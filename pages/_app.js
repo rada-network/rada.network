@@ -1,3 +1,4 @@
+import '../styles/tw.css'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
