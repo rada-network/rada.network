@@ -4,7 +4,9 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: [],
+  
   darkMode: false, // or 'media' or 'class'
+
   theme: {
     // Add Font to Sans Font Array
     fontFamily: {
@@ -16,15 +18,8 @@ module.exports = {
       center: true,
       padding: '1rem',
     },
-    
+
     extend: {
-
-      //Grid Template Columns
-      gridTemplateColumns: {
-        // Simple 16 column grid
-       '2-main-l': 'auto [page-main] 24rem [page-sidebar]',
-
-      },
 
       // Only define main background images
       backgroundImage: {
@@ -81,12 +76,14 @@ module.exports = {
        },
     }
   },
+
   variants: {
     scale: ['responsive', 'hover', 'focus', 'group-hover'],
     textColor: ['responsive', 'hover', 'focus', 'group-hover'],
     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
     backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
   },
+
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
