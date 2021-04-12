@@ -1,21 +1,21 @@
 export const Header = () => {
   return (
-    <div className="home--header">
-      <div className="container home--header--container">
+    <div className="header">
+      <div className="container">
 
-        <div className="flex flex-col mb-16 sm:text-center sm:mb-0">
-          <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-            <h2 className="mb-6 text-4xl font-400 text-white sm:text-6xl lg:text-7xl lg:leading-snug md:mx-auto">
+        <div className="flex flex-col mb-16 container-inner">
+          <div className="mb-5">
+            <h2 className="mb-2 text-3xl font-600 text-white">
               <span className="relative inline-block">
-                The largest NFT marketplace
+                Discover all the latest Crypto Projects 
               </span>
             </h2>
-            <p className="text-base text-indigo-100 md:text-lg">
-              Buy, sell, and discover rare digital items
+            <p className="text-base text-indigo-100 text-xl">
+              and always be in the loop!
             </p>
           </div>
           <div>
-            <a href="/" className="btn btn-secondary h-12 px-6 font-medium tracking-wide">
+            <a href="/" className="h-12 px-6 font-medium tracking-wide rounded btn btn-secondary">
               Get started
             </a>
           </div>

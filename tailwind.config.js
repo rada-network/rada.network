@@ -23,7 +23,7 @@ module.exports = {
 
       // Only define main background images
       backgroundImage: {
-       'hero-img-1': "url('/images/header/hero.png')"
+       'hero-img-1': "url('/images/hero.svg')"
       },
 
       // Mapping Colors
