@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { useState } from 'react'
 
+import { RiUploadLine } from "react-icons/ri";
+
 export const Navbar = () => {
   return (
     <nav className="">
@@ -42,23 +44,21 @@ export const Navbar = () => {
             {/* Logo */}
             <div className="flex items-center flex-shrink-0">
               <Link href={`/`}>
-              <a title="Rada.co"><img className="block w-auto h-8"
-              src="./images/rada-sm.svg" alt="Rada.co" /></a>
+              <a title="Rada.co"><img className="block w-auto h-8" src="./images/rada.svg" alt="Rada.co" /></a>
               </Link>
             </div>
 
             {/* Search */}
             <div className="relative w-full mx-6">
-              <input type="search" className="w-full px-5 py-2 border-0 rounded-full shadow focus:shadow-lg bg-purple-white" placeholder="Search by creator, collection ..." />
+              <input type="search" className="w-full px-5 py-2 border border-gray-100 rounded shadow-sm focus:shadow-lg focus:border-primary-700" placeholder="Search by address or name ..." />
             </div>
 
             {/* Main Nav */}
-            <div className="hidden sm:block sm:ml-6">
+            <div className="flex-1 hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                <a href="/" className="px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-md" aria-current="page">Dashboard</a>
-                <a href="/" className="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Team</a>
-                <a href="/" className="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Projects</a>
-                <a href="/" className="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Calendar</a>
+                <a href="/" className="px-3 py-2 font-medium text-white rounded-md whitespace-nowrap bg-primary-700" aria-current="page">Explore</a>
+                <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">About Us</a>
+                <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">How It Work</a>
               </div>
             </div>
  
@@ -67,20 +67,20 @@ export const Navbar = () => {
 
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
-            {/* Notification Button */}
-            <button className="p-1 text-gray-400 bg-gray-800 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-              <span className="sr-only">View notifications</span>
-              {/* Heroicon name: outline/bell */}
-              <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-              </svg>
-            </button>
+            <div className="flex-1 hidden sm:block">
+              <div className="flex space-x-4">
+                <a href="/" className="flex items-center px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">
+                  <span className="mr-2 icon"><RiUploadLine /></span>
+                  Submit
+                </a>
+              </div>
+            </div>
     
             {/* Profile dropdown */}
             <div className="relative ml-3">
 
               <div>
-                <button type="button" className="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-expanded="false" aria-haspopup="true">
+                <button type="button" className="flex text-sm bg-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-expanded="false" aria-haspopup="true">
                   <span className="sr-only">Open user menu</span>
                   <img className="w-8 h-8 rounded-full" src="https://picsum.photos/80/80?random=1" alt="" />
                 </button>

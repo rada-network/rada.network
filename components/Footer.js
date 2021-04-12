@@ -2,9 +2,9 @@ export const Footer = () => {
   return (
     <div className="mt-8 footer lg:mt-16">
       <div className="container">
-      <div className="flex flex-col justify-between pt-5 pb-10 border-t sm:flex-row">
+       <div className="flex flex-col justify-between pt-5 pb-10 sm:flex-row">
         <p className="text-sm text-gray-600">
-          © Copyright 2020 Lorem Inc. All rights reserved.
+          © Copyright 2021 Rada.co . All rights reserved.
         </p>
         <div className="flex items-center mt-4 space-x-4 sm:mt-0">
           <a

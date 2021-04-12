@@ -1,4 +1,19 @@
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+/* Custom Fonts, Google Fonts, etc...*/
+@import '_fonts';
 
+/* Custom Variables */
+@import '_variables';
 
+/* Grid and Layout*/
+/* @import '_type'; */
+
+/* Grid and Layout*/
+@import '_layout';
+
+/* Core HTML elements */
+@import '_common';
+
+/* HTML elements */
+@import '_icons';
+@import '_buttons';
+@import '_lists';

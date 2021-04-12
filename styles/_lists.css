@@ -1,0 +1,66 @@
+/*
+Lists Styles 
+*/
+
+.list-group {
+
+}
+
+.list-group-item {
+  @apply flex justify-between items-center px-1 py-3;
+  @apply border-b border-gray-200;
+}
+
+/*
+Asset Meta List
+*/
+.asset-meta-list {
+}
+
+.asset-meta-list .asset-meta-figure {
+  @apply h-full w-2/6;
+}
+
+.asset-meta-list .asset-meta {
+  @apply h-full flex-1;
+}
+
+/*
+Asset Bidding List
+*/
+.asset-bidding-list {
+}
+
+.asset-bidding-list .asset-meta {
+  @apply h-full flex-1;
+}
+
+.asset-bidding-list .asset-price {
+  @apply h-full w-3/12;
+}
+
+.asset-bidding-list .asset-time {
+  @apply h-full w-3/12 flex items-center;
+}
+
+/*
+Asset History List
+*/
+.asset-history-list {
+}
+
+.asset-history-list .asset-history-figure {
+  @apply mr-4;
+}
+
+.asset-history-list .asset-meta {
+  @apply h-full flex-1;
+}
+
+.asset-history-list .asset-price {
+  @apply h-full w-3/12;
+}
+
+.asset-history-list .asset-time {
+  @apply h-full w-3/12 flex items-center;
+}

@@ -30,7 +30,6 @@ module.exports = {
       colors: {
         primary: colors.purple,
         secondary: colors.green,
-        neutral: colors.gray,
       },
 
       // Added Percentage Spacing

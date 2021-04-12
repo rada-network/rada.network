@@ -12,7 +12,6 @@ export default function Home(props) {
 
   return (
     <Layout extraClass="page-home">
-      <Header />
 
     </Layout>
   )

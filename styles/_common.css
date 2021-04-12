@@ -1,0 +1,28 @@
+/* 
+Set a default styles for all elements
+*/
+body {
+  @apply text-gray-700;
+}
+
+/* 
+Links 
+*/
+a {
+  @apply transition-colors duration-200;
+}
+
+.link {
+  /* Seperating each at.apply for clearer declaration */
+  /* This is for visual option */
+  @apply text-purple-700 hover:text-purple-900;
+}
+
+.link-text {
+  @apply text-gray-700 hover:text-gray-900;
+}
+
+.link-text-bold {
+  @apply text-gray-700 hover:text-gray-900;
+  @apply font-medium;
+}
