@@ -19,6 +19,16 @@ export default function Home(props) {
         title="Today"
         cta="View all Collections"
       />
+      <ProjectsList
+        gap="2"
+        title="Yesterday"
+        cta="View all Collections"
+      />
+      <ProjectsList
+        gap="2"
+        title="10 Jan"
+        cta="View all Collections"
+      />
     </Layout>
   )
 }

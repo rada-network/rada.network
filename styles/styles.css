@@ -1,4 +1,7 @@
 
+.page-home .header {
+  @apply mt-6;
+}
 
 .page-home .header .container-inner {
   @apply bg-primary-700 bg-no-repeat bg-right rounded-md shadow;

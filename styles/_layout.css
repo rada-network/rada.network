@@ -1,10 +1,3 @@
-/* 
-Add a global x-padding
-*/
-
-body {
-  @apply bg-gray-100;
-}
 
 .wrapper {
 }
@@ -26,7 +19,7 @@ Main Grid
 Section
 */
 .section {
-  @apply my-6;
+  @apply my-12;
 }
 
 .section-header {

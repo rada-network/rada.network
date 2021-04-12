@@ -5,7 +5,7 @@ export const Header = () => {
 
         <div className="flex flex-col px-16 py-12 container-inner">
           <div className="">
-            <h2 className="mb-2 text-3xl font-600 text-white">
+            <h2 className="mb-2 text-3xl font-semibold text-white">
               <span className="relative inline-block">
                 Discover all the latest Crypto Projects 
               </span>

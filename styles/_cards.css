@@ -21,7 +21,7 @@ Generic Styles
 }
 
 .card-media {
-  @apply flex flex-col justify-center justify-items-center overflow-hidden rounded-t-md;
+  @apply flex flex-col justify-center justify-items-center overflow-hidden rounded-md;
 }
 
 .card-img {
@@ -53,7 +53,9 @@ Project
 */
 .card-project {
 
-  @apply relative border shadow-sm;
+  @apply relative transition-all;
+  @apply bg-white border border-gray-100 shadow-sm hover:shadow-lg;
+  @apply px-6 py-4;
 
   .card-body {
     @apply p-6 bg-white rounded-b-md;
@@ -63,14 +65,18 @@ Project
     @apply mb-2 -mt-14;
   }
 
+  .card-title {
+    @apply font-semibold;
+  }
+
   .card-text {
-    @apply line-clamp-3;
+    @apply text-sm line-clamp-2 text-gray-600;
   }
 
 }
 
 .card-project .card-media {
-  @extend %Img64;
+  @extend %Img80;
 }
 
 .card-project .card-body-media {

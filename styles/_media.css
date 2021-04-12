@@ -17,3 +17,7 @@
 %Img64 {
   @apply w-icon-64 h-icon-64 inline-block overflow-hidden;
 }
+
+%Img80 {
+  @apply w-icon-80 h-icon-80 inline-block overflow-hidden;
+}

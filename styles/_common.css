@@ -2,7 +2,7 @@
 Set a default styles for all elements
 */
 body {
-  @apply text-gray-700;
+  @apply bg-gray-100;
 }
 
 /* 

@@ -1,6 +1,8 @@
+import { RiArrowUpSFill } from "react-icons/ri";
+
 export const Card = ({title, text, mediaUri, submitterImgUri, link, voteTotal}) => {
   const content = 
-    <div className="card card-project flex-row items-center content-center">
+    <div className="card group card-project flex-row items-center content-center">
       <div className="card-media project-icon">
         <img className="card-img project-icon_img" src={mediaUri} />
       </div> 
@@ -13,11 +15,22 @@ export const Card = ({title, text, mediaUri, submitterImgUri, link, voteTotal}) 
         </div> 
         <div className="card-body-main">
           <div className="card-text">{text}</div>
+          <div className="card-text">
+            <div class="project-metadata-wrapper">
+              <div class="project-date">
+                5 hours ago
+              </div>
+              <div class="project-date">
+                rada.co
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="card-footer">
-        <btn className="btn btn-project-vote">
-          <span className="btn-project-vote_total">
+        <btn className="btn flex-col justify-center w-icon-64 h-icon-64 btn-project-vote rounded-md bg-gray-50 group-hover:bg-primary-700 group-hover:text-white transition-none">
+          <span className="icon text-xl"><RiArrowUpSFill /></span>
+          <span className="btn-project-vote_total text-xs whitespace-nowrap font-bold transition-all">
             {voteTotal}
           </span>
         </btn>
