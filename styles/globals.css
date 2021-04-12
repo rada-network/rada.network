@@ -13,7 +13,9 @@
 /* Core HTML elements */
 @import '_common';
 
-/* HTML elements */
+/* Components */
 @import '_icons';
+@import '_media';
 @import '_buttons';
 @import '_lists';
+@import '_cards';

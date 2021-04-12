@@ -2,6 +2,10 @@
 Add a global x-padding
 */
 
+body {
+  @apply bg-gray-100;
+}
+
 .wrapper {
 }
 
@@ -36,7 +40,4 @@ Section
 .section-cta {
   @apply text-sm font-medium;
   @apply flex justify-between items-center;
-  .icon {
-    @apply ml-2;
-  }
 }

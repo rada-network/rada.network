@@ -21,11 +21,6 @@ module.exports = {
 
     extend: {
 
-      // Only define main background images
-      backgroundImage: {
-       'hero-img-1': "url('/images/hero.svg')"
-      },
-
       // Mapping Colors
       colors: {
         primary: colors.purple,

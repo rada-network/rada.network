@@ -1,0 +1,19 @@
+%Img32 {
+  @apply w-icon-32 h-icon-32 inline-block overflow-hidden;
+}
+
+%Img40 {
+  @apply w-icon-40 h-icon-40 inline-block overflow-hidden;
+}
+
+%Img48 {
+  @apply w-icon-48 h-icon-48 inline-block overflow-hidden;
+}
+
+%Img56 {
+  @apply w-icon-56 h-icon-56 inline-block overflow-hidden;
+}
+
+%Img64 {
+  @apply w-icon-64 h-icon-64 inline-block overflow-hidden;
+}

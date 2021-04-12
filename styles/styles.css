@@ -1,10 +1,8 @@
 
 
 .page-home .header .container-inner {
-  /* Seperating each at.apply for clearer declaration */
-  /* This is for visual option */
-  @apply bg-primary-900 bg-hero-img-1 bg-center bg-cover rounded;
-  /* This is for spacing option */
-  @apply mt-5 mb-5 py-12 px-12;
+  @apply bg-primary-700 bg-no-repeat bg-right rounded-md shadow;
+  background-image: url(/images/hero.svg);
+  background-size: 80%;
 }
 
