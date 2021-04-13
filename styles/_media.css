@@ -1,3 +1,11 @@
+%Img16 {
+  @apply w-icon-16 h-icon-16 inline-block overflow-hidden;
+}
+
+%Img24 {
+  @apply w-icon-24 h-icon-24 inline-block overflow-hidden;
+}
+
 %Img32 {
   @apply w-icon-32 h-icon-32 inline-block overflow-hidden;
 }

@@ -1,0 +1,15 @@
+.metadata {
+  @apply inline-flex justify-items-center font-semibold;
+}
+
+.metadata + .metadata {
+  @apply ml-2;
+}
+
+.metadata-divider {
+  @apply inline-flex justify-items-center w-2 h-3 ml-3;
+  &::before {
+    @apply block border-l border-gray-300;
+    content: "";
+  }
+}
