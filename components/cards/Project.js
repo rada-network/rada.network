@@ -2,7 +2,7 @@ import { RiArrowUpSFill } from "react-icons/ri";
 import { RiChat1Fill } from "react-icons/ri";
 
 
-export const Card = ({title, text, mediaUri, projectDate, projectSubmitter, projectSubmitterImgUri, projectCommentsCounts, link, voteTotal}) => {
+export const Card = ({title, text, mediaUri, projectType, projectPlatform, projectDate, projectSubmitter, projectSubmitterImgUri, projectCommentsCounts, link, voteTotal}) => {
   const content = 
     <div className="card group card-project flex-row items-center content-center">
       <div className="card-media project-icon">
@@ -11,6 +11,14 @@ export const Card = ({title, text, mediaUri, projectDate, projectSubmitter, proj
       <div className="card-body">
         <div className="card-body-header">
           <div className="card-title">{title}</div>
+          <div className="metadata-wrapper project-metadata-wrapper">
+            <div class="metadata project-metadata_type">
+              <span class="metadata-value">{projectType}</span>
+            </div>
+            <div class="metadata project-metadata_platform">
+              <span class="metadata-value">{projectPlatform}</span>
+            </div>
+          </div>
         </div> 
         <div className="card-body-main">
           <div className="card-text">{text}</div>

@@ -54,7 +54,7 @@ Project
 .card-project {
 
   @apply relative transition-all;
-  @apply bg-white border border-gray-100 shadow-sm hover:shadow-lg;
+  @apply bg-white border border-gray-100 shadow-sm hover:shadow-md;
   @apply px-6 py-4;
 
   .card-body {
