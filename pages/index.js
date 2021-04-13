@@ -27,7 +27,13 @@ export default function Home(props) {
         cta="Sorted by"
       />
       <ProjectsList
-        grid="2"
+        grid="1"
+        gap="2"
+        title="28 Jan"
+        cta="Sorted by"
+      />
+       <ProjectsList
+        grid="1"
         gap="2"
         title="10 Jan"
         cta="Sorted by"

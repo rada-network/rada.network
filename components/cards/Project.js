@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { RiArrowUpSFill } from "react-icons/ri";
 import { RiChat1Fill } from "react-icons/ri";
 
@@ -30,23 +32,22 @@ export const Card = ({title, text, mediaUri, projectType, projectPlatform, proje
 
             <a href="#" className={`metadata project-metadata_platform project-metadata_platform_${projectPlatformShort || ''} `}>
               {/* <img className="card-img" src={`./node_modules/cryptocurrency-icons/svg/color/${projectPlatformShort || ''}.svg`} /> */}
-              <img className="card-img" src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/svg/color/btc.svg" />
+              <span className="icon"><i class={`cf cf-${projectPlatformShort || 'btc'}`}></i></span>
               <span className="metadata-value">{projectPlatform}</span>
             </a>
 
             <div className="metadata-divider"></div>
 
             <div className="metadata project-metadata_date">
-              <span className="icon"></span>
               <span className="metadata-value">{projectDate}</span>
             </div>
 
-            <a href={link} className="metadata project-metadata_submitter hidden">
+            {/* <a href={link} className="metadata project-metadata_submitter hidden">
               <span className="card-body-media project-submitter inline-block mr-1">
                 <img className="card-img project-submitter_img" src={projectSubmitterImgUri} />
               </span>
               <span className="metadata-value">{projectSubmitter}</span>
-            </a>
+            </a> */}
 
             <div className="metadata-divider"></div>
 

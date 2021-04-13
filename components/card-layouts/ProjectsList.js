@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {useState} from "react";
 import {Card} from "../cards/Project";
 
@@ -7,6 +9,9 @@ import { RiFireFill } from "react-icons/ri";
 import { RiTimeFill } from "react-icons/ri";
 import { RiFireLine } from "react-icons/ri";
 import { RiTimeLine } from "react-icons/ri";
+
+import { Icon, InlineIcon } from '@iconify/react';
+import btcIcon from '@iconify/icons-cryptocurrency/btc';
 
 
 
@@ -38,6 +43,7 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 							link="#"
 							projectType="dApp"
 							projectPlatform="Solana"
+							projectPlatformShort="sol"
 							projectDate="4 hours ago"
 							projectSubmitterImgUri="https://picsum.photos/80/80?random=1"
 							projectSubmitter="rada.co"
@@ -51,6 +57,7 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 							link="#"
 							projectType="Token"
 							projectPlatform="Ethereum"
+							projectPlatformShort="eth"
 							projectDate="23 hours ago"
 							projectSubmitterImgUri="https://picsum.photos/80/80?random=2"
 							projectSubmitter="Hung Dinh"
@@ -64,6 +71,7 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 							link="#"
 							projectType="NFT"
 							projectPlatform="Cardano"
+							projectPlatformShort="ada"
 							projectDate="2 days ago"
 							projectSubmitterImgUri="https://picsum.photos/80/80?random=3"
 							projectSubmitter="Khanh Le"
@@ -77,6 +85,7 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 							link="#"
 							projectType="dApp"
 							projectPlatform="Binance BSC"
+							projectPlatformShort="bnb"
 							projectDate="7 days ago"
 							projectSubmitterImgUri="https://picsum.photos/80/80?random=4"
 							projectSubmitter="Hieu Nguyen"
