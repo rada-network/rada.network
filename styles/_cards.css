@@ -1,0 +1,164 @@
+/*
+Extend Styles. Use for repeatable styles.
+*/
+%CardTextXsGray {
+  @apply text-xs opacity-70;
+}
+
+%CardTextBase500 {
+  @apply text-base font-medium;
+}
+
+%CardTextXsSecondary500 {
+  @apply text-xs font-medium text-secondary-500;
+}
+
+/*
+Generic Styles
+*/
+.card {
+  @apply flex h-full rounded-md;
+}
+
+.card-media {
+  @apply flex flex-col justify-center justify-items-center overflow-hidden rounded-md;
+}
+
+.card-img {
+  @apply w-full h-auto object-center object-cover;
+}
+
+.card-title {
+  @apply text-base font-medium;
+  > a {
+    @apply hover:text-gray-900;
+  }
+}
+
+.card-meta {
+  @apply text-xs text-gray-400;
+}
+
+.card-link {
+  @apply block;
+}
+
+.card-body {
+  @apply flex flex-col flex-1 p-4;
+}
+
+
+/*
+Project
+*/
+.card-project {
+
+  @apply relative transition-all;
+  @apply bg-white border border-gray-100 shadow-sm hover:shadow-lg;
+  @apply px-6 py-4;
+
+  .card-body {
+    @apply p-6 bg-white rounded-b-md;
+  }
+
+  .card-body-header {
+    @apply mb-2 -mt-14;
+  }
+
+  .card-title {
+    @apply font-semibold;
+  }
+
+  .card-text {
+    @apply text-sm line-clamp-2 text-gray-600;
+  }
+
+}
+
+.card-project .card-media {
+  @extend %Img80;
+}
+
+.card-project .card-body-media {
+  @extend %Img32;
+}
+
+.card-project {
+
+}
+
+
+/*
+Media Full
+*/
+.card-media-full {
+
+  @apply relative text-white border shadow-sm;
+
+  .card-media {
+    @apply max-h-60 rounded-md;
+  }
+
+  .card-img {
+    @apply rounded-md;
+    filter: brightness(50%);
+  }
+
+  .card-body {
+    @apply p-6 absolute w-full max-w-sm -bottom-0 m-auto;
+  }
+
+  .card-body-header {
+    @apply mb-2;
+  }
+
+  .card-title {
+    @apply text-lg line-clamp-2;
+  }
+
+  .card-text {
+    @apply line-clamp-3;
+  }
+
+  .card-body-footer {
+    @apply mt-4;
+    .btn {
+      @apply text-xs font-medium bg-white text-gray-900 rounded-md;
+      @apply py-2 px-3;
+    }
+  }
+
+}
+
+/*
+Mini Horizontal
+*/
+.card-mini-h {
+  @apply flex flex-row;
+  
+  /* Todo: Fix Later */
+  /* .card-media {
+    @extend %CardImageRounded56;
+  } */
+
+  .card-img {
+    @apply rounded-full;
+  }
+  
+  .card-body {
+    @apply flex flex-col justify-center px-4 py-1;
+  }
+
+  .card-body-header {
+  }
+
+  .card-body-main {
+    @apply m-0;
+  }
+
+}
+
+/* Todo: Fix Later */
+.card-mini-h .card-media {
+  @extend %Img48;
+}

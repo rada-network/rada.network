@@ -1,0 +1,11 @@
+
+.page-home .header {
+  @apply mt-6;
+}
+
+.page-home .header .container-inner {
+  @apply bg-primary-700 bg-no-repeat bg-right rounded-md shadow;
+  background-image: url(/images/hero.svg);
+  background-size: 80%;
+}
+

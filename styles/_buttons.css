@@ -1,0 +1,38 @@
+/*
+Buttons
+*/
+
+.btn {
+  @apply group inline-flex items-center focus:outline-none;
+  .btn-text + .icon {
+    @apply ml-1 ;
+  }
+  .icon {
+    @apply relative right-0 transition-all;
+  }
+  .btn-text + .icon {
+    @apply ml-1;
+  }
+  .icon + .btn-text {
+    @apply ml-1;
+  }
+  &:hover {
+    .btn-text + .icon {
+      @apply -right-0.5;
+    }
+  }
+  &:hover, &:active, &:focus {
+    outline: none;
+  }
+}
+
+/*
+Buttons Styles
+*/
+.btn-primary {
+  @apply bg-primary-700 text-primary-100 hover:bg-primary-900 hover:text-white;
+}
+
+.btn-secondary {
+  @apply bg-secondary-400 text-secondary-900 hover:bg-primary-100 hover:text-primary-700;
+}

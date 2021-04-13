@@ -1,0 +1,36 @@
+
+.wrapper {
+}
+
+/* 
+Main Container
+*/
+.container {
+  @apply mx-auto px-4 max-w-screen-xl;
+}
+
+/* 
+Main Grid
+*/
+.grid {
+}
+
+/* 
+Section
+*/
+.section {
+  @apply my-12;
+}
+
+.section-header {
+  @apply flex justify-between items-center mb-6;
+}
+
+.section-title {
+  @apply text-2xl font-medium;
+}
+
+.section-cta {
+  @apply text-sm font-medium;
+  @apply flex justify-between items-center;
+}

@@ -1,0 +1,8 @@
+/*
+Icons Styles
+*/
+
+.icon {
+  @apply inline-block;
+  size: 1;
+}
