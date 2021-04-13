@@ -29,7 +29,7 @@ export const Card = ({title, text, mediaUri, projectType, projectPlatform, proje
           <div className="metadata-wrapper project-metadata-wrapper">
 
             <a href="#" className={`metadata project-metadata_platform project-metadata_platform_${projectPlatformShort || ''} `}>
-              <img className="card-img" src="./node_modules/cryptocurrency-icons/svg/color/ada.svg" />
+              <img className="card-img" src={`./node_modules/cryptocurrency-icons/svg/color/${projectPlatformShort || ''}.svg`} />
               <span className="metadata-value">{projectPlatform}</span>
             </a>
 
