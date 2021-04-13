@@ -1,4 +1,6 @@
 
+@import '_media';
+
 .page-home .header {
   @apply mt-6;
 }
@@ -9,3 +11,19 @@
   background-size: 80%;
 }
 
+.project-metadata-wrapper {
+  @apply flex items-center justify-items-center text-xs text-gray-900 text-opacity-50;
+}
+ 
+.project-submitter {
+  @extend %Img16;
+  @apply rounded-full;
+}
+
+.project-comment_count {
+  @apply flex items-center justify-items-center;
+}
+
+.project-comment_count .icon {
+  @apply text-base;
+}

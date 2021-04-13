@@ -1,6 +1,8 @@
 import { RiArrowUpSFill } from "react-icons/ri";
+import { RiChat1Fill } from "react-icons/ri";
 
-export const Card = ({title, text, mediaUri, submitterImgUri, link, voteTotal}) => {
+
+export const Card = ({title, text, mediaUri, projectDate, projectSubmitter, projectSubmitterImgUri, projectCommentsCounts, link, voteTotal}) => {
   const content = 
     <div className="card group card-project flex-row items-center content-center">
       <div className="card-media project-icon">
@@ -8,23 +10,29 @@ export const Card = ({title, text, mediaUri, submitterImgUri, link, voteTotal}) 
       </div> 
       <div className="card-body">
         <div className="card-body-header">
-          <div className="card-body-media project-submitter">
-            <img className="card-img project-submitter_img" src={submitterImgUri} />
-          </div>
           <div className="card-title">{title}</div>
         </div> 
         <div className="card-body-main">
           <div className="card-text">{text}</div>
-          <div className="card-text">
-            <div class="project-metadata-wrapper">
-              <div class="project-date">
-                5 hours ago
+        </div>
+        <div class="card-body-footer">
+          <div className="metadata-wrapper project-metadata-wrapper">
+              <div class="metadata project-metadata_date">
+                <span class="icon"></span>
+                <span class="metadata-value">{projectDate}</span>
               </div>
-              <div class="project-date">
-                rada.co
+              <div class="metadata project-metadata_submitter">
+                <div className="card-body-media project-submitter inline-block mr-1">
+                  <img className="card-img project-submitter_img" src={projectSubmitterImgUri} />
+                </div>
+                <span class="metadata-value">{projectSubmitter}</span>
+              </div>
+              <div class="metadata-divider"></div>
+              <div class="metadata project-comment_count">
+                <span class="icon mr-1"><RiChat1Fill /></span>
+                <span>{projectCommentsCounts}</span>
               </div>
             </div>
-          </div>
         </div>
       </div>
       <div className="card-footer">

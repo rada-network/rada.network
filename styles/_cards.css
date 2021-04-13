@@ -58,15 +58,23 @@ Project
   @apply px-6 py-4;
 
   .card-body {
-    @apply p-6 bg-white rounded-b-md;
+    @apply px-6 py-0 h-full justify-items-stretch bg-white;
   }
 
   .card-body-header {
-    @apply mb-2 -mt-14;
+    @apply mb-1;
+  }
+
+  .card-body-main {
+    @apply mb-2;
+  }
+
+  .card-body-footer {
+    @apply mt-auto;
   }
 
   .card-title {
-    @apply font-semibold;
+    @apply text-base font-semibold;
   }
 
   .card-text {
@@ -77,10 +85,6 @@ Project
 
 .card-project .card-media {
   @extend %Img80;
-}
-
-.card-project .card-body-media {
-  @extend %Img32;
 }
 
 .card-project {
