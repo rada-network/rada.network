@@ -15,19 +15,22 @@ export default function Home(props) {
     <Layout extraClass="page-home">
       <Header />
       <ProjectsList
+        grid="2"
         gap="2"
         title="Today"
-        cta="View all Collections"
+        cta="Sorted by"
       />
       <ProjectsList
+        grid="1"
         gap="2"
         title="Yesterday"
-        cta="View all Collections"
+        cta="Sorted by"
       />
       <ProjectsList
+        grid="2"
         gap="2"
         title="10 Jan"
-        cta="View all Collections"
+        cta="Sorted by"
       />
     </Layout>
   )

@@ -1,17 +1,17 @@
 .badge {
-  @apply text-xs font-normal px-2 leading-5;
-  @apply text-gray-500 bg-gradient-to-br from-gray-100 from-gray-200;
-  @apply rounded-lg rounded-tr rounded-bl;
+  @apply text-xs font-medium px-2 leading-5;
+  @apply text-gray-500 uppercase;
+  @apply rounded-full bg-gray-100;
 }
 
 .badge-dApp {
-  @apply text-blue-700 from-blue-100 to-blue-200;
+  @apply text-blue-500;
 }
 
 .badge-NFT {
-  @apply text-purple-700 from-purple-100 to-purple-200;
+  @apply text-purple-500;
 }
 
 .badge-Token {
-  @apply text-yellow-600 from-yellow-100 to-yellow-200;
+  @apply text-yellow-500 ;
 }

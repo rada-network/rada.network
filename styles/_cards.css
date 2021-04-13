@@ -85,14 +85,20 @@ Project
     @apply text-sm line-clamp-2 text-gray-600;
   }
 
+
+  .card-body-footer a.metadata {
+    @apply hover:text-gray-600;
+  }
+
 }
 
 .card-project .card-media {
   @extend %Img80;
 }
 
-.card-project {
-
+.card-project .card-body-footer .metadata img {
+  @extend %Img16;
+  @apply rounded-full mr-1;
 }
 
 

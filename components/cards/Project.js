@@ -29,7 +29,8 @@ export const Card = ({title, text, mediaUri, projectType, projectPlatform, proje
           <div className="metadata-wrapper project-metadata-wrapper">
 
             <a href="#" className={`metadata project-metadata_platform project-metadata_platform_${projectPlatformShort || ''} `}>
-              <img className="card-img" src={`./node_modules/cryptocurrency-icons/svg/color/${projectPlatformShort || ''}.svg`} />
+              {/* <img className="card-img" src={`./node_modules/cryptocurrency-icons/svg/color/${projectPlatformShort || ''}.svg`} /> */}
+              <img className="card-img" src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/svg/color/btc.svg" />
               <span className="metadata-value">{projectPlatform}</span>
             </a>
 

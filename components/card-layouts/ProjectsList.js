@@ -22,7 +22,7 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 							<span className="icon mr-1"><RiTimeFill /></span>
 							<span className="btn-text text-xs font-medium uppercase">Latest</span>
 						</button>
-						<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60">
+						<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100">
 							<span className="icon mr-1"><RiFireFill /></span>
 							<span className="btn-text text-xs font-medium uppercase">Popular</span>
 						</button>
@@ -45,7 +45,7 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 							voteTotal="2"
 						/>
 						<Card 
-							title="Blockchain Adventurers Guild"
+							title="Blockchain Adventurers"
 							text="Enabling DeFi on Thorchain through synthetic assets and efficient use of your crypto."
 							mediaUri="https://picsum.photos/400/400?random=2"
 							link="#"

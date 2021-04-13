@@ -1,5 +1,5 @@
 .metadata {
-  @apply inline-flex justify-items-center;
+  @apply inline-flex justify-items-center items-center;
 }
 
 .metadata + .metadata {
