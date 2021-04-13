@@ -62,7 +62,11 @@ Project
   }
 
   .card-body-header {
-    @apply mb-1;
+    @apply mb-1 flex flex-wrap justify-items-center;
+  }
+
+  .card-body-header .metadata-wrapper {
+    @apply ml-2;
   }
 
   .card-body-main {
@@ -70,7 +74,7 @@ Project
   }
 
   .card-body-footer {
-    @apply mt-auto;
+    @apply mt-auto font-semibold;
   }
 
   .card-title {

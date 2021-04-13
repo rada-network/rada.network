@@ -1,6 +1,7 @@
-
 @import '_media';
 
+
+/* Home Header */
 .page-home .header {
   @apply mt-6;
 }
@@ -11,8 +12,13 @@
   background-size: 80%;
 }
 
+/* Projects */
 .project-metadata-wrapper {
   @apply flex items-center justify-items-center text-xs text-gray-900 text-opacity-50;
+}
+
+.project-metadata_submitter {
+  @apply hidden;
 }
  
 .project-submitter {
@@ -26,4 +32,8 @@
 
 .project-comment_count .icon {
   @apply text-base;
+}
+
+.card-body-footer {
+  @apply font-medium;
 }
