@@ -54,7 +54,10 @@ Project Details
   }
 
   .page-header {
-    @apply flex items-center justify-items-center;
+  }
+
+  .page-header_main {
+    @apply py-1 px-6;
   }
 
   .page-main {
@@ -62,7 +65,11 @@ Project Details
   }
 
   .page-sidebar {
-    @apply max-h-full pt-8 overflow-x-hidden overflow-y-auto; 
+    @apply w-72 max-h-full p-6 overflow-x-hidden overflow-y-auto; 
   }
 
+}
+
+.project-text_short {
+  @apply text-base text-gray-900 text-opacity-75 line-clamp-1;
 }

@@ -27,10 +27,21 @@ Section
 }
 
 .section-title {
-  @apply text-2xl font-semibold;
+  @apply text-xl font-semibold;
 }
 
 .section-cta {
   @apply text-sm font-medium;
   @apply flex justify-between items-center;
+}
+
+/* 
+Page 
+*/
+.page-header {
+  @apply flex justify-between items-center mb-6;
+}
+
+.page-title {
+  @apply text-2xl font-semibold mb-1;
 }

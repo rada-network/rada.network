@@ -5,6 +5,9 @@ import Head from 'next/head';
 import {Layout} from '../components/page-layouts/OneColumn';
 import {Header} from '../components/Header';
 import {ProjectsList} from '../components/card-layouts/ProjectsList';
+import {PromoList} from '../components/card-layouts/PromoList';
+import {TopSellersList} from '../components/card-layouts/TopSellersList';
+import {CategoryList} from '../components/card-layouts/CategoryList';
 
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
@@ -17,25 +20,43 @@ export default function Home(props) {
       <ProjectsList
         grid="2"
         gap="2"
-        title="Today"
-        cta="Sorted by"
+        title="Popular Projects Today"
+      />
+      <CategoryList
+        extraClass="category-list"
+        grid="5"
+        gap="5"
+        title="Project Categories"
+        cta="View all"
+      />
+      <ProjectsList
+        grid="2"
+        gap="2"
+        title="NFTs that you cannot missed"
+      />
+      <ProjectsList
+        grid="2"
+        gap="2"
+        title="Most Active Dapps in a Week"
+      />
+      <TopSellersList
+        grid="5"
+        gap="5"
       />
       <ProjectsList
         grid="1"
         gap="2"
-        title="Yesterday"
-        cta="Sorted by"
+        title="New Projects Today"
       />
-      <ProjectsList
-        grid="1"
-        gap="2"
-        title="28 Jan"
-        cta="Sorted by"
+      <PromoList
+        extraClass="promo-list"
+        grid="3"
+        gap="5"
       />
        <ProjectsList
         grid="1"
         gap="2"
-        title="10 Jan"
+        title="All Projects"
         cta="Sorted by"
       />
     </Layout>

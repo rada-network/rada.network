@@ -133,20 +133,22 @@ Media Full
     @apply mb-2;
   }
 
+  .card-body-main {
+    @apply mb-4;
+  }
+
   .card-title {
-    @apply text-lg line-clamp-2;
+    @apply text-base line-clamp-1;
   }
 
   .card-text {
-    @apply line-clamp-3;
+    @apply text-xs line-clamp-2;
   }
 
-  .card-body-footer {
-    @apply mt-4;
-    .btn {
-      @apply text-xs font-medium bg-white text-gray-900 rounded-md;
-      @apply py-2 px-3;
-    }
+  .card-body-footer .btn {
+    @apply text-xs font-medium bg-white text-gray-900 rounded-md;
+    @apply bg-opacity-80 backdrop-filter backdrop-blur;
+    @apply py-2 px-3;
   }
 
 }

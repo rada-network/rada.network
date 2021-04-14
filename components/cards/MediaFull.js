@@ -10,11 +10,11 @@ export const Card = ({title, text, mediaUri, cta}) => {
       <div className="card-body">
         { title && 
         <div className="card-body-header">
-          <div className="card-title">{title}</div>
+          <div className="card-title text-base line-clamp-1">{title}</div>
         </div> }
         { text && 
         <div className="card-body-main">
-          <div className="card-text">{text}</div>
+          <div className="card-text text-xs opacity-75">{text}</div>
         </div> }
         { cta && 
         <div className="card-body-footer">
