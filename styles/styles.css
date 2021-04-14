@@ -3,7 +3,6 @@
 
 /* Home Header */
 .page-home .header {
-  @apply mt-6;
 }
 
 .page-home .header .container-inner {
@@ -40,4 +39,30 @@
 
 .card-footer .btn {
   transition-property: background;
+}
+
+
+/* 
+Project Details
+--------------------------------------------- */
+.page-project_details {
+  height: 100%;
+
+  .mainbody,
+  .mainbody > .container {
+    @apply h-full; 
+  }
+
+  .page-header {
+    @apply flex items-center justify-items-center;
+  }
+
+  .page-main {
+    @apply flex-1; 
+  }
+
+  .page-sidebar {
+    @apply max-h-full pt-8 overflow-x-hidden overflow-y-auto; 
+  }
+
 }

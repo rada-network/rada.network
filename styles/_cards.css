@@ -97,7 +97,9 @@ Project
 
 }
 
-.card-project .card-media {
+.card-project .card-media,
+.project-icon {
+  @apply rounded-md overflow-hidden;
   @extend %Img80;
 }
 

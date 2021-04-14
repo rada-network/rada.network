@@ -5,12 +5,12 @@ import { RiArrowUpSFill } from "react-icons/ri";
 import { RiChat1Fill } from "react-icons/ri";
 
 
-export const Card = ({projectTitle, projectTextShort, projectText, mediaUri, projectType, projectPlatform, projectPlatformShort, projectDate, projectSubmitter, projectSubmitterImgUri, projectCommentsCounts, link, voteTotal}) => {
+export const Card = ({projectTitle, projectTextShort, projectText, projectIconUri, projectType, projectPlatform, projectPlatformShort, projectDate, projectSubmitter, projectSubmitterImgUri, projectCommentsCounts, link, voteTotal}) => {
   return (
     <div className="card group card-project flex-row items-center content-center">
       <div className="card-media project-icon">
         <Link href="/project_details">
-        <img className="card-img project-icon_img" src={mediaUri} />
+        <img className="card-img project-icon_img" src={projectIconUri} />
         </Link>
       </div> 
       <div className="card-body">

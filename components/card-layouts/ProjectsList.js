@@ -36,7 +36,7 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 						<Card 
 							projectTitle="SolaSystem"
 							projectTextShort="SolaSystem is building the new creative economy. Coming soon!"
-							mediaUri="https://picsum.photos/400/400?random=1"
+							projectIconUri="https://picsum.photos/400/400?random=1"
 							link="#"
 							projectType="dApp"
 							projectPlatform="Solana"
@@ -50,7 +50,7 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 						<Card 
 							projectTitle="Blockchain Adventurers"
 							projectTextShort="Enabling DeFi on Thorchain through synthetic assets and efficient use of your crypto."
-							mediaUri="https://picsum.photos/400/400?random=2"
+							projectIconUri="https://picsum.photos/400/400?random=2"
 							link="#"
 							projectType="Token"
 							projectPlatform="Ethereum"
@@ -64,7 +64,7 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 						<Card 
 							projectTitle="Alpha Omega"
 							projectTextShort="A socioeconomic experiment of human creativity, cooperation and governance."
-							mediaUri="https://picsum.photos/400/400?random=3"
+							projectIconUri="https://picsum.photos/400/400?random=3"
 							link="#"
 							projectType="NFT"
 							projectPlatform="Cardano"
@@ -78,7 +78,7 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 						<Card 
 							projectTitle="Picasso Kongz"
 							projectTextShort="1,000 unique Picasso Kongz have been minted !"
-							mediaUri="https://picsum.photos/400/400?random=4"
+							projectIconUri="https://picsum.photos/400/400?random=4"
 							link="#"
 							projectType="dApp"
 							projectPlatform="Binance BSC"
