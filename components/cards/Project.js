@@ -5,20 +5,20 @@ import { RiArrowUpSFill } from "react-icons/ri";
 import { RiChat1Fill } from "react-icons/ri";
 
 
-export const Card = ({title, text, mediaUri, projectType, projectPlatform, projectPlatformShort, projectDate, projectSubmitter, projectSubmitterImgUri, projectCommentsCounts, link, voteTotal}) => {
+export const Card = ({projectTitle, projectTextShort, projectText, mediaUri, projectType, projectPlatform, projectPlatformShort, projectDate, projectSubmitter, projectSubmitterImgUri, projectCommentsCounts, link, voteTotal}) => {
   return (
     <div className="card group card-project flex-row items-center content-center">
       <div className="card-media project-icon">
-        <Link href="/details">
+        <Link href="/project_details">
         <img className="card-img project-icon_img" src={mediaUri} />
         </Link>
       </div> 
       <div className="card-body">
         <div className="card-body-header">
           <div className="card-title">
-            <Link href="/details">
+            <Link href="/project_details">
             <a className="card-link">
-              {title}
+              {projectTitle}
             </a>
             </Link>
           </div>
@@ -29,7 +29,7 @@ export const Card = ({title, text, mediaUri, projectType, projectPlatform, proje
           </div>
         </div> 
         <div className="card-body-main">
-          <div className="card-text">{text}</div>
+          <div className="card-text">{projectTextShort}</div>
         </div>
 
         <div className="card-body-footer">

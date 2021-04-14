@@ -34,8 +34,8 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 				<div className="section-body">
 					<div className={`grid grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
 						<Card 
-							title="SolaSystem"
-							text="SolaSystem is building the new creative economy. Coming soon!"
+							projectTitle="SolaSystem"
+							projectTextShort="SolaSystem is building the new creative economy. Coming soon!"
 							mediaUri="https://picsum.photos/400/400?random=1"
 							link="#"
 							projectType="dApp"
@@ -48,8 +48,8 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 							voteTotal="2"
 						/>
 						<Card 
-							title="Blockchain Adventurers"
-							text="Enabling DeFi on Thorchain through synthetic assets and efficient use of your crypto."
+							projectTitle="Blockchain Adventurers"
+							projectTextShort="Enabling DeFi on Thorchain through synthetic assets and efficient use of your crypto."
 							mediaUri="https://picsum.photos/400/400?random=2"
 							link="#"
 							projectType="Token"
@@ -62,8 +62,8 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 							voteTotal="192"
 						/>
 						<Card 
-							title="Alpha Omega"
-							text="A socioeconomic experiment of human creativity, cooperation and governance."
+							projectTitle="Alpha Omega"
+							projectTextShort="A socioeconomic experiment of human creativity, cooperation and governance."
 							mediaUri="https://picsum.photos/400/400?random=3"
 							link="#"
 							projectType="NFT"
@@ -76,8 +76,8 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 							voteTotal="1"
 						/>
 						<Card 
-							title="Picasso Kongz"
-							text="1,000 unique Picasso Kongz have been minted !"
+							projectTitle="Picasso Kongz"
+							projectTextShort="1,000 unique Picasso Kongz have been minted !"
 							mediaUri="https://picsum.photos/400/400?random=4"
 							link="#"
 							projectType="dApp"
