@@ -64,9 +64,9 @@ export const Card = ({title, text, mediaUri, projectType, projectPlatform, proje
         </div>
       </div>
       <div className="card-footer">
-        <btn className="btn flex-col justify-center w-icon-64 h-icon-64 btn-project-vote rounded-md bg-gray-50 group-hover:bg-primary-700 group-hover:text-white transition-none">
+        <btn className="btn flex-col justify-center w-icon-64 h-icon-64 btn-project-vote rounded-md bg-gray-50 group-hover:bg-primary-700 group-hover:text-white">
           <span className="icon text-xl"><RiArrowUpSFill /></span>
-          <span className="btn-project-vote_total text-xs whitespace-nowrap font-bold transition-all">
+          <span className="btn-project-vote_total text-xs whitespace-nowrap font-bold">
             {voteTotal}
           </span>
         </btn>

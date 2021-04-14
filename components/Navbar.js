@@ -7,7 +7,7 @@ import { RiUploadLine } from "react-icons/ri";
 
 export const Navbar = () => {
   return (
-    <nav className="">
+    <nav className="navbar-main">
       <div className="container">
         <div className="relative flex items-center justify-between h-16">
 
@@ -57,7 +57,7 @@ export const Navbar = () => {
 
             {/* Main Nav */}
             <div className="flex-1 hidden sm:block sm:ml-6">
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 text-sm">
                 <a href="/" className="px-3 py-2 font-medium text-white rounded-md whitespace-nowrap bg-primary-700" aria-current="page">Explore</a>
                 <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">About Us</a>
                 <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">How It Work</a>
@@ -68,8 +68,7 @@ export const Navbar = () => {
 
 
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-            <div className="flex-1 hidden sm:block">
+            <div className="flex-1 hidden sm:block text-sm">
               <div className="flex space-x-4">
                 <a href="/" className="flex items-center px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">
                   <span className="mr-2 icon"><RiUploadLine /></span>

@@ -37,3 +37,7 @@
 .card-body-footer {
   @apply font-medium;
 }
+
+.card-footer .btn {
+  transition-property: background;
+}

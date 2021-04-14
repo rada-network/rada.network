@@ -27,6 +27,11 @@ module.exports = {
         secondary: colors.green,
       },
 
+      // Extra Font Sizes
+      fontSize: {
+        xxs: ['0.65rem', '1'],
+      },
+
       // Added Percentage Spacing
       margin: {
         '4p':   '4%',
@@ -36,6 +41,8 @@ module.exports = {
       },
 
       padding: {
+        '2px':  '2px',
+        '4px':  '4px',
         '4p':   '4%',
         '8p':   '8%',
         '12p':  '12%',

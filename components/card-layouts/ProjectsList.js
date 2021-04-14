@@ -10,9 +10,6 @@ import { RiTimeFill } from "react-icons/ri";
 import { RiFireLine } from "react-icons/ri";
 import { RiTimeLine } from "react-icons/ri";
 
-import { Icon, InlineIcon } from '@iconify/react';
-import btcIcon from '@iconify/icons-cryptocurrency/btc';
-
 
 
 export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
