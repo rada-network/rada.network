@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link'
 
 import { RiArrowUpSFill } from "react-icons/ri";
 import { RiChat1Fill } from "react-icons/ri";
@@ -8,14 +9,18 @@ export const Card = ({title, text, mediaUri, projectType, projectPlatform, proje
   return (
     <div className="card group card-project flex-row items-center content-center">
       <div className="card-media project-icon">
+        <Link href="/details">
         <img className="card-img project-icon_img" src={mediaUri} />
+        </Link>
       </div> 
       <div className="card-body">
         <div className="card-body-header">
           <div className="card-title">
-           <a className="card-link" href={link}>
+            <Link href="/details">
+            <a className="card-link">
               {title}
             </a>
+            </Link>
           </div>
           <div className="metadata-wrapper project-metadata-wrapper">
             <a href="#" className={`metadata badge badge-${projectType || ''} project-metadata_type`}>
