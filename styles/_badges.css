@@ -4,7 +4,7 @@ Badges
 .badge {
   @apply group text-xs font-medium px-3 py-0 h-7 whitespace-nowrap;
   @apply bg-white border text-gray-500 uppercase;
-  @apply rounded rounded-tr-lg rounded-bl-lg bg-gray-100;
+  @apply rounded rounded-tl-lg rounded-br-lg bg-gray-100;
   .cf {
     @apply text-base;
   }
@@ -42,7 +42,7 @@ Badges
 Small Badges
 */
 .badge-sm {
-  @apply h-auto border-none rounded-sm rounded-tr-md rounded-bl-md text-xxs px-2 pt-4px pb-2px;
+  @apply h-auto border-none rounded-sm rounded-tl-md rounded-br-md text-xxs px-2 pt-4px pb-2px;
 }
 
 .badge-sm.badge-dApp {
