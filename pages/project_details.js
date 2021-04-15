@@ -20,12 +20,12 @@ export default function ProjectDetails(props) {
       <>
       <div className="container">
 
-        <div className="page-header flex flex-row justify-center">
+        <div className="page-header">
 
           <div class="page-header_l">
             <Link href={`#`}>
               <a title="SolaSystem" class="project-icon">
-                <img className="project-icon_img" src="https://picsum.photos/96/96?random=1" />
+                <img className="project-icon_img" src="https://picsum.photos/300/300?random=1" />
               </a>
             </Link>
           </div>
@@ -46,6 +46,9 @@ export default function ProjectDetails(props) {
               <a href="#" className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
                 <span className="icon mr-2"><i class="cf cf-sol"></i></span>
                 <span className="metadata-value">Solana</span>
+              </a>
+              <a href="#" className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
+                <span className="metadata-value">SOL</span>
               </a>
             </div>
 

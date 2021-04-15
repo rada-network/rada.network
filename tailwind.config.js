@@ -61,6 +61,8 @@ module.exports = {
         'icon-80':  '80px',
         'icon-88':  '88px',
         'icon-96':  '96px',
+        'icon-104': '104px',
+        'icon-128': '128px',
       },
       
       height: {
@@ -74,6 +76,8 @@ module.exports = {
         'icon-80':  '80px',
         'icon-88':  '88px',
         'icon-96':  '96px',
+        'icon-104': '104px',
+        'icon-128': '128px',
       },
 
       // Added zIndex
