@@ -88,10 +88,29 @@ export default function ProjectDetails(props) {
                 </div>
               </div>
 
-              <div className="project-text mt-8 text-gray-900 text-opacity-75">
-                <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition</p>
+              <div className="mt-8 pt-8 border-t border-gray-100 flex">
 
-                <p className="">Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain. Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
+                <div className="project-text flex-1 text-gray-900 text-opacity-75 pr-10">
+                  <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition</p>
+
+                  <p className="">Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain. Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
+                </div>
+
+                <div className="project-info text-sm border-l border-gray-100 w-64 pl-8 text-gray-900 text-opacity-75">
+                    <div className="pb-2 mb-2">
+                      <strong>Project Info</strong>
+                    </div>
+                    <div className="pb-2 mb-2">
+                      Featured: 2 hours ago
+                    </div>
+                    <div className="pb-2 mb-2">
+                      Category: DeFi
+                    </div>
+                    <div className="pb-4">
+                      Token: SOL
+                    </div>
+                </div>
+
               </div>
 
             </div>
