@@ -1,8 +1,29 @@
+@import url('https://cdn.cryptofonts.com/1.3.0/cryptofont.css');
+
 /*
 Icons Styles
 */
 
 .icon {
   @apply inline-block;
-  size: 1;
+}
+
+.cf-btc {
+  @apply text-yellow-600;
+}
+
+.cf-eth {
+  @apply text-gray-900;
+}
+
+.cf-ada {
+  @apply text-purple-700;
+}
+
+.cf-bnb {
+  @apply text-yellow-400;
+}
+
+.cf-sol {
+  @apply text-green-600;
 }

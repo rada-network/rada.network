@@ -6,7 +6,7 @@
 Main Container
 */
 .container {
-  @apply mx-auto px-4 max-w-screen-xl;
+  @apply mx-auto px-4 max-w-screen-lg;
 }
 
 /* 
@@ -27,10 +27,21 @@ Section
 }
 
 .section-title {
-  @apply text-2xl font-medium;
+  @apply text-xl font-semibold;
 }
 
 .section-cta {
   @apply text-sm font-medium;
   @apply flex justify-between items-center;
+}
+
+/* 
+Page 
+*/
+.page-header {
+  @apply flex justify-between items-center mb-6;
+}
+
+.page-title {
+  @apply text-2xl font-semibold mb-1;
 }

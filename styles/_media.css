@@ -29,3 +29,11 @@
 %Img80 {
   @apply w-icon-80 h-icon-80 inline-block overflow-hidden;
 }
+
+%Img88 {
+  @apply w-icon-88 h-icon-88 inline-block overflow-hidden;
+}
+
+%Img96 {
+  @apply w-icon-96 h-icon-96 inline-block overflow-hidden;
+}

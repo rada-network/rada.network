@@ -11,12 +11,14 @@
 @import '_layout';
 
 /* Core HTML elements */
-@import '_common';
+@import '_core';
 
 /* Components */
 @import '_icons';
 @import '_media';
 @import '_buttons';
+@import '_badges';
 @import '_lists';
 @import '_cards';
 @import '_contents';
+@import '_navbar';

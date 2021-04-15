@@ -1,5 +1,5 @@
 .metadata {
-  @apply inline-flex justify-items-center font-semibold;
+  @apply inline-flex justify-items-center items-center;
 }
 
 .metadata + .metadata {
@@ -7,7 +7,7 @@
 }
 
 .metadata-divider {
-  @apply inline-flex justify-items-center w-2 h-3 ml-3;
+  @apply inline-flex justify-items-center w-2 h-3 ml-2;
   &::before {
     @apply block border-l border-gray-300;
     content: "";

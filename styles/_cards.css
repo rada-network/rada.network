@@ -54,7 +54,7 @@ Project
 .card-project {
 
   @apply relative transition-all;
-  @apply bg-white border border-gray-100 shadow-sm hover:shadow-lg;
+  @apply bg-white border border-gray-100 shadow-sm hover:shadow-md;
   @apply px-6 py-4;
 
   .card-body {
@@ -62,7 +62,11 @@ Project
   }
 
   .card-body-header {
-    @apply mb-1;
+    @apply mb-1 flex flex-wrap justify-items-center;
+  }
+
+  .card-body-header .metadata-wrapper {
+    @apply ml-2;
   }
 
   .card-body-main {
@@ -70,7 +74,12 @@ Project
   }
 
   .card-body-footer {
-    @apply mt-auto;
+    @apply mt-auto font-semibold;
+  }
+
+  .card-body-footer .icon {
+    @apply text-base mr-1 relative;
+    top: -1px;
   }
 
   .card-title {
@@ -81,14 +90,22 @@ Project
     @apply text-sm line-clamp-2 text-gray-600;
   }
 
+
+  .card-body-footer a.metadata {
+    @apply hover:text-gray-600;
+  }
+
 }
 
-.card-project .card-media {
+.card-project .card-media,
+.project-icon {
+  @apply rounded-md overflow-hidden;
   @extend %Img80;
 }
 
-.card-project {
-
+.card-project .card-body-footer .metadata img {
+  @extend %Img16;
+  @apply rounded-full mr-1;
 }
 
 
@@ -116,20 +133,22 @@ Media Full
     @apply mb-2;
   }
 
+  .card-body-main {
+    @apply mb-4;
+  }
+
   .card-title {
-    @apply text-lg line-clamp-2;
+    @apply text-base line-clamp-1;
   }
 
   .card-text {
-    @apply line-clamp-3;
+    @apply text-xs line-clamp-2;
   }
 
-  .card-body-footer {
-    @apply mt-4;
-    .btn {
-      @apply text-xs font-medium bg-white text-gray-900 rounded-md;
-      @apply py-2 px-3;
-    }
+  .card-body-footer .btn {
+    @apply text-xs font-medium bg-white text-gray-900 rounded-md;
+    @apply bg-opacity-80 backdrop-filter backdrop-blur;
+    @apply py-2 px-3;
   }
 
 }
