@@ -91,7 +91,7 @@ export default function ProjectDetails(props) {
 
               <div className="mt-10 pt-8 border-t border-gray-100 flex">
 
-                <div className="project-text flex-1 text-gray-900 text-opacity-75 pr-10">
+                <div className="project-text flex-1 text-gray-900 text-opacity-90 pr-10">
                   <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition. Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain.</p>
 
                   <p className="">Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
@@ -101,21 +101,21 @@ export default function ProjectDetails(props) {
                     <div className="pb-3 mb-3 border-b border-gray-100">
                       <strong>Project Info</strong>
                     </div>
-                    <div className="pb-2 mb-2">
+                    <div className="pb-1 mb-1">
                       <span className="inline-block w-20">Featured:</span>
-                      <strong className="inline-block font-medium ml-2">2 hours ago</strong>
+                      <strong className="inline-block font-medium ml-2 text-gray-900 text-opacity-90">2 hours ago</strong>
                     </div>
-                    <div className="pb-2 mb-2">
+                    <div className="pb-1 mb-1">
                       <span className="inline-block w-20">Category:</span>
-                      <strong className="inline-block font-medium ml-2">DeFi</strong>
+                      <strong className="inline-block font-medium ml-2 text-gray-900 text-opacity-90">DeFi</strong>
                     </div>
-                    <div className="pb-4">
+                    <div className="pb-1 mb-1">
                       <span className="inline-block w-20">Token:</span>
-                      <strong className="inline-block font-medium ml-2">SOL</strong>
+                      <strong className="inline-block font-medium ml-2 text-gray-900 text-opacity-90">SOL</strong>
                     </div>
-                    <div className="pb-4">
+                    <div className="pb-1 mb-1">
                       <span className="inline-block w-20">Blockchain:</span>
-                      <strong className="inline-block font-medium ml-2">Solana</strong>
+                      <strong className="inline-block font-medium ml-2 text-gray-900 text-opacity-90">Solana</strong>
                     </div>
                 </div>
 
