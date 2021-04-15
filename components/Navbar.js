@@ -1,11 +1,15 @@
 import Link from 'next/link'
 import { Transition } from '@headlessui/react'
 import { useState } from 'react'
+import { useWallet } from 'use-wallet'
 
 import { RiUploadLine } from "react-icons/ri";
 
 
 export const Navbar = () => {
+  const wallet = useWallet()
+  const blockNumber = wallet.getBlockNumber()
+
   return (
     <nav className="navbar-main">
       <div className="container">
@@ -78,12 +82,23 @@ export const Navbar = () => {
             </div>
     
             {/* Profile dropdown */}
-            <div className="relative ml-3">
+            <div className="relative ml-3">              
 
               <div>
                 <button type="button" className="flex text-sm bg-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-expanded="false" aria-haspopup="true">
-                  <span className="sr-only">Open user menu</span>
-                  <img className="w-8 h-8 rounded-full" src="https://picsum.photos/80/80?random=1" alt="" />
+                {wallet.status === 'connected' ? (
+                  <div>
+                    <div>{wallet.account}</div>
+                    <button onClick={() => wallet.reset()}>Disconnect</button>
+                  </div>
+                ) : (
+                  <div>
+                    <button onClick={() => wallet.connect()}>Connect Wallet</button>
+                  </div>
+                )}
+
+                  {/* <span className="sr-only">Open user menu</span>
+                  <img className="w-8 h-8 rounded-full" src="https://picsum.photos/80/80?random=1" alt="" /> */}
                 </button>
               </div>
     
