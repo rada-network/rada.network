@@ -64,7 +64,7 @@ export default function ProjectDetails(props) {
                 </span>
               </btn>
               <btn className="btn item-center justify-center px-3 py-3 btn-project-vote rounded-md bg-primary-700 hover:bg-primary-600 text-white">
-                <span className="icon text-2xl -mb-1"><RiArrowUpSFill /></span>
+                <span className="icon text-2xl -mb-1 -ml-1"><RiArrowUpSFill /></span>
                 <span className="btn-project-vote_total whitespace-nowrap ml-1 uppercase">
                   <span className="inline-block text-sm font-medium">Upvote</span> 
                   <strong className="inline-block text-base font-bold ml-2">1989</strong>

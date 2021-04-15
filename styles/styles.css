@@ -1,6 +1,11 @@
 @import '_media';
 
-
+.logo-text {
+  @apply bg-gradient-to-r from-primary-700 to-yellow-700;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+ 
 /* Home Header */
 .page-home .header {
 }

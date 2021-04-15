@@ -10,7 +10,7 @@ export const Header = () => {
                 Discover all the latest Crypto Projects 
               </span>
             </h2>
-            <p className="text-base text-indigo-100 text-xl">
+            <p className="text-base text-xl text-indigo-100">
               and always be in the loop!
             </p>
           </div>
