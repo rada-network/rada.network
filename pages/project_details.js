@@ -39,9 +39,13 @@ export default function ProjectDetails(props) {
               <p>SolaSystem is the world's first completely decentralized derivatives exchange with trustless cross-chain trading.</p>
             </div>
 
-            <div className="metadata-wrapper project-metadata-wrapper">
+            <div className="metadata-wrapper project-metadata-wrapper mt-4">
               <a href="#" className="metadata badge badge-dApp project-metadata_type">
                 <span className="metadata-value">dapp</span>
+              </a>
+              <a href="#" className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
+                <span className="icon mr-2"><i class="cf cf-sol"></i></span>
+                <span className="metadata-value">Solana</span>
               </a>
             </div>
 
