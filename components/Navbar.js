@@ -9,11 +9,9 @@ import {ChevronDoubleDownIcon, ChevronDownIcon} from "@heroicons/react/solid";
 
 import { RiUploadLine } from "react-icons/ri";
 
+import {Wallet} from "./Wallet"
 
 export const Navbar = () => {
-  const wallet = useWallet()
-  const blockNumber = wallet.getBlockNumber()
-
   return (
       <nav className="navbar-main">
         <div className="container">
@@ -110,18 +108,7 @@ export const Navbar = () => {
                               className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                           >
                             <div className="px-1 py-1 ">
-                            {wallet.status === 'connected' ? (
-                              <>
-                                <div>{wallet.account.substr(0, 4) + '...' + wallet.account.substr(-4)}</div>
-                                <Menu.Item>
-                                <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" onClick={() => wallet.reset()}>Disconnect</a>
-                                </Menu.Item>
-                              </>
-                            ) : (
-                              <Menu.Item>
-                                <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" onClick={() => wallet.connect()}>Connect Wallet</a>
-                              </Menu.Item>
-                            )}                              
+                              <Wallet/>                
                             </div>
                             
                           </Menu.Items>
