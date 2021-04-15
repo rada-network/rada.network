@@ -1,10 +1,10 @@
 export const Footer = () => {
   return (
-    <div className="mt-8 footer lg:mt-16">
+    <div className="footer mt-4 lg:mt-8">
       <div className="container">
-       <div className="flex flex-col justify-between pt-5 pb-10 sm:flex-row">
+       <div className="flex flex-col justify-between pt-4 pb-4 sm:flex-row">
         <p className="text-sm text-gray-600">
-          © Copyright 2021 Rada.co . All rights reserved.
+          © Copyright 2021 dhunt.io . All rights reserved.
         </p>
         <div className="flex items-center mt-4 space-x-4 sm:mt-0">
           <a

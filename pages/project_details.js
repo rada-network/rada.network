@@ -65,7 +65,7 @@ export default function ProjectDetails(props) {
               </btn>
               <btn className="btn item-center justify-center px-3 py-3 btn-project-vote rounded-md bg-primary-700 hover:bg-primary-600 text-white">
                 <span className="icon text-2xl -mb-1"><RiArrowUpSFill /></span>
-                <span className="btn-project-vote_total whitespace-nowrap ml-2 uppercase">
+                <span className="btn-project-vote_total whitespace-nowrap ml-1 uppercase">
                   <span className="inline-block text-sm font-medium">Upvote</span> 
                   <strong className="inline-block text-base font-bold ml-2">1989</strong>
                 </span>
@@ -82,16 +82,43 @@ export default function ProjectDetails(props) {
 
               <div className="project-media-viewer">
                 <div className="project-media-wrapper h-full w-full">
-                  <div className="project-media aspect-w-16 aspect-h-9">
-                    <img className="project-img" alt="" src="https://picsum.photos/1024/768?random=2" />
+                  <div className="project-media rounded overflow-hidden shadow-lg aspect-w-16 aspect-h-9">
+                    {/* <img className="project-img" alt="" src="https://picsum.photos/1024/768?random=2" /> */}
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qnkuBUAwfe0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 </div>
               </div>
 
-              <div className="project-text mt-8 text-gray-900 text-opacity-75">
-                <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition</p>
+              <div className="mt-10 pt-8 border-t border-gray-100 flex">
 
-                <p className="">Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain. Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
+                <div className="project-text flex-1 text-gray-900 text-opacity-75 pr-10">
+                  <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition. Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain.</p>
+
+                  <p className="">Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
+                </div>
+
+                <div className="project-info text-sm border-l border-gray-100 w-64 pl-8 text-gray-900 text-opacity-75">
+                    <div className="pb-3 mb-3 border-b border-gray-100">
+                      <strong>Project Info</strong>
+                    </div>
+                    <div className="pb-2 mb-2">
+                      <span className="inline-block w-20">Featured:</span>
+                      <strong className="inline-block font-medium ml-2">2 hours ago</strong>
+                    </div>
+                    <div className="pb-2 mb-2">
+                      <span className="inline-block w-20">Category:</span>
+                      <strong className="inline-block font-medium ml-2">DeFi</strong>
+                    </div>
+                    <div className="pb-4">
+                      <span className="inline-block w-20">Token:</span>
+                      <strong className="inline-block font-medium ml-2">SOL</strong>
+                    </div>
+                    <div className="pb-4">
+                      <span className="inline-block w-20">Blockchain:</span>
+                      <strong className="inline-block font-medium ml-2">Solana</strong>
+                    </div>
+                </div>
+
               </div>
 
             </div>
