@@ -1,7 +1,11 @@
 .badge {
-  @apply text-xxs font-medium px-2 pt-4px pb-2px whitespace-nowrap;
-  @apply text-gray-500 uppercase;
-  @apply rounded-full bg-gray-100;
+  @apply text-sm font-medium px-3 py-1 whitespace-nowrap;
+  @apply bg-white border text-gray-500 uppercase;
+  @apply rounded-lg rounded-tr-sm rounded-bl-sm bg-gray-100;
+}
+
+.badge-sm {
+  @apply rounded-full border-none text-xxs px-2 pt-4px pb-2px;
 }
 
 .badge-dApp {

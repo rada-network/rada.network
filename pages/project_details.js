@@ -39,9 +39,13 @@ export default function ProjectDetails(props) {
               <p>SolaSystem is the world's first completely decentralized derivatives exchange with trustless cross-chain trading.</p>
             </div>
 
-            <div className="metadata-wrapper project-metadata-wrapper">
+            <div className="metadata-wrapper project-metadata-wrapper mt-4">
               <a href="#" className="metadata badge badge-dApp project-metadata_type">
                 <span className="metadata-value">dapp</span>
+              </a>
+              <a href="#" className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
+                <span className="icon mr-2"><i class="cf cf-sol"></i></span>
+                <span className="metadata-value">Solana</span>
               </a>
             </div>
 
@@ -72,10 +76,10 @@ export default function ProjectDetails(props) {
                 </div>
               </div>
 
-              <div className="project-text">
-                <p>Part of the Legendary Series, 99 ever minted, 2nd Edition</p>
+              <div className="project-text mt-8 text-gray-900 text-opacity-75">
+                <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition</p>
 
-                <p>Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain. Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
+                <p className="">Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain. Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
               </div>
 
             </div>
@@ -86,15 +90,14 @@ export default function ProjectDetails(props) {
 
           </div>
 
-          <div className="page-sidebar">
+          {/* <div className="page-sidebar">
             <div className="project-details flex flex-col h-full">
-            <div className="project-text">
+              <div className="project-text">
                 <p>Part of the Legendary Series, 99 ever minted, 2nd Edition</p>
-
                 <p>Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain. Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
               </div>
             </div>
-          </div>
+          </div> */}
           
         </div>
       </div>

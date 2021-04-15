@@ -23,7 +23,7 @@ export const Card = ({projectTitle, projectTextShort, projectText, projectIconUr
             </Link>
           </div>
           <div className="metadata-wrapper project-metadata-wrapper">
-            <a href="#" className={`metadata badge badge-${projectType || ''} project-metadata_type`}>
+            <a href="#" className={`metadata badge badge-sm badge-${projectType || ''} project-metadata_type`}>
               <span className="metadata-value">{projectType}</span>
             </a>
           </div>
