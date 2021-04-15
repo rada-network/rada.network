@@ -89,26 +89,33 @@ export default function ProjectDetails(props) {
                 </div>
               </div>
 
-              <div className="mt-8 pt-8 border-t border-gray-100 flex">
+              <div className="mt-10 pt-8 border-t border-gray-100 flex">
 
                 <div className="project-text flex-1 text-gray-900 text-opacity-75 pr-10">
-                  <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition</p>
+                  <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition. Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain.</p>
 
-                  <p className="">Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain. Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
+                  <p className="">Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
                 </div>
 
                 <div className="project-info text-sm border-l border-gray-100 w-64 pl-8 text-gray-900 text-opacity-75">
-                    <div className="pb-2 mb-2">
+                    <div className="pb-3 mb-3 border-b border-gray-100">
                       <strong>Project Info</strong>
                     </div>
                     <div className="pb-2 mb-2">
-                      Featured: 2 hours ago
+                      <span className="inline-block w-20">Featured:</span>
+                      <strong className="inline-block font-medium ml-2">2 hours ago</strong>
                     </div>
                     <div className="pb-2 mb-2">
-                      Category: DeFi
+                      <span className="inline-block w-20">Category:</span>
+                      <strong className="inline-block font-medium ml-2">DeFi</strong>
                     </div>
                     <div className="pb-4">
-                      Token: SOL
+                      <span className="inline-block w-20">Token:</span>
+                      <strong className="inline-block font-medium ml-2">SOL</strong>
+                    </div>
+                    <div className="pb-4">
+                      <span className="inline-block w-20">Blockchain:</span>
+                      <strong className="inline-block font-medium ml-2">Solana</strong>
                     </div>
                 </div>
 
