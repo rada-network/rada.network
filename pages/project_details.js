@@ -11,6 +11,7 @@ import {ProjectsList} from '../components/card-layouts/ProjectsList';
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
 import { RiArrowUpSFill } from "react-icons/ri";
+import { RiCompass3Fill } from "react-icons/ri";
 import { RiChat1Fill } from "react-icons/ri";
 
 export default function ProjectDetails(props) {
@@ -20,12 +21,12 @@ export default function ProjectDetails(props) {
       <>
       <div className="container">
 
-        <div className="page-header flex flex-row justify-center">
+        <div className="page-header">
 
           <div class="page-header_l">
             <Link href={`#`}>
               <a title="SolaSystem" class="project-icon">
-                <img className="project-icon_img" src="https://picsum.photos/96/96?random=1" />
+                <img className="project-icon_img" src="https://picsum.photos/300/300?random=1" />
               </a>
             </Link>
           </div>
@@ -47,18 +48,29 @@ export default function ProjectDetails(props) {
                 <span className="icon mr-2"><i class="cf cf-sol"></i></span>
                 <span className="metadata-value">Solana</span>
               </a>
+              <a href="#" className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
+                <span className="metadata-value">SOL</span>
+              </a>
             </div>
 
           </div>
 
           <div class="page-header_r">
-            <btn className="btn item-center justify-center w-full px-4 py-4 btn-project-vote rounded-md bg-primary-700 hover:bg-primary-600 text-white">
-              <span className="icon text-2xl -mb-1"><RiArrowUpSFill /></span>
-              <span className="btn-project-vote_total whitespace-nowrap ml-1 uppercase">
-                <span className="inline-block text-sm">Upvote</span> 
-                <strong className="inline-block text-base font-bold ml-2">1989</strong>
-              </span>
-            </btn>
+            <div class="cta-wrapper flex">
+              <btn className="btn item-center justify-center px-3 py-3 border border-gray-300 rounded-md bg-white hover:bg-primary-100 hover:border-primary-500 text-purple-700">
+                <span className="icon text-2xl"><RiCompass3Fill /></span>
+                <span className="btn-project-vote_total whitespace-nowrap ml-2 uppercase">
+                  <span className="inline-block text-sm font-medium">Visit</span> 
+                </span>
+              </btn>
+              <btn className="btn item-center justify-center px-3 py-3 btn-project-vote rounded-md bg-primary-700 hover:bg-primary-600 text-white">
+                <span className="icon text-2xl -mb-1"><RiArrowUpSFill /></span>
+                <span className="btn-project-vote_total whitespace-nowrap ml-2 uppercase">
+                  <span className="inline-block text-sm font-medium">Upvote</span> 
+                  <strong className="inline-block text-base font-bold ml-2">1989</strong>
+                </span>
+              </btn>
+            </div>
           </div>
         </div>
 

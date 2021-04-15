@@ -37,3 +37,11 @@
 %Img96 {
   @apply w-icon-96 h-icon-96 inline-block overflow-hidden;
 }
+
+%Img104 {
+  @apply w-icon-104 h-icon-104 inline-block overflow-hidden;
+}
+
+%Img128 {
+  @apply w-icon-128 h-icon-128 inline-block overflow-hidden;
+}

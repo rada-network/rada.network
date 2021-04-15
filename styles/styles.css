@@ -46,18 +46,16 @@
 Project Details
 --------------------------------------------- */
 .page-project_details {
-  height: 100%;
 
   .mainbody,
   .mainbody > .container {
-    @apply h-full; 
   }
 
   .page-header {
   }
 
   .page-header_main {
-    @apply py-1 px-6;
+    @apply px-10;
   }
 
   .page-main {
@@ -65,15 +63,19 @@ Project Details
   }
 
   .page-header_r {
-    @apply w-64 max-h-full p-6; 
+    @apply max-h-full;
+    .btn + .btn {
+      @apply ml-3;
+    }
   }
 
   .page-sidebar {
-    @apply w-64 max-h-full p-6; 
+    @apply w-64 max-h-full p-8; 
   }
 
   .project-icon {
-    @extend %Img96;
+    @apply shadow;
+    @extend %Img104;
   }
 
 }
