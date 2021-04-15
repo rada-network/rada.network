@@ -25,24 +25,34 @@ export default function ProjectDetails(props) {
           <div class="page-header_l">
             <Link href={`#`}>
               <a title="SolaSystem" class="project-icon">
-                <img className="project-icon_img" src="https://picsum.photos/80/80?random=1" />
+                <img className="project-icon_img" src="https://picsum.photos/96/96?random=1" />
               </a>
             </Link>
           </div>
 
           <div class="page-header_main flex-1">
-            <h1 className="page-title project-title">SolaSystem</h1>
+            <div className="page-title flex items-center content-center">
+              <h1 className="project-title">SolaSystem</h1>
+            </div>
 
             <div className="project-text_short">
-              <p>"That is not a drug, it’s a leaf."</p>
+              <p>SolaSystem is the world's first completely decentralized derivatives exchange with trustless cross-chain trading.</p>
             </div>
+
+            <div className="metadata-wrapper project-metadata-wrapper">
+              <a href="#" className="metadata badge badge-dApp project-metadata_type">
+                <span className="metadata-value">dapp</span>
+              </a>
+            </div>
+
           </div>
 
           <div class="page-header_r">
-            <btn className="btn flex-col justify-center w-icon-64 h-icon-64 btn-project-vote rounded-md bg-gray-50 group-hover:bg-primary-700 group-hover:text-white">
-              <span className="icon text-xl"><RiArrowUpSFill /></span>
-              <span className="btn-project-vote_total text-xs whitespace-nowrap font-bold">
-                198
+            <btn className="btn item-center justify-center w-full px-4 py-4 btn-project-vote rounded-md bg-primary-700 hover:bg-primary-600 text-white">
+              <span className="icon text-2xl -mb-1"><RiArrowUpSFill /></span>
+              <span className="btn-project-vote_total whitespace-nowrap ml-1 uppercase">
+                <span className="inline-block text-sm">Upvote</span> 
+                <strong className="inline-block text-base font-bold ml-2">1989</strong>
               </span>
             </btn>
           </div>

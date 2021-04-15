@@ -18,18 +18,18 @@ export const PromoList = ({extraClass, grid, gap, title}) => {
               title="Solana Universe"
               text="Originally released in 1981, Centipede is a fixed shooter arcade game that became one of the most successful titles of its time, and one of the first to attract a significant female player base"
               cta="Explore"
-              mediaUri="https://picsum.photos/600/600?random=1"
+              mediaUri="https://picsum.photos/600/600?random=21"
             />
             <Card
               title="Popular NFTs"
               text="Originally released in 1981, Centipede is a fixed shooter arcade game that became one of the most successful titles of its time, and one of the first to attract a significant female player base"
               cta="Explore"
-              mediaUri="https://picsum.photos/600/600?random=2"
+              mediaUri="https://picsum.photos/600/600?random=22"
             />
             <Card 
               title="Gaming on the Future"
               text="Originally released in 1981, Centipede is a fixed shooter arcade game that became one of the most successful titles of its time, and one of the first to attract a significant female player base"
-              mediaUri="https://picsum.photos/600/600?random=4"
+              mediaUri="https://picsum.photos/600/600?random=23"
               cta="Explore"
             />
 					</div>

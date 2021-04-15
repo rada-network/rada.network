@@ -1,9 +1,9 @@
 import {useState} from "react";
 import {Card} from "../cards/MiniHorizontal";
 
-export const TopSellersList = ({extraClass, grid, gap}) => {
+export const TopUsersList = ({extraClass, grid, gap}) => {
 	return (
-		<div className={`section section-sellers-list ${extraClass || ''}`}>
+		<div className={`section section-users-list ${extraClass || ''}`}>
 			<div className="container">
 				<div className="section-header">
 					<div className="section-title">

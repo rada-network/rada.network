@@ -6,7 +6,7 @@ import {Layout} from '../components/page-layouts/OneColumn';
 import {Header} from '../components/Header';
 import {ProjectsList} from '../components/card-layouts/ProjectsList';
 import {PromoList} from '../components/card-layouts/PromoList';
-import {TopSellersList} from '../components/card-layouts/TopSellersList';
+import {TopUsersList} from '../components/card-layouts/TopUsersList';
 import {CategoryList} from '../components/card-layouts/CategoryList';
 
 //ReactIcons
@@ -39,7 +39,7 @@ export default function Home(props) {
         gap="2"
         title="Most Active Dapps in a Week"
       />
-      <TopSellersList
+      <TopUsersList
         grid="5"
         gap="5"
       />
