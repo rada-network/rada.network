@@ -65,7 +65,7 @@ export default function ProjectDetails(props) {
               </btn>
               <btn className="btn item-center justify-center px-3 py-3 btn-project-vote rounded-md bg-primary-700 hover:bg-primary-600 text-white">
                 <span className="icon text-2xl -mb-1"><RiArrowUpSFill /></span>
-                <span className="btn-project-vote_total whitespace-nowrap ml-2 uppercase">
+                <span className="btn-project-vote_total whitespace-nowrap ml-1 uppercase">
                   <span className="inline-block text-sm font-medium">Upvote</span> 
                   <strong className="inline-block text-base font-bold ml-2">1989</strong>
                 </span>
@@ -82,8 +82,9 @@ export default function ProjectDetails(props) {
 
               <div className="project-media-viewer">
                 <div className="project-media-wrapper h-full w-full">
-                  <div className="project-media aspect-w-16 aspect-h-9">
-                    <img className="project-img" alt="" src="https://picsum.photos/1024/768?random=2" />
+                  <div className="project-media rounded overflow-hidden shadow-lg aspect-w-16 aspect-h-9">
+                    {/* <img className="project-img" alt="" src="https://picsum.photos/1024/768?random=2" /> */}
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qnkuBUAwfe0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 </div>
               </div>
