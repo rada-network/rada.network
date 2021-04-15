@@ -55,7 +55,7 @@ Project Details
   }
 
   .page-header_main {
-    @apply px-8;
+    @apply px-10;
   }
 
   .page-main {
@@ -63,11 +63,14 @@ Project Details
   }
 
   .page-header_r {
-    @apply w-56 max-h-full; 
+    @apply max-h-full;
+    .btn + .btn {
+      @apply ml-3;
+    }
   }
 
   .page-sidebar {
-    @apply w-64 max-h-full p-6; 
+    @apply w-64 max-h-full p-8; 
   }
 
   .project-icon {

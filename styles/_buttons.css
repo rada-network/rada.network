@@ -3,7 +3,7 @@ Buttons
 */
 
 .btn {
-  @apply group inline-flex items-center focus:outline-none cursor-pointer;
+  @apply group inline-flex items-center focus:outline-none cursor-pointer transition;
 
   .btn-text + .icon {
     @apply ml-1 ;
