@@ -1,4 +1,5 @@
 import { useWallet, ConnectionRejectedError } from 'use-wallet'
+import { Menu, Transition } from "@headlessui/react"
 
 export const Wallet = () => {
   const wallet = useWallet()
@@ -28,7 +29,15 @@ export const Wallet = () => {
   
   return (
     <p>
-        <button onClick={() => wallet.connect()}>Connect Wallet</button>
+        <div>
+        <button onClick={() => wallet.connect()}>Connect Metamask</button>
+        </div>
+        <div>
+        <button onClick={() => wallet.connect('walletconnect')}>WalletConnect</button>
+        </div>
+        <div>
+        <button onClick={() => wallet.connect('walletlink')}>WalletLink</button>
+        </div>
     </p>
   )
 }
