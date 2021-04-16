@@ -56,7 +56,7 @@ Project Details
 --------------------------------------------- */
 .page-project_details {
 
-  @apply pt-8;
+  @apply pt-4 md:pt-8;
   
   .mainbody,
   .mainbody > .container {
@@ -66,18 +66,18 @@ Project Details
   }
 
   .page-header_main {
-    @apply px-10;
   }
 
-  .page-main {
-    @apply flex-1; 
+  .page-header-l {
+
   }
 
   .page-header_r {
     @apply max-h-full;
-    .btn + .btn {
-      @apply ml-3;
-    }
+  }
+
+  .page-main {
+    @apply flex-1; 
   }
 
   .page-sidebar {
@@ -92,5 +92,5 @@ Project Details
 }
 
 .project-text_short {
-  @apply text-base text-gray-900 text-opacity-70 line-clamp-2;
+  @apply text-sm md:text-base text-gray-900 text-opacity-70 line-clamp-2;
 }

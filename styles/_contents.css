@@ -3,7 +3,7 @@
 }
 
 .metadata + .metadata {
-  @apply ml-2;
+  @apply ml-1 md:ml-2;
 }
 
 .metadata-divider {

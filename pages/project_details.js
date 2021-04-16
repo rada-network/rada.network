@@ -31,8 +31,8 @@ export default function ProjectDetails(props) {
               </Link>
             </div>
 
-            <div className="page-header_main flex-1">
-              <div className="page-title flex items-center content-center">
+            <div className="flex-1 page-header_main">
+              <div className="flex items-center content-center page-title">
                 <h1 className="project-title">SolaSystem</h1>
               </div>
 
@@ -40,12 +40,12 @@ export default function ProjectDetails(props) {
                 <p>SolaSystem is the world's first completely decentralized derivatives exchange with trustless cross-chain trading.</p>
               </div>
 
-              <div className="metadata-wrapper project-metadata-wrapper mt-4">
+              <div className="mt-4 metadata-wrapper project-metadata-wrapper">
                 <a href="#" className="metadata badge badge-dApp project-metadata_type">
                   <span className="metadata-value">dapp</span>
                 </a>
                 <a href="#" className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
-                  <span className="icon mr-2"><i className="cf cf-sol"></i></span>
+                  <span className="icon"><i className="cf cf-sol"></i></span>
                   <span className="metadata-value">Solana</span>
                 </a>
                 <a href="#" className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
@@ -56,18 +56,18 @@ export default function ProjectDetails(props) {
             </div>
 
             <div className="page-header_r">
-              <div className="cta-wrapper flex">
-                <btn className="btn item-center justify-center px-3 py-3 border border-gray-300 rounded-md bg-white hover:bg-primary-100 hover:border-primary-500 text-purple-700 shadow-sm">
-                  <span className="icon text-2xl"><RiCompass3Fill /></span>
-                  <span className="btn-project-vote_total whitespace-nowrap ml-2 uppercase">
+              <div className="flex justify-between cta-wrapper">
+                <btn className="w-icon-104 md:w-full px-2 py-2 justify-center text-purple-700 bg-white border border-gray-300 rounded-md shadow-sm btn item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
+                  <span className="text-2xl icon"><RiCompass3Fill /></span>
+                  <span className="ml-2 uppercase btn-project-vote_total whitespace-nowrap">
                     <span className="inline-block text-sm font-medium">Visit</span> 
                   </span>
                 </btn>
-                <btn className="btn item-center justify-center px-3 py-3 btn-project-vote rounded-md bg-primary-700 bg-gradient-to-tr from-primary-700 to-primary-500 hover:bg-primary-600 hover:from-primary-600 hover:to-primary-400 text-white shadow transition-all">
-                  <span className="icon text-2xl -mb-1 -ml-1"><RiArrowUpSFill /></span>
-                  <span className="btn-project-vote_total whitespace-nowrap ml-1 uppercase">
+                <btn className="flex-1 px-2 py-2 ml-4 justify-center md:px-3 md:py-3 text-white transition-all rounded-md shadow btn item-center btn-project-vote bg-primary-700 bg-gradient-to-tr from-primary-700 to-primary-500 hover:bg-primary-600 hover:from-primary-600 hover:to-primary-400">
+                  <span className="-mb-1 -ml-1 text-2xl icon"><RiArrowUpSFill /></span>
+                  <span className="ml-1 uppercase btn-project-vote_total whitespace-nowrap">
                     <span className="inline-block text-sm font-medium">Upvote</span> 
-                    <strong className="inline-block text-base font-bold ml-2">1989</strong>
+                    <strong className="inline-block ml-2 text-base font-bold">1989</strong>
                   </span>
                 </btn>
               </div>
@@ -88,37 +88,37 @@ export default function ProjectDetails(props) {
                   <div className="flex-col">
 
                     <div className="project-media-viewer">
-                      <div className="project-media-wrapper h-full w-full">
-                        <div className="project-media rounded overflow-hidden shadow-xl aspect-w-16 aspect-h-9">
+                      <div className="w-full h-full project-media-wrapper">
+                        <div className="overflow-hidden rounded shadow-xl project-media aspect-w-16 aspect-h-9">
                           {/* <img className="project-img" alt="" src="https://picsum.photos/1024/768?random=2" /> */}
                           <iframe width="560" height="315" src="https://www.youtube.com/embed/qnkuBUAwfe0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                       </div>
                     </div>
 
-                    <div className="mt-8 pt-4 flex">
+                    <div className="flex pt-4 mt-8">
 
-                      <div className="project-text flex-1 text-gray-900 text-opacity-100 pr-10">
+                      <div className="flex-1 pr-10 text-gray-900 text-opacity-100 project-text">
                         <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition. Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain.</p>
 
                         <p className="">Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
                       </div>
 
-                      <div className="list-group-sm project-info text-sm w-64 pl-8 text-gray-900 text-opacity-50">
+                      <div className="w-64 pl-8 -mt-1 text-sm text-gray-900 text-opacity-50 list-group-sm project-info">
                           <div className="list-group-item">
                             <strong className="uppercas">Project Info</strong>
                           </div>
                           <div className="list-group-item">
-                            <span className="w-20 flex-1">Featured</span>
-                            <strong className="font-medium ml-2 text-gray-900 text-opacity-90 text-right">2 hours ago</strong>
+                            <span className="flex-1 w-20">Featured</span>
+                            <strong className="ml-2 font-medium text-right text-gray-900 text-opacity-90">2 hours ago</strong>
                           </div>
-                          <div className="list-group-item pb-1">
-                            <span className="w-20 flex-1">Data 1</span>
-                            <strong className="font-medium ml-2 text-gray-900 text-opacity-90">Combined</strong>
+                          <div className="pb-1 list-group-item">
+                            <span className="flex-1 w-20">Data 1</span>
+                            <strong className="ml-2 font-medium text-gray-900 text-opacity-90">Combined</strong>
                           </div>
-                          <div className="list-group-item pb-1 border-none">
-                            <span className="w-20 flex-1">Data 2</span>
-                            <strong className="font-medium ml-2 text-gray-900 text-opacity-90">Other</strong>
+                          <div className="pb-1 border-none list-group-item">
+                            <span className="flex-1 w-20">Data 2</span>
+                            <strong className="ml-2 font-medium text-gray-900 text-opacity-90">Other</strong>
                           </div>
                       </div>
 
@@ -130,7 +130,7 @@ export default function ProjectDetails(props) {
               </div>
 
 
-              <div className="section section-project-discussions border-t border-gray-100 pt-4">
+              <div className="pt-4 border-t border-gray-100 section section-project-discussions">
 
                 <div className="section-header">
                   <div className="section-title">Discussions</div>
@@ -138,12 +138,12 @@ export default function ProjectDetails(props) {
 
                 <div className="section-body">
 
-                  <div className="mt-8 pt-4 flex">
+                  <div className="flex pt-4 mt-8">
 
-                    <div className="flex-1 text-gray-900 text-opacity-100 pr-10">
+                    <div className="flex-1 pr-10 text-gray-900 text-opacity-100">
                     </div>
 
-                    <div className="lw-64 pl-8 text-gray-900 text-opacity-50">
+                    <div className="pl-8 text-gray-900 text-opacity-50 lw-64">
                     </div>
 
                   </div>
@@ -154,7 +154,7 @@ export default function ProjectDetails(props) {
             </div>
 
             {/* <div className="page-sidebar">
-              <div className="project-details flex flex-col h-full">
+              <div className="flex flex-col h-full project-details">
                 <div className="project-text">
                   <p>Part of the Legendary Series, 99 ever minted, 2nd Edition</p>
                   <p>Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain. Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>

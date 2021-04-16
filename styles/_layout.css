@@ -39,15 +39,28 @@ Section
 Page 
 */
 .page-header .container {
-  @apply flex;
+  @apply md:flex;
 }
 
 .page-header_l,
 .page-header_main,
 .page-header_r {
-  @apply flex flex-col justify-items-center justify-center;
+  @apply md:flex md:flex-col justify-items-center justify-center;
 }
 
+.page-header_l {
+  @apply float-left mr-4 mt-2 mb-4 md:float-none md:mr-0;
+}
+
+.page-header_main {
+  @apply md:px-10;
+}
+
+.page-header_r {
+  @apply max-h-full mt-8 md:mt-0;
+}
+
+
 .page-title {
-  @apply text-2xl font-semibold mb-1;
+  @apply text-xl md:text-2xl font-semibold mb-1;
 }

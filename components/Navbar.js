@@ -23,7 +23,8 @@ export const Navbar = () => {
               <Link href={`/`}>
                 <a className="flex items-center justify-center align-center" title="dhunt.io">
                   <img className="block w-auto h-8" src="./images/dhunt.svg" alt="dhunt.io" />
-                  <strong className="ml-2 text-gray-900 logo-text text-opacity-90">dhunt.io</strong>
+                  <strong className="ml-2 text-gray-900 logo-text text-opacity-90">
+                    <span>d</span><span>hunt</span><span>.io</span></strong>
                 </a>
               </Link>
             </div>
@@ -44,7 +45,7 @@ export const Navbar = () => {
 
           </div>
 
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto">
+          <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto">
             {/* <div className="flex-1 hidden text-sm sm:block">
               <div className="flex space-x-4">
                 <a href="/" className="flex items-center px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">
@@ -55,7 +56,7 @@ export const Navbar = () => {
             </div> */}
 
             {/* Profile dropdown */}
-            <div className="relative ml-3">
+            <div className="relative">
               <Wallet />
             </div>
           </div>
