@@ -97,25 +97,17 @@ export default function ProjectDetails(props) {
                   <p className="">Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
                 </div>
 
-                <div className="project-info text-sm border-l border-gray-100 w-64 pl-8 text-gray-900 text-opacity-75">
-                    <div className="pb-3 mb-3 border-b border-gray-100">
+                <div className="project-info text-sm w-64 pl-8 text-gray-900 text-opacity-75">
+                    <div className="pb-1 mb-1">
                       <strong>Project Info</strong>
                     </div>
                     <div className="pb-1 mb-1">
-                      <span className="inline-block w-20">Featured:</span>
+                      <span className="inline-block w-20">Featured</span>
                       <strong className="inline-block font-medium ml-2 text-gray-900 text-opacity-90">2 hours ago</strong>
                     </div>
                     <div className="pb-1 mb-1">
-                      <span className="inline-block w-20">Category:</span>
+                      <span className="inline-block w-20">Homepage:</span>
                       <strong className="inline-block font-medium ml-2 text-gray-900 text-opacity-90">DeFi</strong>
-                    </div>
-                    <div className="pb-1 mb-1">
-                      <span className="inline-block w-20">Token:</span>
-                      <strong className="inline-block font-medium ml-2 text-gray-900 text-opacity-90">SOL</strong>
-                    </div>
-                    <div className="pb-1 mb-1">
-                      <span className="inline-block w-20">Blockchain:</span>
-                      <strong className="inline-block font-medium ml-2 text-gray-900 text-opacity-90">Solana</strong>
                     </div>
                 </div>
 
