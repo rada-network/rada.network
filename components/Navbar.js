@@ -30,7 +30,7 @@ export const Navbar = () => {
             </div>
 
             {/* Search */}
-            <div className="relative w-full mx-6">
+            <div className="relative w-full mx-4 md:mx-6">
               <input type="search" className="w-full px-5 py-2 text-sm focus:text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0" placeholder="Search by address or name ..." />
             </div>
 
@@ -45,7 +45,7 @@ export const Navbar = () => {
 
           </div>
 
-          <div className="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto">
+          <div className="flex items-center">
             {/* <div className="flex-1 hidden text-sm sm:block">
               <div className="flex space-x-4">
                 <a href="/" className="flex items-center px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">

@@ -6,7 +6,7 @@ Badges
   @apply bg-white border text-gray-500 uppercase;
   @apply rounded rounded-tl-lg rounded-br-lg bg-gray-100;
   .icon {
-    @apply mr-1 md:mr-2;
+    @apply mr-1 -mb-0.5 md:mr-2 md:mb-0;
   }
   .cf {
     @apply md:text-base;

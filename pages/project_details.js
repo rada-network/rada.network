@@ -96,15 +96,15 @@ export default function ProjectDetails(props) {
                       </div>
                     </div>
 
-                    <div className="flex pt-4 mt-8">
+                    <div className="md:flex mt-4 pt-4 md:mt-8">
 
-                      <div className="flex-1 pr-10 text-gray-900 text-opacity-100 project-text">
+                      <div className="w-full flex-1 md:pr-10 text-gray-900 text-opacity-100 project-text">
                         <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition. Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain.</p>
 
                         <p className="">Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
                       </div>
 
-                      <div className="w-64 pl-8 -mt-1 text-sm text-gray-900 text-opacity-50 list-group-sm project-info">
+                      <div className="w-full mt-4 md:w-64 md:pl-8 md:-mt-1 text-sm text-gray-900 text-opacity-50 list-group-sm project-info">
                           <div className="list-group-item">
                             <strong className="uppercas">Project Info</strong>
                           </div>
