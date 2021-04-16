@@ -7,6 +7,10 @@
 }
  
 /* Home Header */
+.page-home {
+  @apply bg-gray-50 pt-8;
+}
+
 .page-home .header {
 }
 
@@ -51,6 +55,8 @@
 Project Details
 --------------------------------------------- */
 .page-project_details {
+
+  @apply pt-8;
 
   .mainbody,
   .mainbody > .container {

@@ -38,8 +38,8 @@ Section
 /* 
 Page 
 */
-.page-header {
-  @apply flex mb-8;
+.page-header .container {
+  @apply flex;
 }
 
 .page-header_l,

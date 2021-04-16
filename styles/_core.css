@@ -2,8 +2,7 @@
 Set a default styles for all elements
 */
 body {
-  @apply bg-gray-50;
-  padding-top: calc(var(--mainnav-height) + 2rem);
+  padding-top: calc(var(--mainnav-height) + 1px);
 }
 
 /* 
