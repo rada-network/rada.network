@@ -54,7 +54,7 @@ export const Navbar = () => {
 
               {/* Search */}
               <div className="relative w-full mx-6">
-                <input type="search" className="w-full px-5 py-2 border border-gray-100 rounded shadow-sm focus:shadow-lg focus:border-primary-700" placeholder="Search by address or name ..." />
+                <input type="search" className="w-full px-5 py-2 text-sm focus:text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0" placeholder="Search by address or name ..." />
               </div>
 
               {/* Main Nav */}
@@ -68,7 +68,7 @@ export const Navbar = () => {
 
             </div>
 
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto">
               {/* <div className="flex-1 hidden text-sm sm:block">
                 <div className="flex space-x-4">
                   <a href="/" className="flex items-center px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">
@@ -79,12 +79,12 @@ export const Navbar = () => {
               </div> */}
 
               {/* Profile dropdown */}
-              <div className="relative ml-3">
+              <div className="relative">
                 <Menu as="div" className="relative inline-block text-left">
                   {({ open }) => (
                       <>
                         <div>
-                          <Menu.Button type="button" className="btn flex text-sm font-medium px-4 py-2 bg-white border border-gray-400 rounded-full hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-expanded="false" aria-haspopup="true">
+                          <Menu.Button type="button" className="flex px-4 py-2 text-sm font-medium shadow-sm bg-white border border-gray-400 rounded-md btn hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-0" id="user-menu" aria-expanded="false" aria-haspopup="true">
                             <span class="icon text-base mr-2"><BiWallet /></span>
                             <span>Connect Wallet</span>
                           </Menu.Button>

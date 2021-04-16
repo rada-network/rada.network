@@ -7,7 +7,7 @@ import { RiChat1Fill } from "react-icons/ri";
 
 export const Card = ({projectTitle, projectTextShort, projectText, projectIconUri, projectType, projectPlatform, projectPlatformShort, projectDate, projectSubmitter, projectSubmitterImgUri, projectCommentsCounts, link, voteTotal}) => {
   return (
-    <div className="card group card-project flex-row items-center content-center">
+    <div className="flex-row items-center content-center card group card-project">
       <div className="card-media project-icon">
         <Link href="/project_details">
         <img className="card-img project-icon_img" src={projectIconUri} />
@@ -47,8 +47,8 @@ export const Card = ({projectTitle, projectTextShort, projectText, projectIconUr
               <span className="metadata-value">{projectDate}</span>
             </div>
 
-            {/* <a href={link} className="metadata project-metadata_submitter hidden">
-              <span className="card-body-media project-submitter inline-block mr-1">
+            {/* <a href={link} className="hidden metadata project-metadata_submitter">
+              <span className="inline-block mr-1 card-body-media project-submitter">
                 <img className="card-img project-submitter_img" src={projectSubmitterImgUri} />
               </span>
               <span className="metadata-value">{projectSubmitter}</span>
@@ -57,16 +57,16 @@ export const Card = ({projectTitle, projectTextShort, projectText, projectIconUr
             <div className="metadata-divider"></div>
 
             <a href={link} className="metadata project-comment_count">
-              <span className="icon mr-1"><RiChat1Fill /></span>
+              <span className="mr-1 icon"><RiChat1Fill /></span>
               <span>{projectCommentsCounts}</span>
             </a>
           </div>
         </div>
       </div>
       <div className="card-footer">
-        <btn className="btn flex-col justify-center w-icon-64 h-icon-64 btn-project-vote rounded-md bg-gray-50 group-hover:bg-primary-700 group-hover:text-white">
-          <span className="icon text-xl"><RiArrowUpSFill /></span>
-          <span className="btn-project-vote_total text-xs whitespace-nowrap font-bold">
+        <btn className="flex-col justify-center transition-all rounded-md btn w-icon-64 h-icon-64 btn-project-vote bg-gray-50 group-hover:bg-primary-700 group-hover:text-white bg-gradient-to-tr from-gray-50 to-gray-50 group-hover:from-primary-700 group-hover:to-primary-500">
+          <span className="text-xl transition-none icon"><RiArrowUpSFill /></span>
+          <span className="text-xs font-bold btn-project-vote_total whitespace-nowrap">
             {voteTotal}
           </span>
         </btn>

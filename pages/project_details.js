@@ -63,7 +63,7 @@ export default function ProjectDetails(props) {
                     <span className="inline-block text-sm font-medium">Visit</span> 
                   </span>
                 </btn>
-                <btn className="btn item-center justify-center px-3 py-3 btn-project-vote rounded-md bg-primary-700 hover:bg-primary-600 text-white shadow transition-all">
+                <btn className="btn item-center justify-center px-3 py-3 btn-project-vote rounded-md bg-primary-700 bg-gradient-to-tr from-primary-700 to-primary-500 hover:bg-primary-600 hover:from-primary-600 hover:to-primary-400 text-white shadow transition-all">
                   <span className="icon text-2xl -mb-1 -ml-1"><RiArrowUpSFill /></span>
                   <span className="btn-project-vote_total whitespace-nowrap ml-1 uppercase">
                     <span className="inline-block text-sm font-medium">Upvote</span> 
