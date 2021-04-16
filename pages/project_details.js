@@ -98,31 +98,32 @@ export default function ProjectDetails(props) {
 
                     <div className="mt-8 pt-4 flex">
 
-                      <div className="project-text flex-1 text-gray-900 text-opacity-90 pr-10">
+                      <div className="project-text flex-1 text-gray-900 text-opacity-100 pr-10">
                         <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition. Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain.</p>
 
                         <p className="">Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
                       </div>
 
-                      <div className="project-info text-sm w-64 pl-8 text-gray-900 text-opacity-50">
-                          <div className="pb-1 mb-2">
-                            <strong className="text-xs uppercase text-gray-900 text-opacity-90">Project Info</strong>
+                      <div className="list-group-sm project-info text-sm w-64 pl-8 text-gray-900 text-opacity-50">
+                          <div className="list-group-item">
+                            <strong className="uppercas">Project Info</strong>
                           </div>
-                          <div className="pb-1 mb-1">
-                            <span className="inline-block w-20">Featured</span>
-                            <strong className="inline-block font-medium ml-2 text-gray-900 text-opacity-90">2 hours ago</strong>
+                          <div className="list-group-item">
+                            <span className="w-20 flex-1">Featured</span>
+                            <strong className="font-medium ml-2 text-gray-900 text-opacity-90 text-right">2 hours ago</strong>
                           </div>
-                          <div className="pb-1 mb-1">
-                            <span className="inline-block w-20">Data 1</span>
-                            <strong className="inline-block font-medium ml-2 text-gray-900 text-opacity-90">Combined</strong>
+                          <div className="list-group-item pb-1">
+                            <span className="w-20 flex-1">Data 1</span>
+                            <strong className="font-medium ml-2 text-gray-900 text-opacity-90">Combined</strong>
                           </div>
-                          <div className="pb-1 mb-1">
-                            <span className="inline-block w-20">Data 2</span>
-                            <strong className="inline-block font-medium ml-2 text-gray-900 text-opacity-90">Other</strong>
+                          <div className="list-group-item pb-1 border-none">
+                            <span className="w-20 flex-1">Data 2</span>
+                            <strong className="font-medium ml-2 text-gray-900 text-opacity-90">Other</strong>
                           </div>
                       </div>
 
                     </div>
+
                   </div>
 
                 </div>
@@ -130,13 +131,23 @@ export default function ProjectDetails(props) {
 
 
               <div className="section section-project-discussions border-t border-gray-100 pt-4">
+
                 <div className="section-header">
                   <div className="section-title">Discussions</div>
                 </div>
+
                 <div className="section-body">
-                  <div className="card flex-col p-6 bg-white shadow-sm">
+
+                  <div className="mt-8 pt-4 flex">
+
+                    <div className="flex-1 text-gray-900 text-opacity-100 pr-10">
+                    </div>
+
+                    <div className="lw-64 pl-8 text-gray-900 text-opacity-50">
+                    </div>
 
                   </div>
+
                 </div>
               </div>
 

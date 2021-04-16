@@ -8,7 +8,11 @@ Lists Styles
 
 .list-group-item {
   @apply flex justify-between items-center px-1 py-3;
-  @apply border-b border-gray-200;
+  @apply border-b border-gray-100;
+}
+
+.list-group-sm .list-group-item {
+  @apply px-1 py-2;
 }
 
 /*

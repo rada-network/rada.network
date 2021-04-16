@@ -57,7 +57,7 @@ Project Details
 .page-project_details {
 
   @apply pt-8;
-
+  
   .mainbody,
   .mainbody > .container {
   }

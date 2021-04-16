@@ -4,6 +4,9 @@ import { useWallet } from 'use-wallet'
 
 import { Menu, Transition } from "@headlessui/react"
 import { Fragment } from "react"
+
+import { BiWallet } from "react-icons/bi";
+import { GiWallet } from "react-icons/gi";
 import {ChevronDoubleDownIcon, ChevronDownIcon} from "@heroicons/react/solid";
 
 
@@ -81,9 +84,9 @@ export const Navbar = () => {
                   {({ open }) => (
                       <>
                         <div>
-                          <Menu.Button type="button" className="flex text-sm bg-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-expanded="false" aria-haspopup="true">
-                            <span className="sr-only">Open user menu</span>
-                            <img className="w-8 h-8 rounded-full" src="https://picsum.photos/80/80?random=1" alt="" />
+                          <Menu.Button type="button" className="btn flex text-sm font-medium px-4 py-2 bg-white border border-gray-400 rounded-full hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-expanded="false" aria-haspopup="true">
+                            <span class="icon text-base mr-2"><BiWallet /></span>
+                            <span>Connect Wallet</span>
                           </Menu.Button>
                         </div>
                         <Transition
