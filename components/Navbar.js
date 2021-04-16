@@ -2,11 +2,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useWallet } from 'use-wallet'
 
-import { Menu, Transition } from "@headlessui/react"
-import { Fragment } from "react"
-
-import { BiWallet } from "react-icons/bi";
-import { GiWallet } from "react-icons/gi";
 import {ChevronDoubleDownIcon, ChevronDownIcon} from "@heroicons/react/solid";
 
 
@@ -112,6 +107,8 @@ export const Navbar = () => {
                       </>
                   )}
                 </Menu>
+              <div className="relative ml-3">
+                <Wallet/>
               </div>
 
             </div>
