@@ -135,20 +135,25 @@ export default function ProjectDetails(props) {
 
                 <div className="section-header">
                   <div className="section-title">Discussions</div>
-                  <div class="relative w-full mx-4 md:mx-6">
-                    {/* <textarea class="w-full px-5 py-2 resize-none text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0" row="1" title="Write a comment" placeholder="What do you think of this project?" /> */}
-                    <TextareaAutosize className="w-full px-5 py-2 resize-none text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="What do you think of this project?" />
-                  </div>
                 </div>
 
                 <div className="section-body">
 
-                  <div className="flex pt-4 mt-8">
+                  <div className="flex">
 
                     <div className="flex-1 pr-10 text-gray-900 text-opacity-100">
+                      <div className="flex">
+                        <div className="flex-1">
+                          <TextareaAutosize className="w-full px-5 py-2 resize-none text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="What do you think of this project?" />
+                        </div>
+                        <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:w-auto md:pl-4 md:mt-0">
+                          <btn className="justify-center flex-1 px-4 py-2 text-white transition-all rounded-md md:px-5 md:py-3 btn item-center btn-project-vote bg-primary-700 hover:bg-primary-600">Submit</btn>
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="pl-8 text-gray-900 text-opacity-50 lw-64">
+                    <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:w-64 md:pl-8 md:-mt-1 list-group-sm">
+                      <div>This is a sub-sidebar placeholder</div>
                     </div>
 
                   </div>
