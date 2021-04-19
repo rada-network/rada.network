@@ -1,7 +1,7 @@
 @import '_media';
 
 .logo-text {
-  @apply bg-gradient-to-r from-purple-700 to-yellow-500 font-medium;
+  @apply bg-gradient-to-r from-purple-700 to-yellow-500 font-semibold;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
