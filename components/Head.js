@@ -5,6 +5,13 @@ export const Head = () => {
 
     <HTMLHead>
     <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      media="print"
+      onLoad="this.media='all'"
+      key="google-fonts"
+    />
+    <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       media="print"
@@ -13,7 +20,7 @@ export const Head = () => {
     />
     <link
       rel="stylesheet"
-      href="https://cdn.cryptofonts.com/1.3.0/cryptofont.css"
+      href="./vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
       media="print"
       onLoad="this.media='all'"
       key="cryptoicons"
@@ -25,6 +32,13 @@ export const Head = () => {
       onLoad="this.media='all'"
       key="fontawesome"
     />
+    {/* <link
+      rel="stylesheet"
+      href="./fonts/product-sans/styles.css"
+      media="print"
+      onLoad="this.media='all'"
+      key="local-font_product_sans"
+    /> */}
     </HTMLHead>
 
   );
