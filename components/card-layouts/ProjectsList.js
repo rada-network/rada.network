@@ -12,13 +12,13 @@ import { RiTimeLine } from "react-icons/ri";
 
 
 
-export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
+export const ProjectsList = ({posts, extraClass, grid, gap, title, cta}) => {
 	return (
 		<div className={`section ${extraClass || ''}`}>
 			<div className="container">
 				<div className="section-header">
 					<div className="section-title">{title}</div>
-					{ cta && 
+					{ cta &&
 					<div className="section-cta">
 						<button className="btn pb-1 text-gray-700 border-b-2 border-gray-700">
 							<span className="icon mr-1"><RiTimeFill /></span>
@@ -33,62 +33,24 @@ export const ProjectsList = ({extraClass, grid, gap, title, cta}) => {
 				</div>
 				<div className="section-body">
 					<div className={`grid grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
-						<Card 
-							projectTitle="SolaSystem"
-							projectTextShort="SolaSystem is building the new creative economy. Coming soon!"
-							projectIconUri="https://picsum.photos/400/400?random=10"
-							link="#"
-							projectType="dApp"
-							projectPlatform="Solana"
-							projectPlatformShort="sol"
-							projectDate="4 hours ago"
-							// projectSubmitterImgUri="https://picsum.photos/80/80?random=11"
-							// projectSubmitter="rada.co"
-							projectCommentsCounts="2"
-							voteTotal="2"
-						/>
-						<Card 
-							projectTitle="Blockchain Adventurers"
-							projectTextShort="Enabling DeFi on Thorchain through synthetic assets and efficient use of your crypto."
-							projectIconUri="https://picsum.photos/400/400?random=11"
-							link="#"
-							projectType="Token"
-							projectPlatform="Ethereum"
-							projectPlatformShort="eth"
-							projectDate="23 hours ago"
-							// projectSubmitterImgUri="https://picsum.photos/80/80?random=13"
-							// projectSubmitter="Hung Dinh"
-							projectCommentsCounts="125"
-							voteTotal="192"
-						/>
-						<Card 
-							projectTitle="Alpha Omega"
-							projectTextShort="A socioeconomic experiment of human creativity, cooperation and governance."
-							projectIconUri="https://picsum.photos/400/400?random=12"
-							link="#"
-							projectType="NFT"
-							projectPlatform="Cardano"
-							projectPlatformShort="ada"
-							projectDate="2 days ago"
-							// projectSubmitterImgUri="https://picsum.photos/80/80?random=15"
-							// projectSubmitter="Khanh Le"
-							projectCommentsCounts="56"
-							voteTotal="1"
-						/>
-						<Card 
-							projectTitle="Picasso Kongz"
-							projectTextShort="1,000 unique Picasso Kongz have been minted !"
-							projectIconUri="https://picsum.photos/400/400?random=13"
-							link="#"
-							projectType="dApp"
-							projectPlatform="Binance BSC"
-							projectPlatformShort="bnb"
-							projectDate="7 days ago"
-							// projectSubmitterImgUri="https://picsum.photos/80/80?random=4"
-							// projectSubmitter="Hieu Nguyen"
-							projectCommentsCounts="18"
-							voteTotal="28"
-						/>
+						{posts.map((post) => (
+							<Card
+								key={post.id}
+								post={post}
+								projectTitle={post.title}
+								projectTextShort={post.description}
+								projectIconUri={post.imageUri}
+								link={`/project_details/${post.id}`}
+								projectType={post.itemType}
+								projectPlatform={post.platform.name}
+								projectPlatformShort="sol"
+								projectDate={post.createdAt}
+								// projectSubmitterImgUri="https://picsum.photos/80/80?random=11"
+								// projectSubmitter="rada.co"
+								projectCommentsCounts="2"
+								voteTotal="2"
+							/>
+						))}
 					</div>
 				</div>
 			</div>

@@ -24,7 +24,10 @@
     "react-icons": "^4.2.0",
     "react-textarea-autosize": "^8.3.2",
     "swr": "^0.5.5",
-    "use-wallet": "^0.8.1"
+    "use-wallet": "^0.8.1",
+    "@apollo/client": "^3.3.12",
+    "graphql": "15.5.0",
+    "graphql-request": "3.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
