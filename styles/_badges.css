@@ -2,7 +2,7 @@
 Badges
 */
 .badge {
-  @apply group text-xs font-medium px-1 md:px-3 py-0 h-5 md:h-7 whitespace-nowrap;
+  @apply group text-xs font-medium px-1 mt-0.5 md:px-2 py-0 h-5 md:h-6 whitespace-nowrap;
   @apply bg-white border text-gray-500 uppercase;
   @apply rounded rounded-tl-lg rounded-br-lg bg-gray-100;
   .icon {

@@ -8,6 +8,10 @@ Icons Styles
   @apply inline-block;
 }
 
+.cf {
+  @apply text-base;
+}
+
 .cf-btc {
   @apply text-yellow-600;
 }

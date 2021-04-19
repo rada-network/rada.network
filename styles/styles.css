@@ -89,7 +89,13 @@ Project Details
     @extend %Img104;
   }
 
+  .project-metadata-wrapper .metadata {
+    @apply mr-1 md:mr-2;
+  }
+
 }
+
+
 
 .project-text_short {
   @apply text-sm md:text-base text-gray-900 text-opacity-70 line-clamp-2;

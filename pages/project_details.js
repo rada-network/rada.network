@@ -2,6 +2,7 @@ import Head from 'next/head';
 
 import Link from 'next/link'
 import dynamic from "next/dynamic";
+import TextareaAutosize from 'react-textarea-autosize';
 
 // Components
 import {Layout} from '../components/page-layouts/OneColumn';
@@ -40,7 +41,7 @@ export default function ProjectDetails(props) {
                 <p>SolaSystem is the world's first completely decentralized derivatives exchange with trustless cross-chain trading.</p>
               </div>
 
-              <div className="mt-4 metadata-wrapper project-metadata-wrapper">
+              <div className="mt-2 metadata-wrapper project-metadata-wrapper">
                 <a href="#" className="metadata badge badge-dApp project-metadata_type">
                   <span className="metadata-value">dapp</span>
                 </a>
@@ -134,6 +135,10 @@ export default function ProjectDetails(props) {
 
                 <div className="section-header">
                   <div className="section-title">Discussions</div>
+                  <div class="relative w-full mx-4 md:mx-6">
+                    {/* <textarea class="w-full px-5 py-2 resize-none text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0" row="1" title="Write a comment" placeholder="What do you think of this project?" /> */}
+                    <TextareaAutosize className="w-full px-5 py-2 resize-none text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="What do you think of this project?" />
+                  </div>
                 </div>
 
                 <div className="section-body">

@@ -39,7 +39,7 @@ Section
 Page 
 */
 .page-header .container {
-  @apply md:flex;
+  @apply md:flex items-center;
 }
 
 .page-header_l,
@@ -49,7 +49,7 @@ Page
 }
 
 .page-header_l {
-  @apply float-left mr-4 mt-2 mb-4 md:float-none md:mr-0;
+  @apply float-left mr-4 md:float-none md:mr-0;
 }
 
 .page-header_main {
