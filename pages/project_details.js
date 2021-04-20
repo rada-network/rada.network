@@ -14,6 +14,8 @@ import { IoChevronForwardSharp } from "react-icons/io5";
 import { RiArrowUpSFill } from "react-icons/ri";
 import { RiCompass3Fill } from "react-icons/ri";
 import { RiChat1Fill } from "react-icons/ri";
+import { RiThumbUpLine } from "react-icons/ri";
+import { RiThumbUpFill } from "react-icons/ri";
 
 export default function ProjectDetails(props) {
 
@@ -141,7 +143,7 @@ export default function ProjectDetails(props) {
 
                   <div className="grid grid-cols-1 md:grid-cols-12">
 
-                    <div className="text-gray-900 text-opacity-100 md:col-span-9 md:pr-10">
+                    <div className="md:col-span-9 md:pr-10">
 
                       {/* Comment Form */}
                       <div className="grid grid-cols-12">
@@ -149,7 +151,7 @@ export default function ProjectDetails(props) {
                         <div className="col-span-9 md:col-span-10">
                           <div className="flex justify-center items-baseline">
                             <div className="mr-2">
-                              <div className="user-wallet-avatar user-wallet-avatar_green">
+                              <div className="user-wallet_avatar user-wallet_avatar_green">
                                 <span className="text-base font-semibold whitespace-nowrap line-clamp-1">xa</span>
                               </div>
                             </div>
@@ -164,21 +166,129 @@ export default function ProjectDetails(props) {
                       </div>
 
                       {/* Comment Threads */}
-                      <div className="comments-list grid grid-cols-12">
+                      <div className="comments-list grid grid-cols-1">
 
-                        <div className="comments-list-item flex items-baseline">
-                          <div className="mr-2">
-                            <div className="user-wallet-avatar user-wallet-avatar_green">
-                              <span className="text-base font-semibold whitespace-nowrap line-clamp-1">xa</span>
+                        {/* Comment that you liked */}
+                        <div className="group comments-list-item flex">
+
+                          <div className="mr-6">
+                            <div className="user-wallet_avatar user-wallet_avatar_red">
+                              <span className="text-base font-semibold whitespace-nowrap line-clamp-1">5e</span>
                             </div>
                           </div>
                           <div className="comment">
-                            <div className="">
-
+                            <div className="comment-header">
+                              <div className="user-wallet_title flex items-baseline">
+                                <span className="text-base font-semibold whitespace-nowrap line-clamp-1">0x495f...7b5e</span>
+                                <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                 <span>4 hours</span> ago
+                                </span>
+                              </div>
                             </div>
-                          
+                            <div className="comment-text mt-1">
+                              <p>Good math, active developers and admins. Service at the highest level. Cheap loot. Long term planning right from the start. I advise everyone?</p>
+                            </div>
+                            <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+                              <div className="flex items-center">
+                                <btn className="btn py-1 px-2 border border-primary-500 text-primary-700 bg-primary-100 rounded">
+                                  <span className="icon mr-2"><RiThumbUpFill /></span>
+                                  <span className="font-bold mr-2">1983</span> <span>Likes</span>
+                                </btn>
+                                <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
+                                  <span className="icon mr-2"><i class="fa fa-reply"></i></span>
+                                  <span>Reply</span>
+                                </btn>
+                              </div>
+                              <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded opacity-0 group-hover:opacity-100">
+                                <span className="icon mr-2"><i class="fas fa-exclamation"></i></span>
+                                <span>Report</span>
+                              </btn>
+                            </div>
                           </div>
+
                         </div>
+
+
+                        {/* Comment */}
+                        <div className="group comments-list-item flex">
+
+                          <div className="mr-6">
+                            <div className="user-wallet_avatar user-wallet_avatar_blue">
+                              <span className="text-base font-semibold whitespace-nowrap line-clamp-1">9x</span>
+                            </div>
+                          </div>
+                          <div className="comment">
+                            <div className="comment-header">
+                              <div className="user-wallet_title flex items-baseline">
+                                <span className="text-base font-semibold whitespace-nowrap line-clamp-1">0x222f...8b9x</span>
+                                <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                 <span>4 hours</span> ago
+                                </span>
+                              </div>
+                            </div>
+                            <div className="comment-text mt-1">
+                              <p>This smart is very good choice for everyone! Recommend to join. No backdoor and fully verified by HazeCrypto!</p>
+                            </div>
+                            <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+                              <div className="flex items-center">
+                                <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
+                                  <span className="icon mr-2"><RiThumbUpFill /></span>
+                                  <span className="font-bold mr-2">1</span> <span>Likes</span>
+                                </btn>
+                                <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
+                                  <span className="icon mr-2"><i class="fa fa-reply"></i></span>
+                                  <span>Reply</span>
+                                </btn>
+                              </div>
+                              <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded opacity-0 group-hover:opacity-100">
+                                <span className="icon mr-2"><i class="fas fa-exclamation"></i></span>
+                                <span>Report</span>
+                              </btn>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        {/* Comment */}
+                        <div className="group comments-list-item flex">
+
+                          <div className="mr-6">
+                            <div className="user-wallet_avatar user-wallet_avatar_blue">
+                              <span className="text-base font-semibold whitespace-nowrap line-clamp-1">9x</span>
+                            </div>
+                          </div>
+                          <div className="comment">
+                            <div className="comment-header">
+                              <div className="user-wallet_title flex items-baseline">
+                                <span className="text-base font-semibold whitespace-nowrap line-clamp-1">0x222f...8b9x</span>
+                                <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                 <span>4 hours</span> ago
+                                </span>
+                              </div>
+                            </div>
+                            <div className="comment-text mt-1">
+                              <p>This smart is very good choice for everyone! Recommend to join. No backdoor and fully verified by HazeCrypto!</p>
+                            </div>
+                            <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+                              <div className="flex items-center">
+                                <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
+                                  <span className="icon mr-2"><RiThumbUpFill /></span>
+                                  <span className="font-bold mr-2">1</span> <span>Likes</span>
+                                </btn>
+                                <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
+                                  <span className="icon mr-2"><i class="fa fa-reply"></i></span>
+                                  <span>Reply</span>
+                                </btn>
+                              </div>
+                              <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded opacity-0 group-hover:opacity-100">
+                                <span className="icon mr-2"><i class="fas fa-exclamation"></i></span>
+                                <span>Report</span>
+                              </btn>
+                            </div>
+                          </div>
+
+                        </div>
+
 
                       </div>
 

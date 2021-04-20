@@ -12,16 +12,42 @@
   }
 }
 
-.user-wallet-avatar {
+.user-wallet_avatar {
   @extend %Img40;
   @apply inline-flex justify-items-center items-center justify-center;
   @apply bg-gray-500 bg-gradient-to-t from-gray-500 to-gray-400 text-gray-50 rounded-full;
-  &_green {
-    @apply bg-green-500 bg-gradient-to-t from-green-500 to-green-400 text-green-50;
-  }
 }
+
+.user-wallet_avatar_green {
+  @apply bg-green-500 bg-gradient-to-t from-green-500 to-green-400 text-green-50;
+}
+
+.user-wallet_avatar_red {
+  @apply bg-red-500 bg-gradient-to-t from-red-500 to-red-400 text-red-50;
+}
+
+.user-wallet_avatar_purple {
+  @apply bg-purple-500 bg-gradient-to-t from-purple-500 to-purple-400 text-purple-50;
+}
+
+.user-wallet_avatar_yellow {
+  @apply bg-yellow-500 bg-gradient-to-t from-yellow-500 to-yellow-400 text-yellow-50;
+}
+
+.user-wallet_avatar_blue {
+  @apply bg-blue-500 bg-gradient-to-t from-blue-500 to-blue-400 text-blue-50;
+}
+
 
 /* Comment */
 .comments-list {
-  @apply py-4;
+  @apply py-4 mt-4 text-sm;
+}
+
+.comments-list-item {
+  @apply mt-6;
+}
+
+.comment-text {
+  @apply text-gray-900 text-opacity-80;
 }
