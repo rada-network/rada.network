@@ -231,7 +231,7 @@ export default function ProjectDetails(props) {
                                 <div className="flex items-center">
                                   <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
                                     <span className="icon mr-2"><RiThumbUpFill /></span>
-                                    <span className="font-bold mr-2">1</span> <span>Likes</span>
+                                    <span>Likes</span>
                                   </btn>
                                   <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
                                     <span className="icon mr-2"><i class="fa fa-reply"></i></span>
@@ -352,7 +352,7 @@ export default function ProjectDetails(props) {
                                 <div className="flex items-center">
                                   <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
                                     <span className="icon mr-2"><RiThumbUpFill /></span>
-                                    <span className="font-bold mr-2">1</span> <span>Likes</span>
+                                    <span>Likes</span>
                                   </btn>
                                   <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
                                     <span className="icon mr-2"><i class="fa fa-reply"></i></span>
