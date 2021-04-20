@@ -220,12 +220,15 @@ export default function ProjectDetails(props) {
                                 <div className="user-wallet_title flex items-baseline">
                                   <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">0x678f...2xab</span>
                                   <span className="text-xs ml-4 text-gray-900 text-opacity-50">
-                                  <span>8 hours</span> ago
+                                    reply to <span className="font-bold">0x495f...7b5e</span>
+                                  </span>
+                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                    <span>8 hours</span> ago
                                   </span>
                                 </div>
                               </div>
                               <div className="comment-text mt-1">
-                                <p>So awesome! Takes NFT's to a new level ! Good job guys!</p>
+                                <p>Love this idea -- congrats to an A+ team!!</p>
                               </div>
                               <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
                                 <div className="flex items-center">
@@ -244,6 +247,104 @@ export default function ProjectDetails(props) {
                                 </btn>
                               </div>
                             </div>
+                          </div>
+
+                          {/* Reply */}
+                          <div className="comment comment_reply group flex">
+                            <div className="mr-3">
+                              <div className="user-wallet_avatar_sm user-wallet_avatar_purple">
+                                <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">2h</span>
+                              </div>
+                            </div>
+                            <div className="comment-main">
+                              <div className="comment-header">
+                                <div className="user-wallet_title flex items-baseline">
+                                  <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">0x268a...1z2h</span>
+                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                    reply to <span className="font-bold">0x495f...7b5e</span>
+                                  </span>
+                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                  <span>1 day</span> ago
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="comment-text mt-1">
+                                <p>This is a bad comment and you already reported!</p>
+                              </div>
+                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+                                <div className="flex items-center">
+                                  <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
+                                    <span className="icon mr-2"><RiThumbUpFill /></span>
+                                    <span>Likes</span>
+                                  </btn>
+                                  <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
+                                    <span className="icon mr-2"><i class="fa fa-reply"></i></span>
+                                    <span>Reply</span>
+                                  </btn>
+                                </div>
+                                <btn className="btn py-1 px-2 ml-2 border border-red-500 text-red-700 rounded">
+                                  <span className="icon mr-2"><i class="fas fa-exclamation"></i></span>
+                                  <span>Report</span>
+                                </btn>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="comment comment_reply group flex">
+                            <div className="mr-3">
+                              <div className="user-wallet_avatar_sm user-wallet_avatar_blue">
+                                <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">9x</span>
+                              </div>
+                            </div>
+                            <div className="comment-main">
+                              <div className="comment-header">
+                                <div className="user-wallet_title flex items-baseline">
+                                  <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">0x222f...8b9x</span>
+                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                    reply to <span className="font-bold">0x268a...1z2h</span>
+                                  </span>
+                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                    <span>4 hours</span> ago
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="comment-text mt-1">
+                                <p>This smart is very good choice for everyone! Recommend to join. No backdoor and fully verified by HazeCrypto!</p>
+                              </div>
+                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+                                <div className="flex items-center">
+                                  <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
+                                    <span className="icon mr-2"><RiThumbUpFill /></span>
+                                    <span className="font-bold mr-2">20</span> <span>Likes</span>
+                                  </btn>
+                                  <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
+                                    <span className="icon mr-2"><i class="fa fa-reply"></i></span>
+                                    <span>Reply</span>
+                                  </btn>
+                                </div>
+                                <btn className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">
+                                  <span className="icon mr-2"><i class="fas fa-exclamation"></i></span>
+                                  <span>Report</span>
+                                </btn>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Reply Form */}
+                          <div className="comment_reply_form flex justify-center items-baseline">
+
+                            <div className="mr-2">
+                              <div className="user-wallet_avatar_sm user-wallet_avatar_green">
+                                <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">xa</span>
+                              </div>
+                            </div>
+
+                            <TextareaAutosize className="h-icon-32 w-full px-4 py-2 text-sm border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="Write your reply" />
+
+                            <div className="pl-2 md:mt-0">
+                              <btn className="h-icon-40 text-sm text-gray-900 text-opacity-50 w-full justify-center flex-1 px-3 py-0 text-gray-500 transition-all rounded-md btn item-center btn-project-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">Reply</btn>
+                            </div>
+
                           </div>
 
                         </div>

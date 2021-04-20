@@ -61,6 +61,10 @@
   @apply mt-6 ml-16;
 }
 
+.comment_reply_form {
+  @apply mt-6 ml-16;
+}
+
 .comment-main {
   @apply flex-1;
 }
