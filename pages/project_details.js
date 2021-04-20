@@ -142,14 +142,46 @@ export default function ProjectDetails(props) {
                   <div className="grid grid-cols-1 md:grid-cols-12">
 
                     <div className="text-gray-900 text-opacity-100 md:col-span-9 md:pr-10">
+
+                      {/* Comment Form */}
                       <div className="grid grid-cols-12">
+
                         <div className="col-span-9 md:col-span-10">
-                          <TextareaAutosize className="w-full px-5 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="What do you think of this project?" />
+                          <div className="flex justify-center items-baseline">
+                            <div className="mr-2">
+                              <div className="user-wallet-avatar user-wallet-avatar_green">
+                                <span className="text-base font-semibold whitespace-nowrap line-clamp-1">xa</span>
+                              </div>
+                            </div>
+                            <TextareaAutosize className="w-full px-5 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="What do you think of this project?" />
+                          </div>
                         </div>
+
                         <div className="col-span-3 md:col-span-2 text-sm text-gray-900 text-opacity-50 pl-2 md:pl-4 md:mt-0">
                           <btn className="w-full justify-center flex-1 px-4 py-3 text-white transition-all rounded-md btn item-center btn-project-vote bg-primary-700 hover:bg-primary-600">Submit</btn>
                         </div>
+
                       </div>
+
+                      {/* Comment Threads */}
+                      <div className="comments-list grid grid-cols-12">
+
+                        <div className="comments-list-item flex items-baseline">
+                          <div className="mr-2">
+                            <div className="user-wallet-avatar user-wallet-avatar_green">
+                              <span className="text-base font-semibold whitespace-nowrap line-clamp-1">xa</span>
+                            </div>
+                          </div>
+                          <div className="comment">
+                            <div className="">
+
+                            </div>
+                          
+                          </div>
+                        </div>
+
+                      </div>
+
                     </div>
 
                     <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:col-span-3 md:pl-8 md:-mt-1 list-group-sm">

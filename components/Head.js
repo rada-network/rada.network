@@ -9,7 +9,7 @@ export const Head = () => {
       href="https://fonts.gstatic.com"
       media="print"
       onLoad="this.media='all'"
-      key="google-fonts"
+      key="google-fonts-preconnect"
     />
     <link
       rel="stylesheet"
@@ -34,10 +34,10 @@ export const Head = () => {
     />
     {/* <link
       rel="stylesheet"
-      href="./fonts/product-sans/styles.css"
+      href="./fonts/aller/stylesheet.css"
       media="print"
       onLoad="this.media='all'"
-      key="local-font_product_sans"
+      key="local-font_aller"
     /> */}
     </HTMLHead>
 

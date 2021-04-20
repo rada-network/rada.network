@@ -48,14 +48,14 @@ Small Badges
   @apply h-auto border-none rounded-sm rounded-tl-md rounded-br-md text-xxs px-2 pt-4px pb-2px;
 }
 
-.badge-sm.badge-dApp {
+.badge-sm.badge-dapp {
   @apply text-blue-500 hover:bg-blue-500 hover:text-white;
 }
 
-.badge-sm.badge-NFT {
+.badge-sm.badge-nft {
   @apply text-purple-500 hover:bg-purple-500 hover:text-white;
 }
 
-.badge-sm.badge-Token {
+.badge-sm.badge-token {
   @apply text-yellow-500 hover:bg-yellow-500 hover:text-white;
 }

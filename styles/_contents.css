@@ -1,3 +1,5 @@
+@import '_media';
+
 .metadata {
   @apply inline-flex justify-items-center items-center;
 }
@@ -8,4 +10,18 @@
     @apply block border-l border-gray-200;
     content: "";
   }
+}
+
+.user-wallet-avatar {
+  @extend %Img40;
+  @apply inline-flex justify-items-center items-center justify-center;
+  @apply bg-gray-500 bg-gradient-to-t from-gray-500 to-gray-400 text-gray-50 rounded-full;
+  &_green {
+    @apply bg-green-500 bg-gradient-to-t from-green-500 to-green-400 text-green-50;
+  }
+}
+
+/* Comment */
+.comments-list {
+  @apply py-4;
 }

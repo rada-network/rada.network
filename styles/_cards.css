@@ -68,6 +68,10 @@ Project
   .card-body-header .card-title {
   }
 
+  .card-body-header .card-title .metadata {
+    @apply relative -top-0.5;
+  }
+
   .card-body-header .card-link {
     @apply inline mr-2;
   }
@@ -93,12 +97,12 @@ Project
   }
 
   .card-text {
-    @apply text-sm line-clamp-2 text-gray-600;
+    @apply text-sm line-clamp-2 text-gray-900 text-opacity-70;
   }
 
 
   .card-body-footer a.metadata {
-    @apply hover:text-gray-600;
+    @apply text-gray-900 text-opacity-70 hover:text-opacity-100;
   }
 
 }

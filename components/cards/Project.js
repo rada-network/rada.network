@@ -57,7 +57,7 @@ export const Card = ({
             >
               {/* <img className="card-img" src={`./node_modules/cryptocurrency-icons/svg/color/${projectPlatformShort || ''}.svg`} /> */}
               <span className="icon">
-                <i class={`cf cf-${projectPlatformShort || "btc"}`}></i>
+                <i className={`cf cf-${projectPlatformShort || "btc"}`}></i>
               </span>
               <span className="metadata-value">{projectPlatform}</span>
             </a>
