@@ -15,7 +15,6 @@ import getClient from "../data/client";
 import postQuery from "../data/query/posts"
 import postNftQuery from "../data/query/postsNFT"
 import useSWR from "swr";
-import {NftList} from "../components/card-layouts/NftList";
 
 
 const getData = async () => {
@@ -55,7 +54,7 @@ export default function Home(props) {
                 title="Project Categories"
                 cta="View all"
             />
-            <NftList
+            <ProjectsList
                 grid="2"
                 gap="2"
                 title="NFTs that you cannot missed"
