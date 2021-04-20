@@ -1,5 +1,5 @@
-import {useState} from "react";
 import {Card} from "../cards/MediaFull";
+import {Carousel} from "../carousel/Carousel";
 
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
@@ -21,7 +21,9 @@ export const CategoryList = ({extraClass, grid, gap, title, cta}) => {
 					</div> }
 				</div>
 				<div className="section-body">
-          <div className={`grid gap-${gap || '5'} sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-${grid || '5'}`}>
+          {/*<div className={`grid gap-${gap || '5'} sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-${grid || '5'}`}>*/}
+          <div className={`grid gap-${1 || '5'} sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-${1 || '5'}`}>
+            <Carousel show={4}>
             <Card 
               title="Finance"
               text=""
@@ -49,8 +51,19 @@ export const CategoryList = ({extraClass, grid, gap, title, cta}) => {
             <Card 
               title="Utilities"
               mediaUri="https://picsum.photos/600/600?random=5"
-              cta="28 Projects"
+              cta="218 Projects"
             />
+              <Card
+              title="Utilities"
+              mediaUri="https://picsum.photos/600/600?random=6"
+              cta="81 Projects"
+            />
+              <Card
+              title="Utilities"
+              mediaUri="https://picsum.photos/600/600?random=7"
+              cta="58 Projects"
+            />
+            </Carousel>
 					</div>
 				</div>
 			</div>
