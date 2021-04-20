@@ -155,7 +155,7 @@ export default function ProjectDetails(props) {
                                 <span className="text-base font-semibold whitespace-nowrap line-clamp-1">xa</span>
                               </div>
                             </div>
-                            <TextareaAutosize className="w-full px-5 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="What do you think of this project?" />
+                            <TextareaAutosize className="w-full px-4 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="What do you think of this project?" />
                           </div>
                         </div>
 
@@ -233,7 +233,7 @@ export default function ProjectDetails(props) {
                               <div className="flex items-center">
                                 <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
                                   <span className="icon mr-2"><RiThumbUpFill /></span>
-                                  <span className="font-bold mr-2">1</span> <span>Likes</span>
+                                  <span className="font-bold mr-2">20</span> <span>Likes</span>
                                 </btn>
                                 <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
                                   <span className="icon mr-2"><i class="fa fa-reply"></i></span>
@@ -253,21 +253,21 @@ export default function ProjectDetails(props) {
                         <div className="group comments-list-item flex">
 
                           <div className="mr-6">
-                            <div className="user-wallet_avatar user-wallet_avatar_blue">
-                              <span className="text-base font-semibold whitespace-nowrap line-clamp-1">9x</span>
+                            <div className="user-wallet_avatar user-wallet_avatar_yellow">
+                              <span className="text-base font-semibold whitespace-nowrap line-clamp-1">ab</span>
                             </div>
                           </div>
                           <div className="comment">
                             <div className="comment-header">
                               <div className="user-wallet_title flex items-baseline">
-                                <span className="text-base font-semibold whitespace-nowrap line-clamp-1">0x222f...8b9x</span>
+                                <span className="text-base font-semibold whitespace-nowrap line-clamp-1">0x678f...2xab</span>
                                 <span className="text-xs ml-4 text-gray-900 text-opacity-50">
-                                 <span>4 hours</span> ago
+                                 <span>8 hours</span> ago
                                 </span>
                               </div>
                             </div>
                             <div className="comment-text mt-1">
-                              <p>This smart is very good choice for everyone! Recommend to join. No backdoor and fully verified by HazeCrypto!</p>
+                              <p>So awesome! Takes NFT's to a new level ! Good job guys!</p>
                             </div>
                             <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
                               <div className="flex items-center">
