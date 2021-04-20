@@ -40,7 +40,7 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta}) => {
 								projectTitle={post.title}
 								projectTextShort={post.description}
 								projectIconUri={post.imageUri}
-								link={`/project_details/${post.id}`}
+								link={`/item/${post.id}`}
 								projectType={post.itemType}
 								projectPlatform={post.platform.name}
 								projectPlatformShort="sol"

@@ -20,14 +20,14 @@ export const Head = () => {
     />
     <link
       rel="stylesheet"
-      href="./vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
+      href="/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
       media="print"
       onLoad="this.media='all'"
       key="cryptoicons"
     />
     <link
       rel="stylesheet"
-      href="./vendors/font-awesome5-pro/css/all.min.css"
+      href="/vendors/font-awesome5-pro/css/all.min.css"
       media="print"
       onLoad="this.media='all'"
       key="fontawesome"

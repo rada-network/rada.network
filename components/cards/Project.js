@@ -23,14 +23,19 @@ export const Card = ({
   return (
     <div className="flex-row items-center content-center card group card-project">
       <div className="card-media project-icon">
-        <Link href={`/project_details/${post.id}`}>
+          <Link href={`/item/${post.id}`}>
           <img className="card-img project-icon_img" src={projectIconUri} />
         </Link>
       </div>
       <div className="card-body">
         <div className="card-body-header">
           <div className="card-title">
-            <Link href={`/project_details/${post.id}`}>
+              <Link href={`/item/${post.id}`}>
+                <a className="card-link">
+                  {projectTitle}
+                </a>
+              </Link>
+            <Link href={`/item/${post.id}`}>
               <a className="card-link">{projectTitle}</a>
             </Link>
             <a
@@ -68,7 +73,7 @@ export const Card = ({
               <span className="metadata-value">{projectDate}</span>
             </div>
 
-            {/* <a href={link} className="hidden metadata project-metadata_submitter">
+              {/* <a href={link} className="hidden metadata project-metadata_submitter">
               <span className="inline-block mr-1 card-body-media project-submitter">
                 <img className="card-img project-submitter_img" src={projectSubmitterImgUri} />
               </span>
@@ -97,5 +102,5 @@ export const Card = ({
         </btn>
       </div>
     </div>
-  );
-};
+  )
+}
