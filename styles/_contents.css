@@ -18,6 +18,12 @@
   @apply bg-gray-500 bg-gradient-to-t from-gray-500 to-gray-400 text-gray-50 rounded-full;
 }
 
+.user-wallet_avatar_sm {
+  @extend %Img32;
+  @apply inline-flex justify-items-center items-center justify-center;
+  @apply bg-gray-500 bg-gradient-to-t from-gray-500 to-gray-400 text-gray-50 rounded-full;
+}
+
 .user-wallet_avatar_green {
   @apply bg-green-500 bg-gradient-to-t from-green-500 to-green-400 text-green-50;
 }
@@ -45,9 +51,20 @@
 }
 
 .comments-list-item {
-  @apply mt-6;
+  @apply mt-6 w-full;
+}
+
+.comment {
+}
+
+.comment_reply {
+  @apply mt-6 ml-16;
+}
+
+.comment-main {
+  @apply flex-1;
 }
 
 .comment-text {
-  @apply text-gray-900 text-opacity-80;
+  @apply text-gray-900 text-opacity-95;
 }
