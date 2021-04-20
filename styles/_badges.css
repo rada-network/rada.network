@@ -13,15 +13,15 @@ Badges
   }
 }
 
-.badge-dApp {
+.badge-dapp {
   @apply text-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white;
 }
 
-.badge-NFT {
+.badge-nft {
   @apply text-purple-500 hover:border-purple-500 hover:bg-purple-500 hover:text-white;
 }
 
-.badge-Token {
+.badge-token {
   @apply text-yellow-500 hover:border-yellow-500 hover:bg-yellow-500 hover:text-white;
 }
 

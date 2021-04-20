@@ -62,11 +62,18 @@ Project
   }
 
   .card-body-header {
-    @apply mb-1 flex flex-wrap justify-items-center;
+    @apply mb-1;
+  }
+
+  .card-body-header .card-title {
+  }
+
+  .card-body-header .card-link {
+    @apply inline mr-2;
   }
 
   .card-body-header .metadata-wrapper {
-    @apply ml-2;
+    @apply inline-block;
   }
 
   .card-body-main {
