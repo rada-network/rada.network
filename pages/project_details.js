@@ -58,7 +58,7 @@ export default function ProjectDetails(props) {
 
             <div className="page-header_r">
               <div className="flex justify-between cta-wrapper">
-                <btn className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md w-icon-104 md:w-full btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
+                <btn className="justify-center px-2 py-2 text-purple-700 bg-white border border-gray-200 rounded-md w-icon-104 md:w-full btn item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
                   <span className="text-2xl icon"><RiCompass3Fill /></span>
                   <span className="ml-2 uppercase btn-project-vote_total whitespace-nowrap">
                     <span className="inline-block text-sm font-medium">Visit</span> 
@@ -97,15 +97,15 @@ export default function ProjectDetails(props) {
                       </div>
                     </div>
 
-                    <div className="pt-4 mt-4 md:flex md:mt-8">
+                    <div className="grid grid-cols-1 md:grid-cols-12 pt-4 mt-4 md:mt-8">
 
-                      <div className="flex-1 w-full text-gray-900 text-opacity-100 md:pr-10 project-text">
+                      <div className="md:col-span-9 w-full text-gray-900 text-opacity-100 md:pr-10 project-text">
                         <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition. Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain.</p>
 
                         <p className="">Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
                       </div>
 
-                      <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:w-64 md:pl-8 md:-mt-1 list-group-sm project-info">
+                      <div className="md:col-span-3 w-full mt-4 text-sm text-gray-900 text-opacity-50 md:pl-8 md:-mt-1 list-group-sm project-info">
                           <div className="list-group-item">
                             <strong className="uppercas">Project Info</strong>
                           </div>
@@ -131,7 +131,7 @@ export default function ProjectDetails(props) {
               </div>
 
 
-              <div className="pt-4 border-t border-gray-100 section section-project-discussions">
+              <div className="pt-8 border-t border-gray-100 section section-project-discussions">
 
                 <div className="section-header">
                   <div className="section-title">Discussions</div>
@@ -139,20 +139,20 @@ export default function ProjectDetails(props) {
 
                 <div className="section-body">
 
-                  <div className="flex">
+                  <div className="grid grid-cols-1 md:grid-cols-12">
 
-                    <div className="flex-1 pr-10 text-gray-900 text-opacity-100">
-                      <div className="flex">
-                        <div className="flex-1">
-                          <TextareaAutosize className="w-full px-5 py-2 resize-none text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="What do you think of this project?" />
+                    <div className="text-gray-900 text-opacity-100 md:col-span-9 md:pr-10">
+                      <div className="grid grid-cols-12">
+                        <div className="col-span-9 md:col-span-10">
+                          <TextareaAutosize className="w-full px-5 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="What do you think of this project?" />
                         </div>
-                        <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:w-auto md:pl-4 md:mt-0">
-                          <btn className="justify-center flex-1 px-4 py-2 text-white transition-all rounded-md md:px-5 md:py-3 btn item-center btn-project-vote bg-primary-700 hover:bg-primary-600">Submit</btn>
+                        <div className="col-span-3 md:col-span-2 text-sm text-gray-900 text-opacity-50 pl-2 md:pl-4 md:mt-0">
+                          <btn className="w-full justify-center flex-1 px-4 py-3 text-white transition-all rounded-md btn item-center btn-project-vote bg-primary-700 hover:bg-primary-600">Submit</btn>
                         </div>
                       </div>
                     </div>
 
-                    <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:w-64 md:pl-8 md:-mt-1 list-group-sm">
+                    <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:col-span-3 md:pl-8 md:-mt-1 list-group-sm">
                       <div>This is a sub-sidebar placeholder</div>
                     </div>
 

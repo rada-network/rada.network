@@ -19,7 +19,7 @@ Main Grid
 Section
 */
 .section {
-  @apply my-12;
+  @apply my-8;
 }
 
 .section-header {
