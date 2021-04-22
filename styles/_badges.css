@@ -4,16 +4,16 @@ Badges
 .badge {
   @apply group text-xs font-medium px-1 mt-0.5 md:px-2 py-0 h-5 md:h-6 whitespace-nowrap;
   @apply bg-white border text-gray-500 uppercase;
-  @apply rounded rounded-tl-lg rounded-br-lg bg-gray-100;
+  @apply rounded-sm rounded-tl-lg rounded-br-lg bg-gray-100;
   .icon {
-    @apply mr-1 -mb-0.5 md:mr-2 md:mb-0;
+    @apply mr-1 md:mr-2;
   }
   .cf {
     @apply md:text-base;
   }
 }
 
-.badge-dapp {
+.badge-dApp {
   @apply text-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white;
 }
 

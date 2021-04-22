@@ -30,11 +30,6 @@ export const Card = ({
       <div className="card-body">
         <div className="card-body-header">
           <div className="card-title">
-              <Link href={`/item/${post.id}`}>
-                <a className="card-link">
-                  {projectTitle}
-                </a>
-              </Link>
             <Link href={`/item/${post.id}`}>
               <a className="card-link">{projectTitle}</a>
             </Link>

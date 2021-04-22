@@ -16,7 +16,6 @@ module.exports = {
     // Set default container to align center and have a 1rem side padding
     container: {
       center: true,
-      padding: '1rem',
     },
 
     extend: {

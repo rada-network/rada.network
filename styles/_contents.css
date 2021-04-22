@@ -58,11 +58,11 @@
 }
 
 .comment_reply {
-  @apply mt-6 ml-16;
+  @apply mt-6 ml-12;
 }
 
 .comment_reply_form {
-  @apply mt-6 ml-16;
+  @apply mt-6 ml-12;
 }
 
 .comment-main {

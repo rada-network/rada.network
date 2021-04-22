@@ -172,7 +172,7 @@ export default function ProjectDetails(props) {
                         <div className="comments-list-item flex flex-col items-stretch">
 
                           <div className="comment group flex">                        
-                            <div className="mr-6">
+                            <div className="mr-3">
                               <div className="user-wallet_avatar user-wallet_avatar_red">
                                 <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">5e</span>
                               </div>
@@ -352,7 +352,7 @@ export default function ProjectDetails(props) {
                         {/* Comment */}
                         <div className="comments-list-item flex flex-col items-stretch">
                           <div className="comment group flex">
-                            <div className="mr-6">
+                            <div className="mr-3">
                               <div className="user-wallet_avatar user-wallet_avatar_blue">
                                 <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">9x</span>
                               </div>
@@ -392,7 +392,7 @@ export default function ProjectDetails(props) {
                         {/* Comment */}
                         <div className="comments-list-item flex flex-col items-stretch">
                           <div className="comment group flex">
-                            <div className="mr-6">
+                            <div className="mr-3">
                               <div className="user-wallet_avatar user-wallet_avatar_yellow">
                                 <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">ab</span>
                               </div>
@@ -432,7 +432,7 @@ export default function ProjectDetails(props) {
                        {/* Comment that you reported */}
                        <div className="comments-list-item flex flex-col items-stretch">
                           <div className="comment group flex">
-                            <div className="mr-6">
+                            <div className="mr-3">
                               <div className="user-wallet_avatar user-wallet_avatar_purple">
                                 <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">2h</span>
                               </div>

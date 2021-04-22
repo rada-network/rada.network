@@ -55,10 +55,10 @@ Project
 
   @apply relative transition-all;
   @apply bg-white border border-gray-100 hover:shadow-md;
-  @apply px-6 py-4;
+  @apply px-4 md:px-6 py-4;
 
   .card-body {
-    @apply px-6 py-0 h-full justify-items-stretch bg-white;
+    @apply px-4 md:px-6 py-0 h-full justify-items-stretch bg-white;
   }
 
   .card-body-header {
@@ -93,7 +93,7 @@ Project
   }
 
   .card-title {
-    @apply text-base font-semibold;
+    @apply text-sm md:text-base font-semibold;
   }
 
   .card-text {
@@ -109,8 +109,7 @@ Project
 
 .card-project .card-media,
 .project-icon {
-  @apply rounded-md overflow-hidden;
-  @extend %Img80;
+  @apply w-icon-56 h-icon-56 md:w-icon-80 md:h-icon-80 rounded-md overflow-hidden;
 }
 
 .card-project .card-body-footer .metadata img {
