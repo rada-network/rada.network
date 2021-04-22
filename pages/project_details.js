@@ -18,6 +18,18 @@ import { RiThumbUpLine } from "react-icons/ri";
 import { RiThumbUpFill } from "react-icons/ri";
 
 export default function ProjectDetails(props) {
+  const readMore = () => {
+    const read = document.getElementById("read")
+    const readBtn = document.getElementById("readBtn")
+    // console.log("abc: ", abc.style.display === "")
+    if (read.style.display === ""){
+      read.style.display = "inline"
+      readBtn.innerHTML = "Read Less"
+    }else{
+      readBtn.innerHTML = "Read More"
+      read.style.display = ""
+    }
+  }
 
   return (
     <Layout extraClass="page-project_details">
@@ -102,9 +114,18 @@ export default function ProjectDetails(props) {
                     <div className="grid grid-cols-1 md:grid-cols-12 pt-4 mt-4 md:mt-8">
 
                       <div className="md:col-span-9 w-full text-gray-900 text-opacity-100 md:pr-10 project-text">
-                        <p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition. Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain.</p>
-
-                        <p className="">Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
+                        {/*<p className="pb-4">Part of the Legendary Series, 99 ever minted, 2nd Edition. Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain.</p>*/}
+                        {/*<p className="line-clamp-3">Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>*/}
+                        <p id="read">Part of the Legendary Series, 99 ever minted, 2nd Edition. Rune Farm is
+                          aiming to be a leading NFT platform on Binance Smart Chain. Rune will launch yield farms as a
+                          way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and
+                          Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their
+                          Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their
+                          Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their
+                          Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their
+                          Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their
+                          attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
+                        <button className="hover:underline text-blue-700" onClick={readMore} id={"readBtn"}>Read more</button>
                       </div>
 
                       <div className="md:col-span-3 w-full mt-4 text-sm text-gray-900 text-opacity-50 md:pl-8 md:-mt-1 list-group-sm project-info">
@@ -492,7 +513,7 @@ export default function ProjectDetails(props) {
                 </div>
               </div>
             </div> */}
-            
+
           </div>
 
         </div>
