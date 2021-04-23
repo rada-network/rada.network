@@ -73,5 +73,5 @@
   @apply text-gray-900 text-opacity-95;
 }
 #read{
-  @apply line-clamp-3
+  @apply line-clamp-5
 }

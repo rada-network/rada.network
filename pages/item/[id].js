@@ -191,6 +191,23 @@ export default function Item ({item_}) {
     }
   }
 
+  const readMore = () => {
+    const read = document.getElementById("read")
+    const readBtn = document.getElementById("readBtn")
+    // console.log("abc: ", abc.style.display === "")
+    if (read.style.display === ""){
+      read.style.display = "inline"
+      readBtn.innerHTML = "Read Less"
+    }else{
+      readBtn.innerHTML = "Read More"
+      read.style.display = ""
+    }
+  }
+
+  const showContents = Object.keys(item.contentJson).map(key => {
+    return `${item.contentJson[key].a} </br> ${item.contentJson[key].b} </br>`
+  })
+
   return (
     <Layout extraClass="page-project_details">
       <>
@@ -274,9 +291,9 @@ export default function Item ({item_}) {
                     <div className="pt-4 mt-4 md:flex md:mt-8">
 
                       <div className="flex-1 w-full text-gray-900 text-opacity-100 md:pr-10 project-text">
-                        {`${item.contentJson}`}
+                        <p id={"read"} dangerouslySetInnerHTML={{__html: showContents}}/>
+                        <button className="hover:underline text-blue-700" onClick={readMore} id={"readBtn"}>Read more</button>
                       </div>
-
                       <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:w-64 md:pl-8 md:-mt-1 list-group-sm project-info">
                         <div className="list-group-item">
                           <strong className="uppercas">Project Info</strong>
