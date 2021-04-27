@@ -12,6 +12,7 @@ import itemQuery from "../../data/query/itemDetail"
 import allItem from "../../data/query/items"
 import {RiArrowUpSFill, RiCompass3Fill} from "react-icons/ri";
 import TextareaAutosize from "react-textarea-autosize";
+import tgVote from "../../data/query/tgVote";
 
 
 const MAX_LEVEL = 3;
@@ -57,6 +58,8 @@ export default function Item ({item_}) {
   const {data: votes} = useSWR(item.id,  getVote, {initialData: {total_vote: 0, self_vote: 0}, revalidateOnMount: 1});
 
   const _comments = {}
+  // console.log("item_.voted.cnt", typeof item_.voted)
+  console.log("walletAddress in Item function: ", user.address())
 
   const showReplyFor = id => {
     if (!user?.address()) {
@@ -171,24 +174,13 @@ export default function Item ({item_}) {
 
     setMessage('Voting...')
 
-    const vote = {item_id: item.id, owner: user.address()}
-    const res = await fetch(
-      `/api/item/${item.id}/vote`,
-      {
-        body: JSON.stringify(vote),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST'
-      }
-    )
+    const client = getClient();
 
-    const result = await res.json()
-    if (result.ok) {
-      votes.self_vote = result.self_vote
-      setMessage('Posted')
-      setTimeout(() => setMessage(''), 1000)
-    }
+    const res = await client.mutate({
+      mutation : tgVote,
+      variables : {itemId: item.id,walletAddress : user.address()}
+    });
+    console.log('status',res.data.toggleVote);
   }
 
   const readMore = () => {
@@ -258,8 +250,8 @@ export default function Item ({item_}) {
                 <btn className="justify-center flex-1 px-2 py-2 ml-4 text-white transition-all rounded-md md:px-3 md:py-3 btn item-center btn-project-vote bg-primary-700 hover:bg-primary-600">
                   <span className="-mb-1 -ml-1 text-2xl icon"><RiArrowUpSFill /></span>
                   <span className="ml-1 uppercase btn-project-vote_total whitespace-nowrap">
-                    <span className="inline-block text-sm font-medium">Upvote</span>
-                    <strong className="inline-block ml-2 text-base font-bold">1989</strong>
+                    <span className="inline-block text-sm font-medium" onClick={toggleVote}>Upvote</span>
+                    <strong className="inline-block ml-2 text-base font-bold">{item_.totalVote}</strong>
                   </span>
                 </btn>
               </div>
