@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useSWR from 'swr'
+import useSWR, {mutate} from 'swr'
 import ReactDOM from "react-dom";
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -23,15 +23,14 @@ const showLoginForm = function() {
   if (btn) btn.click()
 }
 
-const getData = async (params) => {
-  const id = params.id
+const getData = async (id) => {
   const client = getClient()
   const dataItem = await client.query({
     query : itemQuery,
     variables : {id : id}
   });
   return {
-    item_ : dataItem.data.itemById
+    item : dataItem.data.itemById
   }
 }
 
@@ -45,21 +44,19 @@ const getVote = async (id) => {
   }
 }
 
-export default function Item ({item_}) {
-  const [showReply, setShowReply] = useState('')
+export default function Item (props) {
+  const [showReply, setShowReply] = useState(false)
   const [message, setMessage] = useState('')
   const user = useUser()
-
   const param = {
-    id : item_.id
+    id : props.item.id
   }
-  const {data: item} = useSWR(param,getData(param), {initialData: item_});
-  const {data: comments} = useSWR(item.id, getComment, {initialData: [], revalidateOnMount: 1});
-  const {data: votes} = useSWR(item.id,  getVote, {initialData: {total_vote: 0, self_vote: 0}, revalidateOnMount: 1});
+  const {data} = useSWR(props.item.id,getData, {initialData: props,revalidateOnMount: true});
+  //const {data: comments} = useSWR(props.item.id, getComment, {initialData: [], refreshInterval: 1000});
+
+  const [totalVote, setTotalVote] = useState(data.item.totalVote)
 
   const _comments = {}
-  // console.log("item_.voted.cnt", typeof item_.voted)
-  console.log("walletAddress in Item function: ", user.address())
 
   const showReplyFor = id => {
     if (!user?.address()) {
@@ -84,7 +81,7 @@ export default function Item ({item_}) {
   }
 
   _comments['root'] = {children: [], level: 0}
-  console.log(comments);
+  const comments = []
   comments.forEach(comment => {
     _comments[comment.id] = {children: [], level: 0, comment, id: comment.id}
     let parent = comment.parent_id && _comments[comment.parent_id] ? _comments[comment.parent_id] : _comments['root']
@@ -171,22 +168,18 @@ export default function Item ({item_}) {
     if (!user?.address()) {
       return showLoginForm()
     }
-
-    setMessage('Voting...')
-
     const client = getClient();
 
     const res = await client.mutate({
       mutation : tgVote,
-      variables : {itemId: item.id,walletAddress : user.address()}
+      variables : {itemId: data.item.id,walletAddress : user.address()}
     });
-    console.log('status',res.data.toggleVote);
+    setTotalVote(res.data.toggleVote.totalVote)
   }
 
   const readMore = () => {
     const read = document.getElementById("read")
     const readBtn = document.getElementById("readBtn")
-    // console.log("abc: ", abc.style.display === "")
     if (read.style.display === ""){
       read.style.display = "inline"
       readBtn.innerHTML = "Read Less"
@@ -196,10 +189,9 @@ export default function Item ({item_}) {
     }
   }
 
-  const showContents = Object.keys(item.contentJson).map(key => {
-    return `${item.contentJson[key].a} </br> ${item.contentJson[key].b} </br>`
+  const showContents = Object.keys(data.item.contentJson).map(key => {
+    return `${data.item.contentJson[key].a} <br /> ${data.item.contentJson[key].b} <br />`
   })
-
   return (
     <Layout extraClass="page-project_details">
       <>
@@ -217,23 +209,23 @@ export default function Item ({item_}) {
 
             <div className="flex-1 page-header_main">
               <div className="flex items-center content-center page-title">
-                <h1 className="project-title">{`${item.title}`}</h1>
+                <h1 className="project-title">{`${data.item.title}`}</h1>
               </div>
 
               <div className="project-text_short">
-                <div  dangerouslySetInnerHTML={{__html: item.description}} />
+                <div  dangerouslySetInnerHTML={{__html: data.item.description}} />
               </div>
 
               <div className="mt-2 metadata-wrapper project-metadata-wrapper">
                 <a href="#" className="metadata badge badge-dApp project-metadata_type">
-                  <span className="metadata-value">{`${item.itemType}`}</span>
+                  <span className="metadata-value">{`${data.item.itemType}`}</span>
                 </a>
                 <a href="#" className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
                   <span className="icon"><i className="cf cf-sol"></i></span>
-                  <span className="metadata-value">{`${item.platform.name}`}</span>
+                  <span className="metadata-value">{`${data.item.platform.name}`}</span>
                 </a>
                 <a href="#" className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
-                  <span className="metadata-value">{`${item.token.symbol}`}</span>
+                  <span className="metadata-value">{`${data.item.token.symbol}`}</span>
                 </a>
               </div>
 
@@ -251,7 +243,7 @@ export default function Item ({item_}) {
                   <span className="-mb-1 -ml-1 text-2xl icon"><RiArrowUpSFill /></span>
                   <span className="ml-1 uppercase btn-project-vote_total whitespace-nowrap">
                     <span className="inline-block text-sm font-medium" onClick={toggleVote}>Upvote</span>
-                    <strong className="inline-block ml-2 text-base font-bold">{item_.totalVote}</strong>
+                    <strong className="inline-block ml-2 text-base font-bold">{`${totalVote}`}</strong>
                   </span>
                 </btn>
               </div>
@@ -271,19 +263,22 @@ export default function Item ({item_}) {
                 <div className="section-body">
                   <div className="flex-col">
 
-                    <div className="project-media-viewer">
-                      <div className="w-full h-full project-media-wrapper">
-                        <div className="overflow-hidden rounded shadow-xl project-media aspect-w-16 aspect-h-9">
-                          {/* <img className="project-img" alt="" src="https://picsum.photos/1024/768?random=2" /> */}
-                          <iframe width="560" height="315" src="https://www.youtube.com/embed/qnkuBUAwfe0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                      </div>
-                    </div>
+                    {/*<div className="project-media-viewer">*/}
+                    {/*  <div className="w-full h-full project-media-wrapper">*/}
+                    {/*    <div className="overflow-hidden rounded shadow-xl project-media aspect-w-16 aspect-h-9">*/}
+                    {/*      /!* <img className="project-img" alt="" src="https://picsum.photos/1024/768?random=2" /> *!/*/}
+                    {/*      <iframe width="560" height="315" src="https://www.youtube.com/embed/qnkuBUAwfe0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*/}
+                    {/*    </div>*/}
+                    {/*  </div>*/}
+                    {/*</div>*/}
 
                     <div className="pt-4 mt-4 md:flex md:mt-8">
 
                       <div className="flex-1 w-full text-gray-900 text-opacity-100 md:pr-10 project-text">
-                        <p id={"read"} dangerouslySetInnerHTML={{__html: showContents}}/>
+                        <div id={`read`}
+                          dangerouslySetInnerHTML={{
+                            __html: showContents
+                          }}></div>
                         <button className="hover:underline text-blue-700" onClick={readMore} id={"readBtn"}>Read more</button>
                       </div>
                       <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:w-64 md:pl-8 md:-mt-1 list-group-sm project-info">
@@ -378,7 +373,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-  const props = await getData(params);
+  const props = await getData(params.id);
   return {
     props,
     revalidate: 1
