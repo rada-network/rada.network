@@ -47,8 +47,8 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta}) => {
 								projectDate={post.createdAt}
 								// projectSubmitterImgUri="https://picsum.photos/80/80?random=11"
 								// projectSubmitter="rada.co"
-								projectCommentsCounts="2"
-								voteTotal="2"
+								projectCommentsCounts={post.totalComment}
+								voteTotal={post.totalVote}
 							/>
 						))}
 					</div>

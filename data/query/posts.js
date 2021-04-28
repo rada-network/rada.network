@@ -16,6 +16,8 @@ export default gql`
         name
         id
       }
+      totalVote
+      totalComment
     }
   }
   `
