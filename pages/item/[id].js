@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useSWR, {mutate} from 'swr'
 import ReactDOM from "react-dom";
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 import useUser from '../../lib/useUser'
 import {Layout} from '../../components/page-layouts/OneColumn';
@@ -12,7 +11,6 @@ import itemQuery from "../../data/query/itemDetail"
 import allItem from "../../data/query/items"
 import {RiArrowUpSFill, RiCompass3Fill} from "react-icons/ri";
 import TextareaAutosize from "react-textarea-autosize";
-import tgVote from "../../data/query/tgVote";
 import {Vote} from "../../components/vote/Vote";
 
 
@@ -49,14 +47,13 @@ export default function Item (props) {
   const [showReply, setShowReply] = useState(false)
   const [message, setMessage] = useState('')
   const user = useUser()
-  const client = getClient()
   const param = {
     id : props.item.id
   }
   const {data} = useSWR(props.item.id, getData, {initialData: props,revalidateOnMount: true});
   //const {data: comments} = useSWR(props.item.id, getComment, {initialData: [], refreshInterval: 1000});
 
-  const [totalVote, setTotalVote] = useState(data.item.totalVote)
+  // const [totalVote, setTotalVote] = useState(data.item.totalVote)
 
   const _comments = {}
 
@@ -166,18 +163,18 @@ export default function Item (props) {
 
   }
 
-  const toggleVote = async () => {
-    if (!user?.address()) {
-      return showLoginForm()
-    }
-    const client = getClient();
-
-    const res = await client.mutate({
-      mutation : tgVote,
-      variables : {itemId: data.item.id,walletAddress : user.address()}
-    });
-    setTotalVote(res.data.toggleVote.totalVote)
-  }
+  // const toggleVote = async () => {
+  //   if (!user?.address()) {
+  //     return showLoginForm()
+  //   }
+  //   const client = getClient();
+  //
+  //   const res = await client.mutate({
+  //     mutation : tgVote,
+  //     variables : {itemId: data.item.id,walletAddress : user.address()}
+  //   });
+  //   setTotalVote(res.data.toggleVote.totalVote)
+  // }
 
   const readMore = () => {
     const read = document.getElementById("read")
@@ -242,8 +239,9 @@ export default function Item (props) {
                   </span>
                 </btn>
                 <Vote
-                  totalVote={totalVote}
-                  toggleVote={toggleVote}
+                  itemId={data.item.id}
+                  votes={data.item.totalVote}
+                  page={"detail"}
                 />
               </div>
             </div>
