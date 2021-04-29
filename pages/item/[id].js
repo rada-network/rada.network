@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useSWR, {mutate} from 'swr'
 import ReactDOM from "react-dom";
 import Link from 'next/link'
@@ -11,6 +11,8 @@ import itemQuery from "../../data/query/itemDetail"
 import allItem from "../../data/query/items"
 import {RiArrowUpSFill, RiCompass3Fill} from "react-icons/ri";
 import TextareaAutosize from "react-textarea-autosize";
+import tgVote from "../../data/query/tgVote";
+import {CommentList} from "../../components/commennts/commentList";
 import {Vote} from "../../components/vote/Vote";
 
 
@@ -29,152 +31,17 @@ const getData = async (id) => {
     variables : {id : id}
   });
   return {
-    item : dataItem.data.itemById
-  }
-}
-
-const getComment = async (id) => {
-  return []
-}
-
-const getVote = async (id) => {
-  return {
-    seftVote : true
+    item : dataItem.data.itemById,
+    comments : []
   }
 }
 
 export default function Item (props) {
-  const [showReply, setShowReply] = useState(false)
-  const [message, setMessage] = useState('')
   const user = useUser()
   const param = {
     id : props.item.id
   }
-  const {data} = useSWR(props.item.id, getData, {initialData: props,revalidateOnMount: true});
-  //const {data: comments} = useSWR(props.item.id, getComment, {initialData: [], refreshInterval: 1000});
-
-  // const [totalVote, setTotalVote] = useState(data.item.totalVote)
-
-  const _comments = {}
-
-  const showReplyFor = id => {
-    if (!user?.address()) {
-      return showLoginForm()
-    }
-
-    let comment = _comments[id]
-    while (comment && comment.level >= MAX_LEVEL) {
-      comment = _comments[comment.comment.parent_id]
-    }
-    if (!comment) {
-      setShowReply('')
-    } else {
-      replyTo = comment.comment.owner
-      setShowReply(comment.id)
-    }
-  }
-
-  const lastId = parent => {
-    if (parent.children.length) return lastId(_comments[parent.children[parent.children.length-1]])
-    return parent.comment.id
-  }
-
-  _comments['root'] = {children: [], level: 0}
-  const comments = []
-  comments.forEach(comment => {
-    _comments[comment.id] = {children: [], level: 0, comment, id: comment.id}
-    let parent = comment.parent_id && _comments[comment.parent_id] ? _comments[comment.parent_id] : _comments['root']
-    while (parent.level >= MAX_LEVEL) parent = _comments[parent.comment.parent_id]
-    // update level
-    _comments[comment.id].level = parent.level + 1
-    parent.children.push(comment.id)
-  })
-
-  const renderReplies = parent => {
-    if (!parent.children.length) return ''
-
-    return (
-      <div className={`replies level=${parent.level}`} style={{marginLeft: 30}}>
-        { parent.children.map(id => {
-          const {level, comment} = _comments[id]
-          return (
-            <div className="reply">
-              <span>By: {comment.owner}</span>
-              <span>Time: {comment.time}</span>
-              <p>{comment.content}</p>
-              <span onClick={() => showReplyFor(id)}>Reply</span>
-              { renderReplies(_comments[id]) }
-              { MAX_LEVEL > level && showReply == id &&
-              <div className="reply-form">
-                <form onSubmit={postComment}>
-                  <textarea autoFocus name="content">{`@${replyTo}\n`}</textarea>
-                  <input type="hidden" name="replyto" value={id} />
-                  <button type="submit">Reply</button>
-                  <button type="button" onClick={ () => setShowReply('') }>Cancel</button>
-                </form>
-              </div>
-              }
-            </div>
-          )
-        }) }
-      </div>
-    )
-  }
-
-  const postComment = async event => {
-    if (!user?.address()) {
-      return showLoginForm()
-    }
-
-    event.preventDefault() // don't redirect the page
-    // data
-    const comment = {
-      item_id: item.id,
-      content: event.target.content.value,
-      parent_id: event.target.replyto ? event.target.replyto.value : '',
-      owner: user.address()
-    }
-
-    setMessage('Posting...')
-    const res = await fetch(
-      `/api/item/${item.id}/comment`,
-      {
-        body: JSON.stringify(comment),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST'
-      }
-    )
-
-    const result = await res.json()
-
-    if (result.ok) {
-      comments.push(result.comment)
-      if (showReply) {
-        setShowReply('')
-      } else {
-        // clean comment form
-        event.target.content.value = ''
-      }
-      setMessage('Posted')
-      setTimeout(() => setMessage(''), 1000)
-    }
-
-  }
-
-  // const toggleVote = async () => {
-  //   if (!user?.address()) {
-  //     return showLoginForm()
-  //   }
-  //   const client = getClient();
-  //
-  //   const res = await client.mutate({
-  //     mutation : tgVote,
-  //     variables : {itemId: data.item.id,walletAddress : user.address()}
-  //   });
-  //   setTotalVote(res.data.toggleVote.totalVote)
-  // }
+  const {data} = useSWR([props.item.id,"item"],getData, {initialData: props,revalidateOnMount: true});
 
   const readMore = () => {
     const read = document.getElementById("read")
@@ -302,37 +169,7 @@ export default function Item (props) {
 
                 </div>
               </div>
-
-
-              <div className="pt-4 border-t border-gray-100 section section-project-discussions">
-
-                <div className="section-header">
-                  <div className="section-title">Discussions</div>
-                </div>
-
-                <div className="section-body">
-
-                  <div className="flex">
-
-                    <div className="flex-1 pr-10 text-gray-900 text-opacity-100">
-                      <div className="flex">
-                        <div className="flex-1">
-                          <TextareaAutosize className="w-full px-5 py-2 resize-none text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="What do you think of this project?" />
-                        </div>
-                        <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:w-auto md:pl-4 md:mt-0">
-                          <btn className="justify-center flex-1 px-4 py-2 text-white transition-all rounded-md md:px-5 md:py-3 btn item-center btn-project-vote bg-primary-700 hover:bg-primary-600">Submit</btn>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:w-64 md:pl-8 md:-mt-1 list-group-sm">
-                      <div>This is a sub-sidebar placeholder</div>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
+              <CommentList item={data.item} />
 
             </div>
 

@@ -61,7 +61,7 @@ type Platform {
 }
 
 type Query {
-    commentFeed(itemId: String!, orderBy: ItemOrderInput, skip: Int = 0, take: Int = 4): [Comment]
+    commentFeed(itemId: String!, orderBy: CommentOrderInput, skip: Int = 0, take: Int = 4): [Comment]
     isVote(itemId: String!, walletAddress: String!): Vote
     itemById(id: String!): Item
     itemFeed(itemType: String, orderBy: ItemOrderInput, skip: Int = 0, take: Int = 4): [Item]
@@ -101,6 +101,10 @@ enum ItemType {
 enum SortOrder {
     asc
     desc
+}
+
+input CommentOrderInput {
+    createAt: SortOrder
 }
 
 input ImageItemInput {
