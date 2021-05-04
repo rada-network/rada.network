@@ -45,7 +45,7 @@ export const Card = ({
           </div>
         </div>
         <div className="card-body-main">
-          <div className="card-text">{projectTextShort}</div>
+          <div className="card-text" dangerouslySetInnerHTML={{ __html: projectTextShort}}></div>
         </div>
 
         <div className="card-body-footer">
