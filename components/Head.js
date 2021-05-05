@@ -32,13 +32,6 @@ export const Head = () => {
       onLoad="this.media='all'"
       key="fontawesome"
     />
-    {/* <link
-      rel="stylesheet"
-      href="./fonts/aller/stylesheet.css"
-      media="print"
-      onLoad="this.media='all'"
-      key="local-font_aller"
-    /> */}
     </HTMLHead>
 
   );

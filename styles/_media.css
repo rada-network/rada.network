@@ -1,47 +1,47 @@
 %Img16 {
-  @apply w-icon-16 h-icon-16 inline-block overflow-hidden;
+  @apply w-px-16 h-px-16 inline-block overflow-hidden;
 }
 
 %Img24 {
-  @apply w-icon-24 h-icon-24 inline-block overflow-hidden;
+  @apply w-px-24 h-px-24 inline-block overflow-hidden;
 }
 
 %Img32 {
-  @apply w-icon-32 h-icon-32 inline-block overflow-hidden;
+  @apply w-px-32 h-px-32 inline-block overflow-hidden;
 }
 
 %Img40 {
-  @apply w-icon-40 h-icon-40 inline-block overflow-hidden;
+  @apply w-px-40 h-px-40 inline-block overflow-hidden;
 }
 
 %Img48 {
-  @apply w-icon-48 h-icon-48 inline-block overflow-hidden;
+  @apply w-px-48 h-px-48 inline-block overflow-hidden;
 }
 
 %Img56 {
-  @apply w-icon-56 h-icon-56 inline-block overflow-hidden;
+  @apply w-px-56 h-px-56 inline-block overflow-hidden;
 }
 
 %Img64 {
-  @apply w-icon-64 h-icon-64 inline-block overflow-hidden;
+  @apply w-px-64 h-px-64 inline-block overflow-hidden;
 }
 
 %Img80 {
-  @apply w-icon-80 h-icon-80 inline-block overflow-hidden;
+  @apply w-px-80 h-px-80 inline-block overflow-hidden;
 }
 
 %Img88 {
-  @apply w-icon-88 h-icon-88 inline-block overflow-hidden;
+  @apply w-px-88 h-px-88 inline-block overflow-hidden;
 }
 
 %Img96 {
-  @apply w-icon-96 h-icon-96 inline-block overflow-hidden;
+  @apply w-px-96 h-px-96 inline-block overflow-hidden;
 }
 
 %Img104 {
-  @apply w-icon-104 h-icon-104 inline-block overflow-hidden;
+  @apply w-px-104 h-px-104 inline-block overflow-hidden;
 }
 
 %Img128 {
-  @apply w-icon-128 h-icon-128 inline-block overflow-hidden;
+  @apply w-px-128 h-px-128 inline-block overflow-hidden;
 }
