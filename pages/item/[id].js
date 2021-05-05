@@ -99,7 +99,7 @@ export default function Item (props) {
 
             <div className="page-header_r">
               <div className="flex justify-between cta-wrapper">
-                <btn className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md w-icon-104 md:w-full btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
+                <btn className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md w-px-104 md:w-full btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
                   <span className="text-2xl icon"><RiCompass3Fill /></span>
                   <span className="ml-2 uppercase btn-project-vote_total whitespace-nowrap">
                     <span className="inline-block text-sm font-medium">Visit</span>

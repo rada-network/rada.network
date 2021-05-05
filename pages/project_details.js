@@ -72,7 +72,7 @@ export default function ProjectDetails(props) {
 
             <div className="page-header_r">
               <div className="flex justify-between cta-wrapper">
-                <btn className="justify-center px-2 py-2 text-purple-700 bg-white border border-gray-200 rounded-md w-icon-104 md:w-full btn item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
+                <btn className="justify-center px-2 py-2 text-purple-700 bg-white border border-gray-200 rounded-md w-px-104 md:w-full btn item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
                   <span className="text-2xl icon"><RiCompass3Fill /></span>
                   <span className="ml-2 uppercase btn-project-vote_total whitespace-nowrap">
                     <span className="inline-block text-sm font-medium">Visit</span> 
@@ -360,10 +360,10 @@ export default function ProjectDetails(props) {
                               </div>
                             </div>
 
-                            <TextareaAutosize className="h-icon-32 w-full px-4 py-2 text-sm border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="Write your reply" />
+                            <TextareaAutosize className="h-px-32 w-full px-4 py-2 text-sm border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="Write your reply" />
 
                             <div className="pl-2 md:mt-0">
-                              <btn className="h-icon-40 text-sm text-gray-900 text-opacity-50 w-full justify-center flex-1 px-3 py-0 text-gray-500 transition-all rounded-md btn item-center btn-project-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">Reply</btn>
+                              <btn className="h-px-40 text-sm text-gray-900 text-opacity-50 w-full justify-center flex-1 px-3 py-0 text-gray-500 transition-all rounded-md btn item-center btn-project-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">Reply</btn>
                             </div>
 
                           </div>
