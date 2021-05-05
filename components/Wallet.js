@@ -68,25 +68,34 @@ const WalletContent = ({wallet, closeModal, open}) => {
                 </div>
               </Dialog.Title>
 
-              <div className="dialog-body py-8 px-8 bg-gradient-to-tr from-primary-100 to-primary-200 bg-primary-100">
+              <div className="dialog-body py-8 px-8 bg-gradient-to-tr from-gray-50 to-gray-100 bg-gray-50">
 
                 <ul>
                   <li>
-                    <a className="group btn rounded-md bg-white py-2 px-4 my-2 w-full" onClick={() => wallet.connect()}>
+                    <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-2 px-4 my-2 w-full hover:bg-primary-100 hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect()}>
+                      <span className="icon w-px-24 h-px-24 mr-4">
+                        <img className="block w-auto" src="/images/icons/metamask-24.png" alt="Metamask" />
+                      </span>
                       <span className="flex-1">Metamask</span>
-                      <i className="fal fa-long-arrow-right"></i>
+                      <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
                   </li>
                   <li>
-                    <a className="group btn rounded-md bg-white py-2 px-4 my-2 w-full" onClick={() => wallet.connect('walletconnect')}>
+                    <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-2 px-4 my-2 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletconnect')}>
+                      <span className="icon w-px-24 h-px-24 mr-4">
+                        <img className="block w-auto" src="/images/icons/walletconnect-24.png" alt="WalletConnect" />
+                      </span>
                       <span className="flex-1">WalletConnect</span>
-                      <i className="fal fa-long-arrow-right"></i>
+                      <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
                   </li>
                   <li>
-                    <a className="group btn rounded-md bg-white py-2 px-4 my-2 w-full" onClick={() => wallet.connect('walletlink')}>
+                    <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-2 px-4 my-2 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletlink')}>
+                      <span className="icon w-px-24 h-px-24 mr-4">
+                        <img className="block w-auto rounded-md" src="/images/icons/walletlink-24.png" alt="WalletLink" />
+                      </span>
                       <span className="flex-1">WalletLink</span>
-                      <i className="fal fa-long-arrow-right"></i>
+                      <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
                   </li>
                 </ul>                    
