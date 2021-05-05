@@ -19,11 +19,6 @@ import {Vote} from "../../components/vote/Vote";
 const MAX_LEVEL = 3;
 let replyTo = ''
 
-const showLoginForm = function() {
-  const btn = document.getElementById('connect-wallet-btn')
-  if (btn) btn.click()
-}
-
 const getData = async (id) => {
   const client = getClient()
   const dataItem = await client.query({
@@ -140,9 +135,7 @@ export default function Item (props) {
 
                       <div className="flex-1 w-full text-gray-900 text-opacity-100 md:pr-10 project-text">
                         <div id={`read`}
-                          dangerouslySetInnerHTML={{
-                            __html: showContents
-                          }}></div>
+                          dangerouslySetInnerHTML={{__html: showContents}}></div>
                         <button className="hover:underline text-blue-700" onClick={readMore} id={"readBtn"}>Read more</button>
                       </div>
                       <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:w-64 md:pl-8 md:-mt-1 list-group-sm project-info">

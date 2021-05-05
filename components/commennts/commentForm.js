@@ -5,11 +5,6 @@ import createComment from "../../data/query/createComment";
 import {useState} from "react";
 import getClient from "../../data/client";
 
-const showLoginForm = function() {
-  const btn = document.getElementById('connect-wallet-btn')
-  if (btn) btn.click()
-}
-
 const client = getClient()
 
 export function CommentForm({replyFor,item}) {

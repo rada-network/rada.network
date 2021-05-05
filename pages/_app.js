@@ -2,6 +2,7 @@ import '../styles/tw.css'
 import '../styles/globals.css'
 import '../styles/styles.css'
 import { useWallet, UseWalletProvider } from 'use-wallet'
+import {AuthProvider} from "../context/auth";
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
@@ -19,6 +20,8 @@ export default ({ Component, pageProps }) => (
       walletlink: { url: 'https://mainnet.eth.aragon.network/' },
   }}
   >
-    <MyApp Component={Component} pageProps={pageProps} />
+    <AuthProvider>
+      <MyApp Component={Component} pageProps={pageProps} />
+    </AuthProvider>
   </UseWalletProvider>
 )

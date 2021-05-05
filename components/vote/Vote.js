@@ -7,16 +7,17 @@ import {useState} from "react";
 export const Vote = ({itemId, votes, page}) => {
   const user = useUser()
   const client = getClient();
-
   const [totalVote, setTotalVote] = useState(votes)
-  const showLoginForm = function() {
-    const btn = document.getElementById('connect-wallet-btn')
-    if (btn) btn.click()
-  }
+
+  // global.showLoginForm = function () {
+  //   const btn = document.getElementById('connect-wallet-btn')
+  //   if (btn) btn.click()
+  // }
   const toggleVote = async () => {
-    if (!user?.address()) {
-      return showLoginForm()
-    }
+    // if (!user?.address()) {
+    //   return showLoginForm()
+    // }
+
 
     const res = await client.mutate({
       mutation : tgVote,

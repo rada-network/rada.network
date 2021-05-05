@@ -2,10 +2,14 @@ import { useWallet, ConnectionRejectedError } from 'use-wallet'
 import { Dialog, Transition } from "@headlessui/react"
 import { BiWallet } from "react-icons/bi";
 import { GiWallet } from "react-icons/gi";
-import { Fragment, useState, useRef } from "react"
+import { Fragment, useState, useRef, useContext, createContext } from "react"
+import login from "../../joom_clone/src/pages/api/login";
+import {useAuthState} from "../context/auth";
 
 const WalletContent = ({wallet, closeModal, open}) => {
   const cancelButtonRef = useRef();
+  const {isAuthenticated_, address} = useAuthState()
+  console.log(`isAuthenticated: ${isAuthenticated_}, ${address}`)
 
   return (
     <Transition show={open} as={Fragment}>
