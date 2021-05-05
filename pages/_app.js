@@ -2,13 +2,22 @@ import '../styles/tw.css'
 import '../styles/globals.css'
 import '../styles/styles.css'
 import { useWallet, UseWalletProvider } from 'use-wallet'
+import { Provider } from 'mobx-react'
+import { useStore } from '../lib/useStore'
+
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <Component {...pageProps} />
+  )
 }
 
 // Wrap everything in <UseWalletProvider />
-export default ({ Component, pageProps }) => (
+export default ({ Component, pageProps }) => {
+  const store = useStore(pageProps.initialState)
+
+  return (
+  <Provider store={store}>
   <UseWalletProvider
     chainId={1}
     connectors={{
@@ -21,4 +30,5 @@ export default ({ Component, pageProps }) => (
   >
     <MyApp Component={Component} pageProps={pageProps} />
   </UseWalletProvider>
-)
+  </Provider>
+)}

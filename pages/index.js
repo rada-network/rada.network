@@ -45,7 +45,8 @@ const getData = async () => {
 }
 
 export default function Home(props) {
-  const {data} = useSWR('homepage', getData, {initialData: props})
+  // const {data} = useSWR('homepage', getData, {initialData: props})
+  const data = props
   return (
     <Layout extraClass="page-home">
       <Header/>
