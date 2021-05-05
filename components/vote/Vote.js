@@ -1,26 +1,24 @@
-import {RiArrowUpSFill} from "react-icons/ri";
-import useUser from "../../lib/useUser";
-import getClient from "../../data/client";
-import tgVote from "../../data/query/tgVote";
-import {useState} from "react";
+import {RiArrowUpSFill} from "react-icons/ri"
+import getClient from "../../data/client"
+import tgVote from "../../data/query/tgVote"
+import {useState} from "react"
+import { observer, inject } from "mobx-react"
 
-export const Vote = ({itemId, votes, page}) => {
-  const user = useUser()
+
+export const Vote = inject('store')(observer(({itemId, votes, page, store}) => {
+  const walletAddress = store.wallet.address
   const client = getClient();
 
   const [totalVote, setTotalVote] = useState(votes)
-  const showLoginForm = function() {
-    const btn = document.getElementById('connect-wallet-btn')
-    if (btn) btn.click()
-  }
+
   const toggleVote = async () => {
-    if (!user?.address()) {
-      return showLoginForm()
+    if (!walletAddress) {
+      return store.wallet.showConnect(true)
     }
 
     const res = await client.mutate({
       mutation : tgVote,
-      variables : {itemId: itemId, walletAddress : user.address()}
+      variables : {itemId: itemId, walletAddress}
     });
     setTotalVote(res.data.toggleVote.totalVote)
   }
@@ -47,4 +45,4 @@ export const Vote = ({itemId, votes, page}) => {
      </btn>
    )
   }
-}
+}))

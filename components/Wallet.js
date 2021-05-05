@@ -3,6 +3,8 @@ import { Dialog, Transition } from "@headlessui/react"
 import { BiWallet } from "react-icons/bi";
 import { GiWallet } from "react-icons/gi";
 import { Fragment, useState, useRef } from "react"
+import { observer, inject } from "mobx-react"
+
 
 const WalletContent = ({wallet, closeModal, open}) => {
   const cancelButtonRef = useRef();
@@ -103,15 +105,21 @@ const NotConnectedButton = ({wallet, showModal}) => (
 )
 
 
-export const Wallet = () => {
+export const Wallet = inject('store')(observer(({store}) => {
   const wallet = useWallet()
-  const [isOpen, setIsOpen] = useState(false)
+  if (wallet.status === 'connected') {
+      store.wallet.update(wallet.account)
+  } else {
+      store.wallet.update("")
+  }  
+  // const [isOpen, setIsOpen] = useState(false)
+  const open = store.wallet.showingConnect
 
   return (
     <div className="relative inline-block text-left">
-      { wallet?.status === 'connected' ? <ConnectedButton wallet={wallet} /> : <NotConnectedButton wallet={wallet} showModal={() => setIsOpen(true)} /> }
+      { wallet?.status === 'connected' ? <ConnectedButton wallet={wallet} /> : <NotConnectedButton wallet={wallet} showModal={() => store.wallet.showConnect(true)} /> }
 
-      { wallet?.status !== 'connected' && <WalletContent wallet={wallet} closeModal={() => setIsOpen(false)} open={isOpen} /> }
+      { wallet?.status !== 'connected' && <WalletContent wallet={wallet} closeModal={() => store.wallet.showConnect(false)} open={open} /> }
     </div>
   )
-}
+}))
