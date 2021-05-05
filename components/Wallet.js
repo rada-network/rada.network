@@ -12,7 +12,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
       <Dialog
         as="div"
         id="modal"
-        className="fixed inset-0 z-10 overflow-y-auto"
+        className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm"
         initialFocus={cancelButtonRef}
         static
         open={open}
@@ -41,11 +41,11 @@ const WalletContent = ({wallet, closeModal, open}) => {
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
-            enterFrom="opacity-0 scale-95"
+            enterFrom="opacity-0 scale-80"
             enterTo="opacity-100 scale-100"
             leave="ease-in duration-200"
             leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95"
+            leaveTo="opacity-0 scale-80"
           >
             <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
               <Dialog.Title
@@ -54,6 +54,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
               >
                 Connect to your Wallet
               </Dialog.Title>
+
               <div className="mt-2">
                 <p className="text-sm text-gray-500">
                 Select a Wallet Connector to connect with your wallet
@@ -79,6 +80,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                   </ul>                    
                 </button>
               </div>
+              
             </div>
           </Transition.Child>
         </div>
