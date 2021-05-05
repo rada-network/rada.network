@@ -2,21 +2,19 @@ import { useWallet, ConnectionRejectedError } from 'use-wallet'
 import { Dialog, Transition } from "@headlessui/react"
 import { BiWallet } from "react-icons/bi";
 import { GiWallet } from "react-icons/gi";
-import { Fragment, useState, useRef, useContext, createContext } from "react"
-import login from "../../joom_clone/src/pages/api/login";
-import {useAuthState} from "../context/auth";
+import { Fragment, useState, useRef } from "react"
+import { observer, inject } from "mobx-react"
+
 
 const WalletContent = ({wallet, closeModal, open}) => {
   const cancelButtonRef = useRef();
-  const {isAuthenticated_, address} = useAuthState()
-  console.log(`isAuthenticated: ${isAuthenticated_}, ${address}`)
 
   return (
     <Transition show={open} as={Fragment}>
       <Dialog
         as="div"
         id="modal"
-        className="fixed inset-0 z-10 overflow-y-auto"
+        className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-60"
         initialFocus={cancelButtonRef}
         static
         open={open}
@@ -42,22 +40,29 @@ const WalletContent = ({wallet, closeModal, open}) => {
           >
             &#8203;
           </span>
+
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
-            enterFrom="opacity-0 scale-95"
+            enterFrom="opacity-0 scale-0"
             enterTo="opacity-100 scale-100"
             leave="ease-in duration-200"
             leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95"
+            leaveTo="opacity-0 scale-0"
           >
-            <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+            <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded">
+
+              <button type="button" className="btn justify-center absolute top-4 right-4 rounded-full bg-gray-100 w-px-32 h-px-32 hover:bg-red-100 hover:text-red-700" onClick={closeModal}>
+                <i class="far fa-times text-sm"></i>
+              </button>
+
               <Dialog.Title
-                as="h3"
+                as="div"
                 className="text-lg font-medium leading-6 text-gray-900"
               >
-                Connect to your Wallet
+                <h3>Connect to your Wallet</h3>
               </Dialog.Title>
+
               <div className="mt-2">
                 <p className="text-sm text-gray-500">
                 Select a Wallet Connector to connect with your wallet
@@ -65,26 +70,22 @@ const WalletContent = ({wallet, closeModal, open}) => {
               </div>
 
               <div className="mt-4">
-                <button
-                  type="button"
-                  className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                  onClick={closeModal}
-                >
-                  <ul>
-                      <li>
-                        <a onClick={() => wallet.connect()}>Connect Metamask</a>
-                      </li>
-                      <li>
-                        <a onClick={() => wallet.connect('walletconnect')}>WalletConnect</a>
-                      </li>
-                      <li>
-                        <a onClick={() => wallet.connect('walletlink')}>WalletLink</a>
-                      </li>
-                  </ul>                    
-                </button>
+                <ul>
+                  <li>
+                    <a onClick={() => wallet.connect()}>Connect Metamask</a>
+                  </li>
+                  <li>
+                    <a onClick={() => wallet.connect('walletconnect')}>WalletConnect</a>
+                  </li>
+                  <li>
+                    <a onClick={() => wallet.connect('walletlink')}>WalletLink</a>
+                  </li>
+                </ul>                    
               </div>
+
             </div>
           </Transition.Child>
+
         </div>
       </Dialog>
     </Transition>  
@@ -107,15 +108,21 @@ const NotConnectedButton = ({wallet, showModal}) => (
 )
 
 
-export const Wallet = () => {
+export const Wallet = inject('store')(observer(({store}) => {
   const wallet = useWallet()
-  const [isOpen, setIsOpen] = useState(false)
+  if (wallet.status === 'connected') {
+      store.wallet.update(wallet.account)
+  } else {
+      store.wallet.update("")
+  }  
+  // const [isOpen, setIsOpen] = useState(false)
+  const open = store.wallet.showingConnect
 
   return (
     <div className="relative inline-block text-left">
-      { wallet?.status === 'connected' ? <ConnectedButton wallet={wallet} /> : <NotConnectedButton wallet={wallet} showModal={() => setIsOpen(true)} /> }
+      { wallet?.status === 'connected' ? <ConnectedButton wallet={wallet} /> : <NotConnectedButton wallet={wallet} showModal={() => store.wallet.showConnect(true)} /> }
 
-      { wallet?.status !== 'connected' && <WalletContent wallet={wallet} closeModal={() => setIsOpen(false)} open={isOpen} /> }
+      { wallet?.status !== 'connected' && <WalletContent wallet={wallet} closeModal={() => store.wallet.showConnect(false)} open={open} /> }
     </div>
   )
-}
+}))

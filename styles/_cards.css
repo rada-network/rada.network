@@ -109,7 +109,7 @@ Project
 
 .card-project .card-media,
 .project-icon {
-  @apply w-icon-56 h-icon-56 md:w-icon-80 md:h-icon-80 rounded-md overflow-hidden;
+  @apply w-px-56 h-px-56 md:w-px-80 md:h-px-80 rounded-md overflow-hidden;
 }
 
 .card-project .card-body-footer .metadata img {

@@ -1,27 +1,24 @@
-import {RiArrowUpSFill} from "react-icons/ri";
-import useUser from "../../lib/useUser";
-import getClient from "../../data/client";
-import tgVote from "../../data/query/tgVote";
-import {useState} from "react";
+import {RiArrowUpSFill} from "react-icons/ri"
+import getClient from "../../data/client"
+import tgVote from "../../data/query/tgVote"
+import {useState} from "react"
+import { observer, inject } from "mobx-react"
 
-export const Vote = ({itemId, votes, page}) => {
-  const user = useUser()
+
+export const Vote = inject('store')(observer(({itemId, votes, page, store}) => {
+  const walletAddress = store.wallet.address
   const client = getClient();
+
   const [totalVote, setTotalVote] = useState(votes)
 
-  // global.showLoginForm = function () {
-  //   const btn = document.getElementById('connect-wallet-btn')
-  //   if (btn) btn.click()
-  // }
   const toggleVote = async () => {
-    // if (!user?.address()) {
-    //   return showLoginForm()
-    // }
-
+    if (!walletAddress) {
+      return store.wallet.showConnect(true)
+    }
 
     const res = await client.mutate({
       mutation : tgVote,
-      variables : {itemId: itemId, walletAddress : user.address()}
+      variables : {itemId: itemId, walletAddress}
     });
     setTotalVote(res.data.toggleVote.totalVote)
   }
@@ -39,7 +36,7 @@ export const Vote = ({itemId, votes, page}) => {
     )
   }else{
    return (
-     <btn className="flex-col justify-center transition-all rounded-md btn w-icon-64 h-icon-64 btn-project-vote bg-gray-50 group-hover:bg-primary-700 group-hover:text-white bg-gradient-to-tr from-gray-50 to-gray-50 group-hover:from-primary-700 group-hover:to-primary-600"
+     <btn className="flex-col justify-center transition-all rounded-md btn w-px-64 h-px-64 btn-project-vote bg-gray-50 group-hover:bg-primary-700 group-hover:text-white bg-gradient-to-tr from-gray-50 to-gray-50 group-hover:from-primary-700 group-hover:to-primary-600"
           onClick={toggleVote}>
           <span className="text-xl transition-none icon"><RiArrowUpSFill /></span>
        <span className="text-xs font-bold btn-project-vote_total whitespace-nowrap">
@@ -48,4 +45,4 @@ export const Vote = ({itemId, votes, page}) => {
      </btn>
    )
   }
-}
+}))
