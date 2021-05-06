@@ -17,7 +17,6 @@ export default ({ Component, pageProps }) => {
   // const store = useStore(pageProps.initialState)
 
   return (
-  <StoreProvider>
   <UseWalletProvider
     chainId={1}
     connectors={{
@@ -28,7 +27,8 @@ export default ({ Component, pageProps }) => {
       walletlink: { url: 'https://mainnet.eth.aragon.network/' },
   }}
   >
+  <StoreProvider>
     <MyApp Component={Component} pageProps={pageProps} />
+    </StoreProvider>
   </UseWalletProvider>
-  </StoreProvider>
 )}

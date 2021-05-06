@@ -46,7 +46,7 @@ const getData = async () => {
 
 export default function Home(props) {
   const store = useStore()
-  const {data} = useSWR('homepage', getData, {initialData: props, revalidateOnMount: true})
+  const {data} = useSWR('homepage', getData, {initialData: props, revalidateOnMount: !store.inited})
   // const data = props
   // update to store
   if (store) {
@@ -113,6 +113,6 @@ export async function getStaticProps() {
   const props = await getData();
   return {
     props,
-    revalidate: 1
+    revalidate: 900
   }
 }
