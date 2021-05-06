@@ -54,7 +54,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
             <div className="inline-block w-full max-w-sm overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded">
 
               <button type="button" className="btn text-gray-900 text-opacity-10 justify-center absolute top-2 right-2 rounded-full w-px-24 h-px-24 hover:bg-red-100 hover:text-red-700" onClick={closeModal}>
-                <i class="far fa-times text-sm"></i>
+                <i className="far fa-times text-sm"></i>
               </button>
 
               <Dialog.Title

@@ -17,11 +17,11 @@ module.exports = (phase) => {
 
     const env = {
         GRAPHQL_URL: (() => {
-            if (isDev) return 'http://35.220.212.232:4005/'
+            if (isDev) return 'http://localhost:4005'
             if (isProd) {
-                return 'http://35.220.212.232:4005/'
+                return 'https://gql-dhunt.howtozweb.com/'
             }
-            if (isStaging) return 'http://35.220.212.232:4005/'
+            if (isStaging) return 'https://gql-dhunt.howtozweb.com/'
         })()
     }
 

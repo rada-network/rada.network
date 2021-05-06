@@ -4,10 +4,11 @@ import useUser from "../../lib/useUser";
 import createComment from "../../data/query/createComment";
 import {useState} from "react";
 import getClient from "../../data/client";
+import {UserStore} from "./commentList";
 
 const client = getClient()
 
-export function CommentForm({replyFor,item}) {
+export function CommentForm({replyFor,item,ItemCommentStore}) {
   const [commentContent, setCommentContent] = useState('')
   const user = useUser()
   let currentUser;
@@ -26,7 +27,7 @@ export function CommentForm({replyFor,item}) {
       return showLoginForm();
     }
     if (event.target.className.indexOf("disabled") >= 0) return false;
-    if (commentContent == ""){
+    if (commentContent === ""){
       return false
     }
     event.target.className = event.target.className + " disabled";
@@ -46,9 +47,19 @@ export function CommentForm({replyFor,item}) {
     }
     if (loading) return <p>Loading...</p  >;
     event.target.className = event.target.className.replace("disabled","");
-    setCommentContent("");
-    console.log(data);
-
+    let createdComment = data.createComment;
+    let curUser = UserStore.create(createdComment.user)
+    ItemCommentStore.addUser(curUser)
+    let createdAt = new Date(createdComment.createdAt)
+    ItemCommentStore.addComment({
+      id : createdComment.id,
+      createdAt: createdAt.getTime(),
+      content : createdComment.content,
+      parent : createdComment.parent,
+      itemId : createdComment.itemId,
+      userId : createdComment.user.id
+    })
+    setCommentContent("")
   }
   return (
     <>
@@ -65,9 +76,9 @@ export function CommentForm({replyFor,item}) {
         }}/>
 
       <div className="text-sm text-gray-900 text-opacity-50 pl-2 md:mt-0">
-        <btn onClick={handleSubmit} className="w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded-md btn item-center btn-project-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">
+        <button onClick={handleSubmit} className="w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded-md btn item-center btn-project-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">
           {btnText}
-        </btn>
+        </button>
       </div>
     </>
   )

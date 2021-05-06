@@ -9,6 +9,13 @@
           "user-agent": "JS GraphQL"
         },
         "introspect": false
+      },
+      "local grapql": {
+        "url": "http://localhost:4005",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
       }
     }
   }
