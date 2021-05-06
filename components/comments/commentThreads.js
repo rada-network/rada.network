@@ -5,43 +5,36 @@ import getClient from "../../data/client";
 import itemComments from "../../data/query/itemComments";
 import useSWR from "swr";
 import {CommentMain} from "./commentMain";
+import {types, applySnapshot, flow, getSnapshot} from 'mobx-state-tree'
+import {serializeFetchParameter} from "@apollo/client";
+import {observer} from "mobx-react";
+import {useStore} from "../../lib/useStore";
+import {useWallet} from "use-wallet";
+import {values} from "mobx";
+import {UserStore} from "./commentList";
 
-const client = getClient();
 
-async function getComments(itemId){
-  console.log("getComment",itemId);
-  let _comments = await client.query({
-    query : itemComments,
-    variables : {itemId : itemId,orderBy : {createAt : "desc"}}
-  })
-  return {
-    comments : _comments.data.commentFeed
-  }
-}
+export const CommentThreads =observer(({item,ItemCommentStore}) => {
 
-export function CommentThreads({item}){
-  const {data,error} = useSWR([item.id,"commentThread"],getComments,{revalidateOnMount : true})
-
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
-  const comments = data.comments
   return (
-      <div className="comments-list grid grid-cols-1">
-        <div className="comments-list-item flex flex-col items-stretch">
-          {
-            comments.map(function (comment) {
-              return (
-                <div className="comment group flex">
-                  <div className="mr-3">
-                    <CommentAvatar user={comment.user} />
-                  </div>
-                  <CommentMain comment={comment} />
-
+    <div className="comments-list grid grid-cols-1">
+      <div className="comments-list-item flex flex-col items-stretch">
+        {
+          ItemCommentStore.getChildComment(item.id).map(function (comment) {
+            comment = getSnapshot(comment)
+            let user = getSnapshot(ItemCommentStore.getUser(comment.userId))
+            return (
+              <div className="comment group flex">
+                <div className="mr-3">
+                  <CommentAvatar user={user} />
                 </div>
-              )
-            })
-          }
-        </div>
+                <CommentMain comment={comment} user={user} ItemCommentStore={ItemCommentStore}/>
+
+              </div>
+            )
+          })
+        }
       </div>
+    </div>
   )
-}
+})

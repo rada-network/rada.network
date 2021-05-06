@@ -1,10 +1,9 @@
-import {RiThumbUpFill} from "react-icons/ri";
 import {CommentHeader} from "./commentHeader";
 
-export function CommentMain({comment}){
+export function CommentMain({comment,user,ItemCommentStore}){
   return (
     <div className="comment-main">
-      <CommentHeader comment={comment} />
+      <CommentHeader comment={comment} user={user}/>
       <div className="comment-text mt-1">
         <p>{comment.content}</p>
       </div>
@@ -21,6 +20,7 @@ export function CommentMain({comment}){
             <span>Reply</span>
           </button>
         </div>
+
         {/*<btn*/}
         {/*  className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">*/}
         {/*  <span className="icon mr-2"><i className="fas fa-exclamation"></i></span>*/}

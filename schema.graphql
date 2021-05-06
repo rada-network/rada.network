@@ -5,24 +5,45 @@ schema {
     mutation: Mutation
 }
 
+type Category {
+    id: String!
+    slug: String!
+    title: String!
+}
+
 type Comment {
     content: String
     createdAt: DateTime
     id: String!
     itemId: String!
+    parent: String!
     parentId: String
     user: User
     userId: String
 }
 
+type IdeaUser {
+    avatarUri: String
+    description: String
+    id: String!
+    name: String
+    thumbnail: String
+    url: String
+}
+
 type Item {
+    category: Category
+    categoryId: String
     content: String
     contentJson: JSONObject
     createdAt: DateTime
     description: String
     id: String!
+    ideaUser: IdeaUser
+    ideaUserId: String
     imageUri: String
     images: String
+    imagesUri: JSONObject
     itemType: ItemType
     metadata: [ItemMetadata]
     platform: Platform
@@ -104,7 +125,7 @@ enum SortOrder {
 }
 
 input CommentOrderInput {
-    createAt: SortOrder
+    createdAt: SortOrder
 }
 
 input ImageItemInput {
