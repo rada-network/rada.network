@@ -10,7 +10,7 @@ export const Vote = observer(({itemId, votes, page}) => {
   const store = useStore()
   const walletAddress = store.wallet.address
   const client = getClient();
-  const totalVote = store.projects.item(itemId).totalVote
+  const totalVote = store.projects.item(itemId).totalVote || votes
 
   //const [totalVote, setTotalVote] = useState(votes)
 
