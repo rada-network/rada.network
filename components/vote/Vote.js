@@ -3,13 +3,16 @@ import getClient from "../../data/client"
 import tgVote from "../../data/query/tgVote"
 import {useState} from "react"
 import { observer, inject } from "mobx-react"
+import { useStore } from "../../lib/useStore"
 
 
-export const Vote = inject('store')(observer(({itemId, votes, page, store}) => {
+export const Vote = observer(({itemId, votes, page}) => {
+  const store = useStore()
   const walletAddress = store.wallet.address
   const client = getClient();
+  const totalVote = store.projects.item(itemId).totalVote
 
-  const [totalVote, setTotalVote] = useState(votes)
+  //const [totalVote, setTotalVote] = useState(votes)
 
   const toggleVote = async () => {
     if (!walletAddress) {
@@ -20,7 +23,8 @@ export const Vote = inject('store')(observer(({itemId, votes, page, store}) => {
       mutation : tgVote,
       variables : {itemId: itemId, walletAddress}
     });
-    setTotalVote(res.data.toggleVote.totalVote)
+    // setTotalVote(res.data.toggleVote.totalVote)
+    store.projects.update([{id: itemId, totalVote: res.data.toggleVote.totalVote}])
   }
 
   if (page === "detail" ){
@@ -45,4 +49,4 @@ export const Vote = inject('store')(observer(({itemId, votes, page, store}) => {
      </btn>
    )
   }
-}))
+})
