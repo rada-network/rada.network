@@ -16,10 +16,10 @@ export function CommentMain({comment}){
           {/*  <span className="icon mr-2"><RiThumbUpFill/></span>*/}
           {/*  <span className="font-bold mr-2">1983</span> <span>Likes</span>*/}
           {/*</btn>*/}
-          <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
+          <button className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
             <span className="icon mr-2"><i className="fa fa-reply"></i></span>
             <span>Reply</span>
-          </btn>
+          </button>
         </div>
         {/*<btn*/}
         {/*  className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">*/}
