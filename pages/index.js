@@ -14,7 +14,7 @@ import {IoChevronForwardSharp} from "react-icons/io5";
 import getClient from "../data/client";
 import postQuery from "../data/query/posts"
 import useSWR from "swr";
-
+import { useStore } from "../lib/useStore"
 
 const getData = async () => {
   console.log("get data")
@@ -35,7 +35,7 @@ const getData = async () => {
     variables: {skip: 0, take: 4, itemType: "dapp"}
   })
 
-  console.log("Query is running...")
+  console.log("Query is running...", typeof window)
 
   return {
     posts: posts.data.itemFeed,
@@ -45,8 +45,16 @@ const getData = async () => {
 }
 
 export default function Home(props) {
-  // const {data} = useSWR('homepage', getData, {initialData: props})
-  const data = props
+  const store = useStore()
+  const {data} = useSWR('homepage', getData, {initialData: props, revalidateOnMount: true})
+  // const data = props
+  // update to store
+  if (store) {
+    store.projects.update(data.posts)
+    store.projects.update(data.postsNFT)
+    store.projects.update(data.postsDapp)
+  }
+    
   return (
     <Layout extraClass="page-home">
       <Header/>

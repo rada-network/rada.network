@@ -2,8 +2,8 @@ import '../styles/tw.css'
 import '../styles/globals.css'
 import '../styles/styles.css'
 import { useWallet, UseWalletProvider } from 'use-wallet'
-import { Provider } from 'mobx-react'
-import { useStore } from '../lib/useStore'
+// import { Provider } from 'mobx-react'
+import { StoreProvider } from "../lib/useStore"
 
 
 function MyApp({ Component, pageProps }) {
@@ -14,10 +14,10 @@ function MyApp({ Component, pageProps }) {
 
 // Wrap everything in <UseWalletProvider />
 export default ({ Component, pageProps }) => {
-  const store = useStore(pageProps.initialState)
+  // const store = useStore(pageProps.initialState)
 
   return (
-  <Provider store={store}>
+  <StoreProvider>
   <UseWalletProvider
     chainId={1}
     connectors={{
@@ -30,5 +30,5 @@ export default ({ Component, pageProps }) => {
   >
     <MyApp Component={Component} pageProps={pageProps} />
   </UseWalletProvider>
-  </Provider>
+  </StoreProvider>
 )}
