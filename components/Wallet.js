@@ -15,7 +15,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
       <Dialog
         as="div"
         id="modal"
-        className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-60"
+        className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-80"
         initialFocus={cancelButtonRef}
         static
         open={open}
@@ -51,35 +51,53 @@ const WalletContent = ({wallet, closeModal, open}) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-0"
           >
-            <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded">
+            <div className="inline-block w-full max-w-sm overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded">
 
-              <button type="button" className="btn justify-center absolute top-4 right-4 rounded-full bg-gray-100 w-px-32 h-px-32 hover:bg-red-100 hover:text-red-700" onClick={closeModal}>
+              <button type="button" className="btn text-gray-900 text-opacity-10 justify-center absolute top-2 right-2 rounded-full w-px-24 h-px-24 hover:bg-red-100 hover:text-red-700" onClick={closeModal}>
                 <i class="far fa-times text-sm"></i>
               </button>
 
               <Dialog.Title
                 as="div"
-                className="text-lg font-medium leading-6 text-gray-900"
+                className="dialog-header py-5 px-8"
               >
-                <h3>Connect to your Wallet</h3>
+                <h3 className="text-lg font-semibold">Connect to your Wallet</h3>
+                <div className="mt-2">
+                  <p className="text-sm text-gray-900 text-opacity-60">
+                  Select a Wallet Connector to connect with your wallet
+                  </p>
+                </div>
               </Dialog.Title>
 
-              <div className="mt-2">
-                <p className="text-sm text-gray-500">
-                Select a Wallet Connector to connect with your wallet
-                </p>
-              </div>
+              <div className="dialog-body py-8 px-8 bg-gradient-to-tr from-gray-50 to-gray-100 bg-gray-50">
 
-              <div className="mt-4">
                 <ul>
                   <li>
-                    <a onClick={() => wallet.connect()}>Connect Metamask</a>
+                    <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-2 px-4 my-2 w-full hover:bg-primary-100 hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect()}>
+                      <span className="icon w-px-24 h-px-24 mr-4">
+                        <img className="block w-auto" src="/images/icons/metamask-24.png" alt="Metamask" />
+                      </span>
+                      <span className="flex-1">Metamask</span>
+                      <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                   </li>
                   <li>
-                    <a onClick={() => wallet.connect('walletconnect')}>WalletConnect</a>
+                    <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-2 px-4 my-2 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletconnect')}>
+                      <span className="icon w-px-24 h-px-24 mr-4">
+                        <img className="block w-auto" src="/images/icons/walletconnect-24.png" alt="WalletConnect" />
+                      </span>
+                      <span className="flex-1">WalletConnect</span>
+                      <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                   </li>
                   <li>
-                    <a onClick={() => wallet.connect('walletlink')}>WalletLink</a>
+                    <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-2 px-4 my-2 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletlink')}>
+                      <span className="icon w-px-24 h-px-24 mr-4">
+                        <img className="block w-auto rounded-md" src="/images/icons/walletlink-24.png" alt="WalletLink" />
+                      </span>
+                      <span className="flex-1">WalletLink</span>
+                      <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                   </li>
                 </ul>                    
               </div>
