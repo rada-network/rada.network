@@ -36,7 +36,7 @@ export default function Item (props) {
   const param = {
     id : props.item.id
   }
-  const {data} = useSWR([props.item.id,"item"],getData, {initialData: props,revalidateOnMount: true});
+  const {data} = useSWR([props.item.id,"item"],getData, {initialData: props});
 
   const readMore = () => {
     const read = document.getElementById("read")
@@ -203,6 +203,6 @@ export async function getStaticProps({params}) {
   const props = await getData(params.id);
   return {
     props,
-    revalidate: 1
+    revalidate: 900
   }
 }
