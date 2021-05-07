@@ -12,29 +12,29 @@ import {useStore} from "../../lib/useStore";
 import {useWallet} from "use-wallet";
 import {values} from "mobx";
 import {UserStore} from "./commentList";
+import {useState} from "react";
 
 
-export const CommentThreads =observer(({item,ItemCommentStore}) => {
-
+export const CommentThreads = observer(({item,ItemCommentStore}) => {
+  let comments = getSnapshot(ItemCommentStore.getChildComment(item.id))
+  console.log(comments)
+  let sortComments = comments.slice(0)
+  sortComments.sort(function(a,b){
+    return a.createdAt < b.createdAt
+  })
+  console.log(sortComments)
   return (
     <div className="comments-list grid grid-cols-1">
-      <div className="comments-list-item flex flex-col items-stretch">
         {
-          ItemCommentStore.getChildComment(item.id).map(function (comment) {
-            comment = getSnapshot(comment)
+          sortComments.map(function (comment) {
             let user = getSnapshot(ItemCommentStore.getUser(comment.userId))
             return (
-              <div className="comment group flex">
-                <div className="mr-3">
-                  <CommentAvatar user={user} />
-                </div>
-                <CommentMain comment={comment} user={user} ItemCommentStore={ItemCommentStore}/>
-
+              <div className="comments-list-item flex flex-col items-stretch">
+              <CommentMain item={item} comment={comment} user={user} ItemCommentStore={ItemCommentStore} level={1}   />
               </div>
             )
           })
         }
-      </div>
     </div>
   )
 })

@@ -14,6 +14,8 @@ import TextareaAutosize from "react-textarea-autosize";
 import tgVote from "../../data/query/tgVote";
 import {CommentList} from "../../components/comments/commentList";
 import {Vote} from "../../components/vote/Vote";
+import IdeaInfo from "../../components/info/ideaInfo";
+import itemComments from "../../data/query/itemComments";
 
 
 const MAX_LEVEL = 3;
@@ -25,17 +27,17 @@ const getData = async (id) => {
     query : itemQuery,
     variables : {id : id}
   });
+  let _comments = await client.query({
+    query : itemComments,
+    variables : {itemId : id,orderBy : {createdAt : "desc"}}
+  })
   return {
     item : dataItem.data.itemById,
-    comments : []
+    comments : _comments.data.commentFeed
   }
 }
 
 export default function Item (props) {
-  const user = useUser()
-  const param = {
-    id : props.item.id
-  }
   const {data} = useSWR([props.item.id,"item"],getData, {initialData: props});
 
   const readMore = () => {
@@ -63,7 +65,7 @@ export default function Item (props) {
             <div className="page-header_l">
               <Link href={`#`}>
                 <a title="SolaSystem" className="project-icon">
-                  <img className="project-icon_img" src="https://picsum.photos/300/300?random=1" />
+                  <img className="project-icon_img" src={data.item.imageUri} />
                 </a>
               </Link>
             </div>
@@ -94,12 +96,12 @@ export default function Item (props) {
 
             <div className="page-header_r">
               <div className="flex justify-between cta-wrapper">
-                <btn className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md w-px-104 md:w-full btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
+                <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md w-px-104 md:w-full btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
                   <span className="text-2xl icon"><RiCompass3Fill /></span>
                   <span className="ml-2 uppercase btn-project-vote_total whitespace-nowrap">
                     <span className="inline-block text-sm font-medium">Visit</span>
                   </span>
-                </btn>
+                </a>
                 <Vote
                   itemId={data.item.id}
                   votes={data.item.totalVote}
@@ -138,23 +140,7 @@ export default function Item (props) {
                           dangerouslySetInnerHTML={{__html: showContents}}></div>
                         <button className="hover:underline text-blue-700" onClick={readMore} id={"readBtn"}>Read more</button>
                       </div>
-                      <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:w-64 md:pl-8 md:-mt-1 list-group-sm project-info">
-                        <div className="list-group-item">
-                          <strong className="uppercas">Project Info</strong>
-                        </div>
-                        <div className="list-group-item">
-                          <span className="flex-1 w-20">Featured</span>
-                          <strong className="ml-2 font-medium text-right text-gray-900 text-opacity-90">2 hours ago</strong>
-                        </div>
-                        <div className="pb-1 list-group-item">
-                          <span className="flex-1 w-20">Data 1</span>
-                          <strong className="ml-2 font-medium text-gray-900 text-opacity-90">Combined</strong>
-                        </div>
-                        <div className="pb-1 border-none list-group-item">
-                          <span className="flex-1 w-20">Data 2</span>
-                          <strong className="ml-2 font-medium text-gray-900 text-opacity-90">Other</strong>
-                        </div>
-                      </div>
+                      <IdeaInfo item={data.item}/>
 
                     </div>
 
@@ -162,7 +148,7 @@ export default function Item (props) {
 
                 </div>
               </div>
-              <CommentList item={data.item} />
+              <CommentList item={data.item} comments={data.comments}/>
 
             </div>
 
