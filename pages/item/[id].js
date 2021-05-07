@@ -12,7 +12,7 @@ import allItem from "../../data/query/items"
 import {RiArrowUpSFill, RiCompass3Fill} from "react-icons/ri";
 import TextareaAutosize from "react-textarea-autosize";
 import tgVote from "../../data/query/tgVote";
-import {CommentList} from "../../components/commennts/commentList";
+import {CommentList} from "../../components/comments/commentList";
 import {Vote} from "../../components/vote/Vote";
 
 

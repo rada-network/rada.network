@@ -6,10 +6,13 @@ export default gql`
                             $content: String!,
                             $parentId: String){
         createComment(itemId: $itemId,walletAddress: $walletAddress,content: $content,parentId: $parentId){
+            id
             itemId
             content
-            parentId
+            createdAt
+            parent
             user{
+                id
                 walletAddress
             }
         }
