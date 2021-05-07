@@ -6,9 +6,12 @@ export default gql`
             id
             title
             description
+            thumbnail
             imageUri
+            websiteUri
             itemType
             contentJson
+            createdAt
             platform{
                 name
                 websiteUri
@@ -20,6 +23,12 @@ export default gql`
             }
             totalVote
             totalComment
+            ideaUser{
+                name
+                avatarUri
+                description
+                url
+            }
         }
     }
 `

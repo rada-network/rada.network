@@ -1,10 +1,11 @@
 import {CommentForm} from "./commentForm";
 import {SubSideBar} from "../subSideBar";
 import {CommentThreads} from "./commentThreads";
-import {types} from "mobx-state-tree";
+import {getSnapshot, types} from "mobx-state-tree";
 import getClient from "../../data/client";
 import itemComments from "../../data/query/itemComments";
 import useSWR from "swr";
+import {observer} from "mobx-react";
 
 export const UserStore = types.model({
   id : types.identifier,
@@ -38,9 +39,13 @@ const ThreadsStore = types.model({
       self.threads.set(data.parent,[])
     }
     let arr = self.threads.get(data.parent)
-    if (arr.find(c => c.id === data.id)) return
-    arr.push(CommentStore.create(data))
+    if (arr.find(c => c.id === data.id) !== undefined) return
+    arr.unshift(CommentStore.create(data))
     self.threads.set(data.parent, arr)
+    if (typeof self.threads.get(data.id) === "undefined") {
+      self.threads.set(data.id, [])
+    }
+
   }
 
   const addUser = function (data){
@@ -55,7 +60,7 @@ const ThreadsStore = types.model({
   }
   return {addComment,getChildComment,addUser,getUser}
 })
-let ItemCommentStore = ThreadsStore.create({})
+
 
 const client = getClient();
 async function getComments(itemId){
@@ -68,13 +73,14 @@ async function getComments(itemId){
   }
 }
 
-export const CommentList = ({item}) => {
+export const CommentList = observer(({item,comments}) => {
+  let threads = {}
+  threads[item.id] = []
+  let ItemCommentStore = ThreadsStore.create({
+    threads: threads,
+    users: []
+  });
 
-  const {data,error} = useSWR([item.id,"commentThread"],getComments,{revalidateOnMount : true})
-
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
-  const comments = data.comments
   for (let comment of comments){
     let user = UserStore.create(comment.user)
     ItemCommentStore.addUser(user)
@@ -87,6 +93,7 @@ export const CommentList = ({item}) => {
       itemId : comment.itemId,
       userId : comment.user.id
     })
+
   }
 
   return (
@@ -113,4 +120,4 @@ export const CommentList = ({item}) => {
       </div>
     </>
   )
-}
+})
