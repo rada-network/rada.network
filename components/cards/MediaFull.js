@@ -1,7 +1,8 @@
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
+import Link from "next/link"
 
-export const Card = ({title, text, mediaUri, cta}) => {
+export const Card = ({title, text, mediaUri, cta, itemType}) => {
   return (
     <div className="card card-media-full">
       <div className="card-media">
@@ -20,7 +21,11 @@ export const Card = ({title, text, mediaUri, cta}) => {
         <div className="card-body-footer">
           <div className="card-cta">
             <button className="btn">
-              <span className="btn-text">{cta}</span>
+              <span className="btn-text">
+                <Link href={`/explore/${itemType}`}>
+                  {cta}
+                </Link>
+              </span>
               <span className="icon"><IoChevronForwardSharp /></span>
             </button>
           </div>
