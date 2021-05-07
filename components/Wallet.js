@@ -73,7 +73,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
 
                 <ul>
                   <li>
-                    <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-2 px-4 my-2 w-full hover:bg-primary-100 hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect()}>
+                    <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-3 px-5 my-2 w-full hover:bg-primary-100 hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect()}>
                       <span className="icon w-px-24 h-px-24 mr-4">
                         <img className="block w-auto" src="/images/icons/metamask-24.png" alt="Metamask" />
                       </span>
@@ -82,7 +82,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                     </a>
                   </li>
                   <li>
-                    <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-2 px-4 my-2 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletconnect')}>
+                    <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-3 px-5 my-2 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletconnect')}>
                       <span className="icon w-px-24 h-px-24 mr-4">
                         <img className="block w-auto" src="/images/icons/walletconnect-24.png" alt="WalletConnect" />
                       </span>
@@ -91,7 +91,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                     </a>
                   </li>
                   <li>
-                    <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-2 px-4 my-2 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletlink')}>
+                    <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-3 px-5 my-2 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletlink')}>
                       <span className="icon w-px-24 h-px-24 mr-4">
                         <img className="block w-auto rounded-md" src="/images/icons/walletlink-24.png" alt="WalletLink" />
                       </span>
