@@ -11,7 +11,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level})
   let comments = getSnapshot(ItemCommentStore.getChildComment(comment.id))
   let sortComments = comments.slice(0)
   sortComments.sort(function(a,b){
-    return a.createdAt < b.createdAt
+    return b.createdAt - a.createdAt
   })
   let nextLevel = level + 1
   const mainClass = level > 1 ? "comment group flex comment_reply"  : "comment group flex"
