@@ -5,6 +5,7 @@ import createComment from "../../data/query/createComment";
 import {useState} from "react";
 import getClient from "../../data/client";
 import {UserStore} from "./commentList";
+import { useStore } from "../../lib/useStore";
 import {observer} from "mobx-react";
 import useSWR, {mutate} from "swr";
 
@@ -13,6 +14,9 @@ const client = getClient()
 export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
   const [commentContent, setCommentContent] = useState('')
   const user = useUser()
+  const store = useStore()
+  const walletAddress = store.wallet.address
+
   let currentUser;
   if (!user?.address()) {
     currentUser = null
@@ -36,8 +40,8 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
   }
 
   const submitComment = async (event) => {
-    if (!user.address()){
-      return showLoginForm();
+    if (!walletAddress){
+      return store.wallet.showConnect(true)
     }
     if (commentContent === ""){
       return false
