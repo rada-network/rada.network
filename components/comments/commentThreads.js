@@ -17,10 +17,9 @@ import {useState} from "react";
 
 export const CommentThreads = observer(({item,ItemCommentStore}) => {
   let comments = getSnapshot(ItemCommentStore.getChildComment(item.id))
-  console.log(comments)
   let sortComments = comments.slice(0)
-  sortComments.sort(function(a,b){
-    return a.createdAt < b.createdAt
+  sortComments = sortComments.sort(function(a,b){
+    return b.createdAt - a.createdAt
   })
   console.log(sortComments)
   return (

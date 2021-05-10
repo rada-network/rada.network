@@ -147,7 +147,7 @@ export default function Item (props) {
                           }}></div>
                         <button className="hover:underline text-blue-700" onClick={readMore} id={"readBtn"}>Read more</button>
                       </div>
-                      <IdeaInfo item={data.item}/>
+                      {data.item.ideaUser !== null ? <IdeaInfo item={data.item}/> : ""}
 
                     </div>
 
