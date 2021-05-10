@@ -13,7 +13,7 @@ Badges
   }
 }
 
-.badge-dApp {
+.badge-dapp {
   @apply text-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white;
 }
 

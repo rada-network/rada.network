@@ -56,7 +56,7 @@ export default function Home(props) {
   }
     
   return (
-    <Layout extraClass="page-home">
+    <Layout extraClass="page-home" title={"dhunt.io"}>
       <Header/>
       <ProjectsList
         grid="2"

@@ -31,7 +31,7 @@ export default function Explore() {
       console.log(post.title)
     })
     return (
-      <Layout extraClass="page-home">
+      <Layout extraClass="page-home" title={itemType === "allPosts" ? "Category Pages" : "Explore Pages"}>
         <Header/>
         {/*<p>{`${itemType === "allPosts"}`}</p>*/}
         <ProjectsList

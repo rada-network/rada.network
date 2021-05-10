@@ -1,9 +1,11 @@
 import HTMLHead from 'next/head'
 
-export const Head = () => {
+export const Head = ({meta}) => {
   return (
 
     <HTMLHead>
+      <title>{meta}</title>
+      <meta name="description" content="dhunt.io"/>
     <link
       rel="preconnect"
       href="https://fonts.gstatic.com"

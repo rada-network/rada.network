@@ -56,7 +56,7 @@ export default function Item (props) {
     return `${data.item.contentJson[key].a} <br /> ${data.item.contentJson[key].b} <br />`
   })
   return (
-    <Layout extraClass="page-project_details">
+    <Layout extraClass="page-project_details" title={data.item.title}>
       <>
         {/* Page Header */}
         <div className="page-header">
@@ -80,15 +80,16 @@ export default function Item (props) {
               </div>
 
               <div className="mt-2 metadata-wrapper project-metadata-wrapper">
-                <a href="#" className="metadata badge badge-dApp project-metadata_type">
-                  <span className="metadata-value">{`${data.item.itemType}`}</span>
+                <a href={`/explore/${data.item.itemType}`} className={`metadata badge badge-${data.item.itemType} project-metadata_type`}>
+                  <span className="metadata-value">{data.item.itemType}</span>
                 </a>
-                <a href="#" className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
-                  <span className="icon"><i className="cf cf-sol"></i></span>
-                  <span className="metadata-value">{`${data.item.platform.name}`}</span>
+                <a href={data.item.platform.websiteUri} className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
+                  <span className="icon"><i className={`cf cf-${data.item.platform.networkName.slice(0, 3)}`}/></span>
+                  <span className="metadata-value">{data.item.platform.name}</span>
                 </a>
-                <a href="#" className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
-                  <span className="metadata-value">{`${data.item.token.symbol}`}</span>
+                <a href="#" className="metadata badge badge-eth project-metadata_platform project-metadata_platform_sol">
+                  <span className="icon"><i className={`cf cf-${data.item.token.symbol.toLowerCase()}`}/></span>
+                  <span className="metadata-value">{data.item.token.symbol}</span>
                 </a>
               </div>
 

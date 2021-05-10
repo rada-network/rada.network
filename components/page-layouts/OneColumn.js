@@ -2,10 +2,10 @@ import { Head } from "../Head";
 import { Navbar } from "../Navbar";
 import { Footer } from "../Footer";
 
-export const Layout = ({children, extraClass}) => {
+export const Layout = ({children, extraClass, title}) => {
   return (
     <>
-    <Head />
+    <Head title={title} />
     <div className={`wrapper page-1-col ${extraClass || ''}`}>
       <Navbar />
       

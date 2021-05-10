@@ -15,6 +15,7 @@ export default gql`
             platform{
                 name
                 websiteUri
+                networkName
             }
             token{
                 name

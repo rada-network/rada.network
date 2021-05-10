@@ -10,6 +10,7 @@ export default gql`
       itemType
       platform{
         name
+        networkName
         websiteUri
       }
       token{

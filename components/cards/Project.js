@@ -58,7 +58,9 @@ export const Card = ({
             >
               {/* <img className="card-img" src={`./node_modules/cryptocurrency-icons/svg/color/${projectPlatformShort || ''}.svg`} /> */}
               <span className="icon">
-                <i className={`cf cf-${projectPlatformShort || "btc"}`}></i>
+                {/*networkName: polkadot, tron, cardano, eth, bsc, solana, ripple,*/}
+                {/* available: cf-sol cf-eth cf-car, unavailable: cf-tron cf-bsc cf-polkadot cf-ripple icon*/}
+                <i className={`cf cf-${projectPlatformShort} || "btc"`}></i>
               </span>
               <span className="metadata-value">{projectPlatform}</span>
             </a>
