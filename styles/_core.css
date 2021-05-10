@@ -1,9 +1,18 @@
 /* 
-Set a default styles for all elements
+Set a default styles for core elements
 */
+/*
+Global Styles
+*/
+html {
+  scroll-behaviour: smooth;
+}
+
 body {
   padding-top: calc(var(--mainnav-height) + 1px);
 }
+
+
 
 /* 
 Links 

@@ -14,7 +14,12 @@ export default gql`
       }
       token{
         name
+      }
+      categoryId
+      category{
         id
+        slug
+        title
       }
       totalVote
       totalComment

@@ -70,6 +70,7 @@ export default function Home(props) {
         gap="5"
         title="Project Categories"
         cta="View all"
+        itemType={"allPosts"}
       />
       <ProjectsList
         grid="2"

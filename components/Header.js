@@ -1,6 +1,12 @@
+// import {useAuthState} from "../context/auth";
 
 
 export const Header = () => {
+  // const {isAuthenticated} = useAuthState()
+  // const str = JSON.stringify(useAuthState(), null, 4)
+  // console.log(`Header: ${str}`)
+  // console.log(`isAuthenticated: ${isAuthenticated}`)
+
   return (
     <div className="header">
       <div className="container">

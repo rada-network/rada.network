@@ -8,11 +8,6 @@ import {UserStore} from "./commentList";
 import {observer} from "mobx-react";
 import useSWR, {mutate} from "swr";
 
-const showLoginForm = function() {
-  const btn = document.getElementById('connect-wallet-btn')
-  if (btn) btn.click()
-}
-
 const client = getClient()
 
 export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {

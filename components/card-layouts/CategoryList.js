@@ -1,10 +1,11 @@
 import {Card} from "../cards/MediaFull";
 import {Carousel} from "../carousel/Carousel";
+import Link from "next/link"
 
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
 
-export const CategoryList = ({extraClass, grid, gap, title, cta}) => {
+export const CategoryList = ({extraClass, grid, gap, title, cta, itemType}) => {
 	return (
 		<div className={`section ${extraClass || ''}`}>
 			<div className="container">
@@ -15,7 +16,11 @@ export const CategoryList = ({extraClass, grid, gap, title, cta}) => {
           { cta && 
 					<div className="section-cta">
 						<button className="btn">
-							<span className="btn-text">{cta}</span>
+							<span className="btn-text">
+                <Link href={`/explore/${itemType}`}>
+                  {cta}
+                </Link>
+              </span>
 							<span className="icon"><IoChevronForwardSharp /></span>
 						</button>
 					</div> }
@@ -26,31 +31,37 @@ export const CategoryList = ({extraClass, grid, gap, title, cta}) => {
             <Carousel show={4}>
             <Card 
               title="Finance"
-              text=""
+              text="short text 1"
+              itemType={"defi"}
               cta="138 Projects"
               mediaUri="https://picsum.photos/600/600?random=1"
             />
             <Card
               title="Exchange"
-              text=""
+              text="short text 2"
+              itemType={"token"}
               cta="28 Projects"
               mediaUri="https://picsum.photos/600/600?random=2"
             />
             <Card
               title="High Risk"
-              text=""
+              text="this is a text"
+              itemType={"nft"}
               cta="92 Projects"
               mediaUri="https://picsum.photos/600/600?random=3"
             />
             <Card 
               title="Gaming"
-              text=""
+              text="Game is just for fun"
               mediaUri="https://picsum.photos/600/600?random=4"
+              itemType={"dapp"}
               cta="300 Projects"
             />
             <Card 
               title="Utilities"
+              text="Utilities makes various"
               mediaUri="https://picsum.photos/600/600?random=5"
+              itemType={"token"}
               cta="218 Projects"
             />
               <Card

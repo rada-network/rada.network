@@ -24,6 +24,7 @@
     "mobx-state-tree": "^5.0.1",
     "next": "10.1.3",
     "next-iron-session": "^4.1.12",
+    "perfect-scrollbar": "^1.5.1",
     "postcss-import": "^14.0.1",
     "react": "17.0.2",
     "react-avatar": "^3.10.0",
