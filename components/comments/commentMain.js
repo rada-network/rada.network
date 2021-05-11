@@ -6,7 +6,7 @@ import {CommentForm} from "./commentForm";
 import {getSnapshot} from "mobx-state-tree";
 import {observer} from "mobx-react";
 
-export const CommentMain = observer(({item,comment,user,ItemCommentStore,level}) =>{
+export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, parent}) =>{
   const [showReply,setShowReply] = useState(false)
   let comments = getSnapshot(ItemCommentStore.getChildComment(comment.id))
   let sortComments = comments.slice(0)
@@ -22,7 +22,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level})
           <CommentAvatar user={user} />
         </div>
         <div className="comment-main">
-          <CommentHeader comment={comment} user={user}/>
+          <CommentHeader comment={comment} user={user} level={level} parent={parent} ItemCommentStore={ItemCommentStore}/>
           <div className="comment-text mt-1">
             <p>{comment.content}</p>
           </div>
@@ -43,10 +43,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level})
                     <span className="icon mr-2"><i className="fa fa-reply"/></span>
                     <span>Reply</span>
                   </button>
-                  : <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
-                    <span className="icon mr-2"><i className="fa fa-reply"></i></span>
-                    <span>Reply</span>
-                  </btn>
+                  : ""
               }
 
             </div>
@@ -68,7 +65,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level})
         sortComments.map(function (c) {
           let user = getSnapshot(ItemCommentStore.getUser(c.userId))
           return (
-            <CommentMain item={item} comment={c} user={user} ItemCommentStore={ItemCommentStore} level={nextLevel}  />
+            <CommentMain item={item} comment={c} user={user} ItemCommentStore={ItemCommentStore} level={nextLevel} parent={comment}  />
           )
         })
       }

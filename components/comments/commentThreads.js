@@ -28,7 +28,7 @@ export const CommentThreads = observer(({item,ItemCommentStore}) => {
             let user = getSnapshot(ItemCommentStore.getUser(comment.userId))
             return (
               <div className="comments-list-item flex flex-col items-stretch">
-              <CommentMain item={item} comment={comment} user={user} ItemCommentStore={ItemCommentStore} level={1}   />
+              <CommentMain item={item} comment={comment} user={user} ItemCommentStore={ItemCommentStore} level={1}  parent={null} />
               </div>
             )
           })
