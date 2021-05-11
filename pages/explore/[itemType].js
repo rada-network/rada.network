@@ -26,6 +26,10 @@ export default function Explore() {
   try {
     const {data, error} = useSWR([itemType], getData)
     // console.log("1. itemType: ", itemType, "data: ", data)
+    console.log(data);
+    if (error){
+      return <div>Loading...</div>
+    }
     data.map((post) => {
       console.log(post.id)
       console.log(post.title)

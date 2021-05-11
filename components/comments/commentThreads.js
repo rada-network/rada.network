@@ -21,7 +21,6 @@ export const CommentThreads = observer(({item,ItemCommentStore}) => {
   sortComments = sortComments.sort(function(a,b){
     return b.createdAt - a.createdAt
   })
-  console.log(sortComments)
   return (
     <div className="comments-list grid grid-cols-1">
         {

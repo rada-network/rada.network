@@ -16,10 +16,9 @@ import {CommentList} from "../../components/comments/commentList";
 import {Vote} from "../../components/vote/Vote";
 import IdeaInfo from "../../components/info/ideaInfo";
 import itemComments from "../../data/query/itemComments";
+import {useRouter} from "next/router";
+import IdeaContent from "../../components/info/ideaContent";
 
-
-const MAX_LEVEL = 3;
-let replyTo = ''
 
 const getData = async (id) => {
   const client = getClient()
@@ -38,23 +37,17 @@ const getData = async (id) => {
 }
 
 export default function Item (props) {
-  const {data} = useSWR([props.item.id,"item"],getData, {initialData: props});
 
-  const readMore = () => {
-    const read = document.getElementById("read")
-    const readBtn = document.getElementById("readBtn")
-    if (read.style.display === ""){
-      read.style.display = "inline"
-      readBtn.innerHTML = "Read Less"
-    }else{
-      readBtn.innerHTML = "Read More"
-      read.style.display = ""
-    }
+  const router = useRouter()
+
+  // If the page is not yet generated, this will be displayed
+  // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return <div>Loading...</div>
   }
 
-  const showContents = Object.keys(data.item.contentJson).map(key => {
-    return `${data.item.contentJson[key].a} <br /> ${data.item.contentJson[key].b} <br />`
-  })
+  const {data} = useSWR([props.item.id,"item"],getData, {initialData: props});
+
   return (
     <Layout extraClass="page-project_details" meta={data.item.title}>
     {/*<Layout extraClass="page-project_details" meta={data.item}>*/}
@@ -135,16 +128,7 @@ export default function Item (props) {
                     {/*  </div>*/}
                     {/*</div>*/}
 
-                    <div className="pt-4 mt-4 md:flex md:mt-8">
-
-                      <div className="flex-1 w-full text-gray-900 text-opacity-100 md:pr-10 project-text">
-                        <div id={`read`}
-                          dangerouslySetInnerHTML={{__html: showContents}}></div>
-                        <button className="hover:underline text-blue-700" onClick={readMore} id={"readBtn"}>Read more</button>
-                      </div>
-                      {data.item.ideaUser !== null ? <IdeaInfo item={data.item}/> : ""}
-
-                    </div>
+                    <IdeaContent item={data.item} />
 
                   </div>
 
@@ -184,7 +168,7 @@ export async function getStaticPaths() {
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
-  return { paths, fallback: false }
+  return { paths, fallback: true }
 }
 
 export async function getStaticProps({params}) {
