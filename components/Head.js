@@ -5,7 +5,9 @@ export const Head = ({meta}) => {
 
     <HTMLHead>
       <title>{meta}</title>
-      <meta name="description" content="dhunt.io"/>
+      <meta name={"description"} content={"dhunt.io"}/>
+      {/*<title>{meta.title == null || undefined ? "dhunt.io" : meta.title}</title>*/}
+      {/*<meta name={meta.description == null ? "description" : meta.description} content={meta.content == null ? "dhunt.io" : meta.content}/>*/}
     <link
       rel="preconnect"
       href="https://fonts.gstatic.com"

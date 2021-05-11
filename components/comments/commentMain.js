@@ -18,7 +18,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level})
   return (
     <>
       <div className={mainClass}>
-        <div className="mr-3">
+        <div className={`mr-3 user-wallet_avatar${level === 1 ? "" : "_sm"} user-wallet_avatar_green`}>
           <CommentAvatar user={user} />
         </div>
         <div className="comment-main">
@@ -26,13 +26,14 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level})
           <div className="comment-text mt-1">
             <p>{comment.content}</p>
           </div>
-          <div
-            className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+          <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
             <div className="flex items-center">
               <button
-                className="btn py-1 px-2 border border-primary-500 text-primary-700 bg-primary-100 rounded">
+                className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
+                {/*<button*/}
+                {/*  className="btn py-1 px-2 border border-primary-500 text-primary-700 bg-primary-100 rounded">*/}
                 <span className="icon mr-2"><RiThumbUpFill/></span>
-                <span className="font-bold mr-2"></span> <span>Likes</span>
+                <span className="font-bold mr-2">1</span><span>Likes</span>
               </button>
               {
                 level  <= 1 ?
@@ -42,10 +43,17 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level})
                     <span className="icon mr-2"><i className="fa fa-reply"/></span>
                     <span>Reply</span>
                   </button>
-                  : ""
+                  : <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
+                    <span className="icon mr-2"><i className="fa fa-reply"></i></span>
+                    <span>Reply</span>
+                  </btn>
               }
 
             </div>
+            <btn className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">
+              <span className="icon mr-2"><i className="fas fa-exclamation"></i></span>
+              <span>Report</span>
+            </btn>
 
             {/*<btn*/}
             {/*  className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">*/}

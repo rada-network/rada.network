@@ -17,6 +17,7 @@ export const Card = ({
   projectDate,
   projectSubmitter,
   projectSubmitterImgUri,
+  projectWebsiteUri,
   projectCommentsCounts,
   link,
   voteTotal,
@@ -51,7 +52,7 @@ export const Card = ({
         <div className="card-body-footer">
           <div className="metadata-wrapper project-metadata-wrapper">
             <a
-              href="#"
+              href={projectWebsiteUri}
               className={`metadata project-metadata_platform project-metadata_platform_${
                 projectPlatformShort || ""
               } `}

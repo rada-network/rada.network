@@ -45,6 +45,7 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta}) => {
 								projectPlatform={post.platform.name}
 								projectPlatformShort={post.platform.networkName.slice(0, 3)}
 								projectDate={post.createdAt}
+								projectWebsiteUri={post.platform.websiteUri}
 								// projectSubmitterImgUri="https://picsum.photos/80/80?random=11"
 								// projectSubmitter="rada.co"
 								projectCommentsCounts={post.totalComment}

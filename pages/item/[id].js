@@ -56,7 +56,8 @@ export default function Item (props) {
     return `${data.item.contentJson[key].a} <br /> ${data.item.contentJson[key].b} <br />`
   })
   return (
-    <Layout extraClass="page-project_details" title={data.item.title}>
+    <Layout extraClass="page-project_details" meta={data.item.title}>
+    {/*<Layout extraClass="page-project_details" meta={data.item}>*/}
       <>
         {/* Page Header */}
         <div className="page-header">
