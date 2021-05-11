@@ -35,7 +35,7 @@ export const Card = ({
               <a className="card-link">{projectTitle}</a>
             </Link>
             <a
-              href="#"
+              href={`/explore/${projectType}`}
               className={`metadata badge badge-sm project-metadata_type badge-${
                 projectType || ""
               } `}
