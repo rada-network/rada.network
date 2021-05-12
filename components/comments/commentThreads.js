@@ -23,16 +23,17 @@ export const CommentThreads = observer(({item,ItemCommentStore}) => {
   })
   return (
     <div className="comments-list grid grid-cols-1">
+      <div className="comments-list-item flex flex-col items-stretch">
         {
           sortComments.map(function (comment) {
             let user = getSnapshot(ItemCommentStore.getUser(comment.userId))
             return (
-              <div className="comments-list-item flex flex-col items-stretch">
-              <CommentMain item={item} comment={comment} user={user} ItemCommentStore={ItemCommentStore} level={1}  parent={null} />
-              </div>
+
+              <CommentMain key={comment.id} item={item} comment={comment} user={user} ItemCommentStore={ItemCommentStore} level={1}  parent={null} />
             )
           })
         }
+      </div>
     </div>
   )
 })

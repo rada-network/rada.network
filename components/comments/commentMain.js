@@ -47,10 +47,10 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
               }
 
             </div>
-            <btn className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">
+            <button className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">
               <span className="icon mr-2"><i className="fas fa-exclamation"></i></span>
               <span>Report</span>
-            </btn>
+            </button>
 
             {/*<btn*/}
             {/*  className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">*/}
@@ -65,13 +65,13 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
         sortComments.map(function (c) {
           let user = getSnapshot(ItemCommentStore.getUser(c.userId))
           return (
-            <CommentMain item={item} comment={c} user={user} ItemCommentStore={ItemCommentStore} level={nextLevel} parent={comment}  />
+            <CommentMain key={c.id} item={item} comment={c} user={user} ItemCommentStore={ItemCommentStore} level={nextLevel} parent={comment}  />
           )
         })
       }
       {showReply ?
         <div className="comment_reply_form flex justify-center items-baseline">
-          <CommentForm  item={item} ItemCommentStore={ItemCommentStore} replyFor={comment.id}  />
+          <CommentForm key={'cmform' + comment.id}  item={item} ItemCommentStore={ItemCommentStore} replyFor={comment.id}  />
         </div>
         : ""
       }

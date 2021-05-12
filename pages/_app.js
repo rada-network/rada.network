@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
 }
 
 // Wrap everything in <UseWalletProvider />
-export default ({ Component, pageProps }) => {
+const TokenRankingStore = ({ Component, pageProps }) => {
   // const store = useStore(pageProps.initialState)
 
   return (
@@ -23,8 +23,8 @@ export default ({ Component, pageProps }) => {
       // This is how connectors get configured
       portis: { dAppId: 'my-dapp-id-123-xyz' },
       fortmatic: { apiKey: 'formatic api key' },
-      walletconnect: { rpcUrl: 'https://mainnet.eth.aragon.network/' },
-      walletlink: { url: 'https://mainnet.eth.aragon.network/' },
+      walletconnect: { rpcUrl: 'https://mainnet.infura.io/v3/92d8c48b74034b8cb45aa0af1bc30d2c' },
+      walletlink: { url: 'https://mainnet.infura.io/v3/92d8c48b74034b8cb45aa0af1bc30d2c' },
   }}
   >
   <StoreProvider>
@@ -32,3 +32,5 @@ export default ({ Component, pageProps }) => {
     </StoreProvider>
   </UseWalletProvider>
 )}
+
+export default TokenRankingStore

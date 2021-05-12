@@ -112,7 +112,7 @@ export const CommentList = observer(({item,comments}) => {
                 </div>
               </div>
               {/* Comment Threads */}
-              <CommentThreads item={item} ItemCommentStore={ItemCommentStore} />
+              <CommentThreads key={'commentThreads' + item.id} item={item} ItemCommentStore={ItemCommentStore} />
             </div>
             <SubSideBar />
           </div>
