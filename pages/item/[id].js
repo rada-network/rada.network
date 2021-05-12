@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 import useUser from '../../lib/useUser'
 import {Layout} from '../../components/page-layouts/OneColumn';
+import {Carousel} from "../../components/carousel/Carousel";
 import getClient from "../../data/client";
 
 import itemQuery from "../../data/query/itemDetail"
@@ -18,6 +19,7 @@ import IdeaInfo from "../../components/info/ideaInfo";
 import itemComments from "../../data/query/itemComments";
 import {useRouter} from "next/router";
 import IdeaContent from "../../components/info/ideaContent";
+import {Card} from "../../components/cards/MediaFull";
 
 
 const getData = async (id) => {
@@ -47,7 +49,22 @@ export default function Item (props) {
   }
 
   const {data} = useSWR([props.item.id,"item"],getData, {initialData: props});
+  const imgsUri = data.item.imagesUri
 
+  const showImgs = Object.keys(imgsUri).map(key => {
+    return <a href={`${imgsUri[key]}`}>img {key} <br /></a>
+  })
+  const showContents_ = Object.keys(imgsUri).map(key => {
+    return(
+          <Card
+            title=""
+            text=""
+            itemType=""
+            cta=""
+            mediaUri={imgsUri[key]}
+          />
+    )
+  })
   return (
     <Layout extraClass="page-project_details" meta={data.item.title}>
     {/*<Layout extraClass="page-project_details" meta={data.item}>*/}
@@ -57,7 +74,7 @@ export default function Item (props) {
           <div className="container">
 
             <div className="page-header_l">
-              <Link href={`#`}>
+              <Link href={data.item.imageUri}>
                 <a title="SolaSystem" className="project-icon">
                   <img className="project-icon_img" src={data.item.imageUri} />
                 </a>
@@ -68,7 +85,8 @@ export default function Item (props) {
               <div className="flex items-center content-center page-title">
                 <h1 className="project-title">{`${data.item.title}`}</h1>
               </div>
-
+              {/*<p>{`${imgs === "" || imgs == null}`}</p>*/}
+              {/*<p>{showImgs}</p>*/}
               <div className="project-text_short">
                 <div  dangerouslySetInnerHTML={{__html: data.item.description}} />
               </div>
@@ -117,6 +135,9 @@ export default function Item (props) {
 
               <div className="section">
                 <div className="section-body">
+                  <Carousel show={2}>
+                    {showContents_}
+                  </Carousel>
                   <div className="flex-col">
 
                     {/*<div className="project-media-viewer">*/}

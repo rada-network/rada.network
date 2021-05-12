@@ -8,6 +8,8 @@ export default gql`
             description
             thumbnail
             imageUri
+            imagesUri
+            images
             websiteUri
             itemType
             contentJson
