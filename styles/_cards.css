@@ -25,7 +25,7 @@ Generic Styles
 }
 
 .card-img {
-  @apply w-full h-auto object-center object-cover;
+  @apply w-full h-full object-center object-cover;
 }
 
 .card-title {

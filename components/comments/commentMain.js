@@ -17,6 +17,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
   const mainClass = level > 1 ? "comment group flex comment_reply"  : "comment group flex"
   return (
     <>
+    <div className="comments-list-item flex flex-col items-stretch">
       <div className={mainClass}>
         <div className={`mr-3 user-wallet_avatar${level === 1 ? "" : "_sm"} user-wallet_avatar_green`}>
           <CommentAvatar user={user} />
@@ -75,6 +76,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
         </div>
         : ""
       }
+    </div>
     </>
   )
 })

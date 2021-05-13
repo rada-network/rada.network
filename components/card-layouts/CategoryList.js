@@ -1,11 +1,40 @@
 import {Card} from "../cards/MediaFull";
-import {Carousel} from "../carousel/Carousel";
 import Link from "next/link"
+import { useState, useEffect, createRef } from 'react'
+import PerfectScrollbar from 'perfect-scrollbar';
+import "perfect-scrollbar/css/perfect-scrollbar.css";
+
+const timelinePanel = createRef();
+let ps;
 
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
 
 export const CategoryList = ({extraClass, grid, gap, title, cta, itemType}) => {
+
+  const [timelineWidth, setTimelineWidth] = useState('')
+
+
+  useEffect(() => {
+    const onResize = () => {
+      setTimelineWidth('')
+      const timelinebox = document.querySelector('.timeline')
+      setTimelineWidth(timelinebox?.scrollWidth)
+    };
+    window.addEventListener("resize", onResize);
+    onResize()
+console.log('init ps')
+    // make scrollbar
+    ps = new PerfectScrollbar(timelinePanel.current, {
+    });
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      ps.destroy();
+    }
+  }, [timelinePanel]);
+
+
 	return (
 		<div className={`section ${extraClass || ''}`}>
 			<div className="container">
@@ -25,10 +54,15 @@ export const CategoryList = ({extraClass, grid, gap, title, cta, itemType}) => {
 						</button>
 					</div> }
 				</div>
+
 				<div className="section-body">
-          {/*<div className={`grid gap-${gap || '5'} sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-${grid || '5'}`}>*/}
-          <div className={`grid gap-${1 || '5'} sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-${1 || '5'}`}>
-            <Carousel show={4}>
+
+        <div className={`flex flex-nowrap scrollbar`} ref={timelinePanel}>
+
+          {/* <div className={`grid scrollbar gap-${gap || '5'} sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-${grid || '5'}`} ref={timelinePanel}> */}
+
+          {/* <div className={`grid gap-${1 || '5'} sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-${1 || '5'}`}> */}
+
             <Card 
               title="Finance"
               text="short text 1"
@@ -74,7 +108,7 @@ export const CategoryList = ({extraClass, grid, gap, title, cta, itemType}) => {
               mediaUri="https://picsum.photos/600/600?random=7"
               cta="58 Projects"
             />
-            </Carousel>
+
 					</div>
 				</div>
 			</div>

@@ -52,6 +52,17 @@
 
 
 /* 
+Card Layouts
+--------------------------------------------- */
+.category-list {
+  .card {
+    @apply flex-shrink-0;
+    width: 200px;
+  }
+}
+
+
+/* 
 Project Details
 --------------------------------------------- */
 .page-project_details {

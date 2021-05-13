@@ -76,7 +76,7 @@ export default function Item (props) {
             <div className="page-header_l">
               <Link href={data.item.imageUri}>
                 <a title="SolaSystem" className="project-icon">
-                  <img className="project-icon_img" src={data.item.imageUri} />
+                  <img className="project-icon_img w-full h-full object-cover" src={data.item.imageUri} />
                 </a>
               </Link>
             </div>
