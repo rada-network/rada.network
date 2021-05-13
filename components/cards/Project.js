@@ -91,7 +91,7 @@ export const Card = ({
         </div>
       </div>
       <div className="card-footer">
-        <Vote
+        <Vote key={post.id}
           itemId={post.id}
           votes={voteTotal}
           page={"index"}
