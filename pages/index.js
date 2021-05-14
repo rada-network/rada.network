@@ -96,6 +96,7 @@ export default function Home(props) {
         itemType={"New-Projects-Today"}
         cta={"View All"}
         title="New Projects Today"
+        detail={true}
         posts={data.posts}
       />
       <PromoList

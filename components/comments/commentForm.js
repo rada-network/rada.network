@@ -80,27 +80,48 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
   }
   return (
     <>
-      <div className="mr-2">
-        <div className="user-wallet_avatar user-wallet_avatar_green">
-          <CommentAvatar user={currentUser} />
-        </div>
-      </div>
-      <TextareaAutosize
-        className="w-full px-4 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"
-        row="1"
-        title="Write a comment"
-        placeholder="What do you think of this project?" value={commentContent}
-        onChange={e => {
-          setCommentContent(e.currentTarget.value);
-        }}
-        onKeyDown={handleKeydown}
-      />
+      {
+        currentUser == null
+        ? <>
+            <TextareaAutosize
+              className="w-full px-4 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"
+              row="1"
+              title="Write a comment"
+              placeholder="You should login firstly!"
+              disabled
+            />
+            <div className="text-sm text-gray-900 text-opacity-50 pl-2 md:mt-0">
+              <button onClick={submitComment}
+                      className="w-full justify-center flex-1 px-3 py-3 text-gray-500 rounded-md btn item-center btn-project-vote bg-gray-100 "
+                      disabled>
+                {btnText}
+              </button>
+            </div>
+          </>
+          : <>
+            <div className="mr-2">
+              <div className="user-wallet_avatar user-wallet_avatar_green">
+                <CommentAvatar user={currentUser} />
+              </div>
+            </div>
+            <TextareaAutosize
+              className="w-full px-4 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"
+              row="1"
+              title="Write a comment"
+              placeholder="What do you think of this project?" value={commentContent}
+              onChange={e => {
+                setCommentContent(e.currentTarget.value);
+              }}
+              onKeyDown={handleKeydown}
+            />
 
-      <div className="text-sm text-gray-900 text-opacity-50 pl-2 md:mt-0">
-        <button onClick={submitComment} className="w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded-md btn item-center btn-project-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">
-          {btnText}
-        </button>
-      </div>
+            <div className="text-sm text-gray-900 text-opacity-50 pl-2 md:mt-0">
+              <button onClick={submitComment} className="w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded-md btn item-center btn-project-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">
+                {btnText}
+              </button>
+            </div>
+          </>
+      }
     </>
   )
 })

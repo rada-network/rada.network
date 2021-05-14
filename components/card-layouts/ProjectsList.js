@@ -22,7 +22,7 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta, itemType
 
 	const postsByDate =  posts.filter(function (post){
 		return post.createdAt.includes(currentTime.toString())
-		// return post.createdAt.includes("2021-05-12")
+		// return post.createdAt.includes("2021-05-14")
 	})
 	const showPostsByDate = (posts) => {
 		return (
@@ -56,10 +56,11 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta, itemType
 			<div className="container">
 				<div className="section-header">
 					<div className="section-title">
-						{itemType !== undefined ?
-							<Link href={`/explore/${itemType}`}>
+						{itemType !== undefined
+							? <Link href={`/explore/${itemType}`}>
 							{title}
-							</Link> : title}
+							</Link>
+							: title}
 					</div>
 					{ cta &&
 					<div className="section-cta">

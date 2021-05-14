@@ -50,6 +50,8 @@ export default function Item (props) {
 
   const {data} = useSWR([props.item.id,"item"],getData, {initialData: props});
   const imgsUri = data.item.imagesUri
+  // const imgs = data.item.images
+  // console.log("imgsUri: ", imgsUri)
 
   const showImgs = Object.keys(imgsUri).map(key => {
     return <a href={`${imgsUri[key]}`}>img {key} <br /></a>
@@ -86,7 +88,7 @@ export default function Item (props) {
                 <h1 className="project-title">{`${data.item.title}`}</h1>
               </div>
               {/*<p>{`${imgs === "" || imgs == null}`}</p>*/}
-              {/*<p>{showImgs}</p>*/}
+              {/*<p>show images: {`${showImgs}`}</p>*/}
               <div className="project-text_short">
                 <div  dangerouslySetInnerHTML={{__html: data.item.description}} />
               </div>
