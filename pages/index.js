@@ -22,7 +22,7 @@ const getData = async () => {
 
   const posts = await client.query({
     query: postQuery,
-    variables: {skip: 0, take: 4, itemType: ""}
+    variables: {skip: 0, take: 4, itemType: "", orderBy: {createdAt: "desc"}}
   })
 
   const postsNFT = await client.query({
@@ -75,12 +75,14 @@ export default function Home(props) {
       <ProjectsList
         grid="2"
         gap="2"
+        itemType={"nft"}
         title="NFTs that you cannot missed"
         posts={data.postsNFT}
       />
       <ProjectsList
         grid="2"
         gap="2"
+        itemType={"dapp"}
         title="Most Active Dapps in a Week"
         posts={data.postsDapp}
       />
@@ -91,6 +93,8 @@ export default function Home(props) {
       <ProjectsList
         grid="1"
         gap="2"
+        itemType={"New-Projects-Today"}
+        cta={"View All"}
         title="New Projects Today"
         posts={data.posts}
       />

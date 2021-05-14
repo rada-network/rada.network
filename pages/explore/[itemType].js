@@ -14,7 +14,9 @@ const getData = async (itemType) => {
   const client = getClient()
   const dataItem = await client.query({
     query: itemsByItemType,
-    variables: itemType === "allPosts" ? {take: 10, skip: 0, itemType: ""} : {take: 10, skip: 0, itemType: itemType}
+    variables: itemType === "All-Posts" || "New-Projects-Today"
+      ? {take: 10, skip: 0, itemType: "", orderBy: {createdAt: "desc"}}
+      : {take: 10, skip: 0, itemType: itemType, orderBy: {createdAt: "asc"}}
   })
   return dataItem.data.itemFeed
 }
@@ -31,17 +33,18 @@ export default function Explore() {
       return <div>Loading...</div>
     }
     data.map((post) => {
-      console.log(post.id)
-      console.log(post.title)
+      console.log(post.createdAt)
     })
     return (
-      <Layout extraClass="page-home" meta={itemType === "allPosts" ? "Category Pages" : "Explore Pages"}>
+      <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
         <Header/>
         {/*<p>{`${itemType === "allPosts"}`}</p>*/}
         <ProjectsList
           grid="2"
           gap="2"
-          title={`Most Active ${itemType.toUpperCase()} in a Week`}
+          title={`Most ${itemType.split('-').join(' ').toUpperCase()} in a Week`}
+          cta="Sorted by"
+          detail={true}
           posts={data}
         />
       </Layout>

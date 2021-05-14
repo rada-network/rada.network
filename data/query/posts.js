@@ -1,8 +1,8 @@
 import {gql} from '@apollo/client';
 
 export default gql`
-  query itemFeed($skip : Int!, $take : Int!, $itemType: String!){
-    itemFeed (skip : $skip, take : $take, itemType: $itemType){
+  query itemFeed($skip : Int!, $take : Int!, $itemType: String!, $orderBy: ItemOrderInput){
+    itemFeed (skip : $skip, take : $take, itemType: $itemType, orderBy: $orderBy){
       id
       title
       description
@@ -25,6 +25,7 @@ export default gql`
       }
       totalVote
       totalComment
+      createdAt
     }
   }
   `
