@@ -53,7 +53,7 @@ Small Badges
   }
 }
 
-.badge-etherem {
+.badge-ethereum {
   @apply text-gray-600 hover:border-gray-600 hover:bg-gray-600 hover:text-white;
   &:hover .cf-eth {
     @apply text-white;
@@ -67,8 +67,8 @@ Small Badges
   }
 }
 
-.badge-tron {
-  @apply text-red-600 hover:border-red-600 hover:bg-red-600 hover:text-white;
+.badge-ripple {
+  @apply text-blue-600 hover:border-blue-600 hover:bg-blue-600 hover:text-white;
   &:hover .cf-eth {
     @apply text-white;
   }
