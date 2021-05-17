@@ -22,9 +22,9 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta, itemType
 
 	const postsByDate =  posts.filter(function (post){
 		return post.createdAt.includes(currentTime.toString())
-		// return post.createdAt.includes("2021-05-14")
+		// return post.createdAt.includes("2021-05-17")
 	})
-	const showPostsByDate = (posts) => {
+	const showPosts = (posts) => {
 		return (
 			posts.map((post) => (
 			<Card
@@ -107,8 +107,8 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta, itemType
 					<div className={`grid grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
 						{
 							detail
-								? showPostsByDate(postsByDate)
-								: showPostsByDate(posts)
+								? showPosts(postsByDate)
+								: showPosts(posts)
 						}
 					</div>
 				</div>

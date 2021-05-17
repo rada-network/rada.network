@@ -14,7 +14,7 @@ const getData = async (itemType) => {
   const client = getClient()
   const dataItem = await client.query({
     query: itemsByItemType,
-    variables: itemType === "All-Posts" || "New-Projects-Today"
+    variables: itemType === "All-Posts" || itemType === "New-Projects-Today"
       ? {take: 10, skip: 0, itemType: "", orderBy: {createdAt: "desc"}}
       : {take: 10, skip: 0, itemType: itemType, orderBy: {createdAt: "asc"}}
   })
@@ -38,15 +38,14 @@ export default function Explore() {
     return (
       <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
         <Header/>
-        {/*<p>{`${itemType === "allPosts"}`}</p>*/}
-        <ProjectsList
-          grid="2"
-          gap="2"
-          title={`Most ${itemType.split('-').join(' ').toUpperCase()} in a Week`}
-          cta="Sorted by"
-          detail={true}
-          posts={data}
-        />
+          <ProjectsList
+            grid="2"
+            gap="2"
+            title={`Most ${itemType.split('-').join(' ').toUpperCase()} in a Week`}
+            cta="Sorted by"
+            detail={!["nft", "dapp", "token", "defi"].includes(itemType)}
+            posts={data}
+          />
       </Layout>
     )
   }catch (err){
@@ -60,6 +59,3 @@ export default function Explore() {
     </Layout>
   )
 }
-
-// async function getStaticProps() {
-// }

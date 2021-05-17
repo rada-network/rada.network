@@ -69,7 +69,7 @@ export const Card = ({
             <div className="metadata-divider"></div>
 
             <div className="metadata project-metadata_date">
-              <span className="metadata-value">{projectDate}</span>
+              <span className="metadata-value">{projectDate.split(('T'))[0]}</span>
             </div>
 
               {/* <a href={link} className="hidden metadata project-metadata_submitter">
