@@ -27,13 +27,12 @@ export default function Explore() {
 
   try {
     const {data, error} = useSWR([itemType], getData)
-    // console.log("1. itemType: ", itemType, "data: ", data)
-    console.log(data);
+    // console.log(data);
     if (error){
       return <div>Loading...</div>
     }
     data.map((post) => {
-      console.log(post.createdAt)
+      console.log(post.createdAt[1])
     })
     return (
       <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
