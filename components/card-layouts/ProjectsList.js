@@ -16,29 +16,9 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta, itemType
 	const date = new Date()
 	const router = useRouter()
 
-	let postsTotalComment = posts.slice().sort((a, b) => b.totalComment - a.totalComment)
-	let postsTotalVote = posts.slice().sort((a, b) => b.totalVote - a.totalVote)
-	let postsOldToNew = posts.slice().sort((a, b) => {
-		const dateA = new Date(a.createdAt)
-		const dateB = new Date(b.createdAt)
-		if (dateA < dateB) return -1
-		if (dateA > dateA) return 1
-		return 0
-	})
-
-	const handleTopComment = () => {
-		console.log("posts sort by comments: ", postsTotalComment)
-		router.push('/explore/New-Projects-Today')
-	}
-
-	const handleTopVote = () => {
-		console.log("posts sort by votes: ", postsTotalVote)
-		router.push('/explore/New-Projects-Today')
-	}
-
-	// postsTotalComment.map(post => console.log("totalComment: ", post.totalComment))
-	// postsTotalVote.map(post => (post.totalVote))
-	// postsOldToNew.map(post => console.log("date: ", post.createdAt))
+	const handleTopComment = () => router.push('/explore/top-comment')
+	const handleTopVote = () => router.push('/explore/top-vote')
+	const handlePostsDate = () => router.push('/explore/New-Project-Today')
 
 	const fullDate = date.toISOString()
 	const currentTime = fullDate.split(('T'))[0]
@@ -99,20 +79,21 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta, itemType
 						: detail ?
 								<div className="section-cta">
 									<button className="btn pb-1 text-gray-700 border-b-2 border-gray-700"
-													onClick={handleTopComment}>
+									onClick={handleTopComment}>
 										<span className="icon mr-1"><RiTimeFill /></span>
 										<span className="btn-text text-xs font-medium uppercase">
 												Top comments
 										</span>
 									</button>
 									<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100"
-													onClick={handleTopVote}>
+									onClick={handleTopVote}>
 										<span className="icon mr-1"><RiFireFill /></span>
 										<span className="btn-text text-xs font-medium uppercase">
 												Top Vote
 										</span>
 									</button>
-									<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100">
+									<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100"
+									onClick={handlePostsDate}>
 										<span className="icon mr-1"><RiFireFill /></span>
 										{/*<span className="btn-text text-xs font-medium uppercase">Ascending by...</span>*/}
 										<span className="btn-text text-xs font-medium uppercase">{currentTime}</span>
@@ -120,11 +101,13 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta, itemType
 								</div>
 								:
 								<div className="section-cta">
-									<button className="btn pb-1 text-gray-700 border-b-2 border-gray-700">
+									<button className="btn pb-1 text-gray-700 border-b-2 border-gray-700"
+									onClick={handlePostsDate}>
 										<span className="icon mr-1"><RiTimeFill /></span>
 										<span className="btn-text text-xs font-medium uppercase">Latest</span>
 									</button>
-									<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100">
+									<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100"
+									onClick={handleTopVote}>
 										<span className="icon mr-1"><RiFireFill /></span>
 										<span className="btn-text text-xs font-medium uppercase">Popular</span>
 									</button>

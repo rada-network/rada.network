@@ -37,7 +37,7 @@ export default function explore() {
           gap="2"
           title="View All"
           cta="View all"
-          detail={true}
+          detail={false}
           posts={data.items}
         />
       </Layout>
@@ -49,6 +49,7 @@ export default function explore() {
     <>
       <Layout extraClass="page-home">
         <Header/>
+        <p>Loading...</p>
       </Layout>
     </>
   )

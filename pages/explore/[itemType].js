@@ -14,8 +14,8 @@ const getData = async (itemType) => {
   const client = getClient()
   const dataItem = await client.query({
     query: itemsByItemType,
-    variables: itemType === "All-Posts" || itemType === "New-Projects-Today"
-      ? {take: 10, skip: 0, itemType: "", orderBy: {createdAt: "desc"}}
+    variables: !["nft", "dapp", "token", "defi"].includes(itemType)
+      ? {take: 16, skip: 0, itemType: "", orderBy: {createdAt: "desc"}}
       : {take: 10, skip: 0, itemType: itemType, orderBy: {createdAt: "asc"}}
   })
   return dataItem.data.itemFeed
@@ -23,38 +23,51 @@ const getData = async (itemType) => {
 
 export default function Explore() {
   const router = useRouter()
-  const { itemType } = router.query
+  let { itemType } = router.query
 
   try {
     const {data, error} = useSWR([itemType], getData)
+
+    let postsTopComments = data.slice().sort((a, b) => b.totalComment - a.totalComment)
+    let postsTopVotes = data.slice().sort((a, b) => b.totalVote - a.totalVote)
     // console.log(data);
     if (error){
-      return <div>Loading...</div>
+      return (
+        <>
+          <p>itemType: {itemType}</p>
+          <div>Loading...</div>
+        </>
+      )
     }
     data.map((post) => {
       console.log(post.createdAt[1])
     })
-    return (
-      <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
-        <Header/>
+    const showPosts = (post) => {
+      return (
+        <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
+          <Header/>
           <ProjectsList
             grid="2"
             gap="2"
             title={`Most ${itemType.split('-').join(' ').toUpperCase()} in a Week`}
             cta="Sorted by"
             detail={!["nft", "dapp", "token", "defi"].includes(itemType)}
-            posts={data}
+            posts={post}
           />
-      </Layout>
-    )
+        </Layout>
+      )
+    }
+    if (itemType === "top-comment") return showPosts(postsTopComments)
+    else if (itemType === "top-vote") return showPosts(postsTopVotes)
+    else return showPosts(data)
   }catch (err){
-    console.log(err)
+    console.log("error")
   }
 
   return (
     <Layout extraClass="page-home">
       <Header/>
-      {/*<p>Explore Page: {itemType}</p>*/}
+      <p>Loading...</p>
     </Layout>
   )
 }
