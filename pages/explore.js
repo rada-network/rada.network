@@ -24,6 +24,18 @@ export default function explore() {
   const router = useRouter()
   const { itemType } = router.query
 
+  const shuffleData = (data) => {
+    let currentIndex = data.length, temp, randomIndex
+    while (0 !== currentIndex){
+      randomIndex = Math.floor(Math.random() * currentIndex)
+      currentIndex -= 1
+      temp = data[currentIndex]
+      data[currentIndex] = data[randomIndex]
+      data[randomIndex] = temp
+    }
+    return data
+  }
+
   try {
     const {data, error} = useSWR("explore-page", getData)
 
@@ -38,7 +50,7 @@ export default function explore() {
           title="View All"
           cta="View all"
           detail={false}
-          posts={data.items}
+          posts={shuffleData(data.items.slice())}
         />
       </Layout>
     )
