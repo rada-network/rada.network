@@ -24,11 +24,14 @@ export const Card = ({
 }) => {
   return (
     <div className="flex-row items-center content-center card group card-project">
-      <div className="card-media project-icon">
+      {Object.keys(projectIconUri).length === 0
+      ? ""
+        : <div className="card-media project-icon">
           <Link href={`/item/${post.id}`}>
-          <img className="card-img project-icon_img" src={projectIconUri} />
-        </Link>
-      </div>
+            <img className="card-img project-icon_img" src={projectIconUri[0]} />
+          </Link>
+        </div>
+      }
       <div className="card-body">
         <div className="card-body-header">
           <div className="card-title">

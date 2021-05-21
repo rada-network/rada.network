@@ -22,8 +22,7 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
       ))
     )
   }
-  // https://twitter.com/user_id_str/status/id_twitter
-  //
+
   return(
     <div className="flex-row items-center content-center card group card-project">
       <div className="card-media project-icon">
@@ -45,7 +44,7 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
 
             </Link>
             <a
-              href={`/explore/"dapp"`}
+              href={`/explore/dapp`}
               className={`metadata badge badge-sm project-metadata_type badge-${
                 "dapp" || ""
               } `}

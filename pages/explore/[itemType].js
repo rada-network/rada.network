@@ -8,9 +8,6 @@ import itemsByItemType from "../../data/query/posts";
 import { useRouter } from "next/router";
 
 const getData = async (itemType) => {
-  // console.log(`2. itemType: ${itemType}`)
-  // console.log("get data in Explore page")
-
   const client = getClient()
   const dataItem = await client.query({
     query: itemsByItemType,
