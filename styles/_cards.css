@@ -17,7 +17,7 @@ Extend Styles. Use for repeatable styles.
 Generic Styles
 */
 .card {
-  @apply flex h-full rounded-md;
+  @apply flex h-full rounded;
 }
 
 .card-media {
