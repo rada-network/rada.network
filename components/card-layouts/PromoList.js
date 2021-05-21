@@ -18,7 +18,7 @@ export const PromoList = ({extraClass, grid, gap, title}) => {
               // title="Solana Universe"
               title="Solana All POSTs"
               text="Originally released in 1981, Centipede is a fixed shooter arcade game that became one of the most successful titles of its time, and one of the first to attract a significant female player base"
-							itemType={"All-Posts"}
+							itemType={"all"}
               cta="Explore"
               mediaUri="https://picsum.photos/600/600?random=21"
             />

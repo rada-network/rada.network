@@ -13,8 +13,10 @@ import {CategoryList} from '../components/card-layouts/CategoryList';
 import {IoChevronForwardSharp} from "react-icons/io5";
 import getClient from "../data/client";
 import postQuery from "../data/query/posts"
+import tweetQuery from "../data/query/postsTweet"
 import useSWR from "swr";
 import { useStore } from "../lib/useStore"
+import {TweetList} from "../components/card-layouts/TweetList";
 
 const getData = async () => {
   console.log("get data")
@@ -35,12 +37,17 @@ const getData = async () => {
     variables: {skip: 0, take: 4, itemType: "dapp"}
   })
 
+  const postsTweet = await client.query({
+    query: tweetQuery,
+    variables: {skip: 0, take: 4, orderBy: {createdAt: "asc"}}
+  })
   console.log("Query is running...", typeof window)
 
   return {
     posts: posts.data.itemFeed,
     postsNFT: postsNFT.data.itemFeed,
     postsDapp: postsDapp.data.itemFeed,
+    postsTweet: postsTweet.data.tweetFeed,
   }
 }
 
@@ -54,7 +61,7 @@ export default function Home(props) {
     store.projects.update(data.postsNFT)
     store.projects.update(data.postsDapp)
   }
-    
+  // console.log("data.postsTweet: ", data.postsTweet)
   return (
     <Layout extraClass="page-home" meta={"dhunt.io"}>
       <Header/>
@@ -64,13 +71,19 @@ export default function Home(props) {
         title="Popular Projects Today"
         posts={data.posts}
       />
+      <TweetList
+        grid="2"
+        gap="2"
+        title="Popular Tweet Today"
+        posts={data.postsTweet}
+      />
       <CategoryList
         extraClass="category-list"
         grid="5"
         gap="5"
         title="Project Categories"
         cta="View all"
-        itemType={"allPosts"}
+        itemType={"all"}
       />
       <ProjectsList
         grid="2"
@@ -93,7 +106,7 @@ export default function Home(props) {
       <ProjectsList
         grid="1"
         gap="2"
-        itemType={"New-Projects-Today"}
+        itemType={"today"}
         cta={"View All"}
         title="New Projects Today"
         detail={true}
@@ -107,6 +120,7 @@ export default function Home(props) {
       <ProjectsList
         grid="1"
         gap="2"
+        itemType={"all"}
         title="All Projects"
         cta="Sorted by"
         posts={data.posts}

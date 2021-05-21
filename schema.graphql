@@ -81,11 +81,23 @@ type Platform {
     websiteUri: String
 }
 
+type Tweet {
+    id: String!
+    favoriteCount: Int!
+    retweetCount: Int!
+    replyCount: Int!
+    quoteCount: Int!
+    source: JSONObject
+    createdAt: DateTime!
+    item: Item
+}
+
 type Query {
     commentFeed(itemId: String!, orderBy: CommentOrderInput, skip: Int = 0, take: Int = 4): [Comment]
     isVote(itemId: String!, walletAddress: String!): Vote
     itemById(id: String!): Item
     itemFeed(itemType: String, orderBy: ItemOrderInput, skip: Int = 0, take: Int = 4): [Item]
+    tweetFeed(orderBy: ItemOrderInput, skip: Int=0, take: Int=4): [Tweet]
 }
 
 type ToggleVote {

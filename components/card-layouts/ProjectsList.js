@@ -27,8 +27,8 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta, itemType
 	const currentYear = fullDate.split('T')[0].split('-')[0]
 
 	const postsByDate =  posts.filter(function (post){
-		return post.createdAt.includes(currentTime.toString())
-		// return post.createdAt.includes("2021-05-17")
+		// return post.createdAt.includes(currentTime.toString())
+		return post.createdAt.includes("2021-05-19")
 	})
 	const showPosts = (posts) => {
 		if (Object.keys(posts).length === 0) return <div>Haven't updated  new posts for {currentTime}</div>
@@ -101,10 +101,14 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta, itemType
 								</div>
 								:
 								<div className="section-cta">
-									<button className="btn pb-1 text-gray-700 border-b-2 border-gray-700"
-									onClick={handlePostsDate}>
+									<button className="btn pb-1 text-gray-700 border-b-2 border-gray-700">
+									{/*onClick={handlePostsDate}>*/}
 										<span className="icon mr-1"><RiTimeFill /></span>
-										<span className="btn-text text-xs font-medium uppercase">Latest</span>
+										<span className="btn-text text-xs font-medium uppercase">
+											<Link href={'/explore/today'}>
+												Latest
+											</Link>
+										</span>
 									</button>
 									<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100"
 									onClick={handleTopVote}>

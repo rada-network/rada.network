@@ -15,7 +15,7 @@ const getData = async (itemType) => {
   const dataItem = await client.query({
     query: itemsByItemType,
     variables: !["nft", "dapp", "token", "defi"].includes(itemType)
-      ? {take: 16, skip: 0, itemType: "", orderBy: {createdAt: "desc"}}
+      ? {take: 150, skip: 0, itemType: "", orderBy: {createdAt: "desc"}}
       : {take: 10, skip: 0, itemType: itemType, orderBy: {createdAt: "asc"}}
   })
   return dataItem.data.itemFeed
@@ -51,7 +51,7 @@ export default function Explore() {
             gap="2"
             title={`Most ${itemType.split('-').join(' ').toUpperCase()} in a Week`}
             cta="Sorted by"
-            detail={!["nft", "dapp", "token", "defi"].includes(itemType)}
+            detail={!["nft", "dapp", "token", "defi", "all"].includes(itemType)}
             posts={post}
           />
         </Layout>
