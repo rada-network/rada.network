@@ -71,12 +71,6 @@ export default function Home(props) {
         title="Popular Projects Today"
         posts={data.posts}
       />
-      <TweetList
-        grid="2"
-        gap="2"
-        title="Popular Tweet Today"
-        posts={data.postsTweet}
-      />
       <CategoryList
         extraClass="category-list"
         grid="5"
@@ -116,6 +110,12 @@ export default function Home(props) {
         extraClass="promo-list"
         grid="3"
         gap="5"
+      />
+      <TweetList
+        grid="1"
+        gap="2"
+        title="Popular Tweet Today"
+        posts={data.postsTweet}
       />
       <ProjectsList
         grid="1"

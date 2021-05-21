@@ -67,21 +67,21 @@ console.log('init ps')
               title="Finance"
               text="short text 1"
               itemType={"defi"}
-              cta="138 Projects"
+              cta="DEFI Projects"
               mediaUri="https://picsum.photos/600/600?random=1"
             />
             <Card
               title="Exchange"
               text="short text 2"
               itemType={"token"}
-              cta="28 Projects"
+              cta="TOKEN Projects"
               mediaUri="https://picsum.photos/600/600?random=2"
             />
             <Card
               title="High Risk"
               text="this is a text"
               itemType={"nft"}
-              cta="92 Projects"
+              cta="NFT Projects"
               mediaUri="https://picsum.photos/600/600?random=3"
             />
             <Card 
@@ -89,14 +89,14 @@ console.log('init ps')
               text="Game is just for fun"
               mediaUri="https://picsum.photos/600/600?random=4"
               itemType={"dapp"}
-              cta="300 Projects"
+              cta="DAPP Projects"
             />
             <Card 
               title="Utilities"
               text="Utilities makes various"
               mediaUri="https://picsum.photos/600/600?random=5"
               itemType={"token"}
-              cta="218 Projects"
+              cta="TOKEN Projects"
             />
               <Card
               title="Utilities"
