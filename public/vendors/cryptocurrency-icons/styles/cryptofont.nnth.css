@@ -1002,7 +1002,9 @@
 .cf-dor:before {
   content: "\ea43";
 }
-.cf-dot:before {
+.cf-dot:before,
+/* nnth */
+.cf-pol:before {
   content: "\ea44";
 }
 .cf-dp:before {
