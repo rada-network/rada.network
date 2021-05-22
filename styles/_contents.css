@@ -1,16 +1,32 @@
 @import '_media';
 
+/* 
+metadata 
+*/
+
+.metadata-wrapper {
+  @apply flex;
+}
+
 .metadata {
   @apply inline-flex justify-items-center items-center;
 }
 
-.metadata-divider {
+.metadata + .metadata {
+  @apply ml-2;
+  &::before {
+    @apply block;
+    content: "\00B7";
+  }
+}
+
+/* .metadata-divider {
   @apply inline-flex justify-items-center w-2 h-3 ml-2;
   &::before {
     @apply block border-l border-gray-200;
     content: "";
   }
-}
+} */
 
 .user-wallet_avatar {
   @extend %Img40;

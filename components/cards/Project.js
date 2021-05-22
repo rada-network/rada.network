@@ -23,7 +23,7 @@ export const Card = ({
   voteTotal,
 }) => {
   return (
-    <div className="flex-row items-center content-center card group card-project">
+    <div className="flex-col items-center content-center card group card-project">
 
       <div className="card-body">
 
@@ -79,46 +79,8 @@ export const Card = ({
           <div className="card-text" dangerouslySetInnerHTML={{ __html: projectTextShort}}></div>
         </div>
 
-        <div className="card-body-footer">
-          <div className="metadata-wrapper project-metadata-wrapper">
-            <a
-              href={projectWebsiteUri}
-              className={`metadata project-metadata_platform project-metadata_platform_${
-                projectPlatformShort || ""
-              } `}
-            >
-              {/* <img className="card-img" src={`./node_modules/cryptocurrency-icons/svg/color/${projectPlatformShort || ''}.svg`} /> */}
-              <span className="icon">
-                {/*networkName: polkadot, tron, cardano, eth, bsc, solana, ripple,*/}
-                {/* available: cf-sol cf-eth cf-car, unavailable: cf-tron cf-bsc cf-polkadot cf-ripple icon*/}
-                <i className={`cf cf-${projectPlatformShort} || "btc"`}></i>
-              </span>
-              <span className="metadata-value">{projectPlatform}</span>
-            </a>
-
-            <div className="metadata-divider"></div>
-
-            <div className="metadata project-metadata_date">
-              <span className="metadata-value">{projectDate.split(('T'))[0]}</span>
-            </div>
-
-              {/* <a href={link} className="hidden metadata project-metadata_submitter">
-              <span className="inline-block mr-1 card-body-media project-submitter">
-                <img className="card-img project-submitter_img" src={projectSubmitterImgUri} />
-              </span>
-              <span className="metadata-value">{projectSubmitter}</span>
-            </a> */}
-
-            <div className="metadata-divider"></div>
-
-            <a href={link} className="metadata project-comment_count">
-              <span className="mr-1 icon text-base">
-                <RiChat1Fill />
-              </span>
-              <span>{projectCommentsCounts}</span>
-            </a>
-          </div>
-        </div>
+        {/* <div className="card-body-footer">
+        </div> */}
 
       </div>
 
@@ -128,6 +90,15 @@ export const Card = ({
           votes={voteTotal}
           page={"index"}
         />
+
+        <div className="metadata-wrapper project-metadata-wrapper">
+          <a href={link} className="metadata project-comment_count">
+            <span className="mr-1 icon text-base">
+              <RiChat1Fill />
+            </span>
+            <span>{projectCommentsCounts}</span>
+          </a>
+        </div>
 
       </div>
     </div>

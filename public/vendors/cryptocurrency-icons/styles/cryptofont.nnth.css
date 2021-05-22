@@ -74,7 +74,9 @@
 .cf-act:before {
   content: "\e90f";
 }
-.cf-ada:before {
+.cf-ada:before,
+/* nnth */
+.cf-car:before {
   content: "\e910";
 }
 .cf-adb:before {
@@ -452,7 +454,9 @@
 .cf-bmh:before {
   content: "\e98d";
 }
-.cf-bnb:before {
+.cf-bnb:before,
+/* nnth */
+.cf-bsc:before {
   content: "\e98e";
 }
 .cf-bnk:before {
@@ -599,9 +603,9 @@
 .cf-capp:before {
   content: "\e9be";
 }
-.cf-car:before {
+/* .cf-car:before {
   content: "\e9bf";
-}
+} */
 .cf-carbon:before {
   content: "\e9c0";
 }
@@ -3170,7 +3174,9 @@
 .cf-trust:before {
   content: "\ed17";
 }
-.cf-trx:before {
+.cf-trx:before,
+/* nnth */
+.cf-tro:before {
   content: "\ed18";
 }
 .cf-tryb:before {
@@ -3548,7 +3554,10 @@
 .cf-xrl:before {
   content: "\ed95";
 }
-.cf-xrp:before {
+
+.cf-xrp:before,
+/* nnth */
+.cf-rip:before {
   content: "\ed96";
 }
 .cf-xsh:before {
