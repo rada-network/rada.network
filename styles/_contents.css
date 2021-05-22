@@ -15,7 +15,7 @@ metadata
 .metadata + .metadata {
   @apply ml-2;
   &::before {
-    @apply block;
+    @apply block mr-2 text-xl;
     content: "\00B7";
   }
 }

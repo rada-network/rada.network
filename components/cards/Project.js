@@ -30,6 +30,8 @@ export const Card = ({
         <div className="card-body-header">
 
           <div className="metadata-wrapper project-metadata-wrapper">
+            {/* aHieu: Van should check if there is value or not */}
+            { projectType && 
             <a
               href={`/explore/${projectType}`}
               className={`metadata project-metadata_type project-metadata_type_${
@@ -37,8 +39,9 @@ export const Card = ({
               } `}
             >
               <span className="metadata-value">{projectType}</span>
-            </a>
+            </a> }
 
+            { projectPlatform && 
             <a
               href={projectWebsiteUri}
               className={`metadata project-metadata_platform project-metadata_platform_${
@@ -46,13 +49,13 @@ export const Card = ({
               } `}
             >
               {/* <img className="card-img" src={`./node_modules/cryptocurrency-icons/svg/color/${projectPlatformShort || ''}.svg`} /> */}
-              <span className="icon">
+              <span className="icon mr-2">
                 {/*networkName: polkadot, tron, cardano, eth, bsc, solana, ripple,*/}
                 {/* available: cf-sol cf-eth cf-car, unavailable: cf-tron cf-bsc cf-polkadot cf-ripple icon*/}
-                <i className={`cf cf-${projectPlatformShort || 'btc'}`}></i>
+                <i className={`cf cf-${projectPlatformShort || 'btc'} text-base`}></i>
               </span>
               <span className="metadata-value">{projectPlatform}</span>
-            </a>
+            </a> }
 
             <div className="metadata project-metadata_date">
               <span className="metadata-value">{projectDate.split(('T'))[0]}</span>

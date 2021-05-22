@@ -4,24 +4,30 @@ Buttons
 
 .btn {
   @apply group inline-flex items-center font-medium focus:outline-none cursor-pointer transition;
+  @apply border border-gray-700 border-opacity-10 rounded;
 
   .btn-text + .icon {
     @apply ml-1 ;
   }
+
   .icon {
     @apply relative right-0 transition-all;
   }
+
   .btn-text + .icon {
     @apply ml-1;
   }
+
   .icon + .btn-text {
     @apply ml-1;
   }
+
   &:hover {
     .btn-text + .icon {
       @apply -right-0.5;
     }
   }
+
   &:hover, &:active, &:focus {
     outline: none;
   }
@@ -36,4 +42,11 @@ Buttons Styles
 
 .btn-secondary {
   @apply bg-secondary-400 text-secondary-900 hover:bg-primary-100 hover:text-primary-700;
+}
+
+/*
+Vote Buttons
+*/
+.btn-project-vote {
+  @apply justify-center;
 }

@@ -43,8 +43,16 @@ Generic Styles
   @apply block;
 }
 
+.card-header {
+  @apply flex justify-between p-4 w-full;
+}
+
 .card-body {
-  @apply flex flex-col flex-1 p-4;
+  @apply flex flex-col flex-1 p-4 w-full;
+}
+
+.card-footer {
+  @apply flex justify-between p-4 w-full;
 }
 
 
@@ -55,10 +63,13 @@ Project
 
   @apply relative transition-all;
   @apply bg-white border border-gray-100 hover:shadow-md;
-  @apply px-4 md:px-6 py-4;
 
   .card-body {
-    @apply px-4 md:px-6 py-0 h-full justify-items-stretch bg-white;
+    @apply px-4 md:px-6 py-4 h-full justify-items-stretch bg-white;
+  }
+
+  .card-footer {
+    @apply px-4 md:px-6 py-4;
   }
 
   .card-body-header {
@@ -84,25 +95,12 @@ Project
     @apply mb-2;
   }
 
-  .card-body-footer {
-    @apply mt-auto font-semibold;
-  }
-
-  .card-body-footer .icon {
-    @apply mr-1 relative;
-  }
-
   .card-title {
     @apply text-sm md:text-base font-semibold;
   }
 
   .card-text {
     @apply text-xs line-clamp-2 text-gray-900 text-opacity-70;
-  }
-
-
-  .card-body-footer a.metadata {
-    @apply text-gray-900 text-opacity-70 hover:text-opacity-100;
   }
 
 }
