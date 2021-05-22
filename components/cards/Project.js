@@ -49,7 +49,7 @@ export const Card = ({
               } `}
             >
               {/* <img className="card-img" src={`./node_modules/cryptocurrency-icons/svg/color/${projectPlatformShort || ''}.svg`} /> */}
-              <span className="icon mr-2">
+              <span className="icon mr-1">
                 {/*networkName: polkadot, tron, cardano, eth, bsc, solana, ripple,*/}
                 {/* available: cf-sol cf-eth cf-car, unavailable: cf-tron cf-bsc cf-polkadot cf-ripple icon*/}
                 <i className={`cf cf-${projectPlatformShort || 'btc'} text-base`}></i>
@@ -96,7 +96,7 @@ export const Card = ({
 
         <div className="metadata-wrapper project-metadata-wrapper">
           <a href={link} className="metadata project-comment_count">
-            <span className="mr-1 icon text-base">
+            <span className="mr-1 icon">
               <RiChat1Fill />
             </span>
             <span>{projectCommentsCounts}</span>

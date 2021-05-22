@@ -22,6 +22,10 @@ Section
   @apply my-8;
 }
 
+.section .container > .container-inner {
+  @apply p-8 bg-white shadow-sm rounded;
+}
+
 .section-header {
   @apply flex justify-between items-center mb-6;
 }

@@ -25,6 +25,7 @@ module.exports = {
         primary: colors.purple,
         secondary: colors.green,
         alternative: colors.yellow,
+        'bluegray-50': '#F8FAFD',
       },
 
       // Extra Font Sizes

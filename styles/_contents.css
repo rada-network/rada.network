@@ -20,6 +20,20 @@ metadata
   }
 }
 
+.project-metadata_type {
+  @apply uppercase font-medium;
+  &_dapp {
+    @apply text-blue-500;
+  }
+  &_nft {
+    @apply text-purple-500;
+  }
+}
+
+.project-metadata_platform {
+  @apply capitalize;
+}
+
 /* .metadata-divider {
   @apply inline-flex justify-items-center w-2 h-3 ml-2;
   &::before {

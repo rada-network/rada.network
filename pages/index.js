@@ -67,7 +67,7 @@ export default function Home(props) {
       <Header/>
       <ProjectsList
         grid="2"
-        gap="2"
+        gap="4"
         title="Popular Projects Today"
         posts={data.posts}
       />
@@ -81,14 +81,14 @@ export default function Home(props) {
       />
       <ProjectsList
         grid="2"
-        gap="2"
+        gap="4"
         itemType={"nft"}
         title="NFTs that you cannot missed"
         posts={data.postsNFT}
       />
       <ProjectsList
         grid="2"
-        gap="2"
+        gap="4"
         itemType={"dapp"}
         title="Most Active Dapps in a Week"
         posts={data.postsDapp}
@@ -98,8 +98,8 @@ export default function Home(props) {
         gap="5"
       />
       <ProjectsList
-        grid="1"
-        gap="2"
+        grid="2"
+        gap="4"
         itemType={"today"}
         cta={"View All"}
         title="New Projects Today"
@@ -118,8 +118,8 @@ export default function Home(props) {
         posts={data.postsTweet}
       />
       <ProjectsList
-        grid="1"
-        gap="2"
+        grid="2"
+        gap="4"
         itemType={"all"}
         title="All Projects"
         cta="Sorted by"

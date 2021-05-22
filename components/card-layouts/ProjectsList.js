@@ -58,76 +58,80 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta, itemType
 	return (
 		<div className={`section ${extraClass || ''}`}>
 			<div className="container">
-				<div className="section-header">
-					<div className="section-title">
-						{itemType !== undefined
-							? <Link href={`/explore/${itemType}`}>
-							{title}
-							</Link>
-							: title}
-					</div>
-					{ cta &&
-					<div className="section-cta">
-						{cta === "View All" ? <button className="btn">
-							<span className="btn-text">
-                <Link href={`/explore/${itemType}`}>
-                  {cta}
-                </Link>
-              </span>
-							<span className="icon"><IoChevronForwardSharp /></span>
-						</button>
-						: detail ?
-								<div className="section-cta">
-									<button className="btn pb-1 text-gray-700 border-b-2 border-gray-700"
-									onClick={handleTopComment}>
-										<span className="icon mr-1"><RiTimeFill /></span>
-										<span className="btn-text text-xs font-medium uppercase">
-												Top comments
-										</span>
-									</button>
-									<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100"
-									onClick={handleTopVote}>
-										<span className="icon mr-1"><RiFireFill /></span>
-										<span className="btn-text text-xs font-medium uppercase">
-												Top Vote
-										</span>
-									</button>
-									<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100"
-									onClick={handlePostsDate}>
-										<span className="icon mr-1"><RiFireFill /></span>
-										{/*<span className="btn-text text-xs font-medium uppercase">Ascending by...</span>*/}
-										<span className="btn-text text-xs font-medium uppercase">{currentTime}</span>
-									</button>
-								</div>
-								:
-								<div className="section-cta">
-									<button className="btn pb-1 text-gray-700 border-b-2 border-gray-700">
-									{/*onClick={handlePostsDate}>*/}
-										<span className="icon mr-1"><RiTimeFill /></span>
-										<span className="btn-text text-xs font-medium uppercase">
-											<Link href={'/explore/today'}>
-												Latest
-											</Link>
-										</span>
-									</button>
-									<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100"
-									onClick={handleTopVote}>
-										<span className="icon mr-1"><RiFireFill /></span>
-										<span className="btn-text text-xs font-medium uppercase">Popular</span>
-									</button>
-								</div>
+				<div className="container-inner">
+
+					<div className="section-header">
+						<div className="section-title">
+							{itemType !== undefined
+								? <Link href={`/explore/${itemType}`}>
+								{title}
+								</Link>
+								: title}
+						</div>
+						{ cta &&
+						<div className="section-cta">
+							{cta === "View All" ? <button className="btn">
+								<span className="btn-text">
+									<Link href={`/explore/${itemType}`}>
+										{cta}
+									</Link>
+								</span>
+								<span className="icon"><IoChevronForwardSharp /></span>
+							</button>
+							: detail ?
+									<div className="section-cta">
+										<button className="btn pb-1 text-gray-700 border-b-2 border-gray-700"
+										onClick={handleTopComment}>
+											<span className="icon mr-1"><RiTimeFill /></span>
+											<span className="btn-text text-xs font-medium uppercase">
+													Top comments
+											</span>
+										</button>
+										<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100"
+										onClick={handleTopVote}>
+											<span className="icon mr-1"><RiFireFill /></span>
+											<span className="btn-text text-xs font-medium uppercase">
+													Top Vote
+											</span>
+										</button>
+										<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100"
+										onClick={handlePostsDate}>
+											<span className="icon mr-1"><RiFireFill /></span>
+											{/*<span className="btn-text text-xs font-medium uppercase">Ascending by...</span>*/}
+											<span className="btn-text text-xs font-medium uppercase">{currentTime}</span>
+										</button>
+									</div>
+									:
+									<div className="section-cta">
+										<button className="btn pb-1 text-gray-700 border-b-2 border-gray-700">
+										{/*onClick={handlePostsDate}>*/}
+											<span className="icon mr-1"><RiTimeFill /></span>
+											<span className="btn-text text-xs font-medium uppercase">
+												<Link href={'/explore/today'}>
+													Latest
+												</Link>
+											</span>
+										</button>
+										<button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100"
+										onClick={handleTopVote}>
+											<span className="icon mr-1"><RiFireFill /></span>
+											<span className="btn-text text-xs font-medium uppercase">Popular</span>
+										</button>
+									</div>
+							}
+						</div>
 						}
 					</div>
-					}
-				</div>
-				<div className="section-body">
-					<div className={`grid grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
-						{
-							detail
-								? showPosts(postsByDate)
-								: showPosts(posts)
-						}
+					<div className="section-body">
+						<div className={`grid grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
+							{
+								detail
+									? showPosts(postsByDate)
+									: showPosts(posts)
+							}
+						</div>
 					</div>
+				
 				</div>
 			</div>
 		</div>

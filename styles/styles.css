@@ -8,46 +8,13 @@
  
 /* Home Header */
 .page-home {
-  @apply bg-gray-50 pt-8;
 }
 
 .page-home .header {
+  @apply bg-purple-900 bg-gradient-to-br from-purple-900 to-blue-900;
 }
 
 .page-home .header .container-inner {
-  @apply bg-primary-700 bg-no-repeat bg-right rounded-md shadow;
-  background-image: url(/images/hero.svg);
-  background-size: 80%;
-}
-
-/* Projects */
-.project-metadata-wrapper {
-  @apply flex flex-wrap items-center justify-items-center text-xs text-gray-900 text-opacity-50;
-}
-
-.project-metadata_submitter {
-  @apply hidden;
-}
- 
-.project-submitter {
-  @extend %Img16;
-  @apply rounded-full;
-}
-
-.project-comment_count {
-  @apply flex items-center justify-items-center;
-}
-
-.project-comment_count .icon {
-  @apply text-base;
-}
-
-.card-body-footer {
-  @apply font-medium;
-}
-
-.card-footer .btn {
-  transition-property: background;
 }
 
 

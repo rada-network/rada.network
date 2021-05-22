@@ -62,37 +62,23 @@ Project
 .card-project {
 
   @apply relative transition-all;
-  @apply bg-white border border-gray-100 hover:shadow-md;
+  @apply bg-white border border-gray-100;
 
   .card-body {
     @apply px-4 md:px-6 py-4 h-full justify-items-stretch bg-white;
   }
 
   .card-footer {
-    @apply px-4 md:px-6 py-4;
+    @apply px-4 md:px-6 py-2 md:py-4;
+    @apply text-sm border-t border-gray-100;
   }
 
   .card-body-header {
-    @apply mb-1;
-  }
-
-  .card-body-header .card-title {
-  }
-
-  .card-body-header .card-title .metadata {
-    @apply relative -top-0.5;
-  }
-
-  .card-body-header .card-link {
-    @apply inline mr-2;
-  }
-
-  .card-body-header .metadata-wrapper {
-    @apply flex;
+    @apply mb-4;
   }
 
   .card-body-main {
-    @apply mb-2;
+    @apply flex;
   }
 
   .card-title {
@@ -100,19 +86,35 @@ Project
   }
 
   .card-text {
-    @apply text-xs line-clamp-2 text-gray-900 text-opacity-70;
+    @apply text-sm line-clamp-4 text-gray-900 text-opacity-60;
   }
 
 }
 
-.card-project .card-media,
-.project-icon {
-  @apply w-px-56 h-px-56 md:w-px-80 md:h-px-80 rounded-md overflow-hidden;
+.project-metadata-wrapper {
+  @apply flex-wrap text-xs text-gray-900 text-opacity-50;
 }
 
-.card-project .card-body-footer .metadata img {
+.project-metadata_submitter {
+  @apply hidden;
+}
+ 
+.project-submitter {
   @extend %Img16;
-  @apply rounded-full mr-1;
+  @apply rounded-full;
+}
+
+.project-comment_count {
+  @apply flex items-center justify-items-center;
+}
+
+.project-comment_count .icon {
+  @apply opacity-70;
+}
+
+.card-project .card-media,
+.project-icon {
+  @apply flex-shrink-0 w-px-56 h-px-56 md:w-px-80 md:h-px-80 mr-4 rounded overflow-hidden;
 }
 
 

@@ -16,18 +16,30 @@ Icons Styles
   @apply text-yellow-600;
 }
 
-.cf-eth {
+.cf-eth,
+.cf-rip {
   @apply text-gray-900;
 }
 
-.cf-ada {
+.cf-ada,
+.cf-car {
   @apply text-purple-700;
 }
 
-.cf-bnb {
+.cf-bnb,
+.cf-bsc {
   @apply text-yellow-400;
 }
 
 .cf-sol {
   @apply text-green-600;
+}
+
+.cf-dot,
+.cf-pol {
+  @apply text-pink-500;
+}
+
+.cf-tro {
+  @apply text-red-700;
 }
