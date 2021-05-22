@@ -24,31 +24,58 @@ export const Card = ({
 }) => {
   return (
     <div className="flex-row items-center content-center card group card-project">
-      {Object.keys(projectIconUri).length === 0
-      ? ""
-        : <div className="card-media project-icon">
-          <Link href={`/item/${post.id}`}>
-            <img className="card-img project-icon_img" src={projectIconUri[0]} />
-          </Link>
-        </div>
-      }
+
       <div className="card-body">
+
         <div className="card-body-header">
-          <div className="card-title">
-            <Link href={`/item/${post.id}`}>
-              <a className="card-link">{projectTitle}</a>
-            </Link>
+
+          <div className="metadata-wrapper project-metadata-wrapper">
             <a
               href={`/explore/${projectType}`}
-              className={`metadata badge badge-sm project-metadata_type badge-${
+              className={`metadata project-metadata_type project-metadata_type_${
                 projectType || ""
               } `}
             >
               <span className="metadata-value">{projectType}</span>
             </a>
+
+            <a
+              href={projectWebsiteUri}
+              className={`metadata project-metadata_platform project-metadata_platform_${
+                projectPlatformShort || ""
+              } `}
+            >
+              {/* <img className="card-img" src={`./node_modules/cryptocurrency-icons/svg/color/${projectPlatformShort || ''}.svg`} /> */}
+              <span className="icon">
+                {/*networkName: polkadot, tron, cardano, eth, bsc, solana, ripple,*/}
+                {/* available: cf-sol cf-eth cf-car, unavailable: cf-tron cf-bsc cf-polkadot cf-ripple icon*/}
+                <i className={`cf cf-${projectPlatformShort || 'btc'}`}></i>
+              </span>
+              <span className="metadata-value">{projectPlatform}</span>
+            </a>
+
+            <div className="metadata project-metadata_date">
+              <span className="metadata-value">{projectDate.split(('T'))[0]}</span>
+            </div>
+
+          </div>
+
+          <div className="card-title">
+            <Link href={`/item/${post.id}`}>
+              <a className="card-link">{projectTitle}</a>
+            </Link>
           </div>
         </div>
+
         <div className="card-body-main">
+          {Object.keys(projectIconUri).length === 0
+          ? ""
+          : <div className="card-media project-icon">
+              <Link href={`/item/${post.id}`}>
+                <img className="card-img project-icon_img" src={projectIconUri[0]} />
+              </Link>
+            </div>
+          }
           <div className="card-text" dangerouslySetInnerHTML={{ __html: projectTextShort}}></div>
         </div>
 
@@ -92,13 +119,16 @@ export const Card = ({
             </a>
           </div>
         </div>
+
       </div>
+
       <div className="card-footer">
         <Vote key={post.id}
           itemId={post.id}
           votes={voteTotal}
           page={"index"}
         />
+
       </div>
     </div>
   )
