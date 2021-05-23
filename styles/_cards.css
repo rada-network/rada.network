@@ -21,7 +21,7 @@ Generic Styles
 }
 
 .card-media {
-  @apply flex flex-col justify-center justify-items-center overflow-hidden rounded-md;
+  @apply flex flex-col flex-shrink-0 justify-center justify-items-center overflow-hidden rounded;
 }
 
 .card-img {
@@ -44,15 +44,15 @@ Generic Styles
 }
 
 .card-header {
-  @apply flex justify-between p-4 w-full;
+  @apply flex justify-between px-4 md:px-6 py-4 w-full;
 }
 
 .card-body {
-  @apply flex flex-col flex-1 p-4 w-full;
+  @apply flex flex-col flex-1 px-4 md:px-6 py-4 w-full;
 }
 
 .card-footer {
-  @apply flex justify-between p-4 w-full;
+  @apply flex justify-between px-4 md:px-6 py-3 w-full;
 }
 
 
@@ -65,11 +65,10 @@ Project
   @apply bg-white border border-gray-100;
 
   .card-body {
-    @apply px-4 md:px-6 py-4 h-full justify-items-stretch bg-white;
+    @apply h-full justify-items-stretch bg-white;
   }
 
   .card-footer {
-    @apply px-4 md:px-6 py-2 md:py-4;
     @apply text-sm border-t border-gray-100;
   }
 
@@ -78,7 +77,7 @@ Project
   }
 
   .card-body-main {
-    @apply flex;
+    @apply flex pb-1;
   }
 
   .card-title {
@@ -109,7 +108,7 @@ Project
 }
 
 .project-comment_count .icon {
-  @apply opacity-70;
+  @apply text-sm opacity-70;
 }
 
 .card-project .card-media,

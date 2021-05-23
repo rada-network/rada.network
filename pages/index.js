@@ -16,7 +16,7 @@ import postQuery from "../data/query/posts"
 import tweetQuery from "../data/query/postsTweet"
 import useSWR from "swr";
 import { useStore } from "../lib/useStore"
-import {TweetList} from "../components/card-layouts/TweetList";
+import {SocialPostsList} from "../components/card-layouts/SocialPostsList";
 
 const getData = async () => {
   console.log("get data")
@@ -90,7 +90,7 @@ export default function Home(props) {
         grid="2"
         gap="4"
         itemType={"dapp"}
-        title="Most Active Dapps in a Week"
+        title="Most Active DApps This Week"
         posts={data.postsDapp}
       />
       <TopUsersList
@@ -111,8 +111,13 @@ export default function Home(props) {
         grid="3"
         gap="5"
       />
+<<<<<<< Updated upstream
       <TweetList
         grid="2"
+=======
+      <SocialPostsList
+        grid="1"
+>>>>>>> Stashed changes
         gap="2"
         title="Popular Tweet Today"
         posts={data.postsTweet}

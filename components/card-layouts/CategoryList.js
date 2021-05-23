@@ -38,6 +38,7 @@ console.log('init ps')
 	return (
 		<div className={`section ${extraClass || ''}`}>
 			<div className="container">
+      <div className="container-inner">
 
 				<div className="section-header">
           { title && 
@@ -57,7 +58,7 @@ console.log('init ps')
 
 				<div className="section-body">
 
-        <div className={`flex flex-nowrap scrollbar`} ref={timelinePanel}>
+          <div className={`flex flex-nowrap scrollbar`} ref={timelinePanel}>
 
           {/* <div className={`grid scrollbar gap-${gap || '5'} sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-${grid || '5'}`} ref={timelinePanel}> */}
 
@@ -111,6 +112,8 @@ console.log('init ps')
 
 					</div>
 				</div>
+
+      </div>
 			</div>
 		</div>
 	)

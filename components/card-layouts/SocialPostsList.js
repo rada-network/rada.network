@@ -5,7 +5,15 @@ import React from "react";
 import {TweetCard} from "../cards/Tweet";
 
 
+<<<<<<< Updated upstream:components/card-layouts/TweetList.js
 export const TweetList = ({posts, extraClass, grid, gap, title, cta, itemType, detail}) => {
+=======
+export const SocialPostsList = ({posts, extraClass, grid, gap, title, cta, itemType, detail}) => {
+  // console.log(posts)
+  // posts.map((post) => {
+  //   console.log("post.text: ", post.source.full_text)
+  // })
+>>>>>>> Stashed changes:components/card-layouts/SocialPostsList.js
 
   const showPosts = (posts) => {
     return (
@@ -26,6 +34,7 @@ export const TweetList = ({posts, extraClass, grid, gap, title, cta, itemType, d
   return (
     <div className={`section ${extraClass || ''}`}>
       <div className="container">
+<<<<<<< Updated upstream:components/card-layouts/TweetList.js
         <div className="container-inner">
 
           <div className="section-header">
@@ -39,6 +48,21 @@ export const TweetList = ({posts, extraClass, grid, gap, title, cta, itemType, d
             { cta &&
             <div className="section-cta">
               {cta === "View All" ? <button className="btn">
+=======
+      <div className="container-inner">
+
+        <div className="section-header">
+          <div className="section-title">
+            {itemType !== undefined
+              ? <Link href={`/explore/${itemType}`}>
+                {title}
+              </Link>
+              : title}
+          </div>
+          { cta &&
+          <div className="section-cta">
+            {cta === "View All" ? <button className="btn">
+>>>>>>> Stashed changes:components/card-layouts/SocialPostsList.js
 							<span className="btn-text">
                 <Link href={`/explore/${itemType}`}>
                   {cta}
@@ -86,6 +110,7 @@ export const TweetList = ({posts, extraClass, grid, gap, title, cta, itemType, d
             </div>
             }
           </div>
+<<<<<<< Updated upstream:components/card-layouts/TweetList.js
           <div className="section-body">
             <div className={`grid grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
               {
@@ -95,8 +120,23 @@ export const TweetList = ({posts, extraClass, grid, gap, title, cta, itemType, d
                   : showPosts(posts)
               }
             </div>
+=======
+          }
+        </div>
+
+        <div className="section-body">
+          <div className={`grid grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
+            {
+              detail
+                // ? showPosts(postsByDate)
+                ? "in progress"
+                : showPosts(posts)
+            }
+>>>>>>> Stashed changes:components/card-layouts/SocialPostsList.js
           </div>
         </div>
+
+      </div>
       </div>
     </div>
   )
