@@ -60,24 +60,32 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
       </div>
 
       <div className="card-footer">
-        <a href={link} className="metadata project-comment_count">
-              <span className="mr-1 icon text-base">
-                <RiTwitterFill/>
-              </span>
-          {/*favorite count*/}
-          <span title={"retweet count"}>{retweetCount}</span>
-        </a>
 
-        <div className="metadata-wrapper project-metadata-wrapper">
-          <a href={link} className="metadata project-comment_count">
-              <span className="mr-1 icon text-base">
-                <RiHeartFill/>
-              </span>
+        <div className="metadata-wrapper metadata-wrapper_nodivide tweet-metadata-wrapper">
+          <a href={link} className="metadata tweet-comment_count">
+            <span className="mr-1 icon text-base">
+              <RiHeartFill/>
+            </span>
             {/*favorite count*/}
             <span title={"likes"}>{favoriteCount}</span>
           </a>
+          <a href={link} className="metadata tweet-comment_count">
+            <span className="mr-1 icon text-base">
+              <RiTwitterFill/>
+            </span>
+            {/*favorite count*/}
+            <span title={"retweet count"}>{retweetCount}</span>
+          </a>
+        </div>
+
+        <div className="metadata-wrapper tweet-metadata-wrapper">
+
+          <div className="metadata tweet-metadata_date">
+              <span className="metadata-value">{createdAt.split(('T'))[0]}</span>
+            </div>
         </div>
       </div>
+
     </div>
   )
 }

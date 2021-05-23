@@ -6,6 +6,7 @@ metadata
 
 .metadata-wrapper {
   @apply flex;
+  @apply text-xs text-gray-900 text-opacity-50;
 }
 
 .metadata {
@@ -20,8 +21,20 @@ metadata
   }
 }
 
+.metadata-wrapper_nodivide {
+  .metadata + .metadata {
+    @apply ml-2;
+    &::before {
+      @apply hidden;
+    }
+  }
+}
+
 .project-metadata_type {
   @apply uppercase font-medium;
+  &_token {
+    @apply text-green-700;
+  }
   &_dapp {
     @apply text-blue-700;
   }

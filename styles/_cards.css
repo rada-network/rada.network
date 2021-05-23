@@ -90,10 +90,6 @@ Project
 
 }
 
-.project-metadata-wrapper {
-  @apply flex-wrap text-xs text-gray-900 text-opacity-50;
-}
-
 .project-metadata_submitter {
   @apply hidden;
 }
@@ -128,7 +124,7 @@ Tweets
   }
 
   .card-footer {
-    @apply text-sm border-t border-gray-100;
+    @apply text-sm pt-0;
   }
 
   .card-body-header {
