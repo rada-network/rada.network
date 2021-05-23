@@ -120,8 +120,10 @@ export default function Home(props) {
       <SocialPostsList
         grid="1"
         gap="2"
-        title="Popular Tweet Today"
+        title="Social Signal"
         posts={data.postsTweet}
+        titleIcon="fire-alt"
+        titleIconColor="red-500"
       />
       <ProjectsList
         grid="2"

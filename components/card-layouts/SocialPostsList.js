@@ -5,7 +5,7 @@ import React from "react"
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import {TweetCard} from "../cards/Tweet";
 
-export const SocialPostsList = ({posts, extraClass, grid, gap, title, cta, itemType, detail}) => {
+export const SocialPostsList = ({posts, extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
   // console.log(posts)
   // posts.map((post) => {
   //   console.log("post.text: ", post.source.full_text)
@@ -34,6 +34,10 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, cta, itemT
 
           <div className="section-header">
             <div className="section-title">
+              { titleIcon &&
+							<span class={`icon mr-3 text-${titleIconColor}`}>
+								<i class={`fad fa-${titleIcon}`}></i>
+							</span> }
               {itemType !== undefined
                 ? <Link href={`/explore/${itemType}`}>
                   {title}
