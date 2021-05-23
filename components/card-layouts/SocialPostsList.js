@@ -1,7 +1,8 @@
 import Link from "next/link";
 import {IoChevronForwardSharp} from "react-icons/io5";
 import {RiFireFill, RiTimeFill} from "react-icons/ri";
-import React from "react";
+import React from "react"
+import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import {TweetCard} from "../cards/Tweet";
 
 export const SocialPostsList = ({posts, extraClass, grid, gap, title, cta, itemType, detail}) => {
@@ -27,7 +28,7 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, cta, itemT
   }
 
   return (
-    <div className={`section ${extraClass || ''}`}>
+    <div className={`section section-socialposts ${extraClass || ''}`}>
       <div className="container">
         <div className="container-inner">
 
@@ -89,16 +90,30 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, cta, itemT
             </div>
             }
           </div>
+
           <div className="section-body">
-            <div className={`grid grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
+            {/* <div className={`grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
               {
                 detail
                   // ? showPosts(postsByDate)
                   ? "in progress"
                   : showPosts(posts)
               }
-            </div>
+            </div> */}
+            <ResponsiveMasonry
+              columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}} 
+            >
+              <Masonry columnsCount={3} gutter="1rem">
+                {
+                detail
+                  // ? showPosts(postsByDate)
+                  ? "in progress"
+                  : showPosts(posts)
+                }
+              </Masonry>
+            </ResponsiveMasonry>
           </div>
+
         </div>
 
       </div>

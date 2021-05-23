@@ -116,6 +116,37 @@ Project
   @apply flex-shrink-0 w-px-56 h-px-56 md:w-px-80 md:h-px-80 mr-4 rounded overflow-hidden;
 }
 
+/*
+Tweets
+*/
+.card-tweet {
+  @apply relative transition-all;
+  @apply bg-white border border-gray-100;
+
+  .card-body {
+    @apply h-full justify-items-stretch bg-white;
+  }
+
+  .card-footer {
+    @apply text-sm border-t border-gray-100;
+  }
+
+  .card-body-header {
+    @apply mb-4;
+  }
+
+  .card-body-main {
+    @apply flex pb-1;
+  }
+
+  .card-title {
+    @apply text-sm md:text-base font-semibold;
+  }
+
+  .card-text {
+    @apply text-sm line-clamp-4 text-gray-900 text-opacity-60;
+  }
+}
 
 /*
 Media Full

@@ -39,7 +39,7 @@ const getData = async () => {
 
   const postsTweet = await client.query({
     query: tweetQuery,
-    variables: {skip: 0, take: 4, orderBy: {createdAt: "asc"}}
+    variables: {skip: 0, take: 12, orderBy: {createdAt: "asc"}}
   })
   console.log("Query is running...", typeof window)
 
