@@ -58,9 +58,10 @@ export const Card = ({
               <span className="metadata-value">{projectPlatform}</span>
             </a> }
 
+            { projectDate && 
             <div className="metadata project-metadata_date">
               <span className="metadata-value">{projectDate.split(('T'))[0]}</span>
-            </div>
+            </div> }
 
           </div>
 
