@@ -112,7 +112,7 @@ export default function Home(props) {
         gap="5"
       />
       <TweetList
-        grid="1"
+        grid="2"
         gap="2"
         title="Popular Tweet Today"
         posts={data.postsTweet}

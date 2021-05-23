@@ -31,11 +31,12 @@ export const Card = ({
 
           <div className="metadata-wrapper project-metadata-wrapper">
             {/* aHieu: Van should check if there is value or not */}
-            { projectType && 
+            { projectType &&
             <a
               href={`/explore/${projectType}`}
-              className={`metadata project-metadata_type project-metadata_type_${
-                projectType || ""
+              // className={`metadata project-metadata_type project-metadata_type_${
+              className={`metadata badge badge-sm project-metadata_type badge-${
+                projectType.toLowerCase() || ""
               } `}
             >
               <span className="metadata-value">{projectType}</span>
