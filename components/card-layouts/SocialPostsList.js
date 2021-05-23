@@ -35,20 +35,42 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, titleIcon,
           <div className="section-header">
 
             <div className="section-title">
+
               { titleIcon &&
-							<span class={`icon mr-3 text-${titleIconColor}`}>
-								<i class={`fad fa-${titleIcon}`}></i>
+							<span className={`icon mr-3 text-${titleIconColor}`}>
+								<i className={`fad fa-${titleIcon}`}></i>
 							</span> }
-              {itemType !== undefined
-                ? <Link href={`/explore/${itemType}`}>
-                  {title}
-                </Link>
-                : title}
+
+              {itemType !== undefined ? 
+              <Link href={`/explore/${itemType}`}>
+                {title}
+              </Link>
+              : title }
+
+              <span className="mx-1">in</span>
+
+              {/* Hieu: Example Dropdown in Section Title */}
+              <div className="dropdown inline-flex justify-center items-center">
+                <span className="text-blue-700">7 days</span>
+                <span className="caret ml-2 -mt-0.5"></span>
+              </div>
+
             </div>
 
             {/* Hieu: Example Sections Buttons */}
             <div className="section-cta">
-                
+
+              <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
+                <a className="btn rounded bg-white px-4 py-1 shadow-sm">All</a>
+                <a className="btn rounded text-gray-400 bg-white bg-opacity-0 px-4 py-1">Twitter</a>
+                <a className="btn rounded text-gray-400 bg-white bg-opacity-0 px-4 py-1">Reddit</a>
+              </div>
+
+              <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
+                <a className="btn rounded text-gray-400 bg-white bg-opacity-0 px-4 py-1">Popular</a>
+                <a className="btn rounded bg-white px-4 py-1 shadow-sm">Latest</a>
+              </div>
+
             </div>
 
             { cta &&
@@ -125,8 +147,11 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, titleIcon,
             </ResponsiveMasonry>
           </div>
 
-        </div>
+          <div className="section-footer">
+						<a href="#" className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">Show all Social Signals</a>
+					</div>
 
+        </div>
       </div>
     </div>
   )

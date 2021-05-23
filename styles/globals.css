@@ -21,5 +21,6 @@
 @import '_lists';
 @import '_cards';
 @import '_contents';
+@import '_nav';
 @import '_navbar';
 @import "_carousel";

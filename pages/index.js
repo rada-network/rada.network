@@ -83,6 +83,14 @@ export default function Home(props) {
         cta="View all"
         itemType={"all"}
       />
+      <SocialPostsList
+        grid="1"
+        gap="2"
+        title="Social Signal"
+        titleIcon="fire-alt"
+        titleIconColor="red-500"
+        posts={data.postsTweet}
+      />
       <ProjectsList
         grid="2"
         gap="4"
@@ -117,14 +125,7 @@ export default function Home(props) {
         grid="3"
         gap="5"
       /> */}
-      <SocialPostsList
-        grid="1"
-        gap="2"
-        title="Social Signal"
-        posts={data.postsTweet}
-        titleIcon="fire-alt"
-        titleIconColor="red-500"
-      />
+
       <ProjectsList
         grid="2"
         gap="4"
