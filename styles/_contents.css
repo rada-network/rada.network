@@ -23,10 +23,13 @@ metadata
 .project-metadata_type {
   @apply uppercase font-medium;
   &_dapp {
-    @apply text-blue-500;
+    @apply text-blue-700;
   }
   &_nft {
-    @apply text-purple-500;
+    @apply text-purple-700;
+  }
+  &_defi {
+    @apply text-pink-700;
   }
 }
 

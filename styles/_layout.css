@@ -34,6 +34,10 @@ Section
   @apply text-xl font-semibold;
 }
 
+.section-footer {
+  @apply flex justify-between items-center;
+}
+
 .section-cta {
   @apply text-sm font-medium;
   @apply flex justify-between items-center;

@@ -128,6 +128,7 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, ti
 						</div>
 						}
 					</div>
+
 					<div className="section-body">
 						<div className={`grid grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
 							{
@@ -136,6 +137,10 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, ti
 									: showPosts(posts)
 							}
 						</div>
+					</div>
+
+					<div className="section-footer">
+						<a href="#" class="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">Show 18 more</a>
 					</div>
 				
 				</div>

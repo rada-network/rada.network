@@ -35,7 +35,7 @@ export const Card = ({
             <a
               href={`/explore/${projectType}`}
               // className={`metadata project-metadata_type project-metadata_type_${
-              className={`metadata project-metadata_type project-metadata_type-${
+              className={`metadata project-metadata_type project-metadata_type_${
                 projectType.toLowerCase() || ""
               } `}
             >

@@ -69,7 +69,7 @@ export default function Home(props) {
         grid="2"
         gap="4"
         title="Popular Projects Today"
-        titleIcon="fire-alt"
+        titleIcon=""
         titleIconColor="red-500"
         posts={data.posts}
       />
@@ -77,7 +77,9 @@ export default function Home(props) {
         extraClass="category-list"
         grid="5"
         gap="5"
-        title="Project Categories"
+        title="Top Topics"
+        titleIcon=""
+        titleIconColor=""
         cta="View all"
         itemType={"all"}
       />
@@ -98,23 +100,23 @@ export default function Home(props) {
       <TopUsersList
         grid="5"
         gap="5"
-        titleIcon="user-friends"
-        titleIconColor="yellow-500"
+        titleIcon=""
+        titleIconColor=""
       />
       <ProjectsList
         grid="2"
         gap="4"
         itemType={"today"}
         cta={"View All"}
-        title="'New Projects Today"
+        title="New Projects Today"
         detail={true}
         posts={data.posts}
       />
-      <PromoList
+      {/* <PromoList
         extraClass="promo-list"
         grid="3"
         gap="5"
-      />
+      /> */}
       <SocialPostsList
         grid="1"
         gap="2"

@@ -10,7 +10,7 @@ let ps;
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
 
-export const CategoryList = ({extraClass, grid, gap, title, cta, itemType}) => {
+export const CategoryList = ({extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType}) => {
 
   const [timelineWidth, setTimelineWidth] = useState('')
 
@@ -41,9 +41,17 @@ console.log('init ps')
       <div className="container-inner">
 
 				<div className="section-header">
+
           { title && 
-					<div className="section-title">{title}</div> }
-          { cta && 
+					<div className="section-title">
+            { titleIcon &&
+            <span class={`icon mr-3 text-${titleIconColor}`}>
+              <i class={`fad fa-${titleIcon}`}></i>
+            </span> }
+            <span>{title}</span>
+          </div> }
+          { cta &&
+
 					<div className="section-cta">
 						<button className="btn">
 							<span className="btn-text">
