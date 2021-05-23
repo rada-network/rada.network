@@ -17,7 +17,6 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
           {/*  <i className={`cf cf-${hashtag.slice(0, 3).toLowerCase()} || "btc"`}></i>*/}
           {/*    </span>*/}
           <span className="metadata-value">#{hashtag}</span>
-          <div className="metadata-divider"></div>
         </a>
       ))
     )
@@ -26,18 +25,27 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
   return(
     <div className="flex-col items-center content-center card group card-tweet">
 
+      <div className="card-header">
+
+        <div className="user-info-wrapper flex">
+          <div className="avatar">
+            <img className="avatar-img" src="https://picsum.photos/600/600?random=21" />
+          </div>
+          <div className="user-info flex flex-col ml-3 justify-center">
+            <span className="text-sm font-medium">Elon Musk</span>
+            <span className="text-xs text-gray-900 text-opacity-50">@elonmusk</span>
+          </div>
+        </div>
+
+        <span className="icon icon-twitter">
+          <i class="fab fa-twitter text-base text-blue-300"></i>
+        </span>
+
+      </div>
+
       <div className="card-body">
 
         <div className="card-body-header">
-
-          <div className="metadata-wrapper project-metadata-wrapper">
-
-            {/* {showPlatform(hashtags)} */}
-
-            <div className="metadata project-metadata_date">
-              <span className="metadata-value">{createdAt.split(('T'))[0]}</span>
-            </div>
-          </div>
 
           <div className="card-title">
             <Link href={link}
@@ -50,7 +58,7 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
 
             </Link>
           </div>
-
+          
         </div>
 
         <div className="card-body-main">
@@ -63,18 +71,16 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
 
         <div className="metadata-wrapper metadata-wrapper_nodivide tweet-metadata-wrapper">
           <a href={link} className="metadata tweet-comment_count">
-            <span className="mr-1 icon text-base">
-              <RiHeartFill/>
+            <span className="mr-1 icon text-sm">
+              <i class="fal fa-retweet"></i>
             </span>
-            {/*favorite count*/}
-            <span title={"likes"}>{favoriteCount}</span>
+            <span title={"retweet count"}>{retweetCount}</span>
           </a>
           <a href={link} className="metadata tweet-comment_count">
-            <span className="mr-1 icon text-base">
-              <RiTwitterFill/>
+            <span className="mr-1 icon text-sm">
+              <i class="fal fa-heart"></i>
             </span>
-            {/*favorite count*/}
-            <span title={"retweet count"}>{retweetCount}</span>
+            <span title={"likes"}>{favoriteCount}</span>
           </a>
         </div>
 

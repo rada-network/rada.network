@@ -47,6 +47,11 @@ Generic Styles
   @apply flex justify-between px-4 md:px-6 py-4 w-full;
 }
 
+.card-header .avatar {
+  @extend %Img40;
+  @apply rounded-full;
+}
+
 .card-body {
   @apply flex flex-col flex-1 px-4 md:px-6 py-4 w-full;
 }
@@ -123,12 +128,16 @@ Tweets
     @apply h-full justify-items-stretch bg-white;
   }
 
+  .card-header {
+    @apply pb-0 flex flex-row justify-between items-center;
+  }
+
   .card-footer {
     @apply text-sm pt-0;
   }
 
   .card-body-header {
-    @apply mb-4;
+    @apply mb-4 flex flex-row justify-between;
   }
 
   .card-body-main {

@@ -33,6 +33,7 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, titleIcon,
         <div className="container-inner">
 
           <div className="section-header">
+
             <div className="section-title">
               { titleIcon &&
 							<span class={`icon mr-3 text-${titleIconColor}`}>
@@ -44,6 +45,12 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, titleIcon,
                 </Link>
                 : title}
             </div>
+
+            {/* Hieu: Example Sections Buttons */}
+            <div className="section-cta">
+                
+            </div>
+
             { cta &&
             <div className="section-cta">
               {cta === "View All" ? <button className="btn">
@@ -105,9 +112,9 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, titleIcon,
               }
             </div> */}
             <ResponsiveMasonry
-              columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}} 
+              columnsCountBreakPoints={{350: 1, 750: 2}} 
             >
-              <Masonry columnsCount={3} gutter="1rem">
+              <Masonry columnsCount={2} gutter="1rem">
                 {
                 detail
                   // ? showPosts(postsByDate)
