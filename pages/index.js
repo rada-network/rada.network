@@ -69,6 +69,8 @@ export default function Home(props) {
         grid="2"
         gap="4"
         title="Popular Projects Today"
+        titleIcon="fire-alt"
+        titleIconColor="red-500"
         posts={data.posts}
       />
       <CategoryList
@@ -96,13 +98,15 @@ export default function Home(props) {
       <TopUsersList
         grid="5"
         gap="5"
+        titleIcon="user-friends"
+        titleIconColor="yellow-500"
       />
       <ProjectsList
         grid="2"
         gap="4"
         itemType={"today"}
         cta={"View All"}
-        title="New Projects Today"
+        title="'New Projects Today"
         detail={true}
         posts={data.posts}
       />

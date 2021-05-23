@@ -12,7 +12,7 @@ import { RiTimeLine } from "react-icons/ri";
 import Link from "next/link"
 import {useRouter} from "next/router";
 
-export const ProjectsList = ({posts, extraClass, grid, gap, title, cta, itemType, detail}) => {
+export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
 	const date = new Date()
 	const router = useRouter()
 
@@ -62,6 +62,12 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, cta, itemType
 
 					<div className="section-header">
 						<div className="section-title">
+
+							{ titleIcon &&
+							<span class={`icon mr-3 text-${titleIconColor}`}>
+								<i class={`fad fa-${titleIcon}`}></i>
+							</span> }
+
 							{itemType !== undefined
 								? <Link href={`/explore/${itemType}`}>
 								{title}

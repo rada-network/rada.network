@@ -1,6 +1,6 @@
 import {Card} from "../cards/MiniHorizontal";
 
-export const TopUsersList = ({extraClass, grid, gap}) => {
+export const TopUsersList = ({extraClass, grid, gap, titleIcon, titleIconColor}) => {
 	return (
 		<div className={`section section-users-list ${extraClass || ''}`}>
 			<div className="container">
@@ -8,6 +8,10 @@ export const TopUsersList = ({extraClass, grid, gap}) => {
 
           <div className="section-header">
             <div className="section-title">
+              { titleIcon &&
+							<span class={`icon mr-3 text-${titleIconColor}`}>
+								<i class={`fad fa-${titleIcon}`}></i>
+							</span> }
               <span>Most Active Users</span>
             </div>
           </div>

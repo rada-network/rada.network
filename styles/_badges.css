@@ -3,21 +3,14 @@ Badges
 */
 .badge {
   @apply group text-xs font-medium px-1 mt-0.5 md:px-2 py-0 h-5 md:h-6 whitespace-nowrap;
-  @apply bg-white border text-gray-500 uppercase;
-  @apply rounded-sm rounded-tl-lg rounded-br-lg bg-gray-100;
+  @apply bg-gray-100 border text-gray-500 uppercase;
+  @apply rounded-sm rounded-tl-lg rounded-br-lg ;
   .icon {
     @apply mr-1 md:mr-2;
   }
   .cf {
     @apply md:text-base;
   }
-}
-
-/*
-Small Badges
-*/
-.badge-sm {
-  @apply h-auto border-none rounded-sm rounded-tl-md rounded-br-md text-xxs px-2 pt-4px pb-2px;
 }
 
 /* Type */
@@ -33,6 +26,19 @@ Small Badges
   @apply text-yellow-500 hover:border-yellow-500 hover:bg-yellow-500 hover:text-white;
 }
 
+.badge-defi {
+  @apply text-yellow-500 hover:border-yellow-500 hover:bg-yellow-500 hover:text-white;
+}
+
+/*
+Small Badges
+*/
+
+.badge-sm {
+  @apply border-none rounded-sm rounded-tl-md rounded-br-md text-xxs px-2 pt-1px pb-1px;
+  @apply bg-gray-100 border text-gray-500 uppercase;
+}
+
 .badge-sm.badge-dapp {
   @apply text-blue-500 hover:bg-blue-500 hover:text-white;
 }
@@ -42,6 +48,10 @@ Small Badges
 }
 
 .badge-sm.badge-token {
+  @apply text-yellow-500 hover:bg-yellow-500 hover:text-white;
+}
+
+.badge-sm.badge-defi {
   @apply text-yellow-500 hover:bg-yellow-500 hover:text-white;
 }
 
