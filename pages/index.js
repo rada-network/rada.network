@@ -111,13 +111,8 @@ export default function Home(props) {
         grid="3"
         gap="5"
       />
-<<<<<<< Updated upstream
-      <TweetList
-        grid="2"
-=======
       <SocialPostsList
         grid="1"
->>>>>>> Stashed changes
         gap="2"
         title="Popular Tweet Today"
         posts={data.postsTweet}
