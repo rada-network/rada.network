@@ -1,5 +1,4 @@
-import {Card} from "../cards/MediaFull";
-import Link from "next/link"
+import {Card} from "../cards/Category";
 import { useState, useEffect, createRef } from 'react'
 import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
@@ -23,7 +22,7 @@ export const CategoryList = ({extraClass, grid, gap, title, titleIcon, titleIcon
     };
     window.addEventListener("resize", onResize);
     onResize()
-console.log('init ps')
+    console.log('init ps')
     // make scrollbar
     ps = new PerfectScrollbar(timelinePanel.current, {
     });
@@ -57,57 +56,44 @@ console.log('init ps')
 
           <div className={`flex flex-nowrap scrollbar`} ref={timelinePanel}>
 
-          {/* <div className={`grid scrollbar gap-${gap || '5'} sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-${grid || '5'}`} ref={timelinePanel}> */}
-
-          {/* <div className={`grid gap-${1 || '5'} sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-${1 || '5'}`}> */}
-
             <Card 
-              title="Finance"
-              text="short text 1"
+              title="DeFi"
               itemType={"defi"}
-              cta="DEFI Projects"
-              mediaUri="https://picsum.photos/600/600?random=1"
+              text="Financial smart contract, DApps, and financial protocols"
+              cta="15 Items"
             />
             <Card
-              title="Exchange"
-              text="short text 2"
+              title="DEX"
               itemType={"token"}
-              cta="TOKEN Projects"
-              mediaUri="https://picsum.photos/600/600?random=2"
+              text="Decentralized cryptocurrency exchanges that allow users to trade cryptocurrencies"
+              cta="32 Items"
             />
             <Card
-              title="High Risk"
-              text="this is a text"
+              title="NFT"
               itemType={"nft"}
-              cta="NFT Projects"
-              mediaUri="https://picsum.photos/600/600?random=3"
+              text="Nonfungible tokens NFT is another type of digital asset besides cryptocurrencies"
+              cta="192 Items"
             />
             <Card 
-              title="Gaming"
-              text="Game is just for fun"
-              mediaUri="https://picsum.photos/600/600?random=4"
+              title="DApps"
               itemType={"dapp"}
-              cta="DAPP Projects"
+              text="A Dapp, or decentralized application, is a software application that runs on a distributed network"
+              cta="202 Items"
             />
             <Card 
               title="Utilities"
-              text="Utilities makes various"
-              mediaUri="https://picsum.photos/600/600?random=5"
-              itemType={"token"}
-              cta="TOKEN Projects"
+              itemType={"utilities"}
+              text="Blockchain utilities refer to the blockchain applications built on blockchains to provide utility functions to users"
+              cta="8 Items"
             />
-              <Card
-              title="Utilities"
-              mediaUri="https://picsum.photos/600/600?random=6"
-              cta="81 Projects"
+            <Card 
+              title="Gambling"
+              itemType={"dapp"}
+              text="Blockchain gambling apps are any gambling products that include blockchain elements"
+              cta="8 Items"
             />
-              <Card
-              title="Utilities"
-              mediaUri="https://picsum.photos/600/600?random=7"
-              cta="58 Projects"
-            />
-
 					</div>
+
 				</div>
 
       </div>

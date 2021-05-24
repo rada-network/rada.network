@@ -96,7 +96,7 @@ export default function Home(props) {
         gap="4"
         itemType={"nft"}
         title="NFTs that you cannot missed"
-        titleIcon="album-collection"
+        titleIcon="icons"
         titleIconColor="purple-500"
         posts={data.postsNFT}
       />
@@ -105,6 +105,8 @@ export default function Home(props) {
         gap="4"
         itemType={"dapp"}
         title="Most Active DApps"
+        titleIcon="cube"
+        titleIconColor="pink-500"
         posts={data.postsDapp}
       />
       {/* <TopUsersList
@@ -132,7 +134,9 @@ export default function Home(props) {
         grid="2"
         gap="4"
         itemType={"all"}
-        title="All Projects"
+        title="Latest Ideas"
+        titleIcon="code-branch"
+        titleIconColor="blue-500"
         cta="Sorted by"
         posts={data.posts}
       />

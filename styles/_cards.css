@@ -153,6 +153,53 @@ Tweets
   }
 }
 
+/* 
+Category 
+*/
+.card-category {
+  @apply h-48 w-48 mr-4;
+  @apply bg-gray-900 text-white;
+
+  .card-title {
+    @apply text-lg;
+  }
+
+  .card-text {
+    @apply text-xs text-white text-opacity-70;
+  }
+
+  .card-body-footer {
+    @apply mt-auto;
+  }
+
+  .card-body-footer .btn {
+    @apply text-sm;
+  }
+
+}
+
+.card-category_defi {
+  @apply bg-gradient-to-br from-red-500 to-red-400;
+}
+
+.card-category_token {
+  @apply bg-gradient-to-br from-green-500 to-green-400;
+}
+
+.card-category_nft {
+  @apply bg-gradient-to-br from-purple-500 to-purple-400;
+}
+
+.card-category_dapp {
+  @apply bg-gradient-to-br from-blue-500 to-blue-400;
+}
+
+.card-category_utilities {
+  @apply bg-gradient-to-br from-yellow-500 to-yellow-400;
+}
+
+
+
 /*
 Media Full
 */
