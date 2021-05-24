@@ -1,15 +1,22 @@
 import Link from "next/link";
 import {IoChevronForwardSharp} from "react-icons/io5";
 import {RiFireFill, RiTimeFill} from "react-icons/ri";
+import { observer } from "mobx-react"
+
 import React from "react"
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import {TweetCard} from "../cards/Tweet";
+import { useStore } from "../../lib/useStore"
 
-export const SocialPostsList = ({posts, extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
-  // console.log(posts)
-  // posts.map((post) => {
-  //   console.log("post.text: ", post.source.full_text)
-  // })
+
+export const SocialPostsList = observer(({posts, extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
+
+  const store = useStore()
+
+  const Button = ({active, onClick, children}) => {
+    if (active) return <a className="btn rounded bg-white px-4 py-1 shadow-sm" onClick={onClick}>{children}</a>
+    return <a className="btn rounded text-gray-400 bg-white bg-opacity-0 px-4 py-1" onClick={onClick}>{children}</a>
+  }
 
   const showPosts = (posts) => {
     return (
@@ -47,28 +54,28 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, titleIcon,
               </Link>
               : title }
 
-              <span className="mx-1">in</span>
+              {/* <span className="mx-1">in</span> */}
 
               {/* Hieu: Example Dropdown in Section Title */}
-              <div className="dropdown inline-flex justify-center items-center">
+              {/* <div className="dropdown inline-flex justify-center items-center">
                 <span className="text-blue-700">7 days</span>
                 <span className="caret ml-2 -mt-0.5"></span>
-              </div>
+              </div> */}
 
             </div>
 
             {/* Hieu: Example Sections Buttons */}
             <div className="section-cta">
 
-              <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
-                <a className="btn rounded bg-white px-4 py-1 shadow-sm">All</a>
-                <a className="btn rounded text-gray-400 bg-white bg-opacity-0 px-4 py-1">Twitter</a>
-                <a className="btn rounded text-gray-400 bg-white bg-opacity-0 px-4 py-1">Reddit</a>
-              </div>
+              {/* <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
+                <Button active={true}>All</Button>
+                <Button>Twitter</Button>
+                <Button>Reddit</Button>
+              </div> */}
 
               <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
-                <a className="btn rounded text-gray-400 bg-white bg-opacity-0 px-4 py-1">Popular</a>
-                <a className="btn rounded bg-white px-4 py-1 shadow-sm">Latest</a>
+                <Button active={store.state.socialOrder == 'popular'} onClick={e => store.state.setSocialOrder('popular')}>Popular</Button>
+                <Button active={store.state.socialOrder == 'latest'} onClick={e => store.state.setSocialOrder('latest')}>Latest</Button>
               </div>
 
             </div>
@@ -158,4 +165,4 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, titleIcon,
       </div>
     </div>
   )
-}
+})

@@ -8,6 +8,7 @@ import {ProjectsList} from '../components/card-layouts/ProjectsList';
 import {PromoList} from '../components/card-layouts/PromoList';
 import {TopUsersList} from '../components/card-layouts/TopUsersList';
 import {CategoryList} from '../components/card-layouts/CategoryList';
+import { observer } from "mobx-react"
 
 //ReactIcons
 import {IoChevronForwardSharp} from "react-icons/io5";
@@ -18,8 +19,7 @@ import useSWR from "swr";
 import { useStore } from "../lib/useStore"
 import {SocialPostsList} from "../components/card-layouts/SocialPostsList";
 
-const getData = async () => {
-  console.log("get data")
+const getData = async (socialOrder) => {
   const client = getClient()
 
   const posts = await client.query({
@@ -39,9 +39,8 @@ const getData = async () => {
 
   const postsTweet = await client.query({
     query: tweetQuery,
-    variables: {skip: 0, take: 12, orderBy: {createdAt: "asc"}}
+    variables: {skip: 0, take: 12, orderBy: socialOrder == 'popular' ? {favoriteCount: "desc"} : {createdAt: "asc"}}
   })
-  console.log("Query is running...", typeof window)
 
   return {
     posts: posts.data.itemFeed,
@@ -51,9 +50,13 @@ const getData = async () => {
   }
 }
 
-export default function Home(props) {
+export default observer(function Home(props) {
   const store = useStore()
-  const {data} = useSWR('homepage', getData, {initialData: props, revalidateOnMount: !store.inited})
+  const getKey = () => {
+    return [store?.state.socialOrder]
+  }
+  
+  const {data} = useSWR(getKey, getData, {initialData: props, revalidateOnMount: !store.inited})
   // const data = props
   // update to store
   if (store) {
@@ -142,7 +145,7 @@ export default function Home(props) {
       />
     </Layout>
   )
-}
+})
 
 export async function getStaticProps() {
   const props = await getData();
