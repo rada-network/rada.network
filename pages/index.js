@@ -96,6 +96,8 @@ export default function Home(props) {
         gap="4"
         itemType={"nft"}
         title="NFTs that you cannot missed"
+        titleIcon="album-collection"
+        titleIconColor="purple-500"
         posts={data.postsNFT}
       />
       <ProjectsList

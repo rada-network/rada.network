@@ -148,7 +148,10 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, titleIcon,
           </div>
 
           <div className="section-footer">
-						<a href="#" className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">Show all Social Signals</a>
+						<a href="#" className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+              <span class="btn-text">Show all Social Signals</span>
+              <span className="icon"><IoChevronForwardSharp /></span>
+            </a>
 					</div>
 
         </div>
