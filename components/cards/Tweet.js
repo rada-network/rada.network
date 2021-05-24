@@ -2,8 +2,23 @@ import React from "react";
 import Link from "next/link";
 import {RiHeartFill, RiTwitterFill} from "react-icons/ri";
 
-export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, fullText, createdAt}) => {
-  const link = `https://twitter.com/${post.source.user_id_str}/status/${post.id}`
+export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
+                            fullText, createdAt, media, tweetUser}) => {
+  let twitterName1
+  let accountName
+  let avatarImg
+  let bannerImg
+
+  if (tweetUser === undefined) console.log("tweetUser is undefined")
+  else{
+    twitterName1 = tweetUser.name
+    accountName = tweetUser.screen_name
+    avatarImg = tweetUser.profile_image_url_https
+    bannerImg = tweetUser.profile_banner_url
+  }
+
+  const link = `https://twitter.com/${accountName}/status/${post.id}`
+
   const showPlatform = (hashtags) => {
     // return unique hashtag
     const uniqueHashtag = [...new Set(hashtags.map(hashtag => hashtag.text))]
@@ -23,29 +38,30 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
   }
 
   return(
-    <div className="flex-col items-center content-center card group card-tweet">
+    <a href={link} target={"_blank"}>
+      <div className="flex-col items-center content-center card group card-tweet">
 
-      <div className="card-header">
+        <div className="card-header">
 
-        <div className="user-info-wrapper flex">
-          <div className="avatar">
-            <img className="avatar-img" src="https://picsum.photos/600/600?random=21" />
+          <div className="user-info-wrapper flex">
+            <div className="avatar">
+              <img className="avatar-img" src={avatarImg} />
+            </div>
+            <div className="user-info flex flex-col ml-3 justify-center">
+              <span className="text-sm font-medium">{twitterName1}</span>
+              <span className="text-xs text-gray-900 text-opacity-50">@{accountName}</span>
+            </div>
           </div>
-          <div className="user-info flex flex-col ml-3 justify-center">
-            <span className="text-sm font-medium">Elon Musk</span>
-            <span className="text-xs text-gray-900 text-opacity-50">@elonmusk</span>
-          </div>
-        </div>
 
-        <span className="icon icon-twitter">
+          <span className="icon icon-twitter">
           <i className="fab fa-twitter text-base text-blue-400"></i>
         </span>
 
-      </div>
+        </div>
 
-      <div className="card-body">
+        <div className="card-body">
 
-        {/* <div className="card-body-header">
+          {/* <div className="card-body-header">
 
           <div className="card-title">
             <Link href={link}
@@ -58,14 +74,20 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
 
             </Link>
           </div>
-          
+
         </div> */}
 
-        <div className="card-body-main">
-          <div className="card-text" dangerouslySetInnerHTML={{ __html: fullText.slice(0, 200)}}></div>
-        </div>
+          <div className="card-body-main">
+            <div className="card-text" dangerouslySetInnerHTML={{ __html: fullText.slice(0, 200)}}></div>
+          </div>
+          <div className="card-body-main">
+            {media
+              ? <img src={media[0].media_url ? media[0].media_url : ""} style={{height: 141, width: 282}} alt=""/>
+              : ""
+            }
+          </div>
 
-      </div>
+        </div>
 
       <div className="card-footer">
 
@@ -92,6 +114,7 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
         </div>
       </div>
 
-    </div>
+      </div>
+    </a>
   )
 }

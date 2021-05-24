@@ -22,6 +22,9 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, titleIcon,
           source={post.source.source}
           createdAt={post.createdAt}
           fullText={post.source.full_text}
+          expandedUrl={post.source.extended_entities}
+          media={post.source.entities.media}
+          tweetUser={post.tweetUser.source}
         />
       ))
     )
@@ -67,7 +70,7 @@ export const SocialPostsList = ({posts, extraClass, grid, gap, title, titleIcon,
               </div>
 
               <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
-                <a className="btn rounded text-gray-400 bg-white bg-opacity-0 px-4 py-1">Popular</a>
+                <a className="btn rounded bg-white text-gray-400 bg-opacity-0 px-4 py-1">Popular</a>
                 <a className="btn rounded bg-white px-4 py-1 shadow-sm">Latest</a>
               </div>
 

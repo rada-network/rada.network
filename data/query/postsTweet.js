@@ -1,8 +1,8 @@
 import {gql} from '@apollo/client';
 
 export default gql`
-    query tweetFeed($skip : Int!, $take : Int!, $orderBy: ItemOrderInput){
-        tweetFeed (skip : $skip, take : $take, orderBy: $orderBy){
+    query tweetFeed($skip : Int!, $take : Int!, $day: Int!, $orderBy: TweetOrderInput){
+        tweetFeed (skip : $skip, take : $take, day: $day, orderBy: $orderBy){
             id
             favoriteCount
             retweetCount
@@ -10,6 +10,10 @@ export default gql`
             quoteCount
             source
             createdAt
+            tweetUser {
+                id
+                source
+            }
             item {
                 id
             }
