@@ -15,7 +15,7 @@ export const SocialPostsList = observer(({posts, extraClass, grid, gap, title, t
 
   const Button = ({active, onClick, children}) => {
     if (active) return <a className="btn rounded bg-white px-4 py-1 shadow-sm" onClick={onClick}>{children}</a>
-    return <a className="btn rounded text-gray-400 bg-white bg-opacity-0 px-4 py-1" onClick={onClick}>{children}</a>
+    return <a className="btn rounded bg-white text-gray-400 bg-opacity-0 px-4 py-1" onClick={onClick}>{children}</a>
   }
 
   const showPosts = (posts) => {
@@ -29,6 +29,9 @@ export const SocialPostsList = observer(({posts, extraClass, grid, gap, title, t
           source={post.source.source}
           createdAt={post.createdAt}
           fullText={post.source.full_text}
+          expandedUrl={post.source.extended_entities}
+          media={post.source.entities.media}
+          tweetUser={post.tweetUser.source}
         />
       ))
     )

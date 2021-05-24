@@ -88,6 +88,7 @@ type Tweet {
     replyCount: Int!
     quoteCount: Int!
     source: JSONObject
+    tweetUser: JSONObject
     createdAt: DateTime!
     item: Item
 }
@@ -97,7 +98,8 @@ type Query {
     isVote(itemId: String!, walletAddress: String!): Vote
     itemById(id: String!): Item
     itemFeed(itemType: String, orderBy: ItemOrderInput, skip: Int = 0, take: Int = 4): [Item]
-    tweetFeed(orderBy: ItemOrderInput, skip: Int=0, take: Int=4): [Tweet]
+    # when add paramerters, remember to add param in client.query
+    tweetFeed(orderBy: TweetOrderInput, day: Int=0, skip: Int=0, take: Int=4): [Tweet]
 }
 
 type ToggleVote {
