@@ -68,11 +68,18 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, ti
 								<i class={`fad fa-${titleIcon}`}></i>
 							</span> }
 
-							{itemType !== undefined
-								? <Link href={`/explore/${itemType}`}>
+							{itemType !== undefined ? 
+							<Link href={`/explore/${itemType}`}>
 								{title}
-								</Link>
-								: title}
+							</Link>
+							: title }
+							
+              {/* Hieu: Example Dropdown in Section Title */}
+              <div className="dropdown ml-2 inline-flex justify-center items-center">
+                <span className="text-blue-700">Today</span>
+                <span className="caret ml-2 -mt-0.5"></span>
+              </div>
+
 						</div>
 
 						{ cta &&

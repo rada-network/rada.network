@@ -38,7 +38,7 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
         </div>
 
         <span className="icon icon-twitter">
-          <i class="fab fa-twitter text-base text-blue-300"></i>
+          <i className="fab fa-twitter text-base text-blue-300"></i>
         </span>
 
       </div>
@@ -72,13 +72,13 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
         <div className="metadata-wrapper metadata-wrapper_nodivide tweet-metadata-wrapper">
           <a href={link} className="metadata tweet-comment_count">
             <span className="mr-1 icon text-sm">
-              <i class="fal fa-retweet"></i>
+              <i className="fal fa-retweet"></i>
             </span>
             <span title={"retweet count"}>{retweetCount}</span>
           </a>
           <a href={link} className="metadata tweet-comment_count">
             <span className="mr-1 icon text-sm">
-              <i class="fal fa-heart"></i>
+              <i className="fal fa-heart"></i>
             </span>
             <span title={"likes"}>{favoriteCount}</span>
           </a>
