@@ -51,18 +51,6 @@ console.log('init ps')
             <span>{title}</span>
           </div> }
 
-          { cta &&
-					<div className="section-cta">
-						<button className="btn">
-							<span className="btn-text">
-                <Link href={`/explore/${itemType}`}>
-                  {cta}
-                </Link>
-              </span>
-							<span className="icon"><IoChevronForwardSharp /></span>
-						</button>
-					</div> }
-          
 				</div>
 
 				<div className="section-body">
