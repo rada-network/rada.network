@@ -149,7 +149,7 @@ Tweets
   }
 
   .card-text {
-    @apply text-sm line-clamp-4 text-gray-900 text-opacity-60;
+    @apply text-sm line-clamp-4 text-gray-500;
   }
 }
 

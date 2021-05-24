@@ -38,14 +38,14 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
         </div>
 
         <span className="icon icon-twitter">
-          <i className="fab fa-twitter text-base text-blue-300"></i>
+          <i className="fab fa-twitter text-base text-blue-400"></i>
         </span>
 
       </div>
 
       <div className="card-body">
 
-        <div className="card-body-header">
+        {/* <div className="card-body-header">
 
           <div className="card-title">
             <Link href={link}
@@ -59,10 +59,10 @@ export const TweetCard = ({post, favoriteCount, retweetCount, source, hashtags, 
             </Link>
           </div>
           
-        </div>
+        </div> */}
 
         <div className="card-body-main">
-          <div className="card-text" dangerouslySetInnerHTML={{ __html: fullText.slice(0, 50)}}></div>
+          <div className="card-text" dangerouslySetInnerHTML={{ __html: fullText.slice(0, 200)}}></div>
         </div>
 
       </div>
