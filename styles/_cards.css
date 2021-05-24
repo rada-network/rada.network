@@ -179,23 +179,23 @@ Category
 }
 
 .card-category_defi {
-  @apply bg-gradient-to-br from-red-500 to-red-400;
+  @apply bg-gradient-to-br from-red-600 to-red-400;
 }
 
 .card-category_token {
-  @apply bg-gradient-to-br from-green-500 to-green-400;
+  @apply bg-gradient-to-br from-green-600 to-green-400;
 }
 
 .card-category_nft {
-  @apply bg-gradient-to-br from-purple-500 to-purple-400;
+  @apply bg-gradient-to-br from-purple-600 to-purple-400;
 }
 
 .card-category_dapp {
-  @apply bg-gradient-to-br from-blue-500 to-blue-400;
+  @apply bg-gradient-to-br from-blue-600 to-blue-400;
 }
 
 .card-category_utilities {
-  @apply bg-gradient-to-br from-yellow-500 to-yellow-400;
+  @apply bg-gradient-to-br from-yellow-600 to-yellow-400;
 }
 
 
