@@ -22,9 +22,11 @@
 Card Layouts
 --------------------------------------------- */
 .category-list {
+  .container > .container-inner {
+    @apply pb-5;
+  }
   .card {
     @apply flex-shrink-0;
-    width: 200px;
   }
 }
 
@@ -89,6 +91,12 @@ Project Details
 /*
 Scrollbar
 */
+.scrollbar {
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+
 .scrollbar::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -100,12 +108,12 @@ Scrollbar
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.1);
   border-radius: 12px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.2);
 }
 
 /*
@@ -116,20 +124,20 @@ Perfect Scrollbar
 }
 
 .scrollbar.ps .ps__thumb-x {
-  @apply bg-white bg-opacity-10;
+  @apply bg-gray-900 bg-opacity-10;
 }
 
 .scrollbar.ps .ps__rail-x:hover,
 .scrollbar.ps .ps__rail-x:focus,
 .scrollbar.ps .ps__rail-x.ps--clicking,
 .scrollbar.ps .ps__rail-y.ps--clicking {
-  @apply bg-white bg-opacity-10 rounded-full;
+  @apply bg-gray-900 bg-opacity-10 rounded-full;
   height: 12px;
 }
 
 .scrollbar.ps .ps__rail-x:hover > .ps__thumb-x,
 .scrollbar.ps .ps__rail-x:focus > .ps__thumb-x,
 .scrollbar.ps .ps__rail-x.ps--clicking .ps__thumb-x {
-  @apply bg-white bg-opacity-40;
+  @apply bg-gray-900 bg-opacity-40;
   height: 8px;
 }

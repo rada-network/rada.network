@@ -54,7 +54,7 @@ export const CategoryList = ({extraClass, grid, gap, title, titleIcon, titleIcon
 
 				<div className="section-body">
 
-          <div className={`flex flex-nowrap scrollbar`} ref={timelinePanel}>
+          <div className={`flex flex-nowrap scrollbar relative pb-5`} ref={timelinePanel}>
 
             <Card 
               title="DeFi"
