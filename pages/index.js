@@ -65,14 +65,14 @@ export default function Home(props) {
   return (
     <Layout extraClass="page-home" meta={"dhunt.io"}>
       <Header/>
-      <ProjectsList
+      {/* <ProjectsList
         grid="2"
         gap="4"
         title="Popular Projects"
         titleIcon=""
         titleIconColor="red-500"
         posts={data.posts}
-      />
+      /> */}
       <CategoryList
         extraClass="category-list"
         grid="5"
@@ -105,12 +105,12 @@ export default function Home(props) {
         title="Most Active DApps"
         posts={data.postsDapp}
       />
-      <TopUsersList
+      {/* <TopUsersList
         grid="5"
         gap="5"
         titleIcon=""
         titleIconColor=""
-      />
+      /> */}
       {/* <ProjectsList
         grid="2"
         gap="4"
