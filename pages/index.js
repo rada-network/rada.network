@@ -39,7 +39,7 @@ const getData = async (socialOrder) => {
 
   const postsTweet = await client.query({
     query: tweetQuery,
-    variables: {skip: 0, take: 12, orderBy: socialOrder == 'popular' ? {favoriteCount: "desc"} : {createdAt: "asc"}}
+    variables: {skip: 0, take: 12, day:0, orderBy: socialOrder == 'popular' ? {favoriteCount: "desc"} : {createdAt: "asc"}}
   })
 
   return {
@@ -90,6 +90,7 @@ export default observer(function Home(props) {
         grid="1"
         gap="2"
         title="Social Signal"
+        itemType={"tweet"}
         titleIcon="fire-alt"
         titleIconColor="red-500"
         posts={data.postsTweet}

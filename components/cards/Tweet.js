@@ -82,7 +82,7 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
           </div>
           <div className="card-body-main">
             {media
-              ? <img src={media[0].media_url ? media[0].media_url : ""} style={{height: 141, width: 282}} alt=""/>
+              ? <img src={media[0].media_url ? media[0].media_url : ""} alt=""/>
               : ""
             }
           </div>
