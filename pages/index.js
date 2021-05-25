@@ -96,6 +96,7 @@ export default observer(function Home(props) {
         grid="1"
         gap="2"
         title="Social Signal"
+        itemType={"tweet"}
         titleIcon="fire-alt"
         titleIconColor="red-500"
         posts={data.postsTweet}

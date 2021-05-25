@@ -2,6 +2,7 @@ import React from 'react';
 
 import {useState} from "react";
 import {Card} from "../cards/Project";
+import {Dropdown} from "../dropdown/DropDown";
 
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
@@ -76,8 +77,11 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, ti
 							
               {/* Hieu: Example Dropdown in Section Title */}
               <div className="dropdown ml-2 inline-flex justify-center items-center">
-                <span className="text-blue-700">Today</span>
-                <span className="caret ml-2 -mt-0.5"></span>
+								<Dropdown
+									color={"blue"}
+								/>
+                {/*<span className="text-blue-700">Today</span>*/}
+                {/*<span className="caret ml-2 -mt-0.5"></span>*/}
               </div>
 
 						</div>
