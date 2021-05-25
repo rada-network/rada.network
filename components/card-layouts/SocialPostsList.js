@@ -158,12 +158,15 @@ export const SocialPostsList = observer(({posts, extraClass, grid, gap, title, t
           </div>
 
           <div className="section-footer">
-						<a href="#" className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
-              <span className="btn-text">Show all Social Signals</span>
-              <span className="icon"><IoChevronForwardSharp /></span>
-            </a>
+            {itemType !== undefined
+              ? <a href={`/explore/${itemType}`}
+                 className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+                <span class="btn-text">Show all Social Signals</span>
+                <span className="icon"><IoChevronForwardSharp/></span>
+              </a>
+              : ""
+            }
 					</div>
-
         </div>
       </div>
     </div>

@@ -1,14 +1,28 @@
 import {Layout} from '../../components/page-layouts/OneColumn';
 import {Header} from '../../components/Header';
 import {ProjectsList} from "../../components/card-layouts/ProjectsList";
+import {SocialPostsList} from "../../components/card-layouts/SocialPostsList";
 import useSWR from "swr";
 import getClient from "../../data/client";
+import {observer} from "mobx-react";
 
 import itemsByItemType from "../../data/query/posts";
-import { useRouter } from "next/router";
+import postsTweet from "../../data/query/postsTweet";
+import {useRouter} from "next/router";
+import {useStore} from "../../lib/useStore";
 
-const getData = async (itemType) => {
+const getData = async (itemType, socialOrder) => {
   const client = getClient()
+  if (itemType === "tweet") {
+    const dataTweet = await client.query({
+      query: postsTweet,
+      variables: {
+        skip: 0, take: 14, day:0,
+        orderBy: socialOrder === "popular" ? {favoriteCount: "desc"} : {createdAt: "desc"},
+        lang : "en"}
+    })
+    return dataTweet.data.tweetFeed
+  }
   const dataItem = await client.query({
     query: itemsByItemType,
     variables: !["nft", "dapp", "token", "defi"].includes(itemType)
@@ -18,16 +32,19 @@ const getData = async (itemType) => {
   return dataItem.data.itemFeed
 }
 
-export default function Explore() {
+export default observer(function Explore(posts) {
   const router = useRouter()
+  const store = useStore()
   let { itemType } = router.query
 
+  const getKey = () => {
+    return [store?.state.socialOrder]
+  }
+  console.log("getKey() ", getKey())
   try {
-    const {data, error} = useSWR([itemType], getData)
-
+    const {data, error} = useSWR([itemType, getKey()[0]], getData)
     let postsTopComments = data.slice().sort((a, b) => b.totalComment - a.totalComment)
     let postsTopVotes = data.slice().sort((a, b) => b.totalVote - a.totalVote)
-    // console.log(data);
     if (error){
       return (
         <>
@@ -56,9 +73,23 @@ export default function Explore() {
     }
     if (itemType === "top-comment") return showPosts(postsTopComments)
     else if (itemType === "top-vote") return showPosts(postsTopVotes)
-    else return showPosts(data)
+    else if (itemType === "tweet") return (
+      <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
+        <Header/>
+        <SocialPostsList
+          grid="1"
+          gap="2"
+          title="Social Signal"
+          titleIcon="fire-alt"
+          titleIconColor="red-500"
+          posts={data}
+          // posts={posts.posts.data.tweetFeed}
+        />
+      </Layout>
+    )
+    return showPosts(data)
   }catch (err){
-    console.log("error")
+    console.log("error in [itemType].js")
   }
 
   return (
@@ -67,4 +98,4 @@ export default function Explore() {
       <p>Loading...</p>
     </Layout>
   )
-}
+})
