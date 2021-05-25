@@ -78,11 +78,11 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
         </div> */}
 
           <div className="card-body-main">
-            <div className="card-text" dangerouslySetInnerHTML={{ __html: fullText.slice(0, 200)}}></div>
+            <div className="card-text" dangerouslySetInnerHTML={{ __html: fullText}}></div>
           </div>
           <div className="card-body-main">
             {media
-              ? <img src={media[0].media_url ? media[0].media_url : ""} style={{height: 141, width: 282}} alt=""/>
+              ? <img src={media[0].media_url ? media[0].media_url : ""} style={{height: 141}} alt=""/>
               : ""
             }
           </div>
@@ -92,18 +92,18 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
       <div className="card-footer">
 
         <div className="metadata-wrapper metadata-wrapper_nodivide tweet-metadata-wrapper">
-          <a href={link} className="metadata tweet-comment_count">
+          <div  className="metadata tweet-comment_count">
             <span className="mr-1 icon text-sm">
               <i className="fal fa-retweet"></i>
             </span>
             <span title={"retweet count"}>{retweetCount}</span>
-          </a>
-          <a href={link} className="metadata tweet-comment_count">
+          </div>
+          <div className="metadata tweet-comment_count">
             <span className="mr-1 icon text-sm">
               <i className="fal fa-heart"></i>
             </span>
             <span title={"likes"}>{favoriteCount}</span>
-          </a>
+          </div>
         </div>
 
         <div className="metadata-wrapper tweet-metadata-wrapper">

@@ -69,7 +69,8 @@ type ItemMetadata {
 
 type Mutation {
     createComment(content: String!, itemId: String!, parentId: String, walletAddress: String!): Comment
-    submitItem(description: String!, medias: ImageItemInput!, platformId: String!, title: String!, tokenId: String!, websiteUri: String!): Item
+    submitItem(description: String!, platformId: String!, title: String!, tokenId: String!, websiteUri: String!): Item
+    submitTweet(tweetData: JSONObject!, userData: JSONObject!): Tweet
     toggleVote(itemId: String!, walletAddress: String!): ToggleVote
 }
 
@@ -81,25 +82,14 @@ type Platform {
     websiteUri: String
 }
 
-type Tweet {
-    id: String!
-    favoriteCount: Int!
-    retweetCount: Int!
-    replyCount: Int!
-    quoteCount: Int!
-    source: JSONObject
-    tweetUser: JSONObject
-    createdAt: DateTime!
-    item: Item
-}
-
 type Query {
     commentFeed(itemId: String!, orderBy: CommentOrderInput, skip: Int = 0, take: Int = 4): [Comment]
     isVote(itemId: String!, walletAddress: String!): Vote
     itemById(id: String!): Item
     itemFeed(itemType: String, orderBy: ItemOrderInput, skip: Int = 0, take: Int = 4): [Item]
-    # when add paramerters, remember to add param in client.query
-    tweetFeed(orderBy: TweetOrderInput, day: Int=0, skip: Int=0, take: Int=4): [Tweet]
+    tweetById(id: String!): Tweet
+    tweetFeed(day: Int = 1, lang: String = "all", orderBy: TweetOrderInput, skip: Int = 0, take: Int = 4): [Tweet]
+    tweetWithoutUser(skip: Int = 0, take: Int = 4): [Tweet]
 }
 
 type ToggleVote {
@@ -111,6 +101,25 @@ type Token {
     name: String
     price: Float
     symbol: String
+}
+
+type Tweet {
+    createdAt: DateTime!
+    favoriteCount: Int!
+    id: String!
+    item: Item
+    lang: String
+    quoteCount: Int!
+    replyCount: Int!
+    retweetCount: Int!
+    source: JSONObject!
+    tweetUser: TweetUser
+    tweetUserId: String
+}
+
+type TweetUser {
+    id: String!
+    source: JSONObject!
 }
 
 type User {
@@ -149,6 +158,11 @@ input ImageItemInput {
 
 input ItemOrderInput {
     createdAt: SortOrder
+}
+
+input TweetOrderInput {
+    createdAt: SortOrder
+    favoriteCount: SortOrder
 }
 
 

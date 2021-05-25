@@ -64,8 +64,8 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, ti
 						<div className="section-title">
 
 							{ titleIcon &&
-							<span class={`icon mr-3 text-${titleIconColor}`}>
-								<i class={`fad fa-${titleIcon}`}></i>
+							<span className={`icon mr-3 text-${titleIconColor}`}>
+								<i className={`fad fa-${titleIcon}`}></i>
 							</span> }
 
 							{itemType !== undefined ? 
@@ -148,7 +148,7 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, ti
 					</div>
 
 					<div className="section-footer">
-						<a href="#" class="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">Show 18 more</a>
+						<a href="#" className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">Show 18 more</a>
 					</div>
 				
 				</div>

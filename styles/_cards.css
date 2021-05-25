@@ -276,3 +276,7 @@ Mini Horizontal
 .card-mini-h .card-media {
   @extend %Img48;
 }
+
+.card-text{
+  white-space: pre-wrap;
+}

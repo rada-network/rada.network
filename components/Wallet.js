@@ -78,7 +78,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                         <img className="block w-auto" src="/images/icons/metamask-24.png" alt="Metamask" />
                       </span>
                       <span className="flex-1">Metamask</span>
-                      <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                      <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"/>
                     </a>
                   </li>
                   <li>
@@ -87,7 +87,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                         <img className="block w-auto" src="/images/icons/walletconnect-24.png" alt="WalletConnect" />
                       </span>
                       <span className="flex-1">WalletConnect</span>
-                      <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                      <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"/>
                     </a>
                   </li>
                   <li>
@@ -96,7 +96,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                         <img className="block w-auto rounded-md" src="/images/icons/walletlink-24.png" alt="WalletLink" />
                       </span>
                       <span className="flex-1">WalletLink</span>
-                      <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                      <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"/>
                     </a>
                   </li>
                 </ul>                    
