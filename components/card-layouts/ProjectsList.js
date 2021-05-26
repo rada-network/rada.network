@@ -78,10 +78,8 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, ti
               {/* Hieu: Example Dropdown in Section Title */}
               <div className="dropdown ml-2 inline-flex justify-center items-center">
 								<Dropdown
-									color={"blue"}
+									color={"white"}
 								/>
-                {/*<span className="text-blue-700">Today</span>*/}
-                {/*<span className="caret ml-2 -mt-0.5"></span>*/}
               </div>
 
 						</div>

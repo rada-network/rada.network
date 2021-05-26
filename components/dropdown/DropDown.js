@@ -20,13 +20,13 @@ export const Dropdown = ({ color }) => {
 
   // custom colors
   color === "white"
-    ? (bgColor = "bg-blueGray-700")
+    ? (bgColor = "bg-white")
     : (bgColor = "bg-" + color + "-500");
   return (
     <>
         <button
-          className={ "text-blue-700 font-bold uppercase text-sm px-6 py-3 rounded  " +
-          " outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 "}
+          className={ "btn" +
+          " outline-none focus:outline-none ease-linear transition-all duration-150 "}
           type="button"
           ref={btnDropdownRef}
           onClick={() => {
@@ -35,21 +35,22 @@ export const Dropdown = ({ color }) => {
               : openDropdownPopover();
           }}
         >
-          <span className={`text-${color}-700 caret`}>Today</span>
+          <span className={`text-blue-700`}>Today</span>
+          <span className={`caret ml-2`}></span>
         </button>
         <div
           ref={popoverDropdownRef}
           className={
             (dropdownPopoverShow ? "block " : "hidden ") +
             (color === "white" ? "bg-white " : bgColor + " ") +
-            "font-bold text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
+            "font-medium text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
           }
           style={{ minWidth: "12rem" }}
         >
           <a
             href="#handleEvent"
             className={
-              "text-sm py-2 px-4 block w-full whitespace-nowrap bg-transparent " +
+              "py-2 px-4 block w-full whitespace-nowrap bg-transparent " +
               (color === "white" ? " text-blueGray-700" : "text-white")
             }
             onClick={e => e.preventDefault()}
@@ -59,7 +60,7 @@ export const Dropdown = ({ color }) => {
           <a
             href="#handleEvent"
             className={
-              "text-sm py-2 px-4 block w-full whitespace-nowrap bg-transparent " +
+              "py-2 px-4 block w-full whitespace-nowrap bg-transparent " +
               (color === "white" ? " text-blueGray-700" : "text-white")
             }
             onClick={e => e.preventDefault()}
