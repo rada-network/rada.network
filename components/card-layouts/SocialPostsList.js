@@ -144,9 +144,9 @@ export const SocialPostsList = observer(({posts, extraClass, grid, gap, title, t
               }
             </div> */}
             <ResponsiveMasonry
-              columnsCountBreakPoints={{350: 1, 750: 2}} 
+              columnsCountBreakPoints={{350: 1, 640: 2, 1024: 3}} 
             >
-              <Masonry columnsCount={2} gutter="1rem">
+              <Masonry columnsCount={3} gutter="1rem">
                 {
                 detail
                   // ? showPosts(postsByDate)
