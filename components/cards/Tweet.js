@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import {RiHeartFill, RiTwitterFill} from "react-icons/ri";
 
+import styles from '../../styles/modules/Card.tweet.module.css'
+
 export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
                             fullText, createdAt, media, tweetUser}) => {
   let twitterName1
@@ -39,9 +41,9 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
 
   return(
     <a href={link} target={"_blank"}>
-      <div className="flex-col items-center content-center card group card-tweet">
+      <div className={`card group ${styles.card_tweet}`}>
 
-        <div className="card-header">
+        <div className={`card-header ${styles.card_header}`}>
 
           <div className="user-info-wrapper flex">
             <div className="avatar">
@@ -59,7 +61,7 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
 
         </div>
 
-        <div className="card-body">
+        <div className={`card-body ${styles.card_body}`}>
 
           {/* <div className="card-body-header">
 
@@ -78,18 +80,18 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
         </div> */}
 
           <div className="card-body-main">
-            <div className="card-text" dangerouslySetInnerHTML={{ __html: fullText}}></div>
-          </div>
-          <div className="card-body-main">
-            {media
-              ? <img src={media[0].media_url ? media[0].media_url : ""} style={{height: 141}} alt=""/>
-              : ""
-            }
+            <div className={`card-text ${styles.card_text}`} dangerouslySetInnerHTML={{ __html: fullText}}></div>
+            <div className={`card-media ${styles.card_media}`}>
+              {media
+                ? <img src={media[0].media_url ? media[0].media_url : ""} alt=""/>
+                : ""
+              }
+            </div>
           </div>
 
         </div>
 
-      <div className="card-footer">
+      <div className={`card-footer ${styles.card_footer}`}>
 
         <div className="metadata-wrapper metadata-wrapper_nodivide tweet-metadata-wrapper">
           <div  className="metadata tweet-comment_count">

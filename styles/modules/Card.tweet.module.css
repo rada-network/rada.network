@@ -1,0 +1,46 @@
+/*
+Tweets
+*/
+.card_tweet {
+  @apply relative transition-all;
+  @apply bg-white border border-gray-100;
+  @apply hover:shadow-lg hover:bg-blue-50 hover:border-blue-300;
+  @apply flex-col items-center content-center;
+}
+
+.card_body {
+  @apply h-full justify-items-stretch;
+}
+
+.card_header {
+  @apply pb-0 flex flex-row justify-between items-center;
+}
+
+.card_footer {
+  @apply text-sm pt-0;
+}
+
+.card_body__header {
+  @apply mb-4 flex flex-row justify-between;
+}
+
+.card_body__main {
+  @apply flex flex-col pb-1;
+}
+
+.card_title {
+  @apply text-sm md:text-base font-semibold;
+}
+
+.card_text {
+  @apply text-sm text-gray-500 group-hover:text-gray-900;
+}
+
+.card_media {
+  @apply mt-4 w-auto h-auto max-w-full overflow-hidden;
+}
+
+.card_media img {
+  @apply w-auto h-auto;
+  @apply border border-gray-300 rounded;
+}
