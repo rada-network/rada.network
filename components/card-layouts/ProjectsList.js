@@ -1,21 +1,22 @@
 import React from 'react';
 
-import {useState} from "react";
 import {Card} from "../cards/Project";
-import {Dropdown} from "../dropdown/DropDown";
+import {DropDown_} from "../dropdown/DropDown_";
 
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
 import { RiFireFill } from "react-icons/ri";
 import { RiTimeFill } from "react-icons/ri";
-import { RiFireLine } from "react-icons/ri";
-import { RiTimeLine } from "react-icons/ri";
 import Link from "next/link"
 import {useRouter} from "next/router";
+import {useStore} from "../../lib/useStore";
+import {observer} from "mobx-react";
 
-export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
+export const ProjectsList = observer (({posts, extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
 	const date = new Date()
 	const router = useRouter()
+
+	const store = useStore()
 
 	const handleTopComment = () => router.push('/explore/top-comment')
 	const handleTopVote = () => router.push('/explore/top-vote')
@@ -24,8 +25,11 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, ti
 	const fullDate = date.toISOString()
 	const currentTime = fullDate.split(('T'))[0]
 	const currentDate = fullDate.split('T')[0].split('-')[2]
-	const currentMonth = fullDate.split('T')[0].split('-')[1]
-	const currentYear = fullDate.split('T')[0].split('-')[0]
+
+	const Button = ({active, onClick, children}) => {
+		if (active) return <a className="btn rounded bg-white px-4 py-1 shadow-sm" onClick={onClick}>{children}</a>
+		return <a className="btn rounded bg-white text-gray-400 bg-opacity-0 px-4 py-1" onClick={onClick}>{children}</a>
+	}
 
 	const postsByDate =  posts.filter(function (post){
 		// return post.createdAt.includes(currentTime.toString())
@@ -77,9 +81,9 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, ti
 							
               {/* Hieu: Example Dropdown in Section Title */}
               <div className="dropdown ml-2 inline-flex justify-center items-center">
-								<Dropdown
-									color={"white"}
-								/>
+								<DropDown_/>
+								<span className="caret ml-2 -mt-0.5"/>
+                {/*<span className="text-blue-700">Today</span>*/}
               </div>
 
 						</div>
@@ -119,20 +123,10 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, ti
 								</div>
 								:
 								<div className="section-cta">
-									<button className="btn text-gray-700">
-									{/*onClick={handlePostsDate}>*/}
-										<span className="icon mr-1"><RiTimeFill /></span>
-										<span className="btn-text text-xs font-medium uppercase">
-											<Link href={'/explore/today'}>
-												Latest
-											</Link>
-										</span>
-									</button>
-									<button className="btn ml-4 text-gray-700 opacity-60 hover:opacity-100"
-									onClick={handleTopVote}>
-										<span className="icon mr-1"><RiFireFill /></span>
-										<span className="btn-text text-xs font-medium uppercase">Popular</span>
-									</button>
+									<div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
+										<Button active={store.stateIdeas.ideasOrder_ == 'popular'} onClick={e => store.stateIdeas.setIdeasOrder('popular')}>Popular</Button>
+										<Button active={store.stateIdeas.ideasOrder_ == 'latest'} onClick={e => store.stateIdeas.setIdeasOrder('latest')}>Latest</Button>
+									</div>
 								</div>
 							}
 						</div>
@@ -157,4 +151,4 @@ export const ProjectsList = ({posts, extraClass, grid, gap, title, titleIcon, ti
 			</div>
 		</div>
 	)
-}
+})

@@ -83,7 +83,7 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
             <div className={`card-text ${styles.card_text}`} dangerouslySetInnerHTML={{ __html: fullText}}></div>
             <div className={`card-media ${styles.card_media}`}>
               {media
-                ? <img src={media[0].media_url ? media[0].media_url : ""} alt=""/>
+                ? <img src={media[0].media_url ? media[0].media_url : ""} className={"project-icon_img w-full h-full rounded object-cover"} style={{height: 141}} alt=""/>
                 : ""
               }
             </div>
