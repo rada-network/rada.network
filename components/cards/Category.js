@@ -1,25 +1,27 @@
+import Link from "next/link"
+import styles from '../../styles/modules/Card.category.module.css'
+
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
-import Link from "next/link"
 
 export const Card = ({title, cta, text, itemType}) => {
   return (
-    <div className={`card card-category card-category_${itemType || 'default'}`}>
+    <div className={`card group ${styles.card_category}`} type={`${itemType || 'default'}`}>
 
-      <div className="card-body">
+      <div className={`card-body ${styles.card_body}`}>
         { title && 
-        <div className="card-body-header">
+        <div className={`card-body-header ${styles.card_body__header}`}>
           <div className="card-title line-clamp-1">{title}</div>
         </div> }
         { text && 
-        <div className="card-body-main">
-          <div className="card-text">{text}</div>
+        <div className={`card-body-main ${styles.card_body__main}`}>
+          <div className={`card-text ${styles.card_text}`}>{text}</div>
         </div> }
         { cta && 
-        <div className="card-body-footer">
+        <div className={`card-body-footer ${styles.card_body__footer}`}>
           <div className="card-cta">
             <button className="btn">
-              <span className="btn-text">
+              <span className="btn-text text-sm">
                 <Link href={`/explore/${itemType}`}>
                   {cta}
                 </Link>

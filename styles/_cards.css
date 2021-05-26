@@ -117,53 +117,6 @@ Project
   @apply flex-shrink-0 w-px-56 h-px-56 md:w-px-80 md:h-px-80 mr-4 rounded overflow-hidden;
 }
 
-/* 
-Category 
-*/
-.card-category {
-  @apply h-48 w-48 mr-4;
-  @apply bg-gray-900 text-white;
-
-  .card-title {
-    @apply text-lg;
-  }
-
-  .card-text {
-    @apply text-xs text-white text-opacity-70;
-  }
-
-  .card-body-footer {
-    @apply mt-auto;
-  }
-
-  .card-body-footer .btn {
-    @apply text-sm;
-  }
-
-}
-
-.card-category_defi {
-  @apply bg-gradient-to-br from-red-600 to-red-400;
-}
-
-.card-category_token {
-  @apply bg-gradient-to-br from-green-600 to-green-400;
-}
-
-.card-category_nft {
-  @apply bg-gradient-to-br from-purple-600 to-purple-400;
-}
-
-.card-category_dapp {
-  @apply bg-gradient-to-br from-blue-600 to-blue-400;
-}
-
-.card-category_utilities {
-  @apply bg-gradient-to-br from-yellow-600 to-yellow-400;
-}
-
-
-
 /*
 Media Full
 */

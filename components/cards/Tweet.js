@@ -55,9 +55,9 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
             </div>
           </div>
 
-          <span className="icon icon-twitter">
-          <i className="fab fa-twitter text-base text-blue-400"></i>
-        </span>
+          <span className={`icon`}>
+            <i className={`fab fa-twitter ${styles.icon_twitter}`}></i>
+          </span>
 
         </div>
 

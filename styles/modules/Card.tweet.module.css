@@ -4,7 +4,7 @@ Tweets
 .card_tweet {
   @apply relative transition-all;
   @apply bg-white border border-gray-100;
-  @apply hover:shadow-lg hover:bg-blue-50 hover:border-blue-300;
+  @apply hover:shadow-lg hover:border-gray-200;
   @apply flex-col items-center content-center;
 }
 
@@ -33,7 +33,11 @@ Tweets
 }
 
 .card_text {
-  @apply text-sm text-gray-500 group-hover:text-gray-900;
+  @apply text-sm text-gray-500 transition-colors;
+}
+
+.card_tweet:hover .card_text {
+  @apply text-gray-900;
 }
 
 .card_media {
@@ -43,4 +47,12 @@ Tweets
 .card_media img {
   @apply w-auto h-auto;
   @apply border border-gray-300 rounded;
+}
+
+.icon_twitter {
+  @apply text-base text-blue-300;
+}
+
+.card_tweet:hover .icon_twitter {
+  @apply text-blue-500;
 }
