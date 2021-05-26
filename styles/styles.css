@@ -11,10 +11,10 @@
 }
 
 .page-home .header {
-  @apply bg-purple-900 bg-gradient-to-br from-purple-900 to-blue-900;
+  @apply bg-gradient-to-br from-purple-900 to-purple-500;
 }
 
-.page-home .header .container-inner {
+.page-home .header .container {
 }
 
 

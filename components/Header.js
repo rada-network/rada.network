@@ -8,12 +8,12 @@ export const Header = () => {
   // console.log(`isAuthenticated: ${isAuthenticated}`)
 
   return (
-    <div className="header">
+    <div className="header overflow-hidden">
       <div className="container">
 
         <div className="flex flex-wrap">
           <div className="py-12 lg:py-16 flex flex-col max-w-screen-sm lg:w-1/2">
-            <h2 className="mb-2 text-2xl leading-10 lg:text-4xl lg:leading-snug font-medium text-white">
+            <h2 className="mb-2 text-2xl leading-8 lg:text-4xl lg:leading-snug font-medium text-white">
               <span className="relative inline-block">
                 Discover all the latest Cardano News, Feeds, Discussions, Projects and more... 
               </span>
@@ -22,7 +22,7 @@ export const Header = () => {
               and always be in the loop!
             </p>
           </div>
-          <div className="lg:w-1/2">
+          <div className="hidden lg:flex lg:w-1/2 lg:-my-12">
             <img className="block w-auto h-auto" src="/images/hero.png" alt="dhunt.io" />
           </div>
           {/* <div className="mt-4">
