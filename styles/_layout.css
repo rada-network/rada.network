@@ -31,7 +31,7 @@ Section
 }
 
 .section-header {
-  @apply flex justify-between items-center mb-6;
+  @apply flex flex-wrap justify-between items-center mb-6;
 }
 
 .section-title {
@@ -44,7 +44,11 @@ Section
 
 .section-cta {
   @apply text-sm font-medium;
-  @apply flex justify-between items-center;
+  @apply flex mt-4 md:mt-0 justify-between items-center;
+}
+
+.section-cta .btn-group + .btn-group {
+  @apply ml-4;
 }
 
 /* 

@@ -76,7 +76,7 @@ export const SocialPostsList = observer(({posts, extraClass, grid, gap, title, t
                 <Button>Reddit</Button>
               </div> */}
 
-              <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
+              <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
                 <Button active={store.state.socialOrder == 'popular'} onClick={e => store.state.setSocialOrder('popular')}>Popular</Button>
                 <Button active={store.state.socialOrder == 'latest'} onClick={e => store.state.setSocialOrder('latest')}>Latest</Button>
               </div>
