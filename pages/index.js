@@ -42,7 +42,7 @@ const getData = async (socialOrder) => {
     variables: {
       skip: 0,
       take: 12,
-      day : 0,
+      day : 1,
       orderBy: socialOrder === 'popular' ? {favoriteCount: "desc"} : {createdAt: "asc"},
       lang : "en"
     }

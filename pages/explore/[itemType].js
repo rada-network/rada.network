@@ -17,7 +17,7 @@ const getData = async (itemType, socialOrder) => {
     const dataTweet = await client.query({
       query: postsTweet,
       variables: {
-        skip: 0, take: 14, day:0,
+        skip: 0, take: 18, day:1,
         orderBy: socialOrder === "popular" ? {favoriteCount: "desc"} : {createdAt: "desc"},
         lang : "en"}
     })
@@ -27,7 +27,10 @@ const getData = async (itemType, socialOrder) => {
     query: itemsByItemType,
     variables: !["nft", "dapp", "token", "defi"].includes(itemType)
       ? {take: 150, skip: 0, itemType: "", orderBy: {createdAt: "desc"}}
-      : {take: 10, skip: 0, itemType: itemType, orderBy: {createdAt: "asc"}}
+      : {take: 12,
+        skip: 0,
+        itemType: itemType,
+        orderBy: socialOrder === "popular" ? {createdAt: "asc"} : {createdAt: "desc"}}
   })
   return dataItem.data.itemFeed
 }

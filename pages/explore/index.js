@@ -1,11 +1,11 @@
-import {Header} from "../components/Header";
-import {Layout} from "../components/page-layouts/OneColumn";
+import {Header} from "../../components/Header";
+import {Layout} from "../../components/page-layouts/OneColumn";
 import {useRouter} from "next/router";
-import getClient from "../data/client";
+import getClient from "../../data/client";
 
-import allItems from "../data/query/posts"
+import allItems from "../../data/query/posts"
 import useSWR from "swr";
-import {ProjectsList} from "../components/card-layouts/ProjectsList";
+import {ProjectsList} from "../../components/card-layouts/ProjectsList";
 
 
 const getData = async () => {
