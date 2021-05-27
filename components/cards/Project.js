@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import timeDifference from "../../lib/util";
+import utils from "../../lib/util";
 
 import { RiArrowUpSFill } from "react-icons/ri";
 import { RiChat1Fill } from "react-icons/ri";
@@ -62,7 +62,7 @@ export const Card = ({
             { projectDate && 
             <div className="metadata project-metadata_date">
               {/*<span className="metadata-value">{projectDate.split(('T'))[0]}</span>*/}
-              <span className="metadata-value">{timeDifference(new Date(), new Date(projectDate))}</span>
+              <span className="metadata-value">{utils.timeDifference(new Date(), new Date(projectDate))}</span>
             </div> }
 
           </div>
