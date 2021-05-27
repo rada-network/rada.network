@@ -109,7 +109,7 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
             <span className="mr-1 icon text-sm">
               <i className="fal fa-comment"></i>
             </span>
-            <span title={"likes"}>{commentCount}</span>
+            <span title={"likes"}>{post.replyCount}</span>
           </div>
           <div className="metadata">
             <span className="mr-1 icon text-sm">
