@@ -89,3 +89,22 @@ Metadata
   @apply w-full justify-between;
 }
 
+.tweet_metadata_name {
+  @apply text-sm font-medium text-gray-900 text-opacity-100 mb-0.5;
+}
+
+/* .card_tweet:hover .tweet_metadata_wrapper svg {
+  opacity: 1;
+}
+
+.card_tweet:hover .tweet_metadata_favoritecount svg {
+  fill: #EF4444;
+}
+
+.card_tweet:hover .tweet_metadata_retweetcount svg {
+  fill: #10B981;
+}
+
+.card_tweet:hover .tweet_metadata_commentcount svg {
+  fill: #2563EB;
+} */

@@ -6,6 +6,9 @@ Icons Styles
 
 .icon {
   @apply inline-block;
+  svg {
+    width: 1em;
+  }
 }
 
 .cf {

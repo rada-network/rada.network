@@ -69,7 +69,7 @@ Project
   @apply relative transition-all;
   @apply bg-white border border-gray-900 border-opacity-5;
   @apply hover:shadow-lg hover:border-opacity-10;
-  
+
   .card-body {
     @apply h-full justify-items-stretch bg-white;
   }
@@ -87,7 +87,7 @@ Project
   }
 
   .card-title {
-    @apply text-sm md:text-base font-semibold;
+    @apply text-base font-semibold;
   }
 
   .card-text {

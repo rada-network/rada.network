@@ -15,7 +15,7 @@ export const Card = ({title, cta, text, itemType}) => {
         </div> }
         { text && 
         <div className={`card-body-main ${styles.card_body__main}`}>
-          <div className={`card-text ${styles.card_text}`}>{text}</div>
+          <div className={`card-text line-clamp-5 ${styles.card_text}`}>{text}</div>
         </div> }
         { cta && 
         <div className={`card-body-footer ${styles.card_body__footer}`}>
