@@ -26,7 +26,7 @@ const getData = async (itemType, socialOrder) => {
   const dataItem = await client.query({
     query: itemsByItemType,
     variables: !["nft", "dapp", "token", "defi"].includes(itemType)
-      ? {take: 150, skip: 0, itemType: "", orderBy: {createdAt: "desc"}}
+      ? {take: 150, skip: 0, itemType: "", orderBy: socialOrder === "popular" ? {createdAt: "asc"} : {createdAt: "desc"}}
       : {take: 12,
         skip: 0,
         itemType: itemType,

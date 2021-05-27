@@ -64,7 +64,7 @@ const getData = async (socialOrder) => {
     socialOrder = "latest"
   }
 
-  const posts = await getPosts({type : "",skip : 0,take : 12,orderBy : {createdAt: "desc"}})
+  const posts = await getPosts({type : "",skip : 0,take : 12, socialOrder})
 
   const postsNFT = await getPosts({type : "nft",skip : 0,take : 6,orderBy : {createdAt: "desc"}})
 
