@@ -21,6 +21,8 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
   }
 
   const link = `https://twitter.com/${accountName}/status/${post.id}`
+  const tweetDate = utils.timeDifference(new Date(), new Date(createdAt))
+  const titleTime = utils.titleTime(createdAt)
 
   const showPlatform = (hashtags) => {
     // return unique hashtag
@@ -59,7 +61,7 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
                   <span className="text-xs text-gray-900 text-opacity-50">@{accountName}</span>
                 </div>
                 <div className={`metadata tweet_metadata_date ${styles.tweet_metadata}`}>
-                  <span className="metadata-value">{utils.timeDifference(new Date(), new Date(createdAt))}</span>
+                  <span className="metadata-value" title={`${titleTime}`}>{tweetDate}</span>
                 </div>
               </div>
             </div>

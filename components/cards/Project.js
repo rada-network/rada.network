@@ -23,6 +23,8 @@ export const Card = ({
   link,
   voteTotal,
 }) => {
+  const postDate = utils.timeDifference(new Date(), new Date(projectDate))
+  const titleTime = utils.titleTime(projectDate)
   return (
     <div className="flex-col items-center content-center card group card-project">
 
@@ -62,7 +64,7 @@ export const Card = ({
             { projectDate && 
             <div className="metadata project-metadata_date">
               {/*<span className="metadata-value">{projectDate.split(('T'))[0]}</span>*/}
-              <span className="metadata-value">{utils.timeDifference(new Date(), new Date(projectDate))}</span>
+              <span className="metadata-value" title={`${titleTime}`}>{postDate}</span>
             </div> }
 
           </div>
