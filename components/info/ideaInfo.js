@@ -1,4 +1,5 @@
 import timeDifference from "../../lib/util";
+import utils from "../../lib/util";
 
 export default function IdeaInfo({item}){
   return (
@@ -13,7 +14,7 @@ export default function IdeaInfo({item}){
       </div>
       <div className="list-group-item">
         <span className="flex-1 w-20">Created at</span>
-        <strong className="ml-2 font-medium text-right text-gray-900 text-opacity-90">{timeDifference(new Date().getTime(),new Date(item.createdAt).getTime())}</strong>
+        <strong className="ml-2 font-medium text-right text-gray-900 text-opacity-90">{utils.timeDifference(new Date().getTime(),new Date(item.createdAt).getTime())}</strong>
       </div>
       <div className="pb-1 list-group-item">
         <span className="flex-1 w-20">Owner</span>

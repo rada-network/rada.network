@@ -1,4 +1,5 @@
 import timeDifference from "../../lib/util";
+import utils from "../../lib/util";
 
 export function CommentHeader({comment,user, level, parent, ItemCommentStore}){
   const createWalletAddressDisplay = (address) => {
@@ -21,7 +22,7 @@ export function CommentHeader({comment,user, level, parent, ItemCommentStore}){
             ""
         }
         <span className="text-xs ml-4 text-gray-900 text-opacity-50">
-          {timeDifference(new Date().getTime(), comment.createdAt)}
+          {utils.timeDifference(new Date().getTime(), comment.createdAt)}
         </span>
       </div>
     </div>
