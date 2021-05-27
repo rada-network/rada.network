@@ -8,6 +8,9 @@ import isVote from "../../data/query/isVoted";
 import useSWR from "swr";
 
 const getData = async (itemId, walletAddress) => {
+  if (!walletAddress){
+    return null
+  }
   const client = getClient()
   const isVote_ = await client.query({
     query: isVote,

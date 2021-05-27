@@ -92,6 +92,7 @@ export default observer(function Explore(posts) {
     )
     return showPosts(data)
   }catch (err){
+    console.log(err)
     console.log("error in [itemType].js")
   }
 

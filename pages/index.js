@@ -18,45 +18,59 @@ import { useStore } from "../lib/useStore"
 import {SocialPostsList} from "../components/card-layouts/SocialPostsList";
 import {action, autorun, computed, makeObservable, observable} from "mobx";
 
-class ObservableTodoStore {
-  todos = [];
-  pendingRequests = 0;
-
+class ObservableTweetStore {
+  homeDisplay = 0
+  currentTab = "latest";
+  tweets = []
   constructor() {
     makeObservable(this, {
-      todos: observable,
-      pendingRequests: observable,
-      completedTodosCount: computed,
-      report: computed,
-      addTodo: action,
+      currentTab: observable,
+      addTweet: action,
+      tweets: observable,
+      homeDisplay: observable,
     });
-    autorun(() => console.log(this.report));
-  }
-
-  get completedTodosCount() {
-    return this.todos.filter(
-      todo => todo.completed === true
-    ).length;
+    autorun(() => this.report);
   }
 
   get report() {
-    if (this.todos.length === 0)
-      return "<none>";
-    const nextTodo = this.todos.find(todo => todo.completed === false);
-    return `Next todo: "${nextTodo ? nextTodo.task : "<none>"}". ` +
-      `Progress: ${this.completedTodosCount}/${this.todos.length}`;
+    if (this.currentTab === "popular"){
+      this.tweetsLatest = []
+    }
+    else if (this.currentTab === "latest"){
+      this.tweetsPopular = []
+    }
   }
+  addTweet(tws) {
+    if (tws.length > 0){
+      for (let tw of tws){
+        if (this.tweets.filter(el => {
+          return el.id === tw.id
+        }).length === 0){
+          this.tweets.push(tw)
+        }
+        // if (this.currentTab === "popular"){
+        //   if (this.tweetsPopular.filter(el => {
+        //     return el.id === tw.id
+        //   }).length === 0){
+        //     this.tweetsPopular.push(tw)
+        //   }
+        //
+        // }
+        // else if (this.currentTab === "latest"){
+        //   if (this.tweetsLatest.filter(el => {
+        //     return el.id === tw.id
+        //   }).length === 0){
+        //     this.tweetsLatest.push(tw)
+        //   }
+        // }
+      }
 
-  addTodo(task) {
-    this.todos.push({
-      task: task,
-      completed: false,
-      assignee: null
-    });
+    }
   }
 }
 
-const observableTodoStore = new ObservableTodoStore();
+
+const observableTweetStore = new ObservableTweetStore();
 
 const getData = async (socialOrder) => {
 
@@ -82,19 +96,20 @@ const getData = async (socialOrder) => {
 
 export default observer(function Home(props) {
   const store = useStore()
-  const getKey = () => {
-    return [store?.state.socialOrder]
-  }
-  
-  const {data} = useSWR(getKey, getData, {initialData: props, revalidateOnMount: !store.inited})
+
+  const {data,error} = useSWR(["latest"], getData, {initialData: props, revalidateOnMount: !store.inited})
   // const data = props
   // update to store
+  if (error){
+    return <p>network error</p>
+  }
+  if (!data) return <div>loading...</div>
   if (store) {
     store.projects.update(data.posts)
     store.projects.update(data.postsNFT)
     store.projects.update(data.postsDapp)
   }
-  // console.log("data.postsTweet: ", data.postsTweet)
+  observableTweetStore.tweets = data.postsTweet
   return (
     <Layout extraClass="page-home" meta={"dhunt.io"}>
       <Header/>
@@ -116,33 +131,42 @@ export default observer(function Home(props) {
         cta="View all"
         itemType={"all"}
       />
-      <SocialPostsList
+      {observableTweetStore.homeDisplay === 1 || observableTweetStore.homeDisplay === 0 ?
+        <SocialPostsList
         grid="1"
         gap="2"
         title="Social Signal"
         itemType={"tweet"}
         titleIcon="fire-alt"
         titleIconColor="red-500"
-        posts={data.postsTweet}
-      />
-      <ProjectsList
-        grid="2"
-        gap="4"
-        itemType={"nft"}
-        title="NFTs that you cannot missed"
-        titleIcon="icons"
-        titleIconColor="purple-500"
-        posts={data.postsNFT}
-      />
-      <ProjectsList
-        grid="2"
-        gap="4"
-        itemType={"dapp"}
-        title="Most Active DApps"
-        titleIcon="cube"
-        titleIconColor="pink-500"
-        posts={data.postsDapp}
-      />
+        dataStore={observableTweetStore}
+        initPosts={{'latest' : data.postsTweet,"popular" : []}}
+      />  : ""
+      }
+      {observableTweetStore.homeDisplay === 2 || observableTweetStore.homeDisplay === 0 ?
+        <ProjectsList
+          grid="2"
+          gap="4"
+          itemType={"nft"}
+          title="NFTs that you cannot missed"
+          titleIcon="icons"
+          titleIconColor="purple-500"
+          posts={data.postsNFT}
+        /> : ""
+      }
+
+      {observableTweetStore.homeDisplay === 3 || observableTweetStore.homeDisplay === 0 ?
+        <ProjectsList
+          grid="2"
+          gap="4"
+          itemType={"dapp"}
+          title="Most Active DApps"
+          titleIcon="cube"
+          titleIconColor="pink-500"
+          posts={data.postsDapp}
+        /> : ""
+      }
+
       {/* <TopUsersList
         grid="5"
         gap="5"
@@ -163,17 +187,19 @@ export default observer(function Home(props) {
         grid="3"
         gap="5"
       /> */}
+      {observableTweetStore.homeDisplay === 4 || observableTweetStore.homeDisplay === 0 ?
+        <ProjectsList
+          grid="2"
+          gap="4"
+          itemType={"all"}
+          title="Latest Ideas"
+          titleIcon="code-branch"
+          titleIconColor="blue-500"
+          cta="Sorted by"
+          posts={data.posts}
+        /> : ""
+      }
 
-      <ProjectsList
-        grid="2"
-        gap="4"
-        itemType={"all"}
-        title="Latest Ideas"
-        titleIcon="code-branch"
-        titleIconColor="blue-500"
-        cta="Sorted by"
-        posts={data.posts}
-      />
     </Layout>
   )
 })

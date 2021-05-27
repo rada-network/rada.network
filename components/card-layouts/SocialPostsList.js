@@ -3,38 +3,36 @@ import {IoChevronForwardSharp} from "react-icons/io5";
 import {RiFireFill, RiTimeFill} from "react-icons/ri";
 import { observer } from "mobx-react"
 
-import React from "react"
+import React, {useState} from "react"
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import {TweetCard} from "../cards/Tweet";
 import { useStore } from "../../lib/useStore"
+import {getTweet} from "../../data/query/postsTweet";
 
 
-export const SocialPostsList = observer(({posts, extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
-
-  const store = useStore()
-
+export const SocialPostsList = observer( ({dataStore, initPosts,extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
+  const [loadingButton,setLoadingButton] = useState(false)
   const Button = ({active, onClick, children}) => {
     if (active) return <a className="btn rounded bg-white px-4 py-1 shadow-sm" onClick={onClick}>{children}</a>
     return <a className="btn rounded bg-white text-gray-400 bg-opacity-0 px-4 py-1" onClick={onClick}>{children}</a>
   }
+  let posts = dataStore.tweets;
 
-  const showPosts = (posts) => {
-    return (
-      posts.map((post) => (
-        <TweetCard key={post.id}
-          post={post}
-          favoriteCount={post.favoriteCount}
-          retweetCount={post.retweetCount}
-          hashtags={post.source.entities.hashtags}
-          source={post.source.source}
-          createdAt={post.createdAt}
-          fullText={post.source.full_text}
-          expandedUrl={post.source.extended_entities}
-          media={post.source.entities.media}
-          tweetUser={post.tweetUser.source}
-        />
-      ))
-    )
+  const handleLoadMoreTweets = async (e) =>{
+    if (dataStore.tweets.length > 0){
+      dataStore.homeDisplay = 1;
+    }
+    setLoadingButton(true)
+    const data = await getTweet({socialOrder : dataStore.currentTab,skip : dataStore.tweets.length,take : 12});
+    if (data.loading){
+      return false
+    }
+    setLoadingButton(false)
+    dataStore.addTweet(data.data.tweetFeed)
+  }
+
+  if (dataStore.homeDisplay !==0 && dataStore.homeDisplay !== 1){
+    return ""
   }
 
   return (
@@ -51,7 +49,7 @@ export const SocialPostsList = observer(({posts, extraClass, grid, gap, title, t
 								<i className={`fad fa-${titleIcon}`}></i>
 							</span> }
 
-              {itemType !== undefined ? 
+              {itemType !== undefined ?
               <Link href={`/explore/${itemType}`}>
                 {title}
               </Link>
@@ -77,8 +75,8 @@ export const SocialPostsList = observer(({posts, extraClass, grid, gap, title, t
               </div> */}
 
               <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
-                <Button active={store.state.socialOrder == 'popular'} onClick={e => store.state.setSocialOrder('popular')}>Popular</Button>
-                <Button active={store.state.socialOrder == 'latest'} onClick={e => store.state.setSocialOrder('latest')}>Latest</Button>
+                <Button active={dataStore.currentTab === 'popular'} onClick={e => {dataStore.currentTab = "popular";dataStore.tweets = [];handleLoadMoreTweets(e)} }>Popular</Button>
+                <Button active={dataStore.currentTab === 'latest'} onClick={e => {dataStore.currentTab = "latest";dataStore.tweets = [];handleLoadMoreTweets(e) }}>Latest</Button>
               </div>
 
             </div>
@@ -144,29 +142,56 @@ export const SocialPostsList = observer(({posts, extraClass, grid, gap, title, t
               }
             </div> */}
             <ResponsiveMasonry
-              columnsCountBreakPoints={{350: 1, 640: 2, 1024: 3}} 
+              columnsCountBreakPoints={{350: 1, 640: 2, 1024: 3}}
             >
               <Masonry columnsCount={3} gutter="1rem">
                 {
                 detail
                   // ? showPosts(postsByDate)
                   ? "in progress"
-                  : showPosts(posts)
+                  : posts.map((post) => (
+                    <TweetCard key={post.id}
+                               post={post}
+                               favoriteCount={post.favoriteCount}
+                               retweetCount={post.retweetCount}
+                               hashtags={post.source.entities.hashtags}
+                               source={post.source.source}
+                               createdAt={post.createdAt}
+                               fullText={post.source.full_text}
+                               expandedUrl={post.source.extended_entities}
+                               media={post.source.entities.media}
+                               tweetUser={post.tweetUser.source}
+                    />
+                  ))
                 }
               </Masonry>
             </ResponsiveMasonry>
           </div>
 
           <div className="section-footer">
-            {itemType !== undefined
-              ? <a href={`/explore/${itemType}`}
+            {loadingButton
+              ? <a
+                   className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+                <span className="btn-text">Loading...</span>
+                <span className="icon"><IoChevronForwardSharp/></span>
+              </a>
+              : <a onClick={handleLoadMoreTweets}
+                   className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+                <span className="btn-text">Show all Social Signals</span>
+                <span className="icon"><IoChevronForwardSharp/></span>
+              </a>
+            }
+					</div>
+          <div className="section-footer">
+            {dataStore.homeDisplay === 1 ?
+              <a onClick={e => dataStore.homeDisplay = 0}
                  className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
-                <span class="btn-text">Show all Social Signals</span>
+                <span className="btn-text">Back to home</span>
                 <span className="icon"><IoChevronForwardSharp/></span>
               </a>
               : ""
             }
-					</div>
+          </div>
         </div>
       </div>
     </div>
