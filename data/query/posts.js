@@ -1,6 +1,7 @@
 import {gql} from '@apollo/client';
+import getClient from "../client";
 
-export default gql`
+const postsGql = gql`
   query itemFeed($skip : Int!, $take : Int!, $itemType: String!, $orderBy: ItemOrderInput){
     itemFeed (skip : $skip, take : $take, itemType: $itemType, orderBy: $orderBy){
       id
@@ -29,3 +30,12 @@ export default gql`
     }
   }
   `
+export default postsGql
+
+export async function getPosts({type,take,skip,orderBy}){
+  const client = getClient()
+  return await client.query({
+    query: postsGql,
+    variables: {skip: skip, take: take, itemType: type, orderBy: orderBy}
+  })
+}

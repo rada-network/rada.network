@@ -11,42 +11,66 @@ import {CategoryList} from '../components/card-layouts/CategoryList';
 import { observer } from "mobx-react"
 
 //ReactIcons
-import {IoChevronForwardSharp} from "react-icons/io5";
-import getClient from "../data/client";
-import postQuery from "../data/query/posts"
-import tweetQuery from "../data/query/postsTweet"
+import {getPosts} from "../data/query/posts"
+import {getTweet} from "../data/query/postsTweet"
 import useSWR from "swr";
 import { useStore } from "../lib/useStore"
 import {SocialPostsList} from "../components/card-layouts/SocialPostsList";
+import {action, autorun, computed, makeObservable, observable} from "mobx";
+
+class ObservableTodoStore {
+  todos = [];
+  pendingRequests = 0;
+
+  constructor() {
+    makeObservable(this, {
+      todos: observable,
+      pendingRequests: observable,
+      completedTodosCount: computed,
+      report: computed,
+      addTodo: action,
+    });
+    autorun(() => console.log(this.report));
+  }
+
+  get completedTodosCount() {
+    return this.todos.filter(
+      todo => todo.completed === true
+    ).length;
+  }
+
+  get report() {
+    if (this.todos.length === 0)
+      return "<none>";
+    const nextTodo = this.todos.find(todo => todo.completed === false);
+    return `Next todo: "${nextTodo ? nextTodo.task : "<none>"}". ` +
+      `Progress: ${this.completedTodosCount}/${this.todos.length}`;
+  }
+
+  addTodo(task) {
+    this.todos.push({
+      task: task,
+      completed: false,
+      assignee: null
+    });
+  }
+}
+
+const observableTodoStore = new ObservableTodoStore();
 
 const getData = async (socialOrder) => {
-  const client = getClient()
 
-  const posts = await client.query({
-    query: postQuery,
-    variables: {skip: 0, take: 12, itemType: "", orderBy: {createdAt: "desc"}}
-  })
+  if (typeof socialOrder == "undefined"){
+    socialOrder = "latest"
+  }
 
-  const postsNFT = await client.query({
-    query: postQuery,
-    variables: {skip: 0, take: 4, itemType: "nft"},
-  })
+  const posts = await getPosts({type : "",skip : 0,take : 12,orderBy : {createdAt: "desc"}})
 
-  const postsDapp = await client.query({
-    query: postQuery,
-    variables: {skip: 0, take: 4, itemType: "dapp"}
-  })
+  const postsNFT = await getPosts({type : "nft",skip : 0,take : 6,orderBy : {createdAt: "desc"}})
 
-  const postsTweet = await client.query({
-    query: tweetQuery,
-    variables: {
-      skip: 0,
-      take: 12,
-      day : 1,
-      orderBy: socialOrder === 'popular' ? {favoriteCount: "desc"} : {createdAt: "asc"},
-      lang : "en"
-    }
-  })
+  const postsDapp = await getPosts({type : "dapp",skip : 0,take : 6,orderBy : {createdAt: "desc"}})
+
+  const postsTweet = await getTweet({socialOrder,skip : 0,take : 12});
 
   return {
     posts: posts.data.itemFeed,
