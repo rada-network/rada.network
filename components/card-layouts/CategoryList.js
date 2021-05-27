@@ -60,37 +60,37 @@ export const CategoryList = ({extraClass, grid, gap, title, titleIcon, titleIcon
               title="DeFi"
               itemType={"defi"}
               text="Financial smart contract, DApps, and financial protocols"
-              cta="15 Items"
+              cta="15 hunted"
             />
             <Card
               title="DEX"
               itemType={"token"}
               text="Decentralized cryptocurrency exchanges that allow users to trade cryptocurrencies"
-              cta="32 Items"
+              cta="32 hunted"
             />
             <Card
               title="NFT"
               itemType={"nft"}
               text="Nonfungible tokens NFT is another type of digital asset besides cryptocurrencies"
-              cta="192 Items"
+              cta="192 hunted"
             />
             <Card 
               title="DApps"
               itemType={"dapp"}
               text="A Dapp, or decentralized application, is a software application that runs on a distributed network"
-              cta="202 Items"
+              cta="202 hunted"
             />
             <Card 
               title="Utilities"
               itemType={"utilities"}
               text="Blockchain utilities refer to the blockchain applications built on blockchains to provide utility functions to users"
-              cta="8 Items"
+              cta="8 hunted"
             />
             <Card 
               title="Gambling"
               itemType={"dapp"}
               text="Blockchain gambling apps are any gambling products that include blockchain elements"
-              cta="8 Items"
+              cta="8 hunted"
             />
 					</div>
 

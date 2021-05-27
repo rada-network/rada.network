@@ -17,7 +17,7 @@ Tweets
 }
 
 .card_footer {
-  @apply text-sm pt-0;
+  @apply text-sm pt-1;
 }
 
 .card_body__header {
@@ -61,8 +61,31 @@ Tweets
 
 .icon_twitter {
   @apply text-base text-blue-300;
+  @apply absolute right-4 top-4;
 }
 
 .card_tweet:hover .icon_twitter {
   @apply text-blue-500;
 }
+
+/* 
+Metadata 
+*/
+.tweet_metadata_wrapper {
+  svg {
+    width: 1em;
+    opacity: 0.4;
+  }
+}
+
+.tweet_metadata + .tweet_metadata {
+  @apply ml-1;
+  &::before {
+    @apply mr-1 leading-4;
+  }
+}
+
+.card_footer .tweet_metadata_wrapper {
+  @apply w-full justify-between;
+}
+
