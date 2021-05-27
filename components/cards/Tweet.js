@@ -2,18 +2,19 @@ import React from "react";
 import Link from "next/link";
 import {RiHeartFill, RiTwitterFill} from "react-icons/ri";
 
+import timeDifference from "../../lib/util";
 import styles from '../../styles/modules/Card.tweet.module.css'
 
 export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
                             fullText, createdAt, media, tweetUser}) => {
-  let twitterName1
+  let twitterName
   let accountName
   let avatarImg
   let bannerImg
 
   if (tweetUser === undefined) console.log("tweetUser is undefined")
   else{
-    twitterName1 = tweetUser.name
+    twitterName = tweetUser.name
     accountName = tweetUser.screen_name
     avatarImg = tweetUser.profile_image_url_https
     bannerImg = tweetUser.profile_banner_url
@@ -51,14 +52,14 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
             </div>
             <div className="flex flex-col ml-3">
               <div className="user-info justify-center ">
-                <span className="text-sm font-medium">{twitterName1}</span>
+                <span className="text-sm font-medium">{twitterName}</span>
               </div>
               <div className={`metadata-wrapper pr-8 ${styles.tweet_metadata_wrapper}`}>
                 <div className={`metadata tweet_metadata_username ${styles.tweet_metadata}`}>
                   <span className="text-xs text-gray-900 text-opacity-50">@{accountName}</span>
                 </div>
                 <div className={`metadata tweet_metadata_date ${styles.tweet_metadata}`}>
-                  <span className="metadata-value">{createdAt.split(('T'))[0]}</span>
+                  <span className="metadata-value">{timeDifference(new Date(), new Date(createdAt))}</span>
                 </div>
               </div>
             </div>
