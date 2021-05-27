@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Card} from "../cards/Project";
-import {DropDown_} from "../dropdown/DropDown_";
+import {DropDown} from "../dropdown/DropDown";
 
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
@@ -81,9 +81,7 @@ export const ProjectsList = observer (({posts, extraClass, grid, gap, title, tit
 							
               {/* Hieu: Example Dropdown in Section Title */}
               <div className="dropdown ml-2 inline-flex justify-center items-center">
-								<DropDown_/>
-								<span className="caret ml-2 -mt-0.5"/>
-                {/*<span className="text-blue-700">Today</span>*/}
+								<DropDown color="white"/>
               </div>
 
 						</div>

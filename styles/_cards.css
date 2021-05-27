@@ -67,8 +67,9 @@ Project
 .card-project {
 
   @apply relative transition-all;
-  @apply bg-white border border-gray-100;
-
+  @apply bg-white border border-gray-900 border-opacity-5;
+  @apply hover:shadow-lg hover:border-opacity-10;
+  
   .card-body {
     @apply h-full justify-items-stretch bg-white;
   }

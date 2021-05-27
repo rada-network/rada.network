@@ -1,7 +1,7 @@
 import React from "react";
 import { createPopper } from "@popperjs/core";
 
-export const Dropdown = ({ color }) => {
+export const DropDown = ({ color }) => {
   let bgColor;
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);

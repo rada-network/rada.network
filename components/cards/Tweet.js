@@ -81,12 +81,23 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
 
           <div className="card-body-main">
             <div className={`card-text ${styles.card_text}`} dangerouslySetInnerHTML={{ __html: fullText}}></div>
-            <div className={`card-media ${styles.card_media}`}>
+            {/* <div className={`card-media ${styles.card_media}`} style={{background: media ? media[0].media_url : "" }}> */}
+
+            {media && 
+              <div className={`card-media ${styles.card_media}`}
+                 style={{backgroundImage: media
+                     ? media[0].media_url
+                       ? "url(" + media[0].media_url + ")"
+                       : ""
+                     : "",
+                 }}>
+
               {media
-                ? <img src={media[0].media_url ? media[0].media_url : ""} className={"project-icon_img w-full h-full rounded object-cover"} style={{height: 141}} alt=""/>
+                ? <img src={media[0].media_url ? media[0].media_url : ""} className={"project-icon_img w-full h-full rounded object-cover"} alt=""/>
                 : ""
               }
-            </div>
+            </div> }
+
           </div>
 
         </div>
@@ -94,13 +105,19 @@ export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
       <div className={`card-footer ${styles.card_footer}`}>
 
         <div className="metadata-wrapper metadata-wrapper_nodivide tweet-metadata-wrapper">
-          <div  className="metadata tweet-comment_count">
+          <div className="metadata">
+            <span className="mr-1 icon text-sm">
+              <i className="fal fa-comment"></i>
+            </span>
+            <span title={"likes"}>{commentCount}</span>
+          </div>
+          <div className="metadata">
             <span className="mr-1 icon text-sm">
               <i className="fal fa-retweet"></i>
             </span>
             <span title={"retweet count"}>{retweetCount}</span>
           </div>
-          <div className="metadata tweet-comment_count">
+          <div className="metadata">
             <span className="mr-1 icon text-sm">
               <i className="fal fa-heart"></i>
             </span>

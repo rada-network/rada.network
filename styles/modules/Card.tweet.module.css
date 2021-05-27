@@ -3,8 +3,8 @@ Tweets
 */
 .card_tweet {
   @apply relative transition-all;
-  @apply bg-white border border-gray-100;
-  @apply hover:shadow-lg hover:border-gray-200;
+  @apply bg-white border border-gray-900 border-opacity-5;
+  @apply hover:shadow-lg hover:border-opacity-10;
   @apply flex-col items-center content-center;
 }
 
@@ -41,12 +41,22 @@ Tweets
 }
 
 .card_media {
-  @apply mt-4 w-auto h-auto max-w-full overflow-hidden;
+  @apply mt-4 w-auto h-auto w-full overflow-hidden;
+  @apply bg-no-repeat bg-cover bg-center;
+  @apply border border-gray-900 border-opacity-10 rounded-lg;
+  min-height: 8rem;
+  max-height: 10rem;
+}
+
+@media only screen and (max-width: 640px) {
+  .card_media {
+    min-height: 12rem;
+    max-height: 14rem;
+  }
 }
 
 .card_media img {
-  @apply w-auto h-auto;
-  @apply border border-gray-300 rounded;
+  @apply w-auto h-auto opacity-0;
 }
 
 .icon_twitter {
