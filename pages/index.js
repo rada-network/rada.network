@@ -19,15 +19,14 @@ import {SocialPostsList} from "../components/card-layouts/SocialPostsList";
 import {action, autorun, computed, makeObservable, observable} from "mobx";
 
 export class ObservableTweetStore {
-  homeDisplay = 0
   currentTab = "latest";
   tweets = []
-  constructor() {
+  constructor({homeStore}) {
+    this.home = homeStore
     makeObservable(this, {
       currentTab: observable,
       addTweet: action,
       tweets: observable,
-      homeDisplay: observable,
     });
     autorun(() => this.report);
   }
@@ -54,17 +53,27 @@ export class ObservableTweetStore {
   }
 }
 
-const observableTweetStore = new ObservableTweetStore();
-const observableItemStore = new ObservableTweetStore()
-const observableNftStore = new ObservableTweetStore()
-const observableDappStore = new ObservableTweetStore()
+export class HomeStore {
+  homeDisplay = 0
+  constructor() {
+    makeObservable(this, {
+      homeDisplay: observable,
+    });
+    autorun(() => {});
+  }
+}
+
+const homeStore = new HomeStore()
+
+const observableTweetStore = new ObservableTweetStore({homeStore});
+const observableItemStore = new ObservableTweetStore({homeStore})
+const observableNftStore = new ObservableTweetStore({homeStore})
+const observableDappStore = new ObservableTweetStore({homeStore})
 
 const getData = async (socialOrder) => {
-
   if (typeof socialOrder == "undefined"){
     socialOrder = "latest"
   }
-
   const posts = await getPosts({type : "",skip : 0,take : 12, socialOrder})
 
   const postsNFT = await getPosts({type : "nft",skip : 0,take : 6,orderBy : {createdAt: "desc"}})
@@ -101,8 +110,9 @@ export default observer(function Home(props) {
   observableItemStore.tweets = data.posts
   observableNftStore.tweets = data.postsNFT
   observableDappStore.tweets = data.postsDapp
+  console.log(homeStore.homeDisplay)
   return (
-    <Layout extraClass="page-home" meta={"dhunt.io"}>
+    <Layout extraClass="page-home" meta={"DHunt.io - Top BlockChain DApps"}>
       <Header/>
       {/* <ProjectsList
         grid="2"
@@ -122,7 +132,7 @@ export default observer(function Home(props) {
         cta="View all"
         itemType={"all"}
       />
-      {observableTweetStore.homeDisplay === 1 || observableTweetStore.homeDisplay === 0 ?
+      {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
         <SocialPostsList
           grid="1"
           gap="2"
@@ -131,11 +141,11 @@ export default observer(function Home(props) {
           titleIcon="fire-alt"
           titleIconColor="red-500"
           dataStore={observableTweetStore}
-          initPosts={{'latest' : data.postsTweet,"popular" : []}}
         />  : ""
       }
-      {observableNftStore.homeDisplay === 1 || observableNftStore.homeDisplay === 0 ?
+      {homeStore.homeDisplay === 2 || homeStore.homeDisplay === 0 ?
         <ProjectsList
+          homeDisplay={2}
           grid="2"
           gap="4"
           itemType={"nft"}
@@ -147,8 +157,9 @@ export default observer(function Home(props) {
         /> : ""
       }
 
-      {observableDappStore.homeDisplay === 1 || observableDappStore.homeDisplay === 0 ?
+      {homeStore.homeDisplay === 3 || homeStore.homeDisplay === 0 ?
         <ProjectsList
+          homeDisplay={3}
           grid="2"
           gap="4"
           itemType={"dapp"}
@@ -180,8 +191,9 @@ export default observer(function Home(props) {
         grid="3"
         gap="5"
       /> */}
-      {observableItemStore.homeDisplay === 1 || observableItemStore.homeDisplay === 0 ?
+      {homeStore.homeDisplay === 4 || homeStore.homeDisplay === 0 ?
         <ProjectsList
+          homeDisplay={4}
           grid="2"
           gap="4"
           itemType={"all"}

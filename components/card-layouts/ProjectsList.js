@@ -14,6 +14,7 @@ import {observer} from "mobx-react";
 import {getPosts} from "../../data/query/posts";
 
 export const ProjectsList = observer(({
+                                        homeDisplay,
                                         dataStore,
                                         extraClass,
                                         grid,
@@ -39,7 +40,7 @@ export const ProjectsList = observer(({
   const currentTime = fullDate.split(('T'))[0]
 
   const handleLoadMoreItems = async (e) => {
-    if (dataStore.tweets.length > 0) dataStore.homeDisplay = 1
+    if (dataStore.tweets.length > 0) dataStore.home.homeDisplay = homeDisplay
     setLoadingButton(true)
 
     const itemsData = await getPosts({
@@ -48,12 +49,11 @@ export const ProjectsList = observer(({
       take: 12,
       type: ""
     });
-    console.log("itemsData: ", itemsData != null)
     if (itemsData.loading) return false
     setLoadingButton(false)
     dataStore.addTweet(itemsData.data.itemFeed)
   }
-  if (dataStore.homeDisplay !== 0 && dataStore.homeDisplay !== 1) return ""
+  if (dataStore.home.homeDisplay !== 0 && dataStore.home.homeDisplay !== homeDisplay) return ""
 
   const Button = ({active, onClick, children}) => {
     if (active) return <a className="btn rounded bg-white px-4 py-1 shadow-sm" onClick={onClick}>{children}</a>
@@ -190,8 +190,8 @@ export const ProjectsList = observer(({
             }
           </div>
           <div className={"section-footer"}>
-						{dataStore.homeDisplay === 1
-							? <a onClick={e => dataStore.homeDisplay = 0} href={"#top"}
+						{dataStore.home.homeDisplay === homeDisplay
+							? <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
                    className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
                 <span className="btn-text">Back to home</span>

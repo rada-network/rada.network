@@ -15,7 +15,7 @@ import { useStore } from "../../lib/useStore"
 import {getTweet} from "../../data/query/postsTweet";
 
 
-export const SocialPostsList = observer( ({dataStore, initPosts,extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
+export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
   const [loadingButton,setLoadingButton] = useState(false)
   const Button = ({active, onClick, children}) => {
     if (active) return <a className="btn rounded bg-white px-4 py-1 shadow-sm" onClick={onClick}>{children}</a>
@@ -25,7 +25,7 @@ export const SocialPostsList = observer( ({dataStore, initPosts,extraClass, grid
 
   const handleLoadMoreTweets = async (e) =>{
     if (dataStore.tweets.length > 0){
-      dataStore.homeDisplay = 1;
+      dataStore.home.homeDisplay = 1;
     }
     setLoadingButton(true)
     const data = await getTweet({
@@ -39,7 +39,7 @@ export const SocialPostsList = observer( ({dataStore, initPosts,extraClass, grid
     dataStore.addTweet(data.data.tweetFeed)
   }
 
-  if (dataStore.homeDisplay !==0 && dataStore.homeDisplay !== 1){
+  if (dataStore.home.homeDisplay !==0 && dataStore.home.homeDisplay !== 1){
     return ""
   }
 
@@ -200,7 +200,7 @@ export const SocialPostsList = observer( ({dataStore, initPosts,extraClass, grid
             }
 					</div>
           <div className="section-footer">
-            {dataStore.homeDisplay === 1 ?
+            {dataStore.home.homeDisplay === 1 ?
               !itemType
                 ? <a href={"#top"}
                      className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
@@ -208,7 +208,7 @@ export const SocialPostsList = observer( ({dataStore, initPosts,extraClass, grid
                   <span className="btn-text">Back to Top</span>
                   <span className="icon"><IoChevronUpCircleSharp/></span>
                 </a>
-                : <a onClick={e => dataStore.homeDisplay = 0} href={"#top"}
+                : <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
                  className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
                 <span className="btn-text">Back to home</span>
