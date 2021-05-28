@@ -38,7 +38,6 @@ export const ProjectsList = observer(({
 
   const fullDate = date.toISOString()
   const currentTime = fullDate.split(('T'))[0]
-
   const handleLoadMoreItems = async (e) => {
     if (dataStore.tweets.length > 0) dataStore.home.homeDisplay = homeDisplay
     setLoadingButton(true)
@@ -47,7 +46,7 @@ export const ProjectsList = observer(({
       socialOrder: dataStore.currentTab,
       skip: dataStore.tweets.length,
       take: 12,
-      type: ""
+      type: itemType === "all" ? "" : itemType
     });
     if (itemsData.loading) return false
     setLoadingButton(false)
