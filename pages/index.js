@@ -48,21 +48,6 @@ export class ObservableTweetStore {
         }).length === 0){
           this.tweets.push(tw)
         }
-        // if (this.currentTab === "popular"){
-        //   if (this.tweetsPopular.filter(el => {
-        //     return el.id === tw.id
-        //   }).length === 0){
-        //     this.tweetsPopular.push(tw)
-        //   }
-        //
-        // }
-        // else if (this.currentTab === "latest"){
-        //   if (this.tweetsLatest.filter(el => {
-        //     return el.id === tw.id
-        //   }).length === 0){
-        //     this.tweetsLatest.push(tw)
-        //   }
-        // }
       }
 
     }
@@ -70,6 +55,9 @@ export class ObservableTweetStore {
 }
 
 const observableTweetStore = new ObservableTweetStore();
+const observableItemStore = new ObservableTweetStore()
+const observableNftStore = new ObservableTweetStore()
+const observableDappStore = new ObservableTweetStore()
 
 const getData = async (socialOrder) => {
 
@@ -108,7 +96,11 @@ export default observer(function Home(props) {
     store.projects.update(data.postsNFT)
     store.projects.update(data.postsDapp)
   }
+  // init first tweet data to show in homepage
   observableTweetStore.tweets = data.postsTweet
+  observableItemStore.tweets = data.posts
+  observableNftStore.tweets = data.postsNFT
+  observableDappStore.tweets = data.postsDapp
   return (
     <Layout extraClass="page-home" meta={"dhunt.io"}>
       <Header/>
@@ -132,17 +124,17 @@ export default observer(function Home(props) {
       />
       {observableTweetStore.homeDisplay === 1 || observableTweetStore.homeDisplay === 0 ?
         <SocialPostsList
-        grid="1"
-        gap="2"
-        title="Social Signal"
-        itemType={"tweet"}
-        titleIcon="fire-alt"
-        titleIconColor="red-500"
-        dataStore={observableTweetStore}
-        initPosts={{'latest' : data.postsTweet,"popular" : []}}
-      />  : ""
+          grid="1"
+          gap="2"
+          title="Social Signal"
+          itemType={"tweet"}
+          titleIcon="fire-alt"
+          titleIconColor="red-500"
+          dataStore={observableTweetStore}
+          initPosts={{'latest' : data.postsTweet,"popular" : []}}
+        />  : ""
       }
-      {observableTweetStore.homeDisplay === 2 || observableTweetStore.homeDisplay === 0 ?
+      {observableNftStore.homeDisplay === 1 || observableNftStore.homeDisplay === 0 ?
         <ProjectsList
           grid="2"
           gap="4"
@@ -150,11 +142,12 @@ export default observer(function Home(props) {
           title="NFTs that you cannot missed"
           titleIcon="icons"
           titleIconColor="purple-500"
-          posts={data.postsNFT}
+          // posts={data.postsNFT}
+          dataStore={observableNftStore}
         /> : ""
       }
 
-      {observableTweetStore.homeDisplay === 3 || observableTweetStore.homeDisplay === 0 ?
+      {observableDappStore.homeDisplay === 1 || observableDappStore.homeDisplay === 0 ?
         <ProjectsList
           grid="2"
           gap="4"
@@ -162,7 +155,8 @@ export default observer(function Home(props) {
           title="Most Active DApps"
           titleIcon="cube"
           titleIconColor="pink-500"
-          posts={data.postsDapp}
+          // posts={data.postsDapp}
+          dataStore={observableDappStore}
         /> : ""
       }
 
@@ -186,7 +180,7 @@ export default observer(function Home(props) {
         grid="3"
         gap="5"
       /> */}
-      {observableTweetStore.homeDisplay === 4 || observableTweetStore.homeDisplay === 0 ?
+      {observableItemStore.homeDisplay === 1 || observableItemStore.homeDisplay === 0 ?
         <ProjectsList
           grid="2"
           gap="4"
@@ -195,7 +189,7 @@ export default observer(function Home(props) {
           titleIcon="code-branch"
           titleIconColor="blue-500"
           cta="Sorted by"
-          posts={data.posts}
+          dataStore={observableItemStore}
         /> : ""
       }
 
