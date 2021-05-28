@@ -10,9 +10,10 @@ import itemsByItemType from "../../data/query/posts";
 import {getTweet} from "../../data/query/postsTweet";
 import {useRouter} from "next/router";
 import {useStore} from "../../lib/useStore";
-import {ObservableTweetStore} from "../index";
+import {HomeStore, ObservableTweetStore} from "../index";
 
-const observableTweetStore = new ObservableTweetStore()
+const homeStore = new HomeStore()
+const observableTweetStore = new ObservableTweetStore({homeStore})
 
 const getData = async (itemType, socialOrder) => {
   const client = getClient()
