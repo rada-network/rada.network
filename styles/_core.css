@@ -13,8 +13,6 @@ body {
   padding-top: calc(var(--mainnav-height) + 1px);
 }
 
-
-
 /* 
 Links 
 */
@@ -35,4 +33,57 @@ a {
 .link-text-bold {
   @apply text-gray-700 hover:text-gray-900;
   @apply font-medium;
+}
+
+
+/* 
+Main Container
+*/
+.wrapper {
+}
+
+.container {
+  @apply mx-auto px-4 md:px-8 max-w-screen-lg;
+}
+
+/* 
+Main Grid
+*/
+.grid {
+}
+
+/* 
+Section
+*/
+.section {
+  @apply my-8;
+}
+
+.section > .container {
+  @apply px-0;
+}
+
+.section .container > .container-inner {
+  @apply p-4 md:p-8 bg-white shadow-sm rounded;
+}
+
+.section-header {
+  @apply flex flex-wrap justify-between items-center mb-6;
+}
+
+.section-title {
+  @apply text-xl font-semibold;
+}
+
+.section-footer {
+  @apply flex justify-between items-center;
+}
+
+.section-cta {
+  @apply text-sm font-medium;
+  @apply flex mt-4 md:mt-0 justify-between items-center;
+}
+
+.section-cta .btn-group + .btn-group {
+  @apply ml-4;
 }

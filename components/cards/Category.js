@@ -6,7 +6,7 @@ import { IoChevronForwardSharp } from "react-icons/io5";
 
 export const Card = ({title, cta, text, itemType}) => {
   return (
-    <div className={`card group ${styles.card_category}`} type={`${itemType || 'default'}`}>
+    <div className={`card group ${styles.card}`} type={`${itemType || 'default'}`}>
 
       <div className={`card-body ${styles.card_body}`}>
         { title && 

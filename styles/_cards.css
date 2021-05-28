@@ -62,63 +62,6 @@ Generic Styles
 
 
 /*
-Project
-*/
-.card-project {
-
-  @apply relative transition-all;
-  @apply bg-white border border-gray-900 border-opacity-5;
-  @apply hover:shadow-lg hover:border-opacity-10;
-
-  .card-body {
-    @apply h-full justify-items-stretch bg-white;
-  }
-
-  .card-footer {
-    @apply text-sm border-t border-gray-100;
-  }
-
-  .card-body-header {
-    @apply mb-4;
-  }
-
-  .card-body-main {
-    @apply flex pb-1;
-  }
-
-  .card-title {
-    @apply text-base font-semibold;
-  }
-
-  .card-text {
-    @apply text-sm line-clamp-4 text-gray-900 text-opacity-60;
-  }
-
-}
-
-.project-metadata_submitter {
-  @apply hidden;
-}
- 
-.project-submitter {
-  @extend %Img16;
-  @apply rounded-full;
-}
-
-.project-comment_count {
-  @apply flex items-center justify-items-center;
-}
-
-.project-comment_count .icon {
-  @apply text-sm opacity-70;
-}
-
-.card-project .card-media,
-.project-icon {
-  @apply flex-shrink-0 w-px-56 h-px-56 md:w-px-80 md:h-px-80 mr-4 rounded overflow-hidden;
-}
-
-/*
 Media Full
 */
 .card-media-full {

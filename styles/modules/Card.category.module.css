@@ -1,7 +1,7 @@
 /* 
 Category 
 */
-.card_category {
+.card {
   @apply h-48 w-48 mr-4;
   @apply bg-gray-900 text-white;
 }
@@ -14,9 +14,11 @@ Category
   @apply text-xs text-white text-opacity-70;
 }
 
-.card_body_header {}
+.card_body {}
 
-.card_body__main{
+.card_body__header {}
+
+.card_body__main {
   @apply mt-1;
 }
 
@@ -28,22 +30,22 @@ Category
 /* 
 Category Types
 */
-.card_category[type="defi"] {
+.card[type="defi"] {
   @apply bg-gradient-to-br from-red-600 to-red-400;
 }
 
-.card_category[type="token"] {
+.card[type="token"] {
   @apply bg-gradient-to-br from-green-600 to-green-400;
 }
 
-.card_category[type="nft"] {
+.card[type="nft"] {
   @apply bg-gradient-to-br from-purple-600 to-purple-400;
 }
 
-.card_category[type="dapp"] {
+.card[type="dapp"] {
   @apply bg-gradient-to-br from-blue-600 to-blue-400;
 }
 
-.card_category[type="utilities"] {
+.card[type="utilities"] {
   @apply bg-gradient-to-br from-yellow-600 to-yellow-400;
 }

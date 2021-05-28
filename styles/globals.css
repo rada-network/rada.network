@@ -7,9 +7,6 @@
 /* Grid and Layout*/
 /* @import '_type'; */
 
-/* Grid and Layout*/
-@import '_layout';
-
 /* Core HTML elements */
 @import '_core';
 
@@ -23,4 +20,6 @@
 @import '_contents';
 @import '_nav';
 @import '_navbar';
-@import "_carousel";
+@import '_pages';
+@import '_carousel';
+
