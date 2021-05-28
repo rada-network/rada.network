@@ -1,5 +1,10 @@
 import Link from "next/link";
-import {IoChevronForwardSharp} from "react-icons/io5";
+import {
+  IoChevronDownSharp,
+  IoChevronForwardSharp,
+  IoChevronUpCircleOutline,
+  IoChevronUpCircleSharp
+} from "react-icons/io5";
 import {RiFireFill, RiTimeFill} from "react-icons/ri";
 import { observer } from "mobx-react"
 
@@ -23,7 +28,10 @@ export const SocialPostsList = observer( ({dataStore, initPosts,extraClass, grid
       dataStore.homeDisplay = 1;
     }
     setLoadingButton(true)
-    const data = await getTweet({socialOrder : dataStore.currentTab,skip : dataStore.tweets.length,take : 12});
+    const data = await getTweet({
+      socialOrder : dataStore.currentTab,
+      skip : dataStore.tweets.length,
+      take : 12});
     if (data.loading){
       return false
     }
@@ -36,7 +44,7 @@ export const SocialPostsList = observer( ({dataStore, initPosts,extraClass, grid
   }
 
   return (
-    <div className={`section section-socialposts ${extraClass || ''}`}>
+    <div className={`section section-socialposts ${extraClass || ''}`} id={"top"}>
       <div className="container">
         <div className="container-inner">
 
@@ -75,8 +83,16 @@ export const SocialPostsList = observer( ({dataStore, initPosts,extraClass, grid
               </div> */}
 
               <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
-                <Button active={dataStore.currentTab === 'popular'} onClick={e => {dataStore.currentTab = "popular";dataStore.tweets = [];handleLoadMoreTweets(e)} }>Popular</Button>
-                <Button active={dataStore.currentTab === 'latest'} onClick={e => {dataStore.currentTab = "latest";dataStore.tweets = [];handleLoadMoreTweets(e) }}>Latest</Button>
+                <Button
+                  active={dataStore.currentTab === 'popular'}
+                  onClick={e => {dataStore.currentTab = "popular";dataStore.tweets = [];handleLoadMoreTweets(e)} }>
+                  Popular
+                </Button>
+                <Button
+                  active={dataStore.currentTab === 'latest'}
+                  onClick={e => {dataStore.currentTab = "latest";dataStore.tweets = [];handleLoadMoreTweets(e) }}>
+                  Latest
+                </Button>
               </div>
 
             </div>
@@ -170,13 +186,14 @@ export const SocialPostsList = observer( ({dataStore, initPosts,extraClass, grid
 
           <div className="section-footer">
             {loadingButton
-              ? <a
-                   className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+              ? <a className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
+                justify-center py-3 px-6 rounded w-full mt-8 text-sm">
                 <span className="btn-text">Loading...</span>
-                <span className="icon"><IoChevronForwardSharp/></span>
+                <span className="icon"><IoChevronDownSharp/></span>
               </a>
               : <a onClick={handleLoadMoreTweets}
-                   className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+                   className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
+                   justify-center py-3 px-6 rounded w-full mt-8 text-sm">
                 <span className="btn-text">Show all Social Signals</span>
                 <span className="icon"><IoChevronForwardSharp/></span>
               </a>
@@ -184,8 +201,16 @@ export const SocialPostsList = observer( ({dataStore, initPosts,extraClass, grid
 					</div>
           <div className="section-footer">
             {dataStore.homeDisplay === 1 ?
-              <a onClick={e => dataStore.homeDisplay = 0}
-                 className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+              !itemType
+                ? <a href={"#top"}
+                     className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
+                     justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+                  <span className="btn-text">Back to Top</span>
+                  <span className="icon"><IoChevronUpCircleSharp/></span>
+                </a>
+                : <a onClick={e => dataStore.homeDisplay = 0} href={"#top"}
+                 className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
+                 justify-center py-3 px-6 rounded w-full mt-8 text-sm">
                 <span className="btn-text">Back to home</span>
                 <span className="icon"><IoChevronForwardSharp/></span>
               </a>

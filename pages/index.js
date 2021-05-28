@@ -18,7 +18,7 @@ import { useStore } from "../lib/useStore"
 import {SocialPostsList} from "../components/card-layouts/SocialPostsList";
 import {action, autorun, computed, makeObservable, observable} from "mobx";
 
-class ObservableTweetStore {
+export class ObservableTweetStore {
   homeDisplay = 0
   currentTab = "latest";
   tweets = []
@@ -68,7 +68,6 @@ class ObservableTweetStore {
     }
   }
 }
-
 
 const observableTweetStore = new ObservableTweetStore();
 

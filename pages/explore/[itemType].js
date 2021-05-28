@@ -7,27 +7,28 @@ import getClient from "../../data/client";
 import {observer} from "mobx-react";
 
 import itemsByItemType from "../../data/query/posts";
-import postsTweet from "../../data/query/postsTweet";
+import {getTweet} from "../../data/query/postsTweet";
 import {useRouter} from "next/router";
 import {useStore} from "../../lib/useStore";
+import {ObservableTweetStore} from "../index";
+
+const observableTweetStore = new ObservableTweetStore()
 
 const getData = async (itemType, socialOrder) => {
   const client = getClient()
+  if (typeof socialOrder == "undefined") socialOrder = "latest"
   if (itemType === "tweet") {
-    const dataTweet = await client.query({
-      query: postsTweet,
-      variables: {
-        skip: 0, take: 18, day:1,
-        orderBy: socialOrder === "popular" ? {favoriteCount: "desc"} : {createdAt: "desc"},
-        lang : "en"}
-    })
-    return dataTweet.data.tweetFeed
+    const postTweet = await getTweet({socialOrder, skip: 0, take: 12})
+    return postTweet.data.tweetFeed
   }
   const dataItem = await client.query({
     query: itemsByItemType,
     variables: !["nft", "dapp", "token", "defi"].includes(itemType)
-      ? {take: 150, skip: 0, itemType: "", orderBy: socialOrder === "popular" ? {createdAt: "asc"} : {createdAt: "desc"}}
-      : {take: 12,
+      ? {take: 4,
+        skip: 0,
+        itemType: "",
+        orderBy: socialOrder === "popular" ? {createdAt: "asc"} : {createdAt: "desc"}}
+      : {take: 4,
         skip: 0,
         itemType: itemType,
         orderBy: socialOrder === "popular" ? {createdAt: "asc"} : {createdAt: "desc"}}
@@ -43,7 +44,7 @@ export default observer(function Explore(posts) {
   const getKey = () => {
     return [store?.state.socialOrder]
   }
-  console.log("getKey() ", getKey())
+
   try {
     const {data, error} = useSWR([itemType, getKey()[0]], getData)
     let postsTopComments = data.slice().sort((a, b) => b.totalComment - a.totalComment)
@@ -76,20 +77,23 @@ export default observer(function Explore(posts) {
     }
     if (itemType === "top-comment") return showPosts(postsTopComments)
     else if (itemType === "top-vote") return showPosts(postsTopVotes)
-    else if (itemType === "tweet") return (
-      <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
-        <Header/>
-        <SocialPostsList
-          grid="1"
-          gap="2"
-          title="Social Signal"
-          titleIcon="fire-alt"
-          titleIconColor="red-500"
-          posts={data}
-          // posts={posts.posts.data.tweetFeed}
-        />
-      </Layout>
-    )
+    else if (itemType === "tweet"){
+      observableTweetStore.tweets = data
+      return (
+        <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
+          <Header/>
+          <SocialPostsList
+            grid="1"
+            gap="2"
+            title="Social Signal"
+            titleIcon="fire-alt"
+            titleIconColor="red-500"
+            initPosts={{'latest': data, 'popular': []}}
+            dataStore={observableTweetStore}
+          />
+        </Layout>
+      )
+    }
     return showPosts(data)
   }catch (err){
     console.log(err)
