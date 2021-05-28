@@ -1,7 +1,7 @@
 /*
 Tweets
 */
-.card_tweet {
+.card {
   @apply relative transition-all;
   @apply bg-white border border-gray-900 border-opacity-5;
   @apply hover:shadow-lg hover:border-opacity-10;
@@ -36,7 +36,7 @@ Tweets
   @apply text-sm text-gray-500 transition-colors;
 }
 
-.card_tweet:hover .card_text {
+.card:hover .card_text {
   @apply text-gray-900;
 }
 
@@ -64,20 +64,13 @@ Tweets
   @apply absolute right-4 top-4;
 }
 
-.card_tweet:hover .icon_twitter {
+.card:hover .icon_twitter {
   @apply text-blue-500;
 }
 
 /* 
 Metadata 
 */
-.tweet_metadata_wrapper {
-  svg {
-    width: 1em;
-    opacity: 0.4;
-  }
-}
-
 .tweet_metadata + .tweet_metadata {
   @apply ml-1;
   &::before {
@@ -93,18 +86,18 @@ Metadata
   @apply text-sm font-medium text-gray-900 text-opacity-100 mb-0.5;
 }
 
-/* .card_tweet:hover .tweet_metadata_wrapper svg {
+/* .card:hover .tweet_metadata_wrapper svg {
   opacity: 1;
 }
 
-.card_tweet:hover .tweet_metadata_favoritecount svg {
+.card:hover .tweet_metadata_favoritecount svg {
   fill: #EF4444;
 }
 
-.card_tweet:hover .tweet_metadata_retweetcount svg {
+.card:hover .tweet_metadata_retweetcount svg {
   fill: #10B981;
 }
 
-.card_tweet:hover .tweet_metadata_commentcount svg {
+.card:hover .tweet_metadata_commentcount svg {
   fill: #2563EB;
 } */

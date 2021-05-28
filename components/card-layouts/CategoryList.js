@@ -3,7 +3,9 @@ import { useState, useEffect, createRef } from 'react'
 import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
-const timelinePanel = createRef();
+import styles from '../../styles/modules/Scrollbar.module.css';
+
+const categoryPanel = createRef();
 let ps;
 
 //ReactIcons
@@ -24,14 +26,14 @@ export const CategoryList = ({extraClass, grid, gap, title, titleIcon, titleIcon
     onResize()
     console.log('init ps')
     // make scrollbar
-    ps = new PerfectScrollbar(timelinePanel.current, {
+    ps = new PerfectScrollbar(categoryPanel.current, {
     });
 
     return () => {
       window.removeEventListener("resize", onResize);
       ps.destroy();
     }
-  }, [timelinePanel]);
+  }, [categoryPanel]);
 
 
 	return (
@@ -54,7 +56,7 @@ export const CategoryList = ({extraClass, grid, gap, title, titleIcon, titleIcon
 
 				<div className="section-body">
 
-          <div className={`flex flex-nowrap scrollbar relative pb-6`} ref={timelinePanel}>
+          <div className={`${styles.category_scroll} scrollbar ${styles.scrollbar}`} ref={categoryPanel}>
 
             <Card 
               title="DeFi"

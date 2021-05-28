@@ -1,0 +1,29 @@
+/* 
+Page 
+*/
+.page-header .container {
+  @apply md:flex items-center;
+}
+
+.page-header_l,
+.page-header_main,
+.page-header_r {
+  @apply md:flex md:flex-col justify-items-center justify-center;
+}
+
+.page-header_l {
+  @apply float-left mr-4 md:float-none md:mr-0;
+}
+
+.page-header_main {
+  @apply md:px-10;
+}
+
+.page-header_r {
+  @apply max-h-full mt-8 md:mt-0;
+}
+
+
+.page-title {
+  @apply text-xl md:text-2xl font-semibold mb-1;
+}
