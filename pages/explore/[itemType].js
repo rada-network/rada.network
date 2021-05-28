@@ -14,6 +14,7 @@ import {HomeStore, ObservableTweetStore} from "../index";
 
 const homeStore = new HomeStore()
 const observableTweetStore = new ObservableTweetStore({homeStore})
+let defaultTypes = ["nft", "dapp", "token", "defi", "africa", "problem", "metadata", "marketing", "dao"]
 
 const getData = async (itemType, socialOrder) => {
   const client = getClient()
@@ -22,14 +23,15 @@ const getData = async (itemType, socialOrder) => {
     const postTweet = await getTweet({socialOrder, skip: 0, take: 12})
     return postTweet.data.tweetFeed
   }
+  // console.log("itemType: ", !defaultTypes.includes(itemType))
   const dataItem = await client.query({
     query: itemsByItemType,
-    variables: !["nft", "dapp", "token", "defi"].includes(itemType)
-      ? {take: 4,
+    variables: !defaultTypes.includes(itemType)
+      ? {take: 12,
         skip: 0,
         itemType: "",
         orderBy: socialOrder === "popular" ? {createdAt: "asc"} : {createdAt: "desc"}}
-      : {take: 4,
+      : {take: 8,
         skip: 0,
         itemType: itemType,
         orderBy: socialOrder === "popular" ? {createdAt: "asc"} : {createdAt: "desc"}}
@@ -48,8 +50,7 @@ export default observer(function Explore(posts) {
 
   try {
     const {data, error} = useSWR([itemType, getKey()[0]], getData)
-    let postsTopComments = data.slice().sort((a, b) => b.totalComment - a.totalComment)
-    let postsTopVotes = data.slice().sort((a, b) => b.totalVote - a.totalVote)
+    observableTweetStore.tweets = data
     if (error){
       return (
         <>
@@ -61,25 +62,7 @@ export default observer(function Explore(posts) {
     data.map((post) => {
       console.log(post.createdAt[1])
     })
-    const showPosts = (post) => {
-      return (
-        <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
-          <Header/>
-          <ProjectsList
-            grid="2"
-            gap="2"
-            title={`Most ${itemType.split('-').join(' ').toUpperCase()} in a Week`}
-            cta="Sorted by"
-            detail={!["nft", "dapp", "token", "defi", "all"].includes(itemType)}
-            posts={post}
-          />
-        </Layout>
-      )
-    }
-    if (itemType === "top-comment") return showPosts(postsTopComments)
-    else if (itemType === "top-vote") return showPosts(postsTopVotes)
-    else if (itemType === "tweet"){
-      observableTweetStore.tweets = data
+    if (itemType === "tweet"){
       return (
         <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
           <Header/>
@@ -95,7 +78,22 @@ export default observer(function Explore(posts) {
         </Layout>
       )
     }
-    return showPosts(data)
+    return (
+      <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
+        <Header/>
+        <ProjectsList
+          grid="2"
+          gap="2"
+          title={`Most ${itemType.split('-').join(' ').toUpperCase()} in a Week`}
+          itemType={itemType}
+          titleIcon="code-branch"
+          titleIconColor="blue-500"
+          cta="Sorted by"
+          detail={!defaultTypes.includes(itemType)}
+          dataStore={observableTweetStore}
+        />
+      </Layout>
+    )
   }catch (err){
     console.log(err)
     console.log("error in [itemType].js")
