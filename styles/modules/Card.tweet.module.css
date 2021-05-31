@@ -91,7 +91,20 @@ Metadata
 }
 
 .tweet_metadata_name {
-  @apply text-sm font-medium text-gray-900 text-opacity-100 mb-0.5;
+  @apply block text-sm font-medium text-gray-900 text-opacity-100 mb-0.5 truncate;
+  max-width: 240px;
+}
+
+@media (min-width: 768px) {
+  .tweet_metadata_name {
+    max-width: 220px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tweet_metadata_name {
+    max-width: 180px;
+  }
 }
 
 /* .card:hover .tweet_metadata_wrapper svg {
