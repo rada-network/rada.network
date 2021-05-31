@@ -44,7 +44,7 @@ type Item {
     imageUri: String
     images: String
     imagesUri: JSONObject
-    itemType: ItemType
+    itemType: String
     metadata: [ItemMetadata]
     platform: Platform
     platformId: String
@@ -67,11 +67,19 @@ type ItemMetadata {
     valueNumber: Float
 }
 
+type ItemType {
+    description: String
+    ideaCount: Int
+    itemType: String
+    title: String
+}
+
 type Mutation {
     createComment(content: String!, itemId: String!, parentId: String, walletAddress: String!): Comment
     submitItem(description: String!, platformId: String!, title: String!, tokenId: String!, websiteUri: String!): Item
     submitTweet(tweetData: JSONObject!, userData: JSONObject!): Tweet
     toggleVote(itemId: String!, walletAddress: String!): ToggleVote
+    updateItem(id: String!, itemType: String): Item
 }
 
 type Platform {
@@ -87,6 +95,7 @@ type Query {
     isVote(itemId: String!, walletAddress: String!): Vote
     itemById(id: String!): Item
     itemFeed(itemType: String, orderBy: ItemOrderInput, skip: Int = 0, take: Int = 4): [Item]
+    itemTypeCount: [ItemType]
     tweetById(id: String!): Tweet
     tweetFeed(day: Int = 1, lang: String = "all", orderBy: TweetOrderInput, skip: Int = 0, take: Int = 4): [Tweet]
     tweetWithoutUser(skip: Int = 0, take: Int = 4): [Tweet]
@@ -133,13 +142,6 @@ type Vote {
     itemId: String!
     user: User
     userId: String!
-}
-
-enum ItemType {
-    dapp
-    defi
-    nft
-    token
 }
 
 enum SortOrder {

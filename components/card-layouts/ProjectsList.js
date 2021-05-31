@@ -27,20 +27,35 @@ export const ProjectsList = observer(({
                                         detail
                                       }) => {
   const date = new Date()
-  const router = useRouter()
   const store = useStore()
   let posts = dataStore.tweets
   const [loadingButton, setLoadingButton] = useState(false)
+  const [showMoreButton, setShowMoreButton] = useState(true)
 
-  const handleTopComment = () => router.push('/explore/top-comment')
-  const handleTopVote = () => router.push('/explore/top-vote')
-  const handlePostsDate = () => router.push('/explore/New-Project-Today')
+  if (itemType === "all") itemType = ""
+
+  const handleTopComment = (e) => {
+    dataStore.currentTab = "topcomment";
+    dataStore.tweets = [];
+    handleLoadMoreItems(e)
+  }
+  const handleTopVote = (e) => {
+    dataStore.currentTab = "topvote";
+    dataStore.tweets = [];
+    handleLoadMoreItems(e)
+  }
+  const handlePostsLatest = (e) => {
+    dataStore.currentTab = "latest";
+    dataStore.tweets = [];
+    handleLoadMoreItems(e)
+  }
 
   const fullDate = date.toISOString()
   const currentTime = fullDate.split(('T'))[0]
   const handleLoadMoreItems = async (e) => {
     if (dataStore.tweets.length > 0) dataStore.home.homeDisplay = homeDisplay
     setLoadingButton(true)
+    setShowMoreButton(false)
 
     const itemsData = await getPosts({
       socialOrder: dataStore.currentTab,
@@ -51,6 +66,12 @@ export const ProjectsList = observer(({
     if (itemsData.loading) return false
     setLoadingButton(false)
     dataStore.addTweet(itemsData.data.itemFeed)
+    if (itemsData.data.itemFeed.length === 0){
+      setShowMoreButton(false)
+    }
+    else{
+      setShowMoreButton(true)
+    }
   }
   if (dataStore.home.homeDisplay !== 0 && dataStore.home.homeDisplay !== homeDisplay) return ""
 
@@ -108,9 +129,9 @@ export const ProjectsList = observer(({
                 : title}
 
               {/* Hieu: Example Dropdown in Section Title */}
-              <div className="ml-2 inline-flex justify-center items-center">
-                <DropDown color="white"/>
-              </div>
+              {/*<div className="ml-2 inline-flex justify-center items-center">*/}
+              {/*  <DropDown color="white"/>*/}
+              {/*</div>*/}
 
             </div>
 
@@ -126,25 +147,27 @@ export const ProjectsList = observer(({
                 </button>
                 : detail ?
                   <div className="section-cta">
-                    <button className="btn text-gray-700"
-                            onClick={handleTopComment}>
+                    <button className={"btn ml-4 text-gray-700 " + (dataStore.currentTab !== 'latest' ? "opacity-60 hover:opacity-100" : "")}
+                            onClick={handlePostsLatest}>
                       <span className="icon mr-1"><RiTimeFill/></span>
-                      <span className="btn-text text-xs font-medium uppercase">
-												Top comments
-										</span>
+                      {/*<span className="btn-text text-xs font-medium uppercase">Ascending by...</span>*/}
+                      <span className="btn-text text-xs font-medium uppercase">Latest</span>
                     </button>
-                    <button className="btn ml-4 text-gray-700 opacity-60 hover:opacity-100"
+
+                    <button className={"btn ml-4 text-gray-700 " + (dataStore.currentTab !== 'topvote' ? "opacity-60 hover:opacity-100" : "")}
                             onClick={handleTopVote}>
                       <span className="icon mr-1"><RiFireFill/></span>
                       <span className="btn-text text-xs font-medium uppercase">
 												Top Vote
 										</span>
                     </button>
-                    <button className="btn ml-4 text-gray-700 opacity-60 hover:opacity-100"
-                            onClick={handlePostsDate}>
-                      <span className="icon mr-1"><RiFireFill/></span>
-                      {/*<span className="btn-text text-xs font-medium uppercase">Ascending by...</span>*/}
-                      <span className="btn-text text-xs font-medium uppercase">{currentTime}</span>
+
+                    <button className={"btn mr-4 text-gray-700 " + (dataStore.currentTab !== 'topcomment' ? "opacity-60 hover:opacity-100" : "")}
+                            onClick={handleTopComment}>
+                      <span className="icon ml-1"><RiFireFill/></span>
+                      <span className="btn-text text-xs font-medium uppercase">
+												Top comments
+										</span>
                     </button>
                   </div>
                   :
@@ -166,15 +189,13 @@ export const ProjectsList = observer(({
           <div className="section-body">
             <div className={`grid grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
               {
-                detail
-                  ? showPosts(postsByDate)
-                  : showPosts(posts)
+                showPosts(posts)
               }
             </div>
           </div>
 
           <div className="section-footer">
-            {dataStore.home.homeDisplay === homeDisplay
+            {dataStore.home.homeDisplay === homeDisplay && dataStore.home.isHome
 							? <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
                    className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                  justify-center py-3 px-3 rounded w-auto mt-8 mr-2 text-sm">
@@ -188,16 +209,20 @@ export const ProjectsList = observer(({
                 justify-center py-3 px-6 rounded w-full mt-8 text-sm">
                 <span className={"btn btn-text"}>Loading...</span>
               </a>
-              : <a onClick={handleLoadMoreItems}
-                   className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
+              : ""
+            }
+            {showMoreButton ?
+              <a onClick={handleLoadMoreItems}
+                 className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                    justify-center py-3 px-6 rounded w-full mt-8 text-sm">
                 <span className="btn-text">Show 12 more</span>
               </a>
+              :  ""
             }
           </div>
           {/* <div className={"section-footer"}>
 						{dataStore.home.homeDisplay === homeDisplay
-							? <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
+							? <a onClick={e => {dataStore.home.homeDisplay = 0;setShowMoreButton(true)}} href={"#top"}
                    className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
                 <span className="btn-text">Back to home</span>

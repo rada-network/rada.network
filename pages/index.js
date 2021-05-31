@@ -17,6 +17,7 @@ import useSWR from "swr";
 import { useStore } from "../lib/useStore"
 import {SocialPostsList} from "../components/card-layouts/SocialPostsList";
 import {action, autorun, computed, makeObservable, observable} from "mobx";
+import {getTopic} from "../data/query/topic";
 
 export class ObservableTweetStore {
   currentTab = "latest";
@@ -32,12 +33,7 @@ export class ObservableTweetStore {
   }
 
   get report() {
-    if (this.currentTab === "popular"){
-      this.tweetsLatest = []
-    }
-    else if (this.currentTab === "latest"){
-      this.tweetsPopular = []
-    }
+
   }
   addTweet(tws) {
     if (tws.length > 0){
@@ -55,7 +51,9 @@ export class ObservableTweetStore {
 
 export class HomeStore {
   homeDisplay = 0
-  constructor() {
+  isHome = false
+  constructor({isHome}) {
+    this.isHome = isHome
     makeObservable(this, {
       homeDisplay: observable,
     });
@@ -63,7 +61,7 @@ export class HomeStore {
   }
 }
 
-const homeStore = new HomeStore()
+const homeStore = new HomeStore({isHome : true})
 
 const observableTweetStore = new ObservableTweetStore({homeStore});
 const observableItemStore = new ObservableTweetStore({homeStore})
@@ -82,11 +80,14 @@ const getData = async (socialOrder) => {
 
   const postsTweet = await getTweet({socialOrder,skip : 0,take : 12});
 
+  const topic = await getTopic();
+
   return {
     posts: posts.data.itemFeed,
     postsNFT: postsNFT.data.itemFeed,
     postsDapp: postsDapp.data.itemFeed,
     postsTweet: postsTweet.data.tweetFeed,
+    topic : topic.data.itemTypeCount
   }
 }
 
@@ -124,13 +125,10 @@ export default observer(function Home(props) {
       /> */}
       <CategoryList
         extraClass="category-list"
-        grid="5"
-        gap="5"
         title="Top Topics"
         titleIcon=""
         titleIconColor=""
-        cta="View all"
-        itemType={"all"}
+        topic={data.topic}
       />
       {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
         <SocialPostsList
