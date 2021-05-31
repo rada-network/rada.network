@@ -12,7 +12,6 @@ import { observer } from "mobx-react"
 import React, {useState} from "react"
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import {TweetCard} from "../cards/Tweet";
-import { useStore } from "../../lib/useStore"
 import {getTweet} from "../../data/query/postsTweet";
 
 
@@ -159,7 +158,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
               }
             </div> */}
             <ResponsiveMasonry
-              columnsCountBreakPoints={{350: 1, 640: 2, 1024: 3}}
+
             >
               <Masonry gutter="1rem">
                 {

@@ -11,7 +11,7 @@ let ps;
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
 
-export const CategoryList = ({extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType}) => {
+export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topic}) => {
 
   const [timelineWidth, setTimelineWidth] = useState('')
 
@@ -57,43 +57,19 @@ export const CategoryList = ({extraClass, grid, gap, title, titleIcon, titleIcon
 				<div className="section-body">
 
           <div className={`${styles.category_scroll} scrollbar ${styles.scrollbar}`} ref={categoryPanel}>
+            {topic.map(function(item){
+              return (
+                <Card
+                  key={item.itemType}
+                  title={item.title}
+                  itemType={item.itemType}
+                  text={item.description}
+                  cta={item.ideaCount + ' hunted'}
+                />
+              )
+            })}
 
-            <Card 
-              title="DeFi"
-              itemType={"defi"}
-              text="Financial smart contract, DApps, and financial protocols"
-              cta="15 hunted"
-            />
-            <Card
-              title="DEX"
-              itemType={"token"}
-              text="Decentralized cryptocurrency exchanges that allow users to trade cryptocurrencies"
-              cta="32 hunted"
-            />
-            <Card
-              title="NFT"
-              itemType={"nft"}
-              text="Nonfungible tokens NFT is another type of digital asset besides cryptocurrencies"
-              cta="192 hunted"
-            />
-            <Card 
-              title="DApps"
-              itemType={"dapp"}
-              text="A Dapp, or decentralized application, is a software application that runs on a distributed network"
-              cta="202 hunted"
-            />
-            <Card 
-              title="Utilities"
-              itemType={"utilities"}
-              text="Blockchain utilities refer to the blockchain applications built on blockchains to provide utility functions to users"
-              cta="8 hunted"
-            />
-            <Card 
-              title="Gambling"
-              itemType={"dapp"}
-              text="Blockchain gambling apps are any gambling products that include blockchain elements"
-              cta="8 hunted"
-            />
+
 					</div>
 
 				</div>
