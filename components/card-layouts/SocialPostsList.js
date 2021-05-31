@@ -194,7 +194,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
               : <a onClick={handleLoadMoreTweets}
                    className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                    justify-center py-3 px-6 rounded w-full mt-8 text-sm">
-                <span className="btn-text">Show all Social Signals</span>
+                <span className="btn-text">Show 12 more</span>
                 <span className="icon"><IoChevronForwardSharp/></span>
               </a>
             }
