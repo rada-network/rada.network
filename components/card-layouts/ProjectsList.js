@@ -108,7 +108,7 @@ export const ProjectsList = observer(({
                 : title}
 
               {/* Hieu: Example Dropdown in Section Title */}
-              <div className="dropdown ml-2 inline-flex justify-center items-center">
+              <div className="ml-2 inline-flex justify-center items-center">
                 <DropDown color="white"/>
               </div>
 

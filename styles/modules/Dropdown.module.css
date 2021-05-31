@@ -1,0 +1,20 @@
+.dropdown {
+  @apply group cursor-pointer;
+}
+
+.dropdown_toggle {
+  @apply outline-none focus:outline-none ease-linear transition-all;
+}
+
+.dropdown_toggle__text {
+  @apply text-blue-500;
+}
+
+.caret {
+  height: 8px;
+  width: 8px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  transform: rotate(45deg);
+  transition: all .3s ease;
+}

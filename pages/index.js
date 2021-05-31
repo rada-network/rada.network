@@ -197,7 +197,7 @@ export default observer(function Home(props) {
           grid="2"
           gap="4"
           itemType={"all"}
-          title="Latest Ideas"
+          title="Projects from Catalyst"
           titleIcon="code-branch"
           titleIconColor="blue-500"
           cta="Sorted by"

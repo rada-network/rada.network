@@ -1,5 +1,6 @@
 import React from "react";
 import { createPopper } from "@popperjs/core";
+import styles from "../../styles/modules/Dropdown.module.css";
 
 export const DropDown = ({ color }) => {
   let bgColor;
@@ -24,9 +25,10 @@ export const DropDown = ({ color }) => {
     : (bgColor = "bg-" + color + "-500");
   return (
     <>
+      <div className={`dropdown ${styles.dropdown}`}>
+
         <button
-          className={ "btn" +
-          " outline-none focus:outline-none ease-linear transition-all duration-150 "}
+          className={`btn dropdown-toggle ${styles.dropdown_toggle}`}
           type="button"
           ref={btnDropdownRef}
           onClick={() => {
@@ -35,9 +37,10 @@ export const DropDown = ({ color }) => {
               : openDropdownPopover();
           }}
         >
-          <span className={`text-blue-700`}>Today</span>
-          <span className={`caret ml-2`}></span>
+          <span className={`btn-text ${styles.dropdown_toggle__text}`}>Today</span>
+          <span className={`caret ml-2 ${styles.caret}`}></span>
         </button>
+
         <div
           ref={popoverDropdownRef}
           className={
@@ -79,6 +82,7 @@ export const DropDown = ({ color }) => {
             7 days ago
           </a>
         </div>
+      </div>
     </>
   );
 };
