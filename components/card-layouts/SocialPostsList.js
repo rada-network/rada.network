@@ -161,7 +161,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
             <ResponsiveMasonry
               columnsCountBreakPoints={{350: 1, 640: 2, 1024: 3}}
             >
-              <Masonry columnsCount={3} gutter="1rem">
+              <Masonry gutter="1rem">
                 {
                 detail
                   // ? showPosts(postsByDate)
@@ -191,13 +191,13 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
               !itemType
                 ? <a href={"#top"}
                      className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-                     justify-center py-3 px-3 rounded w-auto mt-8 mr-4 text-sm">
+                     justify-center py-3 px-3 rounded w-auto mt-8 mr-2 text-sm">
                   <span className="icon"><IoChevronUpCircleSharp/></span>
                   <span className="btn-text whitespace-nowrap">Back to Top</span>
                 </a>
                 : <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
                  className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-                 justify-center py-3 px-3 rounded w-auto mt-8 mr-4 text-sm">
+                 justify-center py-3 px-3 rounded w-auto mt-8 mr-2 text-sm">
                 <span className="icon"><IoChevronBackSharp/></span>
                 <span className="btn-text whitespace-nowrap">Back to home</span>
               </a>
