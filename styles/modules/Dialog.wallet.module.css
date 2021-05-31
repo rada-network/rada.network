@@ -1,17 +1,27 @@
+
+.dialog_outside_wrapper {
+  @apply fixed inset-0 z-50 overflow-y-auto bg-white md:bg-bluegray-50 bg-opacity-100;
+}
+
+.dialog_outside {
+  @apply md:px-4 text-center;
+}
+
 .dialog {
-  @apply max-w-2xl overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded;
+  @apply max-w-2xl overflow-hidden text-left md:align-middle transition-all transform bg-white md:shadow-2xl rounded;
+}
+
+.dialog_wrapper {
+  @apply block lg:flex;
 }
 
 .dialog_header_wrapper {
-  @apply flex;
+  @apply flex w-full lg:w-5/12 relative;
+  @apply bg-gradient-to-br from-purple-700 to-purple-500 text-white overflow-hidden;
 }
 
 .dialog_header {
-  @apply flex relative w-5/12 bg-gradient-to-br from-purple-700 to-purple-500 text-white overflow-hidden;
-}
-
-.dialog_header__title {
-  @apply z-10;
+  @apply flex flex-col py-6 px-8 z-10;
 }
 
 .dialog_header__deco {
@@ -20,11 +30,11 @@
 }
 
 .dialog_body_wrapper {
-  @apply flex w-7/12;
+  @apply flex lg:w-7/12;
 }
 
 .dialog_body {
-  @apply py-8 px-8 bg-white;
+  @apply py-8 px-8 w-full bg-white;
 }
 
 .btn {

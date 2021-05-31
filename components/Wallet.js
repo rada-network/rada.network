@@ -18,13 +18,13 @@ const WalletContent = ({wallet, closeModal, open}) => {
       <Dialog
         as="div"
         id="modal"
-        className="fixed inset-0 z-50 overflow-y-auto bg-bluegray-50 bg-opacity-100"
+        className={`${styles.dialog_outside_wrapper}`}
         initialFocus={cancelButtonRef}
         static
         open={open}
         onClose={closeModal}
       >
-        <div className="min-h-screen px-4 text-center">
+        <div className={`min-h-screen ${styles.dialog_outside}`}>
         
           <Transition.Child
             as={Fragment}
@@ -58,15 +58,14 @@ const WalletContent = ({wallet, closeModal, open}) => {
 
             <div className={`inline-block w-full ${styles.dialog}`}>
 
-              <div className={`${styles.dialog_header_wrapper}`}>
+              <div className={`${styles.dialog_wrapper}`}>
 
                 {/* Dialog Header */}
-                <div className={`dialog_header ${styles.dialog_header}`}>
+                <div className={`dialog_header ${styles.dialog_header_wrapper}`}>
                   <Dialog.Title
                     as="div"
-                    className={`flex flex-col py-6 px-8 ${styles.dialog_header__title}`}
+                    className={`${styles.dialog_header}`}
                   >
-                    
                     <button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
                       <span className="icon"><IoChevronBackSharp/></span>
                       <span className="btn-text font-normal">Go back</span>
