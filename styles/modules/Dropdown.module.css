@@ -18,3 +18,20 @@
   transform: rotate(45deg);
   transition: all .3s ease;
 }
+
+.dropdown_menu {
+  @apply z-50 float-left p-2 list-none text-left mt-1;
+  @apply font-medium text-sm bg-white border border-gray-900 border-opacity-10 rounded shadow-lg;
+  min-width: 12rem;
+}
+
+.dropdown_menu__item {
+  @apply flex py-2 px-4 rounded;
+  &:hover {
+    @apply bg-gray-100;
+  }
+}
+
+.dropdown_menu__divider {
+  @apply h-0 my-2 border border-solid border-t-0 border-gray-900 opacity-10;
+}

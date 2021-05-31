@@ -4,7 +4,7 @@ Tweets
 .card {
   @apply relative transition-all;
   @apply bg-white border border-gray-900 border-opacity-5;
-  @apply hover:shadow-lg hover:border-opacity-10;
+  @apply lg:hover:shadow-lg lg:hover:border-opacity-10;
   @apply flex-col items-center content-center;
 }
 
@@ -33,7 +33,7 @@ Tweets
 }
 
 .card_text {
-  @apply text-sm text-gray-500 transition-colors;
+  @apply text-sm text-gray-700 lg:text-gray-500 transition-colors;
 }
 
 .card:hover .card_text {

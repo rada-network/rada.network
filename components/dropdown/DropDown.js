@@ -3,7 +3,7 @@ import { createPopper } from "@popperjs/core";
 import styles from "../../styles/modules/Dropdown.module.css";
 
 export const DropDown = ({ color }) => {
-  let bgColor;
+  // let bgColor;
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
@@ -20,9 +20,9 @@ export const DropDown = ({ color }) => {
   };
 
   // custom colors
-  color === "white"
-    ? (bgColor = "bg-white")
-    : (bgColor = "bg-" + color + "-500");
+  // color === "white"
+  //   ? (bgColor = "bg-white")
+  //   : (bgColor = "bg-" + color + "-500");
   return (
     <>
       <div className={`dropdown ${styles.dropdown}`}>
@@ -43,40 +43,26 @@ export const DropDown = ({ color }) => {
 
         <div
           ref={popoverDropdownRef}
-          className={
-            (dropdownPopoverShow ? "block " : "hidden ") +
-            (color === "white" ? "bg-white " : bgColor + " ") +
-            "font-medium text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
-          }
-          style={{ minWidth: "12rem" }}
+          className={`dropdown_menu ${styles.dropdown_menu} ${dropdownPopoverShow ? "block " : "hidden "}`}
         >
           <a
             href="#handleEvent"
-            className={
-              "py-2 px-4 block w-full whitespace-nowrap bg-transparent " +
-              (color === "white" ? " text-blueGray-700" : "text-white")
-            }
+            className={`dropdown_menu__item ${styles.dropdown_menu__item}`}
             onClick={e => e.preventDefault()}
           >
             Yesterday
           </a>
           <a
             href="#handleEvent"
-            className={
-              "py-2 px-4 block w-full whitespace-nowrap bg-transparent " +
-              (color === "white" ? " text-blueGray-700" : "text-white")
-            }
+            className={`dropdown_menu__item ${styles.dropdown_menu__item}`}
             onClick={e => e.preventDefault()}
           >
             2 days ago
           </a>
-          <div className="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-25" />
+          <div className={`dropdown_menu__divider ${styles.dropdown_menu__divider}`} />
           <a
             href="#handleEvent"
-            className={
-              "text-sm py-2 px-4 block w-full whitespace-nowrap bg-transparent " +
-              (color === "white" ? " text-blueGray-700" : "text-white")
-            }
+            className={`dropdown_menu__item ${styles.dropdown_menu__item}`}
             onClick={e => e.preventDefault()}
           >
             7 days ago
