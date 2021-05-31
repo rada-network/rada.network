@@ -5,8 +5,10 @@ import { Fragment, useState, useRef } from "react"
 import { observer, inject } from "mobx-react"
 import { useStore } from '../lib/useStore'
 
+import {IoChevronDownSharp, IoChevronForwardSharp, IoChevronBackSharp} from "react-icons/io5";
+
 import { Dialog, Transition } from "@headlessui/react"
-import ReactTooltip from 'react-tooltip';
+import styles from '../styles/modules/Dialog.wallet.module.css'
 
 const WalletContent = ({wallet, closeModal, open}) => {
   const cancelButtonRef = useRef();
@@ -16,13 +18,14 @@ const WalletContent = ({wallet, closeModal, open}) => {
       <Dialog
         as="div"
         id="modal"
-        className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-80"
+        className="fixed inset-0 z-50 overflow-y-auto bg-bluegray-50 bg-opacity-100"
         initialFocus={cancelButtonRef}
         static
         open={open}
         onClose={closeModal}
       >
         <div className="min-h-screen px-4 text-center">
+        
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -52,20 +55,27 @@ const WalletContent = ({wallet, closeModal, open}) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-0"
           >
-            <div className="inline-block w-full max-w-2xl overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded">
+
+            
+            <div className={`inline-block w-full ${styles.dialog}`}>
 
               <div className="flex">
 
                 {/* Dialog Header */}
-                <div className="flex w-5/12 bg-gradient-to-br from-purple-700 to-purple-500 text-white">
+                <div className={`dialog_header ${styles.dialog_header}`}>
                   <Dialog.Title
                     as="div"
-                    className="dialog-header flex flex-col py-6 px-8"
+                    className={`flex flex-col py-6 px-8 ${styles.dialog_header__title}`}
                   >
+                    <div className={`${styles.dialog_header__deco}`} />
+                    <button type="button" className="btn text-sm text-white text-opacity-70 hover:text-opacity-100 mb-2" onClick={closeModal}>
+                      <span className="icon"><IoChevronBackSharp/></span>
+                      <span className="btn-text font-normal">Go back</span>
+                    </button>
                     <h3 className="text-xl font-semibold">Connect your wallet</h3>
-                    <div className="mt-2">
-                      <p className="text-sm text-white text-opacity-50">
-                        Connect with one of our available wallet providers.
+                    <div className="mt-4 text-sm text-white text-opacity-70 leading-6">
+                      <p className="">
+                        Connect your wallet to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> on projects you like the most.
                       </p>
                     </div>
                   </Dialog.Title>
@@ -74,47 +84,43 @@ const WalletContent = ({wallet, closeModal, open}) => {
                 {/* Dialog Body */}
                 <div className="flex w-7/12">
 
-                  <button type="button" className="btn text-gray-900 text-opacity-10 justify-center absolute top-2 right-2 rounded-full w-px-24 h-px-24 hover:bg-red-100 hover:text-red-700" onClick={closeModal}>
-                    <i className="far fa-times text-sm"></i>
-                  </button>
-
-                  <div className="dialog-body py-8 px-8 bg-gradient-to-tr from-gray-50 to-gray-100">
+                  <div className="dialog-body py-8 px-8 bg-white">
 
                     <ul>
                       <li>
-                        <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-3 px-5 mb-4 w-full hover:bg-primary-100 hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect()}>
-                          <span className="icon w-px-24 h-px-24 mr-4">
+                        <a className="group flex rounded-md bg-white border border-black border-opacity-10 py-4 px-6 mb-4 w-full hover:bg-primary-100 hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect()}>
+                          <span className="icon w-px-24 h-px-24 mr-4 mt-1">
                             <img className="block w-auto" src="/images/icons/metamask-24.png" alt="Metamask" />
                           </span>
-                          <div className="flex flex-col flex-1 mr-4">
+                          <div className="flex flex-col flex-1 mr-6">
                             <span className="text-base font-semibold">Metamask</span>
                             <span className="text-xs text-gray-900 text-opacity-50 mt-1 font-normal">One of the most secure wallets with great flexibility</span>
                           </div>
-                          <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"/>
+                          <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform mt-1"/>
                         </a>
                       </li>
                       <li>
-                        <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-3 px-5 mb-4 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletconnect')}>
-                          <span className="icon w-px-24 h-px-24 mr-4">
+                        <a className="group flex rounded-md bg-white border border-black border-opacity-10 py-4 px-6 mb-4 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletconnect')}>
+                          <span className="icon w-px-24 h-px-24 mr-4 mt-1">
                             <img className="block w-auto" src="/images/icons/walletconnect-24.png" alt="WalletConnect" />
                           </span>
-                          <div className="flex flex-col flex-1 mr-4">
+                          <div className="flex flex-col flex-1 mr-6">
                             <span className="text-base font-semibold">WalletConnect</span>
                             <span className="text-xs text-gray-900 text-opacity-50 mt-1 font-normal">Connect with <b>Rainbow</b>, <b>Trust</b>, <b>Argent</b> and more</span>
                           </div>
-                          <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"/>
+                          <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform mt-1"/>
                         </a>
                       </li>
                       <li>
-                        <a className="group btn rounded-md bg-white border border-black border-opacity-10 py-3 px-5 mb-8 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletlink')}>
-                          <span className="icon w-px-24 h-px-24 mr-4">
+                        <a className="group flex rounded-md bg-white border border-black border-opacity-10 py-4 px-6 mb-8 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletlink')}>
+                          <span className="icon w-px-24 h-px-24 mr-4 mt-1">
                             <img className="block w-auto rounded-md" src="/images/icons/walletlink-24.png" alt="WalletLink" />
                           </span>
-                          <div className="flex flex-col flex-1 mr-4">
+                          <div className="flex flex-col flex-1 mr-6">
                             <span className="text-base font-semibold">WalletLink</span>
                             <span className="text-xs text-gray-900 text-opacity-50 mt-1 font-normal">Connect with <b>Coinbase</b> wallet</span>
                           </div>
-                          <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform"/>
+                          <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform mt-1"/>
                         </a>
                       </li>
                     </ul>    
