@@ -4,7 +4,7 @@ import {Card} from "../cards/Project";
 import {DropDown} from "../dropdown/DropDown";
 
 //ReactIcons
-import {IoChevronDownSharp, IoChevronForwardSharp} from "react-icons/io5";
+import {IoChevronDownSharp, IoChevronForwardSharp, IoChevronBackSharp} from "react-icons/io5";
 import {RiFireFill} from "react-icons/ri";
 import {RiTimeFill} from "react-icons/ri";
 import Link from "next/link"
@@ -174,21 +174,28 @@ export const ProjectsList = observer(({
           </div>
 
           <div className="section-footer">
+            {dataStore.home.homeDisplay === homeDisplay
+							? <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
+                   className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
+                 justify-center py-3 px-3 rounded w-auto mt-8 mr-4 text-sm">
+                <span className="icon"><IoChevronBackSharp/></span>
+                <span className="btn-text whitespace-nowrap">Back to home</span>
+              </a>
+							: ""
+						}
             {loadingButton
               ? <a className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                 justify-center py-3 px-6 rounded w-full mt-8 text-sm">
                 <span className={"btn btn-text"}>Loading...</span>
-                <span className="icon"><IoChevronDownSharp/></span>
               </a>
               : <a onClick={handleLoadMoreItems}
                    className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                    justify-center py-3 px-6 rounded w-full mt-8 text-sm">
                 <span className="btn-text">Show 12 more</span>
-                <span className="icon"><IoChevronForwardSharp/></span>
               </a>
             }
           </div>
-          <div className={"section-footer"}>
+          {/* <div className={"section-footer"}>
 						{dataStore.home.homeDisplay === homeDisplay
 							? <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
                    className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
@@ -198,7 +205,7 @@ export const ProjectsList = observer(({
               </a>
 							: ""
 						}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

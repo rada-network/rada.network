@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   IoChevronDownSharp,
+  IoChevronBackSharp,
   IoChevronForwardSharp,
   IoChevronUpCircleOutline,
   IoChevronUpCircleSharp
@@ -185,38 +186,37 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
           </div>
 
           <div className="section-footer">
+
+            {dataStore.home.homeDisplay === 1 ?
+              !itemType
+                ? <a href={"#top"}
+                     className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
+                     justify-center py-3 px-3 rounded w-auto mt-8 mr-4 text-sm">
+                  <span className="icon"><IoChevronUpCircleSharp/></span>
+                  <span className="btn-text whitespace-nowrap">Back to Top</span>
+                </a>
+                : <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
+                 className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
+                 justify-center py-3 px-3 rounded w-auto mt-8 mr-4 text-sm">
+                <span className="icon"><IoChevronBackSharp/></span>
+                <span className="btn-text whitespace-nowrap">Back to home</span>
+              </a>
+              : ""
+            }
+
             {loadingButton
               ? <a className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                 justify-center py-3 px-6 rounded w-full mt-8 text-sm">
                 <span className="btn-text">Loading...</span>
-                <span className="icon"><IoChevronDownSharp/></span>
               </a>
               : <a onClick={handleLoadMoreTweets}
                    className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                    justify-center py-3 px-6 rounded w-full mt-8 text-sm">
                 <span className="btn-text">Show 12 more</span>
-                <span className="icon"><IoChevronForwardSharp/></span>
               </a>
             }
 					</div>
-          <div className="section-footer">
-            {dataStore.home.homeDisplay === 1 ?
-              !itemType
-                ? <a href={"#top"}
-                     className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-                     justify-center py-3 px-6 rounded w-full mt-8 text-sm">
-                  <span className="btn-text">Back to Top</span>
-                  <span className="icon"><IoChevronUpCircleSharp/></span>
-                </a>
-                : <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
-                 className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-                 justify-center py-3 px-6 rounded w-full mt-8 text-sm">
-                <span className="btn-text">Back to home</span>
-                <span className="icon"><IoChevronForwardSharp/></span>
-              </a>
-              : ""
-            }
-          </div>
+
         </div>
       </div>
     </div>
