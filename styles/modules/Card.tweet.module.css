@@ -78,6 +78,14 @@ Metadata
   }
 }
 
+.card_header .tweet_metadata_wrapper {
+  @apply pr-5 ;
+}
+
+.card_header .tweet_metadata_wrapper + .tweet_metadata_wrapper {
+  @apply pr-0 flex-wrap;
+}
+
 .card_footer .tweet_metadata_wrapper {
   @apply w-full justify-between;
 }
