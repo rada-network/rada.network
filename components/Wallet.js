@@ -29,11 +29,11 @@ const WalletContent = ({wallet, closeModal, open}) => {
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
+            enterFrom="opacity-0 scale-0"
+            enterTo="opacity-100 scale-100"
             leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-0"
           >
             <Dialog.Overlay className="fixed inset-0" />
           </Transition.Child>
@@ -56,10 +56,9 @@ const WalletContent = ({wallet, closeModal, open}) => {
             leaveTo="opacity-0 scale-0"
           >
 
-            
             <div className={`inline-block w-full ${styles.dialog}`}>
 
-              <div className="flex">
+              <div className={`${styles.dialog_header_wrapper}`}>
 
                 {/* Dialog Header */}
                 <div className={`dialog_header ${styles.dialog_header}`}>
@@ -67,8 +66,8 @@ const WalletContent = ({wallet, closeModal, open}) => {
                     as="div"
                     className={`flex flex-col py-6 px-8 ${styles.dialog_header__title}`}
                   >
-                    <div className={`${styles.dialog_header__deco}`} />
-                    <button type="button" className="btn text-sm text-white text-opacity-70 hover:text-opacity-100 mb-2" onClick={closeModal}>
+                    
+                    <button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
                       <span className="icon"><IoChevronBackSharp/></span>
                       <span className="btn-text font-normal">Go back</span>
                     </button>
@@ -79,53 +78,54 @@ const WalletContent = ({wallet, closeModal, open}) => {
                       </p>
                     </div>
                   </Dialog.Title>
+                  <div className={`${styles.dialog_header__deco}`} />
                 </div>
 
                 {/* Dialog Body */}
-                <div className="flex w-7/12">
+                <div className={`${styles.dialog_body_wrapper}`}>
 
-                  <div className="dialog-body py-8 px-8 bg-white">
+                  <div className={`${styles.dialog_body}`}>
 
                     <ul>
                       <li>
-                        <a className="group flex rounded-md bg-white border border-black border-opacity-10 py-4 px-6 mb-4 w-full hover:bg-primary-100 hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect()}>
-                          <span className="icon w-px-24 h-px-24 mr-4 mt-1">
-                            <img className="block w-auto" src="/images/icons/metamask-24.png" alt="Metamask" />
+                        <a className={`${styles.btn}`} onClick={() => wallet.connect()}>
+                          <span className={`icon ${styles.btn_icon}`}>
+                            <img src="/images/icons/metamask-24.png" alt="Metamask" />
                           </span>
-                          <div className="flex flex-col flex-1 mr-6">
+                          <div className={`${styles.btn_text}`}>
                             <span className="text-base font-semibold">Metamask</span>
                             <span className="text-xs text-gray-900 text-opacity-50 mt-1 font-normal">One of the most secure wallets with great flexibility</span>
                           </div>
-                          <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform mt-1"/>
+                          <i className={`fal fa-long-arrow-right ${styles.btn_arrow}`}/>
                         </a>
                       </li>
                       <li>
-                        <a className="group flex rounded-md bg-white border border-black border-opacity-10 py-4 px-6 mb-4 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletconnect')}>
-                          <span className="icon w-px-24 h-px-24 mr-4 mt-1">
-                            <img className="block w-auto" src="/images/icons/walletconnect-24.png" alt="WalletConnect" />
+                        <a className={`${styles.btn}`} onClick={() => wallet.connect('walletconnect')}>
+                          <span className={`icon ${styles.btn_icon}`}>
+                            <img src="/images/icons/walletconnect-24.png" alt="WalletConnect" />
                           </span>
-                          <div className="flex flex-col flex-1 mr-6">
+                          <div className={`${styles.btn_text}`}>
                             <span className="text-base font-semibold">WalletConnect</span>
                             <span className="text-xs text-gray-900 text-opacity-50 mt-1 font-normal">Connect with <b>Rainbow</b>, <b>Trust</b>, <b>Argent</b> and more</span>
                           </div>
-                          <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform mt-1"/>
+                          <i className={`fal fa-long-arrow-right ${styles.btn_arrow}`}/>
                         </a>
                       </li>
                       <li>
-                        <a className="group flex rounded-md bg-white border border-black border-opacity-10 py-4 px-6 mb-8 w-full hover:bg-primary-100  hover:border-primary-500 hover:shadow-md" onClick={() => wallet.connect('walletlink')}>
-                          <span className="icon w-px-24 h-px-24 mr-4 mt-1">
-                            <img className="block w-auto rounded-md" src="/images/icons/walletlink-24.png" alt="WalletLink" />
+                        <a className={`${styles.btn}`} onClick={() => wallet.connect('walletlink')}>
+                          <span className={`icon ${styles.btn_icon}`}>
+                            <img src="/images/icons/walletlink-24.png" alt="WalletLink" />
                           </span>
-                          <div className="flex flex-col flex-1 mr-6">
+                          <div className={`${styles.btn_text}`}>
                             <span className="text-base font-semibold">WalletLink</span>
                             <span className="text-xs text-gray-900 text-opacity-50 mt-1 font-normal">Connect with <b>Coinbase</b> wallet</span>
                           </div>
-                          <i className="fal fa-long-arrow-right transform group-hover:translate-x-1 transition-transform mt-1"/>
+                          <i className={`fal fa-long-arrow-right ${styles.btn_arrow}`}/>
                         </a>
                       </li>
                     </ul>    
 
-                    <div className="mt-auto">
+                    <div className="mt-8">
                       <p className="text-xs text-gray-900 text-opacity-50">
                         We do not own your private keys and cannot access your funds without your confirmation.
                       </p>
