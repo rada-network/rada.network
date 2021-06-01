@@ -1,8 +1,7 @@
 import Link from "next/link"
 import styles from '../../styles/modules/Card.category.module.css'
 
-//ReactIcons
-import { IoChevronForwardSharp } from "react-icons/io5";
+import {IoChevronForwardSharp} from "react-icons/io5";
 
 export const Card = ({title, cta, text, itemType}) => {
   return (
@@ -19,14 +18,14 @@ export const Card = ({title, cta, text, itemType}) => {
         </div> }
         { cta && 
         <div className={`card-body-footer ${styles.card_body__footer}`}>
-          <div className="card-cta">
-            <button className="btn">
-              <span className="btn-text text-sm">
+          <div className={`card-cta ${styles.card_cta}`}>
+            <button className={`btn ${styles.btn}`}>
+              <span className={`btn-text ${styles.btn_text}`}>
                 <Link href={`/explore/${itemType}`}>
                   {cta}
                 </Link>
               </span>
-              <span className="icon"><IoChevronForwardSharp /></span>
+              <span className={`icon ${styles.btn_arrow}`}><IoChevronForwardSharp /></span>
             </button>
           </div>
         </div> }

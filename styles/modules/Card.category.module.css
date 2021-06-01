@@ -3,7 +3,7 @@ Category
 */
 .card {
   @apply h-48 w-48 mr-4;
-  @apply bg-gray-900 text-white;
+  @apply bg-gradient-to-br from-gray-700 to-gray-500 text-white;
 }
 
 .card_title {
@@ -26,6 +26,19 @@ Category
   @apply mt-auto;
 }
 
+.card_cta {}
+
+.btn {
+  @apply text-xs text-white text-opacity-70 hover:text-opacity-100
+}
+
+.btn_text {
+  @apply font-medium;
+}
+
+.btn_arrow {
+  @apply ml-2;
+}
 
 /* 
 Category Types
