@@ -43,7 +43,9 @@ Category
 /* 
 Category Types
 */
-.card[type="defi"] {
+.card[type="defi"],
+.card[type="Metadata"],
+.card[type="problem"] {
   @apply bg-gradient-to-br from-red-600 to-red-400;
 }
 
@@ -51,12 +53,18 @@ Category Types
   @apply bg-gradient-to-br from-green-600 to-green-400;
 }
 
+.card[type="marketing"],
 .card[type="nft"] {
   @apply bg-gradient-to-br from-purple-600 to-purple-400;
 }
 
-.card[type="dapp"] {
+.card[type="dapp"],
+.card[type="ecosystem"]{
   @apply bg-gradient-to-br from-blue-600 to-blue-400;
+}
+
+.card[type="dao"]{
+  @apply bg-gradient-to-br from-blue-900 to-blue-600;
 }
 
 .card[type="utilities"] {

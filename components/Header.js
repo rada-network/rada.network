@@ -1,25 +1,28 @@
 // import {useAuthState} from "../context/auth";
 
 
-export const Header = () => {
+export const Header = ({props}) => {
+  props = props || {
+    title : "",
+    description : "",
+    itemType : ""
+  }
   // const {isAuthenticated} = useAuthState()
   // const str = JSON.stringify(useAuthState(), null, 4)
   // console.log(`Header: ${str}`)
   // console.log(`isAuthenticated: ${isAuthenticated}`)
-
   return (
-    <div className="header overflow-hidden">
+    <div className={"header overflow-hidden " + props.itemType}>
       <div className="container">
-
         <div className="flex flex-wrap">
           <div className="py-12 lg:py-16 flex flex-col max-w-screen-sm lg:w-1/2">
             <h2 className="mb-2 text-2xl leading-8 lg:text-4xl lg:leading-snug font-medium text-white">
               <span className="relative inline-block">
-                Discover all the latest Cardano News, Feeds, Discussions, Projects and more... 
+                {props.title}
               </span>
             </h2>
             <p className="text-base lg:text-lg font-light text-white text-opacity-70">
-              and always be in the loop!
+              {props.description}
             </p>
           </div>
           <div className="hidden lg:flex lg:w-1/2 lg:-my-12">

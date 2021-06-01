@@ -114,7 +114,11 @@ export default observer(function Home(props) {
   console.log(homeStore.homeDisplay)
   return (
     <Layout extraClass="page-home" meta={"DHunt.io - Top BlockChain DApps"}>
-      <Header/>
+      <Header props={{
+        title : "Discover all the latest Cardano News, Feeds, Discussions, Projects and more... ",
+        type : "home",
+        description : "and always be in the loop!"
+      }}/>
       {/* <ProjectsList
         grid="2"
         gap="4"
