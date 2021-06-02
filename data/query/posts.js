@@ -34,12 +34,20 @@ export default postsGql
 
 export async function getPosts({type,take,skip, socialOrder}){
   const client = getClient()
+  let orderBy = {createdAt : "desc"}
+  if (socialOrder === "popular" || socialOrder === "topvote"){
+    orderBy = {totalVote : "desc"}
+  }
+  else if (socialOrder === "topcomment"){
+    orderBy = {totalComment : "desc"}
+  }
   return await client.query({
     query: postsGql,
     variables: {
       skip: skip,
       take: take,
       itemType: type,
-      orderBy: socialOrder === "popular" ? {createdAt: "asc"} : {createdAt: "desc"}}
+      orderBy : orderBy
+    }
   })
 }

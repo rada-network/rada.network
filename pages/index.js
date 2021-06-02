@@ -68,17 +68,15 @@ const observableItemStore = new ObservableTweetStore({homeStore})
 const observableNftStore = new ObservableTweetStore({homeStore})
 const observableDappStore = new ObservableTweetStore({homeStore})
 
-const getData = async (socialOrder) => {
-  if (typeof socialOrder == "undefined"){
-    socialOrder = "latest"
-  }
-  const posts = await getPosts({type : "",skip : 0,take : 12, socialOrder})
+const getData = async () => {
 
-  const postsNFT = await getPosts({type : "nft",skip : 0,take : 6,orderBy : {createdAt: "desc"}})
+  const posts = await getPosts({type : "",skip : 0,take : 12, socialOrder : observableItemStore.currentTab})
 
-  const postsDapp = await getPosts({type : "dapp",skip : 0,take : 6,orderBy : {createdAt: "desc"}})
+  const postsNFT = await getPosts({type : "nft",skip : 0,take : 6,socialOrder : observableNftStore.currentTab})
 
-  const postsTweet = await getTweet({socialOrder,skip : 0,take : 12});
+  const postsDapp = await getPosts({type : "dapp",skip : 0,take : 6,socialOrder : observableDappStore.currentTab})
+
+  const postsTweet = await getTweet({socialOrder: observableTweetStore.currentTab,skip : 0,take : 12});
 
   const topic = await getTopic();
 
@@ -94,7 +92,7 @@ const getData = async (socialOrder) => {
 export default observer(function Home(props) {
   const store = useStore()
 
-  const {data,error} = useSWR(["latest"], getData, {initialData: props, revalidateOnMount: !store.inited})
+  const {data,error} = useSWR(["latest"], getData, {initialData: props})
   // const data = props
   // update to store
   if (error){

@@ -44,6 +44,11 @@ export const ProjectsList = observer(({
     dataStore.tweets = [];
     handleLoadMoreItems(e)
   }
+  const handlePopular = (e) => {
+    dataStore.currentTab = "popular";
+    dataStore.tweets = [];
+    handleLoadMoreItems(e)
+  }
   const handlePostsLatest = (e) => {
     dataStore.currentTab = "latest";
     dataStore.tweets = [];
@@ -175,10 +180,10 @@ export const ProjectsList = observer(({
                     <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
                       {/*<Button active={store.stateIdeas.ideasOrder_ == 'popular'} onClick={e => store.stateIdeas.setIdeasOrder('popular')}>Popular11</Button>*/}
                       {/*<Button active={store.stateIdeas.ideasOrder_ == 'latest'} onClick={e => store.stateIdeas.setIdeasOrder('latest')}>Latest22</Button>*/}
-                      <Button active={store.state.socialOrder == 'popular'}
-                              onClick={e => store.state.setSocialOrder('popular')}>Popular</Button>
-                      <Button active={store.state.socialOrder == 'latest'}
-                              onClick={e => store.state.setSocialOrder('latest')}>Latest</Button>
+                      <Button active={dataStore.currentTab == 'popular'}
+                              onClick={e => handlePopular(e)}>Popular</Button>
+                      <Button active={dataStore.currentTab == 'latest'}
+                              onClick={e => handlePostsLatest(e)}>Latest</Button>
                     </div>
                   </div>
               }
