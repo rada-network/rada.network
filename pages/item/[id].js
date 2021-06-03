@@ -56,44 +56,45 @@ export default function Item (props) {
   const showImgs = Object.keys(imgsUri).map(key => {
     return <a href={`${imgsUri[key]}`}>img {key} <br /></a>
   })
-  const showContents_ = Object.keys(imgsUri).map(key => {
+  const showImages_ = Object.keys(imgsUri).map(key => {
     return(
-          <Card
-            title=""
-            text=""
-            itemType=""
-            cta=""
-            mediaUri={imgsUri[key]}
-          />
+      <Card
+        itemType=""
+        mediaUri={imgsUri[key]}
+      />
     )
   })
   return (
     <Layout extraClass="page-project_details" meta={data.item.title}>
     {/*<Layout extraClass="page-project_details" meta={data.item}>*/}
       <>
-        <div className="container-inner">
 
-          {/* Page Header */}
-          <div className="page-header">
-            <div className="container">
-            {data.item.thumbnail !== null ?
-                <div className="page-header_l">
-                  <Link target={"_blank"} href={data.item.imageUri}>
-                    <a className="project-icon">
-                      <img className="project-icon_img w-full h-full object-cover" src={data.item.imageUri} />
-                    </a>
-                  </Link>
-                </div>
-                : ""
-            }
-              <div className="flex-1 page-header_main">
+      <div class="section">
+        <div className="container">
+          <div className="container-inner">
+
+            {/* Page Header */}
+            <div className="page-header">
+
+              {data.item.thumbnail !== null ?
+              <div className="">
+                <Link target={"_blank"} href={data.item.imageUri}>
+                  <a className="project-icon">
+                    <img className="project-icon_img w-full h-full object-cover" src={data.item.imageUri} />
+                  </a>
+                </Link>
+              </div>
+              : ""
+              }
+
+              <div className="flex-1">
                 <div className="flex items-center content-center page-title">
                   <h1 className="project-title">{`${data.item.title}`}</h1>
                 </div>
                 {/*<p>{`${imgs === "" || imgs == null}`}</p>*/}
                 {/*<p>show images: {`${showImgs}`}</p>*/}
                 <div className="project-text_short">
-                  <div  dangerouslySetInnerHTML={{__html: data.item.description}} />
+                  <div dangerouslySetInnerHTML={{__html: data.item.description}} />
                 </div>
 
                 <div className="mt-2 metadata-wrapper project-metadata-wrapper">
@@ -109,10 +110,9 @@ export default function Item (props) {
                     <span className="metadata-value">{data.item.token.symbol}</span>
                   </a>
                 </div>
-
               </div>
 
-              <div className="page-header_r">
+              <div className="">
                 <div className="flex justify-between cta-wrapper">
                   <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md w-px-104 md:w-full btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
                     <span className="text-2xl icon"><RiCompass3Fill /></span>
@@ -129,55 +129,33 @@ export default function Item (props) {
               </div>
 
             </div>
-          </div>
 
-          {/* Page Main */}
-          <div className="container">
-
+            {/* Page Main */}
             <div className="flex flex-row justify-center">
 
-              <div className="page-main">
+                <div className="page-main">
 
-                <div className="section">
-                  <div className="section-body">
-                    <Carousel show={2}>
-                      {showContents_}
-                    </Carousel>
-                    <div className="flex-col">
+                  {showImages_}
 
-                      {/*<div className="project-media-viewer">*/}
-                      {/*  <div className="w-full h-full project-media-wrapper">*/}
-                      {/*    <div className="overflow-hidden rounded shadow-xl project-media aspect-w-16 aspect-h-9">*/}
-                      {/*      /!* <img className="project-img" alt="" src="https://picsum.photos/1024/768?random=2" /> *!/*/}
-                      {/*      <iframe width="560" height="315" src="https://www.youtube.com/embed/qnkuBUAwfe0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*/}
-                      {/*    </div>*/}
-                      {/*  </div>*/}
-                      {/*</div>*/}
+                  <IdeaContent item={data.item} />
 
-                      <IdeaContent item={data.item} />
-
-                    </div>
-
-                  </div>
                 </div>
-                <CommentList item={data.item} comments={data.comments}/>
 
               </div>
 
-              {/* <div className="page-sidebar">
-                <div className="flex flex-col h-full project-details">
-                  <div className="project-text">
-                    <p>Part of the Legendary Series, 99 ever minted, 2nd Edition</p>
-                    <p>Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain. Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
-                  </div>
-                </div>
-              </div> */}
-
             </div>
-
           </div>
-
         </div>
+
+        {/* Comments */}
+        <div class="section">
+          <div className="container">
+            <div className="container-inner">
+              <CommentList item={data.item} comments={data.comments}/>
+            </div>
+          </div>
+        </div>
+
       </>
     </Layout>
   )

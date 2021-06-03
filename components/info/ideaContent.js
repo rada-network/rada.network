@@ -14,17 +14,24 @@ export default function IdeaContent({item}){
     }
   }
   const showContents = Object.keys(item.contentJson).map(key => {
-    return `${item.contentJson[key].a} <br /> ${item.contentJson[key].b} <br />`
+    return `
+    <h3 class="text-bold">${item.contentJson[key].a}</h3> 
+    <br /> 
+    ${item.contentJson[key].b} 
+    <br />
+    `
   })
   return (
-    <div className="pt-4 mt-4 md:flex md:mt-8">
+    <div className="grid grid-col-1 md:grid-cols-12 mt-8">
 
-      <div className="flex-1 w-full text-gray-900 text-opacity-100 md:pr-10 project-text">
+      <div className="col-span-9 text-gray-900 text-opacity-100 md:pr-10 project-text">
         <div style={{display : hideContent ? '' : `inline`}}
           id={`read`} dangerouslySetInnerHTML={{__html: showContents.join("")}}  />
         <button className="hover:underline text-blue-700" onClick={readMore} id={"readBtn"}>Read more</button>
       </div>
+
       {item.ideaUser !== null ? <IdeaInfo item={item}/> : ""}
+      
     </div>
   )
 }

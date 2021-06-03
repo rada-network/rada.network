@@ -10,6 +10,14 @@
 /* 
 Headers
 --------------------------------------------- */
+.header h2 {
+  @apply mb-2 text-xl leading-8 lg:text-2xl lg:leading-snug font-medium text-white;
+}
+
+.header p {
+  @apply text-sm lg:text-base font-light text-white text-opacity-80;
+}
+
 /* 
 Home Header 
 */
@@ -20,12 +28,56 @@ Home Header
   @apply bg-gradient-to-br from-purple-900 to-purple-500;
 }
 
+.page-home .header h2 {
+  @apply mb-2 text-2xl leading-8 lg:text-4xl lg:leading-snug font-medium text-white;
+}
+
+.page-home .header p {
+  @apply text-base lg:text-lg font-light text-white text-opacity-70;
+}
+
 .page-home .header .container {
 }
 
 /* 
 Category Header 
 */
+.page_topic .header {
+  @apply bg-gradient-to-br from-gray-900 to-gray-500;
+}
+
+.page_topic img {
+  @apply hidden;
+}
+
+.page_topic .header[type="defi"],
+.page_topic .header[type="Metadata"],
+.page_topic .header[type="problem"] {
+  @apply bg-gradient-to-br from-red-600 to-red-400;
+}
+
+.page_topic .header[type="token"] {
+  @apply bg-gradient-to-br from-green-600 to-green-400;
+}
+
+.page_topic .header[type="marketing"],
+.page_topic .header[type="nft"] {
+  @apply bg-gradient-to-br from-purple-600 to-purple-400;
+}
+
+.page_topic .header[type="dapp"],
+.page_topic .header[type="ecosystem"]{
+  @apply bg-gradient-to-br from-blue-600 to-blue-400;
+}
+
+.page_topic .header[type="dao"]{
+  @apply bg-gradient-to-br from-blue-900 to-blue-600;
+}
+
+.page_topic .card[type="utilities"] {
+  @apply bg-gradient-to-br from-yellow-600 to-yellow-400;
+}
+
 
 
 /* 
@@ -84,8 +136,6 @@ Project Details
   @apply text-xl md:text-2xl font-semibold mb-1;
 }
 
-
-
 .page-project_details {
 
   @apply pt-4 md:pt-8;
@@ -129,6 +179,23 @@ Project Details
 
 .project-text_short {
   @apply text-sm md:text-base text-gray-900 text-opacity-70 line-clamp-2;
+}
+
+.project-info {
+  @apply text-sm text-center border border-gray-100 rounded p-8;
+}
+
+.project-info .list-name {
+  @apply mb-1 flex-1 font-normal text-gray-900 text-opacity-50;
+}
+
+.project-info .list-value,
+.project-info .list-value strong[data-element-id="field-answer"] {
+  @apply font-semibold text-gray-900 text-opacity-90;
+}
+
+.project-info .list-value strong[data-element-id="field-label"] {
+  @apply block mb-1 flex-1 font-normal text-gray-900 text-opacity-50;
 }
 
 

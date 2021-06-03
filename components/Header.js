@@ -16,26 +16,21 @@ export const Header = ({props}) => {
       <div className="container">
         <div className="flex flex-wrap">
           <div className="py-12 lg:py-16 flex flex-col max-w-screen-sm lg:w-1/2">
-            <h2 className="mb-2 text-2xl leading-8 lg:text-4xl lg:leading-snug font-medium text-white">
+            <h2 className="">
               <span className="relative inline-block">
                 {props.title}
               </span>
             </h2>
-            <p className="text-base lg:text-lg font-light text-white text-opacity-70">
+            <p className="">
               {props.description}
             </p>
           </div>
           {props.itemType === "home" ?
-              <div className="hidden lg:flex lg:w-1/2 lg:-my-12">
+          <div className="hidden lg:flex lg:w-1/2 lg:-my-12">
             <img className="block w-auto h-auto" src="/images/hero.png" />
-              </div>
-              : ""
+          </div>
+          : ""
           }
-          {/* <div className="mt-4">
-            <a href="/" className="h-12 px-6 font-medium tracking-wide rounded btn btn-secondary">
-              Get started
-            </a>
-          </div> */}
         </div>
 
       </div>

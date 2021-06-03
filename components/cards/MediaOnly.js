@@ -1,15 +1,11 @@
-//ReactIcons
-import { IoChevronForwardSharp } from "react-icons/io5";
 import Link from "next/link"
 
-export const Card = ({title, text, mediaUri, cta, itemType}) => {
+export const Card = ({mediaUri, itemType}) => {
   return (
-    <div className="card card-media-full">
+    <div className="card card-media-only">
       <div className="card-media">
         <img className="card-img" src={mediaUri} />
-      </div>
-      
-      { title || text || cta && 
+      </div> 
       <div className="card-body">
         { title && 
         <div className="card-body-header">
@@ -32,8 +28,7 @@ export const Card = ({title, text, mediaUri, cta, itemType}) => {
             </button>
           </div>
         </div> }
-      </div> }
-
+      </div>
     </div>
   );
 };
