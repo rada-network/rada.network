@@ -13,14 +13,11 @@ import React, {useState} from "react"
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import {TweetCard} from "../cards/Tweet";
 import {getTweet} from "../../data/query/postsTweet";
+import {TabButton} from "../button/tabButton";
 
 
 export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
   const [loadingButton,setLoadingButton] = useState(false)
-  const Button = ({active, onClick, children}) => {
-    if (active) return <a className="btn rounded bg-white px-4 py-1 shadow-sm" onClick={onClick}>{children}</a>
-    return <a className="btn rounded bg-white text-gray-400 bg-opacity-0 px-4 py-1" onClick={onClick}>{children}</a>
-  }
   let posts = dataStore.tweets;
 
   const handleLoadMoreTweets = async (e) =>{
@@ -82,83 +79,14 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
                 <Button>Reddit</Button>
               </div> */}
               <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
-              <Button
-                  active={dataStore.currentTab === 'popular'}
-                  onClick={e => {dataStore.currentTab = "popular";dataStore.tweets = [];handleLoadMoreTweets(e)} }>
-                Popular
-              </Button>
-
-                <Button
-                  active={dataStore.currentTab === 'latest'}
-                  onClick={e => {dataStore.currentTab = "latest";dataStore.tweets = [];handleLoadMoreTweets(e) }}>
-                  Latest
-                </Button>
+                <TabButton handle={handleLoadMoreTweets} key={"popular"} nValue={"popular"} value={"Popular"} dataStore={dataStore} />
+                <TabButton handle={handleLoadMoreTweets} key={"latest"} nValue={"latest"} value={"Latest"} dataStore={dataStore} />
               </div>
             </div>
-
-            { cta &&
-            <div className="section-cta">
-              {cta === "View All" ? <button className="btn">
-							<span className="btn-text">
-                <Link href={`/explore/${itemType}`}>
-                  {cta}
-                </Link>
-              </span>
-                  <span className="icon"><IoChevronForwardSharp /></span>
-                </button>
-                : detail ?
-                  <div className="section-cta">
-                    <button className="btn pb-1 text-gray-700 border-b-2 border-gray-700">
-                      <span className="icon mr-1"><RiTimeFill /></span>
-                      <span className="btn-text text-xs font-medium uppercase">
-												Top comments
-										</span>
-                    </button>
-                    <button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100">
-                      <span className="icon mr-1"><RiFireFill /></span>
-                      <span className="btn-text text-xs font-medium uppercase">
-												Top Vote
-										</span>
-                    </button>
-                    <button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100">
-                      <span className="icon mr-1"><RiFireFill /></span>
-                      {/*<span className="btn-text text-xs font-medium uppercase">Ascending by...</span>*/}
-                      <span className="btn-text text-xs font-medium uppercase">12/03</span>
-                    </button>
-                  </div>
-                  :
-                  <div className="section-cta">
-                    <button className="btn pb-1 text-gray-700 border-b-2 border-gray-700">
-                      {/*onClick={handlePostsDate}>*/}
-                      <span className="icon mr-1"><RiTimeFill /></span>
-                      <span className="btn-text text-xs font-medium uppercase">
-											<Link href={'/explore/all?'}>
-												Latest
-											</Link>
-										</span>
-                    </button>
-                    <button className="btn ml-4 pb-1 text-gray-700 border-b-2 border-transparent opacity-60 hover:opacity-100">
-                      <span className="icon mr-1"><RiFireFill /></span>
-                      <span className="btn-text text-xs font-medium uppercase">Popular</span>
-                    </button>
-                  </div>
-              }
-            </div>
-            }
           </div>
 
           <div className="section-body">
-            {/* <div className={`grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
-              {
-                detail
-                  // ? showPosts(postsByDate)
-                  ? "in progress"
-                  : showPosts(posts)
-              }
-            </div> */}
-            <ResponsiveMasonry
-
-            >
+            <ResponsiveMasonry>
               <Masonry gutter="1rem">
                 {
                 detail
