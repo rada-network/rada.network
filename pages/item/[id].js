@@ -94,27 +94,30 @@ export default function Item (props) {
                 </div>
 
                 <div className="metadata-wrapper project-metadata-wrapper">
-                  <a href={`/explore/${data.item.itemType}`} className={`metadata badge badge-${data.item.itemType} project-metadata_type`}>
+                  <a href={`/explore/${data.item.itemType}`} className={`metadata project-metadata_type`}>
                     <span className="metadata-value">{data.item.itemType}</span>
                   </a>
-                  <a href={data.item.platform.websiteUri} className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
-                    <span className="icon"><i className={`cf cf-${data.item.platform.networkName.slice(0, 3)}`}/></span>
+                  <a href={data.item.platform.websiteUri} className="metadata project-metadata_platform project-metadata_platform_sol">
+                    <span className="icon mr-1"><i className={`cf cf-${data.item.platform.networkName.slice(0, 3)}`}/></span>
                     <span className="metadata-value">{data.item.platform.name}</span>
                   </a>
-                  <a href="#" className="metadata badge badge-eth project-metadata_platform project-metadata_platform_sol">
-                    <span className="icon"><i className={`cf cf-${data.item.token.symbol.toLowerCase()}`}/></span>
+                  <a href="#" className="metadata project-metadata_platform project-metadata_platform_sol">
+                    <span className="icon mr-1"><i className={`cf cf-${data.item.token.symbol.toLowerCase()}`}/></span>
                     <span className="metadata-value">{data.item.token.symbol}</span>
                   </a>
                 </div>
+                
+                <div className="project-text_short" dangerouslySetInnerHTML={{__html: data.item.description}} />
+                
 
                 {/* Main CTAS */}
-                <div className="mt-6 flex cta-wrapper">
+                <div className="cta-wrapper">
                   <Vote
                     itemId={data.item.id}
                     votes={data.item.totalVote}
                     page={"detail"}
                   />
-                  <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="btn">
+                  <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="btn ml-4">
                     <span className="text-2xl icon"><RiCompass3Fill /></span>
                     <span className="ml-2 btn-project-vote_total whitespace-nowrap">
                       <span className="inline-block text-sm font-medium">Visit</span>

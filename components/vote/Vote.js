@@ -48,8 +48,8 @@ export const Vote = observer(({itemId, votes, page}) => {
   }
 
   if (page === "detail" ) return (
-    <button className={`btn-project-vote flex-grow-0 ml-4 text-black btn item-center hover:bg-primary-50 
-    ${data == null ? "" : "bg-primary-700 text-white"}`}
+    <button className={`btn-project-vote
+    ${data == null ? "" : "btn-project-vote_active"}`}
           onClick={toggleVote}>
       <span className="-mb-1 -ml-1 text-2xl icon"><RiArrowUpSFill /></span>
       <span className="ml-1 uppercase btn-project-vote_total whitespace-nowrap">

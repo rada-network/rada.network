@@ -60,7 +60,7 @@ Section
 }
 
 .section.section-top {
-  @apply mt-0;
+  @apply md:mt-0;
 }
 
 .section > .container {

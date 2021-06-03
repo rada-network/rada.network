@@ -50,3 +50,7 @@ Vote Buttons
   @apply px-4 py-2 justify-center;
   @apply border border-gray-700 border-opacity-10 rounded;
 }
+
+.btn-project-vote_active {
+  @apply bg-purple-700 text-white;
+}
