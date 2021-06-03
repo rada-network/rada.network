@@ -117,7 +117,7 @@ export default function Item (props) {
                     votes={data.item.totalVote}
                     page={"detail"}
                   />
-                  <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="btn ml-4">
+                  <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="btn btn-project-link ml-4">
                     <span className="text-2xl icon"><RiCompass3Fill /></span>
                     <span className="ml-2 btn-project-vote_total whitespace-nowrap">
                       <span className="inline-block text-sm font-medium">Visit</span>

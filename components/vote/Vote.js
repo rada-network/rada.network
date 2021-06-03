@@ -48,19 +48,19 @@ export const Vote = observer(({itemId, votes, page}) => {
   }
 
   if (page === "detail" ) return (
-    <button className={`btn-project-vote
-    ${data == null ? "" : "btn-project-vote_active"}`}
+    <button className={`btn btn-project-vote
+    ${data == null ? "" : "active"}`}
           onClick={toggleVote}>
       <span className="-mb-1 -ml-1 text-2xl icon"><RiArrowUpSFill /></span>
       <span className="ml-1 uppercase btn-project-vote_total whitespace-nowrap">
-        <span className="inline-block text-sm font-medium">Upvote</span>
-        <strong className="inline-block ml-2 text-base font-bold">{`${totalVote}`}</strong>
+        <span className="inline-block text-base font-medium">Upvote</span>
+        <strong className="inline-block ml-2 text-lg font-bold">{`${totalVote}`}</strong>
       </span>
       </button>
     )
    return (
-    <button className={`btn btn-project-vote bg-gray-50 hover:bg-primary-100 hover:border-primary-500 hover:text-primary-700 
-    ${data == null ? "" : "bg-primary-700 text-white"}`}
+    <button className={`btn btn-project-vote 
+    ${data == null ? "" : "active"}`}
         onClick={toggleVote}>
       <span className="text-xl transition-none icon"><RiArrowUpSFill /></span>
       <span className="ml-1 uppercase btn-project-vote_total whitespace-nowrap">

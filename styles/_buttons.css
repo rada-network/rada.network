@@ -49,8 +49,9 @@ Vote Buttons
 .btn-project-vote {
   @apply px-4 py-2 justify-center;
   @apply border border-gray-700 border-opacity-10 rounded;
+  @apply hover:border-purple-500 hover:bg-purple-50 hover:text-primary-700;
 }
 
-.btn-project-vote_active {
+.btn-project-vote.active {
   @apply bg-purple-700 text-white;
 }
