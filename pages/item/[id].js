@@ -71,104 +71,108 @@ export default function Item (props) {
     <Layout extraClass="page-project_details" meta={data.item.title}>
     {/*<Layout extraClass="page-project_details" meta={data.item}>*/}
       <>
-        {/* Page Header */}
-        <div className="page-header">
+        <div className="container-inner">
+
+          {/* Page Header */}
+          <div className="page-header">
+            <div className="container">
+
+              <div className="page-header_l">
+                <Link href={data.item.imageUri}>
+                  <a title="SolaSystem" className="project-icon">
+                    <img className="project-icon_img w-full h-full object-cover" src={data.item.imageUri} />
+                  </a>
+                </Link>
+              </div>
+
+              <div className="flex-1 page-header_main">
+                <div className="flex items-center content-center page-title">
+                  <h1 className="project-title">{`${data.item.title}`}</h1>
+                </div>
+                {/*<p>{`${imgs === "" || imgs == null}`}</p>*/}
+                {/*<p>show images: {`${showImgs}`}</p>*/}
+                <div className="project-text_short">
+                  <div  dangerouslySetInnerHTML={{__html: data.item.description}} />
+                </div>
+
+                <div className="mt-2 metadata-wrapper project-metadata-wrapper">
+                  <a href={`/explore/${data.item.itemType}`} className={`metadata badge badge-${data.item.itemType} project-metadata_type`}>
+                    <span className="metadata-value">{data.item.itemType}</span>
+                  </a>
+                  <a href={data.item.platform.websiteUri} className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
+                    <span className="icon"><i className={`cf cf-${data.item.platform.networkName.slice(0, 3)}`}/></span>
+                    <span className="metadata-value">{data.item.platform.name}</span>
+                  </a>
+                  <a href="#" className="metadata badge badge-eth project-metadata_platform project-metadata_platform_sol">
+                    <span className="icon"><i className={`cf cf-${data.item.token.symbol.toLowerCase()}`}/></span>
+                    <span className="metadata-value">{data.item.token.symbol}</span>
+                  </a>
+                </div>
+
+              </div>
+
+              <div className="page-header_r">
+                <div className="flex justify-between cta-wrapper">
+                  <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md w-px-104 md:w-full btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
+                    <span className="text-2xl icon"><RiCompass3Fill /></span>
+                    <span className="ml-2 uppercase btn-project-vote_total whitespace-nowrap">
+                      <span className="inline-block text-sm font-medium">Visit</span>
+                    </span>
+                  </a>
+                  <Vote
+                    itemId={data.item.id}
+                    votes={data.item.totalVote}
+                    page={"detail"}
+                  />
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Page Main */}
           <div className="container">
 
-            <div className="page-header_l">
-              <Link href={data.item.imageUri}>
-                <a title="SolaSystem" className="project-icon">
-                  <img className="project-icon_img w-full h-full object-cover" src={data.item.imageUri} />
-                </a>
-              </Link>
-            </div>
+            <div className="flex flex-row justify-center">
 
-            <div className="flex-1 page-header_main">
-              <div className="flex items-center content-center page-title">
-                <h1 className="project-title">{`${data.item.title}`}</h1>
-              </div>
-              {/*<p>{`${imgs === "" || imgs == null}`}</p>*/}
-              {/*<p>show images: {`${showImgs}`}</p>*/}
-              <div className="project-text_short">
-                <div  dangerouslySetInnerHTML={{__html: data.item.description}} />
-              </div>
+              <div className="page-main">
 
-              <div className="mt-2 metadata-wrapper project-metadata-wrapper">
-                <a href={`/explore/${data.item.itemType}`} className={`metadata badge badge-${data.item.itemType} project-metadata_type`}>
-                  <span className="metadata-value">{data.item.itemType}</span>
-                </a>
-                <a href={data.item.platform.websiteUri} className="metadata badge badge-sol project-metadata_platform project-metadata_platform_sol">
-                  <span className="icon"><i className={`cf cf-${data.item.platform.networkName.slice(0, 3)}`}/></span>
-                  <span className="metadata-value">{data.item.platform.name}</span>
-                </a>
-                <a href="#" className="metadata badge badge-eth project-metadata_platform project-metadata_platform_sol">
-                  <span className="icon"><i className={`cf cf-${data.item.token.symbol.toLowerCase()}`}/></span>
-                  <span className="metadata-value">{data.item.token.symbol}</span>
-                </a>
-              </div>
+                <div className="section">
+                  <div className="section-body">
+                    <Carousel show={2}>
+                      {showContents_}
+                    </Carousel>
+                    <div className="flex-col">
 
-            </div>
+                      {/*<div className="project-media-viewer">*/}
+                      {/*  <div className="w-full h-full project-media-wrapper">*/}
+                      {/*    <div className="overflow-hidden rounded shadow-xl project-media aspect-w-16 aspect-h-9">*/}
+                      {/*      /!* <img className="project-img" alt="" src="https://picsum.photos/1024/768?random=2" /> *!/*/}
+                      {/*      <iframe width="560" height="315" src="https://www.youtube.com/embed/qnkuBUAwfe0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*/}
+                      {/*    </div>*/}
+                      {/*  </div>*/}
+                      {/*</div>*/}
 
-            <div className="page-header_r">
-              <div className="flex justify-between cta-wrapper">
-                <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md w-px-104 md:w-full btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
-                  <span className="text-2xl icon"><RiCompass3Fill /></span>
-                  <span className="ml-2 uppercase btn-project-vote_total whitespace-nowrap">
-                    <span className="inline-block text-sm font-medium">Visit</span>
-                  </span>
-                </a>
-                <Vote
-                  itemId={data.item.id}
-                  votes={data.item.totalVote}
-                  page={"detail"}
-                />
-              </div>
-            </div>
+                      <IdeaContent item={data.item} />
 
-          </div>
-        </div>
-
-        {/* Page Main */}
-        <div className="container">
-
-          <div className="flex flex-row justify-center">
-
-            <div className="page-main">
-
-              <div className="section">
-                <div className="section-body">
-                  <Carousel show={2}>
-                    {showContents_}
-                  </Carousel>
-                  <div className="flex-col">
-
-                    {/*<div className="project-media-viewer">*/}
-                    {/*  <div className="w-full h-full project-media-wrapper">*/}
-                    {/*    <div className="overflow-hidden rounded shadow-xl project-media aspect-w-16 aspect-h-9">*/}
-                    {/*      /!* <img className="project-img" alt="" src="https://picsum.photos/1024/768?random=2" /> *!/*/}
-                    {/*      <iframe width="560" height="315" src="https://www.youtube.com/embed/qnkuBUAwfe0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*/}
-                    {/*    </div>*/}
-                    {/*  </div>*/}
-                    {/*</div>*/}
-
-                    <IdeaContent item={data.item} />
+                    </div>
 
                   </div>
-
                 </div>
+                <CommentList item={data.item} comments={data.comments}/>
+
               </div>
-              <CommentList item={data.item} comments={data.comments}/>
+
+              {/* <div className="page-sidebar">
+                <div className="flex flex-col h-full project-details">
+                  <div className="project-text">
+                    <p>Part of the Legendary Series, 99 ever minted, 2nd Edition</p>
+                    <p>Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain. Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
+                  </div>
+                </div>
+              </div> */}
 
             </div>
-
-            {/* <div className="page-sidebar">
-              <div className="flex flex-col h-full project-details">
-                <div className="project-text">
-                  <p>Part of the Legendary Series, 99 ever minted, 2nd Edition</p>
-                  <p>Rune Farm is aiming to be a leading NFT platform on Binance Smart Chain. Rune will launch yield farms as a way to acquire NFTs that can be combined into other NFTs called Rune Words. Characters and Guilds on the platform will gain certain farm bonuses or NFT rewards depending on their attributes. We are a fair launch project with no pre-sale, no investor, and no pre-mine.</p>
-                </div>
-              </div>
-            </div> */}
 
           </div>
 

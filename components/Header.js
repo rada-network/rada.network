@@ -12,7 +12,7 @@ export const Header = ({props}) => {
   // console.log(`Header: ${str}`)
   // console.log(`isAuthenticated: ${isAuthenticated}`)
   return (
-    <div className={"header overflow-hidden " + props.itemType}>
+    <div className={`header overflow-hidden`} type={props.itemType}>
       <div className="container">
         <div className="flex flex-wrap">
           <div className="py-12 lg:py-16 flex flex-col max-w-screen-sm lg:w-1/2">
@@ -26,13 +26,8 @@ export const Header = ({props}) => {
             </p>
           </div>
           <div className="hidden lg:flex lg:w-1/2 lg:-my-12">
-            <img className="block w-auto h-auto" src="/images/hero.png" alt="dhunt.io" />
+            <img className="block w-auto h-auto" src="/images/hero.png" />
           </div>
-          {/* <div className="mt-4">
-            <a href="/" className="h-12 px-6 font-medium tracking-wide rounded btn btn-secondary">
-              Get started
-            </a>
-          </div> */}
         </div>
 
       </div>

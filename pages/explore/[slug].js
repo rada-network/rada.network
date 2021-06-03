@@ -111,12 +111,12 @@ export default observer(function Explore({props}) {
   }
   else{
     return (
-      <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
+      <Layout extraClass="page_topic" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
         <Header props={data.topic[0]}/>
         <ProjectsList
           grid="2"
           gap="2"
-          title={`Most ${itemType.split('-').join(' ').toUpperCase()} in a Week`}
+          title={`${itemType.split('-').join(' ').toUpperCase()}`}
           cta="Sorted by"
           detail={true}
           itemType={itemType}
