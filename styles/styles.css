@@ -141,9 +141,14 @@ Project Details
     @apply flex mt-6;
   }
 
+  .cta-wrapper .btn {
+    @apply uppercase text-sm;
+  }
+
   .cta-wrapper .btn-project-link {
     @apply justify-center px-2 py-2 md:px-3;
-    @apply text-gray-700 bg-gray-50 border rounded border-gray-200 hover:bg-primary-100 hover:text-primary-700 hover:border-primary-500;
+    @apply text-gray-700 border-2 border-gray-900 border-opacity-0 rounded;
+    @apply hover:text-purple-700;
   }
 
   .cta-wrapper .btn-project-vote {

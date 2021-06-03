@@ -51,10 +51,10 @@ export const Vote = observer(({itemId, votes, page}) => {
     <button className={`btn btn-project-vote
     ${data == null ? "" : "active"}`}
           onClick={toggleVote}>
-      <span className="-mb-1 -ml-1 text-2xl icon"><RiArrowUpSFill /></span>
-      <span className="ml-1 uppercase btn-project-vote_total whitespace-nowrap">
-        <span className="inline-block text-base font-medium">Upvote</span>
-        <strong className="inline-block ml-2 text-lg font-bold">{`${totalVote}`}</strong>
+      <span className="-mb-0.5 -ml-1 text-2xl icon"><RiArrowUpSFill /></span>
+      <span className="ml-1 btn-project-vote_total whitespace-nowrap">
+        <span className="inline-block font-medium">Upvote</span>
+        <strong className="inline-block ml-2 font-bold">{`${totalVote}`}</strong>
       </span>
       </button>
     )
@@ -62,9 +62,9 @@ export const Vote = observer(({itemId, votes, page}) => {
     <button className={`btn btn-project-vote 
     ${data == null ? "" : "active"}`}
         onClick={toggleVote}>
-      <span className="text-xl transition-none icon"><RiArrowUpSFill /></span>
-      <span className="ml-1 uppercase btn-project-vote_total whitespace-nowrap">
-        <span className="ml-1 text-xs font-bold btn-project-vote_total whitespace-nowrap">
+      <span className="text-xl -mb-0.5 transition-none icon"><RiArrowUpSFill /></span>
+      <span className="ml-1 btn-project-vote_total whitespace-nowrap">
+        <span className="font-bold btn-project-vote_total whitespace-nowrap">
         {`${totalVote}`}
         </span>
       </span>

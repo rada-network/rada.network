@@ -10,7 +10,7 @@ import getClient from "../../data/client";
 
 import itemQuery from "../../data/query/itemDetail"
 import allItem from "../../data/query/items"
-import {RiArrowUpSFill, RiCompass3Fill} from "react-icons/ri";
+import {RiArrowUpSFill, RiCompass3Fill, RiExternalLinkLine} from "react-icons/ri";
 import TextareaAutosize from "react-textarea-autosize";
 import tgVote from "../../data/query/tgVote";
 import {CommentList} from "../../components/comments/commentList";
@@ -118,10 +118,10 @@ export default function Item (props) {
                     page={"detail"}
                   />
                   <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="btn btn-project-link ml-4">
-                    <span className="text-2xl icon"><RiCompass3Fill /></span>
-                    <span className="ml-2 btn-project-vote_total whitespace-nowrap">
+                    <span className="btn-project-vote_total whitespace-nowrap">
                       <span className="inline-block text-sm font-medium">Visit</span>
                     </span>
+                    <span className="icon ml-2"><RiExternalLinkLine /></span>
                   </a>
                 </div>
                 

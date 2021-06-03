@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export const Card = ({title, text, mediaUri, cta, itemType}) => {
   return (
-    <div className="card card-media-full">
+    <div className="card-media-full">
       <div className="card-media">
         <img className="card-img" src={mediaUri} />
       </div>
