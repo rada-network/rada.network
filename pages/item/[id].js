@@ -100,7 +100,7 @@ export default function Item (props) {
 
             {/* Page Header */}
             <div className="page-header flex flex-col md:flex-row">
-              
+
               {data.item.thumbnail !== null ?
               <div className="mr-8">
                 <Link target={"_blank"} href={data.item.imageUri}>
@@ -116,7 +116,7 @@ export default function Item (props) {
                   <h1 className="project-title">{`${data.item.title}`}</h1>
                 </div>
 
-                <div className="metadata-wrapper project-metadata-wrapper">
+                <div className="mt-1 metadata-wrapper project-metadata-wrapper">
                   <a href={`/explore/${data.item.itemType}`} className={`metadata badge project-metadata_type`}>
                     <span className="metadata-value">{data.item.itemType}</span>
                   </a>
