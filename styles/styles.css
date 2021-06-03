@@ -111,31 +111,13 @@ Page Layout
   @apply md:flex items-center;
 }
 
-.page-header_l,
-.page-header_main,
-.page-header_r {
-  @apply md:flex md:flex-col justify-items-center justify-center;
-}
-
-.page-header_l {
-  @apply float-left mr-4 md:float-none md:mr-0;
-}
-
-.page-header_main {
-  @apply md:px-10;
-}
-
-.page-header_r {
-  @apply max-h-full mt-8 md:mt-0;
+.page-title {
+  @apply text-xl md:text-2xl font-semibold mb-1;
 }
 
 /* 
 Project Details
 */
-.page-title {
-  @apply text-xl md:text-2xl font-semibold mb-1;
-}
-
 .page-project_details {
 
   .page-main {
@@ -155,7 +137,16 @@ Project Details
     @apply mr-1;
   }
 
+  .cta-wrapper .btn {
+    @apply justify-center px-2 py-2 text-purple-700 bg-white border rounded border-gray-200 md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500;
+  }
+
+  .cta-wrapper .btn-project-vote {
+    @apply px-2 py-2 md:px-6 md:py-3;
+  }
+
 }
+
 
 .project-text_short {
   @apply text-base text-gray-900 text-opacity-100;

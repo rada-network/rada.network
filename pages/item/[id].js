@@ -109,17 +109,17 @@ export default function Item (props) {
 
                 {/* Main CTAS */}
                 <div className="mt-6 flex cta-wrapper">
-                  <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
-                    <span className="text-2xl icon"><RiCompass3Fill /></span>
-                    <span className="ml-2 btn-project-vote_total whitespace-nowrap">
-                      <span className="inline-block text-sm font-medium">Visit</span>
-                    </span>
-                  </a>
                   <Vote
                     itemId={data.item.id}
                     votes={data.item.totalVote}
                     page={"detail"}
                   />
+                  <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="btn">
+                    <span className="text-2xl icon"><RiCompass3Fill /></span>
+                    <span className="ml-2 btn-project-vote_total whitespace-nowrap">
+                      <span className="inline-block text-sm font-medium">Visit</span>
+                    </span>
+                  </a>
                 </div>
                 
               </div>
