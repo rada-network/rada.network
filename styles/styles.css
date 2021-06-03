@@ -140,26 +140,8 @@ Project Details
 
   @apply pt-4 md:pt-8;
   
-  .mainbody,
-  .mainbody > .container {
-  }
-
-  .page-header {
-  }
-
-  .page-header_main {
-  }
-
-  .page-header-l {
-
-  }
-
-  .page-header_r {
-    @apply max-h-full;
-  }
-
   .page-main {
-    @apply flex-1; 
+    @apply flex-1 mt-8; 
   }
 
   .page-sidebar {
@@ -167,18 +149,19 @@ Project Details
   }
 
   .project-icon {
-    @apply shadow;
+    @apply shadow rounded;
     @extend %Img104;
   }
 
   .project-metadata-wrapper .metadata {
-    @apply mr-1 md:mr-2;
+    @apply mr-1;
   }
 
 }
 
 .project-text_short {
-  @apply text-sm md:text-base text-gray-900 text-opacity-70 line-clamp-2;
+  @apply text-base text-gray-900 text-opacity-100;
+  @apply mb-8;
 }
 
 .project-info {
@@ -186,12 +169,16 @@ Project Details
 }
 
 .project-info .list-name {
-  @apply mb-1 flex-1 font-normal text-gray-900 text-opacity-50;
+  @apply mb-1 flex-1 text-gray-900 text-opacity-50;
+}
+
+.project-info a.list-value {
+  @apply font-semibold text-purple-500 hover:underline;
 }
 
 .project-info .list-value,
 .project-info .list-value strong[data-element-id="field-answer"] {
-  @apply font-semibold text-gray-900 text-opacity-90;
+  @apply text-gray-900 text-opacity-80;
 }
 
 .project-info .list-value strong[data-element-id="field-label"] {
@@ -199,7 +186,7 @@ Project Details
 }
 
 .project-text_section {
-  @apply mb-8;
+  @apply mb-8 text-base;
 }
 
 .project-text_section p br {
@@ -212,11 +199,11 @@ Project Details
 }
 
 .project-text_title {
-  @apply text-base font-semibold mb-2;
+  @apply font-semibold mb-2;
 }
 
 .project-text_content {
-  @apply text-base font-normal mb-4;
+  @apply text-gray-900 text-opacity-80 mb-4;
 }
 
 #read {

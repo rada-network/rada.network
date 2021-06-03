@@ -28,13 +28,11 @@ export default function IdeaContent({item}){
 
       <div className="col-span-9 text-gray-900 text-opacity-100 md:pr-10 project-text">
 
-        <div className="project-text_short">
-          <div dangerouslySetInnerHTML={{__html: item.description}} />
-        </div>
-
+        <div className="project-text_short" dangerouslySetInnerHTML={{__html: item.description}} />
+        
         <div style={{display : hideContent ? '' : `block`}}
           id={`read`} dangerouslySetInnerHTML={{__html: showContents.join("")}}  />
-        <button className="btn mt-4 hover:underline text-blue-700" onClick={readMore} id={"readBtn"}>Read more</button>
+        <button className="btn mt-4 text-purple-500 hover:underline" onClick={readMore} id={"readBtn"}>Read more</button>
       </div>
 
       {item.ideaUser !== null ? <IdeaInfo item={item}/> : ""}

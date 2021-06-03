@@ -74,12 +74,12 @@ export default function Item (props) {
           <div className="container-inner">
 
             {/* Page Header */}
-            <div className="page-header">
+            <div className="page-header flex">
 
               {data.item.thumbnail !== null ?
-              <div className="">
+              <div className="mr-8">
                 <Link target={"_blank"} href={data.item.imageUri}>
-                  <a className="project-icon">
+                  <a className="project-icon rounded overflow-hidden">
                     <img className="project-icon_img w-full h-full object-cover" src={data.item.imageUri} />
                   </a>
                 </Link>
@@ -87,17 +87,13 @@ export default function Item (props) {
               : ""
               }
 
-              <div className="flex-1">
+              <div className="flex w-full flex-col">
+
                 <div className="flex items-center content-center page-title">
                   <h1 className="project-title">{`${data.item.title}`}</h1>
                 </div>
-                {/*<p>{`${imgs === "" || imgs == null}`}</p>*/}
-                {/*<p>show images: {`${showImgs}`}</p>*/}
-                <div className="project-text_short">
-                  <div dangerouslySetInnerHTML={{__html: data.item.description}} />
-                </div>
 
-                <div className="mt-2 metadata-wrapper project-metadata-wrapper">
+                <div className="metadata-wrapper project-metadata-wrapper">
                   <a href={`/explore/${data.item.itemType}`} className={`metadata badge badge-${data.item.itemType} project-metadata_type`}>
                     <span className="metadata-value">{data.item.itemType}</span>
                   </a>
@@ -110,22 +106,24 @@ export default function Item (props) {
                     <span className="metadata-value">{data.item.token.symbol}</span>
                   </a>
                 </div>
-              </div>
 
-              <div className="">
-                <div className="flex justify-between cta-wrapper">
-                  <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md w-px-104 md:w-full btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
-                    <span className="text-2xl icon"><RiCompass3Fill /></span>
-                    <span className="ml-2 uppercase btn-project-vote_total whitespace-nowrap">
-                      <span className="inline-block text-sm font-medium">Visit</span>
-                    </span>
-                  </a>
-                  <Vote
-                    itemId={data.item.id}
-                    votes={data.item.totalVote}
-                    page={"detail"}
-                  />
+                {/* Main CTAS */}
+                <div className="mt-4">
+                  <div className="flex justify-evenly cta-wrapper">
+                    <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md w-px-104 btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
+                      <span className="text-2xl icon"><RiCompass3Fill /></span>
+                      <span className="ml-2 uppercase btn-project-vote_total whitespace-nowrap">
+                        <span className="inline-block text-sm font-medium">Visit</span>
+                      </span>
+                    </a>
+                    <Vote
+                      itemId={data.item.id}
+                      votes={data.item.totalVote}
+                      page={"detail"}
+                    />
+                  </div>
                 </div>
+                
               </div>
 
             </div>
