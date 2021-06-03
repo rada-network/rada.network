@@ -155,6 +155,11 @@ Project Details
     @apply px-2 py-2 md:px-6;
   }
 
+  .cta-wrapper .btn-project-vote {
+    @apply px-2 py-2 md:px-6;
+    @apply border-2;
+  }
+
 }
 
 

@@ -85,7 +85,7 @@ export default function Item (props) {
                 </div>
 
                 <div className="metadata-wrapper project-metadata-wrapper">
-                  <a href={`/explore/${data.item.itemType}`} className={`metadata project-metadata_type`}>
+                  <a href={`/explore/${data.item.itemType}`} className={`metadata badge project-metadata_type`}>
                     <span className="metadata-value">{data.item.itemType}</span>
                   </a>
                   <NetworkIcon
@@ -98,7 +98,6 @@ export default function Item (props) {
                 </div>
 
                 <div className="project-text_short" dangerouslySetInnerHTML={{__html: data.item.description}} />
-
 
                 {/* Main CTAS */}
                 <div className="cta-wrapper">

@@ -26,7 +26,7 @@ export const Header = ({props}) => {
             </p>
           </div>
           {props.itemType === "home" ?
-          <div className="hidden lg:flex lg:w-1/2 lg:-my-20">
+          <div className="hidden lg:flex lg:w-1/2 lg:-my-24">
             <img className="block w-auto h-auto" src="/images/hero.png" />
           </div>
           : ""

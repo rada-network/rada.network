@@ -64,7 +64,7 @@ export const Vote = observer(({itemId, votes, page}) => {
         onClick={toggleVote}>
       <span className="text-xl -mb-0.5 transition-none icon"><RiArrowUpSFill /></span>
       <span className="ml-1 btn-project-vote_total whitespace-nowrap">
-        <span className="font-bold btn-project-vote_total whitespace-nowrap">
+        <span className="btn-project-vote_total whitespace-nowrap">
         {`${totalVote}`}
         </span>
       </span>
