@@ -109,7 +109,6 @@ export default observer(function Home(props) {
   observableItemStore.tweets = data.posts
   observableNftStore.tweets = data.postsNFT
   observableDappStore.tweets = data.postsDapp
-  console.log(homeStore.homeDisplay)
   return (
     <Layout extraClass="page-home" meta={"DHunt.io - Top BlockChain DApps"}>
       <Header props={{
