@@ -198,6 +198,33 @@ Project Details
   @apply block mb-1 flex-1 font-normal text-gray-900 text-opacity-50;
 }
 
+.project-text_section {
+  @apply mb-8;
+}
+
+.project-text_section p br {
+  @apply block h-2;
+  content: " ";
+}
+
+.project-text_section p a {
+  @apply text-blue-500 hover:underline;
+}
+
+.project-text_title {
+  @apply text-base font-semibold mb-2;
+}
+
+.project-text_content {
+  @apply text-base font-normal mb-4;
+}
+
+#read {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 12;
+}
 
 /*
 Perfect Scrollbar

@@ -118,7 +118,3 @@ metadata
 .comment-text {
   @apply text-gray-900 text-opacity-95;
 }
-
-#read{
-  @apply line-clamp-5
-}

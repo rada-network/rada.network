@@ -5,8 +5,6 @@ import {DropDown} from "../dropdown/DropDown";
 
 //ReactIcons
 import {IoChevronDownSharp, IoChevronForwardSharp, IoChevronBackSharp} from "react-icons/io5";
-import {RiFireFill} from "react-icons/ri";
-import {RiTimeFill} from "react-icons/ri";
 import Link from "next/link"
 import {useRouter} from "next/router";
 import {useStore} from "../../lib/useStore";
