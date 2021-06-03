@@ -69,12 +69,11 @@ Media Full
   @apply h-auto relative text-white border shadow-sm;
 
   .card-media {
-    @apply max-h-96 rounded-md;
+    @apply max-h-96 max-w-screen-sm rounded;
   }
 
   .card-img {
-    @apply rounded-md;
-    filter: brightness(50%);
+    @apply rounded;
   }
 
   .card-body {

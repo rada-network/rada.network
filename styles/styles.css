@@ -134,7 +134,6 @@ Project Details
   }
 
   .project-metadata-wrapper .metadata {
-    @apply mr-1;
   }
 
   .cta-wrapper {
@@ -157,7 +156,6 @@ Project Details
 
   .cta-wrapper .btn-project-vote {
     @apply px-2 py-2 md:px-6;
-    @apply border-2;
   }
 
 }
@@ -219,7 +217,7 @@ Project Details
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 8;
+  -webkit-line-clamp: 9;
 }
 
 /*

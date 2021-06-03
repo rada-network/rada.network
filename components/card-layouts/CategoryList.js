@@ -1,11 +1,11 @@
 import {Card} from "../cards/Category";
 import { useState, useEffect, createRef } from 'react'
+
 import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
-
 import styles from '../../styles/modules/Scrollbar.module.css';
 
-const categoryPanel = createRef();
+const scrollBox = createRef();
 let ps;
 
 //ReactIcons
@@ -14,7 +14,6 @@ import { IoChevronForwardSharp } from "react-icons/io5";
 export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topic}) => {
 
   const [timelineWidth, setTimelineWidth] = useState('')
-
 
   useEffect(() => {
     const onResize = () => {
@@ -26,14 +25,14 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
     onResize()
     console.log('init ps')
     // make scrollbar
-    ps = new PerfectScrollbar(categoryPanel.current, {
+    ps = new PerfectScrollbar(scrollBox.current, {
     });
 
     return () => {
       window.removeEventListener("resize", onResize);
       ps.destroy();
     }
-  }, [categoryPanel]);
+  }, [scrollBox]);
 
 
 	return (
@@ -56,7 +55,7 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
 
 				<div className="section-body">
 
-          <div className={`${styles.category_scroll} scrollbar ${styles.scrollbar}`} ref={categoryPanel}>
+          <div className={`${styles.category_scroll} scrollbar ${styles.scrollbar}`} ref={scrollBox}>
             {topic.map(function(item){
               return (
                 <Card

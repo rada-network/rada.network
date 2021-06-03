@@ -1,8 +1,13 @@
 import useSWR, {mutate} from 'swr'
 import Link from 'next/link'
+import { useState, useEffect, createRef } from 'react'
 
 import {Layout} from '../../components/page-layouts/OneColumn';
 import getClient from "../../data/client";
+
+import PerfectScrollbar from 'perfect-scrollbar';
+import "perfect-scrollbar/css/perfect-scrollbar.css";
+import styles from '../../styles/modules/Scrollbar.module.css';
 
 import itemQuery from "../../data/query/itemDetail"
 import allItem from "../../data/query/items"
@@ -16,6 +21,8 @@ import {Card} from "../../components/cards/MediaFull";
 import NetworkIcon from "../../components/icons/networkIcon";
 import TokenIcon from "../../components/icons/tokenIcon";
 
+const scrollBox = createRef();
+let ps;
 
 const getData = async (id) => {
   const client = getClient()
@@ -51,6 +58,7 @@ export default function Item (props) {
   const showImgs = Object.keys(imgsUri).map(key => {
     return <a href={`${imgsUri[key]}`}>img {key} <br /></a>
   })
+
   const showImages_ = Object.keys(imgsUri).map(key => {
     return(
       <Card
@@ -59,6 +67,28 @@ export default function Item (props) {
       />
     )
   })
+
+  const [timelineWidth, setTimelineWidth] = useState('')
+
+  useEffect(() => {
+    const onResize = () => {
+      setTimelineWidth('')
+      const timelinebox = document.querySelector('.timeline')
+      setTimelineWidth(timelinebox?.scrollWidth)
+    };
+    window.addEventListener("resize", onResize);
+    onResize()
+    console.log('init ps')
+    // make scrollbar
+    ps = new PerfectScrollbar(scrollBox.current, {
+    });
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      ps.destroy();
+    }
+  }, [scrollBox]);
+
   return (
     <Layout extraClass="page-project_details" meta={data.item.title}>
     {/*<Layout extraClass="page-project_details" meta={data.item}>*/}
@@ -67,8 +97,10 @@ export default function Item (props) {
       <div class="section section-top">
         <div className="container">
           <div className="container-inner">
+
             {/* Page Header */}
             <div className="page-header flex flex-col md:flex-row">
+              
               {data.item.thumbnail !== null ?
               <div className="mr-8">
                 <Link target={"_blank"} href={data.item.imageUri}>
@@ -120,11 +152,18 @@ export default function Item (props) {
 
             {/* Page Main */}
             <div className="flex flex-row justify-center">
-                <div className="page-main">
+              <div className="page-main">
+
+                {/* Gallery */}
+                <div className={`${styles.category_scroll} scrollbar ${styles.scrollbar}`} ref={scrollBox}>
                   {showImages_}
-                  <IdeaContent item={data.item} />
                 </div>
+
+                <IdeaContent item={data.item} />
+
               </div>
+            </div>
+
             </div>
           </div>
         </div>
