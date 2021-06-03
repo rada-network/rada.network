@@ -10,6 +10,7 @@ import {useRouter} from "next/router";
 import {useStore} from "../../lib/useStore";
 import {observer} from "mobx-react";
 import {getPosts} from "../../data/query/posts";
+import {TabButton} from "../button/tabButton";
 
 export const ProjectsList = observer(({
                                         homeDisplay,
@@ -31,27 +32,6 @@ export const ProjectsList = observer(({
   const [showMoreButton, setShowMoreButton] = useState(true)
 
   if (itemType === "all") itemType = ""
-
-  const handleTopComment = (e) => {
-    dataStore.currentTab = "topcomment";
-    dataStore.tweets = [];
-    handleLoadMoreItems(e)
-  }
-  const handleTopVote = (e) => {
-    dataStore.currentTab = "topvote";
-    dataStore.tweets = [];
-    handleLoadMoreItems(e)
-  }
-  const handlePopular = (e) => {
-    dataStore.currentTab = "popular";
-    dataStore.tweets = [];
-    handleLoadMoreItems(e)
-  }
-  const handlePostsLatest = (e) => {
-    dataStore.currentTab = "latest";
-    dataStore.tweets = [];
-    handleLoadMoreItems(e)
-  }
 
   const fullDate = date.toISOString()
   const currentTime = fullDate.split(('T'))[0]
@@ -78,15 +58,6 @@ export const ProjectsList = observer(({
   }
   if (dataStore.home.homeDisplay !== 0 && dataStore.home.homeDisplay !== homeDisplay) return ""
 
-  const Button = ({active, onClick, children}) => {
-    if (active) return <a className="btn rounded bg-white px-4 py-1 shadow-sm" onClick={onClick}>{children}</a>
-    return <a className="btn rounded bg-white text-gray-400 bg-opacity-0 px-4 py-1" onClick={onClick}>{children}</a>
-  }
-
-  const postsByDate = posts.filter(function (post) {
-    // return post.createdAt.includes(currentTime.toString())
-    return post.createdAt.includes("2021-05-19")
-  })
   const showPosts = (posts) => {
     return (
       posts.map((post) => (
@@ -121,7 +92,7 @@ export const ProjectsList = observer(({
 
               {titleIcon &&
               <span className={`icon mr-3 text-${titleIconColor}`}>
-								<i className={`fad fa-${titleIcon}`}></i>
+								<i className={`fad fa-${titleIcon}`}/>
 							</span>}
 
               {itemType !== undefined ?
@@ -150,26 +121,16 @@ export const ProjectsList = observer(({
                 : detail ?
                       <div className="section-cta">
                         <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
-                          {/*<Button active={store.stateIdeas.ideasOrder_ == 'popular'} onClick={e => store.stateIdeas.setIdeasOrder('popular')}>Popular11</Button>*/}
-                          {/*<Button active={store.stateIdeas.ideasOrder_ == 'latest'} onClick={e => store.stateIdeas.setIdeasOrder('latest')}>Latest22</Button>*/}
-                          <Button active={dataStore.currentTab == 'topvote'}
-                                  onClick={e => handleTopVote(e)}>Top Vote</Button>
-                          <Button active={dataStore.currentTab == 'topcomment'}
-                                  onClick={e => handleTopComment(e)}>Top Comment</Button>
-                          <Button active={dataStore.currentTab == 'latest'}
-                                  onClick={e => handlePostsLatest(e)}>Latest</Button>
+                          <TabButton handle={handleLoadMoreItems} key={"topvote"} nValue={"topvote"}  value={"Top Vote"} dataStore={dataStore} />
+                          <TabButton handle={handleLoadMoreItems} key={"topcomment"} nValue={"topcomment"}  value={"Top Comment"} dataStore={dataStore} />
+                          <TabButton handle={handleLoadMoreItems} key={"latest"} nValue={"latest"}  value={"Latest"} dataStore={dataStore} />
                         </div>
                       </div>
                   :
                   <div className="section-cta">
                     <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
-                      {/*<Button active={store.stateIdeas.ideasOrder_ == 'popular'} onClick={e => store.stateIdeas.setIdeasOrder('popular')}>Popular11</Button>*/}
-                      {/*<Button active={store.stateIdeas.ideasOrder_ == 'latest'} onClick={e => store.stateIdeas.setIdeasOrder('latest')}>Latest22</Button>*/}
-                      <Button active={dataStore.currentTab == 'popular'}
-                              onClick={e => handlePopular(e)}>Popular</Button>
-                      <Button active={dataStore.currentTab == 'latest'}
-                              onClick={e => handlePostsLatest(e)}>Latest</Button>
-
+                      <TabButton handle={handleLoadMoreItems} key={"popular"} nValue={"popular"} value={"Popular"} dataStore={dataStore} />
+                      <TabButton handle={handleLoadMoreItems} key={"latest"} nValue={"latest"}  value={"Latest"}dataStore={dataStore} />
                     </div>
                   </div>
               }
