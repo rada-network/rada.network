@@ -29,7 +29,7 @@ export default function IdeaContent({item}){
       <div className="col-span-9 text-gray-900 text-opacity-100 md:pr-10 project-text">
 
         <div className="project-text_short">
-          <div dangerouslySetInnerHTML={{__html: data.item.description}} />
+          <div dangerouslySetInnerHTML={{__html: item.description}} />
         </div>
 
         <div style={{display : hideContent ? '' : `block`}}
