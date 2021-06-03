@@ -8,7 +8,7 @@ export default function IdeaInfo({item}){
       <div className="list-group-sm list-group-v project-info">
 
         <div className="list-group-item">
-          <a className="mb-4 w-px-80 h-px-80 rounded-full overflow-hidden">
+          <a className="mb-4 w-px-64 h-px-64 rounded-full overflow-hidden">
             <img src={item.ideaUser.avatarUri}/>
           </a>
           <span className="list-name">Owner</span>

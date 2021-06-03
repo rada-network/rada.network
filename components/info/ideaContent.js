@@ -27,6 +27,11 @@ export default function IdeaContent({item}){
     <div className="grid grid-col-1 md:grid-cols-12 mt-8">
 
       <div className="col-span-9 text-gray-900 text-opacity-100 md:pr-10 project-text">
+
+        <div className="project-text_short">
+          <div dangerouslySetInnerHTML={{__html: data.item.description}} />
+        </div>
+
         <div style={{display : hideContent ? '' : `block`}}
           id={`read`} dangerouslySetInnerHTML={{__html: showContents.join("")}}  />
         <button className="btn mt-4 hover:underline text-blue-700" onClick={readMore} id={"readBtn"}>Read more</button>

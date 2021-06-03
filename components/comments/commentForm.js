@@ -87,7 +87,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
               className="w-full px-4 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"
               row="1"
               title="Write a comment"
-              placeholder="You should login firstly!"
+              placeholder="Connect your wallet to start discussing"
             />
             <div className="text-sm text-gray-900 text-opacity-50 pl-2 md:mt-0">
               <button onClick={submitComment}

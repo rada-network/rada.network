@@ -137,7 +137,10 @@ export default function Item (props) {
 
                   {showImages_}
 
+
                   <IdeaContent item={data.item} />
+
+
 
                 </div>
 
