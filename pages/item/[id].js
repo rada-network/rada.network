@@ -76,15 +76,16 @@ export default function Item (props) {
           {/* Page Header */}
           <div className="page-header">
             <div className="container">
-
-              <div className="page-header_l">
-                <Link href={data.item.imageUri}>
-                  <a title="SolaSystem" className="project-icon">
-                    <img className="project-icon_img w-full h-full object-cover" src={data.item.imageUri} />
-                  </a>
-                </Link>
-              </div>
-
+            {data.item.thumbnail !== null ?
+                <div className="page-header_l">
+                  <Link target={"_blank"} href={data.item.imageUri}>
+                    <a className="project-icon">
+                      <img className="project-icon_img w-full h-full object-cover" src={data.item.imageUri} />
+                    </a>
+                  </Link>
+                </div>
+                : ""
+            }
               <div className="flex-1 page-header_main">
                 <div className="flex items-center content-center page-title">
                   <h1 className="project-title">{`${data.item.title}`}</h1>

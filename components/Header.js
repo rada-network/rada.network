@@ -25,9 +25,17 @@ export const Header = ({props}) => {
               {props.description}
             </p>
           </div>
-          <div className="hidden lg:flex lg:w-1/2 lg:-my-12">
+          {props.itemType === "home" ?
+              <div className="hidden lg:flex lg:w-1/2 lg:-my-12">
             <img className="block w-auto h-auto" src="/images/hero.png" />
-          </div>
+              </div>
+              : ""
+          }
+          {/* <div className="mt-4">
+            <a href="/" className="h-12 px-6 font-medium tracking-wide rounded btn btn-secondary">
+              Get started
+            </a>
+          </div> */}
         </div>
 
       </div>

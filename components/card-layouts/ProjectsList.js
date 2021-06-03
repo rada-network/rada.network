@@ -151,30 +151,18 @@ export const ProjectsList = observer(({
                   <span className="icon"><IoChevronForwardSharp/></span>
                 </button>
                 : detail ?
-                  <div className="section-cta">
-                    <button className={"btn ml-4 text-gray-700 " + (dataStore.currentTab !== 'latest' ? "opacity-60 hover:opacity-100" : "")}
-                            onClick={handlePostsLatest}>
-                      <span className="icon mr-1"><RiTimeFill/></span>
-                      {/*<span className="btn-text text-xs font-medium uppercase">Ascending by...</span>*/}
-                      <span className="btn-text text-xs font-medium uppercase">Latest</span>
-                    </button>
-
-                    <button className={"btn ml-4 text-gray-700 " + (dataStore.currentTab !== 'topvote' ? "opacity-60 hover:opacity-100" : "")}
-                            onClick={handleTopVote}>
-                      <span className="icon mr-1"><RiFireFill/></span>
-                      <span className="btn-text text-xs font-medium uppercase">
-												Top Vote
-										</span>
-                    </button>
-
-                    <button className={"btn mr-4 text-gray-700 " + (dataStore.currentTab !== 'topcomment' ? "opacity-60 hover:opacity-100" : "")}
-                            onClick={handleTopComment}>
-                      <span className="icon ml-1"><RiFireFill/></span>
-                      <span className="btn-text text-xs font-medium uppercase">
-												Top comments
-										</span>
-                    </button>
-                  </div>
+                      <div className="section-cta">
+                        <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
+                          {/*<Button active={store.stateIdeas.ideasOrder_ == 'popular'} onClick={e => store.stateIdeas.setIdeasOrder('popular')}>Popular11</Button>*/}
+                          {/*<Button active={store.stateIdeas.ideasOrder_ == 'latest'} onClick={e => store.stateIdeas.setIdeasOrder('latest')}>Latest22</Button>*/}
+                          <Button active={dataStore.currentTab == 'latest'}
+                                  onClick={e => handlePostsLatest(e)}>Latest</Button>
+                          <Button active={dataStore.currentTab == 'topvote'}
+                                  onClick={e => handleTopVote(e)}>Top Vote</Button>
+                          <Button active={dataStore.currentTab == 'topcomment'}
+                                  onClick={e => handleTopComment(e)}>Top Comment</Button>
+                        </div>
+                      </div>
                   :
                   <div className="section-cta">
                     <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
