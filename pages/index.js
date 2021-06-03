@@ -163,7 +163,7 @@ export default observer(function Home(props) {
           grid="2"
           gap="4"
           itemType={"dapp"}
-          title="Most Active DApps"
+          title="Most active DApps"
           titleIcon="cube"
           titleIconColor="pink-500"
           // posts={data.postsDapp}
