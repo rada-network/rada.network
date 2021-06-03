@@ -2,7 +2,7 @@
 Category 
 */
 .card {
-  @apply h-48 w-48 mr-4;
+  @apply h-40 w-44 mr-4;
   @apply bg-gradient-to-br from-gray-700 to-gray-500 text-white;
 }
 

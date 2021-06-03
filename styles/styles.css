@@ -169,7 +169,7 @@ Project Details
 }
 
 .project-info {
-  @apply text-sm text-center border border-gray-100 rounded p-8;
+  @apply text-sm text-center border border-gray-900 border-opacity-10 rounded p-8;
 }
 
 .project-info .list-name {
