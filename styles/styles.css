@@ -11,7 +11,7 @@
 Headers
 --------------------------------------------- */
 .header h2 {
-  @apply mb-2 text-xl leading-8 lg:text-2xl lg:leading-snug font-medium text-white;
+  @apply mb-4 text-xl leading-8 lg:text-2xl lg:leading-snug font-medium text-white;
 }
 
 .header p {

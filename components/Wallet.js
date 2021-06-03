@@ -164,7 +164,8 @@ const WalletAvatar = ({wallet}) => {
 
 const ConnectedButton = ({wallet}) => (
   <div className="btn text-sm font-medium px-3 py-2 bg-white border border-gray-200 rounded hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-expanded="false" aria-haspopup="true">
-    <WalletAvatar wallet={wallet} />
+    {/* <WalletAvatar wallet={wallet} /> */}
+    <span className="icon text-base mr-2"><i className="fad fa-wallet"/></span>
     <span onClick={e => wallet.reset()}>Logout</span>
   </div>
 )
