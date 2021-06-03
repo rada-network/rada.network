@@ -81,20 +81,19 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
                 <Button>Twitter</Button>
                 <Button>Reddit</Button>
               </div> */}
-
               <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
+              <Button
+                  active={dataStore.currentTab === 'popular'}
+                  onClick={e => {dataStore.currentTab = "popular";dataStore.tweets = [];handleLoadMoreTweets(e)} }>
+                Popular
+              </Button>
+
                 <Button
                   active={dataStore.currentTab === 'latest'}
                   onClick={e => {dataStore.currentTab = "latest";dataStore.tweets = [];handleLoadMoreTweets(e) }}>
                   Latest
                 </Button>
-                <Button
-                    active={dataStore.currentTab === 'popular'}
-                    onClick={e => {dataStore.currentTab = "popular";dataStore.tweets = [];handleLoadMoreTweets(e)} }>
-                  Popular
-                </Button>
               </div>
-
             </div>
 
             { cta &&

@@ -88,7 +88,6 @@ export const ProjectsList = observer(({
     return post.createdAt.includes("2021-05-19")
   })
   const showPosts = (posts) => {
-    if (Object.keys(posts).length === 0) return <div>Haven't updated new posts for {currentTime}</div>
     return (
       posts.map((post) => (
         <Card
@@ -153,12 +152,12 @@ export const ProjectsList = observer(({
                         <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
                           {/*<Button active={store.stateIdeas.ideasOrder_ == 'popular'} onClick={e => store.stateIdeas.setIdeasOrder('popular')}>Popular11</Button>*/}
                           {/*<Button active={store.stateIdeas.ideasOrder_ == 'latest'} onClick={e => store.stateIdeas.setIdeasOrder('latest')}>Latest22</Button>*/}
-                          <Button active={dataStore.currentTab == 'latest'}
-                                  onClick={e => handlePostsLatest(e)}>Latest</Button>
                           <Button active={dataStore.currentTab == 'topvote'}
                                   onClick={e => handleTopVote(e)}>Top Vote</Button>
                           <Button active={dataStore.currentTab == 'topcomment'}
                                   onClick={e => handleTopComment(e)}>Top Comment</Button>
+                          <Button active={dataStore.currentTab == 'latest'}
+                                  onClick={e => handlePostsLatest(e)}>Latest</Button>
                         </div>
                       </div>
                   :
@@ -166,10 +165,11 @@ export const ProjectsList = observer(({
                     <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
                       {/*<Button active={store.stateIdeas.ideasOrder_ == 'popular'} onClick={e => store.stateIdeas.setIdeasOrder('popular')}>Popular11</Button>*/}
                       {/*<Button active={store.stateIdeas.ideasOrder_ == 'latest'} onClick={e => store.stateIdeas.setIdeasOrder('latest')}>Latest22</Button>*/}
-                      <Button active={dataStore.currentTab == 'latest'}
-                              onClick={e => handlePostsLatest(e)}>Latest</Button>
                       <Button active={dataStore.currentTab == 'popular'}
                               onClick={e => handlePopular(e)}>Popular</Button>
+                      <Button active={dataStore.currentTab == 'latest'}
+                              onClick={e => handlePostsLatest(e)}>Latest</Button>
+
                     </div>
                   </div>
               }

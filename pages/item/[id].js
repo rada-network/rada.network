@@ -1,25 +1,20 @@
-import { useEffect, useState } from "react";
 import useSWR, {mutate} from 'swr'
-import ReactDOM from "react-dom";
 import Link from 'next/link'
 
-import useUser from '../../lib/useUser'
 import {Layout} from '../../components/page-layouts/OneColumn';
-import {Carousel} from "../../components/carousel/Carousel";
 import getClient from "../../data/client";
 
 import itemQuery from "../../data/query/itemDetail"
 import allItem from "../../data/query/items"
 import {RiArrowUpSFill, RiCompass3Fill, RiExternalLinkLine} from "react-icons/ri";
-import TextareaAutosize from "react-textarea-autosize";
-import tgVote from "../../data/query/tgVote";
 import {CommentList} from "../../components/comments/commentList";
 import {Vote} from "../../components/vote/Vote";
-import IdeaInfo from "../../components/info/ideaInfo";
 import itemComments from "../../data/query/itemComments";
 import {useRouter} from "next/router";
 import IdeaContent from "../../components/info/ideaContent";
 import {Card} from "../../components/cards/MediaFull";
+import NetworkIcon from "../../components/icons/networkIcon";
+import TokenIcon from "../../components/icons/tokenIcon";
 
 
 const getData = async (id) => {
@@ -72,10 +67,8 @@ export default function Item (props) {
       <div class="section section-top">
         <div className="container">
           <div className="container-inner">
-
             {/* Page Header */}
             <div className="page-header flex flex-col md:flex-row">
-
               {data.item.thumbnail !== null ?
               <div className="mr-8">
                 <Link target={"_blank"} href={data.item.imageUri}>
@@ -86,9 +79,7 @@ export default function Item (props) {
               </div>
               : ""
               }
-
               <div className="flex w-full flex-col">
-
                 <div className="flex items-center content-center page-title">
                   <h1 className="project-title">{`${data.item.title}`}</h1>
                 </div>
@@ -97,18 +88,17 @@ export default function Item (props) {
                   <a href={`/explore/${data.item.itemType}`} className={`metadata project-metadata_type`}>
                     <span className="metadata-value">{data.item.itemType}</span>
                   </a>
-                  <a href={data.item.platform.websiteUri} className="metadata project-metadata_platform project-metadata_platform_sol">
-                    <span className="icon mr-1"><i className={`cf cf-${data.item.platform.networkName.slice(0, 3)}`}/></span>
-                    <span className="metadata-value">{data.item.platform.name}</span>
-                  </a>
-                  <a href="#" className="metadata project-metadata_platform project-metadata_platform_sol">
-                    <span className="icon mr-1"><i className={`cf cf-${data.item.token.symbol.toLowerCase()}`}/></span>
-                    <span className="metadata-value">{data.item.token.symbol}</span>
-                  </a>
+                  <NetworkIcon
+                      badge={true}
+                      projectWebsiteUri={data.item.platform.websiteUri}
+                      projectPlatformShort={data.item.platform.networkName.slice(0, 3)}
+                      projectPlatform={data.item.platform.name}
+                  />
+                  <TokenIcon item={data.item} badge={true}  />
                 </div>
-                
+
                 <div className="project-text_short" dangerouslySetInnerHTML={{__html: data.item.description}} />
-                
+
 
                 {/* Main CTAS */}
                 <div className="cta-wrapper">
@@ -124,27 +114,18 @@ export default function Item (props) {
                     <span className="icon ml-2"><RiExternalLinkLine /></span>
                   </a>
                 </div>
-                
+
               </div>
 
             </div>
 
             {/* Page Main */}
             <div className="flex flex-row justify-center">
-
                 <div className="page-main">
-
                   {showImages_}
-
-
                   <IdeaContent item={data.item} />
-
-
-
                 </div>
-
               </div>
-
             </div>
           </div>
         </div>

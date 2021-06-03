@@ -5,6 +5,8 @@ import utils from "../../lib/util";
 import {Vote} from "../vote/Vote";
 
 import styles from '../../styles/modules/Card.project.module.css'
+import ItemTypeIcon from "../icons/itemTypeIcon";
+import NetworkIcon from "../icons/networkIcon";
 
 export const Card = ({
   post,
@@ -34,33 +36,10 @@ export const Card = ({
 
           <div className="metadata-wrapper project-metadata-wrapper">
             {/* aHieu: Van should check if there is value or not */}
-            { projectType &&
-            <a
-              href={`/explore/${projectType}`}
-              // className={`metadata project-metadata_type project-metadata_type_${
-              className={`metadata project-metadata_type project-metadata_type_${
-                projectType.toLowerCase() || ""
-              } `}
-            >
-              <span className="metadata-value">{projectType}</span>
-            </a> }
 
-            { projectPlatform && 
-            <a
-              href={projectWebsiteUri}
-              className={`metadata project-metadata_platform project-metadata_platform_${
-                projectPlatformShort || ""
-              } `}
-            >
-              {/* <img className="card-img" src={`./node_modules/cryptocurrency-icons/svg/color/${projectPlatformShort || ''}.svg`} /> */}
-              <span className="icon mr-1">
-                {/*networkName: polkadot, tron, cardano, eth, bsc, solana, ripple,*/}
-                {/* available: cf-sol cf-eth cf-car, unavailable: cf-tron cf-bsc cf-polkadot cf-ripple icon*/}
-                <i className={`cf cf-${projectPlatformShort || 'btc'} text-base`}></i>
-              </span>
-              <span className="metadata-value">{projectPlatform}</span>
-            </a> }
+            <ItemTypeIcon projectType={projectType} />
 
+            <NetworkIcon projectPlatform={projectPlatform} projectPlatformShort={projectPlatformShort} projectWebsiteUri={projectWebsiteUri} badge={false}/>
             { projectDate && 
             <div className="metadata project-metadata_date">
               {/*<span className="metadata-value">{projectDate.split(('T'))[0]}</span>*/}
