@@ -69,12 +69,12 @@ export default function Item (props) {
     {/*<Layout extraClass="page-project_details" meta={data.item}>*/}
       <>
 
-      <div class="section">
+      <div class="section section-top">
         <div className="container">
           <div className="container-inner">
 
             {/* Page Header */}
-            <div className="page-header flex">
+            <div className="page-header flex flex-col md:flex-row">
 
               {data.item.thumbnail !== null ?
               <div className="mr-8">
@@ -108,20 +108,18 @@ export default function Item (props) {
                 </div>
 
                 {/* Main CTAS */}
-                <div className="mt-4">
-                  <div className="flex justify-evenly cta-wrapper">
-                    <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md w-px-104 btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
-                      <span className="text-2xl icon"><RiCompass3Fill /></span>
-                      <span className="ml-2 uppercase btn-project-vote_total whitespace-nowrap">
-                        <span className="inline-block text-sm font-medium">Visit</span>
-                      </span>
-                    </a>
-                    <Vote
-                      itemId={data.item.id}
-                      votes={data.item.totalVote}
-                      page={"detail"}
-                    />
-                  </div>
+                <div className="mt-6 flex cta-wrapper">
+                  <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="justify-center px-2 py-2 text-purple-700 bg-white border rounded-md btn border-gray-200 item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
+                    <span className="text-2xl icon"><RiCompass3Fill /></span>
+                    <span className="ml-2 btn-project-vote_total whitespace-nowrap">
+                      <span className="inline-block text-sm font-medium">Visit</span>
+                    </span>
+                  </a>
+                  <Vote
+                    itemId={data.item.id}
+                    votes={data.item.totalVote}
+                    page={"detail"}
+                  />
                 </div>
                 
               </div>

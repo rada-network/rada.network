@@ -59,6 +59,10 @@ Section
   @apply my-8;
 }
 
+.section.section-top {
+  @apply mt-0;
+}
+
 .section > .container {
   @apply px-0;
 }

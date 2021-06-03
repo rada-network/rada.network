@@ -2,9 +2,9 @@
 Badges
 */
 .badge {
-  @apply group text-xs px-1 mt-0.5 md:px-2 py-0 h-5 md:h-6 whitespace-nowrap;
+  @apply group text-xs px-2 py-0 h-6 whitespace-nowrap;
   @apply bg-gray-100 text-gray-900 text-opacity-80;
-  @apply rounded-sm;
+  @apply rounded;
   text-transform: uppercase !important;
 
   &::before {

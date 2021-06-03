@@ -3,7 +3,7 @@ import utils from "../../lib/util";
 
 export default function IdeaInfo({item}){
   return (
-    <div className="col-span-3">
+    <div className="md:col-span-3">
 
       <div className="list-group-sm list-group-v project-info">
 

@@ -138,8 +138,6 @@ Project Details
 
 .page-project_details {
 
-  @apply pt-4 md:pt-8;
-  
   .page-main {
     @apply flex-1 mt-8; 
   }
