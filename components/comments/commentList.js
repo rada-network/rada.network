@@ -98,7 +98,7 @@ export const CommentList = observer(({item,comments}) => {
 
   return (
     <>
-      <div className="pt-8 border-t border-gray-100 section section-project-discussions">
+      <div className="section section-project-discussions">
         <div className="section-header">
           <div className="section-title">Discussions</div>
         </div>

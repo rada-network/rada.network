@@ -21,11 +21,11 @@ export const Header = ({props}) => {
         <div className={`header overflow-hidden`} type={props.itemType}>
           <div className="container">
             <div className="flex flex-wrap">
-              <div className="py-12 lg:py-16 flex flex-col max-w-screen-sm lg:w-1/2">
+              <div className="header-body">
                 <h2 className="">
-              <span className="relative inline-block">
-                {utils.topicTransform(props.title)}
-              </span>
+                  <span className="relative inline-block">
+                    {utils.topicTransform(props.title)}
+                  </span>
                 </h2>
                 <p className="">
                   {props.description}

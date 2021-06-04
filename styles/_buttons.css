@@ -55,3 +55,15 @@ Vote Buttons
 .btn-project-vote.active {
   @apply bg-purple-700 text-white;
 }
+
+
+/* 
+Group Buttons 
+*/
+.btn-group {
+  @apply justify-evenly;
+}
+
+.btn-group .btn {
+  
+}

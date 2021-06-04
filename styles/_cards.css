@@ -66,15 +66,15 @@ Media Full
 */
 .card-media-full {
 
-  @apply h-auto relative text-white border shadow-sm;
+  @apply relative border;
 
-  .card-media {
+  /* .card-media {
     @apply max-h-96 max-w-screen-sm rounded;
   }
 
   .card-img {
     @apply rounded;
-  }
+  } */
 
   .card-body {
     @apply p-6 absolute w-full max-w-sm -bottom-0 m-auto;

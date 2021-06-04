@@ -61,7 +61,7 @@ export default observer(function Explore({props}) {
       </>
     )
   }
-  let title = itemType !== "search" ? `Most ${utils.topicTransform(itemType)} in a Week` : "Search results for " + q
+  let title = itemType !== "search" ? `${utils.topicTransform(itemType)}` : "Search results for " + `<strong>${q}</strong>`
   if (!data){
     observableTweetStore.data = []
     if (itemType === 'tweet')

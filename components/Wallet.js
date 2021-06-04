@@ -151,23 +151,24 @@ const WalletContent = ({wallet, closeModal, open}) => {
 }
 
 const WalletAvatar = ({wallet}) => {
-  const text = wallet.account ?  wallet.account.substr(wallet.account.length - 3,1) + " " + wallet.account.substr(wallet.account.length - 2,1)  : 'a n';
+  const text = wallet.account
   return (
-      <div className="mr-2">
-        <Avatar
-          size={16}
-          name={text}
-          variant="bauhaus"
-          colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-        />
-      </div>
-
+    <div className="mr-2">
+      <Avatar
+        size={16}
+        name={text}
+        variant="bauhaus"
+        colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+      />
+    </div>
   )
 }
 
 const ConnectedButton = ({wallet}) => (
   <div className="btn flex text-sm font-medium px-3 py-2 bg-white border border-gray-200 rounded-md hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-expanded="false" aria-haspopup="true">
-    <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
+    {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
+    <WalletAvatar wallet={wallet} />
+    <span className="hidden">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
     <span onClick={e => wallet.reset()}>Logout</span>
   </div>
 )

@@ -10,8 +10,13 @@
 /* 
 Headers
 --------------------------------------------- */
+
+.header-body {
+  @apply py-6 lg:py-10 flex flex-col max-w-screen-sm lg:w-3/4;
+}
+
 .header h2 {
-  @apply mb-4 text-xl leading-8 lg:text-2xl lg:leading-snug font-medium text-white;
+  @apply mb-2 text-xl leading-8 lg:text-2xl lg:leading-snug font-medium text-white;
 }
 
 .header p {
@@ -26,6 +31,10 @@ Home Header
 
 .page-home .header {
   @apply bg-gradient-to-br from-purple-900 to-purple-500;
+}
+
+.page-home .header-body {
+   @apply py-12 lg:py-16 lg:w-1/2;
 }
 
 .page-home .header h2 {
@@ -163,20 +172,30 @@ Project Details
 Media
 */
 .project-media {
-  @apply flex pb-8 md:pb-12;
+  @apply flex flex-nowrap pb-6 mb-8 relative;
 }
 
 .project-media .card-media-full {
-  @apply max-w-screen-sm mr-2;
+  @apply mr-4;
   @apply rounded shadow-none;
+  flex: 1 0 auto;
+  height: 300px;
+  max-width: 80%;
 }
 
 .project-media .card-media-full .card-media {
-  @apply h-full max-w-full;
+  @apply h-full w-full;
   @apply rounded overflow-hidden;
 }
 
+.project-media .card-media-full .card-img {
+  @apply h-full w-auto;
+  @apply object-cover;
+}
 
+/*
+Intro
+*/
 .page-header .project-text_short {
   @apply text-base leading-relaxed text-gray-900 text-opacity-70;
   @apply mt-2 max-w-screen-sm;
