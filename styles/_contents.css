@@ -136,8 +136,8 @@ metadata
 .comments-list-item:hover .comment,
 .comments-list-item:hover .comment_reply_form {
   &::before {
-    border-left-color: #E5E7EB;
-    border-bottom-color: #E5E7EB;
+    border-left-color: #EDE9FE;
+    border-bottom-color: #EDE9FE;
   }
 }
 
