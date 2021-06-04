@@ -155,7 +155,7 @@ export default function Item (props) {
               <div className="page-main">
 
                 {/* Gallery */}
-                <div className={`${styles.category_scroll} scrollbar ${styles.scrollbar}`} ref={scrollBox}>
+                <div className={`project-media scrollbar ${styles.scrollbar}`} ref={scrollBox}>
                   {showImages_}
                 </div>
 

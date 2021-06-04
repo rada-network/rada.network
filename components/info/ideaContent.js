@@ -24,7 +24,7 @@ export default function IdeaContent({item}){
     `
   })
   return (
-    <div className="grid grid-col-1 md:grid-cols-12 mt-8">
+    <div className="grid grid-col-1 md:grid-cols-12">
 
       <div className="md:col-span-9 text-gray-900 text-opacity-100 md:pr-10 project-text">
 

@@ -29,7 +29,7 @@ Home Header
 }
 
 .page-home .header h2 {
-  @apply mb-2 text-2xl leading-8 lg:text-4xl lg:leading-snug font-medium text-white;
+  @apply text-2xl leading-8 lg:text-4xl lg:leading-snug font-medium text-white;
 }
 
 .page-home .header p {
@@ -121,7 +121,7 @@ Project Details
 .page-project_details {
 
   .page-main {
-    @apply flex-1 mt-8; 
+    @apply border-t border-gray-100 flex-1 mt-8; 
   }
 
   .page-sidebar {
@@ -158,6 +158,23 @@ Project Details
     @apply px-2 py-2 md:px-6;
   }
 
+}
+
+/*
+Media
+*/
+.project-media {
+  @apply flex pb-8 md:pb-12;
+}
+
+.project-media .card-media-full {
+  @apply max-w-screen-sm mr-2;
+  @apply rounded shadow-none;
+}
+
+.project-media .card-media-full .card-media {
+  @apply h-full max-w-full;
+  @apply rounded overflow-hidden;
 }
 
 

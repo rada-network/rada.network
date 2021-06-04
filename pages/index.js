@@ -112,9 +112,9 @@ export default observer(function Home(props) {
   return (
     <Layout extraClass="page-home" meta={"DHunt.io - Top BlockChain DApps"}>
       <Header props={{
-        title : "Trends hunter for Cardano community!",
+        title : "Trends hunter for Cardano community",
         itemType : "home",
-        description : "Stay updated with the best quality news & updates!"
+        description : "Stay updated with the best quality news & updates"
       }}/>
       {/* <ProjectsList
         grid="2"

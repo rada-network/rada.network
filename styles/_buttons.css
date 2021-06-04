@@ -47,7 +47,7 @@ Buttons Styles
 Vote Buttons
 */
 .btn-project-vote {
-  @apply px-4 py-4px justify-center;
+  @apply px-2 py-4px justify-center;
   @apply bg-gray-50 border border-gray-900 border-opacity-10 rounded;
   @apply hover:border-purple-700 hover:bg-purple-50 hover:text-primary-700;
 }
