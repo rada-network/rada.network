@@ -49,7 +49,8 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
               <i class={`fad fa-${titleIcon}`}></i>
             </span> }
             <span>{title}</span>
-          </div> }
+          </div>
+          }
 
 				</div>
 

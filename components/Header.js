@@ -1,6 +1,8 @@
 // import {useAuthState} from "../context/auth";
 
 
+import utils from "../lib/util";
+
 export const Header = ({props}) => {
   props = props || {
     title : "",
@@ -22,7 +24,7 @@ export const Header = ({props}) => {
               <div className="py-12 lg:py-16 flex flex-col max-w-screen-sm lg:w-1/2">
                 <h2 className="">
               <span className="relative inline-block">
-                {props.title}
+                {utils.topicTransform(props.title)}
               </span>
                 </h2>
                 <p className="">

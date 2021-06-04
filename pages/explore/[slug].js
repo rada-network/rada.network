@@ -11,6 +11,7 @@ import {getTweet} from "../../data/query/postsTweet";
 import {useRouter} from "next/router";
 import {HomeStore, ObservableTweetStore} from "../index";
 import {getTopic} from "../../data/query/topic";
+import utils from "../../lib/util";
 
 const homeStore = new HomeStore({isHome : false})
 const observableTweetStore = new ObservableTweetStore({homeStore})
@@ -60,6 +61,7 @@ export default observer(function Explore({props}) {
       </>
     )
   }
+  let title = itemType !== "search" ? `Most ${utils.topicTransform(itemType)} in a Week` : "Search results for " + q
   if (!data){
     observableTweetStore.data = []
     if (itemType === 'tweet')
@@ -69,7 +71,7 @@ export default observer(function Explore({props}) {
           <SocialPostsList
             grid="1"
             gap="2"
-            title=""
+            title={title}
             titleIcon="fire-alt"
             titleIconColor="red-500"
             dataStore={observableTweetStore}
@@ -83,7 +85,7 @@ export default observer(function Explore({props}) {
           <ProjectsList
             grid="2"
             gap="2"
-            title={`Most ${itemType.split('-').join(' ').toUpperCase()} in a Week`}
+            title={title}
             cta="Sorted by"
             detail={true}
             itemType={itemType}
@@ -94,7 +96,6 @@ export default observer(function Explore({props}) {
   }
   observableTweetStore.query = q;
   observableTweetStore.tweets = data.feed
-
   if (itemType === "tweet"){
     return (
       <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
@@ -102,7 +103,7 @@ export default observer(function Explore({props}) {
         <SocialPostsList
           grid="1"
           gap="2"
-          title="Social Signal"
+          title={title}
           titleIcon="fire-alt"
           titleIconColor="red-500"
           dataStore={observableTweetStore}
@@ -111,7 +112,6 @@ export default observer(function Explore({props}) {
     )
   }
   else{
-    let title = itemType !== "search" ? `${itemType.split('-').join(' ').toUpperCase()}` : "Search results for " + q
     return (
       <Layout extraClass="page_topic" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
         <Header props={data.topic[0]}/>
