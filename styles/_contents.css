@@ -126,10 +126,15 @@ metadata
   }
 }
 
-.no-reply .comment,
-.no-reply .comment_reply_form {
+.no-reply .comment {
   &::before {
     opacity: 0;
+  }
+}
+
+.no-reply .comment_reply_form {
+  &::before {
+    top: -60px;
   }
 }
 
@@ -174,6 +179,9 @@ metadata
 
 .comment_reply_form {
   @apply py-6 pl-12 relative;
+}
+
+.comment_reply_form textarea {
 }
 
 .comment-main {
