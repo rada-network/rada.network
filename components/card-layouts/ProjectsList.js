@@ -11,6 +11,9 @@ import {useStore} from "../../lib/useStore";
 import {observer} from "mobx-react";
 import {getPosts} from "../../data/query/posts";
 import {TabButton} from "../button/tabButton";
+import WidgetTitle from "../text/widgetTitle";
+
+const take = 12
 
 export const ProjectsList = observer(({
                                         homeDisplay,
@@ -29,8 +32,11 @@ export const ProjectsList = observer(({
   const store = useStore()
   let posts = dataStore.tweets
   const [loadingButton, setLoadingButton] = useState(false)
-  const [showMoreButton, setShowMoreButton] = useState(true)
-
+  let startShowMoreButton = true;
+  if (posts.length < take){
+    startShowMoreButton = false
+  }
+  const [showMoreButton, setShowMoreButton] = useState(startShowMoreButton)
   if (itemType === "all") itemType = ""
 
   const fullDate = date.toISOString()
@@ -43,14 +49,14 @@ export const ProjectsList = observer(({
     const itemsData = await getPosts({
       socialOrder: dataStore.currentTab,
       skip: dataStore.tweets.length,
-      take: 12,
+      take: take,
       type: itemType === "all" ? "" : itemType,
         query : dataStore.query
     });
     if (itemsData.loading) return false
     setLoadingButton(false)
     dataStore.addTweet(itemsData.data.itemFeed)
-    if (itemsData.data.itemFeed.length === 0){
+    if (itemsData.data.itemFeed.length < take){
       setShowMoreButton(false)
     }
     else{
@@ -60,6 +66,13 @@ export const ProjectsList = observer(({
   if (dataStore.home.homeDisplay !== 0 && dataStore.home.homeDisplay !== homeDisplay) return ""
 
   const showPosts = (posts) => {
+    if (!loadingButton && posts.length === 0){
+      return (
+        <>
+          <h2>{dataStore.query} was not found in any documents.</h2>
+        </>
+      )
+    }
     return (
       posts.map((post) => (
         <Card
@@ -91,11 +104,9 @@ export const ProjectsList = observer(({
           <div className="section-header">
             <div className="section-title">
 
-              {titleIcon &&
-              <span className={`icon mr-3 text-${titleIconColor}`}>
-								<i className={`fad fa-${titleIcon}`}/>
-							</span>}
-              {title}
+              <WidgetTitle title={title} titleIcon={titleIcon} titleIconColor={titleIconColor}
+                           dataStore={dataStore}
+              />
 
               {/* Hieu: Example Dropdown in Section Title */}
               {/*<div className="ml-2 inline-flex justify-center items-center">*/}
@@ -115,20 +126,16 @@ export const ProjectsList = observer(({
                   <span className="icon"><IoChevronForwardSharp/></span>
                 </button>
                 : detail ?
-                      <div className="section-cta">
-                        <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
-                          <TabButton handle={handleLoadMoreItems} key={"topvote"} nValue={"topvote"}  value={"Top Vote"} dataStore={dataStore} />
-                          <TabButton handle={handleLoadMoreItems} key={"topcomment"} nValue={"topcomment"}  value={"Top Comment"} dataStore={dataStore} />
-                          <TabButton handle={handleLoadMoreItems} key={"latest"} nValue={"latest"}  value={"Latest"} dataStore={dataStore} />
-                        </div>
-                      </div>
+                <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
+                  <TabButton handle={handleLoadMoreItems} key={"topvote"} nValue={"topvote"}  value={"Top Vote"} dataStore={dataStore} />
+                  <TabButton handle={handleLoadMoreItems} key={"topcomment"} nValue={"topcomment"}  value={"Top Comment"} dataStore={dataStore} />
+                  <TabButton handle={handleLoadMoreItems} key={"latest"} nValue={"latest"}  value={"Latest"} dataStore={dataStore} />
+                </div>
                   :
-                  <div className="section-cta">
-                    <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
-                      <TabButton handle={handleLoadMoreItems} key={"popular"} nValue={"popular"} value={"Popular"} dataStore={dataStore} />
-                      <TabButton handle={handleLoadMoreItems} key={"latest"} nValue={"latest"}  value={"Latest"}dataStore={dataStore} />
-                    </div>
-                  </div>
+                <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
+                  <TabButton handle={handleLoadMoreItems} key={"popular"} nValue={"popular"} value={"Popular"} dataStore={dataStore} />
+                  <TabButton handle={handleLoadMoreItems} key={"latest"} nValue={"latest"}  value={"Latest"}dataStore={dataStore} />
+                </div>
               }
             </div>
             }
@@ -163,7 +170,7 @@ export const ProjectsList = observer(({
               <a onClick={handleLoadMoreItems}
                  className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                    justify-center py-3 px-6 rounded w-full mt-8 text-sm">
-                <span className="btn-text">Show 12 more</span>
+                <span className="btn-text">Show {take} more</span>
               </a>
               :  ""
             }

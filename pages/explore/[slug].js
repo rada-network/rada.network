@@ -3,7 +3,6 @@ import {Header} from '../../components/Header';
 import {ProjectsList} from "../../components/card-layouts/ProjectsList";
 import {SocialPostsList} from "../../components/card-layouts/SocialPostsList";
 import useSWR from "swr";
-import getClient from "../../data/client";
 import {observer} from "mobx-react";
 
 import {getPosts} from "../../data/query/posts";
@@ -17,19 +16,20 @@ const homeStore = new HomeStore({isHome : false})
 const observableTweetStore = new ObservableTweetStore({homeStore})
 
 const getData = async (itemType,q) => {
-  const client = getClient()
 
   const topics = await getTopic();
 
   if (itemType === "tweet") {
     const postTweet = await getTweet({socialOrder : observableTweetStore.currentTab, skip: 0, take: 12})
     return {
-      data : postTweet.data.tweetFeed,
-      topic : {
-        title : "Tweets",
-        type : "tweet",
-        description : "Blockchain social signals.."
-      }
+      feed : postTweet.data.tweetFeed,
+      topic : [
+        {
+          title : "Tweets",
+          type : "tweet",
+          description : "Blockchain social signals.."
+        }
+      ]
     }
   }
   const dataItem =await getPosts({
@@ -61,7 +61,8 @@ export default observer(function Explore({props}) {
       </>
     )
   }
-  let title = itemType !== "search" ? `${utils.topicTransform(itemType)}` : "Search results for " + `<strong>${q}</strong>`
+  observableTweetStore.query = q;
+  let title = itemType !== "search" ? `${utils.topicTransform(itemType)}` : "Search results for "
   if (!data){
     observableTweetStore.data = []
     if (itemType === 'tweet')
@@ -94,7 +95,6 @@ export default observer(function Explore({props}) {
         </Layout>
       )
   }
-  observableTweetStore.query = q;
   observableTweetStore.tweets = data.feed
   if (itemType === "tweet"){
     return (
