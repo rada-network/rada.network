@@ -159,13 +159,8 @@ export default function Item (props) {
         </div>
 
         {/* Comments */}
-        <div class="section">
-          <div className="container">
-            <div className="container-inner">
-              <CommentList item={data.item} comments={data.comments}/>
-            </div>
-          </div>
-        </div>
+
+        <CommentList item={data.item} comments={data.comments}/>
 
       </>
     </Layout>
