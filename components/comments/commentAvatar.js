@@ -8,7 +8,7 @@ export function CommentAvatar({user,size}){
           size={size}
           name={text}
           variant="bauhaus"
-          colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+          colors={["#818CF8", "#FBBF24", "#EF4444", "#DB2777", "#4338CA"]}
         />
       </>
   )

@@ -120,7 +120,7 @@ Project Details
 .page-project_details {
 
   .page-main {
-    @apply border-t border-gray-100 flex-1 mt-8; 
+    @apply flex-1 mt-8 md:mt-12; 
   }
 
   .page-sidebar {
@@ -187,6 +187,9 @@ Media
   @apply mb-8;
 }
 
+/*
+Info
+*/
 .project-info {
   @apply text-sm text-center border border-gray-900 border-opacity-10 rounded p-8;
 }
@@ -208,6 +211,9 @@ Media
   @apply block mb-1 flex-1 font-normal text-gray-900 text-opacity-50;
 }
 
+/*
+Text
+*/
 .project-text_section {
   @apply mb-8 text-base;
 }
@@ -215,6 +221,10 @@ Media
 .project-text_section p br {
   @apply block h-2;
   content: " ";
+}
+
+.project-text_section p {
+  @apply mb-2;
 }
 
 .project-text_section p a {
