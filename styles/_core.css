@@ -76,7 +76,11 @@ Section
 }
 
 .section-title {
-  @apply text-xl font-semibold;
+  @apply text-xl font-medium;
+  strong {
+    @apply font-semibold;
+    border-bottom: 1px dotted;
+  }
 }
 
 .section-footer {

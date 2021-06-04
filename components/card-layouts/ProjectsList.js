@@ -126,13 +126,13 @@ export const ProjectsList = observer(({
                   <span className="icon"><IoChevronForwardSharp/></span>
                 </button>
                 : detail ?
-                <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
+                <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
                   <TabButton handle={handleLoadMoreItems} key={"topvote"} nValue={"topvote"}  value={"Top Vote"} dataStore={dataStore} />
                   <TabButton handle={handleLoadMoreItems} key={"topcomment"} nValue={"topcomment"}  value={"Top Comment"} dataStore={dataStore} />
                   <TabButton handle={handleLoadMoreItems} key={"latest"} nValue={"latest"}  value={"Latest"} dataStore={dataStore} />
                 </div>
                   :
-                <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs ml-4">
+                <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
                   <TabButton handle={handleLoadMoreItems} key={"popular"} nValue={"popular"} value={"Popular"} dataStore={dataStore} />
                   <TabButton handle={handleLoadMoreItems} key={"latest"} nValue={"latest"}  value={"Latest"}dataStore={dataStore} />
                 </div>

@@ -21,7 +21,7 @@ export default function SearchInput(){
             <input value={searchValue} onChange={handledOnChange} onKeyPress={handledOnKeypress}
                 type="search"
                 className="w-full px-5 py-2 text-sm focus:text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"
-                placeholder="Search by address or name ..." />
+                placeholder="Search by name ..." />
         </div>
     )
 }
