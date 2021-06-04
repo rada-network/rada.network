@@ -68,19 +68,20 @@ export default function Item (props) {
     setShowIdx(idx)
   }
 
-  const images = []
-  const showImages_ = Object.keys(imgsUri).map((key, idx) => {
-    images.push(imgsUri[key])
-    return(
-      <Card
-        itemType=""
-        mediaUri={imgsUri[key]}
-        onClick={e => popupMedia(idx)}
-      />
-    )
-  })
+  const images = Object.keys(imgsUri).map(key => imgsUri[key])
 
-  const [timelineWidth, setTimelineWidth] = useState('')
+  const Gallery = () => (!images.length) ? <span ref={scrollBox} /> : (
+    <div className={`project-media scrollbar ${styles.scrollbar}`} ref={scrollBox}>
+      {images.map((img, idx) => (
+        <Card
+          itemType=""
+          mediaUri={img}
+          onClick={e => popupMedia(idx)}
+        />
+      ))}
+    </div>
+  )
+
 
   useEffect(() => {
     // make scrollbar
@@ -156,10 +157,8 @@ export default function Item (props) {
               <div className="page-main">
 
                 {/* Gallery */}
-                <div className={`project-media scrollbar ${styles.scrollbar}`} ref={scrollBox}>
-                  {showImages_}
-                </div>
-
+                <Gallery ref={scrollBox} />
+                
                 <IdeaContent item={data.item} />
 
                 {/* Uncomment to show media popup */}
