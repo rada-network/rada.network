@@ -181,6 +181,9 @@ metadata
   @apply py-6 pl-12 relative;
 }
 
+.comment_reply_form textarea {
+}
+
 .comment-main {
   @apply flex-1;
 }
