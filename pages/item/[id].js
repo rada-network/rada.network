@@ -65,6 +65,7 @@ export default function Item (props) {
 
   const [showIdx, setShowIdx] = useState(-1)
   const popupMedia = (idx) => {
+    return // remove to show popup
     setShowIdx(idx)
   }
 
@@ -91,7 +92,7 @@ export default function Item (props) {
     return () => {
       ps.destroy();
     }
-  }, [scrollBox]);
+  }, [scrollBox, showIdx]);
 
   return (
     <Layout extraClass="page-project_details" meta={data.item.title}>
@@ -158,11 +159,10 @@ export default function Item (props) {
 
                 {/* Gallery */}
                 <Gallery ref={scrollBox} />
-                
+
                 <IdeaContent item={data.item} />
 
-                {/* Uncomment to show media popup */}
-                {/* <Media idx={showIdx} doClose={() => setShowIdx(-1)} items={images} /> */}
+                <Media idx={showIdx} doClose={() => setShowIdx(-1)} items={images} />
               </div>
             </div>
 
