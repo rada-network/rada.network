@@ -2,9 +2,9 @@
 import { IoChevronForwardSharp } from "react-icons/io5";
 import Link from "next/link"
 
-export const Card = ({title, text, mediaUri, cta, itemType}) => {
+export const Card = ({title, text, mediaUri, cta, itemType, onClick}) => {
   return (
-    <div className="card-media-full">
+    <div className="card-media-full" onClick={onClick}>
       <div className="card-media">
         <img className="card-img" src={mediaUri} />
       </div>

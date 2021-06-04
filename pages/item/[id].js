@@ -22,6 +22,8 @@ import NetworkIcon from "../../components/icons/networkIcon";
 import TokenIcon from "../../components/icons/tokenIcon";
 import ItemTypeBadge from "../../components/icons/itemTypeBadge";
 
+import Media from "../../components/Media"
+
 const scrollBox = createRef();
 let ps;
 
@@ -60,11 +62,20 @@ export default function Item (props) {
     return <a href={`${imgsUri[key]}`}>img {key} <br /></a>
   })
 
-  const showImages_ = Object.keys(imgsUri).map(key => {
+
+  const [showIdx, setShowIdx] = useState(-1)
+  const popupMedia = (idx) => {
+    setShowIdx(idx)
+  }
+
+  const images = []
+  const showImages_ = Object.keys(imgsUri).map((key, idx) => {
+    images.push(imgsUri[key])
     return(
       <Card
         itemType=""
         mediaUri={imgsUri[key]}
+        onClick={e => popupMedia(idx)}
       />
     )
   })
@@ -151,6 +162,8 @@ export default function Item (props) {
 
                 <IdeaContent item={data.item} />
 
+                {/* Uncomment to show media popup */}
+                {/* <Media idx={showIdx} doClose={() => setShowIdx(-1)} items={images} /> */}
               </div>
             </div>
 
