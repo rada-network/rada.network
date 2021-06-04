@@ -104,14 +104,35 @@ metadata
 }
 
 .comments-list-item {
-  @apply mt-6 w-full;
+  @apply mt-6 w-full relative;
+  &::before {
+    @apply bg-gray-50;
+    display: block;
+    position: absolute;
+    top: 56px;
+    left: 18px;
+    width: 2px;
+    height: calc(100% - 56px);
+    content: " ";
+  }
 }
 
 .comment {
+  @apply relative;
 }
 
 .comment_reply {
-  @apply mt-6 ml-12;
+  @apply mt-6 ml-12 relative;
+  &::before {
+    @apply bg-gray-50;
+    display: block;
+    position: absolute;
+    top: 42px;
+    left: 14px;
+    width: 2px;
+    height: calc(100% - 42px);
+    content: " ";
+  }
 }
 
 .comment_reply_form {

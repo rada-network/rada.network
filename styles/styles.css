@@ -176,11 +176,9 @@ Media
 }
 
 .project-media .card-media-full {
-  @apply mr-4;
+  @apply mr-4 h-80;
   @apply rounded shadow-none;
   flex: 1 0 auto;
-  height: 300px;
-  max-width: 80%;
 }
 
 .project-media .card-media-full .card-media {
@@ -197,7 +195,7 @@ Media
 Intro
 */
 .page-header .project-text_short {
-  @apply text-base leading-relaxed text-gray-900 text-opacity-70;
+  @apply text-base leading-relaxed text-gray-900 text-opacity-70 line-clamp-2;
   @apply mt-2 max-w-screen-sm;
 }
 
