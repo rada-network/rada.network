@@ -178,7 +178,7 @@ metadata
 }
 
 .comment_reply_form {
-  @apply py-6 pl-12 relative;
+  @apply pt-6 pb-2 pl-12 relative;
 }
 
 .comment_reply_form textarea {
