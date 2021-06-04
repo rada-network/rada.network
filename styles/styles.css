@@ -47,7 +47,6 @@ Category Header
 }
 
 .page_topic img {
-  @apply hidden;
 }
 
 .page_topic .header[type="defi"],

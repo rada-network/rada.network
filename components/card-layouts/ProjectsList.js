@@ -44,7 +44,8 @@ export const ProjectsList = observer(({
       socialOrder: dataStore.currentTab,
       skip: dataStore.tweets.length,
       take: 12,
-      type: itemType === "all" ? "" : itemType
+      type: itemType === "all" ? "" : itemType,
+        query : dataStore.query
     });
     if (itemsData.loading) return false
     setLoadingButton(false)
@@ -94,12 +95,7 @@ export const ProjectsList = observer(({
               <span className={`icon mr-3 text-${titleIconColor}`}>
 								<i className={`fad fa-${titleIcon}`}/>
 							</span>}
-
-              {itemType !== undefined ?
-                <Link href={`/explore/${itemType}`}>
-                  {title}
-                </Link>
-                : title}
+              {title}
 
               {/* Hieu: Example Dropdown in Section Title */}
               {/*<div className="ml-2 inline-flex justify-center items-center">*/}

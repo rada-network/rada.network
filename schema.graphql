@@ -94,7 +94,7 @@ type Query {
     commentFeed(itemId: String!, orderBy: CommentOrderInput, skip: Int = 0, take: Int = 4): [Comment]
     isVote(itemId: String!, walletAddress: String!): Vote
     itemById(id: String!): Item
-    itemFeed(itemType: String, orderBy: ItemOrderInput, skip: Int = 0, take: Int = 4): [Item]
+    itemFeed(itemType: String, orderBy: ItemOrderInput, query: String, skip: Int = 0, take: Int = 4): [Item]
     itemTypeCount: [ItemType]
     tweetById(id: String!): Tweet
     tweetFeed(day: Int = 1, lang: String = "all", orderBy: TweetOrderInput, skip: Int = 0, take: Int = 4): [Tweet]
@@ -160,11 +160,14 @@ input ImageItemInput {
 
 input ItemOrderInput {
     createdAt: SortOrder
+    totalComment: SortOrder
+    totalVote: SortOrder
 }
 
 input TweetOrderInput {
     createdAt: SortOrder
     favoriteCount: SortOrder
+    retweetCount: SortOrder
 }
 
 

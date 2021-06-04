@@ -8,6 +8,7 @@ import {ChevronDoubleDownIcon, ChevronDownIcon} from "@heroicons/react/solid";
 import { RiUploadLine } from "react-icons/ri";
 
 import {Wallet} from "./Wallet"
+import SearchInput from "./search";
 
 export const Navbar = () => {
   return (
@@ -30,9 +31,7 @@ export const Navbar = () => {
             </div>
 
             {/* Search */}
-            <div className="relative w-full mx-4 md:mx-6">
-              <input type="search" className="w-full px-5 py-2 text-sm focus:text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0" placeholder="Search by address or name ..." />
-            </div>
+            <SearchInput />
 
             {/* Main Nav */}
             {/* <div className="flex-1 hidden sm:block sm:ml-6">

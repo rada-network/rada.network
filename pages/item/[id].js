@@ -20,6 +20,7 @@ import IdeaContent from "../../components/info/ideaContent";
 import {Card} from "../../components/cards/MediaFull";
 import NetworkIcon from "../../components/icons/networkIcon";
 import TokenIcon from "../../components/icons/tokenIcon";
+import ItemTypeBadge from "../../components/icons/itemTypeBadge";
 
 const scrollBox = createRef();
 let ps;
@@ -117,9 +118,7 @@ export default function Item (props) {
                 </div>
 
                 <div className="mt-1 metadata-wrapper project-metadata-wrapper">
-                  <a href={`/explore/${data.item.itemType}`} className={`metadata badge project-metadata_type`}>
-                    <span className="metadata-value">{data.item.itemType}</span>
-                  </a>
+                  <ItemTypeBadge item={data.item}/>
                   <NetworkIcon
                       badge={true}
                       projectWebsiteUri={data.item.platform.websiteUri}

@@ -22,10 +22,12 @@ import {getTopic} from "../data/query/topic";
 export class ObservableTweetStore {
   currentTab = "latest";
   tweets = []
+  query = ""
   constructor({homeStore}) {
     this.home = homeStore
     makeObservable(this, {
       currentTab: observable,
+      query: observable,
       addTweet: action,
       tweets: observable,
     });

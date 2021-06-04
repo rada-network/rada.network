@@ -154,9 +154,9 @@ const WalletContent = ({wallet, closeModal, open}) => {
 const WalletAvatar = ({wallet}) => {
   const text = wallet.account ?  wallet.account.substr(wallet.account.length - 3,1) + " " + wallet.account.substr(wallet.account.length - 2,1)  : 'a n';
   return (
-
-    <div className="user-wallet_avatar_xs user-wallet_avatar_green mr-2">
-      <Avatar name={text} maxInitials={2} textSizeRatio={6} />
+      <div className="mr-2">
+        <div className="">
+          <Avatar name={text} size={"27px"}  round={true} maxInitials={2} textSizeRatio={2} />
     </div>
 
   )

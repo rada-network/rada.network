@@ -15,13 +15,13 @@ import {getTopic} from "../../data/query/topic";
 const homeStore = new HomeStore({isHome : false})
 const observableTweetStore = new ObservableTweetStore({homeStore})
 
-const getData = async (itemType, socialOrder) => {
+const getData = async (itemType,q) => {
   const client = getClient()
-  if (typeof socialOrder == "undefined") socialOrder = "latest"
+
   const topics = await getTopic();
 
   if (itemType === "tweet") {
-    const postTweet = await getTweet({socialOrder, skip: 0, take: 12})
+    const postTweet = await getTweet({socialOrder : observableTweetStore.currentTab, skip: 0, take: 12})
     return {
       data : postTweet.data.tweetFeed,
       topic : {
@@ -35,7 +35,8 @@ const getData = async (itemType, socialOrder) => {
     type : itemType,
     take : 12,
     skip : 0,
-    socialOrder : "latest"
+    socialOrder : observableTweetStore.currentTab,
+    query : q
   })
 
   return {
@@ -48,9 +49,9 @@ const getData = async (itemType, socialOrder) => {
 
 export default observer(function Explore({props}) {
   const router = useRouter();
-  let { slug } = router.query;
+  let { slug,q } = router.query;
   const itemType = slug;
-  const {data, error} = useSWR([itemType], getData)
+  const {data, error} = useSWR([itemType,q], getData)
   if (error){
     return (
       <>
@@ -91,7 +92,7 @@ export default observer(function Explore({props}) {
         </Layout>
       )
   }
-  console.log(data)
+  observableTweetStore.query = q;
   observableTweetStore.tweets = data.feed
 
   if (itemType === "tweet"){
@@ -110,13 +111,14 @@ export default observer(function Explore({props}) {
     )
   }
   else{
+    let title = itemType !== "search" ? `${itemType.split('-').join(' ').toUpperCase()}` : "Search results for " + q
     return (
       <Layout extraClass="page_topic" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
         <Header props={data.topic[0]}/>
         <ProjectsList
           grid="2"
           gap="2"
-          title={`${itemType.split('-').join(' ').toUpperCase()}`}
+          title={title}
           cta="Sorted by"
           detail={true}
           itemType={itemType}
