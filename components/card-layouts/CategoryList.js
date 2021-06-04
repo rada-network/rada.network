@@ -16,20 +16,11 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
   const [timelineWidth, setTimelineWidth] = useState('')
 
   useEffect(() => {
-    const onResize = () => {
-      setTimelineWidth('')
-      const timelinebox = document.querySelector('.timeline')
-      setTimelineWidth(timelinebox?.scrollWidth)
-    };
-    window.addEventListener("resize", onResize);
-    onResize()
-    console.log('init ps')
     // make scrollbar
     ps = new PerfectScrollbar(scrollBox.current, {
     });
 
     return () => {
-      window.removeEventListener("resize", onResize);
       ps.destroy();
     }
   }, [scrollBox]);
