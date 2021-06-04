@@ -21,7 +21,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
     return (
       <>
         <div className={subclass}>
-          <div className={`mr-3 user-wallet_avatar${level === 1 ? "" : "_sm"} user-wallet_avatar_green`}>
+          <div className={`mr-3 md:mr-4 user-wallet_avatar${level === 1 ? "" : "_sm"}`}>
             <CommentAvatar user={user} size={level > 1 ? 32 : 40} />
           </div>
           <div className="comment-main">
@@ -73,7 +73,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
           })
         }
         {showReply ?
-          <div className="comment_reply_form flex justify-center items-baseline">
+          <div className="comment_reply_form flex justify-center">
             <CommentForm key={'cmform' + comment.id}  item={item} ItemCommentStore={ItemCommentStore} replyFor={comment.id}  />
           </div>
           : ""

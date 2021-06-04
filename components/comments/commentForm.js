@@ -98,10 +98,8 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
             </div>
           </>
           : <>
-            <div className="mr-2">
-              <div className="">
-                <CommentAvatar user={currentUser} size={replyFor === null ? 40 : 32} />
-              </div>
+            <div className="mr-2 md:mr-3">
+              <CommentAvatar user={currentUser} size={replyFor === null ? 40 : 32} />
             </div>
             <TextareaAutosize
               className="w-full px-4 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"

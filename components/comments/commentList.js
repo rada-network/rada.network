@@ -104,17 +104,16 @@ export const CommentList = observer(({item,comments}) => {
         </div>
         <div className="section-body">
           <div className="grid grid-cols-1 md:grid-cols-12">
-            <div className="md:col-span-9 md:pr-10">
+            {/* <div className="md:col-span-9 md:pr-10"> */}
+            <div className="col-span-12 lg:col-span-10">
               {/* Comment Form */}
-              <div className="grid grid-cols-1">
-                <div className="flex justify-center items-baseline">
-                  <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} />
-                </div>
+              <div className="flex justify-center">
+                <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} />
               </div>
               {/* Comment Threads */}
               <CommentThreads key={'commentThreads' + item.id} item={item} ItemCommentStore={ItemCommentStore} />
             </div>
-            <SubSideBar />
+            {/* <SubSideBar /> */}
           </div>
         </div>
       </div>

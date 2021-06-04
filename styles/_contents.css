@@ -61,7 +61,7 @@ metadata
 .user-wallet_avatar,
 .user-wallet_avatar_sm,
 .user-wallet_avatar_xs {
-  @apply inline-flex justify-items-center items-center justify-center overflow-hidden;
+  @apply inline-flex flex-shrink-0 justify-items-center items-center justify-center overflow-hidden;
   @apply bg-gray-500 bg-gradient-to-t from-gray-500 to-gray-400 text-gray-50 rounded-full;
 }
 

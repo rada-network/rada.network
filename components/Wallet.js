@@ -155,10 +155,10 @@ const WalletAvatar = ({wallet}) => {
   return (
     <div className="mr-2">
       <Avatar
-        size={16}
+        size={24}
         name={text}
         variant="bauhaus"
-        colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+        colors={["#8B5CF6", "#34D399", "#FEF3C7", "#FBBF24", "#EF4444"]}
       />
     </div>
   )

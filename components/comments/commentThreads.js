@@ -22,12 +22,11 @@ export const CommentThreads = observer(({item,ItemCommentStore}) => {
     return b.createdAt - a.createdAt
   })
   return (
-    <div className="comments-list grid grid-cols-1">
+    <div className="comments-list">
       {
         sortComments.map(function (comment) {
           let user = getSnapshot(ItemCommentStore.getUser(comment.userId))
           return (
-
             <CommentMain key={comment.id} item={item} comment={comment} user={user} ItemCommentStore={ItemCommentStore} level={1}  parent={null} />
           )
         })
