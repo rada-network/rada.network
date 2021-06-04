@@ -181,26 +181,10 @@ export default function Item (props) {
   )
 }
 
-export async function getStaticPaths() {
-  const client = getClient()
-  const items = await client.query({
-    query : allItem,
-    variables : {take : 10000,skip : 0}
-  });
-  // Get the paths we want to pre-render based on posts
-  const paths = items.data.itemFeed.map((item) => ({
-    params: { id: item.id },
-  }))
-
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
-  return { paths, fallback: true }
-}
-
-export async function getStaticProps({params}) {
-  const props = await getData(params.id);
+export async function getServerSideProps(context) {
+  const {id} = context.query;
+  const props = await getData(id);
   return {
-    props,
-    revalidate: 900
+    props: props
   }
 }
