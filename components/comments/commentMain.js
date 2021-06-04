@@ -14,9 +14,11 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
     return b.createdAt - a.createdAt
   })
   let nextLevel = level + 1
-  const mainClass = level > 1 ? "comment comment_reply group flex"  : "comments-list-item flex flex-col items-stretch"
+  let mainClass = level > 1 ? "comment comment_reply group flex"  : "comments-list-item flex flex-col items-stretch"
   const subclass = level > 1 ? "comment group flex comment_reply"  : "comment group flex"
-
+  if (sortComments.length === 0){
+    mainClass = mainClass + ' no-reply'
+  }
   const SubComment = () =>{
     return (
       <>
