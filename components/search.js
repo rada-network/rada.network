@@ -20,7 +20,7 @@ export default function SearchInput(){
         <div className="relative w-full mx-4 md:mx-6">
             <input value={searchValue} onChange={handledOnChange} onKeyPress={handledOnKeypress}
                 type="search"
-                className="w-full px-5 py-2 text-sm focus:text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"
+                className="search-input"
                 placeholder="Search by name ..." />
         </div>
     )

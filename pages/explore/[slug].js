@@ -48,53 +48,14 @@ const getData = async (itemType,q) => {
   }
 }
 
-export default observer(function Explore({props}) {
+export default observer(function Explore(props) {
   const router = useRouter();
   let { slug,q } = router.query;
+  const data = props
+  console.log(props)
   const itemType = slug;
-  const {data, error} = useSWR([itemType,q], getData)
-  if (error){
-    return (
-      <>
-        <p>itemType: {itemType}</p>
-        <div>error.</div>
-      </>
-    )
-  }
   observableTweetStore.query = q;
   let title = itemType !== "search" ? `${utils.topicTransform(itemType)}` : "Search results for "
-  if (!data){
-    observableTweetStore.data = []
-    if (itemType === 'tweet')
-      return (
-        <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
-          <Header/>
-          <SocialPostsList
-            grid="1"
-            gap="2"
-            title={title}
-            titleIcon="fire-alt"
-            titleIconColor="red-500"
-            dataStore={observableTweetStore}
-          />
-        </Layout>
-      )
-    else
-      return (
-        <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
-          <Header/>
-          <ProjectsList
-            grid="2"
-            gap="2"
-            title={title}
-            cta="Sorted by"
-            detail={true}
-            itemType={itemType}
-            dataStore={observableTweetStore}
-          />
-        </Layout>
-      )
-  }
   observableTweetStore.tweets = data.feed
   if (itemType === "tweet"){
     return (
@@ -130,10 +91,9 @@ export default observer(function Explore({props}) {
 })
 
 export async function getServerSideProps(context) {
-  const {slug} = context.query;
-
+  const {slug,q} = context.query;
+  const props = await getData(slug,q)
   return {
-    props: {
-    }, // will be passed to the page component as props
+    props: props
   }
 }

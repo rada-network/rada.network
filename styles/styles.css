@@ -176,9 +176,13 @@ Media
 }
 
 .project-media .card-media-full {
-  @apply mr-4 h-80;
+  @apply h-80 max-w-full;
   @apply rounded shadow-none;
   flex: 1 0 auto;
+}
+
+.project-media .card-media-full + .card-media-full {
+  @apply ml-4;
 }
 
 .project-media .card-media-full .card-media {

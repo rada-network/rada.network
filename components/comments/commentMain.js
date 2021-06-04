@@ -64,6 +64,12 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
           </div>
 
         </div>
+        {showReply ?
+          <div className="comment_reply_form flex justify-center">
+            <CommentForm key={'cmform' + comment.id}  item={item} ItemCommentStore={ItemCommentStore} replyFor={comment.id}  />
+          </div>
+          : ""
+        }
         {
           sortComments.map(function (c) {
             let user = getSnapshot(ItemCommentStore.getUser(c.userId))
@@ -72,12 +78,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
             )
           })
         }
-        {showReply ?
-          <div className="comment_reply_form flex justify-center">
-            <CommentForm key={'cmform' + comment.id}  item={item} ItemCommentStore={ItemCommentStore} replyFor={comment.id}  />
-          </div>
-          : ""
-        }
+
       </>
     )
   }

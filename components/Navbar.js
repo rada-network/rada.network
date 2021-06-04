@@ -24,7 +24,7 @@ export const Navbar = () => {
               <Link href={`/`}>
                 <a className="flex items-center justify-center align-center" title="dhunt.io">
                   <img className="block w-auto h-8" src="/images/dhunt.svg" alt="dhunt.io" />
-                  <strong className="ml-2 text-gray-900 logo-text text-opacity-90">
+                  <strong className="hidden md:inline-flex ml-2 text-gray-900 logo-text text-opacity-90">
                     <span>d</span><span>hunt</span><span>.io</span></strong>
                 </a>
               </Link>
