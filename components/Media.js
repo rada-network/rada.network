@@ -1,7 +1,9 @@
 import { Fragment, useState, useRef } from "react"
 
 import { Dialog, Transition } from "@headlessui/react"
-import styles from '../styles/modules/Dialog.wallet.module.css'
+import styles from '../styles/modules/Dialog.gallery.module.css'
+
+import {IoChevronBackSharp} from "react-icons/io5";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -57,18 +59,32 @@ const Media = ({doClose, idx, items}) => {
 
             <div className={`inline-block w-full ${styles.dialog}`}>
 
+              <button type="button" className={`btn ${styles.btn_back}`} onClick={doClose}>
+                <span className="icon"><IoChevronBackSharp/></span>
+                <span className="btn-text font-normal">Go back</span>
+              </button>
+
               <div className={`${styles.dialog_wrapper}`}>
+
 
                 {/* Dialog Body */}
                 <div className={`${styles.dialog_body_wrapper}`}>
 
                   <div className={`${styles.dialog_body}`}>
-                    <Carousel selectedItem={idx} showArrows={true} showThumbs={false} showIndicators={false}>
-                        {items && items.map(url => (
-                        <div>
-                            <img src={url} />
-                        </div>
-                        ))}
+
+                    <Carousel
+                      className="gallery" 
+                      selectedItem={idx} 
+                      showArrows={true} 
+                      showThumbs={false} 
+                      showIndicators={false} 
+                      dynamicHeight={false}
+                    >
+                      {items && items.map(url => (
+                      <div className={`${styles.media}`}>
+                        <img src={url} />
+                      </div>
+                      ))}
                     </Carousel>
 
                   </div>

@@ -134,7 +134,7 @@ metadata
 
 .no-reply .comment_reply_form {
   &::before {
-    top: -60px;
+    top: -45px;
   }
 }
 

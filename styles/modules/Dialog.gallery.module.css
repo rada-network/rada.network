@@ -1,0 +1,31 @@
+
+.dialog_outside_wrapper {
+  @apply fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-90 backdrop-filter backdrop-blur-md;
+}
+
+.dialog_outside {
+  @apply text-center;
+}
+
+.dialog {
+  @apply max-w-max overflow-hidden text-left align-top md:align-middle transition-all transform;
+  @apply text-left bg-transparent;
+  height: 100vh;
+}
+
+.dialog_wrapper {
+  @apply flex h-full w-full;
+}
+
+.dialog_body_wrapper {
+  @apply flex flex-col items-stretch justify-center;
+}
+
+.dialog_body {
+  @apply w-full bg-transparent -mt-3;
+}
+
+.btn_back {
+  @apply text-sm text-white text-opacity-70 hover:text-opacity-100;
+  @apply px-4 py-4;
+}

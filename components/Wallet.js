@@ -5,7 +5,7 @@ import { Fragment, useState, useRef } from "react"
 import { observer, inject } from "mobx-react"
 import { useStore } from '../lib/useStore'
 
-import {IoChevronDownSharp, IoChevronForwardSharp, IoChevronBackSharp} from "react-icons/io5";
+import {IoChevronBackSharp} from "react-icons/io5";
 
 import { Dialog, Transition } from "@headlessui/react"
 import styles from '../styles/modules/Dialog.wallet.module.css'

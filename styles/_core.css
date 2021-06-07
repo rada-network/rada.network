@@ -76,7 +76,7 @@ Section
 }
 
 .section-title {
-  @apply text-xl font-medium;
+  @apply text-lg lg:text-xl font-medium;
   strong {
     @apply font-semibold;
     border-bottom: 1px dotted;

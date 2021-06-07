@@ -29,11 +29,11 @@ Project
 }
 
 .card_text {
-  @apply text-sm line-clamp-4 text-gray-900 text-opacity-80 lg:text-opacity-60;
+  @apply text-sm line-clamp-4 text-gray-600;
 }
 
 .card:hover .card_text {
-  @apply text-opacity-80;
+  @apply text-gray-900;
 }
 
 .project_icon {

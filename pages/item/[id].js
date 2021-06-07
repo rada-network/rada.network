@@ -65,7 +65,6 @@ export default function Item (props) {
 
   const [showIdx, setShowIdx] = useState(-1)
   const popupMedia = (idx) => {
-    return // remove to show popup
     setShowIdx(idx)
   }
 
@@ -163,6 +162,7 @@ export default function Item (props) {
                 <IdeaContent item={data.item} />
 
                 <Media idx={showIdx} doClose={() => setShowIdx(-1)} items={images} />
+                
               </div>
             </div>
 
