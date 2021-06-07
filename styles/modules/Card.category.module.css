@@ -2,8 +2,12 @@
 Category 
 */
 .card {
-  @apply h-40 w-44 mr-4;
+  @apply h-40 w-40 lg:h-44 lg:w-44;
   @apply bg-gradient-to-br from-gray-700 to-gray-500 text-white;
+}
+
+.card + .card {
+  @apply ml-4;
 }
 
 .card_title {

@@ -29,7 +29,7 @@ Project
 }
 
 .card_text {
-  @apply text-sm line-clamp-4 text-gray-600;
+  @apply text-sm line-clamp-4 text-gray-700;
 }
 
 .card:hover .card_text {

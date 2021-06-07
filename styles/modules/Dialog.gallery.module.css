@@ -8,7 +8,7 @@
 }
 
 .dialog {
-  @apply max-w-max overflow-hidden text-left align-top md:align-middle transition-all transform;
+  @apply max-w-max overflow-hidden text-left align-middle transition-all transform;
   @apply text-left bg-transparent;
   height: 100vh;
 }
@@ -18,14 +18,16 @@
 }
 
 .dialog_body_wrapper {
-  @apply flex flex-col items-stretch justify-center;
+  @apply flex flex-col items-center justify-center max-w-screen-lg;
 }
 
 .dialog_body {
-  @apply w-full bg-transparent -mt-3;
+  @apply w-full bg-transparent -mt-8;
 }
 
 .btn_back {
   @apply text-sm text-white text-opacity-70 hover:text-opacity-100;
   @apply px-4 py-4;
 }
+
+.media {}
