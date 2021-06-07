@@ -133,7 +133,7 @@ Project Details
   }
 
   .project-icon {
-    @apply shadow-sm rounded;
+    @apply hidden md:inline-flex shadow-sm rounded;
     @extend %Img128;
   }
 
@@ -231,7 +231,7 @@ Info
 Text
 */
 .project-text_section {
-  @apply mb-8 text-base;
+  @apply pb-4 text-base;
 }
 
 .project-text_section p br {
@@ -240,11 +240,30 @@ Text
 }
 
 .project-text_section p {
-  @apply mb-2;
+  @apply pb-2;
 }
 
 .project-text_section p a {
   @apply text-blue-500 hover:underline;
+}
+
+
+.project-text_section ul {
+  @apply pb-2;
+}
+
+.project-text_section ul li {
+  @apply pl-0 ml-8;
+  @apply list-disc;
+}
+
+.project-text_section ol {
+  @apply pb-2;
+}
+
+.project-text_section ol li {
+  @apply pl-0 ml-8;
+  @apply list-decimal;
 }
 
 .project-text_title {
@@ -252,7 +271,7 @@ Text
 }
 
 .project-text_content {
-  @apply text-gray-900 text-opacity-80 mb-4;
+  @apply text-gray-900 text-opacity-80 pb-2;
 }
 
 #read {

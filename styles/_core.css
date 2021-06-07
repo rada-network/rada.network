@@ -72,11 +72,11 @@ Section
 }
 
 .section-header {
-  @apply block md:flex flex-wrap justify-between items-center mb-6;
+  @apply flex justify-between items-center mb-6;
 }
 
 .section-title {
-  @apply text-lg lg:text-xl font-medium;
+  @apply text-lg lg:text-2xl font-medium;
   strong {
     @apply font-semibold;
     border-bottom: 1px dotted;
@@ -89,7 +89,7 @@ Section
 
 .section-cta {
   @apply text-sm font-medium;
-  @apply flex mt-4 md:mt-0 justify-between items-center;
+  @apply flex mt-0 justify-between items-center;
 }
 
 .section-cta .btn-group + .btn-group {
