@@ -142,7 +142,7 @@ export const ProjectsList = observer(({
           </div>
 
           <div className="section-body">
-            <div className={`grid grid gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
+            <div className={`grid gap-0 lg:gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
               {
                 showPosts(posts)
               }

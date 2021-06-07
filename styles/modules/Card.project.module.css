@@ -2,14 +2,15 @@
 Project
 */
 .card {
-  @apply flex-col items-center content-center;
+  @apply flex-col items-center content-center -mx-4 lg:mx-auto;
   @apply relative transition-all;
-  @apply bg-white border border-gray-900 border-opacity-5;
+  @apply bg-white border-t lg:border lg:border-gray-900 lg:border-opacity-5 lg:rounded;
   @apply lg:hover:shadow-lg lg:hover:border-opacity-10;
 }
 
 .card_body {
   @apply h-full justify-items-stretch;
+  @apply p-4 pb-0 lg:p-4;
 }
 
 .card_body_header {
@@ -21,7 +22,8 @@ Project
 }
 
 .card_footer {
-  @apply text-sm border-t border-gray-100;
+  @apply text-sm lg:border-t border-gray-100;
+  @apply p-4;  
 }
 
 .card_title {
