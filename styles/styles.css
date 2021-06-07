@@ -266,6 +266,15 @@ Text
   @apply list-decimal;
 }
 
+.project-text_section .youtube-video {
+  @apply aspect-w-16 aspect-h-9 w-full h-auto;
+}
+
+.project-text_section .youtube-video iframe {
+  width: 100% !important;
+
+}
+
 .project-text_title {
   @apply font-semibold mb-2;
 }

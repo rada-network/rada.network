@@ -126,6 +126,7 @@ export default observer(function Home(props) {
         titleIconColor="red-500"
         posts={data.posts}
       /> */}
+
       <CategoryList
         extraClass="category-list"
         title="Top Topics"
@@ -133,6 +134,7 @@ export default observer(function Home(props) {
         titleIconColor=""
         topic={data.topic}
       />
+
       {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
         <SocialPostsList
           grid="1"
@@ -144,7 +146,8 @@ export default observer(function Home(props) {
           dataStore={observableTweetStore}
         />  : ""
       }
-      {homeStore.homeDisplay === 2 || homeStore.homeDisplay === 0 ?
+
+      {/* {homeStore.homeDisplay === 2 || homeStore.homeDisplay === 0 ?
         <ProjectsList
           homeDisplay={2}
           grid="2"
@@ -156,9 +159,9 @@ export default observer(function Home(props) {
           // posts={data.postsNFT}
           dataStore={observableNftStore}
         /> : ""
-      }
+      } */}
 
-      {homeStore.homeDisplay === 3 || homeStore.homeDisplay === 0 ?
+      {/* {homeStore.homeDisplay === 3 || homeStore.homeDisplay === 0 ?
         <ProjectsList
           homeDisplay={3}
           grid="2"
@@ -170,7 +173,7 @@ export default observer(function Home(props) {
           // posts={data.postsDapp}
           dataStore={observableDappStore}
         /> : ""
-      }
+      } */}
 
       {/* <TopUsersList
         grid="5"
