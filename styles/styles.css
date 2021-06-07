@@ -274,13 +274,16 @@ Text
   @apply text-gray-900 text-opacity-80 pb-2;
 }
 
-#read {
+/* #read {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 9;
-}
+} */
 
+#readBtn {
+  @apply hidden;
+}
 
 /* 
 Page Topic  
