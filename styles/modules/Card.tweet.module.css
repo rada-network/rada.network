@@ -2,10 +2,10 @@
 Tweets
 */
 .card {
-  @apply flex-col items-center content-center -mx-4 md:mx-auto;
+  @apply flex-col items-center content-center -mx-4 md:mx-0;
   @apply relative transition-all;
   @apply bg-white border-t md:border md:border-gray-900 md:border-opacity-5 md:rounded;
-  @apply lg:hover:shadow-lg lg:hover:border-opacity-10;
+  @apply lg:hover:shadow-md lg:hover:border-opacity-10;
 }
 
 .card_body {
