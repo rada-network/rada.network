@@ -122,7 +122,7 @@ Page Layout
 
 /* 
 Project Details
-*/
+--------------- */
 .page-project_details {
   .page-main {
     @apply flex-1 mt-8 md:mt-12;
@@ -280,6 +280,17 @@ Text
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 9;
 }
+
+
+/* 
+Page Topic  
+---------- */
+.page_topic {}
+
+
+/* 
+Components
+--------------------------------------------- */
 
 /* 
 Responsive Carousel 

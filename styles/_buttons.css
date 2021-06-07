@@ -55,6 +55,12 @@ Vote Buttons
   }
 }
 
+.card .btn-project-vote {
+  strong {
+    @apply font-medium;
+  }
+}
+
 .btn-project-vote.active {
   @apply bg-purple-700 text-white;
 }
