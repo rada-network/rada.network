@@ -231,6 +231,7 @@ Info
 Text
 */
 .project-text_section {
+  @apply w-full overflow-hidden;
   @apply pb-4 text-base;
 }
 
@@ -245,6 +246,7 @@ Text
 
 .project-text_section p a {
   @apply text-blue-500 hover:underline;
+  word-break: break-word;
 }
 
 

@@ -113,11 +113,13 @@ export default observer(function Home(props) {
   observableDappStore.tweets = data.postsDapp
   return (
     <Layout extraClass="page-home" meta={"DHunt.io - Top BlockChain DApps"}>
+
       <Header props={{
         title : "Trends hunter for Cardano community",
         itemType : "home",
         description : "Stay updated with the best quality news & updates"
       }}/>
+
       {/* <ProjectsList
         grid="2"
         gap="4"
@@ -181,6 +183,7 @@ export default observer(function Home(props) {
         titleIcon=""
         titleIconColor=""
       /> */}
+
       {/* <ProjectsList
         grid="2"
         gap="4"
@@ -190,11 +193,13 @@ export default observer(function Home(props) {
         detail={true}
         posts={data.posts}
       /> */}
+
       {/* <PromoList
         extraClass="promo-list"
         grid="3"
         gap="5"
       /> */}
+      
       {homeStore.homeDisplay === 4 || homeStore.homeDisplay === 0 ?
         <ProjectsList
           homeDisplay={4}
