@@ -10,6 +10,9 @@ import {TopUsersList} from '../components/card-layouts/TopUsersList';
 import {CategoryList} from '../components/card-layouts/CategoryList';
 import { observer } from "mobx-react"
 
+// Widgets Comp
+import { Widget } from "../components/widgets/Widget";
+
 //ReactIcons
 import {getPosts} from "../data/query/posts"
 import {getTweet} from "../data/query/postsTweet"
@@ -120,99 +123,121 @@ export default observer(function Home(props) {
         description : "Stay updated with the best quality news & updates"
       }}/>
 
-      {/* <ProjectsList
-        grid="2"
-        gap="4"
-        title="Popular Projects"
-        titleIcon=""
-        titleIconColor="red-500"
-        posts={data.posts}
-      /> */}
 
-      <CategoryList
-        extraClass="category-list"
-        title="Top Topics"
-        titleIcon=""
-        titleIconColor=""
-        topic={data.topic}
-      />
+      <div className="wrapper">
+        <div className="container">
 
-      {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
-        <SocialPostsList
-          grid="1"
-          gap="2"
-          title="Social Signal"
-          itemType={"tweet"}
-          titleIcon="fire-alt"
-          titleIconColor="red-500"
-          dataStore={observableTweetStore}
-        />  : ""
-      }
+          <div className="grid grid-cols-1 lg:grid-cols-12">
 
-      {/* {homeStore.homeDisplay === 2 || homeStore.homeDisplay === 0 ?
-        <ProjectsList
-          homeDisplay={2}
-          grid="2"
-          gap="4"
-          itemType={"nft"}
-          title="NFTs that you cannot missed"
-          titleIcon="icons"
-          titleIconColor="purple-500"
-          // posts={data.postsNFT}
-          dataStore={observableNftStore}
-        /> : ""
-      } */}
+            {/* mainbody */}
+            <div className="mainbody lg:col-span-9">
+              {/* <ProjectsList
+                grid="2"
+                gap="4"
+                title="Popular Projects"
+                titleIcon=""
+                titleIconColor="red-500"
+                posts={data.posts}
+              /> */}
 
-      {/* {homeStore.homeDisplay === 3 || homeStore.homeDisplay === 0 ?
-        <ProjectsList
-          homeDisplay={3}
-          grid="2"
-          gap="4"
-          itemType={"dapp"}
-          title="Most active DApps"
-          titleIcon="cube"
-          titleIconColor="pink-500"
-          // posts={data.postsDapp}
-          dataStore={observableDappStore}
-        /> : ""
-      } */}
+              <CategoryList
+                extraClass="category-list"
+                title="Top Topics"
+                titleIcon=""
+                titleIconColor=""
+                topic={data.topic}
+              />
 
-      {/* <TopUsersList
-        grid="5"
-        gap="5"
-        titleIcon=""
-        titleIconColor=""
-      /> */}
+              {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
+                <SocialPostsList
+                  grid="1"
+                  gap="2"
+                  title="Social Signal"
+                  itemType={"tweet"}
+                  titleIcon="fire-alt"
+                  titleIconColor="red-500"
+                  dataStore={observableTweetStore}
+                />  : ""
+              }
 
-      {/* <ProjectsList
-        grid="2"
-        gap="4"
-        itemType={"today"}
-        cta={"View All"}
-        title="New Projects"
-        detail={true}
-        posts={data.posts}
-      /> */}
+              {/* {homeStore.homeDisplay === 2 || homeStore.homeDisplay === 0 ?
+                <ProjectsList
+                  homeDisplay={2}
+                  grid="2"
+                  gap="4"
+                  itemType={"nft"}
+                  title="NFTs that you cannot missed"
+                  titleIcon="icons"
+                  titleIconColor="purple-500"
+                  // posts={data.postsNFT}
+                  dataStore={observableNftStore}
+                /> : ""
+              } */}
 
-      {/* <PromoList
-        extraClass="promo-list"
-        grid="3"
-        gap="5"
-      /> */}
-      
-      {homeStore.homeDisplay === 4 || homeStore.homeDisplay === 0 ?
-        <ProjectsList
-          homeDisplay={4}
-          grid="2"
-          gap="4"
-          itemType={"all"}
-          title="Projects from Catalyst"
-          titleIcon="code-branch"
-          titleIconColor="blue-500"
-          cta="Sorted by"
-          dataStore={observableItemStore}
-        /> : ""
-      }
+              {/* {homeStore.homeDisplay === 3 || homeStore.homeDisplay === 0 ?
+                <ProjectsList
+                  homeDisplay={3}
+                  grid="2"
+                  gap="4"
+                  itemType={"dapp"}
+                  title="Most active DApps"
+                  titleIcon="cube"
+                  titleIconColor="pink-500"
+                  // posts={data.postsDapp}
+                  dataStore={observableDappStore}
+                /> : ""
+              } */}
+
+              {/* <TopUsersList
+                grid="5"
+                gap="5"
+                titleIcon=""
+                titleIconColor=""
+              /> */}
+
+              {/* <ProjectsList
+                grid="2"
+                gap="4"
+                itemType={"today"}
+                cta={"View All"}
+                title="New Projects"
+                detail={true}
+                posts={data.posts}
+              /> */}
+
+              {/* <PromoList
+                extraClass="promo-list"
+                grid="3"
+                gap="5"
+              /> */}
+              
+              {homeStore.homeDisplay === 4 || homeStore.homeDisplay === 0 ?
+                <ProjectsList
+                  homeDisplay={4}
+                  grid="2"
+                  gap="4"
+                  itemType={"all"}
+                  title="Projects from Catalyst"
+                  titleIcon="code-branch"
+                  titleIconColor="blue-500"
+                  cta="Sorted by"
+                  dataStore={observableItemStore}
+                /> : ""
+              }
+            </div>
+
+            {/* Sidebar */}
+            <div className="sidebar lg:col-span-3">
+              <Widget 
+                title="Pricing"
+                text="Lorem Ipsum Dolor sit Amet"
+              />
+            </div>
+
+          </div>
+
+        </div>
+      </div>
 
     </Layout>
   )

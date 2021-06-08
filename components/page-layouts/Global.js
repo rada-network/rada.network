@@ -1,6 +1,6 @@
 import { Head } from "../Head";
-import { Navbar } from "../navbars/Navbar";
-import { Footer } from "../footers/Footer";
+import { Navbar } from "../Navbar";
+import { Footer } from "../Footer";
 
 export const Layout = ({children, extraClass}) => {
   return (

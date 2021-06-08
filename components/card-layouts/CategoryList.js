@@ -28,8 +28,7 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
 
 	return (
 		<div className={`section ${extraClass || ''}`}>
-			<div className="container">
-      <div className="container-inner">
+      <div className="section-inner">
 
 				<div className="section-header">
 
@@ -65,7 +64,6 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
 
 				</div>
 
-      </div>
 			</div>
 		</div>
 	)

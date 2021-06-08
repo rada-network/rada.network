@@ -1,0 +1,28 @@
+/*
+Generic Styles
+*/
+.widget {
+  @apply flex flex-col mt-8;
+  @apply bg-white rounded border-gray-900 border-opacity-5 shadow-sm;
+}
+
+.widget_header {
+  @apply flex flex-col justify-between px-4 md:px-6 py-4 w-full;
+  @apply border-b border-gray-900 border-opacity-5;
+}
+
+.widget_body {
+  @apply flex flex-col flex-1 px-4 md:px-6 py-4 w-full;
+}
+
+.widget_footer {
+  @apply flex justify-between px-4 md:px-6 py-3 w-full;
+}
+
+.widget_title {
+  @apply text-base font-semibold;
+  > a {
+    @apply hover:text-gray-900;
+  }
+}
+
