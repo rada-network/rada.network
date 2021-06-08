@@ -24,6 +24,9 @@ import ItemTypeBadge from "../../components/icons/itemTypeBadge";
 
 import Media from "../../components/Media"
 
+// Widgets Comp
+import { Widget } from "../../components/widgets/Widget";
+
 const scrollBox = createRef();
 let ps;
 
@@ -98,82 +101,105 @@ export default function Item (props) {
     {/*<Layout extraClass="page-project_details" meta={data.item}>*/}
       <>
 
-      <div class="section section-top">
+      <div className="wrapper">
         <div className="container">
-          <div className="container-inner">
 
-            {/* Page Header */}
-            <div className="page-header flex flex-col md:flex-row">
+          <div className="grid grid-cols-1 lg:grid-cols-12">
 
-              {data.item.thumbnail !== null ?
-              <div className="mr-8">
-                <Link target={"_blank"} href={data.item.imageUri}>
-                  <a className="project-icon rounded overflow-hidden">
-                    <img className="project-icon_img w-full h-full object-cover" src={data.item.imageUri} />
-                  </a>
-                </Link>
+            {/* mainbody */}
+            <div className="mainbody lg:col-span-9">
+
+              <div class="section section-top">
+
+                <div className="section-inner">
+
+                  {/* Page Header */}
+                  <div className="page-header flex flex-col md:flex-row">
+
+                    {data.item.thumbnail !== null ?
+                    <div className="mr-8">
+                      <Link target={"_blank"} href={data.item.imageUri}>
+                        <a className="project-icon rounded overflow-hidden">
+                          <img className="project-icon_img w-full h-full object-cover" src={data.item.imageUri} />
+                        </a>
+                      </Link>
+                    </div>
+                    : ""
+                    }
+                    <div className="flex w-full flex-col">
+                      <div className="flex items-center content-center page-title">
+                        <h1 className="project-title">{`${data.item.title}`}</h1>
+                      </div>
+
+                      <div className="mt-1 metadata-wrapper project-metadata-wrapper">
+                        <ItemTypeBadge item={data.item}/>
+                        <NetworkIcon
+                            badge={true}
+                            projectWebsiteUri={data.item.platform.websiteUri}
+                            projectPlatformShort={data.item.platform.networkName.slice(0, 3)}
+                            projectPlatform={data.item.platform.name}
+                        />
+                        <TokenIcon item={data.item} badge={true}  />
+                      </div>
+
+                      <div className="project-text_short" dangerouslySetInnerHTML={{__html: data.item.description}} />
+
+                      {/* Main CTAS */}
+                      <div className="cta-wrapper">
+                        <Vote
+                          itemId={data.item.id}
+                          votes={data.item.totalVote}
+                          page={"detail"}
+                        />
+                        <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="btn btn-project-link ml-4">
+                          <span className="btn-project-vote_total whitespace-nowrap">
+                            <span className="inline-block text-sm font-medium">Visit</span>
+                          </span>
+                          <span className="icon ml-2"><RiExternalLinkLine /></span>
+                        </a>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  {/* Page Main */}
+                  <div className="flex flex-row justify-center">
+                    <div className="page-main">
+
+                      {/* Gallery */}
+                      <Gallery ref={scrollBox} />
+
+                      <IdeaContent item={data.item} />
+
+                      <Media idx={showIdx} doClose={() => setShowIdx(-1)} items={images} />
+                      
+                    </div>
+                  </div>
+
+                </div>
+
               </div>
-              : ""
-              }
-              <div className="flex w-full flex-col">
-                <div className="flex items-center content-center page-title">
-                  <h1 className="project-title">{`${data.item.title}`}</h1>
-                </div>
 
-                <div className="mt-1 metadata-wrapper project-metadata-wrapper">
-                  <ItemTypeBadge item={data.item}/>
-                  <NetworkIcon
-                      badge={true}
-                      projectWebsiteUri={data.item.platform.websiteUri}
-                      projectPlatformShort={data.item.platform.networkName.slice(0, 3)}
-                      projectPlatform={data.item.platform.name}
-                  />
-                  <TokenIcon item={data.item} badge={true}  />
-                </div>
+              {/* Comments */}
 
-                <div className="project-text_short" dangerouslySetInnerHTML={{__html: data.item.description}} />
-
-                {/* Main CTAS */}
-                <div className="cta-wrapper">
-                  <Vote
-                    itemId={data.item.id}
-                    votes={data.item.totalVote}
-                    page={"detail"}
-                  />
-                  <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="btn btn-project-link ml-4">
-                    <span className="btn-project-vote_total whitespace-nowrap">
-                      <span className="inline-block text-sm font-medium">Visit</span>
-                    </span>
-                    <span className="icon ml-2"><RiExternalLinkLine /></span>
-                  </a>
-                </div>
-
-              </div>
+              <CommentList item={data.item} comments={data.comments}/>
 
             </div>
 
-            {/* Page Main */}
-            <div className="flex flex-row justify-center">
-              <div className="page-main">
-
-                {/* Gallery */}
-                <Gallery ref={scrollBox} />
-
-                <IdeaContent item={data.item} />
-
-                <Media idx={showIdx} doClose={() => setShowIdx(-1)} items={images} />
-                
-              </div>
+            {/* Sidebar */}
+            <div className="sidebar lg:col-span-3">
+              <Widget 
+                title="Pricing"
+                text="Lorem Ipsum Dolor sit Amet"
+              />
             </div>
 
-            </div>
           </div>
+
         </div>
-
-        {/* Comments */}
-
-        <CommentList item={data.item} comments={data.comments}/>
-
+      </div>
+      
       </>
     </Layout>
   )

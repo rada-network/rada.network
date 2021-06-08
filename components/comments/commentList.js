@@ -98,31 +98,30 @@ export const CommentList = observer(({item,comments}) => {
 
   return (
     <>
-      <div className="section section-project-discussions">
-        <div className="container">
-          <div className="container-inner">
+    <div className="section section-project-discussions">
+      <div className="section-inner">
 
-            <div className="section-header">
-              <div className="section-title">Discussions</div>
-            </div>
-            <div className="section-body">
-              <div className="grid grid-cols-1 md:grid-cols-12">
-                {/* <div className="md:col-span-9 md:pr-10"> */}
-                <div className="col-span-12 lg:col-span-10">
-                  {/* Comment Form */}
-                  <div className="flex justify-center">
-                    <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} />
-                  </div>
-                  {/* Comment Threads */}
-                  <CommentThreads key={'commentThreads' + item.id} item={item} ItemCommentStore={ItemCommentStore} />
-                </div>
-                {/* <SubSideBar /> */}
+        <div className="section-header">
+          <div className="section-title">Discussions</div>
+        </div>
+        
+        <div className="section-body">
+          <div className="grid grid-cols-1 md:grid-cols-12">
+            {/* <div className="md:col-span-9 md:pr-10"> */}
+            <div className="col-span-12 lg:col-span-10">
+              {/* Comment Form */}
+              <div className="flex justify-center">
+                <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} />
               </div>
+              {/* Comment Threads */}
+              <CommentThreads key={'commentThreads' + item.id} item={item} ItemCommentStore={ItemCommentStore} />
             </div>
-
+            {/* <SubSideBar /> */}
           </div>
         </div>
+
       </div>
+    </div>
     </>
   )
 })

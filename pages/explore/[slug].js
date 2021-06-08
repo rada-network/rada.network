@@ -12,6 +12,9 @@ import {HomeStore, ObservableTweetStore} from "../index";
 import {getTopic} from "../../data/query/topic";
 import utils from "../../lib/util";
 
+// Widgets Comp
+import { Widget } from "../../components/widgets/Widget";
+
 const homeStore = new HomeStore({isHome : false})
 const observableTweetStore = new ObservableTweetStore({homeStore})
 
@@ -61,14 +64,39 @@ export default observer(function Explore(props) {
     return (
       <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
         <Header props={data.topic[0]}/>
-        <SocialPostsList
-          grid="1"
-          gap="4"
-          title={title}
-          titleIcon="fire-alt"
-          titleIconColor="red-500"
-          dataStore={observableTweetStore}
-        />
+
+        <div className="wrapper">
+          <div className="container">
+
+            <div className="grid grid-cols-1 lg:grid-cols-12">
+
+              {/* mainbody */}
+              <div className="mainbody lg:col-span-9">
+
+                <SocialPostsList
+                  grid="1"
+                  gap="4"
+                  title={title}
+                  titleIcon="fire-alt"
+                  titleIconColor="red-500"
+                  dataStore={observableTweetStore}
+                />
+
+              </div>
+
+              {/* Sidebar */}
+              <div className="sidebar lg:col-span-3">
+                <Widget 
+                  title="Pricing"
+                  text="Lorem Ipsum Dolor sit Amet"
+                />
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
       </Layout>
     )
   }
@@ -76,15 +104,40 @@ export default observer(function Explore(props) {
     return (
       <Layout extraClass="page_topic" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
         <Header props={data.topic[0]}/>
-        <ProjectsList
-          grid="2"
-          gap="4"
-          title={title}
-          cta="Sorted by"
-          detail={true}
-          itemType={itemType}
-          dataStore={observableTweetStore}
-        />
+
+        <div className="wrapper">
+          <div className="container">
+
+            <div className="grid grid-cols-1 lg:grid-cols-12">
+
+              {/* mainbody */}
+              <div className="mainbody lg:col-span-9">
+
+                <ProjectsList
+                  grid="2"
+                  gap="4"
+                  title={title}
+                  cta="Sorted by"
+                  detail={true}
+                  itemType={itemType}
+                  dataStore={observableTweetStore}
+                />
+
+              </div>
+
+              {/* Sidebar */}
+              <div className="sidebar lg:col-span-3">
+                <Widget 
+                  title="Pricing"
+                  text="Lorem Ipsum Dolor sit Amet"
+                />
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
       </Layout>
     )
   }
