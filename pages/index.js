@@ -214,7 +214,7 @@ export default observer((props) => {
                 />  : ""
               }
 
-      {/* {homeStore.homeDisplay === 2 || homeStore.homeDisplay === 0 ?
+              {/* {homeStore.homeDisplay === 2 || homeStore.homeDisplay === 0 ?
                 <ProjectsList
                   homeDisplay={2}
                   grid="2"
@@ -227,9 +227,9 @@ export default observer((props) => {
                   dataStore={observableNftStore}
           voteStore={voteStore}
                 /> : ""
-      } */}
+              } */}
 
-      {/* {homeStore.homeDisplay === 3 || homeStore.homeDisplay === 0 ?
+              {/* {homeStore.homeDisplay === 3 || homeStore.homeDisplay === 0 ?
                 <ProjectsList
                   homeDisplay={3}
                   grid="2"
@@ -242,7 +242,7 @@ export default observer((props) => {
                   dataStore={observableDappStore}
           voteStore={voteStore}
                 /> : ""
-      } */}
+              } */}
 
               {/* <TopUsersList
                 grid="5"
