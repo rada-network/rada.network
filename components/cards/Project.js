@@ -84,8 +84,7 @@ export const Card = ({
           </a>
         </div>
 
-        <Vote key={post.id} itemId={post.id} page={"index"} voteStore={voteStore}
-        />
+        <Vote key={post.id} itemId={post.id} page={"index"} voteStore={voteStore} />
 
       </div>
     </div>
