@@ -82,7 +82,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
         </div>
 
         <div className="section-body">
-          <ResponsiveMasonry>
+          <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 1280: 2}}>
             <Masonry gutter="1rem">
               {
               detail

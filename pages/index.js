@@ -205,7 +205,7 @@ export default observer((props) => {
               {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
                 <SocialPostsList
                   grid="1"
-                  gap="2"
+                  gap="4"
                   title="Social Signal"
                   itemType={"tweet"}
                   titleIcon="fire-alt"
@@ -270,7 +270,7 @@ export default observer((props) => {
               {homeStore.homeDisplay === 4 || homeStore.homeDisplay === 0 ?
                 <ProjectsList
                   homeDisplay={4}
-                  grid="2"
+                  grid="1"
                   gap="4"
                   itemType={"all"}
                   title="Projects from Catalyst"
