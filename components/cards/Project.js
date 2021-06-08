@@ -9,6 +9,7 @@ import ItemTypeIcon from "../icons/itemTypeIcon";
 import NetworkIcon from "../icons/networkIcon";
 
 export const Card = ({
+  voteStore,
   post,
   projectTitle,
   projectTextShort,
@@ -64,7 +65,7 @@ export const Card = ({
               </Link>
             </div>
           }
-          <div className={`card-text ${styles.card_text}`} dangerouslySetInnerHTML={{ __html: projectTextShort}}></div>
+          <div className={`card-text ${styles.card_text}`} dangerouslySetInnerHTML={{__html: projectTextShort}} />
         </div>
 
         {/* <div className="card-body-footer">
@@ -83,10 +84,7 @@ export const Card = ({
           </a>
         </div>
 
-        <Vote key={post.id}
-          itemId={post.id}
-          votes={voteTotal}
-          page={"index"}
+        <Vote key={post.id} itemId={post.id} page={"index"} voteStore={voteStore}
         />
 
       </div>

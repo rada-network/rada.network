@@ -93,6 +93,7 @@ type Platform {
 type Query {
     commentFeed(itemId: String!, orderBy: CommentOrderInput, skip: Int = 0, take: Int = 4): [Comment]
     isVote(itemId: String!, walletAddress: String!): Vote
+    isVotes(ids: [String], walletAddress: String!): [Vote]
     itemById(id: String!): Item
     itemFeed(itemType: String, orderBy: ItemOrderInput, query: String, skip: Int = 0, take: Int = 4): [Item]
     itemTypeCount: [ItemType]
@@ -102,6 +103,7 @@ type Query {
 }
 
 type ToggleVote {
+    isVoted: Boolean
     totalVote: Int
 }
 

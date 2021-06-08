@@ -9,7 +9,6 @@ export const Header = ({props}) => {
     description : "",
     itemType : ""
   }
-  console.log(props)
   // const {isAuthenticated} = useAuthState()
   // const str = JSON.stringify(useAuthState(), null, 4)
   // console.log(`Header: ${str}`)

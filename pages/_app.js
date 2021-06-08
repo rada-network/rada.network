@@ -5,6 +5,11 @@ import { useWallet, UseWalletProvider } from 'use-wallet'
 // import { Provider } from 'mobx-react'
 import { StoreProvider } from "../lib/useStore"
 
+import { configure } from "mobx"
+
+configure({
+  enforceActions: "never",
+})
 
 function MyApp({ Component, pageProps }) {
   return (

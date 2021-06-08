@@ -21,6 +21,10 @@ import { useStore } from "../lib/useStore"
 import {SocialPostsList} from "../components/card-layouts/SocialPostsList";
 import {action, autorun, computed, makeObservable, observable} from "mobx";
 import {getTopic} from "../data/query/topic";
+import {Vote} from "../components/vote/Vote";
+import {getIsVotes} from "../data/query/isVoted";
+import vote from "./api/item/[id]/vote";
+import utils from "../lib/util";
 
 export class ObservableTweetStore {
   currentTab = "latest";
@@ -66,6 +70,59 @@ export class HomeStore {
   }
 }
 
+export class VoteStore {
+  votes = []
+  walletAddress = ''
+  constructor() {
+    makeObservable(this, {
+      votes: observable,
+      walletAddress : observable,
+      addVotes: action,
+      updateVote: action,
+      getIds: action,
+    });
+    autorun(() => {});
+  }
+  addVotes(votes) {
+    if (votes.length > 0){
+      for (let vote of votes){
+        if (this.votes.filter(el => {
+          return el.id === vote.id
+        }).length === 0){
+          this.votes.push({
+            id : vote.id,
+            totalVote: vote.totalVote,
+            isVoted : false
+          })
+        }
+      }
+    }
+  }
+  getIds () {
+    return this.votes.map(a => a.id)
+  }
+  updateVote(vote) {
+    let flag = false
+    this.votes.forEach((el,index)=>{
+      if (el.id === vote.id){
+        this.votes[index] = {
+          id : vote.id,
+          isVoted : typeof vote.isVoted == "undefined" ?  el.isVoted : vote.isVoted,
+          totalVote : typeof vote.totalVote == "undefined" ?  el.totalVote : vote.totalVote,
+        }
+        flag = true;
+      }
+    })
+    if (!flag){
+      this.votes.push({
+        id : vote.id,
+        isVoted : typeof vote.isVoted == "undefined" ?  false : vote.isVoted,
+        totalVote : typeof vote.totalVote == "undefined" ?  0 : vote.totalVote,
+      })
+    }
+  }
+}
+const voteStore = new VoteStore();
 const homeStore = new HomeStore({isHome : true})
 
 const observableTweetStore = new ObservableTweetStore({homeStore});
@@ -94,26 +151,23 @@ const getData = async () => {
   }
 }
 
-export default observer(function Home(props) {
+export default observer((props) => {
   const store = useStore()
-
-  const {data,error} = useSWR(["latest"], getData, {initialData: props})
+  const data = props
+  voteStore.walletAddress = store.wallet.address
   // const data = props
   // update to store
-  if (error){
-    return <p>network error</p>
-  }
   if (!data) return <div>loading...</div>
-  if (store) {
-    store.projects.update(data.posts)
-    store.projects.update(data.postsNFT)
-    store.projects.update(data.postsDapp)
-  }
   // init first tweet data to show in homepage
   observableTweetStore.tweets = data.postsTweet
   observableItemStore.tweets = data.posts
   observableNftStore.tweets = data.postsNFT
   observableDappStore.tweets = data.postsDapp
+  voteStore.walletAddress = store.wallet.address
+  voteStore.addVotes(data.posts)
+  voteStore.addVotes(data.postsNFT)
+  voteStore.addVotes(data.postsDapp)
+  utils.initVoteStore(voteStore)
   return (
     <Layout extraClass="page-home" meta={"DHunt.io - Top BlockChain DApps"}>
 
@@ -171,6 +225,7 @@ export default observer(function Home(props) {
                   titleIconColor="purple-500"
                   // posts={data.postsNFT}
                   dataStore={observableNftStore}
+          voteStore={voteStore}
                 /> : ""
               } */}
 
@@ -185,6 +240,7 @@ export default observer(function Home(props) {
                   titleIconColor="pink-500"
                   // posts={data.postsDapp}
                   dataStore={observableDappStore}
+          voteStore={voteStore}
                 /> : ""
               } */}
 
@@ -210,7 +266,7 @@ export default observer(function Home(props) {
                 grid="3"
                 gap="5"
               /> */}
-              
+
               {homeStore.homeDisplay === 4 || homeStore.homeDisplay === 0 ?
                 <ProjectsList
                   homeDisplay={4}
@@ -222,13 +278,14 @@ export default observer(function Home(props) {
                   titleIconColor="blue-500"
                   cta="Sorted by"
                   dataStore={observableItemStore}
+          voteStore={voteStore}
                 /> : ""
               }
             </div>
 
             {/* Sidebar */}
             <div className="sidebar lg:col-span-3">
-              <Widget 
+              <Widget
                 title="Pricing"
                 text="Lorem Ipsum Dolor sit Amet"
               />

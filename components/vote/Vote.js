@@ -5,28 +5,21 @@ import {useState} from "react"
 import { observer, inject } from "mobx-react"
 import { useStore } from "../../lib/useStore"
 import isVote from "../../data/query/isVoted";
-import useSWR from "swr";
 
-const getData = async (itemId, walletAddress) => {
-  if (!walletAddress){
-    return null
-  }
-  const client = getClient()
-  const isVote_ = await client.query({
-    query: isVote,
-    variables: {walletAddress: walletAddress, itemId: itemId}
-  })
-  return isVote_.data.isVote
-}
 
-export const Vote = observer(({itemId, votes, page}) => {
+export const Vote = observer(({itemId, page,voteStore}) => {
   const store = useStore()
   const walletAddress = store.wallet.address
   const client = getClient();
-  const totalVote = store.projects.item(itemId).totalVote || votes
-
-  const {data, error} = useSWR([itemId, walletAddress], getData)
-  //const [totalVote, setTotalVote] = useState(votes)
+  let totalVote = 0
+  let isVote = false
+  let vote = voteStore.votes.filter(el =>{
+    return el.id === itemId
+  })
+  if (vote.length > 0){
+    totalVote = vote[0].totalVote
+    isVote = vote[0].isVoted
+  }
   const toggleVote = async () => {
     if (!walletAddress) {
       return store.wallet.showConnect(true)
@@ -36,20 +29,17 @@ export const Vote = observer(({itemId, votes, page}) => {
       mutation : tgVote,
       variables : {itemId: itemId, walletAddress}
     });
-    // setTotalVote(res.data.toggleVote.totalVote)
-    store.projects.update([{id: itemId, totalVote: res.data.toggleVote.totalVote}])
-
-    const vote = await client.query({
-      query: isVote,
-      variables: {walletAddress: walletAddress, itemId: itemId}
+    voteStore.updateVote({
+      id : itemId,
+      isVoted : res.data.toggleVote.isVoted,
+      totalVote : res.data.toggleVote.totalVote
     })
-    const vote_ = vote.data.isVote
-    console.log("isVoted", vote_ !== null)
+    console.log(res)
   }
 
   if (page === "detail" ) return (
     <button className={`btn btn-project-vote
-    ${data == null ? "" : "active"}`}
+    ${!isVote ? "" : "active"}`}
           onClick={toggleVote}>
       <span className="-mb-0.5 -ml-1 text-2xl icon"><RiArrowUpSFill /></span>
       <span className="ml-1 btn-project-vote_total whitespace-nowrap">
@@ -60,7 +50,7 @@ export const Vote = observer(({itemId, votes, page}) => {
     )
    return (
     <button className={`btn btn-project-vote 
-    ${data == null ? "" : "active"}`}
+    ${!isVote ? "" : "active"}`}
         onClick={toggleVote}>
       <span className="text-xl -mb-0.5 transition-none icon"><RiArrowUpSFill /></span>
       <span className="ml-1 btn-project-vote_total whitespace-nowrap">

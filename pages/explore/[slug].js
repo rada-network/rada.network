@@ -8,9 +8,10 @@ import {observer} from "mobx-react";
 import {getPosts} from "../../data/query/posts";
 import {getTweet} from "../../data/query/postsTweet";
 import {useRouter} from "next/router";
-import {HomeStore, ObservableTweetStore} from "../index";
+import {HomeStore, ObservableTweetStore, VoteStore} from "../index";
 import {getTopic} from "../../data/query/topic";
 import utils from "../../lib/util";
+import {useStore} from "../../lib/useStore";
 
 // Widgets Comp
 import { Widget } from "../../components/widgets/Widget";
@@ -50,12 +51,12 @@ const getData = async (itemType,q) => {
     })
   }
 }
-
+const voteStore = new VoteStore()
 export default observer(function Explore(props) {
   const router = useRouter();
   let { slug,q } = router.query;
   const data = props
-  console.log(props)
+  const store = useStore()
   const itemType = slug;
   observableTweetStore.query = q;
   let title = itemType !== "search" ? `${utils.topicTransform(itemType)}` : "Search results for "
@@ -86,7 +87,7 @@ export default observer(function Explore(props) {
 
               {/* Sidebar */}
               <div className="sidebar lg:col-span-3">
-                <Widget 
+                <Widget
                   title="Pricing"
                   text="Lorem Ipsum Dolor sit Amet"
                 />
@@ -101,6 +102,9 @@ export default observer(function Explore(props) {
     )
   }
   else{
+    voteStore.walletAddress = store.wallet.address
+    voteStore.addVotes(data.feed)
+    utils.initVoteStore(voteStore)
     return (
       <Layout extraClass="page_topic" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
         <Header props={data.topic[0]}/>
@@ -121,13 +125,14 @@ export default observer(function Explore(props) {
                   detail={true}
                   itemType={itemType}
                   dataStore={observableTweetStore}
+          voteStore={voteStore}
                 />
 
               </div>
 
               {/* Sidebar */}
               <div className="sidebar lg:col-span-3">
-                <Widget 
+                <Widget
                   title="Pricing"
                   text="Lorem Ipsum Dolor sit Amet"
                 />

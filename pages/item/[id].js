@@ -23,6 +23,10 @@ import TokenIcon from "../../components/icons/tokenIcon";
 import ItemTypeBadge from "../../components/icons/itemTypeBadge";
 
 import Media from "../../components/Media"
+import {VoteStore} from "../index";
+import {useStore} from "../../lib/useStore";
+import {getIsVotes} from "../../data/query/isVoted";
+import utils from "../../lib/util";
 
 // Widgets Comp
 import { Widget } from "../../components/widgets/Widget";
@@ -46,6 +50,8 @@ const getData = async (id) => {
   }
 }
 
+const voteStore = new VoteStore()
+
 export default function Item (props) {
 
   const router = useRouter()
@@ -55,16 +61,22 @@ export default function Item (props) {
   if (router.isFallback) {
     return <div>Loading...</div>
   }
+  const store = useStore()
+  voteStore.walletAddress = store.wallet.address
 
   const {data} = useSWR([props.item.id,"item"],getData, {initialData: props});
   const imgsUri = data.item.imagesUri
-  // const imgs = data.item.images
-  // console.log("imgsUri: ", imgsUri)
 
   const showImgs = Object.keys(imgsUri).map(key => {
     return <a href={`${imgsUri[key]}`}>img {key} <br /></a>
   })
 
+  voteStore.addVotes([{
+    id : data.item.id,
+    totalVote : data.item.totalVote,
+    isVoted : false
+  }])
+  utils.initVoteStore(voteStore)
 
   const [showIdx, setShowIdx] = useState(-1)
   const popupMedia = (idx) => {
@@ -148,7 +160,7 @@ export default function Item (props) {
                       <div className="cta-wrapper">
                         <Vote
                           itemId={data.item.id}
-                          votes={data.item.totalVote}
+                    voteStore={voteStore}
                           page={"detail"}
                         />
                         <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="btn btn-project-link ml-4">
@@ -173,7 +185,7 @@ export default function Item (props) {
                       <IdeaContent item={data.item} />
 
                       <Media idx={showIdx} doClose={() => setShowIdx(-1)} items={images} />
-                      
+
                     </div>
                   </div>
 
@@ -189,7 +201,7 @@ export default function Item (props) {
 
             {/* Sidebar */}
             <div className="sidebar lg:col-span-3">
-              <Widget 
+              <Widget
                 title="Pricing"
                 text="Lorem Ipsum Dolor sit Amet"
               />
@@ -199,7 +211,7 @@ export default function Item (props) {
 
         </div>
       </div>
-      
+
       </>
     </Layout>
   )

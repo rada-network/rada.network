@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {
-        "url": "http://35.220.212.232:4005/",
+        "url": "https://gql.dhunt.io",
         "headers": {
           "user-agent": "JS GraphQL"
         },

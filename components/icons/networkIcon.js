@@ -4,7 +4,7 @@ export default function NetworkIcon({projectPlatform,projectPlatformShort,projec
     return (
         <>
             { projectPlatform &&
-            <a href={projectWebsiteUri}
+            <a rel={"nofollow"} target={"_blank"} href={projectWebsiteUri}
                className={`metadata project-metadata_platform project-metadata_platform_${projectPlatformShort || ""} ` + (badge? `badge badge-${projectPlatformShort}` : "")}
             >
                 {/* <img className="card-img" src={`./node_modules/cryptocurrency-icons/svg/color/${projectPlatformShort || ''}.svg`} /> */}

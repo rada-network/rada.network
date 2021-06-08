@@ -21,9 +21,8 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
   let posts = dataStore.tweets;
 
   const handleLoadMoreTweets = async (e) =>{
-    if (dataStore.tweets.length > 0){
-      dataStore.home.homeDisplay = 1;
-    }
+    //if (dataStore.tweets.length > 0) dataStore.home.homeDisplay = 1;
+
     setLoadingButton(true)
     const data = await getTweet({
       socialOrder : dataStore.currentTab,
@@ -36,9 +35,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
     dataStore.addTweet(data.data.tweetFeed)
   }
 
-  if (dataStore.home.homeDisplay !==0 && dataStore.home.homeDisplay !== 1){
-    return ""
-  }
+  //if (dataStore.home.homeDisplay !==0 && dataStore.home.homeDisplay !== 1) return ""
 
   return (
     <div className={`section section-socialposts ${extraClass || ''}`} id={"top"}>

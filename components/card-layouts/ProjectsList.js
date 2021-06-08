@@ -12,10 +12,12 @@ import {observer} from "mobx-react";
 import {getPosts} from "../../data/query/posts";
 import {TabButton} from "../button/tabButton";
 import WidgetTitle from "../text/widgetTitle";
+import utils from "../../lib/util";
 
 const take = 12
 
 export const ProjectsList = observer(({
+                                        voteStore,
                                         homeDisplay,
                                         dataStore,
                                         extraClass,
@@ -28,21 +30,19 @@ export const ProjectsList = observer(({
                                         itemType,
                                         detail
                                       }) => {
-  const date = new Date()
   const store = useStore()
   let posts = dataStore.tweets
   const [loadingButton, setLoadingButton] = useState(false)
   let startShowMoreButton = true;
-  if (posts.length < take){
+  if (posts.length < take && !dataStore.home.isHome){
     startShowMoreButton = false
   }
   const [showMoreButton, setShowMoreButton] = useState(startShowMoreButton)
   if (itemType === "all") itemType = ""
 
-  const fullDate = date.toISOString()
-  const currentTime = fullDate.split(('T'))[0]
+
   const handleLoadMoreItems = async (e) => {
-    if (dataStore.tweets.length > 0) dataStore.home.homeDisplay = homeDisplay
+    //if (dataStore.tweets.length > 0) dataStore.home.homeDisplay = homeDisplay
     setLoadingButton(true)
     setShowMoreButton(false)
 
@@ -56,6 +56,8 @@ export const ProjectsList = observer(({
     if (itemsData.loading) return false
     setLoadingButton(false)
     dataStore.addTweet(itemsData.data.itemFeed)
+    voteStore.addVotes(itemsData.data.itemFeed)
+    utils.initVoteStore(voteStore)
     if (itemsData.data.itemFeed.length < take){
       setShowMoreButton(false)
     }
@@ -63,7 +65,7 @@ export const ProjectsList = observer(({
       setShowMoreButton(true)
     }
   }
-  if (dataStore.home.homeDisplay !== 0 && dataStore.home.homeDisplay !== homeDisplay) return ""
+  //if (dataStore.home.homeDisplay !== 0 && dataStore.home.homeDisplay !== homeDisplay) return ""
 
   const showPosts = (posts) => {
     if (!loadingButton && posts.length === 0){
@@ -91,6 +93,7 @@ export const ProjectsList = observer(({
           // projectSubmitter="rada.co"
           projectCommentsCounts={post.totalComment}
           voteTotal={post.totalVote}
+          voteStore={voteStore}
         />
       )))
   }
