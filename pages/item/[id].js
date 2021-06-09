@@ -119,7 +119,7 @@ export default function Item (props) {
           <div className="grid grid-cols-1 lg:grid-cols-12">
 
             {/* mainbody */}
-            <div className="mainbody lg:col-span-9">
+            <div className="mainbody">
 
               <div class="section section-top">
 
@@ -200,7 +200,7 @@ export default function Item (props) {
             </div>
 
             {/* Sidebar */}
-            <div className="sidebar lg:col-span-3">
+            <div className="sidebar">
               <Widget
                 title="Pricing"
                 text="Lorem Ipsum Dolor sit Amet"

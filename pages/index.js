@@ -184,7 +184,7 @@ export default observer((props) => {
           <div className="grid grid-cols-1 lg:grid-cols-12">
 
             {/* mainbody */}
-            <div className="mainbody lg:col-span-9">
+            <div className="mainbody">
               {/* <ProjectsList
                 grid="2"
                 gap="4"
@@ -284,7 +284,7 @@ export default observer((props) => {
             </div>
 
             {/* Sidebar */}
-            <div className="sidebar lg:col-span-3">
+            <div className="sidebar">
               <Widget
                 title="Pricing"
                 text="Lorem Ipsum Dolor sit Amet"

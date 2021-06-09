@@ -1,29 +1,42 @@
+%card-padding {
+  @apply p-4 lg:p-6;
+}
+
 /*
 Project
 */
 .card {
-  @apply flex-col items-center content-center -mx-4 lg:mx-0;
+  @apply flex w-full -mx-4 lg:mx-0;
   @apply relative transition-all;
   @apply bg-white border-t lg:border lg:border-gray-900 lg:border-opacity-5 lg:rounded;
   @apply lg:hover:shadow-md lg:hover:border-opacity-10;
 }
 
+.card_media {
+  @extend %card-padding;
+  @apply pr-0;
+}
+
 .card_body {
-  @apply h-full justify-items-stretch;
-  @apply p-4 pb-0 lg:p-4;
+  @apply flex flex-col h-full w-full;
+  @extend %card-padding;
 }
 
 .card_body_header {
-  @apply mb-4;
+  @apply flex flex-col mb-2 -mt-1;
 }
 
 .card_body_main {
   @apply flex pb-1;
 }
 
+.card_body_footer {
+  @apply flex mt-4;
+}
+
 .card_footer {
-  @apply text-sm lg:border-t border-gray-100;
-  @apply p-4;  
+  @extend %card-padding; 
+  @apply flex-1 text-sm;
 }
 
 .card_title {
@@ -31,7 +44,7 @@ Project
 }
 
 .card_text {
-  @apply text-sm line-clamp-4 text-gray-700;
+  @apply text-sm line-clamp-2 text-gray-500;
 }
 
 .card:hover .card_text {
@@ -39,5 +52,18 @@ Project
 }
 
 .project_icon {
-  @apply flex-shrink-0 w-px-56 h-px-56 md:w-px-80 md:h-px-80 mr-4 rounded overflow-hidden;
+  @apply flex-shrink-0 w-px-56 h-px-56 md:w-px-88 md:h-px-88 rounded overflow-hidden;
+}
+
+.project_icon_ph {
+  @extend .project_icon;
+  @apply p-3 bg-gray-50;
+}
+
+.project_icon__img {
+
+}
+
+.project_icon_ph__img {
+  @apply opacity-20;
 }

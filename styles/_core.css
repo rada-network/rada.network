@@ -59,10 +59,12 @@ Page Layouts
   @apply grid grid-cols-1 md:grid-cols-2;
 }
 
-.mainbody {}
+.mainbody {
+  @apply lg:col-span-8;
+}
 
 .sidebar {
-  @apply px-4;
+  @apply lg:col-span-4 px-4;
 }
 
 

@@ -72,7 +72,7 @@ export default observer(function Explore(props) {
             <div className="grid grid-cols-1 lg:grid-cols-12">
 
               {/* mainbody */}
-              <div className="mainbody lg:col-span-9">
+              <div className="mainbody">
 
                 <SocialPostsList
                   grid="1"
@@ -86,7 +86,7 @@ export default observer(function Explore(props) {
               </div>
 
               {/* Sidebar */}
-              <div className="sidebar lg:col-span-3">
+              <div className="sidebar">
                 <Widget
                   title="Pricing"
                   text="Lorem Ipsum Dolor sit Amet"
