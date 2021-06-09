@@ -1,5 +1,5 @@
 %card-padding {
-  @apply p-4 lg:p-6;
+  @apply pt-5 pb-4 px-4 lg:p-6;
 }
 
 /*
@@ -37,7 +37,7 @@ Project
 .card_footer {
   @extend %card-padding; 
   @apply flex-1;
-  @apply pt-5 lg:pt-7;
+  @apply pt-5 pl-0 lg:pt-7;
 }
 
 .card_title {
