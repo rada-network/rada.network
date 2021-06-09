@@ -64,7 +64,7 @@ Page Layouts
 }
 
 .sidebar {
-  @apply lg:col-span-4 px-4;
+  @apply lg:col-span-4 pl-8;
 }
 
 
