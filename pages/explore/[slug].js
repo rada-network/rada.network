@@ -1,5 +1,5 @@
 import {Layout} from '../../components/page-layouts/OneColumn';
-import {Header} from '../../components/Header';
+import {Header} from '../../components/headers/Header';
 import {ProjectsList} from "../../components/card-layouts/ProjectsList";
 import {SocialPostsList} from "../../components/card-layouts/SocialPostsList";
 import useSWR from "swr";
@@ -105,6 +105,7 @@ export default observer(function Explore(props) {
   else{
     return (
       <Layout extraClass="page_topic" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
+
         <Header props={data.topic[0]}/>
 
         <div className="wrapper">
@@ -116,7 +117,7 @@ export default observer(function Explore(props) {
               <div className="mainbody lg:col-span-9">
 
                 <ProjectsList
-                  grid="2"
+                  grid="1"
                   gap="4"
                   title={title}
                   cta="Sorted by"

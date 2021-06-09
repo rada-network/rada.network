@@ -1,0 +1,34 @@
+@import "../_animations";
+
+.header {
+  @apply overflow-hidden;
+  @apply bg-gradient-to-br from-purple-900 to-purple-500;
+  animation: fadein 1s ease;
+}
+
+.header_inner {
+  @apply flex relative;
+}
+
+.header_body {
+  @apply py-12 lg:py-16 lg:w-1/2;
+}
+
+.header_media {
+  @apply absolute inset-0 left-auto w-1/2;
+  @apply opacity-10 lg:opacity-100;
+  margin-top: -8%;
+}
+
+.header_title {
+  @apply text-2xl leading-8 lg:text-4xl lg:leading-snug font-medium text-white;
+}
+
+.header_text {
+  @apply text-base lg:text-lg font-light text-white text-opacity-70 mt-2;
+}
+
+.floating {
+  @apply relative;
+  animation: floating 12s infinite ease-in-out;
+}

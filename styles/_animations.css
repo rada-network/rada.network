@@ -1,0 +1,38 @@
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(2rem);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(2rem);
+  }
+}
+
+@keyframes expanded-width {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes collapsed-width {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}

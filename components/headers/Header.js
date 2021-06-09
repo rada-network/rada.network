@@ -1,7 +1,8 @@
 // import {useAuthState} from "../context/auth";
 
+import styles from '../../styles/modules/Header.module.css'
 
-import utils from "../lib/util";
+import utils from "../../lib/util";
 
 export const Header = ({props}) => {
   props = props || {
@@ -17,25 +18,23 @@ export const Header = ({props}) => {
     <>
     { props.title === "" ?
         "" :
-        <div className={`header overflow-hidden`} type={props.itemType}>
+        
+        <div className={`${styles.header}`} type={props.itemType}>
           <div className="container">
-            <div className="flex flex-wrap">
-              <div className="header-body">
-                <h2 className="">
+
+            <div className={`${styles.header_inner}`}>
+
+              <div className={`${styles.header_body}`}>
+                <h2 className={`${styles.header_title}`}>
                   <span className="relative inline-block">
                     {utils.topicTransform(props.title)}
                   </span>
                 </h2>
-                <p className="">
+                <p className={`${styles.header_text}`}>
                   {props.description}
                 </p>
               </div>
-              {props.itemType === "home" ?
-                <div className="hidden lg:flex lg:w-1/2 lg:-my-24">
-                  <img className="block w-auto h-auto" src="/images/hero.png"/>
-                </div>
-                : ""
-              }
+
             </div>
 
           </div>

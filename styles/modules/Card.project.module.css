@@ -6,9 +6,9 @@
 Project
 */
 .card {
-  @apply flex w-full -mx-4 lg:mx-0;
+  @apply flex -mx-4 lg:mx-auto;
   @apply relative transition-all;
-  @apply bg-white border-t lg:border lg:border-gray-900 lg:border-opacity-5 lg:rounded;
+  @apply bg-white border-t lg:border border-gray-900 border-opacity-10 lg:border-opacity-5 lg:rounded;
   @apply lg:hover:bg-gray-50 lg:hover:border-opacity-10;
 }
 

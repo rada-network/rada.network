@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 // Components
 import {Layout} from '../components/page-layouts/OneColumn';
-import {Header} from '../components/Header';
+import {Header} from '../components/headers/HeaderHome';
 import {ProjectsList} from '../components/card-layouts/ProjectsList';
 import {CategoryList} from '../components/card-layouts/CategoryList';
 import { observer } from "mobx-react"
@@ -67,7 +67,6 @@ export default observer((props) => {
         itemType : "home",
         description : "Stay updated with the best quality news & updates"
       }}/>
-
 
       <div className="wrapper">
         <div className="container">
