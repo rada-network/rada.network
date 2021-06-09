@@ -126,13 +126,13 @@ export default function Item (props) {
                 <div className="section-inner">
 
                   {/* Page Header */}
-                  <div className="page-header flex flex-col md:flex-row">
+                  <div className="page-header flex">
 
                     {data.item.thumbnail !== null ?
-                    <div className="project-icon rounded overflow-hidden">
+                    <div className="project-icon">
                       <Link target={"_blank"} href={data.item.imageUri}>
                         <a className="">
-                          <img className="project-icon_img w-full h-full object-cover" src={data.item.imageUri} />
+                          <img className="project-icon_img" src={data.item.imageUri} />
                         </a>
                       </Link>
                     </div>

@@ -133,12 +133,12 @@ Project Details
   }
 
   .project-icon {
-    @apply flex-shrink-0 rounded mr-8 mt-1;
+    @apply flex-shrink-0 rounded mr-4 md:mr-8 mt-1;
   }
 
   .project-icon_img {
     @extend %Img96;
-    @apply rounded;
+    @apply rounded object-cover;
   }
 
   .project-metadata-wrapper .metadata {
