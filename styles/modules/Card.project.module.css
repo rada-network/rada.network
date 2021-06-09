@@ -9,7 +9,7 @@ Project
   @apply flex w-full -mx-4 lg:mx-0;
   @apply relative transition-all;
   @apply bg-white border-t lg:border lg:border-gray-900 lg:border-opacity-5 lg:rounded;
-  @apply lg:hover:border-opacity-5;
+  @apply lg:hover:bg-gray-50 lg:hover:border-opacity-10;
 }
 
 .card_media {
@@ -45,11 +45,11 @@ Project
 }
 
 .card_text {
-  @apply text-sm line-clamp-2 text-gray-500 transition;
+  @apply text-sm line-clamp-2 text-gray-600 transition;
 }
 
 .card:hover .card_text {
-  @apply text-gray-700;
+  @apply text-gray-900;
 }
 
 .project_icon {
