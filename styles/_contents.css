@@ -58,6 +58,15 @@ metadata
   }
 } */
 
+.project-comment_count {
+  @apply px-2;
+  @apply bg-gray-50 rounded;
+}
+
+/* 
+Avatars 
+*/
+
 .user-wallet_avatar,
 .user-wallet_avatar_sm,
 .user-wallet_avatar_xs {
@@ -98,7 +107,9 @@ metadata
 }
 
 
-/* Comment */
+/*
+Comment
+*/
 .comments-list {
   @apply py-4 mt-4 text-sm;
 }
