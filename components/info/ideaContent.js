@@ -24,18 +24,20 @@ export default function IdeaContent({item}){
     `
   })
   return (
-    <div className="grid grid-col-1 md:grid-cols-12">
+    <div className="grid grid-col-1 lg:grid-cols-12">
 
-      <div className="md:col-span-8 lg:col-span-9 text-gray-900 text-opacity-100 md:pr-10 project-text">
+      <div className="lg:col-span-9 text-gray-900 text-opacity-100 lg:pr-8 project-text">
 
         {/* <div className="project-text_short" dangerouslySetInnerHTML={{__html: item.description}} /> */}
         
         <div style={{display : hideContent ? '' : `block`}}
           id={`read`} dangerouslySetInnerHTML={{__html: showContents.join("")}}  />
+
         <button className="btn mt-4 text-purple-500 hover:underline" onClick={readMore} id={"readBtn"}>Read more</button>
+
       </div>
 
-      <div className="mt-8 md:mt-0 md:col-span-4 lg:col-span-3">
+      <div className="mt-8 md:mt-0 lg:col-span-3">
         {item.ideaUser !== null ? <IdeaInfo item={item}/> : ""}
       </div>
       

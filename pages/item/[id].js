@@ -129,9 +129,9 @@ export default function Item (props) {
                   <div className="page-header flex flex-col md:flex-row">
 
                     {data.item.thumbnail !== null ?
-                    <div className="mr-8">
+                    <div className="project-icon rounded overflow-hidden">
                       <Link target={"_blank"} href={data.item.imageUri}>
-                        <a className="project-icon rounded overflow-hidden">
+                        <a className="">
                           <img className="project-icon_img w-full h-full object-cover" src={data.item.imageUri} />
                         </a>
                       </Link>
@@ -160,7 +160,7 @@ export default function Item (props) {
                       <div className="cta-wrapper">
                         <Vote
                           itemId={data.item.id}
-                    voteStore={voteStore}
+                          voteStore={voteStore}
                           page={"detail"}
                         />
                         <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="btn btn-project-link ml-4">

@@ -133,8 +133,12 @@ Project Details
   }
 
   .project-icon {
-    @apply hidden md:inline-flex shadow-sm rounded;
-    @extend %Img128;
+    @apply flex-shrink-0 rounded mr-8 mt-1;
+  }
+
+  .project-icon_img {
+    @extend %Img96;
+    @apply rounded;
   }
 
   .project-metadata-wrapper .metadata {
@@ -195,7 +199,7 @@ Intro
 */
 .page-header .project-text_short {
   @apply text-base leading-relaxed text-gray-900 text-opacity-70;
-  @apply mt-2 max-w-screen-sm;
+  @apply mt-4;
 }
 
 .page-main .project-text_short {
@@ -207,11 +211,21 @@ Intro
 Info
 */
 .project-info {
-  @apply text-sm text-center border border-gray-900 border-opacity-10 rounded p-8;
+  @apply text-sm text-center border border-gray-700 border-opacity-10 rounded;
+  @apply px-8 py-4 md:px-2 md:py-4 lg:p-4;
+  @apply flex flex-col md:flex-row lg:flex-col;
+}
+
+.project-info .list-group-item {
+  @apply px-4 md:py-0 lg:px-0 lg:py-4 justify-center;
+  @apply md:border-b-0 md:border-r lg:border-b lg:border-r-0;
+}
+
+.project-info .list-media {
 }
 
 .project-info .list-name {
-  @apply mb-1 flex-1 text-gray-900 text-opacity-50;
+  @apply mb-1 text-gray-900 text-opacity-50;
 }
 
 .project-info a.list-value {
@@ -282,7 +296,7 @@ Text
 }
 
 .project-text_content {
-  @apply text-gray-900 text-opacity-80 pb-2;
+  @apply text-gray-900 text-opacity-70 pb-2;
 }
 
 /* #read {

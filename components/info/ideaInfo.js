@@ -6,10 +6,13 @@ export default function IdeaInfo({item}){
 
     <div className="list-group-sm list-group-v project-info">
 
-      <div className="list-group-item">
-        <a className="mb-4 w-px-64 h-px-64 rounded-full overflow-hidden">
+      <div className="list-group-item border-none">
+        <a className="list-media w-px-64 h-px-64 rounded-full overflow-hidden">
           <img src={item.ideaUser.avatarUri}/>
         </a>
+      </div>
+
+      <div className="list-group-item">
         <span className="list-name">Owner</span>
         <a href={item.ideaUser.url} className="list-value" target="_blank" rel="nofollow">
           <span className="">
@@ -19,13 +22,13 @@ export default function IdeaInfo({item}){
       </div>
 
       <div className="list-group-item">
-        <span className="list-name">Created at</span>
+        <span className="list-name">Date</span>
         <span className="list-value">
           {utils.timeDifference(new Date().getTime(),new Date(item.createdAt).getTime())}
         </span>
       </div>
 
-      <div className="border-none list-group-item">
+      <div className="list-group-item border-none">
         <span className="hidden">Owner description</span>
         <span className="list-value" dangerouslySetInnerHTML={{__html: item.ideaUser.description}} />
       </div>

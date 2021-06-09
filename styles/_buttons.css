@@ -48,14 +48,8 @@ Vote Buttons
 */
 .btn-project-vote {
   @apply px-2 py-4px justify-center;
-  @apply bg-gray-50 border border-gray-900 border-opacity-10 rounded;
+  @apply font-normal bg-gray-50 border border-gray-900 border-opacity-10 rounded;
   @apply hover:border-purple-700 hover:bg-purple-50 hover:text-primary-700;
-}
-
-.card .btn-project-vote {
-  strong {
-    @apply font-medium;
-  }
 }
 
 .btn-project-vote.active {
@@ -66,6 +60,13 @@ Vote Buttons
 .btn-project-vote_sm {
   @extend .btn-project-vote;
   @apply border-gray-900 border-opacity-5 bg-white px-5 py-4;
+}
+
+.card .btn-project-vote,
+.card .btn-project-vote_sm {
+  strong {
+    @apply font-normal;
+  }
 }
 
 /* 

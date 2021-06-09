@@ -5,7 +5,7 @@ Tweets
   @apply flex-col items-center content-center -mx-4 md:mx-0;
   @apply relative transition-all;
   @apply bg-white border-t md:border md:border-gray-900 md:border-opacity-5 md:rounded;
-  @apply lg:hover:shadow-md lg:hover:border-opacity-10;
+  @apply lg:hover:border-opacity-5;
 }
 
 .card_body {
@@ -91,11 +91,11 @@ Metadata
 }
 
 .tweet_metadata_name {
-  @apply block text-sm font-medium text-gray-900 text-opacity-100 mb-0.5 truncate;
-  max-width: 240px;
+  @apply block text-base font-medium text-gray-900 text-opacity-100 mb-0.5 truncate;
+  width: 240px;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .tweet_metadata_name {
     max-width: 220px;
   }
@@ -103,9 +103,9 @@ Metadata
 
 @media (min-width: 1024px) {
   .tweet_metadata_name {
-    max-width: 180px;
+    max-width: 220px;
   }
-}
+} */
 
 /* .card:hover .tweet_metadata_wrapper svg {
   opacity: 1;
