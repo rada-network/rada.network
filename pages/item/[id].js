@@ -23,13 +23,13 @@ import TokenIcon from "../../components/icons/tokenIcon";
 import ItemTypeBadge from "../../components/icons/itemTypeBadge";
 
 import Media from "../../components/Media"
-import {VoteStore} from "../index";
 import {useStore} from "../../lib/useStore";
 import {getIsVotes} from "../../data/query/isVoted";
 import utils from "../../lib/util";
 
 // Widgets Comp
 import { Widget } from "../../components/widgets/Widget";
+import {VoteStore} from "../../lib/store";
 
 const scrollBox = createRef();
 let ps;
