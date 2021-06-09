@@ -8,13 +8,13 @@ import {observer} from "mobx-react";
 import {getPosts} from "../../data/query/posts";
 import {getTweet} from "../../data/query/postsTweet";
 import {useRouter} from "next/router";
-import {HomeStore, ObservableTweetStore, VoteStore} from "../index";
 import {getTopic} from "../../data/query/topic";
 import utils from "../../lib/util";
 import {useStore} from "../../lib/useStore";
 
 // Widgets Comp
 import { Widget } from "../../components/widgets/Widget";
+import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 
 const homeStore = new HomeStore({isHome : false})
 const observableTweetStore = new ObservableTweetStore({homeStore})
@@ -52,6 +52,7 @@ const getData = async (itemType,q) => {
   }
 }
 const voteStore = new VoteStore()
+
 export default observer(function Explore(props) {
   const router = useRouter();
   let { slug,q } = router.query;
@@ -102,9 +103,6 @@ export default observer(function Explore(props) {
     )
   }
   else{
-    voteStore.walletAddress = store.wallet.address
-    voteStore.addVotes(data.feed)
-    utils.initVoteStore(voteStore)
     return (
       <Layout extraClass="page_topic" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
         <Header props={data.topic[0]}/>

@@ -2,6 +2,7 @@ import '../styles/tw.css'
 import '../styles/globals.css'
 import '../styles/styles.css'
 import { useWallet, UseWalletProvider } from 'use-wallet'
+import NextNprogress from 'nextjs-progressbar';
 // import { Provider } from 'mobx-react'
 import { StoreProvider } from "../lib/useStore"
 
@@ -32,8 +33,15 @@ const TokenRankingStore = ({ Component, pageProps }) => {
       walletlink: { url: 'https://mainnet.infura.io/v3/92d8c48b74034b8cb45aa0af1bc30d2c' },
   }}
   >
-  <StoreProvider>
-    <MyApp Component={Component} pageProps={pageProps} />
+    <StoreProvider>
+      <NextNprogress
+        color="#29D"
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={3}
+        showOnShallow={true}
+      />
+      <MyApp Component={Component} pageProps={pageProps} />
     </StoreProvider>
   </UseWalletProvider>
 )}

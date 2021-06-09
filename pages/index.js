@@ -5,8 +5,6 @@ import Head from 'next/head';
 import {Layout} from '../components/page-layouts/OneColumn';
 import {Header} from '../components/Header';
 import {ProjectsList} from '../components/card-layouts/ProjectsList';
-import {PromoList} from '../components/card-layouts/PromoList';
-import {TopUsersList} from '../components/card-layouts/TopUsersList';
 import {CategoryList} from '../components/card-layouts/CategoryList';
 import { observer } from "mobx-react"
 
@@ -16,112 +14,12 @@ import { Widget } from "../components/widgets/Widget";
 //ReactIcons
 import {getPosts} from "../data/query/posts"
 import {getTweet} from "../data/query/postsTweet"
-import useSWR from "swr";
-import { useStore } from "../lib/useStore"
+import {useStore} from "../lib/useStore"
 import {SocialPostsList} from "../components/card-layouts/SocialPostsList";
-import {action, autorun, computed, makeObservable, observable} from "mobx";
 import {getTopic} from "../data/query/topic";
-import {Vote} from "../components/vote/Vote";
-import {getIsVotes} from "../data/query/isVoted";
-import vote from "./api/item/[id]/vote";
 import utils from "../lib/util";
+import {HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
 
-export class ObservableTweetStore {
-  currentTab = "latest";
-  tweets = []
-  query = ""
-  constructor({homeStore}) {
-    this.home = homeStore
-    makeObservable(this, {
-      currentTab: observable,
-      query: observable,
-      addTweet: action,
-      tweets: observable,
-    });
-    autorun(() => this.report);
-  }
-
-  get report() {
-
-  }
-  addTweet(tws) {
-    if (tws.length > 0){
-      for (let tw of tws){
-        if (this.tweets.filter(el => {
-          return el.id === tw.id
-        }).length === 0){
-          this.tweets.push(tw)
-        }
-      }
-
-    }
-  }
-}
-
-export class HomeStore {
-  homeDisplay = 0
-  isHome = false
-  constructor({isHome}) {
-    this.isHome = isHome
-    makeObservable(this, {
-      homeDisplay: observable,
-    });
-    autorun(() => {});
-  }
-}
-
-export class VoteStore {
-  votes = []
-  walletAddress = ''
-  constructor() {
-    makeObservable(this, {
-      votes: observable,
-      walletAddress : observable,
-      addVotes: action,
-      updateVote: action,
-      getIds: action,
-    });
-    autorun(() => {});
-  }
-  addVotes(votes) {
-    if (votes.length > 0){
-      for (let vote of votes){
-        if (this.votes.filter(el => {
-          return el.id === vote.id
-        }).length === 0){
-          this.votes.push({
-            id : vote.id,
-            totalVote: vote.totalVote,
-            isVoted : false
-          })
-        }
-      }
-    }
-  }
-  getIds () {
-    return this.votes.map(a => a.id)
-  }
-  updateVote(vote) {
-    let flag = false
-    this.votes.forEach((el,index)=>{
-      if (el.id === vote.id){
-        this.votes[index] = {
-          id : vote.id,
-          isVoted : typeof vote.isVoted == "undefined" ?  el.isVoted : vote.isVoted,
-          totalVote : typeof vote.totalVote == "undefined" ?  el.totalVote : vote.totalVote,
-        }
-        flag = true;
-      }
-    })
-    if (!flag){
-      this.votes.push({
-        id : vote.id,
-        isVoted : typeof vote.isVoted == "undefined" ?  false : vote.isVoted,
-        totalVote : typeof vote.totalVote == "undefined" ?  0 : vote.totalVote,
-      })
-    }
-  }
-}
 const voteStore = new VoteStore();
 const homeStore = new HomeStore({isHome : true})
 
@@ -152,9 +50,7 @@ const getData = async () => {
 }
 
 export default observer((props) => {
-  const store = useStore()
   const data = props
-  voteStore.walletAddress = store.wallet.address
   // const data = props
   // update to store
   if (!data) return <div>loading...</div>
@@ -163,11 +59,6 @@ export default observer((props) => {
   observableItemStore.tweets = data.posts
   observableNftStore.tweets = data.postsNFT
   observableDappStore.tweets = data.postsDapp
-  voteStore.walletAddress = store.wallet.address
-  voteStore.addVotes(data.posts)
-  voteStore.addVotes(data.postsNFT)
-  voteStore.addVotes(data.postsDapp)
-  utils.initVoteStore(voteStore)
   return (
     <Layout extraClass="page-home" meta={"DHunt.io - Top BlockChain DApps"}>
 

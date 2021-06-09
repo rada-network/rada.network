@@ -31,16 +31,17 @@ export const ProjectsList = observer(({
                                         detail
                                       }) => {
   const store = useStore()
+  voteStore.walletAddress = store.wallet.address
+  voteStore.addVotes(dataStore.tweets)
+
   let posts = dataStore.tweets
   const [loadingButton, setLoadingButton] = useState(false)
   let startShowMoreButton = true;
-  if (posts.length < take && !dataStore.home.isHome){
+  if (dataStore.tweets.length < take && !dataStore.home.isHome){
     startShowMoreButton = false
   }
   const [showMoreButton, setShowMoreButton] = useState(startShowMoreButton)
   if (itemType === "all") itemType = ""
-
-
   const handleLoadMoreItems = async (e) => {
     //if (dataStore.tweets.length > 0) dataStore.home.homeDisplay = homeDisplay
     setLoadingButton(true)
@@ -51,11 +52,12 @@ export const ProjectsList = observer(({
       skip: dataStore.tweets.length,
       take: take,
       type: itemType === "all" ? "" : itemType,
-        query : dataStore.query
+      query : dataStore.query
     });
     if (itemsData.loading) return false
     setLoadingButton(false)
     dataStore.addTweet(itemsData.data.itemFeed)
+
     voteStore.addVotes(itemsData.data.itemFeed)
     utils.initVoteStore(voteStore)
     if (itemsData.data.itemFeed.length < take){
