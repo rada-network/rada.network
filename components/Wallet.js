@@ -1,7 +1,7 @@
 import { useWallet, ConnectionRejectedError } from 'use-wallet'
 import { BiWallet } from "react-icons/bi";
 import { GiWallet } from "react-icons/gi";
-import { Fragment, useState, useRef } from "react"
+import { Fragment, useEffect, useRef } from "react"
 import { observer, inject } from "mobx-react"
 import { useStore } from '../lib/useStore'
 
@@ -10,6 +10,9 @@ import {IoChevronBackSharp} from "react-icons/io5";
 import { Dialog, Transition } from "@headlessui/react"
 import styles from '../styles/modules/Dialog.wallet.module.css'
 import Avatar from "boring-avatars";
+
+import ReactTooltip from 'react-tooltip'
+
 
 const WalletContent = ({wallet, closeModal, open}) => {
   const cancelButtonRef = useRef();
@@ -71,7 +74,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                       <span className="icon"><IoChevronBackSharp/></span>
                       <span className="btn-text font-normal">Go back</span>
                     </button>
-                    <h3 className="text-xl font-semibold">Connect your wallet</h3>
+                    <h3 className="text-xl font-semibold">Connect your wallet <i className="fa fa-info" data-tip="hello world"></i></h3>
                     <div className="mt-4 text-sm text-white text-opacity-70 leading-6">
                       <p className="">
                         Connect your wallet to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> on projects you like the most.
@@ -192,6 +195,11 @@ export const Wallet = observer(() => {
   }  
   // const [isOpen, setIsOpen] = useState(false)
   const open = store?.wallet.showingConnect
+
+  // rebuild tooltip
+  useEffect(() => {
+    setTimeout(() => ReactTooltip.rebuild(), 200)
+  }, [open]);
 
   return (
     <div className="relative inline-block text-left">
