@@ -6,9 +6,9 @@
 Project
 */
 .card {
-  @apply flex -mx-4 lg:mx-auto;
+  @apply flex -mx-4 lg:mx-0;
   @apply relative transition-all;
-  @apply bg-white border-t lg:border border-gray-900 border-opacity-10 lg:border-opacity-5 lg:rounded;
+  @apply bg-white border-t border-gray-900 border-opacity-10 lg:border lg:border-opacity-5 lg:rounded;
   @apply lg:hover:bg-gray-50 lg:hover:border-opacity-10;
 }
 
@@ -58,7 +58,7 @@ Project
 
 .project_icon_ph {
   @extend .project_icon;
-  @apply p-6 bg-gray-50;
+  @apply p-3 lg:p-6 bg-gray-50;
 }
 
 .project_icon__img {
