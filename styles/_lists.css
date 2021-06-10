@@ -17,4 +17,4 @@ Lists Styles
 
 .list-group-v .list-group-item {
   @apply flex flex-col justify-between items-center px-1 py-4;
-} 
+}

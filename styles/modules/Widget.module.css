@@ -7,7 +7,7 @@ Generic Styles
 }
 
 .widget_header {
-  @apply flex justify-between items-center px-4 md:px-8 py-6 w-full;
+  @apply flex justify-between items-center px-4 py-4 md:px-8 w-full;
   @apply border-b border-gray-900 border-opacity-5;
 }
 
@@ -20,7 +20,7 @@ Generic Styles
 }
 
 .widget_title {
-  @apply text-base font-semibold;
+  @apply text-lg md:text-lg font-medium;
   > a {
     @apply hover:text-gray-900;
   }
@@ -34,7 +34,41 @@ Generic Styles
 }
 
 .widget_icon_fa {
-  @apply text-2xl;
+  @apply text-lg;
 }
+
+/*
+Widget Lists 
+*/
+.widget_list {
+  @apply -mx-4 md:-mx-8;
+}
+
+.widget_list__link {
+  @apply block;
+}
+
+.widget_list__link:hover {
+  @apply bg-gray-50;
+}
+
+.widget_list__item {
+  @apply flex flex-col justify-between;
+  @apply px-4 py-4 md:px-8;
+  @apply border-b border-gray-900 border-opacity-5;
+}
+
+.widget_list__link:firt-child {
+  @apply pt-0;
+} 
+
+/* .widget_list__item__first {
+  @apply pt-0;
+}
+
+.widget_list__item__last {
+  @apply pb-0 border-b-0;
+} */
+
 
 

@@ -1,0 +1,47 @@
+/*
+Widget: Pricing
+*/
+.body {
+  @apply flex flex-col flex-1 px-4 md:px-8 w-full;
+}
+
+.event {
+  @apply py-4 flex items-start relative;
+}
+
+.title {
+  @apply text-base font-medium text-gray-900;
+}
+
+.text {
+  @apply text-sm text-gray-900 text-opacity-50 mt-2;
+}
+
+.info_wrapper {
+  @apply flex mt-2;
+}
+
+.info {
+  @apply text-xs leading-none truncate text-gray-900 text-opacity-50 rounded;
+  @apply py-1 px-2 overflow-hidden;
+}
+
+.info_date strong {
+  @apply text-gray-900 text-opacity-100 font-medium;
+}
+
+.info_type {
+  @apply w-20 text-center font-medium;
+}
+
+.info[type="event-important"] {
+  @apply bg-yellow-50 text-yellow-500;
+}
+
+.info[type="event-airdrop"] {
+  @apply bg-blue-50 text-blue-500;
+}
+
+.info[type="event-launchpad"] {
+  @apply bg-purple-50 text-purple-500;
+}

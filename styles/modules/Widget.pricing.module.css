@@ -19,6 +19,14 @@ Widget: Pricing
   @apply text-sm bg-gray-400 text-white rounded;
 }
 
+.indicator[type="price-up"] {
+  @apply bg-green-500;
+}
+
+.indicator[type="price-down"] {
+  @apply bg-red-500;
+}
+
 .chart {
   
 }
