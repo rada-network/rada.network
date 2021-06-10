@@ -18,7 +18,7 @@ Widget: Pricing
 }
 
 .info_wrapper {
-  @apply flex mt-2;
+  @apply flex mt-1;
 }
 
 .info {
@@ -34,6 +34,10 @@ Widget: Pricing
   @apply w-20 text-center font-medium;
 }
 
+.info_type + .info_type {
+  @apply ml-2;
+}
+
 .info[type="event-important"] {
   @apply bg-yellow-50 text-yellow-500;
 }
@@ -44,4 +48,8 @@ Widget: Pricing
 
 .info[type="event-launchpad"] {
   @apply bg-purple-50 text-purple-500;
+}
+
+.info[type="event-expired"] {
+  @apply bg-gray-100 text-gray-500;
 }

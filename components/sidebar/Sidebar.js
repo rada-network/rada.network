@@ -13,7 +13,6 @@ export const Sidebar = ({extraClass}) => {
       />
       <WidgetEvents
         title="Cardano Events"
-        text="Lorem Ipsum Dolor sit Amet"
         widgetIcon="calendar-day"
       />
     </div>
