@@ -11,13 +11,12 @@
 }
 
 .header_body {
-  @apply py-12 lg:py-16 lg:w-1/2;
+  @apply py-8 md:py-12 lg:py-16 lg:w-1/2;
 }
 
 .header_media {
-  @apply absolute inset-0 left-auto w-1/2;
+  @apply absolute inset-0 left-auto w-2/3 md:w-1/2 -mt-8 md:-mt-16 md:-mt-20;
   @apply opacity-10 lg:opacity-100;
-  margin-top: -8%;
 }
 
 .header_title {

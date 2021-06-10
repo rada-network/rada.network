@@ -52,14 +52,15 @@ Vote Buttons
   @apply hover:border-purple-700 hover:bg-purple-50 hover:text-primary-700;
 }
 
-.btn-project-vote.active {
+.btn-project-vote.active,
+.btn-project-vote_sm.active {
   @apply bg-purple-700 text-white;
 }
 
-
 .btn-project-vote_sm {
   @extend .btn-project-vote;
-  @apply border-gray-900 border-opacity-5 bg-white px-5 py-4;
+  @apply bg-white;
+  @apply px-4 md:px-5 py-4;
 }
 
 .card .btn-project-vote,
