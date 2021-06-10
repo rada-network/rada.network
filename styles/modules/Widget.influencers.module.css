@@ -1,0 +1,51 @@
+/*
+Widget: Pricing
+*/
+.body {
+  @apply flex flex-col flex-1 px-4 md:px-8 w-full;
+}
+
+.event {
+  @apply py-4 flex items-start relative;
+}
+
+.title {
+  @apply text-base font-medium text-gray-900;
+}
+
+.text {
+  @apply text-sm text-gray-900 text-opacity-50 mt-2;
+}
+
+.info_wrapper {
+  @apply flex mt-1;
+}
+
+.info {
+  @apply text-xs leading-none truncate text-gray-900 text-opacity-50 rounded;
+  @apply py-1 px-2 overflow-hidden;
+}
+
+.info_type {
+  @apply text-center;
+  @apply bg-gray-100;
+}
+
+.info_type + .info_type {
+  @apply ml-2;
+}
+
+.avatar {
+  @apply w-px-64 h-px-64 rounded-full;
+}
+
+/* 
+Links 
+*/
+.links {
+  @apply flex;
+}
+
+.links__icon {
+  @apply opacity-50 hover:opacity-70;
+}
