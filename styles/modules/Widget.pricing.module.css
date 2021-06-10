@@ -18,3 +18,7 @@ Widget: Pricing
   @apply py-2 px-3 ml-4 mt-1;
   @apply text-sm bg-gray-400 text-white rounded;
 }
+
+.chart {
+  
+}

@@ -28,7 +28,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
         </div>
 
         {/* Pricing Chart */}
-        <div className={`${styles.pricing_chart}`}>
+        <div className={`${stylesPricing.chart}`}>
           
         </div>
 

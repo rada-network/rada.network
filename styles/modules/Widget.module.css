@@ -30,7 +30,11 @@ Generic Styles
 }
 
 .widget_icon_cf {
-  @apply text-2xl leading-none;
+  @apply text-2xl;
+}
+
+.widget_icon_fa {
+  @apply text-2xl;
 }
 
 
