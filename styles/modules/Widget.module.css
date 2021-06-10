@@ -7,12 +7,12 @@ Generic Styles
 }
 
 .widget_header {
-  @apply flex flex-col justify-between px-4 md:px-8 py-8 w-full;
+  @apply flex justify-between items-center px-4 md:px-8 py-6 w-full;
   @apply border-b border-gray-900 border-opacity-5;
 }
 
 .widget_body {
-  @apply flex flex-col flex-1 px-4 md:px-8 py-4 w-full;
+  @apply flex flex-col flex-1 px-4 md:px-8 py-6 w-full;
 }
 
 .widget_footer {
@@ -25,4 +25,12 @@ Generic Styles
     @apply hover:text-gray-900;
   }
 }
+
+.widget_icon {
+}
+
+.widget_icon_cf {
+  @apply text-2xl leading-none;
+}
+
 

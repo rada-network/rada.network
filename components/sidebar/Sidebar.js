@@ -9,6 +9,7 @@ export const Sidebar = ({extraClass}) => {
       <WidgetPricing
         title="Market Insights"
         text="Lorem Ipsum Dolor sit Amet"
+        projectPlatformShort="ada"
       />
     </div>
   );
