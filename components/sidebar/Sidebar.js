@@ -7,7 +7,7 @@ export const Sidebar = ({extraClass}) => {
   return (
     <div className={`sidebar ${extraClass || ''}`}>
       <WidgetPricing
-        title="Pricing"
+        title="Market Insights"
         text="Lorem Ipsum Dolor sit Amet"
       />
     </div>

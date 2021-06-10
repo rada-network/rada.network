@@ -1,0 +1,20 @@
+/*
+Widget: Pricing
+*/
+
+.title {
+  @apply text-sm text-gray-900 text-opacity-50;
+}
+
+.pricing {
+  @apply py-4 flex items-start relative;
+}
+
+.value {
+  @apply text-5xl leading-none truncate font-medium text-gray-900 text-opacity-100;
+}
+
+.indicator {
+  @apply py-2 px-3 ml-4 mt-1;
+  @apply text-sm bg-gray-400 text-white rounded;
+}
