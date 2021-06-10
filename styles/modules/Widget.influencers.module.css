@@ -36,16 +36,38 @@ Widget: Pricing
 }
 
 .avatar {
-  @apply w-px-64 h-px-64 rounded-full;
+  @apply bg-gray-100 w-px-80 h-px-80 mt-2 ml-4 rounded-full flex-shrink-0 overflow-hidden;
+}
+
+.avatar img {
+  @apply object-cover h-full;
 }
 
 /* 
 Links 
 */
 .links {
-  @apply flex;
+  @apply flex mt-2;
+}
+
+.links a {
+
+}
+
+.links a + a {
+  @apply ml-2;
 }
 
 .links__icon {
-  @apply opacity-50 hover:opacity-70;
+  @apply flex w-px-32 h-px-32 justify-center items-center rounded;
+  @apply border border-opacity-10 hover:bg-purple-50 hover:border-purple-500 text-center;
 }
+
+.links__icon i {
+  @apply opacity-50;
+}
+
+.links__icon:hover i {
+  @apply opacity-100;
+}
+

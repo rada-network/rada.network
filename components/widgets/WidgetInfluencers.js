@@ -38,12 +38,15 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
                 </span>
               </div>
 
-              <div className={`${stylesInfluencers.text}`}>
-                Charles Hoskinson is the founder of Cardano and co-founder of Ethereum, which are both blockchain platforms.
-              </div>
+              <div className="flex">
+                <div className={`${stylesInfluencers.text}`}>
+                  Charles Hoskinson is the founder of Cardano and co-founder of Ethereum, which are both blockchain platforms.
+                </div>
 
-              <div className={`${stylesInfluencers.avatar}`}>
-               <img width="220" height="220" data-w="440" data-h="440" data-fw="600" data-fh="600" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/21/Charles_Hoskinson_profile_color_no_background.png/440px-Charles_Hoskinson_profile_color_no_background.png" data-original="//upload.wikimedia.org/wikipedia/commons/thumb/2/21/Charles_Hoskinson_profile_color_no_background.png/440px-Charles_Hoskinson_profile_color_no_background.png" data-href="/wiki/File:Charles_Hoskinson_profile_color_no_background.png" alt="Charles Hoskinson" />
+                <div className={`${stylesInfluencers.avatar}`}>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Charles_Hoskinson_profile_color_no_background.png" alt="Charles Hoskinson" />
+
+                </div>
               </div>
 
               <div className={`${stylesInfluencers.links}`}>
@@ -71,18 +74,44 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
             <div className={`group ${styles.widget_list__item}`}>
 
               <div className={`${stylesInfluencers.title}`}>
-                <span>Cardano First Ever Airdrop</span>
+                <span>Vitalik Buterin</span>
               </div>
+
               <div className={`${stylesInfluencers.info_wrapper}`}>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`} type="event-airdrop">
-                  Airdrop
+                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
+                  Founder
                 </span>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_date}`} title="19:00, 30, Sep 2021">
-                  <strong>5d 23h</strong> to go
+                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
+                  Developer
                 </span>
               </div>
-              <div className={`${stylesInfluencers.text}`}>
-                One day, you'll look to see I've gone. For tomorrow may rain, so I'll follow the sun
+
+              <div className="flex">
+                <div className={`${stylesInfluencers.text}`}>
+                  Vitaly Dmitriyevich "Vitalik" Buterin is a Russian-Canadian programmer and writer who is best known as one of the co-founders of Ethereum.
+                </div>
+
+                <div className={`${stylesInfluencers.avatar}`}>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/VitalikButerinProfile.jpg/1920px-VitalikButerinProfile.jpg?1623322336489" alt="Vitalik Buterin" />
+                </div>
+              </div>
+
+              <div className={`${stylesInfluencers.links}`}>
+                <a href="#" target="_blank">
+                  <span className={`icon ${stylesInfluencers.links__icon}`}>
+                    <i class="fab fa-twitter"></i>
+                  </span>
+                </a>
+                <a href="#" target="_blank">
+                  <span className={`icon ${stylesInfluencers.links__icon}`}>
+                    <i class="fab fa-telegram-plane"></i>
+                  </span>
+                </a>
+                <a href="#" target="_blank">
+                  <span className={`icon ${stylesInfluencers.links__icon}`}>
+                    <i class="fa fa-globe"></i>
+                  </span>
+                </a>
               </div>
 
             </div>
@@ -92,42 +121,44 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
             <div className={`group ${styles.widget_list__item}`}>
 
               <div className={`${stylesInfluencers.title}`}>
-                <span>Cardano First Ever Launchpad</span>
+                <span>Pink Floyd</span>
               </div>
+
               <div className={`${stylesInfluencers.info_wrapper}`}>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`} type="event-launchpad">
-                  Launchpad
+                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
+                  Legend
                 </span>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_date}`} title="19:00, 30, Sep 2021">
-                  <strong>5d 23h</strong> to go
+                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
+                  Musicians
                 </span>
-              </div>
-              <div className={`${stylesInfluencers.text}`}>
-                "Follow me down to the valley below You know Moonlight is bleeding From out of your soul...
               </div>
 
-            </div>
-          </a>
+              <div className="flex">
+                <div className={`${stylesInfluencers.text}`}>
+                  Pink Floyd were an English rock band formed in London in 1965. Gaining an early following as one of the first British psychedelic groups
+                </div>
 
-          <a className={`${styles.widget_list__link}`} href="#" target="_blank">
-            <div className={`group ${styles.widget_list__item}`}>
+                <div className={`${stylesInfluencers.avatar}`}>
+                  <img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg?1623322481672" alt="Pink Floyd" />
+                </div>
+              </div>
 
-              <div className={`${stylesInfluencers.title}`}>
-                <span>Cardano First Ever Launchpad</span>
-              </div>
-              <div className={`${stylesInfluencers.info_wrapper}`}>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`} type="event-launchpad">
-                  Launchpad
-                </span>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`} type="event-expired">
-                  Expired
-                </span>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_date}`} title="19:00, 30, Sep 2021">
-                  <strong>25d</strong> ago
-                </span>
-              </div>
-              <div className={`${stylesInfluencers.text}`}>
-                "Follow me down to the valley below You know Moonlight is bleeding From out of your soul...
+              <div className={`${stylesInfluencers.links}`}>
+                <a href="#" target="_blank">
+                  <span className={`icon ${stylesInfluencers.links__icon}`}>
+                    <i class="fab fa-twitter"></i>
+                  </span>
+                </a>
+                <a href="#" target="_blank">
+                  <span className={`icon ${stylesInfluencers.links__icon}`}>
+                    <i class="fab fa-telegram-plane"></i>
+                  </span>
+                </a>
+                <a href="#" target="_blank">
+                  <span className={`icon ${stylesInfluencers.links__icon}`}>
+                    <i class="fa fa-globe"></i>
+                  </span>
+                </a>
               </div>
 
             </div>
