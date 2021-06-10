@@ -1,5 +1,6 @@
 import {Layout} from '../../components/page-layouts/OneColumn';
 import {Header} from '../../components/headers/Header';
+import {Sidebar} from '../../components/sidebar/Sidebar';
 import {ProjectsList} from "../../components/card-layouts/ProjectsList";
 import {SocialPostsList} from "../../components/card-layouts/SocialPostsList";
 import useSWR from "swr";
@@ -12,8 +13,7 @@ import {getTopic} from "../../data/query/topic";
 import utils from "../../lib/util";
 import {useStore} from "../../lib/useStore";
 
-// Widgets Comp
-import { Widget } from "../../components/widgets/Widget";
+
 import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 
 const homeStore = new HomeStore({isHome : false})
@@ -87,12 +87,7 @@ export default observer(function Explore(props) {
               </div>
 
               {/* Sidebar */}
-              <div className="sidebar">
-                <Widget
-                  title="Pricing"
-                  text="Lorem Ipsum Dolor sit Amet"
-                />
-              </div>
+              <Sidebar extraClass="" />
 
             </div>
 

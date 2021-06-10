@@ -55,7 +55,7 @@ Project Details
   }
 
   .project-icon {
-    @apply flex-shrink-0 rounded mr-4 md:mr-8 mt-1;
+    @apply hidden md:block flex-shrink-0 rounded mr-6 mt-1;
   }
 
   .project-icon_img {

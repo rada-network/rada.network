@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { useState, useEffect, createRef } from 'react'
 
 import {Layout} from '../../components/page-layouts/OneColumn';
+import {Sidebar} from '../../components/sidebar/Sidebar';
+
 import getClient from "../../data/client";
 
 import PerfectScrollbar from 'perfect-scrollbar';
@@ -200,12 +202,7 @@ export default function Item (props) {
             </div>
 
             {/* Sidebar */}
-            <div className="sidebar">
-              <Widget
-                title="Pricing"
-                text="Lorem Ipsum Dolor sit Amet"
-              />
-            </div>
+            <Sidebar extraClass="" />
 
           </div>
 

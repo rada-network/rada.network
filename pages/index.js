@@ -4,12 +4,11 @@ import Head from 'next/head';
 // Components
 import {Layout} from '../components/page-layouts/OneColumn';
 import {Header} from '../components/headers/HeaderHome';
+import {Sidebar} from '../components/sidebar/Sidebar';
 import {ProjectsList} from '../components/card-layouts/ProjectsList';
 import {CategoryList} from '../components/card-layouts/CategoryList';
-import { observer } from "mobx-react"
 
-// Widgets Comp
-import { Widget } from "../components/widgets/Widget";
+import { observer } from "mobx-react"
 
 //ReactIcons
 import {getPosts} from "../data/query/posts"
@@ -174,12 +173,7 @@ export default observer((props) => {
             </div>
 
             {/* Sidebar */}
-            <div className="sidebar">
-              <Widget
-                title="Pricing"
-                text="Lorem Ipsum Dolor sit Amet"
-              />
-            </div>
+            <Sidebar extraClass="" />
 
           </div>
 

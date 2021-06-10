@@ -59,7 +59,7 @@ Vote Buttons
 
 .btn-project-vote_sm {
   @extend .btn-project-vote;
-  @apply bg-white;
+  @apply bg-white border border-gray-900 border-opacity-10 md:border-opacity-5;
   @apply px-4 md:px-5 py-4;
 }
 
