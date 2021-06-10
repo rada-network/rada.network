@@ -62,7 +62,7 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
                 </a>
                 <a href="#" target="_blank">
                   <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i class="fa fa-globe"></i>
+                    <i class="fal fa-globe"></i>
                   </span>
                 </a>
               </div>
@@ -109,7 +109,7 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
                 </a>
                 <a href="#" target="_blank">
                   <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i class="fa fa-globe"></i>
+                    <i class="fal fa-globe"></i>
                   </span>
                 </a>
               </div>
@@ -156,7 +156,7 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
                 </a>
                 <a href="#" target="_blank">
                   <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i class="fa fa-globe"></i>
+                    <i class="fal fa-globe"></i>
                   </span>
                 </a>
               </div>
