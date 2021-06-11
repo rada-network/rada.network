@@ -2,6 +2,7 @@
 import { Widget } from "../widgets/Widget";
 import { WidgetPricing } from "../widgets/WidgetPricing";
 import { WidgetEvents } from "../widgets/WidgetEvents";
+import { WidgetStats } from "../widgets/WidgetStats";
 import { WidgetInfluencers } from "../widgets/WidgetInfluencers";
 
 
@@ -17,9 +18,13 @@ export const Sidebar = ({extraClass}) => {
         title="Cardano Events"
         widgetIcon="calendar-day"
       />
+      <WidgetStats
+        title="Network Information"
+        widgetIcon="chart-pie-alt"
+      />
       <WidgetInfluencers
         title="Influencers"
-        widgetIcon="street-view"
+        widgetIcon="user-secret"
       />
     </div>
   );

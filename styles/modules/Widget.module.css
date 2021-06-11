@@ -58,9 +58,29 @@ Widget Lists
   @apply border-b border-gray-900 border-opacity-5;
 }
 
-.widget_list__link:firt-child {
-  @apply pt-0;
-} 
+
+/*
+Widget Lists Compact
+*/
+.widget_list_sm {
+  @extend .widget_list;
+}
+
+.widget_list_sm__link {
+  @extend .widget_list__link;
+}
+
+.widget_list_sm__link:hover {
+  @apply bg-gray-50;
+}
+
+.widget_list_sm__item {
+  @extend .widget_list__item;
+  @apply px-4 py-4 md:px-8;
+}
+
+
+
 
 /* .widget_list__item__first {
   @apply pt-0;

@@ -1,0 +1,23 @@
+/*
+Widget: Pricing
+*/
+.body {
+  @apply flex flex-col flex-1 px-4 md:px-8 w-full;
+}
+
+.stat {
+  @apply flex items-center justify-between relative;
+}
+
+.title {
+  @apply text-xs font-medium text-gray-500;
+}
+
+.value {
+  @apply flex justify-center items-center;
+  @apply text-sm font-semibold text-gray-900;
+}
+
+.currency {
+  @apply ml-1 text-xs;
+}
