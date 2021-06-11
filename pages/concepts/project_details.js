@@ -32,7 +32,7 @@ export default function ProjectDetails(props) {
   }
 
   return (
-    <Layout extraClass="page-project_details">
+    <Layout extraClassName="page-project_details">
       <>
         {/* Page Header */}
         <div className="page-header">
@@ -217,12 +217,12 @@ export default function ProjectDetails(props) {
                                     <span className="font-bold mr-2">1983</span> <span>Likes</span>
                                   </btn>
                                   <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
-                                    <span className="icon mr-2"><i class="fa fa-reply"></i></span>
+                                    <span className="icon mr-2"><i className="fa fa-reply"></i></span>
                                     <span>Reply</span>
                                   </btn>
                                 </div>
                                 <btn className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">
-                                  <span className="icon mr-2"><i class="fas fa-exclamation"></i></span>
+                                  <span className="icon mr-2"><i className="fas fa-exclamation"></i></span>
                                   <span>Report</span>
                                 </btn>
                               </div>
@@ -258,12 +258,12 @@ export default function ProjectDetails(props) {
                                     <span>Likes</span>
                                   </btn>
                                   <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
-                                    <span className="icon mr-2"><i class="fa fa-reply"></i></span>
+                                    <span className="icon mr-2"><i className="fa fa-reply"></i></span>
                                     <span>Reply</span>
                                   </btn>
                                 </div>
                                 <btn className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">
-                                  <span className="icon mr-2"><i class="fas fa-exclamation"></i></span>
+                                  <span className="icon mr-2"><i className="fas fa-exclamation"></i></span>
                                   <span>Report</span>
                                 </btn>
                               </div>
@@ -299,12 +299,12 @@ export default function ProjectDetails(props) {
                                     <span>Likes</span>
                                   </btn>
                                   <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
-                                    <span className="icon mr-2"><i class="fa fa-reply"></i></span>
+                                    <span className="icon mr-2"><i className="fa fa-reply"></i></span>
                                     <span>Reply</span>
                                   </btn>
                                 </div>
                                 <btn className="btn py-1 px-2 ml-2 border border-red-500 text-red-700 rounded">
-                                  <span className="icon mr-2"><i class="fas fa-exclamation"></i></span>
+                                  <span className="icon mr-2"><i className="fas fa-exclamation"></i></span>
                                   <span>Report</span>
                                 </btn>
                               </div>
@@ -339,12 +339,12 @@ export default function ProjectDetails(props) {
                                     <span className="font-bold mr-2">20</span> <span>Likes</span>
                                   </btn>
                                   <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
-                                    <span className="icon mr-2"><i class="fa fa-reply"></i></span>
+                                    <span className="icon mr-2"><i className="fa fa-reply"></i></span>
                                     <span>Reply</span>
                                   </btn>
                                 </div>
                                 <btn className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">
-                                  <span className="icon mr-2"><i class="fas fa-exclamation"></i></span>
+                                  <span className="icon mr-2"><i className="fas fa-exclamation"></i></span>
                                   <span>Report</span>
                                 </btn>
                               </div>
@@ -397,12 +397,12 @@ export default function ProjectDetails(props) {
                                     <span className="font-bold mr-2">20</span> <span>Likes</span>
                                   </btn>
                                   <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
-                                    <span className="icon mr-2"><i class="fa fa-reply"></i></span>
+                                    <span className="icon mr-2"><i className="fa fa-reply"></i></span>
                                     <span>Reply</span>
                                   </btn>
                                 </div>
                                 <btn className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">
-                                  <span className="icon mr-2"><i class="fas fa-exclamation"></i></span>
+                                  <span className="icon mr-2"><i className="fas fa-exclamation"></i></span>
                                   <span>Report</span>
                                 </btn>
                               </div>
@@ -437,12 +437,12 @@ export default function ProjectDetails(props) {
                                     <span className="font-bold mr-2">1</span> <span>Likes</span>
                                   </btn>
                                   <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
-                                    <span className="icon mr-2"><i class="fa fa-reply"></i></span>
+                                    <span className="icon mr-2"><i className="fa fa-reply"></i></span>
                                     <span>Reply</span>
                                   </btn>
                                 </div>
                                 <btn className="btn py-1 px-2 ml-2 hover:text-red-700 rounded opacity-0 group-hover:opacity-100">
-                                  <span className="icon mr-2"><i class="fas fa-exclamation"></i></span>
+                                  <span className="icon mr-2"><i className="fas fa-exclamation"></i></span>
                                   <span>Report</span>
                                 </btn>
                               </div>
@@ -477,12 +477,12 @@ export default function ProjectDetails(props) {
                                     <span>Likes</span>
                                   </btn>
                                   <btn className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded">
-                                    <span className="icon mr-2"><i class="fa fa-reply"></i></span>
+                                    <span className="icon mr-2"><i className="fa fa-reply"></i></span>
                                     <span>Reply</span>
                                   </btn>
                                 </div>
                                 <btn className="btn py-1 px-2 ml-2 border border-red-500 text-red-700 rounded">
-                                  <span className="icon mr-2"><i class="fas fa-exclamation"></i></span>
+                                  <span className="icon mr-2"><i className="fas fa-exclamation"></i></span>
                                   <span>Report</span>
                                 </btn>
                               </div>

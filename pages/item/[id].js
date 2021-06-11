@@ -123,7 +123,7 @@ export default function Item (props) {
             {/* mainbody */}
             <div className="mainbody">
 
-              <div class="section section-top">
+              <div className="section section-top">
 
                 <div className="section-inner">
 
@@ -202,7 +202,7 @@ export default function Item (props) {
             </div>
 
             {/* Sidebar */}
-            <Sidebar extraClass="" />
+            <Sidebar extraClassName="" />
 
           </div>
 

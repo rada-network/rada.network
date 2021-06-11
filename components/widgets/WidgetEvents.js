@@ -118,8 +118,8 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
       </div>
 
       <div className={`${styles.widget_footer}`}>
-        <a class="btn block bg-gray-100 hover:bg-purple-100 hover:text-purple-700 justify-center py-3 px-6 rounded w-full text-sm">
-          <span class="btn-text">Show 4 more</span>
+        <a className="btn block bg-gray-100 hover:bg-purple-100 hover:text-purple-700 justify-center py-3 px-6 rounded w-full text-sm">
+          <span className="btn-text">Show 4 more</span>
         </a>
       </div>
 

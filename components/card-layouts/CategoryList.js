@@ -35,8 +35,8 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
           { title && 
 					<div className="section-title">
             { titleIcon &&
-            <span class={`icon mr-3 text-${titleIconColor}`}>
-              <i class={`fad fa-${titleIcon}`}></i>
+            <span className={`icon mr-3 text-${titleIconColor}`}>
+              <i className={`fad fa-${titleIcon}`}></i>
             </span> }
             <span>{title}</span>
           </div>

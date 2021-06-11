@@ -52,17 +52,17 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
               <div className={`${stylesInfluencers.links}`}>
                 <a href="#" target="_blank">
                   <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i class="fab fa-twitter"></i>
+                    <i className="fab fa-twitter"></i>
                   </span>
                 </a>
                 <a href="#" target="_blank">
                   <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i class="fab fa-telegram-plane"></i>
+                    <i className="fab fa-telegram-plane"></i>
                   </span>
                 </a>
                 <a href="#" target="_blank">
                   <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i class="fal fa-globe"></i>
+                    <i className="fal fa-globe"></i>
                   </span>
                 </a>
               </div>
@@ -99,17 +99,17 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
               <div className={`${stylesInfluencers.links}`}>
                 <a href="#" target="_blank">
                   <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i class="fab fa-twitter"></i>
+                    <i className="fab fa-twitter"></i>
                   </span>
                 </a>
                 <a href="#" target="_blank">
                   <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i class="fab fa-telegram-plane"></i>
+                    <i className="fab fa-telegram-plane"></i>
                   </span>
                 </a>
                 <a href="#" target="_blank">
                   <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i class="fal fa-globe"></i>
+                    <i className="fal fa-globe"></i>
                   </span>
                 </a>
               </div>
@@ -146,17 +146,17 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
               <div className={`${stylesInfluencers.links}`}>
                 <a href="#" target="_blank">
                   <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i class="fab fa-twitter"></i>
+                    <i className="fab fa-twitter"></i>
                   </span>
                 </a>
                 <a href="#" target="_blank">
                   <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i class="fab fa-telegram-plane"></i>
+                    <i className="fab fa-telegram-plane"></i>
                   </span>
                 </a>
                 <a href="#" target="_blank">
                   <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i class="fal fa-globe"></i>
+                    <i className="fal fa-globe"></i>
                   </span>
                 </a>
               </div>
@@ -169,8 +169,8 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
       </div>
 
       <div className={`${styles.widget_footer}`}>
-        <a class="btn block bg-gray-100 hover:bg-purple-100 hover:text-purple-700 justify-center py-3 px-6 rounded w-full text-sm">
-          <span class="btn-text">Show 4 more</span>
+        <a className="btn block bg-gray-100 hover:bg-purple-100 hover:text-purple-700 justify-center py-3 px-6 rounded w-full text-sm">
+          <span className="btn-text">Show 4 more</span>
         </a>
       </div>
 

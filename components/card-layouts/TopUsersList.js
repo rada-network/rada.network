@@ -9,8 +9,8 @@ export const TopUsersList = ({extraClass, grid, gap, titleIcon, titleIconColor})
           <div className="section-header">
             <div className="section-title">
               { titleIcon &&
-							<span class={`icon mr-3 text-${titleIconColor}`}>
-								<i class={`fad fa-${titleIcon}`}></i>
+							<span className={`icon mr-3 text-${titleIconColor}`}>
+								<i className={`fad fa-${titleIcon}`}></i>
 							</span> }
               <span>Most Active Users</span>
             </div>
