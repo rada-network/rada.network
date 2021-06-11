@@ -202,7 +202,7 @@ export default function Item (props) {
             </div>
 
             {/* Sidebar */}
-            <Sidebar extraClassName="" />
+            <Sidebar extraClass="" />
 
           </div>
 

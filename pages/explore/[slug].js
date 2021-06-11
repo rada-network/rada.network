@@ -119,18 +119,13 @@ export default observer(function Explore(props) {
                   detail={true}
                   itemType={itemType}
                   dataStore={observableTweetStore}
-          voteStore={voteStore}
+                  voteStore={voteStore}
                 />
 
               </div>
 
               {/* Sidebar */}
-              <div className="sidebar lg:col-span-3">
-                <Widget
-                  title="Pricing"
-                  text="Lorem Ipsum Dolor sit Amet"
-                />
-              </div>
+              <Sidebar extraClass="" />
 
             </div>
 
