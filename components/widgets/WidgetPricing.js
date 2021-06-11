@@ -8,6 +8,7 @@ import LineChart from "../chart/LineChart"
 
 export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
+  const [size, setSize] = useState({w: 300, h: 150})
   const [duration, setDuration] = useState(24)
   const [data, setData] = useState([])
   const endDate = new Date()
@@ -15,13 +16,21 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
   const fdate = d => d.toISOString().substr(0, 16)
   const url = `https://production.api.coindesk.com/v2/price/values/ADA?start_date=${fdate(startDate)}&end_date=${fdate(endDate)}&ohlc=false`
   
+  const fd = d => {
+    if (duration <= 24) {
+      return new Date(d).toTimeString().substr(0, 5)
+    } else {
+      return new Date(d).toLocaleDateString('en-US', {month: 'short', day: 'numeric'})
+    }
+  }
+
   useEffect(() => {
     fetchJson(url).then(res => {
       const sortedData = [];
       let count = 0;
       res.data.entries.forEach((c, idx) => {
         sortedData.push({
-          d: '', //new Date(c[0]).toISOString(),
+          d: fd(c[0]),
           p: c[1].toLocaleString('us-EN',{ style: 'currency', currency: 'USD' }),
           x: count, //previous days
           y: c[1] // numerical price
@@ -31,6 +40,11 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
       setData(sortedData)
     })
+
+    // get widget size
+    const w = document.getElementById('chart-box').clientWidth
+    const h = Math.round(w/2)
+    setSize({w, h})
   }, [duration])
 
   const Duration = () => {
@@ -76,9 +90,9 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
         </div>
 
         {/* Pricing Chart */}
-        <div className={`${stylesPricing.chart}`}>
+        <div className={`${stylesPricing.chart}`} id="chart-box">
           <Duration />
-          <LineChart data={data} onChartHover={ (a,b) => '' } showLabels={false} svgWidth={400} /> 
+          <LineChart data={data} onChartHover={ (a,b) => '' } showLabels={false} svgWidth={size.w} svgHeight={size.h} /> 
         </div>
 
 

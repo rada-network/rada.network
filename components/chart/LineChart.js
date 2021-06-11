@@ -152,7 +152,7 @@ export default function LineChart(props) {
     } else {
       setHoverLoc(relativeLoc)
       setActivePoint(closestPoint)
-      onChartHover(relativeLoc, closestPoint);
+      //onChartHover(relativeLoc, closestPoint);
     }
   }
 
@@ -160,7 +160,7 @@ export default function LineChart(props) {
   const stopHover = () => {
     setHoverLoc(null)
     setActivePoint(null)
-    onChartHover(null, null);
+    //onChartHover(null, null);
   }
 
   // MAKE ACTIVE POINT
@@ -188,19 +188,41 @@ export default function LineChart(props) {
   }
 
 
+  // Tooltip
+  const Tooltip = () => {
+    if (!hoverLoc) return ''
+
+    const svgLocation = document.getElementsByClassName("linechart")[0].getBoundingClientRect();
+
+    let placementStyles = {position: 'absolute'};
+    let width = 100;
+    placementStyles.width = width + 'px';
+    placementStyles.left = hoverLoc + svgLocation.left - (width/2);
+
+    return (
+      <div className='hover' style={ placementStyles }>
+        <div className='date'>{ activePoint.d }</div>
+        <div className='price'>{activePoint.p }</div>
+      </div>
+    )
+  }
+
   return (
-    <svg  width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`} className={'linechart'}
-          onMouseLeave={ () => stopHover() }
-          onMouseMove={ (e) => getCoords(e) } >
-      <g>
-        <Axis />
-        <Path />
-        <Area />
-        <Labels />
-        <Line />
-        <ActivePoint />
-      </g>
-    </svg>
+    <>
+      <svg  width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`} className={'linechart'}
+            onMouseLeave={ () => stopHover() }
+            onMouseMove={ (e) => getCoords(e) } >
+        <g>
+          <Axis />
+          <Path />
+          <Area />
+          <Labels />
+          <Line />
+          <ActivePoint />
+        </g>
+      </svg>
+      <Tooltip />
+    </>
   );  
 
 }
