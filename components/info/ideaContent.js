@@ -17,9 +17,9 @@ export default function IdeaContent({item}){
   }
   const showContents = Object.keys(item.contentJson).map(key => {
     return `
-    <div className="project-text_section">
-      <h3 className="project-text_title">${item.contentJson[key].a}</h3> 
-      <div className="project-text_content">${item.contentJson[key].b}</div>
+    <div class="project-text_section">
+      <h3 class="project-text_title">${item.contentJson[key].a}</h3> 
+      <div class="project-text_content">${item.contentJson[key].b}</div>
     </div>
     `
   })
