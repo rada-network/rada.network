@@ -79,16 +79,15 @@ Widget Lists Compact
   @apply px-4 py-4 md:px-8;
 }
 
-
-
-
-/* .widget_list__item__first {
-  @apply pt-0;
+/* 
+Footer 
+*/
+.widget_footer_text {
+  @apply text-right w-full text-xs text-gray-500;
 }
 
-.widget_list__item__last {
-  @apply pb-0 border-b-0;
-} */
-
+.widget_footer_text a {
+  @apply text-primary-500 hover:text-primary-700;
+}
 
 

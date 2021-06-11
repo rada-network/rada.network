@@ -3,6 +3,8 @@ import Link from "next/link"
 import styles from '../../styles/modules/Widget.module.css'
 import stylesStats from '../../styles/modules/Widget.stats.module.css'
 
+import {RiExternalLinkLine} from "react-icons/ri";
+
 import ReactTooltip from 'react-tooltip'
 
 export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
@@ -44,7 +46,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
             </div>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
-                <span title="Transactions Amount">Amount</span>
+                <span title="Transactions Amount">Total Amount</span>
               </div>
               <div className={`${stylesStats.value}`}>
                 <span>10,531,106,458,046</span>
@@ -130,7 +132,10 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
       </div>
 
       <div className={`${styles.widget_footer}`}>
-
+        <div className={`${styles.widget_footer_text}`}>
+          Source: <a href="https://adastat.net/">AdaStat <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span>
+          </a>
+        </div>
       </div>
 
     </div>
