@@ -58,9 +58,10 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
     ]
 
     return (
-      <div className="times">
-        { times.map(t => (<span className={`time${t[1]==duration?' active':''}`} onClick={e => setDuration(t[1])}>{t[0]}</span>)) }
+      <div className="btn-group flex px-1 py-1 bg-gray-100 text-xs">
+        { times.map(t => (<span className={`btn rounded bg-white text-gray-400 bg-opacity-0 px-4 py-1 time${t[1]==duration?' bg-opacity-100 shadow-sm text-gray-900':''}`} onClick={e => setDuration(t[1])}>{t[0]}</span>)) }
       </div>
+
     )
   }
 
@@ -92,7 +93,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
         {/* Pricing Chart */}
         <div className={`${stylesPricing.chart}`} id="chart-box">
           <Duration />
-          <LineChart data={data} onChartHover={ (a,b) => '' } showLabels={false} svgWidth={size.w} svgHeight={size.h} /> 
+          <LineChart data={data} onChartHover={ (a,b) => '' } showLabels={true} svgWidth={size.w} svgHeight={size.h} /> 
         </div>
 
 

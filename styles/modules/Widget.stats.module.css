@@ -19,7 +19,7 @@ Widget: Pricing
 
 .value {
   @apply flex justify-center items-center;
-  @apply text-sm font-semibold text-gray-900;
+  @apply text-sm font-semibold text-gray-700;
 }
 
 .currency {

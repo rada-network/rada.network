@@ -1,11 +1,12 @@
 import {useState} from "react"
 
+import styles from '../../styles/modules/Chart.linechart.module.css'
 
 export default function LineChart(props) {
 
   let {data, svgHeight, svgWidth, color, pointRadius, onChartHover, showLabels, xLabelSize, yLabelSize} = {
     data: [],
-    color: '#2196F3',
+    color: '#3B82F6',
     pointRadius: 5,
     svgHeight: 300,
     svgWidth: 500,
