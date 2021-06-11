@@ -9,7 +9,7 @@
 
 .dialog {
   @apply max-w-2xl overflow-hidden text-left align-top md:align-middle transition-all transform;
-  @apply text-left bg-white md:shadow-2xl rounded;
+  @apply text-left bg-white md:shadow-2xl md:rounded;
 }
 
 .dialog_wrapper {
@@ -22,7 +22,7 @@
 }
 
 .dialog_header {
-  @apply flex flex-col py-6 px-8 z-10;
+  @apply flex flex-col py-8 px-8 lg:px-6 z-10;
 }
 
 .dialog_header__deco {

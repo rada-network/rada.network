@@ -74,10 +74,17 @@ const WalletContent = ({wallet, closeModal, open}) => {
                       <span className="icon"><IoChevronBackSharp/></span>
                       <span className="btn-text font-normal">Go back</span>
                     </button>
-                    <h3 className="text-xl font-semibold">Connect your wallet <i className="fa fa-info" data-tip="hello world"></i></h3>
+                    <h3 className="text-xl font-semibold">
+                      Connect your 
+                      <span 
+                        className="hasTooltip" 
+                        data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
+                      > wallet <i className="fad fa-info-circle text-base" />
+                      </span>
+                    </h3>
                     <div className="mt-4 text-sm text-white text-opacity-70 leading-6">
                       <p className="">
-                        Connect your wallet to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> on projects you like the most.
+                        Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics by connecting to your wallet
                       </p>
                     </div>
                   </Dialog.Title>
@@ -130,7 +137,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
 
                     <div className="mt-8">
                       <p className="text-xs text-gray-900 text-opacity-50">
-                        We do not own your private keys and cannot access your funds without your confirmation.
+                        We have no access to your private key and funds without your confirmation
                       </p>
                     </div>
 

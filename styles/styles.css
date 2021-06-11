@@ -241,6 +241,21 @@ Page Topic
 /* 
 Components
 --------------------------------------------- */
+/* 
+Tootips 
+*/
+.hasTooltip {
+  @apply cursor-pointer;
+  i {
+    @apply ml-0.5 text-base;
+  }
+}
+
+.__react_component_tooltip {
+  @apply max-w-xs;
+  font-size: 0.875rem !important;
+  padding: 1rem 1.5rem !important;
+}
 
 /* 
 Responsive Carousel 
