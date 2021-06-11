@@ -42,12 +42,9 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
                 <span>8,760,241</span>
               </div>
             </div>
-          </div>
-
-          <div className={`group ${styles.widget_list_sm__item}`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
-                <span title="Transactions Amount">Trans. Amount</span>
+                <span title="Transactions Amount">Amount</span>
               </div>
               <div className={`${stylesStats.value}`}>
                 <span>10,531,106,458,046</span>
@@ -67,9 +64,6 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
                 <span>2,576</span>
               </div>
             </div>
-          </div>
-
-          <div className={`group ${styles.widget_list_sm__item}`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
                 <span title="">Total Stake</span>
@@ -92,9 +86,6 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
                 <span>631,472</span>
               </div>
             </div>
-          </div>
-
-          <div className={`group ${styles.widget_list_sm__item}`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
                 <span title="">Total Rewards</span>
@@ -107,6 +98,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
               </div>
             </div>
           </div>
+
 
           <div className={`group ${styles.widget_list_sm__item}`}>
             <div className={`${stylesStats.stat}`}>

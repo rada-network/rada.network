@@ -9,6 +9,10 @@ Widget: Pricing
   @apply flex items-center justify-between relative;
 }
 
+.stat + .stat {
+  @apply mt-2;
+}
+
 .title {
   @apply text-xs font-medium text-gray-500;
 }
