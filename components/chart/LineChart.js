@@ -11,7 +11,7 @@ export default function LineChart(props) {
     svgHeight: 300,
     svgWidth: 500,
     xLabelSize: 20,
-    yLabelSize: 80,
+    yLabelSize: 50,
     showLabels: true,
     onChartHover: () => '',
     ...props
@@ -60,7 +60,7 @@ export default function LineChart(props) {
     }).join("");
 
     return (
-      <path className="linechart_path" d={pathD} style={{stroke: color}} />
+      <path className={`${styles.path}`} d={pathD} style={{stroke: color}} />
     );
   }
 
@@ -77,7 +77,7 @@ export default function LineChart(props) {
     pathD += "L " + getSvgX(x.max) + " " + getSvgY(y.min) + " "
     + "L " + getSvgX(x.min) + " " + getSvgY(y.min) + " ";
 
-    return <path className="linechart_area" d={pathD} />
+    return <path className={`${styles.area}`} d={pathD} />
   }
 
   // BUILD GRID AXIS
@@ -86,7 +86,7 @@ export default function LineChart(props) {
     const y = getY();
 
     return (
-      <g className="linechart_axis">
+      <g className={`${styles.axis}`}>
         <line
           x1={getSvgX(x.min) - yLabelSize} y1={getSvgY(y.min)}
           x2={getSvgX(x.max)} y2={getSvgY(y.min)}
@@ -105,7 +105,7 @@ export default function LineChart(props) {
     const sd = data[0].d
     const ed = data[data.length - 1].d
     return(
-      <g className="linechart_label">
+      <g className={`${styles.label}`}>
         {/* Y AXIS LABELS */}
         <text transform={`translate(${yLabelSize/2}, 20)`} textAnchor="middle">
           {getY().max.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' })}
@@ -169,7 +169,7 @@ export default function LineChart(props) {
     if (!hoverLoc) return ''
     return (
       <circle
-        className='linechart_point'
+        className={`${styles.pointer}`}
         style={{stroke: color}}
         r={pointRadius}
         cx={activePoint.svgX}
@@ -182,7 +182,7 @@ export default function LineChart(props) {
   const Line = () => {
     if (!hoverLoc) return ''
     return (
-      <line className='hoverLine'
+      <line className={`${styles.hover_line}`}
         x1={hoverLoc} y1={-8}
         x2={hoverLoc} y2={svgHeight - xLabelSize} />
     )
@@ -210,7 +210,7 @@ export default function LineChart(props) {
 
   return (
     <>
-      <svg  width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`} className={'linechart'}
+      <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`} className={`linechart ${styles.chart}`}
             onMouseLeave={ () => stopHover() }
             onMouseMove={ (e) => getCoords(e) } >
         <g>

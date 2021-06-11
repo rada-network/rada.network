@@ -1,33 +1,35 @@
-.linechart {
-    padding: 8px;
-  }
-  .linechart_path {
-    stroke-width: 3;
-    fill: none;
-  }
+.chart {
+
+}
+
+.path {
+  stroke-width: 3;
+  fill: none;
+}
   
-  .linechart_axis {
-    stroke: #bdc3c7;
-  }
+.axis {
+  @apply opacity-5;
+  stroke-width: 1;
+  stroke: #111827;
+}
   
-  .linechart_point {
-    fill: #fff;
-    stroke-width: 2;
-  }
+.pointer {
+  fill: #fff;
+  stroke-width: 1;
+}
+
+.area {
+  padding: 8px;
+  fill: #64B5F6;
+  stroke: none;
+  opacity: .4;
+}
   
-  .linechart_area {
-    padding: 8px;
-    fill: #64B5F6;
-    stroke: none;
-    opacity: .4;
-  }
+.label {
+  @apply text-xs;
+}
   
-  .linechart_label {
-   fill: #64B5F6;
-   font-weight: 700;
-  }
-  
-  .hoverLine {
-    stroke: #7D95B6;
-    stroke-width: 1;
-  }
+.hover_line {
+  stroke: #7D95B6;
+  stroke-width: 1;
+}
