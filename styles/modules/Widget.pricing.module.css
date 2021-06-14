@@ -29,6 +29,5 @@ Widget: Pricing
 
 .chart {
   /* @apply -mx-8 pt-8 border-t border-gray-900 border-opacity-5; */
-  @apply -mx-8;
 }
 
