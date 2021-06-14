@@ -20,9 +20,9 @@ export const CardNews = ({news}) => {
             </a>
           </div>
           :
-          <div className={`${styles.project_icon_ph}`}>
+          <div className={`${styles.project_icon}`}>
             <a rel={"nofollow"} target={"_blank"} href={news.websiteUri}>
-              <img className={`card-img ${styles.project_icon_ph__img}`} src={news.thumbnailUri} />
+              <img className={`card-img ${styles.project_icon__img}`} src={news.thumbnailUri} />
             </a>
           </div>
         }
