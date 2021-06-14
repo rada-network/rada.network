@@ -10,8 +10,8 @@ export default function LineChart(props) {
     pointRadius: 5,
     svgHeight: 300,
     svgWidth: 500,
-    xLabelSize: 16,
-    yLabelSize: 16,
+    xLabelSize: 20,
+    yLabelSize: 40,
     showLabels: true,
     onChartHover: () => '',
     ...props

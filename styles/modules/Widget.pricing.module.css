@@ -14,7 +14,7 @@ Widget: Pricing
 }
 
 .indicator {
-  @apply py-2 px-3 ml-4 mt-1;
+  @apply py-1 px-2 ml-4 mt-1 leading-none;
   @apply text-sm bg-gray-400 text-white rounded;
 }
 
@@ -28,6 +28,7 @@ Widget: Pricing
 
 
 .chart {
+  /* @apply -mx-8 pt-8 border-t border-gray-900 border-opacity-5; */
   @apply -mx-8;
 }
 
