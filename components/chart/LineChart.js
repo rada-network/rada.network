@@ -203,14 +203,19 @@ export default function LineChart(props) {
     const svgLocation = document.getElementsByClassName("linechart")[0].getBoundingClientRect();
 
     let placementStyles = {position: 'absolute'};
-    let width = 100;
+    let width = 60;
     placementStyles.width = width + 'px';
     placementStyles.left = hoverLoc - (width/2);
 
     return (
       <div className={styles.tooltip} style={ placementStyles }>
-        <div className={styles.tooltip_date}>{ activePoint.d }</div>
-        <div className={styles.tooltip_price}>{activePoint.p }</div>
+        <div className={styles.tooltip_price}>
+          <span className={styles.tooltip_price__title}>Price:</span>
+          <span className={styles.tooltip_price__value}>{activePoint.p }</span>
+        </div>
+        <div className={styles.tooltip_date}>
+          <span className={styles.tooltip_date__value}>{ activePoint.d }</span>
+        </div>
       </div>
     )
   }

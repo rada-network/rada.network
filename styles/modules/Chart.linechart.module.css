@@ -43,7 +43,7 @@
 
 .label_x {
   @apply flex justify-between w-auto h-auto;
-  @apply absolute bottom-0 left-10 right-1;
+  @apply absolute -bottom-0.5 left-8 right-1;
 }
   
 .hover_line {
@@ -54,7 +54,27 @@
 /* 
 Tooltip 
 */
-
 .tooltip {
-  @apply absolute;
+  @apply bg-gray-900 bg-opacity-90 py-2 px-4 rounded shadow-md text-white;
+  width: auto !important;
+  min-width: 80px;
+}
+
+.tooltip_date,
+.tooltip_price {
+}
+
+.tooltip_price__title,
+.tooltip_date__title {
+  @apply hidden;
+}
+
+.tooltip_price__value {
+  @apply block font-medium;
+  font-size: 12px;
+}
+
+.tooltip_date__value {
+  @apply mt-0.5 block uppercase text-white text-opacity-70;
+  font-size: 10px;
 }
