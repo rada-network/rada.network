@@ -1,16 +1,12 @@
 /*
 Widget: Pricing
 */
-.body {
-  @apply pb-0;
-}
-
 .title {
-  @apply text-sm text-gray-900 text-opacity-50;
+  @apply px-8 pt-8 text-sm text-gray-900 text-opacity-50;
 }
 
 .pricing {
-  @apply py-8 flex items-start relative;
+  @apply p-8 pt-4 flex items-start relative;
 }
 
 .value {
@@ -31,10 +27,10 @@ Widget: Pricing
 }
 
 .chart {
-  @apply border-gray-900 border-opacity-5;
+  @apply px-8 py-4 border-gray-900 border-opacity-5;
 }
 
 .widget_list_sm {
-  @apply mt-8;
+  @apply mt-4;
   @apply border-t border-gray-900 border-opacity-5;
 }

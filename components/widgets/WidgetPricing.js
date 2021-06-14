@@ -113,7 +113,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
       </div> }
 
 
-      <div className={`${styles.widget_body} ${stylesPricing.body}`}>
+      <div className={`${styles.widget_body_p0}`}>
 
         <div className={`${stylesPricing.title}`}>Cardano Price (ADA)</div>
 

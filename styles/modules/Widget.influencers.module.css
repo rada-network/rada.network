@@ -1,11 +1,6 @@
 /*
 Widget: Influencer
 */
-
-.body {
-  @apply py-0;
-}
-
 .event {
   @apply py-4 flex items-start relative;
 }

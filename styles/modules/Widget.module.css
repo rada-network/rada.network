@@ -15,6 +15,10 @@ Generic Styles
   @apply flex flex-col flex-1 px-4 md:px-8 py-6 w-full;
 }
 
+.widget_body_p0 {
+  @apply flex flex-col flex-1 p-0 w-full;
+}
+
 .widget_footer {
   @apply flex justify-between px-4 md:px-8 py-4 w-full;
 }
@@ -41,7 +45,6 @@ Generic Styles
 Widget Lists 
 */
 .widget_list {
-  @apply -mx-4 md:-mx-8;
 }
 
 .widget_list__link {

@@ -37,7 +37,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
         </span>
       </div> }
 
-      <div className={`${styles.widget_body} ${stylesStats.body}`}>
+      <div className={`${styles.widget_body_p0}`}>
 
         <div className={`${styles.widget_list_sm}`}>
 

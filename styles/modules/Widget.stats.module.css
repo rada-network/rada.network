@@ -1,10 +1,6 @@
 /*
 Widget: Stats
 */
-.body {
-  @apply py-0;
-}
-
 .stat {
   @apply flex items-center justify-between relative;
 }
