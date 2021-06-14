@@ -6,7 +6,6 @@ import TextareaAutosize from 'react-textarea-autosize';
 
 // Components
 import {Layout} from '../../components/page-layouts/OneColumn';
-import {Header} from '../../components/Header';
 import {ProjectsList} from '../../components/card-layouts/ProjectsList';
 
 //ReactIcons

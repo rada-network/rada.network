@@ -18,6 +18,9 @@ import {SocialPostsList} from "../components/card-layouts/SocialPostsList";
 import {getTopic} from "../data/query/topic";
 import utils from "../lib/util";
 import {HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
+import {BlogsList} from "../components/card-layouts/BlogsList";
+import {getNews} from "../data/query/news";
+import {NewsList} from "../components/card-layouts/NewsList";
 
 const voteStore = new VoteStore();
 const homeStore = new HomeStore({isHome : true})
@@ -26,6 +29,7 @@ const observableTweetStore = new ObservableTweetStore({homeStore});
 const observableItemStore = new ObservableTweetStore({homeStore})
 const observableNftStore = new ObservableTweetStore({homeStore})
 const observableDappStore = new ObservableTweetStore({homeStore})
+const observableNewsStore = new ObservableTweetStore({homeStore})
 
 const getData = async () => {
 
@@ -37,6 +41,8 @@ const getData = async () => {
 
   const postsTweet = await getTweet({socialOrder: observableTweetStore.currentTab,skip : 0,take : 12});
 
+  const news = await getNews({take : 6, skip: 0, orderBy: {createdAt : "desc"}})
+
   const topic = await getTopic();
 
   return {
@@ -44,7 +50,8 @@ const getData = async () => {
     postsNFT: postsNFT.data.itemFeed,
     postsDapp: postsDapp.data.itemFeed,
     postsTweet: postsTweet.data.tweetFeed,
-    topic : topic.data.itemTypeCount
+    topic : topic.data.itemTypeCount,
+    news : news.data.newsFeed
   }
 }
 
@@ -58,6 +65,7 @@ export default observer((props) => {
   observableItemStore.tweets = data.posts
   observableNftStore.tweets = data.postsNFT
   observableDappStore.tweets = data.postsDapp
+  observableNewsStore.tweets = data.news
   return (
     <Layout extraClass="page-home" meta={"DHunt.io - Top BlockChain DApps"}>
 
@@ -74,15 +82,6 @@ export default observer((props) => {
 
             {/* mainbody */}
             <div className="mainbody">
-              {/* <ProjectsList
-                grid="2"
-                gap="4"
-                title="Popular Projects"
-                titleIcon=""
-                titleIconColor="red-500"
-                posts={data.posts}
-              /> */}
-
               <CategoryList
                 extraClass="category-list"
                 title="Top Topics"
@@ -91,6 +90,14 @@ export default observer((props) => {
                 topic={data.topic}
               />
 
+              <NewsList
+                grid="1"
+                gap="4"
+                title="News from Cardano"
+                titleIcon="cube"
+                titleIconColor="pink-500"
+                dataStore={observableNewsStore}
+              />
               {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
                 <SocialPostsList
                   grid="1"
