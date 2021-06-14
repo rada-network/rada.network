@@ -143,6 +143,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
         {/* Pricing Chart */}
         <div className={`${stylesPricing.chart}`} id="chart-box">
           <Duration />
+          {/* <LineChart data={data} onChartHover={ (a,b) => '' } showLabels={true} svgWidth={size.w} svgHeight={size.h} /> */}
           <LineChart data={data} onChartHover={ (a,b) => '' } showLabels={true} svgWidth={size.w} svgHeight={size.h} /> 
         </div>
 

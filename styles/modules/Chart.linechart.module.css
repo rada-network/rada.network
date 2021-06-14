@@ -31,6 +31,7 @@
 
 .label {
   @apply absolute inset-0 w-full h-full text-gray-900 text-opacity-50;
+  @apply pointer-events-none;
   font-size: 10px;
 
 }
