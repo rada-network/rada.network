@@ -36,7 +36,7 @@ export const Header = ({props}) => {
               </div>
 
               <div className={`${styles.header_media}`}>
-                <img className={`${styles.floating}`} src="/images/hero.png"/>
+                <img className={`${styles.floating}`} src="/images/cardano.svg"/>
               </div>
 
             </div>

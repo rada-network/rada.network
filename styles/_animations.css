@@ -9,13 +9,16 @@
 
 @keyframes floating {
   0% {
-    transform: translateY(2rem);
+    transform: translateY(-2rem) rotate(0deg) scale(1);
+    opacity: 0.2;
   }
   50% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(90deg) scale(1.2);
+    opacity: 0.6;
   }
   100% {
-    transform: translateY(2rem);
+    transform: translateY(-2rem) rotate(0deg) scale(1);
+    opacity: 0.2;
   }
 }
 
