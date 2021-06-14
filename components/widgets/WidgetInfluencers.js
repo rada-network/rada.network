@@ -18,7 +18,7 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
         </span>
       </div> }
 
-      <div className={`${stylesInfluencers.body}`}>
+      <div className={`${styles.widget_body} ${stylesInfluencers.body}`}>
 
         <div className={`${styles.widget_list}`}>
 

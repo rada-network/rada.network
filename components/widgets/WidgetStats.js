@@ -20,7 +20,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
         </span>
       </div> }
 
-      <div className={`${stylesStats.body}`}>
+      <div className={`${styles.widget_body} ${stylesStats.body}`}>
 
         <div className={`${styles.widget_list_sm}`}>
 
@@ -133,8 +133,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
 
       <div className={`${styles.widget_footer}`}>
         <div className={`${styles.widget_footer_text}`}>
-          Source: <a href="https://adastat.net/">AdaStat <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span>
-          </a>
+          Source: <a href="https://adastat.net/">AdaStat <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span></a>
         </div>
       </div>
 

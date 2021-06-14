@@ -1,10 +1,12 @@
 import styles from '../../styles/modules/Widget.module.css'
 import stylesPricing from '../../styles/modules/Widget.pricing.module.css'
+import stylesStats from '../../styles/modules/Widget.stats.module.css'
 
 import {useEffect, useState} from 'react'
 import fetchJson from "../../lib/fetchJson"
 import LineChart from "../chart/LineChart"
 
+import {RiExternalLinkLine} from "react-icons/ri";
 
 export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
@@ -99,7 +101,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
     ]
 
     return (
-      <div className="btn-group flex px-1 py-1 bg-gray-50 text-xs rounded">
+      <div className="btn-group flex px-1 py-1 bg-gray-100 text-xs rounded">
         { times.map(t => (<span className={`btn rounded bg-white text-gray-400 bg-opacity-0 px-3 py-1 time${t[1]==duration?' bg-opacity-100 shadow-sm text-gray-900':''}`} onClick={e => setDuration(t[1])}>{t[0]}</span>)) }
       </div>
     )
@@ -130,8 +132,9 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
           <i className={`cf cf-${projectPlatformShort || 'btc'} ${styles.widget_icon_cf}`}/>
         </span>
       </div> }
-      { text &&
-      <div className={`${styles.widget_body}`}>
+
+
+      <div className={`${styles.widget_body} ${stylesPricing.body}`}>
 
         <div className={`${stylesPricing.title}`}>Cardano Price (ADA)</div>
 
@@ -147,12 +150,63 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
           <LineChart data={data} onChartHover={ (a,b) => '' } showLabels={true} svgWidth={size.w} svgHeight={size.h} /> 
         </div>
 
+        {/* Stats */}
+        <div className={`${styles.widget_list_sm} ${stylesPricing.widget_list_sm}`}>
 
-      </div> }
-      { footer &&
+          <div className={`group ${styles.widget_list_sm__item}`}>
+            <div className={`${stylesStats.stat}`}>
+              <div className={`${stylesStats.title}`}>
+                <span title="">Market Cap</span>
+              </div>
+              <div className={`${stylesStats.value}`}>
+                <span>$48.83B</span>
+              </div>
+            </div>
+          </div>
+
+          <div className={`group ${styles.widget_list_sm__item}`}>
+            <div className={`${stylesStats.stat}`}>
+              <div className={`${stylesStats.title}`}>
+                <span title="">Volume (24h)</span>
+              </div>
+              <div className={`${stylesStats.value}`}>
+                <span>$8.19M</span>
+              </div>
+            </div>
+          </div>
+
+          <div className={`group ${styles.widget_list_sm__item}`}>
+            <div className={`${stylesStats.stat}`}>
+              <div className={`${stylesStats.title}`}>
+                <span title="">All Time High</span>
+              </div>
+              <div className={`${stylesStats.value}`}>
+                <span>$2.47</span>
+              </div>
+            </div>
+          </div>
+
+          <div className={`group ${styles.widget_list_sm__item}`}>
+            <div className={`${stylesStats.stat}`}>
+              <div className={`${stylesStats.title}`}>
+                <span title="">Volatility (30d)</span>
+              </div>
+              <div className={`${stylesStats.value}`}>
+                <span>1.56</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div> 
+
       <div className={`${styles.widget_footer}`}>
-        <div className={`${styles.widget_text}`}>{footer}</div>
-      </div> }
+        <div className={`${styles.widget_footer_text}`}>
+          Source: <a href="https://www.coindesk.com/price/cardano">CoinDesk <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span></a>
+        </div>
+      </div>
+
     </div>
 
   );
