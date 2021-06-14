@@ -11,7 +11,7 @@ export default function LineChart(props) {
     svgHeight: 300,
     svgWidth: 500,
     xLabelSize: 20,
-    yLabelSize: 50,
+    yLabelSize: 40,
     showLabels: true,
     onChartHover: () => '',
     ...props
@@ -105,22 +105,29 @@ export default function LineChart(props) {
     const sd = data[0].d
     const ed = data[data.length - 1].d
     return(
-      <g className={`${styles.label}`}>
+      <div className={`${styles.label}`}>
+
         {/* Y AXIS LABELS */}
-        <text transform={`translate(${yLabelSize/2}, 20)`} textAnchor="middle">
-          {getY().max.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' })}
-        </text>
-        <text transform={`translate(${yLabelSize/2}, ${svgHeight - xLabelSize - padding})`} textAnchor="middle">
-          {getY().min.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' })}
-        </text>
+        <div className={`${styles.label_y}`}>
+          <span>
+            {getY().max.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' })}
+          </span>
+          <span>
+            {getY().min.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' })}
+          </span>
+        </div>
+        
         {/* X AXIS LABELS */}
-        <text transform={`translate(${yLabelSize}, ${svgHeight})`} textAnchor="start">
-          { sd }
-        </text>
-        <text transform={`translate(${svgWidth}, ${svgHeight})`} textAnchor="end">
-          { ed }
-        </text>
-      </g>
+        <div className={`${styles.label_x}`}>
+          <span>
+            { sd }
+          </span>
+          <span>
+            { ed }
+          </span>
+        </div>
+
+      </div>
     )
   }
 
@@ -210,19 +217,21 @@ export default function LineChart(props) {
 
   return (
     <>
-      <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`} className={`linechart ${styles.chart}`}
-            onMouseLeave={ () => stopHover() }
-            onMouseMove={ (e) => getCoords(e) } >
-        <g>
-          <Axis />
-          <Path />
-          <Area />
-          <Labels />
-          <Line />
-          <ActivePoint />
-        </g>
-      </svg>
-      <Tooltip />
+      <div className={`${styles.chart}`}>
+        <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`} className={`linechart ${styles.linechart}`}
+              onMouseLeave={ () => stopHover() }
+              onMouseMove={ (e) => getCoords(e) } >
+          <g>
+            <Axis />
+            <Path />
+            <Area />
+            <Line />
+            <ActivePoint />
+          </g>
+        </svg>
+        <Labels />
+        <Tooltip />
+      </div>
     </>
   );  
 

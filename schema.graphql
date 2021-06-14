@@ -45,6 +45,7 @@ type Item {
     images: String
     imagesUri: JSONObject
     itemType: String
+    keywords: String
     metadata: [ItemMetadata]
     platform: Platform
     platformId: String
@@ -76,10 +77,28 @@ type ItemType {
 
 type Mutation {
     createComment(content: String!, itemId: String!, parentId: String, walletAddress: String!): Comment
+    submitIdeaKeyword(id: String!, keywords: String!): Item
     submitItem(description: String!, platformId: String!, title: String!, tokenId: String!, websiteUri: String!): Item
+    submitNews(newsData: JSONObject): News
     submitTweet(tweetData: JSONObject!, userData: JSONObject!): Tweet
+    submitTweetKeyword(id: String!, keywords: String!): Tweet
     toggleVote(itemId: String!, walletAddress: String!): ToggleVote
     updateItem(id: String!, itemType: String): Item
+}
+
+type News {
+    content: String!
+    createdAt: DateTime
+    description: String
+    id: String!
+    isApproved: Boolean
+    isEditorPick: Boolean
+    keywords: String
+    thumbnail: String
+    thumbnailUri: String
+    title: String!
+    updatedAt: DateTime
+    websiteUri: String
 }
 
 type Platform {
@@ -92,13 +111,16 @@ type Platform {
 
 type Query {
     commentFeed(itemId: String!, orderBy: CommentOrderInput, skip: Int = 0, take: Int = 4): [Comment]
+    ideaWithoutKeyword(skip: Int = 0, take: Int = 4): [Item]
     isVote(itemId: String!, walletAddress: String!): Vote
     isVotes(ids: [String], walletAddress: String!): [Vote]
     itemById(id: String!): Item
     itemFeed(itemType: String, orderBy: ItemOrderInput, query: String, skip: Int = 0, take: Int = 4): [Item]
     itemTypeCount: [ItemType]
+    newsFeed(orderBy: ItemOrderInput, query: String, skip: Int = 0, take: Int = 4): [News]
     tweetById(id: String!): Tweet
     tweetFeed(day: Int = 1, lang: String = "all", orderBy: TweetOrderInput, skip: Int = 0, take: Int = 4): [Tweet]
+    tweetWithoutKeyword(skip: Int = 0, take: Int = 4): [Tweet]
     tweetWithoutUser(skip: Int = 0, take: Int = 4): [Tweet]
 }
 
@@ -119,6 +141,7 @@ type Tweet {
     favoriteCount: Int!
     id: String!
     item: Item
+    keywords: String
     lang: String
     quoteCount: Int!
     replyCount: Int!

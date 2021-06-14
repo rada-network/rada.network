@@ -15,6 +15,7 @@ import {useStore} from "../../lib/useStore";
 
 
 import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
+import {Widget} from "../../components/widgets/Widget";
 
 const homeStore = new HomeStore({isHome : false})
 const observableTweetStore = new ObservableTweetStore({homeStore})
