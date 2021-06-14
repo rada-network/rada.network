@@ -4,7 +4,7 @@
 }
 
 .linechart {
-  @apply pl-0 pr-0;
+  @apply relative pl-0 pr-0;
 }
 
 .path {
@@ -47,6 +47,14 @@
 }
   
 .hover_line {
-  stroke: #7D95B6;
+  stroke: #6B7280;
   stroke-width: 1;
+}
+
+/* 
+Tooltip 
+*/
+
+.tooltip {
+  @apply absolute;
 }
