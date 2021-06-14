@@ -11,31 +11,72 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
   const [size, setSize] = useState({w: 300, h: 150})
   const [duration, setDuration] = useState(24)
   const [data, setData] = useState([])
+  const [info, setInfo] = useState({})
   const endDate = new Date()
   const startDate = new Date(endDate.getTime() - duration * 60 * 60 * 1000)
   const fdate = d => d.toISOString().substr(0, 16)
-  const url = `https://production.api.coindesk.com/v2/price/values/ADA?start_date=${fdate(startDate)}&end_date=${fdate(endDate)}&ohlc=false`
+  
+  let limit = duration 
+  let interval = 'hour'
+  if (limit < 100) {
+    // convert interval to minute
+    interval = 'minute'
+    limit *= 60
+  } else if (limit > 2000) {
+    // convert interval to day
+    interval = 'day'
+    limit /= 24
+  }
+
+  const url = `/api/chart-data?limit=${limit}&interval=${interval}`
+  // const url = `https://production.api.coindesk.com/v2/price/values/ADA?start_date=${fdate(startDate)}&end_date=${fdate(endDate)}&ohlc=false`
   
   const fd = d => {
+    const date = new Date(d)
     if (duration <= 24) {
-      return new Date(d).toTimeString().substr(0, 5)
+      return date.toTimeString().substr(0, 5)
     } else {
-      return new Date(d).toLocaleDateString('en-US', {month: 'short', day: 'numeric'})
+      return date.toLocaleDateString('en-US', {month: 'short', day: 'numeric'})
     }
   }
 
   useEffect(() => {
+    // get token info
+    fetchJson('/api/coin-info').then(res => {
+      setInfo({
+        Name: res.Data.CoinInfo.Name,
+        MaxSupply: res.Data.CoinInfo.MaxSupply,
+        AssetLaunchDate: res.Data.CoinInfo.AssetLaunchDate,
+        Price: res.Data.AggregatedData.PRICE.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' }),
+        Change24h: res.Data.AggregatedData.CHANGE24HOUR,
+        MacketCap: res.Data.AggregatedData.MKTCAP
+      })
+    })
+
     fetchJson(url).then(res => {
       const sortedData = [];
       let count = 0;
-      res.data.entries.forEach((c, idx) => {
-        sortedData.push({
-          d: fd(c[0]),
-          p: c[1].toLocaleString('us-EN',{ style: 'currency', currency: 'USD' }),
-          x: count, //previous days
-          y: c[1] // numerical price
-        });
-        count++;
+      // res.data.entries.forEach((c, idx) => {
+      //   sortedData.push({
+      //     d: fd(c[0]),
+      //     p: c[1].toLocaleString('us-EN',{ style: 'currency', currency: 'USD' }),
+      //     x: count, //previous days
+      //     y: c[1] // numerical price
+      //   });
+      //   count++;
+      // })
+      const batch = limit > 1000 ? 15 : limit > 500 ? 6 : 1
+      res.Data.Data.forEach((c, idx) => {
+        if ((idx-1) % batch == 0) {
+          const p = parseFloat(c.close)
+          sortedData.push({
+            d: fd(c.time*1000),
+            p: p.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' }),
+            x: count, //previous days
+            y: p // numerical price
+          });
+          count++;
+        }
       })
 
       setData(sortedData)
@@ -52,18 +93,32 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
       ['1h', 1],
       ['1d', 24],
       ['1w', 24*7],
-      ['1m', 24*7*30],
-      ['3m', 24*7*90],
-      ['1y', 24*7*365],
+      ['1m', 24*30],
+      ['3m', 24*90],
+      ['1y', 24*365],
     ]
 
     return (
       <div className="btn-group flex px-1 py-1 bg-gray-100 text-xs">
         { times.map(t => (<span className={`btn rounded bg-white text-gray-400 bg-opacity-0 px-4 py-1 time${t[1]==duration?' bg-opacity-100 shadow-sm text-gray-900':''}`} onClick={e => setDuration(t[1])}>{t[0]}</span>)) }
       </div>
-
     )
   }
+
+  const PriceChange = () => {
+    const change = info.Change24h || 0
+    const type = change >= 0 ? 'price-up' : 'price-down'
+    // const Indicator = () => change >= 0 ? <span className={`${stylesPricing.sb__up}`}>+</span> : <span className={`${stylesPricing.sb__down}`}>-</span>
+
+    return (
+    <div className={`${stylesPricing.indicator}`} type={type}>
+      {/* <Indicator /> */}
+      {(change * 100).toFixed(2)}%
+    </div>
+    )
+  }
+
+  const Price = () => (<div className={`${stylesPricing.value}`}>{info.Price}</div>)
 
   return (
 
@@ -81,13 +136,8 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
         <div className={`${stylesPricing.title}`}>Cardano Price (ADA)</div>
 
         <div className={`${stylesPricing.pricing}`}>
-          <div className={`${stylesPricing.value}`}>$1.58</div>
-          <div className={`${stylesPricing.indicator}`} type="price-up">
-            <span className={`${stylesPricing.sb__up}`}>+</span>0.45%
-          </div>
-          {/* <div className={`${stylesPricing.indicator}`} type="price-down">
-            <span className={`${stylesPricing.sb__down}`}>-</span>0.45%
-          </div> */}
+          <Price />
+          <PriceChange />
         </div>
 
         {/* Pricing Chart */}
