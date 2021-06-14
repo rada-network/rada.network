@@ -10,8 +10,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
   const [size, setSize] = useState({w: 300, h: 150})
   const [duration, setDuration] = useState(24)
-  const [data, setData] = useState([])
-  const [info, setInfo] = useState({})
+  const [data, setData] = useState({})
   const endDate = new Date()
   const startDate = new Date(endDate.getTime() - duration * 60 * 60 * 1000)
   const fdate = d => d.toISOString().substr(0, 16)
@@ -41,35 +40,15 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
   }
 
   useEffect(() => {
-    // get token info
-    fetchJson('/api/coin-info').then(res => {
-      setInfo({
-        Name: res.Data.CoinInfo.Name,
-        MaxSupply: res.Data.CoinInfo.MaxSupply,
-        AssetLaunchDate: res.Data.CoinInfo.AssetLaunchDate,
-        Price: res.Data.AggregatedData.PRICE.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' }),
-        Change24h: res.Data.AggregatedData.CHANGE24HOUR,
-        MacketCap: res.Data.AggregatedData.MKTCAP
-      })
-    })
-
     fetchJson(url).then(res => {
-      const sortedData = [];
+      const entries = [];
       let count = 0;
-      // res.data.entries.forEach((c, idx) => {
-      //   sortedData.push({
-      //     d: fd(c[0]),
-      //     p: c[1].toLocaleString('us-EN',{ style: 'currency', currency: 'USD' }),
-      //     x: count, //previous days
-      //     y: c[1] // numerical price
-      //   });
-      //   count++;
-      // })
+
       const batch = limit > 1000 ? 15 : limit > 500 ? 6 : 1
-      res.Data.Data.forEach((c, idx) => {
+      res.entries.forEach((c, idx) => {
         if ((idx-1) % batch == 0) {
           const p = parseFloat(c.close)
-          sortedData.push({
+          entries.push({
             d: fd(c.time*1000),
             p: p.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' }),
             x: count, //previous days
@@ -79,7 +58,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
         }
       })
 
-      setData(sortedData)
+      setData({entries, price: res.price, change: res.change})
     })
 
     // get widget size
@@ -90,7 +69,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
   const Duration = () => {
     const times = [
-      ['1h', 1],
+      // ['1h', 1],
       ['1d', 24],
       ['1w', 24*7],
       ['1m', 24*30],
@@ -106,7 +85,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
   }
 
   const PriceChange = () => {
-    const change = info.Change24h || 0
+    const change = data.change || 0
     const type = change >= 0 ? 'price-up' : 'price-down'
     // const Indicator = () => change >= 0 ? <span className={`${stylesPricing.sb__up}`}>+</span> : <span className={`${stylesPricing.sb__down}`}>-</span>
 
@@ -118,7 +97,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
     )
   }
 
-  const Price = () => (<div className={`${stylesPricing.value}`}>{info.Price}</div>)
+  const Price = () => (<div className={`${stylesPricing.value}`}>{data.price}</div>)
 
   return (
 
@@ -144,7 +123,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
         <div className={`${stylesPricing.chart}`} id="chart-box">
           <Duration />
           {/* <LineChart data={data} onChartHover={ (a,b) => '' } showLabels={true} svgWidth={size.w} svgHeight={size.h} /> */}
-          <LineChart data={data} onChartHover={ (a,b) => '' } showLabels={true} svgWidth={size.w} svgHeight={size.h} /> 
+          <LineChart data={data.entries} onChartHover={ (a,b) => '' } showLabels={true} svgWidth={size.w} svgHeight={size.h} /> 
         </div>
 
 

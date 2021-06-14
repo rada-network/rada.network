@@ -1,13 +1,30 @@
 import Link from "next/link"
+import {useEffect, useState} from 'react'
 
 import styles from '../../styles/modules/Widget.module.css'
 import stylesStats from '../../styles/modules/Widget.stats.module.css'
 
 import {RiExternalLinkLine} from "react-icons/ri";
+import fetchJson from "../../lib/fetchJson"
 
 import ReactTooltip from 'react-tooltip'
 
 export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
+  const [info, setInfo] = useState({})
+  useEffect(() => {
+    // get token info
+    fetchJson('/api/coin-info').then(res => {
+      setInfo({
+        Name: res.Data.CoinInfo.Name,
+        MaxSupply: res.Data.CoinInfo.MaxSupply,
+        AssetLaunchDate: res.Data.CoinInfo.AssetLaunchDate,
+        Price: res.Data.AggregatedData.PRICE.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' }),
+        Change24h: res.Data.AggregatedData.CHANGE24HOUR,
+        MacketCap: res.Data.AggregatedData.MKTCAP
+      })
+    })
+  }, [])
+
   return (
 
     <div className={`${styles.widget}`}>
