@@ -1,8 +1,9 @@
 /*
-Widget: Pricing
+Widget: Influencer
 */
+
 .body {
-  @apply flex flex-col flex-1 px-4 md:px-8 w-full;
+  @apply py-0;
 }
 
 .event {

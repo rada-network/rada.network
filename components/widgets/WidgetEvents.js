@@ -18,7 +18,7 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
         </span>
       </div> }
 
-      <div className={`${stylesEvent.body}`}>
+      <div className={`${styles.widget_body} ${stylesEvent.body}`}>
 
         <div className={`${styles.widget_list}`}>
 
