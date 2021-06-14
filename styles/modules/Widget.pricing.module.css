@@ -1,7 +1,6 @@
 /*
 Widget: Pricing
 */
-
 .title {
   @apply text-sm text-gray-900 text-opacity-50;
 }
@@ -27,10 +26,8 @@ Widget: Pricing
   @apply bg-red-500;
 }
 
+
 .chart {
   @apply -mx-8;
-  svg {
-    width: 100%;
-    height: auto;
-  }
 }
+

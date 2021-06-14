@@ -1,14 +1,19 @@
 .chart {
+  @apply relative;
+  @apply mt-4;
+}
 
+.linechart {
+  @apply pl-10;
 }
 
 .path {
-  stroke-width: 3;
+  stroke-width: 2;
   fill: none;
 }
   
 .axis {
-  @apply opacity-5;
+  @apply opacity-20;
   stroke-width: 1;
   stroke: #111827;
 }
@@ -19,14 +24,25 @@
 }
 
 .area {
-  padding: 8px;
-  fill: #64B5F6;
+  fill: #EFF6FF;
   stroke: none;
-  opacity: .4;
+  opacity: 0.5;
 }
-  
+
 .label {
-  @apply text-xs;
+  @apply absolute inset-0 w-full h-full text-gray-900 text-opacity-50;
+  font-size: 10px;
+
+}
+
+.label_y {
+  @apply flex flex-col justify-between h-auto w-auto;
+  @apply absolute bottom-5 top-0.5 left-0;
+}
+
+.label_x {
+  @apply flex justify-between w-auto h-auto;
+  @apply absolute bottom-0 left-10 right-1;
 }
   
 .hover_line {
