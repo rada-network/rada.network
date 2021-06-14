@@ -113,7 +113,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
     return (
     <div className={`${stylesPricing.indicator}`} type={type}>
       {/* <Indicator /> */}
-      {(change * 100).toFixed(2)}%
+      {change > 0 && '+'}{(change * 100).toFixed(2)}%
     </div>
     )
   }
