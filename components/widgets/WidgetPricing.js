@@ -8,8 +8,11 @@ import LineChart from "../chart/LineChart"
 
 import {RiExternalLinkLine} from "react-icons/ri";
 
+import utils from "../../lib/util"
+
 export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
+  const [loading, setLoading] = useState(false)
   const [size, setSize] = useState({w: 300, h: 150})
   const [duration, setDuration] = useState(24)
   const [data, setData] = useState({})
@@ -42,6 +45,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
   }
 
   useEffect(() => {
+    setLoading(true)
     fetchJson(url).then(res => {
       const entries = [];
       let count = 0;
@@ -61,10 +65,13 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
       })
 
       setData({entries, price: res.price, change: res.change})
+      setLoading(false)
     })
 
     // get widget size
-    const w = document.getElementById('chart-box').clientWidth
+    const box = document.getElementById('chart-box')
+    const style = getComputedStyle(box)
+    const w = box.clientWidth - parseInt(style.paddingLeft) - parseInt(style.paddingRight)
     const h = Math.round(w/2)
     setSize({w, h})
   }, [duration])
@@ -99,7 +106,26 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
     )
   }
 
-  const Price = () => (<div className={`${stylesPricing.value}`}>{data.price}</div>)
+  const Price = () => (<div className={`${stylesPricing.value}`}>{data.price?.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' })}</div>)
+
+  const Loading = () => loading ? <p>Loading...</p> : ''
+
+  // Token infomation
+  const [info, setInfo] = useState({})
+  useEffect(() => {
+    // get token info
+    fetchJson('/api/coin-info').then(res => {
+      setInfo({
+        Name: res.Data.CoinInfo.Name,
+        MaxSupply: res.Data.CoinInfo.MaxSupply,
+        AssetLaunchDate: res.Data.CoinInfo.AssetLaunchDate,
+        Price: res.Data.AggregatedData.PRICE.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' }),
+        Change24h: res.Data.AggregatedData.CHANGE24HOUR,
+        MacketCap: res.Data.AggregatedData.MKTCAP,
+        Volume24h: res.Data.AggregatedData.TOTALVOLUME24H
+      })
+    })
+  }, [])
 
   return (
 
@@ -121,12 +147,12 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
           <Price />
           <PriceChange />
         </div>
-
+        <Loading />
         {/* Pricing Chart */}
         <div className={`${stylesPricing.chart}`} id="chart-box">
           <Duration />
           {/* <LineChart data={data} onChartHover={ (a,b) => '' } showLabels={true} svgWidth={size.w} svgHeight={size.h} /> */}
-          <LineChart data={data.entries} onChartHover={ (a,b) => '' } showLabels={true} svgWidth={size.w} svgHeight={size.h} /> 
+          <LineChart data={data.entries} showLabels={true} svgWidth={size.w} svgHeight={size.h} /> 
         </div>
 
         {/* Stats */}
@@ -138,7 +164,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
                 <span title="">Market Cap</span>
               </div>
               <div className={`${stylesStats.value}`}>
-                <span>$48.83B</span>
+                <span>{utils.currencyFormat(info.MacketCap)}</span>
               </div>
             </div>
           </div>
@@ -149,7 +175,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
                 <span title="">Volume (24h)</span>
               </div>
               <div className={`${stylesStats.value}`}>
-                <span>$8.19M</span>
+              <span>{utils.currencyFormat(info.Volume24h)}</span>
               </div>
             </div>
           </div>

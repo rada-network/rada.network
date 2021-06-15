@@ -223,7 +223,7 @@ export default function LineChart(props) {
   return (
     <>
       <div className={`${styles.chart}`}>
-        <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className={`linechart ${styles.linechart}`}
+        <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`} className={`linechart ${styles.linechart}`}
               onMouseLeave={ () => stopHover() }
               onMouseMove={ (e) => getCoords(e) } >
           <g>
