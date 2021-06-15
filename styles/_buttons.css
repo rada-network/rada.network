@@ -78,5 +78,19 @@ Group Buttons
 }
 
 .btn-group .btn {
-  
+}
+
+/*
+"Show More" Button
+*/
+.btn-showmore {
+  @apply justify-center py-3 px-6 w-full mt-8;
+  @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700 rounded;
+  @apply text-sm;
+}
+
+.btn-loading {
+  @apply justify-center py-3 px-6 w-full mt-8;
+  @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700 rounded;
+  @apply text-sm;
 }

@@ -11,7 +11,7 @@ import { observer } from "mobx-react"
 
 import React, {useState} from "react"
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
-import {TweetCard} from "../cards/Tweet";
+import {SocialPost} from "../cards/SocialPost";
 import {getTweet} from "../../data/query/postsTweet";
 import {TabButton} from "../button/tabButton";
 
@@ -89,7 +89,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
                 // ? showPosts(postsByDate)
                 ? "in progress"
                 : posts.map((post) => (
-                  <TweetCard key={post.id}
+                  <SocialPost key={post.id}
                               post={post}
                               favoriteCount={post.favoriteCount}
                               retweetCount={post.retweetCount}
@@ -127,13 +127,11 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
           }
 
           {loadingButton
-            ? <a className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-              justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+            ? <a className="btn btn-loading">
               <span className="btn-text">Loading...</span>
             </a>
             : <a onClick={handleLoadMoreTweets}
-                  className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-                  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+                  className="btn btn-showmore">
               <span className="btn-text">Show 12 more</span>
             </a>
           }

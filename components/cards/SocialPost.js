@@ -5,7 +5,7 @@ import {RiHeartFill, RiTwitterFill} from "react-icons/ri";
 import utils from "../../lib/util";
 import styles from '../../styles/modules/Card.tweet.module.css'
 
-export const TweetCard = ({post, favoriteCount, retweetCount, hashtags,
+export const SocialPost = ({post, favoriteCount, retweetCount, hashtags,
                             fullText, createdAt, media, tweetUser}) => {
   let twitterName
   let accountName

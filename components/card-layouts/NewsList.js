@@ -6,7 +6,7 @@ import Link from "next/link"
 import {observer} from "mobx-react";
 import {TabButton} from "../button/tabButton";
 import WidgetTitle from "../text/widgetTitle";
-import {CardNews} from "../cards/news";
+import {CardNews} from "../cards/News";
 import {getPosts} from "../../data/query/posts";
 import utils from "../../lib/util";
 import {getNews} from "../../data/query/news";
@@ -124,16 +124,14 @@ export const NewsList = observer(({
 
         <div className="section-footer">
           {loadingButton
-            ? <a className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-              justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+            ? <a className="btn btn-loading">
               <span className={"btn btn-text"}>Loading...</span>
             </a>
             : ""
           }
           {showMoreButton ?
             <a onClick={handleLoadMoreItems}
-               className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-                  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+               className="btn btn-showmore">
               <span className="btn-text">Show {take} more</span>
             </a>
             :  ""
