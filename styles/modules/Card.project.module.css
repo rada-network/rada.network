@@ -9,7 +9,7 @@ Project
   @apply flex;
   @apply relative transition-all;
   @apply bg-white border-t border-gray-700 border-opacity-10;
-  @apply lg:hover:bg-bluegray-100;
+  @apply lg:hover:bg-shadepurple-50;
 }
 
 .card_media {
