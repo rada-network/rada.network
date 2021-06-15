@@ -2,7 +2,7 @@
 Generic Styles
 */
 .widget {
-  @apply flex flex-col mt-8;
+  @apply flex flex-col mb-8;
   @apply bg-white rounded border-gray-900 border-opacity-5 shadow-sm;
 }
 

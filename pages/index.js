@@ -82,6 +82,7 @@ export default observer((props) => {
 
             {/* mainbody */}
             <div className="mainbody">
+
               <CategoryList
                 extraClass="category-list"
                 title="Top Topics"
@@ -92,12 +93,13 @@ export default observer((props) => {
 
               <NewsList
                 grid="1"
-                gap="4"
+                gap="0"
                 title="News from Cardano"
-                titleIcon="cube"
-                titleIconColor="pink-500"
+                titleIcon="newspaper"
+                titleIconColor="yellow-500"
                 dataStore={observableNewsStore}
               />
+
               {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
                 <SocialPostsList
                   grid="1"
@@ -167,14 +169,14 @@ export default observer((props) => {
                 <ProjectsList
                   homeDisplay={4}
                   grid="1"
-                  gap="4"
+                  gap="0"
                   itemType={"all"}
                   title="Projects from Catalyst"
                   titleIcon="code-branch"
                   titleIconColor="blue-500"
                   cta="Sorted by"
                   dataStore={observableItemStore}
-          voteStore={voteStore}
+                  voteStore={voteStore}
                 /> : ""
               }
             </div>

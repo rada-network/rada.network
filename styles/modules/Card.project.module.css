@@ -1,15 +1,15 @@
 %card-padding {
-  @apply pt-5 pb-4 px-3 md:px-4 lg:p-6;
+  @apply p-4 md:p-6 lg:p-8;
 }
 
 /*
 Project
 */
 .card {
-  @apply flex -mx-4 lg:mx-0;
+  @apply flex;
   @apply relative transition-all;
-  @apply bg-white border-t border-gray-900 border-opacity-10 lg:border lg:border-opacity-5 lg:rounded;
-  @apply lg:hover:bg-gray-50 lg:hover:border-opacity-10;
+  @apply bg-white border-t border-gray-500 border-opacity-10;
+  @apply lg:hover:bg-shadepurple-50;
 }
 
 .card_media {
@@ -40,15 +40,15 @@ Project
 }
 
 .card_title {
-  @apply text-base font-medium;
+  @apply text-base font-semibold;
 }
 
 .card_text {
-  @apply text-sm line-clamp-2 text-gray-900 lg:text-gray-600 transition;
+  @apply text-sm line-clamp-2 text-gray-900 text-opacity-50 transition;
+  @apply my-1;
 }
 
 .card:hover .card_text {
-  @apply text-gray-900;
 }
 
 .project_icon {

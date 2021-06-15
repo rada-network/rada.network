@@ -11,7 +11,7 @@ import { observer } from "mobx-react"
 
 import React, {useState} from "react"
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
-import {TweetCard} from "../cards/Tweet";
+import {SocialPost} from "../cards/SocialPost";
 import {getTweet} from "../../data/query/postsTweet";
 import {TabButton} from "../button/tabButton";
 
@@ -81,7 +81,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
           </div>
         </div>
 
-        <div className="section-body">
+        <div className="section-body p-0 md:p-4 lg:p-8 lg:pt-0">
           <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 1280: 2}}>
             <Masonry gutter="1rem">
               {
@@ -89,7 +89,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
                 // ? showPosts(postsByDate)
                 ? "in progress"
                 : posts.map((post) => (
-                  <TweetCard key={post.id}
+                  <SocialPost key={post.id}
                               post={post}
                               favoriteCount={post.favoriteCount}
                               retweetCount={post.retweetCount}
@@ -112,14 +112,12 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
           {dataStore.home.homeDisplay === 1 ?
             !itemType
               ? <a href={"#top"}
-                    className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-                    justify-center py-3 px-3 rounded w-auto mt-8 mr-2 text-sm">
+                    className="btn btn-nav mr-2">
                 <span className="icon"><IoChevronUpCircleSharp/></span>
                 <span className="btn-text whitespace-nowrap">Back to Top</span>
               </a>
               : <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
-                className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-                justify-center py-3 px-3 rounded w-auto mt-8 mr-2 text-sm">
+                className="btn btn-nav mr-2">
               <span className="icon"><IoChevronBackSharp/></span>
               <span className="btn-text whitespace-nowrap">Back to home</span>
             </a>
@@ -127,13 +125,10 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
           }
 
           {loadingButton
-            ? <a className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-              justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+            ? <a className="btn btn-loading">
               <span className="btn-text">Loading...</span>
             </a>
-            : <a onClick={handleLoadMoreTweets}
-                  className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-                  justify-center py-3 px-6 rounded w-full mt-8 text-sm">
+            : <a onClick={handleLoadMoreTweets} className="btn btn-nav">
               <span className="btn-text">Show 12 more</span>
             </a>
           }

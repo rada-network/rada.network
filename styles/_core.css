@@ -64,7 +64,7 @@ Page Layouts
 }
 
 .sidebar {
-  @apply lg:col-span-4 lg:pl-8;
+  @apply -mx-4 md:mx-0 lg:col-span-4 lg:pl-8 lg:pt-8;
 }
 
 
@@ -80,11 +80,12 @@ Section
 }
 
 .section-inner {
-  @apply p-4 -mx-4 md:mx-auto md:px-8 md:py-6 bg-white shadow-sm rounded;
+  @apply p-0 -mx-4 md:mx-0 bg-white shadow-sm rounded;
 }
 
 .section-header {
-  @apply flex justify-between items-center mb-6;
+  @apply flex justify-between items-center;
+  @apply px-4 py-4 md:px-6 md:py-4 lg:px-8 lg:py-6;
 }
 
 .section-title {
@@ -97,6 +98,8 @@ Section
 
 .section-footer {
   @apply flex justify-between items-center;
+  @apply px-4 py-4 md:px-8 md:py-6;
+  @apply border-t border-gray-500 border-opacity-10;
 }
 
 .section-cta {
