@@ -44,7 +44,7 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
 
 				</div>
 
-				<div className="section-body px-4 md:px-6 lg:px-8">
+				<div className="section-body p-4 md:px-6 md:pb-6 lg:px-8 lg:pb-8">
 
           <div className={`${styles.category_scroll} scrollbar ${styles.scrollbar}`} ref={scrollBox}>
             {topic.map(function(item){
