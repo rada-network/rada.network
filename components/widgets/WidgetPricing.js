@@ -147,7 +147,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
           <Price />
           <PriceChange />
         </div>
-        <Loading />
+        {/* <Loading /> */}
         {/* Pricing Chart */}
         <div className={`${stylesPricing.chart}`} id="chart-box">
           <Duration />

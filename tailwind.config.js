@@ -31,6 +31,8 @@ module.exports = {
         'bluegray-100': '#ebf1f9',
         'shadepurple-50': '#fafaff',
         'shadepurple-100': '#eff0fe',
+        'shadeyellow-50': '#fffefa',
+        'shadeyellow-100': '#fffdf7',
       },
 
       // Extra Font Sizes

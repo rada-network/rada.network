@@ -5,6 +5,8 @@ import utils from "../../lib/util";
 import styles from '../../styles/modules/Card.project.module.css'
 import KeywordIcon from "../icons/keywordIcon";
 
+import {RiExternalLinkLine} from "react-icons/ri";
+
 export const CardNews = ({news}) => {
   const postDate = utils.timeDifference(new Date(), new Date(news.createdAt))
   let keywords = JSON.parse(news.keywords);
@@ -32,9 +34,19 @@ export const CardNews = ({news}) => {
 
         <div className={`${styles.card_body_header}`}>
           <div className={`${styles.card_title}`}>
-            <a rel={"nofollow"} target={"_blank"} href={news.websiteUri}>
-              <a className="card-link">{news.title}</a>
+            <a className="card-link group" rel={"nofollow"} target={"_blank"} href={news.websiteUri}>
+              <span className="">{news.title}</span>
+              <span className="icon transition ml-2 -mb-0.5 opacity-0 group-hover:opacity-100"><RiExternalLinkLine /></span>
             </a>
+          </div>
+          <div className="metadata-wrapper">
+            {
+              keywords.map(function(value, index, array){
+                return (
+                  <KeywordIcon keyword={value[0]} weight={value[1]}/>
+                )
+              })
+            }
           </div>
         </div>
 
@@ -43,19 +55,13 @@ export const CardNews = ({news}) => {
         </div>
 
         <div className={`${styles.card_body_footer}`}>
-          <div className="metadata-wrapper project-metadata-wrapper">
-            {
-              keywords.map(function(value, index, array){
-                return (
-                  <KeywordIcon keyword={value[0]} weight={value[1]}/>
-                )
-              })
-            }
-            <div className="metadata project-metadata_date">
-              {/*<span className="metadata-value">{projectDate.split(('T'))[0]}</span>*/}
+          <div className="metadata-wrapper">
+            <div className="metadata metadata_author">
+              <span className="metadata-value" title={`${postDate}`}>Cardano Foundation</span>
+            </div>
+            <div className="metadata metadata_date">
               <span className="metadata-value" title={`${postDate}`}>{postDate}</span>
             </div>
-
           </div>
         </div>
 

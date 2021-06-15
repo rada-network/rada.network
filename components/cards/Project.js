@@ -61,7 +61,7 @@ export const Card = ({
         </div>
 
         <div className={`${styles.card_body_footer}`}>
-          <div className="metadata-wrapper project-metadata-wrapper">
+          <div className="metadata-wrapper">
 
             <a href={link} className="metadata project-comment_count">
               <span className="icon mr-1 text-base opacity-40">
@@ -75,7 +75,7 @@ export const Card = ({
             <NetworkIcon projectPlatform={projectPlatform} projectPlatformShort={projectPlatformShort} projectWebsiteUri={projectWebsiteUri} badge={false}/>
 
             { projectDate && 
-            <div className="metadata project-metadata_date">
+            <div className="metadata metadata_date">
               {/*<span className="metadata-value">{projectDate.split(('T'))[0]}</span>*/}
               <span className="metadata-value" title={`${titleTime}`}>{postDate}</span>
             </div> }

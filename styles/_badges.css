@@ -2,20 +2,22 @@
 Badges
 */
 .badge {
-  @apply group text-xs px-2 py-0 h-6 whitespace-nowrap;
-  @apply bg-gray-100 text-gray-900 text-opacity-80;
-  @apply rounded;
-  text-transform: uppercase !important;
+  @apply group text-xs px-2 py-0 h-6 whitespace-nowrap mb-1 lg:mb-2;
+  @apply bg-bluegray-50 hover:bg-blue-500 text-gray-700 text-opacity-50 hover:text-white;
+  @apply rounded-sm;
 
   &::before {
     display: none !important;
   }
+
   .icon {
     @apply mr-1 md:mr-2;
   }
+
   .cf {
     @apply md:text-base;
   }
+
 }
 
 /* Type */
@@ -41,7 +43,7 @@ Small Badges
 
 .badge-sm {
   @apply border-none rounded-sm rounded-tl-md rounded-br-md text-xxs px-2 pt-1px pb-1px;
-  @apply bg-gray-100 border text-gray-500 uppercase;
+  @apply bg-gray-100 border text-gray-500;
 }
 
 .badge-sm.badge-dapp {
@@ -61,7 +63,7 @@ Small Badges
 }
 
 /* Platforms */
-.badge-solana {
+/* .badge-solana {
   @apply text-green-600 hover:border-green-600 hover:bg-green-600 hover:text-white;
   &:hover .cf-sol {
     @apply text-white;
@@ -87,6 +89,6 @@ Small Badges
   &:hover .cf-eth {
     @apply text-white;
   }
-}
+} */
 
 

@@ -145,7 +145,7 @@ export default function Item (props) {
                         <h1 className="project-title">{`${data.item.title}`}</h1>
                       </div>
 
-                      <div className="mt-1 metadata-wrapper project-metadata-wrapper">
+                      <div className="mt-1 metadata-wrapper">
                         <ItemTypeBadge item={data.item}/>
                         <NetworkIcon
                             badge={true}
