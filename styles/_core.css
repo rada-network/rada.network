@@ -99,6 +99,7 @@ Section
 .section-footer {
   @apply flex justify-between items-center;
   @apply px-4 py-4 md:px-8 md:py-6;
+  @apply border-t border-gray-700 border-opacity-10;
 }
 
 .section-cta {

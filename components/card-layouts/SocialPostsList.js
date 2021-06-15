@@ -112,14 +112,12 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
           {dataStore.home.homeDisplay === 1 ?
             !itemType
               ? <a href={"#top"}
-                    className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-                    justify-center py-3 px-3 rounded w-auto mt-8 mr-2 text-sm">
+                    className="btn btn-nav mr-2">
                 <span className="icon"><IoChevronUpCircleSharp/></span>
                 <span className="btn-text whitespace-nowrap">Back to Top</span>
               </a>
               : <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
-                className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
-                justify-center py-3 px-3 rounded w-auto mt-8 mr-2 text-sm">
+                className="btn btn-nav mr-2">
               <span className="icon"><IoChevronBackSharp/></span>
               <span className="btn-text whitespace-nowrap">Back to home</span>
             </a>
@@ -130,8 +128,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
             ? <a className="btn btn-loading">
               <span className="btn-text">Loading...</span>
             </a>
-            : <a onClick={handleLoadMoreTweets}
-                  className="btn btn-showmore">
+            : <a onClick={handleLoadMoreTweets} className="btn btn-nav">
               <span className="btn-text">Show 12 more</span>
             </a>
           }

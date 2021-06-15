@@ -83,14 +83,14 @@ Group Buttons
 /*
 "Show More" Button
 */
-.btn-showmore {
-  @apply justify-center py-3 px-6 w-full mt-8;
+.btn-nav {
+  @apply justify-center py-3 px-6 w-full;
   @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700 rounded;
   @apply text-sm;
 }
 
 .btn-loading {
-  @apply justify-center py-3 px-6 w-full mt-8;
+  @apply justify-center py-3 px-6 w-full;
   @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700 rounded;
   @apply text-sm;
 }
