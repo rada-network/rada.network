@@ -8,7 +8,7 @@ Project
 .card {
   @apply flex;
   @apply relative transition-all;
-  @apply bg-white border-t border-gray-700 border-opacity-10;
+  @apply bg-white border-t border-gray-500 border-opacity-10;
   @apply lg:hover:bg-shadepurple-50;
 }
 
