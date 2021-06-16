@@ -164,13 +164,12 @@ export const ProjectsList = observer(({
           }
           {loadingButton
             ? <a className="btn btn-loading">
-              <span className={"btn btn-text"}>Loading...</span>
+              <span className={"btn-text"}>Loading...</span>
             </a>
             : ""
           }
           {showMoreButton ?
-            <a onClick={handleLoadMoreItems}
-                className="btn btn-nav">
+            <a onClick={handleLoadMoreItems} className="btn btn-nav">
               <span className="btn-text">Show {take} more</span>
             </a>
             :  ""

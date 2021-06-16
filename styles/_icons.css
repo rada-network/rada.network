@@ -46,3 +46,8 @@ Icons Styles
 .cf-tro {
   @apply text-red-700;
 }
+
+/* External Indicator */
+.ico-external-link {
+  @apply transition opacity-0 transform scale-0 group-hover:opacity-100 group-hover:scale-100;
+}

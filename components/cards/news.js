@@ -36,7 +36,7 @@ export const CardNews = ({news}) => {
           <div className={`${styles.card_title}`}>
             <a className="card-link group" rel={"nofollow"} target={"_blank"} href={news.websiteUri}>
               <span className="">{news.title}</span>
-              <span className="icon transition ml-2 -mb-0.5 opacity-0 group-hover:opacity-100"><RiExternalLinkLine /></span>
+              <span className="icon ml-2 -mb-0.5 ico-external-link"><RiExternalLinkLine /></span>
             </a>
           </div>
           <div className="metadata-wrapper">

@@ -27,7 +27,7 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
 
               <div className={`${stylesEvent.title}`}>
                 <span>Smart Contract Launch</span>
-                <span className="icon transition ml-2 -mb-0.5 opacity-0 group-hover:opacity-100"><RiExternalLinkLine /></span>
+                <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
               </div>
               <div className={`${stylesEvent.info_wrapper}`}>
                 <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-important">
@@ -49,7 +49,7 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
 
               <div className={`${stylesEvent.title}`}>
                 <span>Cardano First Ever Airdrop</span>
-                <span className="icon transition ml-2 -mb-0.5 opacity-0 group-hover:opacity-100"><RiExternalLinkLine /></span>
+                <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
               </div>
               <div className={`${stylesEvent.info_wrapper}`}>
                 <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-airdrop">
@@ -71,7 +71,7 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
 
               <div className={`${stylesEvent.title}`}>
                 <span>Cardano First Ever Launchpad</span>
-                <span className="icon transition ml-2 -mb-0.5 opacity-0 group-hover:opacity-100"><RiExternalLinkLine /></span>
+                <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
               </div>
               <div className={`${stylesEvent.info_wrapper}`}>
                 <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-launchpad">
@@ -93,7 +93,7 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
 
               <div className={`${stylesEvent.title}`}>
                 <span>Cardano First Ever Launchpad</span>
-                <span className="icon transition ml-2 -mb-0.5 opacity-0 group-hover:opacity-100"><RiExternalLinkLine /></span>
+                <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
               </div>
               <div className={`${stylesEvent.info_wrapper}`}>
                 <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-launchpad">
