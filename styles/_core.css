@@ -89,6 +89,7 @@ Section
 }
 
 .section-title {
+  @apply flex flex-wrap;
   @apply text-lg lg:text-xl font-semibold;
   strong {
     @apply font-semibold;
