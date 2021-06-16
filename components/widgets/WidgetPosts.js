@@ -87,7 +87,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
             <div className={`group ${styles.widget_list__item}`}>
 
               <div className={`${stylesPosts.title}`}>
-                <span>Family/Groups join planning dAPP</span>
+                <span>Cardano China Info Hub</span>
               </div>
 
               <div className="overflown-hidden">
@@ -96,7 +96,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
 
                 <div className={`${stylesPosts.text}`}>
-                  Provide a simple and good way for family and groups participate in join projects
+                  The Chinese Cardano community has limited access to accurate Cardano-related information which led to low awareness and mass misconception
                 </div>
               </div>
 
@@ -117,7 +117,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
             <div className={`group ${styles.widget_list__item}`}>
 
               <div className={`${stylesPosts.title}`}>
-                <span>Family/Groups join planning dAPP</span>
+                <span>Cardano On-Chain Voting</span>
               </div>
 
               <div className="overflown-hidden">
@@ -126,7 +126,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
 
                 <div className={`${stylesPosts.text}`}>
-                  Provide a simple and good way for family and groups participate in join projects
+                  People desire a secure, reliable, and immutable source of truth when dealing with votes, polls, and elections
                 </div>
               </div>
 
