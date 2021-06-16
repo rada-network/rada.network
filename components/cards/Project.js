@@ -4,7 +4,7 @@ import Link from "next/link";
 import utils from "../../lib/util";
 import {Vote} from "../vote/Vote";
 
-import styles from '../../styles/modules/Card.project.module.css'
+import styles from '../../styles/modules/Card.post.module.css'
 import ItemTypeIcon from "../icons/itemTypeIcon";
 import NetworkIcon from "../icons/networkIcon";
 

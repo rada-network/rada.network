@@ -10,7 +10,7 @@ Widget: Events
 }
 
 .text {
-  @apply text-sm text-gray-400 mt-2;
+  @apply text-sm text-gray-400 mt-2 line-clamp-2;
 }
 
 .info_wrapper {

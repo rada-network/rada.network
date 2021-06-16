@@ -22,6 +22,7 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
 
         <div className={`${styles.widget_list}`}>
 
+          {/* Even Item */}
           <a className={`${styles.widget_list__link}`} href="#" target="_blank">
             <div className={`group ${styles.widget_list__item}`}>
 
@@ -44,6 +45,7 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
             </div>
           </a>
 
+          {/* Even Item */}
           <a className={`${styles.widget_list__link}`} href="#" target="_blank">
             <div className={`group ${styles.widget_list__item}`}>
 
@@ -65,7 +67,8 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
 
             </div>
           </a>
-
+          
+          {/* Even Item */}
           <a className={`${styles.widget_list__link}`} href="#" target="_blank">
             <div className={`group ${styles.widget_list__item}`}>
 
@@ -88,6 +91,7 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
             </div>
           </a>
 
+          {/* Even Item */}
           <a className={`${styles.widget_list__link}`} href="#" target="_blank">
             <div className={`group ${styles.widget_list__item}`}>
 

@@ -2,7 +2,7 @@ import React from "react";
 
 import utils from "../../lib/util";
 
-import styles from '../../styles/modules/Card.project.module.css'
+import styles from '../../styles/modules/Card.post.module.css'
 import KeywordIcon from "../icons/keywordIcon";
 
 import {RiExternalLinkLine} from "react-icons/ri";

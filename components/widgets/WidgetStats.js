@@ -41,6 +41,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
 
         <div className={`${styles.widget_list_sm}`}>
 
+          {/* Stat Item */}
           <div className={`group ${styles.widget_list_sm__item}`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
@@ -52,6 +53,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
             </div>
           </div>
 
+          {/* Stat Item */}
           <div className={`group ${styles.widget_list_sm__item}`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
@@ -74,6 +76,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
             </div>
           </div>
 
+          {/* Stat Item */}
           <div className={`group ${styles.widget_list_sm__item}`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
@@ -96,6 +99,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
             </div>
           </div>
 
+          {/* Stat Item */}
           <div className={`group ${styles.widget_list_sm__item}`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
@@ -118,7 +122,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
             </div>
           </div>
 
-
+          {/* Stat Item */}
           <div className={`group ${styles.widget_list_sm__item}`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
@@ -130,6 +134,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
             </div>
           </div>
 
+          {/* Stat Item */}
           <div className={`group ${styles.widget_list_sm__item}`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>

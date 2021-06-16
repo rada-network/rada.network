@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useState, useEffect, createRef } from 'react'
 
 import {Layout} from '../../components/page-layouts/OneColumn';
-import {Sidebar} from '../../components/sidebar/Sidebar';
+import {Sidebar} from '../../components/sidebar/SidebarPost';
 
 import getClient from "../../data/client";
 

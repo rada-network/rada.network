@@ -1,0 +1,23 @@
+/*
+Widget: Post
+*/
+.title {
+  @apply text-base font-medium text-gray-900;
+}
+
+.text {
+  @apply text-sm text-gray-400 mt-2 line-clamp-3;
+}
+
+.info_wrapper {
+  @apply flex mt-1;
+}
+
+.media {
+  @apply float-right bg-gray-100 w-px-56 h-px-56 mt-3 ml-2 rounded flex-shrink-0 overflow-hidden;
+}
+
+.media img {
+  @apply object-cover h-full;
+}
+
