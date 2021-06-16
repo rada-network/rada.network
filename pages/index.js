@@ -39,7 +39,7 @@ const getData = async () => {
 
   const postsDapp = await getPosts({type : "dapp",skip : 0,take : 6,socialOrder : observableDappStore.currentTab})
 
-  const postsTweet = await getTweet({socialOrder: observableTweetStore.currentTab,skip : 0,take : 12});
+  const postsTweet = await getTweet({socialOrder: observableTweetStore.currentTab,skip : 0,take : 12,query: "ada,cardano"});
 
   const news = await getNews({take : 6, skip: 0, orderBy: {createdAt : "desc"}})
 
@@ -61,6 +61,7 @@ export default observer((props) => {
   // update to store
   if (!data) return <div>loading...</div>
   // init first tweet data to show in homepage
+  observableTweetStore.query = "ada,cardano"
   observableTweetStore.tweets = data.postsTweet
   observableItemStore.tweets = data.posts
   observableNftStore.tweets = data.postsNFT

@@ -29,7 +29,9 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
     const data = await getTweet({
       socialOrder : dataStore.currentTab,
       skip : dataStore.tweets.length,
-      take : 12});
+      take : 12,
+      query : dataStore.query
+    });
     if (data.loading){
       return false
     }
