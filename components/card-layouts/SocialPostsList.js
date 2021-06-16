@@ -15,6 +15,8 @@ import {SocialPost} from "../cards/SocialPost";
 import {getTweet} from "../../data/query/postsTweet";
 import {TabButton} from "../button/tabButton";
 
+import ReactTooltip from 'react-tooltip'
+
 
 export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
   const [loadingButton,setLoadingButton] = useState(false)
@@ -53,6 +55,9 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
             {itemType !== undefined ?
             <Link href={`/explore/${itemType}`}>
               {title}
+              {/* <span className="hasTooltip" 
+                    data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
+                    ><i className="fad fa-info-circle text-base" /></span> */}
             </Link>
             : title }
 
