@@ -265,8 +265,17 @@ Tootips
 }
 
 .__react_component_tooltip {
-  @apply max-w-xs;
+  @apply max-w-xs shadow-lg backdrop-filter backdrop-blur;
+  background: #FEF3C7 !important;
+  color: #111827 !important;
   font-size: 0.875rem !important;
+  &::after {
+    border-top-color: #FEF3C7 !important;
+  }
+}
+
+.__react_component_tooltip.show {
+  
 }
 
 /* 

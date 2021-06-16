@@ -59,7 +59,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
               <>
               {title}
               <span className="hasTooltip ml-2 text-xs text-blue-500 relative -top-0.5 group" 
-                    data-tip="Caught up with latest trends and hottest disscusion on blockchain community.">
+                    data-tip="By using smart algorithm, we detect and analysis the social trends to keep you up on any latest movements of the blockchain community.">
                 <span className="border-b border-dotted border-blue-500">What's this?</span> <i className="icon fal fa-info-circle text-base relative -bottom-0.5" />
               </span>
               </>
