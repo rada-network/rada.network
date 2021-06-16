@@ -104,7 +104,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                           </span>
                           <div className={`${styles.btn_text}`}>
                             <span className="text-base font-semibold">Metamask</span>
-                            <span className="text-xs text-gray-900 text-opacity-50 mt-1 font-normal">One of the most secure wallets with great flexibility</span>
+                            <span className="text-xs text-gray-400 mt-1 font-normal">One of the most secure wallets with great flexibility</span>
                           </div>
                           <i className={`fal fa-long-arrow-right ${styles.btn_arrow}`}/>
                         </a>
@@ -116,7 +116,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                           </span>
                           <div className={`${styles.btn_text}`}>
                             <span className="text-base font-semibold">WalletConnect</span>
-                            <span className="text-xs text-gray-900 text-opacity-50 mt-1 font-normal">Connect with <b>Rainbow</b>, <b>Trust</b>, <b>Argent</b> and more</span>
+                            <span className="text-xs text-gray-400 mt-1 font-normal">Connect with <b>Rainbow</b>, <b>Trust</b>, <b>Argent</b> and more</span>
                           </div>
                           <i className={`fal fa-long-arrow-right ${styles.btn_arrow}`}/>
                         </a>
@@ -128,7 +128,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                           </span>
                           <div className={`${styles.btn_text}`}>
                             <span className="text-base font-semibold">WalletLink</span>
-                            <span className="text-xs text-gray-900 text-opacity-50 mt-1 font-normal">Connect with <b>Coinbase</b> wallet</span>
+                            <span className="text-xs text-gray-400 mt-1 font-normal">Connect with <b>Coinbase</b> wallet</span>
                           </div>
                           <i className={`fal fa-long-arrow-right ${styles.btn_arrow}`}/>
                         </a>
@@ -136,7 +136,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                     </ul>    
 
                     <div className="mt-8">
-                      <p className="text-xs text-gray-900 text-opacity-50">
+                      <p className="text-xs text-gray-400">
                         We have no access to your private key and funds without your confirmation
                       </p>
                     </div>

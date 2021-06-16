@@ -26,7 +26,7 @@ export default function IdeaContent({item}){
   return (
     <div className="grid grid-col-1 lg:grid-cols-12">
 
-      <div className="lg:col-span-9 text-gray-900 text-opacity-100 lg:pr-8 project-text">
+      <div className="text-gray-900 project-text lg:col-span-9 lg:pr-8">
 
         {/* <div className="project-text_short" dangerouslySetInnerHTML={{__html: item.description}} /> */}
         

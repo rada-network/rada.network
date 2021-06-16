@@ -6,7 +6,7 @@ metadata
 
 .metadata-wrapper {
   @apply flex flex-wrap;
-  @apply text-xs text-gray-900 text-opacity-50;
+  @apply text-xs text-gray-400;
 }
 
 .metadata {
@@ -16,7 +16,7 @@ metadata
 
 .metadata + .metadata {
   &::before {
-    @apply block mr-1 md:mr-2 text-xl;
+    @apply block mr-1 md:mr-2 text-xl leading-4;
     content: "\00B7";
   }
 }

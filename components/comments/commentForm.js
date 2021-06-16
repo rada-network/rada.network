@@ -89,7 +89,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
               title="Write a comment"
               placeholder="Connect wallet to discuss"
             />
-            <div className="text-sm text-gray-900 text-opacity-50 pl-2 md:mt-0">
+            <div className="text-sm text-gray-400 pl-2 md:mt-0">
               <button onClick={submitComment}
                       className="w-full justify-center flex-1 px-3 py-3 text-gray-500 rounded-md btn item-center bg-gray-100 "
                       >
@@ -112,7 +112,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
               onKeyDown={handleKeydown}
             />
 
-            <div className="text-sm text-gray-900 text-opacity-50 pl-2 md:mt-0">
+            <div className="text-sm text-gray-400 pl-2 md:mt-0">
               <button onClick={submitComment} className="w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded-md btn item-center bg-gray-100 hover:bg-primary-100 hover:text-primary-700">
                 {btnText}
               </button>

@@ -12,7 +12,7 @@ export function CommentHeader({comment,user, level, parent, ItemCommentStore}){
         <span className="text-sm font-semibold whitespace-nowrap leading-4">
           {createWalletAddressDisplay(user.walletAddress)}
         </span>
-        <span className="text-xs ml-2 text-gray-900 text-opacity-50">
+        <span className="text-xs ml-2 text-gray-400">
           <span className="mr-2"> ·</span>
           {utils.timeDifference(new Date().getTime(), comment.createdAt)}
         </span>
@@ -20,7 +20,7 @@ export function CommentHeader({comment,user, level, parent, ItemCommentStore}){
       <div className="flex items-baseline">
         {
           level > 1 ?
-            <span className="text-xs text-gray-900 text-opacity-50 leading-6">
+            <span className="text-xs text-gray-400 leading-6">
           {/*    reply to <span className="font-bold">{text.toUpperCase()}</span>*/}
               {/*reply to <span className="font-bold">{createWalletAddressDisplay(user.walletAddress)}</span>*/}
               reply to <span className="font-bold">{parent === null ?

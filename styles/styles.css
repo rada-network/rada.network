@@ -147,7 +147,7 @@ Info
 }
 
 .project-info .list-name {
-  @apply mb-1 text-gray-900 text-opacity-50;
+  @apply mb-1 text-gray-400;
 }
 
 .project-info a.list-value {
@@ -160,7 +160,7 @@ Info
 }
 
 .project-info .list-value strong[data-element-id="field-label"] {
-  @apply block mb-1 flex-1 font-normal text-gray-900 text-opacity-50;
+  @apply block mb-1 flex-1 font-normal text-gray-400;
 }
 
 /*

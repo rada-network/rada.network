@@ -58,7 +58,7 @@ export const SocialPost = ({post, favoriteCount, retweetCount, hashtags,
               </div>
               <div className={`metadata-wrapper ${styles.tweet_metadata_wrapper}`}>
                 <div className={`metadata ${styles.tweet_metadata} ${styles.tweet_metadata_username}`}>
-                  <span className="text-xs text-gray-900 text-opacity-50">@{accountName}</span>
+                  <span className="text-xs text-gray-400">@{accountName}</span>
                 </div>
                 <div className={`metadata tweet_metadata_date ${styles.tweet_metadata}`}>
                   <span className="metadata-value" title={`${titleTime}`}>{tweetDate}</span>

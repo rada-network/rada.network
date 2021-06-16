@@ -31,7 +31,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
             <div className="comment-text mt-1">
               <p>{comment.content}</p>
             </div>
-            <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+            <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-400">
               <div className="flex items-center">
                 <button
                   className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">

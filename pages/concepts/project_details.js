@@ -127,7 +127,7 @@ export default function ProjectDetails(props) {
                         <button className="hover:underline text-blue-700" onClick={readMore} id={"readBtn"}>Read more</button>
                       </div>
 
-                      <div className="md:col-span-3 w-full mt-4 text-sm text-gray-900 text-opacity-50 md:pl-8 md:-mt-1 list-group-sm project-info">
+                      <div className="md:col-span-3 w-full mt-4 text-sm text-gray-400 md:pl-8 md:-mt-1 list-group-sm project-info">
                           <div className="list-group-item">
                             <strong className="uppercas">Project Info</strong>
                           </div>
@@ -178,7 +178,7 @@ export default function ProjectDetails(props) {
 
                           <TextareaAutosize className="w-full px-4 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="What do you think of this project?" />
 
-                          <div className="text-sm text-gray-900 text-opacity-50 pl-2 md:mt-0">
+                          <div className="text-sm text-gray-400 pl-2 md:mt-0">
                             <btn className="w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded-md btn item-center btn-project-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">Submit</btn>
                           </div>
                         </div>
@@ -201,7 +201,7 @@ export default function ProjectDetails(props) {
                               <div className="comment-header">
                                 <div className="user-wallet_title flex items-baseline">
                                   <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">0x495f...7b5e</span>
-                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                  <span className="text-xs ml-4 text-gray-400">
                                   <span>4 hours</span> ago
                                   </span>
                                 </div>
@@ -209,7 +209,7 @@ export default function ProjectDetails(props) {
                               <div className="comment-text mt-1">
                                 <p>Good math, active developers and admins. Service at the highest level. Cheap loot. Long term planning right from the start. I advise everyone?</p>
                               </div>
-                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-400">
                                 <div className="flex items-center">
                                   <btn className="btn py-1 px-2 border border-primary-500 text-primary-700 bg-primary-100 rounded">
                                     <span className="icon mr-2"><RiThumbUpFill /></span>
@@ -239,10 +239,10 @@ export default function ProjectDetails(props) {
                               <div className="comment-header">
                                 <div className="user-wallet_title flex items-baseline">
                                   <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">0x678f...2xab</span>
-                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                  <span className="text-xs ml-4 text-gray-400">
                                     reply to <span className="font-bold">0x495f...7b5e</span>
                                   </span>
-                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                  <span className="text-xs ml-4 text-gray-400">
                                     <span>8 hours</span> ago
                                   </span>
                                 </div>
@@ -250,7 +250,7 @@ export default function ProjectDetails(props) {
                               <div className="comment-text mt-1">
                                 <p>Love this idea -- congrats to an A+ team!!</p>
                               </div>
-                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-400">
                                 <div className="flex items-center">
                                   <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
                                     <span className="icon mr-2"><RiThumbUpFill /></span>
@@ -280,10 +280,10 @@ export default function ProjectDetails(props) {
                               <div className="comment-header">
                                 <div className="user-wallet_title flex items-baseline">
                                   <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">0x268a...1z2h</span>
-                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                  <span className="text-xs ml-4 text-gray-400">
                                     reply to <span className="font-bold">0x495f...7b5e</span>
                                   </span>
-                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                  <span className="text-xs ml-4 text-gray-400">
                                   <span>1 day</span> ago
                                   </span>
                                 </div>
@@ -291,7 +291,7 @@ export default function ProjectDetails(props) {
                               <div className="comment-text mt-1">
                                 <p>This is a bad comment and you already reported!</p>
                               </div>
-                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-400">
                                 <div className="flex items-center">
                                   <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
                                     <span className="icon mr-2"><RiThumbUpFill /></span>
@@ -320,10 +320,10 @@ export default function ProjectDetails(props) {
                               <div className="comment-header">
                                 <div className="user-wallet_title flex items-baseline">
                                   <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">0x222f...8b9x</span>
-                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                  <span className="text-xs ml-4 text-gray-400">
                                     reply to <span className="font-bold">0x268a...1z2h</span>
                                   </span>
-                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                  <span className="text-xs ml-4 text-gray-400">
                                     <span>4 hours</span> ago
                                   </span>
                                 </div>
@@ -331,7 +331,7 @@ export default function ProjectDetails(props) {
                               <div className="comment-text mt-1">
                                 <p>This smart is very good choice for everyone! Recommend to join. No backdoor and fully verified by HazeCrypto!</p>
                               </div>
-                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-400">
                                 <div className="flex items-center">
                                   <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
                                     <span className="icon mr-2"><RiThumbUpFill /></span>
@@ -362,7 +362,7 @@ export default function ProjectDetails(props) {
                             <TextareaAutosize className="h-px-32 w-full px-4 py-2 text-sm border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="Write your reply" />
 
                             <div className="pl-2 md:mt-0">
-                              <btn className="h-px-40 text-sm text-gray-900 text-opacity-50 w-full justify-center flex-1 px-3 py-0 text-gray-500 transition-all rounded-md btn item-center btn-project-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">Reply</btn>
+                              <btn className="h-px-40 text-sm text-gray-400 w-full justify-center flex-1 px-3 py-0 text-gray-500 transition-all rounded-md btn item-center btn-project-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">Reply</btn>
                             </div>
 
                           </div>
@@ -381,7 +381,7 @@ export default function ProjectDetails(props) {
                               <div className="comment-header">
                                 <div className="user-wallet_title flex items-baseline">
                                   <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">0x222f...8b9x</span>
-                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                  <span className="text-xs ml-4 text-gray-400">
                                   <span>4 hours</span> ago
                                   </span>
                                 </div>
@@ -389,7 +389,7 @@ export default function ProjectDetails(props) {
                               <div className="comment-text mt-1">
                                 <p>This smart is very good choice for everyone! Recommend to join. No backdoor and fully verified by HazeCrypto!</p>
                               </div>
-                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-400">
                                 <div className="flex items-center">
                                   <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
                                     <span className="icon mr-2"><RiThumbUpFill /></span>
@@ -421,7 +421,7 @@ export default function ProjectDetails(props) {
                               <div className="comment-header">
                                 <div className="user-wallet_title flex items-baseline">
                                   <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">0x678f...2xab</span>
-                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                  <span className="text-xs ml-4 text-gray-400">
                                   <span>8 hours</span> ago
                                   </span>
                                 </div>
@@ -429,7 +429,7 @@ export default function ProjectDetails(props) {
                               <div className="comment-text mt-1">
                                 <p>So awesome! Takes NFT's to a new level ! Good job guys!</p>
                               </div>
-                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-400">
                                 <div className="flex items-center">
                                   <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
                                     <span className="icon mr-2"><RiThumbUpFill /></span>
@@ -461,7 +461,7 @@ export default function ProjectDetails(props) {
                               <div className="comment-header">
                                 <div className="user-wallet_title flex items-baseline">
                                   <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">0x268a...1z2h</span>
-                                  <span className="text-xs ml-4 text-gray-900 text-opacity-50">
+                                  <span className="text-xs ml-4 text-gray-400">
                                   <span>1 day</span> ago
                                   </span>
                                 </div>
@@ -469,7 +469,7 @@ export default function ProjectDetails(props) {
                               <div className="comment-text mt-1">
                                 <p>This is a bad comment and you already reported!</p>
                               </div>
-                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-900 text-opacity-50">
+                              <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-400">
                                 <div className="flex items-center">
                                   <btn className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
                                     <span className="icon mr-2"><RiThumbUpFill /></span>
@@ -493,7 +493,7 @@ export default function ProjectDetails(props) {
 
                     </div>
 
-                    <div className="w-full mt-4 text-sm text-gray-900 text-opacity-50 md:col-span-3 md:pl-8 md:-mt-1 list-group-sm">
+                    <div className="w-full mt-4 text-sm text-gray-400 md:col-span-3 md:pl-8 md:-mt-1 list-group-sm">
                       <div>This is a sub-sidebar placeholder</div>
                     </div>
 
