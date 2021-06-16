@@ -10,7 +10,7 @@ Widget: Influencer
 }
 
 .text {
-  @apply text-sm text-gray-900 text-opacity-50 mt-2;
+  @apply text-sm text-gray-400 mt-2;
 }
 
 .info_wrapper {
@@ -18,7 +18,7 @@ Widget: Influencer
 }
 
 .info {
-  @apply text-xs leading-none truncate text-gray-900 text-opacity-50 rounded;
+  @apply text-xs leading-none truncate text-gray-400 rounded;
   @apply py-1 px-2 overflow-hidden;
 }
 
@@ -43,7 +43,7 @@ Widget: Influencer
 Links 
 */
 .links {
-  @apply flex mt-2;
+  @apply flex mt-4;
 }
 
 .links a {

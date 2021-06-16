@@ -44,7 +44,7 @@ Project
 }
 
 .card_text {
-  @apply text-sm line-clamp-2 text-gray-900 text-opacity-50 transition;
+  @apply text-sm line-clamp-2 text-gray-500 transition;
 }
 
 .card:hover .card_text {

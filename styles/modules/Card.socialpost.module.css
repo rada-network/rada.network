@@ -5,7 +5,7 @@ Tweets
   @apply flex-col items-center content-center mx-0 overflow-hidden;
   @apply relative transition-all;
   @apply bg-white border-t border-gray-500 border-opacity-10 md:border md:border-opacity-10 md:rounded;
-  @apply lg:hover:bg-shadepurple-50 lg:hover:border-opacity-10;
+  @apply lg:hover:bg-shadeyellow-100 lg:hover:shadow-lg;
 }
 
 .card_body {
@@ -33,11 +33,11 @@ Tweets
 }
 
 .card_text {
-  @apply text-sm text-gray-900 md:text-gray-600 transition-colors;
+  @apply text-sm text-gray-700 lg:text-gray-500 transition-colors;
 }
 
 .card:hover .card_text {
-  @apply text-gray-900;
+  @apply text-gray-700;
 }
 
 .card_media {
@@ -91,7 +91,7 @@ Metadata
 }
 
 .tweet_metadata_name {
-  @apply block text-base font-medium text-gray-900 text-opacity-100 mb-0.5 truncate;
+  @apply block text-base font-semibold text-gray-900 text-opacity-100 mb-0.5 truncate;
   width: 240px;
 }
 

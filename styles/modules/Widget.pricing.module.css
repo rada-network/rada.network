@@ -2,7 +2,7 @@
 Widget: Pricing
 */
 .title {
-  @apply px-8 pt-8 text-sm text-gray-900 text-opacity-50;
+  @apply px-8 pt-8 text-sm text-gray-400;
 }
 
 .pricing {

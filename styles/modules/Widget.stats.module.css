@@ -10,7 +10,7 @@ Widget: Stats
 }
 
 .title {
-  @apply text-xs font-medium text-gray-500;
+  @apply text-xs font-base text-gray-400;
 }
 
 .value {
