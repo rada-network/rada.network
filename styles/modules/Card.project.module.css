@@ -51,18 +51,19 @@ Project
 }
 
 .project_icon {
-  @apply flex-shrink-0 w-px-56 h-px-56 md:w-px-88 md:h-px-88 rounded overflow-hidden cursor-pointer;
+  @apply flex-shrink-0 w-px-56 h-px-56 md:w-px-88 md:h-px-88;
+  @apply rounded overflow-hidden cursor-pointer;
 }
 
 .project_icon_ph {
   @extend .project_icon;
   @apply p-3 lg:p-6 bg-gray-50;
+  @apply inline-flex justify-center items-center;
 }
 
 .project_icon__img {
-
 }
 
 .project_icon_ph__img {
-  @apply opacity-10;
+  @apply text-xl leading-none opacity-20;
 }
