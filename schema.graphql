@@ -119,7 +119,7 @@ type Query {
     itemTypeCount: [ItemType]
     newsFeed(orderBy: ItemOrderInput, query: String, skip: Int = 0, take: Int = 4): [News]
     tweetById(id: String!): Tweet
-    tweetFeed(day: Int = 1, lang: String = "all", orderBy: TweetOrderInput, skip: Int = 0, take: Int = 4): [Tweet]
+    tweetFeed(day: Int = 1, lang: String = "all", orderBy: TweetOrderInput, query: String, skip: Int = 0, take: Int = 4): [Tweet]
     tweetWithoutKeyword(skip: Int = 0, take: Int = 4): [Tweet]
     tweetWithoutUser(skip: Int = 0, take: Int = 4): [Tweet]
 }

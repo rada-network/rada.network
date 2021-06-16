@@ -13,6 +13,8 @@ import {useStore} from "../../lib/useStore";
 import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 import {NewsList} from "../../components/card-layouts/NewsList";
 import {getTweet} from "../../data/query/postsTweet";
+import {getNews} from "../../data/query/news";
+import {getPosts} from "../../data/query/posts";
 
 const homeStore = new HomeStore({isHome: false})
 const observableTweetStore = new ObservableTweetStore({homeStore})
@@ -20,9 +22,30 @@ const observableNewsStore = new ObservableTweetStore({homeStore})
 const observableItemStore = new ObservableTweetStore({homeStore})
 
 const getData = async (word) => {
-
+  let newsFeed = await getNews({
+    take : 12,
+    skip : 0,
+    query : word,
+    orderBy : {createdAt : "desc"}
+  })
+  let itemFeed = await getPosts({
+    type : "search",
+    take : 12,
+    skip : 0,
+    socialOrder : "latest",
+    query : word
+  })
+  let tweetFeed = await getTweet({
+    take : 12,
+    skip : 0,
+    socialOrder : "latest",
+    query : word,
+    day : 1
+  })
   return {
-
+    newsFeed : newsFeed.data.newsFeed,
+    itemFeed : itemFeed.data.itemFeed,
+    tweetFeed : tweetFeed.data.tweetFeed,
   }
 }
 const voteStore = new VoteStore()
@@ -31,6 +54,14 @@ export default observer(function Explore(props) {
   const router = useRouter();
   let {word} = router.query;
   const data = props
+
+  observableTweetStore.query = word
+  observableNewsStore.query = word
+  observableItemStore.query = word
+
+  observableTweetStore.tweets = data.tweetFeed
+  observableNewsStore.tweets = data.newsFeed
+  observableItemStore.tweets = data.itemFeed
 
   return (
     <Layout extraClass="page_topic" meta={"Top info from " + word}>
@@ -52,7 +83,7 @@ export default observer(function Explore(props) {
               <NewsList
                 grid="1"
                 gap="4"
-                title={"News from " + word}
+                title={"News from "}
                 titleIcon="cube"
                 titleIconColor="pink-500"
                 dataStore={observableNewsStore}
@@ -60,7 +91,7 @@ export default observer(function Explore(props) {
               <ProjectsList
                 grid="1"
                 gap="4"
-                title={"Idea from " + word}
+                title={"Idea from "}
                 cta="Sorted by"
                 detail={true}
                 itemType={'all'}
