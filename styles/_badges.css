@@ -3,7 +3,7 @@ Badges
 */
 .badge {
   @apply group text-xs px-2 py-0 h-6 whitespace-nowrap mb-1 lg:mb-2;
-  @apply bg-bluegray-50 hover:bg-blue-500 text-gray-700 text-opacity-50 hover:text-white;
+  @apply bg-bluegray-50 hover:bg-bluegray-100 text-gray-400 hover:text-gray-700;
   @apply rounded-sm;
 
   &::before {

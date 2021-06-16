@@ -128,7 +128,7 @@ export default function Item (props) {
                 <div className="section-inner">
 
                   {/* Page Header */}
-                  <div className="page-header flex">
+                  <div className="page-header">
 
                     {data.item.thumbnail !== null ?
                     <div className="project-icon">
@@ -145,7 +145,7 @@ export default function Item (props) {
                         <h1 className="project-title">{`${data.item.title}`}</h1>
                       </div>
 
-                      <div className="mt-1 metadata-wrapper">
+                      <div className="metadata-wrapper">
                         <ItemTypeBadge item={data.item}/>
                         <NetworkIcon
                             badge={true}
