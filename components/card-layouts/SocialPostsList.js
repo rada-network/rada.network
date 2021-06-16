@@ -56,9 +56,9 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
             <Link href={`/explore/${itemType}`}>
               <>
               {title}
-              <span className="hasTooltip ml-2 text-xs text-blue-500 border-b border-dotted" 
-                    data-tip="Caught up with latest trends and hottest disscusion on blockchain community."
-                    >What's this? <i className="fal fa-info-circle text-base -mb-0.5" />
+              <span className="hasTooltip ml-2 text-xs text-blue-500 relative -top-0.5 group" 
+                    data-tip="Caught up with latest trends and hottest disscusion on blockchain community.">
+                <span className="border-b border-dotted border-blue-500">What's this?</span> <i className="icon fal fa-info-circle text-base relative -bottom-0.5" />
               </span>
               </>
             </Link>
