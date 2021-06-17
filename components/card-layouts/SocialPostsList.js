@@ -58,7 +58,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
             <Link href={`/explore/${itemType}`}>
               <>
               {title}
-              <span className="hasTooltip ml-2 -mb-1 text-xs text-blue-500 relative group" 
+              <span className="hasTooltip ml-2 text-xs text-blue-500 relative -bottom-0.5 group" 
                     data-tip="By using smart algorithm, we detect and analysis the social trends to keep you up on any latest movements of the blockchain community.">
                 <span className="border-b border-dotted border-blue-500">What's this?</span> <i className="icon fal fa-info-circle text-base relative -bottom-0.5" />
               </span>
@@ -85,7 +85,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
           </div>
         </div>
 
-        <div className="p-0 md:p-4 lg:p-8 lg:pt-0">
+        <div className="p-0 md:p-6 md:pt-0 lg:p-8 lg:pt-0">
           <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 1280: 2}}>
             <Masonry gutter="1rem">
               {
