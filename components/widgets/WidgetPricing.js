@@ -208,7 +208,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
       <div className={`${styles.widget_footer}`}>
         <div className={`${styles.widget_footer_text}`}>
-          Source: <a href="https://www.coindesk.com/price/cardano">CoinDesk <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span></a>
+          Source: <a className="link" href="https://www.coindesk.com/price/cardano">CoinDesk <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span></a>
         </div>
       </div>
 

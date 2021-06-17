@@ -7,6 +7,7 @@ import {Header} from '../components/headers/HeaderHome';
 import {Sidebar} from '../components/sidebar/Sidebar';
 import {ProjectsList} from '../components/card-layouts/ProjectsList';
 import {CategoryList} from '../components/card-layouts/CategoryList';
+import {MediaList} from '../components/card-layouts/MediaList';
 
 import { observer } from "mobx-react"
 
@@ -92,9 +93,19 @@ export default observer((props) => {
                 topic={data.topic}
               />
 
+              {/* <MediaList
+                grid="4"
+                gap="4"
+                extraClass="media-list"
+                title="Latest Media"
+                titleIcon=""
+                titleIconColor=""
+              /> */}
+
               <NewsList
                 grid="1"
                 gap="0"
+                extraClass="news-list"
                 title="News from Cardano"
                 titleIcon="newspaper"
                 titleIconColor="yellow-500"
