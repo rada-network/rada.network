@@ -62,28 +62,34 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
   });
 
   useEffect(() => {
-    setLoading(true)
-    fetchJson(url).then(res => {
-      const entries = [];
-      let count = 0;
+    const loadData = () => {
+      setLoading(true)
+      fetchJson(url).then(res => {
+        const entries = [];
+        let count = 0;
 
-      const batch = limit > 1000 ? 15 : limit > 500 ? 6 : 1
-      res.entries.forEach((c, idx) => {
-        if ((idx-1) % batch == 0) {
-          const p = parseFloat(c.close)
-          entries.push({
-            d: fd(c.time*1000),
-            p: p.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' }),
-            x: count, //previous days
-            y: p // numerical price
-          });
-          count++;
-        }
+        const batch = limit > 1000 ? 15 : limit > 500 ? 6 : 1
+        res.entries.forEach((c, idx) => {
+          if ((idx-1) % batch == 0) {
+            const p = parseFloat(c.close)
+            entries.push({
+              d: fd(c.time*1000),
+              p: p.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' }),
+              x: count, //previous days
+              y: p // numerical price
+            });
+            count++;
+          }
+        })
+
+        setData({entries, price: res.price, change: res.change})
+        setLoading(false)      
       })
+    }
+    let ti = setInterval(loadData, 10000)
+    loadData()
 
-      setData({entries, price: res.price, change: res.change})
-      setLoading(false)
-    })
+    return () => clearInterval(ti)
   }, [duration])
 
   const Duration = () => {
