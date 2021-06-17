@@ -1,38 +1,54 @@
+import Link from "next/link"
+import styles from '../../styles/modules/Card.media.module.css'
+
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
-import Link from "next/link"
 
-export const Card = ({title, text, mediaUri, cta, itemType, onClick}) => {
-  return (
-    <div className="card-media-full" onClick={onClick}>
-      <div className="card-media">
-        <img className="card-img" src={mediaUri} />
+export const Card = ({title, mediaUri, mediaType}) => {
+
+  const Podcast = () => (
+    <div className={`${styles.card_media}`}>
+      <div className="w-full h-full">
+        <div className={`${styles.media} aspect-w-16 aspect-h-9`}>
+          <iframe width="560" height="315" src={mediaUri} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+        </div>
       </div>
+    </div>
+  )
+  const Video = ({src}) => (
+    <div className={`${styles.card_media}`}>
+      <div className="w-full h-full">
+        <div className={`${styles.media} aspect-w-16 aspect-h-9`}>
+          <iframe width="560" height="315" src={mediaUri} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+        </div>
+      </div>
+    </div>
+  )
+
+  return (
+    <div className={`card ${styles.card}`}>
+
+      { mediaType == 'Video' && <Video src={mediaUri} /> }
+      { mediaType == 'Podcast' && <Podcast src={mediaUri} /> }
       
-      { title || text || cta && 
-      <div className="card-body">
-        { title && 
-        <div className="card-body-header">
-          <div className="card-title text-base line-clamp-1">{title}</div>
-        </div> }
-        { text && 
-        <div className="card-body-main">
-          <div className="card-text text-xs opacity-75">{text}</div>
-        </div> }
-        { cta && 
-        <div className="card-body-footer">
-          <div className="card-cta">
-            <button className="btn">
-              <span className="btn-text">
-                <Link href={`/explore/${itemType}`}>
-                  {cta}
-                </Link>
-              </span>
-              <span className="icon"><IoChevronForwardSharp /></span>
-            </button>
+      <div className={`card-body ${styles.card_body}`}>
+
+        <div className={`card-body-header ${styles.card_body__header}`}>
+          <a href="#" className={`card-title ${styles.card_title}`}>{title}</a>
+        </div>
+
+        <div className={`${styles.card_body_footer}`}>
+          <div className="metadata-wrapper">
+            <div className="metadata metadata_author">
+              <span className="metadata-value">Cardano Foundation</span>
+            </div>
+            <div className="metadata metadata_date">
+              <span className="metadata-value">2d</span>
+            </div>
           </div>
-        </div> }
-      </div> }
+        </div>
+
+      </div>
 
     </div>
   );

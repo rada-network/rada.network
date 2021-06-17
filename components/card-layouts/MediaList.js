@@ -15,32 +15,36 @@ export const MediaList = ({extraClass, grid, gap, title}) => {
 				</div> }
 
 				<div className="section-body">
-          <div className={`grid gap-${gap || '5'} sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-${grid || '5'}`}>
+          <div className={`grid gap-${gap || '5'} sm:grid-cols-2 lg:grid-cols-${grid || '3'}`}>
             
             <Card 
-              // title="Solana Universe"
-              title="Solana All POSTs"
-              text="Originally released in 1981, Centipede is a fixed shooter arcade game that became one of the most successful titles of its time, and one of the first to attract a significant female player base"
-							itemType={"all"}
-              cta="Explore"
-              mediaUri="https://picsum.photos/600/600?random=21"
+              title="STARTLING TRUTH ABOUT CARDANO! (ADA Holders Must PREPARE)"
+              mediaType="Podcast"
+              mediaUri="https://www.youtube.com/embed/Ck1Xza8Xmyw"
+            />
+
+            <Card 
+              title="The future will be decentralized | Charles Hoskinson | TEDxBermuda"
+              mediaType="Video"
+              mediaUri="https://www.youtube.com/embed/97ufCT6lQcY"
             />
 
             <Card
-              title="Popular NFTs"
-              text="Originally released in 1981, Centipede is a fixed shooter arcade game that became one of the most successful titles of its time, and one of the first to attract a significant female player base"
-              cta="Explore"
-							itemType={"nft"}
-              mediaUri="https://picsum.photos/600/600?random=22"
+              title="Cardano - Simply Explained"
+              mediaType="Video"
+              mediaUri="https://www.youtube.com/embed/Do8rHvr65ZA"
             />
 
             <Card 
-              // title="Gaming on the Future"
-              title="Interesting DAPPs"
-              text="Originally released in 1981, Centipede is a fixed shooter arcade game that became one of the most successful titles of its time, and one of the first to attract a significant female player base"
-              mediaUri="https://picsum.photos/600/600?random=23"
-							itemType={"dapp"}
-              cta="Explore"
+              title="What is Cardano? | Charles Hoskinson and Lex Fridman"
+              mediaUri="https://www.youtube.com/embed/Elwv7Itr1qA"
+              mediaType="Video"
+            />
+
+            <Card 
+              title="Ethereum vs. Cardano: Which is BEST?!"
+              mediaUri="https://www.youtube.com/embed/SXfXydnXNH4"
+              mediaType="Podcast"
             />
 
 					</div>

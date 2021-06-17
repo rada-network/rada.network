@@ -93,14 +93,14 @@ export default observer((props) => {
                 topic={data.topic}
               />
 
-              {/* <MediaList
-                grid="4"
+              <MediaList
+                grid="3"
                 gap="4"
                 extraClass="media-list"
                 title="Latest Media"
                 titleIcon=""
                 titleIconColor=""
-              /> */}
+              />
 
               <NewsList
                 grid="1"

@@ -1,0 +1,36 @@
+/*
+Media Full
+*/
+
+.card {
+  @apply relative;
+  @apply flex-col;
+}
+
+.card_body {
+  @apply p-2;
+}
+
+.card_body__header {
+  @apply mb-2;
+}
+
+.card_body__main {
+  @apply mb-4;
+}
+
+.card_title {
+  @apply text-sm;
+}
+
+.card_media {
+  @apply max-h-96 max-w-screen-sm rounded;
+}
+
+.media {
+  @apply rounded shadow;
+}
+
+.img {
+  @apply rounded;
+}

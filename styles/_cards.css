@@ -60,50 +60,6 @@ Generic Styles
   @apply flex justify-between px-4 md:px-6 py-3 w-full;
 }
 
-
-/*
-Media Full
-*/
-.card-media-full {
-
-  @apply relative border;
-
-  /* .card-media {
-    @apply max-h-96 max-w-screen-sm rounded;
-  }
-
-  .card-img {
-    @apply rounded;
-  } */
-
-  .card-body {
-    @apply p-6 absolute w-full max-w-sm -bottom-0 m-auto;
-  }
-
-  .card-body-header {
-    @apply mb-2;
-  }
-
-  .card-body-main {
-    @apply mb-4;
-  }
-
-  .card-title {
-    @apply text-base line-clamp-1;
-  }
-
-  .card-text {
-    @apply text-xs line-clamp-2;
-  }
-
-  .card-body-footer .btn {
-    @apply text-xs font-medium bg-white text-gray-900 rounded-md;
-    @apply bg-opacity-80 backdrop-filter backdrop-blur;
-    @apply py-2 px-3;
-  }
-
-}
-
 /*
 Mini Horizontal
 */
