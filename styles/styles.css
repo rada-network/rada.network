@@ -334,3 +334,10 @@ Perfect Scrollbar
   @apply bg-gray-900 bg-opacity-40;
   height: 8px;
 }
+
+/* 
+Uitilities 
+*/
+.no-padding {
+  @apply p-0;
+}

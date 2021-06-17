@@ -130,13 +130,13 @@ export const ProjectsList = observer(({
                 <span className="icon"><IoChevronForwardSharp/></span>
               </button>
               : detail ?
-              <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
+              <div className="btn-group btn-group-filter">
                 <TabButton handle={handleLoadMoreItems} key={"topvote"} nValue={"topvote"} value={"Top Vote"} dataStore={dataStore} />
                 <TabButton handle={handleLoadMoreItems} key={"topcomment"} nValue={"topcomment"} value={"Top Comment"} dataStore={dataStore} />
                 <TabButton handle={handleLoadMoreItems} key={"latest"} nValue={"latest"} value={"Latest"} dataStore={dataStore} />
               </div>
                 :
-              <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
+              <div className="btn-group btn-group-filter">
                 <TabButton handle={handleLoadMoreItems} key={"popular"} nValue={"popular"} value={"Popular"} dataStore={dataStore} />
                 <TabButton handle={handleLoadMoreItems} key={"latest"} nValue={"latest"} value={"Latest"}dataStore={dataStore} />
               </div>
@@ -145,7 +145,7 @@ export const ProjectsList = observer(({
           }
         </div>
 
-        <div className="section-body">
+        <div className="section-body no-padding">
           <div className={`grid gap-0 lg:gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
             {
               showPosts(posts)

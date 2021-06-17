@@ -87,8 +87,8 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
     ]
 
     return (
-      <div className="btn-group flex px-1 py-1 bg-gray-100 text-xs rounded">
-        { times.map(t => (<span className={`btn rounded bg-white text-gray-400 bg-opacity-0 px-3 w-full justify-center py-1 time${t[1]==duration?' bg-opacity-100 shadow-sm text-gray-900':''}`} onClick={e => setDuration(t[1])}>{t[0]}</span>)) }
+      <div className="btn-group btn-group-filter">
+        { times.map(t => (<span className={`btn w-full btn-filter time${t[1]==duration?' btn-filter-active':''}`} onClick={e => setDuration(t[1])}>{t[0]}</span>)) }
       </div>
     )
   }

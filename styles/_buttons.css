@@ -78,11 +78,15 @@ Vote Buttons
 Group Buttons 
 */
 .btn-group {
-  @apply justify-evenly;
+  @apply flex justify-evenly;
+}
+
+.btn-group-filter {
+  @apply rounded px-1 py-1 bg-gray-100 text-xs;
 }
 
 .btn-filter {
-  @apply px-2 md:px-4 py-1;
+  @apply px-2 md:px-4 py-1 justify-center;
   @apply rounded bg-transparent text-gray-500;
 }
 

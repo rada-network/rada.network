@@ -114,7 +114,7 @@ export const NewsList = observer(({
           }
         </div>
 
-        <div className="section-body">
+        <div className="section-body no-padding">
           <div className={`grid gap-0 lg:gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
             {
               showPosts(posts)

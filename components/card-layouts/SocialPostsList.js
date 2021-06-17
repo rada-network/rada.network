@@ -78,20 +78,14 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
 
           {/* Hieu: Example Sections Buttons */}
           <div className="section-cta">
-
-            {/* <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
-              <Button active={true}>All</Button>
-              <Button>Twitter</Button>
-              <Button>Reddit</Button>
-            </div> */}
-            <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
+            <div className="btn-group btn-group-filter">
               <TabButton handle={handleLoadMoreTweets} key={"popular"} nValue={"popular"} value={"Popular"} dataStore={dataStore} />
               <TabButton handle={handleLoadMoreTweets} key={"latest"} nValue={"latest"} value={"Latest"} dataStore={dataStore} />
             </div>
           </div>
         </div>
 
-        <div className="section-body p-0 md:p-4 lg:p-8 lg:pt-0">
+        <div className="p-0 md:p-4 lg:p-8 lg:pt-0">
           <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 1280: 2}}>
             <Masonry gutter="1rem">
               {
