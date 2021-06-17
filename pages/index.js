@@ -88,18 +88,18 @@ export default observer((props) => {
               <CategoryList
                 extraClass="category-list"
                 title="Top Topics"
-                titleIcon=""
-                titleIconColor=""
+                titleIcon="album-collection"
+                titleIconColor="gray-400"
                 topic={data.topic}
               />
 
               <MediaList
-                grid="3"
+                grid="2"
                 gap="4"
                 extraClass="media-list"
                 title="Latest Media"
-                titleIcon=""
-                titleIconColor=""
+                titleIcon="icons"
+                titleIconColor="purple-500"
               />
 
               <NewsList

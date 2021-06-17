@@ -1,17 +1,32 @@
 import {useState} from "react";
 import {Card} from "../cards/MediaFull";
 
+import WidgetTitle from "../text/widgetTitle";
+
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
 
-export const MediaList = ({extraClass, grid, gap, title}) => {
+export const MediaList = ({
+                          extraClass, 
+                          grid, 
+                          gap, 
+                          title,
+                          titleIcon,
+                          titleIconColor,
+                        }) => 
+  {
 	return (
 		<div className={`section ${extraClass || ''}`}>
       <div className="section-inner">
 
         { title && 
 				<div className="section-header">
-					<div className="section-title">{title}</div>
+					<div className="section-title">
+            <span className={`icon mr-3 text-${titleIconColor}`}>
+              <i className={`fad fa-${titleIcon}`}/>
+            </span>
+            <span> {title}</span>
+          </div>
 				</div> }
 
 				<div className="section-body">
