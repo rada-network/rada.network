@@ -34,8 +34,8 @@ Pages
 /* 
 Page Layout
 */
-.page-header .container {
-  @apply md:flex items-center;
+.page-header {
+  @apply md:flex;
 }
 
 .page-title {
@@ -46,8 +46,13 @@ Page Layout
 Project Details
 --------------- */
 .page-project_details {
+  
+  .page-header {
+    @apply p-4 md:p-6 lg:p-8;
+  }
+
   .page-main {
-    @apply flex-1 mt-8 md:mt-12;
+    @apply flex-1 p-4 md:p-6 lg:p-8 pt-0 md:pt-0 lg:pt-0;
   }
 
   .page-sidebar {
@@ -120,12 +125,12 @@ Media
 Intro
 */
 .page-header .project-text_short {
-  @apply text-base leading-relaxed text-gray-900 text-opacity-70;
-  @apply mt-4;
+  @apply text-base leading-relaxed text-gray-600;
+  @apply mt-2;
 }
 
 .page-main .project-text_short {
-  @apply text-base text-gray-900 text-opacity-100 font-medium;
+  @apply text-base text-gray-900 font-medium;
   @apply mb-8;
 }
 
@@ -218,7 +223,7 @@ Text
 }
 
 .project-text_content {
-  @apply text-gray-900 text-opacity-70 pb-2;
+  @apply text-gray-600 pb-2;
 }
 
 /* #read {
@@ -231,6 +236,14 @@ Text
 #readBtn {
   @apply hidden;
 }
+
+/* Comments */
+.section-project-discussions {
+  .section-body {
+    @apply flex-1 p-4 md:p-6 lg:p-8 pt-0 md:pt-0 lg:pt-0;
+  }
+}
+
 
 /* 
 Page Topic  
@@ -252,8 +265,17 @@ Tootips
 }
 
 .__react_component_tooltip {
-  @apply max-w-xs;
+  @apply max-w-xs shadow-lg backdrop-filter backdrop-blur;
+  background: #FEF3C7 !important;
+  color: #111827 !important;
   font-size: 0.875rem !important;
+  &::after {
+    border-top-color: #FEF3C7 !important;
+  }
+}
+
+.__react_component_tooltip.show {
+  
 }
 
 /* 
@@ -311,4 +333,11 @@ Perfect Scrollbar
 .scrollbar.ps .ps__rail-x.ps--clicking .ps__thumb-x {
   @apply bg-gray-900 bg-opacity-40;
   height: 8px;
+}
+
+/* 
+Uitilities 
+*/
+.no-padding {
+  @apply p-0;
 }

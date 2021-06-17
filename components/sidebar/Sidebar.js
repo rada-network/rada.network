@@ -4,7 +4,7 @@ import { WidgetPricing } from "../widgets/WidgetPricing";
 import { WidgetEvents } from "../widgets/WidgetEvents";
 import { WidgetStats } from "../widgets/WidgetStats";
 import { WidgetInfluencers } from "../widgets/WidgetInfluencers";
-
+import { WidgetPosts } from "../widgets/WidgetPosts";
 
 export const Sidebar = ({extraClass}) => {
   return (
@@ -25,6 +25,10 @@ export const Sidebar = ({extraClass}) => {
       <WidgetInfluencers
         title="Influencers"
         widgetIcon="user-secret"
+      />
+      <WidgetPosts
+        title="Top Projects"
+        widgetIcon="code-branch"
       />
     </div>
   );

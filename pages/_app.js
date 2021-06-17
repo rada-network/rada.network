@@ -35,6 +35,7 @@ const TokenRankingStore = ({ Component, pageProps }) => {
   >
     <StoreProvider>
       <NextNprogress
+        options={{ showSpinner: false }}
         color="#29D"
         startPosition={0.3}
         stopDelayMs={200}

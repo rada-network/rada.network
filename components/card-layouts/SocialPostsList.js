@@ -15,6 +15,8 @@ import {SocialPost} from "../cards/SocialPost";
 import {getTweet} from "../../data/query/postsTweet";
 import {TabButton} from "../button/tabButton";
 
+import ReactTooltip from 'react-tooltip'
+
 
 export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
   const [loadingButton,setLoadingButton] = useState(false)
@@ -27,7 +29,9 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
     const data = await getTweet({
       socialOrder : dataStore.currentTab,
       skip : dataStore.tweets.length,
-      take : 12});
+      take : 12,
+      query : dataStore.query
+    });
     if (data.loading){
       return false
     }
@@ -54,9 +58,10 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
             <Link href={`/explore/${itemType}`}>
               <>
               {title}
-              <span className="hasTooltip" 
-                    data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
-                    ><i className="fad fa-info-circle text-base" /></span>
+              <span className="hasTooltip ml-2 text-xs text-blue-500 relative -bottom-0.5 group" 
+                    data-tip="By using smart algorithm, we detect and analysis the social trends to keep you up on any latest movements of the blockchain community.">
+                <span className="border-b border-dotted border-blue-500">What's this?</span> <i className="icon fal fa-info-circle text-base relative -bottom-0.5" />
+              </span>
               </>
             </Link>
             : title }
@@ -73,20 +78,14 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
 
           {/* Hieu: Example Sections Buttons */}
           <div className="section-cta">
-
-            {/* <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
-              <Button active={true}>All</Button>
-              <Button>Twitter</Button>
-              <Button>Reddit</Button>
-            </div> */}
-            <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
+            <div className="btn-group btn-group-filter">
               <TabButton handle={handleLoadMoreTweets} key={"popular"} nValue={"popular"} value={"Popular"} dataStore={dataStore} />
               <TabButton handle={handleLoadMoreTweets} key={"latest"} nValue={"latest"} value={"Latest"} dataStore={dataStore} />
             </div>
           </div>
         </div>
 
-        <div className="section-body p-0 md:p-4 lg:p-8 lg:pt-0">
+        <div className="p-0 md:p-6 md:pt-0 lg:p-8 lg:pt-0">
           <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 1280: 2}}>
             <Masonry gutter="1rem">
               {

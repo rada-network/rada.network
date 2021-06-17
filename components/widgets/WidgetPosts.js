@@ -87,7 +87,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
             <div className={`group ${styles.widget_list__item}`}>
 
               <div className={`${stylesPosts.title}`}>
-                <span>Family/Groups join planning dAPP</span>
+                <span>Cardano China Info Hub</span>
               </div>
 
               <div className="overflown-hidden">
@@ -96,7 +96,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
 
                 <div className={`${stylesPosts.text}`}>
-                  Provide a simple and good way for family and groups participate in join projects
+                  The Chinese Cardano community has limited access to accurate Cardano-related information which led to low awareness and mass misconception
                 </div>
               </div>
 
@@ -117,7 +117,37 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
             <div className={`group ${styles.widget_list__item}`}>
 
               <div className={`${stylesPosts.title}`}>
-                <span>Family/Groups join planning dAPP</span>
+                <span>This is a post with no image</span>
+              </div>
+
+              <div className="overflown-hidden">
+                {/* <div className={`${stylesPosts.media}`}>
+                  <img src="https://picsum.photos/300/300?random=4" alt="" />
+                </div> */}
+
+                <div className={`${stylesPosts.text}`}>
+                  People desire a secure, reliable, and immutable source of truth when dealing with votes, polls, and elections
+                </div>
+              </div>
+
+              <div class="metadata-wrapper mt-2">
+                <a class="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
+                  <span class="metadata-value">dapp</span> 
+                </a>
+                <a rel="nofollow" target="_blank" href="https://cardano.org/" class="metadata project-metadata_platform project-metadata_platform_car ">
+                  <span class="icon mr-1"><i class="cf cf-car text-base"></i></span><span class="metadata-value">Cardano</span>
+                </a>
+                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div></div>
+
+            </div>
+          </a>
+
+          {/* Post Item */}
+          <a className={`${styles.widget_list__link}`} href="#" target="_blank">
+            <div className={`group ${styles.widget_list__item}`}>
+
+              <div className={`${stylesPosts.title}`}>
+                <span>Cardano On-Chain Voting</span>
               </div>
 
               <div className="overflown-hidden">
@@ -126,7 +156,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
 
                 <div className={`${stylesPosts.text}`}>
-                  Provide a simple and good way for family and groups participate in join projects
+                  People desire a secure, reliable, and immutable source of truth when dealing with votes, polls, and elections
                 </div>
               </div>
 

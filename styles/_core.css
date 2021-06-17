@@ -80,7 +80,8 @@ Section
 }
 
 .section-inner {
-  @apply p-0 -mx-4 md:mx-0 bg-white shadow-sm rounded;
+  @apply p-0 -mx-4 md:mx-0;
+  @apply bg-white shadow-sm rounded;
 }
 
 .section-header {
@@ -89,11 +90,16 @@ Section
 }
 
 .section-title {
+  @apply flex flex-wrap;
   @apply text-lg lg:text-xl font-semibold;
   strong {
     @apply font-semibold;
     border-bottom: 1px dotted;
   }
+}
+
+.section-body {
+  @apply px-4 pb-4 md:px-6 md:pb-4 lg:px-8 lg:pb-6;
 }
 
 .section-footer {

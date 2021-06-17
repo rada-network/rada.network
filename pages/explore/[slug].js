@@ -78,7 +78,7 @@ export default observer(function Explore(props) {
 
                 <SocialPostsList
                   grid="1"
-                  gap="4"
+                  gap="0"
                   title={title}
                   titleIcon="fire-alt"
                   titleIconColor="red-500"
@@ -114,7 +114,7 @@ export default observer(function Explore(props) {
 
                 <ProjectsList
                   grid="1"
-                  gap="4"
+                  gap="0"
                   title={title}
                   cta="Sorted by"
                   detail={true}

@@ -7,6 +7,7 @@ import {Header} from '../components/headers/HeaderHome';
 import {Sidebar} from '../components/sidebar/Sidebar';
 import {ProjectsList} from '../components/card-layouts/ProjectsList';
 import {CategoryList} from '../components/card-layouts/CategoryList';
+import {MediaList} from '../components/card-layouts/MediaList';
 
 import { observer } from "mobx-react"
 
@@ -39,7 +40,7 @@ const getData = async () => {
 
   const postsDapp = await getPosts({type : "dapp",skip : 0,take : 6,socialOrder : observableDappStore.currentTab})
 
-  const postsTweet = await getTweet({socialOrder: observableTweetStore.currentTab,skip : 0,take : 12});
+  const postsTweet = await getTweet({socialOrder: observableTweetStore.currentTab,skip : 0,take : 12,query: "ada,cardano"});
 
   const news = await getNews({take : 6, skip: 0, orderBy: {createdAt : "desc"}})
 
@@ -61,6 +62,7 @@ export default observer((props) => {
   // update to store
   if (!data) return <div>loading...</div>
   // init first tweet data to show in homepage
+  observableTweetStore.query = "ada,cardano"
   observableTweetStore.tweets = data.postsTweet
   observableItemStore.tweets = data.posts
   observableNftStore.tweets = data.postsNFT
@@ -91,9 +93,19 @@ export default observer((props) => {
                 topic={data.topic}
               />
 
+              {/* <MediaList
+                grid="4"
+                gap="4"
+                extraClass="media-list"
+                title="Latest Media"
+                titleIcon=""
+                titleIconColor=""
+              /> */}
+
               <NewsList
                 grid="1"
                 gap="0"
+                extraClass="news-list"
                 title="News from Cardano"
                 titleIcon="newspaper"
                 titleIconColor="yellow-500"

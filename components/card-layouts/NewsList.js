@@ -6,7 +6,7 @@ import Link from "next/link"
 import {observer} from "mobx-react";
 import {TabButton} from "../button/tabButton";
 import WidgetTitle from "../text/widgetTitle";
-import {CardNews} from "../cards/News";
+import {CardNews} from "../cards/news";
 import {getPosts} from "../../data/query/posts";
 import utils from "../../lib/util";
 import {getNews} from "../../data/query/news";
@@ -114,7 +114,7 @@ export const NewsList = observer(({
           }
         </div>
 
-        <div className="section-body">
+        <div className="section-body no-padding">
           <div className={`grid gap-0 lg:gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
             {
               showPosts(posts)

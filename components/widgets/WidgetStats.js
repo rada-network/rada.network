@@ -70,7 +70,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
               <div className={`${stylesStats.value}`}>
                 <span>10,531,106,458,046</span>
                 <span className={`${stylesStats.currency}`}>
-                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" stroke-linejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
+                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" strokeLinejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
                 </span>
               </div>
             </div>
@@ -93,7 +93,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
               <div className={`${stylesStats.value}`}>
                 <span>23,028,019,601</span>
                 <span className={`${stylesStats.currency}`}>
-                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" stroke-linejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
+                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" strokeLinejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
                 </span>
               </div>
             </div>
@@ -116,7 +116,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
               <div className={`${stylesStats.value}`}>
                 <span>839,164,436</span>
                 <span className={`${stylesStats.currency}`}>
-                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" stroke-linejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
+                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" strokeLinejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
                 </span>
               </div>
             </div>
@@ -143,7 +143,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
               <div className={`${stylesStats.value}`}>
                 <span>8,771,086,790</span>
                 <span className={`${stylesStats.currency}`}>
-                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" stroke-linejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
+                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" strokeLinejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
                 </span>
               </div>
             </div>
@@ -155,7 +155,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
 
       <div className={`${styles.widget_footer}`}>
         <div className={`${styles.widget_footer_text}`}>
-          Source: <a href="https://adastat.net/">AdaStat <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span></a>
+          Source: <a className="link" href="https://adastat.net/">AdaStat <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span></a>
         </div>
       </div>
 
