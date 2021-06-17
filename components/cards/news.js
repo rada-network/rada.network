@@ -43,7 +43,7 @@ export const CardNews = ({news}) => {
             {
               keywords.map(function(value, index, array){
                 return (
-                  <KeywordIcon keyword={value[0]} weight={value[1]}/>
+                  <KeywordIcon key={value[0]+value[1]+(new Date()).getTime()} keyword={value[0]} weight={value[1]}/>
                 )
               })
             }
@@ -57,7 +57,7 @@ export const CardNews = ({news}) => {
         <div className={`${styles.card_body_footer}`}>
           <div className="metadata-wrapper">
             <div className="metadata metadata_author">
-              <span className="metadata-value" title={`${postDate}`}>Cardano Foundation</span>
+              <span className="metadata-value" title={news.source}>{news.source}</span>
             </div>
             <div className="metadata metadata_date">
               <span className="metadata-value" title={`${postDate}`}>{postDate}</span>

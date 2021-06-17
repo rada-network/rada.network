@@ -45,7 +45,7 @@ type Item {
     images: String
     imagesUri: JSONObject
     itemType: String
-    keywords: String
+    keywords: String!
     metadata: [ItemMetadata]
     platform: Platform
     platformId: String
@@ -94,6 +94,7 @@ type News {
     isApproved: Boolean
     isEditorPick: Boolean
     keywords: String
+    source: String
     thumbnail: String
     thumbnailUri: String
     title: String!
