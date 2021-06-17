@@ -27,6 +27,7 @@ const postsGql = gql`
       totalVote
       totalComment
       createdAt
+      keywords
     }
   }
   `

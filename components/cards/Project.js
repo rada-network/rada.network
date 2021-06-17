@@ -7,6 +7,7 @@ import {Vote} from "../vote/Vote";
 import styles from '../../styles/modules/Card.post.module.css'
 import ItemTypeIcon from "../icons/itemTypeIcon";
 import NetworkIcon from "../icons/networkIcon";
+import KeywordIcon from "../icons/keywordIcon";
 
 export const Card = ({
   voteStore,
@@ -28,6 +29,10 @@ export const Card = ({
 }) => {
   const postDate = utils.timeDifference(new Date(), new Date(projectDate))
   const titleTime = utils.titleTime(projectDate)
+
+  let keywords = JSON.parse(post.keywords);
+  keywords = Object.entries(keywords)
+
   return (
     <div className={`card group ${styles.card}`}>
 
@@ -53,6 +58,15 @@ export const Card = ({
             <Link href={`/item/${post.id}`}>
               <a className="card-link">{projectTitle}</a>
             </Link>
+          </div>
+          <div className="metadata-wrapper">
+            {
+              keywords.map(function(value, index, array){
+                return (
+                  <KeywordIcon key={value[0]+value[1]+(new Date()).getTime()} keyword={value[0]} weight={value[1]}/>
+                )
+              })
+            }
           </div>
         </div>
 

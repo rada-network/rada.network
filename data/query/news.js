@@ -8,6 +8,7 @@ const newsGql = gql`
             title
             description
             thumbnailUri
+            source
             content
             keywords
             createdAt
