@@ -99,7 +99,7 @@ Section
 }
 
 .section-body {
-  @apply px-4 py-4 md:px-6 md:py-4 lg:px-8 lg:py-6;
+  @apply px-4 pb-4 md:px-6 md:pb-4 lg:px-8 lg:pb-6;
 }
 
 .section-footer {
