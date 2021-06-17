@@ -80,7 +80,8 @@ Section
 }
 
 .section-inner {
-  @apply p-0 -mx-4 md:mx-0 bg-white shadow-sm rounded;
+  @apply p-0 -mx-4 md:mx-0;
+  @apply bg-white shadow-sm rounded;
 }
 
 .section-header {
