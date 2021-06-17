@@ -39,7 +39,7 @@ export const CardNews = ({news}) => {
               <span className="icon -mb-0.5 ico-external-link"><RiExternalLinkLine /></span>
             </a>
           </div>
-          <div className="metadata-wrapper mt-1">
+          <div className="metadata-wrapper md:my-1 lg:mt-0">
             {
               keywords.map(function(value, index, array){
                 return (
