@@ -35,11 +35,11 @@ export const CardNews = ({news}) => {
         <div className={`${styles.card_body_header}`}>
           <div className={`${styles.card_title}`}>
             <a className="card-link group" rel={"nofollow"} target={"_blank"} href={news.websiteUri}>
-              <span className="">{news.title}</span>
-              <span className="icon ml-2 -mb-0.5 ico-external-link"><RiExternalLinkLine /></span>
+              <span className="mr-2">{news.title}</span>
+              <span className="icon -mb-0.5 ico-external-link"><RiExternalLinkLine /></span>
             </a>
           </div>
-          <div className="metadata-wrapper">
+          <div className="metadata-wrapper mt-1">
             {
               keywords.map(function(value, index, array){
                 return (
@@ -50,7 +50,7 @@ export const CardNews = ({news}) => {
           </div>
         </div>
 
-        <div className={`${styles.card_body_main}`}>
+        <div className={`${styles.card_body_main} transform scale-0 h-0 md:scale-100 md:h-auto`}>
           <div className={`${styles.card_text}`} dangerouslySetInnerHTML={{__html: news.description}} />
         </div>
 
