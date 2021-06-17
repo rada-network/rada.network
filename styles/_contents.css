@@ -31,7 +31,7 @@ metadata
 }
 
 .project-metadata_type {
-  @apply uppercase font-medium;
+
   &_token {
     @apply text-green-700;
   }

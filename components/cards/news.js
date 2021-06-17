@@ -18,7 +18,7 @@ export const CardNews = ({news}) => {
         {news.thumbnailUri === "" ?
           <div className={`${styles.project_icon_ph}`}>
             <a rel={"nofollow"} target={"_blank"} href={news.websiteUri}>
-              <span class={`icon text-yellow-500 ${styles.project_icon_ph__img}`}><i class="fad fa-newspaper"></i></span>
+              <span className={`icon text-yellow-500 ${styles.project_icon_ph__img}`}><i className="fad fa-newspaper"></i></span>
             </a>
           </div>
           :
