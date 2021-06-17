@@ -44,7 +44,7 @@ Project
 }
 
 .card_title a {
-  @apply relative pr-4;
+  @apply relative pr-2;
 }
 
 .card_text {
