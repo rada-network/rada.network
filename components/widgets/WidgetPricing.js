@@ -45,6 +45,23 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
   }
 
   useEffect(() => {
+    const onResize = () => {
+      // get widget size
+      const box = document.getElementById('chart-box')
+      const style = getComputedStyle(box)
+      const w = box.clientWidth - parseInt(style.paddingLeft) - parseInt(style.paddingRight)
+      const h = Math.round(w/2)
+      setSize({w, h})    
+    };
+    window.addEventListener("resize", onResize);
+    onResize()
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+    }
+  });
+
+  useEffect(() => {
     setLoading(true)
     fetchJson(url).then(res => {
       const entries = [];
@@ -67,13 +84,6 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
       setData({entries, price: res.price, change: res.change})
       setLoading(false)
     })
-
-    // get widget size
-    const box = document.getElementById('chart-box')
-    const style = getComputedStyle(box)
-    const w = box.clientWidth - parseInt(style.paddingLeft) - parseInt(style.paddingRight)
-    const h = Math.round(w/2)
-    setSize({w, h})
   }, [duration])
 
   const Duration = () => {
