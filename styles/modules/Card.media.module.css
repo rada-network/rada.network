@@ -12,12 +12,14 @@ Media Full
 }
 
 .card_body__header {
-  @apply mb-2;
+  @apply mb-1;
 }
 
 .card_body__main {
   @apply mb-4;
 }
+
+.card_body__footer {}
 
 .card_title {
   @apply text-sm;
@@ -28,7 +30,6 @@ Media Full
 }
 
 .media {
-  @apply rounded shadow;
 }
 
 .img {

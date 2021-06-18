@@ -114,8 +114,6 @@ export default observer((props) => {
 
               {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
                 <SocialPostsList
-                  grid="1"
-                  gap="4"
                   title="Social Signal"
                   itemType={"tweet"}
                   titleIcon="fire-alt"

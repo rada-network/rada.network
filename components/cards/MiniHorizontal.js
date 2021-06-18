@@ -1,26 +1,32 @@
-export const Card = ({title, text, mediaUri, link, cta}) => {
+import Link from "next/link"
+import styles from '../../styles/modules/Card.miniH.module.css'
+
+export const CardMiniH = ({title, text, mediaUri, mediaType, link}) => {
   const content = 
-    <div className="card card-mini-h">
-      <div className="card-media">
-      <img className="card-img" src={mediaUri} />
+    <div className={`card group ${styles.card}`}>
+
+      <div className={`${styles.card_media}`}>
+        <img className={`${styles.media}`} src={mediaUri} />
       </div> 
-      <div className="card-body">
+
+      <div className={`${styles.card_body}`}>
+
         { title && 
-        <div className="card-body-header">
-          <div className="card-title text-base text-gray-900 mb-1">{title}</div>
+        <div className={`${styles.card_body__header}`}>
+          <div className={`${styles.card_title}`}>{title}</div>
         </div> }
-        { text && 
-        <div className="card-body-main">
-          <div className="card-text text-xs text-gray-900 text-opacity-75">{text}</div>
-        </div> }
-        { cta && 
-        <div className="card-body-footer">
-          <div className="card-cta">
-            <button className="btn">
-              <span className="btn-text">{cta}</span>
-            </button>
+
+        <div className={`${styles.card_body__footer}`}>
+          <div className="metadata-wrapper">
+            <div className="metadata metadata_author">
+              <span className="metadata-value">Cardano Foundation</span>
+            </div>
+            <div className="metadata metadata_date">
+              <span className="metadata-value">2d</span>
+            </div>
           </div>
-        </div> }
+        </div>
+
       </div>
     </div>;
 

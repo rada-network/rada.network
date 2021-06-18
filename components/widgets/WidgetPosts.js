@@ -30,7 +30,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 <span>Family/Groups join planning dAPP</span>
               </div>
 
-              <div className="overflown-hidden">
+              <div className="overflow-hidden">
                 <div className={`${stylesPosts.media}`}>
                   <img src="https://picsum.photos/300/300?random=1" alt="" />
                 </div>
@@ -47,7 +47,8 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 <a rel="nofollow" target="_blank" href="https://cardano.org/" class="metadata project-metadata_platform project-metadata_platform_car ">
                   <span class="icon mr-1"><i class="cf cf-car text-base"></i></span><span class="metadata-value">Cardano</span>
                 </a>
-                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div></div>
+                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+              </div>
 
             </div>
           </a>
@@ -60,7 +61,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 <span>Family/Groups join planning dAPP</span>
               </div>
 
-              <div className="overflown-hidden">
+              <div className="overflow-hidden">
                 <div className={`${stylesPosts.media}`}>
                   <img src="https://picsum.photos/300/300?random=2" alt="" />
                 </div>
@@ -77,7 +78,8 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 <a rel="nofollow" target="_blank" href="https://cardano.org/" class="metadata project-metadata_platform project-metadata_platform_car ">
                   <span class="icon mr-1"><i class="cf cf-car text-base"></i></span><span class="metadata-value">Cardano</span>
                 </a>
-                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div></div>
+                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+              </div>
 
             </div>
           </a>
@@ -90,7 +92,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 <span>Cardano China Info Hub</span>
               </div>
 
-              <div className="overflown-hidden">
+              <div className="overflow-hidden">
                 <div className={`${stylesPosts.media}`}>
                   <img src="https://picsum.photos/300/300?random=3" alt="" />
                 </div>
@@ -107,7 +109,8 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 <a rel="nofollow" target="_blank" href="https://cardano.org/" class="metadata project-metadata_platform project-metadata_platform_car ">
                   <span class="icon mr-1"><i class="cf cf-car text-base"></i></span><span class="metadata-value">Cardano</span>
                 </a>
-                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div></div>
+                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+              </div>
 
             </div>
           </a>
@@ -120,7 +123,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 <span>This is a post with no image</span>
               </div>
 
-              <div className="overflown-hidden">
+              <div className="overflow-hidden">
                 {/* <div className={`${stylesPosts.media}`}>
                   <img src="https://picsum.photos/300/300?random=4" alt="" />
                 </div> */}
@@ -137,7 +140,8 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 <a rel="nofollow" target="_blank" href="https://cardano.org/" class="metadata project-metadata_platform project-metadata_platform_car ">
                   <span class="icon mr-1"><i class="cf cf-car text-base"></i></span><span class="metadata-value">Cardano</span>
                 </a>
-                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div></div>
+                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+              </div>
 
             </div>
           </a>
@@ -150,7 +154,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 <span>Cardano On-Chain Voting</span>
               </div>
 
-              <div className="overflown-hidden">
+              <div className="overflow-hidden">
                 <div className={`${stylesPosts.media}`}>
                   <img src="https://picsum.photos/300/300?random=4" alt="" />
                 </div>
@@ -167,7 +171,8 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 <a rel="nofollow" target="_blank" href="https://cardano.org/" class="metadata project-metadata_platform project-metadata_platform_car ">
                   <span class="icon mr-1"><i class="cf cf-car text-base"></i></span><span class="metadata-value">Cardano</span>
                 </a>
-                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div></div>
+                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+              </div>
 
             </div>
           </a>

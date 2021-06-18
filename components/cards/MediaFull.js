@@ -10,7 +10,7 @@ export const Card = ({title, mediaUri, mediaType}) => {
     <div className={`${styles.card_media}`}>
       <div className="w-full h-full">
         <div className={`${styles.media} aspect-w-16 aspect-h-9`}>
-          <iframe width="560" height="315" src={mediaUri} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+          <iframe width="640" height="360" src={mediaUri} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@ export const Card = ({title, mediaUri, mediaType}) => {
     <div className={`${styles.card_media}`}>
       <div className="w-full h-full">
         <div className={`${styles.media} aspect-w-16 aspect-h-9`}>
-          <iframe width="560" height="315" src={mediaUri} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+          <iframe width="640" height="360" src={mediaUri} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@ export const Card = ({title, mediaUri, mediaType}) => {
           <a href="#" className={`card-title ${styles.card_title}`}>{title}</a>
         </div>
 
-        <div className={`${styles.card_body_footer}`}>
+        <div className={`${styles.card_body__footer}`}>
           <div className="metadata-wrapper">
             <div className="metadata metadata_author">
               <span className="metadata-value">Cardano Foundation</span>

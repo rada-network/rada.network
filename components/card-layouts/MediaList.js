@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {Card} from "../cards/MediaFull";
+import {CardMiniH} from "../cards/MiniHorizontal";
 
 import WidgetTitle from "../text/widgetTitle";
 
@@ -20,7 +21,7 @@ export const MediaList = ({
       <div className="section-inner">
 
         { title && 
-				<div className="section-header">
+				<div className="section-header border-b border-gray-500 border-opacity-10">
 					<div className="section-title">
             <span className={`icon mr-3 text-${titleIconColor}`}>
               <i className={`fad fa-${titleIcon}`}/>
@@ -29,38 +30,46 @@ export const MediaList = ({
           </div>
 				</div> }
 
-				<div className="section-body">
-          <div className={`grid gap-${gap || '5'} sm:grid-cols-2 lg:grid-cols-${grid || '3'}`}>
-            
-            <Card 
-              title="STARTLING TRUTH ABOUT CARDANO! (ADA Holders Must PREPARE)"
-              mediaType="Podcast"
-              mediaUri="https://www.youtube.com/embed/Ck1Xza8Xmyw"
-            />
+				<div className="section-body no-padding">
+          <div className={`grid grid-cols-1 lg:grid-cols-12`}>
 
-            <Card 
-              title="The future will be decentralized | Charles Hoskinson | TEDxBermuda"
-              mediaType="Video"
-              mediaUri="https://www.youtube.com/embed/97ufCT6lQcY"
-            />
+            <div className="col-span-8 media-player">
+              <Card
+                title="STARTLING TRUTH ABOUT CARDANO! (ADA Holders Must PREPARE)"
+                mediaType="Podcast"
+                mediaUri="https://www.youtube.com/embed/Ck1Xza8Xmyw"
+              />
+            </div>
 
-            <Card
-              title="Cardano - Simply Explained"
-              mediaType="Video"
-              mediaUri="https://www.youtube.com/embed/Do8rHvr65ZA"
-            />
+            <div className="col-span-4 media-list border-l border-gray-500 border-opacity-10">
+              <CardMiniH
+                title="The future will be decentralized | Charles Hoskinson | TEDxBermuda"
+                mediaType="Video"
+                mediaUri="https://picsum.photos/300/300?random=1"
+                link="#"
+              />
 
-            <Card 
-              title="What is Cardano? | Charles Hoskinson and Lex Fridman"
-              mediaUri="https://www.youtube.com/embed/Elwv7Itr1qA"
-              mediaType="Video"
-            />
+              <CardMiniH
+                title="Cardano - Simply Explained"
+                mediaType="Video"
+                mediaUri="https://picsum.photos/300/300?random=2"
+                link="#"
+              />
 
-            <Card 
-              title="Ethereum vs. Cardano: Which is BEST?!"
-              mediaUri="https://www.youtube.com/embed/SXfXydnXNH4"
-              mediaType="Podcast"
-            />
+              <CardMiniH
+                title="What is Cardano? | Charles Hoskinson and Lex Fridman"
+                mediaUri="https://picsum.photos/300/300?random=3"
+                mediaType="Video"
+                link="#"
+              />
+
+              <CardMiniH 
+                title="Ethereum vs. Cardano: Which is BEST?!"
+                mediaUri="https://picsum.photos/300/300?random=4"
+                mediaType="Podcast"
+                link="#"
+              />
+            </div>
 
 					</div>
 				</div>
