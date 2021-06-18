@@ -11,13 +11,11 @@
 Card Layouts
 --------------------------------------------- */
 .category-list {
-  .container > .container-inner {
-    @apply pb-5;
-  }
   .card {
     @apply flex-shrink-0;
   }
 }
+
 
 /* 
 Sections
@@ -27,6 +25,21 @@ Social
 */
 .section-socialposts {
 }
+
+/* 
+Media 
+*/
+.media-player {
+
+}
+
+.media-playlist {
+  .card {
+    @apply flex-shrink-0 w-64 h-full;
+  }
+}
+
+
 
 /* 
 Pages

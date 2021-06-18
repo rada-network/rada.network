@@ -8,7 +8,7 @@ Mini Horizontal
 }
 
 .card_body {
-  @apply p-4;
+  @apply mt-2;
 }
 
 .card_body__header {
@@ -30,7 +30,7 @@ Mini Horizontal
 }
 
 .media {
-  @apply w-px-48 h-px-56 rounded;
+  @apply w-full  h-px-104 object-cover rounded;
 }
 
 .img {

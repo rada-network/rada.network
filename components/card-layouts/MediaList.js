@@ -53,7 +53,7 @@ export const MediaList = ({
           <div className={`grid grid-cols-1`}>
 
             {/* Media Player */}
-            <div className="media-player p-8">
+            <div className="media-player">
               <Card
                 title="STARTLING TRUTH ABOUT CARDANO! (ADA Holders Must PREPARE)"
                 mediaType="Podcast"
@@ -62,7 +62,7 @@ export const MediaList = ({
             </div>
 
             {/* Media Playlist */}
-            <div className={`scrollbar ${styles.scrollbar} ${styles.media_scroll}`} ref={scrollBox}>
+            <div className={`media-playlist scrollbar ${styles.scrollbar} ${styles.media_scroll}`} ref={scrollBox}>
               <CardMiniV
                 title="The future will be decentralized | Charles Hoskinson | TEDxBermuda"
                 mediaType="Video"
