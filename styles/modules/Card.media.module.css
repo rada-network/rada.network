@@ -8,7 +8,7 @@ Media Full
 }
 
 .card_body {
-  @apply p-2;
+  @apply p-4 pb-0;
 }
 
 .card_body__header {
@@ -22,11 +22,11 @@ Media Full
 .card_body__footer {}
 
 .card_title {
-  @apply text-sm;
+
 }
 
 .card_media {
-  @apply rounded;
+  @apply rounded-md overflow-hidden shadow;
 }
 
 .media {

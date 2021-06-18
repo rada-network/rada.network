@@ -40,14 +40,14 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
               </div>
 
-              <div class="metadata-wrapper mt-2">
-                <a class="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
-                  <span class="metadata-value">dapp</span> 
+              <div className="metadata-wrapper mt-2">
+                <a className="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
+                  <span className="metadata-value">dapp</span> 
                 </a>
-                <a rel="nofollow" target="_blank" href="https://cardano.org/" class="metadata project-metadata_platform project-metadata_platform_car ">
-                  <span class="icon mr-1"><i class="cf cf-car text-base"></i></span><span class="metadata-value">Cardano</span>
+                <a rel="nofollow" target="_blank" href="https://cardano.org/" className="metadata project-metadata_platform project-metadata_platform_car ">
+                  <span className="icon mr-1"><i className="cf cf-car text-base"></i></span><span className="metadata-value">Cardano</span>
                 </a>
-                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+                <div className="metadata metadata_date"><span className="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
               </div>
 
             </div>
@@ -71,14 +71,14 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
               </div>
 
-              <div class="metadata-wrapper mt-2">
-                <a class="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
-                  <span class="metadata-value">dapp</span> 
+              <div className="metadata-wrapper mt-2">
+                <a className="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
+                  <span className="metadata-value">dapp</span> 
                 </a>
-                <a rel="nofollow" target="_blank" href="https://cardano.org/" class="metadata project-metadata_platform project-metadata_platform_car ">
-                  <span class="icon mr-1"><i class="cf cf-car text-base"></i></span><span class="metadata-value">Cardano</span>
+                <a rel="nofollow" target="_blank" href="https://cardano.org/" className="metadata project-metadata_platform project-metadata_platform_car ">
+                  <span className="icon mr-1"><i className="cf cf-car text-base"></i></span><span className="metadata-value">Cardano</span>
                 </a>
-                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+                <div className="metadata metadata_date"><span className="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
               </div>
 
             </div>
@@ -102,14 +102,14 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
               </div>
 
-              <div class="metadata-wrapper mt-2">
-                <a class="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
-                  <span class="metadata-value">dapp</span> 
+              <div className="metadata-wrapper mt-2">
+                <a className="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
+                  <span className="metadata-value">dapp</span> 
                 </a>
-                <a rel="nofollow" target="_blank" href="https://cardano.org/" class="metadata project-metadata_platform project-metadata_platform_car ">
-                  <span class="icon mr-1"><i class="cf cf-car text-base"></i></span><span class="metadata-value">Cardano</span>
+                <a rel="nofollow" target="_blank" href="https://cardano.org/" className="metadata project-metadata_platform project-metadata_platform_car ">
+                  <span className="icon mr-1"><i className="cf cf-car text-base"></i></span><span className="metadata-value">Cardano</span>
                 </a>
-                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+                <div className="metadata metadata_date"><span className="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
               </div>
 
             </div>
@@ -133,14 +133,14 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
               </div>
 
-              <div class="metadata-wrapper mt-2">
-                <a class="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
-                  <span class="metadata-value">dapp</span> 
+              <div className="metadata-wrapper mt-2">
+                <a className="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
+                  <span className="metadata-value">dapp</span> 
                 </a>
-                <a rel="nofollow" target="_blank" href="https://cardano.org/" class="metadata project-metadata_platform project-metadata_platform_car ">
-                  <span class="icon mr-1"><i class="cf cf-car text-base"></i></span><span class="metadata-value">Cardano</span>
+                <a rel="nofollow" target="_blank" href="https://cardano.org/" className="metadata project-metadata_platform project-metadata_platform_car ">
+                  <span className="icon mr-1"><i className="cf cf-car text-base"></i></span><span className="metadata-value">Cardano</span>
                 </a>
-                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+                <div className="metadata metadata_date"><span className="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
               </div>
 
             </div>
@@ -164,14 +164,14 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
               </div>
 
-              <div class="metadata-wrapper mt-2">
-                <a class="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
-                  <span class="metadata-value">dapp</span> 
+              <div className="metadata-wrapper mt-2">
+                <a className="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
+                  <span className="metadata-value">dapp</span> 
                 </a>
-                <a rel="nofollow" target="_blank" href="https://cardano.org/" class="metadata project-metadata_platform project-metadata_platform_car ">
-                  <span class="icon mr-1"><i class="cf cf-car text-base"></i></span><span class="metadata-value">Cardano</span>
+                <a rel="nofollow" target="_blank" href="https://cardano.org/" className="metadata project-metadata_platform project-metadata_platform_car ">
+                  <span className="icon mr-1"><i className="cf cf-car text-base"></i></span><span className="metadata-value">Cardano</span>
                 </a>
-                <div class="metadata metadata_date"><span class="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+                <div className="metadata metadata_date"><span className="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
               </div>
 
             </div>

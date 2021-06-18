@@ -38,5 +38,5 @@ Category Scrollbar
 Media Scrollbar  
 */
 .media_scroll {
-  @apply flex flex-nowrap relative pb-6;
+  @apply flex flex-nowrap relative pb-4 mb-4;
 }

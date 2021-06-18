@@ -30,13 +30,19 @@ Social
 Media 
 */
 .media-player {
-
+  @apply p-4 md:p-6 lg:p-8;
+  @apply border-b border-gray-500 border-opacity-10;
 }
 
 .media-playlist {
-  .card {
-    @apply flex-shrink-0 w-64 h-full;
+  @apply mx-4 mt-2 md:mx-6 md:mt-4 lg:mx-8 lg:mt-6;
+  .card,
+  .card-link {
+    @apply flex-shrink-0 w-60 h-full rounded transition;
   }
+  .card-link:hover {
+    @apply bg-gray-100;
+  }  
 }
 
 
