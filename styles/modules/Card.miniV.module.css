@@ -21,7 +21,7 @@ Mini Horizontal
 .card_body__footer {}
 
 .card_title {
-  @apply text-sm line-clamp-1 -mt-0.5;
+  @apply text-sm line-clamp-2 mt-1;
 }
 
 .card_media {

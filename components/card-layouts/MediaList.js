@@ -51,6 +51,21 @@ export const MediaList = ({
       type: 'Video',
       id: '9ZPzC-3sueo'
     },
+    {
+      title: 'The future will be decentralized | Charles Hoskinson | TEDxBermuda',
+      type: 'Video',
+      id: 'Ck1Xza8Xmyw'
+    },
+    {
+      title: 'BREAKING: Hoskinson UPDATES Cardano Smart Contract Timeline',
+      type: 'Video',
+      id: 'ZpRwpDt8wGw'
+    },
+    {
+      title: 'Greatest Cardano News Of 2021!! (Best Altcoin And Crypto Strategy)',
+      type: 'Video',
+      id: '9ZPzC-3sueo'
+    },
   ]
 
   const [activeIdx, setActiveIdx] = useState(0)
@@ -84,7 +99,7 @@ export const MediaList = ({
             {/* Media Playlist */}
             <div className={`media-playlist scrollbar ${styles.scrollbar} ${styles.media_scroll}`} ref={scrollBox}>
 
-              { items.map((item, idx) => <CardMiniV {...item} onClick={() => setActiveIdx(idx)} />) }
+              { items.map((item, idx) => <CardMiniV {...item} onClick={() => setActiveIdx(idx)} className={idx==activeIdx ? 'active' : ''} />) }
 
             </div>
 
