@@ -10,7 +10,7 @@ export const Card = ({title, mediaUri, mediaType}) => {
     <div className={`${styles.card_media}`}>
       <div className="w-full h-full">
         <div className={`${styles.media} aspect-w-16 aspect-h-9`}>
-          <iframe width="640" height="360" src={mediaUri} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+          <iframe width="640" height="360" src={mediaUri} title={title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@ export const Card = ({title, mediaUri, mediaType}) => {
     <div className={`${styles.card_media}`}>
       <div className="w-full h-full">
         <div className={`${styles.media} aspect-w-16 aspect-h-9`}>
-          <iframe width="640" height="360" src={mediaUri} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+          <iframe width="640" height="360" src={mediaUri} title={title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
     </div>
