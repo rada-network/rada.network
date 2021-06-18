@@ -12,7 +12,7 @@ import utils from "../../lib/util"
 
 export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
-  return <div className={`group ${styles.widget}`}><div className={`${styles.widget_header}`}><div className={`${styles.widget_title}`}>Pricing - temporary hide</div></div></div>
+  //return <div className={`group ${styles.widget}`}><div className={`${styles.widget_header}`}><div className={`${styles.widget_title}`}>Pricing - temporary hide</div></div></div>
 
   const [loading, setLoading] = useState(false)
   const [size, setSize] = useState({w: 300, h: 150})
@@ -61,11 +61,13 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
     return () => {
       window.removeEventListener("resize", onResize);
     }
-  });
+  }, []);
+
+  console.log('render')
 
   useEffect(() => {
     const loadData = () => {
-      setLoading(true)
+      //setLoading(true)
       fetchJson(url).then(res => {
         const entries = [];
         let count = 0;
@@ -85,7 +87,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
         })
 
         setData({entries, price: res.price, change: res.change})
-        setLoading(false)      
+        //setLoading(false)      
       })
     }
     let ti = setInterval(loadData, 60000)
@@ -131,6 +133,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
   // Token infomation
   const [info, setInfo] = useState({})
   useEffect(() => {
+
     // get token info
     fetchJson('/api/coin-info').then(res => {
       setInfo({
