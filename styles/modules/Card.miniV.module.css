@@ -6,6 +6,10 @@ Mini Horizontal
   @apply flex flex-col relative p-3;
 }
 
+.card + .card {
+  @apply ml-1;
+}
+
 .card_body {
   @apply mt-2;
 }
