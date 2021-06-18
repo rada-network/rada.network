@@ -88,8 +88,8 @@ export default observer((props) => {
               <CategoryList
                 extraClass="category-list"
                 title="Top Topics"
-                titleIcon="album-collection"
-                titleIconColor="gray-400"
+                // titleIcon="album-collection"
+                // titleIconColor="gray-400"
                 topic={data.topic}
               />
 
@@ -98,8 +98,8 @@ export default observer((props) => {
                 gap="4"
                 extraClass="media-list"
                 title="Latest Media"
-                titleIcon="icons"
-                titleIconColor="purple-500"
+                // titleIcon="icons"
+                // titleIconColor="purple-500"
               />
 
               <NewsList
@@ -107,8 +107,8 @@ export default observer((props) => {
                 gap="0"
                 extraClass="news-list"
                 title="News from Cardano"
-                titleIcon="newspaper"
-                titleIconColor="yellow-500"
+                // titleIcon="newspaper"
+                // titleIconColor="yellow-500"
                 dataStore={observableNewsStore}
               />
 
@@ -182,8 +182,8 @@ export default observer((props) => {
                   gap="0"
                   itemType={"all"}
                   title="Projects from Catalyst"
-                  titleIcon="code-branch"
-                  titleIconColor="blue-500"
+                  // titleIcon="code-branch"
+                  // titleIconColor="blue-500"
                   cta="Sorted by"
                   dataStore={observableItemStore}
                   voteStore={voteStore}

@@ -38,9 +38,11 @@ Media
   @apply mx-4 mt-2 md:mx-6 md:mt-4 lg:mx-8 lg:mt-6;
   .card,
   .card-link {
-    @apply flex-shrink-0 w-60 h-full rounded transition;
+    @apply flex-shrink-0 w-60 h-full rounded transition cursor-pointer;
   }
-  .card-link:hover {
+  .card:hover {
+  }
+  .card.active {
     @apply bg-gray-100;
   }  
 }

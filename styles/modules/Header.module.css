@@ -56,8 +56,9 @@ Category Header
   @apply bg-gradient-to-br from-yellow-500 to-yellow-400;
 }
 
-
+/* Animation */
 .floating {
   @apply relative mt-8 -mb-40 lg:mt-16 lg:-mb-48;
-  animation: floating 8s infinite ease-in-out;
+  animation: floating 16s infinite ease-in-out;
+  will-change: transform;
 }
