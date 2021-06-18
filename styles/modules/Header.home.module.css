@@ -27,7 +27,9 @@
   @apply text-base lg:text-lg font-light text-white text-opacity-70 mt-2;
 }
 
+/* Animation */
 .floating {
   @apply relative;
   animation: floating 60s infinite ease-in-out;
+  will-change: transform;
 }
