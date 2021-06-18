@@ -11,7 +11,9 @@ import {RiExternalLinkLine} from "react-icons/ri";
 import utils from "../../lib/util"
 
 export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
-return 'hide it'
+
+  return <div className={`group ${styles.widget}`}><div className={`${styles.widget_header}`}><div className={`${styles.widget_title}`}>Pricing - temporary hide</div></div></div>
+
   const [loading, setLoading] = useState(false)
   const [size, setSize] = useState({w: 300, h: 150})
   const [duration, setDuration] = useState(24)
