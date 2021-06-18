@@ -1,12 +1,16 @@
 import Link from "next/link"
 import styles from '../../styles/modules/Card.miniV.module.css'
 
-export const CardMiniV = ({title, text, mediaUri, mediaType, link}) => {
+export const CardMiniV = ({title, type, id, link, onClick}) => {
+  const thumb = {
+    Video: `https://img.youtube.com/vi/${id}/0.jpg`
+  }
+
   const content = 
-    <div className={`card group ${styles.card}`}>
+    <div className={`card group ${styles.card}`} onClick={onClick}>
 
       <div className={`${styles.card_media}`}>
-        <img className={`${styles.media}`} src={mediaUri} />
+        <img className={`${styles.media}`} src={thumb[type]} />
       </div> 
 
       <div className={`${styles.card_body}`}>

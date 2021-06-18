@@ -11,7 +11,7 @@ import {RiExternalLinkLine} from "react-icons/ri";
 import utils from "../../lib/util"
 
 export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
-
+return 'hide it'
   const [loading, setLoading] = useState(false)
   const [size, setSize] = useState({w: 300, h: 150})
   const [duration, setDuration] = useState(24)
@@ -86,7 +86,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
         setLoading(false)      
       })
     }
-    let ti = setInterval(loadData, 10000)
+    let ti = setInterval(loadData, 60000)
     loadData()
 
     return () => clearInterval(ti)

@@ -34,6 +34,27 @@ export const MediaList = ({
       ps.destroy();
     }
   }, [scrollBox]);
+  
+  const items = [
+    {
+      title: 'The future will be decentralized | Charles Hoskinson | TEDxBermuda',
+      type: 'Video',
+      id: 'Ck1Xza8Xmyw'
+    },
+    {
+      title: 'BREAKING: Hoskinson UPDATES Cardano Smart Contract Timeline',
+      type: 'Video',
+      id: 'ZpRwpDt8wGw'
+    },
+    {
+      title: 'Greatest Cardano News Of 2021!! (Best Altcoin And Crypto Strategy)',
+      type: 'Video',
+      id: '9ZPzC-3sueo'
+    },
+  ]
+
+  const [activeIdx, setActiveIdx] = useState(0)
+  const activeItem = items[activeIdx] ?? items[0]
 
 	return (
 		<div className={`section ${extraClass || ''}`}>
@@ -51,73 +72,19 @@ export const MediaList = ({
 
 				<div className="section-body no-padding">
           <div className={`grid grid-cols-1`}>
-
             {/* Media Player */}
             <div className="media-player">
               <Card
-                title="STARTLING TRUTH ABOUT CARDANO! (ADA Holders Must PREPARE)"
-                mediaType="Podcast"
-                mediaUri="https://www.youtube.com/embed/Ck1Xza8Xmyw"
+                title={activeItem.title}
+                mediaType={activeItem.type}
+                mediaUri={`https://www.youtube.com/embed/${activeItem.id}`}
               />
             </div>
 
             {/* Media Playlist */}
             <div className={`media-playlist scrollbar ${styles.scrollbar} ${styles.media_scroll}`} ref={scrollBox}>
-              <CardMiniV
-                title="The future will be decentralized | Charles Hoskinson | TEDxBermuda"
-                mediaType="Video"
-                mediaUri="https://picsum.photos/300/300?random=1"
-                link="#"
-              />
 
-              <CardMiniV
-                title="Cardano - Simply Explained"
-                mediaType="Video"
-                mediaUri="https://picsum.photos/300/300?random=2"
-                link="#"
-              />
-
-              <CardMiniV
-                title="What is Cardano? | Charles Hoskinson and Lex Fridman"
-                mediaUri="https://picsum.photos/300/300?random=3"
-                mediaType="Video"
-                link="#"
-              />
-
-              <CardMiniV 
-                title="Ethereum vs. Cardano: Which is BEST?!"
-                mediaUri="https://picsum.photos/300/300?random=4"
-                mediaType="Podcast"
-                link="#"
-              />
-
-              <CardMiniV
-                title="The future will be decentralized | Charles Hoskinson | TEDxBermuda"
-                mediaType="Video"
-                mediaUri="https://picsum.photos/300/300?random=1"
-                link="#"
-              />
-
-              <CardMiniV
-                title="Cardano - Simply Explained"
-                mediaType="Video"
-                mediaUri="https://picsum.photos/300/300?random=2"
-                link="#"
-              />
-
-              <CardMiniV
-                title="What is Cardano? | Charles Hoskinson and Lex Fridman"
-                mediaUri="https://picsum.photos/300/300?random=3"
-                mediaType="Video"
-                link="#"
-              />
-
-              <CardMiniV 
-                title="Ethereum vs. Cardano: Which is BEST?!"
-                mediaUri="https://picsum.photos/300/300?random=4"
-                mediaType="Podcast"
-                link="#"
-              />
+              { items.map((item, idx) => <CardMiniV {...item} onClick={() => setActiveIdx(idx)} />) }
 
             </div>
 
