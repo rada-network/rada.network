@@ -26,7 +26,7 @@ Media Full
 }
 
 .card_media {
-  @apply max-h-96 max-w-screen-sm rounded;
+  @apply rounded;
 }
 
 .media {

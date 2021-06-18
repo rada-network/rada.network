@@ -58,8 +58,6 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
                 />
               )
             })}
-
-
 					</div>
 
 				</div>

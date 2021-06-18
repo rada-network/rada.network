@@ -1,0 +1,38 @@
+/*
+Mini Horizontal
+*/
+
+.card {
+  @apply flex flex-col relative px-4 py-4;
+  /* @apply border-b border-gray-500 border-opacity-10; */
+}
+
+.card_body {
+  @apply p-4;
+}
+
+.card_body__header {
+  @apply mb-1;
+}
+
+.card_body__main {
+  @apply mb-4;
+}
+
+.card_body__footer {}
+
+.card_title {
+  @apply text-sm line-clamp-1 -mt-0.5;
+}
+
+.card_media {
+  @apply flex-shrink-0 rounded;
+}
+
+.media {
+  @apply w-px-48 h-px-56 rounded;
+}
+
+.img {
+  @apply rounded;
+}
