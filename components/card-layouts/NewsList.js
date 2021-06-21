@@ -6,9 +6,7 @@ import Link from "next/link"
 import {observer} from "mobx-react";
 import {TabButton} from "../button/tabButton";
 import WidgetTitle from "../text/widgetTitle";
-import {CardNews} from "../cards/News";
-import {getPosts} from "../../data/query/posts";
-import utils from "../../lib/util";
+import {CardNews} from "../cards/news";
 import {getNews} from "../../data/query/news";
 
 const take = 12
