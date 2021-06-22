@@ -37,7 +37,7 @@ export const DropDown = ({ color }) => {
               : openDropdownPopover();
           }}
         >
-          <span className={`btn-text ${styles.dropdown_toggle__text}`}>Today</span>
+          <span className={`btn__text ${styles.dropdown_toggle__text}`}>Today</span>
           <span className={`caret ml-2 ${styles.caret}`}></span>
         </button>
 

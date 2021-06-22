@@ -122,7 +122,7 @@ export const ProjectsList = observer(({
           {cta &&
           <div className="section-cta">
             {cta === "View All" ? <button className="btn">
-              <span className="btn-text">
+              <span className="btn__text">
                 <Link href={`/explore/${itemType}`}>
                   {cta}
                 </Link>
@@ -158,20 +158,20 @@ export const ProjectsList = observer(({
             ? <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
                   className="btn btn-nav mr-2">
               <span className="icon"><IoChevronBackSharp/></span>
-              <span className="btn-text whitespace-nowrap">Back to home</span>
+              <span className="btn__text whitespace-nowrap">Back to home</span>
             </a>
             : ""
           }
           {loadingButton
             ? <a className="btn btn-loading">
-              <span className={"btn-text"}>Loading...</span>
+              <span className={"btn__text"}>Loading...</span>
             </a>
             : ""
           }
           {showMoreButton ?
             <a onClick={handleLoadMoreItems} className="btn btn-nav">
-              <span className="btn-text">Show {take} more</span>
-              <span className="btn-caret"></span>
+              <span className="btn__text">Show {take} more</span>
+              <span className="btn__caret_down"></span>
             </a>
             :  ""
           }
@@ -181,7 +181,7 @@ export const ProjectsList = observer(({
             ? <a onClick={e => {dataStore.home.homeDisplay = 0;setShowMoreButton(true)}} href={"#top"}
                   className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                 justify-center py-3 px-6 rounded w-full mt-8 text-sm">
-              <span className="btn-text">Back to home</span>
+              <span className="btn__text">Back to home</span>
               <span className="icon"><IoChevronForwardSharp/></span>
             </a>
             : ""

@@ -95,7 +95,7 @@ export const NewsList = observer(({
           <div className="section-cta">
             {cta === "View All" ?
               <button className="btn">
-                <span className="btn-text">
+                <span className="btn__text">
                   <Link href={`/news/${query}`}>
                     {cta}
                   </Link>
@@ -123,15 +123,15 @@ export const NewsList = observer(({
         <div className="section-footer">
           {loadingButton
             ? <a className="btn btn-loading">
-              <span className={"btn btn-text"}>Loading...</span>
+              <span className={"btn btn__text"}>Loading...</span>
             </a>
             : ""
           }
           {showMoreButton ?
             <a onClick={handleLoadMoreItems}
                className="btn btn-nav">
-              <span className="btn-text">Show {take} more</span>
-              <span className="btn-caret"></span>
+              <span className="btn__text">Show {take} more</span>
+              <span className="btn__caret_down"></span>
             </a>
             :  ""
           }

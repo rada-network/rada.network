@@ -33,15 +33,11 @@ Category
 .card_cta {}
 
 .btn {
-  @apply text-xs text-white text-opacity-70 hover:text-opacity-100
+  @apply text-xs text-white text-opacity-70 hover:text-opacity-100;
 }
 
 .btn_text {
   @apply font-medium;
-}
-
-.btn_arrow {
-  @apply ml-2;
 }
 
 /* 

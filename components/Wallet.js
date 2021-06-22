@@ -72,7 +72,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                   >
                     <button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
                       <span className="icon"><IoChevronBackSharp/></span>
-                      <span className="btn-text font-normal">Go back</span>
+                      <span className="btn__text font-normal">Go back</span>
                     </button>
                     <h3 className="text-xl font-semibold">
                       Connect your 

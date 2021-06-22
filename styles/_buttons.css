@@ -1,3 +1,5 @@
+@import "_animations";
+
 /*
 Buttons
 */
@@ -5,7 +7,7 @@ Buttons
 .btn {
   @apply inline-flex items-center font-medium focus:outline-none cursor-pointer transition;
 
-  .btn-text + .icon {
+  .btn__text + .icon {
     @apply ml-1 ;
   }
 
@@ -13,16 +15,16 @@ Buttons
     @apply relative right-0 transition-all;
   }
 
-  .btn-text + .icon {
+  .btn__text + .icon {
     @apply ml-1;
   }
 
-  .icon + .btn-text {
+  .icon + .btn__text {
     @apply ml-1;
   }
 
   &:hover {
-    .btn-text + .icon {
+    .btn__text + .icon {
       @apply -right-0.5;
     }
   }
@@ -110,13 +112,34 @@ Group Buttons
   @apply text-sm;
 }
 
-.btn-caret {
-  @apply ml-2 -mt-0.5;
+
+/* 
+Button Caret
+*/
+.btn__caret_down,
+.btn__caret_right {
+  @apply relative;
   height: 6px;
   width: 6px;
   border-bottom: 2px solid;
   border-right: 2px solid;
-  transform: rotate(45deg);
-  transition: all .3s ease;
+  transition: all 0.2s ease-in-out;
 }
 
+.btn__caret_right {
+  @apply ml-1 -right-0.5;
+  transform: rotate(-45deg);
+}
+
+.btn:hover .btn__caret_right {
+  @apply -right-1;
+}
+
+.btn__caret_down {
+  @apply ml-2 -mt-0.5;
+  transform: rotate(45deg);
+}
+
+.btn:hover .btn__caret_down {
+  @apply mt-0;
+}

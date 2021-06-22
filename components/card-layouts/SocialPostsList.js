@@ -118,23 +118,23 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
               ? <a href={"#top"}
                     className="btn btn-nav mr-2">
                 <span className="icon"><IoChevronUpCircleSharp/></span>
-                <span className="btn-text whitespace-nowrap">Back to Top</span>
+                <span className="btn__text whitespace-nowrap">Back to Top</span>
               </a>
               : <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
                 className="btn btn-nav mr-2">
               <span className="icon"><IoChevronBackSharp/></span>
-              <span className="btn-text whitespace-nowrap">Back to home</span>
+              <span className="btn__text whitespace-nowrap">Back to home</span>
             </a>
             : ""
           }
 
           {loadingButton
             ? <a className="btn btn-loading">
-              <span className="btn-text">Loading...</span>
+              <span className="btn__text">Loading...</span>
             </a>
             : <a onClick={handleLoadMoreTweets} className="btn btn-nav">
-              <span className="btn-text">Show 12 more</span>
-              <span className="btn-caret"></span>
+              <span className="btn__text">Show 12 more</span>
+              <span className="btn__caret_down"></span>
             </a>
           }
         </div>

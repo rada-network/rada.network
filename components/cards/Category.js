@@ -21,12 +21,12 @@ export const Card = ({title, cta, text, itemType}) => {
         <div className={`card-body-footer ${styles.card_body__footer}`}>
           <div className={`card-cta ${styles.card_cta}`}>
             <button className={`btn ${styles.btn}`}>
-              <span className={`btn-text ${styles.btn_text}`}>
+              <span className={`btn__text ${styles.btn_text}`}>
                 <Link href={`/explore/${itemType}`}>
                   {cta}
                 </Link>
               </span>
-              <span className={`icon ${styles.btn_arrow}`}><IoChevronForwardSharp /></span>
+              <span className={`btn__caret_right`}></span>
             </button>
           </div>
         </div> }
