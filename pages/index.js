@@ -116,8 +116,8 @@ export default observer((props) => {
                 <SocialPostsList
                   title="Social Signal"
                   itemType={"tweet"}
-                  titleIcon="fire-alt"
-                  titleIconColor="red-500"
+                  titleIcon=""
+                  titleIconColor=""
                   dataStore={observableTweetStore}
                 />  : ""
               }

@@ -49,7 +49,7 @@ Category
   @apply text-opacity-100;
 }
 
-.card:hover .btn .btn__caret_right {
+.card:hover .btn__caret_right {
   @apply -right-1;
 }
 
