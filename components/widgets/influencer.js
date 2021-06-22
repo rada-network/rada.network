@@ -4,12 +4,12 @@ import Link from "next/link"
 import {uuid} from "@walletconnect/utils";
 
 const InfluencerInfoType = ({word}) => {
-  const cword = word.trim().toLowerCase()
-  if (cword === ""){
+  const cWord = word.trim().toLowerCase()
+  if (cWord === ""){
     return ""
   }
   return (
-    <Link href={`/tags/${cword}`}>
+    <Link href={`/tags/${cWord}`}>
         <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
         {word}
       </span>
@@ -36,9 +36,12 @@ export function Influencer({item}) {
         </div>
 
         <div className="overflow-hidden">
-          <div className={`${stylesInfluencers.avatar}`}>
-            <img src={item.image} alt={item.name}/>
-          </div>
+          {item.image ?
+            <div className={`${stylesInfluencers.avatar}`}>
+              <img src={item.image} alt={item.name}/>
+            </div>
+            : ""
+          }
           <div className={`${stylesInfluencers.text}`}>
             {item.description}
           </div>
@@ -55,18 +58,16 @@ export function Influencer({item}) {
             ""
           }
 
-          {/*<a href="#" target="_blank">*/}
-          {/*        <span className={`icon ${stylesInfluencers.links__icon}`}>*/}
-          {/*          <i className="fab fa-telegram-plane"/>*/}
-          {/*        </span>*/}
-          {/*</a>*/}
-          {item.website !== null &&
+          <a href="#" target="_blank">
+                  <span className={`icon ${stylesInfluencers.links__icon}`}>
+                    <i className="fab fa-telegram-plane"/>
+                  </span>
+          </a>
           <a href={item.website} target="_blank">
             <span className={`icon ${stylesInfluencers.links__icon}`}>
               <i className="fal fa-globe"/>
             </span>
           </a>
-          }
         </div>
 
       </div>

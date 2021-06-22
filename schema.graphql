@@ -5,6 +5,21 @@ schema {
     mutation: Mutation
 }
 
+type CardanoEvent {
+    createdAt: DateTime
+    description: String
+    endedAt: DateTime
+    facebook: String
+    id: String
+    keywords: String
+    startedAt: DateTime
+    telegram: String
+    title: String
+    twitter: String
+    website: String
+    youtube: String
+}
+
 type Category {
     id: String!
     slug: String!
@@ -111,6 +126,7 @@ type Platform {
 }
 
 type Query {
+    cardanoEventFeed(skip: Int = 0, take: Int = 4): [CardanoEvent]
     commentFeed(itemId: String!, orderBy: CommentOrderInput, skip: Int = 0, take: Int = 4): [Comment]
     ideaWithoutKeyword(skip: Int = 0, take: Int = 4): [Item]
     isVote(itemId: String!, walletAddress: String!): Vote
@@ -132,7 +148,9 @@ type SuggestUser {
     id: String
     image: String
     keywords: String
+    linkedin: String
     name: String
+    telegram: String
     twitter: String
     website: String
 }
