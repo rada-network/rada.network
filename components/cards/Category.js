@@ -6,6 +6,7 @@ import utils from "../../lib/util";
 
 export const Card = ({title, cta, text, itemType}) => {
   return (
+    <Link href={`/explore/${itemType}`}>
     <div className={`card group ${styles.card}`} type={`${itemType || 'default'}`}>
 
       <div className={`card-body ${styles.card_body}`}>
@@ -22,16 +23,17 @@ export const Card = ({title, cta, text, itemType}) => {
           <div className={`card-cta ${styles.card_cta}`}>
             <button className={`btn ${styles.btn}`}>
               <span className={`btn__text ${styles.btn_text}`}>
-                <Link href={`/explore/${itemType}`}>
+                <a href={`/explore/${itemType}`}>
                   {cta}
-                </Link>
+                </a>
               </span>
-              <span className={`btn__caret_right`}></span>
+              <span className={`btn__caret_right ${styles.btn__caret_right}`}></span>
             </button>
           </div>
         </div> }
       </div>
 
     </div>
+    </Link>
   );
 };

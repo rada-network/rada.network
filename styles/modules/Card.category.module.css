@@ -2,8 +2,12 @@
 Category 
 */
 .card {
-  @apply h-40 w-40 lg:h-44 lg:w-44 rounded;
+  @apply h-40 w-40 lg:h-44 lg:w-44 rounded cursor-pointer transition;
   @apply bg-gradient-to-br from-gray-700 to-gray-500 text-white;
+}
+
+.card:hover {
+  @apply opacity-90;
 }
 
 .card + .card {
@@ -16,6 +20,10 @@ Category
 
 .card_text {
   @apply text-xs text-white text-opacity-70;
+}
+
+.card:hover .card_text {
+  @apply text-opacity-100;
 }
 
 .card_body {}
@@ -34,6 +42,15 @@ Category
 
 .btn {
   @apply text-xs text-white text-opacity-70 hover:text-opacity-100;
+}
+
+.card:hover .btn,
+.card:focus .btn {
+  @apply text-opacity-100;
+}
+
+.card:hover .btn .btn__caret_right {
+  @apply -right-1;
 }
 
 .btn_text {
