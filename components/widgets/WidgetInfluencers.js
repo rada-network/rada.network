@@ -32,7 +32,6 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
 
         <div className={`${styles.widget_list}`}>
           {_list.map(function (item) {
-
             return (
               <Influencer key={item.id} item={item} />
               )

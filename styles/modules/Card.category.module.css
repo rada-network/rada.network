@@ -22,9 +22,9 @@ Category
   @apply text-xs text-white text-opacity-70;
 }
 
-.card:hover .card_text {
+/* .card:hover .card_text {
   @apply text-opacity-100;
-}
+} */
 
 .card_body {}
 

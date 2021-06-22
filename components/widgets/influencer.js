@@ -20,7 +20,7 @@ const InfluencerInfoType = ({word}) => {
 export function Influencer({item}) {
   const keywords = item.keywords?.split(",") || []
   return (
-    <div className={`${styles.widget_list__link}`}>
+    <div className={`${styles.widget_list}`}>
       <div className={`group ${styles.widget_list__item}`}>
 
         <div className={`${stylesInfluencers.title}`}>
@@ -47,9 +47,9 @@ export function Influencer({item}) {
         <div className={`${stylesInfluencers.links}`}>
           {item.twitter !== null ?
           <a href={item.twitter} target="_blank">
-              <span className={`icon ${stylesInfluencers.links__icon}`}>
-                <i className="fab fa-twitter"/>
-              </span>
+            <span className={`icon ${stylesInfluencers.links__icon}`}>
+              <i className="fab fa-twitter"/>
+            </span>
           </a>
             :
             ""
@@ -62,9 +62,9 @@ export function Influencer({item}) {
           {/*</a>*/}
           {item.website !== null &&
           <a href={item.website} target="_blank">
-                  <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i className="fal fa-globe"/>
-                  </span>
+            <span className={`icon ${stylesInfluencers.links__icon}`}>
+              <i className="fal fa-globe"/>
+            </span>
           </a>
           }
         </div>

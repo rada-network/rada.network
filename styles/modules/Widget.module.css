@@ -48,7 +48,7 @@ Widget Lists
 }
 
 .widget_list__link {
-  @apply block;
+  @apply block cursor-pointer;
 }
 
 .widget_list__link:hover {
