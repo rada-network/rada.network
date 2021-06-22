@@ -43,8 +43,8 @@ export const SocialPost = ({post, favoriteCount, retweetCount, hashtags,
   }
 
   return(
-    <a href={link} target={"_blank"}>
-      <div className={`card group ${styles.card}`}>
+    <Link href={link} target={"_blank"}>
+      <div className={`card group ${styles.card} cursor-pointer`}>
 
         <div className={`card-header ${styles.card_header}`}>
 
@@ -54,7 +54,9 @@ export const SocialPost = ({post, favoriteCount, retweetCount, hashtags,
             </div>
             <div className="flex flex-col ml-3">
               <div className={`metadata-wrapper ${styles.tweet_metadata_wrapper}`}>
-                <span className={`metadata ${styles.tweet_metadata_name} ${styles.tweet_metadata}`}>{twitterName}</span>
+                <a href={link} target={"_blank"}>
+                  <span className={`metadata ${styles.tweet_metadata_name} ${styles.tweet_metadata}`}>{twitterName}</span>
+                </a>
               </div>
               <div className={`metadata-wrapper ${styles.tweet_metadata_wrapper}`}>
                 <div className={`metadata ${styles.tweet_metadata} ${styles.tweet_metadata_username}`}>
@@ -141,6 +143,6 @@ export const SocialPost = ({post, favoriteCount, retweetCount, hashtags,
       </div>
 
       </div>
-    </a>
+    </Link>
   )
 }
