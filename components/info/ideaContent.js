@@ -15,23 +15,23 @@ export default function IdeaContent({item}){
       readBtn.innerHTML = "Read more"
     }
   }
-  const showContents = Object.keys(item.contentJson).map(key => {
-    return `
-    <div className="project-text_section">
-      <h3 className="project-text_title">${item.contentJson[key].a}</h3> 
-      <div className="project-text_content">${item.contentJson[key].b}</div>
-    </div>
-    `
-  })
+
+  const ContentItem = ({a, b}) => (
+  <div className="project-text_section">
+    <h3 className="project-text_title">{a}</h3> 
+    <div className="project-text_content" dangerouslySetInnerHTML={{__html: b}}></div>
+  </div>
+  )
   return (
     <div className="grid grid-col-1 lg:grid-cols-12">
 
       <div className="project-text lg:col-span-9 lg:pr-8">
 
         {/* <div className="project-text_short" dangerouslySetInnerHTML={{__html: item.description}} /> */}
-        
         <div style={{display : hideContent ? '' : `block`}}
-          id={`read`} dangerouslySetInnerHTML={{__html: showContents.join("")}}  />
+          id={`read`}>
+          { Object.keys(item.contentJson).map(key => <ContentItem a={item.contentJson[key].a} b={item.contentJson[key].b} />) } 
+        </div>        
 
         <button className="btn mt-4 text-purple-500 hover:underline" onClick={readMore} id={"readBtn"}>Read more</button>
 

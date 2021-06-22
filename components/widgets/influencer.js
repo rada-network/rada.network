@@ -18,7 +18,7 @@ const InfluencerInfoType = ({word}) => {
 }
 
 export function Influencer({item}) {
-  const keywords = item.keywords.split(",")
+  const keywords = item.keywords?.split(",") || []
   return (
     <div className={`${styles.widget_list__link}`}>
       <div className={`group ${styles.widget_list__item}`}>

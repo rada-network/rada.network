@@ -1,6 +1,7 @@
 import '../styles/tw.css'
 import '../styles/globals.css'
 import '../styles/styles.css'
+
 import { useWallet, UseWalletProvider } from 'use-wallet'
 import NextNprogress from 'nextjs-progressbar';
 // import { Provider } from 'mobx-react'
