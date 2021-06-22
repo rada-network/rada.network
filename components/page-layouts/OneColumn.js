@@ -8,7 +8,7 @@ export const Layout = ({children, extraClass, meta}) => {
   return (
     <>
     <Head meta={meta} />
-    <div className={`wrapper ${extraClass || ''}`}>
+    <div className={`${styles.wrapper} ${extraClass || ''}`}>
       <Navbar />
       
       <div className={`${styles.mainbody}`}>

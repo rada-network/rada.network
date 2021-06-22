@@ -6,9 +6,9 @@ import { WidgetStats } from "../widgets/WidgetStats";
 import { WidgetInfluencers } from "../widgets/WidgetInfluencers";
 import { WidgetPosts } from "../widgets/WidgetPosts";
 
-export const Sidebar = ({extraClass}) => {
+export const Sidebar = ({className, extraClass}) => {
   return (
-    <div className={`sidebar ${extraClass || ''}`}>
+    <div className={`sidebar ${className} ${extraClass || ''}`}>
       <WidgetPricing
         title="Market Insights"
         text="Lorem Ipsum Dolor sit Amet"

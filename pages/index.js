@@ -11,6 +11,8 @@ import {MediaList} from '../components/card-layouts/MediaList';
 
 import { observer } from "mobx-react"
 
+import styles from "../styles/modules/Layout.module.css";
+
 //ReactIcons
 import {getPosts} from "../data/query/posts"
 import {getTweet} from "../data/query/postsTweet"
@@ -77,13 +79,13 @@ export default observer((props) => {
         description : "Stay updated with the best quality news & updates"
       }}/>
 
-      <div className="wrapper">
-        <div className="container">
+      <div className={`${styles.wrapper}`}>
+        <div className={`${styles.container}`}>
 
           <div className="grid grid-cols-1 lg:grid-cols-12">
 
             {/* main content */}
-            <div className="maincontent">
+            <div className={`${styles.maincontent}`}>
 
               <CategoryList
                 extraClass="category-list"
@@ -192,7 +194,7 @@ export default observer((props) => {
             </div>
 
             {/* Sidebar */}
-            <Sidebar extraClass="" />
+            <Sidebar className={`${styles.sidebar}`} extraClass="" />
 
           </div>
 
