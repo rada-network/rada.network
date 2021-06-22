@@ -110,4 +110,13 @@ Group Buttons
   @apply text-sm;
 }
 
+.btn-caret {
+  @apply ml-2 -mt-0.5;
+  height: 6px;
+  width: 6px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  transform: rotate(45deg);
+  transition: all .3s ease;
+}
 

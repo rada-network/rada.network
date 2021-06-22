@@ -134,6 +134,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
             </a>
             : <a onClick={handleLoadMoreTweets} className="btn btn-nav">
               <span className="btn-text">Show 12 more</span>
+              <span className="btn-caret"></span>
             </a>
           }
         </div>

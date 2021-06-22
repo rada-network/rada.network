@@ -131,6 +131,7 @@ export const NewsList = observer(({
             <a onClick={handleLoadMoreItems}
                className="btn btn-nav">
               <span className="btn-text">Show {take} more</span>
+              <span className="btn-caret"></span>
             </a>
             :  ""
           }

@@ -44,6 +44,7 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
         <div className={`${styles.widget_footer}`}>
           <a className="btn btn-nav block" onClick={() => setSkip(skip+1)}>
             <span className="btn-text">Show {take} more</span>
+            <span className="btn-caret"></span>
           </a>
         </div>
         :
