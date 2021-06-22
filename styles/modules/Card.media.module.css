@@ -22,14 +22,14 @@ Media Full
 .card_body__footer {}
 
 .card_title {
-
 }
 
 .card_media {
-  @apply rounded-md overflow-hidden shadow;
+  @apply flex-shrink-0 overflow-hidden rounded-md shadow-sm;
 }
 
 .media {
+  @apply w-auto h-full;
 }
 
 .img {

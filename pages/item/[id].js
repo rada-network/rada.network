@@ -19,7 +19,7 @@ import {Vote} from "../../components/vote/Vote";
 import itemComments from "../../data/query/itemComments";
 import {useRouter} from "next/router";
 import IdeaContent from "../../components/info/ideaContent";
-import {Card} from "../../components/cards/MediaFull";
+import {Card} from "../../components/cards/MediaOnly";
 import NetworkIcon from "../../components/icons/networkIcon";
 import TokenIcon from "../../components/icons/tokenIcon";
 import ItemTypeBadge from "../../components/icons/itemTypeBadge";

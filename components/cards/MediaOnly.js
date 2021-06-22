@@ -1,11 +1,13 @@
 import Link from "next/link"
+import styles from '../../styles/modules/Card.media.module.css'
 
-export const Card = ({mediaUri, itemType}) => {
+export const Card = ({mediaUri, itemType, title, text, cta, onClick}) => {
   return (
-    <div className="card card-media-only">
-      <div className="card-media">
-        <img className="card-img" src={mediaUri} />
+    <div className={`card ${styles.card}`} onClick={onClick}>
+      <div className={`${styles.card_media} h-full`}>
+        <img className={`${styles.media} cursor-pointer`} src={mediaUri} />
       </div> 
+      { title || text || cta && 
       <div className="card-body">
         { title && 
         <div className="card-body-header">
@@ -28,7 +30,7 @@ export const Card = ({mediaUri, itemType}) => {
             </button>
           </div>
         </div> }
-      </div>
+      </div> }
     </div>
   );
 };

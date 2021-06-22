@@ -92,6 +92,7 @@ Project Details
   .project-metadata-wrapper .metadata {
   }
 
+  /* CTAs */
   .cta-wrapper {
     @apply flex mt-6;
   }
@@ -102,7 +103,7 @@ Project Details
 
   .cta-wrapper .btn-project-link {
     @apply justify-center px-2 py-2 md:px-3;
-    @apply text-gray-700 border-2 border-gray-900 border-opacity-0 rounded;
+    @apply text-gray-700 border-2 border-transparent rounded;
     @apply hover:text-purple-700;
   }
 
@@ -122,13 +123,13 @@ Media
   @apply flex flex-nowrap pb-6 mb-8 relative;
 }
 
-.project-media .card-media-full {
+.project-media .card {
   @apply h-80 max-w-full;
   @apply rounded shadow-none;
   flex: 1 0 auto;
 }
 
-.project-media .card-media-full + .card-media-full {
+.project-media .card + .card {
   @apply ml-4;
 }
 
