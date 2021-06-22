@@ -120,8 +120,8 @@ export default function Item (props) {
 
           <div className="grid grid-cols-1 lg:grid-cols-12">
 
-            {/* mainbody */}
-            <div className="mainbody">
+            {/* main content */}
+            <div className="maincontent">
 
               <div className="section section-top">
 

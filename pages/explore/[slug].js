@@ -73,8 +73,8 @@ export default observer(function Explore(props) {
 
             <div className="grid grid-cols-1 lg:grid-cols-12">
 
-              {/* mainbody */}
-              <div className="mainbody">
+              {/* main content */}
+              <div className="maincontent">
 
                 <SocialPostsList
                   grid="1"
@@ -109,8 +109,8 @@ export default observer(function Explore(props) {
 
             <div className="grid grid-cols-1 lg:grid-cols-12">
 
-              {/* mainbody */}
-              <div className="mainbody lg:col-span-9">
+              {/* main content */}
+              <div className="maincontent">
 
                 <ProjectsList
                   grid="1"

@@ -30,7 +30,7 @@ Social
 Media 
 */
 .media-player {
-  @apply p-4 md:p-6 lg:p-8;
+  @apply p-4 md:p-6 lg:p-8 pt-0 md:pt-0 lg:pt-0;
   @apply border-b border-gray-500 border-opacity-10;
 }
 

@@ -25,7 +25,7 @@ Media Full
 }
 
 .card_media {
-  @apply flex-shrink-0 overflow-hidden rounded-md shadow-sm;
+  @apply flex-shrink-0 overflow-hidden rounded shadow-sm;
 }
 
 .media {

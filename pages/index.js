@@ -82,8 +82,8 @@ export default observer((props) => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12">
 
-            {/* mainbody */}
-            <div className="mainbody">
+            {/* main content */}
+            <div className="maincontent">
 
               <CategoryList
                 extraClass="category-list"
