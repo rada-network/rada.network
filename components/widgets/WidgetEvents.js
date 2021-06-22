@@ -23,99 +23,107 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
         <div className={`${styles.widget_list}`}>
 
           {/* Even Item */}
-          <a className={`${styles.widget_list__link}`} href="#" target="_blank">
-            <div className={`group ${styles.widget_list__item}`}>
+          <Link href="#" target="_blank">
+          <div className={`group ${styles.widget_list__item} ${styles.widget_list__link}`}>
 
-              <div className={`${stylesEvent.title}`}>
+            <div className={`${stylesEvent.title}`}>
+              <a className={`${styles.widget_list__link}`} href="#" target="_blank">
                 <span>Smart Contract Launch</span>
                 <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
-              </div>
-              <div className={`${stylesEvent.info_wrapper}`}>
-                <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-important">
-                  Important
-                </span>
-                <span className={`${stylesEvent.info} ${stylesEvent.info_date}`} title="00:00, 30, Sep 2021">
-                  <strong>17d</strong> to go
-                </span>
-              </div>
-              <div className={`${stylesEvent.text}`}>
-                One day, you'll look to see I've gone. For tomorrow may rain, so I'll follow the sun
-              </div>
-
+              </a>
             </div>
-          </a>
+            <div className={`${stylesEvent.info_wrapper}`}>
+              <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-important">
+                Important
+              </span>
+              <span className={`${stylesEvent.info} ${stylesEvent.info_date}`} title="00:00, 30, Sep 2021">
+                <strong>17d</strong> to go
+              </span>
+            </div>
+            <div className={`${stylesEvent.text}`}>
+              One day, you'll look to see I've gone. For tomorrow may rain, so I'll follow the sun
+            </div>
+
+          </div>
+          </Link>
 
           {/* Even Item */}
-          <a className={`${styles.widget_list__link}`} href="#" target="_blank">
-            <div className={`group ${styles.widget_list__item}`}>
+          <Link href="#" target="_blank">
+          <div className={`group ${styles.widget_list__item} ${styles.widget_list__link}`}>
 
-              <div className={`${stylesEvent.title}`}>
+            <div className={`${stylesEvent.title}`}>
+              <a className={`${styles.widget_list__link}`} href="#" target="_blank">
                 <span>Cardano First Ever Airdrop</span>
                 <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
-              </div>
-              <div className={`${stylesEvent.info_wrapper}`}>
-                <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-airdrop">
-                  Airdrop
-                </span>
-                <span className={`${stylesEvent.info} ${stylesEvent.info_date}`} title="19:00, 30, Sep 2021">
-                  <strong>5d 23h</strong> to go
-                </span>
-              </div>
-              <div className={`${stylesEvent.text}`}>
-                One day, you'll look to see I've gone. For tomorrow may rain, so I'll follow the sun
-              </div>
-
+              </a>
             </div>
-          </a>
+            <div className={`${stylesEvent.info_wrapper}`}>
+              <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-airdrop">
+                Airdrop
+              </span>
+              <span className={`${stylesEvent.info} ${stylesEvent.info_date}`} title="19:00, 30, Sep 2021">
+                <strong>5d 23h</strong> to go
+              </span>
+            </div>
+            <div className={`${stylesEvent.text}`}>
+              One day, you'll look to see I've gone. For tomorrow may rain, so I'll follow the sun
+            </div>
+
+          </div>
+          </Link>
           
           {/* Even Item */}
-          <a className={`${styles.widget_list__link}`} href="#" target="_blank">
-            <div className={`group ${styles.widget_list__item}`}>
+          <Link href="#" target="_blank">
+          <div className={`group ${styles.widget_list__item} ${styles.widget_list__link}`}>
 
-              <div className={`${stylesEvent.title}`}>
+            <div className={`${stylesEvent.title}`}>
+              <a className={`${styles.widget_list__link}`} href="#" target="_blank">
                 <span>Cardano First Ever Launchpad</span>
                 <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
-              </div>
-              <div className={`${stylesEvent.info_wrapper}`}>
-                <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-launchpad">
-                  Launchpad
-                </span>
-                <span className={`${stylesEvent.info} ${stylesEvent.info_date}`} title="19:00, 30, Sep 2021">
-                  <strong>5d 23h</strong> to go
-                </span>
-              </div>
-              <div className={`${stylesEvent.text}`}>
-                "Follow me down to the valley below You know Moonlight is bleeding From out of your soul...
-              </div>
-
+              </a>
             </div>
-          </a>
+            <div className={`${stylesEvent.info_wrapper}`}>
+              <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-launchpad">
+                Launchpad
+              </span>
+              <span className={`${stylesEvent.info} ${stylesEvent.info_date}`} title="19:00, 30, Sep 2021">
+                <strong>5d 23h</strong> to go
+              </span>
+            </div>
+            <div className={`${stylesEvent.text}`}>
+              "Follow me down to the valley below You know Moonlight is bleeding From out of your soul...
+            </div>
+
+          </div>
+          </Link>
 
           {/* Even Item */}
-          <a className={`${styles.widget_list__link}`} href="#" target="_blank">
-            <div className={`group ${styles.widget_list__item}`}>
+          <Link href="#" target="_blank">
+          <div className={`group ${styles.widget_list__item} ${styles.widget_list__link}`}>
 
-              <div className={`${stylesEvent.title}`}>
+            <div className={`${stylesEvent.title}`}>
+              <a className={`${styles.widget_list__link}`} href="#" target="_blank">
                 <span>Cardano First Ever Launchpad</span>
                 <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
-              </div>
-              <div className={`${stylesEvent.info_wrapper}`}>
-                <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-launchpad">
-                  Launchpad
-                </span>
-                <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-expired">
-                  Expired
-                </span>
-                <span className={`${stylesEvent.info} ${stylesEvent.info_date}`} title="19:00, 30, Sep 2021">
-                  <strong>25d</strong> ago
-                </span>
-              </div>
-              <div className={`${stylesEvent.text}`}>
-                "Follow me down to the valley below You know Moonlight is bleeding From out of your soul...
-              </div>
-
+              </a>
             </div>
-          </a>
+            <div className={`${stylesEvent.info_wrapper}`}>
+              <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-launchpad">
+                Launchpad
+              </span>
+              <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-expired">
+                Expired
+              </span>
+              <span className={`${stylesEvent.info} ${stylesEvent.info_date}`} title="19:00, 30, Sep 2021">
+                <strong>25d</strong> ago
+              </span>
+            </div>
+            <div className={`${stylesEvent.text}`}>
+              "Follow me down to the valley below You know Moonlight is bleeding From out of your soul...
+            </div>
+
+          </div>
+          </Link>
 
         </div>
 
