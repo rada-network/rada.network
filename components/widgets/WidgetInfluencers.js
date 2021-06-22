@@ -1,11 +1,21 @@
 import Link from "next/link"
 
 import styles from '../../styles/modules/Widget.module.css'
-import stylesInfluencers from '../../styles/modules/Widget.influencers.module.css'
-
-import {RiExternalLinkLine} from "react-icons/ri";
+import {useEffect, useState} from "react";
+import {getInfluencers} from "../../data/query/getSuggestUser";
+import {Influencer} from "./influencer";
 
 export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
+  const [listInfluencers,setListInfluencers] = useState([])
+  const [skip,setSkip] = useState(1)
+  const take = 4
+  useEffect(() => {
+    getInfluencers({}).then(function(res){
+      setListInfluencers(res.data.suggestUserFeed)
+    })
+  },[])
+  const _list = listInfluencers.slice(0,skip * take)
+
   return (
 
     <div className={`${styles.widget}`}>
@@ -21,157 +31,25 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
       <div className={`${styles.widget_body_p0}`}>
 
         <div className={`${styles.widget_list}`}>
+          {_list.map(function (item) {
 
-          {/* Influencer Item */}
-          <a className={`${styles.widget_list__link}`} href="#" target="_blank">
-            <div className={`group ${styles.widget_list__item}`}>
-
-              <div className={`${stylesInfluencers.title}`}>
-                <span>Charles Hoskinson</span>
-              </div>
-
-              <div className={`${stylesInfluencers.info_wrapper}`}>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
-                  Founder
-                </span>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
-                  Mathematicians
-                </span>
-              </div>
-
-              <div className="overflow-hidden">
-                <div className={`${stylesInfluencers.avatar}`}>
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Charles_Hoskinson_profile_color_no_background.png" alt="Charles Hoskinson" />
-                </div>
-                <div className={`${stylesInfluencers.text}`}>
-                  Charles Hoskinson is the founder of Cardano and co-founder of Ethereum, which are both blockchain platforms.
-                </div>
-              </div>
-
-              <div className={`${stylesInfluencers.links}`}>
-                <a href="#" target="_blank">
-                  <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i className="fab fa-twitter"></i>
-                  </span>
-                </a>
-                <a href="#" target="_blank">
-                  <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i className="fab fa-telegram-plane"></i>
-                  </span>
-                </a>
-                <a href="#" target="_blank">
-                  <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i className="fal fa-globe"></i>
-                  </span>
-                </a>
-              </div>
-
-            </div>
-          </a>
-
-          {/* Influencer Item */}
-          <a className={`${styles.widget_list__link}`} href="#" target="_blank">
-            <div className={`group ${styles.widget_list__item}`}>
-
-              <div className={`${stylesInfluencers.title}`}>
-                <span>Vitalik Buterin</span>
-              </div>
-
-              <div className={`${stylesInfluencers.info_wrapper}`}>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
-                  Founder
-                </span>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
-                  Developer
-                </span>
-              </div>
-
-              <div className="overflow-hidden">
-                <div className={`${stylesInfluencers.avatar}`}>
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/VitalikButerinProfile.jpg/1920px-VitalikButerinProfile.jpg?1623322336489" alt="Vitalik Buterin" />
-                </div>
-                <div className={`${stylesInfluencers.text}`}>
-                  Vitaly Dmitriyevich "Vitalik" Buterin is a Russian-Canadian programmer and writer who is best known as one of the co-founders of Ethereum.
-                </div>
-              </div>
-
-              <div className={`${stylesInfluencers.links}`}>
-                <a href="#" target="_blank">
-                  <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i className="fab fa-twitter"></i>
-                  </span>
-                </a>
-                <a href="#" target="_blank">
-                  <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i className="fab fa-telegram-plane"></i>
-                  </span>
-                </a>
-                <a href="#" target="_blank">
-                  <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i className="fal fa-globe"></i>
-                  </span>
-                </a>
-              </div>
-
-            </div>
-          </a>
-
-          {/* Influencer Item */}
-          <a className={`${styles.widget_list__link}`} href="#" target="_blank">
-            <div className={`group ${styles.widget_list__item}`}>
-
-              <div className={`${stylesInfluencers.title}`}>
-                <span>Pink Floyd</span>
-              </div>
-
-              <div className={`${stylesInfluencers.info_wrapper}`}>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
-                  Legend
-                </span>
-                <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
-                  Musicians
-                </span>
-              </div>
-
-              <div className="overflow-hidden">
-                <div className={`${stylesInfluencers.avatar}`}>
-                  <img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg?1623322481672" alt="Pink Floyd" />
-                </div>
-                <div className={`${stylesInfluencers.text}`}>
-                  Pink Floyd were an English rock band formed in London in 1965. Gaining an early following as one of the first British psychedelic groups
-                </div>
-              </div>
-
-              <div className={`${stylesInfluencers.links}`}>
-                <a href="#" target="_blank">
-                  <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i className="fab fa-twitter"></i>
-                  </span>
-                </a>
-                <a href="#" target="_blank">
-                  <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i className="fab fa-telegram-plane"></i>
-                  </span>
-                </a>
-                <a href="#" target="_blank">
-                  <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i className="fal fa-globe"></i>
-                  </span>
-                </a>
-              </div>
-
-            </div>
-          </a>
-
+            return (
+              <Influencer key={item.id} item={item} />
+              )
+          })}
         </div>
 
       </div>
+      {(skip * take) < listInfluencers.length ?
+        <div className={`${styles.widget_footer}`}>
+          <a className="btn btn-nav block" onClick={() => setSkip(skip+1)}>
+            <span className="btn-text">Show {take} more</span>
+          </a>
+        </div>
+        :
+        ""
+      }
 
-      <div className={`${styles.widget_footer}`}>
-        <a className="btn btn-nav block">
-          <span className="btn-text">Show 4 more</span>
-        </a>
-      </div>
 
     </div>
 
