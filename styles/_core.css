@@ -39,17 +39,8 @@ a {
 /* 
 Main Container
 */
-.wrapper {
-}
-
 .container {
   @apply mx-auto px-4 md:px-8 max-w-screen-xl;
-}
-
-/* 
-Main Grid
-*/
-.grid {
 }
 
 /* 

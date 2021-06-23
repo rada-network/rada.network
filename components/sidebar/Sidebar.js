@@ -8,7 +8,7 @@ import { WidgetPosts } from "../widgets/WidgetPosts";
 
 export const Sidebar = ({className, extraClass}) => {
   return (
-    <div className={`sidebar ${className} ${extraClass || ''}`}>
+    <div className={`${className} ${extraClass || ''}`}>
       <WidgetPricing
         title="Market Insights"
         text="Lorem Ipsum Dolor sit Amet"

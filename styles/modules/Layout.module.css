@@ -2,15 +2,17 @@
 Layout 
 */
 .wrapper {
-
 }
 
 .mainbody {
-
 }
 
 .container {
   @apply mx-auto px-4 md:px-8 max-w-screen-xl;
+}
+
+.grid_12cols {
+  @apply grid grid-cols-1 lg:grid-cols-12;
 }
 
 .maincontent {

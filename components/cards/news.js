@@ -12,7 +12,7 @@ export const CardNews = ({news}) => {
   let keywords = JSON.parse(news.keywords);
   keywords = Object.entries(keywords)
   return (
-    <div className={`card card-news group ${styles.card}`}>
+    <div className={`${styles.card}`}>
 
       <div className={`${styles.card_media}`}>
         {news.thumbnailUri === "" ?

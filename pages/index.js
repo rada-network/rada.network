@@ -82,7 +82,7 @@ export default observer((props) => {
       <div className={`${styles.wrapper}`}>
         <div className={`${styles.container}`}>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12">
+          <div className={`${styles.grid_12cols}`}>
 
             {/* main content */}
             <div className={`${styles.maincontent}`}>

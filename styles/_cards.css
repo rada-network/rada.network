@@ -1,19 +1,4 @@
 /*
-Extend Styles. Use for repeatable styles.
-*/
-%CardTextXsGray {
-  @apply text-xs opacity-70;
-}
-
-%CardTextBase500 {
-  @apply text-base font-medium;
-}
-
-%CardTextXsSecondary500 {
-  @apply text-xs font-medium text-secondary-500;
-}
-
-/*
 Generic Styles
 */
 .card {

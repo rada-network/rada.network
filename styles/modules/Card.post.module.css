@@ -70,5 +70,5 @@ Project
 }
 
 .project_icon_ph__img {
-  @apply text-xl leading-none opacity-20;
+  @apply text-xl leading-none opacity-30;
 }
