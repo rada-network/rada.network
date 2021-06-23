@@ -38,8 +38,8 @@ const EventItem = ({item}) => {
       <div className={`group ${styles.widget_list__item} ${styles.widget_list__link}`}>
 
         <div className={`${stylesEvent.title}`}>
-          <a className={`${styles.widget_list__link}`} href="#" target="_blank">
-            <span>Cardano First Ever Launchpad</span>
+          <a className={`${styles.widget_list__link}`} rel={'nofollow'} href={url} target="_blank">
+            <span>{item.title}</span>
             <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
           </a>
         </div>
