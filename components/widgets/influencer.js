@@ -23,15 +23,20 @@ export function Influencer({item}) {
     <div className={`${styles.widget_list}`}>
       <div className={`group ${styles.widget_list__item}`}>
 
-        <div className={`${stylesInfluencers.title}`}>
-          <span>{item.name}</span>
+        <div className="flex">
 
-          <div className={`${stylesInfluencers.info_wrapper}`}>
-            {keywords.map(function (word) {
-              return (
-                <InfluencerInfoType key={uuid()} word={word}/>
-              )
-            })}
+          <div className="flex flex-col flex-1">
+            <div className={`${stylesInfluencers.title}`}>
+              <span>{item.name}</span>
+            </div>
+
+            <div className={`${stylesInfluencers.info_wrapper}`}>
+              {keywords.map(function (word) {
+                return (
+                  <InfluencerInfoType key={uuid()} word={word}/>
+                )
+              })}
+            </div>
           </div>
 
           {item.image ?
@@ -40,6 +45,7 @@ export function Influencer({item}) {
             </div>
             : ""
           }
+
         </div>
 
 
