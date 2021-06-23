@@ -10,7 +10,7 @@ Widget: Events
 }
 
 .text {
-  @apply text-sm text-gray-400 mt-2 line-clamp-2;
+  @apply text-sm text-gray-400 mt-2 line-clamp-3;
 }
 
 .info_wrapper {
@@ -23,11 +23,11 @@ Widget: Events
 }
 
 .info_date strong {
-  @apply text-gray-900 text-opacity-100 font-medium;
+  @apply text-gray-900 text-opacity-100;
 }
 
 .info_type {
-  @apply w-20 text-center font-medium;
+  @apply w-24 text-center font-medium;
 }
 
 .info_type + .info_type {
@@ -47,5 +47,6 @@ Widget: Events
 }
 
 .info[type="event-expired"] {
-  @apply bg-gray-100 text-gray-500;
+  @apply bg-transparent text-gray-400;
+  @apply w-auto;
 }

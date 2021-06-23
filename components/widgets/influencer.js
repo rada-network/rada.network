@@ -25,23 +25,25 @@ export function Influencer({item}) {
 
         <div className={`${stylesInfluencers.title}`}>
           <span>{item.name}</span>
-        </div>
 
-        <div className={`${stylesInfluencers.info_wrapper}`}>
-          {keywords.map(function (word) {
-            return (
-              <InfluencerInfoType key={uuid()} word={word}/>
-            )
-          })}
-        </div>
+          <div className={`${stylesInfluencers.info_wrapper}`}>
+            {keywords.map(function (word) {
+              return (
+                <InfluencerInfoType key={uuid()} word={word}/>
+              )
+            })}
+          </div>
 
-        <div className="overflow-hidden">
           {item.image ?
             <div className={`${stylesInfluencers.avatar}`}>
               <img src={item.image} alt={item.name}/>
             </div>
             : ""
           }
+        </div>
+
+
+        <div className="flex">
           <div className={`${stylesInfluencers.text}`}>
             {item.description}
           </div>
@@ -58,16 +60,26 @@ export function Influencer({item}) {
             ""
           }
 
-          <a href="#" target="_blank">
-                  <span className={`icon ${stylesInfluencers.links__icon}`}>
-                    <i className="fab fa-telegram-plane"/>
-                  </span>
+          {item.linkedin !== null ?
+          <a href={item.linkedin} target="_blank">
+            <span className={`icon ${stylesInfluencers.links__icon}`}>
+              <i className="fab fa-linkedin"/>
+            </span>
           </a>
+            :
+            ""
+          }
+
+          {item.website !== null ?
           <a href={item.website} target="_blank">
             <span className={`icon ${stylesInfluencers.links__icon}`}>
               <i className="fal fa-globe"/>
             </span>
           </a>
+            :
+            ""
+          }
+
         </div>
 
       </div>

@@ -2,7 +2,7 @@
 Widget: Influencer
 */
 .title {
-  @apply text-base font-medium text-gray-900;
+  @apply flex text-base font-medium text-gray-900;
 }
 
 .text {
@@ -28,7 +28,7 @@ Widget: Influencer
 }
 
 .avatar {
-  @apply float-right bg-gray-100 w-px-80 h-px-80 mt-2 ml-4 rounded-full flex-shrink-0 overflow-hidden;
+  @apply bg-gray-100 w-px-32 h-px-32 mt-2 ml-4 rounded-full flex-shrink-0 overflow-hidden;
 }
 
 .avatar img {
