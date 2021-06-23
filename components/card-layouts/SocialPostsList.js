@@ -61,7 +61,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
   //if (dataStore.home.homeDisplay !==0 && dataStore.home.homeDisplay !== 1) return ""
 
   return (
-    <div className={`section section-socialposts ${extraClass || ''}`} id={"top"}>
+    <div className={`section ${extraClass || ''}`} id={"top"}>
       <div className="section-inner">
 
         <div className="section-header">

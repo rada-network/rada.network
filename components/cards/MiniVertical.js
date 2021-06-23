@@ -7,7 +7,7 @@ export const CardMiniV = ({title, type, id, link, onClick, className}) => {
   }
 
   const content = 
-    <div className={`card group ${styles.card} ${className}`} onClick={onClick}>
+    <div className={`card ${styles.card} ${className}`} onClick={onClick}>
 
       <div className={`${styles.card_media}`}>
         <img className={`${styles.media}`} src={thumb[type]} />
@@ -17,7 +17,12 @@ export const CardMiniV = ({title, type, id, link, onClick, className}) => {
 
         { title && 
         <div className={`${styles.card_body__header}`}>
-          <div className={`${styles.card_title}`}>{title}</div>
+
+          <div className={`${styles.card_title}`}>
+            <a className="card-link" href={link}>
+              {title}
+            </a>
+          </div>
         </div> }
 
         <div className={`${styles.card_body__footer}`}>
@@ -35,9 +40,9 @@ export const CardMiniV = ({title, type, id, link, onClick, className}) => {
     </div>;
 
   return link ? (
-    <a className="card-link" href={link}>
+    <Link href={link}>
       {content}
-    </a>
+    </Link>
   ) : (
     content
   );

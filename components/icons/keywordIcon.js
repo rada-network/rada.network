@@ -7,7 +7,7 @@ export default function KeywordIcon({keyword,weight}){
   return (
     <>
       <Link href={`/tags/${keyword}`}>
-        <a  className={`metadata badge project-metadata_type ` + `badge-${keyword}` } >
+        <a className={`metadata badge project-metadata_type ` + `badge-${keyword}` } >
           <span className="metadata-value">{keyword}</span>
         </a>
       </Link>

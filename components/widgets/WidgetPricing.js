@@ -150,7 +150,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
   return (
 
-    <div className={`group ${styles.widget}`}>
+    <div className={`${styles.widget}`}>
       { title &&
       <div className={`${styles.widget_header}`}>
         <div className={`${styles.widget_title}`}>{title}</div>

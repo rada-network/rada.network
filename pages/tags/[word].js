@@ -9,6 +9,7 @@ import {useRouter} from "next/router";
 import utils from "../../lib/util";
 import {useStore} from "../../lib/useStore";
 
+import styles from "../../styles/modules/Layout.module.css";
 
 import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 import {NewsList} from "../../components/card-layouts/NewsList";
@@ -65,13 +66,13 @@ export default observer(function Explore(props) {
 
   return (
     <Layout extraClass="page_topic" meta={"Top info from " + word}>
-      <div className="wrapper">
-        <div className="container">
+      <div className={`${styles.wrapper}`}>
+        <div className={`${styles.container}`}>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12">
+          <div className={`${styles.grid_12cols}`}>
 
             {/* main content */}
-            <div className="maincontent">
+            <div className={`${styles.maincontent}`}>
               <SocialPostsList
                 grid="1"
                 gap="4"
@@ -101,7 +102,7 @@ export default observer(function Explore(props) {
             </div>
 
             {/* Sidebar */}
-            <Sidebar extraClass=""/>
+            <Sidebar className={`${styles.sidebar}`} extraClass="" />
 
           </div>
 
