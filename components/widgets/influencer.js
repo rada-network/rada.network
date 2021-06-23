@@ -69,7 +69,7 @@ export function Influencer({item}) {
           {item.linkedin !== null ?
           <a href={item.linkedin} target="_blank">
             <span className={`icon ${stylesInfluencers.links__icon}`}>
-              <i className="fab fa-linkedin"/>
+              <i className="fab fa-linkedin-in"/>
             </span>
           </a>
             :
