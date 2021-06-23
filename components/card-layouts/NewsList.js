@@ -6,8 +6,9 @@ import Link from "next/link"
 import {observer} from "mobx-react";
 import {TabButton} from "../button/tabButton";
 import WidgetTitle from "../text/widgetTitle";
-import {CardNews} from "../cards/news";
+import {CardNews, NewsLoader} from "../cards/news";
 import {getNews} from "../../data/query/news";
+import ContentLoader from "react-content-loader";
 
 const take = 12
 
@@ -117,6 +118,11 @@ export const NewsList = observer(({
             {
               showPosts(posts)
             }
+            {loadingButton &&
+              [...Array(take)].map((x, i) =>
+                <NewsLoader key={i} />
+              )
+            }
           </div>
         </div>
 
@@ -131,7 +137,7 @@ export const NewsList = observer(({
             <a onClick={handleLoadMoreItems}
                className="btn btn-nav">
               <span className="btn__text">Show {take} more</span>
-              <span className="btn__caret_down"></span>
+              <span className="btn__caret_down"/>
             </a>
             :  ""
           }

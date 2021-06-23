@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {Card} from "../cards/Project";
+import {Card, ProjectLoader} from "../cards/Project";
 import {DropDown} from "../dropdown/DropDown";
 
 //ReactIcons
@@ -149,6 +149,11 @@ export const ProjectsList = observer(({
           <div className={`grid gap-0 lg:gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
             {
               showPosts(posts)
+            }
+            {loadingButton &&
+              [...Array(take)].map((x, i) =>
+                <ProjectLoader key={i} />
+              )
             }
           </div>
         </div>

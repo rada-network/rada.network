@@ -6,6 +6,27 @@ import styles from '../../styles/modules/Card.post.module.css'
 import KeywordIcon from "../icons/keywordIcon";
 
 import {RiExternalLinkLine} from "react-icons/ri";
+import ContentLoader from "react-content-loader";
+
+export const NewsLoader = (props) => (
+  <div className={`card card-news group ${styles.card}`}>
+    <div className={`${styles.card_body}`}>
+      <ContentLoader
+        speed={2}
+        backgroundColor="#f3f3f3"
+        foregroundColor="#ecebeb"
+        {...props}
+      >
+        <rect x="48" y="8" rx="3" ry="3" width="88" height="6" />
+        <rect x="48" y="26" rx="3" ry="3" width="52" height="6" />
+        <rect x="0" y="56" rx="3" ry="3" width="410" height="6" />
+        <rect x="-1" y="71" rx="3" ry="3" width="380" height="6" />
+        <rect x="0" y="88" rx="3" ry="3" width="178" height="6" />
+        <circle cx="20" cy="20" r="20" />
+      </ContentLoader>
+    </div>
+  </div>
+)
 
 export const CardNews = ({news}) => {
   const postDate = utils.timeDifference(new Date(), new Date(news.createdAt))
@@ -24,7 +45,7 @@ export const CardNews = ({news}) => {
           :
           <div className={`${styles.project_icon}`}>
             <a rel={"nofollow"} target={"_blank"} href={news.websiteUri}>
-              <img className={`card-img ${styles.project_icon__img}`} src={news.thumbnailUri} />
+              <img className={`card-img ${styles.project_icon__img}`} src={news.thumbnailUri}  alt={""}/>
             </a>
           </div>
         }

@@ -14,14 +14,33 @@ import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import {SocialPost} from "../cards/SocialPost";
 import {getTweet} from "../../data/query/postsTweet";
 import {TabButton} from "../button/tabButton";
+import ContentLoader from "react-content-loader"
+
 
 import ReactTooltip from 'react-tooltip'
+
+const TweetLoader = (props) => (
+  <ContentLoader
+    speed={2}
+    backgroundColor="#f3f3f3"
+    foregroundColor="#ecebeb"
+    {...props}
+  >
+    <rect x="48" y="8" rx="3" ry="3" width="88" height="6" />
+    <rect x="48" y="26" rx="3" ry="3" width="52" height="6" />
+    <rect x="0" y="56" rx="3" ry="3" width="410" height="6" />
+    <rect x="-1" y="71" rx="3" ry="3" width="380" height="6" />
+    <rect x="0" y="88" rx="3" ry="3" width="178" height="6" />
+    <circle cx="20" cy="20" r="20" />
+  </ContentLoader>
+)
+
 
 
 export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail}) => {
   const [loadingButton,setLoadingButton] = useState(false)
   let posts = dataStore.tweets;
-
+  const take = 12
   const handleLoadMoreTweets = async (e) =>{
     //if (dataStore.tweets.length > 0) dataStore.home.homeDisplay = 1;
 
@@ -29,7 +48,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
     const data = await getTweet({
       socialOrder : dataStore.currentTab,
       skip : dataStore.tweets.length,
-      take : 12,
+      take : take,
       query : dataStore.query
     });
     if (data.loading){
@@ -51,7 +70,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
 
             { titleIcon &&
             <span className={`icon mr-3 text-${titleIconColor}`}>
-              <i className={`fad fa-${titleIcon}`}></i>
+              <i className={`fad fa-${titleIcon}`}/>
             </span> }
 
             {itemType !== undefined ?
@@ -90,7 +109,6 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
             <Masonry gutter="1rem">
               {
               detail
-                // ? showPosts(postsByDate)
                 ? "in progress"
                 : posts.map((post) => (
                   <SocialPost key={post.id}
@@ -106,6 +124,11 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
                               tweetUser={post.tweetUser.source}
                   />
                 ))
+              }
+              {loadingButton &&
+                [...Array(take)].map((x, i) =>
+                  <TweetLoader key={i} />
+                )
               }
             </Masonry>
           </ResponsiveMasonry>
@@ -133,8 +156,8 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
               <span className="btn__text">Loading...</span>
             </a>
             : <a onClick={handleLoadMoreTweets} className="btn btn-nav">
-              <span className="btn__text">Show 12 more</span>
-              <span className="btn__caret_down"></span>
+              <span className="btn__text">Show {take} more</span>
+              <span className="btn__caret_down"/>
             </a>
           }
         </div>
