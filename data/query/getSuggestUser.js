@@ -10,6 +10,7 @@ const suggestUserGql = gql`
             twitter
             facebook
             website
+            linkedin
             keywords
             image
         }
