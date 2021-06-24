@@ -27,11 +27,11 @@ Project
 }
 
 .card_body_main {
-  @apply flex py-1;
+  @apply hidden md:flex py-1;
 }
 
 .card_body_footer {
-  @apply flex flex-wrap md:mt-2;
+  @apply flex flex-wrap mt-1 md:mt-2;
 }
 
 .card_footer {

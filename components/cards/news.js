@@ -22,8 +22,8 @@ export const NewsLoader = (props) => (
         <rect x="0" y="0" rx="3" ry="3" width="40" height="40" />
         <rect x="48" y="8" rx="3" ry="3" width="128" height="6" />
         <rect x="48" y="24" rx="3" ry="3" width="80" height="6" />
-        <rect x="48" y="56" rx="3" ry="3" width="380" height="6" />
-        <rect x="48" y="71" rx="3" ry="3" width="360" height="6" />
+        <rect x="48" y="56" rx="3" ry="3" width="360" height="6" />
+        <rect x="48" y="71" rx="3" ry="3" width="380" height="6" />
         <rect x="48" y="88" rx="3" ry="3" width="178" height="6" />
       </ContentLoader>
     </div>
@@ -73,7 +73,7 @@ export const CardNews = ({news}) => {
           </div>
         </div>
 
-        <div className={`${styles.card_body_main} transform scale-0 h-0 md:scale-100 md:h-auto`}>
+        <div className={`${styles.card_body_main}`}>
           <div className={`${styles.card_text}`} dangerouslySetInnerHTML={{__html: news.description}} />
         </div>
 
