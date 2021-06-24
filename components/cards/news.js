@@ -13,8 +13,9 @@ export const NewsLoader = (props) => (
     <div className={`${styles.card_body}`}>
       <ContentLoader
         speed={2}
-        backgroundColor="#f3f3f3"
+        backgroundColor="#F3F4F6"
         foregroundColor="#ecebeb"
+        style={{ width: '100%' }}
         {...props}
       >
         <rect x="48" y="8" rx="3" ry="3" width="88" height="6" />

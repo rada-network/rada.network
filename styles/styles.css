@@ -282,6 +282,14 @@ Empty State
 .empty-state {
   @apply p-4 md:p-6 lg:p-8;
 }
+
+/* 
+Content Loader 
+*/
+.content-loader {
+  @apply p-4 md:p-6 lg:p-8;
+}
+
 /* 
 Tootips 
 */
