@@ -37,7 +37,7 @@ Media
 .media-playlist {
   @apply mx-4 mt-2 md:mx-6 md:mt-4 lg:mx-8 lg:mt-6;
   .card {
-    @apply flex-shrink-0 w-40 lg:w-60 h-full rounded transition cursor-pointer;
+    @apply flex-shrink-0 w-40 lg:w-56 h-full rounded transition cursor-pointer;
   }
   .card:hover {
     @apply bg-gray-50;
@@ -276,6 +276,12 @@ Page Topic
 /* 
 Components
 --------------------------------------------- */
+/*
+Empty State
+*/
+.empty-state {
+  @apply p-4 md:p-6 lg:p-8;
+}
 /* 
 Tootips 
 */

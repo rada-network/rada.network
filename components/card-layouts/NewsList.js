@@ -60,7 +60,9 @@ export const NewsList = observer(({
     if (!loadingButton && posts.length === 0){
       return (
         <>
-          <h2>{dataStore.query} was not found in any documents.</h2>
+          <div className="empty-state">
+            <p><strong className="text-bold">{dataStore.query}</strong> was not found in any documents.</p>
+          </div>
         </>
       )
     }
