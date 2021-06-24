@@ -42,9 +42,9 @@ export const SocialPost = ({post, favoriteCount, retweetCount, hashtags,
     )
   }
 
-  return(
+  return (
     <Link href={link} target={"_blank"}>
-      <div className={`card group ${styles.card} cursor-pointer`}>
+      <div className={`${styles.card} cursor-pointer`}>
 
         <div className={`card-header ${styles.card_header}`}>
 
@@ -93,28 +93,28 @@ export const SocialPost = ({post, favoriteCount, retweetCount, hashtags,
 
         </div> */}
 
-          <div className="card-body-main">
-            <div className={`card-text ${styles.card_text}`} dangerouslySetInnerHTML={{ __html: fullText}}></div>
-            {/* <div className={`card-media ${styles.card_media}`} style={{background: media ? media[0].media_url : "" }}> */}
+        <div className="card-body-main">
+          <div className={`card-text ${styles.card_text}`} dangerouslySetInnerHTML={{ __html: fullText}}></div>
+          {/* <div className={`card-media ${styles.card_media}`} style={{background: media ? media[0].media_url : "" }}> */}
 
-            {media && 
-              <div className={`card-media ${styles.card_media}`}
-                 style={{backgroundImage: media
-                     ? media[0].media_url_https
-                       ? "url(" + media[0].media_url_https + ")"
-                       : ""
-                     : "",
-                 }}>
+          {media && 
+            <div className={`card-media ${styles.card_media}`}
+                style={{backgroundImage: media
+                    ? media[0].media_url_https
+                      ? "url(" + media[0].media_url_https + ")"
+                      : ""
+                    : "",
+                }}>
 
-              {media
-                ? <img src={media[0].media_url_https ? media[0].media_url_https : ""} className={"project-icon_img w-full h-full rounded object-cover"} alt=""/>
-                : ""
-              }
-            </div> }
-
-          </div>
+            {media
+              ? <img src={media[0].media_url_https ? media[0].media_url_https : ""} className={"project-icon_img w-full h-full rounded object-cover"} alt=""/>
+              : ""
+            }
+          </div> }
 
         </div>
+
+      </div>
 
       <div className={`card-footer ${styles.card_footer}`}>
 
