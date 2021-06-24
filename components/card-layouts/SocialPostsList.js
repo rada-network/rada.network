@@ -58,7 +58,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
     if (data.loading){
       return false
     }
-    // setLoadingButton(false)
+    setLoadingButton(false)
     dataStore.addTweet(data.data.tweetFeed)
   }
 
