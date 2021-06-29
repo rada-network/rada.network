@@ -10,6 +10,8 @@ import {CardNews, NewsLoader} from "../cards/news";
 import {getNews} from "../../data/query/news";
 import ContentLoader from "react-content-loader";
 
+import styles from "../../styles/modules/Layout.module.css";
+
 const take = 12
 
 export const NewsList = observer(({
@@ -77,11 +79,11 @@ export const NewsList = observer(({
 
 
   return (
-    <div className={`section ${extraClass || ''}`} id={"#top"}>
-      <div className="section-inner">
+    <div className={`${styles.section} ${extraClass || ''}`}>
+      <div className={`${styles.section_inner}`}>
 
-        <div className="section-header">
-          <div className="section-title">
+        <div className={`${styles.section_header}`}>
+          <div className={`${styles.section_title}`}>
 
             <WidgetTitle title={title} titleIcon={titleIcon} titleIconColor={titleIconColor}
                          dataStore={dataStore}
@@ -95,7 +97,7 @@ export const NewsList = observer(({
           </div>
 
           {cta &&
-          <div className="section-cta">
+          <div className={`${styles.section_cta}`}>
             {cta === "View All" ?
               <button className="btn">
                 <span className="btn__text">
@@ -106,7 +108,7 @@ export const NewsList = observer(({
                 <span className="icon"><IoChevronForwardSharp/></span>
               </button>
               :
-              <div className="btn-group flex rounded px-1 py-1 bg-gray-100 text-xs">
+              <div className="btn-group btn-group-filter">
                 <TabButton handle={handleLoadMoreItems} key={"popular"} nValue={"popular"} value={"Popular"} dataStore={dataStore} />
                 <TabButton handle={handleLoadMoreItems} key={"latest"} nValue={"latest"} value={"Latest"} dataStore={dataStore} />
               </div>
@@ -115,7 +117,7 @@ export const NewsList = observer(({
           }
         </div>
 
-        <div className="section-body no-padding">
+        <div className={`${styles.section_body} ${styles.no_padding}`}>
           <div className={`grid gap-0 lg:gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
             {
               showPosts(posts)
@@ -128,7 +130,7 @@ export const NewsList = observer(({
           </div>
         </div>
 
-        <div className="section-footer">
+        <div className={`${styles.section_footer}`}>
           {loadingButton
             ? <a className="btn btn-loading">
               <span className={"btn btn__text"}>Loading...</span>
