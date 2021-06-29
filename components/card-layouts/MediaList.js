@@ -4,7 +4,9 @@ import {CardMiniV} from "../cards/MiniVertical";
 
 import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
-import styles from '../../styles/modules/Scrollbar.module.css';
+
+import stylesSB from '../../styles/modules/Scrollbar.module.css';
+import styles from "../../styles/modules/Layout.module.css";
 
 import WidgetTitle from "../text/widgetTitle";
 
@@ -72,12 +74,12 @@ export const MediaList = ({
   const activeItem = items[activeIdx] ?? items[0]
 
 	return (
-		<div className={`section ${extraClass || ''}`}>
-      <div className="section-inner">
+		<div className={`${styles.section} ${extraClass || ''}`}>
+      <div className={`${styles.section_inner}`}>
 
         { title && 
-				<div className="section-header">
-					<div className="section-title">
+				<div className={`${styles.section_header}`}>
+					<div className={`${styles.section_title}`}>
             <span className={`icon mr-3 text-${titleIconColor}`}>
               <i className={`fad fa-${titleIcon}`}/>
             </span>
@@ -85,7 +87,7 @@ export const MediaList = ({
           </div>
 				</div> }
 
-				<div className="section-body no-padding">
+				<div className={`${styles.section_body} ${styles.no_padding}`}>
           <div className={`grid grid-cols-1`}>
             {/* Media Player */}
             <div className="media-player">
@@ -97,7 +99,7 @@ export const MediaList = ({
             </div>
 
             {/* Media Playlist */}
-            <div className={`media-playlist scrollbar ${styles.scrollbar} ${styles.media_scroll}`} ref={scrollBox}>
+            <div className={`media-playlist scrollbar ${stylesSB.scrollbar} ${stylesSB.media_scroll}`} ref={scrollBox}>
 
               { items.map((item, idx) => <CardMiniV {...item} onClick={() => setActiveIdx(idx)} className={idx==activeIdx ? 'active' : ''} />) }
 

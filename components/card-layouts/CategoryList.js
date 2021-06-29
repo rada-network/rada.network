@@ -3,7 +3,9 @@ import { useState, useEffect, createRef } from 'react'
 
 import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
-import styles from '../../styles/modules/Scrollbar.module.css';
+
+import stylesSB from '../../styles/modules/Scrollbar.module.css';
+import styles from "../../styles/modules/Layout.module.css";
 
 const scrollBox = createRef();
 let ps;
@@ -27,13 +29,13 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
 
 
 	return (
-		<div className={`section ${extraClass || ''}`}>
-      <div className="section-inner">
+		<div className={`${styles.section} ${extraClass || ''}`}>
+      <div className={`${styles.section_inner}`}>
 
-				<div className="section-header">
+				<div className={`${styles.section_header}`}>
 
           { title && 
-					<div className="section-title">
+					<div className={`${styles.section_title}`}>
             { titleIcon &&
             <span className={`icon mr-3 text-${titleIconColor}`}>
               <i className={`fad fa-${titleIcon}`}></i>
@@ -44,9 +46,9 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
 
 				</div>
 
-				<div className="section-body">
+				<div className={`${styles.section_body}`}>
 
-          <div className={`${styles.category_scroll} scrollbar ${styles.scrollbar}`} ref={scrollBox}>
+          <div className={`${stylesSB.category_scroll} scrollbar ${stylesSB.scrollbar}`} ref={scrollBox}>
             {topic.map(function(item){
               return (
                 <Card

@@ -3,6 +3,8 @@ import React, {useState} from 'react';
 import {Card, ProjectLoader} from "../cards/Project";
 import {DropDown} from "../dropdown/DropDown";
 
+import styles from "../../styles/modules/Layout.module.css";
+
 //ReactIcons
 import {IoChevronDownSharp, IoChevronForwardSharp, IoChevronBackSharp} from "react-icons/io5";
 import Link from "next/link"
@@ -104,11 +106,11 @@ export const ProjectsList = observer(({
 
 
   return (
-    <div className={`section ${extraClass || ''}`} id={"#top"}>
-      <div className="section-inner">
+    <div className={`${styles.section} ${extraClass || ''}`}>
+      <div className={`${styles.section_inner}`}>
 
-        <div className="section-header">
-          <div className="section-title">
+        <div className={`${styles.section_header}`}>
+          <div className={`${styles.section_title}`}>
 
             <WidgetTitle title={title} titleIcon={titleIcon} titleIconColor={titleIconColor}
                           dataStore={dataStore}
@@ -122,13 +124,14 @@ export const ProjectsList = observer(({
           </div>
 
           {cta &&
-          <div className="section-cta">
-            {cta === "View All" ? <button className="btn">
-              <span className="btn__text">
-                <Link href={`/explore/${itemType}`}>
-                  {cta}
-                </Link>
-              </span>
+          <div className={`${styles.section_cta}`}>
+            {cta === "View All" ? 
+              <button className="btn">
+                <span className="btn__text">
+                  <Link href={`/explore/${itemType}`}>
+                    {cta}
+                  </Link>
+                </span>
                 <span className="icon"><IoChevronForwardSharp/></span>
               </button>
               : detail ?
@@ -147,7 +150,7 @@ export const ProjectsList = observer(({
           }
         </div>
 
-        <div className="section-body no-padding">
+        <div className={`${styles.section_body} ${styles.no_padding}`}>
           <div className={`grid gap-0 lg:gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
             {
               showPosts(posts)
@@ -160,7 +163,7 @@ export const ProjectsList = observer(({
           </div>
         </div>
 
-        <div className="section-footer">
+        <div className={`${styles.section_footer}`}>
           {dataStore.home.homeDisplay === homeDisplay && dataStore.home.isHome
             ? <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
                   className="btn btn-nav mr-2">

@@ -58,10 +58,6 @@ Section
   @apply px-4 pb-4 md:px-6 md:pb-4 lg:px-8 lg:pb-6;
 }
 
-.no_padding {
-  @apply p-0;
-}
-
 .section_footer {
   @apply flex justify-between items-center;
   @apply px-4 py-4 md:px-8 md:py-6;
@@ -75,4 +71,15 @@ Section
 
 .section_cta .btn-group + .btn-group {
   @apply ml-4;
+}
+
+/* 
+Helpers 
+*/
+.no_padding {
+  @apply p-0;
+}
+
+.no_padding-t {
+  @apply pt-0;
 }
