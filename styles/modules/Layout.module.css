@@ -31,7 +31,7 @@ Section
   @apply my-8;
 }
 
-.section.section-top {
+.section_top {
   @apply mt-0 md:mt-8;
 }
 

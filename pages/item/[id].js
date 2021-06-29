@@ -11,6 +11,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 import stylesSB from '../../styles/modules/Scrollbar.module.css';
+import styles from "../../styles/modules/Layout.module.css";
 
 import itemQuery from "../../data/query/itemDetail"
 import allItem from "../../data/query/items"
@@ -116,17 +117,17 @@ export default function Item (props) {
     {/*<Layout extraClass="page-project_details" meta={data.item}>*/}
       <>
 
-      <div className="wrapper">
-        <div className="container">
+      <div className={`${styles.wrapper}`}>
+        <div className={`${styles.container}`}>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12">
+          <div className={`${styles.grid_12cols}`}>
 
             {/* main content */}
-            <div className="maincontent">
+            <div className={`${styles.maincontent}`}>
 
-              <div className="section section-top">
+              <div className={`${styles.section} ${styles.section_top}`}>
 
-                <div className="section-inner">
+                <div className={`${styles.section_inner}`}>
 
                   {/* Page Header */}
                   <div className="page-header">
