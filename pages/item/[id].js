@@ -113,8 +113,9 @@ export default function Item (props) {
   }, [scrollBox, showIdx]);
 
   return (
-    <Layout extraClass="page-project_details" meta={data.item.title}>
-    {/*<Layout extraClass="page-project_details" meta={data.item}>*/}
+    <Layout extraClass="page-project_details"
+            meta={utils.createSiteMetadata({page : 'IdeaDetail',data : data.item})}
+    >
       <>
 
       <div className={`${styles.wrapper}`}>

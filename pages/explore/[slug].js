@@ -67,7 +67,9 @@ export default observer(function Explore(props) {
   observableTweetStore.tweets = data.feed
   if (itemType === "tweet"){
     return (
-      <Layout extraClass="page-home" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
+      <Layout extraClass="page-home"
+              meta={utils.createSiteMetadata({page : 'Explore',data : {query : q,itemType : itemType}})}
+      >
         <Header props={data.topic[0]}/>
 
         <div className={`${styles.wrapper}`}>
@@ -102,7 +104,8 @@ export default observer(function Explore(props) {
   }
   else{
     return (
-      <Layout extraClass="page_topic" meta={itemType === "All-Posts" ? "Category Pages" : "Explore Pages"}>
+      <Layout extraClass="page_topic"
+              meta={utils.createSiteMetadata({page : 'Explore',data : {query : q,itemType : itemType}})}>
 
         <Header props={data.topic[0]}/>
 

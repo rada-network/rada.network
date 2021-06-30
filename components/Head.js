@@ -1,11 +1,11 @@
 import HTMLHead from 'next/head'
 
-export const Head = ({meta}) => {
+export const Head = ({title,description,facebook,twitter,keyword}) => {
   return (
 
     <HTMLHead>
-      <title>{meta}</title>
-      <meta name={"description"} content={"dhunt.io"}/>
+      <title>{title}</title>
+      <meta name="description" content={description}/>
       {/*<title>{meta.title == null || undefined ? "dhunt.io" : meta.title}</title>*/}
       {/*<meta name={meta.description == null ? "description" : meta.description} content={meta.content == null ? "dhunt.io" : meta.content}/>*/}
     <link

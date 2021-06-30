@@ -71,7 +71,7 @@ export default observer((props) => {
   observableDappStore.tweets = data.postsDapp
   observableNewsStore.tweets = data.news
   return (
-    <Layout extraClass="page-home" meta={"DHunt.io - Top BlockChain DApps"}>
+    <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 
       <Header props={{
         title : "Trends hunter for Cardano community",

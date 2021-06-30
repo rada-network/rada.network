@@ -5,9 +5,10 @@ import { Footer } from "../Footer";
 import styles from "../../styles/modules/Layout.module.css";
 
 export const Layout = ({children, extraClass, meta}) => {
+  console.log(meta)
   return (
     <>
-    <Head meta={meta} />
+    <Head title={meta.title} description={meta.description} />
     <div className={`${styles.wrapper} ${extraClass || ''}`}>
       <Navbar />
       

@@ -63,9 +63,10 @@ export default observer(function Explore(props) {
   observableTweetStore.tweets = data.tweetFeed
   observableNewsStore.tweets = data.newsFeed
   observableItemStore.tweets = data.itemFeed
-
   return (
-    <Layout extraClass="page_topic" meta={"Top info from " + word}>
+    <Layout extraClass="page_topic"
+            meta={utils.createSiteMetadata({page : 'Tag',data : {word : word}})}
+    >
       <div className={`${styles.wrapper}`}>
         <div className={`${styles.container}`}>
 
