@@ -30,17 +30,29 @@ export const Navbar = () => {
               </Link>
             </div>
 
+            {/* Main Nav */}
+            <div className="flex-1 hidden sm:block sm:ml-6">
+              <div className="flex space-x-4 text-sm">
+                <a href="/" className="px-3 py-2 font-medium rounded-md whitespace-nowrap text-primary-700" aria-current="page">
+                  <span className="">Explore</span>
+                </a>
+                <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700" aria-current="page">
+                  <span className="">News</span>
+                </a>
+                <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">
+                  <span className="">Social Signals</span>
+                </a>
+                <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">
+                  <span className="">Projects</span>
+                </a>
+                <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">
+                  <span className="">Blogs</span>
+                </a>
+              </div>
+            </div>
+
             {/* Search */}
             <SearchInput />
-
-            {/* Main Nav */}
-            {/* <div className="flex-1 hidden sm:block sm:ml-6">
-              <div className="flex space-x-4 text-sm">
-                <a href="/" className="px-3 py-2 font-medium rounded-md whitespace-nowrap text-primary-700" aria-current="page">Explore</a>
-                <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">About Us</a>
-                <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">How It Work</a>
-              </div>
-            </div> */}
 
           </div>
 

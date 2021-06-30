@@ -30,6 +30,6 @@
 /* Animation */
 .floating {
   @apply relative;
-  animation: floating 60s infinite ease-in-out;
+  animation: floating 120s infinite ease-in-out;
   will-change: transform;
 }
