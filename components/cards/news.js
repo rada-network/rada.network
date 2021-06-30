@@ -32,6 +32,8 @@ export const NewsLoader = (props) => (
 
 export const CardNews = ({news}) => {
   const postDate = utils.timeDifference(new Date(), new Date(news.createdAt))
+  const postDate_ = utils.titleTime(news.createdAt)
+  const source_ = news.websiteUri.split('/')
   let keywords = JSON.parse(news.keywords);
   keywords = Object.entries(keywords)
   return (
@@ -83,7 +85,7 @@ export const CardNews = ({news}) => {
               <span className="metadata-value" title={news.source}>{news.source}</span>
             </div>
             <div className="metadata metadata_date">
-              <span className="metadata-value" title={`${postDate}`}>{postDate}</span>
+              <span className="metadata-value" title={`${postDate_}`}>{postDate}</span>
             </div>
           </div>
         </div>
