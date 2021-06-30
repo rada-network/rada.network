@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { useWallet } from 'use-wallet'
+import { useRouter } from 'next/router'
+
 
 import {ChevronDoubleDownIcon, ChevronDownIcon} from "@heroicons/react/solid";
 
@@ -11,6 +13,22 @@ import {Wallet} from "./Wallet"
 import SearchInput from "./search";
 
 export const Navbar = () => {
+  const router = useRouter()
+
+  const NavItem = ({className, href, children}) => {
+    const activeCls = router.asPath === href ? 'active' : ''
+    const cls = []
+    cls.push('px-3 py-2 text-gray-400 whitespace-nowrap hover:text-gray-700')
+    cls.push(className)
+    if (router.asPath === href) cls.push('active')
+
+    return (
+    <a href={href} className={cls.join(' ')}>
+      <span>{children}</span>
+    </a>
+    )
+  }
+
   return (
     <nav className="navbar-main">
       <div className="container">
@@ -33,21 +51,10 @@ export const Navbar = () => {
             {/* Main Nav */}
             <div className="flex-1 hidden sm:block sm:ml-6">
               <div className="flex space-x-4 text-sm">
-                <a href="/" className="px-3 py-2 font-medium rounded-md whitespace-nowrap text-gray-700" aria-current="page">
-                  <span className="">Explore</span>
-                </a>
-                <a href="/" className="px-3 py-2 text-gray-400 whitespace-nowrap hover:text-gray-700" aria-current="page">
-                  <span className="">News</span>
-                </a>
-                <a href="/" className="px-3 py-2 text-gray-400 whitespace-nowrap hover:text-gray-700">
-                  <span className="">Social Signals</span>
-                </a>
-                <a href="/" className="px-3 py-2 text-gray-400 whitespace-nowrap hover:text-gray-700">
-                  <span className="">Projects</span>
-                </a>
-                <a href="/" className="px-3 py-2 text-gray-400 whitespace-nowrap hover:text-gray-700">
-                  <span className="">Blogs</span>
-                </a>
+                <NavItem href="/explore/news">News</NavItem>
+                <NavItem href="/explore/social">Social Signals</NavItem>
+                <NavItem href="/explore/projects">Projects</NavItem>
+                <NavItem href="/explore/blog">Blog</NavItem>
               </div>
             </div>
 
