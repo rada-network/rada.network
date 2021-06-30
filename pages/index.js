@@ -87,12 +87,14 @@ export default observer((props) => {
             {/* main content */}
             <div className={`${styles.maincontent}`}>
 
-              <CategoryList
-                extraClass="category-list"
-                title="Top Topics"
-                // titleIcon="album-collection"
-                // titleIconColor="gray-400"
-                topic={data.topic}
+              <NewsList
+                grid="1"
+                gap="0"
+                extraClass="news-list"
+                title="Cardano's News"
+                // titleIcon="newspaper"
+                // titleIconColor="yellow-500"
+                dataStore={observableNewsStore}
               />
 
               <MediaList
@@ -104,16 +106,6 @@ export default observer((props) => {
                 // titleIconColor="purple-500"
               />
 
-              <NewsList
-                grid="1"
-                gap="0"
-                extraClass="news-list"
-                title="Cardano's News"
-                // titleIcon="newspaper"
-                // titleIconColor="yellow-500"
-                dataStore={observableNewsStore}
-              />
-
               {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
                 <SocialPostsList
                   title="Social Signal"
@@ -123,6 +115,14 @@ export default observer((props) => {
                   dataStore={observableTweetStore}
                 />  : ""
               }
+
+              <CategoryList
+                extraClass="category-list"
+                title="Top Topics"
+                // titleIcon="album-collection"
+                // titleIconColor="gray-400"
+                topic={data.topic}
+              />
 
               {/* {homeStore.homeDisplay === 2 || homeStore.homeDisplay === 0 ?
                 <ProjectsList
