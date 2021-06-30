@@ -33,19 +33,19 @@ export const Navbar = () => {
             {/* Main Nav */}
             <div className="flex-1 hidden sm:block sm:ml-6">
               <div className="flex space-x-4 text-sm">
-                <a href="/" className="px-3 py-2 font-medium rounded-md whitespace-nowrap text-primary-700" aria-current="page">
+                <a href="/" className="px-3 py-2 font-medium rounded-md whitespace-nowrap text-gray-700" aria-current="page">
                   <span className="">Explore</span>
                 </a>
-                <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700" aria-current="page">
+                <a href="/" className="px-3 py-2 text-gray-400 whitespace-nowrap hover:text-gray-700" aria-current="page">
                   <span className="">News</span>
                 </a>
-                <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">
+                <a href="/" className="px-3 py-2 text-gray-400 whitespace-nowrap hover:text-gray-700">
                   <span className="">Social Signals</span>
                 </a>
-                <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">
+                <a href="/" className="px-3 py-2 text-gray-400 whitespace-nowrap hover:text-gray-700">
                   <span className="">Projects</span>
                 </a>
-                <a href="/" className="px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">
+                <a href="/" className="px-3 py-2 text-gray-400 whitespace-nowrap hover:text-gray-700">
                   <span className="">Blogs</span>
                 </a>
               </div>
@@ -70,6 +70,7 @@ export const Navbar = () => {
             <div className="relative">
               <Wallet />
             </div>
+
           </div>
 
         </div>
