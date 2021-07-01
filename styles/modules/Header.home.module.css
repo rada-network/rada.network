@@ -2,7 +2,7 @@
 
 .header {
   @apply overflow-hidden;
-  @apply bg-gradient-to-br from-purple-900 to-purple-500;
+  @apply bg-gradient-to-br from-purple-900 to-purple-500 shadow;
   animation: fadein 1s ease;
 }
 

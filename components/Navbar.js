@@ -3,12 +3,8 @@ import { useState } from 'react'
 import { useWallet } from 'use-wallet'
 import { useRouter } from 'next/router'
 
-import {ChevronDoubleDownIcon, ChevronDownIcon} from "@heroicons/react/solid"
 import styles from '../styles/modules/Navbar.module.css'
 
-
-
-import { RiUploadLine } from "react-icons/ri"
 
 import {Wallet} from "./Wallet"
 import SearchInput from "./search"
