@@ -1,0 +1,3 @@
+.navbar_search__input {
+  @apply w-full px-5 py-2 text-sm focus:text-base bg-gray-50 focus:bg-white border border-gray-100 rounded-md shadow-sm focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0 transition-all;
+}

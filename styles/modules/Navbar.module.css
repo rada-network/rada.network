@@ -1,0 +1,24 @@
+.wrapper {
+  @apply bg-white bg-opacity-90 border-b border-gray-100 z-50 backdrop-filter backdrop-blur;
+  @apply fixed inset-x-0 inset-y-0;
+  height: var(--mainnav-height);
+}
+
+.container {
+  @apply mx-auto px-4 md:px-8 max-w-screen-xl;
+}
+
+.main {
+  @apply relative flex items-center justify-between space-x-4;
+  height: var(--mainnav-height);
+}
+
+.nav_item {
+  @apply whitespace-nowrap;
+  @apply text-gray-900 text-opacity-50;
+  @apply hover:text-opacity-90;
+}
+
+.nav_item__active {
+  @apply text-gray-900 text-opacity-100 font-medium;
+}

@@ -4,6 +4,8 @@ import { useWallet } from 'use-wallet'
 import { useRouter } from 'next/router'
 
 import {ChevronDoubleDownIcon, ChevronDownIcon} from "@heroicons/react/solid"
+import styles from '../styles/modules/Navbar.module.css'
+
 
 
 import { RiUploadLine } from "react-icons/ri"
@@ -16,11 +18,11 @@ export const Navbar = () => {
   const router = useRouter()
 
   const NavItem = ({className, href, children}) => {
-    const activeCls = router.asPath === href ? 'active' : ''
+
     const cls = []
-    cls.push('px-3 py-2 text-gray-400 whitespace-nowrap hover:text-gray-700')
+    cls.push(`${styles.nav_item}`)
     cls.push(className)
-    if (router.asPath === href) cls.push('active')
+    if (router.asPath === href) cls.push(`${styles.nav_item__active}`)
 
     return (
     <a href={href} className={cls.join(' ')}>
@@ -30,12 +32,12 @@ export const Navbar = () => {
   }
 
   return (
-    <nav className="navbar-main">
-      <div className="container">
+    <nav className={`${styles.wrapper}`}>
+      <div className={`${styles.container}`}>
         
-        <div className="relative flex items-center justify-between h-16">
+        <div className={`${styles.main}`}>
 
-          <div className="flex items-center justify-center flex-1 align-center">
+          <div className="flex items-center justify-center align-center">
 
             {/* Logo */}
             <div className="flex items-center flex-shrink-0">
@@ -48,9 +50,13 @@ export const Navbar = () => {
               </Link>
             </div>
 
+          </div>
+
+          <div className="flex items-center flex-1">
+
             {/* Main Nav */}
-            <div className="flex-1 hidden sm:block sm:ml-6">
-              <div className="flex space-x-4 text-sm">
+            <div className="flex-1 hidden sm:block sm:ml-6 flex-shrink-0">
+              <div className="flex space-x-4 text-sm flex-shrink-0">
                 <NavItem href="/explore/news">News</NavItem>
                 <NavItem href="/explore/social">Social Signals</NavItem>
                 <NavItem href="/explore/projects">Projects</NavItem>
@@ -60,18 +66,6 @@ export const Navbar = () => {
 
             {/* Search */}
             <SearchInput />
-
-          </div>
-
-          <div className="flex items-center">
-            {/* <div className="flex-1 hidden text-sm sm:block">
-              <div className="flex space-x-4">
-                <a href="/" className="flex items-center px-3 py-2 font-medium text-gray-700 whitespace-nowrap hover:text-primary-700">
-                  <span className="mr-2 icon"><RiUploadLine /></span>
-                  Submit
-                </a>
-              </div>
-            </div> */}
 
             {/* Profile dropdown */}
             <div className="relative">
