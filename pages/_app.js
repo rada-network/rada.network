@@ -6,6 +6,8 @@ import { useWallet, UseWalletProvider } from 'use-wallet'
 import NextNprogress from 'nextjs-progressbar';
 // import { Provider } from 'mobx-react'
 import { StoreProvider } from "../lib/useStore"
+import { ThemeProvider } from 'next-themes';
+
 
 import { configure } from "mobx"
 
@@ -35,6 +37,7 @@ const TokenRankingStore = ({ Component, pageProps }) => {
   }}
   >
     <StoreProvider>
+    <ThemeProvider attribute="class">
       <NextNprogress
         options={{ showSpinner: false }}
         color="#29D"
@@ -44,6 +47,7 @@ const TokenRankingStore = ({ Component, pageProps }) => {
         showOnShallow={true}
       />
       <MyApp Component={Component} pageProps={pageProps} />
+    </ThemeProvider>
     </StoreProvider>
   </UseWalletProvider>
 )}

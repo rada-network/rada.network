@@ -11,7 +11,7 @@ module.exports = {
     './pages/**/*.{js,jsx,ts,tsx,vue}',    
   ],
   
-  darkMode: 'media', // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
 
   theme: {
     // Add Font to Sans Font Array

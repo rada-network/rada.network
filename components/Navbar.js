@@ -3,14 +3,14 @@ import { useState } from 'react'
 import { useWallet } from 'use-wallet'
 import { useRouter } from 'next/router'
 
+import {ChevronDoubleDownIcon, ChevronDownIcon} from "@heroicons/react/solid"
 
-import {ChevronDoubleDownIcon, ChevronDownIcon} from "@heroicons/react/solid";
 
-
-import { RiUploadLine } from "react-icons/ri";
+import { RiUploadLine } from "react-icons/ri"
 
 import {Wallet} from "./Wallet"
-import SearchInput from "./search";
+import SearchInput from "./search"
+import ThemeSwitch from "./ThemeSwitch"
 
 export const Navbar = () => {
   const router = useRouter()
@@ -77,6 +77,8 @@ export const Navbar = () => {
             <div className="relative">
               <Wallet />
             </div>
+
+            <ThemeSwitch />
 
           </div>
 
