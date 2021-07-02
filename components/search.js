@@ -19,7 +19,7 @@ export default function SearchInput(){
   }
   return (
     <div className={`${styles.navbar_search}`}>
-      <span className={`icon ${styles.navbar_search__icon}`}><i class="fa fa-search" /></span>
+      <span className={`icon ${styles.navbar_search__icon}`}><i class="far fa-search" /></span>
       <input value={searchValue} onChange={handledOnChange} onKeyPress={handledOnKeypress}
         type="search"
         className={`${styles.navbar_search__input}`}

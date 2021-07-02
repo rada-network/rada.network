@@ -81,7 +81,7 @@ Nav Button
 */
 .nav-btn {
   @apply flex px-2.5 py-2 rounded-md;
-  @apply text-sm font-medium text-gray-900 text-opacity-80 bg-white border border-gray-200;
+  @apply text-sm font-medium text-gray-900 text-opacity-80 bg-gray-100 border border-transparent;
   @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
 }
 

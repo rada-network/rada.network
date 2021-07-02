@@ -16,7 +16,7 @@
 
 .navbar_search__input {
   @apply w-6 focus:w-full md:w-full focus:px-2 md:px-2 pl-7 focus:pl-10 md:pl-10 py-2 text-sm transition;
-  @apply bg-gray-50 focus:bg-white border border-gray-200 rounded-md focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0;
+  @apply bg-gray-100 focus:bg-white border border-transparent rounded-md focus:shadow-md focus:border-primary-700 focus:outline-none focus:ring-0;
 }
 
 .navbar_search__input::placeholder {
