@@ -3,7 +3,7 @@
 }
 
 .navbar_search__icon {
-  @apply absolute top-1.5 left-4  pointer-events-none;
+  @apply absolute top-1.5 left-3 pointer-events-none text-base;
 }
 
 .navbar_search__icon i {
@@ -15,8 +15,8 @@
 }
 
 .navbar_search__input {
-  @apply w-6 focus:w-full focus:px-5 pl-9 focus:pl-10 py-2 text-sm transition;
-  @apply bg-gray-50 focus:bg-white border border-gray-100 rounded focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0;
+  @apply w-6 focus:w-full focus:px-2 pl-7 focus:pl-10 py-2 text-sm transition;
+  @apply bg-gray-50 focus:bg-white border border-gray-200 rounded focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0;
 }
 
 .navbar_search__input::placeholder {

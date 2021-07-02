@@ -77,6 +77,15 @@ Vote Buttons
 }
 
 /* 
+Wallet Button 
+*/
+.btn-connect-wallet {
+  @apply flex px-3 py-2 rounded;
+  @apply text-sm font-medium text-gray-900 text-opacity-80 bg-white border border-gray-200;
+  @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
+}
+
+/* 
 Group Buttons 
 */
 .btn-group {
@@ -111,7 +120,6 @@ Group Buttons
   @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700 rounded;
   @apply text-sm;
 }
-
 
 /* 
 Button Caret
