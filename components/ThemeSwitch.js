@@ -31,15 +31,17 @@ const ThemeSwitch = () => {
       onChange={handleChange}
       checked={checked}
       aria-label="switch between day and night themes"
-      offColor="#555"
-      onHandleColor="#eee"
+      offColor="#D1D5DB"
+      onColor="#D1D5DB"
+      onHandleColor="#fff"
+      offHandleColor="#fff"
       handleDiameter={20}
       uncheckedIcon={
         <div className="flex justify-center items-center h-full">
           <IconContext.Provider
             value={{
-              color: 'gold',
-              size: '80%',
+              color: '#374151',
+              size: '0%',
             }}
           >
             <FaSun />
@@ -50,16 +52,16 @@ const ThemeSwitch = () => {
         <div className="flex justify-center items-center h-full">
           <IconContext.Provider
             value={{
-              color: 'yellow',
-              size: '80%',
+              color: '#374151',
+              size: '60%',
             }}
           >
             <FaMoon />
           </IconContext.Provider>
         </div>
       }
-      height={24}
-      width={48}
+      height={28}
+      width={56}
     />
   );
 };
