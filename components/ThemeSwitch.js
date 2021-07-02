@@ -1,13 +1,26 @@
 // components/theme-switch.tsx
-import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 
 const ThemeSwitch = () => {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme('light')
+
+  if (theme == "light"){
 
   return (
-      <a className="xzy" onClick={e => setTheme(theme == 'dark' ? 'light' : 'dark')}>xxx</a>
-  )
+    <a className="btn btn-switch-theme" onClick={e => setTheme(theme == 'dark' ? 'light' : 'dark')}>
+      <span className="text-base leading-5"><i className="fad fa-sun" /></span>
+    </a>
+  ) 
+  }
+
+  else {
+    return (
+      <a className="btn btn-switch-theme" onClick={e => setTheme(theme == 'dark' ? 'light' : 'dark')}>
+        <span className="text-base leading-5"><i className="fad fa-moon" /></span>
+      </a>
+    ) 
+  }
+
 }
 
 export default ThemeSwitch

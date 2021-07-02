@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  @apply bg-bluegray-50;
+  @apply bg-bluegray-50 dark:bg-purple-900;
   padding-top: calc(var(--mainnav-height) + 1px);
 }
 
