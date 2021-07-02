@@ -14,7 +14,7 @@
 }
 
 .nav_item {
-  @apply whitespace-nowrap;
+  @apply whitespace-nowrap h-full text-sm;
   @apply text-gray-900 text-opacity-50 font-medium;
   @apply hover:text-opacity-90;
 }

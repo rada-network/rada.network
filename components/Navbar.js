@@ -33,13 +33,13 @@ export const Navbar = () => {
         
         <div className={`${styles.main}`}>
 
-          <div className="flex items-center justify-center align-center flex-1 space-x-4 md:space-x-6">
+          <div className="flex items-center justify-center align-center flex-1">
 
             {/* Logo */}
             <div className="flex items-center flex-shrink-0">
               <Link href={`/`}>
                 <a className="flex items-center justify-center align-center" title="dhunt.io">
-                  <img className="block w-auto h-8" src="/images/dhunt.svg" alt="dhunt.io" />
+                  <img className="block w-auto h-6" src="/images/dhunt.svg" alt="dhunt.io" />
                   <strong className="hidden md:inline-flex ml-2 text-gray-900 logo-text text-opacity-90">
                     <span>d</span><span>hunt</span><span>.io</span></strong>
                 </a>
@@ -47,18 +47,16 @@ export const Navbar = () => {
             </div>
 
             {/* Main Nav */}
-            <div className="flex-1 hidden sm:block flex-shrink-0">
-              <div className="flex space-x-4 text-sm flex-shrink-0">
-                <NavItem href="/explore/news">News</NavItem>
-                <NavItem href="/explore/social">Social Signals</NavItem>
-                <NavItem href="/explore/projects">Projects</NavItem>
-                <NavItem href="/explore/blog">Blog</NavItem>
-              </div>
+            <div className="flex-1 hidden sm:block flex-shrink-0 ml-8 space-x-4">
+              <NavItem href="/explore/news">News</NavItem>
+              <NavItem href="/explore/social">Social Signals</NavItem>
+              <NavItem href="/explore/projects">Projects</NavItem>
+              <NavItem href="/explore/blog">Blog</NavItem>
             </div>
 
           </div>
 
-          <div className="flex items-center space-x-4 md:space-x-6">
+          <div className="flex items-center space-x-4">
 
             {/* Search */}
             <SearchInput />
