@@ -33,7 +33,7 @@ export const Navbar = () => {
         
         <div className={`${styles.main}`}>
 
-          <div className="flex items-center justify-center align-center">
+          <div className="flex items-center justify-center align-center flex-1 space-x-4 md:space-x-6">
 
             {/* Logo */}
             <div className="flex items-center flex-shrink-0">
@@ -46,12 +46,8 @@ export const Navbar = () => {
               </Link>
             </div>
 
-          </div>
-
-          <div className="flex items-center flex-1">
-
             {/* Main Nav */}
-            <div className="flex-1 hidden sm:block sm:ml-6 flex-shrink-0">
+            <div className="flex-1 hidden sm:block flex-shrink-0">
               <div className="flex space-x-4 text-sm flex-shrink-0">
                 <NavItem href="/explore/news">News</NavItem>
                 <NavItem href="/explore/social">Social Signals</NavItem>
@@ -59,6 +55,10 @@ export const Navbar = () => {
                 <NavItem href="/explore/blog">Blog</NavItem>
               </div>
             </div>
+
+          </div>
+
+          <div className="flex items-center space-x-4 md:space-x-6">
 
             {/* Search */}
             <SearchInput />

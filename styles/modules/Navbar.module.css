@@ -9,16 +9,16 @@
 }
 
 .main {
-  @apply relative flex items-center justify-between space-x-4;
+  @apply relative flex items-center justify-between;
   height: var(--mainnav-height);
 }
 
 .nav_item {
   @apply whitespace-nowrap;
-  @apply text-gray-900 text-opacity-50;
+  @apply text-gray-900 text-opacity-50 font-medium;
   @apply hover:text-opacity-90;
 }
 
 .nav_item__active {
-  @apply text-gray-900 text-opacity-100 font-medium;
+  @apply text-gray-900 text-opacity-100;
 }
