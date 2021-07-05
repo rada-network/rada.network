@@ -55,7 +55,7 @@ export default observer((props) => {
             {/* main content */}
             <div className={`${styles.maincontent}`}>
 
-            <CategoryList
+              <CategoryList
                 extraClass="category-list"
                 title="Top Topics"
                 // titleIcon="album-collection"

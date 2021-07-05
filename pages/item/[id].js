@@ -1,6 +1,6 @@
 import useSWR, {mutate} from 'swr'
 import Link from 'next/link'
-import { useState, useEffect, createRef } from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 
 import {Layout} from '../../components/page-layouts/OneColumn';
 import {Sidebar} from '../../components/sidebar/SidebarPost';
@@ -205,7 +205,7 @@ export default function Item (props) {
             </div>
 
             {/* Sidebar */}
-            <Sidebar extraClass="" />
+            <Sidebar className={`${styles.sidebar}`} extraClass="" />
 
           </div>
 

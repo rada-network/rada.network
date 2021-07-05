@@ -7,6 +7,7 @@ import KeywordIcon from "../icons/keywordIcon";
 
 import {RiExternalLinkLine} from "react-icons/ri";
 import ContentLoader from "react-content-loader";
+import Link from "next/link"
 
 export const NewsLoader = (props) => (
   <div className={`${styles.card}`}>
@@ -22,9 +23,11 @@ export const NewsLoader = (props) => (
         <rect x="0" y="0" rx="3" ry="3" width="40" height="40" />
         <rect x="48" y="8" rx="3" ry="3" width="128" height="6" />
         <rect x="48" y="24" rx="3" ry="3" width="80" height="6" />
-        <rect x="48" y="56" rx="3" ry="3" width="360" height="6" />
-        <rect x="48" y="71" rx="3" ry="3" width="380" height="6" />
-        <rect x="48" y="88" rx="3" ry="3" width="178" height="6" />
+        <div className={`${styles.card_body_main}`}>
+          <rect x="48" y="56" rx="3" ry="3" width="360" height="6" />
+          <rect x="48" y="71" rx="3" ry="3" width="380" height="6" />
+          <rect x="48" y="88" rx="3" ry="3" width="178" height="6" />
+        </div>
       </ContentLoader>
     </div>
   </div>
@@ -43,7 +46,7 @@ export const CardNews = ({news}) => {
         {news.thumbnailUri === "" ?
           <div className={`${styles.project_icon_ph}`}>
             <a rel={"nofollow"} target={"_blank"} href={news.websiteUri}>
-              <span className={`icon text-yellow-500 ${styles.project_icon_ph__img}`}><i className="fad fa-newspaper"></i></span>
+              <span className={`icon text-yellow-500 ${styles.project_icon_ph__img}`}><i className="fad fa-newspaper"/></span>
             </a>
           </div>
           :
@@ -59,10 +62,12 @@ export const CardNews = ({news}) => {
 
         <div className={`${styles.card_body_header}`}>
           <div className={`${styles.card_title}`}>
-            <a className="card-link group" rel={"nofollow"} target={"_blank"} href={news.websiteUri}>
-              <span className="mr-2">{news.title}</span>
-              <span className="icon -mb-0.5 ico-external-link"><RiExternalLinkLine /></span>
-            </a>
+            <Link href={"/news/"+news.id} >
+              <a className="card-link group" href={"/news/"+news.id}>
+                <span className="mr-2">{news.title}</span>
+                <span className="icon -mb-0.5 ico-external-link"><RiExternalLinkLine /></span>
+              </a>
+            </Link>
           </div>
           <div className="metadata-wrapper md:my-1 lg:mt-0">
             {

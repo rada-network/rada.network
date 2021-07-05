@@ -8,9 +8,9 @@ import { WidgetInfluencers } from "../widgets/WidgetInfluencers";
 import { WidgetPosts } from "../widgets/WidgetPosts";
 
 
-export const Sidebar = ({extraClass}) => {
+export const Sidebar = ({className,extraClass}) => {
   return (
-    <div className={`sidebar ${extraClass || ''}`}>
+    <div className={`${className} ${extraClass || ''}`}>
       <WidgetPosts
         title="Related Projects"
         widgetIcon="code-branch"

@@ -134,6 +134,7 @@ type Query {
     itemById(id: String!): Item
     itemFeed(itemType: String, orderBy: ItemOrderInput, query: String, skip: Int = 0, take: Int = 4): [Item]
     itemTypeCount: [ItemType]
+    newsById(id: String): News
     newsFeed(orderBy: ItemOrderInput, query: String, skip: Int = 0, take: Int = 4): [News]
     suggestUserFeed(skip: Int = 0, take: Int = 4): [SuggestUser]
     tweetById(id: String!): Tweet

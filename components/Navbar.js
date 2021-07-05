@@ -1,6 +1,4 @@
 import Link from 'next/link'
-import { useState } from 'react'
-import { useWallet } from 'use-wallet'
 import { useRouter } from 'next/router'
 
 import styles from '../styles/modules/Navbar.module.css'
@@ -22,7 +20,10 @@ export const Navbar = () => {
 
     return (
     <a href={href} className={cls.join(' ')}>
-      <span>{children}</span>
+      <Link href={href}>
+        <span>{children}</span>
+      </Link>
+
     </a>
     )
   }
