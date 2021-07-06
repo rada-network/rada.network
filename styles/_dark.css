@@ -1,57 +1,54 @@
-.dark {
+/* Main */
+body {
+  @apply dark:bg-deepgray-200;
+}
 
-  /* Main */
-  body {
-    @apply bg-deepgray-200;
-  }
+.section-inner,
+.widget {
+  @apply dark:bg-deepgray-50;
+}
 
-  .section-inner,
-  .widget {
-    @apply bg-deepgray-50;
-  }
+/* Navbar */
+.navbar {
+  @apply dark:bg-gray-900 dark:bg-opacity-90 dark:border-gray-800 dark:shadow-none;
+}
 
-  /* Navbar */
-  .navbar {
-    @apply bg-gray-900 bg-opacity-90 border-gray-800 shadow-none;
-  }
+.nav-item {
+  @apply dark:text-white dark:text-opacity-60;
+}
 
-  .nav-item {
-    @apply text-white text-opacity-60;
-  }
+.nav-item-active {
+  @apply dark:text-white dark:text-opacity-100;
+}
 
-  .nav-item-active {
-    @apply text-white text-opacity-100;
-  }
+/* Header */
+.header {
+  @apply dark:from-purple-900 dark:to-purple-700;
+}
 
-  /* Header */
-  .header {
-    @apply from-purple-900 to-purple-700;
-  }
+/* Widgets */
+.widget {
+}
 
-  /* Widgets */
-  .widget {
-  }
+/* Chart */
+.dark .chart-area {
+  fill: #E5E7EB;
+  stroke: none;
+  opacity: 0.02;
+}
 
-  /* Chart */
-  .chart-area {
-    fill: #E5E7EB;
-    stroke: none;
-    opacity: 0.05;
-  }
+/* Cards */
+.card-news:hover,
+.card-project:hover {
+  @apply dark:bg-gray-900;
+}
 
-  /* Cards */
-  .card-news:hover,
-  .card-project:hover {
-    @apply bg-gray-900;
-  }
+.card-text {
+  @apply dark:text-gray-500;
+}
 
-  .card-text {
-    @apply text-gray-500;
-  }
-
-  .card:hover .card-text {
-    @apply text-gray-200;
-  }
+.card:hover .card-text {
+  @apply dark:text-gray-200;
+}
 
 /* End Dark Theme */
-}
