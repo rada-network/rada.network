@@ -54,13 +54,13 @@ const EventItem = ({item}) => {
                 Expired
               </span>
               <span className={`badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
-                  <strong>{Math.abs(endDay)}d</strong> ago
+                  <strong className="title">{Math.abs(endDay)}d</strong> ago
               </span>
             </>
             :
             (day > 0) ?
             <span className={`badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
-                <strong>{day}d</strong> to go
+                <strong className="title">{day}d</strong> to go
               </span>
               :  <span className={`badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
                 Ongoing

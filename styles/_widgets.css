@@ -3,12 +3,13 @@ Generic Styles
 */
 .widget {
   @apply flex flex-col mb-8;
-  @apply bg-white rounded border-gray-900 border-opacity-5 shadow-sm;
+  @apply bg-white rounded border-gray-500 border-opacity-10 shadow-sm;
+  @apply dark:bg-gray-900;
 }
 
 .widget-header {
   @apply flex justify-between items-center px-4 py-4 md:px-8 w-full;
-  @apply border-b border-gray-900 border-opacity-5;
+  @apply border-b border-gray-500 border-opacity-10;
 }
 
 .widget-body {
@@ -58,7 +59,7 @@ Widget Lists
 .widget-list--item {
   @apply flex flex-col justify-between;
   @apply px-4 py-4 md:py-6 md:px-8;
-  @apply border-b border-gray-900 border-opacity-5;
+  @apply border-b border-gray-500 border-opacity-10;
 }
 
 
