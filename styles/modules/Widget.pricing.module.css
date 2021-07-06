@@ -10,7 +10,7 @@ Widget: Pricing
 }
 
 .value {
-  @apply text-5xl leading-none truncate font-semibold text-gray-900;
+  @apply text-5xl leading-none truncate font-semibold;
 }
 
 .indicator {

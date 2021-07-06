@@ -1,36 +1,57 @@
-/* Main */
-body {
-  @apply dark:bg-gray-900;
-}
+.dark {
 
-.section-inner {
-  @apply dark:bg-gray-800;
-}
+  /* Main */
+  body {
+    @apply bg-deepgray-200;
+  }
 
-/* Navbar */
-.navbar {
-  @apply dark:bg-gray-900 dark:bg-opacity-90 dark:border-gray-800 dark:shadow-none;
-}
+  .section-inner,
+  .widget {
+    @apply bg-deepgray-50;
+  }
 
-.nav-item {
-  @apply dark:text-white dark:text-opacity-60;
-}
+  /* Navbar */
+  .navbar {
+    @apply bg-gray-900 bg-opacity-90 border-gray-800 shadow-none;
+  }
 
-.nav-item-active {
-  @apply dark:text-white dark:text-opacity-100;
-}
+  .nav-item {
+    @apply text-white text-opacity-60;
+  }
 
-/* Header */
-.header {
-  @apply dark:from-purple-900 dark:to-purple-700;
-}
+  .nav-item-active {
+    @apply text-white text-opacity-100;
+  }
 
-.card-news:hover,
-.card-project:hover {
-  @apply dark:bg-purple-700;
-}
+  /* Header */
+  .header {
+    @apply from-purple-900 to-purple-700;
+  }
 
-/* Widgets */
-.widget {
-  @apply dark:bg-gray-800;
+  /* Widgets */
+  .widget {
+  }
+
+  /* Chart */
+  .chart-area {
+    fill: #E5E7EB;
+    stroke: none;
+    opacity: 0.05;
+  }
+
+  /* Cards */
+  .card-news:hover,
+  .card-project:hover {
+    @apply bg-gray-900;
+  }
+
+  .card-text {
+    @apply text-gray-500;
+  }
+
+  .card:hover .card-text {
+    @apply text-gray-200;
+  }
+
+/* End Dark Theme */
 }

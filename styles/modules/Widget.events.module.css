@@ -6,7 +6,7 @@ Widget: Events
 }
 
 .title {
-  @apply text-base font-medium text-gray-900;
+  @apply text-base font-medium;
 }
 
 .text {

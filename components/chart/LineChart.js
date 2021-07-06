@@ -77,7 +77,7 @@ export default function LineChart(props) {
     pathD += "L " + getSvgX(x.max) + " " + getSvgY(y.min) + " "
     + "L " + getSvgX(x.min) + " " + getSvgY(y.min) + " ";
 
-    return <path className={`${styles.area}`} d={pathD} />
+    return <path className={`chart-area ${styles.area}`} d={pathD} />
   }
 
   // BUILD GRID AXIS

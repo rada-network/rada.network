@@ -81,7 +81,7 @@ export const CardNews = ({news}) => {
         </div>
 
         <div className={`${styles.card_body_main}`}>
-          <div className={`${styles.card_text}`} dangerouslySetInnerHTML={{__html: news.description}} />
+          <div className={`card-text ${styles.card_text}`} dangerouslySetInnerHTML={{__html: news.description}} />
         </div>
 
         <div className={`${styles.card_body_footer}`}>
