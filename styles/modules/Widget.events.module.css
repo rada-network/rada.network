@@ -14,12 +14,16 @@ Widget: Events
 }
 
 .info_wrapper {
-  @apply flex mt-1;
+  @apply flex lg:-mt-1;
 }
 
 .info {
   @apply text-xs leading-none truncate text-gray-400 rounded;
   @apply py-1 px-2 overflow-hidden;
+}
+
+.info_date {
+  @apply bg-transparent;
 }
 
 .info_date strong {

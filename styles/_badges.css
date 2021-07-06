@@ -2,7 +2,7 @@
 Badges
 */
 .badge {
-  @apply text-xs px-2 py-0 h-6 whitespace-nowrap mt-1 lg:mt-2;
+  @apply text-xs px-2 py-1 whitespace-nowrap mt-1 lg:mt-2;
   @apply bg-gray-400 bg-opacity-10 hover:bg-opacity-20 text-gray-400 hover:text-gray-700 dark:hover:text-white;
   @apply rounded-sm;
 
@@ -40,7 +40,6 @@ Badges
 /*
 Small Badges
 */
-
 .badge-sm {
   @apply border-none rounded-sm rounded-tl-md rounded-br-md text-xxs px-2 pt-1px pb-1px;
   @apply bg-gray-100 border text-gray-500;

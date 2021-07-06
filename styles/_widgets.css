@@ -11,51 +11,51 @@ Generic Styles
   @apply border-b border-gray-900 border-opacity-5;
 }
 
-.widget_body {
+.widget-body {
   @apply flex flex-col flex-1 px-4 md:px-8 py-6 w-full;
 }
 
-.widget_body_p0 {
+.widget-body-p0 {
   @apply flex flex-col flex-1 p-0 w-full;
 }
 
-.widget_footer {
+.widget-footer {
   @apply flex justify-between px-4 md:px-8 py-4 w-full;
 }
 
-.widget_title {
+.widget-title {
   @apply text-lg md:text-lg font-medium;
   > a {
     @apply hover:text-gray-900;
   }
 }
 
-.widget_icon {
+.widget-icon {
 }
 
-.widget_icon_cf {
+.widget-icon-cf {
   @apply text-2xl;
 }
 
-.widget_icon_fa {
+.widget-icon-fa {
   @apply text-lg;
 }
 
 /*
 Widget Lists 
 */
-.widget_list {
+.widget-list {
 }
 
-.widget_list__link {
+.widget-list--link {
   @apply block cursor-pointer;
 }
 
-.widget_list__link:hover {
-  @apply bg-gray-50;
+.widget-list--link:hover {
+  @apply bg-shadeyellow-100 dark:bg-gray-800;
 }
 
-.widget_list__item {
+.widget-list--item {
   @apply flex flex-col justify-between;
   @apply px-4 py-4 md:py-6 md:px-8;
   @apply border-b border-gray-900 border-opacity-5;
@@ -65,29 +65,26 @@ Widget Lists
 /*
 Widget Lists Compact
 */
-.widget_list_sm {
-  @extend .widget_list;
+.widget-list-sm {
+  @extend .widget-list;
 }
 
-.widget_list_sm__link {
-  @extend .widget_list__link;
+.widget-list-sm--link {
+  @extend .widget-list--link;
 }
 
-.widget_list_sm__link:hover {
+.widget-list-sm--link:hover {
   @apply bg-gray-50;
 }
 
-.widget_list_sm__item {
-  @extend .widget_list__item;
+.widget-list-sm--item {
+  @extend .widget-list--item;
   @apply px-4 py-4 md:px-8;
 }
 
 /* 
 Footer 
 */
-.widget_footer_text {
+.widget-footer-text {
   @apply text-right w-full text-xs text-gray-500;
 }
-
-
-

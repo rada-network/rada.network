@@ -5,18 +5,18 @@ export const Widget = ({title, text, footer, widgetIcon, widgetIconColor}) => {
 
     <div className={`widget group ${styles.widget}`}>
       { title &&
-      <div className={`${styles.widget_header}`}>
-        <div className={`${styles.widget_title}`}>{title}</div>
-        <span className={`${styles.widget_icon}`}>
-          <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-300'} ${styles.widget_icon_fa}`}/>
+      <div className={`widget-header`}>
+        <div className={`widget-title`}>{title}</div>
+        <span className={`widget-icon`}>
+          <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-300'} widget-icon-fa`}/>
         </span>
       </div> }
       { text &&
-      <div className={`${styles.widget_body}`}>
+      <div className={`widget-body`}>
         <div className={`${styles.widget_text}`}>{text}</div>
       </div> }
       { footer &&
-      <div className={`${styles.widget_footer}`}>
+      <div className={`widget-footer`}>
         <div className={`${styles.widget_text}`}>{footer}</div>
       </div> }
     </div>

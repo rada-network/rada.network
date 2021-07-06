@@ -1,6 +1,5 @@
 import Link from "next/link"
 
-import styles from '../../styles/modules/Widget.module.css'
 import {useEffect, useState} from "react";
 import {getInfluencers} from "../../data/query/getSuggestUser";
 import {Influencer} from "./influencer";
@@ -18,19 +17,19 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
 
   return (
 
-    <div className={`widget ${styles.widget}`}>
+    <div className={`widget widget-influencers`}>
 
       { title &&
-      <div className={`${styles.widget_header}`}>
-        <div className={`${styles.widget_title}`}>{title}</div>
-        <span className={`${styles.widget_icon}`}>
-          <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} ${styles.widget_icon_fa}`}/>
+      <div className={`widget-header`}>
+        <div className={`widget-title`}>{title}</div>
+        <span className={`widget-icon`}>
+          <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} widget-icon-fa`}/>
         </span>
       </div> }
 
-      <div className={`${styles.widget_body_p0}`}>
+      <div className={`widget-body-p0`}>
 
-        <div className={`${styles.widget_list}`}>
+        <div className={`widget-list`}>
           {_list.map(function (item) {
             return (
               <Influencer key={item.id} item={item} />
@@ -40,7 +39,7 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
 
       </div>
       {(skip * take) < listInfluencers.length ?
-        <div className={`${styles.widget_footer}`}>
+        <div className={`widget-footer`}>
           <a className="btn btn-nav block" onClick={() => setSkip(skip+1)}>
             <span className="btn__text">Show {take} more</span>
             <span className="btn__caret_down"></span>

@@ -12,7 +12,7 @@ import utils from "../../lib/util"
 
 export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
-  //return <div className={`group ${styles.widget}`}><div className={`${styles.widget_header}`}><div className={`${styles.widget_title}`}>Pricing - temporary hide</div></div></div>
+  //return <div className={`group ${styles.widget}`}><div className={`widget-header`}><div className={`widget-title`}>Pricing - temporary hide</div></div></div>
 
   const [loading, setLoading] = useState(false)
   const [size, setSize] = useState({w: 300, h: 150})
@@ -152,15 +152,15 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
     <div className={`widget ${styles.widget}`}>
       { title &&
-      <div className={`${styles.widget_header}`}>
-        <div className={`${styles.widget_title}`}>{title}</div>
-        <span className={`${styles.widget_icon}`}>
+      <div className={`widget-header`}>
+        <div className={`widget-title`}>{title}</div>
+        <span className={`widget-icon`}>
           <i className={`cf cf-${projectPlatformShort || 'btc'} ${styles.widget_icon_cf}`}/>
         </span>
       </div> }
 
 
-      <div className={`${styles.widget_body_p0}`}>
+      <div className={`widget-body-p0`}>
 
         <div className={`${stylesPricing.title}`}>Cardano Price (ADA)</div>
 
@@ -227,7 +227,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
       </div> 
 
-      <div className={`${styles.widget_footer}`}>
+      <div className={`widget-footer`}>
         <div className={`${styles.widget_footer_text}`}>
           Source: <a className="link" target={"_blank"} href="https://www.coindesk.com/price/cardano">CoinDesk <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span></a>
         </div>

@@ -1,7 +1,6 @@
 import Link from "next/link"
 
-import styles from '../../styles/modules/Widget.module.css'
-import stylesPosts from '../../styles/modules/Widget.posts.module.css'
+import styles from '../../styles/modules/Widget.posts.module.css'
 
 import {RiExternalLinkLine} from "react-icons/ri";
 
@@ -11,33 +10,33 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
     <div className={`widget ${styles.widget}`}>
 
       { title &&
-      <div className={`${styles.widget_header}`}>
-        <div className={`${styles.widget_title}`}>{title}</div>
-        <span className={`${styles.widget_icon}`}>
-          <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} ${styles.widget_icon_fa}`}/>
+      <div className={`widget-header`}>
+        <div className={`widget-title`}>{title}</div>
+        <span className={`widget-icon`}>
+          <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} widget-icon-fa`}/>
         </span>
       </div> }
 
-      <div className={`${styles.widget_body_p0}`}>
+      <div className={`widget-body-p0`}>
 
-        <div className={`${styles.widget_list}`}>
+        <div className={`widget-list`}>
 
           {/* Post Item */}
           <Link href="#" target="_blank">
-          <div className={`group ${styles.widget_list__item} ${styles.widget_list__link}`}>
+          <div className={`group widget-list--item widget-list--link`}>
 
-            <div className={`${stylesPosts.title}`}>
+            <div className={`${styles.title}`}>
               <a href="#" target="_blank">
                 <span>Family/Groups join planning dAPP</span>
               </a>
             </div>
 
             <div className="overflow-hidden">
-              <div className={`${stylesPosts.media}`}>
+              <div className={`${styles.media}`}>
                 <img src="https://picsum.photos/300/300?random=1" alt="" />
               </div>
 
-              <div className={`${stylesPosts.text}`}>
+              <div className={`${styles.text}`}>
                 Provide a simple and good way for family and groups participate in join projects
               </div>
             </div>
@@ -57,20 +56,20 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Post Item */}
           <Link href="#" target="_blank">
-          <div className={`group ${styles.widget_list__item} ${styles.widget_list__link}`}>
+          <div className={`group widget-list--item widget-list--link`}>
 
-            <div className={`${stylesPosts.title}`}>
+            <div className={`${styles.title}`}>
               <a href="#" target="_blank">
                 <span>Family/Groups join planning dAPP</span>
               </a>
             </div>
 
             <div className="overflow-hidden">
-              <div className={`${stylesPosts.media}`}>
+              <div className={`${styles.media}`}>
                 <img src="https://picsum.photos/300/300?random=2" alt="" />
               </div>
 
-              <div className={`${stylesPosts.text}`}>
+              <div className={`${styles.text}`}>
                 Provide a simple and good way for family and groups participate in join projects
               </div>
             </div>
@@ -90,20 +89,20 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Post Item */}
           <Link href="#" target="_blank">
-          <div className={`group ${styles.widget_list__item} ${styles.widget_list__link}`}>
+          <div className={`group widget-list--item widget-list--link`}>
 
-            <div className={`${stylesPosts.title}`}>
+            <div className={`${styles.title}`}>
               <a href="#" target="_blank">
                 <span>Cardano China Info Hub</span>
               </a>
             </div>
 
             <div className="overflow-hidden">
-              <div className={`${stylesPosts.media}`}>
+              <div className={`${styles.media}`}>
                 <img src="https://picsum.photos/300/300?random=3" alt="" />
               </div>
 
-              <div className={`${stylesPosts.text}`}>
+              <div className={`${styles.text}`}>
                 The Chinese Cardano community has limited access to accurate Cardano-related information which led to low awareness and mass misconception
               </div>
             </div>
@@ -123,20 +122,20 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Post Item */}
           <Link href="#" target="_blank">
-          <div className={`group ${styles.widget_list__item} ${styles.widget_list__link}`}>
+          <div className={`group widget-list--item widget-list--link`}>
 
-            <div className={`${stylesPosts.title}`}>
+            <div className={`${styles.title}`}>
               <a href="#" target="_blank">
                 <span>This is a post with no image</span>
               </a>
             </div>
 
             <div className="overflow-hidden">
-              {/* <div className={`${stylesPosts.media}`}>
+              {/* <div className={`${styles.media}`}>
                 <img src="https://picsum.photos/300/300?random=4" alt="" />
               </div> */}
 
-              <div className={`${stylesPosts.text}`}>
+              <div className={`${styles.text}`}>
                 People desire a secure, reliable, and immutable source of truth when dealing with votes, polls, and elections
               </div>
             </div>
@@ -156,20 +155,20 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Post Item */}
           <Link href="#" target="_blank">
-          <div className={`group ${styles.widget_list__item} ${styles.widget_list__link}`}>
+          <div className={`group widget-list--item widget-list--link`}>
 
-            <div className={`${stylesPosts.title}`}>
+            <div className={`${styles.title}`}>
               <a href="#" target="_blank">
                 <span>Cardano On-Chain Voting</span>
               </a>
             </div>
 
             <div className="overflow-hidden">
-              <div className={`${stylesPosts.media}`}>
+              <div className={`${styles.media}`}>
                 <img src="https://picsum.photos/300/300?random=4" alt="" />
               </div>
 
-              <div className={`${stylesPosts.text}`}>
+              <div className={`${styles.text}`}>
                 People desire a secure, reliable, and immutable source of truth when dealing with votes, polls, and elections
               </div>
             </div>
@@ -191,7 +190,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
       </div>
 
-      <div className={`${styles.widget_footer}`}>
+      <div className={`widget-footer`}>
         <a className="btn btn-nav block">
           <span className="btn__text">Show 4 more</span>
           <span className="btn__caret_down"></span>

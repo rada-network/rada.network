@@ -1,7 +1,6 @@
 import Link from "next/link"
 
-import styles from '../../styles/modules/Widget.module.css'
-import stylesEvent from '../../styles/modules/Widget.events.module.css'
+import styles from '../../styles/modules/Widget.events.module.css'
 
 import {RiExternalLinkLine} from "react-icons/ri";
 import {useEffect, useState} from "react";
@@ -16,7 +15,7 @@ const EventKeyword = ({word}) =>{
   }
   word = word.charAt(0).toUpperCase() + word.slice(1)
   return (
-    <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-launchpad">
+    <span className={`badge ${styles.info} ${styles.info_type}`} type="event-launchpad">
       {word}
     </span>
   )
@@ -35,15 +34,15 @@ const EventItem = ({item}) => {
   const keywords = item.keywords !== null ? item.keywords.split(",") : []
   return (
     <Link href={url} target="_blank" rel={'nofollow'}>
-      <div className={`group ${styles.widget_list__item} ${styles.widget_list__link}`}>
+      <div className={`group widget-list--item widget-list--link`}>
 
-        <div className={`${stylesEvent.title}`}>
-          <a className={`${styles.widget_list__link}`} rel={'nofollow'} href={url} target="_blank">
+        <div className={`${styles.title}`}>
+          <a className={`widget-list--link`} rel={'nofollow'} href={url} target="_blank">
             <span>{item.title}</span>
             <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
           </a>
         </div>
-        <div className={`${stylesEvent.info_wrapper}`}>
+        <div className={`${styles.info_wrapper}`}>
           {keywords.map(function (word) {
             return (
               <EventKeyword key={uuid()} word={word}/>
@@ -51,25 +50,25 @@ const EventItem = ({item}) => {
           })}
           {endDay < 0 ?
             <>
-              <span className={`${stylesEvent.info} ${stylesEvent.info_type}`} type="event-expired">
+              <span className={`badge ${styles.info} ${styles.info_type}`} type="event-expired">
                 Expired
               </span>
-              <span className={`${stylesEvent.info} ${stylesEvent.info_date}`} title={item.startedAt}>
+              <span className={`badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
                   <strong>{Math.abs(endDay)}d</strong> ago
               </span>
             </>
             :
             (day > 0) ?
-            <span className={`${stylesEvent.info} ${stylesEvent.info_date}`} title={item.startedAt}>
+            <span className={`badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
                 <strong>{day}d</strong> to go
               </span>
-              :  <span className={`${stylesEvent.info} ${stylesEvent.info_date}`} title={item.startedAt}>
+              :  <span className={`badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
                 Ongoing
               </span>
           }
 
         </div>
-        <div className={`${stylesEvent.text}`}>
+        <div className={`${styles.text}`}>
           {item.description}
         </div>
 
@@ -100,19 +99,19 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
 
   return (
 
-    <div className={`widget ${styles.widget}`}>
+    <div className={`widget widget-event`}>
 
       { title &&
-      <div className={`${styles.widget_header}`}>
-        <div className={`${styles.widget_title}`}>{title}</div>
-        <span className={`${styles.widget_icon}`}>
-          <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} ${styles.widget_icon_fa}`}/>
+      <div className={`widget-header`}>
+        <div className={`widget-title`}>{title}</div>
+        <span className={`widget-icon`}>
+          <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} widget-icon-fa`}/>
         </span>
       </div> }
 
-      <div className={`${styles.widget_body_p0}`}>
+      <div className={`widget-body-p0`}>
 
-        <div className={`${styles.widget_list}`}>
+        <div className={`widget-list`}>
 
           {/* Even Item */}
           {_list.map(function (item) {
@@ -126,7 +125,7 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
       </div>
 
       {(skip * take) < listEvents.length ?
-        <div className={`${styles.widget_footer}`}>
+        <div className={`widget-footer`}>
           <a className="btn btn-nav block" onClick={() => setSkip(skip+1)}>
             <span className="btn__text">Show {take} more</span>
             <span className="btn__caret_down"></span>

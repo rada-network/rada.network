@@ -30,14 +30,14 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
     <div className={`widget ${styles.widget}`}>
 
       { title &&
-      <div className={`${styles.widget_header}`}>
-        <div className={`${styles.widget_title}`}>{title}</div>
-        <span className={`${styles.widget_icon}`}>
-          <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} ${styles.widget_icon_fa}`}/>
+      <div className={`widget-header`}>
+        <div className={`widget-title`}>{title}</div>
+        <span className={`widget-icon`}>
+          <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} widget-icon-fa`}/>
         </span>
       </div> }
 
-      <div className={`${styles.widget_body_p0}`}>
+      <div className={`widget-body-p0`}>
 
         <div className={`${styles.widget_list_sm}`}>
 
@@ -153,7 +153,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
 
       </div>
 
-      <div className={`${styles.widget_footer}`}>
+      <div className={`widget-footer`}>
         <div className={`${styles.widget_footer_text}`}>
           Source: <a className="link" target={"_blank"} href="https://adastat.net/">AdaStat <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span></a>
         </div>

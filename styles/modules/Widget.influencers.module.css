@@ -10,17 +10,15 @@ Widget: Influencer
 }
 
 .info_wrapper {
-  @apply flex mt-1;
+  @apply flex lg:-mt-1;
 }
 
 .info {
-  @apply text-xs leading-none truncate text-gray-400 rounded;
+  @apply text-xs leading-none truncate rounded;
   @apply py-1 px-2 overflow-hidden;
 }
 
 .info_type {
-  @apply text-center;
-  @apply bg-gray-100;
 }
 
 .info_type + .info_type {
