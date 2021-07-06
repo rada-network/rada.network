@@ -16,19 +16,7 @@ import utils from "../../lib/util";
 
 const take = 12
 
-export const ProjectsList = observer(({
-                                        voteStore,
-                                        homeDisplay,
-                                        dataStore,
-                                        extraClass,
-                                        grid,
-                                        gap,
-                                        title,
-                                        titleIcon,
-                                        titleIconColor,
-                                        cta,
-                                        itemType,
-                                        detail
+export const ProjectsList = observer(({voteStore, homeDisplay, dataStore, extraClass, grid, gap, title, titleIcon, titleIconColor, cta, itemType, detail
                                       }) => {
   const store = useStore()
   voteStore.walletAddress = store.wallet.address
@@ -36,16 +24,11 @@ export const ProjectsList = observer(({
 
   let posts = dataStore.tweets
   const [loadingButton, setLoadingButton] = useState(false)
-  let startShowMoreButton = true;
-  if (dataStore.tweets.length < take && !dataStore.home.isHome){
-    startShowMoreButton = false
-  }
-  const [showMoreButton, setShowMoreButton] = useState(startShowMoreButton)
   if (itemType === "all") itemType = ""
   const handleLoadMoreItems = async (e) => {
     //if (dataStore.tweets.length > 0) dataStore.home.homeDisplay = homeDisplay
     setLoadingButton(true)
-    setShowMoreButton(false)
+    dataStore.showMoreButton = false
 
     const itemsData = await getPosts({
       socialOrder: dataStore.currentTab,
@@ -59,12 +42,11 @@ export const ProjectsList = observer(({
     dataStore.addTweet(itemsData.data.itemFeed)
 
     voteStore.addVotes(itemsData.data.itemFeed)
-    utils.initVoteStore(voteStore)
     if (itemsData.data.itemFeed.length < take){
-      setShowMoreButton(false)
+      dataStore.showMoreButton = false
     }
     else{
-      setShowMoreButton(true)
+      dataStore.showMoreButton = true
     }
   }
   //if (dataStore.home.homeDisplay !== 0 && dataStore.home.homeDisplay !== homeDisplay) return ""
@@ -161,29 +143,26 @@ export const ProjectsList = observer(({
           </div>
         </div>
 
-        <div className={`section-footer`}>
-          {dataStore.home.homeDisplay === homeDisplay && dataStore.home.isHome
-            ? <a onClick={e => dataStore.home.homeDisplay = 0} href={"#top"}
-                  className="btn btn-nav mr-2">
-              <span className="icon"><IoChevronBackSharp/></span>
-              <span className="btn__text whitespace-nowrap">Back to home</span>
-            </a>
-            : ""
-          }
-          {loadingButton
-            ? <a className="btn btn-loading">
-              <span className={"btn__text"}>Loading...</span>
-            </a>
-            : ""
-          }
-          {showMoreButton ?
-            <a onClick={handleLoadMoreItems} className="btn btn-nav">
-              <span className="btn__text">Show {take} more</span>
-              <span className="btn__caret_down"></span>
-            </a>
-            :  ""
-          }
-        </div>
+        {loadingButton || dataStore.showMoreButton ?
+          <div className={`section-footer`}>
+            {loadingButton
+              ? <a className="btn btn-loading">
+                <span className={"btn btn__text"}>Loading...</span>
+              </a>
+              : ""
+            }
+            {dataStore.showMoreButton ?
+              <a onClick={handleLoadMoreItems}
+                 className="btn btn-nav">
+                <span className="btn__text">Show {take} more</span>
+                <span className="btn__caret_down"/>
+              </a>
+              :  ""
+            }
+          </div>
+          :
+          ""
+        }
         {/* <div className={"section-footer"}>
           {dataStore.home.homeDisplay === homeDisplay
             ? <a onClick={e => {dataStore.home.homeDisplay = 0;setShowMoreButton(true)}} href={"#top"}
