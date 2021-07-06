@@ -9,8 +9,6 @@ import {useRouter} from "next/router";
 import utils from "../../lib/util";
 import {useStore} from "../../lib/useStore";
 
-import styles from "../../styles/modules/Layout.module.css";
-
 import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 import {NewsList} from "../../components/card-layouts/NewsList";
 import {getTweet} from "../../data/query/postsTweet";
@@ -103,7 +101,7 @@ export default observer(function Explore(props) {
             </div>
 
             {/* Sidebar */}
-            <Sidebar className={`${styles.sidebar}`} extraClass="" />
+            <Sidebar className={`sidebar`} extraClass="" />
 
           </div>
 

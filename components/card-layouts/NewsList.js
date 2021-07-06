@@ -10,8 +10,6 @@ import {CardNews, NewsLoader} from "../cards/news";
 import {getNews} from "../../data/query/news";
 import ContentLoader from "react-content-loader";
 
-import styles from "../../styles/modules/Layout.module.css";
-
 const take = 12
 
 export const NewsList = observer(({
@@ -79,11 +77,11 @@ export const NewsList = observer(({
 
 
   return (
-    <div className={`${styles.section} ${extraClass || ''}`}>
-      <div className={`${styles.section_inner} section-inner`}>
+    <div className={`section ${extraClass || ''}`}>
+      <div className={`section-inner`}>
 
-        <div className={`${styles.section_header}`}>
-          <div className={`${styles.section_title}`}>
+        <div className={`section-header`}>
+          <div className={`section-title`}>
 
             <WidgetTitle title={title} titleIcon={titleIcon} titleIconColor={titleIconColor}
                          dataStore={dataStore}
@@ -97,7 +95,7 @@ export const NewsList = observer(({
           </div>
 
           {cta &&
-          <div className={`${styles.section_cta}`}>
+          <div className={`section-cta`}>
             {cta === "View All" ?
               <button className="btn">
                 <span className="btn__text">
@@ -117,7 +115,7 @@ export const NewsList = observer(({
           }
         </div>
 
-        <div className={`${styles.section_body} ${styles.no_padding}`}>
+        <div className={`section-body no-padding`}>
           <div className={`grid gap-0 lg:gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
             {
               showPosts(posts)
@@ -130,7 +128,7 @@ export const NewsList = observer(({
           </div>
         </div>
 
-        <div className={`${styles.section_footer}`}>
+        <div className={`section-footer`}>
           {loadingButton
             ? <a className="btn btn-loading">
               <span className={"btn btn__text"}>Loading...</span>

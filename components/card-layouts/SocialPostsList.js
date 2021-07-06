@@ -16,8 +16,7 @@ import {getTweet} from "../../data/query/postsTweet";
 import {TabButton} from "../button/tabButton";
 import ContentLoader from "react-content-loader"
 
-import stylesCard from '../../styles/modules/Card.socialpost.module.css'
-import styles from "../../styles/modules/Layout.module.css";
+import styles from '../../styles/modules/Card.socialpost.module.css'
 
 import ReactTooltip from 'react-tooltip'
 
@@ -69,12 +68,12 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
   //if (dataStore.home.homeDisplay !==0 && dataStore.home.homeDisplay !== 1) return ""
 
   return (
-    <div className={`${styles.section} ${extraClass || ''}`}>
-      <div className={`${styles.section_inner} section-inner`}>
+    <div className={`section ${extraClass || ''}`}>
+      <div className={`section-inner`}>
 
-        <div className={`${styles.section_header}`}>
+        <div className={`section-header`}>
 
-          <div className={`${styles.section_title}`}>
+          <div className={`section-title`}>
 
             { titleIcon &&
             <span className={`icon mr-3 text-${titleIconColor}`}>
@@ -104,7 +103,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
           </div>
 
           {/* Hieu: Example Sections Buttons */}
-          <div className={`${styles.section_cta}`}>
+          <div className={`section-cta`}>
             <div className="btn-group btn-group-filter">
               <TabButton handle={handleLoadMoreTweets} key={"popular"} nValue={"popular"} value={"Popular"} dataStore={dataStore} />
               <TabButton handle={handleLoadMoreTweets} key={"latest"} nValue={"latest"} value={"Latest"} dataStore={dataStore} />
@@ -112,7 +111,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
           </div>
         </div>
 
-        <div className={`${styles.section_body} ${styles.no_padding_t}`}>
+        <div className={`section-body no-padding-t`}>
           <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 1280: 2}}>
             <Masonry gutter="1rem">
               {
@@ -142,7 +141,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
           </ResponsiveMasonry>
         </div>
 
-        <div className={`${styles.section_footer}`}>
+        <div className={`section-footer`}>
 
           {dataStore.home.homeDisplay === 1 ?
             !itemType

@@ -1,24 +1,24 @@
-.navbar_search {
+.navbar-search {
   @apply relative cursor-pointer;
 }
 
-.navbar_search__icon {
+.navbar-search--icon {
   @apply absolute top-1.5 left-3 pointer-events-none text-base;
 }
 
-.navbar_search__icon i {
+.navbar-search--icon i {
   @apply text-gray-900 text-opacity-80;
 }
 
-.navbar_search:hover i {
+.navbar-search:hover i {
   @apply text-primary-700;
 }
 
-.navbar_search__input {
+.navbar-search--input {
   @apply w-6 focus:w-full md:w-full focus:px-2 md:px-2 pl-7 focus:pl-10 md:pl-10 py-2 text-sm transition;
-  @apply bg-gray-100 focus:bg-white border border-transparent rounded-md focus:shadow-md focus:border-primary-700 focus:outline-none focus:ring-0;
+  @apply bg-gray-100 focus:bg-white border-transparent rounded-md focus:shadow-md focus:ring-0 focus:border-primary-700;
 }
 
-.navbar_search__input::placeholder {
+.navbar-search--input::placeholder {
   @apply text-gray-400;
 }

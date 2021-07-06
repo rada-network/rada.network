@@ -85,6 +85,15 @@ export default observer((props) => {
             {/* main content */}
             <div className={`maincontent`}>
 
+              <MediaList
+                grid="2"
+                gap="4"
+                extraClass="media-list"
+                title="Latest Media"
+                // titleIcon="icons"
+                // titleIconColor="purple-500"
+              />
+
               <NewsList
                 grid="1"
                 gap="0"
@@ -93,15 +102,6 @@ export default observer((props) => {
                 // titleIcon="newspaper"
                 // titleIconColor="yellow-500"
                 dataStore={observableNewsStore}
-              />
-
-              <MediaList
-                grid="2"
-                gap="4"
-                extraClass="media-list"
-                title="Latest Media"
-                // titleIcon="icons"
-                // titleIconColor="purple-500"
               />
 
               {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?

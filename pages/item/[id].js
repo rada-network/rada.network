@@ -10,8 +10,6 @@ import getClient from "../../data/client";
 import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
-import stylesSB from '../../styles/modules/Scrollbar.module.css';
-import styles from "../../styles/modules/Layout.module.css";
 
 import itemQuery from "../../data/query/itemDetail"
 import allItem from "../../data/query/items"
@@ -90,7 +88,7 @@ export default function Item (props) {
   const images = Object.keys(imgsUri).map(key => imgsUri[key])
 
   const Gallery = () => (!images.length) ? <span ref={scrollBox} /> : (
-    <div className={`project-media scrollbar ${stylesSB.scrollbar}`} ref={scrollBox}>
+    <div className={`project-media scrollbar`} ref={scrollBox}>
       {images.map((img, idx) => (
         <Card
           itemType=""
@@ -126,9 +124,9 @@ export default function Item (props) {
             {/* main content */}
             <div className={`maincontent`}>
 
-              <div className={`${styles.section} ${styles.section_top}`}>
+              <div className={`section section-top`}>
 
-                <div className={`section-inner ${styles.section_inner}`}>
+                <div className={`section-inner`}>
 
                   {/* Page Header */}
                   <div className="page-header">
@@ -205,7 +203,7 @@ export default function Item (props) {
             </div>
 
             {/* Sidebar */}
-            <Sidebar className={`${styles.sidebar}`} extraClass="" />
+            <Sidebar className={`sidebar`} extraClass="" />
 
           </div>
 

@@ -1,8 +1,6 @@
 import {useState} from "react";
 import {useRouter} from "next/router";
 
-import styles from '../styles/modules/Form.module.css'
-
 export default function SearchInput(){
   const router = useRouter()
   const [searchValue,setSearchValue] = useState("")
@@ -18,11 +16,11 @@ export default function SearchInput(){
     }
   }
   return (
-    <div className={`${styles.navbar_search}`}>
-      <span className={`icon ${styles.navbar_search__icon}`}><i className="far fa-search" /></span>
+    <div className={`navbar-search`}>
+      <span className={`icon navbar-search--icon`}><i className="far fa-search" /></span>
       <input value={searchValue} onChange={handledOnChange} onKeyPress={handledOnKeypress}
         type="search"
-        className={`${styles.navbar_search__input}`}
+        className={`navbar-search--input`}
         placeholder="Search by name ..." />
     </div>
   )

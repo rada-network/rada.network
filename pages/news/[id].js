@@ -4,8 +4,6 @@ import {Sidebar} from '../../components/sidebar/SidebarPost';
 
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
-import styles from "../../styles/modules/Layout.module.css";
-
 import {RiArrowUpSFill, RiCompass3Fill, RiExternalLinkLine} from "react-icons/ri";
 import {CommentList} from "../../components/comments/commentList";
 import {Vote} from "../../components/vote/Vote";
@@ -34,8 +32,8 @@ export function NewsDetailBody({props,isSideBar}){
         <div className={`grid-12cols`}>
           {/* main content */}
           <div className={`maincontent`}>
-            <div className={`${styles.section} ${styles.section_top}`}>
-              <div className={`section-inner ${styles.section_inner}`}>
+            <div className={`section section-top`}>
+              <div className={`section-inner`}>
                 {/* Page Header */}
                 <div className="page-header">
 

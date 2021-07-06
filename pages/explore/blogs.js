@@ -6,8 +6,6 @@ import {CategoryList} from '../../components/card-layouts/CategoryList';
 
 import { observer } from "mobx-react"
 
-import styles from "../../styles/modules/Layout.module.css";
-
 //ReactIcons
 import {getTopic} from "../../data/query/topic";
 import utils from "../../lib/util";
@@ -76,7 +74,7 @@ export default observer((props) => {
             </div>
 
             {/* Sidebar */}
-            <Sidebar className={`${styles.sidebar}`} extraClass="" />
+            <Sidebar className={`sidebar`} extraClass="" />
 
           </div>
 

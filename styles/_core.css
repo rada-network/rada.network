@@ -60,78 +60,9 @@ Layout
   @apply -mx-4 md:mx-0 lg:col-span-4 lg:pl-8 lg:pt-8;
 }
 
-
 /* 
 Main Container
 */
 .container {
   @apply mx-auto px-4 md:px-8 max-w-screen-xl;
-}
-
-/* 
-Section
-*/
-.section_inner {
-  @apply bg-white dark:bg-purple-900 shadow-sm rounded;
-}
-
-
-/* 
-Section
-*/
-.section {
-  @apply my-8;
-}
-
-.section_top {
-  @apply mt-0 md:mt-8;
-}
-
-.section_inner {
-  @apply p-0 -mx-4 md:mx-0;
-  @apply bg-white shadow-sm rounded;
-}
-
-.section_header {
-  @apply flex justify-between items-center;
-  @apply px-4 py-4 md:px-6 md:py-4 lg:px-8 lg:py-6;
-}
-
-.section_title {
-  @apply flex flex-wrap;
-  @apply text-lg lg:text-xl font-semibold;
-  strong {
-    @apply font-semibold;
-    border-bottom: 1px dotted;
-  }
-}
-
-.section_body {
-  @apply px-4 pb-4 md:px-6 md:pb-4 lg:px-8 lg:pb-6;
-}
-
-.section_footer {
-  @apply flex justify-between items-center;
-  @apply px-4 py-4 md:px-8 md:py-6;
-  @apply border-t border-gray-500 border-opacity-10;
-}
-
-.section_cta {
-  @apply text-sm font-medium;
-  @apply flex mt-0 justify-between items-center;
-}
-
-.section_cta .btn-group + .btn-group {
-  @apply ml-4;
-}
-
-/* 
-Helpers 
-*/
-.no_padding {
-  @apply p-0;
-}
-
-.no_padding-t {
-  @apply pt-0;
 }

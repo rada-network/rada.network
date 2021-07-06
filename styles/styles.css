@@ -17,6 +17,56 @@ Card Layouts
   }
 }
 
+/* 
+Sections Layout
+--------------------------------------------- */
+.section {
+  @apply my-8;
+}
+
+.section-top {
+  @apply mt-0 md:mt-8;
+}
+
+.section-inner {
+  @apply p-0 -mx-4 md:mx-0;
+  @apply bg-white shadow-sm rounded;
+  @apply dark:bg-gray-900;
+}
+
+.section-header {
+  @apply flex justify-between items-center;
+  @apply px-4 py-4 md:px-6 md:py-4 lg:px-8 lg:py-6;
+}
+
+.section-title {
+  @apply flex flex-wrap;
+  @apply text-lg lg:text-xl font-semibold;
+  strong {
+    @apply font-semibold;
+    border-bottom: 1px dotted;
+  }
+}
+
+.section-body {
+  @apply px-4 pb-4 md:px-6 md:pb-4 lg:px-8 lg:pb-6;
+}
+
+.section-footer {
+  @apply flex justify-between items-center;
+  @apply px-4 py-4 md:px-8 md:py-6;
+  @apply border-t border-gray-500 border-opacity-10;
+}
+
+.section-cta {
+  @apply text-sm font-medium;
+  @apply flex mt-0 justify-between items-center;
+}
+
+.section-cta .btn-group + .btn-group {
+  @apply ml-4;
+}
+
 
 /* 
 Sections
@@ -37,16 +87,19 @@ Media
 
 .media-playlist {
   @apply mx-4 mt-2 md:mx-6 md:mt-4 lg:mx-8 lg:mt-6;
-  .card {
-    @apply flex-shrink-0 w-40 lg:w-56 h-full rounded transition cursor-pointer;
-  }
-  .card:hover {
-    @apply bg-gray-50;
-  }
-  .card.active {
-    @apply bg-gray-100;
-  }  
 }
+
+.media-playlist .card {
+  @apply flex-shrink-0 w-40 lg:w-56 h-full rounded transition cursor-pointer;
+}
+
+.media-playlist .card:hover {
+  @apply bg-gray-50 dark:bg-deepgray-100;
+}
+
+.media-playlist .card.active {
+  @apply bg-gray-100 dark:bg-gray-800;
+}  
 
 
 
@@ -349,6 +402,31 @@ Responsive Carousel
 /*
 Perfect Scrollbar
 */
+.scrollbar {
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0);
+  border-radius: 12px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.1);
+  border-radius: 12px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.2);
+}
+
 .scrollbar.ps .ps__rail-x {
   height: 12px;
 }
@@ -372,9 +450,23 @@ Perfect Scrollbar
   height: 8px;
 }
 
+/* Category Scrollbar  */
+.category-scroll {
+  @apply flex flex-nowrap relative pb-6;
+}
+
+/* Media Scrollbar  */
+.media-scroll {
+  @apply flex flex-nowrap relative pb-4 mb-4;
+}
+
 /* 
 Uitilities 
 */
 .no-padding {
   @apply p-0;
+}
+
+.no-padding-t {
+  @apply pt-0;
 }

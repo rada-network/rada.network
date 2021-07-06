@@ -13,8 +13,6 @@ import {getTopic} from "../../data/query/topic";
 import utils from "../../lib/util";
 import {useStore} from "../../lib/useStore";
 
-import styles from "../../styles/modules/Layout.module.css";
-
 
 import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 import {Widget} from "../../components/widgets/Widget";
@@ -92,7 +90,7 @@ export default observer(function Explore(props) {
               </div>
 
               {/* Sidebar */}
-              <Sidebar className={`${styles.sidebar}`} extraClass="" />
+              <Sidebar className={`sidebar`} extraClass="" />
 
             </div>
 
@@ -131,7 +129,7 @@ export default observer(function Explore(props) {
               </div>
 
               {/* Sidebar */}
-              <Sidebar className={`${styles.sidebar}`} extraClass="" />
+              <Sidebar className={`sidebar`} extraClass="" />
 
             </div>
 
