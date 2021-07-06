@@ -13,7 +13,9 @@ export const CardMiniH = ({title, text, mediaUri, mediaType, link}) => {
 
         { title && 
         <div className={`${styles.card_body__header}`}>
-          <div className={`${styles.card_title}`}>{title}</div>
+          <div className={`${styles.card_title}`}>
+            <span className="title">{title}</span>
+          </div>
         </div> }
 
         <div className={`${styles.card_body__footer}`}>

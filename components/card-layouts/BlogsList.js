@@ -10,7 +10,9 @@ export const BlogsList = ({posts, extraClass, grid, gap, title, cta}) => {
 		<div className={`section ${extraClass || ''}`}>
 			<div className="container">
 				<div className="section-header">
-					<div className="section-title">{title}</div>
+					<div className="section-title">
+						<span className="title">{title}</span>
+					</div>
 					{ cta && 
 					<div className="section-cta">
 						<button className="btn">

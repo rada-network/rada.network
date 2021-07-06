@@ -96,7 +96,7 @@ Metadata
 }
 
 .tweet_metadata_name {
-  @apply block text-base font-semibold text-gray-900 text-opacity-100 mb-0.5 truncate;
+  @apply block text-base font-semibold mb-0.5 truncate;
   width: 240px;
 }
 

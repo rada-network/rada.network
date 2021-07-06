@@ -156,7 +156,9 @@ export default function ProjectDetails(props) {
               <div className="pt-8 border-t border-gray-100 section section-project-discussions">
 
                 <div className="section-header">
-                  <div className="section-title">Discussions</div>
+                  <div className="section-title">
+                    <span className="title">Discussions</span>
+                  </div>
                 </div>
 
                 <div className="section-body">

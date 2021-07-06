@@ -10,7 +10,9 @@ export const PromoList = ({extraClass, grid, gap, title}) => {
 			<div className="container">
         { title && 
 				<div className="section-header">
-					<div className="section-title">{title}</div>
+					<div className="section-title">
+            <span className="title">{title}</span>
+          </div>
 				</div> }
 				<div className="section-body">
           <div className={`grid gap-${gap || '5'} sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-${grid || '5'}`}>

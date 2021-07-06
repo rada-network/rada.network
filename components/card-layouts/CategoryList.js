@@ -37,7 +37,7 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
             <span className={`icon mr-3 text-${titleIconColor}`}>
               <i className={`fad fa-${titleIcon}`}></i>
             </span> }
-            <span>{title}</span>
+            <span className="title">{title}</span>
           </div>
           }
 

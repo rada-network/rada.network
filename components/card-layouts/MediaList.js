@@ -77,10 +77,11 @@ export const MediaList = ({
         { title && 
 				<div className={`section-header`}>
 					<div className={`section-title`}>
+            { titleIcon && 
             <span className={`icon mr-3 text-${titleIconColor}`}>
               <i className={`fad fa-${titleIcon}`}/>
-            </span>
-            <span>{title}</span>
+            </span> }
+            <span className="title">{title}</span>
           </div>
 				</div> }
 

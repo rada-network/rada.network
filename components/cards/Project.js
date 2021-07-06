@@ -79,7 +79,9 @@ export const Card = ({
         <div className={`${styles.card_body_header}`}>
           <div className={`${styles.card_title}`}>
             <Link href={`/item/${post.id}`}>
-              <a className="card-link">{projectTitle}</a>
+              <a className="card-link">
+                <span className="title">{projectTitle}</span>
+              </a>
             </Link>
           </div>
           <div className="metadata-wrapper">

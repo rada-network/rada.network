@@ -20,7 +20,7 @@ export const CardMiniV = ({title, type, id, link, onClick, className}) => {
 
           <div className={`${styles.card_title}`}>
             <a className="card-link" href={link}>
-              {title}
+              <span className="title">{title}</span>
             </a>
           </div>
         </div> }

@@ -39,7 +39,8 @@ body {
 
 /* Cards */
 .card-news:hover,
-.card-project:hover {
+.card-project:hover,
+.card-social:hover {
   @apply dark:bg-gray-800;
 }
 

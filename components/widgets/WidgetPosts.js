@@ -11,7 +11,9 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
       { title &&
       <div className={`widget-header`}>
-        <div className={`widget-title`}>{title}</div>
+        <div className={`widget-title`}>
+          <span className="title">{title}</span>
+        </div>
         <span className={`widget-icon`}>
           <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} widget-icon-fa`}/>
         </span>
@@ -27,7 +29,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
             <div className={`${styles.title}`}>
               <a href="#" target="_blank">
-                <span>Family/Groups join planning dAPP</span>
+                <span className="title">Family/Groups join planning dAPP</span>
               </a>
             </div>
 
@@ -60,7 +62,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
             <div className={`${styles.title}`}>
               <a href="#" target="_blank">
-                <span>Family/Groups join planning dAPP</span>
+                <span className="title">Family/Groups join planning dAPP</span>
               </a>
             </div>
 
@@ -93,7 +95,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
             <div className={`${styles.title}`}>
               <a href="#" target="_blank">
-                <span>Cardano China Info Hub</span>
+                <span className="title">Cardano China Info Hub</span>
               </a>
             </div>
 
@@ -126,7 +128,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
             <div className={`${styles.title}`}>
               <a href="#" target="_blank">
-                <span>This is a post with no image</span>
+                <span className="title">This is a post with no image</span>
               </a>
             </div>
 
@@ -159,7 +161,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
             <div className={`${styles.title}`}>
               <a href="#" target="_blank">
-                <span>Cardano On-Chain Voting</span>
+                <span className="title">Cardano On-Chain Voting</span>
               </a>
             </div>
 

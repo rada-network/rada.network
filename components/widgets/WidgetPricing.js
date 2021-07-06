@@ -153,7 +153,9 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
     <div className={`widget ${styles.widget}`}>
       { title &&
       <div className={`widget-header`}>
-        <div className={`widget-title`}>{title}</div>
+        <div className={`widget-title`}>
+          <span className="title">{title}</span>
+        </div>
         <span className={`widget-icon`}>
           <i className={`cf cf-${projectPlatformShort || 'btc'} ${styles.widget_icon_cf}`}/>
         </span>

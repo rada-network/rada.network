@@ -1,12 +1,15 @@
 @import '_media';
 
+.title {
+  @apply text-gray-900 dark:text-white;
+}
+
 /* 
 metadata 
 */
-
 .metadata-wrapper {
   @apply flex flex-wrap;
-  @apply text-xs text-gray-400;
+  @apply text-xs text-gray-400 dark:text-gray-500;
 }
 
 .metadata {
