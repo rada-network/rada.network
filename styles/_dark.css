@@ -40,7 +40,7 @@ body {
 /* Cards */
 .card-news:hover,
 .card-project:hover {
-  @apply dark:bg-gray-900;
+  @apply dark:bg-gray-800;
 }
 
 .card-text {

@@ -14,17 +14,17 @@ export const Footer = () => {
           <div className="flex items-center mt-4 space-x-4 sm:mt-0">
             <a href="/" className="text-gray-400 hover:text-gray-700">
               <span className="icon">
-                <i class="fab fa-twitter"></i>
+                <i className="fab fa-twitter"></i>
               </span>
             </a>
             <a href="/" className="text-gray-400 hover:text-gray-700">
               <span className="icon">
-                <i class="fab fa-medium-m"></i>
+                <i className="fab fa-medium-m"></i>
               </span>
             </a>
             <a href="/" className="text-gray-400 hover:text-gray-700">
               <span className="icon">
-                <i class="fa fa-envelope"></i>
+                <i className="fa fa-envelope"></i>
               </span>
             </a>
           </div>

@@ -36,7 +36,7 @@ const observableNewsStore = new ObservableTweetStore({homeStore})
 
 const getData = async () => {
 
-  const posts = await getPosts({type : "",skip : 0,take : 12, socialOrder : observableItemStore.currentTab})
+  const posts = await getPosts({type : "",skip : 0,take : 6, socialOrder : observableItemStore.currentTab})
 
   const postsNFT = await getPosts({type : "nft",skip : 0,take : 6,socialOrder : observableNftStore.currentTab})
 

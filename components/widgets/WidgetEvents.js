@@ -34,7 +34,7 @@ const EventItem = ({item}) => {
   const url = item.website ? item.website : item.twitter
   const keywords = item.keywords !== null ? item.keywords.split(",") : []
   return (
-    <a href={url} target="_blank" rel={'nofollow'}>
+    <Link href={url} target="_blank" rel={'nofollow'}>
       <div className={`group ${styles.widget_list__item} ${styles.widget_list__link}`}>
 
         <div className={`${stylesEvent.title}`}>
@@ -74,7 +74,7 @@ const EventItem = ({item}) => {
         </div>
 
       </div>
-    </a>
+    </Link>
   )
 }
 

@@ -35,7 +35,7 @@ export function NewsDetailBody({props,isSideBar}){
           {/* main content */}
           <div className={`${styles.maincontent}`}>
             <div className={`${styles.section} ${styles.section_top}`}>
-              <div className={`${styles.section_inner}`}>
+              <div className={`section-inner ${styles.section_inner}`}>
                 {/* Page Header */}
                 <div className="page-header">
 

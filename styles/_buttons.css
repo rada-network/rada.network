@@ -129,8 +129,8 @@ Group Buttons
   @apply justify-center py-3 px-6 w-full;
   @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700 rounded;
   @apply text-sm;
-  @apply dark:text-white dark:bg-gray-700;
-  @apply dark:hover:bg-gray-600;
+  @apply dark:text-white dark:bg-gray-800;
+  @apply dark:hover:bg-gray-900;
 }
 
 .btn-loading {
