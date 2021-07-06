@@ -3,7 +3,7 @@ import styles from '../../styles/modules/Card.miniH.module.css'
 
 export const CardMiniH = ({title, text, mediaUri, mediaType, link}) => {
   const content = 
-    <div className={`card group ${styles.card}`}>
+    <div className={`card ${styles.card}`}>
 
       <div className={`${styles.card_media}`}>
         <img className={`${styles.media}`} src={mediaUri} />

@@ -8,7 +8,7 @@ const ThemeSwitch = () => {
 
   return (
     <a className="btn btn-switch-theme" onClick={e => setTheme(theme == 'dark' ? 'light' : 'dark')} title="Swith to Dark Theme">
-      <span className="text-base leading-5"><i className="far fa-moon" /></span>
+      <span className="text-base leading-5"><i className="fad fa-moon" /></span>
     </a>
   ) 
   }

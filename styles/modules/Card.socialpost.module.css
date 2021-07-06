@@ -4,7 +4,7 @@ Tweets
 .card {
   @apply flex-col items-center content-center mx-0 overflow-hidden;
   @apply relative transition-all;
-  @apply bg-white border-t border-gray-500 border-opacity-10 md:border md:border-opacity-10 md:rounded;
+  @apply border-t border-gray-500 border-opacity-10 md:border md:border-opacity-10 md:rounded;
   @apply lg:hover:bg-shadeyellow-100;
 }
 

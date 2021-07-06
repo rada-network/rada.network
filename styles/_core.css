@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  @apply bg-bluegray-50 dark:bg-purple-900;
+  @apply bg-bluegray-50;
   padding-top: calc(var(--mainnav-height) + 1px);
 }
 
@@ -41,4 +41,11 @@ Main Container
 */
 .container {
   @apply mx-auto px-4 md:px-8 max-w-screen-xl;
+}
+
+/* 
+Section
+*/
+.section_inner {
+  @apply bg-white dark:bg-purple-900 shadow-sm rounded;
 }

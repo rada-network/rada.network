@@ -44,7 +44,7 @@ export const SocialPost = ({post, favoriteCount, retweetCount, hashtags,
 
   return (
     <Link href={link} target={"_blank"}>
-      <div className={`${styles.card} cursor-pointer`}>
+      <div className={`card card-social ${styles.card} cursor-pointer`}>
 
         <div className={`card-header ${styles.card_header}`}>
 

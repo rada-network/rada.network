@@ -75,7 +75,7 @@ export const MediaList = ({
 
 	return (
 		<div className={`${styles.section} ${extraClass || ''}`}>
-      <div className={`${styles.section_inner}`}>
+      <div className={`${styles.section_inner} section-inner`}>
 
         { title && 
 				<div className={`${styles.section_header}`}>

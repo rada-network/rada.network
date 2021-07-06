@@ -107,7 +107,7 @@ export const ProjectsList = observer(({
 
   return (
     <div className={`${styles.section} ${extraClass || ''}`}>
-      <div className={`${styles.section_inner}`}>
+      <div className={`${styles.section_inner} section-inner`}>
 
         <div className={`${styles.section_header}`}>
           <div className={`${styles.section_title}`}>

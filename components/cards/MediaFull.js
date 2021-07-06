@@ -7,10 +7,10 @@ import { IoChevronForwardSharp } from "react-icons/io5";
 export const Card = ({title, mediaUri, mediaType}) => {
 
   const Podcast = () => (
-    <div className={`${styles.card_media}`}>
+    <div className={`card ${styles.card_media}`}>
       <div className="w-full h-full">
         <div className={`${styles.media} aspect-w-16 aspect-h-9`}>
-          <iframe width="640" height="360" src={mediaUri} title={title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" frameBorder="0" />
+          <iframe width="640" height="360" src={mediaUri} title={title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" />
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@ export const Card = ({title, mediaUri, mediaType}) => {
     <div className={`${styles.card_media}`}>
       <div className="w-full h-full">
         <div className={`${styles.media} aspect-w-16 aspect-h-9`}>
-          <iframe width="640" height="360" src={mediaUri} title={title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" frameBorder="0"></iframe>
+          <iframe width="640" height="360" src={mediaUri} title={title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen"></iframe>
         </div>
       </div>
     </div>

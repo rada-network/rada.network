@@ -30,7 +30,7 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
 
 	return (
 		<div className={`${styles.section} ${extraClass || ''}`}>
-      <div className={`${styles.section_inner}`}>
+      <div className={`${styles.section_inner} section-inner`}>
 
 				<div className={`${styles.section_header}`}>
 

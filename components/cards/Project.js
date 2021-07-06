@@ -57,7 +57,7 @@ export const Card = ({
   keywords = Object.entries(keywords)
 
   return (
-    <div className={`card group ${styles.card}`}>
+    <div className={`card card-project ${styles.card}`}>
 
       <div className={`${styles.card_media}`}>
         {Object.keys(projectIconUri).length === 0

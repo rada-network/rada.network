@@ -1,0 +1,12 @@
+body {
+  @apply dark:bg-gray-900;
+}
+
+.section-inner {
+  @apply dark:bg-gray-800;
+}
+
+.card-news:hover,
+.card-project:hover {
+  @apply dark:bg-purple-900;
+}

@@ -105,7 +105,7 @@ export default function ProjectDetails(props) {
                       <div className="w-full h-full project-media-wrapper">
                         <div className="overflow-hidden rounded shadow-xl project-media aspect-w-16 aspect-h-9">
                           {/* <img className="project-img" alt="" src="https://picsum.photos/1024/768?random=2" /> */}
-                          <iframe width="560" height="315" src="https://www.youtube.com/embed/qnkuBUAwfe0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/qnkuBUAwfe0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen"></iframe>
                         </div>
                       </div>
                     </div>
