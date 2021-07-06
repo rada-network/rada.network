@@ -8,6 +8,7 @@ import KeywordIcon from "../icons/keywordIcon";
 import {RiExternalLinkLine} from "react-icons/ri";
 import ContentLoader from "react-content-loader";
 import Link from "next/link"
+import showSources from '../news-sources/showSources'
 
 export const NewsLoader = (props) => (
   <div className={`${styles.card}`}>
@@ -37,6 +38,7 @@ export const CardNews = ({news}) => {
   const postDate = utils.timeDifference(new Date(), new Date(news.createdAt))
   const postDate_ = utils.titleTime(news.createdAt)
   const source_ = news.websiteUri.split('/')
+
   let keywords = JSON.parse(news.keywords);
   keywords = Object.entries(keywords)
   return (
@@ -86,9 +88,10 @@ export const CardNews = ({news}) => {
 
         <div className={`${styles.card_body_footer}`}>
           <div className="metadata-wrapper">
-            <div className="metadata metadata_author">
-              <span className="metadata-value" title={news.source}>{news.source}</span>
-            </div>
+            {/*<div className="metadata metadata_author">*/}
+            {/*  <span className="metadata-value" title={news.source}>{news.source}</span>*/}
+            {/*</div>*/}
+            {showSources(news.websiteUri)}
             <div className="metadata metadata_date">
               <span className="metadata-value" title={`${postDate_}`}>{postDate}</span>
             </div>
