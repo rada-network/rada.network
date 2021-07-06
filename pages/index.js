@@ -11,8 +11,6 @@ import {MediaList} from '../components/card-layouts/MediaList';
 
 import { observer } from "mobx-react"
 
-import styles from "../styles/modules/Layout.module.css";
-
 //ReactIcons
 import {getPosts} from "../data/query/posts"
 import {getTweet} from "../data/query/postsTweet"
@@ -79,13 +77,13 @@ export default observer((props) => {
         description : "Stay updated with the best quality news & updates"
       }}/>
 
-      <div className={`${styles.wrapper}`}>
-        <div className={`${styles.container}`}>
+      <div className={`wrapper`}>
+        <div className={`container`}>
 
-          <div className={`${styles.grid_12cols}`}>
+          <div className={`grid-12cols`}>
 
             {/* main content */}
-            <div className={`${styles.maincontent}`}>
+            <div className={`maincontent`}>
 
               <NewsList
                 grid="1"
@@ -135,7 +133,7 @@ export default observer((props) => {
                   titleIconColor="purple-500"
                   // posts={data.postsNFT}
                   dataStore={observableNftStore}
-          voteStore={voteStore}
+                  voteStore={voteStore}
                 /> : ""
               } */}
 
@@ -150,7 +148,7 @@ export default observer((props) => {
                   titleIconColor="pink-500"
                   // posts={data.postsDapp}
                   dataStore={observableDappStore}
-          voteStore={voteStore}
+                  voteStore={voteStore}
                 /> : ""
               } */}
 
@@ -194,7 +192,7 @@ export default observer((props) => {
             </div>
 
             {/* Sidebar */}
-            <Sidebar className={`${styles.sidebar}`} extraClass="" />
+            <Sidebar className={`sidebar`} extraClass="" />
 
           </div>
 

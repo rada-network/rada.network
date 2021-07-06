@@ -72,13 +72,13 @@ export default observer(function Explore(props) {
       >
         <Header props={data.topic[0]}/>
 
-        <div className={`${styles.wrapper}`}>
-          <div className={`${styles.container}`}>
+        <div className={`wrapper`}>
+          <div className={`container`}>
 
-            <div className={`${styles.grid_12cols}`}>
+            <div className={`grid-12cols`}>
 
               {/* main content */}
-              <div className={`${styles.maincontent}`}>
+              <div className={`maincontent`}>
 
                 <SocialPostsList
                   grid="1"
@@ -109,13 +109,13 @@ export default observer(function Explore(props) {
 
         <Header props={data.topic[0]}/>
 
-        <div className={`${styles.wrapper}`}>
-          <div className={`${styles.container}`}>
+        <div className={`wrapper`}>
+          <div className={`container`}>
 
-            <div className={`${styles.grid_12cols}`}>
+            <div className={`grid-12cols`}>
 
               {/* main content */}
-              <div className={`${styles.maincontent}`}>
+              <div className={`maincontent`}>
 
                 <ProjectsList
                   grid="1"

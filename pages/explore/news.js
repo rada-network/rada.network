@@ -47,13 +47,13 @@ export default observer((props) => {
         description : "Stay updated with the best quality news & updates"
       }}/>
 
-      <div className={`${styles.wrapper}`}>
-        <div className={`${styles.container}`}>
+      <div className={`wrapper`}>
+        <div className={`container`}>
 
-          <div className={`${styles.grid_12cols}`}>
+          <div className={`grid-12cols`}>
 
             {/* main content */}
-            <div className={`${styles.maincontent}`}>
+            <div className={`maincontent`}>
 
             <CategoryList
                 extraClass="category-list"

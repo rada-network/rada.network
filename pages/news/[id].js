@@ -29,11 +29,11 @@ export function NewsDetailBody({props,isSideBar}){
   let keywords = JSON.parse(props.news.keywords);
   keywords = Object.entries(keywords)
   return (
-    <div className={`${styles.wrapper}`}>
-      <div className={`${styles.container}`}>
-        <div className={`${styles.grid_12cols}`}>
+    <div className={`wrapper`}>
+      <div className={`container`}>
+        <div className={`grid-12cols`}>
           {/* main content */}
-          <div className={`${styles.maincontent}`}>
+          <div className={`maincontent`}>
             <div className={`${styles.section} ${styles.section_top}`}>
               <div className={`section-inner ${styles.section_inner}`}>
                 {/* Page Header */}
@@ -87,7 +87,7 @@ export function NewsDetailBody({props,isSideBar}){
           </div>
           {/* Sidebar */}
           {isSideBar ?
-            <Sidebar className={`${styles.sidebar}`} extraClass="" />
+            <Sidebar className={`sidebar`} extraClass="" />
             : ""
           }
 

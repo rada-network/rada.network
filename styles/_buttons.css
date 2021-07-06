@@ -109,17 +109,17 @@ Group Buttons
 }
 
 .btn-group-filter {
-  @apply rounded px-1 py-1 bg-gray-100 text-xs;
+  @apply rounded px-1 py-1 bg-gray-100 dark:bg-gray-900 text-xs;
 }
 
 .btn-filter {
   @apply px-2 md:px-4 py-1 justify-center;
-  @apply rounded bg-transparent text-gray-500;
+  @apply rounded bg-transparent text-gray-900 dark:text-white text-opacity-50 dark:text-opacity-50;
 }
 
 .btn-filter-active {
-  @apply px-2 md:px-4 py-1;
-  @apply rounded bg-white text-gray-900 shadow-sm;
+  @apply px-2 md:px-4 py-1 justify-center;
+  @apply rounded bg-white text-opacity-100 dark:text-white dark:bg-gray-700 shadow-sm;
 }
 
 /*
@@ -129,8 +129,8 @@ Group Buttons
   @apply justify-center py-3 px-6 w-full;
   @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700 rounded;
   @apply text-sm;
-  @apply dark:text-white dark:bg-gray-800;
-  @apply dark:hover:bg-gray-900;
+  @apply dark:text-white dark:bg-gray-900;
+  @apply dark:hover:bg-gray-800;
 }
 
 .btn-loading {

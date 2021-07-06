@@ -30,7 +30,7 @@ export const Navbar = () => {
 
   return (
     <nav className={`navbar ${styles.wrapper}`}>
-      <div className={`${styles.container}`}>
+      <div className={`container`}>
         
         <div className={`${styles.main}`}>
 
