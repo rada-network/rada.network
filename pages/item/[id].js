@@ -78,7 +78,6 @@ export default function Item (props) {
     totalVote : data.item.totalVote,
     isVoted : false
   }])
-  utils.initVoteStore(voteStore)
 
   const [showIdx, setShowIdx] = useState(-1)
   const popupMedia = (idx) => {

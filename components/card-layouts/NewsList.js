@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 
 //ReactIcons
 import {IoChevronDownSharp, IoChevronForwardSharp, IoChevronBackSharp} from "react-icons/io5";
@@ -12,29 +12,13 @@ import ContentLoader from "react-content-loader";
 
 const take = 12
 
-export const NewsList = observer(({
-                                        dataStore,
-                                        extraClass,
-                                        grid,
-                                        gap,
-                                        title,
-                                        titleIcon,
-                                        titleIconColor,
-                                        cta,
-                                        query,
-                                      }) => {
+export const NewsList = observer(({dataStore, extraClass, grid, gap, title, titleIcon,titleIconColor, cta, query,startShowMoreButton}) => {
 
-  let posts = dataStore.tweets
   const [loadingButton, setLoadingButton] = useState(false)
-  let startShowMoreButton = true;
-  if (dataStore.tweets.length < take && !dataStore.home.isHome){
-    startShowMoreButton = false
-  }
-  const [showMoreButton, setShowMoreButton] = useState(startShowMoreButton)
   const handleLoadMoreItems = async (e) => {
     //if (dataStore.tweets.length > 0) dataStore.home.homeDisplay = homeDisplay
     setLoadingButton(true)
-    setShowMoreButton(false)
+    dataStore.showMoreButton = false
 
     const newsData = await getNews({
       skip: dataStore.tweets.length,
@@ -49,10 +33,10 @@ export const NewsList = observer(({
     dataStore.addTweet(newsData.data.newsFeed)
 
     if (newsData.data.newsFeed.length < take){
-      setShowMoreButton(false)
+      dataStore.showMoreButton = false
     }
     else{
-      setShowMoreButton(true)
+      dataStore.showMoreButton = true
     }
 
   }
@@ -118,7 +102,7 @@ export const NewsList = observer(({
         <div className={`section-body no-padding`}>
           <div className={`grid gap-0 lg:gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
             {
-              showPosts(posts)
+              showPosts(dataStore.tweets)
             }
             {loadingButton &&
               [...Array(take)].map((x, i) =>
@@ -127,23 +111,27 @@ export const NewsList = observer(({
             }
           </div>
         </div>
+        {loadingButton || dataStore.showMoreButton ?
+          <div className={`section-footer`}>
+            {loadingButton
+              ? <a className="btn btn-loading">
+                <span className={"btn btn__text"}>Loading...</span>
+              </a>
+              : ""
+            }
+            {dataStore.showMoreButton ?
+              <a onClick={handleLoadMoreItems}
+                 className="btn btn-nav">
+                <span className="btn__text">Show {take} more</span>
+                <span className="btn__caret_down"/>
+              </a>
+              :  ""
+            }
+          </div>
+          :
+          ""
+        }
 
-        <div className={`section-footer`}>
-          {loadingButton
-            ? <a className="btn btn-loading">
-              <span className={"btn btn__text"}>Loading...</span>
-            </a>
-            : ""
-          }
-          {showMoreButton ?
-            <a onClick={handleLoadMoreItems}
-               className="btn btn-nav">
-              <span className="btn__text">Show {take} more</span>
-              <span className="btn__caret_down"/>
-            </a>
-            :  ""
-          }
-        </div>
       </div>
     </div>
   )
