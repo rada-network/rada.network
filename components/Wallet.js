@@ -175,7 +175,7 @@ const WalletAvatar = ({wallet}) => {
 }
 
 const ConnectedButton = ({wallet}) => (
-  <div className="btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
+  <div className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
     {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
     <WalletAvatar wallet={wallet} />
     <span className="hidden">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
@@ -184,7 +184,7 @@ const ConnectedButton = ({wallet}) => (
 )
 
 const NotConnectedButton = ({wallet, showModal}) => (
-  <div onClick={ showModal } type="button" className="btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
+  <div onClick={ showModal } type="button" className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
     <span className="icon text-base leading-none"><i className="fad fa-wallet" /></span>
     <span className="hidden md:inline-block md:ml-2 whitespace-nowrap">Connect Wallet</span>
   </div>

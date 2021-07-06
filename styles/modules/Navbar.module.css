@@ -20,5 +20,5 @@
 }
 
 .nav_item__active {
-  @apply text-gray-900 text-opacity-100;
+  @apply text-opacity-100;
 }

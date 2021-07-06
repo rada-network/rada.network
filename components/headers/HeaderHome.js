@@ -19,7 +19,7 @@ export const Header = ({props}) => {
     { props.title === "" ?
         "" :
         
-        <div className={`${styles.header}`} type={props.itemType}>
+        <div className={`header header-home ${styles.header}`} type={props.itemType}>
           <div className="container">
 
             <div className={`${styles.header_inner}`} >

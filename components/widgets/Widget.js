@@ -3,7 +3,7 @@ import styles from '../../styles/modules/Widget.module.css'
 export const Widget = ({title, text, footer, widgetIcon, widgetIconColor}) => {
   return (
 
-    <div className={`group ${styles.widget}`}>
+    <div className={`widget group ${styles.widget}`}>
       { title &&
       <div className={`${styles.widget_header}`}>
         <div className={`${styles.widget_title}`}>{title}</div>

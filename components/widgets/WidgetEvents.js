@@ -100,7 +100,7 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
 
   return (
 
-    <div className={`${styles.widget}`}>
+    <div className={`widget ${styles.widget}`}>
 
       { title &&
       <div className={`${styles.widget_header}`}>

@@ -1,3 +1,4 @@
+/* Main */
 body {
   @apply dark:bg-gray-900;
 }
@@ -6,7 +7,30 @@ body {
   @apply dark:bg-gray-800;
 }
 
+/* Navbar */
+.navbar {
+  @apply dark:bg-gray-900 dark:bg-opacity-90 dark:border-gray-800 dark:shadow-none;
+}
+
+.nav-item {
+  @apply dark:text-white dark:text-opacity-60;
+}
+
+.nav-item-active {
+  @apply dark:text-white dark:text-opacity-100;
+}
+
+/* Header */
+.header {
+  @apply dark:from-purple-900 dark:to-purple-700;
+}
+
 .card-news:hover,
 .card-project:hover {
-  @apply dark:bg-purple-900;
+  @apply dark:bg-purple-700;
+}
+
+/* Widgets */
+.widget {
+  @apply dark:bg-gray-800;
 }

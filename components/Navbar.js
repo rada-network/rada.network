@@ -14,9 +14,9 @@ export const Navbar = () => {
   const NavItem = ({className, href, children}) => {
 
     const cls = []
-    cls.push(`${styles.nav_item}`)
+    cls.push(`nav-item ${styles.nav_item}`)
     cls.push(className)
-    if (router.asPath === href) cls.push(`${styles.nav_item__active}`)
+    if (router.asPath === href) cls.push(`nav-item-active ${styles.nav_item__active}`)
 
     return (
     <a href={href} className={cls.join(' ')}>
@@ -29,7 +29,7 @@ export const Navbar = () => {
   }
 
   return (
-    <nav className={`${styles.wrapper}`}>
+    <nav className={`navbar ${styles.wrapper}`}>
       <div className={`${styles.container}`}>
         
         <div className={`${styles.main}`}>

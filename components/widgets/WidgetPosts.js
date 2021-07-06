@@ -8,7 +8,7 @@ import {RiExternalLinkLine} from "react-icons/ri";
 export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
   return (
 
-    <div className={`${styles.widget}`}>
+    <div className={`widget ${styles.widget}`}>
 
       { title &&
       <div className={`${styles.widget_header}`}>

@@ -2,7 +2,7 @@
 Widget: Influencer
 */
 .title {
-  @apply flex text-base font-medium text-gray-900;
+  @apply flex text-base font-medium;
 }
 
 .text {

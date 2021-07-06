@@ -10,7 +10,7 @@ const InfluencerInfoType = ({word}) => {
   }
   return (
     <Link href={`/tags/${cWord}`}>
-        <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
+      <span className={`${stylesInfluencers.info} ${stylesInfluencers.info_type}`}>
         {word}
       </span>
     </Link>

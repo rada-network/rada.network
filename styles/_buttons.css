@@ -83,13 +83,14 @@ Nav Button
   @apply flex px-2.5 py-2 rounded-md;
   @apply text-sm font-medium text-gray-900 text-opacity-80 bg-gray-100 border border-transparent;
   @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
+  @apply dark:text-white dark:bg-gray-700;
+  @apply dark:hover:bg-gray-800 dark:hover:border-gray-500;
 }
 
 /* 
 Wallet Button 
 */
 .btn-connect-wallet {
-  @extend .nav-btn;
 }
 
 
@@ -97,9 +98,7 @@ Wallet Button
 Theme Button 
 */
 .btn-switch-theme {
-  @extend .nav-btn;
 }
-
 
 
 /* 
