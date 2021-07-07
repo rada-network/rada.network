@@ -15,7 +15,7 @@ const EventKeyword = ({word}) =>{
   }
   word = word.charAt(0).toUpperCase() + word.slice(1)
   return (
-    <span className={`badge ${styles.info} ${styles.info_type}`} type="event-launchpad">
+    <span className={`badge ${styles.info}  ${cWord}`} type="event-launchpad">
       {word}
     </span>
   )

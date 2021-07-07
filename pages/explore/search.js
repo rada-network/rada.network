@@ -12,9 +12,6 @@ import {getTopic} from "../../data/query/topic";
 import utils from "../../lib/util";
 import {useStore} from "../../lib/useStore";
 
-import styles from "../../styles/modules/Layout.module.css";
-
-
 import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 import {getNews} from "../../data/query/news";
 import {NewsList} from "../../components/card-layouts/NewsList";
