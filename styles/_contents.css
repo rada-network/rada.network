@@ -2,7 +2,7 @@
 
 /* 
 Core Contents Contrast
-*/
+----------------------------------- */
 .text-color-title {
   @apply text-gray-900 dark:text-white;
 }
@@ -14,7 +14,7 @@ Core Contents Contrast
 
 /* 
 Metadata 
-*/
+----------------------------------- */
 .metadata-wrapper {
   @apply flex flex-wrap;
   @apply text-xs text-gray-400 dark:text-gray-500;
@@ -78,10 +78,46 @@ Metadata
   @apply bg-gray-50 rounded;
 }
 
+
+/*
+Info Row
+-------------------------------- */
+.info-row {
+  @apply flex items-center justify-between relative;
+}
+
+.info-row + .info-row {
+  @apply mt-2;
+}
+
+.info-row--title {
+  @apply text-xs;
+}
+
+.info-row--value {
+  @apply flex justify-center items-center;
+  @apply text-sm font-semibold;
+}
+
+.info-row--value .currency-ada {
+  @apply ml-1 text-xs;
+}
+
+
+/* Currency
+-------------------------------- */
+.currency-ada svg {
+  stroke: #111827;
+}
+
+.dark .currency-ada svg {
+  stroke: white;
+}
+
+
 /* 
 Avatars 
-*/
-
+-------------------------------- */
 .user-wallet_avatar,
 .user-wallet_avatar_sm,
 .user-wallet_avatar_xs {
@@ -124,7 +160,7 @@ Avatars
 
 /*
 Comment
-*/
+-------------------------------- */
 .comments-list {
   @apply py-4 mt-4 text-sm;
 }

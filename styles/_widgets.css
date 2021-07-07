@@ -1,6 +1,6 @@
 /*
 Generic Styles
-*/
+-------------------------------- */
 .widget {
   @apply flex flex-col mb-8;
   @apply bg-white rounded border-gray-500 border-opacity-10 shadow-sm;
@@ -42,50 +42,24 @@ Generic Styles
   @apply text-lg;
 }
 
-/*
-Widget Lists 
-*/
-.widget-list {
-}
-
-.widget-list--link {
-  @apply block cursor-pointer;
-}
-
-.widget-list--link:hover {
-  @apply bg-shadeyellow-100 dark:bg-gray-800;
-}
-
-.widget-list--item {
-  @apply flex flex-col justify-between;
-  @apply px-4 py-4 md:py-6 md:px-8;
-  @apply border-b border-gray-500 border-opacity-10;
-}
-
-
-/*
-Widget Lists Compact
-*/
-.widget-list-sm {
-  @extend .widget-list;
-}
-
-.widget-list-sm--link {
-  @extend .widget-list--link;
-}
-
-.widget-list-sm--link:hover {
-  @apply bg-gray-50;
-}
-
-.widget-list-sm--item {
-  @extend .widget-list--item;
-  @apply px-4 py-4 md:px-8;
-}
-
 /* 
 Footer 
 */
 .widget-footer-text {
   @apply text-right w-full text-xs text-gray-500;
 }
+
+
+/*
+Widget Events
+-------------------------------- */
+.widget-event {
+  .badge {
+    @apply w-24 justify-center;
+  }
+  .badge.badge-transparent {
+    @apply w-auto mr-0;
+  }
+}
+
+

@@ -1,13 +1,11 @@
 import Link from "next/link"
 
-import styles from '../../styles/modules/Widget.posts.module.css'
-
 import {RiExternalLinkLine} from "react-icons/ri";
 
 export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
   return (
 
-    <div className={`widget ${styles.widget}`}>
+    <div className={`widget widget-posts`}>
 
       { title &&
       <div className={`widget-header`}>
@@ -27,18 +25,18 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
           <Link href="#" target="_blank">
           <div className={`group widget-list--item widget-list--link`}>
 
-            <div className={`${styles.title}`}>
+            <div className={`widget-list--item--title`}>
               <a href="#" target="_blank">
                 <span className="text-color-title">Family/Groups join planning dAPP</span>
               </a>
             </div>
 
             <div className="overflow-hidden">
-              <div className={`${styles.media}`}>
+              <div className={`widget-list--item--media`}>
                 <img src="https://picsum.photos/300/300?random=1" alt="" />
               </div>
 
-              <div className={`${styles.text}`}>
+              <div className={`text-color-desc widget-list--item--text`}>
                 Provide a simple and good way for family and groups participate in join projects
               </div>
             </div>
@@ -60,18 +58,18 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
           <Link href="#" target="_blank">
           <div className={`group widget-list--item widget-list--link`}>
 
-            <div className={`${styles.title}`}>
+            <div className={`widget-list--item--title`}>
               <a href="#" target="_blank">
                 <span className="text-color-title">Family/Groups join planning dAPP</span>
               </a>
             </div>
 
             <div className="overflow-hidden">
-              <div className={`${styles.media}`}>
+              <div className={`widget-list--item--media`}>
                 <img src="https://picsum.photos/300/300?random=2" alt="" />
               </div>
 
-              <div className={`${styles.text}`}>
+              <div className={`text-color-desc widget-list--item--text`}>
                 Provide a simple and good way for family and groups participate in join projects
               </div>
             </div>
@@ -93,18 +91,18 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
           <Link href="#" target="_blank">
           <div className={`group widget-list--item widget-list--link`}>
 
-            <div className={`${styles.title}`}>
+            <div className={`widget-list--item--title`}>
               <a href="#" target="_blank">
                 <span className="text-color-title">Cardano China Info Hub</span>
               </a>
             </div>
 
             <div className="overflow-hidden">
-              <div className={`${styles.media}`}>
+              <div className={`widget-list--item--media`}>
                 <img src="https://picsum.photos/300/300?random=3" alt="" />
               </div>
 
-              <div className={`${styles.text}`}>
+              <div className={`text-color-desc widget-list--item--text`}>
                 The Chinese Cardano community has limited access to accurate Cardano-related information which led to low awareness and mass misconception
               </div>
             </div>
@@ -126,18 +124,18 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
           <Link href="#" target="_blank">
           <div className={`group widget-list--item widget-list--link`}>
 
-            <div className={`${styles.title}`}>
+            <div className={`widget-list--item--title`}>
               <a href="#" target="_blank">
                 <span className="text-color-title">This is a post with no image</span>
               </a>
             </div>
 
             <div className="overflow-hidden">
-              {/* <div className={`${styles.media}`}>
+              {/* <div className={`widget-list--item--media`}>
                 <img src="https://picsum.photos/300/300?random=4" alt="" />
               </div> */}
 
-              <div className={`${styles.text}`}>
+              <div className={`text-color-desc widget-list--item--text`}>
                 People desire a secure, reliable, and immutable source of truth when dealing with votes, polls, and elections
               </div>
             </div>
@@ -159,18 +157,18 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
           <Link href="#" target="_blank">
           <div className={`group widget-list--item widget-list--link`}>
 
-            <div className={`${styles.title}`}>
+            <div className={`widget-list--item--title`}>
               <a href="#" target="_blank">
                 <span className="text-color-title">Cardano On-Chain Voting</span>
               </a>
             </div>
 
             <div className="overflow-hidden">
-              <div className={`${styles.media}`}>
+              <div className={`widget-list--item--media`}>
                 <img src="https://picsum.photos/300/300?random=4" alt="" />
               </div>
 
-              <div className={`${styles.text}`}>
+              <div className={`text-color-desc widget-list--item--text`}>
                 People desire a secure, reliable, and immutable source of truth when dealing with votes, polls, and elections
               </div>
             </div>

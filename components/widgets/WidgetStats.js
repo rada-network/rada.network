@@ -1,8 +1,6 @@
 import Link from "next/link"
 import {useEffect, useState} from 'react'
 
-import styles from '../../styles/modules/Widget.stats.module.css'
-
 import {RiExternalLinkLine} from "react-icons/ri";
 import fetchJson from "../../lib/fetchJson"
 
@@ -44,11 +42,11 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Stat Item */}
           <div className={`group widget-list-sm--item`}>
-            <div className={`${styles.stat}`}>
-              <div className={`${styles.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="">Blocks</span>
               </div>
-              <div className={`${styles.value}`}>
+              <div className={`text-color-title info-row--value`}>
                 <span>5,836,414</span>
               </div>
             </div>
@@ -56,22 +54,22 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Stat Item */}
           <div className={`group widget-list-sm--item`}>
-            <div className={`${styles.stat}`}>
-              <div className={`${styles.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="">Transactions</span>
               </div>
-              <div className={`${styles.value}`}>
+              <div className={`text-color-title info-row--value`}>
                 <span>8,760,241</span>
               </div>
             </div>
-            <div className={`${styles.stat}`}>
-              <div className={`${styles.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="Transactions Amount">Total Amount</span>
               </div>
-              <div className={`${styles.value}`}>
+              <div className={`text-color-title info-row--value`}>
                 <span>10,531,106,458,046</span>
-                <span className={`${styles.currency}`}>
-                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" strokeLinejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
+                <span className={`currency-ada`}>
+                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="" strokeLinecap="round" strokeWidth="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" strokeLinejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
                 </span>
               </div>
             </div>
@@ -79,22 +77,22 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Stat Item */}
           <div className={`group widget-list-sm--item`}>
-            <div className={`${styles.stat}`}>
-              <div className={`${styles.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="">Staking Pools</span>
               </div>
-              <div className={`${styles.value}`}>
+              <div className={`text-color-title info-row--value`}>
                 <span>2,576</span>
               </div>
             </div>
-            <div className={`${styles.stat}`}>
-              <div className={`${styles.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="">Total Stake</span>
               </div>
-              <div className={`${styles.value}`}>
+              <div className={`text-color-title info-row--value`}>
                 <span>23,028,019,601</span>
-                <span className={`${styles.currency}`}>
-                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" strokeLinejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
+                <span className={`currency-ada`}>
+                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="" strokeLinecap="round" strokeWidth="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" strokeLinejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
                 </span>
               </div>
             </div>
@@ -102,22 +100,22 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Stat Item */}
           <div className={`group widget-list-sm--item`}>
-            <div className={`${styles.stat}`}>
-              <div className={`${styles.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="">Delegators</span>
               </div>
-              <div className={`${styles.value}`}>
+              <div className={`text-color-title info-row--value`}>
                 <span>631,472</span>
               </div>
             </div>
-            <div className={`${styles.stat}`}>
-              <div className={`${styles.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="">Total Rewards</span>
               </div>
-              <div className={`${styles.value}`}>
+              <div className={`text-color-title info-row--value`}>
                 <span>839,164,436</span>
-                <span className={`${styles.currency}`}>
-                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" strokeLinejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
+                <span className={`currency-ada`}>
+                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="" strokeLinecap="round" strokeWidth="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" strokeLinejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
                 </span>
               </div>
             </div>
@@ -125,11 +123,11 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Stat Item */}
           <div className={`group widget-list-sm--item`}>
-            <div className={`${styles.stat}`}>
-              <div className={`${styles.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="">Accounts</span>
               </div>
-              <div className={`${styles.value}`}>
+              <div className={`text-color-title info-row--value`}>
                 <span>1,098,824</span>
               </div>
             </div>
@@ -137,14 +135,14 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Stat Item */}
           <div className={`group widget-list-sm--item`}>
-            <div className={`${styles.stat}`}>
-              <div className={`${styles.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="">Nondelegated Tokens</span>
               </div>
-              <div className={`${styles.value}`}>
+              <div className={`text-color-title info-row--value`}>
                 <span>8,771,086,790</span>
-                <span className={`${styles.currency}`}>
-                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="#000" strokeLinecap="round" strokeWidth="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" strokeLinejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
+                <span className={`currency-ada`}>
+                  <svg width="1em" height="1em" viewBox="0 0 37.042 44.185" xmlns="http://www.w3.org/2000/svg" data-svg="ada"><g transform="translate(0 -252.81)" fill="none" stroke="" strokeLinecap="round" strokeWidth="3.9688"><path d="m2.0126 279.93h33.016"></path><path d="m3.1099 294.84 15.411-40.045 15.789 40.191" strokeLinejoin="round"></path><path d="m5.7168 272h25.608"></path></g></svg>
                 </span>
               </div>
             </div>

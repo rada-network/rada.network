@@ -18,8 +18,7 @@ Widget: Events
 }
 
 .info {
-  @apply text-xs leading-none truncate rounded;
-  @apply py-1 px-2 overflow-hidden;
+  @apply text-xs leading-none truncate rounded mr-0;
 }
 
 .info_date {
@@ -32,10 +31,6 @@ Widget: Events
 
 .info_type {
   @apply w-24 text-center font-medium;
-}
-
-.info_type + .info_type {
-  @apply ml-2;
 }
 
 .info[type="event-important"] {

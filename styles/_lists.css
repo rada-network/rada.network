@@ -1,9 +1,7 @@
 /*
 Lists Styles 
-*/
-
+-------------------------------- */
 .list-group {
-
 }
 
 .list-group-item {
@@ -17,4 +15,62 @@ Lists Styles
 
 .list-group-v .list-group-item {
   @apply flex flex-col justify-between items-center px-1 py-4;
+}
+
+
+/*
+Widget Lists 
+-------------------------------- */
+.widget-list {
+}
+
+.widget-list--link {
+  @apply block cursor-pointer;
+}
+
+.widget-list--link:hover {
+  @apply bg-shadeyellow-100 dark:bg-gray-800;
+}
+
+.widget-list--item {
+  @apply flex flex-col justify-between;
+  @apply px-4 py-4 md:py-6 md:px-8;
+  @apply border-b border-gray-500 border-opacity-10;
+}
+
+.widget-list--item--title {
+  @apply text-base font-medium;
+}
+
+.widget-list--item--text {
+  @apply text-sm mt-2 line-clamp-3;
+}
+
+.widget-list--item--media {
+  @apply float-right bg-gray-100 w-px-56 h-px-56 mt-3 ml-2 rounded flex-shrink-0 overflow-hidden;
+}
+
+.widget-list--item--media img {
+  @apply object-cover h-full;
+}
+
+
+/*
+Widget Lists Compact
+-------------------------------- */
+.widget-list-sm {
+  @extend .widget-list;
+}
+
+.widget-list-sm--link {
+  @extend .widget-list--link;
+}
+
+.widget-list-sm--link:hover {
+  @apply bg-gray-50;
+}
+
+.widget-list-sm--item {
+  @extend .widget-list--item;
+  @apply px-4 py-4 md:px-8;
 }

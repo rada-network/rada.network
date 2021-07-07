@@ -25,6 +25,9 @@ a.badge {
 }
 
 /* Type */
+.badge-transparent {
+  @apply bg-transparent;
+}
 .badge-dapp {
   @apply text-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white;
 }
@@ -39,6 +42,28 @@ a.badge {
 
 .badge-defi {
   @apply text-yellow-500 hover:border-yellow-500 hover:bg-yellow-500 hover:text-white;
+}
+
+/* Event */
+.badge.meetup {
+  @apply bg-yellow-50 text-yellow-500;
+}
+
+.badge.airdrop {
+  @apply bg-blue-50 text-blue-500;
+}
+
+.badge.launchpad {
+  @apply bg-purple-50 text-purple-500;
+}
+
+.badge.release,
+.badge.intergration {
+  @apply bg-green-50 text-green-500;
+}
+
+.badge.expired {
+  @apply w-auto;
 }
 
 /*

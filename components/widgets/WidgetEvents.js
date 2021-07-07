@@ -1,7 +1,5 @@
 import Link from "next/link"
 
-import styles from '../../styles/modules/Widget.events.module.css'
-
 import {RiExternalLinkLine} from "react-icons/ri";
 import {useEffect, useState} from "react";
 import {getCardanoEvents} from "../../data/query/getEvents";
@@ -15,7 +13,7 @@ const EventKeyword = ({word}) =>{
   }
   word = word.charAt(0).toUpperCase() + word.slice(1)
   return (
-    <span className={`badge ${styles.info}  ${cWord}`} type="event-launchpad">
+    <span className={`metadata badge widget-metadata ${cWord}`}>
       {word}
     </span>
   )
@@ -36,12 +34,13 @@ const EventItem = ({item}) => {
     <Link href={url} target="_blank" rel={'nofollow'}>
       <div className={`group widget-list--item widget-list--link`}>
 
-        <div className={`${styles.title}`}>
+        <div className={`widget-list--item--title`}>
           <a className={`widget-list--link`} rel={'nofollow'} href={url} target="_blank">
             <span className="text-color-title">{item.title}</span>
             <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
           </a>
         </div>
+
         <div className={`metadata-wrapper widget-metadata-wrapper`}>
           {keywords.map(function (word) {
             return (
@@ -50,25 +49,26 @@ const EventItem = ({item}) => {
           })}
           {endDay < 0 ?
             <>
-              <span className={`metadata widget-metadata badge ${styles.info} ${styles.info_type}`} type="event-expired">
+              <span className={`metadata widget-metadata badge badge-transparent`} type="event-expired">
                 Expired
               </span>
-              <span className={`metadata widget-metadata badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
-                  <strong className="text-color-title">{Math.abs(endDay)}d</strong> ago
+              <span className={`metadata widget-metadata badge badge-transparent`} title={item.startedAt}>
+                  <strong className="text-color-title">{Math.abs(endDay)}d</strong>&nbsp;ago
               </span>
             </>
             :
             (day > 0) ?
-            <span className={`metadata widget-metadata badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
-                <strong className="text-color-title">{day}d</strong> to go
+            <span className={`metadata widget-metadata badge badge-transparent`} title={item.startedAt}>
+                <strong className="text-color-title">{day}d</strong>&nbsp;to go
             </span>
-            :  <span className={`metadata badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
+            :  <span className={`metadata badge badge-transparent`} title={item.startedAt}>
               Ongoing
             </span>
           }
 
         </div>
-        <div className={`text-color-desc ${styles.text}`}>
+
+        <div className={`text-color-desc widget-list--item--text`}>
           {item.description}
         </div>
 

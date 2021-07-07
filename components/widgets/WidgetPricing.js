@@ -3,7 +3,7 @@ import fetchJson from "../../lib/fetchJson"
 import LineChart from "../chart/LineChart"
 
 import styles from '../../styles/modules/Widget.pricing.module.css'
-import stylesStats from '../../styles/modules/Widget.stats.module.css'
+
 
 import {RiExternalLinkLine} from "react-icons/ri";
 
@@ -181,44 +181,44 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
         <div className={`widget-list-sm ${styles.widget_list_sm}`}>
 
           <div className={`group widget-list-sm--item`}>
-            <div className={`${stylesStats.stat}`}>
-              <div className={`${stylesStats.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="">Market Cap</span>
               </div>
-              <div className={`${stylesStats.value}`}>
+              <div className={`text-color-title info-row--value`}>
                 <span>{utils.currencyFormat(info.MacketCap)}</span>
               </div>
             </div>
           </div>
 
           <div className={`group widget-list-sm--item`}>
-            <div className={`${stylesStats.stat}`}>
-              <div className={`${stylesStats.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="">Volume (24h)</span>
               </div>
-              <div className={`${stylesStats.value}`}>
+              <div className={`text-color-title info-row--value`}>
               <span>{utils.currencyFormat(info.Volume24h)}</span>
               </div>
             </div>
           </div>
 
           <div className={`group widget-list-sm--item`}>
-            <div className={`${stylesStats.stat}`}>
-              <div className={`${stylesStats.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="">All Time High</span>
               </div>
-              <div className={`${stylesStats.value}`}>
+              <div className={`text-color-title info-row--value`}>
                 <span>$2.47</span>
               </div>
             </div>
           </div>
 
           <div className={`group widget-list-sm--item`}>
-            <div className={`${stylesStats.stat}`}>
-              <div className={`${stylesStats.title}`}>
+            <div className={`info-row`}>
+              <div className={`text-color-desc info-row--title`}>
                 <span title="">Volatility (30d)</span>
               </div>
-              <div className={`${stylesStats.value}`}>
+              <div className={`text-color-title info-row--value`}>
                 <span>1.56</span>
               </div>
             </div>
