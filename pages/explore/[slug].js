@@ -58,10 +58,9 @@ export default observer(function Explore(props) {
   const router = useRouter();
   let { slug,q } = router.query;
   const data = props
-  const store = useStore()
   const itemType = slug;
   observableTweetStore.query = q;
-  let title = itemType !== "search" ? `${utils.topicTransform(itemType)}` : "Search results for "
+  let title = `${utils.topicTransform(itemType)}`
   observableTweetStore.tweets = data.feed
   if (itemType === "tweet"){
     return (

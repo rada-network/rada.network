@@ -9,23 +9,22 @@ import { observer } from "mobx-react";
 //ReactIcons
 import {getTopic} from "../../data/query/topic";
 import utils from "../../lib/util";
-import {HomeStore, ObservableTweetStore} from "../../lib/store";
+import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 import {getNews} from "../../data/query/news";
 import {NewsList} from "../../components/card-layouts/NewsList";
+import {getPosts} from "../../data/query/posts";
+import {ProjectsList} from "../../components/card-layouts/ProjectsList";
 
-const homeStore = new HomeStore({isHome : true})
-
-const observableNewsStore = new ObservableTweetStore({homeStore})
+const homeStore = new HomeStore({isHome : false})
+const voteStore = new VoteStore();
+const observableIdeaStore = new ObservableTweetStore({homeStore})
 
 const getData = async () => {
-
-  const news = await getNews({take : 20, skip: 0, orderBy: {createdAt : "desc"}})
-
+  const post = await getPosts({take : 20, skip: 0, socialOrder: observableIdeaStore.currentTab,type: ""})
   const topic = await getTopic();
-
   return {
     topic : topic.data.itemTypeCount,
-    news : news.data.newsFeed
+    ideas : post.data.itemFeed
   }
 }
 
@@ -35,9 +34,9 @@ export default observer((props) => {
   // update to store
   if (!data) return <div>loading...</div>
   // init first tweet data to show in homepage
-  observableNewsStore.tweets = data.news
+  observableIdeaStore.tweets = data.ideas
   return (
-    <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'News',data : {}})}>
+    <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Project',data : {}})}>
 
       <Header props={{
         title : "Trends hunter for Cardano community",
@@ -61,14 +60,17 @@ export default observer((props) => {
                 topic={data.topic}
               />
 
-              <NewsList
+              <ProjectsList
+                homeDisplay={4}
                 grid="1"
                 gap="0"
-                extraClass="news-list"
-                title="Cardano's News"
-                // titleIcon="newspaper"
-                // titleIconColor="yellow-500"
-                dataStore={observableNewsStore}
+                itemType={"all"}
+                title="Projects from Catalyst"
+                // titleIcon="code-branch"
+                // titleIconColor="blue-500"
+                cta="Sorted by"
+                dataStore={observableIdeaStore}
+                voteStore={voteStore}
               />
 
             </div>

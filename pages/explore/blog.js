@@ -13,19 +13,14 @@ import {HomeStore, ObservableTweetStore} from "../../lib/store";
 import {getNews} from "../../data/query/news";
 import {NewsList} from "../../components/card-layouts/NewsList";
 
-const homeStore = new HomeStore({isHome : true})
+const homeStore = new HomeStore({isHome : false})
 
 const observableNewsStore = new ObservableTweetStore({homeStore})
 
 const getData = async () => {
-
-  const news = await getNews({take : 20, skip: 0, orderBy: {createdAt : "desc"}})
-
   const topic = await getTopic();
-
   return {
     topic : topic.data.itemTypeCount,
-    news : news.data.newsFeed
   }
 }
 
@@ -35,7 +30,6 @@ export default observer((props) => {
   // update to store
   if (!data) return <div>loading...</div>
   // init first tweet data to show in homepage
-  observableNewsStore.tweets = data.news
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'News',data : {}})}>
 
@@ -61,15 +55,7 @@ export default observer((props) => {
                 topic={data.topic}
               />
 
-              <NewsList
-                grid="1"
-                gap="0"
-                extraClass="news-list"
-                title="Cardano's News"
-                // titleIcon="newspaper"
-                // titleIconColor="yellow-500"
-                dataStore={observableNewsStore}
-              />
+             <h1>Updating</h1>
 
             </div>
 
