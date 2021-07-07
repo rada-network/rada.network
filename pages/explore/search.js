@@ -1,14 +1,10 @@
 import {Layout} from '../../components/page-layouts/OneColumn';
-import {Header} from '../../components/headers/Header';
 import {Sidebar} from '../../components/sidebar/Sidebar';
 import {ProjectsList} from "../../components/card-layouts/ProjectsList";
-import {SocialPostsList} from "../../components/card-layouts/SocialPostsList";
-import useSWR from "swr";
 import {observer} from "mobx-react";
 
 import {getPosts} from "../../data/query/posts";
 import {useRouter} from "next/router";
-import {getTopic} from "../../data/query/topic";
 import utils from "../../lib/util";
 import {useStore} from "../../lib/useStore";
 
@@ -61,13 +57,13 @@ export default observer(function ExploreSearch(props) {
   return (
     <Layout extraClass="page_topic"
             meta={utils.createSiteMetadata({page : 'Search',data : {q : observableNewsStore.query}})}>
-      <div className={`${styles.wrapper}`}>
-        <div className={`${styles.container}`}>
+      <div className={`wrapper`}>
+        <div className={`container`}>
 
-          <div className={`${styles.grid_12cols}`}>
+          <div className={`grid-12cols`}>
 
             {/* main content */}
-            <div className={`${styles.maincontent}`}>
+            <div className={`maincontent`}>
 
               <NewsList
                 grid="1"
@@ -92,7 +88,7 @@ export default observer(function ExploreSearch(props) {
             </div>
 
             {/* Sidebar */}
-            <Sidebar className={`${styles.sidebar}`} extraClass="" />
+            <Sidebar className={`sidebar`} extraClass="" />
 
           </div>
 
