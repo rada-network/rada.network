@@ -86,7 +86,7 @@ export default function LineChart(props) {
     const y = getY();
 
     return (
-      <g className={`${styles.axis}`}>
+      <g className={`axis ${styles.axis}`}>
         <line
           x1={getSvgX(x.min) - yLabelSize} y1={getSvgY(y.min)}
           x2={getSvgX(x.max)} y2={getSvgY(y.min)}

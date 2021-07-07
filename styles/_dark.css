@@ -27,6 +27,12 @@
   opacity: 0.02;
 }
 
+.dark .axis {
+  @apply opacity-40;
+  stroke-width: 1;
+  stroke: #fff;
+}
+
 /* Cards */
 .card-news:hover,
 .card-project:hover,

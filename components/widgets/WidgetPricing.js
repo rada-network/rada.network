@@ -1,10 +1,9 @@
-import styles from '../../styles/modules/Widget.module.css'
-import stylesPricing from '../../styles/modules/Widget.pricing.module.css'
-import stylesStats from '../../styles/modules/Widget.stats.module.css'
-
 import {useEffect, useState} from 'react'
 import fetchJson from "../../lib/fetchJson"
 import LineChart from "../chart/LineChart"
+
+import styles from '../../styles/modules/Widget.pricing.module.css'
+import stylesStats from '../../styles/modules/Widget.stats.module.css'
 
 import {RiExternalLinkLine} from "react-icons/ri";
 
@@ -116,17 +115,17 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
   const PriceChange = () => {
     const change = data.change || 0
     const type = change >= 0 ? 'price-up' : 'price-down'
-    // const Indicator = () => change >= 0 ? <span className={`${stylesPricing.sb__up}`}>+</span> : <span className={`${stylesPricing.sb__down}`}>-</span>
+    // const Indicator = () => change >= 0 ? <span className={`${styles.sb__up}`}>+</span> : <span className={`${styles.sb__down}`}>-</span>
 
     return (
-    <div className={`${stylesPricing.indicator}`} type={type}>
+    <div className={`${styles.indicator}`} type={type}>
       {/* <Indicator /> */}
       {change > 0 && '+'}{(change * 100).toFixed(2)}%
     </div>
     )
   }
 
-  const Price = () => (<div className={`${stylesPricing.value}`}>{data.price?.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' })}</div>)
+  const Price = () => (<div className={`${styles.value}`}>{data.price?.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' })}</div>)
 
   const Loading = () => loading ? <p>Loading...</p> : ''
 
@@ -150,38 +149,38 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
   return (
 
-    <div className={`widget ${styles.widget}`}>
+    <div className={`widget widget-pricing`}>
       { title &&
       <div className={`widget-header`}>
         <div className={`widget-title`}>
           <span className="title">{title}</span>
         </div>
         <span className={`widget-icon`}>
-          <i className={`cf cf-${projectPlatformShort || 'btc'} ${styles.widget_icon_cf}`}/>
+          <i className={`cf cf-${projectPlatformShort || 'btc'} widget-icon-cf`}/>
         </span>
       </div> }
 
 
       <div className={`widget-body-p0`}>
 
-        <div className={`${stylesPricing.title}`}>Cardano Price (ADA)</div>
+        <div className={`${styles.title}`}>Cardano Price (ADA)</div>
 
-        <div className={`${stylesPricing.pricing}`}>
+        <div className={`${styles.pricing}`}>
           <Price />
           <PriceChange />
         </div>
         {/* <Loading /> */}
         {/* Pricing Chart */}
-        <div className={`${stylesPricing.chart}`} id="chart-box">
+        <div className={`${styles.chart}`} id="chart-box">
           <Duration />
           {/* <LineChart data={data} onChartHover={ (a,b) => '' } showLabels={true} svgWidth={size.w} svgHeight={size.h} /> */}
           <LineChart data={data.entries} showLabels={true} svgWidth={size.w} svgHeight={size.h} /> 
         </div>
 
         {/* Stats */}
-        <div className={`${styles.widget_list_sm} ${stylesPricing.widget_list_sm}`}>
+        <div className={`widget-list-sm ${styles.widget_list_sm}`}>
 
-          <div className={`group ${styles.widget_list_sm__item}`}>
+          <div className={`group widget-list-sm--item`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
                 <span title="">Market Cap</span>
@@ -192,7 +191,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
             </div>
           </div>
 
-          <div className={`group ${styles.widget_list_sm__item}`}>
+          <div className={`group widget-list-sm--item`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
                 <span title="">Volume (24h)</span>
@@ -203,7 +202,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
             </div>
           </div>
 
-          <div className={`group ${styles.widget_list_sm__item}`}>
+          <div className={`group widget-list-sm--item`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
                 <span title="">All Time High</span>
@@ -214,7 +213,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
             </div>
           </div>
 
-          <div className={`group ${styles.widget_list_sm__item}`}>
+          <div className={`group widget-list-sm--item`}>
             <div className={`${stylesStats.stat}`}>
               <div className={`${stylesStats.title}`}>
                 <span title="">Volatility (30d)</span>
@@ -230,7 +229,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
       </div> 
 
       <div className={`widget-footer`}>
-        <div className={`${styles.widget_footer_text}`}>
+        <div className={`widget-footer-text`}>
           Source: <a className="link" target={"_blank"} href="https://www.coindesk.com/price/cardano">CoinDesk <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span></a>
         </div>
       </div>
