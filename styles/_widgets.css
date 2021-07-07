@@ -45,7 +45,7 @@ Generic Styles
 /* 
 Footer 
 */
-.widget-footer-text {
+.widget-footer--text {
   @apply text-right w-full text-xs text-gray-500;
 }
 

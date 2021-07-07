@@ -32,5 +32,5 @@ Widget: Pricing
 
 .widget_list_sm {
   @apply mt-4;
-  @apply border-t border-gray-900 border-opacity-5;
+  @apply border-t border-gray-500 border-opacity-10;
 }

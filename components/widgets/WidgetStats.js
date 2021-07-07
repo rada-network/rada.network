@@ -153,7 +153,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
       </div>
 
       <div className={`widget-footer`}>
-        <div className={`widget-footer-text`}>
+        <div className={`widget-footer--text`}>
           Source: <a className="link" target={"_blank"} href="https://adastat.net/">AdaStat <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span></a>
         </div>
       </div>

@@ -1,9 +1,8 @@
-import styles from '../../styles/modules/Widget.module.css'
 
 export const Widget = ({title, text, footer, widgetIcon, widgetIconColor}) => {
   return (
 
-    <div className={`widget group ${styles.widget}`}>
+    <div className={`widget group`}>
       { title &&
       <div className={`widget-header`}>
         <div className={`widget-title`}>
@@ -15,11 +14,15 @@ export const Widget = ({title, text, footer, widgetIcon, widgetIconColor}) => {
       </div> }
       { text &&
       <div className={`widget-body`}>
-        <div className={`${styles.widget_text}`}>{text}</div>
+        <div className={`widget-text`}>
+          {text}
+        </div>
       </div> }
       { footer &&
       <div className={`widget-footer`}>
-        <div className={`${styles.widget_text}`}>{footer}</div>
+        <div className={`widget-footer--text`}>
+          {footer}
+        </div>
       </div> }
     </div>
 
