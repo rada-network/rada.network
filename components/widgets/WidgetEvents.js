@@ -38,7 +38,7 @@ const EventItem = ({item}) => {
 
         <div className={`${styles.title}`}>
           <a className={`widget-list--link`} rel={'nofollow'} href={url} target="_blank">
-            <span>{item.title}</span>
+            <span className="text-color-title">{item.title}</span>
             <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
           </a>
         </div>
@@ -54,13 +54,13 @@ const EventItem = ({item}) => {
                 Expired
               </span>
               <span className={`metadata widget-metadata badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
-                  <strong className="title">{Math.abs(endDay)}d</strong> ago
+                  <strong className="text-color-title">{Math.abs(endDay)}d</strong> ago
               </span>
             </>
             :
             (day > 0) ?
             <span className={`metadata widget-metadata badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
-                <strong className="title">{day}d</strong> to go
+                <strong className="text-color-title">{day}d</strong> to go
             </span>
             :  <span className={`metadata badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
               Ongoing
@@ -68,7 +68,7 @@ const EventItem = ({item}) => {
           }
 
         </div>
-        <div className={`${styles.text}`}>
+        <div className={`text-color-desc ${styles.text}`}>
           {item.description}
         </div>
 
@@ -104,7 +104,7 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
       { title &&
       <div className={`widget-header`}>
         <div className={`widget-title`}>
-          <span className="title">{title}</span>
+          <span className="text-color-title">{title}</span>
         </div>
         <span className={`widget-icon`}>
           <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} widget-icon-fa`}/>

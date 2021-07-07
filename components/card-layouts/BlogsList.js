@@ -11,7 +11,7 @@ export const BlogsList = ({posts, extraClass, grid, gap, title, cta}) => {
 			<div className="container">
 				<div className="section-header">
 					<div className="section-title">
-						<span className="title">{title}</span>
+						<span className="text-color-title">{title}</span>
 					</div>
 					{ cta && 
 					<div className="section-cta">

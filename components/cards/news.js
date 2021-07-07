@@ -66,7 +66,7 @@ export const CardNews = ({news}) => {
           <div className={`${styles.card_title}`}>
             <Link href={"/news/"+news.id} >
               <a className="card-link group" href={"/news/"+news.id}>
-                <span className="title mr-2">{news.title}</span>
+                <span className="text-color-title mr-2">{news.title}</span>
                 <span className="icon -mb-0.5 ico-external-link"><RiExternalLinkLine /></span>
               </a>
             </Link>

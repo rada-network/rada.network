@@ -49,7 +49,7 @@ Project
 }
 
 .card_text {
-  @apply line-clamp-2 text-sm text-gray-400 transition;
+  @apply line-clamp-2 text-sm transition;
 }
 
 .card:hover .card_text {

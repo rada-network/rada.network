@@ -27,7 +27,7 @@ export function Influencer({item}) {
 
           <div className="flex flex-col flex-1">
             <div className={`${styles.title}`}>
-              <span className="title">{item.name}</span>
+              <span className="text-color-title">{item.name}</span>
             </div>
 
             <div className={`${styles.info_wrapper}`}>

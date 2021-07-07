@@ -21,18 +21,16 @@ export default function showSources(source) {
           {/*    <img className={`card-img ${styles.project_icon__img}`} src={listLogos[i]} alt={""}/>*/}
           {/*  </span>*/}
           {/*</div>*/}
-          <div className="metadata metadata_author">
+          <div className="metadata metadata-source">
             {source.includes('cardano') ?
               <span className="icon mr-1">
-              <i className={`cf cf-car text-base`}/>
-            </span>
+                <i className={`cf cf-car text-base`}/>
+              </span>
               :
-              <div className={`${styles.project_icon} metadata metadata_date`}>
-              <span className="metadata-value">
-              <img className={`card-img ${styles.project_icon__img}`} src={listLogos[i]} alt={value}/>
-                {/*<img className={`card-img ${styles.project_icon__img}`} src={'images/logo-sources/adapulse.png'} alt='logo'/>*/}
-            </span>
-              </div>
+              <span className={`metadata-value`}>
+                <img className="metadata-value--img" src={listLogos[i]} alt={value} />
+                  {/*<img className={`card-img ${styles.project_icon__img}`} src={'images/logo-sources/adapulse.png'} alt='logo'/>*/}
+              </span> 
             }
             <span className="metadata-value" title={displaySources[i]}>{displaySources[i]}</span>
           </div>

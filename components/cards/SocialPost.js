@@ -55,7 +55,7 @@ export const SocialPost = ({post, favoriteCount, retweetCount, hashtags,
             <div className="flex flex-col ml-3">
               <div className={`metadata-wrapper ${styles.tweet_metadata_wrapper}`}>
                 <a href={link} target={"_blank"} className={`metadata ${styles.tweet_metadata_name} ${styles.tweet_metadata}`}>
-                  <span className="title">
+                  <span className="text-color-title">
                     {twitterName}
                   </span>
                 </a>

@@ -22,7 +22,7 @@ export const WidgetInfluencers = ({title, widgetIcon, widgetIconColor}) => {
       { title &&
       <div className={`widget-header`}>
         <div className={`widget-title`}>
-          <span className="title">{title}</span>
+          <span className="text-color-title">{title}</span>
         </div>
         <span className={`widget-icon`}>
           <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} widget-icon-fa`}/>

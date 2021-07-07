@@ -10,7 +10,7 @@ Widget: Events
 }
 
 .text {
-  @apply text-sm text-gray-400 mt-2 line-clamp-3;
+  @apply text-sm mt-2 line-clamp-3;
 }
 
 .info_wrapper {
@@ -18,7 +18,7 @@ Widget: Events
 }
 
 .info {
-  @apply text-xs leading-none truncate text-gray-400 rounded;
+  @apply text-xs leading-none truncate rounded;
   @apply py-1 px-2 overflow-hidden;
 }
 

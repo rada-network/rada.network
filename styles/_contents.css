@@ -1,11 +1,19 @@
 @import '_media';
 
-.title {
+/* 
+Core Contents Contrast
+*/
+.text-color-title {
   @apply text-gray-900 dark:text-white;
 }
 
+.text-color-desc,
+.card-text {
+  @apply text-gray-400 dark:text-gray-500;
+}
+
 /* 
-metadata 
+Metadata 
 */
 .metadata-wrapper {
   @apply flex flex-wrap;
@@ -31,6 +39,10 @@ metadata
       @apply hidden;
     }
   }
+}
+
+.metadata-value--img {
+  @apply hidden h-px-16 mr-1;
 }
 
 .project-metadata_type {

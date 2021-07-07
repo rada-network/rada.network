@@ -103,7 +103,7 @@ export const CommentList = observer(({item,comments}) => {
 
         <div className="section-header">
           <div className="section-title">
-            <span className="title">Discussions</span>
+            <span className="text-color-title">Discussions</span>
           </div>
         </div>
         

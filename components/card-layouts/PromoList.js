@@ -11,7 +11,7 @@ export const PromoList = ({extraClass, grid, gap, title}) => {
         { title && 
 				<div className="section-header">
 					<div className="section-title">
-            <span className="title">{title}</span>
+            <span className="text-color-title">{title}</span>
           </div>
 				</div> }
 				<div className="section-body">

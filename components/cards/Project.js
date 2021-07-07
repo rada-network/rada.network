@@ -80,7 +80,7 @@ export const Card = ({
           <div className={`${styles.card_title}`}>
             <Link href={`/item/${post.id}`}>
               <a className="card-link">
-                <span className="title">{projectTitle}</span>
+                <span className="text-color-title">{projectTitle}</span>
               </a>
             </Link>
           </div>
@@ -96,7 +96,7 @@ export const Card = ({
         </div>
 
         <div className={`${styles.card_body_main}`}>
-          <div className={`${styles.card_text}`} dangerouslySetInnerHTML={{__html: projectTextShort}} />
+          <div className={`card-text ${styles.card_text}`} dangerouslySetInnerHTML={{__html: projectTextShort}} />
         </div>
 
         <div className={`${styles.card_body_footer}`}>
