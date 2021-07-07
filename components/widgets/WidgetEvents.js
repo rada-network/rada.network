@@ -42,7 +42,7 @@ const EventItem = ({item}) => {
             <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
           </a>
         </div>
-        <div className={`${styles.info_wrapper}`}>
+        <div className={`metadata-wrapper widget-metadata-wrapper`}>
           {keywords.map(function (word) {
             return (
               <EventKeyword key={uuid()} word={word}/>
@@ -50,21 +50,21 @@ const EventItem = ({item}) => {
           })}
           {endDay < 0 ?
             <>
-              <span className={`badge ${styles.info} ${styles.info_type}`} type="event-expired">
+              <span className={`metadata widget-metadata badge ${styles.info} ${styles.info_type}`} type="event-expired">
                 Expired
               </span>
-              <span className={`badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
+              <span className={`metadata widget-metadata badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
                   <strong className="title">{Math.abs(endDay)}d</strong> ago
               </span>
             </>
             :
             (day > 0) ?
-            <span className={`badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
+            <span className={`metadata widget-metadata badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
                 <strong className="title">{day}d</strong> to go
-              </span>
-              :  <span className={`badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
-                Ongoing
-              </span>
+            </span>
+            :  <span className={`metadata badge ${styles.info} ${styles.info_date}`} title={item.startedAt}>
+              Ongoing
+            </span>
           }
 
         </div>
