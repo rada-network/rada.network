@@ -31,15 +31,27 @@ module.exports = {
         primary: colors.purple,
         secondary: colors.green,
         alternative: colors.yellow,
+
         'bluegray-50': '#f8fafd',
         'bluegray-100': '#ebf1f9',
+
         'shadepurple-50': '#fafaff',
         'shadepurple-100': '#eff0fe',
-        'deeppurple-50': '#16082c',
-        'deeppurple-100': '#0e051d',
-        'deeppurple-200': '#07030f',
-        'shadeyellow-50': '#fffefa',
+
+        'deeppurple-50':  '#411980',
+        'deeppurple-100': '#3c1775',
+        'deeppurple-200': '#36156a',
+        'deeppurple-300': '#311360',
+        'deeppurple-400': '#2b1155',
+        'deeppurple-500': '#260f4b',
+        'deeppurple-600': '#210c40',
+        'deeppurple-700': '#1b0a35',
+        'deeppurple-800': '#16082b',
+        'deeppurple-900': '#100620',
+
+        'shadeyellow-50':  '#fffefa',
         'shadeyellow-100': '#fffdf7',
+
         'deepgray-50': '#0f1623',
         'deepgray-100': '#0c111b',
         'deepgray-200': '#090c13',

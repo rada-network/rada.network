@@ -50,7 +50,8 @@ Links
 
 .links__icon {
   @apply flex w-px-32 h-px-32 justify-center items-center rounded;
-  @apply border border-opacity-10 hover:bg-purple-50 hover:border-purple-500 text-center;
+  @apply border border-gray-500 border-opacity-10 hover:bg-purple-50 hover:border-purple-500 text-center;
+  @apply dark:hover:bg-gray-800 hover:border-gray-700;
 }
 
 .links__icon i {

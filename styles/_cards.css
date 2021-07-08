@@ -44,3 +44,16 @@ Generic Styles
 .card-footer {
   @apply flex justify-between px-4 md:px-6 py-3 w-full;
 }
+
+
+/* 
+Card Social 
+*/
+.card-social {
+
+}
+
+.dark .card-social .icon svg {
+  stroke: #fff;
+  fill: #fff;
+}

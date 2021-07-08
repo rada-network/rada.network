@@ -1,18 +1,6 @@
 @import '_media';
 
 /* 
-Core Contents Contrast
------------------------------------ */
-.text-color-title {
-  @apply text-gray-900 dark:text-white;
-}
-
-.text-color-desc,
-.card-text {
-  @apply text-gray-400 dark:text-gray-500;
-}
-
-/* 
 Metadata 
 ----------------------------------- */
 .metadata-wrapper {
@@ -65,17 +53,15 @@ Metadata
   @apply capitalize;
 }
 
-/* .metadata-divider {
-  @apply inline-flex justify-items-center w-2 h-3 ml-2;
-  &::before {
-    @apply block border-l border-gray-200;
-    content: "";
-  }
-} */
-
 .project-comment_count {
   @apply px-2;
   @apply bg-gray-50 rounded;
+  @apply dark:bg-gray-900;
+}
+
+.dark .project-comment_count svg {
+  stroke: #fff;
+  fill: #fff;
 }
 
 

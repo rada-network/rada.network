@@ -5,7 +5,7 @@
 @import '_variables';
 
 /* Grid and Layout*/
-/* @import '_type'; */
+@import '_type';
 
 /* Core HTML elements */
 @import '_core';
