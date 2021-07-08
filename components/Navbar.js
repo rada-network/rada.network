@@ -34,7 +34,7 @@ export const Navbar = () => {
         
         <div className={`${styles.main}`}>
 
-          <div className="flex items-center justify-center flex-1">
+          <div className="flex flex-1">
 
             {/* Logo */}
             <div className="flex items-center flex-shrink-0">
@@ -48,7 +48,7 @@ export const Navbar = () => {
             </div>
 
             {/* Main Nav */}
-            <div className="flex-1 hidden sm:block flex-shrink-0 ml-8 space-x-6">
+            <div className="flex-1 flex-shrink-0 hidden sm:block lg:ml-8 space-x-6">
               <NavItem href="/explore/news">News</NavItem>
               <NavItem href="/explore/social">Social Signals</NavItem>
               <NavItem href="/explore/projects">Projects</NavItem>
