@@ -1,6 +1,19 @@
+/* Core */
+body {
+  @apply dark:bg-deepgray-200;
+}
+
+.section-inner {;
+  @apply dark:bg-deepgray-100;
+}
+
+.widget {
+  @apply dark:bg-deepgray-100;
+}
+
 /* Navbar */
 .navbar {
-  @apply dark:bg-deeppurple-800 dark:bg-opacity-90 dark:border-gray-800 dark:shadow-none;
+  @apply dark:bg-deepgray-100 dark:bg-opacity-90 dark:border-gray-800 dark:shadow-none;
 }
 
 .nav-item {
@@ -34,10 +47,10 @@
 .card-project:hover,
 .card-social:hover,
 .widget-list--link:hover {
-  @apply dark:bg-deeppurple-600;
+  @apply dark:bg-gray-900;
 }
 
-.card:hover .card-text,
+.card:hover .text-color-desc,
 .widget-list--link:hover .widget-list--item--text {
   @apply dark:text-gray-400;
 }

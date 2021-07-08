@@ -29,6 +29,11 @@ Metadata
   }
 }
 
+.metadata-socialusername {
+  @apply block text-base font-semibold mb-0.5 truncate;
+  width: 240px;
+}
+
 .metadata-value--img {
   @apply hidden h-px-16 mr-1;
 }

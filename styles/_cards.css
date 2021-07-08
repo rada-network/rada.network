@@ -50,7 +50,94 @@ Generic Styles
 Card Social 
 */
 .card-social {
+  @apply flex-col items-center content-center mx-0 overflow-hidden;
+  @apply relative transition-all;
+  @apply border-t border-gray-500 border-opacity-10 md:border md:border-opacity-10 md:rounded;
+  @apply lg:hover:bg-shadeyellow-100;
+}
 
+.card-social .card-body {
+  @apply h-full justify-items-stretch;
+}
+
+.card-social .card-header {
+  @apply pb-0 flex flex-row justify-between items-center;
+}
+
+.card-social .card-footer {
+  @apply text-sm pt-1 pb-0 md:pb-4;
+}
+
+.card-social .card-body--header {
+  @apply mb-4 flex flex-row justify-between;
+}
+
+.card-social .card-body--main {
+  @apply flex flex-col pb-1;
+}
+
+.card-social .card-title {
+  @apply text-sm md:text-base font-semibold;
+}
+
+.card-social .card-text {
+  @apply text-sm text-gray-700 transition-colors;
+  @apply dark:text-gray-300;
+}
+
+/* Media */
+.card-social .card-media {
+  @apply mt-4 h-auto w-full overflow-hidden;
+  @apply bg-no-repeat bg-cover bg-center;
+  @apply border border-gray-900 border-opacity-10 rounded-lg;
+  min-height: 8rem;
+  max-height: 10rem;
+}
+
+@media only screen and (max-width: 640px) {
+  .card-social .card-media {
+    min-height: 12rem;
+    max-height: 14rem;
+  }
+}
+
+.card-social .card-media img {
+  @apply w-auto h-auto opacity-0;
+}
+
+/* Metadata */
+.card-social .metadata {
+  @apply mr-1.5;
+}
+
+.card-social .metadata + .metadata {
+  &::before {
+    @apply mr-1 leading-4;
+  }
+}
+
+.card-social .card-header .metadata-wrapper {
+  @apply pr-5 ;
+}
+
+.card-social .card-header .metadata-wrapper + .metadata-wrapper {
+  @apply pr-0 flex-wrap;
+}
+
+.card-social .card-footer .metadata-wrapper {
+  @apply w-full justify-between;
+}
+
+/* 
+Card Icon
+*/
+.card-social .icon-twitter {
+  @apply text-lg text-blue-200 transition transform scale-90;
+  @apply absolute right-4 top-4;
+}
+
+.card-social:hover .icon-twitter {
+  @apply text-blue-500 scale-100;
 }
 
 .dark .card-social .icon svg {

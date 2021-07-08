@@ -96,7 +96,7 @@ export const Card = ({
         </div>
 
         <div className={`${styles.card_body_main}`}>
-          <div className={`card-text ${styles.card_text}`} dangerouslySetInnerHTML={{__html: projectTextShort}} />
+          <div className={`card-text text-color-desc ${styles.card_text}`} dangerouslySetInnerHTML={{__html: projectTextShort}} />
         </div>
 
         <div className={`${styles.card_body_footer}`}>

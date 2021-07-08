@@ -10,7 +10,6 @@ Core Contents
   @apply text-gray-900 dark:text-white;
 }
 
-.text-color-desc,
-.card-text {
+.text-color-desc {
   @apply text-gray-400 dark:text-gray-500;
 }

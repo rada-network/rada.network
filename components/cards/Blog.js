@@ -24,7 +24,7 @@ export const Card = ({post, title, text, mediaUri, link}) => {
           </div>
         </div> 
         <div className="card-body-main">
-          <div className="card-text">{post.content}</div>
+          <div className="card-text text-color-desc">{post.content}</div>
         </div>
       </div>
     </div>;

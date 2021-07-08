@@ -52,7 +52,7 @@ Vote Buttons
   @apply px-2 py-4px justify-center;
   @apply font-normal bg-gray-50 border border-gray-900 border-opacity-10 rounded;
   @apply hover:border-purple-700 hover:bg-purple-50 hover:text-primary-700;
-  @apply dark:bg-gray-900;
+  @apply dark:bg-deepgray-100;
 }
 
 .btn-project-vote.active,
@@ -64,7 +64,7 @@ Vote Buttons
   @extend .btn-project-vote;
   @apply bg-white border border-gray-900 border-opacity-10 md:border-opacity-5;
   @apply px-2 py-1 md:px-5 md:py-4;
-  @apply dark:bg-gray-900;
+  @apply dark:bg-deepgray-100;
 }
 
 .card .btn-project-vote,
@@ -85,7 +85,7 @@ Nav Button
   @apply flex px-2.5 py-2 rounded-md;
   @apply text-sm font-medium text-gray-900 bg-gray-100 border border-transparent;
   @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
-  @apply dark:text-white dark:bg-deeppurple-500;
+  @apply dark:text-white dark:bg-gray-900;
   @apply dark:hover:bg-deeppurple-300 dark:hover:border-purple-500;
 }
 
@@ -131,7 +131,7 @@ Group Buttons
   @apply justify-center py-3 px-6 w-full;
   @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700 rounded;
   @apply text-sm;
-  @apply dark:text-white dark:bg-deeppurple-600;
+  @apply dark:text-white dark:bg-gray-900;
   @apply dark:hover:bg-deeppurple-100;
 }
 

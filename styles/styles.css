@@ -34,7 +34,6 @@ Sections Layout
 .section-inner {
   @apply p-0 -mx-4 md:mx-0;
   @apply bg-white shadow-sm rounded;
-  @apply dark:bg-deeppurple-800;
 }
 
 .section-header {
