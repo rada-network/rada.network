@@ -9,6 +9,7 @@ import {RiExternalLinkLine} from "react-icons/ri";
 import ContentLoader from "react-content-loader";
 import Link from "next/link"
 import ShowSources from '../news-sources/ShowSources'
+import ReadingTime from "../news-sources/ReadingTime";
 
 export const NewsLoader = (props) => (
   <div className={`${styles.card}`}>
@@ -93,6 +94,7 @@ export const CardNews = ({news}) => {
             <div className="metadata metadata_date">
               <span className="metadata-value" title={`${postDate_}`}>{postDate}</span>
             </div>
+            <ReadingTime content={news.content}/>
           </div>
         </div>
 
