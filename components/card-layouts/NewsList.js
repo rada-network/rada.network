@@ -61,7 +61,7 @@ export const NewsList = observer(({dataStore, extraClass, grid, gap, title, titl
 
 
   return (
-    <div className={`section ${extraClass || ''}`}>
+    <div className={`section section-news ${extraClass || ''}`}>
       <div className={`section-inner`}>
 
         <div className={`section-header`}>

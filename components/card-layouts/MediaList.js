@@ -71,7 +71,7 @@ export const MediaList = ({
   const activeItem = items[activeIdx] ?? items[0]
 
 	return (
-		<div className={`section ${extraClass || ''}`}>
+		<div className={`section section-media ${extraClass || ''}`}>
       <div className={`section-inner`}>
 
         { title && 
