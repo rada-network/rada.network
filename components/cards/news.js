@@ -8,7 +8,7 @@ import KeywordIcon from "../icons/keywordIcon";
 import {RiExternalLinkLine} from "react-icons/ri";
 import ContentLoader from "react-content-loader";
 import Link from "next/link"
-import showSources from '../news-sources/showSources'
+import ShowSources from '../news-sources/ShowSources'
 
 export const NewsLoader = (props) => (
   <div className={`${styles.card}`}>
@@ -89,7 +89,7 @@ export const CardNews = ({news}) => {
             {/*<div className="metadata metadata_author">*/}
             {/*  <span className="metadata-value" title={news.source}>{news.source}</span>*/}
             {/*</div>*/}
-            {showSources(news.websiteUri)}
+            <ShowSources source={news.websiteUri}/>
             <div className="metadata metadata_date">
               <span className="metadata-value" title={`${postDate_}`}>{postDate}</span>
             </div>
