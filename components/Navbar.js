@@ -48,7 +48,7 @@ export const Navbar = () => {
             </div>
 
             {/* Main Nav */}
-            <div className="flex-1 flex-shrink-0 hidden sm:block lg:ml-8 space-x-6">
+            <div className="flex-1 flex-shrink-0 hidden sm:block ml-8 space-x-6">
               <NavItem href="/explore/news">News</NavItem>
               <NavItem href="/explore/social">Social Signals</NavItem>
               <NavItem href="/explore/projects">Projects</NavItem>
