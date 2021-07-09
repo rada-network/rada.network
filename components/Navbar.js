@@ -1,9 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import styles from '../styles/modules/Navbar.module.css'
-
-
 import {Wallet} from "./Wallet"
 import SearchInput from "./search"
 import ThemeSwitch from "./ThemeSwitch"
