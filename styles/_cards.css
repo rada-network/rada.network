@@ -129,7 +129,7 @@ Card Social
 }
 
 .card-social .card-footer {
-  @apply text-sm pt-1 pb-0 md:pb-4;
+  @apply w-full text-sm pt-1 pb-0 md:pb-4;
 }
 
 .card-social .card-body--header {
