@@ -68,7 +68,7 @@ export default observer(function Explore(props) {
       <div className={`wrapper`}>
         <div className={`container`}>
 
-          <div className={`grid-12cols`}>
+          <div className={`main-grid`}>
 
             {/* main content */}
             <div className={`maincontent`}>

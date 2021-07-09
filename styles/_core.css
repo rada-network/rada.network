@@ -53,12 +53,21 @@ Layout
   @apply grid grid-cols-1 lg:grid-cols-12;
 }
 
+.main-grid {
+  @apply flex;
+}
+
 .maincontent {
-  @apply lg:col-span-8;
+  @apply w-auto flex-1 lg:pr-8;
 }
 
 .sidebar {
-  @apply -mx-4 md:mx-0 lg:col-span-4 lg:pl-8 lg:pt-8;
+  @apply lg:pt-8;
+  @apply w-80;
+}
+
+.sidebar-inner {
+  @apply w-80 mb-12;
 }
 
 /* 
