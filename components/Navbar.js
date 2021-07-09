@@ -90,6 +90,10 @@ export const Navbar = () => {
     <div className="navbar-app">
       <div className={`container`}>
         <div className={`navbar-main`}>
+          <NavItem href="/">
+            <span className="icon"><i class="fad fa-home"></i></span>
+            <span className="nav-item--text">Home</span>
+          </NavItem>
           <NavItem href="/explore/news">
             <span className="icon"><i class="fad fa-newspaper"></i></span>
             <span className="nav-item--text">News</span>

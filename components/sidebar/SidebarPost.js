@@ -13,23 +13,6 @@ export default function SidebarPost ({className,extraClass}) {
         title="Related Projects"
         widgetIcon="code-branch"
       />
-      <WidgetPricing
-        title="Market Insights"
-        text="Lorem Ipsum Dolor sit Amet"
-        projectPlatformShort="ada"
-      />
-      <WidgetEvents
-        title="Cardano Events"
-        widgetIcon="calendar-day"
-      />
-      <WidgetStats
-        title="Network Information"
-        widgetIcon="chart-pie-alt"
-      />
-      <WidgetInfluencers
-        title="Influencers"
-        widgetIcon="user-secret"
-      />
     </>
   );
 };

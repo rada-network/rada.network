@@ -25,7 +25,7 @@ Navbar for Mobile and Apps
 --------------------------------*/
 .navbar-app {
   @apply fixed lg:hidden z-50;
-  @apply bg-gray-100;
+  @apply bg-gray-100 dark:bg-gray-900 border-t border-gray-500 border-opacity-20;
   bottom: 0;
   left: 0;
   right: 0;
@@ -36,9 +36,9 @@ Navbar for Mobile and Apps
 }
 
 .navbar-app .icon {
-  @apply text-lg leading-none mb-1;
+  @apply text-lg leading-none my-1;
 }
 
 .navbar-app .nav-item-active {
-  @apply text-primary-700 text-opacity-100;
+  @apply text-primary-700 dark:text-primary-400 text-opacity-100;
 }
