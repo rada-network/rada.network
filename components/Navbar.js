@@ -85,7 +85,7 @@ export const Navbar = () => {
 
     {/* Mobile Nav */}
     <div className="navbar-app">
-      <div className={`container`}>
+
         <div className={`navbar-main`}>
           <NavItem href="/">
             <span className="icon"><i class="fad fa-home"></i></span>
@@ -96,8 +96,8 @@ export const Navbar = () => {
             <span className="nav-item--text">News</span>
           </NavItem>
           <NavItem href="/explore/social">
-            <span className="icon"><i class="fad fa-users"></i></span>
-            <span className="nav-item--text">Social Signals</span>
+            <span className="icon"><i class="fad fa-fire-alt"></i></span>
+            <span className="nav-item--text">Signals</span>
           </NavItem>
           <NavItem href="/explore/projects">
             <span className="icon"><i class="fad fa-code-branch"></i></span>
@@ -108,7 +108,7 @@ export const Navbar = () => {
             <span className="nav-item--text">Blog</span>
           </NavItem>
         </div>
-      </div>
+
     </div>
     </>
   );

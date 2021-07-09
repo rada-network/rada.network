@@ -7,12 +7,14 @@
 
 .scroll-down .navbar {
   transform: translateY(-60px);
+  transition-delay: 0.8s;
 }
 
 .scroll-up .navbar {
   @apply fixed;
   top: 0;
   transform: translateY(0);
+  transition-delay: 0.1s;
 }
 
 .navbar-main {
@@ -36,18 +38,22 @@ Navbar for Mobile and Apps
 --------------------------------*/
 .navbar-app {
   @apply fixed lg:hidden z-50;
-  @apply bg-gray-100 dark:bg-gray-900 border-t border-gray-500 border-opacity-20;
+  @apply bg-gray-50 dark:bg-gray-900 border-t border-gray-500 border-opacity-10;
   bottom: 0;
   left: 0;
   right: 0;
 }
 
 .navbar-app .nav-item {
-  @apply justify-center items-center text-xs text-gray-900;
+  @apply w-full justify-center items-center text-xs text-gray-500;
 }
 
 .navbar-app .icon {
-  @apply text-lg leading-none my-1;
+  @apply text-lg leading-none mt-2 mb-1;
+}
+
+.navbar-app .nav-item--text {
+  @apply text-xs font-normal;
 }
 
 .navbar-app .nav-item-active {
