@@ -2,7 +2,6 @@ import React from "react";
 
 import utils from "../../lib/util";
 
-import styles from '../../styles/modules/Card.post.module.css'
 import KeywordIcon from "../icons/keywordIcon";
 
 import {RiExternalLinkLine} from "react-icons/ri";
@@ -12,8 +11,8 @@ import ShowSources from '../news-sources/ShowSources'
 import ReadingTime from "../news-sources/ReadingTime";
 
 export const NewsLoader = (props) => (
-  <div className={`${styles.card}`}>
-    <div className={`${styles.card_body}`}>
+  <div className={`card card-news`}>
+    <div className={`card-body`}>
       <ContentLoader
         speed={2}
         backgroundColor="#F3F4F6"
@@ -41,28 +40,28 @@ export const CardNews = ({news}) => {
   let keywords = JSON.parse(news.keywords);
   keywords = Object.entries(keywords)
   return (
-    <div className={`card card-news ${styles.card}`}>
+    <div className={`card card-post card-news`}>
 
-      <div className={`${styles.card_media}`}>
+      <div className={`card-media`}>
         {news.thumbnailUri === "" ?
-          <div className={`${styles.project_icon_ph}`}>
+          <div className={`card-media-blank`}>
             <a rel={"nofollow"} target={"_blank"} href={news.websiteUri}>
-              <span className={`icon text-yellow-500 ${styles.project_icon_ph__img}`}><i className="fad fa-newspaper"/></span>
+              <span className={`icon text-yellow-500`}><i className="fad fa-newspaper"/></span>
             </a>
           </div>
           :
-          <div className={`${styles.project_icon}`}>
+          <div className={`card-media-img`}>
             <a rel={"nofollow"} target={"_blank"} href={news.websiteUri}>
-              <img className={`card-img ${styles.project_icon__img}`} src={news.thumbnailUri}  alt={""}/>
+              <img className={`card-img project-icon--img`} src={news.thumbnailUri}  alt={""}/>
             </a>
           </div>
         }
       </div>
 
-      <div className={`${styles.card_body}`}>
+      <div className={`card-body`}>
 
-        <div className={`${styles.card_body_header}`}>
-          <div className={`${styles.card_title}`}>
+        <div className={`card-body--header`}>
+          <div className={`card-title`}>
             <Link href={"/news/"+news.id} >
               <a className="card-link group" href={"/news/"+news.id}>
                 <span className="text-color-title mr-2">{news.title}</span>
@@ -81,17 +80,17 @@ export const CardNews = ({news}) => {
           </div>
         </div>
 
-        <div className={`${styles.card_body_main}`}>
-          <div className={`card-text text-color-desc ${styles.card_text}`} dangerouslySetInnerHTML={{__html: news.description}} />
+        <div className={`card-body--main`}>
+          <div className={`card-text text-color-desc`} dangerouslySetInnerHTML={{__html: news.description}} />
         </div>
 
-        <div className={`${styles.card_body_footer}`}>
+        <div className={`card-body--footer`}>
           <div className="metadata-wrapper">
             {/*<div className="metadata metadata_author">*/}
             {/*  <span className="metadata-value" title={news.source}>{news.source}</span>*/}
             {/*</div>*/}
             <ShowSources source={news.websiteUri}/>
-            <div className="metadata metadata_date">
+            <div className="metadata metadata-date">
               <span className="metadata-value" title={`${postDate_}`}>{postDate}</span>
             </div>
             <ReadingTime content={news.content}/>

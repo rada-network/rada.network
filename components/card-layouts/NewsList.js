@@ -6,7 +6,7 @@ import Link from "next/link"
 import {observer} from "mobx-react";
 import {TabButton} from "../button/tabButton";
 import WidgetTitle from "../text/widgetTitle";
-import {CardNews, NewsLoader} from "../cards/news";
+import {CardNews, NewsLoader} from "../cards/News";
 import {getNews} from "../../data/query/news";
 import ContentLoader from "react-content-loader";
 

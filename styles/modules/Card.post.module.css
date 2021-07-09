@@ -40,9 +40,9 @@ Project
   @apply flex-1;
 }
 
-.card_title {
+/* .card_title {
   @apply text-base font-semibold leading-snug;
-}
+} */
 
 .card_title a {
   @apply relative pr-2;
