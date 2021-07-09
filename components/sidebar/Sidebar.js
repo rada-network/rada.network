@@ -31,30 +31,31 @@ export const Sidebar = ({className, extraClass, type}) => {
       }
 
       // sidebar diff height
-      deltaH = sidebar.parentNode.clientHeight - rect.height - paddingTop
+      deltaH = sidebar.parentNode.clientHeight - rect.height - 80
     }
   
     const sidebarScroll = () => {
       if (!sidebarRef.current) return
-
       if (!fixSidebar) initFixedPoint()
+      if (deltaH <= 300) {
+        console.log('remove ')
+        window.removeEventListener("scroll", sidebarScroll)
+        return
+      }
+
         // update DOM css
       if (deltaH && window.scrollY > kickoffPoint + deltaH) {
         fixSidebar = true
         sidebarRef.current.classList.add('lg:fixed')
-        sidebarRef.current.style.top = (offsetTop + kickoffPoint + deltaH - window.scrollY) + 'px'
+        sidebarRef.current.style.top = (offsetTop + kickoffPoint + deltaH - window.scrollY + 15) + 'px'
       } else if (window.scrollY > kickoffPoint) {
-        if (!fixSidebar) {
-          fixSidebar = true
-          sidebarRef.current.classList.add('lg:fixed')
-          sidebarRef.current.style.top = offsetTop + 'px'
-        }
+        fixSidebar = true
+        sidebarRef.current.classList.add('lg:fixed')
+        sidebarRef.current.style.top = offsetTop + 'px'
       } else {
-        if (fixSidebar) {
-          fixSidebar = false
-          sidebarRef.current.classList.remove('lg:fixed')
-          sidebarRef.current.style.top = ''
-        }
+        fixSidebar = false
+        sidebarRef.current.classList.remove('lg:fixed')
+        sidebarRef.current.style.top = ''
       }
 
       // add scroll direction class
