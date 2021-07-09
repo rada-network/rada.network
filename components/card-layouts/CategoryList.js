@@ -44,21 +44,21 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
 				</div>
 
 				<div className={`section-body`}>
-
-          <div className={`scrollbar category-scroll`} ref={scrollBox}>
-            {topic.map(function(item){
-              return (
-                <Card
-                  key={item.itemType}
-                  title={item.title}
-                  itemType={item.itemType}
-                  text={item.description}
-                  cta={item.ideaCount + ' hunted'}
-                />
-              )
-            })}
-					</div>
-
+          <div className="grid grid-cols-1">
+            <div className={`scrollbar category-scroll`} ref={scrollBox}>
+              {topic.map(function(item){
+                return (
+                  <Card
+                    key={item.itemType}
+                    title={item.title}
+                    itemType={item.itemType}
+                    text={item.description}
+                    cta={item.ideaCount + ' hunted'}
+                  />
+                )
+              })}
+            </div>
+          </div>
 				</div>
 
 			</div>

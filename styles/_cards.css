@@ -42,11 +42,11 @@ Generic Styles
 }
 
 .card-body {
-  @apply flex flex-col flex-1 px-4 md:px-6 py-4 w-full;
+  @apply flex flex-col px-4 md:px-6 py-4 w-full;
 }
 
 .card-footer {
-  @apply flex justify-between px-4 md:px-6 py-3 w-full;
+  @apply flex;
 }
 
 
@@ -76,8 +76,7 @@ Card Post (News, Projects,...)
 }
 
 .card-post .card-footer {
-  @apply pl-0 pt-4 pr-3 md:pt-5 md:pb-4 md:px-4 lg:p-6 lg:pt-7;
-  @apply flex-1;
+  @apply block pl-0 pt-4 pr-3 md:pt-5 md:pb-4 md:px-4 lg:p-6 lg:pt-7;
 }
 
 .card-post .card-text {
@@ -109,7 +108,6 @@ Card Post (News, Projects,...)
 .card-post .card-media-blank .icon {
   @apply text-xl leading-none opacity-30;
 }
-
 
 
 /* 

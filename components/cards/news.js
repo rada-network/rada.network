@@ -11,7 +11,7 @@ import ShowSources from '../news-sources/ShowSources'
 import ReadingTime from "../news-sources/ReadingTime";
 
 export const NewsLoader = (props) => (
-  <div className={`card card-news`}>
+  <div className={`card card-post card-news`}>
     <div className={`card-body`}>
       <ContentLoader
         speed={2}
