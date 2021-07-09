@@ -1,6 +1,6 @@
 .navbar {
   @apply bg-white bg-opacity-90 border-b border-gray-100 z-50 backdrop-filter backdrop-blur;
-  @apply absolute lg:fixed inset-x-0 inset-y-0;
+  @apply fixed inset-x-0 inset-y-0;
   height: var(--mainnav-height);
 }
 
