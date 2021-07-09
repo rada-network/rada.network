@@ -14,25 +14,27 @@ export const Navbar = () => {
   const NavItem = ({className, href, children}) => {
 
     const cls = []
-    cls.push(`nav-item ${styles.nav_item}`)
+    cls.push(`nav-item`)
     cls.push(className)
-    if (router.asPath === href) cls.push(`nav-item-active ${styles.nav_item__active}`)
+    if (router.asPath === href) cls.push(`nav-item-active`)
 
     return (
     <a href={href} className={cls.join(' ')}>
       <Link href={href}>
-        <span>{children}</span>
+        <>
+          {children}
+        </>
       </Link>
-
     </a>
     )
   }
 
   return (
-    <nav className={`navbar ${styles.wrapper}`}>
+    <>
+    <nav className={`navbar`}>
       <div className={`container`}>
         
-        <div className={`${styles.main}`}>
+        <div className={`navbar-main`}>
 
           <div className="flex flex-1">
 
@@ -48,11 +50,19 @@ export const Navbar = () => {
             </div>
 
             {/* Main Nav */}
-            <div className="flex-1 flex-shrink-0 hidden sm:block ml-8 space-x-6">
-              <NavItem href="/explore/news">News</NavItem>
-              <NavItem href="/explore/social">Social Signals</NavItem>
-              <NavItem href="/explore/projects">Projects</NavItem>
-              <NavItem href="/explore/blog">Blog</NavItem>
+            <div className="hidden lg:flex ml-8 space-x-6">
+              <NavItem href="/explore/news">
+                <span className="nav-item--text">News</span>
+              </NavItem>
+              <NavItem href="/explore/social">
+                <span className="nav-item--text">Social Signals</span>
+              </NavItem>
+              <NavItem href="/explore/projects">
+                <span className="nav-item--text">Projects</span>
+              </NavItem>
+              <NavItem href="/explore/blog">
+                <span className="nav-item--text">Blog</span>
+              </NavItem>
             </div>
 
           </div>
@@ -75,5 +85,30 @@ export const Navbar = () => {
       
       </div>
     </nav>
+
+    {/* Mobile Nav */}
+    <div className="navbar-app">
+      <div className={`container`}>
+        <div className={`navbar-main`}>
+          <NavItem href="/explore/news">
+            <span className="icon"><i class="fad fa-newspaper"></i></span>
+            <span className="nav-item--text">News</span>
+          </NavItem>
+          <NavItem href="/explore/social">
+            <span className="icon"><i class="fad fa-users"></i></span>
+            <span className="nav-item--text">Social Signals</span>
+          </NavItem>
+          <NavItem href="/explore/projects">
+            <span className="icon"><i class="fad fa-code-branch"></i></span>
+            <span className="nav-item--text">Projects</span>
+          </NavItem>
+          <NavItem href="/explore/blog">
+            <span className="icon"><i class="fad fa-pen-nib"></i></span>
+            <span className="nav-item--text">Blog</span>
+          </NavItem>
+        </div>
+      </div>
+    </div>
+    </>
   );
 }

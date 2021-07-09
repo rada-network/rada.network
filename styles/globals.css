@@ -20,6 +20,7 @@
 @import '_cards';
 @import '_widgets';
 @import '_contents';
+@import '_navbar';
 
 /* Theme */
 @import '_dark';

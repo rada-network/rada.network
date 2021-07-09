@@ -1,0 +1,44 @@
+.navbar {
+  @apply bg-white bg-opacity-90 border-b border-gray-100 z-50 backdrop-filter backdrop-blur;
+  @apply absolute lg:fixed inset-x-0 inset-y-0;
+  height: var(--mainnav-height);
+}
+
+.navbar-main {
+  @apply relative flex items-center justify-evenly;
+  height: var(--mainnav-height);
+}
+
+.nav-item {
+  @apply flex flex-col whitespace-nowrap h-full text-sm leading-10;
+  @apply text-gray-900 text-opacity-50 font-medium;
+  @apply hover:text-opacity-90;
+}
+
+.nav-item-active {
+  @apply text-opacity-100;
+}
+
+
+/* 
+Navbar for Mobile and Apps 
+--------------------------------*/
+.navbar-app {
+  @apply fixed lg:hidden z-50;
+  @apply bg-gray-100;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar-app .nav-item {
+  @apply justify-center items-center text-xs text-gray-900;
+}
+
+.navbar-app .icon {
+  @apply text-lg leading-none mb-1;
+}
+
+.navbar-app .nav-item-active {
+  @apply text-primary-700 text-opacity-100;
+}
