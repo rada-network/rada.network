@@ -8,6 +8,7 @@ export const Sidebar = ({className, extraClass, type}) => {
 
   useEffect(() => {
 
+
     let fixSidebar = false
     let offsetTop = 0
     let kickoffPoint = 0
@@ -17,7 +18,6 @@ export const Sidebar = ({className, extraClass, type}) => {
     const initFixedPoint = () => {
       const paddingTop = parseInt(window.getComputedStyle(document.body).paddingTop)
       const sidebar = sidebarRef.current
-      if (!sidebar) return
       const rect = sidebar.getBoundingClientRect()
       const sidebarTop = rect.top + window.scrollY - paddingTop
       const innerHeight = rect.height + 30
@@ -35,6 +35,8 @@ export const Sidebar = ({className, extraClass, type}) => {
     }
   
     const sidebarScroll = () => {
+      if (!sidebarRef.current) return
+
       if (!fixSidebar) initFixedPoint()
         // update DOM css
       if (deltaH && window.scrollY > kickoffPoint + deltaH) {
