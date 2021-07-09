@@ -4,7 +4,6 @@ import Link from "next/link";
 import utils from "../../lib/util";
 import {Vote} from "../vote/Vote";
 
-import styles from '../../styles/modules/Card.post.module.css'
 import ItemTypeIcon from "../icons/itemTypeIcon";
 import NetworkIcon from "../icons/networkIcon";
 import KeywordIcon from "../icons/keywordIcon";
@@ -12,8 +11,8 @@ import ContentLoader from "react-content-loader";
 import ReadingTime from "../news-sources/ReadingTime";
 
 export const ProjectLoader = (props) => (
-  <div className={`${styles.card}`}>
-    <div className={`${styles.card_body}`}>
+  <div className={`card card-post card-project`}>
+    <div className={`card-body`}>
       <ContentLoader
         speed={2}
         backgroundColor="#F3F4F6"
@@ -59,27 +58,27 @@ export const Card = ({
   keywords = Object.entries(keywords)
 
   return (
-    <div className={`card card-project ${styles.card}`}>
+    <div className={`card card-post card-project`}>
 
-      <div className={`${styles.card_media}`}>
+      <div className={`card-media`}>
         {Object.keys(projectIconUri).length === 0
-        ? <div className={`${styles.project_icon_ph}`}>
+        ? <div className={`card-media-blank`}>
             <Link href={`/item/${post.id}`}>
-             <span className={`icon text-blue-500 ${styles.project_icon_ph__img}`}><i className="fad fa-code-branch"></i></span>
+             <span className={`icon text-blue-500`}><i className="fad fa-code-branch"></i></span>
             </Link>
           </div>
-        : <div className={`${styles.project_icon}`}>
+        : <div className={`card-media-img`}>
             <Link href={`/item/${post.id}`}>
-              <img className={`card-img ${styles.project_icon__img}`}  src={projectIconUri[0]} />
+              <img className={`card-img`}  src={projectIconUri[0]} />
             </Link>
           </div>
         }
       </div>
 
-      <div className={`${styles.card_body}`}>
+      <div className={`card-body`}>
 
-        <div className={`${styles.card_body_header}`}>
-          <div className={`${styles.card_title}`}>
+        <div className={`card-body--header`}>
+          <div className={`card-title`}>
             <Link href={`/item/${post.id}`}>
               <a className="card-link">
                 <span className="text-color-title">{projectTitle}</span>
@@ -97,11 +96,11 @@ export const Card = ({
           </div>
         </div>
 
-        <div className={`${styles.card_body_main}`}>
-          <div className={`card-text text-color-desc ${styles.card_text}`} dangerouslySetInnerHTML={{__html: projectTextShort}} />
+        <div className={`card-body--main`}>
+          <div className={`card-text text-color-desc`} dangerouslySetInnerHTML={{__html: projectTextShort}} />
         </div>
 
-        <div className={`${styles.card_body_footer}`}>
+        <div className={`card-body--footer`}>
           <div className="metadata-wrapper">
 
             <a href={link} className="metadata project-comment_count">
@@ -126,7 +125,7 @@ export const Card = ({
 
       </div>
 
-      <div className={`${styles.card_footer}`}>
+      <div className={`card-footer`}>
 
         <Vote key={post.id} itemId={post.id} page={"index"} voteStore={voteStore} />
 
