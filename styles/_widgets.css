@@ -4,7 +4,6 @@ Generic Styles
 .widget {
   @apply flex flex-col mb-8;
   @apply bg-white rounded border-gray-500 border-opacity-10 shadow-sm;
-  @apply dark:bg-deepgray-100;
 }
 
 .widget-header {

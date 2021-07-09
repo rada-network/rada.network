@@ -7,6 +7,7 @@ const postsGql = gql`
       id
       title
       description
+      contentJson
       imageUri
       imagesUri
       itemType

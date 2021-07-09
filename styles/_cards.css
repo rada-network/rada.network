@@ -1,12 +1,16 @@
 /*
 Generic Styles
-*/
+----------------------------------------------*/
+%card-padding {
+  @apply py-4 px-3 md:p-6 lg:p-8;
+}
+
 .card {
-  @apply flex h-full;
+  @apply flex h-full relative transition;
 }
 
 .card-media {
-  @apply flex flex-col flex-shrink-0 justify-center justify-items-center overflow-hidden rounded;
+  @apply flex flex-col flex-shrink-0 overflow-hidden rounded;
 }
 
 .card-img {
@@ -14,10 +18,7 @@ Generic Styles
 }
 
 .card-title {
-  @apply text-base font-medium;
-  > a {
-    @apply hover:text-gray-900;
-  }
+  @apply text-base font-medium leading-snug;
 }
 
 .card-meta {
@@ -26,6 +27,9 @@ Generic Styles
 
 .card-link {
   @apply block;
+  &:hover {
+    @apply hover:text-purple-900;
+  }
 }
 
 .card-header {
@@ -43,4 +47,164 @@ Generic Styles
 
 .card-footer {
   @apply flex justify-between px-4 md:px-6 py-3 w-full;
+}
+
+
+/* 
+Card Post (News, Projects,...)
+----------------------------------------------*/
+.card-post {
+  @apply border-t border-gray-500 border-opacity-10;
+  @apply lg:hover:bg-shadeyellow-100;
+}
+
+.card-post .card-body {
+  @extend %card-padding;
+  @apply flex flex-col h-full w-full;
+}
+
+.card-post .card-body--header {
+  @apply flex flex-col pb-0 md:pb-1 -mt-1;
+}
+
+.card-post .card-body--main {
+  @apply hidden md:flex py-1;
+}
+
+.card-post .card-body--footer {
+  @apply flex flex-wrap mt-1 md:mt-2;
+}
+
+.card-post .card-footer {
+  @apply pl-0 pt-4 pr-3 md:pt-5 md:pb-4 md:px-4 lg:p-6 lg:pt-7;
+  @apply flex-1;
+}
+
+.card-post .card-text {
+  @apply line-clamp-2 text-sm transition;
+}
+
+.card-post:hover .card-text {
+  @apply text-gray-700;
+}
+
+/* Media */
+.card-post .card-media {
+  @extend %card-padding;
+  @apply pr-0;
+}
+
+.card-post .card-media .card-img {
+  @apply flex-shrink-0 w-px-48 h-px-48 md:w-px-88 md:h-px-88;
+  @apply rounded overflow-hidden cursor-pointer;
+}
+
+.card-post .card-media-blank {
+  @apply flex-shrink-0 w-px-48 h-px-48 md:w-px-88 md:h-px-88;
+  @apply rounded overflow-hidden cursor-pointer;
+  @apply p-3 lg:p-6 bg-gray-300 bg-opacity-10;
+  @apply inline-flex justify-center items-center;
+}
+
+.card-post .card-media-blank .icon {
+  @apply text-xl leading-none opacity-30;
+}
+
+
+
+/* 
+Card Social 
+----------------------------------------------*/
+.card-social {
+  @apply flex-col items-center content-center mx-0 overflow-hidden;
+  @apply relative transition-all;
+  @apply border-t border-gray-500 border-opacity-10 md:border md:border-opacity-10 md:rounded;
+  @apply lg:hover:bg-shadeyellow-100;
+}
+
+.card-social .card-body {
+  @apply h-full justify-items-stretch;
+}
+
+.card-social .card-header {
+  @apply pb-0 flex flex-row justify-between items-center;
+}
+
+.card-social .card-footer {
+  @apply text-sm pt-1 pb-0 md:pb-4;
+}
+
+.card-social .card-body--header {
+  @apply mb-4 flex flex-row justify-between;
+}
+
+.card-social .card-body--main {
+  @apply flex flex-col pb-1;
+}
+
+.card-social .card-title {
+  @apply text-sm md:text-base font-semibold;
+}
+
+.card-social .card-text {
+  @apply text-sm text-gray-700 transition-colors;
+  @apply dark:text-gray-300;
+}
+
+/* Media */
+.card-social .card-media {
+  @apply mt-4 h-auto w-full overflow-hidden;
+  @apply bg-no-repeat bg-cover bg-center;
+  @apply border border-gray-900 border-opacity-10 rounded-lg;
+  min-height: 8rem;
+  max-height: 10rem;
+}
+
+@media only screen and (max-width: 640px) {
+  .card-social .card-media {
+    min-height: 12rem;
+    max-height: 14rem;
+  }
+}
+
+.card-social .card-media img {
+  @apply w-auto h-auto opacity-0;
+}
+
+/* Metadata */
+.card-social .metadata {
+  @apply mr-1.5;
+}
+
+.card-social .metadata + .metadata {
+  &::before {
+    @apply mr-1 leading-4;
+  }
+}
+
+.card-social .card-header .metadata-wrapper {
+  @apply pr-5 ;
+}
+
+.card-social .card-header .metadata-wrapper + .metadata-wrapper {
+  @apply pr-0 flex-wrap;
+}
+
+.card-social .card-footer .metadata-wrapper {
+  @apply w-full justify-between;
+}
+
+/* Card Icon */
+.card-social .icon-twitter {
+  @apply text-lg text-blue-200 transition transform scale-90;
+  @apply absolute right-4 top-4;
+}
+
+.card-social:hover .icon-twitter {
+  @apply text-blue-500 scale-100;
+}
+
+.dark .card-social .icon svg {
+  stroke: #fff;
+  fill: #fff;
 }

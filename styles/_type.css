@@ -2,6 +2,14 @@
 Typography Styles 
 */
 
-.section-title {
-  
+
+/* 
+Core Contents
+----------------------------------- */
+.text-color-title {
+  @apply text-gray-900 dark:text-white;
+}
+
+.text-color-desc {
+  @apply text-gray-400 dark:text-gray-500;
 }

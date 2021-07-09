@@ -6,7 +6,7 @@ import Link from "next/link"
 import {observer} from "mobx-react";
 import {TabButton} from "../button/tabButton";
 import WidgetTitle from "../text/widgetTitle";
-import {CardNews, NewsLoader} from "../cards/news";
+import {CardNews, NewsLoader} from "../cards/News";
 import {getNews} from "../../data/query/news";
 import ContentLoader from "react-content-loader";
 
@@ -61,7 +61,7 @@ export const NewsList = observer(({dataStore, extraClass, grid, gap, title, titl
 
 
   return (
-    <div className={`section ${extraClass || ''}`}>
+    <div className={`section section-news ${extraClass || ''}`}>
       <div className={`section-inner`}>
 
         <div className={`section-header`}>

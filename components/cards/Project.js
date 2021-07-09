@@ -9,6 +9,7 @@ import ItemTypeIcon from "../icons/itemTypeIcon";
 import NetworkIcon from "../icons/networkIcon";
 import KeywordIcon from "../icons/keywordIcon";
 import ContentLoader from "react-content-loader";
+import ReadingTime from "../news-sources/ReadingTime";
 
 export const ProjectLoader = (props) => (
   <div className={`${styles.card}`}>
@@ -37,6 +38,7 @@ export const Card = ({
   post,
   projectTitle,
   projectTextShort,
+  projectContentJson,
   projectText,
   projectIconUri,
   projectType,
@@ -96,7 +98,7 @@ export const Card = ({
         </div>
 
         <div className={`${styles.card_body_main}`}>
-          <div className={`card-text ${styles.card_text}`} dangerouslySetInnerHTML={{__html: projectTextShort}} />
+          <div className={`card-text text-color-desc ${styles.card_text}`} dangerouslySetInnerHTML={{__html: projectTextShort}} />
         </div>
 
         <div className={`${styles.card_body_footer}`}>
@@ -118,7 +120,7 @@ export const Card = ({
               {/*<span className="metadata-value">{projectDate.split(('T'))[0]}</span>*/}
               <span className="metadata-value" title={`${titleTime}`}>{postDate}</span>
             </div> }
-
+            <ReadingTime content={projectContentJson}/>
           </div>
         </div>
 

@@ -68,6 +68,7 @@ export const ProjectsList = observer(({voteStore, homeDisplay, dataStore, extraC
           post={post}
           projectTitle={post.title}
           projectTextShort={post.description}
+          projectContentJson={post.contentJson}
           projectIconUri={post.imagesUri}
           link={`/item/${post.id}`}
           projectType={post.itemType}

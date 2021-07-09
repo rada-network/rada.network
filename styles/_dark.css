@@ -1,6 +1,19 @@
+/* Core */
+body {
+  @apply dark:bg-deepgray-200;
+}
+
+.section-inner {;
+  @apply dark:bg-deepgray-100;
+}
+
+.widget {
+  @apply dark:bg-deepgray-100;
+}
+
 /* Navbar */
 .navbar {
-  @apply dark:bg-gray-900 dark:bg-opacity-90 dark:border-gray-800 dark:shadow-none;
+  @apply dark:bg-deepgray-100 dark:bg-opacity-90 dark:border-gray-800 dark:shadow-none;
 }
 
 .nav-item {
@@ -16,10 +29,6 @@
   @apply dark:from-purple-900 dark:to-purple-700;
 }
 
-/* Widgets */
-.widget {
-}
-
 /* Chart */
 .dark .chart-area {
   fill: #E5E7EB;
@@ -33,19 +42,17 @@
   stroke: #fff;
 }
 
-/* Cards */
+/* Cards & Widgets */
 .card-news:hover,
 .card-project:hover,
-.card-social:hover {
-  @apply dark:bg-gray-800;
+.card-social:hover,
+.widget-list--link:hover {
+  @apply dark:bg-gray-900;
 }
 
-.card-text {
-  @apply dark:text-gray-500;
-}
-
-.card:hover .card-text {
-  @apply dark:text-gray-200;
+.card:hover .text-color-desc,
+.widget-list--link:hover .widget-list--item--text {
+  @apply dark:text-gray-400;
 }
 
 /* End Dark Theme */

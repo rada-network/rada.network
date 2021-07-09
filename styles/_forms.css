@@ -8,15 +8,17 @@
 
 .navbar-search--icon i {
   @apply text-gray-900 text-opacity-80;
+  @apply dark:text-white dark:text-opacity-80;
 }
 
 .navbar-search:hover i {
-  @apply text-primary-700;
+  @apply text-primary-700 dark:text-white dark:text-opacity-100;
 }
 
 .navbar-search--input {
   @apply w-6 focus:w-full md:w-full focus:px-2 md:px-2 pl-7 focus:pl-10 md:pl-10 py-2 text-sm transition;
   @apply bg-gray-100 focus:bg-white border-transparent rounded-md focus:shadow-md focus:ring-0 focus:border-primary-700;
+  @apply dark:bg-gray-900 dark:focus:bg-gray-900 dark:focus:border-primary-500;
 }
 
 .navbar-search--input::placeholder {

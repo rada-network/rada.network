@@ -16,13 +16,11 @@ import {getTweet} from "../../data/query/postsTweet";
 import {TabButton} from "../button/tabButton";
 import ContentLoader from "react-content-loader"
 
-import styles from '../../styles/modules/Card.socialpost.module.css'
-
 import ReactTooltip from 'react-tooltip'
 
 const TweetLoader = (props) => (
-  <div className={`card ${styles.card}`}>
-    <div className={`card-body ${styles.card_body}`}>
+  <div className={`card card-social`}>
+    <div className={`card-body`}>
       <ContentLoader
         speed={2}
         backgroundColor="#F3F4F6"
@@ -68,7 +66,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
   //if (dataStore.home.homeDisplay !==0 && dataStore.home.homeDisplay !== 1) return ""
 
   return (
-    <div className={`section ${extraClass || ''}`}>
+    <div className={`section section-social ${extraClass || ''}`}>
       <div className={`section-inner`}>
 
         <div className={`section-header`}>

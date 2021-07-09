@@ -1,7 +1,7 @@
 import React from "react";
 import styles from '../../styles/modules/Card.post.module.css'
 
-export default function showSources(source) {
+export default function showSources({source}) {
   const forumCardanoLogo = 'https://sjc3.discourse-cdn.com/business4/user_avatar/forum.cardano.org/cardano-foundation/45/22471_2.png'
   const iohkLogo = 'images/logo-sources/iohk.png'
   const coindeskLogo = "images/logo-sources/coindesk.png"

@@ -29,7 +29,7 @@ Widget Lists
 }
 
 .widget-list--link:hover {
-  @apply bg-shadeyellow-100 dark:bg-gray-800;
+  @apply bg-shadeyellow-100;
 }
 
 .widget-list--item {
