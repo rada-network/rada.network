@@ -26,6 +26,7 @@ const TokenRankingStore = ({ Component, pageProps }) => {
   // const store = useStore(pageProps.initialState)
 
   return (
+  <ThemeProvider attribute="class">
   <UseWalletProvider
     chainId={1}
     connectors={{
@@ -37,7 +38,6 @@ const TokenRankingStore = ({ Component, pageProps }) => {
   }}
   >
     <StoreProvider>
-    <ThemeProvider attribute="class">
       <NextNprogress
         options={{ showSpinner: false }}
         color="#29D"
@@ -46,10 +46,10 @@ const TokenRankingStore = ({ Component, pageProps }) => {
         height={3}
         showOnShallow={true}
       />
-      <MyApp Component={Component} pageProps={pageProps} />
-    </ThemeProvider>
+      <MyApp Component={Component} pageProps={pageProps} />    
     </StoreProvider>
   </UseWalletProvider>
+  </ThemeProvider>
 )}
 
 export default TokenRankingStore
