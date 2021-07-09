@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {Layout} from '../../components/page-layouts/OneColumn';
-import {Sidebar} from '../../components/sidebar/SidebarPost';
+import {Sidebar} from '../../components/sidebar/Sidebar';
 
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
@@ -85,7 +85,7 @@ export function NewsDetailBody({props,isSideBar}){
           </div>
           {/* Sidebar */}
           {isSideBar ?
-            <Sidebar className={`sidebar`} extraClass="" />
+            <Sidebar className={`sidebar`} extraClass="" type="Post" />
             : ""
           }
 

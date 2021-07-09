@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React, { useState, useEffect, createRef } from 'react'
 
 import {Layout} from '../../components/page-layouts/OneColumn';
-import {Sidebar} from '../../components/sidebar/SidebarPost';
+import {Sidebar} from '../../components/sidebar/Sidebar';
 
 import getClient from "../../data/client";
 
@@ -202,7 +202,7 @@ export default function Item (props) {
             </div>
 
             {/* Sidebar */}
-            <Sidebar className={`sidebar`} extraClass="" />
+            <Sidebar className={`sidebar`} extraClass="" type="Post" />
 
           </div>
 

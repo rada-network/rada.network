@@ -1,5 +1,4 @@
 // Widgets Comp
-import { Widget } from "../widgets/Widget";
 import { WidgetPricing } from "../widgets/WidgetPricing";
 import { WidgetEvents } from "../widgets/WidgetEvents";
 import { WidgetStats } from "../widgets/WidgetStats";
@@ -7,10 +6,9 @@ import { WidgetInfluencers } from "../widgets/WidgetInfluencers";
 
 import { WidgetPosts } from "../widgets/WidgetPosts";
 
-
-export const Sidebar = ({className,extraClass}) => {
+export default function SidebarPost ({className,extraClass}) {
   return (
-    <div className={`${className} ${extraClass || ''}`}>
+    <>
       <WidgetPosts
         title="Related Projects"
         widgetIcon="code-branch"
@@ -32,7 +30,7 @@ export const Sidebar = ({className,extraClass}) => {
         title="Influencers"
         widgetIcon="user-secret"
       />
-    </div>
+    </>
   );
 };
 

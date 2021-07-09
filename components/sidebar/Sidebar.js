@@ -1,86 +1,86 @@
 // Widgets Comp
-import { Widget } from "../widgets/Widget";
-import { WidgetPricing } from "../widgets/WidgetPricing";
-import { WidgetEvents } from "../widgets/WidgetEvents";
-import { WidgetStats } from "../widgets/WidgetStats";
-import { WidgetInfluencers } from "../widgets/WidgetInfluencers";
-import { WidgetPosts } from "../widgets/WidgetPosts";
-import { useEffect, useState, useRef } from "react";
+import dynamic from 'next/dynamic'
+import { useEffect, useRef } from "react";
 
-export const Sidebar = ({className, extraClass}) => {
-  const [fixSidebar, setFixSidebar] = useState(false)
-  const [offsetTop, setOffsetTop] = useState(0)
-  const [kickoffPoint, setKickoffPoint] = useState(0)
+export const Sidebar = ({className, extraClass, type}) => {
+
   const sidebarRef = useRef()
 
-
-  const initFixedPoint = () => {
-    const paddingTop = parseInt(window.getComputedStyle(document.body).paddingTop)
-    const sidebar = sidebarRef.current
-    const rect = sidebar.getBoundingClientRect()
-    const sidebarTop = rect.top + window.scrollY - paddingTop
-    // calculate offsetTop
-    let kickoffPoint_ = 0
-    if (rect.height + sidebarTop < window.innerHeight) {
-      kickoffPoint_ = sidebarTop
-      setOffsetTop(paddingTop)
-    } else {
-      kickoffPoint_ = sidebarTop + rect.height - window.innerHeight
-      setOffsetTop(window.innerHeight - rect.height)
-    }
-    setKickoffPoint(kickoffPoint_)
-  }
-
-  const sidebarScroll = () => {
-    if (!fixSidebar) initFixedPoint()
-
-    if (window.scrollY > kickoffPoint) {
-      if (!fixSidebar) {
-        setFixSidebar(true)
-      }
-    } else {
-      if (fixSidebar) {
-        setFixSidebar(false)
-      }
-    }
-  }
-
   useEffect(() => {
-    function watchEvents() {
-      window.addEventListener("scroll", sidebarScroll)
+
+    let fixSidebar = false
+    let offsetTop = 0
+    let kickoffPoint = 0
+    let deltaH = 0
+    let lastY = 0
+
+    const initFixedPoint = () => {
+      const paddingTop = parseInt(window.getComputedStyle(document.body).paddingTop)
+      const sidebar = sidebarRef.current
+      if (!sidebar) return
+      const rect = sidebar.getBoundingClientRect()
+      const sidebarTop = rect.top + window.scrollY - paddingTop
+      const innerHeight = rect.height + 30
+      // calculate offsetTop
+      if (innerHeight + sidebarTop < window.innerHeight) {
+        kickoffPoint = sidebarTop
+        offsetTop = paddingTop
+      } else {
+        kickoffPoint = sidebarTop + innerHeight - window.innerHeight + paddingTop
+        offsetTop = window.innerHeight - innerHeight
+      }
+
+      // sidebar diff height
+      deltaH = sidebar.parentNode.clientHeight - rect.height - paddingTop
     }
-    watchEvents();
+  
+    const sidebarScroll = () => {
+      if (!fixSidebar) initFixedPoint()
+        // update DOM css
+      if (deltaH && window.scrollY > kickoffPoint + deltaH) {
+        fixSidebar = true
+        sidebarRef.current.style.position = 'fixed'
+        sidebarRef.current.style.top = (offsetTop + kickoffPoint + deltaH - window.scrollY) + 'px'
+      } else if (window.scrollY > kickoffPoint) {
+        if (!fixSidebar) {
+          fixSidebar = true
+          sidebarRef.current.style.position = 'fixed'
+          sidebarRef.current.style.top = offsetTop + 'px'
+        }
+      } else {
+        if (fixSidebar) {
+          fixSidebar = false
+          sidebarRef.current.style.position = ''
+          sidebarRef.current.style.top = ''
+        }
+      }
+
+      // add scroll direction class
+      if (window.scrollY > lastY) {
+        document.body.classList.remove('scroll-up')
+        document.body.classList.add('scroll-down')
+      } else {
+        document.body.classList.add('scroll-up')
+        document.body.classList.remove('scroll-down')
+      }
+      lastY = window.scrollY
+    }
+  
+
+    window.addEventListener("scroll", sidebarScroll)
+    // sidebarScroll();
     return () => {
       window.removeEventListener("scroll", sidebarScroll)
     }
-  }, [fixSidebar, offsetTop, kickoffPoint])
+  }, [])
 
-  const styles = fixSidebar ? {position: "fixed", top: offsetTop+'px'} : {}
+  // Dynamic load sidebar content
+  const SidebarWidgets = dynamic(() => import(`./Sidebar${type || 'Home'}`))
 
   return (
     <div className={`${className} ${extraClass || ''}`}>
-      <div ref={sidebarRef} className='sidebar-inner' style={styles}>
-      <WidgetPricing
-        title="Market Insights"
-        text="Lorem Ipsum Dolor sit Amet"
-        projectPlatformShort="ada"
-      />
-      <WidgetEvents
-        title="Cardano Events"
-        widgetIcon="calendar-day"
-      />
-      <WidgetStats
-        title="Network Information"
-        widgetIcon="chart-pie-alt"
-      />
-      <WidgetInfluencers
-        title="Influencers"
-        widgetIcon="user-secret"
-      />
-      <WidgetPosts
-        title="Top Projects"
-        widgetIcon="code-branch"
-      />
+      <div ref={sidebarRef} className='sidebar-inner'>
+        <SidebarWidgets />
       </div>
     </div>
   );
