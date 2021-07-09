@@ -41,18 +41,18 @@ export const Sidebar = ({className, extraClass, type}) => {
         // update DOM css
       if (deltaH && window.scrollY > kickoffPoint + deltaH) {
         fixSidebar = true
-        sidebarRef.current.style.position = 'fixed'
+        sidebarRef.current.classList.add('lg:fixed')
         sidebarRef.current.style.top = (offsetTop + kickoffPoint + deltaH - window.scrollY) + 'px'
       } else if (window.scrollY > kickoffPoint) {
         if (!fixSidebar) {
           fixSidebar = true
-          sidebarRef.current.style.position = 'fixed'
+          sidebarRef.current.classList.add('lg:fixed')
           sidebarRef.current.style.top = offsetTop + 'px'
         }
       } else {
         if (fixSidebar) {
           fixSidebar = false
-          sidebarRef.current.style.position = ''
+          sidebarRef.current.classList.remove('lg:fixed')
           sidebarRef.current.style.top = ''
         }
       }

@@ -1,7 +1,7 @@
 // Components
 import {Layout} from '../../components/page-layouts/OneColumn';
 import {Header} from '../../components/headers/HeaderHome';
-import {Sidebar} from '../../components/sidebar/SidebarNews';
+import {Sidebar} from '../../components/sidebar/Sidebar';
 import {CategoryList} from '../../components/card-layouts/CategoryList';
 
 import { observer } from "mobx-react"
@@ -60,7 +60,7 @@ export default observer((props) => {
             </div>
 
             {/* Sidebar */}
-            <Sidebar className={`sidebar`} extraClass="" />
+            <Sidebar className={`sidebar`} extraClass="" type="Post" />
 
           </div>
 
