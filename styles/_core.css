@@ -9,8 +9,8 @@ html {
 }
 
 body {
-  @apply bg-bluegray-50;
-  @apply dark:bg-deepgray-200;
+  @apply bg-bluegray-50 text-gray-900;
+  @apply dark:bg-deepgray-200 dark:text-gray-50;
   padding-top: calc(var(--mainnav-height) + 1px);
 }
 
@@ -54,20 +54,19 @@ Layout
 }
 
 .main-grid {
-  @apply flex;
+  @apply flex flex-wrap lg:flex-nowrap;
 }
 
 .maincontent {
-  @apply w-auto flex-1 lg:pr-8;
+  @apply w-full flex-1 lg:pr-8;
 }
 
 .sidebar {
-  @apply lg:pt-8;
-  @apply w-80;
+  @apply -mx-4 md:-mx-0 lg:w-80 lg:pt-8;
 }
 
 .sidebar-inner {
-  @apply w-80 mb-12;
+  @apply lg:w-80 lg:mb-12;
 }
 
 /* 
