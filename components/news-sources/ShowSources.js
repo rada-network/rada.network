@@ -10,7 +10,7 @@ export default function showSources({source}) {
 
   const listLogos = [forumCardanoLogo, iohkLogo, coindeskLogo, cointeleLogo, adapulseLogo]
   const displaySources = ['Cardano Foundation', 'IOHK', 'CoinDesk', 'CoinTelegraph', 'AdaPulse']
-  const listSources = ['cardano', 'iohk', 'coindesk', 'cointele', 'adapulse']
+  const listSources = ['forum.cardano', 'iohk', 'coindesk', 'cointele', 'adapulse']
   for (const [i, value] of listSources.entries()) {
     if (source.toLowerCase().includes(value)) {
       return (
@@ -21,7 +21,7 @@ export default function showSources({source}) {
           {/*  </span>*/}
           {/*</div>*/}
           <div className="metadata metadata-source">
-            {source.includes('cardano') ?
+            {source.includes(listSources[0]) ?
               <span className="icon mr-1">
                 <i className={`cf cf-car text-base`}/>
               </span>
