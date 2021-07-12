@@ -47,9 +47,9 @@ const getData = async () => {
   const topic = await getTopic();
 
   return {
-    posts: posts.data.itemFeed,
-    postsNFT: postsNFT.data.itemFeed,
-    postsDapp: postsDapp.data.itemFeed,
+    posts: posts.data.ideaFeed,
+    postsNFT: postsNFT.data.ideaFeed,
+    postsDapp: postsDapp.data.ideaFeed,
     postsTweet: postsTweet.data.tweetFeed,
     topic : topic.data.itemTypeCount,
     news : news.data.newsFeed
@@ -68,6 +68,7 @@ export default observer((props) => {
   observableNftStore.tweets = data.postsNFT
   observableDappStore.tweets = data.postsDapp
   observableNewsStore.tweets = data.news
+
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 

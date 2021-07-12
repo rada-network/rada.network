@@ -1,20 +1,15 @@
-import Head from 'next/head';
 
 import Link from 'next/link'
-import dynamic from "next/dynamic";
 import TextareaAutosize from 'react-textarea-autosize';
 
 // Components
 import {Layout} from '../../components/page-layouts/OneColumn';
-import {ProjectsList} from '../../components/card-layouts/ProjectsList';
 
 //ReactIcons
-import { IoChevronForwardSharp } from "react-icons/io5";
 import { RiArrowUpSFill } from "react-icons/ri";
 import { RiCompass3Fill } from "react-icons/ri";
-import { RiChat1Fill } from "react-icons/ri";
-import { RiThumbUpLine } from "react-icons/ri";
 import { RiThumbUpFill } from "react-icons/ri";
+import utils from "../../lib/util";
 
 export default function ProjectDetails(props) {
   const readMore = () => {
@@ -31,7 +26,7 @@ export default function ProjectDetails(props) {
   }
 
   return (
-    <Layout extraClassName="page-project_details">
+    <Layout extraClassName="page-project_details" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
       <>
         {/* Page Header */}
         <div className="page-header">

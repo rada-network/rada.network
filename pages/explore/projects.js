@@ -24,7 +24,7 @@ const getData = async () => {
   const topic = await getTopic();
   return {
     topic : topic.data.itemTypeCount,
-    ideas : post.data.itemFeed
+    ideas : post.data.ideaFeed
   }
 }
 

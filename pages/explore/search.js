@@ -33,7 +33,7 @@ const getData = async (q) => {
   })
 
   return {
-    ideas : dataItem.data.itemFeed,
+    ideas : dataItem.data.ideaFeed,
     news : dataNews.data.newsFeed,
   }
 }

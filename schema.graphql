@@ -37,6 +37,40 @@ type Comment {
     userId: String
 }
 
+type Idea {
+    category: Category
+    categoryId: String
+    content: String
+    contentJson: JSONObject
+    createdAt: DateTime
+    description: String
+    id: String!
+    ideaType: String
+    ideaUser: IdeaUser
+    ideaUserId: String
+    imageUri: String
+    images: String
+    imagesUri: JSONObject
+    item: Item
+    keywords: String!
+    platform: Platform
+    platformId: String
+    thumbnail: String
+    title: String!
+    token: Token
+    tokenId: String
+    updatedAt: DateTime
+    video: String
+    websiteUri: String
+}
+
+type IdeaType {
+    description: String
+    ideaCount: Int
+    ideaType: String
+    title: String
+}
+
 type IdeaUser {
     avatarUri: String
     description: String
@@ -47,32 +81,12 @@ type IdeaUser {
 }
 
 type Item {
-    category: Category
-    categoryId: String
-    content: String
-    contentJson: JSONObject
-    createdAt: DateTime
-    description: String
     id: String!
-    ideaUser: IdeaUser
-    ideaUserId: String
-    imageUri: String
-    images: String
-    imagesUri: JSONObject
-    itemType: String
-    keywords: String!
-    metadata: [ItemMetadata]
-    platform: Platform
-    platformId: String
-    thumbnail: String
-    title: String!
-    token: Token
-    tokenId: String
+    ideaId: String
+    newsId: String
     totalComment: Int
     totalVote: Int
-    updatedAt: DateTime
-    video: String
-    websiteUri: String
+    tweetId: String
 }
 
 type ItemMetadata {
@@ -108,6 +122,7 @@ type News {
     id: String!
     isApproved: Boolean
     isEditorPick: Boolean
+    item: Item
     keywords: String
     source: String
     thumbnail: String
@@ -128,6 +143,9 @@ type Platform {
 type Query {
     cardanoEventFeed(skip: Int = 0, take: Int = 4): [CardanoEvent]
     commentFeed(itemId: String!, orderBy: CommentOrderInput, skip: Int = 0, take: Int = 4): [Comment]
+    ideaById(id: String!): Idea
+    ideaFeed(ideaType: String, orderBy: IdeaOrderInput, query: String, skip: Int = 0, take: Int = 4): [Idea]
+    ideaTypeCount: [IdeaType]
     ideaWithoutKeyword(skip: Int = 0, take: Int = 4): [Item]
     isVote(itemId: String!, walletAddress: String!): Vote
     isVotes(ids: [String], walletAddress: String!): [Vote]
@@ -208,6 +226,12 @@ enum SortOrder {
 
 input CommentOrderInput {
     createdAt: SortOrder
+}
+
+input IdeaOrderInput {
+    createdAt: SortOrder
+    totalComment: SortOrder
+    totalVote: SortOrder
 }
 
 input ImageItemInput {

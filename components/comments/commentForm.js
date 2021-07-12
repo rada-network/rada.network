@@ -49,7 +49,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
     let _commentContent = commentContent
     setCommentContent("")
     const comment = {
-      itemId: item.id,
+      itemId: item.item.id,
       content: _commentContent,
       parentId: replyFor,
       walletAddress: user.address()

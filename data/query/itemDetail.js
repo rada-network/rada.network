@@ -1,8 +1,8 @@
 import {gql} from '@apollo/client';
 
 export default gql`
-    query itemById($id : String!){
-        itemById (id : $id){
+    query ideaById($id : String!){
+        ideaById (id : $id){
             id
             title
             description
@@ -11,7 +11,7 @@ export default gql`
             imagesUri
             images
             websiteUri
-            itemType
+            ideaType
             contentJson
             createdAt
             platform{
@@ -24,8 +24,11 @@ export default gql`
                 id
                 symbol
             }
-            totalVote
-            totalComment
+            item{
+                id
+                totalComment
+                totalVote
+            }
             ideaUser{
                 name
                 avatarUri

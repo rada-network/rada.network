@@ -43,7 +43,7 @@ const getData = async (word) => {
   })
   return {
     newsFeed : newsFeed.data.newsFeed,
-    itemFeed : itemFeed.data.itemFeed,
+    ideaFeed : itemFeed.data.ideaFeed,
     tweetFeed : tweetFeed.data.tweetFeed,
   }
 }
@@ -60,7 +60,7 @@ export default observer(function Explore(props) {
 
   observableTweetStore.tweets = data.tweetFeed
   observableNewsStore.tweets = data.newsFeed
-  observableItemStore.tweets = data.itemFeed
+  observableItemStore.tweets = data.ideaFeed
   return (
     <Layout extraClass="page_topic"
             meta={utils.createSiteMetadata({page : 'Tag',data : {word : word}})}

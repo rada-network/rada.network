@@ -2,15 +2,16 @@ import {gql} from '@apollo/client';
 import getClient from "../client";
 
 const postsGql = gql`
-  query itemFeed($skip : Int!, $take : Int!, $itemType: String!, $orderBy: ItemOrderInput, $query : String!){
-    itemFeed (skip : $skip, take : $take, itemType: $itemType, orderBy: $orderBy, query : $query){
+  query ideaFeed($skip : Int!, $take : Int!, $ideaType: String!, $orderBy: IdeaOrderInput, $query : String!){
+    ideaFeed (skip : $skip, take : $take, ideaType: $ideaType, orderBy: $orderBy, query: $query){
       id
       title
       description
+        
       contentJson
       imageUri
       imagesUri
-      itemType
+      ideaType
       platform{
         name
         networkName
@@ -25,8 +26,11 @@ const postsGql = gql`
         slug
         title
       }
-      totalVote
-      totalComment
+        item{
+            id
+            totalComment
+            totalVote
+        }
       createdAt
       keywords
     }
@@ -49,7 +53,7 @@ export async function getPosts({type,take,skip, socialOrder,query}){
     variables: {
       skip: skip,
       take: take,
-      itemType: type,
+      ideaType: type,
       orderBy : orderBy,
       query : query
     }

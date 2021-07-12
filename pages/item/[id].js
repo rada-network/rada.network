@@ -42,20 +42,16 @@ const getData = async (id) => {
     query : itemQuery,
     variables : {id : id}
   });
-  let _comments = await client.query({
-    query : itemComments,
-    variables : {itemId : id,orderBy : {createdAt : "desc"}}
-  })
+
   return {
-    item : dataItem.data.itemById,
-    comments : _comments.data.commentFeed
+    item : dataItem.data.ideaById,
   }
 }
 
 const voteStore = new VoteStore()
 
 export default function Item (props) {
-
+  const data = props
   const router = useRouter()
 
   // If the page is not yet generated, this will be displayed
@@ -66,18 +62,13 @@ export default function Item (props) {
   const store = useStore()
   voteStore.walletAddress = store.wallet.address
 
-  const {data} = useSWR([props.item.id,"item"],getData, {initialData: props});
   const imgsUri = data.item.imagesUri
 
   const showImgs = Object.keys(imgsUri).map(key => {
     return <a href={`${imgsUri[key]}`}>img {key} <br /></a>
   })
 
-  voteStore.addVotes([{
-    id : data.item.id,
-    totalVote : data.item.totalVote,
-    isVoted : false
-  }])
+  voteStore.addVotes([data.item])
 
   const [showIdx, setShowIdx] = useState(-1)
   const popupMedia = (idx) => {
@@ -161,7 +152,7 @@ export default function Item (props) {
                       {/* Main CTAS */}
                       <div className="cta-wrapper">
                         <Vote
-                          itemId={data.item.id}
+                          itemId={data.item.item.id}
                           voteStore={voteStore}
                           page={"detail"}
                         />
@@ -197,7 +188,7 @@ export default function Item (props) {
 
               {/* Comments */}
 
-              <CommentList item={data.item} comments={data.comments}/>
+              <CommentList item={data.item} />
 
             </div>
 

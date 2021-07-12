@@ -13,6 +13,11 @@ const newsByIdGql = gql`
             keywords
             createdAt
             websiteUri
+            item{
+                id
+                totalComment
+                totalVote
+            }
         }
     }
 `

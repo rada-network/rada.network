@@ -17,8 +17,8 @@ module.exports = (phase) => {
 
     const env = {
         GRAPHQL_URL: (() => {
-            // if (isDev) return 'http://localhost:4005/'
-            if (isDev) return 'https://gql.dhunt.io'
+            if (isDev) return 'http://localhost:4005/'
+            //if (isDev) return 'https://gql.dhunt.io'
             if (isProd) {
                 return 'https://gql.dhunt.io'
             }

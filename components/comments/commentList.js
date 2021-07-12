@@ -6,6 +6,8 @@ import getClient from "../../data/client";
 import itemComments from "../../data/query/itemComments";
 import useSWR from "swr";
 import {observer} from "mobx-react";
+import {useEffect, useState} from "react";
+import {getInfluencers} from "../../data/query/getSuggestUser";
 
 export const UserStore = types.model({
   id : types.identifier,
@@ -62,20 +64,19 @@ const ThreadsStore = types.model({
 })
 
 
-const client = getClient();
-async function getComments(itemId){
-  let _comments = await client.query({
-    query : itemComments,
-    variables : {itemId : itemId,orderBy : {createdAt : "desc"}}
-  })
-  return {
-    comments : _comments.data.commentFeed
-  }
-}
-
-export const CommentList = observer(({item,comments}) => {
+export const CommentList = observer(({item}) => {
   let threads = {}
-  threads[item.id] = []
+  const [comments,setComments] = useState([]);
+  useEffect(() => {
+    const client = getClient()
+    client.query({
+      query : itemComments,
+      variables : {itemId : item.item.id,orderBy : {createdAt : "desc"}}
+    }).then(function(res){
+      setComments(res.data.commentFeed)
+    })
+  },[])
+  threads[item.item.id] = []
   let ItemCommentStore = ThreadsStore.create({
     threads: threads,
     users: []
@@ -116,7 +117,7 @@ export const CommentList = observer(({item,comments}) => {
                 <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} />
               </div>
               {/* Comment Threads */}
-              <CommentThreads key={'commentThreads' + item.id} item={item} ItemCommentStore={ItemCommentStore} />
+              <CommentThreads key={'commentThreads' + item.item.id} item={item} ItemCommentStore={ItemCommentStore} />
             </div>
             {/* <SubSideBar /> */}
           </div>

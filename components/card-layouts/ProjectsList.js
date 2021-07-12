@@ -39,10 +39,10 @@ export const ProjectsList = observer(({voteStore, homeDisplay, dataStore, extraC
     });
     if (itemsData.loading) return false
     setLoadingButton(false)
-    dataStore.addTweet(itemsData.data.itemFeed)
+    dataStore.addTweet(itemsData.data.ideaFeed)
 
-    voteStore.addVotes(itemsData.data.itemFeed)
-    if (itemsData.data.itemFeed.length < take){
+    voteStore.addVotes(itemsData.data.ideaFeed)
+    if (itemsData.data.ideaFeed.length < take){
       dataStore.showMoreButton = false
     }
     else{
@@ -78,8 +78,8 @@ export const ProjectsList = observer(({voteStore, homeDisplay, dataStore, extraC
           projectWebsiteUri={post.platform.websiteUri}
           // projectSubmitterImgUri="https://picsum.photos/80/80?random=11"
           // projectSubmitter="rada.co"
-          projectCommentsCounts={post.totalComment}
-          voteTotal={post.totalVote}
+          projectCommentsCounts={post.item.totalComment}
+          voteTotal={post.item.totalVote}
           voteStore={voteStore}
         />
       )))

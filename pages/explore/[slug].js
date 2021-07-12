@@ -46,7 +46,7 @@ const getData = async (itemType,q) => {
   })
 
   return {
-    feed : dataItem.data.itemFeed,
+    feed : dataItem.data.ideaFeed,
     topic : topics.data.itemTypeCount.filter(function(item){
       return item.itemType === itemType
     })
