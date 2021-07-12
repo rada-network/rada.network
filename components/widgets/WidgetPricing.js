@@ -62,8 +62,6 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
     }
   }, []);
 
-  console.log('render')
-
   useEffect(() => {
     const loadData = () => {
       //setLoading(true)

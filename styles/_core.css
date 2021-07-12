@@ -62,7 +62,7 @@ Layout
 }
 
 .sidebar {
-  @apply -mx-4 md:-mx-0 lg:w-80 lg:pt-8;
+  @apply -mx-4 md:-mx-0 lg:w-80 lg:pt-8 md:w-full;
 }
 
 .sidebar-inner {
