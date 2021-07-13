@@ -1,3 +1,14 @@
+/* 
+Global Padding
+*/
+%global-padding {
+  @apply px-4;
+}
+
+
+/* 
+Media 
+*/
 %Img16 {
   @apply w-px-16 h-px-16 inline-block overflow-hidden;
 }

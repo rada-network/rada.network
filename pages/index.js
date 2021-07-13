@@ -79,61 +79,59 @@ export default observer((props) => {
       }}/>
 
       <div className={`wrapper`}>
-        <div className={`container`}>
 
-          <div className={`main-grid`}>
+        <div className={`main-grid`}>
 
-            {/* main content */}
-            <div className={`maincontent`}>
+          {/* main content */}
+          <div className={`maincontent`}>
 
-              <NewsList
+            <NewsList
+              grid="1"
+              gap="0"
+              extraClass="news-list"
+              title="Cardano's News"
+              // titleIcon="newspaper"
+              // titleIconColor="yellow-500"
+              dataStore={observableNewsStore}
+            />
+
+            {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
+              <SocialPostsList
+                title="Social Signal"
+                itemType={"tweet"}
+                titleIcon=""
+                titleIconColor=""
+                dataStore={observableTweetStore}
+              />  : ""
+            }
+
+            <CategoryList
+              extraClass="category-list"
+              title="Top Topics"
+              // titleIcon="album-collection"
+              // titleIconColor="gray-400"
+              topic={data.topic}
+            />
+
+
+            {homeStore.homeDisplay === 4 || homeStore.homeDisplay === 0 ?
+              <ProjectsList
+                homeDisplay={4}
                 grid="1"
                 gap="0"
-                extraClass="news-list"
-                title="Cardano's News"
-                // titleIcon="newspaper"
-                // titleIconColor="yellow-500"
-                dataStore={observableNewsStore}
-              />
-
-              {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
-                <SocialPostsList
-                  title="Social Signal"
-                  itemType={"tweet"}
-                  titleIcon=""
-                  titleIconColor=""
-                  dataStore={observableTweetStore}
-                />  : ""
-              }
-
-              <CategoryList
-                extraClass="category-list"
-                title="Top Topics"
-                // titleIcon="album-collection"
-                // titleIconColor="gray-400"
-                topic={data.topic}
-              />
-
-
-              {homeStore.homeDisplay === 4 || homeStore.homeDisplay === 0 ?
-                <ProjectsList
-                  homeDisplay={4}
-                  grid="1"
-                  gap="0"
-                  itemType={"all"}
-                  title="Projects from Catalyst"
-                  // titleIcon="code-branch"
-                  // titleIconColor="blue-500"
-                  cta="Sorted by"
-                  dataStore={observableItemStore}
-                  voteStore={voteStore}
-                /> : ""
-              }
-            </div>
-
+                itemType={"all"}
+                title="Projects from Catalyst"
+                // titleIcon="code-branch"
+                // titleIconColor="blue-500"
+                cta="Sorted by"
+                dataStore={observableItemStore}
+                voteStore={voteStore}
+              /> : ""
+            }
           </div>
 
         </div>
+
       </div>
 
     </Layout>

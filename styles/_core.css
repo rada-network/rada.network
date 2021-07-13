@@ -6,12 +6,13 @@ Global Styles
 */
 html {
   scroll-behaviour: smooth;
+  font-size: 15px;
 }
 
 body {
   @apply bg-bluegray-50 text-gray-900;
   @apply dark:bg-deepgray-200 dark:text-gray-50;
-  padding-top: calc(var(--mainnav-height) + 1px);
+  padding-top: calc(var(--topbar-height) + 1px);
 }
 
 /* 
@@ -59,7 +60,7 @@ Layout
 }
 
 .maincontent {
-  @apply w-full flex-1 lg:pr-8;
+  @apply w-full flex-1;
 }
 
 .sidebar {

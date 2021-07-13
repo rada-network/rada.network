@@ -1,8 +1,6 @@
 .navbar {
   @apply bg-white bg-opacity-90 border-b border-gray-100 z-50 backdrop-filter backdrop-blur;
   @apply dark:bg-deepgray-100 dark:bg-opacity-90 dark:border-gray-800;
-  @apply absolute inset-x-0 inset-y-0;
-  height: var(--mainnav-height);
   transition: 0.3s all ease;
 }
 
@@ -20,14 +18,18 @@
 
 .navbar-main {
   @apply relative flex items-center justify-evenly;
-  height: var(--mainnav-height);
 }
 
 .nav-item {
-  @apply flex flex-col whitespace-nowrap h-full text-sm leading-10;
+  @apply flex whitespace-nowrap h-full text-sm leading-10;
+  @apply px-4;
   @apply text-gray-900 text-opacity-50 font-medium;
   @apply dark:text-white dark:text-opacity-60;
   @apply hover:text-opacity-90;
+}
+
+.nav-item .icon {
+  @apply mr-2;
 }
 
 .nav-item-active {
@@ -52,10 +54,10 @@ Navbar for Mobile and Apps
 }
 
 .navbar-app .nav-item {
-  @apply w-full justify-center items-center text-xs text-gray-500;
+  @apply flex-col w-full justify-center items-center text-xs text-gray-500;
 }
 
-.navbar-app .icon {
+.navbar-app .nav-item .icon {
   @apply text-lg leading-none mt-2 mb-1;
 }
 

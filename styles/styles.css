@@ -1,4 +1,15 @@
-@import "_media";
+
+
+/* Topbar 
+--------------------------------*/
+.topbar {
+  @apply flex justify-between fixed top-0 w-full;
+  @apply bg-white bg-opacity-90 border-b border-gray-100 z-50 backdrop-filter backdrop-blur;
+  @apply dark:bg-deepgray-100 dark:bg-opacity-90 dark:border-gray-800;
+  height: var(--topbar-height);
+}
+
+
 
 /* 
 Navbar
