@@ -1,19 +1,25 @@
 import { Head } from "../Head";
+import { Topbar } from "../Topbar";
 import { Navbar } from "../Navbar";
 import { Footer } from "../Footer";
 
-export const Layout = ({children, extraClass}) => {
+export const Layout = ({children}) => {
   return (
     <>
     <Head />
-    <div className={`wrapper page-global ${extraClass || ''}`}>
+
+    <div className={`main-layout`}>
+
       <Navbar />
+
+      <Topbar />
       
       <div className={`mainbody`}>
         {children}
       </div>
 
       <Footer />
+
     </div>
     </>
   );

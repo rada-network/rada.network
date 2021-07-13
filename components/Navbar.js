@@ -17,13 +17,11 @@ export const Navbar = () => {
 
     return (
       <Link href={href}>
-    <a href={href} className={cls.join(' ')}>
-
-        <>
-          {children}
-        </>
-
-    </a>
+        <a href={href} className={cls.join(' ')}>
+          <>
+            {children}
+          </>
+        </a>
       </Link>
     )
   }
@@ -31,85 +29,67 @@ export const Navbar = () => {
   return (
     <>
     <nav className={`navbar`}>
-      <div className={`container`}>
-        
-        <div className={`navbar-main`}>
 
-          <div className="flex flex-1">
+      <div className={`navbar-main`}>
 
-            {/* Logo */}
-            <div className="flex items-center flex-shrink-0">
-              <Link href={`/`}>
-                <a className="flex items-center justify-center align-center" title="dhunt.io">
-                  <img className="block w-auto h-6" src="/images/dhunt.svg" alt="dhunt.io" />
-                  <strong className="hidden md:inline-flex ml-2 text-gray-900 logo-text text-opacity-90">
-                    <span>d</span><span>hunt</span><span>.io</span></strong>
-                </a>
-              </Link>
-            </div>
+        <div className="flex flex-1">
 
-            {/* Main Nav */}
-            <div className="hidden lg:flex ml-8 space-x-6">
-              <NavItem href="/explore/news">
-                <span className="nav-item--text">News</span>
-              </NavItem>
-              <NavItem href="/explore/social">
-                <span className="nav-item--text">Social Signals</span>
-              </NavItem>
-              <NavItem href="/explore/projects">
-                <span className="nav-item--text">Projects</span>
-              </NavItem>
-              <NavItem href="/explore/blog">
-                <span className="nav-item--text">Blog</span>
-              </NavItem>
-            </div>
-
+          {/* Logo */}
+          <div className="flex items-center flex-shrink-0">
+            <Link href={`/`}>
+              <a className="flex items-center justify-center align-center" title="dhunt.io">
+                <img className="block w-auto h-6" src="/images/dhunt.svg" alt="dhunt.io" />
+                <strong className="hidden md:inline-flex ml-2 text-gray-900 logo-text text-opacity-90">
+                  <span>d</span><span>hunt</span><span>.io</span></strong>
+              </a>
+            </Link>
           </div>
 
-          <div className="flex items-center space-x-2">
-
-            {/* Search */}
-            <SearchInput />
-
-            <ThemeSwitch />
-
-            {/* Profile dropdown */}
-            <div className="relative">
-              <Wallet />
-            </div>
-
+          {/* Main Nav */}
+          <div className="hidden lg:flex ml-8 space-x-6">
+            <NavItem href="/explore/news">
+              <span className="nav-item--text">News</span>
+            </NavItem>
+            <NavItem href="/explore/social">
+              <span className="nav-item--text">Social Signals</span>
+            </NavItem>
+            <NavItem href="/explore/projects">
+              <span className="nav-item--text">Projects</span>
+            </NavItem>
+            <NavItem href="/explore/blog">
+              <span className="nav-item--text">Blog</span>
+            </NavItem>
           </div>
 
         </div>
-      
+
       </div>
+
     </nav>
 
     {/* Mobile Nav */}
     <div className="navbar-app">
 
-        <div className={`navbar-main`}>
-          <NavItem href="/">
-            <span className="icon"><i class="fad fa-home"></i></span>
-            <span className="nav-item--text">Explore</span>
-          </NavItem>
-          <NavItem href="/explore/news">
-            <span className="icon"><i class="fad fa-newspaper"></i></span>
-            <span className="nav-item--text">News</span>
-          </NavItem>
-          <NavItem href="/explore/social">
-            <span className="icon"><i class="fad fa-fire-alt"></i></span>
-            <span className="nav-item--text">Signals</span>
-          </NavItem>
-          <NavItem href="/explore/projects">
-            <span className="icon"><i class="fad fa-code-branch"></i></span>
-            <span className="nav-item--text">Projects</span>
-          </NavItem>
-          <NavItem href="/explore/blog">
-            <span className="icon"><i class="fad fa-pen-nib"></i></span>
-            <span className="nav-item--text">Blog</span>
-          </NavItem>
-        </div>
+      <NavItem href="/">
+        <span className="icon"><i class="fad fa-home"></i></span>
+        <span className="nav-item--text">Explore</span>
+      </NavItem>
+      <NavItem href="/explore/news">
+        <span className="icon"><i class="fad fa-newspaper"></i></span>
+        <span className="nav-item--text">News</span>
+      </NavItem>
+      <NavItem href="/explore/social">
+        <span className="icon"><i class="fad fa-fire-alt"></i></span>
+        <span className="nav-item--text">Signals</span>
+      </NavItem>
+      <NavItem href="/explore/projects">
+        <span className="icon"><i class="fad fa-code-branch"></i></span>
+        <span className="nav-item--text">Projects</span>
+      </NavItem>
+      <NavItem href="/explore/blog">
+        <span className="icon"><i class="fad fa-pen-nib"></i></span>
+        <span className="nav-item--text">Blog</span>
+      </NavItem>
 
     </div>
     </>

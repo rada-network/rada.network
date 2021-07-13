@@ -22,6 +22,8 @@
     "form-data": "^4.0.0",
     "graphql": "15.5.0",
     "graphql-request": "3.4.0",
+    "lord-icon-element": "^2.0.2",
+    "lottie-web": "^5.7.11",
     "mobx": "^6.3.0",
     "mobx-react": "^7.1.0",
     "mobx-state-tree": "^5.0.1",

@@ -39,14 +39,15 @@ a {
 /* 
 Layout 
 */
-.wrapper {
+.main-layout {
+  @apply flex h-full items-stretch;
 }
 
 .mainbody {
 }
 
 .container {
-  @apply mx-auto px-4 md:px-8 max-w-screen-xl;
+  @apply w-full;
 }
 
 .grid-12cols {

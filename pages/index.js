@@ -2,7 +2,7 @@
 import Head from 'next/head';
 
 // Components
-import {Layout} from '../components/page-layouts/OneColumn';
+import {Layout} from '../components/page-layouts/Global';
 import {Header} from '../components/headers/HeaderHome';
 import {Sidebar} from '../components/sidebar/Sidebar';
 import {ProjectsList} from '../components/card-layouts/ProjectsList';
@@ -86,15 +86,6 @@ export default observer((props) => {
             {/* main content */}
             <div className={`maincontent`}>
 
-              <MediaList
-                grid="2"
-                gap="4"
-                extraClass="media-list"
-                title="Latest Media"
-                // titleIcon="icons"
-                // titleIconColor="purple-500"
-              />
-
               <NewsList
                 grid="1"
                 gap="0"
@@ -123,58 +114,6 @@ export default observer((props) => {
                 topic={data.topic}
               />
 
-              {/* {homeStore.homeDisplay === 2 || homeStore.homeDisplay === 0 ?
-                <ProjectsList
-                  homeDisplay={2}
-                  grid="2"
-                  gap="4"
-                  itemType={"nft"}
-                  title="NFTs that you cannot missed"
-                  titleIcon="icons"
-                  titleIconColor="purple-500"
-                  // posts={data.postsNFT}
-                  dataStore={observableNftStore}
-                  voteStore={voteStore}
-                /> : ""
-              } */}
-
-              {/* {homeStore.homeDisplay === 3 || homeStore.homeDisplay === 0 ?
-                <ProjectsList
-                  homeDisplay={3}
-                  grid="2"
-                  gap="4"
-                  itemType={"dapp"}
-                  title="Most active DApps"
-                  titleIcon="cube"
-                  titleIconColor="pink-500"
-                  // posts={data.postsDapp}
-                  dataStore={observableDappStore}
-                  voteStore={voteStore}
-                /> : ""
-              } */}
-
-              {/* <TopUsersList
-                grid="5"
-                gap="5"
-                titleIcon=""
-                titleIconColor=""
-              /> */}
-
-              {/* <ProjectsList
-                grid="2"
-                gap="4"
-                itemType={"today"}
-                cta={"View All"}
-                title="New Projects"
-                detail={true}
-                posts={data.posts}
-              /> */}
-
-              {/* <PromoList
-                extraClass="promo-list"
-                grid="3"
-                gap="5"
-              /> */}
 
               {homeStore.homeDisplay === 4 || homeStore.homeDisplay === 0 ?
                 <ProjectsList
@@ -191,9 +130,6 @@ export default observer((props) => {
                 /> : ""
               }
             </div>
-
-            {/* Sidebar */}
-            <Sidebar className={`sidebar`} extraClass="" />
 
           </div>
 
