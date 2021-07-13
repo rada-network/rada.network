@@ -45,6 +45,7 @@ Layout
 }
 
 .mainbody {
+  @apply relative;
 }
 
 .container {

@@ -1,8 +1,6 @@
 // import dynamic from 'next/dynamic'
 import Head from 'next/head';
 
-import { useState, useEffect, createRef } from 'react'
-
 // Components
 import {Layout} from '../components/page-layouts/Global';
 import {Header} from '../components/headers/HeaderHome';
@@ -58,13 +56,6 @@ const getData = async () => {
   }
 }
 
-// Perfect Scrollbar
-import PerfectScrollbar from 'perfect-scrollbar';
-import "perfect-scrollbar/css/perfect-scrollbar.css";
-
-const scrollBox = createRef();
-let ps;
-
 
 export default observer((props) => {
   const data = props
@@ -79,80 +70,63 @@ export default observer((props) => {
   observableDappStore.tweets = data.postsDapp
   observableNewsStore.tweets = data.news
 
-  const [Scrollbar] = useState('')
-
-  useEffect(() => {
-    // make scrollbar
-    ps = new PerfectScrollbar(scrollBox.current, {
-    });
-  
-    return () => {
-      ps.destroy();
-    }
-  }, [scrollBox]);
-
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 
+      <div className={`main-grid`}>
 
-      <div className={`wrapper scrollbar`} ref={scrollBox}>
+        {/* main content */}
+        <div className={`maincontent`}>
 
-        <div className={`main-grid`}>
+          <Header props={{
+            title : "Trends hunter for Cardano community",
+            itemType : "home",
+            description : "Stay updated with the best quality news & updates"
+          }}/>
 
-          {/* main content */}
-          <div className={`maincontent`}>
+          <NewsList
+            grid="1"
+            gap="0"
+            extraClass="news-list"
+            title="Cardano's News"
+            // titleIcon="newspaper"
+            // titleIconColor="yellow-500"
+            dataStore={observableNewsStore}
+          />
 
-            <Header props={{
-              title : "Trends hunter for Cardano community",
-              itemType : "home",
-              description : "Stay updated with the best quality news & updates"
-            }}/>
+          {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
+            <SocialPostsList
+              title="Social Signal"
+              itemType={"tweet"}
+              titleIcon=""
+              titleIconColor=""
+              dataStore={observableTweetStore}
+            />  : ""
+          }
 
-            <NewsList
+          <CategoryList
+            extraClass="category-list"
+            title="Top Topics"
+            // titleIcon="album-collection"
+            // titleIconColor="gray-400"
+            topic={data.topic}
+          />
+
+
+          {homeStore.homeDisplay === 4 || homeStore.homeDisplay === 0 ?
+            <ProjectsList
+              homeDisplay={4}
               grid="1"
               gap="0"
-              extraClass="news-list"
-              title="Cardano's News"
-              // titleIcon="newspaper"
-              // titleIconColor="yellow-500"
-              dataStore={observableNewsStore}
-            />
-
-            {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
-              <SocialPostsList
-                title="Social Signal"
-                itemType={"tweet"}
-                titleIcon=""
-                titleIconColor=""
-                dataStore={observableTweetStore}
-              />  : ""
-            }
-
-            <CategoryList
-              extraClass="category-list"
-              title="Top Topics"
-              // titleIcon="album-collection"
-              // titleIconColor="gray-400"
-              topic={data.topic}
-            />
-
-
-            {homeStore.homeDisplay === 4 || homeStore.homeDisplay === 0 ?
-              <ProjectsList
-                homeDisplay={4}
-                grid="1"
-                gap="0"
-                itemType={"all"}
-                title="Projects from Catalyst"
-                // titleIcon="code-branch"
-                // titleIconColor="blue-500"
-                cta="Sorted by"
-                dataStore={observableItemStore}
-                voteStore={voteStore}
-              /> : ""
-            }
-          </div>
-
+              itemType={"all"}
+              title="Projects from Catalyst"
+              // titleIcon="code-branch"
+              // titleIconColor="blue-500"
+              cta="Sorted by"
+              dataStore={observableItemStore}
+              voteStore={voteStore}
+            /> : ""
+          }
         </div>
 
       </div>
