@@ -62,16 +62,22 @@ export const Sidebar = ({className, extraClass, type}) => {
       if (window.scrollY > lastY) {
         document.body.classList.remove('scroll-up')
         document.body.classList.add('scroll-down')
-      } else {
+      } else if (window.scrollY < lastY) {
         document.body.classList.add('scroll-up')
         document.body.classList.remove('scroll-down')
       }
       lastY = window.scrollY
     }
   
+    // init - remove all added things
+    document.body.classList.remove('scroll-down')
+    document.body.classList.remove('scroll-up')
+    sidebarRef.current.classList.remove('lg:fixed')
+    sidebarRef.current.style.top = ''
 
+    // monitor scroll
     window.addEventListener("scroll", sidebarScroll)
-    // sidebarScroll();
+    
     return () => {
       window.removeEventListener("scroll", sidebarScroll)
     }
