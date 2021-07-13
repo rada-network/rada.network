@@ -1,6 +1,8 @@
 // import dynamic from 'next/dynamic'
 import Head from 'next/head';
 
+import { useState, useEffect, createRef } from 'react'
+
 // Components
 import {Layout} from '../components/page-layouts/Global';
 import {Header} from '../components/headers/HeaderHome';
@@ -56,6 +58,14 @@ const getData = async () => {
   }
 }
 
+// Perfect Scrollbar
+import PerfectScrollbar from 'perfect-scrollbar';
+import "perfect-scrollbar/css/perfect-scrollbar.css";
+
+const scrollBox = createRef();
+let ps;
+
+
 export default observer((props) => {
   const data = props
   // const data = props
@@ -68,6 +78,18 @@ export default observer((props) => {
   observableNftStore.tweets = data.postsNFT
   observableDappStore.tweets = data.postsDapp
   observableNewsStore.tweets = data.news
+
+  const [Scrollbar] = useState('')
+
+  useEffect(() => {
+    // make scrollbar
+    ps = new PerfectScrollbar(scrollBox.current, {
+    });
+  
+    return () => {
+      ps.destroy();
+    }
+  }, [scrollBox]);
 
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
@@ -83,7 +105,7 @@ export default observer((props) => {
         <div className={`main-grid`}>
 
           {/* main content */}
-          <div className={`maincontent`}>
+          <div className={`maincontent`} ref={scrollBox}>
 
             <NewsList
               grid="1"
