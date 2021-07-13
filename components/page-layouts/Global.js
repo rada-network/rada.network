@@ -16,9 +16,8 @@ export const Layout = ({children}) => {
       
       <div className={`mainbody`}>
         {children}
+        <Footer />
       </div>
-
-      <Footer />
 
     </div>
     </>
