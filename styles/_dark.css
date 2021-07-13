@@ -11,19 +11,6 @@ body {
   @apply dark:bg-deepgray-100;
 }
 
-/* Navbar */
-.navbar {
-  @apply dark:bg-deepgray-100 dark:bg-opacity-90 dark:border-gray-800 dark:shadow-none;
-}
-
-.nav-item {
-  @apply dark:text-white dark:text-opacity-60;
-}
-
-.nav-item-active {
-  @apply dark:text-white dark:text-opacity-100;
-}
-
 /* Header */
 .header {
   @apply dark:from-purple-900 dark:to-purple-700;

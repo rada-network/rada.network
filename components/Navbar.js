@@ -89,7 +89,7 @@ export const Navbar = () => {
         <div className={`navbar-main`}>
           <NavItem href="/">
             <span className="icon"><i class="fad fa-home"></i></span>
-            <span className="nav-item--text">Home</span>
+            <span className="nav-item--text">Explore</span>
           </NavItem>
           <NavItem href="/explore/news">
             <span className="icon"><i class="fad fa-newspaper"></i></span>

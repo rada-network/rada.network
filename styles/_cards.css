@@ -64,11 +64,11 @@ Card Post (News, Projects,...)
 }
 
 .card-post .card-body--header {
-  @apply flex flex-col pb-0 md:pb-1 -mt-1;
+  @apply flex flex-col pb-1 -mt-1;
 }
 
 .card-post .card-body--main {
-  @apply hidden md:flex py-1;
+  @apply hidden md:flex;
 }
 
 .card-post .card-body--footer {

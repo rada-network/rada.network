@@ -3,6 +3,7 @@ import {Layout} from '../../components/page-layouts/OneColumn';
 import {Header} from '../../components/headers/HeaderHome';
 import {Sidebar} from '../../components/sidebar/Sidebar';
 import {CategoryList} from '../../components/card-layouts/CategoryList';
+import {MediaList} from '../../components/card-layouts/MediaList';
 
 import { observer } from "mobx-react";
 
@@ -53,12 +54,13 @@ export default observer((props) => {
             {/* main content */}
             <div className={`maincontent`}>
 
-            <CategoryList
-                extraClass="category-list"
-                title="Top Topics"
-                // titleIcon="album-collection"
-                // titleIconColor="gray-400"
-                topic={data.topic}
+              <MediaList
+                grid="2"
+                gap="4"
+                extraClass="media-list"
+                title="Latest Media"
+                // titleIcon="icons"
+                // titleIconColor="purple-500"
               />
 
               <NewsList

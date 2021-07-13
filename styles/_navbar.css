@@ -1,5 +1,6 @@
 .navbar {
   @apply bg-white bg-opacity-90 border-b border-gray-100 z-50 backdrop-filter backdrop-blur;
+  @apply dark:bg-deepgray-100 dark:bg-opacity-90 dark:border-gray-800;
   @apply absolute inset-x-0 inset-y-0;
   height: var(--mainnav-height);
   transition: 0.3s all ease;
@@ -25,11 +26,13 @@
 .nav-item {
   @apply flex flex-col whitespace-nowrap h-full text-sm leading-10;
   @apply text-gray-900 text-opacity-50 font-medium;
+  @apply dark:text-white dark:text-opacity-60;
   @apply hover:text-opacity-90;
 }
 
 .nav-item-active {
   @apply text-opacity-100;
+  @apply dark:text-white dark:text-opacity-100;
 }
 
 
@@ -37,11 +40,15 @@
 Navbar for Mobile and Apps 
 --------------------------------*/
 .navbar-app {
-  @apply fixed lg:hidden z-50;
-  @apply bg-gray-50 dark:bg-gray-900 border-t border-gray-500 border-opacity-10;
+  @apply fixed lg:hidden h-auto z-50;
+  @apply bg-gray-50 dark:bg-gray-900 bg-opacity-90 dark:bg-opacity-90 backdrop-filter backdrop-blur;
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.navbar-app .navbar-main {
+  @apply h-auto py-1;
 }
 
 .navbar-app .nav-item {
