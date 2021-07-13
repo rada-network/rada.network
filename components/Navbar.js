@@ -16,13 +16,15 @@ export const Navbar = () => {
     if (router.asPath === href) cls.push(`nav-item-active`)
 
     return (
-    <a href={href} className={cls.join(' ')}>
       <Link href={href}>
+    <a href={href} className={cls.join(' ')}>
+
         <>
           {children}
         </>
-      </Link>
+
     </a>
+      </Link>
     )
   }
 

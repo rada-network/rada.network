@@ -3,6 +3,9 @@ const {
     PHASE_PRODUCTION_BUILD,
 } = require('next/constants')
 
+const withPWA = require('next-pwa')
+const runtimeCaching = require('next-pwa/cache')
+
 // This uses phases as outlined here: https://nextjs.org/docs/#custom-configuration
 module.exports = (phase) => {
     // when started in development mode `next dev` or `npm run dev` regardless of the value of STAGING environmental variable
@@ -17,17 +20,21 @@ module.exports = (phase) => {
 
     const env = {
         GRAPHQL_URL: (() => {
-            if (isDev) return 'http://localhost:4005/'
-            //if (isDev) return 'https://gql.dhunt.io'
+            //if (isDev) return 'http://localhost:4005/'
+            if (isDev) return 'https://gql.dhunt.io'
             if (isProd) {
                 return 'https://gql.dhunt.io'
             }
             if (isStaging) return 'https://gql.dhunt.io'
-        })()
+        })(),
+        pwa: {
+            dest: 'public',
+            runtimeCaching,
+        },
     }
 
     // next.config.js object
-    return {
+    return withPWA({
         env,
-    }
+    })
 }
