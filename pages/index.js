@@ -94,18 +94,19 @@ export default observer((props) => {
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 
-      <Header props={{
-        title : "Trends hunter for Cardano community",
-        itemType : "home",
-        description : "Stay updated with the best quality news & updates"
-      }}/>
 
-      <div className={`wrapper`}>
+      <div className={`wrapper scrollbar`} ref={scrollBox}>
 
         <div className={`main-grid`}>
 
           {/* main content */}
-          <div className={`maincontent`} ref={scrollBox}>
+          <div className={`maincontent`}>
+
+            <Header props={{
+              title : "Trends hunter for Cardano community",
+              itemType : "home",
+              description : "Stay updated with the best quality news & updates"
+            }}/>
 
             <NewsList
               grid="1"
