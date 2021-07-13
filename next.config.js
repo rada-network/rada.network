@@ -19,22 +19,16 @@ module.exports = (phase) => {
     console.log(`isDev:${isDev}  isProd:${isProd}   isStaging:${isStaging}`)
 
     const env = {
-        GRAPHQL_URL: (() => {
-            //if (isDev) return 'http://localhost:4005/'
-            if (isDev) return 'https://gql.dhunt.io'
-            if (isProd) {
-                return 'https://gql.dhunt.io'
-            }
-            if (isStaging) return 'https://gql.dhunt.io'
-        })(),
+        future: {
+            webpack5: true,
+        },
         pwa: {
             dest: 'public',
+            disable : isDev,
             runtimeCaching,
         },
     }
 
     // next.config.js object
-    return withPWA({
-        env,
-    })
+    return withPWA(env)
 }
