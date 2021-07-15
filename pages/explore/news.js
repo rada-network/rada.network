@@ -37,6 +37,7 @@ export default observer((props) => {
   if (!data) return <div>loading...</div>
   // init first tweet data to show in homepage
   observableNewsStore.tweets = data.news
+  //return JSON.stringify(data.news)
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'News',data : {}})}>
 

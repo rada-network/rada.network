@@ -24,8 +24,9 @@ module.exports = (phase) => {
         },
         pwa: {
             dest: 'public',
-            disable : isDev,
-            runtimeCaching,
+            publicExcludes : ["!vendors/*","!vendors/**/*","!vendors/**/**/*","!vendors/**/**/**/*"],
+            buildExcludes  : [/chunks\/.*$/],
+            disable : isDev
         },
     }
 

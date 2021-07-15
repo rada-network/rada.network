@@ -99,7 +99,7 @@ export const MediaList = ({
             {/* Media Playlist */}
             <div className={`media-playlist scrollbar media-scroll`} ref={scrollBox}>
 
-              { items.map((item, idx) => <CardMiniV {...item} onClick={() => setActiveIdx(idx)} className={idx==activeIdx ? 'active' : ''} />) }
+              { items.map((item, idx) => <CardMiniV key={item.id} {...item} onClick={() => setActiveIdx(idx)} className={idx==activeIdx ? 'active' : ''} />) }
 
             </div>
 
