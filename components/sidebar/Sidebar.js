@@ -2,7 +2,7 @@
 import dynamic from 'next/dynamic'
 import { useEffect, useRef } from "react";
 
-export const Sidebar = ({className, extraClass, type}) => {
+export const Sidebar = ({className, extraClass, type,context}) => {
 
   const sidebarRef = useRef()
 
@@ -88,7 +88,7 @@ export const Sidebar = ({className, extraClass, type}) => {
 
   return (
     <div className={`${className} ${extraClass || ''}`} ref={sidebarRef} >
-      <SidebarWidgets />
+      <SidebarWidgets context={context} />
     </div>
   );
 };

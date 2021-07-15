@@ -94,7 +94,7 @@ export function NewsDetailBody({props,isSideBar,voteStore}){
           </div>
           {/* Sidebar */}
           {isSideBar ?
-            <Sidebar className={`sidebar`} extraClass="" type="Post" />
+            <Sidebar className={`sidebar`} extraClass="" type="NewsDetail" context={props.news} />
             : ""
           }
 
