@@ -14,17 +14,17 @@ let ps;
 
 export const Layout = ({children}) => {
 
-  const [Scrollbar] = useState('')
+  // const [Scrollbar] = useState('')
 
-  useEffect(() => {
-    // make scrollbar
-    ps = new PerfectScrollbar(scrollBox.current, {
-    });
+  // useEffect(() => {
+  //   // make scrollbar
+  //   ps = new PerfectScrollbar(scrollBox.current, {
+  //   });
   
-    return () => {
-      ps.destroy();
-    }
-  }, [scrollBox]);
+  //   return () => {
+  //     ps.destroy();
+  //   }
+  // }, [scrollBox]);
 
   return (
     <>
@@ -36,7 +36,7 @@ export const Layout = ({children}) => {
 
       <Topbar />
       
-      <div className={`mainbody scrollbar`} ref={scrollBox}>
+      <div className={`mainbody scrollbar`}>
         {children}
         <Footer />
       </div>

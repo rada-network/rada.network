@@ -2,7 +2,7 @@ import useSWR, {mutate} from 'swr'
 import Link from 'next/link'
 import React, { useState, useEffect, createRef } from 'react'
 
-import {Layout} from '../../components/page-layouts/OneColumn';
+import {Layout} from '../../components/page-layouts/Global';
 import {Sidebar} from '../../components/sidebar/Sidebar';
 
 import getClient from "../../data/client";

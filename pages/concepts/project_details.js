@@ -3,7 +3,7 @@ import Link from 'next/link'
 import TextareaAutosize from 'react-textarea-autosize';
 
 // Components
-import {Layout} from '../../components/page-layouts/OneColumn';
+import {Layout} from '../../components/page-layouts/Global';
 
 //ReactIcons
 import { RiArrowUpSFill } from "react-icons/ri";

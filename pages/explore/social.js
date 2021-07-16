@@ -1,5 +1,5 @@
 // Components
-import {Layout} from '../../components/page-layouts/OneColumn';
+import {Layout} from '../../components/page-layouts/Global';
 import {Header} from '../../components/headers/HeaderHome';
 import {Sidebar} from '../../components/sidebar/Sidebar';
 import {CategoryList} from '../../components/card-layouts/CategoryList';

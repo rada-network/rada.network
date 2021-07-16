@@ -1,4 +1,4 @@
-import {Layout} from '../../components/page-layouts/OneColumn';
+import {Layout} from '../../components/page-layouts/Global';
 import {Header} from '../../components/headers/Header';
 import {Sidebar} from '../../components/sidebar/Sidebar';
 import {ProjectsList} from "../../components/card-layouts/ProjectsList";

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import {Layout} from '../../components/page-layouts/OneColumn';
+import {Layout} from '../../components/page-layouts/Global';
 import {Sidebar} from '../../components/sidebar/Sidebar';
 
 import "perfect-scrollbar/css/perfect-scrollbar.css";
