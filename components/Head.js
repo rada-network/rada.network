@@ -17,7 +17,7 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
       key="google-fonts-preconnect"
     />
     <link
-      rel="prefetch"
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       media="print"
       onLoad="this.media='all'"
@@ -31,7 +31,7 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
       key="cryptoicons"
     />
     <link
-      rel="prefetch"
+      rel="stylesheet"
       href="/vendors/font-awesome5-pro/css/all.min.css"
       media="print"
       onLoad="this.media='all'"
