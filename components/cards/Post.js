@@ -31,7 +31,7 @@ export const NewsLoader = (props) => (
   </div>
 )
 
-export const CardPost = ({title, mediaUri}) => {
+export const CardPost = ({title, mediaUri, type, source}) => {
 
   return (
     <Link href={"#"}>
@@ -53,15 +53,31 @@ export const CardPost = ({title, mediaUri}) => {
           </a>
         </div>
 
-        <div class="metadata-wrapper mt-1">
-          <div class="metadata metadata-source">
-            <span class="metadata-value">
-              <img class="metadata-value--img" src="/images/logo-sources/cointelegraph.png" alt="cointele" />
-            </span>
-            <span class="metadata-value" title="CoinTelegraph">CoinTelegraph</span>
+        <div class="metadata-wrapper justify-between mt-1 md:mt-2">
+          <div className="flex flex-shrink-0">
+            <div class="metadata metadata-source">
+              <span className="icon mr-1">
+                <i class={`${type}`} />
+              </span>
+              <span class="metadata-value" title="CoinTelegraph">{source}</span>
+            </div>
+            <div class="metadata metadata-date">
+              <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+            </div>
           </div>
-          <div class="metadata metadata-date">
-            <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+          <div className="flex metadata-wrapper_nodivide">
+            <div className="metadata">
+              <span className="icon mr-1">
+                <i class="fas fa-comment" />
+              </span>
+              <span>2</span>
+            </div>
+            <div className="metadata">
+              <span className="icon mr-1">
+                <i class="fas fa-arrow-alt-up" />
+              </span>
+              <span>2</span>
+            </div>
           </div>
         </div>
 

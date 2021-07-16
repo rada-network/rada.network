@@ -66,6 +66,10 @@ export const Navbar = () => {
           <span className="icon"><i className="fad fa-fire-alt" /></span>
           <span className="nav-item--text">Signals</span>
         </NavItem>
+        <NavItem href="/explore/media">
+          <span className="icon"><i className="fad fa-icons" /></span>
+          <span className="nav-item--text">Media</span>
+        </NavItem>
         <NavItem href="/explore/projects">
           <span className="icon"><i className="fad fa-code-branch" /></span>
           <span className="nav-item--text">Projects</span>

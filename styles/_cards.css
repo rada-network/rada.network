@@ -6,6 +6,7 @@ Generic Styles
 }
 
 .card {
+  @extend %card-padding;
   @apply flex h-full relative transition;
 }
 
@@ -33,7 +34,7 @@ Generic Styles
 }
 
 .card-header {
-  @apply flex justify-between px-4 md:px-6 py-4 w-full;
+  @apply flex justify-between px-4 md:px-6 w-full;
 }
 
 .card-header .avatar {
@@ -42,7 +43,7 @@ Generic Styles
 }
 
 .card-body {
-  @apply flex flex-col px-4 md:px-6 py-4 w-full;
+  @apply flex flex-col w-full;
 }
 
 .card-footer {
@@ -59,8 +60,7 @@ Card Post (News, Projects,...)
 }
 
 .card-post .card-body {
-  @extend %card-padding;
-  @apply flex flex-col h-full w-full;
+  @apply flex flex-col h-full w-full ml-4;
 }
 
 .card-post .card-body--header {
@@ -89,7 +89,7 @@ Card Post (News, Projects,...)
 
 /* Media */
 .card-post .card-media {
-  @extend %card-padding;
+
   @apply pr-0;
 }
 

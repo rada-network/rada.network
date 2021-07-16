@@ -27,7 +27,7 @@ Layout
 }
 
 .pane-content {
-  @apply bg-bluegray-50 flex w-full h-full;
+  @apply bg-bluegray-50 flex flex-wrap md:flex-nowrap w-full h-full;
   @apply dark:bg-deepgray-100;
 }
 
@@ -92,7 +92,6 @@ Sections Layout
 }
 
 .section-inner {
-  @apply p-0 -mx-4 md:mx-0;
   @apply bg-white shadow-sm;
 }
 
