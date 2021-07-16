@@ -14,6 +14,7 @@ export default gql`
             ideaType
             contentJson
             createdAt
+            keywords
             platform{
                 name
                 websiteUri
