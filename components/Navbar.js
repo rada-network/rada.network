@@ -39,6 +39,21 @@ export const Navbar = () => {
   return (
     <>
     <nav className={`navbar`}>
+
+      <div className="flex flex-1 w-full">
+        {/* Logo */}
+        <div className="flex flex-shrink-0 w-full">
+          <Link href={`/`}>
+            <a className="flex flex-col w-full items-center justify-center align-center py-4">
+              <img className="block w-auto h-8" src="/images/dhunt.svg" alt="dhunt.io" />
+              <strong className="hidden md:inline-flex ml-2 text-gray-900 logo-text text-opacity-90">
+                <span>RADA</span><span>.co</span>
+              </strong>
+            </a>
+          </Link>
+        </div>
+      </div>
+
       {/* Main Nav */}
       <div className={`navbar-main`}>
         <NavItem href="/">

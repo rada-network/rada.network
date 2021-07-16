@@ -2,17 +2,7 @@
 Layout 
 --------------------------------*/
 .main-layout {
-  @apply flex flex-col h-full items-stretch;
-}
-
-.pane-top {
-  @apply bg-white bg-opacity-90 border-b border-gray-100 z-50;
-  @apply dark:bg-deepgray-100 dark:border-gray-800;
-  height: var(--topbar-height);
-}
-
-.pane-main {
-  @apply flex h-full;
+  @apply flex h-full w-full;
 }
 
 .pane-left {
@@ -21,24 +11,27 @@ Layout
   @apply dark:bg-deepgray-100 dark:border-gray-800;
 }
 
-.mainbody {
-  @apply flex flex-col flex-1;
+.pane-center {
+  @apply flex flex-1 flex-col h-full w-full items-stretch;
 }
 
-.main-grid {
-  @apply flex flex-wrap lg:flex-nowrap;
+.pane-center--top {
+  @apply bg-white bg-opacity-90 border-b border-gray-100 z-50;
+  @apply dark:bg-deepgray-100 dark:border-gray-800;
+  height: var(--topbar-height);
 }
 
-.maincontent {
-  @apply w-full flex-1;
+.pane-center--main {
+  @apply flex w-full h-full;
 }
 
-.sidebar {
-  @apply -mx-4 md:-mx-0 lg:w-80 lg:pt-8 md:w-full;
+.pane-content {
+  @apply flex w-full h-full;
 }
 
-.sidebar-inner {
-  @apply lg:w-80 lg:mb-12;
+.pane-content--main,
+.pane-content--sec {
+  @apply flex flex-col w-full h-full overflow-x-hidden overflow-y-auto;
 }
 
 

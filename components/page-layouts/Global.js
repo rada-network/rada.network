@@ -32,18 +32,20 @@ export const Layout = ({children}) => {
 
     <div className={`main-layout`}>
 
-      <div class="pane-top">
-        <Topbar />
+      <div class="pane-left">
+        <Navbar />
       </div>
 
-      <div className="pane-main">
-        <div class="pane-left">
-          <Navbar />
+      <div className={`pane-center`}>
+
+        <div class="pane-center--top">
+          <Topbar />
         </div>
 
-        <div className={`pane-center`}>
+        <div className="pane-center--main">
           {children}
         </div>
+
       </div>
 
     </div>

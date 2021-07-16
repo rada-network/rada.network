@@ -1,5 +1,5 @@
 .navbar {
-  @apply relative flex w-full;
+  @apply relative flex flex-col w-full;
 }
 
 .navbar-main {
