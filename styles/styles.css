@@ -16,6 +16,7 @@ Layout
 }
 
 .pane-center--top {
+  @apply flex-shrink-0;
   @apply bg-white bg-opacity-90 border-b border-gray-100 z-50;
   @apply dark:bg-deepgray-100 dark:border-gray-800;
   height: var(--topbar-height);
@@ -84,7 +85,6 @@ Card Layouts
 Sections Layout
 --------------------------------------------- */
 .section {
-  @apply my-8;
 }
 
 .section-top {
@@ -93,7 +93,7 @@ Sections Layout
 
 .section-inner {
   @apply p-0 -mx-4 md:mx-0;
-  @apply bg-white shadow-sm rounded;
+  @apply bg-white shadow-sm;
 }
 
 .section-header {

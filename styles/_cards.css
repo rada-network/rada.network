@@ -2,7 +2,7 @@
 Generic Styles
 ----------------------------------------------*/
 %card-padding {
-  @apply py-4 px-3 md:p-6 lg:p-8;
+  @apply p-4;
 }
 
 .card {
@@ -54,7 +54,7 @@ Generic Styles
 Card Post (News, Projects,...)
 ----------------------------------------------*/
 .card-post {
-  @apply border-t border-gray-500 border-opacity-10;
+  @apply border-t border-gray-500 border-opacity-10 cursor-pointer;
   @apply lg:hover:bg-shadeyellow-100;
 }
 
@@ -94,7 +94,7 @@ Card Post (News, Projects,...)
 }
 
 .card-post .card-media .card-img {
-  @apply flex-shrink-0 w-px-48 h-px-48 md:w-px-88 md:h-px-88;
+  @apply flex-shrink-0 w-px-40 h-px-40 md:w-px-56 md:h-px-56;
   @apply rounded overflow-hidden cursor-pointer;
 }
 

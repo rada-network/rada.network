@@ -21,7 +21,7 @@ import utils from "../lib/util";
 import {HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
 import {BlogsList} from "../components/card-layouts/BlogsList";
 import {getNews} from "../data/query/news";
-import {NewsList} from "../components/card-layouts/NewsList";
+import {PostsList} from "../components/card-layouts/PostsList";
 
 const voteStore = new VoteStore();
 const homeStore = new HomeStore({isHome : true})
@@ -78,6 +78,8 @@ export default observer((props) => {
       {/* main content pane */}
       <div className={`pane-content--main`}>
 
+        <PostsList
+        />
 
       </div>
 
