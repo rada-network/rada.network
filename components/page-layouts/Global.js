@@ -32,13 +32,13 @@ export const Layout = ({children}) => {
 
     <div className={`main-layout`}>
 
-      <div class="pane-left">
+      <div className="pane-left">
         <Navbar />
       </div>
 
       <div className={`pane-center`}>
 
-        <div class="pane-center--top">
+        <div className="pane-center--top">
           <Topbar />
         </div>
 

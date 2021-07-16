@@ -7,7 +7,7 @@
 }
 
 .nav-item {
-  @apply flex whitespace-nowrap h-full text-sm leading-10;
+  @apply flex whitespace-nowrap h-full text-sm leading-10 font-medium;
   @apply px-4;
   @apply text-gray-900 text-opacity-50;
   @apply dark:text-white dark:text-opacity-60;
@@ -15,7 +15,7 @@
 }
 
 .nav-item .icon {
-  @apply mr-2;
+  @apply w-4 mr-2;
 }
 
 .nav-item-active {

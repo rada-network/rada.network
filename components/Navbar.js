@@ -44,9 +44,9 @@ export const Navbar = () => {
         {/* Logo */}
         <div className="flex flex-shrink-0 w-full">
           <Link href={`/`}>
-            <a className="flex flex-col w-full items-center justify-center align-center py-4">
-              <img className="block w-auto h-8" src="/images/dhunt.svg" alt="dhunt.io" />
-              <strong className="logo-text">
+            <a className="logo">
+              <img className="logo--img" src="/images/dhunt.svg" alt="dhunt.io" />
+              <strong className="logo--text">
                 <span>RADA</span>
               </strong>
             </a>
@@ -57,7 +57,7 @@ export const Navbar = () => {
       {/* Main Nav */}
       <div className={`navbar-main`}>
         <NavItem href="/">
-        <span className="icon"><i className="fad fa-home"></i></span>
+        <span className="icon"><i class="fad fa-satellite" /></span>
           <span className="nav-item--text">Explore</span>
         </NavItem>
         <NavItem href="/explore/news">
@@ -65,7 +65,7 @@ export const Navbar = () => {
           <span className="nav-item--text">News</span>
         </NavItem>
         <NavItem href="/explore/social">
-          <span className="icon"><i className="fad fa-fire-alt"></i></span>
+          <span className="icon"><i className="fad fa-fire-alt" /></span>
           <span className="nav-item--text">Signals</span>
         </NavItem>
         <NavItem href="/explore/projects">
