@@ -25,7 +25,7 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
         key="google-fonts-preconnect_2"
       />
       <link
-      rel="stylesheet"
+      rel="prefetch"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         media="print"
         onLoad="this.media='all'"
@@ -46,14 +46,14 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
         key="google-fonts_4"
       />
       <link
-      rel="stylesheet"
+      rel="prefetch"
         href="/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
         media="print"
         onLoad="this.media='all'"
         key="cryptoicons"
       />
       <link
-      rel="stylesheet"
+      rel="prefetch"
         href="/vendors/font-awesome5-pro/css/all.min.css"
         media="print"
         onLoad="this.media='all'"
