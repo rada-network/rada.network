@@ -46,8 +46,8 @@ export const Navbar = () => {
           <Link href={`/`}>
             <a className="flex flex-col w-full items-center justify-center align-center py-4">
               <img className="block w-auto h-8" src="/images/dhunt.svg" alt="dhunt.io" />
-              <strong className="hidden md:inline-flex ml-2 text-gray-900 logo-text text-opacity-90">
-                <span>RADA</span><span>.co</span>
+              <strong className="logo-text">
+                <span>RADA</span>
               </strong>
             </a>
           </Link>

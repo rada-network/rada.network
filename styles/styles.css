@@ -43,7 +43,7 @@ Nav & Top Bars
 }
 
 .logo-text {
-  @apply bg-gradient-to-r from-purple-700 to-blue-700 font-semibold;
+  @apply bg-gradient-to-b from-purple-500 to-blue-700 font-semibold;
   @apply dark:from-purple-500 dark:to-blue-500;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
