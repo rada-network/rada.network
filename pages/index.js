@@ -73,63 +73,21 @@ export default observer((props) => {
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 
-      <div className={`main-grid`}>
+    <div className={`pane-content`}>
 
-        {/* main content */}
-        <div className={`maincontent`}>
+      {/* main content pane */}
+      <div className={`pane-content--main`}>
 
-          <Header props={{
-            title : "Trends hunter for Cardano community",
-            itemType : "home",
-            description : "Stay updated with the best quality news & updates"
-          }}/>
-
-          <NewsList
-            grid="1"
-            gap="0"
-            extraClass="news-list"
-            title="Cardano's News"
-            // titleIcon="newspaper"
-            // titleIconColor="yellow-500"
-            dataStore={observableNewsStore}
-          />
-
-          {homeStore.homeDisplay === 1 || homeStore.homeDisplay === 0 ?
-            <SocialPostsList
-              title="Social Signal"
-              itemType={"tweet"}
-              titleIcon=""
-              titleIconColor=""
-              dataStore={observableTweetStore}
-            />  : ""
-          }
-
-          <CategoryList
-            extraClass="category-list"
-            title="Top Topics"
-            // titleIcon="album-collection"
-            // titleIconColor="gray-400"
-            topic={data.topic}
-          />
-
-
-          {homeStore.homeDisplay === 4 || homeStore.homeDisplay === 0 ?
-            <ProjectsList
-              homeDisplay={4}
-              grid="1"
-              gap="0"
-              itemType={"all"}
-              title="Projects from Catalyst"
-              // titleIcon="code-branch"
-              // titleIconColor="blue-500"
-              cta="Sorted by"
-              dataStore={observableItemStore}
-              voteStore={voteStore}
-            /> : ""
-          }
-        </div>
 
       </div>
+
+      {/* secondary content pane */}
+      <div className={`pane-content--sec`}>
+
+
+      </div>
+
+    </div>
 
     </Layout>
   )

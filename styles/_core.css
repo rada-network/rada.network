@@ -5,14 +5,18 @@ Set a default styles for core elements
 Global Styles
 */
 html {
+  @apply h-full;
   scroll-behaviour: smooth;
   font-size: 15px;
 }
 
 body {
-  @apply bg-bluegray-50 text-gray-900 overflow-hidden;
+  @apply bg-white text-gray-900 h-full overflow-hidden;
   @apply dark:bg-deepgray-200 dark:text-gray-50;
-  padding-top: calc(var(--topbar-height) + 1px);
+}
+
+#__next {
+  @apply w-full h-full;
 }
 
 /* 
@@ -35,46 +39,4 @@ a {
 .link-text-bold {
   @apply text-gray-700 hover:text-gray-900;
   @apply font-medium;
-}
-
-/* 
-Layout 
-*/
-.main-layout {
-  @apply flex h-full items-stretch;
-}
-
-.mainbody {
-  @apply relative;
-}
-
-.container {
-  @apply w-full;
-}
-
-.grid-12cols {
-  @apply grid grid-cols-1 lg:grid-cols-12;
-}
-
-.main-grid {
-  @apply flex flex-wrap lg:flex-nowrap;
-}
-
-.maincontent {
-  @apply w-full flex-1;
-}
-
-.sidebar {
-  @apply -mx-4 md:-mx-0 lg:w-80 lg:pt-8 md:w-full;
-}
-
-.sidebar-inner {
-  @apply lg:w-80 lg:mb-12;
-}
-
-/* 
-Main Container
-*/
-.container {
-  @apply mx-auto px-4 md:px-8 max-w-screen-xl;
 }

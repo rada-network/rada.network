@@ -1,29 +1,15 @@
 .navbar {
-  @apply bg-white bg-opacity-90 border-b border-gray-100 z-50 backdrop-filter backdrop-blur;
-  @apply dark:bg-deepgray-100 dark:bg-opacity-90 dark:border-gray-800;
-  transition: 0.3s all ease;
-}
-
-.scroll-down .navbar {
-  transform: translateY(-60px);
-  transition-delay: 0.8s;
-}
-
-.scroll-up .navbar {
-  @apply fixed;
-  top: 0;
-  transform: translateY(0);
-  transition-delay: 0.1s;
+  @apply relative flex w-full;
 }
 
 .navbar-main {
-  @apply relative flex items-center justify-evenly;
+  @apply md:flex lg:flex flex-col w-full;
 }
 
 .nav-item {
   @apply flex whitespace-nowrap h-full text-sm leading-10;
   @apply px-4;
-  @apply text-gray-900 text-opacity-50 font-medium;
+  @apply text-gray-900 text-opacity-50;
   @apply dark:text-white dark:text-opacity-60;
   @apply hover:text-opacity-90;
 }

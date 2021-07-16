@@ -1,19 +1,54 @@
-
-
-/* Topbar 
+/* 
+Layout 
 --------------------------------*/
-.topbar {
-  @apply flex justify-between fixed top-0 w-full px-4;
-  @apply bg-white bg-opacity-90 border-b border-gray-100 z-50 backdrop-filter backdrop-blur;
-  @apply dark:bg-deepgray-100 dark:bg-opacity-90 dark:border-gray-800;
+.main-layout {
+  @apply flex flex-col h-full items-stretch;
+}
+
+.pane-top {
+  @apply bg-white bg-opacity-90 border-b border-gray-100 z-50;
+  @apply dark:bg-deepgray-100 dark:border-gray-800;
   height: var(--topbar-height);
 }
 
+.pane-main {
+  @apply flex h-full;
+}
+
+.pane-left {
+  @apply flex flex-col h-full overflow-hidden w-32;
+  @apply bg-white bg-opacity-90 border-r border-gray-100 z-50;
+  @apply dark:bg-deepgray-100 dark:border-gray-800;
+}
+
+.mainbody {
+  @apply flex flex-col flex-1;
+}
+
+.main-grid {
+  @apply flex flex-wrap lg:flex-nowrap;
+}
+
+.maincontent {
+  @apply w-full flex-1;
+}
+
+.sidebar {
+  @apply -mx-4 md:-mx-0 lg:w-80 lg:pt-8 md:w-full;
+}
+
+.sidebar-inner {
+  @apply lg:w-80 lg:mb-12;
+}
 
 
 /* 
-Navbar
+Nav & Top Bars
 --------------------------------------------- */
+.topbar {
+  @apply flex justify-between px-4 h-full;
+}
+
 .logo-text {
   @apply bg-gradient-to-r from-purple-700 to-blue-700 font-semibold;
   @apply dark:from-purple-500 dark:to-blue-500;
