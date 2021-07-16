@@ -32,7 +32,17 @@ export const Topbar = () => {
     <>
     <div className={`topbar`}>
 
-      <div className="flex flex-1">
+      <div className="logo">
+
+        {/* Logo */}
+        <Link href={`/`}>
+          <a className="flex justify-center items-center">
+            <img className="logo--img" src="/images/dhunt.svg" alt="dhunt.io" />
+            <strong className="logo--text ml-2">
+              <span>RADA</span>
+            </strong>
+          </a>
+        </Link>
 
       </div>
 

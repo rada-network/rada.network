@@ -40,28 +40,26 @@ export const Navbar = () => {
     <>
     <nav className={`navbar`}>
 
-      <div className="flex flex-1 w-full">
+      <div className="logo">
         {/* Logo */}
-        <div className="flex flex-shrink-0 w-full">
-          <Link href={`/`}>
-            <a className="logo">
-              <img className="logo--img" src="/images/dhunt.svg" alt="dhunt.io" />
-              <strong className="logo--text">
-                <span>RADA</span>
-              </strong>
-            </a>
-          </Link>
-        </div>
+        <Link href={`/`}>
+          <a className="flex flex-col w-full justify-center items-center">
+            <img className="logo--img" src="/images/dhunt.svg" alt="dhunt.io" />
+            <strong className="logo--text mt-1">
+              <span>RADA</span>
+            </strong>
+          </a>
+        </Link>
       </div>
 
       {/* Main Nav */}
       <div className={`navbar-main`}>
         <NavItem href="/">
-        <span className="icon"><i class="fad fa-satellite" /></span>
+        <span className="icon"><i class="fad fa-rss" /></span>
           <span className="nav-item--text">Explore</span>
         </NavItem>
         <NavItem href="/explore/news">
-          <span className="icon"><i className="fad fa-newspaper"></i></span>
+          <span className="icon"><i className="fad fa-newspaper" /></span>
           <span className="nav-item--text">News</span>
         </NavItem>
         <NavItem href="/explore/social">
@@ -69,17 +67,17 @@ export const Navbar = () => {
           <span className="nav-item--text">Signals</span>
         </NavItem>
         <NavItem href="/explore/projects">
-          <span className="icon"><i className="fad fa-code-branch"></i></span>
+          <span className="icon"><i className="fad fa-code-branch" /></span>
           <span className="nav-item--text">Projects</span>
         </NavItem>
         <NavItem href="/explore/blog">
-          <span className="icon"><i className="fad fa-pen-nib"></i></span>
+          <span className="icon"><i className="fad fa-pen-nib" /></span>
           <span className="nav-item--text">Blog</span>
         </NavItem>
       </div>
     </nav>
 
-    {/* Mobile Nav */}
+    {/* Mobile Nav
     <div className="navbar-app">
 
       <NavItem href="/">
@@ -103,7 +101,7 @@ export const Navbar = () => {
         <span className="nav-item--text">Blog</span>
       </NavItem>
 
-    </div>
+    </div> */}
     </>
   );
 }
