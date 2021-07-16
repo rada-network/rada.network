@@ -9,7 +9,7 @@ export const Footer = () => {
       <div className="container">
         <div className="flex flex-col justify-between pt-4 pb-4 sm:flex-row">
           <p className="text-sm text-gray-400">
-            Copyright © 2021 dhunt.io. All rights reserved.
+            Copyright © 2021 RADA.co. All rights reserved.
           </p>
           <div className="flex items-center mt-4 space-x-4 sm:mt-0">
             <a href="/" className="text-gray-400 hover:text-gray-700">
