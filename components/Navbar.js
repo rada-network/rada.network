@@ -40,8 +40,8 @@ export const Navbar = () => {
             {/* Logo */}
             <div className="flex items-center flex-shrink-0">
               <Link href={`/`}>
-                <a className="flex items-center justify-center align-center" title="dhunt.io">
-                  <img className="block w-auto h-6" src="/images/dhunt.svg" alt="dhunt.io" />
+                <a className="flex items-center justify-center align-center" title="radar.co">
+                  <img className="block w-auto h-6" src="/images/rada.svg" alt="radar.co" />
                   <strong className="hidden md:inline-flex ml-2 text-gray-900 logo-text text-opacity-90">
                     <span>R</span><span>ADA</span><span>.co</span></strong>
                 </a>
