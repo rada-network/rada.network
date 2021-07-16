@@ -6,10 +6,11 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
     <HTMLHead>
       <title>{title}</title>
       <meta name="description" content={description}/>
+      <meta name="keyword" content={keyword}/>
       {/*<title>{meta.title == null || undefined ? "dhunt.io" : meta.title}</title>*/}
       {/*<meta name={meta.description == null ? "description" : meta.description} content={meta.content == null ? "dhunt.io" : meta.content}/>*/}
-      <link 
-        rel="preconnect" 
+      <link
+        rel="preconnect"
         href="https://fonts.googleapis.com"
         media="print"
         onLoad="this.media='all'"
@@ -24,54 +25,41 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
         key="google-fonts-preconnect_2"
       />
       <link
-        rel="stylesheet"
+      rel="prefetch"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         media="print"
         onLoad="this.media='all'"
         key="google-fonts"
       />
-      <link 
-        href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" 
+      <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap"
         rel="stylesheet"
         media="print"
         onLoad="this.media='all'"
         key="google-fonts_2"
       />
-      <link 
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" 
+      <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
         rel="stylesheet"
         media="print"
         onLoad="this.media='all'"
         key="google-fonts_4"
       />
       <link
-        rel="stylesheet"
+      rel="prefetch"
         href="/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
         media="print"
         onLoad="this.media='all'"
         key="cryptoicons"
       />
       <link
-        rel="stylesheet"
+      rel="prefetch"
         href="/vendors/font-awesome5-pro/css/all.min.css"
         media="print"
         onLoad="this.media='all'"
         key="fontawesome"
       />
       <link rel="manifest" href="/manifest.json" />
-      <link
-        href="/icons/favicon-16x16.png"
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-      />
-      <link
-        href="/icons/favicon-32x32.png"
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-      />
-      <link rel="apple-touch-icon" href="/apple-icon.png"/>
       <meta name="theme-color" content="#317EFB" />
     </HTMLHead>
 
