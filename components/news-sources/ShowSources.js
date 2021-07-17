@@ -10,8 +10,8 @@ export default function showSources({source}) {
   const coingapeLogo = '/images/logo-sources/coingape.png'
 
   const listLogos = [forumCardanoLogo, iohkLogo, coindeskLogo, cointeleLogo, adapulseLogo, coingapeLogo]
-  const displaySources = ['Cardano Foundation', 'IOHK', 'CoinDesk', 'CoinTelegraph', 'AdaPulse', 'CoinGape']
-  const listSources = ['forum.cardano', 'iohk', 'coindesk', 'cointele', 'adapulse', 'coingape']
+  const displaySources = ['Cardano Foundation', 'IOHK', 'CoinDesk', 'CoinTelegraph', 'AdaPulse', 'CoinGape', 'Bitcoinist']
+  const listSources = ['forum.cardano', 'iohk', 'coindesk', 'cointele', 'adapulse', 'coingape', 'bitcoinist']
   for (const [i, value] of listSources.entries()) {
     if (source.toLowerCase().includes(value)) {
       return (
