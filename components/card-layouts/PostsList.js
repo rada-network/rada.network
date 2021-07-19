@@ -9,15 +9,28 @@ import WidgetTitle from "../text/widgetTitle";
 import {CardPost} from "../cards/Post";
 import ContentLoader from "react-content-loader";
 
-export const PostsList = ({extraClass}) => {
+export const PostsList = ({title, extraClass}) => {
 
   return (
     <div className={`section ${extraClass || ''}`}>
       <div className={`section-inner`}>
 
+        <div className={`section-header`}>
+          <div className={`section-title`}>
+            <span className="text-color-title">{title}</span>
+          </div>
+          <div class="section-cta">
+            <a class="btn">
+              <span classname="btn__text text-color-desc">
+                About RADA
+              </span>
+              <span class="btn__caret_right"></span>
+            </a>
+          </div>
+        </div>
+
         <div className={`section-body no-padding`}>
           <div className={`grid gap-0`}>
-
 
           <CardPost
               title="Republican Senator Highlights Bitcoin’s Battle in Shedding Criminal Baggage"

@@ -55,7 +55,7 @@ export const Navbar = () => {
       {/* Main Nav */}
       <div className={`navbar-main`}>
         <NavItem href="/">
-        <span className="icon"><i class="fad fa-rss" /></span>
+        <span className="icon"><i className="fad fa-rss" /></span>
           <span className="nav-item--text">Explore</span>
         </NavItem>
         <NavItem href="/explore/news">

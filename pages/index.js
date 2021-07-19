@@ -9,6 +9,10 @@ import {ProjectsList} from '../components/card-layouts/ProjectsList';
 import {CategoryList} from '../components/card-layouts/CategoryList';
 import {MediaList} from '../components/card-layouts/MediaList';
 
+// Concepts
+import {PostsList} from "../components/card-layouts/PostsList";
+import {PostsListTrending} from "../components/card-layouts/PostsListTrending";
+
 import { observer } from "mobx-react"
 import { useState, useEffect, createRef } from 'react'
 
@@ -22,7 +26,7 @@ import utils from "../lib/util";
 import {HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
 import {BlogsList} from "../components/card-layouts/BlogsList";
 import {getNews} from "../data/query/news";
-import {PostsList} from "../components/card-layouts/PostsList";
+
 
 const voteStore = new VoteStore();
 const homeStore = new HomeStore({isHome : true})
@@ -97,15 +101,13 @@ export default observer((props) => {
       {/* main content pane */}
       <div className={`pane-content--main scrollbar`} ref={scrollBox}>
 
-        <PostsList
-        />
+        <PostsList title="Trend hunters for Cardano Community" />
 
       </div>
 
       {/* secondary content pane */}
-      <div className={`pane-content--sec`}>
-
-
+      <div className={`pane-content--sec scrollbar`} ref={scrollBox}>
+        <PostsListTrending title="Most Trending" />
       </div>
 
     </div>

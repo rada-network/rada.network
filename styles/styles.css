@@ -1,3 +1,5 @@
+@import '_presets';
+
 /* 
 Layout 
 --------------------------------*/
@@ -96,13 +98,15 @@ Sections Layout
 }
 
 .section-header {
+  @extend %global-padding;
+  @apply py-2;
   @apply flex justify-between items-center;
-  @apply px-4 py-4 md:px-6 md:py-4 lg:px-8 lg:py-6;
+  @apply border-b border-gray-500 border-opacity-10;
 }
 
 .section-title {
   @apply flex flex-wrap;
-  @apply text-lg lg:text-xl font-semibold;
+  @apply text-sm font-semibold;
   strong {
     @apply font-semibold;
     border-bottom: 1px dotted;
@@ -122,6 +126,10 @@ Sections Layout
 .section-cta {
   @apply text-sm font-medium;
   @apply flex mt-0 justify-between items-center;
+}
+
+.section-cta .btn {
+  @apply text-sm font-normal;
 }
 
 .section-cta .btn-group + .btn-group {

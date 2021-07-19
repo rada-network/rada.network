@@ -1,12 +1,8 @@
 /*
 Generic Styles
 ----------------------------------------------*/
-%card-padding {
-  @apply p-4;
-}
-
 .card {
-  @extend %card-padding;
+  @extend %global-padding;
   @apply flex h-full relative transition;
 }
 

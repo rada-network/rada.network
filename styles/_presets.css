@@ -2,7 +2,7 @@
 Global Padding
 */
 %global-padding {
-  @apply px-4;
+  @apply p-4;
 }
 
 
