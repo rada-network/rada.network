@@ -33,3 +33,6 @@ yarn-error.log*
 # vercel
 .vercel
 /.idea/*
+/public/sw.js
+/public/fallback-weLiS7RPN3739bF1qbhgR.js
+/public/workbox-ea903bce.js
