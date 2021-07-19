@@ -465,6 +465,7 @@ Responsive Carousel
 Perfect Scrollbar
 */
 .scrollbar {
+  @apply relative;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;

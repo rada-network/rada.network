@@ -7,7 +7,6 @@ Global Styles
 html {
   @apply h-full;
   scroll-behaviour: smooth;
-  font-size: 15px;
 }
 
 body {

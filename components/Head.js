@@ -42,7 +42,7 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
         rel="stylesheet"
         media="print"
         onLoad="this.media='all'"
-        key="google-fonts_3"
+        key="google-fonts_4"
       />
       <link
         rel="stylesheet"

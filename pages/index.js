@@ -10,6 +10,7 @@ import {CategoryList} from '../components/card-layouts/CategoryList';
 import {MediaList} from '../components/card-layouts/MediaList';
 
 import { observer } from "mobx-react"
+import { useState, useEffect, createRef } from 'react'
 
 //ReactIcons
 import {getPosts} from "../data/query/posts"
@@ -31,6 +32,12 @@ const observableItemStore = new ObservableTweetStore({homeStore})
 const observableNftStore = new ObservableTweetStore({homeStore})
 const observableDappStore = new ObservableTweetStore({homeStore})
 const observableNewsStore = new ObservableTweetStore({homeStore})
+
+import PerfectScrollbar from 'perfect-scrollbar';
+import "perfect-scrollbar/css/perfect-scrollbar.css";
+
+const scrollBox = createRef();
+let ps;
 
 const getData = async () => {
 
@@ -70,13 +77,25 @@ export default observer((props) => {
   observableDappStore.tweets = data.postsDapp
   observableNewsStore.tweets = data.news
 
+  const [scrollbar] = useState('')
+
+  useEffect(() => {
+    // make scrollbar
+    ps = new PerfectScrollbar(scrollBox.current, {
+    });
+
+    return () => {
+      ps.destroy();
+    }
+  }, [scrollBox]);
+
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 
     <div className={`pane-content`}>
 
       {/* main content pane */}
-      <div className={`pane-content--main`}>
+      <div className={`pane-content--main scrollbar`} ref={scrollBox}>
 
         <PostsList
         />

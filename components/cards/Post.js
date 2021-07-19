@@ -31,7 +31,7 @@ export const NewsLoader = (props) => (
   </div>
 )
 
-export const CardPost = ({title, mediaUri, type, source}) => {
+export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount}) => {
 
   return (
     <Link href={"#"}>
@@ -53,30 +53,30 @@ export const CardPost = ({title, mediaUri, type, source}) => {
           </a>
         </div>
 
-        <div class="metadata-wrapper justify-between mt-1 md:mt-2">
+        <div className="metadata-wrapper justify-between mt-1 md:mt-2">
           <div className="flex flex-shrink-0">
-            <div class="metadata metadata-source">
+            <div className="metadata metadata-source">
               <span className="icon mr-1">
-                <i class={`${type}`} />
+                <i className={`${type}`} />
               </span>
-              <span class="metadata-value" title="CoinTelegraph">{source}</span>
+              <span className="metadata-value" title="CoinTelegraph">{source}</span>
             </div>
-            <div class="metadata metadata-date">
-              <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+            <div className="metadata metadata-date">
+              <span className="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
             </div>
           </div>
           <div className="flex metadata-wrapper_nodivide">
             <div className="metadata">
               <span className="icon mr-1">
-                <i class="fas fa-comment" />
+                <i className="far fa-comment-alt" />
               </span>
-              <span>2</span>
+              <span className="">{commentCount}</span>
             </div>
             <div className="metadata">
               <span className="icon mr-1">
-                <i class="fas fa-arrow-alt-up" />
+                <i className="far fa-arrow-up" />
               </span>
-              <span>2</span>
+              <span>{voteCount}</span>
             </div>
           </div>
         </div>

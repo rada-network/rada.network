@@ -19,7 +19,7 @@ Generic Styles
 }
 
 .card-title {
-  @apply text-base font-medium leading-snug;
+  @apply text-sm leading-snug;
 }
 
 .card-meta {
@@ -55,7 +55,7 @@ Generic Styles
 Card Post (News, Projects,...)
 ----------------------------------------------*/
 .card-post {
-  @apply border-t border-gray-500 border-opacity-10 cursor-pointer;
+  @apply border-b border-gray-500 border-opacity-10 cursor-pointer;
   @apply lg:hover:bg-shadeyellow-100;
 }
 
@@ -89,18 +89,17 @@ Card Post (News, Projects,...)
 
 /* Media */
 .card-post .card-media {
-
   @apply pr-0;
 }
 
 .card-post .card-media .card-img {
-  @apply flex-shrink-0 w-px-40 h-px-40 md:w-px-56 md:h-px-56;
+  @apply flex-shrink-0 w-px-32 h-px-32 md:w-px-40 md:h-px-40;
   @apply rounded overflow-hidden cursor-pointer;
 }
 
 .card-post .card-media-blank {
-  @apply flex-shrink-0 w-px-48 h-px-48 md:w-px-88 md:h-px-88;
-  @apply rounded overflow-hidden cursor-pointer;
+  @apply flex-shrink-0 w-px-32 h-px-32 md:w-px-40 md:h-px-40;
+  @apply overflow-hidden cursor-pointer;
   @apply p-3 lg:p-6 bg-gray-300 bg-opacity-10;
   @apply inline-flex justify-center items-center;
 }
