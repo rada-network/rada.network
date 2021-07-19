@@ -24,7 +24,7 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
       key="google-fonts"
     />
     <link
-      rel="prefetch"
+      rel="stylesheet"
       href="/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
       media="print"
       onLoad="this.media='all'"
