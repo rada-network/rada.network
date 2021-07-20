@@ -5,9 +5,14 @@ import { WidgetStats } from "../widgets/WidgetStats";
 import { WidgetInfluencers } from "../widgets/WidgetInfluencers";
 import { WidgetPosts } from "../widgets/WidgetPosts";
 
+import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
+
+
 export default function SidebarHome({className, extraClass}) {
   return (
     <>
+    <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 1280: 2}}>
+        <Masonry gutter="1rem">
       <WidgetPricing
         title="Market Insights"
         text="Lorem Ipsum Dolor sit Amet"
@@ -29,6 +34,8 @@ export default function SidebarHome({className, extraClass}) {
         title="Top Projects"
         widgetIcon="code-branch"
       />
+      </Masonry>
+      </ResponsiveMasonry>
     </>
   );
 };

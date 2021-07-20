@@ -2,8 +2,6 @@
 import dynamic from 'next/dynamic'
 import { useEffect, useRef } from "react";
 
-import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
-
 export const Sidebar = ({className, extraClass, type}) => {
 
   const sidebarRef = useRef()
@@ -84,11 +82,7 @@ export const Sidebar = ({className, extraClass, type}) => {
 
   return (
     <div className={`${className} ${extraClass || ''}`} ref={sidebarRef} >
-      <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 1280: 2}}>
-        <Masonry gutter="1rem">
-          <SidebarWidgets />
-        </Masonry>
-      </ResponsiveMasonry>
+      <SidebarWidgets />
     </div>
   );
 };
