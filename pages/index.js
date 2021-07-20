@@ -133,7 +133,7 @@ export default observer((props) => {
         <div className={`pane-content--sec--top`}>
         </div>
 
-        <div className={`pane-content--sec--main`}>
+        <div className={`pane-content--sec--main scrollbar`} ref={scrollBox}>
           <PostsListTrending title="Most Popular" />
         </div>
 
