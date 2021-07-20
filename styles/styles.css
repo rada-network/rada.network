@@ -43,7 +43,8 @@ Layout
 }
 
 .pane-content--main--main {
-  @apply flex flex-col w-full h-full overflow-x-hidden overflow-y-auto;
+  height: 85vh;
+  @apply flex flex-col w-full md:h-full overflow-x-hidden overflow-y-auto;
 }
 
 .pane-content--sec {
@@ -86,7 +87,7 @@ Nav & Top Bars
 Navbar 
 */
 .navbar {
-  @apply relative flex flex-col w-full;
+  @apply relative flex flex-col w-full h-full;
 }
 
 .navbar-main {
@@ -94,8 +95,8 @@ Navbar
 }
 
 .nav-item {
-  @apply flex flex-col lg:flex-row items-baseline whitespace-nowrap w-full h-full px-2 py-2;
-  @apply leading-10;
+  @apply flex flex-col lg:flex-row items-center lg:items-baseline w-full h-full px-2 pb-1  lg:py-2;
+  @apply leading-10 whitespace-nowrap;
   @apply text-gray-900 text-opacity-50;
   @apply dark:text-white dark:text-opacity-60;
   @apply hover:text-opacity-90;
