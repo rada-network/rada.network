@@ -1,9 +1,9 @@
 .navbar-search {
-  @apply relative cursor-pointer;
+  @apply relative flex h-full items-center;
 }
 
 .navbar-search--icon {
-  @apply absolute top-1.5 left-3 pointer-events-none text-base;
+  @apply pointer-events-none text-sm;
 }
 
 .navbar-search--icon i {
@@ -16,9 +16,8 @@
 }
 
 .navbar-search--input {
-  @apply w-6 focus:w-full md:w-full focus:px-2 md:px-2 pl-7 focus:pl-10 md:pl-10 py-2 text-sm transition;
-  @apply bg-gray-100 focus:bg-white border-transparent rounded-md focus:shadow-md focus:ring-0 focus:border-primary-700;
-  @apply dark:bg-gray-900 dark:focus:bg-gray-900 dark:focus:border-primary-500;
+  @apply focus:w-full md:w-full pl-3 py-1 text-sm transition;
+  @apply bg-transparent border-0 focus:ring-0;
 }
 
 .navbar-search--input::placeholder {

@@ -16,7 +16,7 @@ export const Topbar = () => {
     if (router.asPath === href) cls.push(`nav-item-active`)
 
     return (
-      <Link href={href}>
+    <Link href={href}>
     <a href={href} className={cls.join(' ')}>
 
         <>
@@ -24,7 +24,7 @@ export const Topbar = () => {
         </>
 
     </a>
-      </Link>
+    </Link>
     )
   }
 
@@ -39,7 +39,7 @@ export const Topbar = () => {
           <a className="flex justify-center items-center">
             <img className="logo--img" src="/images/dhunt.svg" alt="dhunt.io" />
             <strong className="logo--text ml-2">
-              <span>RADA</span>
+              <span>rADA</span>
             </strong>
           </a>
         </Link>
@@ -47,9 +47,6 @@ export const Topbar = () => {
       </div>
 
       <div className="flex items-center space-x-2">
-
-        {/* Search */}
-        <SearchInput />
 
         <ThemeSwitch />
 

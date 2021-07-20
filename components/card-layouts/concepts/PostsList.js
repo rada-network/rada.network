@@ -32,18 +32,6 @@ export const PostsList = ({title, extraClass}) => {
   return (
     <div className={`section ${extraClass || ''}`}>
 
-      <div className={`section-header`}>
-        <div className={`section-title`}>
-          <span className="text-color-title">{title}</span>
-        </div>
-        <div class="section-cta">
-          <div className="btn-group btn-group-filter">
-            <a className="btn btn-filter">Popular</a>
-            <a className="btn btn-filter-active">Latest</a>
-          </div>
-        </div>
-      </div>
-
       <div className={`section-body no-padding scrollbar`} ref={scrollBox}>
         <div className={`grid gap-0`}>
 

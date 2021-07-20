@@ -23,8 +23,8 @@
 }
 
 .nav-item-active {
-  @apply text-opacity-100 font-medium;
-  @apply dark:text-white dark:text-opacity-100;
+  @apply text-primary-700 text-opacity-100 font-medium;
+  @apply bg-primary-50 dark:text-white dark:text-opacity-100;
 }
 
 
