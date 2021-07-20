@@ -7,7 +7,7 @@ Generic Styles
 }
 
 .card-media {
-  @apply flex flex-col flex-shrink-0 overflow-hidden rounded;
+  @apply flex flex-col flex-shrink-0 overflow-hidden rounded-sm;
 }
 
 .card-img {
@@ -90,7 +90,7 @@ Card Post (News, Projects,...)
 
 .card-post .card-media .card-img {
   @apply flex-shrink-0 w-px-32 h-px-32 md:w-px-40 md:h-px-40;
-  @apply rounded overflow-hidden cursor-pointer;
+  @apply rounded-sm overflow-hidden cursor-pointer;
 }
 
 .card-post .card-media-blank {

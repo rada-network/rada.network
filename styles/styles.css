@@ -33,10 +33,24 @@ Layout
   @apply dark:bg-deepgray-100;
 }
 
-.pane-content--main,
+.pane-content--main {
+  @apply flex flex-col w-full h-full;
+}
+
+.pane-content--main--top {
+  @apply flex px-4 py-2;
+  @apply bg-white border-b border-gray-400 border-opacity-10;
+  @apply dark:bg-deepgray-100;
+}
+
+.pane-content--main--main {
+  @apply flex flex-col w-full h-full overflow-x-hidden overflow-y-auto;
+}
+
 .pane-content--sec {
   @apply flex flex-col w-full h-full overflow-x-hidden overflow-y-auto;
 }
+
 
 .pane-content--sec {
   @apply border-l border-gray-100 dark:border-gray-800;
@@ -87,6 +101,8 @@ Card Layouts
 Sections Layout
 --------------------------------------------- */
 .section {
+  @apply flex flex-col h-full w-full;
+  @apply bg-white dark:bg-deepgray-100;
 }
 
 .section-top {
@@ -115,6 +131,10 @@ Sections Layout
 
 .section-body {
   @apply px-4 pb-4 md:px-6 md:pb-4 lg:px-8 lg:pb-6;
+}
+
+.section-body.scrollbar {
+  @apply flex flex-col w-full h-full overflow-x-hidden overflow-y-auto;
 }
 
 .section-footer {

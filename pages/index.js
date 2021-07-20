@@ -10,8 +10,8 @@ import {CategoryList} from '../components/card-layouts/CategoryList';
 import {MediaList} from '../components/card-layouts/MediaList';
 
 // Concepts
-import {PostsList} from "../components/card-layouts/PostsList";
-import {PostsListTrending} from "../components/card-layouts/PostsListTrending";
+import {PostsList} from "../components/card-layouts/concepts/PostsList";
+import {PostsListTrending} from "../components/card-layouts/concepts/PostsListTrending";
 
 import { observer } from "mobx-react"
 import { useState, useEffect, createRef } from 'react'
@@ -99,15 +99,13 @@ export default observer((props) => {
     <div className={`pane-content`}>
 
       {/* main content pane */}
-      <div className={`pane-content--main scrollbar`} ref={scrollBox}>
-
-        <PostsList title="Trend hunters for Cardano Community" />
-
+      <div className={`pane-content--main`}>
+        <PostsList title="Trends hunter for Cardano Community" />
       </div>
 
       {/* secondary content pane */}
       <div className={`pane-content--sec scrollbar`} ref={scrollBox}>
-        <PostsListTrending title="Most Trending" />
+        <PostsListTrending title="Most Popular" />
       </div>
 
     </div>
