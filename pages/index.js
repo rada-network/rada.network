@@ -43,9 +43,6 @@ const observableNewsStore = new ObservableTweetStore({homeStore})
 import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
-const scrollBox = createRef();
-let ps;
-
 const getData = async () => {
 
   const posts = await getPosts({type : "",skip : 0,take : 6, socialOrder : observableItemStore.currentTab})
@@ -86,15 +83,22 @@ export default observer((props) => {
 
   const [scrollbar] = useState('')
 
+  const scrollBox1 = createRef();
+  let ps1;
+
+  const scrollBox2 = createRef();
+  let ps2;
+  
   useEffect(() => {
     // make scrollbar
-    ps = new PerfectScrollbar(scrollBox.current, {
-    });
+    ps1 = new PerfectScrollbar(scrollBox1.current, {});
+    ps2 = new PerfectScrollbar(scrollBox2.current, {});
 
     return () => {
-      ps.destroy();
+      ps1.destroy();
+      ps2.destroy();
     }
-  }, [scrollBox]);
+  }, [scrollBox1, scrollBox2]);
 
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
@@ -121,7 +125,7 @@ export default observer((props) => {
 
         </div>
 
-        <div className={`pane-content--main--main scrollbar`} ref={scrollBox}>
+        <div className={`pane-content--main--main scrollbar`} ref={scrollBox1}>
           <PostsList />
         </div>
 
@@ -133,8 +137,8 @@ export default observer((props) => {
         <div className={`pane-content--sec--top`}>
         </div>
 
-        <div className={`pane-content--sec--main scrollbar`} ref={scrollBox}>
-          <PostsListTrending title="Most Popular" />
+        <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
+          <Sidebar className={`sidebar`} extraClass="" />
         </div>
 
       </div>

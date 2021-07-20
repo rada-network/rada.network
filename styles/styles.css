@@ -48,11 +48,7 @@ Layout
 }
 
 .pane-content--sec {
-  @apply flex flex-col w-full h-full overflow-x-hidden overflow-y-auto;
-}
-
-
-.pane-content--sec {
+  @apply hidden md:flex flex-col w-full h-full overflow-x-hidden overflow-y-auto;
   @apply border-l border-gray-100 dark:border-gray-800;
 }
 
@@ -117,6 +113,12 @@ Navbar
 .nav-item-active {
   @apply text-primary-700 text-opacity-100 font-medium;
   @apply bg-primary-50 dark:text-white dark:text-opacity-100;
+}
+
+/* 
+Sidebar
+--------------------------------------------- */
+.sidebar {
 }
 
 

@@ -2,8 +2,8 @@
 Generic Styles
 -------------------------------- */
 .widget {
-  @apply flex flex-col mb-8;
-  @apply bg-white rounded border-gray-500 border-opacity-10 shadow-sm;
+  @apply m-4 flex flex-col;
+  @apply bg-white border-b border-gray-500 border-opacity-10;
 }
 
 .widget-header {

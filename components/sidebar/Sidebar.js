@@ -2,6 +2,8 @@
 import dynamic from 'next/dynamic'
 import { useEffect, useRef } from "react";
 
+import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
+
 export const Sidebar = ({className, extraClass, type}) => {
 
   const sidebarRef = useRef()
@@ -81,10 +83,12 @@ export const Sidebar = ({className, extraClass, type}) => {
   const SidebarWidgets = dynamic(() => import(`./Sidebar${type || 'Home'}`))
 
   return (
-    <div className={`${className} ${extraClass || ''}`}>
-      <div ref={sidebarRef} className='sidebar-inner'>
-        <SidebarWidgets />
-      </div>
+    <div className={`${className} ${extraClass || ''}`} ref={sidebarRef} >
+      <ResponsiveMasonry columnsCountBreakPoints={{350: 2, 1280: 2}}>
+        <Masonry gutter="1rem">
+          <SidebarWidgets />
+        </Masonry>
+      </ResponsiveMasonry>
     </div>
   );
 };
