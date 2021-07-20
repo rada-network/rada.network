@@ -82,7 +82,7 @@ Vote Buttons
 Nav Button
 */
 .nav-btn {
-  @apply flex px-2.5 py-2 rounded-md;
+  @apply flex px-2 py-1 rounded-md;
   @apply text-sm font-medium text-gray-900 bg-gray-100 border border-transparent;
   @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
   @apply dark:text-white dark:bg-gray-900;

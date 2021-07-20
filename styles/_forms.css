@@ -3,7 +3,7 @@
 }
 
 .navbar-search--icon {
-  @apply pointer-events-none text-sm;
+  @apply pointer-events-none text-sm pl-1;
 }
 
 .navbar-search--icon i {

@@ -32,18 +32,20 @@ export const Topbar = () => {
     <>
     <div className={`topbar`}>
 
-      <div className="logo">
+      <div className="flex items-center">
+        <div className="logo">
 
-        {/* Logo */}
-        <Link href={`/`}>
-          <a className="flex justify-center items-center">
-            <img className="logo--img" src="/images/dhunt.svg" alt="dhunt.io" />
-            <strong className="logo--text ml-2">
-              <span>rADA</span>
-            </strong>
-          </a>
-        </Link>
+          {/* Logo */}
+          <Link href={`/`}>
+            <a className="flex justify-center items-center">
+              <img className="logo--img" src="/images/dhunt.svg" alt="dhunt.io" />
+              <strong className="logo--text ml-2">
+                <span>RADA</span>
+              </strong>
+            </a>
+          </Link>
 
+        </div>
       </div>
 
       <div className="flex items-center space-x-2">

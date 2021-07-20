@@ -81,6 +81,8 @@ export const Navbar = () => {
       </div>
     </nav>
 
+    <ThemeSwitch />
+
     {/* Mobile Nav
     <div className="navbar-app">
 

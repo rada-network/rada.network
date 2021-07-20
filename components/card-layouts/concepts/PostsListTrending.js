@@ -21,7 +21,7 @@ export const PostsListTrending = ({title, extraClass}) => {
         <div class="section-cta">
           <a class="btn">
             <span classname="btn__text text-color-desc">
-              Show all
+              More
             </span>
             <span class="btn__caret_right"></span>
           </a>

@@ -8,20 +8,20 @@ Layout
 }
 
 .pane-left {
-  @apply flex lg:flex-col w-full h-auto order-2 lg:order-1 overflow-hidden lg:w-32 lg:h-full;
+  @apply flex lg:flex-col w-full h-auto justify-between order-2 lg:order-1 overflow-hidden lg:w-32 lg:h-full;
   @apply bg-white bg-opacity-90 border-r border-gray-100 z-50;
   @apply dark:bg-deepgray-100 dark:border-gray-800;
 }
 
 .pane-center {
-  @apply flex flex-1 flex-col h-full w-full items-stretch order-1 lg:order-2;
+  height: calc(100% - var(--topbar-height));
+  @apply flex flex-1 flex-col md:h-full w-full items-stretch order-1 lg:order-2;
 }
 
 .pane-center--top {
   @apply flex lg:hidden flex-shrink-0;
   @apply bg-white bg-opacity-90 border-b border-gray-100 z-50;
   @apply dark:bg-deepgray-100 dark:border-gray-800;
-  height: var(--topbar-height);
 }
 
 .pane-center--main {
@@ -61,13 +61,12 @@ Layout
 Nav & Top Bars
 --------------------------------------------- */
 .topbar {
-  @apply flex justify-between px-4 h-full;
+  @apply flex justify-between px-4 py-2 h-full w-full;
 }
 
 .logo {
   @apply flex items-center justify-center;
 }
-
 
 .navbar .logo {
   @apply hidden lg:flex py-4;
@@ -77,11 +76,47 @@ Nav & Top Bars
   @apply block w-auto h-10;
 }
 
+.topbar .logo--img {
+  @apply h-8;
+}
+
 .logo--text {
   @apply bg-gradient-to-b from-purple-400 to-purple-700 font-semibold;
   @apply dark:from-purple-500 dark:to-purple-700;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* 
+Navbar 
+*/
+.navbar {
+  @apply relative flex flex-col w-full;
+}
+
+.navbar-main {
+  @apply flex justify-evenly lg:flex-col w-full;
+}
+
+.nav-item {
+  @apply flex flex-col lg:flex-row items-baseline whitespace-nowrap w-full h-full px-2 py-2;
+  @apply leading-10;
+  @apply text-gray-900 text-opacity-50;
+  @apply dark:text-white dark:text-opacity-60;
+  @apply hover:text-opacity-90;
+}
+
+.nav-item .icon {
+  @apply text-lg lg:text-base leading-none mt-2 mb-1 lg:my-0 lg:mr-1 w-8 text-center;
+}
+
+.nav-item--text {
+  @apply text-xs;
+}
+
+.nav-item-active {
+  @apply text-primary-700 text-opacity-100 font-medium;
+  @apply bg-primary-50 dark:text-white dark:text-opacity-100;
 }
 
 

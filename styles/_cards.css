@@ -1,6 +1,11 @@
 /*
 Generic Styles
 ----------------------------------------------*/
+.cards-list {
+  @apply flex flex-col;
+  @apply bg-white dark:bg-deepgray-100;
+}
+
 .card {
   @extend %global-padding;
   @apply flex h-full relative transition;

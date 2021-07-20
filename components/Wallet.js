@@ -185,7 +185,7 @@ const ConnectedButton = ({wallet}) => (
 
 const NotConnectedButton = ({wallet, showModal}) => (
   <div onClick={ showModal } type="button" className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
-    <span className="icon text-base leading-5"><i className="fad fa-wallet" /></span>
+    <span className="icon leading-5"><i className="fad fa-wallet" /></span>
     <span className="hidden md:inline-block md:ml-2 whitespace-nowrap">Connect Wallet</span>
   </div>
 )
