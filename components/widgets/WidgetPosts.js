@@ -36,9 +36,6 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 <img src="https://picsum.photos/300/300?random=1" alt="" />
               </div>
 
-              <div className={`text-color-desc widget-list--item--text`}>
-                Provide a simple and good way for family and groups participate in join projects
-              </div>
             </div>
 
             <div className="metadata-wrapper mt-2">
@@ -69,9 +66,6 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 <img src="https://picsum.photos/300/300?random=2" alt="" />
               </div>
 
-              <div className={`text-color-desc widget-list--item--text`}>
-                Provide a simple and good way for family and groups participate in join projects
-              </div>
             </div>
 
             <div className="metadata-wrapper mt-2">
@@ -100,10 +94,6 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
             <div className="overflow-hidden">
               <div className={`widget-list--item--media`}>
                 <img src="https://picsum.photos/300/300?random=3" alt="" />
-              </div>
-
-              <div className={`text-color-desc widget-list--item--text`}>
-                The Chinese Cardano community has limited access to accurate Cardano-related information which led to low awareness and mass misconception
               </div>
             </div>
 
@@ -166,10 +156,6 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
             <div className="overflow-hidden">
               <div className={`widget-list--item--media`}>
                 <img src="https://picsum.photos/300/300?random=4" alt="" />
-              </div>
-
-              <div className={`text-color-desc widget-list--item--text`}>
-                People desire a secure, reliable, and immutable source of truth when dealing with votes, polls, and elections
               </div>
             </div>
 

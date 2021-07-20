@@ -34,7 +34,7 @@ Widget Lists
 
 .widget-list--item {
   @apply flex flex-col justify-between;
-  @apply px-4 py-4 md:py-6 md:px-8;
+  @apply p-4;
   @apply border-b border-gray-500 border-opacity-10;
 }
 
@@ -72,5 +72,5 @@ Widget Lists Compact
 
 .widget-list-sm--item {
   @extend .widget-list--item;
-  @apply px-4 py-4 md:px-8;
+  @apply px-4 py-4;
 }

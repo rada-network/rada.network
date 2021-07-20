@@ -12,28 +12,28 @@ export default function SidebarHome({className, extraClass}) {
   return (
     <>
     <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 1280: 2}}>
-        <Masonry gutter="1rem">
-      <WidgetPricing
-        title="Market Insights"
-        text="Lorem Ipsum Dolor sit Amet"
-        projectPlatformShort="ada"
-      />
-      <WidgetEvents
-        title="Cardano Events"
-        widgetIcon="calendar-day"
-      />
-      <WidgetStats
-        title="Network Information"
-        widgetIcon="chart-pie-alt"
-      />
-      <WidgetInfluencers
-        title="Influencers"
-        widgetIcon="user-secret"
-      />
-      <WidgetPosts
-        title="Top Projects"
-        widgetIcon="code-branch"
-      />
+      <Masonry gutter="1rem">
+        <WidgetPricing
+          title="Market Insights"
+          text="Lorem Ipsum Dolor sit Amet"
+          projectPlatformShort="ada"
+        />
+        <WidgetEvents
+          title="Cardano Events"
+          widgetIcon="calendar-day"
+        />
+        <WidgetStats
+          title="Network Information"
+          widgetIcon="chart-pie-alt"
+        />
+        <WidgetInfluencers
+          title="Influencers"
+          widgetIcon="user-secret"
+        />
+        <WidgetPosts
+          title="Top Projects"
+          widgetIcon="code-branch"
+        />
       </Masonry>
       </ResponsiveMasonry>
     </>

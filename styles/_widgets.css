@@ -2,17 +2,17 @@
 Generic Styles
 -------------------------------- */
 .widget {
-  @apply m-4 flex flex-col;
-  @apply bg-white border-b border-gray-500 border-opacity-10;
+  @apply flex flex-col;
+  @apply bg-white border border-gray-500 border-opacity-10;
 }
 
 .widget-header {
-  @apply flex justify-between items-center px-4 py-4 md:px-8 w-full;
+  @apply flex justify-between items-center px-4 py-2 w-full;
   @apply border-b border-gray-500 border-opacity-10;
 }
 
 .widget-body {
-  @apply flex flex-col flex-1 px-4 md:px-8 py-6 w-full;
+  @apply flex flex-col flex-1 px-4 py-6 w-full;
 }
 
 .widget-body-p0 {
@@ -20,11 +20,11 @@ Generic Styles
 }
 
 .widget-footer {
-  @apply flex justify-between px-4 md:px-8 py-4 w-full;
+  @apply flex justify-between px-4 py-2 w-full;
 }
 
 .widget-title {
-  @apply text-lg md:text-lg font-medium;
+  @apply text-base font-medium;
   > a {
     @apply hover:text-gray-900;
   }

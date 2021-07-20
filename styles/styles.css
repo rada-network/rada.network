@@ -14,7 +14,6 @@ Layout
 }
 
 .pane-center {
-  height: calc(100% - var(--topbar-height));
   @apply flex flex-1 flex-col md:h-full w-full items-stretch order-1 lg:order-2;
 }
 
@@ -119,6 +118,7 @@ Navbar
 Sidebar
 --------------------------------------------- */
 .sidebar {
+  @apply p-4;
 }
 
 
