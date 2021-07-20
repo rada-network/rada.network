@@ -84,7 +84,7 @@ export const Sidebar = ({className, extraClass, type}) => {
 
   return (
     <div className={`${className} ${extraClass || ''}`} ref={sidebarRef} >
-      <ResponsiveMasonry columnsCountBreakPoints={{350: 2, 1280: 2}}>
+      <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 1280: 2}}>
         <Masonry gutter="1rem">
           <SidebarWidgets />
         </Masonry>
