@@ -1,64 +1,71 @@
-@import "../_animations";
+@import "_animations";
 
 /* 
 Headers
 --------------------------------------------- */
 .header {
-  @apply overflow-hidden;
-  @apply bg-gradient-to-br from-gray-600 to-gray-500;
+  @apply overflow-hidden p-4 pb-0;
   animation: fadein 1s ease;
 }
 
-.header_inner {
+.header-inner {
   @apply flex relative;
+  @apply bg-gradient-to-br from-gray-600 to-gray-500 rounded shadow;
 }
 
-.header_body {
-  @apply p-4 flex flex-col max-w-screen-sm lg:w-3/4;
+.header-body {
+  @apply p-4 w-full;
 }
 
-.header_title {
-  @apply text-xl leading-8 lg:text-2xl lg:leading-snug font-medium text-white;
+.header-media {
+  @apply absolute inset-0 left-auto w-2/3 md:w-2/5;
+  @apply opacity-50 lg:opacity-100;
 }
 
-.header_text {
-  @apply text-base lg:text-base font-light text-white text-opacity-80 mt-2;
+.header-title {
+  @apply text-3xl leading-8 text-white;
 }
+
+.header-text {
+  @apply text-base font-light text-white text-opacity-70 mt-2;
+}
+
+/* Animation */
+.ani-floating {
+  @apply relative -mt-8 -mb-40;
+  animation: floating 60s infinite ease-in-out;
+  will-change: transform;
+}
+
 
 /* 
 Category Header 
 */
-.header[type="defi"],
-.header[type="Metadata"],
-.header[type="problem"] {
+.header[type="defi"] .header-inner,
+.header[type="Metadata"] .header-inner,
+.header[type="problem"] .header-inner{
   @apply bg-gradient-to-br from-red-500 to-red-400;
 }
 
-.header[type="token"] {
+.header[type="token"] .header-inner{
   @apply bg-gradient-to-br from-green-500 to-green-400;
 }
 
-.header[type="marketing"],
-.header[type="nft"] {
+.header[type="marketing"] .header-inner,
+.header[type="nft"] .header-inner,
+.header[type="home"] .header-inner {
   @apply bg-gradient-to-br from-purple-500 to-purple-400;
 }
 
-.header[type="dapp"],
-.header[type="ecosystem"] {
+.header[type="dapp"] .header-inner,
+.header[type="ecosystem"] .header-inner {
   @apply bg-gradient-to-br from-blue-500 to-blue-400;
 }
 
-.header[type="dao"] {
+.header[type="dao"] .header-inner {
   @apply bg-gradient-to-br from-blue-600 to-blue-500;
 }
 
-.card[type="utilities"] {
+.header[type="utilities"] .header-inner {
   @apply bg-gradient-to-br from-yellow-500 to-yellow-400;
-}
-
-/* Animation */
-.floating {
-  @apply relative mt-8 -mb-40 lg:mt-16 lg:-mb-48;
-  animation: floating 16s infinite ease-in-out;
-  will-change: transform;
 }
