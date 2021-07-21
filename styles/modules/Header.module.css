@@ -5,12 +5,12 @@ Headers
 --------------------------------------------- */
 .header {
   @apply overflow-hidden;
-  @apply bg-gradient-to-br from-gray-600 to-gray-500;
   animation: fadein 1s ease;
 }
 
 .header_inner {
   @apply flex relative;
+  @apply bg-gradient-to-br from-gray-600 to-gray-500;
 }
 
 .header_body {
