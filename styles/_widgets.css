@@ -24,7 +24,7 @@ Generic Styles
 }
 
 .widget-title {
-  @apply text-base font-medium;
+  @apply text-sm font-medium;
   > a {
     @apply hover:text-gray-900;
   }
@@ -34,7 +34,7 @@ Generic Styles
 }
 
 .widget-icon-cf {
-  @apply text-2xl;
+  @apply text-xl leading-6;
 }
 
 .widget-icon-fa {
@@ -48,6 +48,36 @@ Footer
   @apply text-right w-full text-xs text-gray-500;
 }
 
+/* 
+Links 
+*/
+.widget-links {
+  @apply flex;
+}
+
+.widget-links a {
+  @apply flex w-px-16 h-px-16 justify-center items-center rounded ml-1 text-xs;
+  @apply hover:text-opacity-100;
+}
+
+.widget-links .icon {
+  @apply opacity-50;
+}
+
+.widget-links a:hover .icon {
+  @apply opacity-100;
+}
+
+/* 
+Media 
+*/
+.widget-media {
+  @apply bg-gray-100 w-px-48 h-px-48 flex-shrink-0 overflow-hidden;
+}
+
+.widget-media img {
+  @apply object-cover h-full;
+}
 
 /*
 Widget Events
@@ -59,6 +89,13 @@ Widget Events
   .badge.badge-transparent {
     @apply w-auto mr-0;
   }
+}
+
+/*
+Widget Influencers
+-------------------------------- */
+.widget-influencers .widget-list--item--title {
+  @apply flex items-center;
 }
 
 

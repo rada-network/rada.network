@@ -135,6 +135,7 @@ export default observer((props) => {
       <div className={`pane-content--sec`}>
 
         <div className={`pane-content--sec--top`}>
+          
         </div>
 
         <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>

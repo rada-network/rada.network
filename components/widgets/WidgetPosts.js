@@ -23,29 +23,42 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Post Item */}
           <Link href="#" target="_blank">
-          <div className={`group widget-list--item widget-list--link`}>
+          <div className={`card card-post`}>
 
-            <div className={`widget-list--item--title`}>
-              <a href="#" target="_blank">
-                <span className="text-color-title">Family/Groups join planning dAPP</span>
-              </a>
+            <div className={`card-media`}>
+              <div className={`card-media-img`}>
+                <img className={`card-img`} src="https://picsum.photos/300/300?random=1" alt="" />
+              </div>
             </div>
 
-            <div className="overflow-hidden">
-              <div className={`widget-list--item--media`}>
-                <img src="https://picsum.photos/300/300?random=1" alt="" />
+            <div className="card-body">
+              <div className={`widget-list--item--title card-title`}>
+                <a href="#" target="_blank">
+                  <span className="text-color-title">Family/Groups join planning dAPP</span>
+                </a>
               </div>
 
-            </div>
-
-            <div className="metadata-wrapper mt-2">
-              <a className="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
-                <span className="metadata-value">dapp</span> 
-              </a>
-              <a rel="nofollow" target="_blank" href="https://cardano.org/" className="metadata project-metadata_platform project-metadata_platform_car ">
-                <span className="icon mr-1"><i className="cf cf-car text-base"></i></span><span className="metadata-value">Cardano</span>
-              </a>
-              <div className="metadata metadata_date"><span className="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+              <div class="metadata-wrapper justify-between mt-1 md:mt-2">
+                <div class="flex flex-shrink-0">
+                  <div class="metadata metadata-source">
+                    <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
+                    <span class="metadata-value" title="CoinTelegraph">DailyHodl</span>
+                  </div>
+                  <div class="metadata metadata-date">
+                    <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+                  </div>
+                </div>
+                <div class="flex metadata-wrapper_nodivide">
+                  <div class="metadata">
+                    <span class="icon mr-1"><i class="far fa-comment-alt"></i></span>
+                    <span class="">107</span>
+                  </div>
+                  <div class="metadata">
+                    <span class="icon mr-1"><i class="far fa-arrow-up"></i></span>
+                    <span>280</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -53,29 +66,42 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Post Item */}
           <Link href="#" target="_blank">
-          <div className={`group widget-list--item widget-list--link`}>
+          <div className={`card card-post`}>
 
-            <div className={`widget-list--item--title`}>
-              <a href="#" target="_blank">
-                <span className="text-color-title">Family/Groups join planning dAPP</span>
-              </a>
+            <div className={`card-media`}>
+              <div className={`card-media-img`}>
+                <img className={`card-img`} src="https://picsum.photos/300/300?random=2" alt="" />
+              </div>
             </div>
 
-            <div className="overflow-hidden">
-              <div className={`widget-list--item--media`}>
-                <img src="https://picsum.photos/300/300?random=2" alt="" />
+            <div className="card-body">
+              <div className={`widget-list--item--title card-title`}>
+                <a href="#" target="_blank">
+                  <span className="text-color-title">Family/Groups join planning dAPP</span>
+                </a>
               </div>
 
-            </div>
-
-            <div className="metadata-wrapper mt-2">
-              <a className="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
-                <span className="metadata-value">dapp</span> 
-              </a>
-              <a rel="nofollow" target="_blank" href="https://cardano.org/" className="metadata project-metadata_platform project-metadata_platform_car ">
-                <span className="icon mr-1"><i className="cf cf-car text-base"></i></span><span className="metadata-value">Cardano</span>
-              </a>
-              <div className="metadata metadata_date"><span className="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+              <div class="metadata-wrapper justify-between mt-1 md:mt-2">
+                <div class="flex flex-shrink-0">
+                  <div class="metadata metadata-source">
+                    <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
+                    <span class="metadata-value" title="CoinTelegraph">Project Catalyst</span>
+                  </div>
+                  <div class="metadata metadata-date">
+                    <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+                  </div>
+                </div>
+                <div class="flex metadata-wrapper_nodivide">
+                  <div class="metadata">
+                    <span class="icon mr-1"><i class="far fa-comment-alt"></i></span>
+                    <span class="">28</span>
+                  </div>
+                  <div class="metadata">
+                    <span class="icon mr-1"><i class="far fa-arrow-up"></i></span>
+                    <span>83</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -83,28 +109,42 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Post Item */}
           <Link href="#" target="_blank">
-          <div className={`group widget-list--item widget-list--link`}>
+          <div className={`card card-post`}>
 
-            <div className={`widget-list--item--title`}>
-              <a href="#" target="_blank">
-                <span className="text-color-title">Cardano China Info Hub</span>
-              </a>
-            </div>
-
-            <div className="overflow-hidden">
-              <div className={`widget-list--item--media`}>
-                <img src="https://picsum.photos/300/300?random=3" alt="" />
+            <div className={`card-media`}>
+              <div className={`card-media-img`}>
+                <img className={`card-img`} src="https://picsum.photos/300/300?random=3" alt="" />
               </div>
             </div>
 
-            <div className="metadata-wrapper mt-2">
-              <a className="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
-                <span className="metadata-value">dapp</span> 
-              </a>
-              <a rel="nofollow" target="_blank" href="https://cardano.org/" className="metadata project-metadata_platform project-metadata_platform_car ">
-                <span className="icon mr-1"><i className="cf cf-car text-base"></i></span><span className="metadata-value">Cardano</span>
-              </a>
-              <div className="metadata metadata_date"><span className="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+            <div className="card-body">
+              <div className={`widget-list--item--title card-title`}>
+                <a href="#" target="_blank">
+                  <span className="text-color-title">Family/Groups join planning dAPP</span>
+                </a>
+              </div>
+
+              <div class="metadata-wrapper justify-between mt-1 md:mt-2">
+                <div class="flex flex-shrink-0">
+                  <div class="metadata metadata-source">
+                    <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
+                    <span class="metadata-value" title="CoinTelegraph">CryptoTalk</span>
+                  </div>
+                  <div class="metadata metadata-date">
+                    <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+                  </div>
+                </div>
+                <div class="flex metadata-wrapper_nodivide">
+                  <div class="metadata">
+                    <span class="icon mr-1"><i class="far fa-comment-alt"></i></span>
+                    <span class="">15</span>
+                  </div>
+                  <div class="metadata">
+                    <span class="icon mr-1"><i class="far fa-arrow-up"></i></span>
+                    <span>27</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -112,32 +152,42 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Post Item */}
           <Link href="#" target="_blank">
-          <div className={`group widget-list--item widget-list--link`}>
+          <div className={`card card-post`}>
 
-            <div className={`widget-list--item--title`}>
-              <a href="#" target="_blank">
-                <span className="text-color-title">This is a post with no image</span>
-              </a>
-            </div>
-
-            <div className="overflow-hidden">
-              {/* <div className={`widget-list--item--media`}>
-                <img src="https://picsum.photos/300/300?random=4" alt="" />
-              </div> */}
-
-              <div className={`text-color-desc widget-list--item--text`}>
-                People desire a secure, reliable, and immutable source of truth when dealing with votes, polls, and elections
+            <div className={`card-media`}>
+              <div className={`card-media-img`}>
+                <img className={`card-img`} src="https://picsum.photos/300/300?random=4" alt="" />
               </div>
             </div>
 
-            <div className="metadata-wrapper mt-2">
-              <a className="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
-                <span className="metadata-value">dapp</span> 
-              </a>
-              <a rel="nofollow" target="_blank" href="https://cardano.org/" className="metadata project-metadata_platform project-metadata_platform_car ">
-                <span className="icon mr-1"><i className="cf cf-car text-base"></i></span><span className="metadata-value">Cardano</span>
-              </a>
-              <div className="metadata metadata_date"><span className="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+            <div className="card-body">
+              <div className={`widget-list--item--title card-title`}>
+                <a href="#" target="_blank">
+                  <span className="text-color-title">Family/Groups join planning dAPP</span>
+                </a>
+              </div>
+
+              <div class="metadata-wrapper justify-between mt-1 md:mt-2">
+                <div class="flex flex-shrink-0">
+                  <div class="metadata metadata-source">
+                    <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
+                    <span class="metadata-value" title="CoinTelegraph">CoinTelegraph</span>
+                  </div>
+                  <div class="metadata metadata-date">
+                    <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+                  </div>
+                </div>
+                <div class="flex metadata-wrapper_nodivide">
+                  <div class="metadata">
+                    <span class="icon mr-1"><i class="far fa-comment-alt"></i></span>
+                    <span class="">2</span>
+                  </div>
+                  <div class="metadata">
+                    <span class="icon mr-1"><i class="far fa-arrow-up"></i></span>
+                    <span>88</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -145,28 +195,42 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
           {/* Post Item */}
           <Link href="#" target="_blank">
-          <div className={`group widget-list--item widget-list--link`}>
+          <div className={`card card-post`}>
 
-            <div className={`widget-list--item--title`}>
-              <a href="#" target="_blank">
-                <span className="text-color-title">Cardano On-Chain Voting</span>
-              </a>
-            </div>
-
-            <div className="overflow-hidden">
-              <div className={`widget-list--item--media`}>
-                <img src="https://picsum.photos/300/300?random=4" alt="" />
+            <div className={`card-media`}>
+              <div className={`card-media-img`}>
+                <img className={`card-img`} src="https://picsum.photos/300/300?random=5" alt="" />
               </div>
             </div>
 
-            <div className="metadata-wrapper mt-2">
-              <a className="metadata project-metadata_type project-metadata_type_dapp " href="/explore/dapp"> 
-                <span className="metadata-value">dapp</span> 
-              </a>
-              <a rel="nofollow" target="_blank" href="https://cardano.org/" className="metadata project-metadata_platform project-metadata_platform_car ">
-                <span className="icon mr-1"><i className="cf cf-car text-base"></i></span><span className="metadata-value">Cardano</span>
-              </a>
-              <div className="metadata metadata_date"><span className="metadata-value" title="6:23 PM - May 25, 2021">May 25</span></div>
+            <div className="card-body">
+              <div className={`widget-list--item--title card-title`}>
+                <a href="#" target="_blank">
+                  <span className="text-color-title">Family/Groups join planning dAPP</span>
+                </a>
+              </div>
+
+              <div class="metadata-wrapper justify-between mt-1 md:mt-2">
+                <div class="flex flex-shrink-0">
+                  <div class="metadata metadata-source">
+                    <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
+                    <span class="metadata-value" title="CoinTelegraph">U.Today</span>
+                  </div>
+                  <div class="metadata metadata-date">
+                    <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+                  </div>
+                </div>
+                <div class="flex metadata-wrapper_nodivide">
+                  <div class="metadata">
+                    <span class="icon mr-1"><i class="far fa-comment-alt"></i></span>
+                    <span class="">15</span>
+                  </div>
+                  <div class="metadata">
+                    <span class="icon mr-1"><i class="far fa-arrow-up"></i></span>
+                    <span>57</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>

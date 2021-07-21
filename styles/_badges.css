@@ -2,7 +2,7 @@
 Badges
 */
 .badge {
-  @apply text-xs px-2 py-1 whitespace-nowrap mt-1 lg:mt-2;
+  @apply text-xs px-2 py-1 whitespace-nowrap mt-1;
   @apply bg-gray-400 bg-opacity-10 text-gray-400;
   @apply rounded-sm;
 

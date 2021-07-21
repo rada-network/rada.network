@@ -18,6 +18,22 @@ export default function SidebarHome({className, extraClass}) {
           text="Lorem Ipsum Dolor sit Amet"
           projectPlatformShort="ada"
         />
+        <WidgetPosts
+          title="Trending News"
+          widgetIcon="newspaper"
+        />
+        <WidgetPosts
+          title="Hot Media"
+          widgetIcon="icons"
+        />
+        <WidgetPosts
+          title="Social Signals"
+          widgetIcon="fire-alt"
+        />
+        <WidgetPosts
+          title="Top Projects"
+          widgetIcon="code"
+        />
         <WidgetEvents
           title="Cardano Events"
           widgetIcon="calendar-day"
@@ -29,10 +45,6 @@ export default function SidebarHome({className, extraClass}) {
         <WidgetInfluencers
           title="Influencers"
           widgetIcon="user-secret"
-        />
-        <WidgetPosts
-          title="Top Projects"
-          widgetIcon="code-branch"
         />
       </Masonry>
       </ResponsiveMasonry>

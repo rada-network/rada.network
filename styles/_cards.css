@@ -12,7 +12,7 @@ Generic Styles
 }
 
 .card-media {
-  @apply flex flex-col flex-shrink-0 overflow-hidden rounded-sm;
+  @apply flex flex-col flex-shrink-0 overflow-hidden rounded-sm mr-2 md:mr-4;
 }
 
 .card-img {
@@ -61,7 +61,7 @@ Card Post (News, Projects,...)
 }
 
 .card-post .card-body {
-  @apply flex flex-col h-full w-full ml-4;
+  @apply flex flex-col h-full w-full;
 }
 
 .card-post .card-body--header {
