@@ -84,7 +84,7 @@ export const Navbar = () => {
     <div className="hidden lg:flex">
       <ThemeSwitch />
     </div>
-    
+
     </>
   );
 }

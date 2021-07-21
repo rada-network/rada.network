@@ -16,7 +16,22 @@ const newsGql = gql`
         }
     }
 `
-export default newsGql
+
+const relatedNewsGql = gql`
+    query newsRelated($skip : Int!, $take : Int!, $id : String!){
+        newsRelated (skip : $skip, take : $take, id : $id){
+            id
+            title
+            description
+            thumbnailUri
+            source
+            content
+            keywords
+            createdAt
+            websiteUri
+        }
+    }
+`
 
 export async function getNews({take,skip,query,orderBy}){
   const client = getClient()
@@ -28,6 +43,18 @@ export async function getNews({take,skip,query,orderBy}){
       take: take,
       orderBy : orderBy,
       query : query
+    }
+  })
+}
+
+export async function getNewsRelated({take,skip,id}){
+  const client = getClient()
+  return await client.query({
+    query: relatedNewsGql,
+    variables: {
+      skip: skip,
+      take: take,
+      id : id
     }
   })
 }

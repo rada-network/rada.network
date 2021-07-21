@@ -2,15 +2,16 @@ import React from "react";
 
 export default function showSources({source}) {
   const forumCardanoLogo = 'https://sjc3.discourse-cdn.com/business4/user_avatar/forum.cardano.org/cardano-foundation/45/22471_2.png'
-  const iohkLogo = 'images/logo-sources/iohk.png'
-  const coindeskLogo = "images/logo-sources/coindesk.png"
+  const iohkLogo = '/images/logo-sources/iohk.png'
+  const coindeskLogo = "/images/logo-sources/coindesk.png"
   // const coindeskLogo = "https://seeklogo.com/images/C/coindesk-logo-C8CDEB939F-seeklogo.com.png"
-  const cointeleLogo = "images/logo-sources/cointelegraph.png"
-  const adapulseLogo = 'images/logo-sources/adapulse.png'
+  const cointeleLogo = "/images/logo-sources/cointelegraph.png"
+  const adapulseLogo = '/images/logo-sources/adapulse.png'
+  const coingapeLogo = '/images/logo-sources/coingape.png'
 
-  const listLogos = [forumCardanoLogo, iohkLogo, coindeskLogo, cointeleLogo, adapulseLogo]
-  const displaySources = ['Cardano Foundation', 'IOHK', 'CoinDesk', 'CoinTelegraph', 'AdaPulse']
-  const listSources = ['forum.cardano', 'iohk', 'coindesk', 'cointele', 'adapulse']
+  const listLogos = [forumCardanoLogo, iohkLogo, coindeskLogo, cointeleLogo, adapulseLogo, coingapeLogo]
+  const displaySources = ['Cardano Foundation', 'IOHK', 'CoinDesk', 'CoinTelegraph', 'AdaPulse', 'CoinGape']
+  const listSources = ['forum.cardano', 'iohk', 'coindesk', 'cointele', 'adapulse', 'coingape']
   for (const [i, value] of listSources.entries()) {
     if (source.toLowerCase().includes(value)) {
       return (
