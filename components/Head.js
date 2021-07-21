@@ -31,19 +31,12 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
         onLoad="this.media='all'"
         key="google-fonts"
       />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap"
+      <link 
+        href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" 
         rel="stylesheet"
         media="print"
         onLoad="this.media='all'"
         key="google-fonts_2"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-        rel="stylesheet"
-        media="print"
-        onLoad="this.media='all'"
-        key="google-fonts_4"
       />
       <link
       rel="stylesheet"

@@ -81,9 +81,9 @@ export const Navbar = () => {
       </div>
     </nav>
 
-    <div className="hidden lg:flex">
+    {/* <div className="hidden lg:flex justify-center p-4">
       <ThemeSwitch />
-    </div>
+    </div> */}
 
     </>
   );

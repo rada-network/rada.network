@@ -1,5 +1,25 @@
 @import '_presets';
 
+/*
+Lists Styles 
+-------------------------------- */
+.list-group {
+}
+
+.list-group-item {
+  @apply flex justify-between items-center px-1 py-3;
+  @apply border-b border-gray-100;
+}
+
+.list-group-sm .list-group-item {
+  @apply px-1 py-2;
+}
+
+.list-group-v .list-group-item {
+  @apply flex flex-col justify-between items-center px-1 py-4;
+}
+
+
 /* 
 Metadata 
 ----------------------------------- */
@@ -13,16 +33,16 @@ Metadata
 }
 
 .metadata + .metadata {
-  @apply ml-1 md:ml-2;
+  @apply ml-1;
   &::before {
-    @apply block mr-1 md:mr-2 text-xl leading-4;
+    @apply block mr-1 text-xl leading-4;
     content: "\00B7";
   }
 }
 
 .metadata-wrapper_nodivide {
   .metadata + .metadata {
-    @apply ml-2;
+    @apply ml-1;
     &::before {
       @apply hidden;
     }
@@ -67,6 +87,181 @@ Metadata
 .dark .project-comment_count svg {
   stroke: #fff;
   fill: #fff;
+}
+
+
+/*
+Badges
+-------------------------------- */
+.badge {
+  @apply text-xs px-2 py-1 whitespace-nowrap mt-1;
+  @apply bg-gray-400 bg-opacity-10 text-gray-400;
+  @apply rounded-sm;
+
+  &::before {
+    display: none !important;
+  }
+
+  .icon {
+    @apply mr-1 md:mr-2;
+  }
+
+  .cf {
+    @apply md:text-base;
+  }
+
+}
+
+a.badge {
+  @apply hover:bg-opacity-20 hover:text-gray-700 dark:hover:text-white;
+}
+
+/* Type */
+.badge-transparent {
+  @apply bg-transparent;
+}
+.badge-dapp {
+  @apply text-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white;
+}
+
+.badge-nft {
+  @apply text-purple-500 hover:border-purple-500 hover:bg-purple-500 hover:text-white;
+}
+
+.badge-token {
+  @apply text-yellow-500 hover:border-yellow-500 hover:bg-yellow-500 hover:text-white;
+}
+
+.badge-defi {
+  @apply text-yellow-500 hover:border-yellow-500 hover:bg-yellow-500 hover:text-white;
+}
+
+/* Event */
+.badge.meetup {
+  @apply bg-yellow-50 text-yellow-500;
+}
+
+.badge.airdrop {
+  @apply bg-blue-50 text-blue-500;
+}
+
+.badge.launchpad {
+  @apply bg-purple-50 text-purple-500;
+}
+
+.badge.release,
+.badge.intergration {
+  @apply bg-green-50 text-green-500;
+}
+
+.badge.expired {
+  @apply w-auto;
+}
+
+/*
+Small Badges
+*/
+.badge-sm {
+  @apply border-none rounded-sm rounded-tl-md rounded-br-md text-xxs px-2 pt-1px pb-1px;
+  @apply bg-gray-100 border text-gray-500;
+}
+
+.badge-sm.badge-dapp {
+  @apply text-blue-500 hover:bg-blue-500 hover:text-white;
+}
+
+.badge-sm.badge-nft {
+  @apply text-purple-500 hover:bg-purple-500 hover:text-white;
+}
+
+.badge-sm.badge-token {
+  @apply text-yellow-500 hover:bg-yellow-500 hover:text-white;
+}
+
+.badge-sm.badge-defi {
+  @apply text-yellow-500 hover:bg-yellow-500 hover:text-white;
+}
+
+/* Platforms */
+/* .badge-solana {
+  @apply text-green-600 hover:border-green-600 hover:bg-green-600 hover:text-white;
+  &:hover .cf-sol {
+    @apply text-white;
+  }
+}
+
+.badge-ethereum {
+  @apply text-gray-600 hover:border-gray-600 hover:bg-gray-600 hover:text-white;
+  &:hover .cf-eth {
+    @apply text-white;
+  }
+}
+
+.badge-cardano {
+  @apply text-purple-600 hover:border-purple-600 hover:bg-purple-600 hover:text-white;
+  &:hover .cf-eth {
+    @apply text-white;
+  }
+}
+
+.badge-ripple {
+  @apply text-blue-600 hover:border-blue-600 hover:bg-blue-600 hover:text-white;
+  &:hover .cf-eth {
+    @apply text-white;
+  }
+} */
+
+
+/*
+Icons Styles
+------------------------------ */
+
+.icon {
+  @apply inline-block;
+  svg {
+    width: 1em;
+  }
+}
+
+.cf {
+  @apply text-base;
+}
+
+.cf-btc {
+  @apply text-yellow-600;
+}
+
+.cf-eth,
+.cf-rip {
+  @apply text-gray-900;
+}
+
+.cf-ada,
+.cf-car {
+  @apply text-purple-700;
+}
+
+.cf-bnb,
+.cf-bsc {
+  @apply text-yellow-400;
+}
+
+.cf-sol {
+  @apply text-green-600;
+}
+
+.cf-dot,
+.cf-pol {
+  @apply text-pink-500;
+}
+
+.cf-tro {
+  @apply text-red-700;
+}
+
+/* External Indicator */
+.ico-external-link {
+  @apply transition opacity-0 transform scale-0 group-hover:opacity-100 group-hover:scale-100;
 }
 
 

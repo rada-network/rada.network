@@ -34,7 +34,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
             <div className="card-body">
               <div className={`widget-list--item--title card-title`}>
                 <a href="#" target="_blank">
-                  <span className="text-color-title">Family/Groups join planning dAPP</span>
+                  <span className="text-color-title">MakerDAO to dissolve Foundation and become truly decentralized again</span>
                 </a>
               </div>
 
@@ -77,7 +77,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
             <div className="card-body">
               <div className={`widget-list--item--title card-title`}>
                 <a href="#" target="_blank">
-                  <span className="text-color-title">Family/Groups join planning dAPP</span>
+                  <span className="text-color-title">Gold or Bitcoin – Where can you park your funds?</span>
                 </a>
               </div>
 
@@ -120,7 +120,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
             <div className="card-body">
               <div className={`widget-list--item--title card-title`}>
                 <a href="#" target="_blank">
-                  <span className="text-color-title">Family/Groups join planning dAPP</span>
+                  <span className="text-color-title">Fake News, Propaganda? Surging Delta Variant Blamed For Bitcoin Sell-Off</span>
                 </a>
               </div>
 
@@ -206,7 +206,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
             <div className="card-body">
               <div className={`widget-list--item--title card-title`}>
                 <a href="#" target="_blank">
-                  <span className="text-color-title">Family/Groups join planning dAPP</span>
+                  <span className="text-color-title">Here’s the catalyst for Bitcoin’s future growth you might not be aware of</span>
                 </a>
               </div>
 
