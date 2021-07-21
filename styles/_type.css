@@ -7,7 +7,7 @@ Typography Styles
 Core Contents
 ----------------------------------- */
 .text-color-title {
-  @apply text-gray-900 dark:text-gray-100;
+  @apply text-gray-800 dark:text-gray-100;
 }
 
 .text-color-desc {
