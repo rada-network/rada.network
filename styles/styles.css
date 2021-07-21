@@ -119,7 +119,7 @@ Navbar
 Sidebar
 --------------------------------------------- */
 .sidebar {
-  @apply p-4;
+  @apply lg:p-4;
 }
 
 
