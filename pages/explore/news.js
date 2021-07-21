@@ -2,10 +2,9 @@
 import {Layout} from '../../components/page-layouts/Global';
 import {Header} from '../../components/headers/HeaderHome';
 import {Sidebar} from '../../components/sidebar/Sidebar';
-import {CategoryList} from '../../components/card-layouts/CategoryList';
 import {MediaList} from '../../components/card-layouts/MediaList';
 
-import { observer } from "mobx-react";
+import {observer} from "mobx-react";
 
 //ReactIcons
 import {getTopic} from "../../data/query/topic";
@@ -31,12 +30,10 @@ const getData = async () => {
 }
 
 export default observer((props) => {
-  const data = props
   // const data = props
   // update to store
-  if (!data) return <div>loading...</div>
   // init first tweet data to show in homepage
-  observableNewsStore.tweets = data.news
+  observableNewsStore.tweets = props.news
   //return JSON.stringify(data.news)
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'News',data : {}})}>

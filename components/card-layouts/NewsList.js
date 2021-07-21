@@ -12,7 +12,7 @@ import ContentLoader from "react-content-loader";
 
 const take = 12
 
-export const NewsList = observer(({dataStore, extraClass, grid, gap, title, titleIcon,titleIconColor, cta, query,startShowMoreButton}) => {
+export const NewsList = observer(({dataStore, extraClass, grid, gap, title, titleIcon,titleIconColor, cta, query}) => {
 
   const [loadingButton, setLoadingButton] = useState(false)
   const handleLoadMoreItems = async (e) => {
@@ -40,26 +40,6 @@ export const NewsList = observer(({dataStore, extraClass, grid, gap, title, titl
     }
 
   }
-  const showPosts = (posts) => {
-    if (!loadingButton && posts.length === 0){
-      return (
-        <>
-          <div className="empty-state">
-            <p><strong className="text-bold">{dataStore.query}</strong> was not found in any documents.</p>
-          </div>
-        </>
-      )
-    }
-    return (
-      posts.map((post) => (
-        <CardNews
-          key={post.id}
-          news={post}
-        />
-      )))
-  }
-
-
   return (
     <div className={`section section-news ${extraClass || ''}`}>
       <div className={`section-inner`}>
@@ -102,7 +82,12 @@ export const NewsList = observer(({dataStore, extraClass, grid, gap, title, titl
         <div className={`section-body no-padding`}>
           <div className={`grid gap-0 lg:gap-${gap || '5'} grid-cols-1 lg:grid-cols-${grid || '2'}`}>
             {
-              showPosts(dataStore.tweets)
+              dataStore.tweets.map(function(post){
+                return (
+                  <CardNews key={post.id} news={post}/>
+                )
+              })
+
             }
             {loadingButton &&
               [...Array(take)].map((x, i) =>

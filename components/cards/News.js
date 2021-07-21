@@ -10,27 +10,29 @@ import Link from "next/link"
 import ShowSources from '../news-sources/ShowSources'
 import ReadingTime from "../news-sources/ReadingTime";
 
-export const NewsLoader = (props) => (
-  <div className={`card card-post card-news`}>
-    <div className={`card-body`}>
-      <ContentLoader
-        speed={2}
-        backgroundColor="#F3F4F6"
-        foregroundColor="#ecebeb"
-        viewBox="0 0 380 100"
-        // style={{ width: '100%' }}
-        {...props}
-      >
-        <rect x="0" y="0" rx="3" ry="3" width="40" height="40" />
-        <rect x="48" y="8" rx="3" ry="3" width="128" height="6" />
-        <rect x="48" y="24" rx="3" ry="3" width="80" height="6" />
-        <rect x="48" y="56" rx="3" ry="3" width="360" height="6" />
-        <rect x="48" y="71" rx="3" ry="3" width="380" height="6" />
-        <rect x="48" y="88" rx="3" ry="3" width="178" height="6" />
-      </ContentLoader>
+export const NewsLoader = (props) => {
+  return (
+    <div className={`card card-post card-news`}>
+      <div className={`card-body`}>
+        <ContentLoader
+          speed={2}
+          backgroundColor="#F3F4F6"
+          foregroundColor="#ecebeb"
+          viewBox="0 0 380 100"
+          // style={{ width: '100%' }}
+          {...props}
+        >
+          <rect x="0" y="0" rx="3" ry="3" width="40" height="40" />
+          <rect x="48" y="8" rx="3" ry="3" width="128" height="6" />
+          <rect x="48" y="24" rx="3" ry="3" width="80" height="6" />
+          <rect x="48" y="56" rx="3" ry="3" width="360" height="6" />
+          <rect x="48" y="71" rx="3" ry="3" width="380" height="6" />
+          <rect x="48" y="88" rx="3" ry="3" width="178" height="6" />
+        </ContentLoader>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export const CardNews = ({news}) => {
   const postDate = utils.timeDifference(new Date(), new Date(news.createdAt))
