@@ -15,6 +15,8 @@ import {MediaList} from '../components/card-layouts/MediaList';
 import SearchInput from "../components/search"
 import {PostsList} from "../components/card-layouts/concepts/PostsList";
 import {PostsListTrending} from "../components/card-layouts/concepts/PostsListTrending";
+import {Wallet} from "../components/Wallet"
+import ThemeSwitch from "../components/ThemeSwitch"
 
 import { observer } from "mobx-react"
 import { useState, useEffect, createRef } from 'react'
@@ -135,7 +137,13 @@ export default observer((props) => {
       <div className={`pane-content--sec`}>
 
         <div className={`pane-content--sec--top`}>
-          
+          <div className="leading-10"></div>
+          <div className="flex items-center space-x-2">
+            <ThemeSwitch />
+            <div className="relative">
+              <Wallet />
+            </div>
+          </div>
         </div>
 
         <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>

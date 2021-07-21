@@ -3,7 +3,7 @@ Generic Styles
 -------------------------------- */
 .widget {
   @apply flex flex-col;
-  @apply bg-white border-t border-b lg:border border-gray-500 border-opacity-10;
+  @apply bg-white border-t border-b lg:border border-gray-500 border-opacity-10 lg:rounded;
 }
 
 .widget-header {
