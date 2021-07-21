@@ -147,6 +147,12 @@ export default observer((props) => {
         </div>
 
         <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
+          <Header props={{
+            title : "Trends hunter for Cardano community",
+            itemType : "home",
+            description : "Stay updated with the best quality news & updates"
+          }}/>
+
           <Sidebar className={`sidebar`} extraClass="" />
         </div>
 
