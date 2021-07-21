@@ -45,15 +45,30 @@ Layout
 }
 
 .pane-content--main--main {
-  height: 85vh;
-  @apply flex flex-col w-full md:h-full overflow-x-hidden overflow-y-auto;
+  height: calc(100vh - 155px);
+  @apply flex flex-col w-full overflow-x-hidden overflow-y-auto;
 }
 
 .pane-content--sec {
-  @apply hidden md:flex flex-col w-full h-full overflow-x-hidden overflow-y-auto;
+  height: calc(100vh - 105px + var(--app-navbar-height));
+  @apply hidden md:flex flex-col w-full overflow-x-hidden overflow-y-auto;
   @apply border-l border-gray-100 dark:border-gray-800;
 }
 
+@screen md {
+  .pane-content--main--main {
+    height: calc(100vh - 105px);
+  }
+}
+
+@screen lg {
+  .pane-content--main--main {
+    height: calc(100vh - 56px);
+  }
+  .pane-content--sec {
+    height: calc(100vh - 56px + var(--app-navbar-height));
+  }
+}
 
 /* 
 Nav & Top Bars
