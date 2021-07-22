@@ -38,7 +38,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </a>
               </div>
 
-              <div class="metadata-wrapper justify-between mt-1 md:mt-2">
+              <div class="metadata-wrapper justify-between mt-1">
                 <div class="flex flex-shrink-0">
                   <div class="metadata metadata-source">
                     <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
@@ -81,7 +81,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </a>
               </div>
 
-              <div class="metadata-wrapper justify-between mt-1 md:mt-2">
+              <div class="metadata-wrapper justify-between mt-1">
                 <div class="flex flex-shrink-0">
                   <div class="metadata metadata-source">
                     <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
@@ -124,7 +124,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </a>
               </div>
 
-              <div class="metadata-wrapper justify-between mt-1 md:mt-2">
+              <div class="metadata-wrapper justify-between mt-1">
                 <div class="flex flex-shrink-0">
                   <div class="metadata metadata-source">
                     <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
@@ -167,7 +167,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </a>
               </div>
 
-              <div class="metadata-wrapper justify-between mt-1 md:mt-2">
+              <div class="metadata-wrapper justify-between mt-1">
                 <div class="flex flex-shrink-0">
                   <div class="metadata metadata-source">
                     <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
