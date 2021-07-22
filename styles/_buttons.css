@@ -128,7 +128,7 @@ Group Buttons
 "Show More" Button
 */
 .btn-nav {
-  @apply justify-center py-3 px-6 w-full;
+  @apply justify-center py-2 px-4 w-full;
   @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700 rounded;
   @apply text-sm;
   @apply dark:text-white dark:bg-gray-900;
@@ -136,7 +136,7 @@ Group Buttons
 }
 
 .btn-loading {
-  @apply justify-center py-3 px-6 w-full;
+  @apply justify-center py-2 px-4 w-full;
   @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700 rounded;
   @apply text-sm;
 }

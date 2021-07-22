@@ -282,7 +282,7 @@ Info Row
 
 .info-row--value {
   @apply flex justify-center items-center;
-  @apply text-sm font-semibold;
+  @apply text-sm;
 }
 
 .info-row--value .currency-ada {

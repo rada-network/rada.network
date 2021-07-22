@@ -65,7 +65,7 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
               <span className="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
             </div>
           </div>
-          <div className="flex metadata-wrapper_nodivide">
+          <div className="flex flex-shrink-0 metadata-wrapper_nodivide">
             <div className="metadata">
               <span className="icon mr-1">
                 <i className="far fa-comment-alt" />

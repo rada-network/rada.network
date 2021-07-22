@@ -24,14 +24,12 @@ export const Header = ({props}) => {
           <div className={`header-inner`} >
 
             <div className={`header-body`}>
-              <h2 className={`header-title`}>
-                <span className="relative inline-block">
-                  <strong className="font-medium">Trends hunter</strong> for <strong className="font-medium">Cardano</strong> community
-                </span>
-              </h2>
               <p className={`header-text`}>
-                Stay updated with the best quality news &amp; updates
+                Congrats! You discovered <strong className="">RADA.co</strong>
               </p>
+              <h2 className={`header-title`}>
+                <strong className="">Trends Hunter</strong> for Cardano Community
+              </h2>
             </div>
 
             <div className={`header-media`}>

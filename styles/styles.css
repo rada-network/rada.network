@@ -9,7 +9,7 @@ Layout
 
 .pane-left {
   @apply flex lg:flex-col w-full h-auto justify-between order-2 lg:order-1 overflow-hidden lg:w-32 lg:h-full;
-  @apply bg-white bg-opacity-90 border-r border-gray-100 z-50;
+  @apply bg-gray-50 border-r border-gray-100 z-50;
   @apply dark:bg-deepgray-100 dark:border-gray-800;
 }
 
@@ -19,7 +19,7 @@ Layout
 
 .pane-center--top {
   @apply flex lg:hidden flex-shrink-0;
-  @apply bg-white bg-opacity-90 border-b border-gray-100 z-50;
+  @apply border-b border-gray-100 z-50;
   @apply dark:bg-deepgray-100 dark:border-gray-800;
 }
 
@@ -129,7 +129,7 @@ Navbar
 
 .nav-item-active {
   @apply text-primary-700 text-opacity-100 font-medium;
-  @apply bg-primary-50 dark:text-white dark:text-opacity-100;
+  @apply dark:text-white dark:text-opacity-100;
 }
 
 /* 
