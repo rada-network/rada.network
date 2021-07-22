@@ -93,6 +93,10 @@ Nav Button
   @apply text-sm;
 }
 
+.btn-open-widgets {
+  @apply md:hidden;
+}
+
 /* 
 Wallet Button 
 */
