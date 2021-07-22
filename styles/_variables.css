@@ -3,5 +3,7 @@ Even more custom variables here
 */
 
 :root {
-  --app-navbar-height: 56px;
+  --navbar-height: 48px;
+  --toolbar-height: 48px;
+  --topbar-height: 48px;
 }

@@ -11,7 +11,7 @@ import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
 export default function SidebarHome({className, extraClass}) {
   return (
     <>
-    <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 1280: 2}}>
+    <ResponsiveMasonry columnsCountBreakPoints={{640: 1, 1280: 2}}>
       <Masonry gutter="1rem">
         <WidgetPricing
           title="Market Insights"

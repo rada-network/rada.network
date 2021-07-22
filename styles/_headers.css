@@ -4,13 +4,13 @@
 Headers
 --------------------------------------------- */
 .header {
-  @apply overflow-hidden p-4 pb-0;
+  @apply overflow-hidden pb-4 xl:p-4 xl:pb-0;
   animation: fadein 1s ease;
 }
 
 .header-inner {
   @apply flex relative;
-  @apply bg-gradient-to-br from-gray-600 to-gray-500 rounded shadow;
+  @apply bg-gradient-to-br from-gray-600 to-gray-500 xl:rounded xl:shadow;
 }
 
 .header-body {

@@ -52,6 +52,10 @@ export const Topbar = () => {
 
         <ThemeSwitch />
 
+        <a className="btn nav-btn btn-switch-theme" onClick={e => setTheme('dark')} title="Swith to Dark Theme">
+          <span className="icon"><i className="fad fa-th-large" /></span>
+        </a>
+
         {/* Profile dropdown */}
         <div className="relative">
           <Wallet />

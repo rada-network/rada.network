@@ -14,13 +14,26 @@ Layout
 }
 
 .pane-center {
-  @apply flex flex-1 flex-col md:h-full w-full items-stretch order-1 lg:order-2;
+  @apply flex flex-1 flex-col w-full items-stretch order-1 lg:order-2;
+}
+
+@screen md {
+  .pane-center {
+    height: calc(100vh - var(--navbar-height) - var(--toolbar-height));
+  }
+}
+
+@screen lg {
+  .pane-center {
+    @apply h-full;
+  }
 }
 
 .pane-center--top {
   @apply flex lg:hidden flex-shrink-0;
   @apply border-b border-gray-100 z-50;
   @apply dark:bg-deepgray-100 dark:border-gray-800;
+  height: var(--topbar-height);
 }
 
 .pane-center--main {
@@ -38,43 +51,39 @@ Layout
 
 .pane-content--main--top,
 .pane-content--sec--top {
-  @apply flex px-4 py-2 justify-between items-center flex-shrink-0;
+  @apply flex px-4 justify-between items-center flex-shrink-0;
   @apply bg-white border-b border-gray-400 border-opacity-10;
   @apply dark:bg-deepgray-100;
-  height: var(--app-navbar-height);
+  height: var(--toolbar-height);
 }
 
 .pane-content--main--main {
-  height: calc(100vh - 155px);
+  height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height));
   @apply flex flex-col w-full overflow-x-hidden overflow-y-auto;
-}
-
-.pane-content--sec {
-  height: calc(100vh - 105px + var(--app-navbar-height));
-  @apply hidden md:flex flex-col w-full overflow-x-hidden overflow-y-auto;
-  @apply border-l border-gray-100 dark:border-gray-800;
-}
-
-@screen md {
-  .pane-content--main--main {
-    height: calc(100vh - 105px);
-  }
 }
 
 @screen lg {
   .pane-content--main--main {
-    height: calc(100vh - 56px);
-  }
-  .pane-content--sec {
-    height: calc(100vh - 56px + var(--app-navbar-height));
+    height: calc(100vh - var(--toolbar-height));
   }
 }
+
+.pane-content--sec {
+  height: calc(100vh - var(--topbar-height) - var(--toolbar-height));
+  @apply hidden md:flex flex-col w-full lg:h-full overflow-x-hidden overflow-y-auto;
+  @apply border-l border-gray-100 dark:border-gray-800;
+}
+
+.pane-content--sec--top {
+  @apply hidden lg:flex;
+}
+
 
 /* 
 Nav & Top Bars
 --------------------------------------------- */
 .topbar {
-  @apply flex justify-between px-4 py-2 h-full w-full;
+  @apply flex justify-between px-4 h-full w-full;
 }
 
 .logo {
@@ -90,7 +99,7 @@ Nav & Top Bars
 }
 
 .topbar .logo--img {
-  @apply h-8;
+  @apply h-7;
 }
 
 .logo--text {
@@ -108,7 +117,8 @@ Navbar
 }
 
 .navbar-main {
-  @apply flex justify-evenly lg:flex-col w-full;
+  height: var(--navbar-height);
+  @apply flex justify-evenly lg:flex-col w-full lg:h-auto;
 }
 
 .nav-item {
@@ -120,7 +130,7 @@ Navbar
 }
 
 .nav-item .icon {
-  @apply text-lg lg:text-base leading-none mt-2 mb-1 lg:my-0 lg:mr-1 w-8 text-center;
+  @apply text-lg lg:text-base leading-none mt-1.5 mb-1 lg:my-0 lg:mr-1 w-8 text-center;
 }
 
 .nav-item--text {
@@ -136,7 +146,7 @@ Navbar
 Sidebar
 --------------------------------------------- */
 .sidebar {
-  @apply lg:p-4;
+  @apply xl:p-4;
 }
 
 
