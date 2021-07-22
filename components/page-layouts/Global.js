@@ -1,5 +1,6 @@
 import { Head } from "../Head";
 import { Topbar } from "../Topbar";
+import { Tabbar } from "../Tabbar";
 import { Navbar } from "../Navbar";
 import { Footer } from "../Footer";
 
@@ -39,6 +40,7 @@ export const Layout = ({children}) => {
       <div className={`pane-center`}>
 
         <div className="pane-center--top">
+          {/* <Tabbar /> */}
           <Topbar />
         </div>
 

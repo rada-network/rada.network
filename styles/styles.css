@@ -30,10 +30,9 @@ Layout
 }
 
 .pane-center--top {
-  @apply flex lg:hidden flex-shrink-0;
+  @apply flex flex-shrink-0;
   @apply border-b border-gray-100 z-50;
   @apply dark:bg-deepgray-100 dark:border-gray-800;
-  height: var(--topbar-height);
 }
 
 .pane-center--main {
@@ -83,7 +82,8 @@ Layout
 Nav & Top Bars
 --------------------------------------------- */
 .topbar {
-  @apply flex justify-between px-4 h-full w-full;
+  @apply flex lg:hidden justify-between px-4 w-full;
+  height: var(--topbar-height);
 }
 
 .logo {
@@ -107,6 +107,39 @@ Nav & Top Bars
   @apply dark:from-purple-500 dark:to-purple-700;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* 
+Navbar 
+*/
+.tabbar {
+  @apply hidden md:flex justify-between px-4 w-full;
+  height: var(--tabbar-height);
+}
+
+.tabbar-main {
+  @apply flex justify-evenly items-center;
+}
+
+.tab-item {
+  @apply flex flex-1 justify-center items-center px-6 h-full;
+  @apply opacity-50;
+}
+
+.tab-item--active {
+  @apply bg-primary-50 text-gray-800 opacity-100;
+}
+
+.tab-item--icon .cf {
+  @apply text-xs mr-1;
+}
+
+.tab-item--icon .cf-ada {
+  @apply text-sm;
+}
+
+.tab-item--text {
+  @apply text-xs; 
 }
 
 /* 

@@ -53,7 +53,9 @@ export const Topbar = () => {
         <ThemeSwitch />
 
         <a className="btn nav-btn btn-open-widgets">
-          <span className="icon"><i className="fad fa-th-large" /></span>
+          <span className="icon">
+            <i className="fad fa-th-large" />
+          </span>
         </a>
 
         {/* Profile dropdown */}
