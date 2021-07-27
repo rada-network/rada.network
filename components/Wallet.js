@@ -40,9 +40,9 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
 
   return (
   <>
-  <div type="button" className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
+  <div type="button" onClick={ openModal } className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
     <span className="icon"><i className="fad fa-wallet" /></span>
-    <span className="hidden md:inline-block md:ml-2 whitespace-nowrap" onClick={ openModal }>Connect Wallet</span>
+    <span className="hidden md:inline-block md:ml-2 whitespace-nowrap">Connect Wallet</span>
   </div>
 
   <Transition show={isOpen} as={Fragment}>
