@@ -73,9 +73,9 @@ Layout
   @apply border-l border-gray-100 dark:border-gray-800;
 }
 
-.pane-content--sec--top {
+/* .pane-content--sec--top {
   @apply hidden lg:flex;
-}
+} */
 
 
 /* 

@@ -1,7 +1,5 @@
 import { useWallet, ConnectionRejectedError } from 'use-wallet'
-import { BiWallet } from "react-icons/bi";
-import { GiWallet } from "react-icons/gi";
-import { Fragment, useEffect, useRef } from "react"
+import { createRef, Fragment, useEffect, useRef } from "react"
 import { observer, inject } from "mobx-react"
 import { useStore } from '../lib/useStore'
 
@@ -13,19 +11,47 @@ import Avatar from "boring-avatars";
 
 import ReactTooltip from 'react-tooltip'
 
+const btnRef = createRef()
 
-const WalletContent = ({wallet, closeModal, open}) => {
-  const cancelButtonRef = useRef();
+const WalletAvatar = ({wallet}) => {
+  const text = wallet.account
+  return (
+    <div className="mr-2">
+      <Avatar
+        size={24}
+        name={text}
+        variant="bauhaus"
+        colors={["#8B5CF6", "#34D399", "#FEF3C7", "#FBBF24", "#EF4444"]}
+      />
+    </div>
+  )
+}
+
+const ConnectedButton = ({wallet}) => (
+  <div className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
+    {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
+    <WalletAvatar wallet={wallet} />
+    <span className="hidden">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
+    <span onClick={e => wallet.reset()}>Logout</span>
+  </div>
+)
+
+const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
 
   return (
-    <Transition show={open} as={Fragment}>
-      <Dialog
+  <>
+  <div type="button" className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
+    <span className="icon"><i className="fad fa-wallet" /></span>
+    <span className="hidden md:inline-block md:ml-2 whitespace-nowrap" onClick={ openModal }>Connect Wallet</span>
+  </div>
+
+  <Transition show={isOpen} as={Fragment}>
+    <Dialog
         as="div"
         id="modal"
-        className={`${styles.dialog_outside_wrapper}`}
-        initialFocus={cancelButtonRef}
+        className={`fixed inset-0 z-10 overflow-y-auto ${styles.dialog_outside_wrapper}`}
+        initialFocus={btnRef}
         static
-        open={open}
         onClose={closeModal}
       >
         <div className={`min-h-screen ${styles.dialog_outside}`}>
@@ -39,7 +65,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-0"
           >
-            <Dialog.Overlay className="fixed inset-0" />
+            <Dialog.Overlay className="fixed inset-0" onClick={closeModal} />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
@@ -60,7 +86,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
             leaveTo="opacity-0 scale-0"
           >
 
-            <div className={`inline-block w-full ${styles.dialog}`}>
+            <div className={`inline-block w-full z-200 relative ${styles.dialog}`}>
 
               <div className={`${styles.dialog_wrapper}`}>
 
@@ -97,7 +123,7 @@ const WalletContent = ({wallet, closeModal, open}) => {
                   <div className={`${styles.dialog_body}`}>
 
                     <ul>
-                      <li>
+                      <li ref={btnRef}>
                         <a className={`${styles.btn}`} onClick={() => wallet.connect()}>
                           <span className={`icon ${styles.btn_icon}`}>
                             <img src="/images/icons/metamask-24.png" alt="Metamask" />
@@ -155,64 +181,35 @@ const WalletContent = ({wallet, closeModal, open}) => {
       </Dialog>
 
 
-    </Transition>  
-
-  )
-}
-
-const WalletAvatar = ({wallet}) => {
-  const text = wallet.account
-  return (
-    <div className="mr-2">
-      <Avatar
-        size={24}
-        name={text}
-        variant="bauhaus"
-        colors={["#8B5CF6", "#34D399", "#FEF3C7", "#FBBF24", "#EF4444"]}
-      />
-    </div>
-  )
-}
-
-const ConnectedButton = ({wallet}) => (
-  <div className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
-    {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
-    <WalletAvatar wallet={wallet} />
-    <span className="hidden">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
-    <span onClick={e => wallet.reset()}>Logout</span>
-  </div>
-)
-
-const NotConnectedButton = ({wallet, showModal}) => (
-  <div onClick={ showModal } type="button" className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
-    <span className="icon"><i className="fad fa-wallet" /></span>
-    <span className="hidden md:inline-block md:ml-2 whitespace-nowrap">Connect Wallet</span>
-  </div>
-)
+    </Transition>    
+  </>
+)}
 
 
 export const Wallet = observer(() => {
+
   const store = useStore()
   const wallet = useWallet()
 
-  if (wallet.status === 'connected') {
-      store.wallet.update(wallet.account)
-  } else {
-      store.wallet.update("")
-  }  
-  // const [isOpen, setIsOpen] = useState(false)
-  const open = store?.wallet.showingConnect
+  // if (wallet.status === 'connected') {
+  //     store.wallet.update(wallet.account)
+  // } else {
+  //     store.wallet.update("")
+  // }  
+  const isOpen = store?.wallet.showingConnect
+  const openModal = () => store.wallet.showConnect(true)
+  const closeModal = () => { store.wallet.showConnect(false) }
 
   // rebuild tooltip
   useEffect(() => {
     setTimeout(() => ReactTooltip.rebuild(), 200)
-  }, [open]);
+  }, [isOpen]);
 
   return (
     <div className="relative inline-block text-left">
-      { store.wallet.isConnected ? <ConnectedButton wallet={wallet} /> : <NotConnectedButton wallet={wallet} showModal={() => store.wallet.showConnect(true)} /> }
-
-      { !store.wallet.isConnected && <WalletContent wallet={wallet} closeModal={() => store.wallet.showConnect(false)} open={open} /> }
+      { store.wallet.isConnected ? 
+      <ConnectedButton wallet={wallet} /> : 
+      <NotConnectedButton wallet={wallet} isOpen={isOpen} openModal={openModal} closeModal={closeModal} /> }
     </div>
   )
 })
