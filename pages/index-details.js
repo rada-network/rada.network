@@ -13,7 +13,7 @@ import {MediaList} from '../components/card-layouts/MediaList';
 
 // Concepts
 import SearchInput from "../components/search"
-import {PostsList} from "../components/card-layouts/concepts/PostsList";
+import {PostsList, PostsListWrapper} from "../components/card-layouts/concepts/PostsList";
 import {PostsListTrending} from "../components/card-layouts/concepts/PostsListTrending";
 import {Wallet} from "../components/Wallet"
 import ThemeSwitch from "../components/ThemeSwitch"
@@ -21,175 +21,119 @@ import ThemeSwitch from "../components/ThemeSwitch"
 import { observer } from "mobx-react"
 import { useState, useEffect, createRef } from 'react'
 
-//ReactIcons
-import {getPosts} from "../data/query/posts"
-import {getTweet} from "../data/query/postsTweet"
-import {useStore} from "../lib/useStore"
-import {SocialPostsList} from "../components/card-layouts/SocialPostsList";
-import {getTopic} from "../data/query/topic";
 import utils from "../lib/util";
 import {HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
-import {BlogsList} from "../components/card-layouts/BlogsList";
-import {getNews} from "../data/query/news";
 import Responsive from '../components/Resposive';
 
 
 const voteStore = new VoteStore();
 const homeStore = new HomeStore({isHome : true})
 
-const observableTweetStore = new ObservableTweetStore({homeStore});
-const observableItemStore = new ObservableTweetStore({homeStore})
-const observableNftStore = new ObservableTweetStore({homeStore})
-const observableDappStore = new ObservableTweetStore({homeStore})
-const observableNewsStore = new ObservableTweetStore({homeStore})
+const observableItemStore = new ObservableTweetStore({homeStore});
 
 import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
+import {getItems} from "../data/query/getItem";
+import {HOME_ITEM_TAKE} from "../config/paging";
 
-const getData = async () => {
-
-  const posts = await getPosts({type : "",skip : 0,take : 6, socialOrder : observableItemStore.currentTab})
-
-  const postsNFT = await getPosts({type : "nft",skip : 0,take : 6,socialOrder : observableNftStore.currentTab})
-
-  const postsDapp = await getPosts({type : "dapp",skip : 0,take : 6,socialOrder : observableDappStore.currentTab})
-
-  const postsTweet = await getTweet({socialOrder: observableTweetStore.currentTab,skip : 0,take : 12,query: "ada,cardano"});
-
-  const news = await getNews({take : 6, skip: 0, orderBy: {createdAt : "desc"}})
-
-  const topic = await getTopic();
-
+const getData = async ({query}) => {
+  const itemFeed = await getItems({
+    take : HOME_ITEM_TAKE,
+    skip : 0,
+    orderBy : {createdAt : "desc"},
+    query : query
+  })
   return {
-    posts: posts.data.ideaFeed,
-    postsNFT: postsNFT.data.ideaFeed,
-    postsDapp: postsDapp.data.ideaFeed,
-    postsTweet: postsTweet.data.tweetFeed,
-    topic : topic.data.itemTypeCount,
-    news : news.data.newsFeed
+    query : query,
+    itemFeed : itemFeed.data.itemFeed
   }
 }
 
 
 export default observer((props) => {
-  const data = props
-  // const data = props
-  // update to store
-  if (!data) return <div>loading...</div>
-  // init first tweet data to show in homepage
-  observableTweetStore.query = "ada,cardano"
-  observableTweetStore.tweets = data.postsTweet
-  observableItemStore.tweets = data.posts
-  observableNftStore.tweets = data.postsNFT
-  observableDappStore.tweets = data.postsDapp
-  observableNewsStore.tweets = data.news
+  if (!props) return <div>loading...</div>
 
+  observableItemStore.query = props.query
   const [scrollbar] = useState('')
 
-  const scrollBox1 = createRef();
-  let ps1;
+  observableItemStore.tweets = props.itemFeed
+
 
   const scrollBox2 = createRef();
   let ps2;
-  
+
   useEffect(() => {
     // make scrollbar
-    ps1 = new PerfectScrollbar(scrollBox1.current, {});
     ps2 = new PerfectScrollbar(scrollBox2.current, {});
-
-    return () => {
-      ps1.destroy();
-      ps2.destroy();
-    }
-  }, [scrollBox1, scrollBox2]);
+  }, [scrollBox2]);
 
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 
-    <div className={`pane-content`}>
+      <div className={`pane-content`}>
 
-      {/* main content pane */}
-      <div className={`pane-content--main`}>
+        {/* main content pane */}
+        <div className={`pane-content--main`}>
+          <PostsListWrapper  dataStore={observableItemStore}  />
+        </div>
 
-        <div className={`pane-content--main--top`}>
+        {/* secondary content pane */}
+        <div className={`pane-content--sec`}>
 
-          <div className="flex-1">
-            {/* Search */}
-            <SearchInput />
-          </div>
-
-          <div className="flex-shrink-0">
-            {/* Sort */}
-            <div className="btn-group btn-group-filter">
-              <a className="btn btn-filter">Popular</a>
-              <a className="btn btn-filter-active">Latest</a>
+          <Responsive gt="1024">
+            <div className={`pane-content--sec--top`}>
+              <div className="leading-10"></div>
+              <div className="flex items-center space-x-2">
+                <ThemeSwitch />
+                <div className="relative">
+                  <Wallet />
+                </div>
+              </div>
             </div>
-          </div>
+          </Responsive>
 
-        </div>
+          <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
 
-        <div className={`pane-content--main--main scrollbar`} ref={scrollBox1}>
-          <PostsList />
-        </div>
+            {/* Post Detail */}
+            <div className="page">
 
-      </div>
+              {/* News Post Detail Content */}
+              <div className="post-detail post-detail-news">
 
-      {/* secondary content pane */}
-      <div className={`pane-content--sec`}>
-
-        <Responsive gt="1024">
-        <div className={`pane-content--sec--top`}>
-          <div className="leading-10"></div>
-          <div className="flex items-center space-x-2">
-            <ThemeSwitch />
-            <div className="relative">
-              <Wallet />
-            </div>
-          </div>
-        </div>
-        </Responsive>
-
-        <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
-
-          {/* Post Detail */}
-          <div className="page">
-
-            {/* News Post Detail Content */}
-            <div className="post-detail post-detail-news">
-
-              {/* Post Header */}
-              <div className="post-header">
-                <h1 className="post-title">
+                {/* Post Header */}
+                <div className="post-header">
+                  <h1 className="post-title">
                   <span className="text-color-title">
                     Whales Are Quietly Pouncing on Ethereum As Crypto Market Meanders, According to Analytics Firm Santiment
                   </span>
-                </h1>
-              </div>
+                  </h1>
+                </div>
 
-              <div className="post-body">
-                <p>The largest Ethereum whales in existence are accumulating ETH as the asset’s price continues to tick downwards.</p>
-                <p>Crypto analytics firm Santiment says Ethereum’s top 10 largest addresses went from owning as low as 18.46% of the total Ethereum supply after mid-May – when ETH achieved its all-time high – to 20.58% by July 13th.</p>
+                <div className="post-body">
+                  <p>The largest Ethereum whales in existence are accumulating ETH as the asset’s price continues to tick downwards.</p>
+                  <p>Crypto analytics firm Santiment says Ethereum’s top 10 largest addresses went from owning as low as 18.46% of the total Ethereum supply after mid-May – when ETH achieved its all-time high – to 20.58% by July 13th.</p>
+                </div>
+
               </div>
 
             </div>
+            {/* End: Post Detail */}
 
           </div>
-          {/* End: Post Detail */}
 
         </div>
 
       </div>
-
-    </div>
 
     </Layout>
   )
 })
 
 export async function getStaticProps() {
-  const props = await getData();
+  const query = "ada,cardano"
+  const props = await getData({query});
   return {
     props,
-    revalidate: 900
+    revalidate: 180
   }
 }

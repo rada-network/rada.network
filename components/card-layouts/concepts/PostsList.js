@@ -62,10 +62,10 @@ export const PostsListWrapper = observer(function ({dataStore}){
         </div>
       </div>
       <div className={`pane-content--main--main scrollbar`} ref={scrollBox1}>
+        <PostsList dataStore={dataStore} />
         {dataStore.loadingButton ?
           <PostsListLoader />
-          :
-          <PostsList dataStore={dataStore} />
+          :""
         }
       </div>
     </>
