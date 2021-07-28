@@ -105,6 +105,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                       <span 
                         className="hasTooltip" 
                         data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
+                        data-event="click"
                       > wallet <i className="fad fa-info-circle text-base" />
                       </span>
                     </h3>
@@ -191,18 +192,18 @@ export const Wallet = observer(() => {
   const store = useStore()
   const wallet = useWallet()
 
-  // if (wallet.status === 'connected') {
-  //     store.wallet.update(wallet.account)
-  // } else {
-  //     store.wallet.update("")
-  // }  
+  if (wallet.status === 'connected') {
+      store.wallet.update(wallet.account)
+  } else {
+      store.wallet.update("")
+  }  
   const isOpen = store?.wallet.showingConnect
   const openModal = () => store.wallet.showConnect(true)
-  const closeModal = () => { store.wallet.showConnect(false) }
+  const closeModal = () => { store.wallet.showConnect(false);  ReactTooltip.hide() }
 
   // rebuild tooltip
   useEffect(() => {
-    setTimeout(() => ReactTooltip.rebuild(), 200)
+    setTimeout(() => ReactTooltip.rebuild(), 500)
   }, [isOpen]);
 
   return (

@@ -18,7 +18,6 @@ export default function Responsive({lt, gt, children}) {
 
     const _lt = parseInt(lt) || 0
     const _gt = parseInt(gt) || 0
-console.log('width: ', ww, _lt, _gt)
 
     // render empty
     if (!ww || (_lt && _lt < ww) || (_gt && _gt >= ww)) return ''

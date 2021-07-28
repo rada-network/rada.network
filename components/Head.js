@@ -1,8 +1,9 @@
 import HTMLHead from 'next/head'
+import ReactTooltip from 'react-tooltip';
 
 export const Head = ({title,description,facebook,twitter,keyword}) => {
   return (
-
+    <>
     <HTMLHead>
       <title>{title}</title>
       <meta name="description" content={description}/>
@@ -56,5 +57,7 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
       <meta name="theme-color" content="#317EFB" />
     </HTMLHead>
 
+    <ReactTooltip type="info" clickable={true} html={true} />
+    </>
   );
 };
