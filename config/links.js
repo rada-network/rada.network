@@ -11,4 +11,4 @@ export const navLinks = [
     label: "Chart",
     path: "/chart",
   }
-];
+]

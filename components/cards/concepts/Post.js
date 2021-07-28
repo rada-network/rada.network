@@ -9,41 +9,42 @@ import Link from "next/link"
 import ShowSources from '../../news-sources/ShowSources'
 import ReadingTime from "../../news-sources/ReadingTime";
 
-export const NewsLoader = (props) => (
+export const CardPostLoader = (props) => (
   <div className={`card card-post`}>
     <div className={`card-body`}>
       <ContentLoader
         speed={2}
         backgroundColor="#F3F4F6"
         foregroundColor="#ecebeb"
-        viewBox="0 0 380 100"
+        viewBox="0 0 380 30"
         // style={{ width: '100%' }}
         {...props}
       >
         <rect x="0" y="0" rx="3" ry="3" width="40" height="40" />
         <rect x="48" y="8" rx="3" ry="3" width="128" height="6" />
         <rect x="48" y="24" rx="3" ry="3" width="80" height="6" />
-        <rect x="48" y="56" rx="3" ry="3" width="360" height="6" />
-        <rect x="48" y="71" rx="3" ry="3" width="380" height="6" />
-        <rect x="48" y="88" rx="3" ry="3" width="178" height="6" />
       </ContentLoader>
     </div>
   </div>
 )
 
-export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount, state}) => {
-
+export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount, state,item}) => {
+  const date = utils.timeDifference(new Date(), new Date(item.createdAt))
+  const dateTitle = utils.titleTime(item.createdAt)
   return (
     <Link href={"#"}>
     <div className={`card card-post ${state}`}>
 
-      <div className={`card-media`}>
-        <div className={`card-media-img`}>
-          <a className="" href={"/"}>
-            <img className={`card-img`} src={mediaUri}  alt={""}/>
-          </a>
+      {mediaUri !== null ?
+        <div className={`card-media`}>
+          <div className={`card-media-img`}>
+            <a className="" href={"/"}>
+              <img className={`card-img`} src={mediaUri}  alt={""}/>
+            </a>
+          </div>
         </div>
-      </div>
+        : ""
+      }
 
       <div className={`card-body`}>
 
@@ -62,7 +63,7 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
               <span className="metadata-value" title="CoinTelegraph">{source}</span>
             </div>
             <div className="metadata metadata-date">
-              <span className="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+              <span className="metadata-value" title={dateTitle}>{date}</span>
             </div>
           </div>
           <div className="flex flex-shrink-0 metadata-wrapper_nodivide">
