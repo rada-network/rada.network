@@ -39,6 +39,7 @@ export const PostsList = ({title, extraClass}) => {
           source="Benson Crypto"
           commentCount="3"
           voteCount="4"
+          state="readed"
         />
 
         <CardPost

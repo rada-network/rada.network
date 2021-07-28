@@ -60,12 +60,18 @@ Card Post (News, Projects,...)
   @apply hover:bg-shadeyellow-100 dark:hover:bg-deeppurple-500;
 }
 
+/* Active */
 .card-post.active {
   @apply bg-primary-50;
 }
 
-.card-post.active .text-color-title {
+/* Readed */
+.card-post.readed .card-title,
+.card-post.readed .metadata-source,
+.card-post.readed .metadata-date {
+  @apply opacity-50;
 }
+
 
 .card-post .card-body {
   @apply flex flex-col h-full w-full;
