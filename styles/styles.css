@@ -73,6 +73,11 @@ Layout
   @apply border-l border-gray-100 dark:border-gray-800;
 }
 
+
+.pane-content--sec--main {
+  @apply w-full h-full;
+}
+
 /* .pane-content--sec--top {
   @apply hidden lg:flex;
 } */
@@ -171,7 +176,7 @@ Navbar
 }
 
 .nav-item-active {
-  @apply text-primary-700 text-opacity-100 font-medium;
+  @apply bg-primary-100 text-primary-700 text-opacity-100 font-medium;
   @apply dark:text-white dark:text-opacity-100;
 }
 
@@ -294,6 +299,11 @@ Pages
 /* 
 Page Layout
 */
+.page {
+  @apply flex flex-col w-full h-full;
+  @apply p-8 bg-white dark:bg-deepgray-50;
+}
+
 .page-header {
   @apply md:flex;
 }
@@ -303,9 +313,25 @@ Page Layout
 }
 
 /* 
-Project Details
+Post Layout
+*/
+.post {
+
+}
+
+.post-header {
+  @apply md:flex;
+}
+
+.post-title {
+  @apply text-xl font-medium;
+}
+
+
+/* 
+Post Details
 --------------- */
-.page-project_details {
+.post-details {
   
   .page-header {
     @apply p-4 md:p-6 lg:p-8;

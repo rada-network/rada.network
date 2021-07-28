@@ -66,6 +66,7 @@ export const PostsList = ({title, extraClass}) => {
           source="@Grayscale"
           commentCount="99"
           voteCount="12"
+          state="active"
         />
 
         <CardPost
@@ -93,6 +94,7 @@ export const PostsList = ({title, extraClass}) => {
           source="CoinDesk"
           commentCount="22"
           voteCount="35"
+          state="readed"
         />
 
         <CardPost
@@ -102,6 +104,7 @@ export const PostsList = ({title, extraClass}) => {
           source="Coin Bureau"
           commentCount="5"
           voteCount="8"
+          state="readed"
         />
 
         <CardPost
@@ -120,6 +123,7 @@ export const PostsList = ({title, extraClass}) => {
           source="Project Catalyst"
           commentCount="0"
           voteCount="4"
+          state="readed"
         />
 
         <CardPost

@@ -31,11 +31,11 @@ export const NewsLoader = (props) => (
   </div>
 )
 
-export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount}) => {
+export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount, state}) => {
 
   return (
     <Link href={"#"}>
-    <div className={`card card-post`}>
+    <div className={`card card-post ${state}`}>
 
       <div className={`card-media`}>
         <div className={`card-media-img`}>
