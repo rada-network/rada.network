@@ -104,12 +104,14 @@ export default observer((props) => {
               <div className="section post-detail post-detail-news">
                 {/* Post Header */}
                 <div className="section-header post-header">
-                  <h1 className="post-title">
-                    <span className="text-color-title">
-                      Whales Are Quietly Pouncing on Ethereum As Crypto Market
-                      Meanders, According to Analytics Firm Santiment
-                    </span>
-                  </h1>
+                  <div className="flex">
+                    <h1 className="post-title">
+                      <span className="text-color-title">
+                        Whales Are Quietly Pouncing on Ethereum As Crypto Market
+                        Meanders, According to Analytics Firm Santiment
+                      </span>
+                    </h1>
+                  </div>
                   <div class="metadata-wrapper justify-between">
                     <div class="flex flex-shrink-0">
                       <div class="metadata metadata-source">
@@ -152,16 +154,25 @@ export default observer((props) => {
                 </div>
 
                 <div className="section-body post-body">
-                  <p>
-                    The largest Ethereum whales in existence are accumulating
-                    ETH as the asset’s price continues to tick downwards.
-                  </p>
-                  <p>
-                    Crypto analytics firm Santiment says Ethereum’s top 10
-                    largest addresses went from owning as low as 18.46% of the
-                    total Ethereum supply after mid-May – when ETH achieved its
-                    all-time high – to 20.58% by July 13th.
-                  </p>
+                  <div className="post-media">
+                    <Link href={`#`}>
+                      <a title="SolaSystem">
+                        <img className="post-media--img" src="https://picsum.photos/1000/300?random=1" />
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="post-content">
+                    <p>
+                      The largest Ethereum whales in existence are accumulating
+                      ETH as the asset’s price continues to tick downwards.
+                    </p>
+                    <p>
+                      Crypto analytics firm Santiment says Ethereum’s top 10
+                      largest addresses went from owning as low as 18.46% of the
+                      total Ethereum supply after mid-May – when ETH achieved its
+                      all-time high – to 20.58% by July 13th.
+                    </p>
+                  </div>
                 </div>
               </div>
 

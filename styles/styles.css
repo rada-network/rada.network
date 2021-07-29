@@ -206,7 +206,7 @@ Sections Layout
 }
 
 .section-header {
-  @apply p-4 md:p-6 lg:p-8 lg:pb-6;
+  @apply p-4 md:p-6;
   @apply flex justify-between;
 }
 
@@ -221,7 +221,7 @@ Sections Layout
 }
 
 .section-body {
-  @apply p-4 md:p-6 lg:p-8 pt-0 md:pt-0 lg:pt-0;
+  @apply p-4 md:p-6 pt-0 md:pt-0;
 }
 
 .section-body.scrollbar {
@@ -378,7 +378,16 @@ Post Details
 /*
 Media
 */
-.project-media {
+.post-media {
+  @apply w-full max-h-96 overflow-hidden rounded mb-4;
+}
+
+.post-media--img {
+  @apply object-cover w-full h-full;
+}
+
+
+/* .project-media {
   @apply flex flex-nowrap pb-6 mb-8 relative;
 }
 
@@ -400,12 +409,12 @@ Media
 .project-media .card-media-full .card-img {
   @apply h-full w-auto;
   @apply object-cover;
-}
+} */
 
 /*
 Intro
 */
-.page-header .project-text_short {
+/* .page-header .project-text_short {
   @apply text-base leading-relaxed text-gray-600;
   @apply mt-2;
 }
@@ -413,12 +422,12 @@ Intro
 .page-main .project-text_short {
   @apply text-base text-gray-900 font-medium;
   @apply mb-8;
-}
+} */
 
 /*
 Info
 */
-.project-info {
+/* .project-info {
   @apply text-sm text-center border border-gray-700 border-opacity-10 rounded;
   @apply px-8 py-4 md:px-2 md:py-4 lg:p-4;
   @apply flex flex-col md:flex-row lg:flex-col;
@@ -447,54 +456,54 @@ Info
 
 .project-info .list-value strong[data-element-id="field-label"] {
   @apply block mb-1 flex-1 font-normal text-gray-400;
-}
+} */
 
 /*
 Text
 */
-.project-text_section {
+.post-content {
   @apply w-full overflow-hidden;
-  @apply pb-4 text-base;
+  @apply text-sm;
 }
 
-.project-text_section p br {
+.post-content p br {
   @apply block h-2;
   content: " ";
 }
 
-.project-text_section p {
-  @apply pb-2;
+.post-content p {
+  @apply pt-2;
 }
 
-.project-text_section p a {
+.post-content p a {
   @apply text-blue-500 hover:underline;
   word-break: break-word;
 }
 
 
-.project-text_section ul {
+.post-content ul {
   @apply pb-2;
 }
 
-.project-text_section ul li {
+.post-content ul li {
   @apply pl-0 ml-8;
   @apply list-disc;
 }
 
-.project-text_section ol {
+.post-content ol {
   @apply pb-2;
 }
 
-.project-text_section ol li {
+.post-content ol li {
   @apply pl-0 ml-8;
   @apply list-decimal;
 }
 
-.project-text_section .youtube-video {
+.post-content .youtube-video {
   @apply w-full h-auto;
 }
 
-.project-text_section .youtube-video iframe {
+.post-content .youtube-video iframe {
   width: 100% !important;
 
 }
@@ -566,6 +575,7 @@ Tootips
   font-size: 0.875rem !important;
   &::after {
     border-top-color: #FEF3C7 !important;
+    border-bottom-color: #FEF3C7 !important;
   }
 }
 
