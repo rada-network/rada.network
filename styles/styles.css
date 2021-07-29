@@ -205,32 +205,23 @@ Sections Layout
   @apply bg-white dark:bg-deepgray-100;
 }
 
-.section-top {
-  @apply mt-0 md:mt-8;
-}
-
-.section-inner {
-  @apply bg-white shadow-sm;
-}
-
 .section-header {
-  @extend %global-padding;
-  @apply py-2;
+  @apply p-4 md:p-6 lg:p-8;
   @apply flex justify-between items-center;
-  @apply border-b border-gray-500 border-opacity-10;
 }
 
 .section-title {
   @apply flex flex-wrap;
-  @apply text-sm font-semibold;
-  strong {
-    @apply font-semibold;
-    border-bottom: 1px dotted;
-  }
+  @apply text-sm font-medium
+}
+
+.section-title strong {
+  @apply font-medium;
+  border-bottom: 1px dotted;
 }
 
 .section-body {
-  @apply px-4 pb-4 md:px-6 md:pb-4 lg:px-8 lg:pb-6;
+  @apply p-4 md:p-6 lg:p-8 pt-0 md:pt-0 lg:pt-0;
 }
 
 .section-body.scrollbar {
@@ -289,7 +280,14 @@ Media
 
 .media-playlist .card.active {
   @apply bg-gray-100 dark:bg-gray-800;
-}  
+}
+
+/* 
+Comments List 
+*/
+.section-comments {
+  @apply border-t border-gray-500 border-opacity-10;
+}
 
 
 
@@ -301,7 +299,7 @@ Page Layout
 */
 .page {
   @apply flex flex-col w-full h-full;
-  @apply p-8 bg-white dark:bg-deepgray-50;
+  @apply bg-white dark:bg-deepgray-50;
 }
 
 .page-header {

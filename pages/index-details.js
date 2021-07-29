@@ -61,7 +61,7 @@ export default observer((props) => {
 
   const scrollBox2 = createRef();
   let ps2;
-
+  
   useEffect(() => {
     // make scrollbar
     ps2 = new PerfectScrollbar(scrollBox2.current, {});
@@ -70,60 +70,62 @@ export default observer((props) => {
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 
-      <div className={`pane-content`}>
+    <div className={`pane-content`}>
 
-        {/* main content pane */}
-        <div className={`pane-content--main`}>
-          <PostsListWrapper  dataStore={observableItemStore}  />
-        </div>
+      {/* main content pane */}
+      <div className={`pane-content--main`}>
+        <PostsListWrapper  dataStore={observableItemStore}  />
+      </div>
 
-        {/* secondary content pane */}
-        <div className={`pane-content--sec`}>
+      {/* secondary content pane */}
+      <div className={`pane-content--sec`}>
 
-          <Responsive gt="1024">
-            <div className={`pane-content--sec--top`}>
-              <div className="leading-10"></div>
-              <div className="flex items-center space-x-2">
-                <ThemeSwitch />
-                <div className="relative">
-                  <Wallet />
-                </div>
-              </div>
+        <Responsive gt="1024">
+        <div className={`pane-content--sec--top`}>
+          <div className="leading-10"></div>
+          <div className="flex items-center space-x-2">
+            <ThemeSwitch />
+            <div className="relative">
+              <Wallet />
             </div>
-          </Responsive>
+          </div>
+        </div>
+        </Responsive>
 
-          <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
+        <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
 
-            {/* Post Detail */}
-            <div className="page">
+          {/* Post Detail */}
+          <div className="page">
 
-              {/* News Post Detail Content */}
-              <div className="post-detail post-detail-news">
+            {/* News Post Detail Content */}
+            <div className="section post-detail post-detail-news">
 
-                {/* Post Header */}
-                <div className="post-header">
-                  <h1 className="post-title">
+              {/* Post Header */}
+              <div className="section-header post-header">
+                <h1 className="post-title">
                   <span className="text-color-title">
                     Whales Are Quietly Pouncing on Ethereum As Crypto Market Meanders, According to Analytics Firm Santiment
                   </span>
-                  </h1>
-                </div>
+                </h1>
+              </div>
 
-                <div className="post-body">
-                  <p>The largest Ethereum whales in existence are accumulating ETH as the asset’s price continues to tick downwards.</p>
-                  <p>Crypto analytics firm Santiment says Ethereum’s top 10 largest addresses went from owning as low as 18.46% of the total Ethereum supply after mid-May – when ETH achieved its all-time high – to 20.58% by July 13th.</p>
-                </div>
-
+              <div className="section-body post-body">
+                <p>The largest Ethereum whales in existence are accumulating ETH as the asset’s price continues to tick downwards.</p>
+                <p>Crypto analytics firm Santiment says Ethereum’s top 10 largest addresses went from owning as low as 18.46% of the total Ethereum supply after mid-May – when ETH achieved its all-time high – to 20.58% by July 13th.</p>
               </div>
 
             </div>
-            {/* End: Post Detail */}
+              
+            {/* Comments */}
+            {/* //Comments */}
 
           </div>
 
         </div>
 
       </div>
+
+    </div>
 
     </Layout>
   )
