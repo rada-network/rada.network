@@ -42,22 +42,22 @@ export const Vote = observer(({itemId, page,voteStore}) => {
   }
 
   if (page === "detail" ) return (
-    <button className={`btn btn-project-vote
+    <button className={`btn btn-post-vote
     ${!isVote ? "" : "active"}`}
           onClick={toggleVote}>
       <span className="icon -mb-0.5 -ml-1 text-2xl"><RiArrowUpSFill /></span>
-      <span className="btn-project-vote_total ml-1 whitespace-nowrap">
+      <span className="btn-post-vote_total ml-1 whitespace-nowrap">
         <span className="inline-block font-medium">{isVote? "Upvoted" : "Upvote"}</span>
         <strong className="inline-block ml-2 font-bold">{`${totalVote}`}</strong>
       </span>
       </button>
     )
    return (
-    <button title={isVote? "Upvoted" : "Upvote"} className={`btn btn-project-vote_sm flex flex-col  
+    <button title={isVote? "Upvoted" : "Upvote"} className={`btn btn-post-vote_sm flex flex-col  
     ${!isVote ? "" : "active"}`}
         onClick={toggleVote}>
       <span className="icon text-xl"><RiArrowUpSFill /></span>
-      <span className="btn-project-vote_total whitespace-nowrap">
+      <span className="btn-post-vote_total whitespace-nowrap">
         <strong className="inline-block text-sm">{`${totalVote}`}</strong>
       </span>
     </button>

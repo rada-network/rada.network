@@ -54,7 +54,7 @@ export const CardNews = ({news}) => {
           :
           <div className={`card-media-img`}>
             <a rel={"nofollow"} target={"_blank"} href={news.websiteUri}>
-              <img className={`card-img project-icon--img`} src={news.thumbnailUri}  alt={""}/>
+              <img className={`card-img post-icon--img`} src={news.thumbnailUri}  alt={""}/>
             </a>
           </div>
         }

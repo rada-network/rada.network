@@ -206,8 +206,8 @@ Sections Layout
 }
 
 .section-header {
-  @apply p-4 md:p-6 lg:p-8;
-  @apply flex justify-between items-center;
+  @apply p-4 md:p-6 lg:p-8 lg:pb-6;
+  @apply flex justify-between;
 }
 
 .section-title {
@@ -311,72 +311,68 @@ Page Layout
 }
 
 /* 
-Post Layout
-*/
+Post Details
+--------------- */
 .post {
 
 }
 
 .post-header {
-  @apply md:flex;
+  @apply flex flex-col;
 }
 
 .post-title {
-  @apply text-xl font-medium;
+  @apply text-lg font-medium;
 }
 
+.post-header .metadata-wrapper {
+  @apply text-sm mt-2;
+}
 
-/* 
-Post Details
---------------- */
-.post-details {
+.post-body {
+  @apply text-sm;
+}
+
+.post-body p {
+  @apply mb-2;
+}
+
+.post-detail {
+
+  flex: 0;
   
-  .page-header {
-    @apply p-4 md:p-6 lg:p-8;
-  }
-
-  .page-main {
-    @apply flex-1 p-4 md:p-6 lg:p-8 pt-0 md:pt-0 lg:pt-0;
-  }
-
-  .page-sidebar {
-    @apply w-64 max-h-full p-8;
-  }
-
-  .project-icon {
+  .post-icon {
     @apply hidden md:block flex-shrink-0 rounded mr-6 mt-1;
   }
 
-  .project-icon_img {
+  .post-icon_img {
     @extend %Img96;
     @apply rounded object-cover;
   }
 
-  .project-metadata-wrapper .metadata {
-  }
-
   /* CTAs */
   .cta-wrapper {
-    @apply flex mt-6;
+    @apply flex;
   }
 
   .cta-wrapper .btn {
-    @apply uppercase text-sm;
+    @apply text-gray-800 text-xs font-normal uppercase;
   }
 
-  .cta-wrapper .btn-project-link {
-    @apply justify-center px-2 py-2 md:px-3;
-    @apply text-gray-700 border-2 border-transparent rounded;
+  .cta-wrapper .btn-post-link {
+    @apply justify-center items-center px-2 py-0.5;
+    @apply border-2 border-transparent rounded;
     @apply hover:text-purple-700;
   }
 
-  .cta-wrapper .btn-project-vote {
-    @apply px-2 py-2 md:px-6;
+  .cta-wrapper .btn-post-link .icon {
+    @apply text-base -mt-0.5;
   }
 
-  .cta-wrapper .btn-project-vote {
-    @apply px-2 py-2 md:px-6;
+  .cta-wrapper .btn-post-vote {
+    @apply px-2;
   }
+
 }
 
 /*

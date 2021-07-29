@@ -50,7 +50,7 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
 
         <div className={`card-title`}>
           <a className="card-link group" href={"/"}>
-            <span className="text-color-title mr-2">
+            <span className="text-color-title">
               <div dangerouslySetInnerHTML={{__html: title}}></div>
             </span>
           </a>

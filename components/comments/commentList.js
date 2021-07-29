@@ -99,19 +99,18 @@ export const CommentList = observer(({item}) => {
 
   return (
     <>
-    <div className="section section-project-discussions">
-      <div className="section-inner">
+    <div className="section section-comments">
 
         <div className="section-header">
           <div className="section-title">
-            <span className="text-color-title">Discussions</span>
+            <span className="text-color-title">99 Comments</span>
           </div>
         </div>
         
         <div className="section-body">
           <div className="grid grid-cols-1 md:grid-cols-12">
             {/* <div className="md:col-span-9 md:pr-10"> */}
-            <div className="col-span-12 lg:col-span-10">
+            <div className="col-span-12">
               {/* Comment Form */}
               <div className="flex justify-center">
                 <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} />
@@ -123,7 +122,6 @@ export const CommentList = observer(({item}) => {
           </div>
         </div>
 
-      </div>
     </div>
     </>
   )

@@ -107,7 +107,7 @@ export const SocialPost = ({post, favoriteCount, retweetCount, hashtags,
                 }}>
 
             {media
-              ? <img src={media[0].media_url_https ? media[0].media_url_https : ""} className={"project-icon_img w-full h-full rounded object-cover"} alt=""/>
+              ? <img src={media[0].media_url_https ? media[0].media_url_https : ""} className={"post-icon_img w-full h-full rounded object-cover"} alt=""/>
               : ""
             }
           </div> }

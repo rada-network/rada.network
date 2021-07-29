@@ -122,10 +122,10 @@ export default function Item (props) {
                   <div className="page-header">
 
                     {data.item.thumbnail !== null ?
-                    <div className="project-icon">
+                    <div className="post-icon">
                       <Link target={"_blank"} href={data.item.imageUri}>
                         <a className="">
-                          <img className="project-icon_img" src={data.item.imageUri} />
+                          <img className="post-icon_img" src={data.item.imageUri} />
                         </a>
                       </Link>
                     </div>
@@ -156,8 +156,8 @@ export default function Item (props) {
                           voteStore={voteStore}
                           page={"detail"}
                         />
-                        <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="btn btn-project-link ml-4">
-                          <span className="btn-project-vote_total whitespace-nowrap">
+                        <a target="_blank" rel="nofollow" href={data.item.websiteUri} className="btn btn-post-link ml-4">
+                          <span className="btn-post-vote_total whitespace-nowrap">
                             <span className="inline-block text-sm font-medium">Visit</span>
                           </span>
                           <span className="icon ml-2"><RiExternalLinkLine /></span>

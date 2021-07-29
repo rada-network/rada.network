@@ -34,8 +34,8 @@ export default function ProjectDetails(props) {
 
             <div className="page-header_l">
               <Link href={`#`}>
-                <a title="SolaSystem" className="project-icon">
-                  <img className="project-icon_img" src="https://picsum.photos/300/300?random=1" />
+                <a title="SolaSystem" className="post-icon">
+                  <img className="post-icon_img" src="https://picsum.photos/300/300?random=1" />
                 </a>
               </Link>
             </div>
@@ -68,13 +68,13 @@ export default function ProjectDetails(props) {
               <div className="flex justify-between cta-wrapper">
                 <btn className="justify-center px-2 py-2 text-purple-700 bg-white border border-gray-200 rounded-md w-px-104 md:w-full btn item-center md:px-3 md:py-3 hover:bg-primary-100 hover:border-primary-500">
                   <span className="text-2xl icon"><RiCompass3Fill /></span>
-                  <span className="ml-2 uppercase btn-project-vote_total whitespace-nowrap">
+                  <span className="ml-2 uppercase btn-post-vote_total whitespace-nowrap">
                     <span className="inline-block text-sm font-medium">Visit</span> 
                   </span>
                 </btn>
-                <btn className="justify-center flex-1 px-2 py-2 ml-4 text-white transition-all rounded-md md:px-3 md:py-3 btn item-center btn-project-vote bg-primary-700 hover:bg-primary-600">
+                <btn className="justify-center flex-1 px-2 py-2 ml-4 text-white transition-all rounded-md md:px-3 md:py-3 btn item-center btn-post-vote bg-primary-700 hover:bg-primary-600">
                   <span className="-mb-1 -ml-1 text-2xl icon"><RiArrowUpSFill /></span>
-                  <span className="ml-1 uppercase btn-project-vote_total whitespace-nowrap">
+                  <span className="ml-1 uppercase btn-post-vote_total whitespace-nowrap">
                     <span className="inline-block text-sm font-medium">Upvote</span> 
                     <strong className="inline-block ml-2 text-base font-bold">1989</strong>
                   </span>
@@ -176,7 +176,7 @@ export default function ProjectDetails(props) {
                           <TextareaAutosize className="w-full px-4 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="What do you think of this project?" />
 
                           <div className="text-sm text-gray-400 pl-2 md:mt-0">
-                            <btn className="w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded-md btn item-center btn-project-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">Submit</btn>
+                            <btn className="w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded-md btn item-center btn-post-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">Submit</btn>
                           </div>
                         </div>
 
@@ -359,7 +359,7 @@ export default function ProjectDetails(props) {
                             <TextareaAutosize className="h-px-32 w-full px-4 py-2 text-sm border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"  row="1" title="Write a comment" placeholder="Write your reply" />
 
                             <div className="pl-2 md:mt-0">
-                              <btn className="h-px-40 text-sm text-gray-400 w-full justify-center flex-1 px-3 py-0 text-gray-500 transition-all rounded-md btn item-center btn-project-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">Reply</btn>
+                              <btn className="h-px-40 text-sm text-gray-400 w-full justify-center flex-1 px-3 py-0 text-gray-500 transition-all rounded-md btn item-center btn-post-vote bg-gray-100 hover:bg-primary-100 hover:text-primary-700">Reply</btn>
                             </div>
 
                           </div>

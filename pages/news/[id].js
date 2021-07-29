@@ -41,9 +41,9 @@ export function NewsDetailBody({props,isSideBar,voteStore}){
                 <div className="page-header">
 
                   {props.news.thumbnailUri !== null && props.news.thumbnailUri ?
-                    <div className="project-icon">
+                    <div className="post-icon">
                       <a target={"_blank"} rel={"nofollow"} href={props.news.websiteUri}>
-                          <img className="project-icon_img" src={props.news.thumbnailUri} />
+                          <img className="post-icon_img" src={props.news.thumbnailUri} />
                       </a>
                     </div>
                     : ""
@@ -72,8 +72,8 @@ export function NewsDetailBody({props,isSideBar,voteStore}){
                         voteStore={voteStore}
                         page={"detail"}
                       />
-                      <a target="_blank" rel="nofollow" href={props.news.websiteUri} className="btn btn-project-link ml-4">
-                          <span className="btn-project-vote_total whitespace-nowrap">
+                      <a target="_blank" rel="nofollow" href={props.news.websiteUri} className="btn btn-post-link ml-4">
+                          <span className="btn-post-vote_total whitespace-nowrap">
                             <span className="inline-block text-sm font-medium">Visit</span>
                           </span>
                         <span className="icon ml-2"><RiExternalLinkLine /></span>
