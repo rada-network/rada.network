@@ -71,7 +71,7 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
           <div className="flex flex-shrink-0 metadata-wrapper_nodivide">
             <div className="metadata">
               <span className="icon mr-1">
-                <i className="far fa-comment-alt" />
+                <i className="far fa-comment" />
               </span>
               <span className="">{commentCount}</span>
             </div>

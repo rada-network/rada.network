@@ -50,7 +50,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
                 <div class="flex metadata-wrapper_nodivide">
                   <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-comment-alt"></i></span>
+                    <span class="icon mr-1"><i class="far fa-comment"></i></span>
                     <span class="">107</span>
                   </div>
                   <div class="metadata">
@@ -93,7 +93,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
                 <div class="flex metadata-wrapper_nodivide">
                   <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-comment-alt"></i></span>
+                    <span class="icon mr-1"><i class="far fa-comment"></i></span>
                     <span class="">28</span>
                   </div>
                   <div class="metadata">
@@ -136,7 +136,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
                 <div class="flex metadata-wrapper_nodivide">
                   <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-comment-alt"></i></span>
+                    <span class="icon mr-1"><i class="far fa-comment"></i></span>
                     <span class="">15</span>
                   </div>
                   <div class="metadata">
@@ -179,7 +179,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
                 <div class="flex metadata-wrapper_nodivide">
                   <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-comment-alt"></i></span>
+                    <span class="icon mr-1"><i class="far fa-comment"></i></span>
                     <span class="">2</span>
                   </div>
                   <div class="metadata">
@@ -222,7 +222,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </div>
                 <div class="flex metadata-wrapper_nodivide">
                   <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-comment-alt"></i></span>
+                    <span class="icon mr-1"><i class="far fa-comment"></i></span>
                     <span class="">15</span>
                   </div>
                   <div class="metadata">

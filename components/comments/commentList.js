@@ -103,6 +103,7 @@ export const CommentList = observer(({item}) => {
 
         <div className="section-header">
           <div className="section-title">
+            <span className="icon mr-2"><i class="fad fa-comments" /></span>
             <span className="text-color-title">99 Comments</span>
           </div>
         </div>

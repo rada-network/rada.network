@@ -100,15 +100,6 @@ export default observer((props) => {
           <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
             {/* Post Detail */}
             <div className="page">
-
-              {/* Close Button */}
-              <div className="page-back">
-                <div className="btn">
-                  <span class="btn__caret_left"></span>
-                  <span className="btn__text">Back</span>
-                </div>
-              </div>
-
               {/* News Post Detail Content */}
               <div className="section post-detail post-detail-news">
                 {/* Post Header */}

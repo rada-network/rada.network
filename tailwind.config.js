@@ -16,7 +16,7 @@ module.exports = {
   theme: {
     // Add Font to Sans Font Array
     fontFamily: {
-      sans: ['Rubik', 'Inter', ...defaultTheme.fontFamily.sans],
+      sans: ['Rubik', ...defaultTheme.fontFamily.sans],
     },
 
     // Set default container to align center and have a 1rem side padding

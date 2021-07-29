@@ -202,11 +202,11 @@ Sections Layout
 --------------------------------------------- */
 .section {
   @apply flex flex-col h-full w-full;
+  @apply p-4 md:p-6;
   @apply bg-white dark:bg-deepgray-100;
 }
 
 .section-header {
-  @apply p-4 md:p-6;
   @apply flex justify-between;
 }
 
@@ -221,7 +221,7 @@ Sections Layout
 }
 
 .section-body {
-  @apply p-4 md:p-6 pt-0 md:pt-0;
+  @apply py-4 md:py-6;
 }
 
 .section-body.scrollbar {
@@ -254,7 +254,7 @@ Sections
 /* 
 Social 
 */
-.section-social .section-body{
+.section-social .section-body {
   @apply px-0 pb-0 md:px-6 md:pb-4 lg:px-8 lg:pb-6;
 }
 
@@ -298,7 +298,7 @@ Pages
 Page Layout
 */
 .page {
-  @apply flex flex-col w-full h-full;
+  @apply flex flex-col w-full h-full relative;
   @apply bg-white dark:bg-deepgray-50;
 }
 
@@ -309,6 +309,11 @@ Page Layout
 .page-title {
   @apply text-xl md:text-2xl font-semibold mb-1;
 }
+
+.page-back {
+  @apply px-4 py-2 md:px-6 md:py-2;
+}
+
 
 /* 
 Post Details
@@ -330,15 +335,11 @@ Post Details
 }
 
 .post-body {
-  @apply text-sm;
-}
-
-.post-body p {
-  @apply mb-2;
 }
 
 .post-detail {
 
+  @apply pt-0;
   flex: 0;
   
   .post-icon {
