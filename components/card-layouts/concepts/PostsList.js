@@ -118,11 +118,11 @@ export const PostsList = observer(({title, extraClass,dataStore}) => {
           item.createdAt = item.tweet.createdAt
           title = item.tweet.source.full_text
           mediaUri = item.tweet.tweetUser ? item.tweet.tweetUser.source.profile_image_url_https : null
-          source = "Twitter"
+          source = item.tweet.tweetUser ? item.tweet.tweetUser.source.screen_name : null
           return <CardPost key={item.id}
                            title={title}
                            mediaUri={mediaUri}
-                           type="fad fa-twitter"
+                           type="fab fa-twitter"
                            source={source}
                            commentCount={commentCount}
                            voteCount={voteCount} item={item}

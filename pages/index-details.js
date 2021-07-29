@@ -19,7 +19,7 @@ import {Wallet} from "../components/Wallet"
 import ThemeSwitch from "../components/ThemeSwitch"
 
 import { observer } from "mobx-react"
-import { useState, useEffect, createRef } from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 
 import utils from "../lib/util";
 import {HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
@@ -35,6 +35,8 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 import {getItems} from "../data/query/getItem";
 import {HOME_ITEM_TAKE} from "../config/paging";
+import {CommentList} from "../components/comments/commentList";
+import {getNews} from "../data/query/getNewsById";
 
 const getData = async ({query}) => {
   const itemFeed = await getItems({
@@ -43,9 +45,11 @@ const getData = async ({query}) => {
     orderBy : {createdAt : "desc"},
     query : query
   })
+  const newsDetail = await getNews({id : "fef6c34e-db9f-4470-870d-24aab5d5f9e2"})
   return {
     query : query,
-    itemFeed : itemFeed.data.itemFeed
+    itemFeed : itemFeed.data.itemFeed,
+    news : newsDetail.data.newsById,
   }
 }
 
@@ -117,6 +121,7 @@ export default observer((props) => {
             </div>
               
             {/* Comments */}
+            <CommentList item={props.news} />
             {/* //Comments */}
 
           </div>
