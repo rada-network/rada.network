@@ -9,7 +9,7 @@ import { useState, useEffect, createRef } from 'react'
 // Perfect Scrollbar
 import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
-import Responsive from "../Resposive";
+import Screen from "../Resposive";
 
 const scrollBox = createRef();
 let ps;
@@ -39,12 +39,13 @@ export const Layout = ({children}) => {
       </div>
 
       <div className={`pane-center`}>
-        <Responsive lt="1024">
+        
+        <Screen upto="md">
         <div className="pane-center--top">
           {/* <Tabbar /> */}
           <Topbar />
         </div>
-        </Responsive>
+        </Screen>
 
         <div className="pane-center--main">
           {children}

@@ -23,8 +23,7 @@ import { useState, useEffect, createRef } from 'react'
 
 import utils from "../lib/util";
 import {HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
-import Responsive from '../components/Resposive';
-
+import Screen from '../components/Resposive';
 
 const voteStore = new VoteStore();
 const homeStore = new HomeStore({isHome : true})
@@ -80,7 +79,7 @@ export default observer((props) => {
       {/* secondary content pane */}
       <div className={`pane-content--sec`}>
 
-        <Responsive gt="1024">
+        <Screen from="lg">
         <div className={`pane-content--sec--top`}>
           <div className="leading-10"></div>
           <div className="flex items-center space-x-2">
@@ -90,7 +89,7 @@ export default observer((props) => {
             </div>
           </div>
         </div>
-        </Responsive>
+        </Screen>
 
         <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
           <Header props={{
