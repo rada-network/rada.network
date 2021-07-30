@@ -32,7 +32,6 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
   const date = utils.timeDifference(new Date(), new Date(item.createdAt))
   const dateTitle = utils.titleTime(item.createdAt)
   return (
-    <Link href={"#"}>
     <div className={`card card-post ${state}`}>
 
       {mediaUri !== null ?
@@ -87,6 +86,5 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
       </div>
 
     </div>
-    </Link>
   )
 }

@@ -9,10 +9,13 @@ import SearchInput from "../../search";
 import {getItems} from "../../../data/query/getItem";
 import {HOME_ITEM_TAKE} from "../../../config/paging";
 import PerfectScrollbar from "perfect-scrollbar";
+import utils from "../../../lib/util";
+import {useRouter} from "next/router";
+import {useStore} from "../../../lib/useStore";
 import { isMobile } from "react-device-detect";
 
 
-export const PostsListWrapper = observer(function ({dataStore}){
+export const PostsListWrapper = observer(function ({dataStore,detailStore,voteStore}){
   const handleChangeFilter = ({filter}) =>{
     dataStore.currentTab = filter;
     dataStore.tweets = []
@@ -24,13 +27,13 @@ export const PostsListWrapper = observer(function ({dataStore}){
   let ps1;
 
   if (!isMobile) {
-    useEffect(() => {    
+    useEffect(() => {
       // make scrollbar
       ps1 = new PerfectScrollbar(scrollBox1.current, {});
       scrollBox1.current.removeEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
       scrollBox1.current.addEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
 
-      window.scrollTo(0, 1)    
+      window.scrollTo(0, 1)
 
       return () => {
         ps1.destroy();
@@ -52,6 +55,11 @@ export const PostsListWrapper = observer(function ({dataStore}){
       if (ps1) ps1.update()
     })
   }
+
+  const store = useStore()
+  voteStore.walletAddress = store.wallet.address
+  voteStore.addVotesV2(dataStore.tweets)
+
   return (
     <>
       <div className={`pane-content--main--top`}>
@@ -70,7 +78,7 @@ export const PostsListWrapper = observer(function ({dataStore}){
         </div>
       </div>
       <div className={`pane-content--main--main scrollbar`} ref={scrollBox1}>
-        <PostsList dataStore={dataStore} />
+        <PostsList dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
         {dataStore.loadingButton ?
           <PostsListLoader />
           :""
@@ -81,7 +89,7 @@ export const PostsListWrapper = observer(function ({dataStore}){
 })
 
 
-function getSourceFromUri(websiteUri){
+export function getSourceFromUri(websiteUri){
   const displaySources = ['Cardano Foundation', 'IOHK', 'CoinDesk', 'CoinTelegraph', 'AdaPulse', 'CoinGape']
   const listSources = ['forum.cardano', 'iohk', 'coindesk', 'cointele', 'adapulse', 'coingape']
   for (const [i, value] of listSources.entries()) {
@@ -102,24 +110,43 @@ const PostsListLoader = () => {
   )
 }
 
-export const PostsList = observer(({title, extraClass,dataStore}) => {
+export const PostsList = observer(({title, extraClass,dataStore,detailStore,voteStore}) => {
+  const router = useRouter();
+  const handleClickPost = (e,obj) => {
+    console.log(obj)
+    e.preventDefault()
+    e.stopPropagation()
+    dataStore.showDetail = true;
+    detailStore.data = obj
+    window.history.pushState("", "", e.currentTarget.getAttribute("data-href"));
+    return false;
+  }
   return (
     <div className={`cards-list ${extraClass || ''}`}>
       {dataStore.tweets.map(function(item){
         let title = null,mediaUri = null,source = null, voteCount=item.totalVote,commentCount=item.totalComment
         if (item.news !== null){
+          item.news.item = {
+            id : item.id,
+            totalVote: item.totalVote,
+            totalComment: item.totalComment
+          }
           item.createdAt = item.news.createdAt
           source = getSourceFromUri(item.news.websiteUri)
           title = item.news.title
           mediaUri = item.news.thumbnailUri !== "" ? item.news.thumbnailUri : null
-          return <CardPost key={item.id}
-                           title={title}
-                           mediaUri={mediaUri}
-                           type="fad fa-newspaper"
-                           source={source}
-                           commentCount={commentCount}
-                           voteCount={voteCount} item={item}
-          />
+          return (
+            <a data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.news)}>
+              <CardPost key={item.id}
+                        title={title}
+                        mediaUri={mediaUri}
+                        type="fad fa-newspaper"
+                        source={source}
+                        commentCount={commentCount}
+                        voteCount={voteCount} item={item}
+              />
+            </a>
+          )
         }
 
         if (item.tweet !== null){

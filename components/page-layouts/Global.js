@@ -14,7 +14,7 @@ import Screen from "../Resposive";
 const scrollBox = createRef();
 let ps;
 
-export const Layout = ({children}) => {
+export const Layout = ({children,meta}) => {
 
   // const [Scrollbar] = useState('')
 
@@ -30,7 +30,7 @@ export const Layout = ({children}) => {
 
   return (
     <>
-    <Head />
+    <Head title={meta.title} description={meta.description} keyword={meta.keyword} facebook={meta.facebook} twitter={meta.twitter} />
 
     <div className={`main-layout`}>
 

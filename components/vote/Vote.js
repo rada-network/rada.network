@@ -1,7 +1,7 @@
 import {RiArrowUpSFill} from "react-icons/ri"
 import getClient from "../../data/client"
 import tgVote from "../../data/query/tgVote"
-import {useState} from "react"
+import React, {useState} from "react"
 import { observer, inject } from "mobx-react"
 import { useStore } from "../../lib/useStore"
 import isVote from "../../data/query/isVoted";
@@ -52,6 +52,21 @@ export const Vote = observer(({itemId, page,voteStore}) => {
       </span>
       </button>
     )
+  if (page === "postDetail" ) return (
+    <button className={`btn btn-post-vote
+    ${!isVote ? "" : "active"}`}
+            onClick={toggleVote}>
+                          <span className="icon mr-1">
+                           <i className="fas fa-arrow-up"></i>
+                          </span>
+      <span className="btn-post-vote_total ml-1 whitespace-nowrap">
+                            <span className="inline-block">{isVote? "Upvoted" : "Upvote"}</span>
+                            <strong className="inline-block ml-2 font-bold">
+                              {totalVote}
+                            </strong>
+                          </span>
+    </button>
+  )
    return (
     <button title={isVote? "Upvoted" : "Upvote"} className={`btn btn-post-vote_sm flex flex-col  
     ${!isVote ? "" : "active"}`}

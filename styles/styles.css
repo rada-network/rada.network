@@ -685,3 +685,6 @@ Uitilities
 .no-padding-t {
   @apply pt-0;
 }
+.hidden {
+  display: none;
+}

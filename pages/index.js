@@ -19,10 +19,10 @@ import {Wallet} from "../components/Wallet"
 import ThemeSwitch from "../components/ThemeSwitch"
 
 import { observer } from "mobx-react"
-import { useState, useEffect, createRef } from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 
 import utils from "../lib/util";
-import {HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
+import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
 import Screen from '../components/Resposive';
 
 const voteStore = new VoteStore();
@@ -34,6 +34,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 import {getItems} from "../data/query/getItem";
 import {HOME_ITEM_TAKE} from "../config/paging";
+import {PostListDetail} from "../components/card-layouts/concepts/PostListDetail";
 
 const getData = async ({query}) => {
   const itemFeed = await getItems({
@@ -50,21 +51,13 @@ const getData = async ({query}) => {
 
 
 export default observer((props) => {
-  if (!props) return <div>loading...</div>
 
   observableItemStore.query = props.query
   const [scrollbar] = useState('')
 
   observableItemStore.tweets = props.itemFeed
 
-
-  const scrollBox2 = createRef();
-  let ps2;
-  
-  useEffect(() => {
-    // make scrollbar
-    ps2 = new PerfectScrollbar(scrollBox2.current, {});
-  }, [scrollBox2]);
+  const detailStore = new DetailStore()
 
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
@@ -73,7 +66,7 @@ export default observer((props) => {
 
       {/* main content pane */}
       <div className={`pane-content--main`}>
-        <PostsListWrapper  dataStore={observableItemStore}  />
+        <PostsListWrapper  dataStore={observableItemStore} detailStore={detailStore} voteStore={voteStore} />
       </div>
 
       {/* secondary content pane */}
@@ -90,22 +83,39 @@ export default observer((props) => {
           </div>
         </div>
         </Screen>
-
-        <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
-          <Header props={{
-            title : "RADA is a trends hunter for Cardano community",
-            itemType : "home",
-            description : "Stay updated with the best quality news & updates"
-          }}/>
-
-          <Sidebar className={`sidebar`} extraClass="" />
-        </div>
-
+        <IndexRightBar  dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
       </div>
-
     </div>
-
     </Layout>
+  )
+})
+
+const IndexRightBar = observer(({dataStore,detailStore,props,voteStore}) => {
+
+  const scrollBox2 = createRef();
+  let ps2;
+
+  useEffect(() => {
+    // make scrollbar
+    ps2 = new PerfectScrollbar(scrollBox2.current, {});
+  }, [scrollBox2]);
+
+  return (
+    <>
+      {dataStore.showDetail ?
+        <PostListDetail props={props} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
+        :
+        ""
+      }
+      <div className={`pane-content--sec--main scrollbar ` + (dataStore.showDetail ? "hidden" : "")} ref={scrollBox2}>
+        <Header props={{
+          title : "RADA is a trends hunter for Cardano community",
+          itemType : "home",
+          description : "Stay updated with the best quality news & updates"
+        }}/>
+        <Sidebar className={`sidebar`} extraClass="" />
+      </div>
+    </>
   )
 })
 
