@@ -25,6 +25,7 @@ import React, { useState, useEffect, createRef } from 'react'
 import utils from "../lib/util";
 import {HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
 import Responsive from '../components/Resposive';
+import Screen from '../components/Resposive';
 
 
 const voteStore = new VoteStore();
@@ -85,17 +86,18 @@ export default observer((props) => {
 
         {/* secondary content pane */}
         <div className={`pane-content--sec`}>
-          <Responsive gt="1024">
-            <div className={`pane-content--sec--top`}>
-              <div className="leading-10"></div>
-              <div className="flex items-center space-x-2">
-                <ThemeSwitch />
-                <div className="relative">
-                  <Wallet />
-                </div>
+          
+          <Screen from="lg">
+          <div className={`pane-content--sec--top`}>
+            <div className="leading-10"></div>
+            <div className="flex items-center space-x-2">
+              <ThemeSwitch />
+              <div className="relative">
+                <Wallet />
               </div>
             </div>
-          </Responsive>
+          </div>
+          </Screen>
 
           <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
             {/* Post Detail */}
