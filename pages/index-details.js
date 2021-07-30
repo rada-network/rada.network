@@ -23,12 +23,12 @@ import { observer } from "mobx-react"
 import React, { useState, useEffect, createRef } from 'react'
 
 import utils from "../lib/util";
-import {HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
+import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
 import Responsive from '../components/Resposive';
 import Screen from '../components/Resposive';
 
 const voteStore = new VoteStore();
-const homeStore = new HomeStore({isHome : true})
+const homeStore = new HomeStore({isHome : false})
 
 const observableItemStore = new ObservableTweetStore({homeStore});
 
@@ -63,6 +63,9 @@ export default observer((props) => {
 
   observableItemStore.tweets = props.itemFeed
 
+  const detailStore = new DetailStore()
+  detailStore.data = props.news
+
   return (
     <Layout
       extraClass="page-home"
@@ -71,7 +74,7 @@ export default observer((props) => {
       <div className={`pane-content`}>
         {/* main content pane */}
         <div className={`pane-content--main`}>
-          <PostsListWrapper dataStore={observableItemStore} voteStore={voteStore} />
+          <PostsListWrapper dataStore={observableItemStore} voteStore={voteStore} detailStore={detailStore} />
         </div>
 
         {/* secondary content pane */}
@@ -89,14 +92,14 @@ export default observer((props) => {
           </div>
           </Screen>
 
-          <PostListDetail props={props} />
+          <PostListDetail props={props} detailStore={detailStore} dataStore={observableItemStore} voteStore={voteStore} />
         </div>
       </div>
     </Layout>
   );
 })
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const query = "ada,cardano"
   const props = await getData({query});
   return {

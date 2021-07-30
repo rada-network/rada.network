@@ -7,14 +7,16 @@ import {observer} from "mobx-react";
 import {getSourceFromUri} from "./PostsList";
 import utils from "../../../lib/util";
 import {Vote} from "../../vote/Vote";
+import {useRouter} from "next/router";
 
 export const PostListDetail = observer(({props,detailStore,dataStore,voteStore}) => {
+  const router = useRouter()
   let item
   if (detailStore !== undefined){
     item = detailStore.data
   }
   else{
-    item = props.news
+    item = props.news !== null ? props.news : props.idea !== null
   }
 
   const scrollBox2 = createRef();
@@ -25,7 +27,12 @@ export const PostListDetail = observer(({props,detailStore,dataStore,voteStore})
   }, [scrollBox2]);
   const handleBack = (e) => {
     dataStore.showDetail = false
-    window.history.pushState("", "", "/");
+    if (!dataStore.isHome){
+      window.history.pushState("", "", "/");
+    }
+    else{
+      router.push("/",undefined)
+    }
   }
 
   const date = utils.timeDifference(new Date(), new Date(item.createdAt))
@@ -37,12 +44,15 @@ export const PostListDetail = observer(({props,detailStore,dataStore,voteStore})
         <div className="page">
 
           {/* Close Button */}
-          <div className="page-back" onClick={(e) => handleBack(e)}>
-            <div className="btn">
-              <span className="btn__caret_left"></span>
-              <span className="btn__text">Back</span>
+          {dataStore !== undefined ?
+            <div className="page-back" onClick={(e) => handleBack(e)}>
+              <div className="btn">
+                <span className="btn__caret_left"></span>
+                <span className="btn__text">Back</span>
+              </div>
             </div>
-          </div>
+            : ""
+          }
 
           {/* News Post Detail Content */}
           <div className="section post-detail post-detail-news">
