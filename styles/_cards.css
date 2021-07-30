@@ -134,15 +134,15 @@ Card Social
 }
 
 .card-social .card-body {
-  @apply h-full justify-items-stretch;
+  @apply h-full justify-items-stretch py-4;
 }
 
 .card-social .card-header {
-  @apply pb-0 flex flex-row justify-between items-center;
+  @apply p-0 flex flex-row justify-between items-center;
 }
 
 .card-social .card-footer {
-  @apply w-full text-sm pt-1 pb-0 md:pb-4;
+  @apply w-full text-sm p-0;
 }
 
 .card-social .card-body--header {
@@ -167,14 +167,14 @@ Card Social
   @apply mt-4 h-auto w-full overflow-hidden;
   @apply bg-no-repeat bg-cover bg-center;
   @apply border border-gray-900 border-opacity-10 rounded-lg;
-  min-height: 8rem;
-  max-height: 10rem;
+  min-height: 12rem;
+  max-height: 16rem;
 }
 
 @media only screen and (max-width: 640px) {
   .card-social .card-media {
-    min-height: 12rem;
-    max-height: 14rem;
+    min-height: 16rem;
+    max-height: 24rem;
   }
 }
 

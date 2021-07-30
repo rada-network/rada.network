@@ -110,7 +110,7 @@ export default observer((props) => {
               </div>
 
               {/* News Post Detail Content */}
-              <div className="section post-detail post-detail-news">
+              <div className="section post-detail post-detail-media">
                 {/* Post Header */}
                 <div className="section-header post-header">
                   <div className="flex">
