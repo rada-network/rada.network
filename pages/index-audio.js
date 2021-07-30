@@ -116,7 +116,7 @@ export default observer((props) => {
                   <div className="flex">
                     <h1 className="post-title">
                       <span className="text-color-title">
-                        Bitcoin Price FLOODED With Green (Cardano BREAKOUT Pending)
+                        Ep. 384 - The New FORTH Token with Evan Kuo of Ampleforth
                       </span>
                     </h1>
                   </div>
@@ -124,10 +124,10 @@ export default observer((props) => {
                     <div class="flex flex-shrink-0">
                       <div class="metadata metadata-source">
                         <span class="icon mr-1">
-                          <i class="fab fa-youtube"></i>
+                          <i class="fab fa-spotify"></i>
                         </span>
                         <span class="metadata-value" title="CoinTelegraph">
-                          Crypto Capital Venture
+                          CRYPTO 101
                         </span>
                       </div>
                       <div class="metadata metadata-date">
@@ -165,21 +165,14 @@ export default observer((props) => {
                   <div className="post-media">
                     {/* Media Player Here */}
                     <div className="media-player">
-                      <div className="w-full h-full">
-                        <div className={`aspect-w-16 aspect-h-9`}>
-                          <iframe width="640" height="360" src="https://www.youtube.com/embed/k2dol_FXyRo" title="Bitcoin Price FLOODED With Green (Cardano BREAKOUT Pending)" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" />
-                        </div>
+                      <div className="w-full h-full overflow-hidden">
+                        <iframe src="https://open.spotify.com/embed/episode/58C0oqH4VgdKy6TzFC4FCK" width="100%" height="152" frameBorder="0" allowtransparency="true" allow="encrypted-media" />
                       </div>
                     </div>
                   </div>
                   <div className="post-content">
                     <p>
-                      ⚡⚡ Stake Your Cardano with my new ADA Pool! Ticker: CCV3<br/>
-                      CCV3 pool id for delegation:<br/>
-                      903c38e5905f1587d5ecf8c875a181725fb4b12b3eb06ce1d20bb1c6<br/>
-                    </p>
-                    <p>
-                      Bitcoin has closed 9 daily green candles in a row. Crypto markets on the short term have been very hype with some altcoins continuing to see higher highs, including Cardano. Do Bitcoin and Cardano bulls have continued momentum to continue this rise? Or has their time come up and is BTC and ADA about to crash?
+                      In this episode of CRYPTO 101, brought to you by StopSIMSwaps.com, we catch up with Evan Kuo of Ampleforth to talk about the launch of the new FORTH governance token… and how Ampleforth is diving into cross-chain integration.
                     </p>
                   </div>
                 </div>

@@ -221,7 +221,7 @@ Sections Layout
 }
 
 .section-body {
-  @apply py-4 md:py-6;
+  @apply pt-4 md:pt-6;
 }
 
 .section-body.scrollbar {
@@ -262,8 +262,6 @@ Social
 Media 
 */
 .media-player {
-  @apply p-4 md:p-6 lg:p-8 pt-0 md:pt-0 lg:pt-0;
-  @apply border-b border-gray-500 border-opacity-10;
 }
 
 .media-playlist {
@@ -357,7 +355,7 @@ Post Details
   }
 
   .cta-wrapper .btn {
-    @apply text-gray-800 text-xs font-normal uppercase;
+    @apply text-gray-800 hover:text-primary-700 text-xs font-normal uppercase;
   }
 
   .cta-wrapper .btn-post-link {

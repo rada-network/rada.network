@@ -4,7 +4,7 @@ import styles from '../../styles/modules/Card.media.module.css'
 //ReactIcons
 import { IoChevronForwardSharp } from "react-icons/io5";
 
-export const Card = ({title, mediaUri, mediaType}) => {
+export const Card = ({mediaUri, mediaType}) => {
 
   const Podcast = () => (
     <div className={`card ${styles.card_media}`}>
@@ -32,21 +32,6 @@ export const Card = ({title, mediaUri, mediaType}) => {
       { mediaType == 'Podcast' && <Podcast src={mediaUri} /> }
       
       <div className={`card-body ${styles.card_body}`}>
-
-        <div className={`card-body-header ${styles.card_body__header}`}>
-          <a href="#" className={`card-title ${styles.card_title}`}>{title}</a>
-        </div>
-
-        <div className={`${styles.card_body__footer}`}>
-          <div className="metadata-wrapper">
-            <div className="metadata metadata_author">
-              <span className="metadata-value">Cardano Foundation</span>
-            </div>
-            <div className="metadata metadata_date">
-              <span className="metadata-value">2d</span>
-            </div>
-          </div>
-        </div>
 
       </div>
 
