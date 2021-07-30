@@ -9,6 +9,8 @@ import SearchInput from "../../search";
 import {getItems} from "../../../data/query/getItem";
 import {HOME_ITEM_TAKE} from "../../../config/paging";
 import PerfectScrollbar from "perfect-scrollbar";
+import { isMobile } from "react-device-detect";
+
 
 export const PostsListWrapper = observer(function ({dataStore}){
   const handleChangeFilter = ({filter}) =>{
@@ -20,15 +22,21 @@ export const PostsListWrapper = observer(function ({dataStore}){
   const scrollBox1 = createRef();
 
   let ps1;
-  useEffect(() => {
-    // make scrollbar
-    ps1 = new PerfectScrollbar(scrollBox1.current, {});
-    scrollBox1.current.removeEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
-    scrollBox1.current.addEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
-    return () => {
-      ps1.destroy();
-    }
-  }, [scrollBox1]);
+
+  if (!isMobile) {
+    useEffect(() => {    
+      // make scrollbar
+      ps1 = new PerfectScrollbar(scrollBox1.current, {});
+      scrollBox1.current.removeEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
+      scrollBox1.current.addEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
+
+      window.scrollTo(0, 1)    
+
+      return () => {
+        ps1.destroy();
+      }
+    }, [scrollBox1]);
+  }
 
   const handleLoadMoreItem = () =>{
     if (dataStore.loadingButton) return false;
@@ -41,7 +49,7 @@ export const PostsListWrapper = observer(function ({dataStore}){
     }).then(function (res){
       dataStore.loadingButton = false;
       dataStore.addTweet(res.data.itemFeed)
-      ps1.update()
+      if (ps1) ps1.update()
     })
   }
   return (
