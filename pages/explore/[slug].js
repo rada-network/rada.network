@@ -82,9 +82,8 @@ export async function getStaticPaths() {
       { params: { slug: 'social' } },
       { params: { slug: 'media' } },
       { params: { slug: 'projects' } },
-      { params: { slug: 'blog' } },
     ],
-    fallback: true,
+    fallback: false,
   }
 }
 
