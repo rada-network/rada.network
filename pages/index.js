@@ -58,7 +58,7 @@ export default observer((props) => {
   observableItemStore.tweets = props.itemFeed
 
   const detailStore = new DetailStore()
-
+  observableItemStore.showDetail = false
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 
@@ -83,14 +83,14 @@ export default observer((props) => {
           </div>
         </div>
         </Screen>
-        <IndexRightBar  dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
+        <IndexRightBar back={"/"} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
       </div>
     </div>
     </Layout>
   )
 })
 
-const IndexRightBar = observer(({dataStore,detailStore,props,voteStore}) => {
+export const IndexRightBar = observer(({dataStore,detailStore,props,voteStore,back}) => {
 
   const scrollBox2 = createRef();
   let ps2;
@@ -103,7 +103,7 @@ const IndexRightBar = observer(({dataStore,detailStore,props,voteStore}) => {
   return (
     <>
       {dataStore.showDetail ?
-        <PostListDetail props={props} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
+        <PostListDetail back={back} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
         :
         ""
       }

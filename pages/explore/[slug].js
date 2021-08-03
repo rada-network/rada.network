@@ -1,149 +1,99 @@
-import {Layout} from '../../components/page-layouts/Global';
-import {Header} from '../../components/headers/Header';
-import {Sidebar} from '../../components/sidebar/Sidebar';
-import {ProjectsList} from "../../components/card-layouts/ProjectsList";
-import {SocialPostsList} from "../../components/card-layouts/SocialPostsList";
-import useSWR from "swr";
-import {observer} from "mobx-react";
-
-import {getPosts} from "../../data/query/posts";
-import {getTweet} from "../../data/query/postsTweet";
-import {useRouter} from "next/router";
-import {getTopic} from "../../data/query/topic";
+import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 import utils from "../../lib/util";
-import {useStore} from "../../lib/useStore";
+import {Layout} from "../../components/page-layouts/Global";
+import {PostsListWrapper} from "../../components/card-layouts/concepts/PostsList";
+import Screen from "../../components/Resposive";
+import ThemeSwitch from "../../components/ThemeSwitch";
+import {Wallet} from "../../components/Wallet";
+import {IndexRightBar} from "../index";
+import {observer} from "mobx-react";
+import {HOME_ITEM_TAKE} from "../../config/paging";
+import {getItems} from "../../data/query/getItem";
+import {useState} from "preact/hooks";
 
 
-import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
-import {Widget} from "../../components/widgets/Widget";
+const voteStore = new VoteStore();
+const homeStore = new HomeStore({isHome : true})
 
-const homeStore = new HomeStore({isHome : false})
-const observableTweetStore = new ObservableTweetStore({homeStore})
+const observableItemStore = new ObservableTweetStore({homeStore});
 
-const getData = async (itemType,q) => {
-
-  const topics = await getTopic();
-
-  if (itemType === "tweet") {
-    const postTweet = await getTweet({socialOrder : observableTweetStore.currentTab, skip: 0, take: 12})
-    return {
-      feed : postTweet.data.tweetFeed,
-      topic : [
-        {
-          title : "Tweets",
-          type : "tweet",
-          description : "Blockchain social signals.."
-        }
-      ]
-    }
-  }
-  const dataItem =await getPosts({
-    type : itemType,
-    take : 12,
+const getData = async ({query,type}) => {
+  const itemFeed = await getItems({
+    take : HOME_ITEM_TAKE,
     skip : 0,
-    socialOrder : observableTweetStore.currentTab,
-    query : q
+    orderBy : {createdAt : "desc"},
+    query : query,
+    type : type
   })
-
   return {
-    feed : dataItem.data.ideaFeed,
-    topic : topics.data.itemTypeCount.filter(function(item){
-      return item.itemType === itemType
-    })
+    query : query,
+    type : type,
+    itemFeed : itemFeed.data.itemFeed
   }
 }
-const voteStore = new VoteStore()
 
-export default observer(function Explore(props) {
-  const router = useRouter();
-  let { slug,q } = router.query;
-  const data = props
-  const itemType = slug;
-  observableTweetStore.query = q;
-  let title = `${utils.topicTransform(itemType)}`
-  observableTweetStore.tweets = data.feed
-  if (itemType === "tweet"){
-    return (
-      <Layout extraClass="page-home"
-              meta={utils.createSiteMetadata({page : 'Explore',data : {query : q,itemType : itemType}})}
-      >
-        <Header props={data.topic[0]}/>
 
-        <div className={`wrapper`}>
-          <div className={`container`}>
+export default observer((props) => {
 
-            <div className={`main-grid`}>
+  observableItemStore.query = props.query
 
-              {/* main content */}
-              <div className={`maincontent`}>
+  observableItemStore.tweets = props.itemFeed
+  observableItemStore.type = props.type
 
-                <SocialPostsList
-                  grid="1"
-                  gap="0"
-                  title={title}
-                  // titleIcon="fire-alt"
-                  // titleIconColor="red-500"
-                  dataStore={observableTweetStore}
-                />
+  const detailStore = new DetailStore()
+  observableItemStore.showDetail = false
 
-              </div>
+  return (
+    <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 
-              {/* Sidebar */}
-              <Sidebar className={`sidebar`} extraClass="" />
+      <div className={`pane-content`}>
 
-            </div>
-
-          </div>
+        {/* main content pane */}
+        <div className={`pane-content--main`}>
+          <PostsListWrapper  dataStore={observableItemStore} detailStore={detailStore} voteStore={voteStore} />
         </div>
 
-      </Layout>
-    )
-  }
-  else{
-    return (
-      <Layout extraClass="page_topic"
-              meta={utils.createSiteMetadata({page : 'Explore',data : {query : q,itemType : itemType}})}>
+        {/* secondary content pane */}
+        <div className={`pane-content--sec`}>
 
-        <Header props={data.topic[0]}/>
-
-        <div className={`wrapper`}>
-          <div className={`container`}>
-
-            <div className={`main-grid`}>
-
-              {/* main content */}
-              <div className={`maincontent`}>
-
-                <ProjectsList
-                  grid="1"
-                  gap="0"
-                  title={title}
-                  cta="Sorted by"
-                  detail={true}
-                  itemType={itemType}
-                  dataStore={observableTweetStore}
-                  voteStore={voteStore}
-                />
-
+          <Screen from="lg">
+            <div className={`pane-content--sec--top`}>
+              <div className="leading-10"></div>
+              <div className="flex items-center space-x-2">
+                <ThemeSwitch />
+                <div className="relative">
+                  <Wallet />
+                </div>
               </div>
-
-              {/* Sidebar */}
-              <Sidebar className={`sidebar`} extraClass="" />
-
             </div>
-
-          </div>
+          </Screen>
+          <IndexRightBar back={"/explore/" + props.type}  dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
         </div>
-
-      </Layout>
-    )
-  }
+      </div>
+    </Layout>
+  )
 })
 
-export async function getServerSideProps(context) {
-  const {slug,q} = context.query;
-  const props = await getData(slug,q)
+
+export async function getStaticPaths() {
   return {
-    props: props
+    paths: [
+      { params: { slug: 'news' } },
+      { params: { slug: 'social' } },
+      { params: { slug: 'media' } },
+      { params: { slug: 'projects' } },
+      { params: { slug: 'blog' } },
+    ],
+    fallback: true,
+  }
+}
+
+export async function getStaticProps(context) {
+  const query = "ada,cardano"
+  const type = context.params.slug
+  const props = await getData({query,type});
+  return {
+    props,
+    revalidate: 180
   }
 }

@@ -115,6 +115,7 @@ type Item {
     tweet: Tweet
     tweetId: String
     video: Video
+    videoId: String
 }
 
 type ItemMetadata {
@@ -141,6 +142,7 @@ type Mutation {
     submitNews(newsData: JSONObject): News
     submitTweet(tweetData: JSONObject!, userData: JSONObject!): Tweet
     submitTweetKeyword(id: String!, keywords: String!): Tweet
+    submitVideo(videoData: JSONObject): Video
     toggleVote(itemId: String!, walletAddress: String!): ToggleVote
     updateItem(id: String!, itemType: String): Item
 }
@@ -173,16 +175,16 @@ type Platform {
 type Query {
     cardanoEventFeed(skip: Int = 0, take: Int = 4): [CardanoEvent]
     commentFeed(itemId: String!, orderBy: CommentOrderInput, skip: Int = 0, take: Int = 4): [Comment]
-    grabTopicFeed(skip: Int = 0, take: Int = 200): [GrabTopic]
+    grabTopicFeed(skip: Int = 0, take: Int = 200, urlType: String = "html"): [GrabTopic]
     ideaById(id: String!): Idea
     ideaFeed(ideaType: String, orderBy: IdeaOrderInput, query: String, skip: Int = 0, take: Int = 4): [Idea]
     ideaTypeCount: [IdeaType]
-    ideaWithoutKeyword(skip: Int = 0, take: Int = 4): [Item]
+    ideaWithoutKeyword(skip: Int = 0, take: Int = 4): [Idea]
     isVote(itemId: String!, walletAddress: String!): Vote
     isVotes(ids: [String], walletAddress: String!): [Vote]
     itemById(id: String!): Item
-    itemFeed(orderBy: ItemOrderInput, query: String, skip: Int = 0, take: Int = 4): [Item]
-    itemTypeCount: [ItemType]
+    itemFeed(orderBy: ItemOrderInput, query: String, skip: Int = 0, t: String, take: Int = 4): [Item]
+    itemTypeCount: [IdeaType]
     newsById(id: String): News
     newsFeed(orderBy: ItemOrderInput, query: String, skip: Int = 0, take: Int = 4): [News]
     newsRelated(id: String!, skip: Int = 0, take: Int = 4): [News]
@@ -244,7 +246,16 @@ type User {
 }
 
 type Video {
+    createdAt: DateTime
+    description: String
     id: String!
+    keywords: String
+    thumbnailUri: String
+    title: String
+    updatedAt: DateTime
+    url: String!
+    videoType: String!
+    youtubeId: String!
 }
 
 type Vote {

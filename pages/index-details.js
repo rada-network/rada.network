@@ -92,7 +92,7 @@ export default observer((props) => {
           </div>
           </Screen>
 
-          <PostListDetail props={props} detailStore={detailStore} dataStore={observableItemStore} voteStore={voteStore} />
+          <PostListDetail detailStore={detailStore} dataStore={observableItemStore} voteStore={voteStore} />
         </div>
       </div>
     </Layout>

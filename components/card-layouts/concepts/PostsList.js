@@ -48,7 +48,8 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
       take : HOME_ITEM_TAKE,
       skip : dataStore.tweets.length,
       orderBy : dataStore.currentTab === "latest" ? {createdAt : "desc"} : {totalVote : "desc"},
-      query : dataStore.query
+      query : dataStore.query,
+      type : dataStore.type
     }).then(function (res){
       dataStore.loadingButton = false;
       dataStore.addTweet(res.data.itemFeed)
@@ -59,7 +60,6 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
   const store = useStore()
   voteStore.walletAddress = store.wallet.address
   voteStore.addVotesV2(dataStore.tweets)
-
   return (
     <>
       <div className={`pane-content--main--top`}>
@@ -112,12 +112,12 @@ const PostsListLoader = () => {
 
 export const PostsList = observer(({title, extraClass,dataStore,detailStore,voteStore}) => {
   const router = useRouter();
-  const handleClickPost = (e,obj) => {
-    console.log(obj)
+  const handleClickPost = (e,obj,type) => {
     e.preventDefault()
     e.stopPropagation()
     dataStore.showDetail = true;
     detailStore.data = obj
+    detailStore.type = type
     window.history.pushState("", "", e.currentTarget.getAttribute("data-href"));
     return false;
   }
@@ -136,7 +136,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           title = item.news.title
           mediaUri = item.news.thumbnailUri !== "" ? item.news.thumbnailUri : null
           return (
-            <a data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.news)}>
+            <a data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.news,"news")}>
               <CardPost key={item.id}
                         title={title}
                         mediaUri={mediaUri}
@@ -150,18 +150,27 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
         }
 
         if (item.tweet !== null){
+          item.tweet.item = {
+            id : item.id,
+            totalVote: item.totalVote,
+            totalComment: item.totalComment
+          }
           item.createdAt = item.tweet.createdAt
           title = item.tweet.source.full_text
           mediaUri = item.tweet.tweetUser ? item.tweet.tweetUser.source.profile_image_url_https : null
           source = item.tweet.tweetUser ? item.tweet.tweetUser.source.screen_name : null
-          return <CardPost key={item.id}
-                           title={title}
-                           mediaUri={mediaUri}
-                           type="fab fa-twitter"
-                           source={source}
-                           commentCount={commentCount}
-                           voteCount={voteCount} item={item}
-          />
+          return (
+            <a data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.tweet,"tweet")}>
+              <CardPost key={item.id}
+                        title={title}
+                        mediaUri={mediaUri}
+                        type="fab fa-twitter"
+                        source={source}
+                        commentCount={commentCount}
+                        voteCount={voteCount} item={item}
+              />
+            </a>
+          )
         }
 
         if (item.idea !== null){
@@ -179,14 +188,27 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
         }
 
         if (item.video !== null){
-          return <CardPost key={item.id}
-                           title="This Group of Investors Drives Bitcoin Bull Markets, According to Analyst Willy Woo – And It’s Not Whales"
-                           mediaUri="https://picsum.photos/80/80?random=3"
-                           type="fad fa-youtube"
-                           source="DailyHodl"
-                           commentCount="0"
-                           voteCount="0" item={item}
-          />
+          item.video.item = {
+            id : item.id,
+            totalVote: item.totalVote,
+            totalComment: item.totalComment
+          }
+          item.createdAt = item.video.createdAt
+          title = item.video.title
+          mediaUri = item.video.thumbnailUri
+
+          return (
+            <a data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.video,"video")}>
+            <CardPost key={item.id}
+                      title={title}
+                      mediaUri={mediaUri}
+                      type="fab fa-youtube"
+                      source="Youtube"
+                      commentCount={commentCount}
+                      voteCount={voteCount} item={item}
+            />
+            </a>
+          )
         }
 
         if (item.media !== null){
@@ -200,7 +222,8 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           />
         }
 
-      })}
+      })
+      }
     </div>
   )
 })

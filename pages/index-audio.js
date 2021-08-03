@@ -80,7 +80,7 @@ export default observer((props) => {
       <div className={`pane-content`}>
         {/* main content pane */}
         <div className={`pane-content--main`}>
-          <PostsListWrapper dataStore={observableItemStore} />
+          <PostsListWrapper voteStore={voteStore} dataStore={observableItemStore} />
         </div>
 
         {/* secondary content pane */}

@@ -2,8 +2,8 @@ import {gql} from '@apollo/client';
 import getClient from "../client";
 
 const itemFeedGql = gql`
-    query itemFeed($skip : Int!, $take : Int!, $orderBy: ItemOrderInput, $query : String!){
-        itemFeed (skip : $skip, take : $take, orderBy: $orderBy, query: $query){
+    query itemFeed($skip : Int!, $take : Int!, $orderBy: ItemOrderInput, $query : String!,$t : String!){
+        itemFeed (skip : $skip, take : $take, orderBy: $orderBy, query: $query,t : $t){
             id
             totalComment
             totalVote
@@ -59,6 +59,14 @@ const itemFeedGql = gql`
             }
             video{
                 id
+                title
+                description
+                videoType
+                thumbnailUri
+                youtubeId
+                url
+                keywords
+                createdAt
             }
             media{
                 id
@@ -125,6 +133,14 @@ const itemByIdGql = gql`
             }
             video{
                 id
+                title
+                description
+                videoType
+                thumbnailUri
+                youtubeId
+                url
+                keywords
+                createdAt
             }
             media{
                 id
@@ -133,7 +149,8 @@ const itemByIdGql = gql`
     }
 `
 
-export async function getItems({take,skip, orderBy,query}){
+export async function getItems({take,skip, orderBy,query,type}){
+    type = type || "all"
   const client = getClient()
   return await client.query({
     query: itemFeedGql,
@@ -141,7 +158,8 @@ export async function getItems({take,skip, orderBy,query}){
       skip: skip,
       take: take,
       orderBy : orderBy,
-      query : query
+      query : query,
+      t : type
     }
   })
 }

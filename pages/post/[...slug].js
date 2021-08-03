@@ -64,14 +64,30 @@ export default observer((props) => {
   observableItemStore.tweets = props.itemFeed
 
   const detailStore = new DetailStore()
-  let item = Object.assign({},props.item.news);
+  let item = {}
+  if (props.item.news !== null){
+    detailStore.type = "news"
+    item = Object.assign({},props.item.news);
+  }
+  else if (props.item.video !== null){
+    detailStore.type = "video"
+    item = Object.assign({},props.item.video);
+  }
+  else if (props.item.tweet !== null){
+    detailStore.type = "tweet"
+    item = Object.assign({},props.item.tweet);
+  }
+  else if (props.item.idea !== null){
+    detailStore.type = "idea"
+    item = Object.assign({},props.item.idea);
+  }
   item.item = {
     id : props.item.id,
     totalVote : props.item.totalVote,
     totalComment : props.item.totalComment,
   }
-  detailStore.data = item
 
+  detailStore.data = item
   return (
     <Layout
       extraClass="page-home"
