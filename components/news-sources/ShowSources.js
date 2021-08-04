@@ -38,4 +38,5 @@ export default function showSources({source}) {
       )
     }
   }
+  return ""
 }

@@ -5,7 +5,7 @@ const topicGql = gql`
     query {
         itemTypeCount{
             title
-            itemType
+            ideaType
             ideaCount
             description
         }

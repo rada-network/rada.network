@@ -49,9 +49,9 @@ export const CategoryList = ({extraClass, title, titleIcon, titleIconColor, topi
               {topic.map(function(item){
                 return (
                   <Card
-                    key={item.itemType}
+                    key={item.ideaType}
                     title={item.title}
-                    itemType={item.itemType}
+                    itemType={item.ideaType}
                     text={item.description}
                     cta={item.ideaCount + ' hunted'}
                   />

@@ -68,7 +68,6 @@ export default observer((props) => {
   observableNftStore.tweets = data.postsNFT
   observableDappStore.tweets = data.postsDapp
   observableNewsStore.tweets = data.news
-
   return (
     <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 
