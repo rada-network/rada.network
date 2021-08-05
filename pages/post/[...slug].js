@@ -63,6 +63,7 @@ export default observer((props) => {
   const [scrollbar] = useState('')
 
   observableItemStore.tweets = props.itemFeed
+  observableItemStore.showDetail = true
 
   const detailStore = new DetailStore()
   let item = {}

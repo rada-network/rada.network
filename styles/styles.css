@@ -8,7 +8,7 @@ Layout
 }
 
 .pane-left {
-  @apply flex lg:flex-col w-full h-auto justify-between order-2 lg:order-1 overflow-hidden lg:w-32 lg:h-full;
+    @apply flex lg:flex-col w-full h-auto justify-between fixed -bottom-0 order-2 lg:order-1 lg:w-32 lg:h-full;
   @apply bg-gray-50 border-r border-gray-100 z-50;
   @apply dark:bg-deepgray-100 dark:border-gray-800;
 }

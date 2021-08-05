@@ -46,7 +46,7 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
   }
 
   const mobileScroll = function(e){
-    const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+    const bottom = e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight + 10;
     if (bottom) handleLoadMoreItem()
   }
 
