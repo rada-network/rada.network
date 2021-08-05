@@ -138,7 +138,6 @@ type Media {
 
 type Mutation {
     createComment(content: String!, itemId: String!, parentId: String, walletAddress: String!): Comment
-    submitIdeaKeyword(id: String!, keywords: String!): Item
     submitNews(newsData: JSONObject): News
     submitTweet(tweetData: JSONObject!, userData: JSONObject!): Tweet
     submitTweetKeyword(id: String!, keywords: String!): Tweet
@@ -250,6 +249,7 @@ type Video {
     description: String
     id: String!
     keywords: String
+    source: String
     thumbnailUri: String
     title: String
     updatedAt: DateTime

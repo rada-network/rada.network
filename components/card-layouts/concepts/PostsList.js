@@ -90,8 +90,8 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
 
 
 export function getSourceFromUri(websiteUri){
-  const displaySources = ['Cardano Foundation', 'IOHK', 'CoinDesk', 'CoinTelegraph', 'AdaPulse', 'CoinGape']
-  const listSources = ['forum.cardano', 'iohk', 'coindesk', 'cointele', 'adapulse', 'coingape']
+  const displaySources = ['Cardano Foundation', 'IOHK', 'CoinDesk', 'CoinTelegraph', 'AdaPulse', 'CoinGape',"CryptoSlate"]
+  const listSources = ['forum.cardano', 'iohk', 'coindesk', 'cointele', 'adapulse', 'coingape','cryptoslate']
   for (const [i, value] of listSources.entries()) {
     if (websiteUri.toLowerCase().includes(value)) {
       return displaySources[i]
@@ -196,14 +196,14 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           item.createdAt = item.video.createdAt
           title = item.video.title
           mediaUri = item.video.thumbnailUri
-
+          source = item.video.source ? item.video.source : "Youtube"
           return (
             <a data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.video,"video")}>
             <CardPost key={item.id}
                       title={title}
                       mediaUri={mediaUri}
                       type="fab fa-youtube"
-                      source="Youtube"
+                      source={source}
                       commentCount={commentCount}
                       voteCount={voteCount} item={item}
             />

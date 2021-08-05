@@ -93,6 +93,6 @@ export async function getStaticProps(context) {
   const props = await getData({query,type});
   return {
     props,
-    revalidate: 180
+    revalidate: 10
   }
 }

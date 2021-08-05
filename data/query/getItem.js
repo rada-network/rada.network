@@ -65,6 +65,7 @@ const itemFeedGql = gql`
                 thumbnailUri
                 youtubeId
                 url
+                source
                 keywords
                 createdAt
             }
