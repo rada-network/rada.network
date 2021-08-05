@@ -39,6 +39,7 @@ import {CommentList} from "../../components/comments/commentList";
 import {getNews} from "../../data/query/getNewsById";
 import {PostListDetail} from "../../components/card-layouts/concepts/PostListDetail";
 import {useRouter} from "next/router";
+import {IndexRightBar} from "../index";
 
 const getData = async ({query,id}) => {
   const itemFeed = await getItems({
@@ -100,21 +101,7 @@ export default observer((props) => {
         </div>
 
         {/* secondary content pane */}
-        <div className={`pane-content--sec`}>
-          <Responsive gt="1024">
-            <div className={`pane-content--sec--top`}>
-              <div className="leading-10"></div>
-              <div className="flex items-center space-x-2">
-                <ThemeSwitch />
-                <div className="relative">
-                  <Wallet />
-                </div>
-              </div>
-            </div>
-          </Responsive>
-
-          <PostListDetail props={props} detailStore={detailStore} dataStore={observableItemStore} voteStore={voteStore} />
-        </div>
+        <IndexRightBar back={"/"} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
       </div>
     </Layout>
   );

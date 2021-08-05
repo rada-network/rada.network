@@ -73,6 +73,14 @@ Layout
   @apply border-l border-gray-100 dark:border-gray-800;
 }
 
+@media (max-width: 768px){
+  .pane-content--sec.pane-content-active {
+    right: 0;
+    @apply absolute flex
+  }
+  }
+
+
 
 .pane-content--sec--main {
   @apply w-full h-full;

@@ -26,19 +26,28 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
 
   let ps1;
 
-  if (!isMobile) {
+  if (!isMobile){
     useEffect(() => {
       // make scrollbar
       ps1 = new PerfectScrollbar(scrollBox1.current, {});
       scrollBox1.current.removeEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
       scrollBox1.current.addEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
-
-      window.scrollTo(0, 1)
-
       return () => {
         ps1.destroy();
       }
     }, [scrollBox1]);
+  }
+  else{
+    useEffect(() =>{
+      scrollBox1.current.removeEventListener('scroll', (e) => {mobileScroll(e)});
+      scrollBox1.current.addEventListener('scroll', (e) => {mobileScroll(e)});
+    },[])
+
+  }
+
+  const mobileScroll = function(e){
+    const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+    if (bottom) handleLoadMoreItem()
   }
 
   const handleLoadMoreItem = () =>{
@@ -136,7 +145,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           title = item.news.title
           mediaUri = item.news.thumbnailUri !== "" ? item.news.thumbnailUri : null
           return (
-            <a data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.news,"news")}>
+            <a key={item.id} data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.news,"news")}>
               <CardPost key={item.id}
                         title={title}
                         mediaUri={mediaUri}
@@ -160,7 +169,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           mediaUri = item.tweet.tweetUser ? item.tweet.tweetUser.source.profile_image_url_https : null
           source = item.tweet.tweetUser ? item.tweet.tweetUser.source.screen_name : null
           return (
-            <a data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.tweet,"tweet")}>
+            <a key={item.id} data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.tweet,"tweet")}>
               <CardPost key={item.id}
                         title={title}
                         mediaUri={mediaUri}
@@ -198,7 +207,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           mediaUri = item.video.thumbnailUri
           source = item.video.source ? item.video.source : "Youtube"
           return (
-            <a data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.video,"video")}>
+            <a key={item.id} data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.video,"video")}>
             <CardPost key={item.id}
                       title={title}
                       mediaUri={mediaUri}

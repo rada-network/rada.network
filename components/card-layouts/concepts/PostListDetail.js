@@ -117,7 +117,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
           <div className="media-player">
             <div className="w-full h-full">
               <div className={`aspect-w-16 aspect-h-9`}>
-                <iframe width="640" height="360" src={"https://www.youtube.com/embed/" + item.youtubeId} title="Bitcoin Price FLOODED With Green (Cardano BREAKOUT Pending)" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" />
+                <iframe  src={"https://www.youtube.com/embed/" + item.youtubeId} title="Bitcoin Price FLOODED With Green (Cardano BREAKOUT Pending)" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" />
               </div>
             </div>
           </div>

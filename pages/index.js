@@ -70,21 +70,8 @@ export default observer((props) => {
       </div>
 
       {/* secondary content pane */}
-      <div className={`pane-content--sec`}>
 
-        <Screen from="lg">
-        <div className={`pane-content--sec--top`}>
-          <div className="leading-10"></div>
-          <div className="flex items-center space-x-2">
-            <ThemeSwitch />
-            <div className="relative">
-              <Wallet />
-            </div>
-          </div>
-        </div>
-        </Screen>
-        <IndexRightBar back={"/"} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
-      </div>
+      <IndexRightBar back={"/"} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
     </div>
     </Layout>
   )
@@ -102,18 +89,32 @@ export const IndexRightBar = observer(({dataStore,detailStore,props,voteStore,ba
 
   return (
     <>
-      {dataStore.showDetail ?
-        <PostListDetail back={back} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
-        :
-        ""
-      }
-      <div className={`pane-content--sec--main scrollbar ` + (dataStore.showDetail ? "hidden" : "")} ref={scrollBox2}>
-        <Header props={{
-          title : "RADA is a trends hunter for Cardano community",
-          itemType : "home",
-          description : "Stay updated with the best quality news & updates"
-        }}/>
-        <Sidebar className={`sidebar`} extraClass="" />
+      <div className={`pane-content--sec` + (dataStore.showDetail ? " pane-content-active" : "")}>
+
+        <Screen from="lg">
+          <div className={`pane-content--sec--top`}>
+            <div className="leading-10"></div>
+            <div className="flex items-center space-x-2">
+              <ThemeSwitch />
+              <div className="relative">
+                <Wallet />
+              </div>
+            </div>
+          </div>
+        </Screen>
+        {dataStore.showDetail ?
+          <PostListDetail back={back} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
+          :
+          ""
+        }
+        <div className={`pane-content--sec--main scrollbar ` + (dataStore.showDetail ? "hidden" : "")} ref={scrollBox2}>
+          <Header props={{
+            title : "RADA is a trends hunter for Cardano community",
+            itemType : "home",
+            description : "Stay updated with the best quality news & updates"
+          }}/>
+          <Sidebar className={`sidebar`} extraClass="" />
+        </div>
       </div>
     </>
   )

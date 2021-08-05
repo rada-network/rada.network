@@ -10,6 +10,7 @@ import {observer} from "mobx-react";
 import {HOME_ITEM_TAKE} from "../../config/paging";
 import {getItems} from "../../data/query/getItem";
 import {useState} from "preact/hooks";
+import React from "react";
 
 
 const voteStore = new VoteStore();
@@ -54,21 +55,7 @@ export default observer((props) => {
         </div>
 
         {/* secondary content pane */}
-        <div className={`pane-content--sec`}>
-
-          <Screen from="lg">
-            <div className={`pane-content--sec--top`}>
-              <div className="leading-10"></div>
-              <div className="flex items-center space-x-2">
-                <ThemeSwitch />
-                <div className="relative">
-                  <Wallet />
-                </div>
-              </div>
-            </div>
-          </Screen>
-          <IndexRightBar back={"/explore/" + props.type}  dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
-        </div>
+        <IndexRightBar back={"/"} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
       </div>
     </Layout>
   )
