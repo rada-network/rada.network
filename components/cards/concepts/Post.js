@@ -8,6 +8,9 @@ import ContentLoader from "react-content-loader";
 import Link from "next/link"
 import ShowSources from '../../news-sources/ShowSources'
 import ReadingTime from "../../news-sources/ReadingTime";
+import {empty} from "@apollo/client";
+import {observer} from "mobx-react";
+import _ from 'lodash';
 
 export const CardPostLoader = (props) => (
   <div className={`card card-post`}>
@@ -28,9 +31,19 @@ export const CardPostLoader = (props) => (
   </div>
 )
 
-export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount, state,item}) => {
+export const CardPost = observer(({title, mediaUri, type, source, commentCount, voteCount,item,detailStore,dataStore}) => {
   const date = utils.timeDifference(new Date(), new Date(item.createdAt))
   const dateTitle = utils.titleTime(item.createdAt)
+  let state = ""
+  if (!_.isEmpty(detailStore.data)){
+    state = detailStore.data.item.id === item.id ? "active" : ""
+  }
+  if (commentCount > 0){
+    state += " hasComment"
+  }
+  if (voteCount > 0){
+    state += " hasVote"
+  }
   return (
     <div className={`card card-post ${state}`}>
 
@@ -42,7 +55,8 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
             </a>
           </div>
         </div>
-        : ""
+        :
+        <div className="card-media-blank"><span className="icon text-blue-500"><i className="fad fa-code-branch"/></span></div>
       }
 
       <div className={`card-body`}>
@@ -61,7 +75,7 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
               <span className="icon mr-1">
                 <i className={`${type}`} />
               </span>
-              <span className="metadata-value" title="CoinTelegraph">{source}</span>
+              <span className="metadata-value" title={source}>{source}</span>
             </div>
             <div className="metadata metadata-date">
               <span className="metadata-value" title={dateTitle}>{date}</span>
@@ -87,4 +101,4 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
 
     </div>
   )
-}
+})

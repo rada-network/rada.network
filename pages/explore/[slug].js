@@ -18,17 +18,19 @@ const homeStore = new HomeStore({isHome : true})
 
 const observableItemStore = new ObservableTweetStore({homeStore});
 
-const getData = async ({query,type}) => {
+const getData = async ({query,type,lang}) => {
   const itemFeed = await getItems({
     take : HOME_ITEM_TAKE,
     skip : 0,
     orderBy : {createdAt : "desc"},
     query : query,
-    type : type
+    type : type,
+    lang : lang
   })
   return {
     query : query,
     type : type,
+    lang : lang,
     itemFeed : itemFeed.data.itemFeed
   }
 }
@@ -37,6 +39,7 @@ const getData = async ({query,type}) => {
 export default observer((props) => {
 
   observableItemStore.query = props.query
+  observableItemStore.lang = props.lang
 
   observableItemStore.tweets = props.itemFeed
   observableItemStore.type = props.type
@@ -55,7 +58,7 @@ export default observer((props) => {
         </div>
 
         {/* secondary content pane */}
-        <IndexRightBar back={"/explore/"+props.type} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
+        <IndexRightBar back={ "/" + props.lang + "/explore/"+props.type} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
       </div>
     </Layout>
   )
@@ -69,6 +72,11 @@ export async function getStaticPaths() {
       { params: { slug: 'social' } },
       { params: { slug: 'media' } },
       { params: { slug: 'projects' } },
+
+      { params: { slug: 'news' },locale : "vi" },
+      { params: { slug: 'social' },locale : "vi" },
+      { params: { slug: 'media' }, locale : "vi" },
+      { params: { slug: 'projects' },locale : "vi" },
     ],
     fallback: false,
   }
@@ -77,7 +85,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const query = "ada,cardano"
   const type = context.params.slug
-  const props = await getData({query,type});
+  const props = await getData({query,type,lang : context.locale});
   return {
     props,
     revalidate: 10

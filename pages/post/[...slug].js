@@ -41,16 +41,32 @@ import {PostListDetail} from "../../components/card-layouts/concepts/PostListDet
 import {useRouter} from "next/router";
 import {IndexRightBar} from "../index";
 
-const getData = async ({query,id}) => {
+const getData = async ({query,id,lang}) => {
+  const newsDetail = await getItemById({id : id})
+  let type = "all"
+  if (newsDetail.data.itemById.news !== null){
+    type = "news"
+  }
+  else if (newsDetail.data.itemById.video !== null){
+    type = "media"
+  }
+  else if (newsDetail.data.itemById.tweet !== null){
+    type = "social"
+  }
+  else if (newsDetail.data.itemById.idea !== null){
+    type = "projects"
+  }
   const itemFeed = await getItems({
     take : HOME_ITEM_TAKE,
     skip : 0,
     orderBy : {createdAt : "desc"},
-    query : query
+    query : query,
+    lang : lang,
+    type : type
   })
-  const newsDetail = await getItemById({id : id})
   return {
     query : query,
+    lang : lang,
     itemFeed : itemFeed.data.itemFeed,
     item : newsDetail.data.itemById,
   }
@@ -63,6 +79,7 @@ export default observer((props) => {
   const [scrollbar] = useState('')
 
   observableItemStore.tweets = props.itemFeed
+  observableItemStore.lang = props.lang
   observableItemStore.showDetail = true
 
   const detailStore = new DetailStore()
@@ -102,7 +119,7 @@ export default observer((props) => {
         </div>
 
         {/* secondary content pane */}
-        <IndexRightBar back={"/"} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
+        <IndexRightBar back={"/" + props.lang} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
       </div>
     </Layout>
   );
@@ -111,7 +128,7 @@ export default observer((props) => {
 export async function getServerSideProps(context) {
   const query = "ada,cardano"
   const slug = context.params.slug
-  const props = await getData({query : query,id : slug[0]});
+  const props = await getData({query : query,id : slug[0],lang : context.locale});
   return {
     props: props
   }

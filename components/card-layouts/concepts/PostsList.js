@@ -58,7 +58,8 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
       skip : dataStore.tweets.length,
       orderBy : dataStore.currentTab === "latest" ? {createdAt : "desc"} : {totalVote : "desc"},
       query : dataStore.query,
-      type : dataStore.type
+      type : dataStore.type,
+      lang : dataStore.lang
     }).then(function (res){
       dataStore.loadingButton = false;
       dataStore.addTweet(res.data.itemFeed)
@@ -98,7 +99,11 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
 })
 
 
-export function getSourceFromUri(websiteUri){
+export function getSourceFromUri(item){
+  if (item.grabTopic !== null){
+    return item.grabTopic.website.name
+  }
+  const websiteUri = item.websiteUri
   const displaySources = ['Cardano Foundation', 'IOHK', 'CoinDesk', 'CoinTelegraph', 'AdaPulse', 'CoinGape',"CryptoSlate"]
   const listSources = ['forum.cardano', 'iohk', 'coindesk', 'cointele', 'adapulse', 'coingape','cryptoslate']
   for (const [i, value] of listSources.entries()) {
@@ -107,6 +112,18 @@ export function getSourceFromUri(websiteUri){
     }
   }
   return ""
+}
+
+export function getSourceVideoFromUri(item){
+  if (item.grabTopic !== null){
+    return item.grabTopic.website.name
+  }
+  return item.source
+}
+
+
+function createPostUri(title,item,lang){
+  return "/" + lang + "/post/" + item.id + "/" + utils.convertToSlug(title)
 }
 
 const PostsListLoader = () => {
@@ -127,7 +144,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
     dataStore.showDetail = true;
     detailStore.data = obj
     detailStore.type = type
-    window.history.pushState("", "", e.currentTarget.getAttribute("data-href"));
+    window.history.pushState("", "", e.currentTarget.getAttribute("href"));
     return false;
   }
   return (
@@ -141,11 +158,11 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
             totalComment: item.totalComment
           }
           item.createdAt = item.news.createdAt
-          source = getSourceFromUri(item.news.websiteUri)
+          source = getSourceFromUri(item.news)
           title = item.news.title
           mediaUri = item.news.thumbnailUri !== "" ? item.news.thumbnailUri : null
           return (
-            <a key={item.id} data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.news,"news")}>
+            <a key={item.id} href={createPostUri(title,item,dataStore.lang)} onClick={(e)=>handleClickPost(e,item.news,"news")}>
               <CardPost key={item.id}
                         title={title}
                         mediaUri={mediaUri}
@@ -153,6 +170,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                         source={source}
                         commentCount={commentCount}
                         voteCount={voteCount} item={item}
+                        detailStore={detailStore}
               />
             </a>
           )
@@ -169,7 +187,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           mediaUri = item.tweet.tweetUser ? item.tweet.tweetUser.source.profile_image_url_https : null
           source = item.tweet.tweetUser ? item.tweet.tweetUser.source.screen_name : null
           return (
-            <a key={item.id} data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.tweet,"tweet")}>
+            <a key={item.id} href={createPostUri(title,item,dataStore.lang)} onClick={(e)=>handleClickPost(e,item.tweet,"tweet")}>
               <CardPost key={item.id}
                         title={title}
                         mediaUri={mediaUri}
@@ -177,6 +195,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                         source={source}
                         commentCount={commentCount}
                         voteCount={voteCount} item={item}
+                        detailStore={detailStore}
               />
             </a>
           )
@@ -193,6 +212,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                            source={"Project Catalyst"}
                            commentCount={commentCount}
                            voteCount={voteCount} item={item}
+                           detailStore={detailStore}
           />
         }
 
@@ -205,9 +225,9 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           item.createdAt = item.video.createdAt
           title = item.video.title
           mediaUri = item.video.thumbnailUri
-          source = item.video.source ? item.video.source : "Youtube"
+          source = getSourceVideoFromUri(item.video)
           return (
-            <a key={item.id} data-href={"/post/" + item.id + "/" + utils.convertToSlug(title)} href={"/post/" + item.id + "/" + utils.convertToSlug(title)} onClick={(e)=>handleClickPost(e,item.video,"video")}>
+            <a key={item.id} href={createPostUri(title,item,dataStore.lang)} onClick={(e)=>handleClickPost(e,item.video,"video")}>
             <CardPost key={item.id}
                       title={title}
                       mediaUri={mediaUri}
@@ -215,6 +235,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                       source={source}
                       commentCount={commentCount}
                       voteCount={voteCount} item={item}
+                      detailStore={detailStore}
             />
             </a>
           )
@@ -228,6 +249,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                            source="DailyHodl"
                            commentCount="0"
                            voteCount="0" item={item}
+                           detailStore={detailStore}
           />
         }
 

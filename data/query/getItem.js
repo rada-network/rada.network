@@ -2,8 +2,8 @@ import {gql} from '@apollo/client';
 import getClient from "../client";
 
 const itemFeedGql = gql`
-    query itemFeed($skip : Int!, $take : Int!, $orderBy: ItemOrderInput, $query : String!,$t : String!){
-        itemFeed (skip : $skip, take : $take, orderBy: $orderBy, query: $query,t : $t){
+    query itemFeed($skip : Int!, $take : Int!, $orderBy: ItemOrderInput, $query : String!,$t : String!,$lang : String!){
+        itemFeed (skip : $skip, take : $take, orderBy: $orderBy, query: $query,t : $t,lang : $lang){
             id
             totalComment
             totalVote
@@ -56,6 +56,14 @@ const itemFeedGql = gql`
                 keywords
                 createdAt
                 websiteUri
+                grabTopic{
+                    name
+                    url
+                    website{
+                        name
+                        url
+                    }
+                }
             }
             video{
                 id
@@ -68,6 +76,14 @@ const itemFeedGql = gql`
                 source
                 keywords
                 createdAt
+                grabTopic{
+                    name
+                    url
+                    website{
+                        name
+                        url
+                    }
+                }
             }
             media{
                 id
@@ -131,6 +147,14 @@ const itemByIdGql = gql`
                 keywords
                 createdAt
                 websiteUri
+                grabTopic{
+                    name
+                    url
+                    website{
+                        name
+                        url
+                    }
+                }
             }
             video{
                 id
@@ -142,6 +166,14 @@ const itemByIdGql = gql`
                 url
                 keywords
                 createdAt
+                grabTopic{
+                    name
+                    url
+                    website{
+                        name
+                        url
+                    }
+                }
             }
             media{
                 id
@@ -150,8 +182,9 @@ const itemByIdGql = gql`
     }
 `
 
-export async function getItems({take,skip, orderBy,query,type}){
+export async function getItems({take,skip, orderBy,query,type,lang}){
     type = type || "all"
+    lang = lang || "en"
   const client = getClient()
   return await client.query({
     query: itemFeedGql,
@@ -160,7 +193,8 @@ export async function getItems({take,skip, orderBy,query,type}){
       take: take,
       orderBy : orderBy,
       query : query,
-      t : type
+      t : type,
+      lang : lang
     }
   })
 }

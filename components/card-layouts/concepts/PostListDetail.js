@@ -4,7 +4,7 @@ import {CommentList} from "../../comments/commentList";
 import React, {createRef, useEffect} from "react";
 import PerfectScrollbar from "perfect-scrollbar";
 import {observer} from "mobx-react";
-import {getSourceFromUri} from "./PostsList";
+import {getSourceFromUri, getSourceVideoFromUri} from "./PostsList";
 import utils from "../../../lib/util";
 import {Vote} from "../../vote/Vote";
 import {useRouter} from "next/router";
@@ -77,6 +77,7 @@ export const PostListDetail = observer(({back,detailStore,dataStore,voteStore}) 
 })
 
 const VideoDetail = function({item,dateTitle,date,voteStore}){
+  const source = getSourceVideoFromUri(item)
   return (
     <div className="section post-detail post-detail-media">
       {/* Post Header */}
@@ -94,8 +95,8 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
                         <span className="icon mr-1">
                           <i className="fab fa-youtube"></i>
                         </span>
-              <span className="metadata-value" title="CoinTelegraph">
-                          Crypto Capital Venture
+              <span className="metadata-value" title={source}>
+                {source}
                         </span>
             </div>
             <div className="metadata metadata-date">
@@ -149,7 +150,7 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
                           <i className="fad fa-newspaper"></i>
                         </span>
               <span className="metadata-value" title="CoinTelegraph">
-                      {getSourceFromUri(item.websiteUri)}
+                      {getSourceFromUri(item)}
                         </span>
             </div>
             <div className="metadata metadata-date">

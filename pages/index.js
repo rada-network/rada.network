@@ -35,16 +35,19 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 import {getItems} from "../data/query/getItem";
 import {HOME_ITEM_TAKE} from "../config/paging";
 import {PostListDetail} from "../components/card-layouts/concepts/PostListDetail";
+import {useRouter} from "next/router";
 
-const getData = async ({query}) => {
+const getData = async ({query,lang}) => {
   const itemFeed = await getItems({
     take : HOME_ITEM_TAKE,
     skip : 0,
     orderBy : {createdAt : "desc"},
-    query : query
+    query : query,
+    lang : lang
   })
   return {
     query : query,
+    lang : lang,
     itemFeed : itemFeed.data.itemFeed
   }
 }
@@ -56,6 +59,7 @@ export default observer((props) => {
   const [scrollbar] = useState('')
 
   observableItemStore.tweets = props.itemFeed
+  observableItemStore.lang = props.lang
 
   const detailStore = new DetailStore()
   observableItemStore.showDetail = false
@@ -71,7 +75,7 @@ export default observer((props) => {
 
       {/* secondary content pane */}
 
-      <IndexRightBar back={"/"} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
+      <IndexRightBar back={"/" + props.lang} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
     </div>
     </Layout>
   )
@@ -120,9 +124,10 @@ export const IndexRightBar = observer(({dataStore,detailStore,props,voteStore,ba
   )
 })
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
   const query = "ada,cardano"
-  const props = await getData({query});
+  const locale = context.locale
+  const props = await getData({query,lang : locale});
   return {
     props,
     revalidate: 180
