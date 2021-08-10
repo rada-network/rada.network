@@ -8,13 +8,13 @@ Layout
 }
 
 .pane-left {
-    @apply flex lg:flex-col w-full h-auto justify-between fixed -bottom-0 order-2 lg:order-1 lg:w-32 lg:h-full;
+    @apply flex lg:flex-col w-full h-auto justify-between  order-3 lg:order-1 lg:w-32 lg:h-full;
   @apply bg-gray-50 border-r border-gray-100 z-50;
   @apply dark:bg-deepgray-100 dark:border-gray-800;
 }
 
 .pane-center {
-  @apply flex flex-1 flex-col w-full items-stretch order-1 lg:order-2;
+  @apply flex flex-1 flex-col w-full items-stretch order-2 lg:order-2;
 }
 
 @screen md {
@@ -57,7 +57,7 @@ Layout
 }
 
 .pane-content--main--main {
-  height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height));
+  height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height) - var(--navbar-height) - var(--navbar-height));
   @apply flex flex-col w-full overflow-x-hidden overflow-y-auto;
 }
 
