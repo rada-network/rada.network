@@ -23,7 +23,7 @@ import { observer } from "mobx-react"
 import React, { useState, useEffect, createRef } from 'react'
 
 import utils from "../lib/util";
-import {HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
+import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
 import Responsive from '../components/Resposive';
 import Screen from '../components/Resposive';
 
@@ -59,11 +59,12 @@ const getData = async ({query}) => {
 export default observer((props) => {
   if (!props) return <div>loading...</div>
 
+  return ""
   observableItemStore.query = props.query
   const [scrollbar] = useState('')
 
   observableItemStore.tweets = props.itemFeed
-
+  const detailStore = new DetailStore()
 
   const scrollBox2 = createRef();
   let ps2;

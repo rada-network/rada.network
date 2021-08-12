@@ -45,6 +45,7 @@ const getData = async ({query,lang}) => {
     query : query,
     lang : lang
   })
+
   return {
     query : query,
     lang : lang,
@@ -64,7 +65,7 @@ export default observer((props) => {
   const detailStore = new DetailStore()
   observableItemStore.showDetail = false
   return (
-    <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
+    <Layout dataStore={observableItemStore} extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 
     <div className={`pane-content`}>
 

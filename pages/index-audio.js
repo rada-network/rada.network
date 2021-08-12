@@ -46,11 +46,9 @@ const getData = async ({query}) => {
     orderBy : {createdAt : "desc"},
     query : query
   })
-  const newsDetail = await getNews({id : "fef6c34e-db9f-4470-870d-24aab5d5f9e2"})
   return {
     query : query,
     itemFeed : itemFeed.data.itemFeed,
-    news : newsDetail.data.newsById,
   }
 }
 
@@ -63,7 +61,7 @@ export default observer((props) => {
 
   observableItemStore.tweets = props.itemFeed
 
-
+  return ""
   const scrollBox2 = createRef();
   let ps2;
   

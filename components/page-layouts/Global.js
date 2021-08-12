@@ -14,7 +14,7 @@ import Screen from "../Resposive";
 const scrollBox = createRef();
 let ps;
 
-export const Layout = ({children,meta}) => {
+export const Layout = ({children,meta,dataStore}) => {
 
   // const [Scrollbar] = useState('')
 
@@ -35,7 +35,7 @@ export const Layout = ({children,meta}) => {
     <div className={`main-layout`}>
 
       <div className="pane-left">
-        <Navbar />
+        <Navbar dataStore={dataStore} />
       </div>
 
       <div className={`pane-center`}>
