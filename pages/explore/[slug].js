@@ -88,6 +88,6 @@ export async function getStaticProps(context) {
   const props = await getData({query,type,lang : context.locale});
   return {
     props,
-    revalidate: 10
+    revalidate: 60
   }
 }
