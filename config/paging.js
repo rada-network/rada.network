@@ -1,1 +1,1 @@
-export const HOME_ITEM_TAKE=30;
+export const HOME_ITEM_TAKE=18;
