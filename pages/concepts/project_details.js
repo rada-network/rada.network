@@ -10,6 +10,13 @@ import { RiArrowUpSFill } from "react-icons/ri";
 import { RiCompass3Fill } from "react-icons/ri";
 import { RiThumbUpFill } from "react-icons/ri";
 import utils from "../../lib/util";
+import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
+
+
+const voteStore = new VoteStore();
+const homeStore = new HomeStore({isHome : true})
+
+const observableItemStore = new ObservableTweetStore({homeStore});
 
 export default function ProjectDetails(props) {
   const readMore = () => {
@@ -26,7 +33,7 @@ export default function ProjectDetails(props) {
   }
 
   return (
-    <Layout extraClassName="page-project_details" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
+    <Layout dataStore={observableItemStore} extraClassName="page-project_details" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
       <>
         {/* Page Header */}
         <div className="page-header">

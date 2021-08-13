@@ -48,7 +48,7 @@ export default observer((props) => {
   observableItemStore.showDetail = false
 
   return (
-    <Layout extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
+    <Layout dataStore={observableItemStore} extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
 
       <div className={`pane-content`}>
 

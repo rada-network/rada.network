@@ -74,7 +74,7 @@ export default observer((props) => {
   }, [scrollBox2]);
 
   return (
-    <Layout
+    <Layout dataStore={observableItemStore}
       extraClassName="page-home"
       meta={utils.createSiteMetadata({ page: "Index", data: {} })}
     >

@@ -108,7 +108,7 @@ export default observer((props) => {
 
   detailStore.data = item
   return (
-    <Layout
+    <Layout dataStore={observableItemStore}
       extraClass="page-home"
       meta={utils.createSiteMetadata({ page: "Index", data: {} })}
     >
