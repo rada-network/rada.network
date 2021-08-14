@@ -184,8 +184,8 @@ Navbar
 }
 
 .nav-item-active {
-  @apply bg-primary-100 text-primary-700 text-opacity-100 font-medium;
-  @apply dark:text-white dark:text-opacity-100;
+  @apply text-primary-700 text-opacity-100 font-medium;
+  @apply dark:text-primary-400 dark:text-opacity-100;
 }
 
 /* 
@@ -584,10 +584,10 @@ Tootips
   color: #111827 !important;
   font-size: 0.875rem !important;
   &::after {
-    border-top-color: #FEF3C7 !important;
-    border-bottom-color: #FEF3C7 !important;
+    border-color: transparent !important;
   }
 }
+
 
 .__react_component_tooltip.show {
   

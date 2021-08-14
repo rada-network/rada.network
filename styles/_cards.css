@@ -57,13 +57,13 @@ Generic Styles
 Card Post (News, Projects,...)
 ----------------------------------------------*/
 .card-post {
-  @apply border-b border-gray-500 border-opacity-10 cursor-pointer;
+  @apply border-b border-gray-100 dark:border-gray-800 cursor-pointer;
   @apply hover:bg-shadeyellow-100 dark:hover:bg-deeppurple-500;
 }
 
 /* Active */
 .card-post.active {
-  @apply bg-primary-50;
+  @apply bg-primary-50 dark:bg-primary-500;
 }
 
 /* Readed */
@@ -72,6 +72,34 @@ Card Post (News, Projects,...)
 .card-post.readed .metadata-date {
   @apply opacity-50;
 }
+
+/* has Comment */
+.card-post .metadata-commentcount .fa {
+  @apply hidden;
+}
+
+.card-post .metadata-commentcount .far {
+  @apply block;
+}
+
+.card-post.hasComment .metadata-commentcount {
+  @apply text-primary-500;
+}
+
+.card-post.hasComment .metadata-commentcount .far {
+  @apply hidden;
+}
+
+.card-post.hasComment .metadata-commentcount .fa {
+  @apply block;
+}
+
+/* has Vote */
+.card-post.hasVote .metadata-votecount {
+  @apply text-green-500;
+}
+
+
 
 
 .card-post .card-body {
