@@ -16,13 +16,13 @@ module.exports = {
   theme: {
     // Add Font to Sans Font Array
     fontFamily: {
-      sans: ["Proxima Nova", ...defaultTheme.fontFamily.sans],
+      sans: ["Inter", ...defaultTheme.fontFamily.sans],
     },
 
     // Set default container to align center and have a 1rem side padding
-    container: {
-      center: true,
-    },
+    // container: {
+    //   center: true,
+    // },
 
     extend: {
 
@@ -60,6 +60,7 @@ module.exports = {
       // Extra Font Sizes
       fontSize: {
         xxs: ['0.65rem', '1'],
+        xxxs: ['0.5rem', '1'],
       },
 
       // Added Percentage Spacing

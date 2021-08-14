@@ -81,9 +81,10 @@ export const Navbar = ({dataStore}) => {
           <span className="icon"><i className="fad fa-newspaper" /></span>
           <span className="nav-item--text">News</span>
         </NavItem>
-        <NavItem href={"/" + dataStore.lang + "/explore/social"} type={"social"}>
+        <NavItem href={"/" + dataStore.lang + "/explore/social"} type={"social"} className="disabled">
           <span className="icon"><i className="fad fa-fire-alt" /></span>
           <span className="nav-item--text">Signals</span>
+          <span className="nav-item--badge">Soon</span>
         </NavItem>
         <NavItem href={"/" + dataStore.lang + "/explore/media"}  type={"media"}>
           <span className="icon"><i className="fad fa-icons" /></span>

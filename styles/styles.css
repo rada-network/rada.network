@@ -168,7 +168,7 @@ Navbar
 }
 
 .nav-item {
-  @apply flex flex-col lg:flex-row items-center lg:items-baseline w-full h-full px-2 pb-1  lg:py-2;
+  @apply relative flex flex-col lg:flex-row items-center lg:items-baseline w-full h-full px-2 pb-1 lg:py-2;
   @apply leading-10 whitespace-nowrap;
   @apply text-gray-900 text-opacity-50;
   @apply dark:text-white dark:text-opacity-60;
@@ -186,6 +186,18 @@ Navbar
 .nav-item-active {
   @apply text-primary-700 text-opacity-100 font-medium;
   @apply dark:text-primary-400 dark:text-opacity-100;
+}
+
+.disabled {
+  @apply opacity-50 pointer-events-none;
+}
+
+.nav-item--badge {
+  @apply text-xxxs rounded-full absolute;
+  @apply bg-red-500 text-white;
+  top: 0;
+  right: 28px;
+  padding: 3px;
 }
 
 /* 
@@ -389,7 +401,7 @@ Post Details
 Media
 */
 .post-media {
-  @apply w-full max-h-80 overflow-hidden rounded mt-4;
+  @apply w-full max-h-56 lg:max-h-72 overflow-hidden rounded mt-4;
 }
 
 .post-media--img {

@@ -94,6 +94,7 @@ export const CardPost = observer(({title, mediaUri, type, source, commentCount, 
             <div className="metadata metadata-votecount">
               <span className="icon mr-1">
                 <i className="far fa-arrow-up" />
+                <i className="fa fa-arrow-up" />
               </span>
               <span>{voteCount}</span>
             </div>

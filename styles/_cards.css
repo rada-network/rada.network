@@ -21,7 +21,7 @@ Generic Styles
 }
 
 .card-title {
-  @apply text-sm leading-snug;
+  @apply text-sm font-medium leading-snug;
 }
 
 .card-meta {
@@ -74,16 +74,16 @@ Card Post (News, Projects,...)
 }
 
 /* has Comment */
+.card-post.hasComment .metadata-commentcount {
+  @apply text-primary-500;
+}
+
 .card-post .metadata-commentcount .fa {
   @apply hidden;
 }
 
 .card-post .metadata-commentcount .far {
   @apply block;
-}
-
-.card-post.hasComment .metadata-commentcount {
-  @apply text-primary-500;
 }
 
 .card-post.hasComment .metadata-commentcount .far {
@@ -97,6 +97,22 @@ Card Post (News, Projects,...)
 /* has Vote */
 .card-post.hasVote .metadata-votecount {
   @apply text-green-500;
+}
+
+.card-post .metadata-votecount .fa {
+  @apply hidden;
+}
+
+.card-post .metadata-votecount .far {
+  @apply block;
+}
+
+.card-post.hasVote .metadata-votecount .far {
+  @apply hidden;
+}
+
+.card-post.hasVote .metadata-votecount .fa {
+  @apply block;
 }
 
 
