@@ -16,7 +16,7 @@ module.exports = {
   theme: {
     // Add Font to Sans Font Array
     fontFamily: {
-      sans: ['IBM Plex Sans', ...defaultTheme.fontFamily.sans],
+      sans: ["Proxima Nova", ...defaultTheme.fontFamily.sans],
     },
 
     // Set default container to align center and have a 1rem side padding

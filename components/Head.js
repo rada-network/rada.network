@@ -33,7 +33,7 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
         key="google-fonts"
       />
       <link
-      rel="stylesheet"
+        rel="stylesheet"
         href="/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
         media="print"
         onLoad="this.media='all'"
@@ -46,8 +46,15 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
         onLoad="this.media='all'"
         key="fontawesome"
       />
+      <link
+        rel="stylesheet"
+        href="/vendors/fonts/ProximaNova/stylesheet.css"
+        media="print"
+        onLoad="this.media='all'"
+        key="webfont"
+      />
       <link rel="manifest" href="/manifest.json" />
-      <meta name="theme-color" content="#317EFB" />
+      <meta name="theme-color" content="#4338CA" />
     </HTMLHead>
 
     <ReactTooltip type="info" clickable={true} html={true} />
