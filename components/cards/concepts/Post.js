@@ -19,13 +19,13 @@ export const CardPostLoader = (props) => (
         speed={2}
         backgroundColor="#F3F4F6"
         foregroundColor="#ecebeb"
-        viewBox="0 0 380 30"
-        // style={{ width: '100%' }}
+        viewBox="0 0 800 40"
+        style={{ width: '100%' }}
         {...props}
       >
-        <rect x="0" y="0" rx="3" ry="3" width="40" height="40" />
-        <rect x="48" y="8" rx="3" ry="3" width="128" height="6" />
-        <rect x="48" y="24" rx="3" ry="3" width="80" height="6" />
+        <rect x="0" y="0" rx="4" ry="4" width="40" height="40" />
+        <rect x="56" y="6" rx="4" ry="4" width="600" height="6" />
+        <rect x="56" y="26" rx="4" ry="4" width="128" height="6" />
       </ContentLoader>
     </div>
   </div>
@@ -56,7 +56,9 @@ export const CardPost = observer(({title, mediaUri, type, source, commentCount, 
           </div>
         </div>
         :
-        <div className="card-media-blank"><span className="icon text-blue-500"><i className="fad fa-code-branch"/></span></div>
+        <div className="card-media-blank">
+          <img className="logo--img" src="/images/dhunt.svg" alt="no image" />
+        </div>
       }
 
       <div className={`card-body`}>

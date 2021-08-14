@@ -26,7 +26,7 @@ export const Head = ({title,description,facebook,twitter,keyword}) => {
         key="google-fonts-preconnect_2"
       />
       <link 
-        href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" 
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" 
         rel="stylesheet"
         media="print"
         onLoad="this.media='all'"

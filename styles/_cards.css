@@ -11,7 +11,8 @@ Generic Styles
   @apply flex h-full relative transition;
 }
 
-.card-media {
+.card-media,
+.card-media-blank {
   @apply flex flex-col flex-shrink-0 overflow-hidden rounded-sm mr-2 md:mr-4;
 }
 
@@ -114,12 +115,16 @@ Card Post (News, Projects,...)
 .card-post .card-media-blank {
   @apply flex-shrink-0 w-px-40 h-px-40;
   @apply overflow-hidden cursor-pointer;
-  @apply p-3 lg:p-6 bg-gray-300 bg-opacity-10;
+  @apply bg-gray-300 bg-opacity-10;
   @apply inline-flex justify-center items-center;
 }
 
 .card-post .card-media-blank .icon {
   @apply text-xl leading-none opacity-30;
+}
+
+.card-post .card-media-blank img {
+  @apply w-px-24 h-px-24 opacity-30;
 }
 
 
