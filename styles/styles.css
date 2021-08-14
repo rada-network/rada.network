@@ -57,7 +57,7 @@ Layout
 }
 
 .pane-content--main--main {
-  height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height) - var(--navbar-height) - var(--navbar-height));
+  height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height));
   @apply flex flex-col w-full overflow-x-hidden overflow-y-auto;
 }
 
@@ -169,7 +169,7 @@ Navbar
 
 .nav-item {
   @apply relative flex flex-col lg:flex-row items-center lg:items-baseline w-full h-full px-2 pb-1 lg:py-2;
-  @apply leading-10 whitespace-nowrap;
+  @apply font-medium leading-10 whitespace-nowrap;
   @apply text-gray-900 text-opacity-50;
   @apply dark:text-white dark:text-opacity-60;
   @apply hover:text-opacity-90;
@@ -184,12 +184,8 @@ Navbar
 }
 
 .nav-item-active {
-  @apply text-primary-700 text-opacity-100 font-medium;
+  @apply text-primary-700 text-opacity-100 font-bold;
   @apply dark:text-primary-400 dark:text-opacity-100;
-}
-
-.disabled {
-  @apply opacity-50 pointer-events-none;
 }
 
 .nav-item--badge {
@@ -708,6 +704,11 @@ Uitilities
 .no-padding-t {
   @apply pt-0;
 }
+
 .hidden {
   display: none;
+}
+
+.disabled {
+  @apply opacity-50 pointer-events-none;
 }
