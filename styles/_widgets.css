@@ -2,13 +2,13 @@
 Generic Styles
 -------------------------------- */
 .widget {
-  @apply flex flex-col -mt-2 xl:mt-0;
-  @apply bg-white border-t border-b xl:border border-gray-500 border-opacity-10 xl:rounded;
+  @apply flex flex-col -mt-2 xl:mt-0 transition;
+  @apply bg-white dark:bg-deepgray-50 border-t border-b xl:border border-gray-400 border-opacity-10 xl:rounded;
 }
 
 .widget-header {
   @apply flex justify-between items-center px-4 py-2 w-full;
-  @apply border-b border-gray-500 border-opacity-10;
+  @apply border-b border-gray-400 border-opacity-10;
 }
 
 .widget-body {

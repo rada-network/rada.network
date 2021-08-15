@@ -3,7 +3,6 @@ Generic Styles
 ----------------------------------------------*/
 .cards-list {
   @apply flex flex-col;
-  @apply bg-white dark:bg-deepgray-100;
 }
 
 .card {
@@ -57,7 +56,7 @@ Generic Styles
 Card Post (News, Projects,...)
 ----------------------------------------------*/
 .card-post {
-  @apply border-b border-gray-100 dark:border-gray-800 cursor-pointer;
+  @apply bg-white dark:bg-deepgray-50 border-b border-gray-400 border-opacity-10 cursor-pointer;
   @apply hover:bg-shadeyellow-100 dark:hover:bg-deeppurple-500;
 }
 
@@ -115,35 +114,9 @@ Card Post (News, Projects,...)
   @apply block;
 }
 
-
-
-
+/* Card Body */
 .card-post .card-body {
   @apply flex flex-col h-full w-full;
-}
-
-.card-post .card-body--header {
-  @apply flex flex-col pb-1 -mt-1;
-}
-
-.card-post .card-body--main {
-  @apply hidden md:flex;
-}
-
-.card-post .card-body--footer {
-  @apply flex flex-wrap mt-1 md:mt-2;
-}
-
-.card-post .card-footer {
-  @apply block pl-0 pt-4 pr-3 md:pt-5 md:pb-4 md:px-4 lg:p-6 lg:pt-7 w-auto;
-}
-
-.card-post .card-text {
-  @apply line-clamp-2 text-sm transition;
-}
-
-.card-post:hover .card-text {
-  @apply text-gray-700;
 }
 
 /* Media */
@@ -157,18 +130,18 @@ Card Post (News, Projects,...)
 }
 
 .card-post .card-media-blank {
-  @apply flex-shrink-0 w-px-40 h-px-40;
+  @apply flex-shrink-0 w-px-40 h-px-40 opacity-0;
   @apply overflow-hidden cursor-pointer;
-  @apply bg-gray-300 bg-opacity-10;
+  @apply bg-gray-100;
   @apply inline-flex justify-center items-center;
 }
 
 .card-post .card-media-blank .icon {
-  @apply text-xl leading-none opacity-30;
+  @apply text-xl leading-none;
 }
 
 .card-post .card-media-blank img {
-  @apply w-px-24 h-px-24 opacity-30;
+  @apply w-px-24 h-px-24;
 }
 
 
