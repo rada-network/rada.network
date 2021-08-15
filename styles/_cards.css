@@ -22,7 +22,7 @@ Generic Styles
 .card-title {
   @apply text-sm font-medium leading-snug;
   .badge {
-    @apply relative mr-1;
+    @apply text-xxs py-0.5 relative mr-1 mt-0;
     top: -2px;
   }
 }
