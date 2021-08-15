@@ -52,9 +52,9 @@ Vote Buttons
 */
 .btn-post-vote {
   @apply px-2 py-1 justify-center;
-  @apply bg-gray-100 text-gray-800 dark:text-white border border-gray-900 border-opacity-10 rounded;
+  @apply bg-gray-100 text-gray-800 border border-gray-400 border-opacity-10 rounded;
   @apply hover:border-primary-700 hover:bg-primary-50 hover:text-primary-700;
-  @apply dark:bg-gray-900 dark:text-white;
+  @apply dark:bg-gray-800 dark:text-white;
 }
 
 .btn-post-vote.active,
@@ -86,7 +86,7 @@ Link Visit Button
 .btn-post-link {
   @apply justify-center items-center px-2 py-0.5;
   @apply text-gray-800 dark:text-white;
-  @apply hover:text-purple-700 dark:hover:text-white;
+  @apply hover:text-primary-700 dark:hover:text-white;
 }
 
 .btn-post-link .icon {
@@ -100,7 +100,7 @@ Nav Button
   @apply px-2 py-1 pt-1.5 items-center justify-center rounded;
   @apply text-sm font-medium text-gray-900 bg-gray-100 border border-transparent;
   @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
-  @apply dark:text-white dark:bg-gray-900;
+  @apply dark:text-white dark:bg-gray-800;
   @apply dark:hover:bg-deeppurple-300 dark:hover:border-purple-500;
 }
 

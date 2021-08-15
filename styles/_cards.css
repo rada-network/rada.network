@@ -70,6 +70,10 @@ Card Post (News, Projects,...)
 }
 
 /* has Comment */
+.card-post .metadata-commentcount {
+  @apply mr-1;
+}
+
 .card-post.hasComment .metadata-commentcount {
   @apply text-primary-500;
 }
