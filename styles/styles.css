@@ -405,22 +405,16 @@ Media
   @apply object-cover w-full h-full;
 }
 
+.post-detail-media .post-media {
+  @apply mt-0 mb-4 max-h-full;
+}
+
 /*
 Content
 */
 .post-content {
   @apply text-sm;
 }
-
-/*
-Post Media Detail
-*/
-.post-detail-media {
-  .post-media {
-    @apply mt-0 mb-4;
-  }
-}
-
 
 
 /* 
