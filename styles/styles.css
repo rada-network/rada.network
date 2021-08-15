@@ -165,7 +165,7 @@ Navbar
 }
 
 .nav-item {
-  @apply relative flex flex-col lg:flex-row items-center lg:items-baseline w-full h-full px-2 pb-1 lg:py-2;
+  @apply relative flex flex-col lg:flex-row items-center lg:items-baseline w-full h-full px-2 py-0.5 lg:py-2;
   @apply font-medium leading-10 whitespace-nowrap;
   @apply text-gray-900 text-opacity-50;
   @apply dark:text-white dark:text-opacity-60;
@@ -177,7 +177,7 @@ Navbar
 }
 
 .nav-item--text {
-  @apply text-xs;
+  @apply text-xxs lg:text-xs;
 }
 
 .nav-item-active {
@@ -188,9 +188,15 @@ Navbar
 .nav-item--badge {
   @apply text-xxxs rounded-full absolute;
   @apply bg-red-500 text-white;
+  padding: 3px;
+  top: 10px;
+  right: auto;
+  left: auto;
+}
+
+@screen lg {
   top: 0;
   right: 28px;
-  padding: 3px;
 }
 
 /* 
