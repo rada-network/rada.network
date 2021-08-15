@@ -11,7 +11,7 @@ html {
 
 body {
   @apply bg-white text-gray-800 h-full overflow-hidden;
-  @apply dark:bg-deepgray-200 dark:text-gray-200;
+  @apply dark:bg-deepgray-100 dark:text-gray-100;
 }
 
 #__next {

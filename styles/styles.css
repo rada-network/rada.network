@@ -57,7 +57,7 @@ Layout
 }
 
 .pane-content--main--main {
-  height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height));
+  height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height) - var(--navbar-height));
   @apply flex flex-col w-full overflow-x-hidden overflow-y-auto;
 }
 
@@ -404,159 +404,22 @@ Media
   @apply object-cover w-full h-full;
 }
 
-
-/* .project-media {
-  @apply flex flex-nowrap pb-6 mb-8 relative;
-}
-
-.project-media .card {
-  @apply h-80 max-w-full;
-  @apply rounded shadow-none;
-  flex: 1 0 auto;
-}
-
-.project-media .card + .card {
-  @apply ml-4;
-}
-
-.project-media .card-media-full .card-media {
-  @apply h-full w-full;
-  @apply rounded overflow-hidden;
-}
-
-.project-media .card-media-full .card-img {
-  @apply h-full w-auto;
-  @apply object-cover;
-} */
-
 /*
-Intro
-*/
-/* .page-header .project-text_short {
-  @apply text-base leading-relaxed text-gray-600;
-  @apply mt-2;
-}
-
-.page-main .project-text_short {
-  @apply text-base text-gray-900 font-medium;
-  @apply mb-8;
-} */
-
-/*
-Info
-*/
-/* .project-info {
-  @apply text-sm text-center border border-gray-700 border-opacity-10 rounded;
-  @apply px-8 py-4 md:px-2 md:py-4 lg:p-4;
-  @apply flex flex-col md:flex-row lg:flex-col;
-}
-
-.project-info .list-group-item {
-  @apply px-4 md:py-0 lg:px-0 lg:py-4 justify-center;
-  @apply md:border-b-0 md:border-r lg:border-b lg:border-r-0;
-}
-
-.project-info .list-media {
-}
-
-.project-info .list-name {
-  @apply mb-1 text-gray-400;
-}
-
-.project-info a.list-value {
-  @apply font-semibold text-purple-500 hover:underline;
-}
-
-.project-info .list-value,
-.project-info .list-value strong[data-element-id="field-answer"] {
-  @apply text-gray-900 text-opacity-80;
-}
-
-.project-info .list-value strong[data-element-id="field-label"] {
-  @apply block mb-1 flex-1 font-normal text-gray-400;
-} */
-
-/*
-Text
+Content
 */
 .post-content {
-  @apply w-full overflow-hidden;
   @apply text-sm;
 }
 
-.post-content p br {
-  @apply block h-2;
-  content: " ";
-}
-
-.post-content p {
-  @apply pt-2;
-}
-
-.post-content p a {
-  @apply text-blue-500 hover:underline;
-  word-break: break-word;
-}
-
-
-.post-content ul {
-  @apply pb-2;
-}
-
-.post-content ul li {
-  @apply pl-0 ml-8;
-  @apply list-disc;
-}
-
-.post-content ol {
-  @apply pb-2;
-}
-
-.post-content ol li {
-  @apply pl-0 ml-8;
-  @apply list-decimal;
-}
-
-.post-content .youtube-video {
-  @apply w-full h-auto;
-}
-
-.post-content .youtube-video iframe {
-  width: 100% !important;
-
-}
-
-.project-text_title {
-  @apply font-semibold mb-2;
-}
-
-.project-text_content {
-  @apply text-gray-600 pb-2;
-}
-
-/* #read {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 9;
-} */
-
-#readBtn {
-  @apply hidden;
-}
-
-/* Comments */
-.section-project-discussions {
-  .section-body {
-    @apply flex-1 p-4 md:p-6 lg:p-8 pt-0 md:pt-0 lg:pt-0;
+/*
+Post Media Detail
+*/
+.post-detail-media {
+  .post-media {
+    @apply mt-0 mb-4;
   }
 }
 
-
-/* 
-Page Topic  
----------- */
-.page_topic {}
 
 
 /* 

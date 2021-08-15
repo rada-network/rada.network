@@ -7,10 +7,10 @@ Typography Styles
 Core Contents
 ----------------------------------- */
 .text-color-title {
-  @apply text-gray-700 dark:text-gray-200;
+  @apply text-gray-800 dark:text-gray-100;
 }
 
 .text-color-desc,
 .metadata-wrapper {
-  @apply text-gray-700 text-opacity-50 dark:text-gray-200 dark:text-opacity-50;
+  @apply text-gray-800 text-opacity-50 dark:text-gray-100 dark:text-opacity-50;
 }
