@@ -20,10 +20,10 @@ export const PostsListTrending = ({title, extraClass}) => {
         </div>
         <div class="section-cta">
           <a class="btn">
-            <span classname="btn__text text-color-desc">
+            <span classname="btn--text text-color-desc">
               More
             </span>
-            <span class="btn__caret_right"></span>
+            <span class="btn--caret-right"></span>
           </a>
         </div>
       </div>

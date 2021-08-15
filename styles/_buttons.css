@@ -7,26 +7,20 @@ Buttons
 .btn {
   @apply inline-flex items-center font-medium focus:outline-none cursor-pointer transition;
 
-  .btn__text + .icon {
-    @apply ml-1 ;
+  .btn--text + .icon {
+    @apply ml-2;
   }
 
   .icon {
-    @apply relative right-0 transition-all;
+    @apply relative right-0;
   }
 
-  .btn__text + .icon {
-    @apply ml-1;
+  .btn--text + .icon {
+    @apply ml-2;
   }
 
-  .icon + .btn__text {
-    @apply ml-1;
-  }
-
-  &:hover {
-    .btn__text + .icon {
-      @apply -right-0.5;
-    }
+  .icon + .btn--text {
+    @apply ml-2;
   }
 
   &:hover, &:active, &:focus {
@@ -37,6 +31,14 @@ Buttons
 /*
 Buttons Styles
 */
+.btn-default {
+  @apply rounded-md;
+  @apply text-sm font-medium text-gray-900 bg-white border border-transparent;
+  @apply hover:bg-primary-50 hover:border-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
+  @apply dark:text-white dark:bg-gray-800;
+  @apply dark:hover:bg-deeppurple-300 dark:hover:border-primary-500;
+}
+
 .btn-primary {
   @apply bg-primary-700 text-primary-100 hover:bg-primary-900 hover:text-white;
 }
@@ -49,15 +51,15 @@ Buttons Styles
 Vote Buttons
 */
 .btn-post-vote {
-  @apply px-2 py-2px justify-center;
-  @apply font-normal bg-gray-50 border border-gray-900 border-opacity-10 rounded;
-  @apply hover:border-purple-700 hover:bg-purple-50 hover:text-primary-700;
-  @apply dark:bg-deepgray-100;
+  @apply px-2 py-1 justify-center;
+  @apply bg-gray-100 text-gray-800 dark:text-white border border-gray-900 border-opacity-10 rounded;
+  @apply hover:border-primary-700 hover:bg-primary-50 hover:text-primary-700;
+  @apply dark:bg-gray-900 dark:text-white;
 }
 
 .btn-post-vote.active,
 .btn-post-vote_sm.active {
-  @apply bg-purple-700 text-white;
+  @apply bg-primary-700 text-white;
 }
 
 .btn-post-vote_sm {
@@ -79,10 +81,23 @@ Vote Buttons
 }
 
 /* 
+Link Visit Button 
+*/
+.btn-post-link {
+  @apply justify-center items-center px-2 py-0.5;
+  @apply text-gray-800 dark:text-white;
+  @apply hover:text-purple-700 dark:hover:text-white;
+}
+
+.btn-post-link .icon {
+  @apply text-base -mt-0.5;
+}
+
+/* 
 Nav Button
 */
 .nav-btn {
-  @apply flex px-2 py-1 pt-1.5 items-center justify-center rounded-md;
+  @apply px-2 py-1 pt-1.5 items-center justify-center rounded;
   @apply text-sm font-medium text-gray-900 bg-gray-100 border border-transparent;
   @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
   @apply dark:text-white dark:bg-gray-900;
@@ -101,6 +116,9 @@ Nav Button
 Wallet Button 
 */
 .btn-connect-wallet {
+  .btn--text {
+    @apply hidden md:inline-block;
+  }
 }
 
 
@@ -152,37 +170,29 @@ Group Buttons
 /* 
 Button Caret
 */
-.btn__caret_down,
-.btn__caret_right,
-.btn__caret_left {
+.btn--caret-down,
+.btn--caret-right,
+.btn--caret-left {
   @apply relative;
   height: 6px;
   width: 6px;
   border-bottom: 2px solid;
   border-right: 2px solid;
-  transition: all 0.2s ease-in-out;
 }
 
-.btn__caret_right {
+.btn--caret-right {
   @apply ml-1 -right-0.5;
   transform: rotate(-45deg);
 }
 
-.btn:hover .btn__caret_right {
-  @apply -right-1;
-}
-
-.btn__caret_left {
+.btn--caret-left {
   @apply mr-1 -mt-0.5;
   transform: rotate(135deg);
 }
 
-.btn__caret_down {
+.btn--caret-down {
   @apply ml-2 -mt-0.5;
   transform: rotate(45deg);
-}
-
-.btn:hover .btn__caret_down {
 }
 
 /* Page Close Button */

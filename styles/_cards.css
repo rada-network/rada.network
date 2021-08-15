@@ -7,7 +7,7 @@ Generic Styles
 
 .card {
   @extend %global-padding;
-  @apply flex h-full relative transition;
+  @apply flex h-full relative;
 }
 
 .card-media,
@@ -29,9 +29,6 @@ Generic Styles
 
 .card-link {
   @apply block;
-  &:hover {
-    @apply hover:text-purple-900;
-  }
 }
 
 .card-header {
@@ -62,7 +59,7 @@ Card Post (News, Projects,...)
 
 /* Active */
 .card-post.active {
-  @apply bg-primary-50 dark:bg-primary-500;
+  @apply bg-primary-50 dark:bg-primary-700;
 }
 
 /* Readed */

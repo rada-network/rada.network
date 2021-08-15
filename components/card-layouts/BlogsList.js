@@ -16,7 +16,7 @@ export const BlogsList = ({posts, extraClass, grid, gap, title, cta}) => {
 					{ cta && 
 					<div className="section-cta">
 						<button className="btn">
-							<span className="btn__text">{cta}</span>
+							<span className="btn--text">{cta}</span>
 							<span className="icon"><IoChevronForwardSharp /></span>
 						</button>
 					</div>

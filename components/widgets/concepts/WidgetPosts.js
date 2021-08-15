@@ -242,8 +242,8 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
 
       <div className={`widget-footer`}>
         <a className="btn btn-nav block">
-          <span className="btn__text">Show more</span>
-          <span className="btn__caret_right"></span>
+          <span className="btn--text">Show more</span>
+          <span className="btn--caret-right"></span>
         </a>
       </div>
 

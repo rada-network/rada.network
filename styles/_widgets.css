@@ -2,7 +2,7 @@
 Generic Styles
 -------------------------------- */
 .widget {
-  @apply flex flex-col -mt-2 xl:mt-0 transition;
+  @apply flex flex-col -mt-2 xl:mt-0;
   @apply bg-white dark:bg-deepgray-50 border-t border-b xl:border border-gray-400 border-opacity-10 xl:rounded;
 }
 
@@ -94,7 +94,7 @@ Widget Lists
 }
 
 .widget-list--link:hover {
-  @apply bg-shadeyellow-100;
+  @apply bg-shadeyellow-100 dark:bg-deeppurple-500;
 }
 
 .widget-list--item {

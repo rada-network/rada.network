@@ -14,17 +14,18 @@ import _ from 'lodash';
 
 export const CardPostLoader = (props) => (
   <div className={`card card-post`}>
-    <div className={`card-body`}>
+    <div className={`card-body content-loader`}>
       <ContentLoader
         speed={2}
-        backgroundColor="#F3F4F6"
-        foregroundColor="#ecebeb"
-        viewBox="0 0 800 40"
-        style={{ width: '100%' }}
+        // backgroundColor="#F3F4F6"
+        // foregroundColor="#ecebeb"
+        viewBox="0 0 600 40"
+        preserveAspectRatio="xMidYMid meet"
+        // style={{ width: '100%' }}
         {...props}
       >
         <rect x="0" y="0" rx="4" ry="4" width="40" height="40" />
-        <rect x="56" y="6" rx="4" ry="4" width="600" height="6" />
+        <rect x="56" y="6" rx="4" ry="4" width="528" height="6" />
         <rect x="56" y="26" rx="4" ry="4" width="128" height="6" />
       </ContentLoader>
     </div>

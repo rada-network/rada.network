@@ -62,7 +62,7 @@ export const NewsList = observer(({dataStore, extraClass, grid, gap, title, titl
           <div className={`section-cta`}>
             {cta === "View All" ?
               <button className="btn">
-                <span className="btn__text">
+                <span className="btn--text">
                   <Link href={`/news/${query}`}>
                     {cta}
                   </Link>
@@ -100,14 +100,14 @@ export const NewsList = observer(({dataStore, extraClass, grid, gap, title, titl
           <div className={`section-footer`}>
             {loadingButton
               ? <a className="btn btn-loading">
-                <span className={"btn btn__text"}>Loading...</span>
+                <span className={"btn btn--text"}>Loading...</span>
               </a>
               : ""
             }
             {dataStore.showMoreButton ?
               <a onClick={handleLoadMoreItems}
                  className="btn btn-nav">
-                <span className="btn__text">Show {take} more</span>
+                <span className="btn--text">Show {take} more</span>
                 <span className="btn__caret_down"/>
               </a>
               :  ""

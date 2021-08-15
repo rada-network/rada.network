@@ -8,7 +8,7 @@ Layout
 }
 
 .pane-left {
-  @apply flex lg:flex-col w-full h-auto justify-between  order-3 lg:order-1 lg:w-32 lg:h-full transition;
+  @apply flex lg:flex-col w-full h-auto justify-between order-3 lg:order-1 lg:w-32 lg:h-full;
   @apply bg-gray-50 border-r border-gray-100 z-50;
   @apply dark:bg-deepgray-100 dark:border-gray-800;
 }
@@ -40,23 +40,23 @@ Layout
 }
 
 .pane-content {
-  @apply flex flex-wrap md:flex-nowrap w-full h-full transition;
+  @apply flex flex-wrap md:flex-nowrap w-full h-full;
 }
 
 .pane-content--main {
-  @apply flex flex-col w-full h-full transition;
+  @apply flex flex-col w-full h-full;
 }
 
 .pane-content--main--top,
 .pane-content--sec--top {
-  @apply flex px-4 justify-between items-center flex-shrink-0 transition;
+  @apply flex px-4 justify-between items-center flex-shrink-0;
   @apply border-b border-gray-400 border-opacity-10;
   height: var(--toolbar-height);
 }
 
 .pane-content--main--main {
   height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height) - var(--navbar-height));
-  @apply flex flex-col w-full overflow-x-hidden overflow-y-auto transition;
+  @apply flex flex-col w-full overflow-x-hidden overflow-y-auto;
   @apply bg-bluegray-50 dark:bg-deepgray-100;
 }
 
@@ -68,7 +68,7 @@ Layout
 
 .pane-content--sec {
   height: calc(100vh - var(--topbar-height) - var(--toolbar-height));
-  @apply hidden md:flex flex-col w-full lg:h-full overflow-x-hidden overflow-y-auto transition;
+  @apply hidden md:flex flex-col w-full lg:h-full overflow-x-hidden overflow-y-auto;
   @apply border-l border-gray-100 dark:border-gray-800;
 }
 
@@ -79,9 +79,8 @@ Layout
   }
 }
 
-
 .pane-content--sec--main {
-  @apply w-full h-full;
+  @apply bg-bluegray-50 dark:bg-deepgray-100 w-full h-full;
 }
 
 /* .pane-content--sec--top {
@@ -217,7 +216,6 @@ Sections Layout
 .section {
   @apply flex flex-col h-full w-full;
   @apply p-4 md:p-6;
-  @apply bg-white dark:bg-deepgray-100;
 }
 
 .section-header {
@@ -346,7 +344,7 @@ Post Details
 }
 
 .post-header .metadata-wrapper {
-  @apply text-sm mt-2;
+  @apply text-sm mt-1;
 }
 
 .post-body {
@@ -357,32 +355,13 @@ Post Details
   @apply pt-0;
   flex: 0;
   
-  .post-icon {
-    @apply hidden md:block flex-shrink-0 rounded mr-6 mt-1;
-  }
-
-  .post-icon_img {
-    @extend %Img96;
-    @apply rounded object-cover;
-  }
-
   /* CTAs */
   .cta-wrapper {
     @apply flex;
   }
 
   .cta-wrapper .btn {
-    @apply text-gray-800 hover:text-primary-700 text-xs font-normal uppercase;
-  }
-
-  .cta-wrapper .btn-post-link {
-    @apply justify-center items-center px-2 py-0.5;
-    @apply border-2 border-transparent rounded;
-    @apply hover:text-purple-700;
-  }
-
-  .cta-wrapper .btn-post-link .icon {
-    @apply text-base -mt-0.5;
+    @apply text-xs;
   }
 
   .cta-wrapper .btn-post-vote {
@@ -423,6 +402,27 @@ Post Media Detail
 /* 
 Components
 --------------------------------------------- */
+/* 
+Dialogs 
+*/
+.dialog-outside-wrapper {
+  @apply fixed inset-0 z-50 overflow-y-auto bg-white md:bg-bluegray-50 bg-opacity-100;
+  @apply dark:bg-deepgray-100 dark:md:bg-deepgray-50;
+}
+
+.dialog-outside {
+  @apply md:px-4 text-center;
+}
+
+.dialog {
+  @apply max-w-2xl overflow-hidden text-left align-top md:align-middle transition-all transform;
+  @apply text-left bg-bluegray-50 dark:bg-gray-900 md:shadow-2xl md:rounded;
+}
+
+.dialog-wrapper {
+  @apply block lg:flex;
+}
+
 /*
 Empty State
 */
@@ -434,7 +434,11 @@ Empty State
 Content Loader 
 */
 .content-loader {
-  @apply p-4 md:p-6 lg:p-8;
+  @apply p-0;
+}
+
+.content-loader svg {
+  @apply w-full opacity-50;
 }
 
 /* 

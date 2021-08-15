@@ -103,8 +103,8 @@ export default observer((props) => {
               {/* Close Button */}
               <div className="page-back">
                 <div className="btn">
-                  <span class="btn__caret_left"></span>
-                  <span className="btn__text">Back</span>
+                  <span class="btn--caret-left"></span>
+                  <span className="btn--text">Back</span>
                 </div>
               </div>
 

@@ -107,19 +107,27 @@ export const IndexRightBar = observer(({dataStore,detailStore,props,voteStore,ba
             </div>
           </div>
         </Screen>
+
         {dataStore.showDetail ?
           <PostListDetail back={back} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
           :
           ""
         }
+
         <div className={`pane-content--sec--main scrollbar ` + (dataStore.showDetail ? "hidden" : "")} ref={scrollBox2}>
+
           <Header props={{
-            title : "RADA is a trends hunter for Cardano community",
             itemType : "home",
-            description : "Stay updated with the best quality news & updates"
           }}/>
+
+          <div className="">
+
+          </div>
+
+          {/* Temporary Disable Widgets */}
           <Sidebar className={`sidebar`} extraClass="" />
         </div>
+
       </div>
     </>
   )

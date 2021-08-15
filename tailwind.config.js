@@ -16,7 +16,7 @@ module.exports = {
   theme: {
     // Add Font to Sans Font Array
     fontFamily: {
-      sans: ["Inter", ...defaultTheme.fontFamily.sans],
+      sans: ['"Inter"', ...defaultTheme.fontFamily.sans],
     },
 
     // Set default container to align center and have a 1rem side padding
@@ -52,9 +52,9 @@ module.exports = {
         'shadeyellow-50':  '#fffefa',
         'shadeyellow-100': '#fffdf7',
 
-        'deepgray-50': '#0f1623',
-        'deepgray-100': '#0c111b',
-        'deepgray-200': '#090c13',
+        'deepgray-50': '#0b0f18',
+        'deepgray-100': '#090c13',
+        'deepgray-200': '#06090f',
       },
 
       // Extra Font Sizes

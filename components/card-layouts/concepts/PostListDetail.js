@@ -43,8 +43,8 @@ export const PostListDetail = observer(({back,detailStore,dataStore,voteStore}) 
           {dataStore !== undefined ?
             <div className="page-back" onClick={(e) => handleBack(e)}>
               <div className="btn">
-                <span className="btn__caret_left"></span>
-                <span className="btn__text">Back</span>
+                <span className="btn--caret-left"></span>
+                <span className="btn--text">Back</span>
               </div>
             </div>
             : ""

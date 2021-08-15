@@ -108,7 +108,7 @@ export const ProjectsList = observer(({voteStore, homeDisplay, dataStore, extraC
           <div className={`section-cta`}>
             {cta === "View All" ? 
               <button className="btn">
-                <span className="btn__text">
+                <span className="btn--text">
                   <Link href={`/explore/${itemType}`}>
                     {cta}
                   </Link>
@@ -148,14 +148,14 @@ export const ProjectsList = observer(({voteStore, homeDisplay, dataStore, extraC
           <div className={`section-footer`}>
             {loadingButton
               ? <a className="btn btn-loading">
-                <span className={"btn btn__text"}>Loading...</span>
+                <span className={"btn btn--text"}>Loading...</span>
               </a>
               : ""
             }
             {dataStore.showMoreButton ?
               <a onClick={handleLoadMoreItems}
                  className="btn btn-nav">
-                <span className="btn__text">Show {take} more</span>
+                <span className="btn--text">Show {take} more</span>
                 <span className="btn__caret_down"/>
               </a>
               :  ""
@@ -169,7 +169,7 @@ export const ProjectsList = observer(({voteStore, homeDisplay, dataStore, extraC
             ? <a onClick={e => {dataStore.home.homeDisplay = 0;setShowMoreButton(true)}} href={"#top"}
                   className="btn bg-gray-100 hover:bg-purple-100 hover:text-purple-700
                 justify-center py-3 px-6 rounded w-full mt-8 text-sm">
-              <span className="btn__text">Back to home</span>
+              <span className="btn--text">Back to home</span>
               <span className="icon"><IoChevronForwardSharp/></span>
             </a>
             : ""

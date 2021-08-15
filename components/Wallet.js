@@ -31,8 +31,9 @@ const ConnectedButton = ({wallet}) => (
   <div className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
     {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
     <WalletAvatar wallet={wallet} />
-    <span className="hidden">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
-    <span onClick={e => wallet.reset()}>Logout</span>
+    <span className="btn--text text-xs">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
+    <span className="icon ml-2"><i class="fad fa-sign-out" /></span>
+    <span className="hidden" onClick={e => wallet.reset()}>Logout</span>
   </div>
 )
 
@@ -40,21 +41,21 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
 
   return (
   <>
-  <div type="button" onClick={ openModal } className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
+  <div onClick={ openModal } className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
     <span className="icon"><i className="fad fa-wallet" /></span>
-    <span className="hidden md:inline-block md:ml-2 whitespace-nowrap">Connect Wallet</span>
+    <span className="btn--text">Connect Wallet</span>
   </div>
 
   <Transition show={isOpen} as={Fragment}>
     <Dialog
         as="div"
         id="modal"
-        className={`fixed inset-0 z-10 overflow-y-auto ${styles.dialog_outside_wrapper}`}
+        className={`fixed inset-0 z-10 overflow-y-auto dialog-outside-wrapper`}
         initialFocus={btnRef}
         static
         onClose={closeModal}
       >
-        <div className={`min-h-screen ${styles.dialog_outside}`}>
+        <div className={`min-h-screen dialog-outside`}>
         
           <Transition.Child
             as={Fragment}
@@ -86,9 +87,9 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
             leaveTo="opacity-0 scale-0"
           >
 
-            <div className={`inline-block w-full z-200 relative ${styles.dialog}`}>
+            <div className={`inline-block w-full z-200 relative dialog`}>
 
-              <div className={`${styles.dialog_wrapper}`}>
+              <div className={`dialog-wrapper`}>
 
                 {/* Dialog Header */}
                 <div className={`dialog_header ${styles.dialog_header_wrapper}`}>
@@ -98,7 +99,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                   >
                     <button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
                       <span className="icon"><IoChevronBackSharp/></span>
-                      <span className="btn__text font-normal">Back</span>
+                      <span className="btn--text font-normal">Back</span>
                     </button>
                     <h3 className="text-xl font-semibold">
                       Connect your 
@@ -125,37 +126,37 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
 
                     <ul>
                       <li ref={btnRef}>
-                        <a className={`${styles.btn}`} onClick={() => wallet.connect()}>
+                        <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect()}>
                           <span className={`icon ${styles.btn_icon}`}>
                             <img src="/images/icons/metamask-24.png" alt="Metamask" />
                           </span>
                           <div className={`${styles.btn_text}`}>
-                            <span className="text-base font-semibold">Metamask</span>
-                            <span className="text-xs text-gray-400 mt-1 font-normal">One of the most secure wallets with great flexibility</span>
+                            <span className="text-base font-semibold text-color-title">Metamask</span>
+                            <span className="text-color-desc">One of the most secure wallets with great flexibility</span>
                           </div>
                           <i className={`fal fa-long-arrow-right ${styles.btn_arrow}`}/>
                         </a>
                       </li>
                       <li>
-                        <a className={`${styles.btn}`} onClick={() => wallet.connect('walletconnect')}>
+                        <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletconnect')}>
                           <span className={`icon ${styles.btn_icon}`}>
                             <img src="/images/icons/walletconnect-24.png" alt="WalletConnect" />
                           </span>
                           <div className={`${styles.btn_text}`}>
-                            <span className="text-base font-semibold">WalletConnect</span>
-                            <span className="text-xs text-gray-400 mt-1 font-normal">Connect with <b>Rainbow</b>, <b>Trust</b>, <b>Argent</b> and more</span>
+                            <span className="text-base font-semibold text-color-title">WalletConnect</span>
+                            <span className="text-color-desc">Connect with <b>Rainbow</b>, <b>Trust</b>, <b>Argent</b> and more</span>
                           </div>
                           <i className={`fal fa-long-arrow-right ${styles.btn_arrow}`}/>
                         </a>
                       </li>
                       <li>
-                        <a className={`${styles.btn}`} onClick={() => wallet.connect('walletlink')}>
+                        <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletlink')}>
                           <span className={`icon ${styles.btn_icon}`}>
                             <img src="/images/icons/walletlink-24.png" alt="WalletLink" />
                           </span>
                           <div className={`${styles.btn_text}`}>
-                            <span className="text-base font-semibold">WalletLink</span>
-                            <span className="text-xs text-gray-400 mt-1 font-normal">Connect with <b>Coinbase</b> wallet</span>
+                            <span className="text-base font-semibold text-color-title">WalletLink</span>
+                            <span className="text-color-desc">Connect with <b>Coinbase</b> wallet</span>
                           </div>
                           <i className={`fal fa-long-arrow-right ${styles.btn_arrow}`}/>
                         </a>

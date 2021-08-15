@@ -22,12 +22,12 @@ export const Card = ({title, cta, text, itemType}) => {
         <div className={`card-body-footer ${styles.card_body__footer}`}>
           <div className={`card-cta ${styles.card_cta}`}>
             <button className={`btn ${styles.btn}`}>
-              <span className={`btn__text ${styles.btn_text}`}>
+              <span className={`btn--text ${styles.btn_text}`}>
                 <a href={`/explore/${itemType}`}>
                   {cta}
                 </a>
               </span>
-              <span className={`btn__caret_right ${styles.btn__caret_right}`}></span>
+              <span className={`btn--caret-right`}></span>
             </button>
           </div>
         </div> }

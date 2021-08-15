@@ -21,7 +21,7 @@ export const Card = ({mediaUri, itemType, title, text, cta, onClick}) => {
         <div className="card-body-footer">
           <div className="card-cta">
             <button className="btn">
-              <span className="btn__text">
+              <span className="btn--text">
                 <Link href={`/explore/${itemType}`}>
                   {cta}
                 </Link>
