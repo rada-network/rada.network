@@ -21,6 +21,10 @@ Generic Styles
 
 .card-title {
   @apply text-sm font-medium leading-snug;
+  .badge {
+    @apply relative mr-1;
+    top: -2px;
+  }
 }
 
 .card-meta {
@@ -114,6 +118,13 @@ Card Post (News, Projects,...)
 .card-post.hasVote .metadata-votecount .fa {
   @apply block;
 }
+
+/* Card Title */
+.card-post .card-link {
+  @apply inline;
+}
+
+
 
 /* Card Body */
 .card-post .card-body {
