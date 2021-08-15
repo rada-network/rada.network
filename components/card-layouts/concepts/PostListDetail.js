@@ -331,7 +331,7 @@ const PostVisitVoteDetail = function({item,voteStore}){
     <div className="flex flex-shrink-0">
       <div className="cta-wrapper">
         <Vote
-          itemId={item.id}
+          itemId={item.item.id}
           voteStore={voteStore}
           page={"postDetail"}
         />
