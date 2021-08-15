@@ -58,6 +58,15 @@ export const Topbar = () => {
           </span>
         </a>
 
+        {/* Edition / Lang switch */}
+        <div className="btn nav-btn btn-switch-lang" data-tip="Change Language / Edition">
+          <div>
+            <span className="icon"><i class="fal fa-globe" /></span>
+            <span className="btn--text">EN / VI</span>
+          </div>
+          <span className="dropdown-arrow ml-2 text-xs"><i class="fa fa-caret-down" /></span>
+        </div>
+
         {/* Profile dropdown */}
         <div className="relative">
           <Wallet />

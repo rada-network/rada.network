@@ -97,11 +97,11 @@ Link Visit Button
 Nav Button
 */
 .nav-btn {
-  @apply px-2 py-1 pt-1.5 items-center justify-center rounded;
-  @apply text-sm font-medium text-gray-900 bg-gray-100 border border-transparent;
+  @apply px-2 py-1 items-center justify-center rounded;
+  @apply text-sm font-medium text-gray-900 bg-gray-500 bg-opacity-10 border border-transparent;
   @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
-  @apply dark:text-white dark:bg-gray-800;
-  @apply dark:hover:bg-deeppurple-300 dark:hover:border-purple-500;
+  @apply dark:text-white dark:bg-gray-400 dark:bg-opacity-20;
+  @apply dark:hover:bg-deeppurple-300 dark:hover:border-primary-500;
 }
 
 .nav-btn .icon {
@@ -110,6 +110,9 @@ Nav Button
 
 .btn-open-widgets {
   @apply md:hidden;
+  .btn--text {
+    @apply hidden lg:inline-block;
+  }
 }
 
 /* 
@@ -123,9 +126,15 @@ Wallet Button
 
 
 /* 
-Theme Button 
+Theme / Language Button 
 */
 .btn-switch-theme {
+  .btn--text {
+    @apply hidden lg:inline-block;
+  }
+}
+
+.btn-switch-lang {
 }
 
 
@@ -172,7 +181,8 @@ Button Caret
 */
 .btn--caret-down,
 .btn--caret-right,
-.btn--caret-left {
+.btn--caret-left,
+.btn--caret-up {
   @apply relative;
   height: 6px;
   width: 6px;
@@ -193,6 +203,16 @@ Button Caret
 .btn--caret-down {
   @apply ml-2 -mt-0.5;
   transform: rotate(45deg);
+}
+
+.btn--caret-up {
+  @apply ml-2 -mb-0.5;
+  transform: rotate(-135deg);
+}
+
+/* Dropdown Button */
+.dropdown-arrow {
+
 }
 
 /* Page Close Button */
