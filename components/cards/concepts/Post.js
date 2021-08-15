@@ -63,17 +63,24 @@ export const CardPost = observer(({title, mediaUri, type, source, commentCount, 
       }
 
       <div className={`card-body`}>
+        <div className={`card-body-header`}>
+          <div className={`card-title`}>
+            <a className="card-link" href={"/"}>
+              <span className="text-color-title" dangerouslySetInnerHTML={{__html: title}}></span>
+            </a>
+          </div>
 
-        <div className={`card-title`}>
-          <Link href="/">
-            <span className="badge badge-btc">BTC</span>
-          </Link>
-          <Link href="/">
-            <span className="badge badge-cardano">ADA</span>
-          </Link>
-          <a className="card-link" href={"/"}>
-            <span className="text-color-title" dangerouslySetInnerHTML={{__html: title}}></span>
-          </a>
+          <div className={`card-badges`}>
+            <Link href="/">
+              <span className="badge badge-btc">BTC</span>
+            </Link>
+            <Link href="/">
+              <span className="badge badge-cardano">ADA</span>
+            </Link>
+            <Link href="/">
+              <span className="badge badge-ethereum">ETH</span>
+            </Link>
+          </div>
         </div>
 
         <div className="metadata-wrapper justify-between mt-1">

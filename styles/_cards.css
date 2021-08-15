@@ -21,10 +21,6 @@ Generic Styles
 
 .card-title {
   @apply text-sm font-medium leading-snug;
-  .badge {
-    @apply text-xxs py-0.5 relative mr-1 mt-0;
-    top: -2px;
-  }
 }
 
 .card-meta {
@@ -48,8 +44,21 @@ Generic Styles
   @apply flex flex-col w-full;
 }
 
+.card-body-header {
+  @apply flex justify-between items-start;
+}
+
 .card-footer {
   @apply flex flex-col px-4 md:px-6 py-4 w-full;
+}
+
+.card-badges {
+  @apply ml-2 relative;
+  top: -4px;
+}
+
+.card-badges .badge {
+  @apply text-xxs px-1 py-0.5 ml-1 mt-0;
 }
 
 
@@ -75,7 +84,7 @@ Card Post (News, Projects,...)
 
 /* has Comment */
 .card-post .metadata-commentcount {
-  @apply mr-1;
+  @apply px-1;
 }
 
 .card-post.hasComment .metadata-commentcount {
@@ -99,6 +108,10 @@ Card Post (News, Projects,...)
 }
 
 /* has Vote */
+.card-post .metadata-votecount {
+  @apply px-1;
+}
+
 .card-post.hasVote .metadata-votecount {
   @apply text-green-500;
 }
@@ -124,8 +137,6 @@ Card Post (News, Projects,...)
   @apply inline;
 }
 
-
-
 /* Card Body */
 .card-post .card-body {
   @apply flex flex-col h-full w-full;
@@ -142,9 +153,9 @@ Card Post (News, Projects,...)
 }
 
 .card-post .card-media-blank {
-  @apply flex-shrink-0 w-px-40 h-px-40 opacity-0;
+  @apply flex-shrink-0 w-px-40 h-px-40 opacity-20;
   @apply overflow-hidden cursor-pointer;
-  @apply bg-gray-100;
+  @apply bg-gray-200;
   @apply inline-flex justify-center items-center;
 }
 
