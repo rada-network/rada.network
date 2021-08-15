@@ -116,7 +116,7 @@ export function getSourceFromUri(item){
 
 export function getSourceVideoFromUri(item){
   if (item.grabTopic !== null){
-    return item.grabTopic.website.name
+    return item.grabTopic.name
   }
   return item.source
 }
