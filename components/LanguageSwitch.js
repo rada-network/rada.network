@@ -1,20 +1,15 @@
 import {observer} from "mobx-react";
 import {useCookies} from "react-cookie";
-import {useRouter} from "next/router";
-import {data} from "autoprefixer";
 export const LanguageSwitch = observer(({dataStore}) => {
-  const router = useRouter()
   const [cookies, setCookie] = useCookies(['dhunt_language']);
   const handleChangeLanguage = (e) => {
     if (cookies.dhunt_language === "en"){
       setCookie('dhunt_language','vi',{path : "/"})
-      router.push(router.pathname,undefined,{locale : "vi"})
-      router.reload()
+      window.location.href = "/" + cookies.dhunt_language
     }
     else{
       setCookie('dhunt_language','en',{path : "/"})
-      router.push(router.pathname,undefined,{locale : "en"})
-      router.reload()
+      window.location.href = "/" + cookies.dhunt_language
     }
 
   }
