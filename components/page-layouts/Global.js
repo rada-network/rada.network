@@ -13,6 +13,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 import Screen from "../Resposive";
+import {LanguageSwitch} from "../LanguageSwitch";
 
 const scrollBox = createRef();
 let ps;
@@ -45,13 +46,7 @@ export const Layout = ({children,meta,dataStore}) => {
           <ThemeSwitch />
 
           {/* Edition / Lang switch */}
-          <div className="btn nav-btn btn-switch-lang" data-tip="Change Language / Edition">
-            <div>
-              <span className="icon"><i class="fal fa-globe" /></span>
-              <span className="btn--text">EN / VI</span>
-            </div>
-            <span className="dropdown-arrow"><i class="fas fa-caret-up" /></span>
-          </div>
+          <LanguageSwitch dataStore={dataStore} />
 
         </div>
         </Screen>
@@ -62,7 +57,7 @@ export const Layout = ({children,meta,dataStore}) => {
         <Screen upto="md">
         <div className="pane-center--top">
           {/* <Tabbar /> */}
-          <Topbar />
+          <Topbar dataStore={dataStore} />
         </div>
         </Screen>
 

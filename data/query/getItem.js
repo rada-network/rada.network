@@ -184,7 +184,8 @@ const itemByIdGql = gql`
 
 export async function getItems({take,skip, orderBy,query,type,lang}){
     type = type || "all"
-    lang = lang || "en"
+    lang = lang || "vi"
+    query = query || ""
   const client = getClient()
   return await client.query({
     query: itemFeedGql,

@@ -3,6 +3,7 @@ import {useRouter} from 'next/router'
 import {getItems} from "../data/query/getItem";
 import {HOME_ITEM_TAKE} from "../config/paging";
 import {observer} from "mobx-react";
+import {useStore} from "../lib/useStore";
 
 
 // import { loadAnimation } from "lottie-web";
@@ -16,7 +17,7 @@ export const Navbar = ({dataStore}) => {
 
 
   const router = useRouter()
-
+  const store = useStore()
   const handleClickNavBar = (e) => {
     e.preventDefault()
     e.stopPropagation()
@@ -25,7 +26,8 @@ export const Navbar = ({dataStore}) => {
     dataStore.tweets = []
     dataStore.loadingButton = true;
     dataStore.showDetail = false;
-    window.history.pushState("", "", e.currentTarget.getAttribute("href"));
+    router.push(e.currentTarget.getAttribute("href"),undefined,{shallow:true})
+    store.setShallowConnect(true);
     getItems({
       take : HOME_ITEM_TAKE,
       skip : dataStore.tweets.length,
@@ -44,7 +46,7 @@ export const Navbar = ({dataStore}) => {
     const cls = []
     cls.push(`nav-item`)
     cls.push(className)
-    if (dataStore.type === type) cls.push(`nav-item-active`)
+    if (dataStore.type === type || (type === "all" && dataStore.type === "")) cls.push(`nav-item-active`)
 
     return (
       <a href={href} className={cls.join(' ')} datatype={type}  onClick={(e) => {handleClickNavBar(e)}}>

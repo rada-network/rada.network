@@ -4,8 +4,9 @@ import { useRouter } from 'next/router'
 import {Wallet} from "./Wallet"
 import SearchInput from "./search"
 import ThemeSwitch from "./ThemeSwitch"
+import {LanguageSwitch} from "./LanguageSwitch";
 
-export const Topbar = () => {
+export const Topbar = ({dataStore}) => {
   const router = useRouter()
 
   const NavItem = ({className, href, children}) => {
@@ -52,20 +53,14 @@ export const Topbar = () => {
 
         <ThemeSwitch />
 
-        <a className="btn nav-btn btn-open-widgets">
-          <span className="icon">
-            <i className="fad fa-th-large" />
-          </span>
-        </a>
+        {/*<a className="btn nav-btn btn-open-widgets">*/}
+        {/*  <span className="icon">*/}
+        {/*    <i className="fad fa-th-large" />*/}
+        {/*  </span>*/}
+        {/*</a>*/}
 
         {/* Edition / Lang switch */}
-        <div className="btn nav-btn btn-switch-lang" data-tip="Change Language / Edition">
-          <div>
-            <span className="icon"><i class="fal fa-globe" /></span>
-            <span className="btn--text">EN / VI</span>
-          </div>
-          <span className="dropdown-arrow ml-2 text-xs"><i class="fa fa-caret-down" /></span>
-        </div>
+        <LanguageSwitch dataStore={dataStore} />
 
         {/* Profile dropdown */}
         <div className="relative">

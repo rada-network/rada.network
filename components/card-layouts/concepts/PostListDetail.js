@@ -8,6 +8,7 @@ import {getSourceFromUri, getSourceVideoFromUri} from "./PostsList";
 import utils from "../../../lib/util";
 import {Vote} from "../../vote/Vote";
 import {useRouter} from "next/router";
+import {useStore} from "../../../lib/useStore";
 
 export const PostListDetail = observer(({back,detailStore,dataStore,voteStore}) => {
   back = back || "/"
@@ -16,18 +17,16 @@ export const PostListDetail = observer(({back,detailStore,dataStore,voteStore}) 
   item = detailStore.data
   const scrollBox2 = createRef();
   let ps2;
+  const store = useStore()
   useEffect(() => {
     // make scrollbar
     ps2 = new PerfectScrollbar(scrollBox2.current, {});
   }, [scrollBox2]);
   const handleBack = (e) => {
     dataStore.showDetail = false
-    if (dataStore.home.isHome){
-      window.history.pushState("", "", back);
-    }
-    else{
-      router.push(back,undefined)
-    }
+    router.push(back,back,{shallow:true})
+    store.setShallowConnect(true)
+    detailStore.data = {}
   }
 
 
@@ -41,7 +40,7 @@ export const PostListDetail = observer(({back,detailStore,dataStore,voteStore}) 
 
           {/* Close Button */}
           {dataStore !== undefined ?
-            <div className="page-back" onClick={(e) => handleBack(e)}>
+            <div className="page-back" onClick={(e) => {handleBack(e)}}>
               <div className="btn">
                 <span className="btn--caret-left"></span>
                 <span className="btn--text">Back</span>

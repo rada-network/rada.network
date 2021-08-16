@@ -32,17 +32,25 @@ export const CardPostLoader = (props) => (
   </div>
 )
 
-export const CardPost = observer(({title, mediaUri, type, source, commentCount, voteCount,item,detailStore,dataStore}) => {
+export const CardPost = observer(({title, mediaUri, type, source, commentCount, voteCount,item,detailStore,dataStore,voteStore}) => {
   const date = utils.timeDifference(new Date(), new Date(item.createdAt))
   const dateTitle = utils.titleTime(item.createdAt)
   let state = ""
   if (!_.isEmpty(detailStore.data)){
     state = detailStore.data.item.id === item.id ? "active" : ""
   }
+  let vote = voteStore.votes.filter(el =>{
+    return el.id === item.id
+  })
+  let isVote
+  if (vote.length > 0){
+    voteCount = vote[0].totalVote
+    isVote = vote[0].isVoted
+  }
   if (commentCount > 0){
     state += " hasComment"
   }
-  if (voteCount > 0){
+  if (isVote > 0){
     state += " hasVote"
   }
   return (

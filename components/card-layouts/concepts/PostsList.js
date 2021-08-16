@@ -144,8 +144,9 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
     dataStore.showDetail = true;
     detailStore.data = obj
     detailStore.type = type
-    window.history.pushState("", "", e.currentTarget.getAttribute("href"));
-    return false;
+    router.push(e.currentTarget.getAttribute("href"),undefined,{shallow:true})
+    store.setShallowConnect(true)
+    return false
   }
   return (
     <div className={`cards-list ${extraClass || ''}`}>
@@ -171,6 +172,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                         commentCount={commentCount}
                         voteCount={voteCount} item={item}
                         detailStore={detailStore}
+                        voteStore={voteStore}
               />
             </a>
           )
@@ -196,6 +198,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                         commentCount={commentCount}
                         voteCount={voteCount} item={item}
                         detailStore={detailStore}
+                        voteStore={voteStore}
               />
             </a>
           )
@@ -213,6 +216,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                            commentCount={commentCount}
                            voteCount={voteCount} item={item}
                            detailStore={detailStore}
+                           voteStore={voteStore}
           />
         }
 
@@ -236,6 +240,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                       commentCount={commentCount}
                       voteCount={voteCount} item={item}
                       detailStore={detailStore}
+                      voteStore={voteStore}
             />
             </a>
           )
@@ -250,6 +255,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                            commentCount="0"
                            voteCount="0" item={item}
                            detailStore={detailStore}
+                           voteStore={voteStore}
           />
         }
 
