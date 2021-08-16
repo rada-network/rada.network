@@ -9,10 +9,12 @@ export const LanguageSwitch = observer(({dataStore}) => {
     if (cookies.dhunt_language === "en"){
       setCookie('dhunt_language','vi',{path : "/"})
       router.push(router.pathname,undefined,{locale : "vi"})
+      router.reload()
     }
     else{
       setCookie('dhunt_language','en',{path : "/"})
       router.push(router.pathname,undefined,{locale : "en"})
+      router.reload()
     }
 
   }

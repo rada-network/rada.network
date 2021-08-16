@@ -95,11 +95,10 @@ export default observer(function(props) {
 
 export const Index  = observer(({props,observableItemStore,voteStore}) => {
   const detailStore = new DetailStore()
-  const router = useRouter()
   const [cookies, setCookie] = useCookies(['dhunt_language']);
   useEffect(function(){
-    if (cookies.dhunt_language !== props.lang && ["en","vi"].indexOf(cookies.dhunt_language) !== -1){
-      router.push(router.pathname,undefined,{locale : cookies.dhunt_language })
+    if (cookies.dhunt_language != props.lang && ["en","vi"].indexOf(cookies.dhunt_language) !== -1){
+      window.location.href = "/" + cookies.dhunt_language
     }
   },[])
   if (props.item === undefined) {
