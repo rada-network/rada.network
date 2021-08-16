@@ -31,9 +31,7 @@ function MyApp({Component, pageProps}) {
       )
       console.log(store.shallowInternal)
       if (shallow && !store.shallowInternal){
-        router.push(url,undefined).then(function(res){
-
-        })
+        router.push(url,undefined)
       }
       else{
         ga.pageview(url)

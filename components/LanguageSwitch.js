@@ -1,15 +1,17 @@
 import {observer} from "mobx-react";
 import {useCookies} from "react-cookie";
+import {useRouter} from "next/router";
 export const LanguageSwitch = observer(({dataStore}) => {
-  const [cookies, setCookie] = useCookies(['dhunt_language']);
+  const [cookies, setCookie] = useCookies(['NEXT_LOCALE']);
+  const router = useRouter()
   const handleChangeLanguage = (e) => {
-    if (cookies.dhunt_language === "en"){
-      setCookie('dhunt_language','vi',{path : "/"})
-      window.location.href = "/" + cookies.dhunt_language
+    if (cookies.NEXT_LOCALE === "en"){
+      setCookie('NEXT_LOCALE','vi',{path : "/"})
+      router.push("/vi")
     }
     else{
-      setCookie('dhunt_language','en',{path : "/"})
-      window.location.href = "/" + cookies.dhunt_language
+      setCookie('NEXT_LOCALE','en',{path : "/"})
+      router.push("/en")
     }
 
   }

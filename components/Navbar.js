@@ -26,7 +26,7 @@ export const Navbar = ({dataStore}) => {
     dataStore.tweets = []
     dataStore.loadingButton = true;
     dataStore.showDetail = false;
-    router.push(e.currentTarget.getAttribute("href"),undefined,{shallow:true})
+    router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
     store.setShallowConnect(true);
     getItems({
       take : HOME_ITEM_TAKE,
@@ -75,31 +75,31 @@ export const Navbar = ({dataStore}) => {
 
       {/* Main Nav */}
       <div className={`navbar-main`} >
-        <NavItem href={"/" + dataStore.lang} type={"all"}>
+        <NavItem href={"/" + dataStore.lang + "/apps/"} type={"all"}>
         <span className="icon"><i className="fad fa-rss" /></span>
           <span className="nav-item--text">Explore</span>
         </NavItem>
-        <NavItem href={"/" + dataStore.lang + "/explore/news"} type={"news"}>
+        <NavItem href={"/" + dataStore.lang + "/apps/explore/news"} type={"news"}>
           <span className="icon"><i className="fad fa-newspaper" /></span>
           <span className="nav-item--text">News</span>
         </NavItem>
-        <NavItem href={"/" + dataStore.lang + "/explore/social"} type={"social"} className="disabled">
+        <NavItem href={"/" + dataStore.lang + "/apps/explore/social"} type={"social"} className="disabled">
           <span className="icon"><i className="fad fa-fire-alt" /></span>
           <span className="nav-item--text">Signals</span>
           <span className="nav-item--badge">Soon</span>
         </NavItem>
-        <NavItem href={"/" + dataStore.lang + "/explore/media"}  type={"media"}>
+        <NavItem href={"/" + dataStore.lang + "/apps/explore/media"}  type={"media"}>
           <span className="icon"><i className="fad fa-icons" /></span>
           <span className="nav-item--text">Media</span>
         </NavItem>
 
         {/* Example of additional filters */}
         <span className="nav-item--divider"></span>
-        <NavItem href={"/" + dataStore.lang + "/explore/media"}  type={"games"}>
+        <NavItem href={"/" + dataStore.lang + "/apps/explore/games"}  type={"games"}>
           <span className="icon"><i className="fad fa-chess-knight" /></span>
           <span className="nav-item--text">Games</span>
         </NavItem>
-        <NavItem href={"/" + dataStore.lang + "/explore/media"}  type={"defi"}>
+        <NavItem href={"/" + dataStore.lang + "/apps/explore/defi"}  type={"defi"}>
           <span className="icon"><i className="fad fa-coins" /></span>
           <span className="nav-item--text">DeFi</span>
         </NavItem>

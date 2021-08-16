@@ -123,7 +123,7 @@ export function getSourceVideoFromUri(item){
 
 
 function createPostUri(title,item,lang){
-  return "/" + lang + "/post/" + item.id + "/" + utils.convertToSlug(title)
+  return "/" + lang + "/apps/post/" + item.id + "/" + utils.convertToSlug(title)
 }
 
 const PostsListLoader = () => {

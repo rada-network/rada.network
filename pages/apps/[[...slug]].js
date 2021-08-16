@@ -1,17 +1,12 @@
-import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
-import utils from "../lib/util";
-import {Layout} from "../components/page-layouts/Global";
-import {PostsListWrapper} from "../components/card-layouts/concepts/PostsList";
-import Screen from "../components/Resposive";
-import ThemeSwitch from "../components/ThemeSwitch";
-import {Wallet} from "../components/Wallet";
+import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
+import utils from "../../lib/util";
+import {Layout} from "../../components/page-layouts/Global";
+import {PostsListWrapper} from "../../components/card-layouts/concepts/PostsList";
 import {observer} from "mobx-react";
-import {HOME_ITEM_TAKE} from "../config/paging";
-import {getItemById, getItems} from "../data/query/getItem";
+import {HOME_ITEM_TAKE} from "../../config/paging";
+import {getItemById, getItems} from "../../data/query/getItem";
 import React, {useEffect, useState} from "react";
-import {IndexRightBar} from "../components/IndexRightBar";
-import {useCookies} from "react-cookie";
-import {useRouter} from "next/router";
+import {IndexRightBar} from "../../components/IndexRightBar";
 
 const getDataExplore = async ({query,type,lang}) => {
   const itemFeed = await getItems({
@@ -95,12 +90,6 @@ export default observer(function(props) {
 
 export const Index  = observer(({props,observableItemStore,voteStore}) => {
   const detailStore = new DetailStore()
-  const [cookies, setCookie] = useCookies(['dhunt_language']);
-  useEffect(function(){
-    if (cookies.dhunt_language != props.lang && ["en","vi"].indexOf(cookies.dhunt_language) !== -1){
-      window.location.href = "/" + cookies.dhunt_language
-    }
-  },[])
   if (props.item === undefined) {
     observableItemStore.query = props.query
     observableItemStore.lang = props.lang
@@ -151,7 +140,7 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
         </div>
 
         {/* secondary content pane */}
-        <IndexRightBar back={ "/" + props.lang + "/explore/"+props.type} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
+        <IndexRightBar back={ "/" + props.lang + "/apps/explore/"+props.type} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
       </div>
     </Layout>
   )
