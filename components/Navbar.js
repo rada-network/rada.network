@@ -90,6 +90,18 @@ export const Navbar = ({dataStore}) => {
           <span className="icon"><i className="fad fa-icons" /></span>
           <span className="nav-item--text">Media</span>
         </NavItem>
+
+        {/* Example of additional filters */}
+        <span className="nav-item--divider"></span>
+        <NavItem href={"/" + dataStore.lang + "/explore/media"}  type={"media"}>
+          <span className="icon"><i className="fad fa-chess-knight" /></span>
+          <span className="nav-item--text">Games</span>
+        </NavItem>
+        <NavItem href={"/" + dataStore.lang + "/explore/media"}  type={"media"}>
+          <span className="icon"><i className="fad fa-coins" /></span>
+          <span className="nav-item--text">DeFi</span>
+        </NavItem>
+
         {/*<NavItem href="/explore/projects">*/}
         {/*  <span className="icon"><i className="fad fa-code-branch" /></span>*/}
         {/*  <span className="nav-item--text">Projects</span>*/}
@@ -100,10 +112,6 @@ export const Navbar = ({dataStore}) => {
         {/*</NavItem>*/}
       </div>
     </nav>
-
-    {/* <div className="hidden lg:flex justify-center p-4">
-      <ThemeSwitch />
-    </div> */}
 
     </>
   );

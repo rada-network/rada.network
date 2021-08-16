@@ -217,6 +217,10 @@ Navbar
   }
 }
 
+.nav-item--divider {
+  @apply hidden lg:block h-1 mt-2 mb-2 border-t border-gray-500 border-opacity-10;
+}
+
 /* 
 Sidebar
 --------------------------------------------- */
