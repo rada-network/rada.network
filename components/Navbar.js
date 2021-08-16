@@ -93,11 +93,11 @@ export const Navbar = ({dataStore}) => {
 
         {/* Example of additional filters */}
         <span className="nav-item--divider"></span>
-        <NavItem href={"/" + dataStore.lang + "/explore/media"}  type={"media"}>
+        <NavItem href={"/" + dataStore.lang + "/explore/media"}  type={"games"}>
           <span className="icon"><i className="fad fa-chess-knight" /></span>
           <span className="nav-item--text">Games</span>
         </NavItem>
-        <NavItem href={"/" + dataStore.lang + "/explore/media"}  type={"media"}>
+        <NavItem href={"/" + dataStore.lang + "/explore/media"}  type={"defi"}>
           <span className="icon"><i className="fad fa-coins" /></span>
           <span className="nav-item--text">DeFi</span>
         </NavItem>

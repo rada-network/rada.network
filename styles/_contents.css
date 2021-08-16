@@ -191,7 +191,7 @@ Small Badges
 }
 
 .badge-ethereum {
-  @apply text-gray-600 hover:border-gray-600 hover:bg-gray-600 hover:text-white;
+  @apply text-gray-500 hover:border-gray-500 hover:bg-gray-500 hover:text-white;
   &:hover .cf-eth {
     @apply text-white;
   }
