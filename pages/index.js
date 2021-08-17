@@ -8,7 +8,7 @@ export default observer((props) => {
 })
 
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   return {
     // returns a redirect to an internal page `/another-page`
     redirect: {

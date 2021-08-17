@@ -7,6 +7,7 @@ import {HOME_ITEM_TAKE} from "../../config/paging";
 import {getItemById, getItems} from "../../data/query/getItem";
 import React, {useEffect, useState} from "react";
 import {IndexRightBar} from "../../components/IndexRightBar";
+import _ from "lodash"
 
 const getDataExplore = async ({query,type,lang}) => {
   if (['news','media','social','all',''].indexOf(type) === -1){
