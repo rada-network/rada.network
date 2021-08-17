@@ -10,8 +10,8 @@ import {Vote} from "../../vote/Vote";
 import {useRouter} from "next/router";
 import {useStore} from "../../../lib/useStore";
 
-export const PostListDetail = observer(({back,detailStore,dataStore,voteStore}) => {
-  back = back || "/"
+export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
+  const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
   const router = useRouter()
   let item
   item = detailStore.data

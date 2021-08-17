@@ -9,6 +9,9 @@ import React, {useEffect, useState} from "react";
 import {IndexRightBar} from "../../components/IndexRightBar";
 
 const getDataExplore = async ({query,type,lang}) => {
+  if (['news','media','social','all',''].indexOf(type) === -1){
+    return false
+  }
   const itemFeed = await getItems({
     take : HOME_ITEM_TAKE,
     skip : 0,
@@ -38,13 +41,16 @@ const getDataHome = async ({query,lang}) => {
   return {
     query : query,
     lang : lang,
-    type : "",
+    type : "all",
     itemFeed : itemFeed.data.itemFeed
   }
 }
 
 const getDataPostDetail = async ({query,id,lang}) => {
   const newsDetail = await getItemById({id : id})
+  if (_.isEmpty(newsDetail.data.itemById)){
+    return false
+  }
   let type = "all"
   if (newsDetail.data.itemById.news !== null){
     type = "news"
@@ -170,10 +176,21 @@ export async function getStaticProps(context) {
   if (type === "explore"){
     let exType = context.params.slug[1] === undefined ? "" : context.params.slug[1]
     props = await getDataExplore({type : exType,lang : context.locale});
+    if (!props){
+      return {
+        notFound: true
+      }
+    }
   }
   else if (type === "post"){
     let id = context.params.slug[1] === undefined ? "" : context.params.slug[1]
     props = await getDataPostDetail({id : id,lang : context.locale});
+    if (!props){
+      return {
+        notFound: true
+      }
+    }
+
   }
   return {
     props,

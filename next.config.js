@@ -36,34 +36,6 @@ module.exports = (phase) => {
       // a non-locale prefixed path e.g. `/hello`
       defaultLocale: 'vi',
 
-    },
-    async redirects() {
-      return [
-        {
-          source: '/en/:path*',
-          has: [
-            {
-              type: 'cookie',
-              key: 'dhunt_language',
-              value: "vi",
-            },
-          ],
-          permanent: false,
-          destination: '/vi/:path*',
-        },
-        {
-          source: '/vi/:path*',
-          has: [
-            {
-              type: 'cookie',
-              key: 'dhunt_language',
-              value: "en",
-            },
-          ],
-          permanent: false,
-          destination: '/en/:path*',
-        },
-      ]
     }
   }
 

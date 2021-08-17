@@ -7,7 +7,7 @@ import {PostListDetail} from "./card-layouts/concepts/PostListDetail";
 import {Header} from "./headers/HeaderHome";
 import {Sidebar} from "./sidebar/Sidebar";
 
-export const IndexRightBar = observer(({dataStore,detailStore,props,voteStore,back}) => {
+export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
 
   const scrollBox2 = createRef();
   let ps2;
@@ -33,7 +33,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,props,voteStore,ba
         </Screen>
 
         {dataStore.showDetail ?
-          <PostListDetail back={back} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
+          <PostListDetail detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
           :
           ""
         }

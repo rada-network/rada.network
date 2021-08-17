@@ -6,12 +6,12 @@ export const LanguageSwitch = observer(({dataStore}) => {
   const router = useRouter()
   const handleChangeLanguage = (e) => {
     if (cookies.NEXT_LOCALE === "en"){
-      setCookie('NEXT_LOCALE','vi',{path : "/"})
-      router.push("/vi")
+      setCookie('NEXT_LOCALE','vi',{path : "/",maxAge: 3600*7*24})
+      router.push("/vi",'/vi',{locale: false})
     }
     else{
-      setCookie('NEXT_LOCALE','en',{path : "/"})
-      router.push("/en")
+      setCookie('NEXT_LOCALE','en',{path : "/",maxAge: 3600*7*24})
+      router.push("/en",'/en',{locale: false})
     }
 
   }
