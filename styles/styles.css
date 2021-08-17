@@ -232,7 +232,6 @@ Sidebar
 Sections Layout
 --------------------------------------------- */
 .section {
-  @apply flex flex-col h-full w-full;
   @apply p-4 md:p-6;
 }
 
