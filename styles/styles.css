@@ -105,7 +105,7 @@ Layout
 
 
 /* 
-Nav & Top Bars
+Top Bars
 --------------------------------------------- */
 .topbar {
   @apply flex lg:hidden justify-between items-center px-4 w-full;
@@ -136,8 +136,8 @@ Nav & Top Bars
 }
 
 /* 
-Navbar 
-*/
+Tabbar (Comming Soon)
+--------------------------------------------- */
 .tabbar {
   @apply hidden md:flex justify-between px-4 w-full;
   height: var(--tabbar-height);
@@ -170,7 +170,7 @@ Navbar
 
 /* 
 Navbar 
-*/
+--------------------------------------------- */
 .navbar {
   @apply relative flex flex-col w-full h-full;
 }
@@ -228,16 +228,6 @@ Sidebar
   @apply xl:p-4;
 }
 
-
-/* 
-Card Layouts
---------------------------------------------- */
-.category-list {
-  .card {
-    @apply flex-shrink-0;
-  }
-}
-
 /* 
 Sections Layout
 --------------------------------------------- */
@@ -292,33 +282,11 @@ Sections Layout
 Sections
 --------------------------------------------- */
 /* 
-Social 
-*/
-.section-social .section-body {
-  @apply px-0 pb-0 md:px-6 md:pb-4 lg:px-8 lg:pb-6;
-}
-
-/* 
 Media 
 */
 .media-player {
 }
 
-.media-playlist {
-  @apply mx-4 mt-2 md:mx-6 md:mt-4 lg:mx-8 lg:mt-6;
-}
-
-.media-playlist .card {
-  @apply flex-shrink-0 w-40 lg:w-56 h-full rounded transition cursor-pointer;
-}
-
-.media-playlist .card:hover {
-  @apply bg-gray-50 dark:bg-deepgray-100;
-}
-
-.media-playlist .card.active {
-  @apply bg-gray-100 dark:bg-gray-800;
-}
 
 /* 
 Comments List 
@@ -326,8 +294,6 @@ Comments List
 .section-comments {
   @apply border-t border-gray-500 border-opacity-10;
 }
-
-
 
 /* 
 Pages

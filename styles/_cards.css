@@ -83,53 +83,22 @@ Card Post (News, Projects,...)
 
 /* has Comment */
 .card-post .metadata-commentcount {
-  @apply px-1;
+  @apply mr-1 opacity-0 transition;
 }
 
 .card-post.hasComment .metadata-commentcount {
-  @apply text-primary-500;
-}
-
-.card-post .metadata-commentcount .fa {
-  @apply hidden;
-}
-
-.card-post .metadata-commentcount .far {
-  @apply block;
-}
-
-.card-post.hasComment .metadata-commentcount .far {
-  @apply hidden;
-}
-
-.card-post.hasComment .metadata-commentcount .fa {
-  @apply block;
+  @apply opacity-100 text-primary-500;
 }
 
 /* has Vote */
 .card-post .metadata-votecount {
-  @apply px-1;
+  @apply mr-1 opacity-0 transition;
 }
 
 .card-post.hasVote .metadata-votecount {
-  @apply text-green-500;
+  @apply opacity-100 text-green-500;
 }
 
-.card-post .metadata-votecount .fa {
-  @apply hidden;
-}
-
-.card-post .metadata-votecount .far {
-  @apply block;
-}
-
-.card-post.hasVote .metadata-votecount .far {
-  @apply hidden;
-}
-
-.card-post.hasVote .metadata-votecount .fa {
-  @apply block;
-}
 
 /* Card Title */
 .card-post .card-link {

@@ -106,14 +106,12 @@ export const CardPost = observer(({title, mediaUri, type, source, commentCount, 
           <div className="flex flex-shrink-0 metadata-wrapper_nodivide">
             <div className="metadata metadata-commentcount">
               <span className="icon mr-1">
-                <i className="far fa-comment" />
                 <i className="fa fa-comment" />
               </span>
               <span className="">{commentCount}</span>
             </div>
             <div className="metadata metadata-votecount">
               <span className="icon mr-1">
-                <i className="far fa-arrow-up" />
                 <i className="fa fa-arrow-up" />
               </span>
               <span>{voteCount}</span>
