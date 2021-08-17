@@ -84,14 +84,14 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
         currentUser == null
         ? <>
             <TextareaAutosize onClick={(e) => {store.wallet.showConnect(true);}}
-              className="w-full px-4 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"
+              className="comment-textarea"
               row="1"
               title="Write a comment"
               placeholder="Connect wallet to discuss"
             />
-            <div className="text-sm text-gray-400 pl-2 md:mt-0">
+            <div className="pl-2 md:mt-0">
               <button onClick={submitComment}
-                      className="w-full justify-center flex-1 px-3 py-3 text-gray-500 rounded-md btn item-center bg-gray-100 "
+                      className="text-sm w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded btn item-center bg-gray-100 hover:bg-primary-100 hover:text-primary-700 border border-transparent hover:border-primary-500 leading-4"
                       >
                 {btnText}
               </button>
@@ -112,8 +112,8 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
               onKeyDown={handleKeydown}
             />
 
-            <div className="text-sm text-gray-400 pl-2 md:mt-0">
-              <button onClick={submitComment} className="w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded-md btn item-center bg-gray-100 hover:bg-primary-100 hover:text-primary-700">
+            <div className="pl-2 md:mt-0">
+              <button onClick={submitComment} className="text-sm w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded btn item-center bg-gray-100 hover:bg-primary-100 hover:text-primary-700 border border-transparent  hover:border-primary-500 leading-4">
                 {btnText}
               </button>
             </div>
