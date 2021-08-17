@@ -12,7 +12,7 @@ Generic Styles
 
 .card-media,
 .card-media-blank {
-  @apply flex flex-col flex-shrink-0 overflow-hidden rounded-sm mr-2 md:mr-4;
+  @apply flex flex-col flex-shrink-0 overflow-hidden rounded-sm mr-2 md:mr-4 mt-0.5;
 }
 
 .card-img {

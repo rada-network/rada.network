@@ -59,9 +59,7 @@ export const CardPost = observer(({title, mediaUri, type, source, commentCount, 
       {mediaUri !== null ?
         <div className={`card-media`}>
           <div className={`card-media-img`}>
-            <a className="" href={"/"}>
-              <img className={`card-img`} src={mediaUri}  alt={""}/>
-            </a>
+            <img className={`card-img`} src={mediaUri} alt={""}/>
           </div>
         </div>
         :

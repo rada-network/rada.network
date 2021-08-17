@@ -102,7 +102,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
               <CommentAvatar user={currentUser} size={replyFor === null ? 40 : 32} />
             </div>
             <TextareaAutosize
-              className="w-full px-4 py-2 text-base border border-gray-100 rounded shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"
+              className="comment-textarea"
               row="1"
               title="Write a comment"
               placeholder="Write your comment..." value={commentContent}
