@@ -93,7 +93,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
             />
             <div className="pl-2 md:mt-0">
               <button onClick={submitComment}
-                      className="text-sm w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded btn item-center bg-gray-100 hover:bg-primary-100 hover:text-primary-700 border border-transparent hover:border-primary-500 leading-4"
+                      className="btn comment-btn"
                       >
                 {btnText}
               </button>
@@ -115,7 +115,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
             />
 
             <div className="pl-2 md:mt-0">
-              <button onClick={submitComment} className="text-sm w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded btn item-center bg-gray-100 hover:bg-primary-100 hover:text-primary-700 border border-transparent  hover:border-primary-500 leading-4">
+              <button onClick={submitComment} className="btn comment-btn">
                 {btnText}
               </button>
             </div>

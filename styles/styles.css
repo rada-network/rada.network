@@ -350,7 +350,7 @@ Post Details
 
 /* CTAs */
 .post-detail .cta-wrapper {
-  @apply flex text-gray-800 dark:text-white;
+  @apply flex text-gray-800 dark:text-gray-200;
 }
 
 .post-detail .cta-wrapper .btn {
