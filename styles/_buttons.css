@@ -52,14 +52,14 @@ Vote Buttons
 */
 .btn-post-vote {
   @apply px-2 py-1 justify-center;
-  @apply bg-gray-100 border border-gray-400 border-opacity-10 rounded;
-  @apply hover:border-primary-700 hover:bg-primary-50 hover:text-primary-700;
-  @apply dark:bg-gray-800 dark:hover:border-primary-500 dark:hover:text-white;
+  @apply border border-gray-400 border-opacity-40 rounded;
+  @apply hover:border-green-500 hover:bg-green-50 hover:text-green-500;
+  @apply dark:hover:bg-transparent dark:hover:text-white;
 }
 
 .btn-post-vote.active,
 .btn-post-vote_sm.active {
-  @apply bg-primary-700 text-white;
+  @apply bg-green-500 text-white;
 }
 
 .btn-post-vote_sm {

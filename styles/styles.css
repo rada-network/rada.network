@@ -438,14 +438,10 @@ Empty State
 }
 
 .home-emptystate-deco {
-  @apply absolute inset-0 w-full h-full opacity-10 z-0;
-  background: url(/images/hero.png) no-repeat center 90%;
+  @apply absolute inset-0 w-full h-full opacity-5 z-0;
+  background: url(/images/hero.png) no-repeat center 95%;
 }
 
-.empty-state .home-emptystate-deco {
-  @apply opacity-5 transition-all;
-  transition-duration: 1s;
-}
 
 .empty-state .empty-state-content {
   @apply opacity-50 transition-all;
@@ -454,10 +450,6 @@ Empty State
 
 .empty-state:hover .empty-state-content {
   @apply opacity-90;
-}
-
-.empty-state:hover .home-emptystate-deco {
-  @apply opacity-10;
 }
 
 .empty-state-content {
