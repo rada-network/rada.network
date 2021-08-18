@@ -47,10 +47,12 @@ export const Navbar = ({dataStore}) => {
           <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/games"}  type={"games"} className="disabled">
             <span className="icon"><i className="fad fa-chess-knight" /></span>
             <span className="nav-item--text">Games</span>
+            <span className="nav-item--badge">Soon</span>
           </NavItem>
           <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/defi"}  type={"defi"} className="disabled">
             <span className="icon"><i className="fad fa-coins" /></span>
             <span className="nav-item--text">DeFi</span>
+            <span className="nav-item--badge">Soon</span>
           </NavItem>
 
           {/*<NavItem href="/explore/projects">*/}
