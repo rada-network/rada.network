@@ -83,20 +83,20 @@ Card Post (News, Projects,...)
 
 /* has Comment */
 .card-post .metadata-commentcount {
-  @apply mr-1 opacity-0 transition;
+  @apply mr-1 hidden transition;
 }
 
 .card-post.hasComment .metadata-commentcount {
-  @apply opacity-100 text-primary-500;
+  @apply inline-flex text-primary-500;
 }
 
 /* has Vote */
 .card-post .metadata-votecount {
-  @apply mr-1 opacity-0 transition;
+  @apply mr-1 hidden transition;
 }
 
 .card-post.hasVote .metadata-votecount {
-  @apply opacity-100 text-green-500;
+  @apply inline-flex text-green-500;
 }
 
 
