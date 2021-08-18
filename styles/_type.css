@@ -6,7 +6,8 @@ Typography Styles
 /* 
 Core Contents
 ----------------------------------- */
-.text-color-title {
+.text-color-title,
+.comment-text {
   @apply text-gray-800 dark:text-gray-100;
 }
 

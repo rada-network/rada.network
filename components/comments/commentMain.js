@@ -34,11 +34,11 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
             <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-400">
               <div className="flex items-center">
                 <button
-                  className="btn py-1 px-2 border border-gray-200 hover:border-primary-500 hover:text-primary-700 hover:bg-primary-100 rounded">
+                  className="btn btn-post-vote">
                   {/*<button*/}
                   {/*  className="btn py-1 px-2 border border-primary-500 text-primary-700 bg-primary-100 rounded">*/}
-                  <span className="icon mr-2"><RiThumbUpFill/></span>
-                  <span className="font-bold mr-2">1</span><span>Likes</span>
+                  <span className="icon mr-1"><RiThumbUpFill/></span>
+                  <span className="font-bold mr-1">1</span><span>Likes</span>
                 </button>
                 {
                   level  <= 1 ?

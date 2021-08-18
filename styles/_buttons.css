@@ -52,9 +52,9 @@ Vote Buttons
 */
 .btn-post-vote {
   @apply px-2 py-1 justify-center;
-  @apply bg-gray-100 text-gray-800 border border-gray-400 border-opacity-10 rounded;
+  @apply bg-gray-100 border border-gray-400 border-opacity-10 rounded;
   @apply hover:border-primary-700 hover:bg-primary-50 hover:text-primary-700;
-  @apply dark:bg-gray-800 dark:text-white;
+  @apply dark:bg-gray-800 dark:hover:border-primary-500 dark:hover:text-primary-500;
 }
 
 .btn-post-vote.active,
@@ -85,8 +85,7 @@ Link Visit Button
 */
 .btn-post-link {
   @apply justify-center items-center px-2 py-0.5;
-  @apply text-gray-800 dark:text-white;
-  @apply hover:text-primary-700 dark:hover:text-white;
+  @apply hover:text-primary-700 dark:hover:text-primary-500;
 }
 
 .btn-post-link .icon {

@@ -344,23 +344,21 @@ Post Details
 }
 
 .post-detail {
-
   @apply pt-0;
   flex: 0;
-  
-  /* CTAs */
-  .cta-wrapper {
-    @apply flex;
-  }
+}
 
-  .cta-wrapper .btn {
-    @apply text-xs;
-  }
+/* CTAs */
+.post-detail .cta-wrapper {
+  @apply flex text-gray-800 dark:text-white;
+}
 
-  .cta-wrapper .btn-post-vote {
-    @apply px-2;
-  }
+.post-detail .cta-wrapper .btn {
+  @apply text-xs;
+}
 
+.post-detail .cta-wrapper .btn-post-vote {
+  @apply px-2;
 }
 
 /*

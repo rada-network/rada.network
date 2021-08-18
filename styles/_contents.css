@@ -366,7 +366,7 @@ Comment
 .comment_reply_form {
   @apply relative;
   &::before {
-    @apply block absolute transition-all border-b-2 border-l-2 border-gray-500 border-opacity-10;
+    @apply block absolute transition-all border-b-2 border-l-2 border-gray-400 border-opacity-20;
     top: 34px;
     left: 18px;
     width: 25px;
@@ -392,8 +392,7 @@ Comment
 .comments-list-item:hover .comment,
 .comments-list-item:hover .comment_reply_form {
   &::before {
-    border-left-color: #EDE9FE;
-    border-bottom-color: #EDE9FE;
+    @apply border-primary-100 dark:border-primary-900;
   }
 }
 
@@ -403,9 +402,13 @@ Comment
   .user-wallet_avatar_xs {
     z-index: 2;
   }
-  .user-wallet_avatar {
-    outline: 2px solid #fff;
-  }
+}
+
+.comment .user-wallet_avatar {
+  @apply ring-4 ring-white dark:ring-deepgray-50;
+}
+
+.comment .btn-post-vote {
 }
 
 .comment_reply {
@@ -440,5 +443,4 @@ Comment
 }
 
 .comment-text {
-  @apply text-gray-900 text-opacity-95;
 }
