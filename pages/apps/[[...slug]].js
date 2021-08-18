@@ -10,7 +10,7 @@ import {IndexRightBar} from "../../components/IndexRightBar";
 import _ from "lodash"
 
 const getDataExplore = async ({query,type,lang}) => {
-  if (['news','media','social','all',''].indexOf(type) === -1){
+  if (['news','media','video','social','all',''].indexOf(type) === -1){
     return false
   }
   const itemFeed = await getItems({

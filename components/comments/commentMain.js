@@ -76,7 +76,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
           sortComments.map(function (c) {
             let user = getSnapshot(ItemCommentStore.getUser(c.userId))
             return (
-              <CommentMain key={c.id} item={item} comment={c} user={user} ItemCommentStore={ItemCommentStore} level={nextLevel} parent={comment}  />
+              <CommentMain key={c.id} item={item} comment={c} user={user} ItemCommentStore={ItemCommentStore} level={nextLevel} parent={comment} dataStore={dataStore}  />
             )
           })
         }

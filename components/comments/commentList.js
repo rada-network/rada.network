@@ -47,7 +47,7 @@ const ThreadsStore = types.model({
     if (typeof self.threads.get(data.id) === "undefined") {
       self.threads.set(data.id, [])
     }
-
+    console.log(self.threads)
   }
 
   const addUser = function (data){
@@ -66,7 +66,7 @@ const ThreadsStore = types.model({
 
 export const CommentList = observer(({detailStore,dataStore}) => {
   let item = detailStore.data
-  let threads = {}
+
   const [comments,setComments] = useState([]);
   useEffect(() => {
     const client = getClient()
@@ -77,11 +77,13 @@ export const CommentList = observer(({detailStore,dataStore}) => {
       setComments(res.data.commentFeed)
     })
   },[item])
+  let threads = {}
   threads[item.item.id] = []
   let ItemCommentStore = ThreadsStore.create({
     threads: threads,
     users: []
   });
+  console.log(ItemCommentStore)
 
   for (let comment of comments){
     let user = UserStore.create(comment.user)

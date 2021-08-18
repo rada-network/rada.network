@@ -37,9 +37,9 @@ export const Navbar = ({dataStore}) => {
             <span className="nav-item--text">Signals</span>
             <span className="nav-item--badge">Soon</span>
           </NavItem>
-          <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/media"}  type={"media"}>
+          <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/video"}  type={"video"}>
             <span className="icon"><i className="fad fa-icons" /></span>
-            <span className="nav-item--text">Media</span>
+            <span className="nav-item--text">Video</span>
           </NavItem>
 
           {/* Example of additional filters */}

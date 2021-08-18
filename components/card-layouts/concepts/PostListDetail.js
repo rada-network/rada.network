@@ -123,7 +123,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
           </div>
         </div>
         <div className="post-content">
-          {item.description}
+          <div dangerouslySetInnerHTML={{__html:item.content}}></div>
         </div>
       </div>
     </div>
