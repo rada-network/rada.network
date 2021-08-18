@@ -67,10 +67,15 @@ export const CardPost = observer(({title, mediaUri, type, source, commentCount, 
     voteCount = vote[0].totalVote
     isVote = vote[0].isVoted
   }
+  dataStore.tweets.forEach((el) =>{
+    if (el.id === item.id){
+      commentCount = el.totalComment
+    }
+  })
   if (commentCount > 0){
     state += " hasComment"
   }
-  if (isVote > 0){
+  if (isVote > 0 || voteCount > 0){
     state += " hasVote"
   }
   return (

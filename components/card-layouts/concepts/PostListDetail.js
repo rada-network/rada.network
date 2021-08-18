@@ -67,7 +67,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
 
 
           {/* Comments */}
-          <CommentList item={item}/>
+          <CommentList detailStore={detailStore} dataStore={dataStore}/>
           {/* //Comments */}
         </div>
       </div>

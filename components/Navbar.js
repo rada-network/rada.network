@@ -84,7 +84,7 @@ const NavItem = observer(({className, href, children,type,dataStore}) => {
     dataStore.loadingButton = true;
     dataStore.showDetail = false;
     store.setShallowConnect(true);
-    router.push(e.currentTarget.getAttribute("href"),undefined,{shallow:true})
+    router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
     getItems({
       take : HOME_ITEM_TAKE,
       skip : dataStore.tweets.length,

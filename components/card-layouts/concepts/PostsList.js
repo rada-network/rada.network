@@ -142,9 +142,10 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
     e.preventDefault()
     e.stopPropagation()
     dataStore.showDetail = true;
+    detailStore.data = {}
     detailStore.data = obj
     detailStore.type = type
-    router.push(e.currentTarget.getAttribute("href"),undefined,{shallow:true})
+    router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
     store.setShallowConnect(true)
     return false
   }
@@ -173,6 +174,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                         voteCount={voteCount} item={item}
                         detailStore={detailStore}
                         voteStore={voteStore}
+                        dataStore={dataStore}
               />
             </a>
           )
@@ -199,6 +201,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                         voteCount={voteCount} item={item}
                         detailStore={detailStore}
                         voteStore={voteStore}
+                        dataStore={dataStore}
               />
             </a>
           )
@@ -217,6 +220,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                            voteCount={voteCount} item={item}
                            detailStore={detailStore}
                            voteStore={voteStore}
+                           dataStore={dataStore}
           />
         }
 
@@ -241,6 +245,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                       voteCount={voteCount} item={item}
                       detailStore={detailStore}
                       voteStore={voteStore}
+                      dataStore={dataStore}
             />
             </a>
           )
@@ -256,6 +261,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
                            voteCount="0" item={item}
                            detailStore={detailStore}
                            voteStore={voteStore}
+                           dataStore={dataStore}
           />
         }
 

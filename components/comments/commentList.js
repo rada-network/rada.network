@@ -64,7 +64,8 @@ const ThreadsStore = types.model({
 })
 
 
-export const CommentList = observer(({item}) => {
+export const CommentList = observer(({detailStore,dataStore}) => {
+  let item = detailStore.data
   let threads = {}
   const [comments,setComments] = useState([]);
   useEffect(() => {
@@ -75,7 +76,7 @@ export const CommentList = observer(({item}) => {
     }).then(function(res){
       setComments(res.data.commentFeed)
     })
-  },[])
+  },[item])
   threads[item.item.id] = []
   let ItemCommentStore = ThreadsStore.create({
     threads: threads,
@@ -114,10 +115,10 @@ export const CommentList = observer(({item}) => {
             <div className="col-span-12">
               {/* Comment Form */}
               <div className="flex justify-center">
-                <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} />
+                <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} dataStore={dataStore}/>
               </div>
               {/* Comment Threads */}
-              <CommentThreads key={'commentThreads' + item.item.id} item={item} ItemCommentStore={ItemCommentStore} />
+              <CommentThreads key={'commentThreads' + item.item.id} item={item} ItemCommentStore={ItemCommentStore} dataStore={dataStore} />
             </div>
             {/* <SubSideBar /> */}
           </div>

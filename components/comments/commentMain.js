@@ -6,7 +6,7 @@ import {CommentForm} from "./commentForm";
 import {getSnapshot} from "mobx-state-tree";
 import {observer} from "mobx-react";
 
-export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, parent}) =>{
+export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, parent,dataStore}) =>{
   const [showReply,setShowReply] = useState(false)
   let comments = getSnapshot(ItemCommentStore.getChildComment(comment.id))
   let sortComments = comments.slice(0)
@@ -68,7 +68,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
         </div>
         {showReply ?
           <div className="comment_reply_form flex justify-center">
-            <CommentForm key={'cmform' + comment.id}  item={item} ItemCommentStore={ItemCommentStore} replyFor={comment.id}  />
+            <CommentForm key={'cmform' + comment.id}  item={item} ItemCommentStore={ItemCommentStore} replyFor={comment.id} dataStore={dataStore}  />
           </div>
           : ""
         }

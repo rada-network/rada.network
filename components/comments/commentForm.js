@@ -11,7 +11,7 @@ import useSWR, {mutate} from "swr";
 
 const client = getClient()
 
-export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
+export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore}) => {
   const [commentContent, setCommentContent] = useState('')
   const user = useUser()
   const store = useStore()
@@ -75,8 +75,11 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
       itemId : createdComment.itemId,
       userId : createdComment.user.id
     })
-
-
+    dataStore.tweets.forEach((el,index) => {
+      if (el.id === item.item.id){
+        dataStore.tweets[index].totalComment+=1
+      }
+    })
   }
   return (
     <>
