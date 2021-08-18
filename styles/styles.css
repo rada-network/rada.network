@@ -390,6 +390,26 @@ Content
 Components
 --------------------------------------------- */
 /* 
+Popper
+*/
+.popper {
+  @apply z-10 flex flex-col w-full h-full relative;
+  @apply bg-white py-2 rounded shadow;
+  min-width: 100px;
+  top: 32px;
+}
+
+.pane-left .popper {
+  top: -59px;
+  width: 111px;
+}
+
+.popper-item {
+  @apply py-2 px-2 text-center cursor-pointer;
+  @apply text-sm font-medium hover:text-primary-700;
+}
+
+/* 
 Dialogs 
 */
 .dialog-outside-wrapper {
@@ -420,7 +440,7 @@ Empty State
 }
 
 .empty-state .empty-state-content {
-  @apply opacity-50 hover:opacity-90 transition;
+  @apply opacity-50 dark:opacity-70 hover:opacity-90 dark:hover:opacity-100 transition-all;
   transition-duration: 1s;
 }
 

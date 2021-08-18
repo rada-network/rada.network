@@ -33,19 +33,21 @@ export const LanguageSwitch = observer(({dataStore}) => {
                      style={styles.popper}
                      {...attributes.popper}>
         {({ close }) => (
-          <div className={`bg-white `}>
-            <button className="btn nav-btn btn-switch-lang " onClick={async (e) => {handleChangeLanguage(e)}} lang={'vi'}>VI-VN</button>
-            <button className="btn nav-btn btn-switch-lang" onClick={async (e) => {handleChangeLanguage(e)}} lang={'en'}>EN-US</button>
+          <div className={`popper`}>
+            <div className="popper-item" onClick={async (e) => {handleChangeLanguage(e)}} lang={'vi'}>
+              <span className="popper-item--text">Tiếng Việt</span>
+            </div>
+            <div className="popper-item" onClick={async (e) => {handleChangeLanguage(e)}} lang={'en'}>
+              <span className="popper-item--text">English</span>
+            </div>
           </div>
         )}
-
       </Popover.Panel>
       <Popover.Button ref={buttonRef} className="btn nav-btn btn-switch-lang" data-tip="Change Language / Edition">
-          <div>
-            <span className="icon"><i className="fal fa-globe"/></span>
-            <span className="btn--text">{langDisplay.toUpperCase()}</span>
-          </div>
-          <span className="dropdown-arrow"><i className="fas fa-caret-up"/></span>
+        <div>
+          <span className="icon"><i className="fal fa-globe"/></span>
+          <span className="btn--text">{langDisplay.toUpperCase()}</span>
+        </div>
       </Popover.Button>
     </Popover>
   )

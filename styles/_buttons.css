@@ -99,7 +99,7 @@ Nav Button
 .nav-btn {
   @apply px-2 py-1 items-center justify-center rounded;
   @apply text-sm font-medium text-gray-900 bg-gray-500 bg-opacity-10 border border-transparent;
-  @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
+  @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-0;
   @apply dark:text-white dark:bg-gray-400 dark:bg-opacity-20;
   @apply dark:hover:bg-deeppurple-300 dark:hover:border-primary-500;
 }
@@ -135,6 +135,9 @@ Theme / Language Button
 }
 
 .btn-switch-lang {
+  .icon {
+    @apply w-px-16;
+  }
 }
 
 
