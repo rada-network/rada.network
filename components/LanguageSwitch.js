@@ -25,18 +25,16 @@ export const LanguageSwitch = observer(({dataStore}) => {
   let [referenceElement, setReferenceElement] = useState()
   let [popperElement, setPopperElement] = useState()
   let { styles, attributes } = usePopper(referenceElement, popperElement)
-
   const buttonRef = useRef();
 
   return (
     <Popover className="relative">
       <Popover.Panel ref={setPopperElement}
-                     style={styles.popper}
                      {...attributes.popper}>
         {({ close }) => (
           <div className="grid grid-cols-2">
-            <button onClick={async (e) => {handleChangeLanguage(e)}} lang={'vi'}>VI-VN</button>
-            <button onClick={async (e) => {handleChangeLanguage(e)}} lang={'en'}>EN-US</button>
+            <button className="btn nav-btn btn-switch-lang " onClick={async (e) => {handleChangeLanguage(e)}} lang={'vi'}>VI-VN</button>
+            <button className="btn nav-btn btn-switch-lang" onClick={async (e) => {handleChangeLanguage(e)}} lang={'en'}>EN-US</button>
           </div>
         )}
 
