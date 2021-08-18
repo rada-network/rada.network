@@ -8,65 +8,11 @@ import useSWR from "swr";
 import {observer} from "mobx-react";
 import {useEffect, useState} from "react";
 import {getInfluencers} from "../../data/query/getSuggestUser";
+import {ThreadsStore, UserStore} from "../../lib/store";
 
-export const UserStore = types.model({
-  id : types.identifier,
-  walletAddress : types.string
-})
-
-export const CommentStore = types.model({
-  id: types.identifier,
-  createdAt :types.Date,
-  content : types.string,
-  parent: types.string,
-  itemId : types.string,
-  userId : types.string,
-
-}).views(self => ({
-
-})).actions(self => {
-  const getUser = function (){
-    return self.user
-  }
-  return {getUser}
-})
-
-const ThreadsStore = types.model({
-  users: types.array(UserStore),
-  threads : types.map(types.array(CommentStore))
-}).views(self => ({
-})).actions(self => {
-  const addComment = function (data){
-    if (typeof self.threads.get(data.parent) === "undefined") {
-      self.threads.set(data.parent,[])
-    }
-    let arr = self.threads.get(data.parent)
-    if (arr.find(c => c.id === data.id) !== undefined) return
-    arr.unshift(CommentStore.create(data))
-    self.threads.set(data.parent, arr)
-    if (typeof self.threads.get(data.id) === "undefined") {
-      self.threads.set(data.id, [])
-    }
-    console.log(self.threads)
-  }
-
-  const addUser = function (data){
-    self.users.push(data)
-  }
-
-  const getUser = function (userId){
-    return self.users.find(u => u.id === userId) || null
-  }
-  const getChildComment = function(parentId){
-    return self.threads.get(parentId) || []
-  }
-  return {addComment,getChildComment,addUser,getUser}
-})
-
-
-export const CommentList = observer(({detailStore,dataStore}) => {
+export const CommentList =({detailStore,dataStore}) => {
   let item = detailStore.data
-
+  console.log("CommentList")
   const [comments,setComments] = useState([]);
   useEffect(() => {
     const client = getClient()
@@ -79,12 +25,10 @@ export const CommentList = observer(({detailStore,dataStore}) => {
   },[item])
   let threads = {}
   threads[item.item.id] = []
-  let ItemCommentStore = ThreadsStore.create({
+  const ItemCommentStore = ThreadsStore.create({
     threads: threads,
     users: []
   });
-  console.log(ItemCommentStore)
-
   for (let comment of comments){
     let user = UserStore.create(comment.user)
     ItemCommentStore.addUser(user)
@@ -104,12 +48,7 @@ export const CommentList = observer(({detailStore,dataStore}) => {
     <>
     <div className="section section-comments">
 
-        <div className="section-header">
-          <div className="section-title">
-            <span className="icon mr-2"><i class="fad fa-comments" /></span>
-            <span className="text-color-title">{item.item.totalComment} Comments</span>
-          </div>
-        </div>
+        <CommentHeader detailStore={detailStore} />
         
         <div className="section-body">
           <div className="grid grid-cols-1 md:grid-cols-12">
@@ -128,5 +67,17 @@ export const CommentList = observer(({detailStore,dataStore}) => {
 
     </div>
     </>
+  )
+}
+
+const CommentHeader = observer(function ({detailStore}){
+  let item = detailStore.data
+  return (
+    <div className="section-header">
+      <div className="section-title">
+        <span className="icon mr-2"><i className="fad fa-comments"/></span>
+        <span className="text-color-title">{item.item.totalComment} Comments</span>
+      </div>
+    </div>
   )
 })

@@ -4,10 +4,9 @@ import useUser from "../../lib/useUser";
 import createComment from "../../data/query/createComment";
 import {useState} from "react";
 import getClient from "../../data/client";
-import {UserStore} from "./commentList";
 import { useStore } from "../../lib/useStore";
 import {observer} from "mobx-react";
-import useSWR, {mutate} from "swr";
+import {UserStore} from "../../lib/store";
 
 const client = getClient()
 
