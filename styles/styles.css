@@ -437,14 +437,27 @@ Empty State
   animation: fadein 1s ease-in;
 }
 
-.empty-state .empty-state-content {
-  @apply opacity-50 dark:opacity-70 hover:opacity-90 dark:hover:opacity-100 transition-all;
-  transition-duration: 1s;
-}
-
 .home-emptystate-deco {
   @apply absolute inset-0 w-full h-full opacity-10 z-0;
   background: url(/images/hero.png) no-repeat center 90%;
+}
+
+.empty-state .home-emptystate-deco {
+  @apply opacity-5 transition-all;
+  transition-duration: 1s;
+}
+
+.empty-state .empty-state-content {
+  @apply opacity-50 transition-all;
+  transition-duration: 1s;
+}
+
+.empty-state:hover .empty-state-content {
+  @apply opacity-90;
+}
+
+.empty-state:hover .home-emptystate-deco {
+  @apply opacity-10;
 }
 
 .empty-state-content {

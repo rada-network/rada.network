@@ -43,7 +43,7 @@ export const LanguageSwitch = observer(({dataStore}) => {
           </div>
         )}
       </Popover.Panel>
-      <Popover.Button ref={buttonRef} className="btn nav-btn btn-switch-lang" data-tip="Change Language / Edition">
+      <Popover.Button ref={buttonRef} className="btn nav-btn btn-switch-lang" title="Change Language">
         <div>
           <span className="icon"><i className="fal fa-globe"/></span>
           <span className="btn--text">{langDisplay.toUpperCase()}</span>
