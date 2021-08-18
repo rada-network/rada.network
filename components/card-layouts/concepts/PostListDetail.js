@@ -83,28 +83,28 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
       <div className="section-header post-header">
         <div className="flex">
           <h1 className="post-title">
-                      <span className="text-color-title">
-                        {item.title}
-                      </span>
+            <span className="text-color-title">
+              {item.title}
+            </span>
           </h1>
         </div>
         <div className="metadata-wrapper justify-between">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
-                        <span className="icon mr-1">
-                          <i className="fab fa-youtube"></i>
-                        </span>
+              <span className="icon mr-1">
+                <i className="fab fa-youtube"></i>
+              </span>
               <span className="metadata-value" title={source}>
                 {source}
-                        </span>
+              </span>
             </div>
             <div className="metadata metadata-date">
-                        <span
-                          className="metadata-value"
-                          title={dateTitle}
-                        >
-                          {date}
-                        </span>
+              <span
+                className="metadata-value"
+                title={dateTitle}
+              >
+                {date}
+              </span>
             </div>
           </div>
           <PostVisitVoteDetail item={item} voteStore={voteStore} />
@@ -137,28 +137,28 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
       <div className="section-header post-header">
         <div className="flex">
           <h1 className="post-title">
-                      <span className="text-color-title">
-                        {item.title}
-                      </span>
+            <span className="text-color-title">
+              {item.title}
+            </span>
           </h1>
         </div>
         <div className="metadata-wrapper justify-between">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
-                        <span className="icon mr-1">
-                          <i className="fad fa-newspaper"></i>
-                        </span>
+              <span className="icon mr-1">
+                <i className="fad fa-newspaper"></i>
+              </span>
               <span className="metadata-value" title="CoinTelegraph">
-                      {getSourceFromUri(item)}
-                        </span>
+                {getSourceFromUri(item)}
+              </span>
             </div>
             <div className="metadata metadata-date">
-                        <span
-                          className="metadata-value"
-                          title={dateTitle}
-                        >
-                          {date}
-                        </span>
+              <span
+                className="metadata-value"
+                title={dateTitle}
+              >
+                {date}
+              </span>
             </div>
           </div>
           <PostVisitVoteDetail item={item} voteStore={voteStore} />
