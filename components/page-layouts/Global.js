@@ -42,10 +42,7 @@ export const Layout = ({children,meta,dataStore}) => {
         <Navbar dataStore={dataStore} />
         <Screen from="lg">
         <div className="pane-left--bottom">
-
-          {/* Edition / Lang switch */}
           <LanguageSwitch dataStore={dataStore} />
-
           <ThemeSwitch />
         </div>
         </Screen>

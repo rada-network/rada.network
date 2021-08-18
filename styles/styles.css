@@ -414,7 +414,50 @@ Dialogs
 Empty State
 */
 .empty-state {
-  @apply p-4 md:p-6 lg:p-8;
+  @apply p-4 md:p-8 lg:p-16 flex flex-col h-full;
+  @apply text-sm;
+  animation: fadein 1s ease-in;
+}
+
+.empty-state .empty-state-content {
+  @apply opacity-50 hover:opacity-90 transition;
+  transition-duration: 1s;
+}
+
+.home-emptystate-deco {
+  @apply absolute inset-0 w-full h-full opacity-10 z-0;
+  background: url(/images/hero.png) no-repeat center 90%;
+}
+
+.empty-state-content {
+  @apply z-10;
+}
+
+.empty-state p {
+  @apply mb-2;
+}
+
+.empty-state h3 {
+  @apply text-base mb-2;
+  @apply font-medium;
+}
+
+.empty-state p + h3 {
+  @apply mt-4;
+}
+
+.about-social {
+  @apply flex items-center space-x-4 mt-4;
+}
+
+.about-social a {
+  @apply flex flex-col justify-center items-center w-px-32 h-px-32;
+  @apply bg-gray-400 bg-opacity-20 rounded;
+  @apply hover:bg-primary-700 hover:text-white;
+}
+
+.about-social i {
+  @apply text-base;
 }
 
 /* 
