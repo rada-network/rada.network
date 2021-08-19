@@ -103,6 +103,10 @@ Nav Button
   @apply dark:hover:bg-deeppurple-300 dark:hover:border-primary-500;
 }
 
+.nav-btn.active {
+  @apply bg-primary-50 dark:bg-deeppurple-300;
+}
+
 .nav-btn .icon {
   @apply text-sm;
 }

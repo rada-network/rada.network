@@ -38,7 +38,7 @@ export const CardPostLoader = (props) => (
         speed={2}
         // backgroundColor="#F3F4F6"
         // foregroundColor="#ecebeb"
-        viewBox="0 0 600 40"
+        viewBox="0 0 640 40"
         preserveAspectRatio="xMidYMid meet"
         // style={{ width: '100%' }}
         {...props}
@@ -101,7 +101,8 @@ export const CardPost = observer(({title, mediaUri, type, source, commentCount, 
             </a>
           </div>
 
-          <div className={`card-badges`}>
+          {/* Tạm ẩn Badges vì chưa có Data */}
+          {/* <div className={`card-badges`}>
             <Link href="/">
               <span className="badge badge-btc">BTC</span>
             </Link>
@@ -111,7 +112,8 @@ export const CardPost = observer(({title, mediaUri, type, source, commentCount, 
             <Link href="/">
               <span className="badge badge-ethereum">ETH</span>
             </Link>
-          </div>
+          </div> */}
+
         </div>
 
         <div className="metadata-wrapper justify-between mt-2">

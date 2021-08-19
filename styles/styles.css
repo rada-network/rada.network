@@ -392,7 +392,7 @@ Popper
 */
 .popper {
   @apply z-10 flex flex-col w-full h-full relative;
-  @apply bg-white py-2 rounded shadow;
+  @apply bg-white dark:bg-gray-900 py-2 rounded shadow;
   min-width: 100px;
   top: 32px;
 }
@@ -404,7 +404,7 @@ Popper
 
 .popper-item {
   @apply py-2 px-2 text-center cursor-pointer;
-  @apply text-sm font-medium hover:text-primary-700;
+  @apply text-sm font-medium hover:text-primary-700 dark:hover:text-primary-500;
 }
 
 /* 
@@ -438,10 +438,9 @@ Empty State
 }
 
 .home-emptystate-deco {
-  @apply absolute inset-0 w-full h-full opacity-5 z-0;
+  @apply hidden lg:block absolute inset-0 w-full h-full opacity-5 z-0;
   background: url(/images/hero.png) no-repeat center 95%;
 }
-
 
 .empty-state .empty-state-content {
   @apply opacity-50 transition-all;
