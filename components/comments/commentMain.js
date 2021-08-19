@@ -34,7 +34,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
             <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-400">
               <div className="flex items-center">
                 <button
-                  className="btn btn-post-vote">
+                  className="btn btn-post-vote disabled">
                   {/*<button*/}
                   {/*  className="btn py-1 px-2 border border-primary-500 text-primary-700 bg-primary-100 rounded">*/}
                   <span className="icon mr-1"><RiThumbUpFill/></span>
