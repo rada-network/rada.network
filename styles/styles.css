@@ -307,7 +307,7 @@ Pages
 Page Layout
 */
 .page {
-  @apply flex flex-col w-full h-full relative;
+  @apply flex flex-col w-full h-full relative z-10;
   @apply bg-white dark:bg-deepgray-50;
 }
 
