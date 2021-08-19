@@ -14,6 +14,7 @@ import {configure} from "mobx"
 import {useEffect} from "react";
 import {useRouter} from "next/router";
 import * as ga from '../lib/ga'
+import { appWithTranslation } from 'next-i18next';
 
 configure({
   enforceActions: "never",
@@ -87,4 +88,4 @@ const TokenRankingStore = ({Component, pageProps}) => {
   )
 }
 
-export default TokenRankingStore
+export default appWithTranslation(TokenRankingStore);

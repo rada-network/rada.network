@@ -9,10 +9,11 @@ import {observer} from "mobx-react";
 import {useEffect, useState} from "react";
 import {getInfluencers} from "../../data/query/getSuggestUser";
 import {ThreadsStore, UserStore} from "../../lib/store";
+import {useTranslation} from "next-i18next";
 
 export const CommentList =({detailStore,dataStore}) => {
   let item = detailStore.data
-  console.log("CommentList")
+
   const [comments,setComments] = useState([]);
   useEffect(() => {
     const client = getClient()
@@ -72,11 +73,12 @@ export const CommentList =({detailStore,dataStore}) => {
 
 const CommentHeader = observer(function ({detailStore}){
   let item = detailStore.data
+  const {t} = useTranslation()
   return (
     <div className="section-header">
       <div className="section-title">
         <span className="icon mr-2"><i className="fad fa-comments"/></span>
-        <span className="text-color-title">{item.item.totalComment} Comments</span>
+        <span className="text-color-title">{item.item.totalComment} {t('comment')}</span>
       </div>
     </div>
   )

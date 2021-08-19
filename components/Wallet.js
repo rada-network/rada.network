@@ -10,6 +10,7 @@ import styles from '../styles/modules/Dialog.wallet.module.css'
 import Avatar from "boring-avatars";
 
 import ReactTooltip from 'react-tooltip'
+import {useTranslation} from "next-i18next";
 
 const btnRef = createRef()
 
@@ -38,12 +39,12 @@ const ConnectedButton = ({wallet}) => (
 )
 
 const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
-
+  const {t} = useTranslation()
   return (
   <>
   <div onClick={ openModal } className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
     <span className="icon"><i className="fad fa-wallet" /></span>
-    <span className="btn--text">Connect Wallet</span>
+    <span className="btn--text">{t("login")}</span>
   </div>
 
   <Transition show={isOpen} as={Fragment}>

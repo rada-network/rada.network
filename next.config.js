@@ -2,7 +2,7 @@ const {
   PHASE_DEVELOPMENT_SERVER,
   PHASE_PRODUCTION_BUILD,
 } = require('next/constants')
-
+const { i18n } = require('./next-i18next.config');
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
 
@@ -28,15 +28,7 @@ module.exports = (phase) => {
       buildExcludes: [/chunks\/.*$/],
       disable: isDev
     },
-    i18n: {
-      // These are all the locales you want to support in
-      // your application
-      locales: ['en', 'vi'],
-      // This is the default locale you want to be used when visiting
-      // a non-locale prefixed path e.g. `/hello`
-      defaultLocale: 'vi',
-
-    }
+    i18n,
   }
 
   // next.config.js object

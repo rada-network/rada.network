@@ -1,7 +1,9 @@
 import {useState} from "react";
 import {useRouter} from "next/router";
+import {useTranslation} from "next-i18next";
 
 export default function SearchInput(){
+  const {t} = useTranslation("common")
   const router = useRouter()
   const [searchValue,setSearchValue] = useState("")
   const handledOnChange = (e) =>{
@@ -21,7 +23,7 @@ export default function SearchInput(){
       <input value={searchValue} onChange={handledOnChange} onKeyPress={handledOnKeypress}
         type="search"
         className={`navbar-search--input`}
-        placeholder="Search by name ..." />
+        placeholder={t('Search input holder')} />
     </div>
   )
 }

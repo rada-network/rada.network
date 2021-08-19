@@ -13,6 +13,8 @@ import utils from "../../../lib/util";
 import {useRouter} from "next/router";
 import {useStore} from "../../../lib/useStore";
 import { isMobile } from "react-device-detect";
+import { useTranslation } from 'next-i18next';
+
 
 
 export const PostsListWrapper = observer(function ({dataStore,detailStore,voteStore}){
@@ -22,6 +24,7 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
     dataStore.loadingButton = false;
     handleLoadMoreItem();
   }
+  const {t} = useTranslation("common")
   const scrollBox1 = createRef();
 
   let ps1;
@@ -82,8 +85,8 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
         <div className="flex-shrink-0">
           {/* Sort */}
           <div className="btn-group btn-group-filter">
-            <a className={"btn " + (dataStore.currentTab === "popular" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "popular"})}}>Popular</a>
-            <a className={"btn " + (dataStore.currentTab === "latest" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "latest"})}}>Latest</a>
+            <a className={"btn " + (dataStore.currentTab === "popular" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "popular"})}}>{t("popular")}</a>
+            <a className={"btn " + (dataStore.currentTab === "latest" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "latest"})}}>{t("latest")}</a>
           </div>
         </div>
       </div>
@@ -146,6 +149,8 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
     detailStore.data = obj
     detailStore.type = type
     router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
+    const meta = utils.createSiteMetadata({page:"NewsDetail",data : obj})
+    document.title = meta.title
     store.setShallowConnect(true)
     return false
   }

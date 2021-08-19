@@ -8,6 +8,7 @@ import {getItemById, getItems} from "../../data/query/getItem";
 import React, {useEffect, useState} from "react";
 import {IndexRightBar} from "../../components/IndexRightBar";
 import _ from "lodash"
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const getDataExplore = async ({query,type,lang}) => {
   if (['news','media','video','social','all',''].indexOf(type) === -1){
@@ -97,6 +98,7 @@ export default observer(function(props) {
 
 export const Index  = observer(({props,observableItemStore,voteStore}) => {
   const detailStore = new DetailStore()
+  let meta
   if (props.item === undefined) {
     observableItemStore.query = props.query
     observableItemStore.lang = props.lang
@@ -104,6 +106,8 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
     observableItemStore.tweets = props.itemFeed
     observableItemStore.type = props.type
     observableItemStore.showDetail = false
+
+    meta = utils.createSiteMetadata({page : 'Explore',data : {query:props.type}})
   }
   else{
     observableItemStore.query = props.query
@@ -134,10 +138,11 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
       totalComment : props.item.totalComment,
     }
     detailStore.data = item
+    meta = utils.createSiteMetadata({page : 'NewsDetail',data : item})
   }
 
   return (
-    <Layout dataStore={observableItemStore} extraClass="page-home" meta={utils.createSiteMetadata({page : 'Index',data : {}})}>
+    <Layout dataStore={observableItemStore} extraClass="page-home" meta={meta}>
 
       <div className={`pane-content`}>
 
@@ -193,6 +198,9 @@ export async function getStaticProps(context) {
     }
 
   }
+  props = Object.assign(props,{
+    ...await serverSideTranslations(context.locale, ['common', 'navbar']),
+  })
   return {
     props,
     revalidate: 60

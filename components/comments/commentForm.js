@@ -7,10 +7,12 @@ import getClient from "../../data/client";
 import { useStore } from "../../lib/useStore";
 import {observer} from "mobx-react";
 import {UserStore} from "../../lib/store";
+import {useTranslation} from "next-i18next";
 
 const client = getClient()
 
 export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore}) => {
+  const {t} = useTranslation("common")
   const [commentContent, setCommentContent] = useState('')
   const user = useUser()
   const store = useStore()
@@ -22,9 +24,9 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
   } else {
     currentUser = {walletAddress: user.address()}
   }
-  let btnText = "Submit"
+  let btnText = t("submit")
   if (replyFor !== null) {
-    btnText = "Reply"
+    btnText = t("reply")
   }
   const handleKeydown = async (event) => {
     const keyCode = event.which || event.keyCode;
@@ -88,8 +90,8 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
             <TextareaAutosize onClick={(e) => {store.wallet.showConnect(true);}}
               className="comment-textarea"
               row="1"
-              title="Write a comment"
-              placeholder="Connect wallet to discuss"
+              title={t('comment input holder')}
+              placeholder={t('comment login')}
             />
             <div className="pl-2 md:mt-0">
               <button onClick={submitComment}
@@ -106,8 +108,8 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
             <TextareaAutosize
               className="comment-textarea"
               row="1"
-              title="Write a comment"
-              placeholder="Write your comment..." value={commentContent}
+              title={t('comment input holder')}
+              placeholder={t('comment input holder')} value={commentContent}
               onChange={e => {
                 setCommentContent(e.currentTarget.value);
               }}
@@ -123,4 +125,4 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
       }
     </>
   )
-})
+},)

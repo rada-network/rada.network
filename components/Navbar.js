@@ -4,8 +4,11 @@ import {getItems} from "../data/query/getItem";
 import {HOME_ITEM_TAKE} from "../config/paging";
 import {observer} from "mobx-react";
 import {useStore} from "../lib/useStore";
+import { useTranslation } from 'next-i18next';
+import utils from "../lib/util";
 
 export const Navbar = ({dataStore}) => {
+  const { t } = useTranslation("navbar")
   return (
     <>
       <nav className={`navbar`}>
@@ -14,7 +17,7 @@ export const Navbar = ({dataStore}) => {
           {/* Logo */}
           <Link href={`/`}>
             <a className="flex flex-col w-full justify-center items-center">
-              <img className="logo--img" src="/images/dhunt.svg" alt="dhunt.io" />
+              <img className="logo--img" src="/images/dhunt.svg" alt="RADA.CO" />
               <strong className="logo--text mt-1">
                 <span>RADA</span>
               </strong>
@@ -26,33 +29,33 @@ export const Navbar = ({dataStore}) => {
         <div className={`navbar-main`} >
           <NavItem dataStore={dataStore} href={"/" + dataStore.lang + "/apps/explore/all"} type={"all"}>
             <span className="icon"><i className="fad fa-rss" /></span>
-            <span className="nav-item--text">Explore</span>
+            <span className="nav-item--text">{t("Explore")}</span>
           </NavItem>
           <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/news"} type={"news"}>
             <span className="icon"><i className="fad fa-newspaper" /></span>
-            <span className="nav-item--text">News</span>
-          </NavItem>
-          <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/social"} type={"social"} className="disabled">
-            <span className="icon"><i className="fad fa-fire-alt" /></span>
-            <span className="nav-item--text">Signals</span>
-            <span className="nav-item--badge">Soon</span>
+            <span className="nav-item--text">{t("News")}</span>
           </NavItem>
           <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/video"}  type={"video"}>
             <span className="icon"><i className="fad fa-icons" /></span>
-            <span className="nav-item--text">Video</span>
+            <span className="nav-item--text">{t("Video")}</span>
+          </NavItem>
+          <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/social"} type={"social"} className="disabled">
+            <span className="icon"><i className="fad fa-fire-alt" /></span>
+            <span className="nav-item--text">{t("Signals")}</span>
+            <span className="nav-item--badge">{t("Soon")}</span>
           </NavItem>
 
           {/* Example of additional filters */}
           <span className="nav-item--divider"></span>
           <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/games"}  type={"games"} className="disabled">
             <span className="icon"><i className="fad fa-chess-knight" /></span>
-            <span className="nav-item--text">Games</span>
+            <span className="nav-item--text">{t("Games")}</span>
             <span className="nav-item--badge">Soon</span>
           </NavItem>
           <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/defi"}  type={"defi"} className="disabled">
             <span className="icon"><i className="fad fa-coins" /></span>
-            <span className="nav-item--text">DeFi</span>
-            <span className="nav-item--badge">Soon</span>
+            <span className="nav-item--text">{t("DeFi")}</span>
+            <span className="nav-item--badge">{t("Soon")}</span>
           </NavItem>
 
           {/*<NavItem href="/explore/projects">*/}
@@ -87,6 +90,8 @@ const NavItem = observer(({className, href, children,type,dataStore}) => {
     dataStore.showDetail = false;
     store.setShallowConnect(true);
     router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
+    const meta = utils.createSiteMetadata({page:"Explore",data : {query : dataStore.type}})
+    document.title = meta.title
     getItems({
       take : HOME_ITEM_TAKE,
       skip : dataStore.tweets.length,
