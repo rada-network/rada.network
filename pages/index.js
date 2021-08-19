@@ -9,7 +9,6 @@ export default observer((props) => {
 
 
 export async function getServerSideProps(context) {
-  console.log(context)
   return {
     // returns a redirect to an internal page `/another-page`
     redirect: {
