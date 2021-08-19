@@ -25,12 +25,7 @@ const MyApp = appWithTranslation(({Component, pageProps}) => {
   const store = useStore()
   useEffect(() => {
     const handleRouteChange = (url,{shallow}) => {
-      console.log(
-        `App is changing to ${url} ${
-          shallow ? 'with' : 'without'
-        } shallow routing`
-      )
-      console.log(store.shallowInternal)
+
       if (shallow && !store.shallowInternal){
         router.push(url,undefined)
       }

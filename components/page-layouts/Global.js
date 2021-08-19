@@ -34,7 +34,7 @@ export const Layout = ({children,meta,dataStore}) => {
 
   return (
     <>
-    <Head title={meta.title} description={meta.description} keyword={meta.keyword} facebook={meta.facebook} twitter={meta.twitter} />
+    <Head meta={meta} title={meta.title} description={meta.description} keyword={meta.keyword} facebook={meta.facebook} twitter={meta.twitter} />
 
     <div className={`main-layout`}>
 
@@ -66,4 +66,4 @@ export const Layout = ({children,meta,dataStore}) => {
     </div>
     </>
   );
-};
+}

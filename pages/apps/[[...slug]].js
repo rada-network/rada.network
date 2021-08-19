@@ -107,7 +107,7 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
     observableItemStore.type = props.type
     observableItemStore.showDetail = false
 
-    meta = utils.createSiteMetadata({page : 'Explore',data : {query:props.type}})
+    meta = utils.createSiteMetadata({page : 'Explore',data : {query:props.type},dataStore : observableItemStore})
   }
   else{
     observableItemStore.query = props.query
@@ -138,7 +138,7 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
       totalComment : props.item.totalComment,
     }
     detailStore.data = item
-    meta = utils.createSiteMetadata({page : 'NewsDetail',data : item})
+    meta = utils.createSiteMetadata({page : 'NewsDetail',data : {...item,type : detailStore.type},dataStore : observableItemStore})
   }
 
   return (
@@ -168,8 +168,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  console.log(context.params.slug)
-
   if (context.params.slug === undefined){
     const props = await getDataHome({lang : context.locale});
     return {

@@ -334,7 +334,7 @@ const PostVisitVoteDetail = function({item,voteStore}){
           voteStore={voteStore}
           page={"postDetail"}
         />
-        <a target="_blank" rel="nofollow" href={item.websiteUri} className="btn btn-post-link ml-2">
+        <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="btn btn-post-link ml-2">
           <span className="whitespace-nowrap">Visit</span>
           <span className="icon ml-2"><RiExternalLinkLine/></span>
         </a>

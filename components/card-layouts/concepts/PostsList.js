@@ -125,7 +125,7 @@ export function getSourceVideoFromUri(item){
 }
 
 
-function createPostUri(title,item,lang){
+export function createPostUri(title,item,lang){
   return "/" + lang + "/apps/post/" + item.id + "/" + utils.convertToSlug(title)
 }
 
@@ -149,7 +149,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
     detailStore.data = obj
     detailStore.type = type
     router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
-    const meta = utils.createSiteMetadata({page:"NewsDetail",data : obj})
+    const meta = utils.createSiteMetadata({page:"NewsDetail",data : {...obj,type},dataStore})
     document.title = meta.title
     store.setShallowConnect(true)
     return false
