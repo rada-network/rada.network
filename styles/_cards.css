@@ -12,7 +12,7 @@ Generic Styles
 
 .card-media,
 .card-media-blank {
-  @apply flex flex-col flex-shrink-0 overflow-hidden rounded-sm mr-2 md:mr-4 mt-0.5;
+  @apply flex flex-col flex-shrink-0 overflow-hidden rounded-sm mr-3 md:mr-4;
 }
 
 .card-img {
@@ -99,10 +99,13 @@ Card Post (News, Projects,...)
   @apply inline-flex text-green-500;
 }
 
-
 /* Card Title */
 .card-post .card-link {
   @apply inline;
+}
+
+.card-post .metadata-wrapper {
+  @apply mt-1.5;
 }
 
 /* Card Body */

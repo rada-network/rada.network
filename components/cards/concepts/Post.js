@@ -116,7 +116,7 @@ export const CardPost = observer(({title, mediaUri, type, source, commentCount, 
 
         </div>
 
-        <div className="metadata-wrapper justify-between mt-2">
+        <div className="metadata-wrapper justify-between">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
               <span className="icon mr-1">
