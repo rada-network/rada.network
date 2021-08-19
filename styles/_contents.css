@@ -355,7 +355,7 @@ Avatars
 Comment
 -------------------------------- */
 .comments-list {
-  @apply py-4 mt-4 text-sm;
+  @apply py-2 text-sm;
 }
 
 .comments-list-item {
