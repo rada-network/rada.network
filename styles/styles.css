@@ -61,6 +61,7 @@ Layout
 
 .pane-content--main {
   @apply flex flex-col w-full h-full;
+  @apply border-r border-gray-100 dark:border-gray-800;
 }
 
 @screen lg {
@@ -91,7 +92,6 @@ Layout
 .pane-content--sec {
   height: calc(100vh - var(--topbar-height) - var(--toolbar-height));
   @apply hidden md:flex flex-col w-full lg:h-full overflow-x-hidden overflow-y-auto;
-  @apply border-l border-gray-100 dark:border-gray-800;
 }
 
 @media (max-width: 768px){
@@ -102,7 +102,7 @@ Layout
 }
 
 .pane-content--sec--main {
-  @apply bg-bluegray-50 dark:bg-deepgray-100 w-full h-full;
+  @apply w-full h-full;
 }
 
 /* .pane-content--sec--top {
