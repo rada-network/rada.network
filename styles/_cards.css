@@ -71,7 +71,7 @@ Card Post (News, Projects,...)
 
 /* Active */
 .card-post.active {
-  @apply bg-primary-50 dark:bg-primary-900;
+  @apply bg-primary-50 border-opacity-0 dark:bg-primary-900;
 }
 
 /* Readed */
