@@ -102,7 +102,7 @@ Layout
 }
 
 .pane-content--sec--main {
-  @apply w-full h-full;
+  @apply bg-white dark:bg-deepgray-50 w-full h-full;
 }
 
 /* .pane-content--sec--top {
