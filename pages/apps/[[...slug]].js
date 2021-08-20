@@ -132,6 +132,7 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
       item = Object.assign({},props.item.idea);
     }
     observableItemStore.type = detailStore.type.slice(0);
+    console.log(detailStore.type.slice(0,-1))
     item.item = {
       id : props.item.id,
       totalVote : props.item.totalVote,
@@ -169,7 +170,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   if (context.params.slug === undefined){
-    const props = await getDataHome({lang : context.locale});
+    let props = await getDataHome({lang : context.locale});
+    props = Object.assign(props,{
+      ...await serverSideTranslations(context.locale, ['common', 'navbar']),
+    })
     return {
       props,
       revalidate: 60
