@@ -8,19 +8,20 @@ import { HOME_ITEM_TAKE } from "../config/paging";
 export default function SearchInput({dataStore,detailStore}){
   const {t} = useTranslation("common")
   const router = useRouter()
-  const [searchValue,setSearchValue] = useState("")
+  const [searchValue,setSearchValue] = useState({clearSearch:false,value:dataStore.query})
   const [isSearch,setIsSearch] = useState(false)
   const handledOnChange = (e) =>{
-    setSearchValue(e.currentTarget.value)
+    const value = e.currentTarget.value
+    setSearchValue({value})
   }
   const handledOnKeypress = (e) =>{
     if (e.which !== 13){
         return false
     }
-    if (searchValue !== "") handleSearch(e)
+    if (searchValue.value !== "") handleSearch(e)
   }
   useEffect(() => {
-    if (searchValue == "") {
+    if (searchValue.value == "" && searchValue.clearSearch) {
       handleSearch(undefined,true)
     }
   }, [searchValue]);
@@ -28,7 +29,7 @@ export default function SearchInput({dataStore,detailStore}){
     clearSearch = clearSearch || false
     if (dataStore.loadingButton) return false
     dataStore.tweets = []
-    dataStore.query = searchValue
+    dataStore.query = searchValue.value
     dataStore.loadingButton = true;
     if (!clearSearch){
       setIsSearch(true)
@@ -53,17 +54,17 @@ export default function SearchInput({dataStore,detailStore}){
     return false
   }
   const handleClose = function(e){
-    setSearchValue("")
+    setSearchValue({value : "",clearSearch:true})
     
   }
   return (
     <div className={`navbar-search`}>
       <span className={`icon navbar-search--icon`}><i className="far fa-search" /></span>
-      <input value={searchValue} onChange={handledOnChange} onKeyPress={handledOnKeypress}
+      <input value={searchValue.value} onChange={handledOnChange} onKeyPress={handledOnKeypress}
         type="text"
         className={`navbar-search--input`}
         placeholder={t('Search input holder')} />
-      {searchValue !== "" ? <button onClick={handleClose} className={`navbar-search--close`} > </button> : ""}
+      {searchValue.value !== "" ? <button onClick={handleClose} className={`navbar-search--close`} > </button> : ""}
     </div>
   
   )

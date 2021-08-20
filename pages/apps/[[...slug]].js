@@ -200,6 +200,21 @@ export async function getStaticProps(context) {
     }
 
   }
+  else if (type === "tags"){
+    let query = context.params.slug[1] === undefined ? "" : context.params.slug[1]
+    props = await getDataExplore({query : query,type : "all",lang : context.locale});
+    if (!props){
+      return {
+        notFound: true
+      }
+    }
+
+  }
+  else {
+    return {
+      notFound: true
+    }
+  }
   props = Object.assign(props,{
     ...await serverSideTranslations(context.locale, ['common', 'navbar']),
   })
