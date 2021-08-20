@@ -7,5 +7,6 @@
   "Search input holder" : "Search by name",
   "comment input holder" : "Write your comment",
   "comment login" : "Connect wallet to discuss",
-  "login" : "Connect Wallet"
+  "login" : "Connect Wallet",
+  "search not found" : " not found in any document."
 }

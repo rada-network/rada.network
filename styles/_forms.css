@@ -25,6 +25,18 @@
   @apply text-gray-400;
 }
 
+.navbar-search--close {
+  margin-left: -40px;
+  height: 1em;
+  width: 1em;
+  border-radius: 50em;
+  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+  background-size: contain;
+  opacity: 1;
+  cursor: pointer;
+}
+
+
 /* Comment Form */
 .comment-textarea {
   @apply w-full px-4 py-2 text-base border border-gray-500 border-opacity-10 rounded resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0;

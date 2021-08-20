@@ -18,7 +18,7 @@ import {LanguageSwitch} from "../LanguageSwitch";
 const scrollBox = createRef();
 let ps;
 
-export const Layout = ({children,meta,dataStore}) => {
+export const Layout = ({children,meta,dataStore,detailStore}) => {
 
   // const [Scrollbar] = useState('')
 
@@ -39,7 +39,7 @@ export const Layout = ({children,meta,dataStore}) => {
     <div className={`main-layout`}>
 
       <div className="pane-left">
-        <Navbar dataStore={dataStore} />
+        <Navbar dataStore={dataStore} detailStore={detailStore} />
         <Screen from="lg">
         <div className="pane-left--bottom">
           <LanguageSwitch dataStore={dataStore} />

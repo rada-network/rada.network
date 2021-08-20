@@ -7,7 +7,7 @@ import {useStore} from "../lib/useStore";
 import { useTranslation } from 'next-i18next';
 import utils from "../lib/util";
 
-export const Navbar = ({dataStore}) => {
+export const Navbar = ({dataStore,detailStore}) => {
   const { t } = useTranslation("navbar")
   return (
     <>
@@ -27,19 +27,19 @@ export const Navbar = ({dataStore}) => {
 
         {/* Main Nav */}
         <div className={`navbar-main`} >
-          <NavItem dataStore={dataStore} href={"/" + dataStore.lang + "/apps/explore/all"} type={"all"}>
+          <NavItem dataStore={dataStore} detailStore={detailStore} href={"/" + dataStore.lang + "/apps/explore/all"} type={"all"}>
             <span className="icon"><i className="fad fa-rss" /></span>
             <span className="nav-item--text">{t("Explore")}</span>
           </NavItem>
-          <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/news"} type={"news"}>
+          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/apps/explore/news"} type={"news"}>
             <span className="icon"><i className="fad fa-newspaper" /></span>
             <span className="nav-item--text">{t("News")}</span>
           </NavItem>
-          <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/video"}  type={"video"}>
+          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/apps/explore/video"}  type={"video"}>
             <span className="icon"><i className="fad fa-icons" /></span>
             <span className="nav-item--text">{t("Video")}</span>
           </NavItem>
-          <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/social"} type={"social"} className="disabled">
+          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/apps/explore/social"} type={"social"} className="disabled">
             <span className="icon"><i className="fad fa-fire-alt" /></span>
             <span className="nav-item--text">{t("Signals")}</span>
             <span className="nav-item--badge">{t("Soon")}</span>
@@ -47,12 +47,12 @@ export const Navbar = ({dataStore}) => {
 
           {/* Example of additional filters */}
           <span className="nav-item--divider"></span>
-          <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/games"}  type={"games"} className="disabled">
+          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/apps/explore/games"}  type={"games"} className="disabled">
             <span className="icon"><i className="fad fa-chess-knight" /></span>
             <span className="nav-item--text">{t("Games")}</span>
-            <span className="nav-item--badge">Soon</span>
+            <span className="nav-item--badge">{t("Soon")}</span>
           </NavItem>
-          <NavItem dataStore={dataStore}  href={"/" + dataStore.lang + "/apps/explore/defi"}  type={"defi"} className="disabled">
+          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/apps/explore/defi"}  type={"defi"} className="disabled">
             <span className="icon"><i className="fad fa-coins" /></span>
             <span className="nav-item--text">{t("DeFi")}</span>
             <span className="nav-item--badge">{t("Soon")}</span>
@@ -73,7 +73,7 @@ export const Navbar = ({dataStore}) => {
   );
 }
 
-const NavItem = observer(({className, href, children,type,dataStore}) => {
+const NavItem = observer(({className, href, children,type,dataStore,detailStore}) => {
   const router = useRouter()
   const store = useStore()
   const cls = []
@@ -84,10 +84,12 @@ const NavItem = observer(({className, href, children,type,dataStore}) => {
   const handleClickNavBar = (e) => {
     e.preventDefault()
     e.stopPropagation()
+    if (dataStore.loadingButton) return false
     dataStore.type = e.currentTarget.getAttribute("datatype")
     dataStore.tweets = []
     dataStore.loadingButton = true;
     dataStore.showDetail = false;
+    detailStore.data = {}
     store.setShallowConnect(true);
     router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
     const meta = utils.createSiteMetadata({page:"Explore",data : {query : dataStore.type}})

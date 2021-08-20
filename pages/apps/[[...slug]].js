@@ -114,7 +114,6 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
     observableItemStore.tweets = props.itemFeed
     observableItemStore.lang = props.lang
     observableItemStore.showDetail = true
-
     let item = {}
     if (props.item.news !== null){
       detailStore.type = "news"
@@ -132,6 +131,7 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
       detailStore.type = "idea"
       item = Object.assign({},props.item.idea);
     }
+    observableItemStore.type = detailStore.type.slice(0);
     item.item = {
       id : props.item.id,
       totalVote : props.item.totalVote,
@@ -142,7 +142,7 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
   }
 
   return (
-    <Layout dataStore={observableItemStore} extraClass="page-home" meta={meta}>
+    <Layout dataStore={observableItemStore} detailStore={detailStore} extraClass="page-home" meta={meta}>
 
       <div className={`pane-content`}>
 

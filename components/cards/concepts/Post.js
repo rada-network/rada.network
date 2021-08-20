@@ -96,9 +96,9 @@ export const CardPost = observer(({title, mediaUri, type, source, commentCount, 
       <div className={`card-body`}>
         <div className={`card-body-header`}>
           <div className={`card-title`}>
-            <a className="card-link" href={"/"}>
+            <span className="card-link">
               <span className="text-color-title" dangerouslySetInnerHTML={{__html: title}}></span>
-            </a>
+            </span>
           </div>
 
           {/* Tạm ẩn Badges vì chưa có Data */}

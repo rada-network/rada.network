@@ -14,14 +14,16 @@ import {useRouter} from "next/router";
 import {useStore} from "../../../lib/useStore";
 import { isMobile } from "react-device-detect";
 import { useTranslation } from 'next-i18next';
+import { data } from 'autoprefixer';
 
 
 
 export const PostsListWrapper = observer(function ({dataStore,detailStore,voteStore}){
   const handleChangeFilter = ({filter}) =>{
+    if (dataStore.loadingButton) return false
     dataStore.currentTab = filter;
     dataStore.tweets = []
-    dataStore.loadingButton = false;
+    //dataStore.loadingButton = false;
     handleLoadMoreItem();
   }
   const {t} = useTranslation("common")
@@ -79,7 +81,7 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
 
         <div className="flex-1">
           {/* Search */}
-          <SearchInput />
+          <SearchInput dataStore={dataStore} detailStore={detailStore} voteStore={voteStore}/>
         </div>
 
         <div className="flex-shrink-0">
@@ -92,6 +94,13 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
       </div>
       <div className={`pane-content--main--main scrollbar`} ref={scrollBox1}>
         <PostsList dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
+        {dataStore.tweets.length == 0 && dataStore.isSearch && !dataStore.loadingButton ? 
+        <p className="search-not-found">
+          <strong>{dataStore.query}</strong> {t("search not found")}
+        </p>
+        :
+        ""
+        }
         {dataStore.loadingButton ?
           <PostsListLoader />
           :""
@@ -144,14 +153,13 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
   const handleClickPost = (e,obj,type) => {
     e.preventDefault()
     e.stopPropagation()
+    store.setShallowConnect(true)
     dataStore.showDetail = true;
-    detailStore.data = {}
     detailStore.data = obj
     detailStore.type = type
-    router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
     const meta = utils.createSiteMetadata({page:"NewsDetail",data : {...obj,type},dataStore})
     document.title = meta.title
-    store.setShallowConnect(true)
+    router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
     return false
   }
   return (

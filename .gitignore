@@ -37,3 +37,4 @@ yarn-error.log*
 /public/fallback-weLiS7RPN3739bF1qbhgR.js
 /public/workbox-ea903bce.js
 package-lock.json
+.env.production

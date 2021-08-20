@@ -636,3 +636,7 @@ Uitilities
 .disabled {
   @apply opacity-50 pointer-events-none;
 }
+
+.search-not-found{
+  @apply flex justify-center my-8
+}

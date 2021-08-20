@@ -13,8 +13,7 @@ import {useStore} from "../../../lib/useStore";
 export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
   const router = useRouter()
-  let item
-  item = detailStore.data
+  let item = detailStore.data
   const scrollBox2 = createRef();
   let ps2;
   const store = useStore()
@@ -23,12 +22,12 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
     ps2 = new PerfectScrollbar(scrollBox2.current, {});
   }, [scrollBox2]);
   const handleBack = (e) => {
-    dataStore.showDetail = false
-    router.push(back,back,{shallow:true})
-    store.setShallowConnect(true)
     detailStore.data = {}
+    dataStore.showDetail = false
+    store.setShallowConnect(true)
+    router.push(back,back,{shallow:true})
+    
   }
-
 
   const date = utils.timeDifference(new Date(), new Date(item.createdAt))
   const dateTitle = utils.titleTime(item.createdAt)
