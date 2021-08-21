@@ -2,16 +2,16 @@ import React, {useCallback, useEffect, useMemo, useState, createRef} from 'react
 
 //ReactIcons
 import {observer} from "mobx-react";
-import {CardPost, CardPostLoader} from "../../cards/concepts/Post";
+import {CardPost, CardPostLoader} from "../cards/Post";
 
 import "perfect-scrollbar/css/perfect-scrollbar.css";
-import SearchInput from "../../search";
-import {getItems} from "../../../data/query/getItem";
-import {HOME_ITEM_TAKE} from "../../../config/paging";
+import SearchInput from "../search";
+import {getItems} from "../../data/query/getItem";
+import {HOME_ITEM_TAKE} from "../../config/paging";
 import PerfectScrollbar from "perfect-scrollbar";
-import utils from "../../../lib/util";
+import utils from "../../lib/util";
 import {useRouter} from "next/router";
-import {useStore} from "../../../lib/useStore";
+import {useStore} from "../../lib/useStore";
 import { isMobile } from "react-device-detect";
 import { useTranslation } from 'next-i18next';
 import { data } from 'autoprefixer';

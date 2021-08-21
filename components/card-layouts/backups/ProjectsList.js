@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 
 import {Card, ProjectLoader} from "../cards/Project";
-import {DropDown} from "../dropdown/DropDown";
+import {DropDown} from "../../dropdown/DropDown";
 
 //ReactIcons
 import {IoChevronDownSharp, IoChevronForwardSharp, IoChevronBackSharp} from "react-icons/io5";
 import Link from "next/link"
 import {useRouter} from "next/router";
-import {useStore} from "../../lib/useStore";
+import {useStore} from "../../../lib/useStore";
 import {observer} from "mobx-react";
-import {getPosts} from "../../data/query/posts";
-import {TabButton} from "../button/tabButton";
-import WidgetTitle from "../text/widgetTitle";
-import utils from "../../lib/util";
+import {getPosts} from "../../../data/query/posts";
+import {TabButton} from "../../button/tabButton";
+import WidgetTitle from "../../text/widgetTitle";
+import utils from "../../../lib/util";
 
 const take = 12
 

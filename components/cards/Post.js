@@ -1,17 +1,17 @@
 import React from "react";
 
-import utils from "../../../lib/util";
+import utils from "../../lib/util";
 
-import KeywordIcon from "../../icons/keywordIcon";
+import KeywordIcon from "../icons/keywordIcon";
 
 import ContentLoader from "react-content-loader";
 import Link from "next/link"
-import ShowSources from '../../news-sources/ShowSources'
-import ReadingTime from "../../news-sources/ReadingTime";
+import ShowSources from '../news-sources/ShowSources'
+import ReadingTime from "../news-sources/ReadingTime";
 import {empty} from "@apollo/client";
 import {observer} from "mobx-react";
 
-import Screen from "../../Resposive";
+import Screen from "../Resposive";
 
 import _ from 'lodash';
 

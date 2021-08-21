@@ -44,6 +44,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
 
         <div className={`pane-content--sec--main scrollbar ` + (dataStore.showDetail ? "hidden" : "")} ref={scrollBox2}>
 
+
           <Intro dataStore={dataStore} />
 
           {/* <Header props={{

@@ -6,7 +6,7 @@ import Link from "next/link"
 import {observer} from "mobx-react";
 import {TabButton} from "../../button/tabButton";
 import WidgetTitle from "../../text/widgetTitle";
-import {CardPost} from "../../cards/concepts/Post";
+import {CardPost} from "../../cards/Post";
 import ContentLoader from "react-content-loader";
 
 export const PostsListTrending = ({title, extraClass}) => {

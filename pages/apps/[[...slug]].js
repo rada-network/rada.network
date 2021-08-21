@@ -1,7 +1,7 @@
 import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 import utils from "../../lib/util";
 import {Layout} from "../../components/page-layouts/Global";
-import {PostsListWrapper} from "../../components/card-layouts/concepts/PostsList";
+import {PostsListWrapper} from "../../components/card-layouts/PostsList";
 import {observer} from "mobx-react";
 import {HOME_ITEM_TAKE} from "../../config/paging";
 import {getItemById, getItems} from "../../data/query/getItem";

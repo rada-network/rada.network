@@ -4,7 +4,7 @@ import {CommentList} from "../../comments/commentList";
 import React, {createRef, useEffect} from "react";
 import PerfectScrollbar from "perfect-scrollbar";
 import {observer} from "mobx-react";
-import {getSourceFromUri, getSourceVideoFromUri} from "./PostsList";
+import {getSourceFromUri, getSourceVideoFromUri} from "../PostsList";
 import utils from "../../../lib/util";
 import {Vote} from "../../vote/Vote";
 import {useRouter} from "next/router";
