@@ -389,6 +389,10 @@ Content
   @apply text-sm;
 }
 
+.post-detail-media .post-content--text {
+  @apply whitespace-pre-wrap;
+}
+
 
 /* 
 Components
@@ -608,15 +612,6 @@ Perfect Scrollbar
   height: 8px;
 }
 
-/* Category Scrollbar  */
-.category-scroll {
-  @apply flex flex-nowrap relative pb-6;
-}
-
-/* Media Scrollbar  */
-.media-scroll {
-  @apply flex flex-nowrap relative pb-4 mb-4;
-}
 
 /* 
 Uitilities 

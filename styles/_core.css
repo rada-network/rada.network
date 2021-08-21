@@ -25,7 +25,8 @@ a {
   @apply transition-colors duration-200;
 }
 
-.link {
+.link,
+.post-content a {
   /* Seperating each at.apply for clearer declaration */
   /* This is for visual option */
   @apply text-primary-700 hover:text-primary-900 transition;
