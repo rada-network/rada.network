@@ -141,11 +141,11 @@ Top & Tool Bars
   -webkit-text-fill-color: transparent;
 }
 
+/* Toolbar */
 .pane-content--main--top .search-wrapper {
-  max-width: 50%;
-  @apply md:w-full md:max-w-none md:mr-2 lg:mr-4;
+  /* max-width: 50%; */
+  @apply md:max-w-none;
 }
-
 
 .pane-content--main--top .cta-wrapper {
   @apply flex-shrink-0;

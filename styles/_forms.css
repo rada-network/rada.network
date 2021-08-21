@@ -1,10 +1,12 @@
 /* Nav Search */
 .navbar-search {
-  @apply relative flex h-full items-center;
+  @apply relative h-full items-center pr-9;
+  padding-left: calc(24px + 0.5rem);
 }
 
 .navbar-search--icon {
-  @apply pointer-events-none text-sm pl-1 w-px-24 text-center;
+  @apply absolute left-0 top-1;
+  @apply pointer-events-none text-sm w-px-24 text-center flex-shrink-0;
 }
 
 .navbar-search--icon i {
@@ -17,7 +19,7 @@
 }
 
 .navbar-search--input {
-  @apply bg-transparent border-0 pl-2 pr-6 py-1 text-sm transition;
+  @apply bg-transparent border-0 px-0 py-1 text-sm transition w-full;
   @apply focus:ring-0 focus:border-0;
 }
 
@@ -25,8 +27,8 @@
 }
 
 .navbar-search--close {
-  @apply absolute right-2 w-4 h-4 cursor-pointer;
-  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times.svg) no-repeat 50% 50%;
+  @apply absolute right-4 top-1.5 w-4 h-4 cursor-pointer opacity-80;
+  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
   background-size: contain;
 }
 

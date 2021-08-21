@@ -156,12 +156,12 @@ Group Buttons
 }
 
 .btn-filter {
-  @apply px-2 md:px-4 py-1 justify-center;
+  @apply px-2 lg:px-4 py-1 justify-center;
   @apply rounded bg-transparent text-gray-900 dark:text-white text-opacity-50 dark:text-opacity-50;
 }
 
 .btn-filter-active {
-  @apply px-2 md:px-4 py-1 justify-center;
+  @apply px-2 lg:px-4 py-1 justify-center;
   @apply rounded bg-white text-opacity-100 dark:text-white dark:bg-gray-700 shadow-sm;
 }
 
