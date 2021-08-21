@@ -35,6 +35,6 @@
 
 /* Comment Form */
 .comment-textarea {
-  @apply w-full px-4 py-2 text-base border border-gray-500 border-opacity-10 rounded resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0;
+  @apply w-full px-4 py-2 text-sm border border-gray-500 border-opacity-10 rounded resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0;
   @apply dark:bg-gray-900 dark:focus:border-primary-500;
 }

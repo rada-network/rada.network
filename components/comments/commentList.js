@@ -53,16 +53,16 @@ export const CommentList =({detailStore,dataStore}) => {
         
         <div className="section-body">
           <div className="grid grid-cols-1 md:grid-cols-12">
-            {/* <div className="md:col-span-9 md:pr-10"> */}
+
             <div className="col-span-12">
               {/* Comment Form */}
-              <div className="flex justify-center">
+              <div className="comment-form">
                 <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} dataStore={dataStore}/>
               </div>
               {/* Comment Threads */}
               <CommentThreads key={'commentThreads' + item.item.id} item={item} ItemCommentStore={ItemCommentStore} dataStore={dataStore} />
             </div>
-            {/* <SubSideBar /> */}
+            
           </div>
         </div>
 

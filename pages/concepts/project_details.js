@@ -175,7 +175,7 @@ export default function ProjectDetails(props) {
                         <div className="flex justify-center items-baseline">
 
                           <div className="mr-2">
-                            <div className="user-wallet_avatar user-wallet_avatar_green">
+                            <div className="user-wallet-avatar user-wallet-avatar_green">
                               <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">xa</span>
                             </div>
                           </div>
@@ -197,7 +197,7 @@ export default function ProjectDetails(props) {
 
                           <div className="comment group flex">                        
                             <div className="mr-3">
-                              <div className="user-wallet_avatar user-wallet_avatar_red">
+                              <div className="user-wallet-avatar user-wallet-avatar_red">
                                 <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">5e</span>
                               </div>
                             </div>
@@ -235,7 +235,7 @@ export default function ProjectDetails(props) {
                           {/* Reply */}
                           <div className="comment comment_reply group flex">
                             <div className="mr-3">
-                              <div className="user-wallet_avatar_sm user-wallet_avatar_yellow">
+                              <div className="user-wallet-avatar-sm user-wallet-avatar_yellow">
                                 <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">ab</span>
                               </div>
                             </div>
@@ -276,7 +276,7 @@ export default function ProjectDetails(props) {
                           {/* Reply */}
                           <div className="comment comment_reply group flex">
                             <div className="mr-3">
-                              <div className="user-wallet_avatar_sm user-wallet_avatar_purple">
+                              <div className="user-wallet-avatar-sm user-wallet-avatar_purple">
                                 <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">2h</span>
                               </div>
                             </div>
@@ -316,7 +316,7 @@ export default function ProjectDetails(props) {
 
                           <div className="comment comment_reply group flex">
                             <div className="mr-3">
-                              <div className="user-wallet_avatar_sm user-wallet_avatar_blue">
+                              <div className="user-wallet-avatar-sm user-wallet-avatar_blue">
                                 <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">9x</span>
                               </div>
                             </div>
@@ -355,10 +355,10 @@ export default function ProjectDetails(props) {
                           </div>
 
                           {/* Reply Form */}
-                          <div className="comment_reply_form flex justify-center items-baseline">
+                          <div className="comment-reply-form flex justify-center items-baseline">
 
                             <div className="mr-2">
-                              <div className="user-wallet_avatar_sm user-wallet_avatar_green">
+                              <div className="user-wallet-avatar-sm user-wallet-avatar_green">
                                 <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">xa</span>
                               </div>
                             </div>
@@ -377,7 +377,7 @@ export default function ProjectDetails(props) {
                         <div className="comments-list-item flex flex-col items-stretch">
                           <div className="comment group flex">
                             <div className="mr-3">
-                              <div className="user-wallet_avatar user-wallet_avatar_blue">
+                              <div className="user-wallet-avatar user-wallet-avatar_blue">
                                 <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">9x</span>
                               </div>
                             </div>
@@ -417,7 +417,7 @@ export default function ProjectDetails(props) {
                         <div className="comments-list-item flex flex-col items-stretch">
                           <div className="comment group flex">
                             <div className="mr-3">
-                              <div className="user-wallet_avatar user-wallet_avatar_yellow">
+                              <div className="user-wallet-avatar user-wallet-avatar_yellow">
                                 <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">ab</span>
                               </div>
                             </div>
@@ -457,7 +457,7 @@ export default function ProjectDetails(props) {
                        <div className="comments-list-item flex flex-col items-stretch">
                           <div className="comment group flex">
                             <div className="mr-3">
-                              <div className="user-wallet_avatar user-wallet_avatar_purple">
+                              <div className="user-wallet-avatar user-wallet-avatar_purple">
                                 <span className="text-sm font-semibold whitespace-nowrap line-clamp-1">2h</span>
                               </div>
                             </div>

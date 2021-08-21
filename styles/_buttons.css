@@ -230,6 +230,6 @@ Button Caret
 
 /* Comment Form Button */
 .comment-btn {
-  @apply text-sm w-full justify-center flex-1 px-0 py-3 w-24 text-gray-500 rounded bg-gray-100 hover:bg-primary-100 hover:text-primary-700 border border-transparent hover:border-primary-500 leading-4;
+  @apply text-sm justify-center px-0 w-20 text-gray-500 rounded bg-gray-100 hover:bg-primary-100 hover:text-primary-700 border border-transparent hover:border-primary-500 leading-4;
   @apply dark:bg-gray-700 dark:text-gray-200 dark:hover:text-white;
 }
