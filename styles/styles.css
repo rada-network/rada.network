@@ -142,8 +142,10 @@ Top & Tool Bars
 }
 
 .pane-content--main--top .search-wrapper {
-  @apply w-1/2 md:w-full md:mr-2 lg:mr-4;
+  max-width: 50%;
+  @apply md:w-full md:max-w-none md:mr-2 lg:mr-4;
 }
+
 
 .pane-content--main--top .cta-wrapper {
   @apply flex-shrink-0;

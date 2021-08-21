@@ -12,7 +12,11 @@ Generic Styles
 
 .card-media,
 .card-media-blank {
-  @apply flex flex-col flex-shrink-0 overflow-hidden rounded-sm mr-3 md:mr-4;
+  @apply flex flex-col flex-shrink-0 overflow-hidden;
+}
+
+.card-media-img {
+  @apply overflow-hidden rounded-sm;
 }
 
 .card-img {
@@ -66,6 +70,7 @@ Card Post (News, Projects,...)
 ----------------------------------------------*/
 .card-post {
   @apply bg-white dark:bg-deepgray-50 border-b border-gray-400 border-opacity-10 cursor-pointer;
+  @apply space-x-3 md:space-x-4;
   @apply hover:bg-shadeyellow-100 dark:hover:bg-deeppurple-500;
 }
 
