@@ -359,7 +359,7 @@ Comment
 }
 
 .comments-list-item {
-  @apply mt-6 w-full relative;
+  @apply mt-4 md:mt-6 w-full relative;
 }
 
 .comment,
@@ -400,6 +400,7 @@ Comment
   .user-wallet_avatar,
   .user-wallet_avatar_sm,
   .user-wallet_avatar_xs {
+    @apply mr-3 md:mr-4;
     z-index: 2;
   }
 }
@@ -412,17 +413,7 @@ Comment
 }
 
 .comment_reply {
-  @apply pt-6 pl-12;
-  /* &::before {
-    @apply bg-gray-200;
-    display: block;
-    position: absolute;
-    top: 0px;
-    left: 18px;
-    width: 2px;
-    height: 100%;
-    content: " ";
-  } */
+  @apply pt-4 md:pt-6 pl-12;
 }
 
 .comment_reply:last-child {
@@ -432,7 +423,7 @@ Comment
 }
 
 .comment_reply_form {
-  @apply pt-6 pb-2 pl-12 relative;
+  @apply pt-4 pb-2 pl-12 relative;
 }
 
 .comment_reply_form textarea {
@@ -443,4 +434,12 @@ Comment
 }
 
 .comment-text {
+}
+
+.comment-footer {
+  @apply mt-2 md:mt-3 space-x-3 md:space-x-4 flex flex-wrap items-center justify-between text-xs;
+}
+
+.user-wallet--title {
+  @apply text-sm font-semibold whitespace-nowrap;
 }

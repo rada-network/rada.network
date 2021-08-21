@@ -13,6 +13,7 @@ Core Contents
 
 .text-color-desc,
 .metadata-wrapper,
-.navbar-search--input::placeholder {
+.navbar-search--input::placeholder,
+.comment-footer {
   @apply text-gray-800 text-opacity-50 dark:text-gray-200 dark:text-opacity-50;
 }

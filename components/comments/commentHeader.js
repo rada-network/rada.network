@@ -7,28 +7,31 @@ export function CommentHeader({comment,user, level, parent, ItemCommentStore}){
   }
   return (
     <div className="comment-header">
-      <div className="user-wallet_title flex items-baseline">
+      <div className="flex">
         {/*name of user: show up by wallet address*/}
-        <span className="text-sm font-semibold whitespace-nowrap leading-4">
+        <span className="metadata user-wallet--title">
           {createWalletAddressDisplay(user.walletAddress)}
         </span>
-        <span className="text-xs ml-2 text-gray-400">
-          <span className="mr-2"> ·</span>
-          {utils.timeDifference(new Date().getTime(), comment.createdAt)}
+        <span className="metadata metadata-date text-xs text-color-desc">
+          <span className="metadate-value">
+            {utils.timeDifference(new Date().getTime(), comment.createdAt)}
+          </span>
         </span>
       </div>
-      <div className="flex items-baseline">
-        {
-          level > 1 ?
-            <span className="text-xs text-gray-400 leading-6">
-          {/*    reply to <span className="font-bold">{text.toUpperCase()}</span>*/}
-              {/*reply to <span className="font-bold">{createWalletAddressDisplay(user.walletAddress)}</span>*/}
-              reply to <span className="font-bold">{parent === null ?
-              "" : createWalletAddressDisplay(ItemCommentStore.getUser(parent.userId).walletAddress)}</span>
-        </span> :
-            ""
-        }
-      </div>
+
+      {
+        level > 1 ?
+        <div className="flex items-baseline">
+          <span className="text-xs text-gray-400 leading-6">
+            {/* reply to <span className="font-bold">{text.toUpperCase()}</span>*/}
+            {/*reply to <span className="font-bold">{createWalletAddressDisplay(user.walletAddress)}</span>*/}
+            reply to <span className="font-bold">{parent === null ?
+            "" : createWalletAddressDisplay(ItemCommentStore.getUser(parent.userId).walletAddress)}</span>
+          </span>  
+        </div>:
+        ""
+      }
+
     </div>
   )
 }

@@ -23,7 +23,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
     return (
       <>
         <div className={subclass}>
-          <div className={`mr-3 md:mr-4 user-wallet_avatar${level === 1 ? "" : "_sm"}`}>
+          <div className={`mr-3 md:mr-4 user-wallet_avatar${level === 1 ? "_sm" : "_xs"}`}>
             <CommentAvatar user={user} size={level > 1 ? 32 : 40} />
           </div>
           <div className="comment-main">
@@ -31,18 +31,19 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
             <div className="comment-text mt-1">
               <p>{comment.content}</p>
             </div>
-            <div className="comment-footer mt-3 flex flex-wrap items-center justify-between text-xs text-gray-400">
-              <div className="flex items-center">
+            <div className="comment-footer">
+              <div className="flex items-center space-x-4">
+
+                {/* Todo: Comment Votte function */}
                 <button
                   className="btn btn-post-vote disabled">
-                  {/*<button*/}
-                  {/*  className="btn py-1 px-2 border border-primary-500 text-primary-700 bg-primary-100 rounded">*/}
                   <span className="icon mr-1"><RiThumbUpFill/></span>
                   <span className="font-bold mr-1">1</span><span>Likes</span>
                 </button>
+
                 {
                   level  <= 1 ?
-                    <button className="btn py-1 px-2 ml-2 hover:text-primary-700 rounded"
+                    <button className="btn py-1 hover:text-primary-700 rounded"
                             onClick={()=>{setShowReply(!showReply)}}
                     >
                       <span className="icon mr-2"><i className="fa fa-reply"/></span>
