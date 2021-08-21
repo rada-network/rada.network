@@ -79,12 +79,12 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
     <>
       <div className={`pane-content--main--top`}>
 
-        <div className="flex-1">
+        <div className="search-wrapper">
           {/* Search */}
           <SearchInput dataStore={dataStore} detailStore={detailStore} voteStore={voteStore}/>
         </div>
 
-        <div className="flex-shrink-0">
+        <div className="cta-wrapper">
           {/* Sort */}
           <div className="btn-group btn-group-filter">
             <a className={"btn " + (dataStore.currentTab === "popular" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "popular"})}}>{t("popular")}</a>

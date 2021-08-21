@@ -197,12 +197,12 @@ Button Caret
 }
 
 .btn--caret-right {
-  @apply ml-1 -right-0.5;
+  @apply ml-1;
   transform: rotate(-45deg);
 }
 
 .btn--caret-left {
-  @apply mr-1 -mt-0.5;
+  @apply mr-1;
   transform: rotate(135deg);
 }
 

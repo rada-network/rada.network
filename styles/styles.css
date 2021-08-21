@@ -111,7 +111,7 @@ Layout
 
 
 /* 
-Top Bars
+Top & Tool Bars
 --------------------------------------------- */
 .topbar {
   @apply flex lg:hidden justify-between items-center px-4 w-full;
@@ -131,7 +131,7 @@ Top Bars
 }
 
 .topbar .logo--img {
-  @apply h-7;
+  @apply w-px-24;
 }
 
 .logo--text {
@@ -140,6 +140,15 @@ Top Bars
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.pane-content--main--top .search-wrapper {
+  @apply w-1/2 md:w-full md:mr-2 lg:mr-4;
+}
+
+.pane-content--main--top .cta-wrapper {
+  @apply flex-shrink-0;
+}
+
 
 /* 
 Tabbar (Comming Soon)

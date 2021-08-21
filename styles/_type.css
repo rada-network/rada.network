@@ -12,6 +12,7 @@ Core Contents
 }
 
 .text-color-desc,
-.metadata-wrapper {
+.metadata-wrapper,
+.navbar-search--input::placeholder {
   @apply text-gray-900 text-opacity-50 dark:text-gray-100 dark:text-opacity-50;
 }

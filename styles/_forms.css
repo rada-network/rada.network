@@ -4,7 +4,7 @@
 }
 
 .navbar-search--icon {
-  @apply pointer-events-none text-sm pl-1;
+  @apply pointer-events-none text-sm pl-1 w-px-24 text-center;
 }
 
 .navbar-search--icon i {
@@ -17,23 +17,17 @@
 }
 
 .navbar-search--input {
-  @apply focus:w-full md:w-full pl-3 py-1 text-sm transition;
-  @apply bg-transparent border-0 focus:ring-0;
+  @apply bg-transparent border-0 pl-2 pr-6 py-1 text-sm transition;
+  @apply focus:ring-0 focus:border-0;
 }
 
 .navbar-search--input::placeholder {
-  @apply text-gray-400;
 }
 
 .navbar-search--close {
-  margin-left: -40px;
-  height: 1em;
-  width: 1em;
-  border-radius: 50em;
-  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+  @apply absolute right-2 w-4 h-4 cursor-pointer;
+  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times.svg) no-repeat 50% 50%;
   background-size: contain;
-  opacity: 1;
-  cursor: pointer;
 }
 
 

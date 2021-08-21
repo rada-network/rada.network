@@ -59,7 +59,7 @@ export default function SearchInput({dataStore,detailStore}){
   }
   return (
     <div className={`navbar-search`}>
-      <span className={`icon navbar-search--icon`}><i className="far fa-search" /></span>
+      <span className={`icon navbar-search--icon`}><i className="fa fa-search" /></span>
       <input value={searchValue.value} onChange={handledOnChange} onKeyPress={handledOnKeypress}
         type="text"
         className={`navbar-search--input`}
