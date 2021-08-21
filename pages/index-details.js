@@ -38,7 +38,7 @@ import {getItems} from "../data/query/getItem";
 import {HOME_ITEM_TAKE} from "../config/paging";
 import {CommentList} from "../components/comments/commentList";
 import {getNews} from "../data/query/getNewsById";
-import {PostListDetail} from "../components/card-layouts/concepts/PostListDetail";
+import {PostListDetail} from "../components/card-layouts/PostListDetail";
 
 const getData = async ({query}) => {
   const itemFeed = await getItems({

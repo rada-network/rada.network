@@ -91,7 +91,9 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
             <a className={"btn " + (dataStore.currentTab === "latest" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "latest"})}}>{t("latest")}</a>
           </div>
         </div>
+        
       </div>
+
       <div className={`pane-content--main--main scrollbar`} ref={scrollBox1}>
         <PostsList dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
         {dataStore.tweets.length == 0 && dataStore.isSearch && !dataStore.loadingButton ? 

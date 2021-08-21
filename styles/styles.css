@@ -318,8 +318,7 @@ Pages
 Page Layout
 */
 .page {
-  @apply flex flex-col w-full h-full relative z-10;
-  @apply bg-white dark:bg-deepgray-50;
+  @apply w-full h-full relative z-10;
 }
 
 .page-header {
@@ -354,7 +353,11 @@ Post Details
 }
 
 .post-header .metadata-wrapper {
-  @apply text-sm mt-1;
+  @apply text-sm justify-between;
+}
+
+.post-header .metadata {
+  @apply mt-1;
 }
 
 .post-body {
@@ -367,7 +370,7 @@ Post Details
 
 /* CTAs */
 .post-detail .cta-wrapper {
-  @apply flex text-gray-800 dark:text-gray-200;
+  @apply flex text-gray-800 dark:text-gray-200 mt-1;
 }
 
 .post-detail .cta-wrapper .btn {

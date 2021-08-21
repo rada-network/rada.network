@@ -1,14 +1,14 @@
 import {RiExternalLinkLine} from "react-icons/ri";
 import Link from "next/link";
-import {CommentList} from "../../comments/commentList";
+import {CommentList} from "../comments/commentList";
 import React, {createRef, useEffect} from "react";
 import PerfectScrollbar from "perfect-scrollbar";
 import {observer} from "mobx-react";
-import {getSourceFromUri, getSourceVideoFromUri} from "../PostsList";
-import utils from "../../../lib/util";
-import {Vote} from "../../vote/Vote";
+import {getSourceFromUri, getSourceVideoFromUri} from "./PostsList";
+import utils from "../../lib/util";
+import {Vote} from "../vote/Vote";
 import {useRouter} from "next/router";
-import {useStore} from "../../../lib/useStore";
+import {useStore} from "../../lib/useStore";
 
 export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
@@ -64,7 +64,6 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
             : ""
           }
 
-
           {/* Comments */}
           <CommentList detailStore={detailStore} dataStore={dataStore}/>
           {/* //Comments */}
@@ -87,7 +86,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
             </span>
           </h1>
         </div>
-        <div className="metadata-wrapper justify-between">
+        <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
               <span className="icon mr-1">
@@ -116,7 +115,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
           <div className="media-player">
             <div className="w-full h-full">
               <div className={`aspect-w-16 aspect-h-9`}>
-                <iframe  src={"https://www.youtube.com/embed/" + item.youtubeId} title="Bitcoin Price FLOODED With Green (Cardano BREAKOUT Pending)" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" />
+                <iframe  src={"https://www.youtube.com/embed/" + item.youtubeId} title={item.title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" />
               </div>
             </div>
           </div>
@@ -141,7 +140,7 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
             </span>
           </h1>
         </div>
-        <div className="metadata-wrapper justify-between">
+        <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
               <span className="icon mr-1">
@@ -199,7 +198,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
             </span>
           </h1>
         </div>
-        <div className="metadata-wrapper justify-between">
+        <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
               <span className="icon mr-1">

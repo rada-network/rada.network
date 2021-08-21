@@ -3,7 +3,7 @@ import React, {createRef, useEffect} from "react";
 import PerfectScrollbar from "perfect-scrollbar";
 import Screen from "./Resposive";
 import {Wallet} from "./Wallet";
-import {PostListDetail} from "./card-layouts/concepts/PostListDetail";
+import {PostListDetail} from "./card-layouts/PostListDetail";
 import {Header} from "./headers/HeaderHome";
 import {Sidebar} from "./sidebar/Sidebar";
 import dynamic from "next/dynamic";
