@@ -442,7 +442,7 @@ Dialogs
 Empty State
 */
 .empty-state {
-  @apply p-4 md:p-8 lg:p-16 flex flex-col h-full;
+  @apply p-4 md:p-8 xl:p-16 flex flex-col h-full;
   @apply text-sm;
   animation: fadein 1s ease-in;
 }
