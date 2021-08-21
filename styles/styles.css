@@ -318,7 +318,8 @@ Pages
 Page Layout
 */
 .page {
-  @apply w-full h-full relative z-10;
+  @apply w-full h-full relative;
+  @apply bg-white dark:bg-deepgray-50;
 }
 
 .page-header {

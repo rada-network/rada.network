@@ -21,7 +21,7 @@ const WalletAvatar = ({wallet}) => {
       <Avatar
         size={24}
         name={text}
-        variant="bauhaus"
+        variant="beam"
         colors={["#8B5CF6", "#34D399", "#FEF3C7", "#FBBF24", "#EF4444"]}
       />
     </div>
