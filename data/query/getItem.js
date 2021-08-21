@@ -70,6 +70,7 @@ const itemFeedGql = gql`
                 title
                 description
                 videoType
+                content
                 thumbnailUri
                 youtubeId
                 url
@@ -160,6 +161,7 @@ const itemByIdGql = gql`
                 id
                 title
                 description
+                content
                 videoType
                 thumbnailUri
                 youtubeId

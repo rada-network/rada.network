@@ -106,8 +106,14 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
     observableItemStore.tweets = props.itemFeed
     observableItemStore.type = props.type
     observableItemStore.showDetail = false
-
-    meta = utils.createSiteMetadata({page : 'Explore',data : {query:props.type},dataStore : observableItemStore})
+    meta = utils.createSiteMetadata(
+    {
+      page : 'Explore',
+      data : {
+        query:props.type == "all" ? props.query : props.type
+      },
+      dataStore : observableItemStore
+    })
   }
   else{
     observableItemStore.query = props.query
