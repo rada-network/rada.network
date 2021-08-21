@@ -10,6 +10,11 @@ import {Vote} from "../vote/Vote";
 import {useRouter} from "next/router";
 import {useStore} from "../../lib/useStore";
 
+import {
+  DesktopView,
+  MobileView
+} from "react-device-detect";
+
 export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
   const router = useRouter()
@@ -33,7 +38,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const dateTitle = utils.titleTime(item.createdAt)
   return (
     <>
-      <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
+      <div className={`pane-content--sec--main grid scrollbar`} ref={scrollBox2}>
         {/* Post Detail */}
         <div className="page">
 
@@ -69,6 +74,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
           {/* //Comments */}
         </div>
       </div>
+      
     </>
   )
 })

@@ -86,6 +86,12 @@ Card Post (News, Projects,...)
   @apply opacity-50;
 }
 
+/* Metadata */
+.card-post .metadata-source .metadata-value {
+  @apply whitespace-nowrap overflow-hidden overflow-ellipsis;
+  max-width: 160px;
+}
+
 /* has Comment */
 .card-post .metadata-commentcount {
   @apply mr-1 hidden transition;
