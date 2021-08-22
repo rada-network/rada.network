@@ -21,6 +21,7 @@ export const Navbar = ({dataStore,detailStore}) => {
               <strong className="logo--text mt-1">
                 <span>RADA</span>
               </strong>
+              <span className="logo--badge">BETA</span>
             </a>
           </Link>
         </div>

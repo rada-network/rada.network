@@ -141,6 +141,15 @@ Top & Tool Bars
   -webkit-text-fill-color: transparent;
 }
 
+.logo--badge {
+  @apply text-xxxs mt-0.5 opacity-50 border-b-2 leading-3;
+  letter-spacing: 2px;
+}
+
+.topbar .logo--badge {
+  @apply ml-1.5 -mt-0.5;
+}
+
 /* Toolbar */
 .pane-content--main--top .search-wrapper {
   /* max-width: 50%; */
