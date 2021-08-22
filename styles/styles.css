@@ -345,14 +345,37 @@ Post Details
   @apply flex flex-col;
 }
 
-.post-title {
+/* 
+Title 
+*/
+.post-title h1 {
   @apply text-lg font-medium;
+}
+
+.post-title--text {
+  @apply text-gray-800 dark:text-gray-200 transition;
+}
+
+.post-title:hover .post-title--text {
+  @apply text-primary-700 dark:text-primary-500;
+}
+
+.post-title .btn-post-link {
+  @apply relative transition;
+  top: -1px;
+}
+
+.post-title:hover .btn-post-link {
+  @apply text-primary-700 dark:text-primary-500 opacity-100;
 }
 
 .post-detail-social .post-title {
   @apply line-clamp-2 overflow-ellipsis;
 }
 
+/* 
+Metadata 
+*/
 .post-header .metadata-wrapper {
   @apply text-sm justify-between;
 }
@@ -369,13 +392,15 @@ Post Details
   flex: 0;
 }
 
-/* CTAs */
+/* 
+CTAs 
+*/
 .post-detail .cta-wrapper {
   @apply flex text-gray-800 dark:text-gray-200 mt-1;
 }
 
 .post-detail .cta-wrapper .btn {
-  @apply text-xs;
+  @apply text-sm;
 }
 
 .post-detail .cta-wrapper .btn-post-vote {
@@ -408,6 +433,10 @@ Content
   @apply whitespace-pre-wrap;
 }
 
+/* Post Actions */
+.post-actions {
+  @apply mt-4;
+}
 
 /* 
 Components

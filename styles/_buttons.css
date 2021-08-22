@@ -84,12 +84,11 @@ Vote Buttons
 Link Visit Button 
 */
 .btn-post-link {
-  @apply justify-center items-center px-2 py-0.5;
-  @apply hover:text-primary-700 dark:hover:text-primary-500;
+  @apply text-sm justify-center items-center px-2 py-1 rounded relative;
 }
 
 .btn-post-link .icon {
-  @apply text-base -mt-0.5;
+  @apply text-sm;
 }
 
 /* 
@@ -221,10 +220,23 @@ Button Caret
 
 }
 
-/* Page Close Button */
+/* Page Back Button */
 .page-back .btn {
-  @apply text-sm opacity-50 font-normal transition;
-  @apply hover:opacity-100 hover:text-primary-700;
+  @apply text-sm font-normal;
+  @apply hover:text-primary-700 dark:hover:text-primary-500;
+}
+
+/* Close Button */
+.btn-close {
+  @apply text-sm font-normal transition justify-center items-center rounded-full;
+  @apply text-gray-900 bg-gray-500 bg-opacity-10 border border-transparent;
+  @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-0;
+  @apply dark:text-white dark:bg-gray-400 dark:bg-opacity-20;
+  @apply dark:hover:bg-deeppurple-300 dark:hover:border-primary-500;
+}
+
+.btn-close .btn--text {
+  @apply text-xxxs uppercase !mx-0;
 }
 
 
