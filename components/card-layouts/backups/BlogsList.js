@@ -1,5 +1,5 @@
 import {useState} from "react";
-import posts from "../../data/query/posts";
+import posts from "../../../data/query/posts";
 import {Card} from "../cards/Blog";
 
 //ReactIcons

@@ -13,8 +13,8 @@ import {MediaList} from '../components/card-layouts/MediaList';
 
 // Concepts
 import SearchInput from "../components/search"
-import {PostsList, PostsListWrapper} from "../components/card-layouts/concepts/PostsList";
-import {PostsListTrending} from "../components/card-layouts/concepts/PostsListTrending";
+import {PostsList, PostsListWrapper} from "../components/card-layouts/PostsList";
+import {PostsListTrending} from "../components/card-layouts/PostsListTrending";
 import {Wallet} from "../components/Wallet"
 import ThemeSwitch from "../components/ThemeSwitch"
 import {RiExternalLinkLine} from "react-icons/ri";
@@ -38,7 +38,7 @@ import {getItems} from "../data/query/getItem";
 import {HOME_ITEM_TAKE} from "../config/paging";
 import {CommentList} from "../components/comments/commentList";
 import {getNews} from "../data/query/getNewsById";
-import {PostListDetail} from "../components/card-layouts/concepts/PostListDetail";
+import {PostListDetail} from "../components/card-layouts/PostListDetail";
 
 const getData = async ({query}) => {
   const itemFeed = await getItems({

@@ -2,7 +2,7 @@ import Link from "next/link"
 import styles from '../../styles/modules/Card.category.module.css'
 
 import {IoChevronForwardSharp} from "react-icons/io5";
-import utils from "../../lib/util";
+import utils from "../../../lib/util";
 
 export const Card = ({title, cta, text, itemType}) => {
   return (

@@ -93,17 +93,13 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
               title={t('comment input holder')}
               placeholder={t('comment login')}
             />
-            <div className="pl-2 md:mt-0">
-              <button onClick={submitComment}
-                      className="btn comment-btn"
-                      >
-                {btnText}
-              </button>
-            </div>
+            <button onClick={submitComment}className="btn comment-btn ml-2">
+              {btnText}
+            </button>
           </>
           : <>
-            <div className="mr-2 md:mr-3">
-              <CommentAvatar user={currentUser} size={replyFor === null ? 40 : 32} />
+            <div className="user-wallet-avatar-sm">
+              <CommentAvatar user={currentUser} size={replyFor === null ? 32 : 32} />
             </div>
             <TextareaAutosize
               className="comment-textarea"
@@ -115,12 +111,9 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
               }}
               onKeyDown={handleKeydown}
             />
-
-            <div className="pl-2 md:mt-0">
-              <button onClick={submitComment} className="btn comment-btn">
-                {btnText}
-              </button>
-            </div>
+            <button onClick={submitComment} className="btn comment-btn ml-2">
+              {btnText}
+            </button>
           </>
       }
     </>

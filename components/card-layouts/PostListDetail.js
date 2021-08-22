@@ -1,14 +1,20 @@
 import {RiExternalLinkLine} from "react-icons/ri";
 import Link from "next/link";
-import {CommentList} from "../../comments/commentList";
+import {CommentList} from "../comments/commentList";
 import React, {createRef, useEffect} from "react";
 import PerfectScrollbar from "perfect-scrollbar";
+
 import {observer} from "mobx-react";
 import {getSourceFromUri, getSourceVideoFromUri} from "./PostsList";
-import utils from "../../../lib/util";
-import {Vote} from "../../vote/Vote";
+import utils from "../../lib/util";
+import {Vote} from "../vote/Vote";
 import {useRouter} from "next/router";
-import {useStore} from "../../../lib/useStore";
+import {useStore} from "../../lib/useStore";
+
+import {
+  DesktopView,
+  MobileView
+} from "react-device-detect";
 
 export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
@@ -36,14 +42,16 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const dateTitle = utils.titleTime(item.createdAt)
   return (
     <>
-      <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
+
+      <div className={`pane-content--sec--main grid scrollbar`} ref={scrollBox2}>
+
         {/* Post Detail */}
         <div className="page">
 
           {/* Close Button */}
           {dataStore !== undefined ?
-            <div className="page-back" onClick={(e) => {handleBack(e)}}>
-              <div className="btn">
+            <div className="page-back">
+              <div className="btn" onClick={(e) => {handleBack(e)}}>
                 <span className="btn--caret-left"></span>
                 <span className="btn--text">Back</span>
               </div>
@@ -67,12 +75,12 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
             : ""
           }
 
-
           {/* Comments */}
           <CommentList detailStore={detailStore} dataStore={dataStore}/>
           {/* //Comments */}
         </div>
       </div>
+
     </>
   )
 })
@@ -83,14 +91,20 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
     <div className="section post-detail post-detail-media">
       {/* Post Header */}
       <div className="section-header post-header">
-        <div className="flex">
-          <h1 className="post-title">
-            <span className="text-color-title">
-              {item.title}
-            </span>
+        <div className="post-title">
+          <h1 className="inline">
+            <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
+              <span className="post-title--text">
+                {item.title}
+              </span>
+              <span className="btn btn-post-link" title="Visit Website">
+                <span className="icon"><i class="fad fa-external-link" /></span>
+                <span className="btn--text sr-only">Visit Website</span>
+              </span>
+            </a>
           </h1>
         </div>
-        <div className="metadata-wrapper justify-between">
+        <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
               <span className="icon mr-1">
@@ -119,13 +133,21 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
           <div className="media-player">
             <div className="w-full h-full">
               <div className={`aspect-w-16 aspect-h-9`}>
-                <iframe  src={"https://www.youtube.com/embed/" + item.youtubeId} title="Bitcoin Price FLOODED With Green (Cardano BREAKOUT Pending)" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" />
+                <iframe  src={"https://www.youtube.com/embed/" + item.youtubeId} title={item.title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" />
               </div>
             </div>
           </div>
         </div>
         <div className="post-content">
           <div className="post-content--text" dangerouslySetInnerHTML={{__html:item.content}}></div>
+        </div>
+        <div className="post-actions">
+          <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
+            <span className="btn nav-btn" title="Visit Website">
+              <span className="icon"><i class="fad fa-external-link" /></span>
+              <span className="btn--text">Visit Website</span>
+            </span>
+          </a>
         </div>
       </div>
     </div>
@@ -137,14 +159,20 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
     <div className="section post-detail post-detail-news">
       {/* Post Header */}
       <div className="section-header post-header">
-        <div className="flex">
-          <h1 className="post-title">
-            <span className="text-color-title">
-              {item.title}
-            </span>
+        <div className="post-title">
+          <h1 className="inline">
+            <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
+              <span className="post-title--text">
+                {item.title}
+              </span>
+              <span className="btn btn-post-link" title="Visit Website">
+                <span className="icon"><i class="fad fa-external-link" /></span>
+                <span className="btn--text sr-only">Visit Website</span>
+              </span>
+            </a>
           </h1>
         </div>
-        <div className="metadata-wrapper justify-between">
+        <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
               <span className="icon mr-1">
@@ -179,6 +207,14 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
           </div>
           : ""
         }
+        <div className="post-actions">
+          <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
+            <span className="btn nav-btn" title="Visit Website">
+              <span className="icon"><i class="fad fa-external-link" /></span>
+              <span className="btn--text">Visit Website</span>
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   )
@@ -195,14 +231,20 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
     <div className="section post-detail post-detail-social">
       {/* Post Header */}
       <div className="section-header post-header">
-        <div className="flex">
-          <h1 className="post-title">
-            <span className="text-color-title">
-            {title}
-            </span>
+        <div className="post-title">
+          <h1 className="inline">
+            <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
+              <span className="post-title--text">
+                {item.title}
+              </span>
+              <span className="btn btn-post-link" title="Visit Website">
+                <span className="icon"><i class="fad fa-external-link" /></span>
+                <span className="btn--text sr-only">Visit Website</span>
+              </span>
+            </a>
           </h1>
         </div>
-        <div className="metadata-wrapper justify-between">
+        <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
               <span className="icon mr-1">
@@ -221,14 +263,11 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
           <PostVisitVoteDetail voteStore={voteStore} item={item} />
         </div>
       </div>
-
+      
       <div className="section-body post-body">
-
         <div className="post-content">
-
           {/* Card Social Post Here */}
           <div className="card card-social cursor-pointer">
-
             <div className="card-header">
               <div className="user-info-wrapper flex">
                 <div className="avatar">
@@ -252,11 +291,8 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
                   </div>
                 </div>
               </div>
-
               <span className="icon icon-twitter"><i className="fab fa-twitter"></i></span>
-
             </div>
-
             <div className="card-body">
               <div className="card-body--main">
                 <div className="card-text">
@@ -270,7 +306,6 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
                            : ""
                          : "",
                      }}>
-
                   {media
                     ? <img src={media[0].media_url_https ? media[0].media_url_https : ""} className={"post-icon_img w-full h-full rounded object-cover"} alt=""/>
                     : ""
@@ -278,7 +313,6 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
                 </div> }
               </div>
             </div>
-
             <div className="card-footer">
               <div className="metadata-wrapper metadata-wrapper_nodivide">
                 <div className="metadata">
@@ -320,8 +354,16 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
               </div>
             </div>
           </div>
-
         </div>
+        <div className="post-actions">
+          <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
+            <span className="btn nav-btn" title="Visit Website">
+              <span className="icon"><i class="fad fa-external-link" /></span>
+              <span className="btn--text">Visit Website</span>
+            </span>
+          </a>
+        </div>
+
       </div>
     </div>
   )
@@ -336,10 +378,6 @@ const PostVisitVoteDetail = function({item,voteStore}){
           voteStore={voteStore}
           page={"postDetail"}
         />
-        <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="btn btn-post-link ml-2">
-          <span className="whitespace-nowrap">Visit</span>
-          <span className="icon ml-2"><RiExternalLinkLine/></span>
-        </a>
       </div>
     </div>
   )

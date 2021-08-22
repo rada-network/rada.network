@@ -311,44 +311,25 @@ Info Row
 /* 
 Avatars 
 -------------------------------- */
-.user-wallet_avatar,
-.user-wallet_avatar_sm,
-.user-wallet_avatar_xs {
+.user-wallet-avatar,
+.user-wallet-avatar-sm,
+.user-wallet-avatar-xs {
   @apply inline-flex flex-shrink-0 justify-items-center items-center justify-center overflow-hidden;
   @apply rounded-full;
 }
 
-.user-wallet_avatar {
+.user-wallet-avatar {
   @extend %Img40;
 }
 
-.user-wallet_avatar_sm {
+.user-wallet-avatar-sm {
   @extend %Img32;
 }
 
-.user-wallet_avatar_xs {
+.user-wallet-avatar-xs {
   @extend %Img24;
 }
 
-.user-wallet_avatar_green {
-  @apply bg-green-500 bg-gradient-to-t from-green-500 to-green-400 text-green-50;
-}
-
-.user-wallet_avatar_red {
-  @apply bg-red-500 bg-gradient-to-t from-red-500 to-red-400 text-red-50;
-}
-
-.user-wallet_avatar_purple {
-  @apply bg-purple-500 bg-gradient-to-t from-purple-500 to-purple-400 text-purple-50;
-}
-
-.user-wallet_avatar_yellow {
-  @apply bg-yellow-500 bg-gradient-to-t from-yellow-500 to-yellow-400 text-yellow-50;
-}
-
-.user-wallet_avatar_blue {
-  @apply bg-blue-500 bg-gradient-to-t from-blue-500 to-blue-400 text-blue-50;
-}
 
 
 /*
@@ -359,83 +340,18 @@ Comment
 }
 
 .comments-list-item {
+  @apply flex flex-col items-stretch;
   @apply mt-6 w-full relative;
 }
 
 .comment,
-.comment_reply_form {
-  @apply relative;
-  &::before {
-    @apply block absolute transition-all border-b-2 border-l-2 border-gray-400 border-opacity-20;
-    top: 34px;
-    left: 18px;
-    width: 25px;
-    height: calc(100% + 8px);
-    content: " ";
-    border-bottom-left-radius: 12px;
-    z-index: 1;
-  }
-}
-
-.no-reply .comment {
-  &::before {
-    opacity: 0;
-  }
-}
-
-.no-reply .comment_reply_form {
-  &::before {
-    top: -45px;
-  }
-}
-
-.comments-list-item:hover .comment,
-.comments-list-item:hover .comment_reply_form {
-  &::before {
-    @apply border-primary-100 dark:border-primary-900;
-  }
-}
-
-.comment {
-  .user-wallet_avatar,
-  .user-wallet_avatar_sm,
-  .user-wallet_avatar_xs {
-    z-index: 2;
-  }
-}
-
-.comment .user-wallet_avatar {
-  @apply ring-4 ring-white dark:ring-deepgray-50;
-}
-
-.comment .btn-post-vote {
+.comment-form,
+.comment-reply-form {
+  @apply flex relative;
 }
 
 .comment_reply {
-  @apply pt-6 pl-12;
-  /* &::before {
-    @apply bg-gray-200;
-    display: block;
-    position: absolute;
-    top: 0px;
-    left: 18px;
-    width: 2px;
-    height: 100%;
-    content: " ";
-  } */
-}
-
-.comment_reply:last-child {
-  &::before {
-    display: none;
-  }
-}
-
-.comment_reply_form {
-  @apply pt-6 pb-2 pl-12 relative;
-}
-
-.comment_reply_form textarea {
+  @apply pt-4 pl-11;
 }
 
 .comment-main {
@@ -443,4 +359,85 @@ Comment
 }
 
 .comment-text {
+}
+
+.comment-footer {
+  @apply mt-2 space-x-3 md:space-x-4 flex flex-wrap items-center justify-between text-xs;
+}
+
+.user-wallet--title {
+  @apply text-sm font-semibold whitespace-nowrap;
+}
+
+/* 
+Comment Forms 
+*/
+.comment-form {
+  @apply flex;
+}
+
+.comment-reply-form {
+  @apply pt-4 pb-2 pl-11 relative;
+}
+
+.comment-reply-form textarea {
+}
+
+/*
+Avatars
+*/
+.comment .user-wallet-avatar,
+.comment .user-wallet-avatar-sm,
+.comment .user-wallet-avatar-xs {
+  @apply mr-3 mt-0.5 ring-2 ring-white dark:ring-deepgray-50;
+  z-index: 2;
+}
+
+.comment-form,
+.comment-reply-form {
+  .user-wallet-avatar,
+  .user-wallet-avatar-sm,
+  .user-wallet-avatar-xs {
+    @apply mr-2 mt-0.5;
+    z-index: 2;
+  }
+}
+
+.comment .user-wallet-avatar {
+  @apply ring-4 ring-white dark:ring-deepgray-50;
+}
+
+/* 
+Comment Trail
+*/
+.comment-trail {
+  @apply block absolute border-b-2 border-l-2 border-gray-100 dark:border-gray-800;
+  top: 0;
+  left: 16px;
+  width: 26px;
+  height: calc(100% + 32px);
+  content: " ";
+  border-bottom-left-radius: 12px;
+  z-index: 1;
+}
+
+.no-reply .comment .comment-trail {
+  @apply opacity-0;
+}
+
+.no-reply.has-reply-form .comment .comment-trail {
+  @apply opacity-100 border-b-0;
+}
+
+.no-reply .comment-reply-form .comment-trail {
+  top: -60px;
+}
+
+.comments-list-item:hover .comment .comment-trail,
+.comments-list-item:hover .comment-reply-form .comment-trail {
+  @apply border-primary-100 dark:border-primary-900;
+}
+
+.comment_reply:last-child .comment-trail {
+  display: none;
 }

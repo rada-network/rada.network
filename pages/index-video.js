@@ -13,8 +13,8 @@ import {MediaList} from '../components/card-layouts/MediaList';
 
 // Concepts
 import SearchInput from "../components/search"
-import {PostsList, PostsListWrapper} from "../components/card-layouts/concepts/PostsList";
-import {PostsListTrending} from "../components/card-layouts/concepts/PostsListTrending";
+import {PostsList, PostsListWrapper} from "../components/card-layouts/PostsList";
+import {PostsListTrending} from "../components/card-layouts/PostsListTrending";
 import {Wallet} from "../components/Wallet"
 import ThemeSwitch from "../components/ThemeSwitch"
 import {RiExternalLinkLine} from "react-icons/ri";

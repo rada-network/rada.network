@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import utils from "../../lib/util";
+import utils from "../../../lib/util";
 
 export const SocialPost = ({post, favoriteCount, retweetCount, hashtags,
                             fullText, createdAt, media, tweetUser}) => {

@@ -8,10 +8,13 @@ Core Contents
 ----------------------------------- */
 .text-color-title,
 .comment-text {
-  @apply text-gray-800 dark:text-gray-100;
+  @apply text-gray-800 dark:text-gray-200;
 }
 
 .text-color-desc,
-.metadata-wrapper {
-  @apply text-gray-900 text-opacity-50 dark:text-gray-100 dark:text-opacity-50;
+.metadata-wrapper,
+.navbar-search--input::placeholder,
+.comment-footer,
+.page-back .btn {
+  @apply text-gray-800 text-opacity-50 dark:text-gray-200 dark:text-opacity-50;
 }

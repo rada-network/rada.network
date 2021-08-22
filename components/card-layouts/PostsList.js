@@ -2,16 +2,16 @@ import React, {useCallback, useEffect, useMemo, useState, createRef} from 'react
 
 //ReactIcons
 import {observer} from "mobx-react";
-import {CardPost, CardPostLoader} from "../../cards/concepts/Post";
+import {CardPost, CardPostLoader} from "../cards/Post";
 
 import "perfect-scrollbar/css/perfect-scrollbar.css";
-import SearchInput from "../../search";
-import {getItems} from "../../../data/query/getItem";
-import {HOME_ITEM_TAKE} from "../../../config/paging";
+import SearchInput from "../search";
+import {getItems} from "../../data/query/getItem";
+import {HOME_ITEM_TAKE} from "../../config/paging";
 import PerfectScrollbar from "perfect-scrollbar";
-import utils from "../../../lib/util";
+import utils from "../../lib/util";
 import {useRouter} from "next/router";
-import {useStore} from "../../../lib/useStore";
+import {useStore} from "../../lib/useStore";
 import { isMobile } from "react-device-detect";
 import { useTranslation } from 'next-i18next';
 import { data } from 'autoprefixer';
@@ -79,19 +79,21 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
     <>
       <div className={`pane-content--main--top`}>
 
-        <div className="flex-1">
+        <div className="search-wrapper">
           {/* Search */}
           <SearchInput dataStore={dataStore} detailStore={detailStore} voteStore={voteStore}/>
         </div>
 
-        <div className="flex-shrink-0">
+        <div className="cta-wrapper">
           {/* Sort */}
           <div className="btn-group btn-group-filter">
             <a className={"btn " + (dataStore.currentTab === "popular" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "popular"})}}>{t("popular")}</a>
             <a className={"btn " + (dataStore.currentTab === "latest" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "latest"})}}>{t("latest")}</a>
           </div>
         </div>
+        
       </div>
+
       <div className={`pane-content--main--main scrollbar`} ref={scrollBox1}>
         <PostsList dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
         {dataStore.tweets.length == 0 && dataStore.isSearch && !dataStore.loadingButton ? 
