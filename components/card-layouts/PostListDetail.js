@@ -39,7 +39,9 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const dateTitle = utils.titleTime(item.createdAt)
   return (
     <>
+
       <div className={`pane-content--sec--main grid scrollbar`} ref={scrollBox2}>
+
         {/* Post Detail */}
         <div className="page">
 
