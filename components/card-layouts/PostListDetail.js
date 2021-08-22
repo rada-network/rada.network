@@ -4,7 +4,7 @@ import {CommentList} from "../comments/commentList";
 import React, {createRef, useEffect} from "react";
 import PerfectScrollbar from "perfect-scrollbar";
 
-import {observer} from "mobx-react";
+import {observer, useStaticRendering} from "mobx-react";
 import {getSourceFromUri, getSourceVideoFromUri} from "./PostsList";
 import utils from "../../lib/util";
 import {Vote} from "../vote/Vote";
@@ -15,6 +15,7 @@ import {
   DesktopView,
   MobileView
 } from "react-device-detect";
+import { useTranslation } from "next-i18next";
 
 export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
@@ -37,7 +38,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
     router.push(back,back,{shallow:true})
     
   }
-
+  const {t} = useTranslation()
   const date = utils.timeDifference(new Date(), new Date(item.createdAt))
   const dateTitle = utils.titleTime(item.createdAt)
   return (
@@ -53,7 +54,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
             <div className="page-back">
               <div className="btn" onClick={(e) => {handleBack(e)}}>
                 <span className="btn--caret-left"></span>
-                <span className="btn--text">Back</span>
+                <span className="btn--text">{t("back")}</span>
               </div>
             </div>
             : ""
@@ -87,6 +88,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
 
 const VideoDetail = function({item,dateTitle,date,voteStore}){
   const source = getSourceVideoFromUri(item)
+  const {t} = useTranslation()
   return (
     <div className="section post-detail post-detail-media">
       {/* Post Header */}
@@ -97,9 +99,9 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
               <span className="post-title--text">
                 {item.title}
               </span>
-              <span className="btn btn-post-link" title="Visit Website">
+              <span className="btn btn-post-link" title={t("visit website")}>
                 <span className="icon"><i class="fad fa-external-link" /></span>
-                <span className="btn--text sr-only">Visit Website</span>
+                <span className="btn--text sr-only">{t("visit website")}</span>
               </span>
             </a>
           </h1>
@@ -143,9 +145,9 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
         </div>
         <div className="post-actions">
           <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
-            <span className="btn nav-btn" title="Visit Website">
+            <span className="btn nav-btn" title={t("visit website")}>
               <span className="icon"><i class="fad fa-external-link" /></span>
-              <span className="btn--text">Visit Website</span>
+              <span className="btn--text">{t("visit website")}</span>
             </span>
           </a>
         </div>
@@ -155,6 +157,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
 }
 
 const NewsDetail = function ({item,dateTitle,date,voteStore}){
+  const {t} = useTranslation()
   return (
     <div className="section post-detail post-detail-news">
       {/* Post Header */}
@@ -165,9 +168,9 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
               <span className="post-title--text">
                 {item.title}
               </span>
-              <span className="btn btn-post-link" title="Visit Website">
+              <span className="btn btn-post-link" title={t("visit website")}>
                 <span className="icon"><i class="fad fa-external-link" /></span>
-                <span className="btn--text sr-only">Visit Website</span>
+                <span className="btn--text sr-only">{t("visit website")}</span>
               </span>
             </a>
           </h1>
@@ -209,9 +212,9 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
         }
         <div className="post-actions">
           <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
-            <span className="btn nav-btn" title="Visit Website">
+            <span className="btn nav-btn" title={t("visit website")}>
               <span className="icon"><i class="fad fa-external-link" /></span>
-              <span className="btn--text">Visit Website</span>
+              <span className="btn--text">{t("visit website")}</span>
             </span>
           </a>
         </div>
