@@ -3,6 +3,7 @@ import Link from "next/link";
 import {CommentList} from "../comments/commentList";
 import React, {createRef, useEffect} from "react";
 import PerfectScrollbar from "perfect-scrollbar";
+
 import {observer} from "mobx-react";
 import {getSourceFromUri, getSourceVideoFromUri} from "./PostsList";
 import utils from "../../lib/util";
@@ -74,7 +75,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
           {/* //Comments */}
         </div>
       </div>
-      
+
     </>
   )
 })
