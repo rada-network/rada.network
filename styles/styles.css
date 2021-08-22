@@ -345,6 +345,12 @@ Post Details
   @apply flex flex-col;
 }
 
+.post-body {}
+
+.post-detail {
+  @apply pt-0;
+}
+
 /* 
 Title 
 */
@@ -384,13 +390,11 @@ Metadata
   @apply mt-1;
 }
 
-.post-body {
+.post-header .metadata-source .metadata-value {
+  max-width: 160px;
+  @apply whitespace-nowrap md:max-w-none overflow-hidden overflow-ellipsis;
 }
 
-.post-detail {
-  @apply pt-0;
-  flex: 0;
-}
 
 /* 
 CTAs 
