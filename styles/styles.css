@@ -387,7 +387,7 @@ Metadata
 }
 
 .post-header .metadata {
-  @apply mt-1;
+  @apply mt-1 mb-1;
 }
 
 .post-header .metadata-source .metadata-value {
@@ -400,7 +400,7 @@ Metadata
 CTAs 
 */
 .post-detail .cta-wrapper {
-  @apply flex text-gray-800 dark:text-gray-200 mt-1;
+  @apply flex text-gray-800 dark:text-gray-200;
 }
 
 .post-detail .cta-wrapper .btn {
@@ -408,7 +408,6 @@ CTAs
 }
 
 .post-detail .cta-wrapper .btn-post-vote {
-  @apply px-2;
 }
 
 /*
