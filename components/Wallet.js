@@ -17,9 +17,9 @@ const btnRef = createRef()
 const WalletAvatar = ({wallet}) => {
   const text = wallet.account
   return (
-    <div className="mr-2">
+    <div className="">
       <Avatar
-        size={24}
+        size={16}
         name={text}
         variant="beam"
         colors={["#8B5CF6", "#34D399", "#FEF3C7", "#FBBF24", "#EF4444"]}
@@ -32,8 +32,8 @@ const ConnectedButton = ({wallet}) => (
   <div className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
     {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
     <WalletAvatar wallet={wallet} />
-    <span className="btn--text text-xs">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
-    <span className="icon ml-2"><i class="fad fa-sign-out" /></span>
+    <span className="btn--text text-xs ml-2">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
+    <span className="icon"><i class="fad fa-sign-out" /></span>
     <span className="hidden" onClick={e => wallet.reset()}>Logout</span>
   </div>
 )
