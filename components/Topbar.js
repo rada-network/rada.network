@@ -43,6 +43,7 @@ export const Topbar = ({dataStore}) => {
               <strong className="logo--text ml-2">
                 <span>RADA</span>
               </strong>
+              <span className="logo--badge">BETA</span>
             </a>
           </Link>
 
