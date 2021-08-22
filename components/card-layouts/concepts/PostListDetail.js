@@ -20,6 +20,9 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   useEffect(() => {
     // make scrollbar
     ps2 = new PerfectScrollbar(scrollBox2.current, {});
+    return () => {
+      ps2.destroy();
+    }
   }, [scrollBox2]);
   const handleBack = (e) => {
     detailStore.data = {}
