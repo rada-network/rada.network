@@ -7,14 +7,10 @@ import Head from 'next/head';
 import {Layout} from '../components/page-layouts/Global';
 import {Header} from '../components/headers/HeaderHome';
 import {Sidebar} from '../components/sidebar/Sidebar';
-import {ProjectsList} from '../components/card-layouts/ProjectsList';
-import {CategoryList} from '../components/card-layouts/CategoryList';
-import {MediaList} from '../components/card-layouts/MediaList';
 
 // Concepts
 import SearchInput from "../components/search"
 import {PostsList, PostsListWrapper} from "../components/card-layouts/PostsList";
-import {PostsListTrending} from "../components/card-layouts/PostsListTrending";
 import {Wallet} from "../components/Wallet"
 import ThemeSwitch from "../components/ThemeSwitch"
 import {RiExternalLinkLine} from "react-icons/ri";
