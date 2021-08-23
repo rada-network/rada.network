@@ -200,16 +200,16 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
 
       <div className="section-body post-body">
         <div className="post-content">
-          <div dangerouslySetInnerHTML={{__html: item.description}}/>
+          <div dangerouslySetInnerHTML={{__html: item.content}}/>
         </div>
-        {item.thumbnailUri !== "" ?
+        {/* {item.thumbnailUri !== "" ?
           <div className="post-media">
             <a title={item.title}>
               <img  title={item.title} className="post-media--img" src={item.thumbnailUri}/>
             </a>
           </div>
           : ""
-        }
+        } */}
         <div className="post-actions">
           <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
             <span className="btn nav-btn" title={t("visit website")}>
