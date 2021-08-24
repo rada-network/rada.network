@@ -16,6 +16,9 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   useEffect(() => {
     // make scrollbar
     ps2 = new PerfectScrollbar(scrollBox2.current, {});
+    return () => {
+      ps2.destroy()
+    }
   }, [scrollBox2]);
 
   const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))

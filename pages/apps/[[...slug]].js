@@ -138,7 +138,6 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
       item = Object.assign({},props.item.idea);
     }
     observableItemStore.type = detailStore.type.slice(0);
-    console.log(detailStore.type.slice(0,-1))
     item.item = {
       id : props.item.id,
       totalVote : props.item.totalVote,

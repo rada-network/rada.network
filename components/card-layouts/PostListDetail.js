@@ -13,6 +13,7 @@ import {useStore} from "../../lib/useStore";
 
 import {
   DesktopView,
+  isMobile,
   MobileView
 } from "react-device-detect";
 import { useTranslation } from "next-i18next";
@@ -22,15 +23,22 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const router = useRouter()
   let item = detailStore.data
   const scrollBox2 = createRef();
-  let ps2;
+  let ps2,className = "";
   const store = useStore()
-  useEffect(() => {
-    // make scrollbar
-    ps2 = new PerfectScrollbar(scrollBox2.current, {});
-    return () => {
-      ps2.destroy();
-    }
-  }, [scrollBox2]);
+  if (!isMobile){
+    useEffect(() => {
+      // make scrollbar
+      ps2 = new PerfectScrollbar(scrollBox2.current, {});
+      return () => {
+        ps2.destroy();
+      }
+    }, [scrollBox2]);
+    className = `pane-content--sec--main grid scrollbar`
+  }
+  else{
+    console.log(isMobile)
+    className = `pane-content--sec--main grid`
+  }
   const handleBack = (e) => {
     detailStore.data = {}
     dataStore.showDetail = false
@@ -44,7 +52,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   return (
     <>
 
-      <div className={`pane-content--sec--main grid scrollbar`} ref={scrollBox2}>
+      <div className={className} ref={scrollBox2}>
 
         {/* Post Detail */}
         <div className="page">

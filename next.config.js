@@ -19,9 +19,6 @@ module.exports = (phase) => {
   console.log(`isDev:${isDev}  isProd:${isProd}   isStaging:${isStaging}`)
 
   const env = {
-    future: {
-      webpack5: true,
-    },
     pwa: {
       dest: 'public',
       publicExcludes: ["!vendors/*", "!vendors/**/*", "!vendors/**/**/*", "!vendors/**/**/**/*"],
