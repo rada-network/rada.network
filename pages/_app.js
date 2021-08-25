@@ -27,7 +27,7 @@ const MyApp = appWithTranslation(({Component, pageProps}) => {
     const handleRouteChange = (url,{shallow}) => {
 
       if (shallow && !store.shallowInternal){
-        router.push(url,undefined)
+        router.push(url,url)
       }
       else{
         ga.pageview(url)
