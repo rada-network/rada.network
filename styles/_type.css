@@ -18,3 +18,35 @@ Core Contents
 .page-back .btn {
   @apply text-gray-800 text-opacity-50 dark:text-gray-200 dark:text-opacity-50;
 }
+
+
+/* 
+Post Content
+----------------------------------- */
+.post-content {
+  h2 {
+    @apply text-base font-semibold mt-8 mb-4;
+  }
+
+  h2:first-child {
+    @apply mt-0;
+  }
+
+  p, figure {
+    @apply my-4 max-w-full;
+  }
+
+  img {
+    @apply max-w-full text-center mx-auto;
+  }
+
+  figcaption {
+    @apply text-center mt-2 text-xs;
+  }
+
+  /* Tweaks */
+  .twitter-tweet,
+  .wp-caption {
+    @apply !w-full;
+  }
+}
