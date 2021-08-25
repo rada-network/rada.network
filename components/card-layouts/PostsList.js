@@ -37,7 +37,6 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
       ps1 = new PerfectScrollbar(scrollBox1.current, {});
       scrollBox1.current.removeEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
       scrollBox1.current.addEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
-      console.log("a")
       return () => {
         ps1.destroy();
       }

@@ -22,7 +22,6 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   }, [scrollBox2]);
 
   const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
-  console.log(dataStore.showDetail)
   return (
     <>
       <div className={`pane-content--sec` + (dataStore.showDetail ? " pane-content-active" : "")}>

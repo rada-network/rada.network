@@ -85,7 +85,7 @@ const getDataPostDetail = async ({query,id,lang}) => {
 }
 
 export default observer(function(props) {
-
+  console.log("wraper")
   const voteStore = new VoteStore();
   const homeStore = new HomeStore({isHome : true})
 

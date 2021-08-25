@@ -53,6 +53,8 @@ const itemFeedGql = gql`
                 thumbnailUri
                 source
                 content
+                isshowcontent
+                contentDisplay
                 keywords
                 createdAt
                 websiteUri
@@ -145,6 +147,8 @@ const itemByIdGql = gql`
                 thumbnailUri
                 source
                 content
+                isshowcontent
+                contentDisplay
                 keywords
                 createdAt
                 websiteUri
