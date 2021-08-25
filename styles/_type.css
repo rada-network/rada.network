@@ -44,6 +44,11 @@ Post Content
     @apply text-center mt-2 text-xs;
   }
 
+  blockquote {
+    @apply font-serif;
+    @apply border-l border-gray-800 dark:border-gray-200 pl-4;
+  }
+
   /* Tweaks */
   .twitter-tweet,
   .wp-caption {

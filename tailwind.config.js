@@ -17,6 +17,7 @@ module.exports = {
     // Add Font to Sans Font Array
     fontFamily: {
       sans: ['"Inter"', ...defaultTheme.fontFamily.sans],
+      serif: ['"Literata"', ...defaultTheme.fontFamily.serif],
     },
 
     // Set default container to align center and have a 1rem side padding

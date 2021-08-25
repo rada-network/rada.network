@@ -107,7 +107,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
                 {item.title}
               </span>
               <span className="btn btn-post-link" title={t("visit website")}>
-                <span className="icon"><i class="fad fa-external-link" /></span>
+                <span className="icon"><i className="fad fa-external-link" /></span>
                 <span className="btn--text sr-only">{t("visit website")}</span>
               </span>
             </a>
@@ -153,7 +153,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
         <div className="post-actions">
           <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
             <span className="btn nav-btn" title={t("visit website")}>
-              <span className="icon"><i class="fad fa-external-link" /></span>
+              <span className="icon"><i className="fad fa-external-link" /></span>
               <span className="btn--text">{t("visit website")}</span>
             </span>
           </a>
@@ -176,7 +176,7 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
                 {item.title}
               </span>
               <span className="btn btn-post-link" title={t("visit website")}>
-                <span className="icon"><i class="fad fa-external-link" /></span>
+                <span className="icon"><i className="fad fa-external-link" /></span>
                 <span className="btn--text sr-only">{t("visit website")}</span>
               </span>
             </a>
@@ -229,7 +229,7 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
         <div className="post-actions">
           <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
             <span className="btn nav-btn" title={t("visit website")}>
-              <span className="icon"><i class="fad fa-external-link" /></span>
+              <span className="icon"><i className="fad fa-external-link" /></span>
               <span className="btn--text">{t("visit website")}</span>
             </span>
           </a>
@@ -257,7 +257,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
                 {item.title}
               </span>
               <span className="btn btn-post-link" title="Visit Website">
-                <span className="icon"><i class="fad fa-external-link" /></span>
+                <span className="icon"><i className="fad fa-external-link" /></span>
                 <span className="btn--text sr-only">Visit Website</span>
               </span>
             </a>
@@ -377,7 +377,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
         <div className="post-actions">
           <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
             <span className="btn nav-btn" title="Visit Website">
-              <span className="icon"><i class="fad fa-external-link" /></span>
+              <span className="icon"><i className="fad fa-external-link" /></span>
               <span className="btn--text">Visit Website</span>
             </span>
           </a>

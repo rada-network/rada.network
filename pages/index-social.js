@@ -103,7 +103,7 @@ export default observer((props) => {
               {/* Close Button */}
               <div className="page-back">
                 <div className="btn">
-                  <span class="btn--caret-left"></span>
+                  <span className="btn--caret-left"></span>
                   <span className="btn--text">Back</span>
                 </div>
               </div>
@@ -119,41 +119,41 @@ export default observer((props) => {
                       </span>
                     </h1>
                   </div>
-                  <div class="metadata-wrapper justify-between">
-                    <div class="flex flex-shrink-0">
-                      <div class="metadata metadata-source">
-                        <span class="icon mr-1">
-                          <i class="fab fa-twitter"></i>
+                  <div className="metadata-wrapper justify-between">
+                    <div className="flex flex-shrink-0">
+                      <div className="metadata metadata-source">
+                        <span className="icon mr-1">
+                          <i className="fab fa-twitter"></i>
                         </span>
-                        <span class="metadata-value" title="CoinTelegraph">
+                        <span className="metadata-value" title="CoinTelegraph">
                           AIR | A Cardano Stake Pool
                         </span>
                       </div>
-                      <div class="metadata metadata-date">
+                      <div className="metadata metadata-date">
                         <span
-                          class="metadata-value"
+                          className="metadata-value"
                           title="6:28 PM - Jul 28, 2021"
                         >
                           16h
                         </span>
                       </div>
                     </div>
-                    <div class="flex flex-shrink-0">
-                      <div class="cta-wrapper">
-                        <button class="btn btn-post-vote">
-                          <span class="icon mr-1">
-                           <i class="fas fa-arrow-up"></i>
+                    <div className="flex flex-shrink-0">
+                      <div className="cta-wrapper">
+                        <button className="btn btn-post-vote">
+                          <span className="icon mr-1">
+                           <i className="fas fa-arrow-up"></i>
                           </span>
-                          <span class="btn-post-vote_total ml-1 whitespace-nowrap">
-                            <span class="inline-block">Upvote</span>
-                            <strong class="inline-block ml-2 font-bold">
+                          <span className="btn-post-vote_total ml-1 whitespace-nowrap">
+                            <span className="inline-block">Upvote</span>
+                            <strong className="inline-block ml-2 font-bold">
                               5
                             </strong>
                           </span>
                         </button>
-                        <a target="_blank" rel="nofollow" href="#" class="btn btn-post-link ml-2">
-                          <span class="whitespace-nowrap">Visit</span>
-                          <span class="icon ml-2"><RiExternalLinkLine /></span>
+                        <a target="_blank" rel="nofollow" href="#" className="btn btn-post-link ml-2">
+                          <span className="whitespace-nowrap">Visit</span>
+                          <span className="icon ml-2"><RiExternalLinkLine /></span>
                         </a>
                       </div>
                     </div>

@@ -34,7 +34,7 @@ export const Tabbar = () => {
 
         <a className="tab-item">
           <span className="icon tab-item--icon">
-            <i class="cf cf-btc widget-icon-cf" />
+            <i className="cf cf-btc widget-icon-cf" />
           </span>
           <span className="tab-item--text">
             Bitcoin
@@ -43,7 +43,7 @@ export const Tabbar = () => {
 
         <a className="tab-item tab-item--active">
           <span className="icon tab-item--icon">
-            <i class="cf cf-ada widget-icon-cf" />
+            <i className="cf cf-ada widget-icon-cf" />
           </span>
           <span className="tab-item--text">
             Cardano
@@ -52,7 +52,7 @@ export const Tabbar = () => {
 
         <a className="tab-item">
           <span className="icon tab-item--icon">
-            <i class="cf cf-eth widget-icon-cf" />
+            <i className="cf cf-eth widget-icon-cf" />
           </span>
           <span className="tab-item--text">
             Ethereum
@@ -61,7 +61,7 @@ export const Tabbar = () => {
 
         <a className="tab-item">
           <span className="icon tab-item--icon">
-            <i class="cf cf-dot widget-icon-cf" />
+            <i className="cf cf-dot widget-icon-cf" />
           </span>
           <span className="tab-item--text">
             Polkadot
@@ -70,7 +70,7 @@ export const Tabbar = () => {
 
         <a className="tab-item">
           <span className="icon tab-item--icon">
-            <i class="cf cf-bsc widget-icon-cf" />
+            <i className="cf cf-bsc widget-icon-cf" />
           </span>
           <span className="tab-item--text">
             BSC
@@ -79,7 +79,7 @@ export const Tabbar = () => {
 
         <a className="tab-item">
           <span className="icon tab-item--icon">
-            <i class="cf cf-sol widget-icon-cf" />
+            <i className="cf cf-sol widget-icon-cf" />
           </span>
           <span className="tab-item--text">
             Solana

@@ -38,23 +38,23 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </a>
               </div>
 
-              <div class="metadata-wrapper justify-between mt-1">
-                <div class="flex flex-shrink-0">
-                  <div class="metadata metadata-source">
-                    <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
-                    <span class="metadata-value" title="CoinTelegraph">DailyHodl</span>
+              <div className="metadata-wrapper justify-between mt-1">
+                <div className="flex flex-shrink-0">
+                  <div className="metadata metadata-source">
+                    <span className="icon mr-1"><i className="fad fa-newspaper"></i></span>
+                    <span className="metadata-value" title="CoinTelegraph">DailyHodl</span>
                   </div>
-                  <div class="metadata metadata-date">
-                    <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+                  <div className="metadata metadata-date">
+                    <span className="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
                   </div>
                 </div>
-                <div class="flex metadata-wrapper_nodivide">
-                  <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-comment"></i></span>
-                    <span class="">107</span>
+                <div className="flex metadata-wrapper_nodivide">
+                  <div className="metadata">
+                    <span className="icon mr-1"><i className="far fa-comment"></i></span>
+                    <span className="">107</span>
                   </div>
-                  <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-arrow-up"></i></span>
+                  <div className="metadata">
+                    <span className="icon mr-1"><i className="far fa-arrow-up"></i></span>
                     <span>280</span>
                   </div>
                 </div>
@@ -81,23 +81,23 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </a>
               </div>
 
-              <div class="metadata-wrapper justify-between mt-1">
-                <div class="flex flex-shrink-0">
-                  <div class="metadata metadata-source">
-                    <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
-                    <span class="metadata-value" title="CoinTelegraph">Project Catalyst</span>
+              <div className="metadata-wrapper justify-between mt-1">
+                <div className="flex flex-shrink-0">
+                  <div className="metadata metadata-source">
+                    <span className="icon mr-1"><i className="fad fa-newspaper"></i></span>
+                    <span className="metadata-value" title="CoinTelegraph">Project Catalyst</span>
                   </div>
-                  <div class="metadata metadata-date">
-                    <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+                  <div className="metadata metadata-date">
+                    <span className="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
                   </div>
                 </div>
-                <div class="flex metadata-wrapper_nodivide">
-                  <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-comment"></i></span>
-                    <span class="">28</span>
+                <div className="flex metadata-wrapper_nodivide">
+                  <div className="metadata">
+                    <span className="icon mr-1"><i className="far fa-comment"></i></span>
+                    <span className="">28</span>
                   </div>
-                  <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-arrow-up"></i></span>
+                  <div className="metadata">
+                    <span className="icon mr-1"><i className="far fa-arrow-up"></i></span>
                     <span>83</span>
                   </div>
                 </div>
@@ -124,23 +124,23 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </a>
               </div>
 
-              <div class="metadata-wrapper justify-between mt-1">
-                <div class="flex flex-shrink-0">
-                  <div class="metadata metadata-source">
-                    <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
-                    <span class="metadata-value" title="CoinTelegraph">CryptoTalk</span>
+              <div className="metadata-wrapper justify-between mt-1">
+                <div className="flex flex-shrink-0">
+                  <div className="metadata metadata-source">
+                    <span className="icon mr-1"><i className="fad fa-newspaper"></i></span>
+                    <span className="metadata-value" title="CoinTelegraph">CryptoTalk</span>
                   </div>
-                  <div class="metadata metadata-date">
-                    <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+                  <div className="metadata metadata-date">
+                    <span className="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
                   </div>
                 </div>
-                <div class="flex metadata-wrapper_nodivide">
-                  <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-comment"></i></span>
-                    <span class="">15</span>
+                <div className="flex metadata-wrapper_nodivide">
+                  <div className="metadata">
+                    <span className="icon mr-1"><i className="far fa-comment"></i></span>
+                    <span className="">15</span>
                   </div>
-                  <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-arrow-up"></i></span>
+                  <div className="metadata">
+                    <span className="icon mr-1"><i className="far fa-arrow-up"></i></span>
                     <span>27</span>
                   </div>
                 </div>
@@ -167,23 +167,23 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </a>
               </div>
 
-              <div class="metadata-wrapper justify-between mt-1">
-                <div class="flex flex-shrink-0">
-                  <div class="metadata metadata-source">
-                    <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
-                    <span class="metadata-value" title="CoinTelegraph">CoinTelegraph</span>
+              <div className="metadata-wrapper justify-between mt-1">
+                <div className="flex flex-shrink-0">
+                  <div className="metadata metadata-source">
+                    <span className="icon mr-1"><i className="fad fa-newspaper"></i></span>
+                    <span className="metadata-value" title="CoinTelegraph">CoinTelegraph</span>
                   </div>
-                  <div class="metadata metadata-date">
-                    <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+                  <div className="metadata metadata-date">
+                    <span className="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
                   </div>
                 </div>
-                <div class="flex metadata-wrapper_nodivide">
-                  <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-comment"></i></span>
-                    <span class="">2</span>
+                <div className="flex metadata-wrapper_nodivide">
+                  <div className="metadata">
+                    <span className="icon mr-1"><i className="far fa-comment"></i></span>
+                    <span className="">2</span>
                   </div>
-                  <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-arrow-up"></i></span>
+                  <div className="metadata">
+                    <span className="icon mr-1"><i className="far fa-arrow-up"></i></span>
                     <span>88</span>
                   </div>
                 </div>
@@ -210,23 +210,23 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
                 </a>
               </div>
 
-              <div class="metadata-wrapper justify-between mt-1">
-                <div class="flex flex-shrink-0">
-                  <div class="metadata metadata-source">
-                    <span class="icon mr-1"><i class="fad fa-newspaper"></i></span>
-                    <span class="metadata-value" title="CoinTelegraph">U.Today</span>
+              <div className="metadata-wrapper justify-between mt-1">
+                <div className="flex flex-shrink-0">
+                  <div className="metadata metadata-source">
+                    <span className="icon mr-1"><i className="fad fa-newspaper"></i></span>
+                    <span className="metadata-value" title="CoinTelegraph">U.Today</span>
                   </div>
-                  <div class="metadata metadata-date">
-                    <span class="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
+                  <div className="metadata metadata-date">
+                    <span className="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
                   </div>
                 </div>
-                <div class="flex metadata-wrapper_nodivide">
-                  <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-comment"></i></span>
-                    <span class="">15</span>
+                <div className="flex metadata-wrapper_nodivide">
+                  <div className="metadata">
+                    <span className="icon mr-1"><i className="far fa-comment"></i></span>
+                    <span className="">15</span>
                   </div>
-                  <div class="metadata">
-                    <span class="icon mr-1"><i class="far fa-arrow-up"></i></span>
+                  <div className="metadata">
+                    <span className="icon mr-1"><i className="far fa-arrow-up"></i></span>
                     <span>57</span>
                   </div>
                 </div>

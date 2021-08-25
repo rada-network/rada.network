@@ -33,7 +33,7 @@ const ConnectedButton = ({wallet}) => (
     {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
     <WalletAvatar wallet={wallet} />
     <span className="btn--text text-xs ml-2">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
-    <span className="icon"><i class="fad fa-sign-out" /></span>
+    <span className="icon"><i className="fad fa-sign-out" /></span>
     <span className="hidden" onClick={e => wallet.reset()}>Logout</span>
   </div>
 )

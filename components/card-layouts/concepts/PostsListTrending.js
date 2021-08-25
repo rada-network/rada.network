@@ -18,12 +18,12 @@ export const PostsListTrending = ({title, extraClass}) => {
         <div className={`section-title`}>
           <span className="text-color-title">{title}</span>
         </div>
-        <div class="section-cta">
-          <a class="btn">
+        <div className="section-cta">
+          <a className="btn">
             <span classname="btn--text text-color-desc">
               More
             </span>
-            <span class="btn--caret-right"></span>
+            <span className="btn--caret-right"></span>
           </a>
         </div>
       </div>
