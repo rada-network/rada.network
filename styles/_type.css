@@ -30,6 +30,20 @@ Post Content Typo
   }
 }
 
+.post-content h3 {
+  @apply text-base font-semibold mt-4 mb-4;
+  &:first-child {
+    @apply mt-0;
+  }
+}
+
+.post-content h4 {
+  @apply text-base font-semibold mt-4 mb-4;
+  &:first-child {
+    @apply mt-0;
+  }
+}
+
 .post-content p, 
 .post-content figure, 
 .post-content blockquote {
@@ -85,5 +99,5 @@ Post Content Typo
 }
 
 .post-content .wp-smiley {
-  @apply text-left mx-0 my-2;
+  @apply hidden;
 }
