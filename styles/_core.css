@@ -29,9 +29,9 @@ a {
 .post-content a {
   /* Seperating each at.apply for clearer declaration */
   /* This is for visual option */
-  @apply text-primary-700 hover:text-primary-900 transition;
-  @apply dark:text-primary-500 hover:text-primary-700;
+  @apply text-primary-700 hover:text-primary-700 transition;
   @apply border-b border-primary-700 border-opacity-20 hover:border-opacity-100;
+  @apply dark:text-primary-500 dark:hover:text-primary-500;
   @apply dark:border-primary-500 dark:border-opacity-50 dark:hover:border-opacity-100;
 }
 
