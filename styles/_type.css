@@ -32,7 +32,7 @@ Post Content
     @apply mt-0;
   }
 
-  p, figure {
+  p, figure, blockquote {
     @apply my-4 max-w-full;
   }
 
@@ -45,13 +45,24 @@ Post Content
   }
 
   blockquote {
-    @apply font-serif;
-    @apply border-l border-gray-800 dark:border-gray-200 pl-4;
+    @apply bg-gray-500 bg-opacity-10 px-4 py-3 rounded;
   }
+
+  blockquote p:first-child {
+    @apply mt-0;
+  }
+
+  blockquote p:last-child {
+    @apply mb-0;
+  }
+
 
   /* Tweaks */
   .twitter-tweet,
   .wp-caption {
     @apply !w-full;
+  }
+  .wp-smiley {
+    @apply text-left mx-0 my-2;
   }
 }

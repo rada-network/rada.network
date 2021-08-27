@@ -40,13 +40,6 @@ export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
         onLoad="this.media='all'"
         key="google-fonts"
       />
-      <link 
-        href="https://fonts.googleapis.com/css2?family=Litarata:ital@1&display=swap" 
-        rel="stylesheet"
-        media="print"
-        onLoad="this.media='all'"
-        key="google-fonts_2"
-      />
       <link
         rel="stylesheet"
         href="/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
