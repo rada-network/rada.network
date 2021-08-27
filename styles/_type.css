@@ -56,16 +56,19 @@ Post Content Typo
   @apply bg-gray-100 dark:bg-gray-800 px-4 py-3 rounded relative;
 }
 
-.post-content .twitter-tweet {
-  @apply bg-blue-50 dark:bg-blue-900;
-}
-
 .post-content blockquote p:first-child {
   @apply mt-0;
 }
 
 .post-content blockquote p:last-child {
   @apply mb-0;
+}
+
+.post-content .twitter-tweet {
+  @apply bg-blue-50 dark:bg-blue-900 font-medium;
+  p {
+    @apply font-normal !mb-2;
+  }
 }
 
 /* Tweaks */
