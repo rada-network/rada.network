@@ -43,12 +43,21 @@ Post Content Typo
   @apply max-w-full text-center mx-auto;
 }
 
+.post-content figure  {
+  @apply text-center text-xs;
+}
+
 .post-content figcaption {
   @apply text-center mt-2 text-xs;
 }
 
-.post-content blockquote {
+.post-content blockquote,
+.post-content .twitter-tweet {
   @apply bg-gray-100 dark:bg-gray-800 px-4 py-3 rounded relative;
+}
+
+.post-content .twitter-tweet {
+  @apply bg-blue-50 dark:bg-blue-900;
 }
 
 .post-content blockquote p:first-child {
@@ -65,11 +74,8 @@ Post Content Typo
   @apply !w-full;
 }
 
-.post-content .twitter-tweet {
-}
-
 .post-content .twitter-tweet:after {
-  @apply block float-right -mt-5;
+  @apply block absolute right-2 bottom-1;
   @apply text-blue-500 text-base rounded-sm;
   font-family: "Font Awesome 5 Brands";
   content: "\f099";

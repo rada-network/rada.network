@@ -364,7 +364,7 @@ Post Details
 Title 
 */
 .post-title h1 {
-  @apply text-lg font-medium;
+  @apply text-lg font-semibold;
 }
 
 .post-title--text {
