@@ -17,7 +17,6 @@ import { useTranslation } from 'next-i18next';
 import { data } from 'autoprefixer';
 
 
-
 export const PostsListWrapper = observer(function ({dataStore,detailStore,voteStore}){
   const handleChangeFilter = ({filter}) =>{
     if (dataStore.loadingButton) return false

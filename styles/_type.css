@@ -21,48 +21,60 @@ Core Contents
 
 
 /* 
-Post Content
+Post Content Typo
 ----------------------------------- */
-.post-content {
-  h2 {
-    @apply text-base font-semibold mt-8 mb-4;
-  }
-
-  h2:first-child {
+.post-content h2 {
+  @apply text-base font-semibold mt-8 mb-4;
+  &:first-child {
     @apply mt-0;
   }
+}
 
-  p, figure, blockquote {
-    @apply my-4 max-w-full;
-  }
-
-  img {
-    @apply max-w-full text-center mx-auto;
-  }
-
-  figcaption {
-    @apply text-center mt-2 text-xs;
-  }
-
-  blockquote {
-    @apply bg-gray-500 bg-opacity-10 px-4 py-3 rounded;
-  }
-
-  blockquote p:first-child {
+.post-content p, 
+.post-content figure, 
+.post-content blockquote {
+  @apply my-4 max-w-full;
+  &:first-child {
     @apply mt-0;
   }
+}
 
-  blockquote p:last-child {
-    @apply mb-0;
-  }
+.post-content img {
+  @apply max-w-full text-center mx-auto;
+}
 
+.post-content figcaption {
+  @apply text-center mt-2 text-xs;
+}
 
-  /* Tweaks */
-  .twitter-tweet,
-  .wp-caption {
-    @apply !w-full;
-  }
-  .wp-smiley {
-    @apply text-left mx-0 my-2;
-  }
+.post-content blockquote {
+  @apply bg-gray-100 dark:bg-gray-800 px-4 py-3 rounded relative;
+}
+
+.post-content blockquote p:first-child {
+  @apply mt-0;
+}
+
+.post-content blockquote p:last-child {
+  @apply mb-0;
+}
+
+/* Tweaks */
+.post-content .twitter-tweet,
+.post-content .wp-caption {
+  @apply !w-full;
+}
+
+.post-content .twitter-tweet {
+}
+
+.post-content .twitter-tweet:after {
+  @apply block float-right -mt-5;
+  @apply text-blue-500 text-base rounded-sm;
+  font-family: "Font Awesome 5 Brands";
+  content: "\f099";
+}
+
+.post-content .wp-smiley {
+  @apply text-left mx-0 my-2;
 }

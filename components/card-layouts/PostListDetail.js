@@ -210,11 +210,12 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
           {item.isshowcontent ? 
             <div dangerouslySetInnerHTML={{__html: item.contentDisplay}}/> 
             :
-            (item.description.length > 100 ? 
-              <div dangerouslySetInnerHTML={{__html: item.description}}/> 
-              :
-              ""  
-            )
+            // (item.description.length > 100 ? 
+            //   <div dangerouslySetInnerHTML={{__html: item.description}}/> 
+            //   :
+            //   ""  
+            // )
+            <div dangerouslySetInnerHTML={{__html: item.contentDisplay}}/> 
           }
           
         </div>
