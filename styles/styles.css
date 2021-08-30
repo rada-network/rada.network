@@ -11,7 +11,7 @@ Layout
 Nav Panels 
 */
 .pane-left {
-  @apply flex flex-shrink-0 flex-col justify-between h-full;
+  @apply flex flex-shrink-0 flex-auto flex-col justify-between h-full;
   @apply bg-gray-50 border-r border-gray-400 border-opacity-10 z-50;
   @apply dark:bg-deepgray-100;
   width: var(--paneleft-width);
@@ -74,13 +74,9 @@ Main Panels
 }
 
 .pane-content {
-  @apply flex;
-  /* @apply flex flex-wrap md:flex-nowrap w-full h-full; */
+  @apply flex flex-wrap md:flex-nowrap w-full h-full;
 }
 
-/* 
-Card List Panel 
-*/
 .pane-content--main {
   @apply flex flex-col w-full h-full;
   @apply border-r border-gray-100 dark:border-gray-800;
@@ -118,14 +114,21 @@ Card List Area
 Reader / Page Area
 */
 .pane-content--sec {
-  height: calc(100vh - var(--topbar-height) - var(--toolbar-height));
-  @apply hidden md:flex flex-col w-full lg:h-full overflow-x-hidden overflow-y-auto;
+  @apply hidden flex-auto md:flex flex-col w-full lg:h-full overflow-x-hidden overflow-y-auto;
+}
+
+@screen md {
+  .pane-content--sec {
+    height: calc(100vh - var(--topbar-height) - var(--toolbar-height));
+  }
 }
 
 @media (max-width: 768px){
   .pane-content--sec.pane-content-active {
+    @apply fixed flex;
     right: 0;
-    @apply absolute flex;
+    top: var(--topbar-height);
+    bottom: var(--navbar-height);
   }
 }
 
