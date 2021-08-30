@@ -99,8 +99,8 @@ Main Panels
 Card List Area
 */
 .pane-content--main--main {
-  height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height));
-  @apply flex flex-col w-full overflow-x-hidden overflow-y-auto;
+  /* height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height)); */
+  @apply flex flex-auto flex-col w-full h-0 overflow-x-hidden overflow-y-auto;
   @apply bg-bluegray-50 dark:bg-deepgray-100;
 }
 
