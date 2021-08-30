@@ -94,7 +94,7 @@ Post Content Typo
 }
 
 .post-content blockquote.twitter-tweet {
-  @apply bg-blue-50 border border-gray-400 border-opacity-40 font-normal rounded py-4;
+  @apply bg-blue-50 dark:bg-blue-900 border border-gray-400 border-opacity-40 font-normal rounded py-4;
   p {
     @apply !mb-2;
   }
