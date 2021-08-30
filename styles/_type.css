@@ -24,7 +24,6 @@ Core Contents
 Post Content Typo
 ----------------------------------- */
 .post-content a {
-  @apply inline-block;
 }
 
 .post-content h2 {
@@ -106,6 +105,10 @@ Post Content Typo
   @apply text-blue-500 text-lg rounded-sm;
   font-family: "Font Awesome 5 Brands";
   content: "\f099";
+}
+
+.post-content .twitter-tweet-rendered {
+  @apply !max-w-none !my-4;
 }
 
 .post-content .wp-smiley {

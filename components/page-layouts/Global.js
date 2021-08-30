@@ -38,7 +38,9 @@ export const Layout = ({children,meta,dataStore,detailStore}) => {
 
     <div className={`main-layout`}>
 
-      <div className="pane-left">
+      {/* Mobile / Tablet Navbar */}
+      <Screen upto="md">
+      <div className="pane-bottom">
         <Navbar dataStore={dataStore} detailStore={detailStore} />
         <Screen from="lg">
         <div className="pane-left--bottom">
@@ -47,6 +49,18 @@ export const Layout = ({children,meta,dataStore,detailStore}) => {
         </div>
         </Screen>
       </div>
+      </Screen>
+
+      {/* Desktop Navbar */}
+      <Screen from="lg">
+      <div className="pane-left">
+        <Navbar dataStore={dataStore} detailStore={detailStore} />
+        <div className="pane-left--bottom">
+          <LanguageSwitch dataStore={dataStore} />
+          <ThemeSwitch />
+        </div>
+      </div>
+      </Screen>
 
       <div className={`pane-center`}>
         

@@ -97,7 +97,7 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
         <PostsList dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
         {dataStore.tweets.length == 0 && dataStore.isSearch && !dataStore.loadingButton ? 
         <p className="search-not-found">
-          <strong>{dataStore.query}</strong> {t("search not found")}
+          <strong>{dataStore.query}</strong>&nbsp;{t("search not found")}
         </p>
         :
         ""

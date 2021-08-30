@@ -7,12 +7,15 @@ import {useStore} from "../lib/useStore";
 import { useTranslation } from 'next-i18next';
 import utils from "../lib/util";
 
+import Screen from "./Resposive";
+
 export const Navbar = ({dataStore,detailStore}) => {
   const { t } = useTranslation("navbar")
   return (
     <>
       <nav className={`navbar`}>
 
+        <Screen from="lg">
         <div className="logo">
           {/* Logo */}
           <Link href={`/`}>
@@ -25,6 +28,7 @@ export const Navbar = ({dataStore,detailStore}) => {
             </a>
           </Link>
         </div>
+        </Screen>
 
         {/* Main Nav */}
         <div className={`navbar-main`} >
