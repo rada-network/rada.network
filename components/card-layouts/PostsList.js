@@ -46,7 +46,6 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
       scrollBox1.current.removeEventListener('scroll', (e) => {mobileScroll(e)});
       scrollBox1.current.addEventListener('scroll', (e) => {mobileScroll(e)});
     },[])
-
   }
 
   const mobileScroll = function(e){
