@@ -28,8 +28,13 @@
 
 .navbar-search--close {
   @apply absolute right-4 top-1.5 w-4 h-4 cursor-pointer opacity-80;
-  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
-  background-size: contain;
+  &:before {
+    @apply block;
+    font-family: "Font Awesome 5 Pro";
+    content: "\f057";
+    font-weight: bold;
+    line-height: 1;
+  }
 }
 
 

@@ -180,7 +180,7 @@ Top & Tool Bars
 /* Toolbar */
 .pane-content--main--top .search-wrapper {
   /* max-width: 50%; */
-  @apply md:max-w-none;
+  @apply md:max-w-none md:w-full;
 }
 
 .pane-content--main--top .cta-wrapper {
