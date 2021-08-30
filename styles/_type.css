@@ -82,7 +82,7 @@ Post Content Typo
 .post-content blockquote,
 .post-content blockquote.twitter-tweet {
   @apply border-l-4 border-purple-500 px-4 relative;
-  @apply font-medium;
+  @apply font-semibold;
 }
 
 .post-content blockquote p:first-child {
@@ -99,7 +99,7 @@ Post Content Typo
     @apply !mb-2;
   }
   p:last-child {
-    @apply font-medium;
+    @apply font-semibold;
   }
 }
 
