@@ -2,7 +2,7 @@ import {RiExternalLinkLine} from "react-icons/ri";
 import Link from "next/link";
 import {CommentList} from "../comments/commentList";
 import React, {createRef, useEffect} from "react";
-import PerfectScrollbar from "perfect-scrollbar";
+// import PerfectScrollbar from "perfect-scrollbar";
 
 import {observer, useStaticRendering} from "mobx-react";
 import {getSourceFromUri, getSourceVideoFromUri} from "./PostsList";
