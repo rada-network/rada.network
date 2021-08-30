@@ -1,5 +1,5 @@
 {
-  "name": "Rada",
+  "name": "rada",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -43,6 +43,7 @@
     "react-switch": "^6.0.0",
     "react-textarea-autosize": "^8.3.2",
     "react-tooltip": "^4.2.21",
+    "slug": "^5.1.0",
     "swr": "^0.5.5",
     "use-wallet": "^0.9.0"
   },

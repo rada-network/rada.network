@@ -29,11 +29,12 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   if (!isMobile){
     useEffect(() => {
       // make scrollbar
-      ps2 = new PerfectScrollbar(scrollBox2.current, {});
-      return () => {
-        ps2.destroy();
-      }
-    }, [scrollBox2]);
+      // ps2 = new PerfectScrollbar(scrollBox2.current, {});
+      // return () => {
+      //   ps2.destroy();
+      // }
+    
+    }, []);
     className = `pane-content--sec--main grid scrollbar`
   }
   else{

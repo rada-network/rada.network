@@ -30,24 +30,24 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
 
   let ps1;
 
-  if (!isMobile){
-    useEffect(() => {
-      // make scrollbar
-      ps1 = new PerfectScrollbar(scrollBox1.current, {});
-      scrollBox1.current.removeEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
-      scrollBox1.current.addEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
-      return () => {
-        ps1.destroy();
-      }
-    }, [scrollBox1]);
-  }
-  else{
+  // if (!isMobile){
+  //   useEffect(() => {
+  //     // make scrollbar
+  //     ps1 = new PerfectScrollbar(scrollBox1.current, {});
+  //     scrollBox1.current.removeEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
+  //     scrollBox1.current.addEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
+  //     return () => {
+  //       ps1.destroy();
+  //     }
+  //   }, [scrollBox1]);
+  // }
+  // else{
     useEffect(() =>{
       scrollBox1.current.removeEventListener('scroll', (e) => {mobileScroll(e)});
       scrollBox1.current.addEventListener('scroll', (e) => {mobileScroll(e)});
     },[])
 
-  }
+  // }
 
   const mobileScroll = function(e){
     const bottom = e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight + 10;
