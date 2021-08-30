@@ -10,6 +10,7 @@ import utils from "../../lib/util";
 import {Vote} from "../vote/Vote";
 import {useRouter} from "next/router";
 import {useStore} from "../../lib/useStore";
+import {userEffect} from "react"
 
 import {
   DesktopView,
@@ -39,6 +40,23 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   // else{
   //   className = `pane-content--sec--main grid`
   // }
+
+    useEffect(() => {
+      // make scrollbar
+      // let iframes = document.querySelectorAll('iframe')
+      // iframes.forEach((iframe) => {
+      //   // iframe.addEventListener('load', function() {
+      //   //   const iframeBody = this.contentWindow.document.body;
+      //   //   const height = Math.max(iframeBody.scrollHeight, iframeBody.offsetHeight);
+      //   //   this.style.height = `${height}px`;
+      //   // })
+      //   iframe.setAttribute("src",iframe.getAttribute("data-src"))
+      // })
+
+      if (typeof twttr !== undefined) {
+        twttr.widgets.load()
+      }
+    }, [item]);
 
   const handleBack = (e) => {
     detailStore.data = {}
