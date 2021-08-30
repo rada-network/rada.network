@@ -659,17 +659,17 @@ Perfect Scrollbar
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0);
+  @apply bg-transparent;
   border-radius: 12px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.1);
+  @apply bg-gray-200 dark:bg-gray-500;
   border-radius: 12px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,0,0,0.2);
+  @apply bg-primary-500;
 }
 
 .scrollbar.ps .ps__rail-x {
