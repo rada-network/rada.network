@@ -23,8 +23,9 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const router = useRouter()
   let item = detailStore.data
   const scrollBox2 = createRef();
-  let ps2,className = "";
   const store = useStore()
+
+  let ps2,className = "";
   if (!isMobile){
     useEffect(() => {
       // make scrollbar
@@ -38,6 +39,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   else{
     className = `pane-content--sec--main grid`
   }
+
   const handleBack = (e) => {
     detailStore.data = {}
     dataStore.showDetail = false

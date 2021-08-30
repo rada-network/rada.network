@@ -23,37 +23,38 @@ Core Contents
 /* 
 Post Content Typo
 ----------------------------------- */
-.post-content a {
-}
-
-.post-content h2 {
-  @apply text-base font-semibold mt-8 mb-4;
-  &:first-child {
-    @apply mt-0;
-  }
-}
-
-.post-content h3 {
-  @apply text-base font-semibold mt-4 mb-4;
-  &:first-child {
-    @apply mt-0;
-  }
-}
-
-.post-content h4 {
-  @apply text-base font-semibold mt-4 mb-4;
-  &:first-child {
-    @apply mt-0;
-  }
-}
-
 .post-content p,
 .post-content ul,
 .post-content figure, 
-.post-content blockquote {
-  @apply my-4 max-w-full;
-  &:first-child {
-    @apply mt-0;
+.post-content blockquote,
+.post-content hr,
+.post-content table {
+  @apply mb-4 max-w-full;
+}
+
+.post-content a {
+}
+
+.post-content h2,
+.post-content .pTitle {
+  @apply text-base font-semibold mb-4;
+}
+
+.post-content h3,
+.post-content .pHead {
+  @apply text-sm font-semibold mb-4;
+}
+
+.post-content h4 {
+  @apply text-sm font-semibold mb-4;
+}
+
+.post-content {
+  h2 strong,
+  h3 strong,
+  h4 strong,
+  h5 strong {
+    @apply font-semibold;
   }
 }
 
@@ -69,8 +70,13 @@ Post Content Typo
   @apply text-center text-xs;
 }
 
-.post-content figcaption {
+.post-content figcaption,
+.post-content .pCaption {
   @apply text-center mt-2 text-xs;
+}
+
+.post-content pre {
+  @apply whitespace-pre-wrap;
 }
 
 .post-content blockquote,
@@ -88,9 +94,12 @@ Post Content Typo
 }
 
 .post-content blockquote.twitter-tweet {
-  @apply border border-gray-400 border-opacity-40 font-medium rounded py-4;
+  @apply bg-blue-50 border border-gray-400 border-opacity-40 font-normal rounded py-4;
   p {
-    @apply font-normal !mb-2;
+    @apply !mb-2;
+  }
+  p:last-child {
+    @apply font-medium;
   }
 }
 
