@@ -3,6 +3,7 @@ Even more custom variables here
 */
 
 :root {
+  --paneleft-width: 7rem;
   --navbar-height:  48px;
   --toolbar-height: 48px;
   --topbar-height:  48px;

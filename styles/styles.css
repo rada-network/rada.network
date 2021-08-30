@@ -11,9 +11,10 @@ Layout
 Nav Panels 
 */
 .pane-left {
-  @apply flex flex-col justify-between w-28 h-full;
+  @apply flex flex-shrink-0 flex-col justify-between h-full;
   @apply bg-gray-50 border-r border-gray-400 border-opacity-10 z-50;
   @apply dark:bg-deepgray-100;
+  width: var(--paneleft-width);
 }
 
 .pane-left--bottom {
@@ -77,6 +78,9 @@ Main Panels
   /* @apply flex flex-wrap md:flex-nowrap w-full h-full; */
 }
 
+/* 
+Card List Panel 
+*/
 .pane-content--main {
   @apply flex flex-col w-full h-full;
   @apply border-r border-gray-100 dark:border-gray-800;
@@ -84,7 +88,7 @@ Main Panels
 
 @screen lg {
   .pane-content--main {
-    width: calc(100% - 7rem);
+    width: calc(100% - var(--paneleft-width));
   }
 }
 
