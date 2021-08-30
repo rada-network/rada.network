@@ -1,6 +1,6 @@
 import {observer} from "mobx-react";
 import React, {createRef, useEffect} from "react";
-import PerfectScrollbar from "perfect-scrollbar";
+// import PerfectScrollbar from "perfect-scrollbar";
 import Screen from "./Resposive";
 import {Wallet} from "./Wallet";
 import {PostListDetail} from "./card-layouts/PostListDetail";
@@ -10,17 +10,16 @@ import dynamic from "next/dynamic";
 
 export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
 
-  const scrollBox2 = createRef();
-  let ps2;
+  // const scrollBox2 = createRef();
+  // let ps2;
 
-  useEffect(() => {
-    // make scrollbar
-    // ps2 = new PerfectScrollbar(scrollBox2.current, {});
-    // return () => {
-    //   ps2.destroy()
-    // }
-  
-  }, [scrollBox2]);
+  // useEffect(() => {
+  //   // make scrollbar
+  //   ps2 = new PerfectScrollbar(scrollBox2.current, {});
+  //   return () => {
+  //     ps2.destroy()
+  //   }
+  // }, [scrollBox2]);
 
   const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
   return (
@@ -45,7 +44,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
           ""
         }
 
-        <div className={`pane-content--sec--main scrollbar ` + (dataStore.showDetail ? "hidden" : "")} ref={scrollBox2}>
+        <div className={`pane-content--sec--main scrollbar ` + (dataStore.showDetail ? "hidden" : "")}>
 
 
           <Intro dataStore={dataStore} />

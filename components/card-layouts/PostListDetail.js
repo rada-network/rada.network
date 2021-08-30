@@ -2,7 +2,7 @@ import {RiExternalLinkLine} from "react-icons/ri";
 import Link from "next/link";
 import {CommentList} from "../comments/commentList";
 import React, {createRef, useEffect} from "react";
-import PerfectScrollbar from "perfect-scrollbar";
+// import PerfectScrollbar from "perfect-scrollbar";
 
 import {observer, useStaticRendering} from "mobx-react";
 import {getSourceFromUri, getSourceVideoFromUri} from "./PostsList";
@@ -25,21 +25,20 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const scrollBox2 = createRef();
   const store = useStore()
 
-  let ps2,className = "";
-  if (!isMobile){
-    useEffect(() => {
-      // make scrollbar
-      // ps2 = new PerfectScrollbar(scrollBox2.current, {});
-      // return () => {
-      //   ps2.destroy();
-      // }
-    
-    }, []);
-    className = `pane-content--sec--main grid scrollbar`
-  }
-  else{
-    className = `pane-content--sec--main grid`
-  }
+  // let ps2,className = "";
+  // if (!isMobile){
+  //   useEffect(() => {
+  //     // make scrollbar
+  //     ps2 = new PerfectScrollbar(scrollBox2.current, {});
+  //     return () => {
+  //       ps2.destroy();
+  //     }
+  //   }, [scrollBox2]);
+  //   className = `pane-content--sec--main grid scrollbar`
+  // }
+  // else{
+  //   className = `pane-content--sec--main grid`
+  // }
 
   const handleBack = (e) => {
     detailStore.data = {}
@@ -54,7 +53,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   return (
     <>
 
-      <div className={className} ref={scrollBox2}>
+      <div className="pane-content--sec--main grid scrollbar">
 
         {/* Post Detail */}
         <div className="page">
