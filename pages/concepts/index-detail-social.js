@@ -4,24 +4,24 @@ import Link from 'next/link'
 import Head from 'next/head';
 
 // Components
-import {Layout} from '../components/page-layouts/Global';
-import {Header} from '../components/headers/HeaderHome';
-import {Sidebar} from '../components/sidebar/Sidebar';
+import {Layout} from '../../components/page-layouts/Global';
+import {Header} from '../../components/headers/HeaderHome';
+import {Sidebar} from '../../components/sidebar/Sidebar';
 
 // Concepts
-import SearchInput from "../components/search"
-import {PostsList, PostsListWrapper} from "../components/card-layouts/PostsList";
-import {Wallet} from "../components/Wallet"
-import ThemeSwitch from "../components/ThemeSwitch"
+import SearchInput from "../../components/search"
+import {PostsList, PostsListWrapper} from "../../components/card-layouts/PostsList";
+import {Wallet} from "../../components/Wallet"
+import ThemeSwitch from "../../components/ThemeSwitch"
 import {RiExternalLinkLine} from "react-icons/ri";
 
 import { observer } from "mobx-react"
 import React, { useState, useEffect, createRef } from 'react'
 
-import utils from "../lib/util";
-import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
-import Responsive from '../components/Resposive';
-import Screen from '../components/Resposive';
+import utils from "../../lib/util";
+import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
+import Responsive from '../../components/Resposive';
+import Screen from '../../components/Resposive';
 
 
 const voteStore = new VoteStore();
@@ -31,10 +31,10 @@ const observableItemStore = new ObservableTweetStore({homeStore});
 
 import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
-import {getItems} from "../data/query/getItem";
-import {HOME_ITEM_TAKE} from "../config/paging";
-import {CommentList} from "../components/comments/commentList";
-import {getNews} from "../data/query/getNewsById";
+import {getItems} from "../../data/query/getItem";
+import {HOME_ITEM_TAKE} from "../../config/paging";
+import {CommentList} from "../../components/comments/commentList";
+import {getNews} from "../../data/query/getNewsById";
 
 const getData = async ({query}) => {
   const itemFeed = await getItems({
