@@ -71,7 +71,6 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
       //   iframe.setAttribute("src",iframe.getAttribute("data-src"))
       // })
 
-
       if (twttr?.widgets) {
         twttr.widgets.load()
       }
