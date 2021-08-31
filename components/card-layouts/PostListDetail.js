@@ -53,7 +53,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
       //   iframe.setAttribute("src",iframe.getAttribute("data-src"))
       // })
 
-      if (typeof twttr !== undefined) {
+      if (typeof twttr.widgets !== undefined) {
         twttr.widgets.load()
       }
     }, [item]);

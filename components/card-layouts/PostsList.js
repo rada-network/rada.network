@@ -43,7 +43,6 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
   // }
   // else{
     useEffect(() =>{
-      console.log(scrollBox1);
       scrollBox1.current.removeEventListener('scroll', (e) => {mobileScroll(e)});
       scrollBox1.current.addEventListener('scroll', (e) => {mobileScroll(e)});
     },[scrollBox1])
