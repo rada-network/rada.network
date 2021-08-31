@@ -11,7 +11,7 @@ Layout
 Nav Panels 
 */
 .pane-left {
-  @apply flex flex-shrink-0 flex-auto flex-col justify-between h-full;
+  @apply flex flex-shrink-0 flex-col justify-between h-full;
   @apply bg-gray-50 border-r border-gray-400 border-opacity-10 z-50;
   @apply dark:bg-deepgray-100;
   width: var(--paneleft-width);
