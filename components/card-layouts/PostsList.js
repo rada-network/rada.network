@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useMemo, useState, createRef} from 'react';
+import React, {useCallback, useEffect, useMemo, useState, createRef, useRef} from 'react';
 
 //ReactIcons
 import {observer} from "mobx-react";
@@ -26,7 +26,7 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
     handleLoadMoreItem();
   }
   const {t} = useTranslation("common")
-  const scrollBox1 = createRef();
+  const scrollBox1 = useRef();
 
   let ps1;
 
@@ -42,14 +42,25 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
   //   }, [scrollBox1]);
   // }
   // else{
+
+  const awayCls = 'list-away-top'
     useEffect(() =>{
-      scrollBox1.current.removeEventListener('scroll', (e) => {mobileScroll(e)});
-      scrollBox1.current.addEventListener('scroll', (e) => {mobileScroll(e)});
+      scrollBox1.current.removeEventListener('scroll', mobileScroll);
+      scrollBox1.current.addEventListener('scroll', mobileScroll);
+      return () => {
+        document.body.classList.remove(awayCls)
+      }
     },[scrollBox1])
 
   // }
 
   const mobileScroll = function(e){
+    if (e.target.scrollTop > 100) {
+        document.body.classList.add(awayCls)
+    } else {
+        document.body.classList.remove(awayCls)
+    }
+
     const bottom = e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight + 10;
     if (bottom) handleLoadMoreItem()
   }
@@ -93,7 +104,7 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
         
       </div>
 
-      <div className={`pane-content--main--main scrollbar`} ref={scrollBox1}>
+      <div className={`pane-content--main--main scrollbar`} ref={scrollBox1} cls="list-top-away">
         <PostsList dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
         {dataStore.tweets.length == 0 && dataStore.isSearch && !dataStore.loadingButton ? 
         <p className="search-not-found">

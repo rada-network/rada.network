@@ -1,7 +1,7 @@
 import {RiExternalLinkLine} from "react-icons/ri";
 import Link from "next/link";
 import {CommentList} from "../comments/commentList";
-import React, {createRef, useEffect} from "react";
+import React, {createRef, useEffect, useRef} from "react";
 // import PerfectScrollbar from "perfect-scrollbar";
 
 import {observer, useStaticRendering} from "mobx-react";
@@ -10,7 +10,6 @@ import utils from "../../lib/util";
 import {Vote} from "../vote/Vote";
 import {useRouter} from "next/router";
 import {useStore} from "../../lib/useStore";
-import {userEffect} from "react"
 
 import {
   DesktopView,
@@ -40,6 +39,25 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   // else{
   //   className = `pane-content--sec--main grid`
   // }
+
+  const scrollRef = useRef()
+  const awayCls = 'details-top-away'
+  const onScroll = e => {
+    if (e.target.scrollTop > 100) {
+      document.body.classList.add(awayCls)
+    } else {
+      document.body.classList.remove(awayCls)
+    }
+  }
+  const onUnload = e => {
+    document.body.classList.remove(awayCls)
+  }
+
+  useEffect(() => {
+    scrollRef.current.removeEventListener('scroll', onScroll)
+    scrollRef.current.addEventListener('scroll', onScroll)
+    return onUnload
+  }, [])
 
     useEffect(() => {
       // make scrollbar
@@ -71,7 +89,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   return (
     <>
 
-      <div className="pane-content--sec--main grid scrollbar">
+      <div className="pane-content--sec--main grid scrollbar" ref={scrollRef}>
 
         {/* Post Detail */}
         <div className="page">
