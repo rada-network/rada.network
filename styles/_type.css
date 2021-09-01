@@ -33,6 +33,7 @@ Post Content Typo
 }
 
 .post-content a {
+  word-break: break-all;
 }
 
 .post-content h2,
@@ -117,8 +118,9 @@ Post Content Typo
 }
 
 .post-content .twitter-tweet-rendered {
-  @apply !max-w-none !my-4;
+  @apply !my-4 rounded-xl overflow-hidden;
 }
+
 
 .post-content .wp-smiley {
   @apply hidden;
