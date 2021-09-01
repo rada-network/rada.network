@@ -767,4 +767,5 @@ Uitilities
   right: 0;
   top: 45%;
   z-index: 100;
+  cursor: col-resize;
 }
