@@ -76,20 +76,29 @@ Main Panels
 }
 
 .pane-content {
-  @apply flex flex-auto flex-wrap md:flex-nowrap h-full;
-  width: 0; /* Fix Layout */
+  @apply h-full;
+  /* @apply flex flex-auto flex-wrap md:flex-nowrap h-full; */
+  /* width: 0; Fix Layout */
 }
 
 .pane-content--main {
+  @apply float-left w-full;
   @apply flex flex-col w-full h-full;
   @apply border-r border-gray-100 dark:border-gray-800;
 }
 
-@screen lg {
+@screen md {
   .pane-content--main {
-    width: calc(100% - var(--paneleft-width));
+    width: 50%;
   }
 }
+
+@screen lg {
+  .pane-content--main {
+    width: 45%;
+  }
+}
+
 
 .pane-content--main--top,
 .pane-content--sec--top {
@@ -116,17 +125,26 @@ Card List Area
 /* 
 Reader / Page Area
 */
+.pane-content--sec {
+  @apply float-left w-full;
+  @apply hidden flex-auto md:flex flex-col overflow-x-hidden overflow-y-auto;
+}
+
 @screen md {
   .pane-content--sec {
+    width:  50%;
     height: calc(100vh - var(--topbar-height) - var(--toolbar-height));
   }
 }
 
-.pane-content--sec {
-  @apply hidden flex-auto md:flex flex-col w-full lg:h-full overflow-x-hidden overflow-y-auto;
+@screen lg {
+  .pane-content--sec {
+    width: 55%;
+    @apply h-full;
+  }
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
   .pane-content--sec.pane-content-active {
     @apply fixed flex;
     right: 0;
