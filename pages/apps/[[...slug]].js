@@ -5,10 +5,12 @@ import {PostsListWrapper} from "../../components/card-layouts/PostsList";
 import {observer} from "mobx-react";
 import {HOME_ITEM_TAKE} from "../../config/paging";
 import {getItemById, getItems} from "../../data/query/getItem";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {IndexRightBar} from "../../components/IndexRightBar";
 import _ from "lodash"
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+import { Dragger } from "../../components/Resposive";
 
 const getDataExplore = async ({query,type,lang}) => {
   if (['news','media','video','social','all',''].indexOf(type) === -1){
@@ -146,14 +148,45 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
     meta = utils.createSiteMetadata({page : 'NewsDetail',data : {...item,type : detailStore.type},dataStore : observableItemStore})
   }
 
+  /* Dragger to resize main col */
+  const mainRef = useRef()
+  const [mainwidth, setMainwidth] = useState(45)
+  let pw 
+  let mw 
+  const resizeStart = e => {
+    pw = mainRef.current.parentNode.clientWidth
+    mw = mainRef.current.clientWidth
+  }
+  const resizeDone = e => {
+    if (!pw) pw = mainRef.current.parentNode.clientWidth
+    // calculate width
+    let mwp = Math.round(mainRef.current.clientWidth / pw * 100)
+    if (mwp > 70) mwp = 70
+    if (mwp < 30) mwp = 30
+    setMainwidth(mwp)
+    mainRef.current.style.width = ''
+    mainRef.current.nextSibling.style.width = ''
+  }
+  const resizePane = e => {
+    // calculate width
+    const dw = e.clientX - e.startX
+    let mwn = Math.round(mw + dw)
+    if (mwn > 0.7*pw) mwn = Math.round(0.7*pw)
+    if (mwn < 0.3*pw) mwn = Math.round(0.3*pw)
+    mainRef.current.style.width = mwn + 'px'
+    mainRef.current.nextSibling.style.width = (pw-mwn-1) + 'px'
+  }
+
+
   return (
     <Layout dataStore={observableItemStore} detailStore={detailStore} extraClass="page-home" meta={meta}>
 
-      <div className={`pane-content`}>
+      <div className={`pane-content`} style={{'--main-width': `${mainwidth}%`}}>
 
         {/* main content pane */}
-        <div className={`pane-content--main`}>
+        <div className={`pane-content--main`} ref={mainRef}>
           <PostsListWrapper  dataStore={observableItemStore} detailStore={detailStore} voteStore={voteStore} />
+          <Dragger className="pane-dragger" onDragMove={resizePane} onDragStop={resizeDone} onDragStart={resizeStart}></Dragger>
         </div>
 
         {/* secondary content pane */}

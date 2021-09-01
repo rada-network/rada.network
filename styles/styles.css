@@ -89,15 +89,15 @@ Main Panels
 
 @screen md {
   .pane-content--main {
-    width: 50%;
+    width: var(--main-width);
   }
 }
 
-@screen lg {
+/* @screen lg {
   .pane-content--main {
     width: 45%;
   }
-}
+} */
 
 
 .pane-content--main--top,
@@ -132,14 +132,14 @@ Reader / Page Area
 
 @screen md {
   .pane-content--sec {
-    width:  50%;
+    width:  calc(100% - var(--main-width));
     height: calc(100vh - var(--topbar-height) - var(--toolbar-height));
   }
 }
 
 @screen lg {
   .pane-content--sec {
-    width: 55%;
+    /* width: 55%; */
     @apply h-full;
   }
 }
@@ -757,4 +757,14 @@ Uitilities
 
 .search-not-found{
   @apply flex justify-center my-8
+}
+
+.pane-content--main {
+  position: relative;
+}
+.pane-dragger {
+  position: absolute;
+  right: 0;
+  top: 45%;
+  z-index: 100;
 }
