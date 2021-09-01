@@ -74,6 +74,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
       if (typeof twttr.widgets !== "undefined") {
         twttr.widgets.load()
       }
+      scrollRef.current.scrollTop = 0; // For Safari
     }, [item]);
 
   const handleBack = (e) => {
