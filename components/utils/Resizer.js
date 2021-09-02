@@ -44,5 +44,5 @@ export function Resizer({className, onDragStart, onDragStop, onDragMove, style})
         }
     }, [drag.dragging])
 
-    return <div className={`dragger${drag.dragging ? ' dragging' : ''} ${className || ''}`} ref={barRef} style={style || {}}>...</div>
+    return <div className={`dragger${drag.dragging ? ' dragging' : ''} ${className || ''}`} ref={barRef} style={style || {}}>&nbsp;</div>
 }

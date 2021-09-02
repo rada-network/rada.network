@@ -12,7 +12,7 @@ import { useState, useEffect, createRef } from 'react'
 import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
-import Screen from "../utils/Resposive";
+import Screen from "../utils/Responsive";
 import {LanguageSwitch} from "../LanguageSwitch";
 
 const scrollBox = createRef();

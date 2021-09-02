@@ -82,7 +82,7 @@ Main Panels
 }
 
 .pane-content--main {
-  @apply float-left w-full;
+  @apply relative float-left w-full;
   @apply flex flex-col w-full h-full;
   @apply border-r border-gray-100 dark:border-gray-800;
 }
@@ -693,48 +693,6 @@ Perfect Scrollbar
   @apply bg-primary-500;
 }
 
-.scrollbar.ps .ps__rail-x {
-  height: 12px;
-}
-
-.scrollbar.ps .ps__rail-y {
-  width: 12px;
-}
-
-.scrollbar.ps .ps__thumb-x,
-.scrollbar.ps .ps__thumb-y {
-  @apply bg-gray-200 dark:bg-gray-700;
-}
-
-.scrollbar.ps .ps__rail-x:hover,
-.scrollbar.ps .ps__rail-x:focus,
-.scrollbar.ps .ps__rail-x.ps--clicking {
-  @apply bg-gray-900 bg-opacity-0 rounded-full;
-  height: 12px;
-}
-
-.scrollbar.ps .ps__rail-y:hover,
-.scrollbar.ps .ps__rail-y:focus,
-.scrollbar.ps .ps__rail-y.ps--clicking {
-  @apply bg-gray-900 bg-opacity-0 rounded-full;
-  width: 12px;
-}
-
-.scrollbar.ps .ps__rail-x:hover > .ps__thumb-x,
-.scrollbar.ps .ps__rail-x:focus > .ps__thumb-x,
-.scrollbar.ps .ps__rail-x.ps--clicking .ps__thumb-x {
-  @apply bg-gray-300 dark:bg-gray-600;
-  height: 8px;
-}
-
-.scrollbar.ps .ps__rail-y:hover > .ps__thumb-y,
-.scrollbar.ps .ps__rail-y:focus > .ps__thumb-y,
-.scrollbar.ps .ps__rail-y.ps--clicking .ps__thumb-y {
-  @apply bg-gray-300 dark:bg-gray-600;
-  width: 8px;
-}
-
-
 
 /* 
 Uitilities 
@@ -756,17 +714,17 @@ Uitilities
 }
 
 .search-not-found{
-  @apply flex justify-center my-8
+  @apply flex justify-center my-8;
 }
 
-.pane-content--main {
-  position: relative;
-}
+ 
+/* 
+Dragger  
+*/
+
 .pane-dragger {
-  position: absolute;
-  right: 0;
-  top: 45%;
-  z-index: 100;
+  @apply absolute h-full w-1 -right-1 top-0 z-50;
+  @apply hover:bg-primary-500;
   cursor: col-resize;
 }
 

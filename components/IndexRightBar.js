@@ -1,7 +1,7 @@
 import {observer} from "mobx-react";
 import React, {createRef, useEffect} from "react";
 // import PerfectScrollbar from "perfect-scrollbar";
-import Screen from "./utils/Resposive";
+import Screen from "./utils/Responsive";
 import {Wallet} from "./Wallet";
 import {PostListDetail} from "./card-layouts/PostListDetail";
 import {Header} from "./headers/HeaderHome";
