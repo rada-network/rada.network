@@ -20,6 +20,14 @@ module.exports = {
       serif: ['"Literata"', ...defaultTheme.fontFamily.serif],
     },
 
+    screens: {
+      'sm':   '640px',
+      'md':   '1024px',
+      'lg':   '1280px',
+      'xl':   '1280px',
+      '2xl':  '1280px',
+    },
+
     // Set default container to align center and have a 1rem side padding
     // container: {
     //   center: true,
