@@ -5,12 +5,10 @@ import Head from 'next/head';
 
 // Components
 import {Layout} from '../../components/page-layouts/Global';
-import {Header} from '../../components/headers/HeaderHome';
-import {Sidebar} from '../../components/sidebar/Sidebar';
 
 // Concepts
 import SearchInput from "../../components/search"
-import {PostsList, PostsListWrapper} from "../../components/card-layouts/PostsList";
+import {PostsList} from "../../components/card-layouts/concepts/PostList";
 import {Wallet} from "../../components/Wallet"
 import ThemeSwitch from "../../components/ThemeSwitch"
 import {RiExternalLinkLine} from "react-icons/ri";
@@ -19,9 +17,9 @@ import { observer } from "mobx-react"
 import React, { useState, useEffect, createRef } from 'react'
 
 import utils from "../../lib/util";
-import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
-import Responsive from '../../components/Resposive';
-import Screen from '../../components/Resposive';
+import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
+
+import Screen from '../../components/utils/Responsive';
 
 
 const voteStore = new VoteStore();
@@ -29,8 +27,6 @@ const homeStore = new HomeStore({isHome : true})
 
 const observableItemStore = new ObservableTweetStore({homeStore});
 
-import PerfectScrollbar from 'perfect-scrollbar';
-import "perfect-scrollbar/css/perfect-scrollbar.css";
 import {getItems} from "../../data/query/getItem";
 import {HOME_ITEM_TAKE} from "../../config/paging";
 import {CommentList} from "../../components/comments/commentList";
@@ -55,30 +51,20 @@ const getData = async ({query}) => {
 export default observer((props) => {
   if (!props) return <div>loading...</div>
 
-  return ""
   observableItemStore.query = props.query
   const [scrollbar] = useState('')
 
   observableItemStore.tweets = props.itemFeed
-  const detailStore = new DetailStore()
-
-  const scrollBox2 = createRef();
-  let ps2;
-  
-  useEffect(() => {
-    // make scrollbar
-    ps2 = new PerfectScrollbar(scrollBox2.current, {});
-  }, [scrollBox2]);
 
   return (
-    <Layout dataStore={observableItemStore}
+    <Layout
       extraClass="page-home"
       meta={utils.createSiteMetadata({ page: "Index", data: {} })}
     >
       <div className={`pane-content`}>
         {/* main content pane */}
         <div className={`pane-content--main`}>
-          <PostsListWrapper voteStore={voteStore}  dataStore={observableItemStore} />
+          <PostsList />
         </div>
 
         {/* secondary content pane */}
@@ -96,15 +82,15 @@ export default observer((props) => {
           </div>
           </Screen>
 
-          <div className={`pane-content--sec--main scrollbar`} ref={scrollBox2}>
+          <div className={`pane-content--sec--main scrollbar`}>
             {/* Post Detail */}
             <div className="page">
 
               {/* Close Button */}
               <div className="page-back">
                 <div className="btn">
-                  <span className="btn--caret-left"></span>
-                  <span className="btn--text">Back</span>
+                  <span class="btn__caret_left"></span>
+                  <span className="btn__text">Back</span>
                 </div>
               </div>
 
@@ -119,41 +105,41 @@ export default observer((props) => {
                       </span>
                     </h1>
                   </div>
-                  <div className="metadata-wrapper justify-between">
-                    <div className="flex flex-shrink-0">
-                      <div className="metadata metadata-source">
-                        <span className="icon mr-1">
-                          <i className="fab fa-twitter"></i>
+                  <div class="metadata-wrapper justify-between">
+                    <div class="flex flex-shrink-0">
+                      <div class="metadata metadata-source">
+                        <span class="icon mr-1">
+                          <i class="fab fa-twitter"></i>
                         </span>
-                        <span className="metadata-value" title="CoinTelegraph">
+                        <span class="metadata-value" title="CoinTelegraph">
                           AIR | A Cardano Stake Pool
                         </span>
                       </div>
-                      <div className="metadata metadata-date">
+                      <div class="metadata metadata-date">
                         <span
-                          className="metadata-value"
+                          class="metadata-value"
                           title="6:28 PM - Jul 28, 2021"
                         >
                           16h
                         </span>
                       </div>
                     </div>
-                    <div className="flex flex-shrink-0">
-                      <div className="cta-wrapper">
-                        <button className="btn btn-post-vote">
-                          <span className="icon mr-1">
-                           <i className="fas fa-arrow-up"></i>
+                    <div class="flex flex-shrink-0">
+                      <div class="cta-wrapper">
+                        <button class="btn btn-post-vote">
+                          <span class="icon mr-1">
+                           <i class="fas fa-arrow-up"></i>
                           </span>
-                          <span className="btn-post-vote_total ml-1 whitespace-nowrap">
-                            <span className="inline-block">Upvote</span>
-                            <strong className="inline-block ml-2 font-bold">
+                          <span class="btn-post-vote_total ml-1 whitespace-nowrap">
+                            <span class="inline-block">Upvote</span>
+                            <strong class="inline-block ml-2 font-bold">
                               5
                             </strong>
                           </span>
                         </button>
-                        <a target="_blank" rel="nofollow" href="#" className="btn btn-post-link ml-2">
-                          <span className="whitespace-nowrap">Visit</span>
-                          <span className="icon ml-2"><RiExternalLinkLine /></span>
+                        <a target="_blank" rel="nofollow" href="#" class="btn btn-post-link ml-2">
+                          <span class="whitespace-nowrap">Visit</span>
+                          <span class="icon ml-2"><RiExternalLinkLine /></span>
                         </a>
                       </div>
                     </div>

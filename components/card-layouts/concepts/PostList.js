@@ -17,18 +17,6 @@ let ps;
 
 export const PostsList = ({title, extraClass}) => {
 
-  const [scrollbar] = useState('')
-
-  useEffect(() => {
-    // make scrollbar
-    ps = new PerfectScrollbar(scrollBox.current, {
-    });
-
-    return () => {
-      ps.destroy();
-    }
-  }, [scrollBox]);
-
   return (
     <div className={`section ${extraClass || ''}`}>
 

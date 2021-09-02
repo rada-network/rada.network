@@ -30,6 +30,7 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
   return (
     <Link href={"#"}>
     <div className={`card card-post`}>
+
       <div className={`card-media`}>
         <div className={`card-media-img`}>
           <a className="" href={"/"}>
@@ -37,13 +38,17 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
           </a>
         </div>
       </div>
+
       <div className={`card-body`}>
+
         <div className={`card-title`}>
           <a className="card-link group" href={"/"}>
             <span className="text-color-title mr-2">{title}</span>
           </a>
         </div>
+
         <div className="metadata-wrapper justify-between mt-1">
+
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
               <span className="icon mr-1">
@@ -55,23 +60,28 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
               <span className="metadata-value" title="9:2 PM - Jul 15, 2021">13h</span>
             </div>
           </div>
+
           <div className="flex metadata-wrapper_nodivide">
-          <div className="flex flex-shrink-0 metadata-wrapper_nodivide">
-            <div className="metadata">
-              <span className="icon mr-1">
-                <i className="far fa-comment-alt" />
-              </span>
-              <span className="">{commentCount}</span>
-            </div>
-            <div className="metadata">
-              <span className="icon mr-1">
-                <i className="far fa-arrow-up" />
-              </span>
-              <span>{voteCount}</span>
+            <div className="flex flex-shrink-0 metadata-wrapper_nodivide">
+              <div className="metadata">
+                <span className="icon mr-1">
+                  <i className="far fa-comment-alt" />
+                </span>
+                <span className="">{commentCount}</span>
+              </div>
+              <div className="metadata">
+                <span className="icon mr-1">
+                  <i className="far fa-arrow-up" />
+                </span>
+                <span>{voteCount}</span>
+              </div>
             </div>
           </div>
+
         </div>
+
       </div>
+      
     </div>
     </Link>
   )
