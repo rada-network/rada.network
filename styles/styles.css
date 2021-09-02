@@ -769,3 +769,7 @@ Uitilities
   z-index: 100;
   cursor: col-resize;
 }
+
+.pane-dragger.dragging {
+  user-select: none;
+}
