@@ -416,7 +416,7 @@ Title
 }
 
 .post-title--text {
-  @apply text-gray-800 dark:text-gray-200 transition;
+  @apply text-gray-800 dark:text-gray-200 transition mr-2;
 }
 
 .post-title:hover .post-title--text {

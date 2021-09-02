@@ -84,7 +84,7 @@ Vote Buttons
 Link Visit Button 
 */
 .btn-post-link {
-  @apply text-sm justify-center items-center px-2 py-1 rounded relative;
+  @apply text-sm justify-center items-center px-0 py-1 rounded relative;
 }
 
 .btn-post-link .icon {
