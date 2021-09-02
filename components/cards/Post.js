@@ -11,7 +11,7 @@ import ReadingTime from "../news-sources/ReadingTime";
 import {empty} from "@apollo/client";
 import {observer} from "mobx-react";
 
-import Screen from "../utils/Resposive";
+import Screen from "../utils/Responsive";
 
 import _ from 'lodash';
 
