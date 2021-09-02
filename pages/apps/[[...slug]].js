@@ -10,7 +10,7 @@ import {IndexRightBar} from "../../components/IndexRightBar";
 import _ from "lodash"
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { Dragger } from "../../components/Resposive";
+import { Resizer } from "../../components/utils/Resizer";
 
 const getDataExplore = async ({query,type,lang}) => {
   if (['news','media','video','social','all',''].indexOf(type) === -1){
@@ -186,7 +186,7 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
         {/* main content pane */}
         <div className={`pane-content--main`} ref={mainRef}>
           <PostsListWrapper  dataStore={observableItemStore} detailStore={detailStore} voteStore={voteStore} />
-          <Dragger className="pane-dragger" onDragMove={resizePane} onDragStop={resizeDone} onDragStart={resizeStart}></Dragger>
+          <Resizer className="pane-dragger" onDragMove={resizePane} onDragStop={resizeDone} onDragStart={resizeStart}></Resizer>
         </div>
 
         {/* secondary content pane */}

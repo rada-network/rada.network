@@ -7,7 +7,7 @@ import {useStore} from "../lib/useStore";
 import { useTranslation } from 'next-i18next';
 import utils from "../lib/util";
 
-import Screen from "./Resposive";
+import Screen from "./utils/Resposive";
 
 export const Navbar = ({dataStore,detailStore}) => {
   const { t } = useTranslation("navbar")
