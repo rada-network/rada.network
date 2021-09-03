@@ -1,7 +1,13 @@
 import HTMLHead from 'next/head'
 import ReactTooltip from 'react-tooltip';
+import { useState,useEffect } from 'react';
+
 
 export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
+  const [isTooltipVisible, setTooltipVisibility] = useState(false);
+  useEffect(() => {
+    setTooltipVisibility(true);
+  }, []);
   return (
     <>
     <HTMLHead>
@@ -57,8 +63,8 @@ export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
       <link rel="manifest" href="/manifest.json" />
       <meta name="theme-color" content="#4338CA" />
     </HTMLHead>
-
-    <ReactTooltip type="info" clickable={true} html={true} />
+    {isTooltipVisible && <ReactTooltip type="info" clickable={true} html={true} />}
+    
     </>
   );
 };

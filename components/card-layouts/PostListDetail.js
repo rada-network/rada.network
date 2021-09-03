@@ -25,21 +25,6 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const scrollBox2 = createRef();
   const store = useStore()
 
-  // let ps2,className = "";
-  // if (!isMobile){
-  //   useEffect(() => {
-  //     // make scrollbar
-  //     ps2 = new PerfectScrollbar(scrollBox2.current, {});
-  //     return () => {
-  //       ps2.destroy();
-  //     }
-  //   }, [scrollBox2]);
-  //   className = `pane-content--sec--main grid scrollbar`
-  // }
-  // else{
-  //   className = `pane-content--sec--main grid`
-  // }
-
   const scrollRef = useRef()
   const awayCls = 'details-top-away'
   const onScroll = e => {
@@ -59,23 +44,35 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
     return onUnload
   }, [])
 
-    useEffect(() => {
-      // make scrollbar
-      // let iframes = document.querySelectorAll('iframe')
-      // iframes.forEach((iframe) => {
-      //   // iframe.addEventListener('load', function() {
-      //   //   const iframeBody = this.contentWindow.document.body;
-      //   //   const height = Math.max(iframeBody.scrollHeight, iframeBody.offsetHeight);
-      //   //   this.style.height = `${height}px`;
-      //   // })
-      //   iframe.setAttribute("src",iframe.getAttribute("data-src"))
-      // })
+  useEffect(() => {
+    // make scrollbar
+    // let iframes = document.querySelectorAll('iframe')
+    // iframes.forEach((iframe) => {
+    //   // iframe.addEventListener('load', function() {
+    //   //   const iframeBody = this.contentWindow.document.body;
+    //   //   const height = Math.max(iframeBody.scrollHeight, iframeBody.offsetHeight);
+    //   //   this.style.height = `${height}px`;
+    //   // })
+    //   iframe.setAttribute("src",iframe.getAttribute("data-src"))
+    // })
 
-      if (typeof twttr.widgets !== "undefined") {
-        twttr.widgets.load()
+    if (typeof twttr.widgets !== "undefined") {
+      twttr.widgets.load()
+    }
+    window.removeEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize)
+
+    scrollRef.current.scrollTop = 0; // For Safari
+  }, [item]);
+  let resizeTimeout = 0;
+  const handleResize = (event) => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      if (detailStore.type === "news"){
+        detailStore.data.contentDisplay += "<span class='newstag123' style='display:none;'>"+ Math.random()+"</span>";
       }
-      scrollRef.current.scrollTop = 0; // For Safari
-    }, [item]);
+    },500)
+  }
 
   const handleBack = (e) => {
     detailStore.data = {}
@@ -202,7 +199,23 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
   )
 }
 
-const NewsDetail = function ({item,dateTitle,date,voteStore}){
+const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
+  useEffect(() => {
+    // make scrollbar
+    // let iframes = document.querySelectorAll('iframe')
+    // iframes.forEach((iframe) => {
+    //   // iframe.addEventListener('load', function() {
+    //   //   const iframeBody = this.contentWindow.document.body;
+    //   //   const height = Math.max(iframeBody.scrollHeight, iframeBody.offsetHeight);
+    //   //   this.style.height = `${height}px`;
+    //   // })
+    //   iframe.setAttribute("src",iframe.getAttribute("data-src"))
+    // })
+
+    if (typeof twttr.widgets !== "undefined") {
+      twttr.widgets.load()
+    }
+  }, [item.contentDisplay]);
   const {t} = useTranslation()
   return (
     <div className="section post-detail post-detail-news">
@@ -277,7 +290,7 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
       </div>
     </div>
   )
-}
+})
 
 const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
   let title = item.source.full_text

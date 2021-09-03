@@ -20,7 +20,6 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   //     ps2.destroy()
   //   }
   // }, [scrollBox2]);
-
   const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
   return (
     <>
