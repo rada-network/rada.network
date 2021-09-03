@@ -20,8 +20,7 @@ import React, { useState, useEffect, createRef } from 'react'
 
 import utils from "../lib/util";
 import {HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
-import Responsive from '../components/Resposive';
-import Screen from '../components/Resposive';
+import Screen from '../components/utils/Responsive';
 
 const voteStore = new VoteStore();
 const homeStore = new HomeStore({isHome : true})
