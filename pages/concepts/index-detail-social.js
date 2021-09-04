@@ -57,7 +57,7 @@ export default observer((props) => {
   observableItemStore.tweets = props.itemFeed
 
   return (
-    <Layout
+    <Layout dataStore={observableItemStore}
       extraClass="page-home"
       meta={utils.createSiteMetadata({ page: "Index", data: {} })}
     >
@@ -242,7 +242,7 @@ export default observer((props) => {
               </div>
 
               {/* Comments */}
-              <CommentList item={props.news} />
+              {/* <CommentList dataStoore={observableItemStore} detailStore={detailStore} /> */}
               {/* //Comments */}
             </div>
           </div>
