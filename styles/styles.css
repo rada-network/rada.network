@@ -6,7 +6,7 @@ Layout
 .main-layout {
   @apply flex flex-col lg:flex-row h-full w-full items-stretch;
   @apply max-w-screen-2xl;
-  @apply bg-white dark:bg-deepgray-50 bg-opacity-95 backdrop-blur shadow-2xl;
+  @apply bg-white dark:bg-deepgray-50 2xl:bg-transparent 2xl:shadow-2xl;
 }
 
 .body-decor,
@@ -37,7 +37,8 @@ Nav Panels
 */
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
-  @apply bg-gray-50 dark:bg-deepgray-100 bg-opacity-80 border-r border-gray-400 border-opacity-10 z-50;
+  @apply border-r border-gray-400 border-opacity-10 z-50;
+  @apply bg-gray-50 dark:bg-deepgray-100 2xl:bg-opacity-95 2xl:backdrop-blur;
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
@@ -109,7 +110,7 @@ Main Panels
 .pane-content--main {
   @apply relative float-left w-full;
   @apply flex flex-col w-full h-full;
-  @apply border-r border-gray-100 dark:border-gray-800;
+  @apply border-r border-gray-100 2xl:border-gray-200 dark:border-gray-800;
 }
 
 @screen md {
@@ -129,6 +130,7 @@ Main Panels
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
   @apply border-b border-gray-400 border-opacity-10;
+  @apply bg-white dark:bg-deepgray-50 2xl:bg-opacity-95 2xl:backdrop-blur;
   height: var(--toolbar-height);
 }
 
@@ -138,7 +140,7 @@ Card List Area
 .pane-content--main--main {
   /* height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height)); */
   @apply flex flex-auto flex-col w-full h-0 overflow-x-hidden overflow-y-auto;
-  /* @apply bg-bluegray-50 dark:bg-deepgray-100; */
+  @apply bg-white dark:bg-deepgray-50 2xl:bg-opacity-95 2xl:backdrop-blur;
 }
 
 @screen lg {
@@ -180,6 +182,7 @@ Reader / Page Area
 
 .pane-content--sec--main {
   @apply w-full h-full;
+  @apply bg-white dark:bg-deepgray-50 2xl:bg-opacity-95 2xl:backdrop-blur;
 }
 
 /* 
