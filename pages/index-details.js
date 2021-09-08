@@ -14,7 +14,7 @@ import React, { useState } from 'react'
 
 import utils from "../lib/util";
 import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
-import Screen from '../../components/utils/Responsive';
+import Screen from '../components/utils/Responsive';
 
 const voteStore = new VoteStore();
 const homeStore = new HomeStore({isHome : false})
