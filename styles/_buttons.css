@@ -103,7 +103,7 @@ Nav Button
 }
 
 .nav-btn.active {
-  @apply bg-primary-50 dark:bg-deeppurple-300;
+  @apply text-primary-700 dark:text-primary-400;
 }
 
 .nav-btn .icon {
