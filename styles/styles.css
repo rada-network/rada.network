@@ -254,27 +254,78 @@ Navbar
   @apply flex justify-evenly lg:flex-col w-full lg:h-auto;
 }
 
+/* 
+Nav Item
+*/
 .nav-item {
   @apply relative flex flex-col lg:flex-row items-center lg:items-baseline w-full h-full px-2 py-0.5 lg:py-2;
-  @apply font-medium leading-10 whitespace-nowrap;
-  @apply text-gray-900 text-opacity-50;
-  @apply dark:text-white dark:text-opacity-60;
-  @apply hover:text-opacity-90;
+  @apply font-medium leading-normal whitespace-nowrap;
+  @apply text-gray-800 opacity-50;
+  @apply dark:text-gray-200;
+  @apply hover:opacity-100;
+  @apply lg:h-9;
 }
 
 .nav-item .icon {
-  @apply text-lg lg:text-base leading-none mt-1.5 mb-1 lg:my-0 lg:mr-1 w-8 text-center;
+  @apply w-8 h-4;
+  @apply inline-flex justify-center mt-1.5 mb-2 lg:my-0 lg:mr-1 text-center;
+  @apply text-lg lg:text-base leading-none;
+}
+
+.nav-item .icon-rada svg {
+  @apply relative -bottom-0.5;
+  transform: scale(1.15);  /* make the svg bigger */
+}
+
+.dark .nav-item .icon-rada svg {
+  .inline-rec {
+    fill: #D1D5DB;
+  }
+  .inline-circle {
+    fill: #6B7280;
+  }
+  .inline-stroke {
+    fill: #111827;
+  }
 }
 
 .nav-item--text {
   @apply text-xxs lg:text-xs;
 }
 
+/* 
+Nav Item Active 
+*/
 .nav-item-active {
   @apply text-primary-700 text-opacity-100 font-bold;
   @apply dark:text-primary-400 dark:text-opacity-100;
+  @apply opacity-100;
 }
 
+.nav-item-active .icon-rada svg {
+  .inline-circle {
+    fill: #C4B5FD;
+  }
+  .inline-rec {
+    fill: #6D28D9;
+  }
+}
+
+.dark .nav-item-active .icon-rada svg {
+  .inline-rec {
+    fill: #6D28D9;
+  }
+  .inline-circle {
+    fill: #C4B5FD;
+  }
+  .inline-stroke {
+    fill: #111827;
+  }
+}
+
+/* 
+Nav Item Addons
+*/
 .nav-item--badge {
   @apply text-xxxs rounded-full absolute;
   @apply bg-red-500 text-white;
@@ -697,6 +748,10 @@ Uitilities
 
 .disabled {
   @apply opacity-50 pointer-events-none;
+}
+
+.nav-item.disabled {
+  @apply opacity-20;
 }
 
 .search-not-found{
