@@ -38,8 +38,8 @@ Nav Panels
 */
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
-  @apply border-r border-gray-400 border-opacity-10 z-50;
-  @apply bg-gray-50 dark:bg-deepgray-100 2xl:bg-opacity-95 2xl:backdrop-blur;
+  @apply border-r border-gray-100 dark:border-gray-800 z-50;
+  @apply bg-gray-50 dark:bg-deepgray-100;
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
@@ -93,8 +93,7 @@ Main Panels
 
 .pane-center--top {
   @apply flex flex-shrink-0 m-0;
-  @apply border-b border-gray-100 z-50;
-  @apply dark:border-gray-800;
+  @apply border-b border-gray-100 dark:border-gray-800 z-50;
   transition: margin .2s ease;
 }
 
@@ -111,7 +110,7 @@ Main Panels
 .pane-content--main {
   @apply relative float-left w-full;
   @apply flex flex-col w-full h-full;
-  @apply border-r border-gray-100 2xl:border-gray-200 dark:border-gray-800;
+  @apply border-r border-gray-100 dark:border-gray-800;
 }
 
 @screen md {
@@ -130,8 +129,8 @@ Main Panels
 .pane-content--main--top,
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
-  @apply border-b border-gray-400 border-opacity-10;
-  @apply bg-white dark:bg-deepgray-50 2xl:bg-opacity-95 2xl:backdrop-blur;
+  @apply border-b border-gray-100 dark:border-gray-800;
+  @apply bg-white dark:bg-deepgray-50;
   height: var(--toolbar-height);
 }
 
@@ -141,7 +140,7 @@ Card List Area
 .pane-content--main--main {
   /* height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height)); */
   @apply flex flex-auto flex-col w-full h-0 overflow-x-hidden overflow-y-auto;
-  @apply bg-white dark:bg-deepgray-50 2xl:bg-opacity-95 2xl:backdrop-blur;
+  @apply bg-white dark:bg-deepgray-50;
 }
 
 @screen lg {
@@ -183,7 +182,7 @@ Reader / Page Area
 
 .pane-content--sec--main {
   @apply w-full h-full;
-  @apply bg-white dark:bg-deepgray-50 2xl:bg-opacity-95 2xl:backdrop-blur;
+  @apply bg-white dark:bg-deepgray-50;
 }
 
 /* 
