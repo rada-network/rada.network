@@ -111,14 +111,14 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
         
 
         {/* HieuNN: Sample of Post from Rada */}
-        <ConceptCardPost
+        {/* <ConceptCardPost
           title="Coinbase CEO Brian Armstrong Lashes Out At the SEC for Confusing Lending With Security"
           mediaUri="https://picsum.photos/80/80?random=1"
           type="rada"
           source="Hung Dinh"
           commentCount="56"
           voteCount="145"
-        />
+        /> */}
 
 
         <PostsList dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
@@ -140,6 +140,9 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
 
 
 export function getSourceFromUri(item){
+  if (item.author !== null){
+    return item.author.name
+  }
   if (item.grabTopic !== null){
     return item.grabTopic.website.name
   }
@@ -203,6 +206,11 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           item.createdAt = item.news.createdAt
           source = getSourceFromUri(item.news)
           title = item.news.title
+          if (item.news.lang === "all"){
+            if (dataStore.lang === "en"){
+              title = item.news.title_en
+            }
+          }
           mediaUri = item.news.thumbnailUri !== "" ? item.news.thumbnailUri : null
           return (
             <a key={item.id} href={createPostUri(title,item,dataStore.lang)} onClick={(e)=>handleClickPost(e,item.news,"news")}>

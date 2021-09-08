@@ -13,7 +13,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Resizer } from "../../components/utils/Resizer";
 
 const getDataExplore = async ({query,type,lang}) => {
-  if (['news','media','video','social','all',''].indexOf(type) === -1){
+  if (['news','media','video','rada','social','all',''].indexOf(type) === -1){
     return false
   }
   const itemFeed = await getItems({

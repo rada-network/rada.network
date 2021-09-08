@@ -22,6 +22,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
   const router = useRouter()
   let item = detailStore.data
+  item.currentLang = dataStore.lang;
   const scrollBox2 = createRef();
   const store = useStore()
 
@@ -202,6 +203,18 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
 }
 
 const NewsDetail = function ({item,dateTitle,date,voteStore}){
+  let title = item.title
+  let content = item.contentDisplay
+  if (item.lang === "all"){
+    if (item.currentLang === "vi"){
+      title = item.title
+      content = item.contentDisplay
+    }
+    else if (item.currentLang === "en"){
+      title = item.title_en
+      content = item.content_en_display
+    }
+  }
   const {t} = useTranslation()
   return (
     <div className="section post-detail post-detail-news">
@@ -211,7 +224,7 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
           <h1 className="inline">
             <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
               <span className="post-title--text">
-                {item.title}
+                {title}
               </span>
               <span className="btn btn-post-link" title={t("visit website")}>
                 <span className="icon"><i className="fad fa-external-link" /></span>
@@ -226,7 +239,7 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
               <span className="icon mr-1">
                 <i className="fad fa-newspaper"></i>
               </span>
-              <span className="metadata-value" title="CoinTelegraph">
+              <span className="metadata-value" title={getSourceFromUri(item)}>
                 {getSourceFromUri(item)}
               </span>
             </div>
@@ -246,14 +259,14 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
       <div className="section-body post-body">
         <div className="post-content">
           {item.isshowcontent ? 
-            <div dangerouslySetInnerHTML={{__html: item.contentDisplay}}/> 
+            <div dangerouslySetInnerHTML={{__html: content}}/> 
             :
             // (item.description.length > 100 ? 
             //   <div dangerouslySetInnerHTML={{__html: item.description}}/> 
             //   :
             //   ""  
             // )
-            <div dangerouslySetInnerHTML={{__html: item.contentDisplay}}/> 
+            <div dangerouslySetInnerHTML={{__html: content}}/> 
           }
           
         </div>

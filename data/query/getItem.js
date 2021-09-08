@@ -49,15 +49,18 @@ const itemFeedGql = gql`
             news{
                 id
                 title
+                title_en
                 description
                 thumbnailUri
                 source
                 content
                 isshowcontent
                 contentDisplay
+                content_en_display
                 keywords
                 createdAt
                 websiteUri
+                lang
                 grabTopic{
                     name
                     url
@@ -65,6 +68,10 @@ const itemFeedGql = gql`
                         name
                         url
                     }
+                }
+                author {
+                    name
+                    id
                 }
             }
             video{
@@ -143,15 +150,18 @@ const itemByIdGql = gql`
             news{
                 id
                 title
+                title_en
                 description
                 thumbnailUri
                 source
                 content
                 isshowcontent
                 contentDisplay
+                content_en_display
                 keywords
                 createdAt
                 websiteUri
+                lang
                 grabTopic{
                     name
                     url
@@ -159,6 +169,10 @@ const itemByIdGql = gql`
                         name
                         url
                     }
+                }
+                author {
+                    name
+                    id
                 }
             }
             video{
