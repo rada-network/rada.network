@@ -145,7 +145,7 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
       totalComment : props.item.totalComment,
     }
     detailStore.data = item
-    meta = utils.createSiteMetadata({page : 'NewsDetail',data : {...item,type : detailStore.type},dataStore : observableItemStore})
+    meta = utils.createSiteMetadata({page : 'ItemDetail',data : {...item,type : detailStore.type},dataStore : observableItemStore})
   }
 
   /* Dragger to resize main col */

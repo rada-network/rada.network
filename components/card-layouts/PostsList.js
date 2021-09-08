@@ -188,7 +188,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
     dataStore.showDetail = true;
     detailStore.data = obj
     detailStore.type = type
-    const meta = utils.createSiteMetadata({page:"NewsDetail",data : {...obj,type},dataStore})
+    const meta = utils.createSiteMetadata({page:"ItemDetail",data : {...obj,type},dataStore})
     document.title = meta.title
     router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
     return false
