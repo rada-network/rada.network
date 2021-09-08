@@ -7,6 +7,7 @@ Layout
   @apply flex flex-col lg:flex-row h-full w-full items-stretch;
   @apply max-w-screen-2xl;
   @apply bg-white dark:bg-deepgray-50 2xl:bg-transparent 2xl:shadow-2xl;
+  animation: fadein 0.4s ease-in;
 }
 
 .body-decor,
