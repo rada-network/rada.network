@@ -51,7 +51,7 @@ export const Navbar = ({dataStore,detailStore}) => {
                 <circle class="inline-circle" cx="31.2583" cy="26.5" r="3" transform="rotate(-60 31.2583 26.5)" fill="#9CA3AF"/>
               </svg>
             </span>
-            <span className="nav-item--text">{t("Rada")}</span>
+            <span className="nav-item--text">{t("RADA")}</span>
           </NavItem>
 
           <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/apps/explore/news"} type={"news"}>

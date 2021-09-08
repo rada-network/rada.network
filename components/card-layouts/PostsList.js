@@ -16,6 +16,9 @@ import { isMobile } from "react-device-detect";
 import { useTranslation } from 'next-i18next';
 import { data } from 'autoprefixer';
 
+// Concepts
+import {ConceptCardPost} from "../cards/concepts/PostRada";
+
 
 export const PostsListWrapper = observer(function ({dataStore,detailStore,voteStore}){
   const handleChangeFilter = ({filter}) =>{
@@ -105,6 +108,19 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
       </div>
 
       <div className={`pane-content--main--main scrollbar`} ref={scrollBox1} cls="list-top-away">
+        
+
+        {/* HieuNN: Sample of Post from Rada */}
+        <ConceptCardPost
+          title="Coinbase CEO Brian Armstrong Lashes Out At the SEC for Confusing Lending With Security"
+          mediaUri="https://picsum.photos/80/80?random=1"
+          type="rada"
+          source="Hung Dinh"
+          commentCount="56"
+          voteCount="145"
+        />
+
+
         <PostsList dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
         {dataStore.tweets.length == 0 && dataStore.isSearch && !dataStore.loadingButton ? 
         <p className="search-not-found">
