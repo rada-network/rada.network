@@ -10,8 +10,7 @@ import ShowSources from '../news-sources/ShowSources'
 import ReadingTime from "../news-sources/ReadingTime";
 import {empty} from "@apollo/client";
 import {observer} from "mobx-react";
-
-import Screen from "../Resposive";
+import Screen from '../../components/utils/Responsive';
 
 import _ from 'lodash';
 
