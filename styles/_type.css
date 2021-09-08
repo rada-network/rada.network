@@ -28,7 +28,8 @@ Post Content Typo
 .post-content figure, 
 .post-content blockquote,
 .post-content hr,
-.post-content table {
+.post-content table,
+.post-content iframe {
   @apply mb-4 max-w-full;
 }
 
@@ -121,6 +122,9 @@ Post Content Typo
   @apply !my-4 rounded-xl overflow-hidden;
 }
 
+.post-content .twitter-tweet-rendered iframe {
+  @apply mb-0;
+}
 
 .post-content .wp-smiley {
   @apply hidden;
