@@ -36,6 +36,17 @@ export const Layout = ({children,meta,dataStore,detailStore}) => {
     <>
     <Head meta={meta} title={meta.title} description={meta.description} keyword={meta.keyword} facebook={meta.facebook} twitter={meta.twitter} />
 
+    <div className={`body-decor`}>
+    </div>
+
+    <div className={`body-decor--text`}>
+      <p className="mb-1">&copy; Image from Unsplash</p>
+      <div className="flex">
+        <a href="#"><i class="far fa-random"></i> New Image</a>
+        <a href="#" className="ml-2"><i class="far fa-minus-circle"></i> Remove Image</a>
+      </div>
+    </div>
+
     <div className={`main-layout`}>
 
       {/* Mobile / Tablet Navbar */}
@@ -78,6 +89,7 @@ export const Layout = ({children,meta,dataStore,detailStore}) => {
       </div>
 
     </div>
+
     </>
   );
 }

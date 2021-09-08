@@ -5,6 +5,31 @@ Layout
 --------------------------------*/
 .main-layout {
   @apply flex flex-col lg:flex-row h-full w-full items-stretch;
+  @apply max-w-screen-2xl;
+  @apply bg-white dark:bg-deepgray-50 bg-opacity-95 backdrop-blur shadow-2xl;
+}
+
+.body-decor,
+.body-decor--text {
+  @apply hidden;
+}
+
+@screen 2xl {
+  .body-decor {
+    @apply block fixed inset-0 w-full h-full -z-1;
+    @apply filter brightness-50;
+    background-image: url("https://source.unsplash.com/random/1600x900/?crypto");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .body-decor--text {
+    @apply block absolute right-4 bottom-4 px-4 py-2 rounded;
+    @apply bg-gray-900 bg-opacity-10 text-white text-opacity-80 text-xs;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+  }
+  .body-decor--text a {
+    @apply hover:text-white hover:text-opacity-100 border-b border-b-white border-opacity-50 hover:border-opacity-100;
+  }
 }
 
 /* 
@@ -12,8 +37,7 @@ Nav Panels
 */
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
-  @apply bg-gray-50 border-r border-gray-400 border-opacity-10 z-50;
-  @apply dark:bg-deepgray-100;
+  @apply bg-gray-50 dark:bg-deepgray-100 bg-opacity-80 border-r border-gray-400 border-opacity-10 z-50;
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
@@ -39,7 +63,7 @@ Navbars on Mobile Tablet
 */
 .pane-bottom {
   @apply flex justify-between w-full h-auto order-last;
-  @apply bg-gray-50 border-r border-gray-400 border-opacity-10 z-50;
+  @apply bg-bluegray-50 border-r border-gray-400 border-opacity-10 z-50;
   @apply dark:bg-deepgray-100;
   flex-basis: var(--navbar-height);
 }
@@ -114,7 +138,7 @@ Card List Area
 .pane-content--main--main {
   /* height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height)); */
   @apply flex flex-auto flex-col w-full h-0 overflow-x-hidden overflow-y-auto;
-  @apply bg-bluegray-50 dark:bg-deepgray-100;
+  /* @apply bg-bluegray-50 dark:bg-deepgray-100; */
 }
 
 @screen lg {
@@ -155,7 +179,7 @@ Reader / Page Area
 }
 
 .pane-content--sec--main {
-  @apply bg-white dark:bg-deepgray-50 w-full h-full;
+  /* @apply bg-white dark:bg-deepgray-50 w-full h-full; */
 }
 
 /* 
@@ -445,7 +469,7 @@ Page Layout
 */
 .page {
   @apply w-full h-full relative;
-  @apply bg-white dark:bg-deepgray-50;
+  /* @apply bg-white dark:bg-deepgray-50; */
 }
 
 .page-header {
