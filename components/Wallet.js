@@ -109,11 +109,11 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                         data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
                         data-event="click"
                       > wallet <i className="fad fa-info-circle text-base" />
-                      </span>
+                      </span> 
                     </h3>
                     <div className="mt-4 text-sm text-white text-opacity-70 leading-6">
                       <p className="">
-                        Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics by connecting to your wallet
+                        Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics by connecting to your wallet or social networks
                       </p>
                     </div>
                   </Dialog.Title>
@@ -125,46 +125,83 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
 
                   <div className={`${styles.dialog_body}`}>
 
-                    <ul>
-                      <li ref={btnRef}>
-                        <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect()}>
-                          <span className={`icon ${styles.btn_icon}`}>
-                            <img src="/images/icons/metamask-24.png" alt="Metamask" />
-                          </span>
-                          <div className={`${styles.btn_text}`}>
-                            <span className="text-base font-semibold text-color-title">Metamask</span>
-                            <span className="text-color-desc">One of the most secure wallets with great flexibility</span>
-                          </div>
-                          <i className={`fal fa-long-arrow-right ${styles.btn_arrow}`}/>
-                        </a>
-                      </li>
-                      <li>
-                        <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletconnect')}>
-                          <span className={`icon ${styles.btn_icon}`}>
-                            <img src="/images/icons/walletconnect-24.png" alt="WalletConnect" />
-                          </span>
-                          <div className={`${styles.btn_text}`}>
-                            <span className="text-base font-semibold text-color-title">WalletConnect</span>
-                            <span className="text-color-desc">Connect with <b>Rainbow</b>, <b>Trust</b>, <b>Argent</b> and more</span>
-                          </div>
-                          <i className={`fal fa-long-arrow-right ${styles.btn_arrow}`}/>
-                        </a>
-                      </li>
-                      <li>
-                        <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletlink')}>
-                          <span className={`icon ${styles.btn_icon}`}>
-                            <img src="/images/icons/walletlink-24.png" alt="WalletLink" />
-                          </span>
-                          <div className={`${styles.btn_text}`}>
-                            <span className="text-base font-semibold text-color-title">WalletLink</span>
-                            <span className="text-color-desc">Connect with <b>Coinbase</b> wallet</span>
-                          </div>
-                          <i className={`fal fa-long-arrow-right ${styles.btn_arrow}`}/>
-                        </a>
-                      </li>
-                    </ul>    
+                    <div className={``}>
+                      <ul>
+                        <li ref={btnRef}>
+                          <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect()}>
+                            <span className={`icon ${styles.btn_icon}`}>
+                              <img src="/images/icons/metamask-24.png" alt="Metamask - Secure wallets with great flexibility" />
+                            </span>
+                            <div className={`${styles.btn_text}`}>
+                              <span className="text-base font-semibold text-color-title">Metamask</span>
+                              <span className="text-color-desc text-sm">Secure wallets with great flexibility</span>
+                            </div>
+                            <i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
+                          </a>
+                        </li>
+                        <li>
+                          <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletconnect')}>
+                            <span className={`icon ${styles.btn_icon}`}>
+                              <img src="/images/icons/walletconnect-24.png" alt="WalletConnect - Connect with Rainbow, Trust, Argent..." />
+                            </span>
+                            <div className={`${styles.btn_text}`}>
+                              <span className="text-base font-semibold text-color-title">WalletConnect</span>
+                              <span className="text-color-desc text-sm">Connect with <b>Rainbow</b>, <b>Trust</b>, <b>Argent</b>...</span>
+                            </div>
+                            <i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
+                          </a>
+                        </li>
+                        <li>
+                          <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletlink')}>
+                            <span className={`icon ${styles.btn_icon}`}>
+                              <img src="/images/icons/walletlink-24.png" alt="WalletLink - Connect with Coinbase wallet" />
+                            </span>
+                            <div className={`${styles.btn_text}`}>
+                              <span className="text-base font-semibold text-color-title">WalletLink</span>
+                              <span className="text-color-desc text-sm">Connect with <b>Coinbase</b> wallet</span>
+                            </div>
+                            <i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
 
-                    <div className="mt-8">
+                    <div className={`divider ${styles.instruct}`}>
+                      <span>Or Connect with</span>
+                    </div>
+
+                    <div className={`${styles.social_login}`}>
+
+                      <a className={`btn btn-default rounded-full ${styles.btn}`} onClick={() => wallet.connect()}>
+                        <span className={`icon ${styles.btn_icon}`}>
+                          <img src="/images/icons/google.svg" alt="Google" />
+                        </span>
+                        <div className={`${styles.btn_text}`}>
+                          <span className="text-base font-semibold text-color-title">Google</span>
+                        </div>
+                      </a>
+
+                      <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletconnect')}>
+                        <span className={`icon ${styles.btn_icon}`}>
+                          <img src="/images/icons/facebook.svg" alt="Facebook" />
+                        </span>
+                        <div className={`${styles.btn_text}`}>
+                          <span className="text-base font-semibold text-color-title">Facebook</span>
+                        </div>
+                      </a>
+
+                      <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletlink')}>
+                        <span className={`icon ${styles.btn_icon}`}>
+                          <img src="/images/icons/twitter.svg" alt="Twitter" />
+                        </span>
+                        <div className={`${styles.btn_text}`}>
+                          <span className="text-base font-semibold text-color-title">Twitter</span>
+                        </div>
+                      </a>
+   
+                    </div>
+
+                    <div className="px-8 md:px-0 mt-6 md:mt-8">
                       <p className="text-xs text-gray-400">
                         We have no access to your private key and funds without your confirmation
                       </p>

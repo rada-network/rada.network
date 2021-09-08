@@ -486,7 +486,7 @@ Media
 Content
 */
 .post-content {
-  @apply text-base md:text-sm;
+  @apply text-sm;
 }
 
 .post-detail-media .post-content--text {
@@ -530,16 +530,31 @@ Dialogs
 }
 
 .dialog-outside {
-  @apply md:px-4 text-center;
+  @apply md:px-4 text-center bg-bluegray-50 dark:bg-gray-900;
 }
 
 .dialog {
-  @apply max-w-2xl overflow-hidden text-left align-top md:align-middle transition-all transform;
+  @apply max-w-2xl lg:max-w-4xl overflow-hidden text-left align-top md:align-middle transition-all transform;
   @apply text-left bg-bluegray-50 dark:bg-gray-900 md:shadow-2xl md:rounded;
 }
 
 .dialog-wrapper {
   @apply block lg:flex;
+}
+
+.dialog .divider {
+  @apply relative my-6 text-center;
+}
+
+.dialog .divider::before {
+  @apply absolute block w-full bg-gray-500 bg-opacity-20 -z-1;
+  content: " ";
+  height: 1px;
+  bottom: calc(50% - 0.2rem)
+}
+
+.dialog .divider span {
+  @apply bg-bluegray-50 dark:bg-gray-900 text-xs uppercase z-0 px-4;
 }
 
 /*
@@ -596,6 +611,7 @@ Empty State
   @apply text-base;
 }
 
+
 /* 
 Content Loader 
 */
@@ -633,36 +649,6 @@ Tootips
   
 }
 
-/* 
-Responsive Carousel 
-*/
-.gallery .carousel .control-arrow,
-.gallery .carousel.carousel-slider .control-arrow {
-  padding: 8px;
-}
-
-.gallery .carousel .control-arrow:focus,
-.gallery .carousel .control-arrow:hover {
-}
-
-.gallery .carousel.carousel-slider .control-arrow:hover {
-}
-
-.gallery .carousel .control-arrow:before,
-.gallery .carousel.carousel-slider .control-arrow:before {
-}
-
-.gallery .carousel .control-prev.control-arrow {
-}
-
-.gallery .carousel .control-prev.control-arrow:before {
-}
-
-.gallery .carousel .control-next.control-arrow {
-}
-
-.gallery .carousel .control-next.control-arrow:before {
-}
 
 /*
 Perfect Scrollbar
@@ -721,7 +707,6 @@ Uitilities
 /* 
 Dragger  
 */
-
 .pane-dragger {
   @apply hidden md:block absolute h-full w-2 -right-2 top-0 z-50;
   @apply border-l-2 border-dashed border-transparent hover:border-primary-500;

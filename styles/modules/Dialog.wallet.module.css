@@ -17,19 +17,28 @@
 }
 
 .dialog_body {
-  @apply py-8 px-8 w-full;
+  @apply pt-0 pb-4 px-0 md:py-8 md:px-8 w-full;
 }
 
+
 .btn {
-  @apply flex rounded-md py-4 px-6 mb-4 w-full;
+  @apply flex rounded-none md:rounded-md py-4 px-6 mb-1 md:mb-4 w-full;
+}
+
+.btn_rounded {
+  @apply flex rounded-full h-12 px-3 justify-center;
 }
 
 .btn_text {
-  @apply flex flex-col flex-1 mr-6;
+  @apply flex flex-col flex-1 mr-6 ml-4;
+}
+
+.btn_rounded .btn_text {
+  @apply ml-2 mr-0;
 }
 
 .btn_icon {
-  @apply w-px-24 h-px-24 mr-4 mt-1;
+  @apply w-px-24 h-px-24;
 }
 
 .btn_icon img {
@@ -48,3 +57,17 @@
 .btn:focus .btn_arrow {
   @apply translate-x-1;
 }
+
+
+.social_login {
+  @apply flex w-full justify-evenly space-x-4 px-6 md:px-0;
+}
+
+.social_login .btn {
+  @apply justify-center px-4;
+}
+
+.social_login .btn_text {
+  @apply hidden md:block ml-2 mr-0;
+}
+

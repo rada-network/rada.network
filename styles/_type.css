@@ -33,21 +33,21 @@ Post Content Typo
 }
 
 .post-content a {
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .post-content h2,
 .post-content .pTitle {
-  @apply text-lg md:text-base font-semibold mb-4;
+  @apply text-base font-semibold mb-4;
 }
 
 .post-content h3,
 .post-content .pHead {
-  @apply text-base md:text-sm font-semibold mb-4;
+  @apply text-sm font-semibold mb-4;
 }
 
 .post-content h4 {
-  @apply text-base md:text-sm font-semibold mb-4;
+  @apply text-sm font-semibold mb-4;
 }
 
 .post-content {
