@@ -58,8 +58,9 @@ module.exports = {
         'deeppurple-800': '#16082b',
         'deeppurple-900': '#100620',
 
-        'shadeyellow-50':  '#fffefa',
-        'shadeyellow-100': '#fffdf7',
+        'shadeyellow-50':  '#fffcf0',
+        'shadeyellow-100': '#fff5cc',
+        'shadeyellow-200': '#feeec5',
 
         'deepgray-50': '#0b0f18',
         'deepgray-100': '#090c13',

@@ -179,7 +179,7 @@ Reader / Page Area
 }
 
 .pane-content--sec--main {
-  /* @apply bg-white dark:bg-deepgray-50 w-full h-full; */
+  @apply w-full h-full;
 }
 
 /* 
