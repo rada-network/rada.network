@@ -22,7 +22,7 @@
 
 
 .btn {
-  @apply flex rounded-none md:rounded-md py-4 px-6 mb-1 md:mb-4 w-full;
+  @apply flex rounded-none md:rounded-md py-4 px-6 my-1 md:mb-4 w-full;
 }
 
 .btn_rounded {
