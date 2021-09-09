@@ -14,11 +14,14 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 import Screen from "../utils/Responsive";
 import {LanguageSwitch} from "../LanguageSwitch";
+import { useStore } from "../../lib/useStore";
+import { observer } from "mobx-react";
 
 const scrollBox = createRef();
 let ps;
 
-export const Layout = ({children,meta,dataStore,detailStore}) => {
+export const Layout = observer(({children,meta,dataStore,detailStore}) => {
+  const store = useStore()
 
   // const [Scrollbar] = useState('')
 
@@ -50,20 +53,23 @@ export const Layout = ({children,meta,dataStore,detailStore}) => {
     <div className={`main-layout`}>
 
       {/* Mobile / Tablet Navbar */}
-      <Screen upto="md">
+      {/* <Screen upto="md"> */}
+      {store.screen.uptoMd && 
       <div className="pane-bottom">
         <Navbar dataStore={dataStore} detailStore={detailStore} />
-        <Screen from="lg">
+        {/* <Screen from="lg"> */}
         <div className="pane-left--bottom">
           <LanguageSwitch dataStore={dataStore} />
           <ThemeSwitch />
         </div>
-        </Screen>
+        {/* </Screen> */}
       </div>
-      </Screen>
+      }
+      {/* </Screen> */}
 
       {/* Desktop Navbar */}
-      <Screen from="lg">
+      {/* <Screen from="lg"> */}
+      {store.screen.fromLg && 
       <div className="pane-left">
         <Navbar dataStore={dataStore} detailStore={detailStore} />
         <div className="pane-left--bottom">
@@ -71,16 +77,19 @@ export const Layout = ({children,meta,dataStore,detailStore}) => {
           <ThemeSwitch />
         </div>
       </div>
-      </Screen>
+      }
+      {/* </Screen> */}
 
       <div className={`pane-center`}>
         
-        <Screen upto="md">
+        {/* <Screen upto="md"> */}
+        {store.screen.uptoMd && 
         <div className="pane-center--top">
           {/* <Tabbar /> */}
           <Topbar dataStore={dataStore} />
         </div>
-        </Screen>
+        }
+        {/* </Screen> */}
 
         <div className="pane-center--main">
           {children}
@@ -92,4 +101,4 @@ export const Layout = ({children,meta,dataStore,detailStore}) => {
 
     </>
   );
-}
+})

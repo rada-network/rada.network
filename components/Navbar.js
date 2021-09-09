@@ -9,13 +9,16 @@ import utils from "../lib/util";
 
 import Screen from "./utils/Responsive";
 
-export const Navbar = ({dataStore,detailStore}) => {
+export const Navbar = observer(({dataStore,detailStore}) => {
+  const store = useStore()
+
   const { t } = useTranslation("navbar")
   return (
     <>
       <nav className={`navbar`}>
 
-        <Screen from="lg">
+        {/* <Screen from="lg"> */}
+        { store.screen.fromLg && 
         <div className="logo">
           {/* Logo */}
           <Link href={`/`}>
@@ -28,7 +31,8 @@ export const Navbar = ({dataStore,detailStore}) => {
             </a>
           </Link>
         </div>
-        </Screen>
+        }
+        {/* </Screen> */}
 
         {/* Main Nav */}
         <div className={`navbar-main`} >
@@ -97,7 +101,7 @@ export const Navbar = ({dataStore,detailStore}) => {
 
     </>
   );
-}
+})
 
 const NavItem = observer(({className, href, children,type,dataStore,detailStore}) => {
   const router = useRouter()

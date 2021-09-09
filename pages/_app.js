@@ -44,6 +44,22 @@ const MyApp = appWithTranslation(({Component, pageProps}) => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [router.events])
+
+  // resize monitor, for responsive/device info
+  useEffect(() => {
+      const onResize = () => {
+          store.updateScreenWidth(window.innerWidth)
+          // update body attribute for styling
+          document.body.setAttribute('data-screen', store.screen.name)
+      }
+      onResize()
+      window.addEventListener("resize", onResize)
+
+      return () => {
+          window.removeEventListener("resize", onResize);
+        }
+  }, [])
+
   return (
     <CookiesProvider>
       <Component {...pageProps} />

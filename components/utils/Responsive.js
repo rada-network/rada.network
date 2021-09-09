@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
 const SCREENS = ['sm', 'md', 'lg', 'xl', '2xl']
-const SCREENS_WIDTH = [640, 768, 1023, 1280, 1536]
+const SCREENS_WIDTH = [640, 768, 1024, 1280, 1536]
 
 {/* <Screen from="md">xxxx</Screen>
 <Screen upto="md">xxxx</Screen> */}
@@ -15,7 +15,7 @@ export default function Screen({from, upto, children}) {
             // setWw(window.innerWidth)
             const w = window.innerWidth
             let i = 0
-            while (i<SCREENS.length-1 && w > SCREENS_WIDTH[i+1]) i++
+            while (i<SCREENS.length-1 && w >= SCREENS_WIDTH[i+1]) i++
             setScreen(i)
         }
         onResize()

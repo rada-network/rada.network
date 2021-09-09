@@ -7,8 +7,10 @@ import {PostListDetail} from "./card-layouts/PostListDetail";
 import {Header} from "./headers/HeaderHome";
 import {Sidebar} from "./sidebar/Sidebar";
 import dynamic from "next/dynamic";
+import { useStore } from "../lib/useStore";
 
 export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
+  const store = useStore()
 
   // const scrollBox2 = createRef();
   // let ps2;
@@ -20,13 +22,22 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   //     ps2.destroy()
   //   }
   // }, [scrollBox2]);
+  useEffect(() => {
+    if (dataStore.showDetail) {
+      document.body.classList.add('page-details')
+    } else {
+      document.body.classList.remove('page-details')
+    }
+  }, [dataStore.showDetail])
+  
 
   const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
   return (
     <>
       <div className={`pane-content--sec` + (dataStore.showDetail ? " pane-content-active" : "")}>
 
-        <Screen from="lg">
+        {/* <Screen from="lg"> */}
+        { store.screen.fromLg &&
           <div className={`pane-content--sec--top`}>
             <div className="leading-10"></div>
             <div className="flex items-center space-x-2">
@@ -36,12 +47,11 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
               </div>
             </div>
           </div>
-        </Screen>
+        }
+        {/* </Screen> */}
 
-        {dataStore.showDetail ?
+        {dataStore.showDetail &&
           <PostListDetail detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
-          :
-          ""
         }
 
         <div className={`pane-content--sec--main scrollbar ` + (dataStore.showDetail ? "hidden" : "")}>
