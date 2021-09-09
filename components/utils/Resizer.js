@@ -21,12 +21,18 @@ export function Resizer({className, onDragStart, onDragStop, onDragMove, style})
 
     useEffect(() => {
         const dragStart = e => {
+            e.stopPropagation()
+            e.preventDefault()
+
             if (drag.dragging) return        
             const pt = getPoint(e)        
             setDrag({dragging: true, ...pt})
             if (onDragStart) onDragStart({target: e.target, startX: pt.x, startY: pt.y})
         }
         const dragStop = e => {
+            e.stopPropagation()
+            e.preventDefault()
+
             const pt = getPoint(e)        
             // clear stopTimeout 
             if (stopTimeout) {
@@ -37,6 +43,9 @@ export function Resizer({className, onDragStart, onDragStop, onDragMove, style})
             setDrag({dragging: false})
         }
         const dragMove = e => {
+            e.stopPropagation()
+            e.preventDefault()
+
             const pt = getPoint(e)        
             if (onDragMove) onDragMove({target: e.target, clientX: pt.x, clientY: pt.y, startX: drag.x, startY: drag.y})
     

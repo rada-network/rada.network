@@ -97,7 +97,7 @@ export default observer(function(props) {
   )
 })
 
-export const Index  = observer(({props,observableItemStore,voteStore}) => {
+export const Index  = ({props,observableItemStore,voteStore}) => {
   const detailStore = new DetailStore()
   let meta
   if (props.item === undefined) {
@@ -192,7 +192,7 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
       </div>
     </Layout>
   )
-})
+}
 
 
 export async function getStaticPaths() {

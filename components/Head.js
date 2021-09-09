@@ -1,23 +1,30 @@
 import HTMLHead from 'next/head'
+import { useEffect, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 
 export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
+  const [load, setLoad] = useState(false)
+
+  useEffect(() => {
+    setLoad(true)
+  }, [])
+
   return (
     <>
     <HTMLHead>
       <title>{title}</title>
       <meta name="description" content={description}/>
       <meta name="keyword" content={keyword}/>
-      {"og:type" in meta ? <meta property="og:type" content={meta["og:type"]} /> : ""}
-      {"og:title" in meta ? <meta property="og:title" content={meta["og:title"]} /> : ""}
-      {"og:description" in meta ? <meta property="og:description" content={meta["og:description"]} /> : ""}
-      {"og:image" in meta ? <meta property="og:image" content={meta["og:image"]} /> : ""}
-      {"og:url" in meta ? <meta property="og:url" content={meta["og:url"]} /> : ""}
+      {"og:type" in meta && <meta property="og:type" content={meta["og:type"]} />}
+      {"og:title" in meta && <meta property="og:title" content={meta["og:title"]} />}
+      {"og:description" in meta && <meta property="og:description" content={meta["og:description"]} />}
+      {"og:image" in meta && <meta property="og:image" content={meta["og:image"]} />}
+      {"og:url" in meta && <meta property="og:url" content={meta["og:url"]} />}
+      {"article:tag" in meta && <meta property="article:tag" content={meta["article:tag"]} />}
+      {"article:section" in meta && <meta property="article:section" content={meta["article:section"]} />}
+      {"article:published_time" in meta && <meta property="article:published_time" content={meta["article:published_time"]} />}
+      {"article:author" in meta && <meta property="article:author" content={meta["article:author"]} />}
       <meta property="og:site_name" content="Rada" />
-      {"article:tag" in meta ? <meta property="article:tag" content={meta["article:tag"]} /> : ""}
-      {"article:section" in meta ? <meta property="article:section" content={meta["article:section"]} /> : ""}
-      {"article:published_time" in meta ? <meta property="article:published_time" content={meta["article:published_time"]} /> : ""}
-      {"article:author" in meta ? <meta property="article:author" content={meta["article:author"]} /> : ""}
       <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -58,7 +65,7 @@ export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
       <meta name="theme-color" content="#4338CA" />
     </HTMLHead>
 
-    <ReactTooltip type="info" clickable={true} html={true} />
+    {load && <ReactTooltip type="info" clickable={true} html={true} />}
     </>
   );
 };
