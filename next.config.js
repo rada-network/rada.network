@@ -26,6 +26,20 @@ module.exports = (phase) => {
       disable: isDev
     },
     i18n,
+    images : {
+      domains: [
+        's3.cointelegraph.com',
+        'cryptoslate.com',
+        'cdn.coingape.com',
+        'webgiacoin.com',
+        'tintucbitcoin.com',
+        'sgp1.digitaloceanspaces.com',
+        'coin68.com',
+        'image.vietstock.vn',
+        'img.youtube.com',
+        'blogtienao.com',
+      ],
+    },
   }
 
   // next.config.js object

@@ -817,3 +817,9 @@ Dragger
 .pane-dragger.dragging {
   user-select: none;
 }
+
+.post-rada ol,ul{
+  list-style: revert;
+  margin: revert;
+  padding: revert;
+}

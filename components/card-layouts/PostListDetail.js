@@ -208,16 +208,21 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
 const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
   let title = item.title
   let content = item.contentDisplay
+  let isRada = false;
+  if (item.grabTopic !== null && item.grabTopic.url.indexOf("rada") !== -1) {
+    isRada = true;
+  }
   if (item.lang === "all"){
     if (item.currentLang === "vi"){
       title = item.title
-      content = item.contentDisplay
+      content = isRada ? item.content : item.contentDisplay
     }
     else if (item.currentLang === "en"){
       title = item.title_en
       content = item.content_en_display
     }
   }
+  
   useEffect(() => {
     // make scrollbar
     // let iframes = document.querySelectorAll('iframe')
@@ -236,12 +241,15 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
   }, [item.contentDisplay]);
   const {t} = useTranslation()
   return (
-    <div className="section post-detail post-detail-news">
+    <div className={`section post-detail post-detail-news` + (isRada ? " post-rada" : "")}>
       {/* Post Header */}
       <div className="section-header post-header">
         <div className="post-title">
           <h1 className="inline">
             <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
+              {isRada ? 
+              <span className="badge badge-rada mr-2">RADA</span> 
+              : ""}
               <span className="post-title--text">
                 {title}
               </span>
@@ -255,9 +263,15 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
         <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
+              {isRada ? 
+              <span className="icon icon-rada w-3.5 mr-1">
+                <img layout='fill' src="/images/rada-mono.svg" alt="RADA NETWORK" />
+              </span>
+              : 
               <span className="icon mr-1">
                 <i className="fad fa-newspaper"></i>
-              </span>
+              </span>} 
+              
               <span className="metadata-value" title={getSourceFromUri(item)}>
                 {getSourceFromUri(item)}
               </span>

@@ -11,6 +11,7 @@ import _ from "lodash"
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Resizer } from "../../components/utils/Resizer";
+import store from "store"
 
 const getDataExplore = async ({query,type,lang}) => {
   if (['news','media','video','rada','social','all',''].indexOf(type) === -1){
