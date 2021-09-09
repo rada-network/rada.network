@@ -4,14 +4,15 @@ import Link from 'next/link'
 import Head from 'next/head';
 
 // Concepts
-import SearchInput from "../components/search"
-import {PostsList} from "../components/card-layouts/concepts/PostsList";
-import {PostsListTrending} from "../components/card-layouts/concepts/PostsListTrending";
+import SearchInput from "../../components/search"
+import {PostsList} from "../../components/card-layouts/concepts/PostList";
+import {PostsListTrending} from "../../components/card-layouts/concepts/PostsListTrending";
 
-export default observer((props) => {
-
-      {/* main content pane */}
-      <div className={`pane-content--main`}>
+export default (props) => {
+  return (
+    <>
+    {/* main content pane */}
+    <div className={`pane-content--main`}>
         <PostsList title="Trends hunter for Cardano Community" />
 
         <div className={`pane-content--main--top`}>
@@ -38,26 +39,27 @@ export default observer((props) => {
       </div>
 
       {/* secondary content pane */}
-      <div className={`pane-content--sec scrollbar`} ref={scrollBox}>
-        <PostsListTrending title="Most Popular" />
+      <div className={`pane-content--sec scrollbar`} >
+        {/* <PostsListTrending title="Most Popular" /> */}
       <div className={`pane-content--sec`}>
 
         <div className={`pane-content--sec--top`}>
         </div>
 
-        <div className={`pane-content--sec--main scrollbar`} ref={scrollBox}>
-          <PostsListTrending title="Most Popular" />
+        <div className={`pane-content--sec--main scrollbar`}>
+          {/* <PostsListTrending title="Most Popular" /> */}
         </div>
 
       </div>
 
     </div>
-    </Layout>
+    </>
   )
+      
+  
 }
-
 export async function getStaticProps() {
-  const props = await getData();
+  const props = {};
   return {
     props,
     revalidate: 900

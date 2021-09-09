@@ -6,9 +6,10 @@ import { getItems } from "../data/query/getItem";
 import { HOME_ITEM_TAKE } from "../config/paging";
 
 export default function SearchInput({dataStore,detailStore}){
+  let query = dataStore !== undefined ? dataStore.query : ""
   const {t} = useTranslation("common")
   const router = useRouter()
-  const [searchValue,setSearchValue] = useState({clearSearch:false,value:dataStore.query})
+  const [searchValue,setSearchValue] = useState({clearSearch:false,value:query})
   const [isSearch,setIsSearch] = useState(false)
   const handledOnChange = (e) =>{
     const value = e.currentTarget.value

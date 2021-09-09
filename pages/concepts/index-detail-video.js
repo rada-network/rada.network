@@ -1,16 +1,11 @@
-import Link from 'next/link'
 
 // import dynamic from 'next/dynamic'
-import Head from 'next/head';
 
 // Components
 import {Layout} from '../../components/page-layouts/Global';
-import {Header} from '../../components/headers/HeaderHome';
-import {Sidebar} from '../../components/sidebar/Sidebar';
 
 // Concepts
-import SearchInput from "../../components/search"
-import {PostsList, PostsListWrapper} from "../../components/card-layouts/PostsList";
+import {PostsListWrapper} from "../../components/card-layouts/PostsList";
 import {Wallet} from "../../components/Wallet"
 import ThemeSwitch from "../../components/ThemeSwitch"
 import {RiExternalLinkLine} from "react-icons/ri";
@@ -20,8 +15,7 @@ import React, { useState, useEffect, createRef } from 'react'
 
 import utils from "../../lib/util";
 import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
-import Responsive from '../../components/Resposive';
-import Screen from '../../components/Resposive';
+import Screen from '../../components/utils/Responsive';
 
 
 const voteStore = new VoteStore();

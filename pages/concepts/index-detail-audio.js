@@ -1,16 +1,11 @@
-import Link from 'next/link'
 
 // import dynamic from 'next/dynamic'
-import Head from 'next/head';
 
 // Components
 import {Layout} from '../../components/page-layouts/Global';
-import {Header} from '../../components/headers/HeaderHome';
-import {Sidebar} from '../../components/sidebar/Sidebar';
 
 // Concepts
-import SearchInput from "../../components/search"
-import {PostsList, PostsListWrapper} from "../../components/card-layouts/PostsList";
+import {PostsListWrapper} from "../../components/card-layouts/PostsList";
 import {Wallet} from "../../components/Wallet"
 import ThemeSwitch from "../../components/ThemeSwitch"
 import {RiExternalLinkLine} from "react-icons/ri";
@@ -20,8 +15,7 @@ import React, { useState, useEffect, createRef } from 'react'
 
 import utils from "../../lib/util";
 import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
-import Responsive from '../../components/Resposive';
-import Screen from '../../components/Resposive';
+import Screen from '../../components/utils/Responsive';
 
 const voteStore = new VoteStore();
 const homeStore = new HomeStore({isHome : true})
@@ -33,7 +27,6 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 import {getItems} from "../../data/query/getItem";
 import {HOME_ITEM_TAKE} from "../../config/paging";
 import {CommentList} from "../../components/comments/commentList";
-import {getNews} from "../../data/query/getNewsById";
 
 const getData = async ({query}) => {
   const itemFeed = await getItems({
