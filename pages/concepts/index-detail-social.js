@@ -19,7 +19,6 @@ import React, { useState, useEffect, createRef } from 'react'
 import utils from "../../lib/util";
 import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 
-import { FromLg } from '../../components/utils/Responsive';
 
 
 const voteStore = new VoteStore();
@@ -50,7 +49,7 @@ const getData = async ({query}) => {
 
 export default observer((props) => {
   if (!props) return <div>loading...</div>
-
+  return ""
   observableItemStore.query = props.query
   const [scrollbar] = useState('')
 

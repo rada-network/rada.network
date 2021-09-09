@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from "react"
 
 export function Resizer({className, onDragStart, onDragStop, onDragMove, style}) {

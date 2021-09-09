@@ -15,7 +15,6 @@ import React, { useState, useEffect, createRef } from 'react'
 
 import utils from "../../lib/util";
 import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
-import Screen, { FromLg } from '../../components/utils/Responsive';
 
 
 const voteStore = new VoteStore();

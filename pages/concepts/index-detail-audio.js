@@ -15,7 +15,6 @@ import React, { useState, useEffect, createRef } from 'react'
 
 import utils from "../../lib/util";
 import {HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
-import { FromLg } from '../../components/utils/Responsive';
 
 const voteStore = new VoteStore();
 const homeStore = new HomeStore({isHome : true})
