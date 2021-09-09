@@ -7,6 +7,7 @@ Layout
   @apply flex flex-col lg:flex-row h-full w-full items-stretch;
   @apply max-w-screen-2xl;
   @apply bg-white dark:bg-deepgray-50 2xl:bg-transparent 2xl:shadow-2xl;
+  animation: fadein 0.4s ease-in;
 }
 
 .body-decor,
@@ -18,9 +19,10 @@ Layout
   .body-decor {
     @apply block fixed inset-0 w-full h-full -z-1;
     @apply filter brightness-50;
-    background-image: url("https://source.unsplash.com/random/1600x900/?crypto");
+    background-image: url("https://source.unsplash.com/random/1600x900/?aerial,drone+view");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: bottom right;
   }
   .body-decor--text {
     @apply block absolute right-4 bottom-4 px-4 py-2 rounded;
@@ -37,8 +39,8 @@ Nav Panels
 */
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
-  @apply border-r border-gray-400 border-opacity-10 z-50;
-  @apply bg-gray-50 dark:bg-deepgray-100 2xl:bg-opacity-95 2xl:backdrop-blur;
+  @apply border-r border-gray-100 dark:border-gray-800 z-50;
+  @apply bg-gray-50 dark:bg-deepgray-100;
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
@@ -92,9 +94,8 @@ Main Panels
 
 .pane-center--top {
   @apply flex flex-shrink-0 m-0;
-  @apply border-b border-gray-100 z-50;
-  @apply dark:border-gray-800;
-  transition: margin .2s ease;
+  @apply border-b border-gray-100 dark:border-gray-800 z-50;
+  transition: margin 300ms linear;
 }
 
 .pane-center--main {
@@ -110,7 +111,7 @@ Main Panels
 .pane-content--main {
   @apply relative float-left w-full;
   @apply flex flex-col w-full h-full;
-  @apply border-r border-gray-100 2xl:border-gray-200 dark:border-gray-800;
+  @apply border-r border-gray-100 dark:border-gray-800;
 }
 
 @screen md {
@@ -129,8 +130,8 @@ Main Panels
 .pane-content--main--top,
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
-  @apply border-b border-gray-400 border-opacity-10;
-  @apply bg-white dark:bg-deepgray-50 2xl:bg-opacity-95 2xl:backdrop-blur;
+  @apply border-b border-gray-100 dark:border-gray-800;
+  @apply bg-white dark:bg-deepgray-50;
   height: var(--toolbar-height);
 }
 
@@ -140,7 +141,7 @@ Card List Area
 .pane-content--main--main {
   /* height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height)); */
   @apply flex flex-auto flex-col w-full h-0 overflow-x-hidden overflow-y-auto;
-  @apply bg-white dark:bg-deepgray-50 2xl:bg-opacity-95 2xl:backdrop-blur;
+  @apply bg-white dark:bg-deepgray-50;
 }
 
 @screen lg {
@@ -182,7 +183,7 @@ Reader / Page Area
 
 .pane-content--sec--main {
   @apply w-full h-full;
-  @apply bg-white dark:bg-deepgray-50 2xl:bg-opacity-95 2xl:backdrop-blur;
+  @apply bg-white dark:bg-deepgray-50;
 }
 
 /* 

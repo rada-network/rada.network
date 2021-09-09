@@ -20,7 +20,7 @@ export const Navbar = ({dataStore,detailStore}) => {
           {/* Logo */}
           <Link href={`/`}>
             <a className="flex flex-col w-full justify-center items-center">
-              <img className="logo--img" src="/images/rada.svg" alt="RADA NETWORK" />
+              <img className="logo--img" src="/images/rada-animate.svg" alt="RADA NETWORK" />
               <strong className="logo--text mt-1">
                 <span>RADA</span>
               </strong>

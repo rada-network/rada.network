@@ -88,7 +88,7 @@ export const CardPost = observer(({title, mediaUri, type, source, commentCount, 
         </div>
         :
         <div className="card-media-blank">
-          <img className="logo--img" src="/images/dhunt.svg" alt="no image" />
+          <img className="logo--img" src="/images/rada.svg" alt="no image" />
         </div>
       }
 
