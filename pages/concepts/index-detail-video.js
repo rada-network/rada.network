@@ -13,9 +13,15 @@ import {RiExternalLinkLine} from "react-icons/ri";
 import { observer } from "mobx-react"
 import React, { useState, useEffect, createRef } from 'react'
 
+<<<<<<< HEAD:pages/concepts/index-detail-video.js
 import utils from "../../lib/util";
 import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 import Screen, { FromLg } from '../../components/utils/Responsive';
+=======
+import utils from "../lib/util";
+import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
+import Screen from '../components/utils/Responsive';
+>>>>>>> rada.co---live:pages/index-video.js
 
 
 const voteStore = new VoteStore();

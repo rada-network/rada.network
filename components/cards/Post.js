@@ -6,13 +6,13 @@ import KeywordIcon from "../icons/keywordIcon";
 
 import ContentLoader from "react-content-loader";
 import Link from "next/link"
-import ShowSources from '../news-sources/ShowSources'
-import ReadingTime from "../news-sources/ReadingTime";
-import {empty} from "@apollo/client";
 import {observer} from "mobx-react";
+import Image from 'next/image'
+
+
+import Screen from "../utils/Responsive";
 
 import _ from 'lodash';
-import Screen from "../utils/Responsive";
 
 export const CardPostLoader = (props) => {
   return (
@@ -107,12 +107,12 @@ const CardPostNormal = observer(({title, mediaUri, type, source, commentCount, v
       {mediaUri !== null ?
         <div className={`card-media`}>
           <div className={`card-media-img`}>
-            <img className={`card-img`} src={mediaUri} alt={""}/>
+            <Image className={`card-img`} src={mediaUri} alt={title}/>
           </div>
         </div>
         :
         <div className="card-media-blank">
-          <img className="logo--img" src="/images/rada.svg" alt="no image" />
+          <Image className="logo--img" src="/images/rada.svg" alt="no image" />
         </div>
       }
 
@@ -212,12 +212,12 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
       {mediaUri !== null ?
         <div className={`card-media`}>
           <div className={`card-media-img`}>
-            <img className={`card-img`} src={mediaUri} alt={""}/>
+            <Image className={`card-img`} src={mediaUri} alt={title}/>
           </div>
         </div>
         :
         <div className="card-media-blank">
-          <img className="logo--img" src="/images/rada.svg" alt="no image" />
+          <Image className="logo--img" src="/images/rada.svg" alt="no image" />
         </div>
       }
 
@@ -237,7 +237,7 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
               <span className="icon icon-rada w-3.5 mr-1">
-                <img src="/images/rada-mono.svg" alt="RADA NETWORK" />
+                <Image src="/images/rada-mono.svg" alt="RADA NETWORK" />
               </span>
               <span className="metadata-value" title={source}>{source}</span>
             </div>
