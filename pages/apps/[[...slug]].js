@@ -180,9 +180,7 @@ export const Index  = observer(({props,observableItemStore,voteStore}) => {
 
   return (
     <Layout dataStore={observableItemStore} detailStore={detailStore} extraClass="page-home" meta={meta}>
-
       <div className={`pane-content`} style={{'--main-width': `${mainwidth}%`}}>
-
         {/* main content pane */}
         <div className={`pane-content--main`} ref={mainRef}>
           <PostsListWrapper  dataStore={observableItemStore} detailStore={detailStore} voteStore={voteStore} />

@@ -12,16 +12,14 @@ import { useState, useEffect, createRef } from 'react'
 import PerfectScrollbar from 'perfect-scrollbar';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
-import Screen from "../utils/Responsive";
 import {LanguageSwitch} from "../LanguageSwitch";
-import { useStore } from "../../lib/useStore";
+import Screen from "../utils/Responsive";
 import { observer } from "mobx-react";
 
 const scrollBox = createRef();
 let ps;
 
 export const Layout = observer(({children,meta,dataStore,detailStore}) => {
-  const store = useStore()
 
   // const [Scrollbar] = useState('')
 
@@ -45,16 +43,15 @@ export const Layout = observer(({children,meta,dataStore,detailStore}) => {
     <div className={`body-decor--text`}>
       <p className="mb-1">&copy; Image from Unsplash</p>
       <div className="flex">
-        <a href="#"><i class="far fa-random"></i> New Image</a>
-        <a href="#" className="ml-2"><i class="far fa-minus-circle"></i> Remove Image</a>
+        <a href="#"><i className="far fa-random"></i> New Image</a>
+        <a href="#" className="ml-2"><i className="far fa-minus-circle"></i> Remove Image</a>
       </div>
     </div>
 
     <div className={`main-layout`}>
 
       {/* Mobile / Tablet Navbar */}
-      {/* <Screen upto="md"> */}
-      {store.screen.uptoMd && 
+      <Screen upto="md">
       <div className="pane-bottom">
         <Navbar dataStore={dataStore} detailStore={detailStore} />
         {/* <Screen from="lg"> */}
@@ -64,12 +61,10 @@ export const Layout = observer(({children,meta,dataStore,detailStore}) => {
         </div>
         {/* </Screen> */}
       </div>
-      }
-      {/* </Screen> */}
+      </Screen>
 
       {/* Desktop Navbar */}
-      {/* <Screen from="lg"> */}
-      {store.screen.fromLg && 
+      <Screen from="lg">
       <div className="pane-left">
         <Navbar dataStore={dataStore} detailStore={detailStore} />
         <div className="pane-left--bottom">
@@ -77,19 +72,16 @@ export const Layout = observer(({children,meta,dataStore,detailStore}) => {
           <ThemeSwitch />
         </div>
       </div>
-      }
-      {/* </Screen> */}
+      </Screen>
 
       <div className={`pane-center`}>
         
-        {/* <Screen upto="md"> */}
-        {store.screen.uptoMd && 
+        <Screen upto="md">
         <div className="pane-center--top">
           {/* <Tabbar /> */}
           <Topbar dataStore={dataStore} />
         </div>
-        }
-        {/* </Screen> */}
+        </Screen>
 
         <div className="pane-center--main">
           {children}

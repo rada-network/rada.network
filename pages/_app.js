@@ -15,6 +15,7 @@ import {useEffect} from "react";
 import {useRouter} from "next/router";
 import * as ga from '../lib/ga'
 import { appWithTranslation } from 'next-i18next';
+import { getScreenName } from '../components/utils/Responsive';
 
 configure({
   enforceActions: "never",
@@ -48,9 +49,8 @@ const MyApp = appWithTranslation(({Component, pageProps}) => {
   // resize monitor, for responsive/device info
   useEffect(() => {
       const onResize = () => {
-          store.updateScreenWidth(window.innerWidth)
           // update body attribute for styling
-          document.body.setAttribute('data-screen', store.screen.name)
+          document.body.setAttribute('data-screen', getScreenName(window.innerWidth))
       }
       onResize()
       window.addEventListener("resize", onResize)

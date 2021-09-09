@@ -11,46 +11,48 @@ import ReadingTime from "../news-sources/ReadingTime";
 import {empty} from "@apollo/client";
 import {observer} from "mobx-react";
 
+import _ from 'lodash';
 import Screen from "../utils/Responsive";
 
-import _ from 'lodash';
+export const CardPostLoader = (props) => {
+  return (
+    <div className={`card card-post`}>
+      <div className={`card-body content-loader`}>
+        <Screen upto="md">
+        <ContentLoader
+          speed={2}
+          // backgroundColor="#F3F4F6"
+          // foregroundColor="#ecebeb"
+          viewBox="0 0 400 40"
+          preserveAspectRatio="xMidYMid meet"
+          style={{ width: '100%' }}
+          {...props}
+        >
+          <rect x="0" y="0" rx="4" ry="4" width="40" height="40" />
+          <rect x="56" y="6" rx="4" ry="4" width="320" height="6" />
+          <rect x="56" y="26" rx="4" ry="4" width="128" height="6" />
+        </ContentLoader>
+        </Screen>
 
-export const CardPostLoader = (props) => (
-  <div className={`card card-post`}>
-    <div className={`card-body content-loader`}>
-      <Screen upto="md">
-      <ContentLoader
-        speed={2}
-        // backgroundColor="#F3F4F6"
-        // foregroundColor="#ecebeb"
-        viewBox="0 0 400 40"
-        preserveAspectRatio="xMidYMid meet"
-        style={{ width: '100%' }}
-        {...props}
-      >
-        <rect x="0" y="0" rx="4" ry="4" width="40" height="40" />
-        <rect x="56" y="6" rx="4" ry="4" width="320" height="6" />
-        <rect x="56" y="26" rx="4" ry="4" width="128" height="6" />
-      </ContentLoader>
-      </Screen>
-      <Screen from="lg">
-      <ContentLoader
-        speed={2}
-        // backgroundColor="#F3F4F6"
-        // foregroundColor="#ecebeb"
-        viewBox="0 0 640 40"
-        preserveAspectRatio="xMidYMid meet"
-        // style={{ width: '100%' }}
-        {...props}
-      >
-        <rect x="0" y="0" rx="4" ry="4" width="40" height="40" />
-        <rect x="56" y="6" rx="4" ry="4" width="528" height="6" />
-        <rect x="56" y="26" rx="4" ry="4" width="128" height="6" />
-      </ContentLoader>
-      </Screen>
+        <Screen from="lg">
+        <ContentLoader
+          speed={2}
+          // backgroundColor="#F3F4F6"
+          // foregroundColor="#ecebeb"
+          viewBox="0 0 640 40"
+          preserveAspectRatio="xMidYMid meet"
+          // style={{ width: '100%' }}
+          {...props}
+        >
+          <rect x="0" y="0" rx="4" ry="4" width="40" height="40" />
+          <rect x="56" y="6" rx="4" ry="4" width="528" height="6" />
+          <rect x="56" y="26" rx="4" ry="4" width="128" height="6" />
+        </ContentLoader>
+        </Screen>
+      </div>
     </div>
-  </div>
-)
+  )}
+  
 export const CardPost = observer(({title, mediaUri, type, source, commentCount, voteCount,item,detailStore,dataStore,voteStore}) => {
   let isRada = false;
   if (item && item.news !== null && item.news.grabTopic !== null && item.news.grabTopic.url.indexOf("rada") !== -1) {

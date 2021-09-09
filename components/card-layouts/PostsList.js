@@ -20,7 +20,7 @@ import { data } from 'autoprefixer';
 import {ConceptCardPost} from "../cards/concepts/PostRada";
 
 
-export const PostsListWrapper = observer(function ({dataStore,detailStore,voteStore}){
+export const PostsListWrapper = function ({dataStore,detailStore,voteStore}){
   const handleChangeFilter = ({filter}) =>{
     if (dataStore.loadingButton) return false
     dataStore.currentTab = filter;
@@ -136,7 +136,7 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
       </div>
     </>
   )
-})
+}
 
 
 export function getSourceFromUri(item){
