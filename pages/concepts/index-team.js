@@ -39,15 +39,15 @@ export default (props) => {
       </div>
 
       {/* secondary content pane */}
-      <div className={`pane-content--sec scrollbar`} ref={scrollBox}>
-        <PostsListTrending title="Most Popular" />
+      <div className={`pane-content--sec scrollbar`} >
+        {/* <PostsListTrending title="Most Popular" /> */}
       <div className={`pane-content--sec`}>
 
         <div className={`pane-content--sec--top`}>
         </div>
 
-        <div className={`pane-content--sec--main scrollbar`} ref={scrollBox}>
-          <PostsListTrending title="Most Popular" />
+        <div className={`pane-content--sec--main scrollbar`} >
+          {/* <PostsListTrending title="Most Popular" /> */}
         </div>
 
       </div>

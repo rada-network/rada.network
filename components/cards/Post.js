@@ -53,10 +53,10 @@ export const CardPostLoader = (props) => (
 )
 export const CardPost = observer(({title, mediaUri, type, source, commentCount, voteCount,item,detailStore,dataStore,voteStore}) => {
   let isRada = false;
-  if (item.news !== null && item.news.grabTopic !== null && item.news.grabTopic.url.indexOf("rada") !== -1) {
+  if (item && item.news !== null && item.news.grabTopic !== null && item.news.grabTopic.url.indexOf("rada") !== -1) {
     isRada = true;
   }
-  if (item.video !== null && item.video.grabTopic !== null && item.video.grabTopic.url.indexOf("rada") !== -1) {
+  if (item && item.video !== null && item.video.grabTopic !== null && item.video.grabTopic.url.indexOf("rada") !== -1) {
     isRada = true;
   }
   if (isRada) {
