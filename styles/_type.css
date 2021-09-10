@@ -26,8 +26,19 @@ body {
 /* 
 Post Content Typo
 ----------------------------------- */
+.post-title h1 {
+  @apply text-lg md:text-xl font-semibold;
+  .badge {
+    @apply relative -top-1;
+  }
+}
+
 .post-content {
-  @apply text-base;
+}
+
+.post-detail-media .post-content--text {
+  @apply text-sm whitespace-pre-wrap;
+  word-break: break-word;
 }
 
 .post-content p,
@@ -59,11 +70,11 @@ Post Content Typo
 
 .post-content h3,
 .post-content .pHead {
-  @apply text-base;
+  @apply text-sm;
 }
 
 .post-content h4 {
-  @apply text-base;
+  @apply text-sm;
 }
 
 .post-content {

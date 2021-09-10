@@ -35,7 +35,8 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
 
         <Screen from="lg">
           <div className={`pane-content--sec--top`}>
-            <div className="leading-10"></div>
+            <div className="leading-10">
+            </div>
             <div className="flex items-center space-x-2">
               {/* <ThemeSwitch /> */}
               <div className="relative">

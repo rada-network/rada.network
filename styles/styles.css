@@ -412,7 +412,7 @@ Page Layout
 }
 
 .page-back {
-  @apply flex items-center px-4 pt-4 pb-2 md:px-6 md:pt-2 md:pb-2 md:mt-4;
+  @apply flex items-center px-4 pt-4 pb-2 md:px-6 md:pt-2 md:pb-2 md:mt-2;
   @apply bg-white dark:bg-deepgray-50 bg-opacity-80 backdrop-blur;
 }
 
@@ -437,9 +437,8 @@ Post Details
 Title 
 */
 .post-title h1 {
-  @apply text-lg lg:text-xl font-semibold;
   .badge {
-    @apply relative -top-0.5 md:-top-1;
+    @apply relative -top-1;
   }
 }
 
@@ -507,7 +506,7 @@ Media
 }
 
 .post-detail-media .post-media {
-  @apply mt-0 mb-8 max-h-full;
+  @apply mt-0 mb-6 max-h-full;
 }
 
 /*
@@ -516,9 +515,6 @@ Content
 .post-content {
 }
 
-.post-detail-media .post-content--text {
-  @apply whitespace-pre-wrap;
-}
 
 /* Post Actions */
 .post-actions {

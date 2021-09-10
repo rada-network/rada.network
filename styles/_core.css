@@ -6,7 +6,7 @@ Global Styles
 */
 html {
   @apply h-full;
-  scroll-behaviour: smooth;
+  scroll-behavior: smooth;
 }
 
 body {

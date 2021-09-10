@@ -16,6 +16,7 @@ module.exports = {
   theme: {
     // Add Font to Sans Font Array
     fontFamily: {
+      // sans: ['"Inter"', ...defaultTheme.fontFamily.sans],
       sans: ['"Inter"', ...defaultTheme.fontFamily.sans],
       serif: ['"Literata"', ...defaultTheme.fontFamily.serif],
     },
