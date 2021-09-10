@@ -41,10 +41,10 @@ export const Layout = observer(({children,meta,dataStore,detailStore}) => {
     </div>
 
     <div className={`body-decor--text`}>
-      <p className="mb-1">&copy; Image from Unsplash</p>
+      <p className="mb-1">&copy; Photo from Unsplash</p>
       <div className="flex">
-        <a href="#"><i className="far fa-random"></i> New Image</a>
-        <a href="#" className="ml-2"><i className="far fa-minus-circle"></i> Remove Image</a>
+        <a href="#"><i className="far fa-random"></i> New Photo</a>
+        <a href="#" className="ml-2"><i className="far fa-minus-circle"></i> Remove</a>
       </div>
     </div>
 

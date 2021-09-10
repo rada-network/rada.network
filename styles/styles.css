@@ -5,8 +5,8 @@ Layout
 --------------------------------*/
 .main-layout {
   @apply flex flex-col lg:flex-row h-full w-full items-stretch;
-  @apply max-w-screen-2xl;
-  @apply bg-white dark:bg-deepgray-50 2xl:bg-transparent 2xl:shadow-2xl;
+  @apply max-w-screen-2xl 2xl:m-auto;
+  @apply bg-white dark:bg-deepgray-50 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-2xl;
   animation: fadein 0.4s ease-in;
 }
 
@@ -19,7 +19,7 @@ Layout
   .body-decor {
     @apply block fixed inset-0 w-full h-full -z-1;
     @apply filter brightness-50;
-    background-image: url("https://source.unsplash.com/random/1600x900/?nature");
+    background-image: url("https://source.unsplash.com/random/1600x900/?art");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
@@ -40,10 +40,12 @@ Nav Panels
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
   @apply border-r border-gray-100 dark:border-gray-800 z-50;
-  @apply bg-gray-50 dark:bg-deepgray-100;
+  @apply bg-gray-50 dark:bg-deepgray-100 2xl:bg-white 2xl:dark:bg-deepgray-100;
+  @apply 2xl:bg-opacity-90 2xl:dark:bg-opacity-60 2xl:backdrop-blur;
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
+
 
 .pane-left--bottom {
   @apply justify-between items-center p-2 space-y-2;
@@ -217,7 +219,6 @@ Main Layout when scrolling
 
     .page-back {
       @apply fixed top-0 w-full z-50;
-      @apply bg-white dark:bg-deepgray-50 bg-opacity-80 backdrop-blur;
     }
     
   }
@@ -514,6 +515,7 @@ Page Layout
 
 .page-back {
   @apply flex items-center px-4 py-2.5 md:px-6 md:pb-2 md:mt-4;
+  @apply bg-white dark:bg-deepgray-50 bg-opacity-80 backdrop-blur;
 }
 
 
