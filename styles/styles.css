@@ -350,10 +350,6 @@ Sections Layout
   @apply pt-4 md:pt-6;
 }
 
-.section-body.scrollbar {
-  @apply flex flex-col w-full h-full overflow-x-hidden overflow-y-auto;
-}
-
 .section-footer {
   @apply flex justify-between items-center;
   @apply px-4 py-4 md:px-8 md:py-6;
@@ -679,28 +675,36 @@ Tootips
 Perfect Scrollbar
 */
 .scrollbar {
-  @apply overflow-x-hidden overflow-y-scroll;
+  @apply relative overflow-x-hidden overflow-y-scroll;
   -webkit-overflow-scrolling: touch;
   /* -ms-overflow-style: none;
   overflow: -moz-scrollbars-none; */
 }
 
 .scrollbar::-webkit-scrollbar {
-  @apply w-2 h-2 bg-gray-50 dark:bg-gray-900;
+  @apply w-2 h-2 bg-gray-200 dark:bg-gray-900 bg-opacity-30;
 }
 
 .scrollbar::-webkit-scrollbar-track {
   @apply bg-transparent;
-  border-radius: 12px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-gray-200 dark:bg-gray-700;
-  border-radius: 12px;
+  @apply bg-gray-300 dark:bg-gray-800 bg-opacity-40;
+  border-radius: 18px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
   @apply bg-primary-500;
+}
+
+/* Tweaks for Content Scrollbar */
+.pane-content--sec--main.scrollbar::-webkit-scrollbar {
+  @apply 2xl:bg-opacity-90;
+}
+
+.pane-content--sec--main.scrollbar::-webkit-scrollbar-thumb {
+  @apply 2xl:bg-opacity-100;
 }
 
 
