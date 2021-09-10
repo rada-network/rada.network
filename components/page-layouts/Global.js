@@ -1,8 +1,6 @@
 import { Head } from "../Head";
 import { Topbar } from "../Topbar";
-import { Tabbar } from "../Tabbar";
 import { Navbar } from "../Navbar";
-import { Footer } from "../Footer";
 
 import ThemeSwitch from "../ThemeSwitch"
 

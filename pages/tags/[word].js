@@ -12,7 +12,7 @@ export async function getServerSideProps(context) {
   return {
     // returns a redirect to an internal page `/another-page`
     redirect: {
-      destination: "/" + 'apps/tags/' + context.query.word,
+      destination: "/" + 'tags/' + context.query.word,
       permanent: false
     }
   }

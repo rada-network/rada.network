@@ -166,7 +166,7 @@ export function getSourceVideoFromUri(item){
 
 
 export function createPostUri(title,item,lang){
-  return "/" + lang + "/apps/post/" + item.id + "/" + utils.convertToSlug(title)
+  return "/" + lang + "/post/" + item.id + "/" + utils.convertToSlug(title)
 }
 
 const PostsListLoader = () => {
