@@ -103,7 +103,7 @@ Main Panels
 }
 
 .pane-content {
-  @apply h-full;
+  @apply w-full h-full;
   /* @apply flex flex-auto flex-wrap md:flex-nowrap h-full; */
   /* width: 0; Fix Layout */
 }
@@ -509,7 +509,7 @@ Post Details
 Title 
 */
 .post-title h1 {
-  @apply text-lg font-semibold;
+  @apply text-lg lg:text-xl font-semibold;
   .badge {
     @apply relative -top-0.5 md:-top-1;
   }

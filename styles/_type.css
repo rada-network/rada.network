@@ -24,7 +24,7 @@ Core Contents
 Post Content Typo
 ----------------------------------- */
 .post-content {
-  @apply text-sm;
+  @apply text-base;
 }
 
 .post-content p,
@@ -42,17 +42,25 @@ Post Content Typo
 }
 
 .post-content h2,
-.post-content .pTitle {
+.post-content h3,
+.post-content h4,
+.post-content .pTitle,
+.post-content .pHead {
   @apply text-base font-semibold mb-4;
+}
+
+.post-content h2,
+.post-content .pTitle {
+  @apply text-lg mt-6;
 }
 
 .post-content h3,
 .post-content .pHead {
-  @apply text-sm font-semibold mb-4;
+  @apply text-base;
 }
 
 .post-content h4 {
-  @apply text-sm font-semibold mb-4;
+  @apply text-base;
 }
 
 .post-content {
@@ -76,7 +84,7 @@ Post Content Typo
 }
 
 .post-content img {
-  @apply max-w-full text-center mx-auto;
+  @apply max-w-full text-center mx-auto rounded;
 }
 
 .post-content figure  {
