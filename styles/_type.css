@@ -46,12 +46,12 @@ Post Content Typo
 .post-content h4,
 .post-content .pTitle,
 .post-content .pHead {
-  @apply text-base font-semibold mb-4;
+  @apply font-semibold mb-4;
 }
 
 .post-content h2,
 .post-content .pTitle {
-  @apply text-lg mt-6;
+  @apply text-lg;
 }
 
 .post-content h3,
