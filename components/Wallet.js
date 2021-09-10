@@ -166,13 +166,13 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                       </ul>
                     </div>
 
-                    <div className={`divider ${styles.instruct}`}>
+                    <div className={`divider`}>
                       <span>Or Connect with</span>
                     </div>
 
                     <div className={`${styles.social_login}`}>
 
-                      <a className={`btn btn-default rounded-full ${styles.btn}`} onClick={() => wallet.connect()}>
+                      <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect()}>
                         <span className={`icon ${styles.btn_icon}`}>
                           <img src="/images/icons/google.svg" alt="Google" />
                         </span>
