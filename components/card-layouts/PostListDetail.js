@@ -26,21 +26,6 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const scrollBox2 = createRef();
   const store = useStore()
 
-  // let ps2,className = "";
-  // if (!isMobile){
-  //   useEffect(() => {
-  //     // make scrollbar
-  //     ps2 = new PerfectScrollbar(scrollBox2.current, {});
-  //     return () => {
-  //       ps2.destroy();
-  //     }
-  //   }, [scrollBox2]);
-  //   className = `pane-content--sec--main grid scrollbar`
-  // }
-  // else{
-  //   className = `pane-content--sec--main grid`
-  // }
-
   const scrollRef = useRef()
   const awayCls = 'details-top-away'
   const onScroll = e => {
@@ -60,7 +45,13 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
     return onUnload
   }, [])
 
-    useEffect(() => {
+  useEffect(() => {
+    scrollRef.current.removeEventListener('scroll', onScroll)
+    scrollRef.current.addEventListener('scroll', onScroll)
+    return onUnload
+  }, [])
+
+  useEffect(() => {
       // make scrollbar
       // let iframes = document.querySelectorAll('iframe')
       // iframes.forEach((iframe) => {
@@ -71,11 +62,23 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
       //   // })
       //   iframe.setAttribute("src",iframe.getAttribute("data-src"))
       // })
+    if (typeof twttr.widgets !== "undefined") {
+      twttr.widgets.load()
+    }
+    window.removeEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize)
 
-      if (twttr?.widgets) {
-        twttr.widgets.load()
+    scrollRef.current.scrollTop = 0; // For Safari
+  }, [item]);
+  let resizeTimeout = 0;
+  const handleResize = (event) => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      if (detailStore.type === "news"){
+        detailStore.data.contentDisplay += "<span class='newstag123' style='display:none;'>"+ Math.random()+"</span>";
       }
-    }, [item]);
+    },500)
+  }
 
   const handleBack = (e) => {
     detailStore.data = {}
@@ -141,7 +144,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
       <div className="section-header post-header">
         <div className="post-title">
           <h1 className="inline">
-            <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
+            <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
               <span className="post-title--text">
                 {item.title}
               </span>
@@ -190,7 +193,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
           <div className="post-content--text" dangerouslySetInnerHTML={{__html:item.content}}></div>
         </div>
         <div className="post-actions">
-          <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
+          <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
             <span className="btn nav-btn" title={t("visit website")}>
               <span className="icon"><i className="fad fa-external-link" /></span>
               <span className="btn--text">{t("visit website")}</span>
@@ -202,27 +205,51 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
   )
 }
 
-const NewsDetail = function ({item,dateTitle,date,voteStore}){
+const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
   let title = item.title
   let content = item.contentDisplay
+  let isRada = false;
+  if (item.grabTopic !== null && item.grabTopic.url.indexOf("rada") !== -1) {
+    isRada = true;
+  }
   if (item.lang === "all"){
     if (item.currentLang === "vi"){
       title = item.title
-      content = item.contentDisplay
+      content = isRada ? item.content : item.contentDisplay
     }
     else if (item.currentLang === "en"){
       title = item.title_en
       content = item.content_en_display
     }
   }
+  
+  useEffect(() => {
+    // make scrollbar
+    // let iframes = document.querySelectorAll('iframe')
+    // iframes.forEach((iframe) => {
+    //   // iframe.addEventListener('load', function() {
+    //   //   const iframeBody = this.contentWindow.document.body;
+    //   //   const height = Math.max(iframeBody.scrollHeight, iframeBody.offsetHeight);
+    //   //   this.style.height = `${height}px`;
+    //   // })
+    //   iframe.setAttribute("src",iframe.getAttribute("data-src"))
+    // })
+
+    if (typeof twttr.widgets !== "undefined") {
+      twttr.widgets.load()
+    }
+  }, [item.contentDisplay]);
   const {t} = useTranslation()
   return (
-    <div className="section post-detail post-detail-news">
+    <div className={`section post-detail post-detail-news` + (isRada ? " post-rada" : "")}>
       {/* Post Header */}
       <div className="section-header post-header">
         <div className="post-title">
           <h1 className="inline">
-            <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
+            <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
+              {isRada ? 
+              <span className="badge badge-rada mr-2">RADA</span> 
+              : ""}
               <span className="post-title--text">
                 {title}
               </span>
@@ -236,9 +263,15 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
         <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
+              {isRada ? 
+              <span className="icon icon-rada w-3.5 mr-1">
+                <img layout='fill' src="/images/rada-mono.svg" alt="RADA NETWORK" />
+              </span>
+              : 
               <span className="icon mr-1">
                 <i className="fad fa-newspaper"></i>
-              </span>
+              </span>} 
+              
               <span className="metadata-value" title={getSourceFromUri(item)}>
                 {getSourceFromUri(item)}
               </span>
@@ -279,7 +312,7 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
           : ""
         } */}
         <div className="post-actions">
-          <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
+          <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
             <span className="btn nav-btn" title={t("visit website")}>
               <span className="icon"><i className="fad fa-external-link" /></span>
               <span className="btn--text">{t("visit website")}</span>
@@ -289,7 +322,7 @@ const NewsDetail = function ({item,dateTitle,date,voteStore}){
       </div>
     </div>
   )
-}
+})
 
 const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
   let title = item.source.full_text
@@ -304,7 +337,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
       <div className="section-header post-header">
         <div className="post-title">
           <h1 className="inline">
-            <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
+            <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
               <span className="post-title--text">
                 {item.title}
               </span>
@@ -348,7 +381,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
                 <div className="flex flex-col ml-3">
                   <div className="metadata-wrapper">
                     <a href="https://twitter.com/ADABreathes/status/1420306216115392512" target="_blank"
-                       className="metadata metadata-socialusername">
+                       className="metadata metadata-socialusername" rel="noreferrer">
                       <span className="text-color-title">{source}</span>
                     </a>
                   </div>
@@ -427,7 +460,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
           </div>
         </div>
         <div className="post-actions">
-          <a target="_blank" rel="nofollow" href={item.websiteUri ? item.websiteUri : item.url} className="">
+          <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
             <span className="btn nav-btn" title="Visit Website">
               <span className="icon"><i className="fad fa-external-link" /></span>
               <span className="btn--text">Visit Website</span>

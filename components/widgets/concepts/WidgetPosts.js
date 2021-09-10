@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/link-passhref */
 import Link from "next/link"
 
 import {RiExternalLinkLine} from "react-icons/ri";

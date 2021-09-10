@@ -11,6 +11,7 @@ import _ from "lodash"
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Resizer } from "../../components/utils/Resizer";
+import store from "store"
 
 const getDataExplore = async ({query,type,lang}) => {
   if (['news','media','video','rada','social','all',''].indexOf(type) === -1){
@@ -91,14 +92,13 @@ export default observer(function(props) {
   const homeStore = new HomeStore({isHome : true})
 
   const observableItemStore =  new ObservableTweetStore({homeStore});
-
+  const detailStore = new DetailStore()
   return (
-    <Index props={props} observableItemStore={observableItemStore} voteStore={voteStore} />
+    <Index props={props} observableItemStore={observableItemStore} voteStore={voteStore} detailStore={detailStore} />
   )
 })
 
-export const Index  = ({props,observableItemStore,voteStore}) => {
-  const detailStore = new DetailStore()
+export const Index  = ({props,observableItemStore,voteStore,detailStore}) => {
   let meta
   if (props.item === undefined) {
     observableItemStore.query = props.query
@@ -150,9 +150,44 @@ export const Index  = ({props,observableItemStore,voteStore}) => {
 
   /* Dragger to resize main col */
   const mainRef = useRef()
-  const [mainwidth, setMainwidth] = useState(45)
+  const containerRef = useRef()
+  
+    
+
+  return (
+    <Layout dataStore={observableItemStore} detailStore={detailStore} extraClass="page-home" meta={meta}>
+
+      <div className={`pane-content`} ref={containerRef} >
+        {/* main content pane */}
+        <div className={`pane-content--main`} ref={mainRef}>
+          <PostsListWrapper  dataStore={observableItemStore} detailStore={detailStore} voteStore={voteStore} />
+          <ResizeerWrapper dataStore={observableItemStore} mainRef={mainRef} containerRef={containerRef} />
+        </div>
+
+        {/* secondary content pane */}
+        <IndexRightBar back={ "/" + props.lang + "/apps/explore/"+props.type} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
+      </div>
+    </Layout>
+  )
+}
+
+const ResizeerWrapper = function({mainRef,dataStore,containerRef}){
   let pw 
   let mw 
+  useEffect(() => {
+    let mwp = store.get('main-width')
+    if (_.isUndefined(mwp)) {
+      mwp = 45
+    }
+    if (isNaN(mwp)) {
+      mwp = 45
+    }
+    if (mwp > 70) mwp = 70
+    if (mwp < 30) mwp = 30
+    dataStore.home.mainwidth=mwp
+    const style=`--main-width: ${mwp}%`
+    containerRef.current.setAttribute('style', style)
+  },[])
   const resizeStart = e => {
     pw = mainRef.current.parentNode.clientWidth
     mw = mainRef.current.clientWidth
@@ -163,9 +198,12 @@ export const Index  = ({props,observableItemStore,voteStore}) => {
     let mwp = Math.round(mainRef.current.clientWidth / pw * 100)
     if (mwp > 70) mwp = 70
     if (mwp < 30) mwp = 30
-    setMainwidth(mwp)
-    mainRef.current.style.width = ''
+    dataStore.home.mainwidth=mwp
+    const style=`--main-width: ${mwp}%`
+    containerRef.current.setAttribute('style', style)
+    store.set("main-width",mwp)
     mainRef.current.nextSibling.style.width = ''
+    mainRef.current.style.width = ''
   }
   const resizePane = e => {
     // calculate width
@@ -177,20 +215,8 @@ export const Index  = ({props,observableItemStore,voteStore}) => {
     mainRef.current.nextSibling.style.width = (pw-mwn-1) + 'px'
   }
 
-
   return (
-    <Layout dataStore={observableItemStore} detailStore={detailStore} extraClass="page-home" meta={meta}>
-      <div className={`pane-content`} style={{'--main-width': `${mainwidth}%`}}>
-        {/* main content pane */}
-        <div className={`pane-content--main`} ref={mainRef}>
-          <PostsListWrapper  dataStore={observableItemStore} detailStore={detailStore} voteStore={voteStore} />
-          <Resizer className="pane-dragger" onDragMove={resizePane} onDragStop={resizeDone} onDragStart={resizeStart}></Resizer>
-        </div>
-
-        {/* secondary content pane */}
-        <IndexRightBar back={ "/" + props.lang + "/apps/explore/"+props.type} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
-      </div>
-    </Layout>
+    <Resizer className="pane-dragger" onDragMove={resizePane} onDragStop={resizeDone} onDragStart={resizeStart}></Resizer>
   )
 }
 

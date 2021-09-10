@@ -22,30 +22,30 @@ export default function Intro({dataStore}){
 
         <h3>Phiên bản hiện tại</h3>
         <p>- Bản daily built mới nhất cho thị trường Việt Nam tại: <a className="link" target="_blank"
-                                                                      href="https://rada.co/vi">https://rada.co/vi</a>
+                                                                      href="https://rada.co/vi" rel="noreferrer">https://rada.co/vi</a>
         </p>
         <p>- Phiên bản dành cho cho những người sử dụng tiếng Anh sẽ được hoàn thiện tại: <a className="link"
                                                                                              target="_blank"
-                                                                                             href="https://rada.co/en">https://rada.co/en</a>
+                                                                                             href="https://rada.co/en" rel="noreferrer">https://rada.co/en</a>
         </p>
 
         <h3>Cộng đồng</h3>
         <p>Tham gia vào cộng đồng Rada.co để tham gia thảo luận, yêu cầu tính năng mới và nhận những cập nhật mới nhất
           về dự án.</p>
         <div className="about-social">
-          <a target="_blank" href="https://www.facebook.com/RADA-Media-100147568952754">
+          <a target="_blank" href="https://www.facebook.com/RADA-Media-100147568952754" rel="noreferrer">
             <i className="fab fa-facebook"/>
           </a>
 
-          <a target="_blank" href="https://twitter.com/radamedia">
+          <a target="_blank" href="https://twitter.com/radamedia" rel="noreferrer">
             <i className="fab fa-twitter"/>
           </a>
 
-          <a target="_blank" href="https://medium.com/@radamedia">
+          <a target="_blank" href="https://medium.com/@radamedia" rel="noreferrer">
             <i className="fab fa-medium-m"/>
           </a>
 
-          <a target="_blank" href="https://discord.gg/ENm9SpQs">
+          <a target="_blank" href="https://discord.gg/ENm9SpQs" rel="noreferrer">
             <i className="fab fa-discord"/>
           </a>
         </div>

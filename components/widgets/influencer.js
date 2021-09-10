@@ -30,7 +30,7 @@ export function Influencer({item}) {
 
               <div className={`widget-links`}>
                 {item.twitter !== null ?
-                <a href={item.twitter} target="_blank">
+                <a href={item.twitter} target="_blank" rel="noreferrer">
                   <span className={`icon`}>
                     <i className="fab fa-twitter"/>
                   </span>
@@ -40,7 +40,7 @@ export function Influencer({item}) {
                 }
 
                 {item.linkedin !== null ?
-                <a href={item.linkedin} target="_blank">
+                <a href={item.linkedin} target="_blank" rel="noreferrer">
                   <span className={`icon`}>
                     <i className="fab fa-linkedin-in"/>
                   </span>
@@ -50,7 +50,7 @@ export function Influencer({item}) {
                 }
 
                 {item.website !== null ?
-                <a href={item.website} target="_blank">
+                <a href={item.website} target="_blank" rel="noreferrer">
                   <span className={`icon`}>
                     <i className="fal fa-globe"/>
                   </span>

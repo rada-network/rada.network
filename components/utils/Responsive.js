@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const SCREENS = ['xs', 'sm', 'md', 'lg', 'xl', '2xl']
 const SCREENS_WIDTH = [0, 640, 768, 1024, 1280, 1536]

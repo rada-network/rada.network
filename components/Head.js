@@ -3,11 +3,10 @@ import { useEffect, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 
 export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
-  const [load, setLoad] = useState(false)
-
+  const [isTooltipVisible, setTooltipVisibility] = useState(false);
   useEffect(() => {
-    setLoad(true)
-  }, [])
+    setTooltipVisibility(true);
+  }, []);
 
   return (
     <>
@@ -65,7 +64,7 @@ export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
       <meta name="theme-color" content="#4338CA" />
     </HTMLHead>
 
-    {load && <ReactTooltip type="info" clickable={true} html={true} />}
+    {isTooltipVisible && <ReactTooltip type="info" clickable={true} html={true} />}
     </>
   );
 };

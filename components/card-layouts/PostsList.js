@@ -20,7 +20,7 @@ import { data } from 'autoprefixer';
 import {ConceptCardPost} from "../cards/concepts/PostRada";
 
 
-export const PostsListWrapper = function ({dataStore,detailStore,voteStore}){
+export const PostsListWrapper = observer(function ({dataStore,detailStore,voteStore}){
   const handleChangeFilter = ({filter}) =>{
     if (dataStore.loadingButton) return false
     dataStore.currentTab = filter;
@@ -64,7 +64,7 @@ export const PostsListWrapper = function ({dataStore,detailStore,voteStore}){
         document.body.classList.remove(awayCls)
     }
 
-    const bottom = e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight + 10;
+    const bottom = e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight +100;
     if (bottom) handleLoadMoreItem()
   }
 
@@ -79,8 +79,8 @@ export const PostsListWrapper = function ({dataStore,detailStore,voteStore}){
       type : dataStore.type,
       lang : dataStore.lang
     }).then(function (res){
-      dataStore.loadingButton = false;
       dataStore.addTweet(res.data.itemFeed)
+      dataStore.loadingButton = false;
       if (ps1) ps1.update()
     })
   }
@@ -136,7 +136,7 @@ export const PostsListWrapper = function ({dataStore,detailStore,voteStore}){
       </div>
     </>
   )
-}
+})
 
 
 export function getSourceFromUri(item){

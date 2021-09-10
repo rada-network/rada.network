@@ -39,16 +39,16 @@ Post Content Typo
 
 .post-content h2,
 .post-content .pTitle {
-  @apply text-base font-semibold mb-4;
+  @apply text-lg md:text-base font-semibold mb-4;
 }
 
 .post-content h3,
 .post-content .pHead {
-  @apply text-sm font-semibold mb-4;
+  @apply text-base md:text-sm font-semibold mb-4;
 }
 
 .post-content h4 {
-  @apply text-sm font-semibold mb-4;
+  @apply text-base md:text-sm font-semibold mb-4;
 }
 
 .post-content {
@@ -125,6 +125,7 @@ Post Content Typo
 .post-content .twitter-tweet-rendered iframe {
   @apply mb-0;
 }
+
 
 .post-content .wp-smiley {
   @apply hidden;

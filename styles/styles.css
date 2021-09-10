@@ -583,7 +583,7 @@ Media
 Content
 */
 .post-content {
-  @apply text-sm;
+  @apply text-base md:text-sm;
 }
 
 .post-detail-media .post-content--text {
@@ -816,4 +816,10 @@ Dragger
 
 .pane-dragger.dragging {
   user-select: none;
+}
+
+.post-rada ol,ul{
+  list-style: revert;
+  margin: revert;
+  padding: revert;
 }

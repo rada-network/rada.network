@@ -50,7 +50,7 @@ const getData = async ({query}) => {
 
 export default observer((props) => {
   if (!props) return <div>loading...</div>
-
+  return ""
   observableItemStore.query = props.query
   const [scrollbar] = useState('')
 
