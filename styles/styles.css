@@ -18,7 +18,7 @@ Layout
 @screen 2xl {
   .body-decor {
     @apply block fixed inset-0 w-full h-full -z-1;
-    @apply filter brightness-50;
+    @apply filter brightness-50 ;
     background-image: url("https://source.unsplash.com/collection/1459961/1600x900");
     background-size: cover;
     background-repeat: no-repeat;
@@ -26,7 +26,7 @@ Layout
   }
   .body-decor--text {
     @apply block absolute right-4 bottom-4 px-4 py-2 rounded;
-    @apply bg-gray-900 bg-opacity-10 text-white text-opacity-80 text-xs;
+    @apply bg-gray-900 bg-opacity-20 text-white text-opacity-80 text-xs;
     text-shadow: 0 1px 1px rgba(0,0,0,.2);
   }
   .body-decor--text a {
@@ -214,18 +214,23 @@ Main Layout when scrolling
     }
 
     .page {
-      @apply pt-9;
+      @apply pt-12;
     }
 
     .page-back {
+      transition: all 150ms linear;
       @apply fixed top-0 w-full z-50;
+      @apply pt-5 pb-1;
     }
     
   }
 
-  .details-top-away {
+  body.page-details.details-top-away {
+    .page {
+      @apply pt-9;
+    }
     .page-back {
-      @apply shadow-sm;
+      @apply shadow-sm py-2;
     }
   }
 
@@ -407,7 +412,7 @@ Page Layout
 }
 
 .page-back {
-  @apply flex items-center px-4 py-2.5 md:px-6 md:pb-2 md:mt-4;
+  @apply flex items-center px-4 pt-4 pb-2 md:px-6 md:pt-2 md:pb-2 md:mt-4;
   @apply bg-white dark:bg-deepgray-50 bg-opacity-80 backdrop-blur;
 }
 
@@ -741,7 +746,8 @@ Dragger
 */
 .pane-dragger {
   @apply hidden md:block absolute h-full w-2 -right-2 top-0 z-50;
-  @apply border-l-2 border-dashed border-transparent hover:border-primary-500;
+  @apply border-l-2 border-dashed border-transparent hover:border-primary-500 transition;
+  transition-delay: 100ms;
   cursor: col-resize;
 }
 
