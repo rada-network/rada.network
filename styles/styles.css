@@ -586,7 +586,6 @@ Media
 Content
 */
 .post-content {
-  @apply text-base md:text-sm;
 }
 
 .post-detail-media .post-content--text {

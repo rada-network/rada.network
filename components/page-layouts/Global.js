@@ -54,12 +54,6 @@ export const Layout = observer(({children,meta,dataStore,detailStore}) => {
       <Screen upto="md">
       <div className="pane-bottom">
         <Navbar dataStore={dataStore} detailStore={detailStore} />
-        {/* <Screen from="lg"> */}
-        <div className="pane-left--bottom">
-          <LanguageSwitch dataStore={dataStore} />
-          <ThemeSwitch />
-        </div>
-        {/* </Screen> */}
       </div>
       </Screen>
 
