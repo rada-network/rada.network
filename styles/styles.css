@@ -510,6 +510,9 @@ Title
 */
 .post-title h1 {
   @apply text-lg font-semibold;
+  .badge {
+    @apply relative -top-1;
+  }
 }
 
 .post-title--text {
