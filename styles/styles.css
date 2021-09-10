@@ -19,7 +19,7 @@ Layout
   .body-decor {
     @apply block fixed inset-0 w-full h-full -z-1;
     @apply filter brightness-50;
-    background-image: url("https://source.unsplash.com/random/1600x900/?art");
+    background-image: url("https://source.unsplash.com/collection/220381/1600x900/");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
@@ -41,7 +41,7 @@ Nav Panels
   @apply flex flex-shrink-0 flex-col justify-between h-full;
   @apply border-r border-gray-100 dark:border-gray-800 z-50;
   @apply bg-gray-50 dark:bg-deepgray-100 2xl:bg-white 2xl:dark:bg-deepgray-100;
-  @apply 2xl:bg-opacity-90 2xl:dark:bg-opacity-60 2xl:backdrop-blur;
+  @apply 2xl:bg-opacity-80 2xl:dark:bg-opacity-60 2xl:backdrop-blur;
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
@@ -265,7 +265,7 @@ Top & Tool Bars
 }
 
 .logo--badge {
-  @apply text-xxxs mt-0.5 opacity-50 border-b-2 leading-3;
+  @apply text-xxxs mt-0.5 opacity-50 border-b-2 border-gray-400 leading-3;
   letter-spacing: 2px;
 }
 
@@ -333,7 +333,7 @@ Navbar
 Nav Item
 */
 .nav-item {
-  @apply relative flex flex-col lg:flex-row items-center lg:items-baseline w-full h-full px-2 py-0.5 lg:py-2;
+  @apply relative flex flex-col lg:flex-row items-center w-full h-full px-2 py-0.5 lg:py-2;
   @apply font-medium leading-normal whitespace-nowrap;
   @apply text-gray-800 opacity-50;
   @apply dark:text-gray-200;
@@ -345,11 +345,15 @@ Nav Item
   @apply w-8 h-4;
   @apply inline-flex justify-center mt-1.5 mb-2 lg:my-0 lg:mr-1 text-center;
   @apply text-lg lg:text-base leading-none;
+  .fad {
+    @apply relative lg:-top-0.5;
+  }
 }
 
+/* Rada Nav */
 .nav-item .icon-rada svg {
-  @apply relative -bottom-0.5;
-  transform: scale(1.15);  /* make the svg bigger */
+  @apply relative lg:-top-0.5;
+  transform: scale(1.18);  /* make the svg bigger */
 }
 
 .dark .nav-item .icon-rada svg {
@@ -697,7 +701,6 @@ Empty State
 
 .home-emptystate-deco {
   @apply hidden lg:block absolute inset-0 w-full h-full opacity-5 z-0;
-  background: url(/images/hero.png) no-repeat center 95%;
 }
 
 .empty-state .empty-state-content {
