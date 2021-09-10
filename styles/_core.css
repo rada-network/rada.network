@@ -10,8 +10,7 @@ html {
 }
 
 body {
-  @apply bg-bluegray-50 text-gray-900 h-full overflow-hidden;
-  @apply dark:bg-deepgray-200 dark:text-gray-200;
+  @apply bg-bluegray-50 dark:bg-deepgray-200 h-full overflow-hidden;
 }
 
 #__next {

@@ -2,13 +2,16 @@
 Typography Styles 
 */
 
-
 /* 
 Core Contents
 ----------------------------------- */
+body {
+  @apply text-gray-800 dark:text-gray-200;
+}
+
 .text-color-title,
 .comment-text {
-  @apply text-gray-900 dark:text-gray-200;
+  @apply text-gray-800 dark:text-gray-200;
 }
 
 .text-color-desc,
@@ -16,7 +19,7 @@ Core Contents
 .navbar-search--input::placeholder,
 .comment-footer,
 .page-back .btn {
-  @apply text-gray-900 text-opacity-50 dark:text-gray-200 dark:text-opacity-50;
+  @apply text-gray-800 text-opacity-50 dark:text-gray-200 dark:text-opacity-50;
 }
 
 

@@ -591,11 +591,11 @@ Metadata
 CTAs 
 */
 .post-detail .cta-wrapper {
-  @apply flex text-gray-800 dark:text-gray-200;
+  @apply flex text-gray-900 dark:text-gray-200;
 }
 
 .post-detail .cta-wrapper .btn {
-  @apply text-sm;
+  @apply text-sm leading-none relative;
 }
 
 .post-detail .cta-wrapper .btn-post-vote {
