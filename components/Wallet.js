@@ -111,7 +111,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                       > wallet <i className="fa-duotone fa-info-circle text-base" />
                       </span> 
                     </h3>
-                    <div className="mt-4 text-sm text-white text-opacity-70 leading-6">
+                    <div className="mt-4 text-white text-opacity-70 leading-6">
                       <p className="">
                         Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics by connecting to your wallet or social networks
                       </p>

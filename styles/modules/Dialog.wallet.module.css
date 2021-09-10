@@ -30,7 +30,7 @@
 }
 
 .btn_text {
-  @apply flex flex-col flex-1 mr-6 ml-4;
+  @apply flex flex-col flex-1 mr-6 ml-4 font-normal;
 }
 
 .btn_rounded .btn_text {
