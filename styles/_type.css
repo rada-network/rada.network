@@ -60,6 +60,13 @@ Post Content Typo
   }
 }
 
+.post-rada ol,
+.post-rada ul {
+  list-style: revert;
+  margin: revert;
+  padding: revert;
+}
+
 .post-content li {
   @apply py-1;
 }
@@ -125,7 +132,6 @@ Post Content Typo
 .post-content .twitter-tweet-rendered iframe {
   @apply mb-0;
 }
-
 
 .post-content .wp-smiley {
   @apply hidden;
