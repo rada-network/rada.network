@@ -3,5 +3,10 @@ Even more custom variables here
 */
 
 :root {
-  --mainnav-height: 64px;
+  --paneleft-width: 7rem;
+  --navbar-height:  3rem;
+  --toolbar-height: 3rem;
+  --topbar-height:  3rem;
+  --tabbar-height:  40px;
+  --main-width:     45%;
 }

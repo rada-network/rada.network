@@ -1,8 +1,7 @@
-/* Custom Fonts, Google Fonts, etc...*/
-/* @import '_fonts'; */
 
 /* Custom Variables */
 @import '_variables';
+@import '_presets';
 
 /* Grid and Layout*/
 @import '_type';
@@ -11,16 +10,12 @@
 @import '_core';
 
 /* Components */
-@import '_icons';
-@import '_media';
 @import '_buttons';
 @import '_forms';
-@import '_badges';
-@import '_lists';
 @import '_cards';
 @import '_widgets';
 @import '_contents';
-@import '_navbar';
+@import '_headers';
 
 /* Theme */
 @import '_dark';

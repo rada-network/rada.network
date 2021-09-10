@@ -1,5 +1,4 @@
 
-import styles from "../../styles/modules/Widget.influencers.module.css";
 import Link from "next/link"
 import {uuid} from "@walletconnect/utils";
 
@@ -10,7 +9,7 @@ const InfluencerInfoType = ({word}) => {
   }
   return (
     <Link href={`/tags/${cWord}`}>
-      <span className={`badge ${styles.info} ${styles.info_type}`}>
+      <span className={`metadata badge`}>
         {word}
       </span>
     </Link>
@@ -26,11 +25,45 @@ export function Influencer({item}) {
         <div className="flex">
 
           <div className="flex flex-col flex-1">
-            <div className={`${styles.title}`}>
+            <div className={`widget-list--item--title`}>
               <span className="text-color-title">{item.name}</span>
+
+              <div className={`widget-links`}>
+                {item.twitter !== null ?
+                <a href={item.twitter} target="_blank" rel="noreferrer">
+                  <span className={`icon`}>
+                    <i className="fab fa-twitter"/>
+                  </span>
+                </a>
+                  :
+                  ""
+                }
+
+                {item.linkedin !== null ?
+                <a href={item.linkedin} target="_blank" rel="noreferrer">
+                  <span className={`icon`}>
+                    <i className="fab fa-linkedin-in"/>
+                  </span>
+                </a>
+                  :
+                  ""
+                }
+
+                {item.website !== null ?
+                <a href={item.website} target="_blank" rel="noreferrer">
+                  <span className={`icon`}>
+                    <i className="fal fa-globe"/>
+                  </span>
+                </a>
+                  :
+                  ""
+                }
+
+              </div>
+
             </div>
 
-            <div className={`${styles.info_wrapper}`}>
+            <div className={`metadata-wrapper`}>
               {keywords.map(function (word) {
                 return (
                   <InfluencerInfoType key={uuid()} word={word}/>
@@ -40,52 +73,18 @@ export function Influencer({item}) {
           </div>
 
           {item.image ?
-            <div className={`${styles.avatar}`}>
-              <img src={item.image} alt={item.name}/>
+            <div className={`widget-media rounded-full ml-4`}>
+              <img className={`rounded-full`} src={item.image} alt={item.name}/>
             </div>
             : ""
           }
 
         </div>
 
-
         <div className="flex">
-          <div className={`${styles.text}`}>
+          <div className={`text-color-desc widget-list--item--text`}>
             {item.description}
           </div>
-        </div>
-
-        <div className={`${styles.links}`}>
-          {item.twitter !== null ?
-          <a href={item.twitter} target="_blank">
-            <span className={`icon ${styles.links__icon}`}>
-              <i className="fab fa-twitter"/>
-            </span>
-          </a>
-            :
-            ""
-          }
-
-          {item.linkedin !== null ?
-          <a href={item.linkedin} target="_blank">
-            <span className={`icon ${styles.links__icon}`}>
-              <i className="fab fa-linkedin-in"/>
-            </span>
-          </a>
-            :
-            ""
-          }
-
-          {item.website !== null ?
-          <a href={item.website} target="_blank">
-            <span className={`icon ${styles.links__icon}`}>
-              <i className="fal fa-globe"/>
-            </span>
-          </a>
-            :
-            ""
-          }
-
         </div>
 
       </div>

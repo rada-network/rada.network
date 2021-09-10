@@ -4,14 +4,15 @@ import useUser from "../../lib/useUser";
 import createComment from "../../data/query/createComment";
 import {useState} from "react";
 import getClient from "../../data/client";
-import {UserStore} from "./commentList";
 import { useStore } from "../../lib/useStore";
 import {observer} from "mobx-react";
-import useSWR, {mutate} from "swr";
+import {UserStore} from "../../lib/store";
+import {useTranslation} from "next-i18next";
 
 const client = getClient()
 
-export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
+export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore}) => {
+  const {t} = useTranslation("common")
   const [commentContent, setCommentContent] = useState('')
   const user = useUser()
   const store = useStore()
@@ -23,9 +24,9 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
   } else {
     currentUser = {walletAddress: user.address()}
   }
-  let btnText = "Submit"
+  let btnText = t("submit")
   if (replyFor !== null) {
-    btnText = "Reply"
+    btnText = t("reply")
   }
   const handleKeydown = async (event) => {
     const keyCode = event.which || event.keyCode;
@@ -75,8 +76,11 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
       itemId : createdComment.itemId,
       userId : createdComment.user.id
     })
-
-
+    dataStore.tweets.forEach((el,index) => {
+      if (el.id === item.item.id){
+        dataStore.tweets[index].totalComment+=1
+      }
+    })
   }
   return (
     <>
@@ -84,41 +88,34 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore}) => {
         currentUser == null
         ? <>
             <TextareaAutosize onClick={(e) => {store.wallet.showConnect(true);}}
-              className="w-full px-4 py-2 text-base border border-gray-100 rounded-md shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"
+              className="comment-textarea"
               row="1"
-              title="Write a comment"
-              placeholder="Connect wallet to discuss"
+              title={t('comment input holder')}
+              placeholder={t('comment login')}
             />
-            <div className="text-sm text-gray-400 pl-2 md:mt-0">
-              <button onClick={submitComment}
-                      className="w-full justify-center flex-1 px-3 py-3 text-gray-500 rounded-md btn item-center bg-gray-100 "
-                      >
-                {btnText}
-              </button>
-            </div>
+            <button onClick={submitComment}className="btn comment-btn ml-2">
+              {btnText}
+            </button>
           </>
           : <>
-            <div className="mr-2 md:mr-3">
-              <CommentAvatar user={currentUser} size={replyFor === null ? 40 : 32} />
+            <div className="user-wallet-avatar-sm">
+              <CommentAvatar user={currentUser} size={replyFor === null ? 32 : 32} />
             </div>
             <TextareaAutosize
-              className="w-full px-4 py-2 text-base border border-gray-100 rounded shadow-sm resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0"
+              className="comment-textarea"
               row="1"
-              title="Write a comment"
-              placeholder="Write your comment..." value={commentContent}
+              title={t('comment input holder')}
+              placeholder={t('comment input holder')} value={commentContent}
               onChange={e => {
                 setCommentContent(e.currentTarget.value);
               }}
               onKeyDown={handleKeydown}
             />
-
-            <div className="text-sm text-gray-400 pl-2 md:mt-0">
-              <button onClick={submitComment} className="w-full justify-center flex-1 px-3 py-3 text-gray-500 transition-all rounded-md btn item-center bg-gray-100 hover:bg-primary-100 hover:text-primary-700">
-                {btnText}
-              </button>
-            </div>
+            <button onClick={submitComment} className="btn comment-btn ml-2">
+              {btnText}
+            </button>
           </>
       }
     </>
   )
-})
+},)

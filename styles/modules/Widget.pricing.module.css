@@ -2,15 +2,15 @@
 Widget: Pricing
 */
 .title {
-  @apply px-8 pt-8 text-sm text-gray-400;
+  @apply px-4 pt-4 text-sm text-gray-400;
 }
 
 .pricing {
-  @apply p-8 pt-4 flex items-start relative;
+  @apply p-4 pt-2 flex items-start relative;
 }
 
 .value {
-  @apply text-5xl leading-none truncate font-semibold;
+  @apply text-5xl leading-none truncate;
 }
 
 .indicator {
@@ -27,7 +27,7 @@ Widget: Pricing
 }
 
 .chart {
-  @apply px-8 py-4 border-gray-900 border-opacity-5;
+  @apply px-4 py-4 pt-0 border-gray-900 border-opacity-5;
 }
 
 .widget_list_sm {

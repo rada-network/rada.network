@@ -2,17 +2,17 @@
 Generic Styles
 -------------------------------- */
 .widget {
-  @apply flex flex-col mb-8;
-  @apply bg-white rounded border-gray-500 border-opacity-10 shadow-sm;
+  @apply flex flex-col -mt-2 xl:mt-0;
+  @apply bg-white dark:bg-deepgray-50 border-t border-b xl:border border-gray-400 border-opacity-10 xl:rounded;
 }
 
 .widget-header {
-  @apply flex justify-between items-center px-4 py-4 md:px-8 w-full;
-  @apply border-b border-gray-500 border-opacity-10;
+  @apply flex justify-between items-center px-4 py-2 w-full;
+  @apply border-b border-gray-400 border-opacity-10;
 }
 
 .widget-body {
-  @apply flex flex-col flex-1 px-4 md:px-8 py-6 w-full;
+  @apply flex flex-col flex-1 px-4 py-6 w-full;
 }
 
 .widget-body-p0 {
@@ -20,13 +20,13 @@ Generic Styles
 }
 
 .widget-footer {
-  @apply flex justify-between px-4 md:px-8 py-4 w-full;
+  @apply flex justify-between px-4 py-2 w-full;
 }
 
 .widget-title {
-  @apply text-lg md:text-lg font-medium;
+  @apply text-sm font-medium;
   > a {
-    @apply hover:text-gray-900;
+    @apply hover:text-gray-800;
   }
 }
 
@@ -34,7 +34,7 @@ Generic Styles
 }
 
 .widget-icon-cf {
-  @apply text-2xl;
+  @apply text-xl leading-6;
 }
 
 .widget-icon-fa {
@@ -48,6 +48,98 @@ Footer
   @apply text-right w-full text-xs text-gray-500;
 }
 
+/* 
+Links 
+*/
+.widget-links {
+  @apply flex;
+}
+
+.widget-links a {
+  @apply flex w-px-16 h-px-16 justify-center items-center rounded ml-1 text-xs;
+  @apply hover:text-opacity-100;
+}
+
+.widget-links .icon {
+  @apply opacity-50;
+}
+
+.widget-links a:hover .icon {
+  @apply opacity-100;
+}
+
+/* 
+Media 
+*/
+.widget-media {
+  @apply bg-gray-100 w-px-48 h-px-48 flex-shrink-0 overflow-hidden;
+}
+
+.widget-media img {
+  @apply object-cover h-full;
+}
+
+/*
+Widget Lists 
+-------------------------------- */
+.widget-list {
+}
+
+.widget-list .card-media {
+  @apply hidden;
+}
+
+.widget-list--link {
+  @apply block cursor-pointer;
+}
+
+.widget-list--link:hover {
+  @apply bg-shadeyellow-100 dark:bg-deeppurple-500;
+}
+
+.widget-list--item {
+  @apply flex flex-col justify-between;
+  @apply p-4;
+  @apply border-b border-gray-500 border-opacity-10;
+}
+
+.widget-list--item--title {
+  @apply text-sm;
+}
+
+.widget-list--item--text {
+  @apply text-sm mt-2 line-clamp-3;
+}
+
+.widget-list--item--media {
+  @apply float-right bg-gray-100 w-px-56 h-px-56 mt-3 ml-2 rounded flex-shrink-0 overflow-hidden;
+}
+
+.widget-list--item--media img {
+  @apply object-cover h-full;
+}
+
+
+/*
+Widget Lists Compact
+-------------------------------- */
+.widget-list-sm {
+  @extend .widget-list;
+}
+
+.widget-list-sm--link {
+  @extend .widget-list--link;
+}
+
+.widget-list-sm--link:hover {
+  @apply bg-gray-50;
+}
+
+.widget-list-sm--item {
+  @extend .widget-list--item;
+  @apply px-4 py-3;
+}
+
 
 /*
 Widget Events
@@ -59,6 +151,13 @@ Widget Events
   .badge.badge-transparent {
     @apply w-auto mr-0;
   }
+}
+
+/*
+Widget Influencers
+-------------------------------- */
+.widget-influencers .widget-list--item--title {
+  @apply flex items-center;
 }
 
 

@@ -1,0 +1,1 @@
+export const HOME_ITEM_TAKE=18;

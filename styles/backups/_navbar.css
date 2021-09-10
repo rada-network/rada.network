@@ -1,0 +1,60 @@
+.navbar {
+  @apply relative flex flex-col w-full;
+}
+
+.navbar-main {
+  @apply flex justify-evenly lg:flex-col w-full;
+}
+
+.nav-item {
+  @apply flex flex-col lg:flex-row items-baseline whitespace-nowrap w-full h-full px-2 py-2;
+  @apply leading-10;
+  @apply text-gray-900 text-opacity-50;
+  @apply dark:text-white dark:text-opacity-60;
+  @apply hover:text-opacity-90;
+}
+
+.nav-item .icon {
+  @apply text-lg lg:text-base leading-none mt-2 mb-1 lg:my-0 lg:mr-1 w-8 text-center;
+}
+
+.nav-item--text {
+  @apply text-xs;
+}
+
+.nav-item-active {
+  @apply text-primary-700 text-opacity-100 font-medium;
+  @apply bg-primary-50 dark:text-white dark:text-opacity-100;
+}
+
+
+/* 
+Navbar for Mobile and Apps 
+--------------------------------*/
+.navbar-app {
+  @apply fixed lg:hidden h-auto z-50;
+  @apply bg-gray-50 dark:bg-gray-900 bg-opacity-90 dark:bg-opacity-90 backdrop-filter backdrop-blur;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar-app .navbar-main {
+  @apply h-auto py-1;
+}
+
+.navbar-app .nav-item {
+  @apply flex-col w-full justify-center items-center text-xs text-gray-500;
+}
+
+.navbar-app .nav-item .icon {
+  @apply text-lg leading-none mt-2 mb-1;
+}
+
+.navbar-app .nav-item--text {
+  @apply text-xs font-normal;
+}
+
+.navbar-app .nav-item-active {
+  @apply text-primary-700 dark:text-primary-400 text-opacity-100;
+}

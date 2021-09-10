@@ -40,6 +40,7 @@ type Comment {
 type GrabTopic {
     baseKeywords: String
     id: String
+    lang: String
     linkSelector: String
     name: String
     url: String!
@@ -139,6 +140,7 @@ type Media {
 type Mutation {
     createComment(content: String!, itemId: String!, parentId: String, walletAddress: String!): Comment
     submitNews(newsData: JSONObject): News
+    submitNewsV2(newsData: JSONObject): News
     submitTweet(tweetData: JSONObject!, userData: JSONObject!): Tweet
     submitTweetKeyword(id: String!, keywords: String!): Tweet
     submitVideo(videoData: JSONObject): Video
@@ -150,6 +152,8 @@ type News {
     content: String!
     createdAt: DateTime
     description: String
+    grabTopic: GrabTopic
+    grabTopicId: String
     id: String!
     isApproved: Boolean
     isEditorPick: Boolean
@@ -174,7 +178,7 @@ type Platform {
 type Query {
     cardanoEventFeed(skip: Int = 0, take: Int = 4): [CardanoEvent]
     commentFeed(itemId: String!, orderBy: CommentOrderInput, skip: Int = 0, take: Int = 4): [Comment]
-    grabTopicFeed(skip: Int = 0, take: Int = 200, urlType: String = "html"): [GrabTopic]
+    grabTopicFeed(lang: String = "all", skip: Int = 0, take: Int = 200, urlType: String = "html"): [GrabTopic]
     ideaById(id: String!): Idea
     ideaFeed(ideaType: String, orderBy: IdeaOrderInput, query: String, skip: Int = 0, take: Int = 4): [Idea]
     ideaTypeCount: [IdeaType]
@@ -182,7 +186,7 @@ type Query {
     isVote(itemId: String!, walletAddress: String!): Vote
     isVotes(ids: [String], walletAddress: String!): [Vote]
     itemById(id: String!): Item
-    itemFeed(orderBy: ItemOrderInput, query: String, skip: Int = 0, t: String, take: Int = 4): [Item]
+    itemFeed(lang: String = "en", orderBy: ItemOrderInput, query: String, skip: Int = 0, t: String, take: Int = 4): [Item]
     itemTypeCount: [IdeaType]
     newsById(id: String): News
     newsFeed(orderBy: ItemOrderInput, query: String, skip: Int = 0, take: Int = 4): [News]
@@ -247,8 +251,11 @@ type User {
 type Video {
     createdAt: DateTime
     description: String
+    grabTopic: GrabTopic
+    grabTopicId: String
     id: String!
     keywords: String
+    source: String
     thumbnailUri: String
     title: String
     updatedAt: DateTime

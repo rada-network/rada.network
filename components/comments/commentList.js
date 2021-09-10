@@ -8,64 +8,12 @@ import useSWR from "swr";
 import {observer} from "mobx-react";
 import {useEffect, useState} from "react";
 import {getInfluencers} from "../../data/query/getSuggestUser";
+import {ThreadsStore, UserStore} from "../../lib/store";
+import {useTranslation} from "next-i18next";
 
-export const UserStore = types.model({
-  id : types.identifier,
-  walletAddress : types.string
-})
+export const CommentList =({detailStore,dataStore}) => {
+  let item = detailStore.data
 
-export const CommentStore = types.model({
-  id: types.identifier,
-  createdAt :types.Date,
-  content : types.string,
-  parent: types.string,
-  itemId : types.string,
-  userId : types.string,
-
-}).views(self => ({
-
-})).actions(self => {
-  const getUser = function (){
-    return self.user
-  }
-  return {getUser}
-})
-
-const ThreadsStore = types.model({
-  users: types.array(UserStore),
-  threads : types.map(types.array(CommentStore))
-}).views(self => ({
-})).actions(self => {
-  const addComment = function (data){
-    if (typeof self.threads.get(data.parent) === "undefined") {
-      self.threads.set(data.parent,[])
-    }
-    let arr = self.threads.get(data.parent)
-    if (arr.find(c => c.id === data.id) !== undefined) return
-    arr.unshift(CommentStore.create(data))
-    self.threads.set(data.parent, arr)
-    if (typeof self.threads.get(data.id) === "undefined") {
-      self.threads.set(data.id, [])
-    }
-
-  }
-
-  const addUser = function (data){
-    self.users.push(data)
-  }
-
-  const getUser = function (userId){
-    return self.users.find(u => u.id === userId) || null
-  }
-  const getChildComment = function(parentId){
-    return self.threads.get(parentId) || []
-  }
-  return {addComment,getChildComment,addUser,getUser}
-})
-
-
-export const CommentList = observer(({item}) => {
-  let threads = {}
   const [comments,setComments] = useState([]);
   useEffect(() => {
     const client = getClient()
@@ -75,13 +23,13 @@ export const CommentList = observer(({item}) => {
     }).then(function(res){
       setComments(res.data.commentFeed)
     })
-  },[])
+  },[item])
+  let threads = {}
   threads[item.item.id] = []
-  let ItemCommentStore = ThreadsStore.create({
+  const ItemCommentStore = ThreadsStore.create({
     threads: threads,
     users: []
   });
-
   for (let comment of comments){
     let user = UserStore.create(comment.user)
     ItemCommentStore.addUser(user)
@@ -99,32 +47,39 @@ export const CommentList = observer(({item}) => {
 
   return (
     <>
-    <div className="section section-project-discussions">
-      <div className="section-inner">
+    <div className="section section-comments">
 
-        <div className="section-header">
-          <div className="section-title">
-            <span className="text-color-title">Discussions</span>
-          </div>
-        </div>
+        <CommentHeader detailStore={detailStore} />
         
         <div className="section-body">
           <div className="grid grid-cols-1 md:grid-cols-12">
-            {/* <div className="md:col-span-9 md:pr-10"> */}
-            <div className="col-span-12 lg:col-span-10">
+
+            <div className="col-span-12">
               {/* Comment Form */}
-              <div className="flex justify-center">
-                <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} />
+              <div className="comment-form">
+                <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} dataStore={dataStore}/>
               </div>
               {/* Comment Threads */}
-              <CommentThreads key={'commentThreads' + item.item.id} item={item} ItemCommentStore={ItemCommentStore} />
+              <CommentThreads key={'commentThreads' + item.item.id} item={item} ItemCommentStore={ItemCommentStore} dataStore={dataStore} />
             </div>
-            {/* <SubSideBar /> */}
+            
           </div>
         </div>
 
-      </div>
     </div>
     </>
+  )
+}
+
+const CommentHeader = observer(function ({detailStore}){
+  let item = detailStore.data
+  const {t} = useTranslation()
+  return (
+    <div className="section-header">
+      <div className="section-title">
+        <span className="icon mr-2"><i className="fad fa-comments"/></span>
+        <span className="text-color-title">{item.item.totalComment} {t('comment')}</span>
+      </div>
+    </div>
   )
 })

@@ -16,13 +16,22 @@ module.exports = {
   theme: {
     // Add Font to Sans Font Array
     fontFamily: {
-      sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      sans: ['"Inter"', ...defaultTheme.fontFamily.sans],
+      serif: ['"Literata"', ...defaultTheme.fontFamily.serif],
     },
 
+    // screens: {
+    //   'sm':   '640px',
+    //   'md':   '768px',
+    //   'lg':   '1024px',
+    //   'xl':   '1280px',
+    //   '2xl':  '1536px',
+    // },
+
     // Set default container to align center and have a 1rem side padding
-    container: {
-      center: true,
-    },
+    // container: {
+    //   center: true,
+    // },
 
     extend: {
 
@@ -49,17 +58,19 @@ module.exports = {
         'deeppurple-800': '#16082b',
         'deeppurple-900': '#100620',
 
-        'shadeyellow-50':  '#fffefa',
-        'shadeyellow-100': '#fffdf7',
+        'shadeyellow-50':  '#fffcf0',
+        'shadeyellow-100': '#fff5cc',
+        'shadeyellow-200': '#feeec5',
 
-        'deepgray-50': '#0f1623',
-        'deepgray-100': '#0c111b',
-        'deepgray-200': '#090c13',
+        'deepgray-50': '#0b0f18',
+        'deepgray-100': '#090c13',
+        'deepgray-200': '#06090f',
       },
 
       // Extra Font Sizes
       fontSize: {
         xxs: ['0.65rem', '1'],
+        xxxs: ['0.5rem', '1'],
       },
 
       // Added Percentage Spacing

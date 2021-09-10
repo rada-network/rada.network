@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 export const Sidebar = ({className, extraClass, type,context}) => {
 
   const sidebarRef = useRef()
-
+/*
   useEffect(() => {
 
 
@@ -82,15 +82,13 @@ export const Sidebar = ({className, extraClass, type,context}) => {
       window.removeEventListener("scroll", sidebarScroll)
     }
   }, [])
-
+*/
   // Dynamic load sidebar content
   const SidebarWidgets = dynamic(() => import(`./Sidebar${type || 'Home'}`))
 
   return (
-    <div className={`${className} ${extraClass || ''}`}>
-      <div ref={sidebarRef} className='sidebar-inner'>
-        <SidebarWidgets context={context} />
-      </div>
+    <div className={`${className} ${extraClass || ''}`} ref={sidebarRef} >
+      <SidebarWidgets context={context} />
     </div>
   );
 };

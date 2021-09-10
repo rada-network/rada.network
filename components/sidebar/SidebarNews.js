@@ -1,6 +1,6 @@
 // Widgets Comp
 import { WidgetPricing } from "../widgets/WidgetPricing";
-import { WidgetPosts } from "../widgets/WidgetPosts";
+import { WidgetPosts } from "../widgets/concepts/WidgetPosts";
 
 export default function SidebarNews ({className, extraClass}) {
 

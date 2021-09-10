@@ -15,15 +15,21 @@ const ThemeSwitch = () => {
 
   return theme == "light" ?
   (
-    <a className="btn nav-btn btn-switch-theme" onClick={e => setTheme('dark')} title="Swith to Dark Theme">
-      <span className="icon text-base leading-5"><i className="fad fa-moon" /></span>
-    </a>
+    <>
+    <button className="btn nav-btn btn-switch-theme" onClick={e => setTheme('dark')} title="Enable Dark Theme">
+      <span className="icon"><i className="fad fa-sun" /></span>
+      <span className="btn--text">Light</span>
+    </button>
+    </>
   ) 
   :
   (
-    <a className="btn nav-btn btn-switch-theme" onClick={e => setTheme('light')} title="Swith to Light Theme">
-      <span className="text-base leading-5"><i className="fad fa-sun" /></span>
-    </a>
+    <>
+    <button className="btn nav-btn btn-switch-theme active" onClick={e => setTheme('light')} title="Disable Light Theme">
+      <span className="icon"><i className="fad fa-moon" /></span>
+      <span className="btn--text">Dark</span>
+    </button>
+    </>
   ) 
 
 }

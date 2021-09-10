@@ -140,7 +140,7 @@ export const WidgetNews = observer(({title, widgetIcon, widgetIconColor,context}
       {newsStore.showMoreButton?
         <div className={`widget-footer`}>
           <a className="btn btn-nav block" onClick={(e)=> handleLoadMoreItems(e)}>
-            <span className="btn__text">Show 4 more</span>
+            <span className="btn--text">Show 4 more</span>
             <span className="btn__caret_down"/>
           </a>
         </div>
@@ -150,7 +150,7 @@ export const WidgetNews = observer(({title, widgetIcon, widgetIconColor,context}
       {loadingButton?
         <div className={`widget-footer`}>
           <a className="btn btn-nav block">
-            <span className="btn__text">Loading</span>
+            <span className="btn--text">Loading</span>
           </a>
         </div>
         : ""

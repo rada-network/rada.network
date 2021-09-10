@@ -1,16 +1,22 @@
 /*
 Generic Styles
 ----------------------------------------------*/
-%card-padding {
-  @apply py-4 px-3 md:p-6 lg:p-8;
+.cards-list {
+  @apply flex flex-col;
 }
 
 .card {
-  @apply flex h-full relative transition;
+  @extend %global-padding;
+  @apply flex h-full relative;
 }
 
-.card-media {
-  @apply flex flex-col flex-shrink-0 overflow-hidden rounded;
+.card-media,
+.card-media-blank {
+  @apply flex flex-col flex-shrink-0 overflow-hidden;
+}
+
+.card-media-img {
+  @apply overflow-hidden rounded-sm;
 }
 
 .card-img {
@@ -18,7 +24,11 @@ Generic Styles
 }
 
 .card-title {
-  @apply text-base font-medium leading-snug;
+  @apply text-sm font-medium leading-snug;
+}
+
+.card-title .badge {
+  @apply mr-1 relative -top-0.5;
 }
 
 .card-meta {
@@ -27,13 +37,10 @@ Generic Styles
 
 .card-link {
   @apply block;
-  &:hover {
-    @apply hover:text-purple-900;
-  }
 }
 
 .card-header {
-  @apply flex justify-between px-4 md:px-6 py-4 w-full;
+  @apply flex justify-between px-4 md:px-6 w-full;
 }
 
 .card-header .avatar {
@@ -42,11 +49,23 @@ Generic Styles
 }
 
 .card-body {
-  @apply flex flex-col px-4 md:px-6 py-4 w-full;
+  @apply flex flex-col w-full;
+}
+
+.card-body-header {
+  @apply flex justify-between items-start;
 }
 
 .card-footer {
   @apply flex flex-col px-4 md:px-6 py-4 w-full;
+}
+
+.card-badges {
+  @apply ml-2 -mt-1;
+}
+
+.card-badges .badge {
+  @apply text-xxs px-1 py-0.5 ml-1 mt-0;
 }
 
 
@@ -54,59 +73,85 @@ Generic Styles
 Card Post (News, Projects,...)
 ----------------------------------------------*/
 .card-post {
-  @apply border-t border-gray-500 border-opacity-10;
-  @apply lg:hover:bg-shadeyellow-100;
+  @apply border-t border-b border-t-transparent border-b-gray-100 dark:border-b-gray-800 cursor-pointer;
+  @apply space-x-3 md:space-x-4;
+  @apply hover:bg-yellow-100 hover:bg-opacity-20 dark:hover:bg-deeppurple-700;
+  /* @apply bg-white dark:bg-deepgray-50; */
 }
 
+/* Active */
+.card-post.active {
+  @apply bg-yellow-100 bg-opacity-50 dark:bg-primary-900 border-opacity-80;
+}
+
+/* Readed */
+.card-post.readed .card-title,
+.card-post.readed .metadata-source,
+.card-post.readed .metadata-date {
+  @apply opacity-50;
+}
+
+/* Metadata */
+.card-post .metadata-source .metadata-value {
+  @apply whitespace-nowrap overflow-hidden overflow-ellipsis;
+  max-width: 160px;
+}
+
+/* has Comment */
+.card-post .metadata-commentcount {
+  @apply mr-1 hidden transition;
+}
+
+.card-post.hasComment .metadata-commentcount {
+  @apply inline-flex text-primary-500;
+}
+
+/* has Vote */
+.card-post .metadata-votecount {
+  @apply mr-1 hidden transition;
+}
+
+.card-post.hasVote .metadata-votecount {
+  @apply inline-flex text-green-500;
+}
+
+/* Card Title */
+.card-post .card-link {
+  @apply inline;
+}
+
+.card-post .metadata-wrapper {
+  @apply mt-1.5;
+}
+
+/* Card Body */
 .card-post .card-body {
-  @extend %card-padding;
   @apply flex flex-col h-full w-full;
-}
-
-.card-post .card-body--header {
-  @apply flex flex-col pb-1 -mt-1;
-}
-
-.card-post .card-body--main {
-  @apply hidden md:flex;
-}
-
-.card-post .card-body--footer {
-  @apply flex flex-wrap mt-1 md:mt-2;
-}
-
-.card-post .card-footer {
-  @apply block pl-0 pt-4 pr-3 md:pt-5 md:pb-4 md:px-4 lg:p-6 lg:pt-7 w-auto;
-}
-
-.card-post .card-text {
-  @apply line-clamp-2 text-sm transition;
-}
-
-.card-post:hover .card-text {
-  @apply text-gray-700;
 }
 
 /* Media */
 .card-post .card-media {
-  @extend %card-padding;
   @apply pr-0;
 }
 
 .card-post .card-media .card-img {
-  @apply flex-shrink-0 w-px-48 h-px-48 md:w-px-88 md:h-px-88;
-  @apply rounded overflow-hidden cursor-pointer;
+  @apply flex-shrink-0 w-px-40 h-px-40;
+  @apply rounded-sm overflow-hidden cursor-pointer;
 }
 
 .card-post .card-media-blank {
-  @apply flex-shrink-0 w-px-48 h-px-48 md:w-px-88 md:h-px-88;
-  @apply rounded overflow-hidden cursor-pointer;
-  @apply p-3 lg:p-6 bg-gray-300 bg-opacity-10;
+  @apply flex-shrink-0 w-px-40 h-px-40 opacity-20;
+  @apply overflow-hidden cursor-pointer;
+  @apply bg-gray-200;
   @apply inline-flex justify-center items-center;
 }
 
 .card-post .card-media-blank .icon {
-  @apply text-xl leading-none opacity-30;
+  @apply text-xl leading-none;
+}
+
+.card-post .card-media-blank img {
+  @apply w-px-24 h-px-24;
 }
 
 
@@ -121,15 +166,15 @@ Card Social
 }
 
 .card-social .card-body {
-  @apply h-full justify-items-stretch;
+  @apply h-full justify-items-stretch py-4;
 }
 
 .card-social .card-header {
-  @apply pb-0 flex flex-row justify-between items-center;
+  @apply p-0 flex flex-row justify-between items-center;
 }
 
 .card-social .card-footer {
-  @apply w-full text-sm pt-1 pb-0 md:pb-4;
+  @apply w-full text-sm p-0;
 }
 
 .card-social .card-body--header {
@@ -154,14 +199,14 @@ Card Social
   @apply mt-4 h-auto w-full overflow-hidden;
   @apply bg-no-repeat bg-cover bg-center;
   @apply border border-gray-900 border-opacity-10 rounded-lg;
-  min-height: 8rem;
-  max-height: 10rem;
+  min-height: 12rem;
+  max-height: 16rem;
 }
 
 @media only screen and (max-width: 640px) {
   .card-social .card-media {
-    min-height: 12rem;
-    max-height: 14rem;
+    min-height: 16rem;
+    max-height: 24rem;
   }
 }
 

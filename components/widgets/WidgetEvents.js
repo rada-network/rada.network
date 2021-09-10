@@ -35,7 +35,7 @@ const EventItem = ({item}) => {
       <div className={`group widget-list--item widget-list--link`}>
 
         <div className={`widget-list--item--title`}>
-          <a className={`widget-list--link`} rel={'nofollow'} href={url} target="_blank">
+          <a className={`widget-list--link`} rel={"nofollow noreferrer"} href={url} target="_blank">
             <span className="text-color-title">{item.title}</span>
             <span className="icon ml-2 -mb-0.5 icon ico-external-link"><RiExternalLinkLine /></span>
           </a>
@@ -129,7 +129,7 @@ export const WidgetEvents = ({title, widgetIcon, widgetIconColor}) => {
       {(skip * take) < listEvents.length ?
         <div className={`widget-footer`}>
           <a className="btn btn-nav block" onClick={() => setSkip(skip+1)}>
-            <span className="btn__text">Show {take} more</span>
+            <span className="btn--text">Show {take} more</span>
             <span className="btn__caret_down"></span>
           </a>
         </div>

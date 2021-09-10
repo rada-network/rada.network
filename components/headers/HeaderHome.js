@@ -19,29 +19,25 @@ export const Header = ({props}) => {
     { props.title === "" ?
         "" :
         
-        <div className={`header header-home ${styles.header}`} type={props.itemType}>
-          <div className="container">
+        <div className={`header header-home`} type={props.itemType}>
+  
+          <div className={`header-inner`} >
 
-            <div className={`${styles.header_inner}`} >
+            <div className={`header-body`}>
+              <p className={`header-text`}>
+                Congrats! You discovered <strong className="">RADA.co</strong>
+              </p>
+              <h2 className={`header-title`}>
+                <strong className="">Trends Hunter</strong> for Cardano Community
+              </h2>
+            </div>
 
-              <div className={`${styles.header_body}`}>
-                <h2 className={`${styles.header_title}`}>
-                  <span className="relative inline-block">
-                    {utils.topicTransform(props.title)}
-                  </span>
-                </h2>
-                <p className={`${styles.header_text}`}>
-                  {props.description}
-                </p>
-              </div>
-
-              <div className={`${styles.header_media}`}>
-                <img className={`${styles.floating}`} src="/images/cardano.svg"/>
-              </div>
-
+            <div className={`header-media`}>
+              <img className={`ani-floating`} src="/images/cardano.svg"/>
             </div>
 
           </div>
+
         </div>
     }
     </>

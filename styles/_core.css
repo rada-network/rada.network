@@ -5,13 +5,17 @@ Set a default styles for core elements
 Global Styles
 */
 html {
+  @apply h-full;
   scroll-behaviour: smooth;
 }
 
 body {
-  @apply bg-bluegray-50 text-gray-900;
-  @apply dark:bg-deepgray-200 dark:text-gray-50;
-  padding-top: calc(var(--mainnav-height) + 1px);
+  @apply bg-bluegray-50 text-gray-800 h-full overflow-hidden;
+  @apply dark:bg-deepgray-200 dark:text-gray-200;
+}
+
+#__next {
+  @apply w-full h-full;
 }
 
 /* 
@@ -21,10 +25,14 @@ a {
   @apply transition-colors duration-200;
 }
 
-.link {
+.link,
+.post-content a {
   /* Seperating each at.apply for clearer declaration */
   /* This is for visual option */
-  @apply text-purple-700 hover:text-purple-900;
+  @apply text-primary-700 hover:text-primary-700 transition;
+  @apply border-b border-primary-700 border-opacity-20 hover:border-opacity-100;
+  @apply dark:text-white dark:hover:text-white;
+  @apply dark:border-white dark:border-opacity-50 dark:hover:border-opacity-100;
 }
 
 .link-text {
@@ -34,44 +42,4 @@ a {
 .link-text-bold {
   @apply text-gray-700 hover:text-gray-900;
   @apply font-medium;
-}
-
-/* 
-Layout 
-*/
-.wrapper {
-}
-
-.mainbody {
-}
-
-.container {
-  @apply mx-auto px-4 md:px-8 max-w-screen-xl;
-}
-
-.grid-12cols {
-  @apply grid grid-cols-1 lg:grid-cols-12;
-}
-
-.main-grid {
-  @apply flex flex-wrap lg:flex-nowrap;
-}
-
-.maincontent {
-  @apply w-full flex-1 lg:pr-8;
-}
-
-.sidebar {
-  @apply -mx-4 md:-mx-0 lg:w-80 lg:pt-8 md:w-full;
-}
-
-.sidebar-inner {
-  @apply lg:w-80 lg:mb-12;
-}
-
-/* 
-Main Container
-*/
-.container {
-  @apply mx-auto px-4 md:px-8 max-w-screen-xl;
 }

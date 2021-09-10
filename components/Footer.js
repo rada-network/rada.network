@@ -1,6 +1,3 @@
-import ReactTooltip from 'react-tooltip'
-
-
 export const Footer = () => {
   return (
     <>
@@ -31,10 +28,7 @@ export const Footer = () => {
         </div>
       </div>
 
-    </div>
-
-    <ReactTooltip event="click" globalEventOff="click" clickable={true} html={true} />
-      
+    </div>      
     </>
     
   );

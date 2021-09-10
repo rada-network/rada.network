@@ -1,0 +1,14 @@
+{
+  "latest": "Latest",
+  "popular": "Popular",
+  "comment" : "Comment",
+  "submit"  : "Submit",
+  "reply"   : "Reply",
+  "Search input holder" : "Search by name",
+  "comment input holder" : "Write your comment",
+  "comment login" : "Connect wallet to discuss",
+  "login" : "Connect Wallet",
+  "search not found" : " not found in any document.",
+  "back" : "Back",
+  "visit website": "Visit Website"
+}

@@ -105,7 +105,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
     return (
       <div className="btn-group btn-group-filter">
-        { times.map(t => (<span className={`btn w-full btn-filter time${t[1]==duration?' btn-filter-active':''}`} onClick={e => setDuration(t[1])}>{t[0]}</span>)) }
+        { times.map(t => (<span key={t} className={`btn w-full btn-filter time${t[1]==duration?' btn-filter-active':''}`} onClick={e => setDuration(t[1])}>{t[0]}</span>)) }
       </div>
     )
   }
@@ -228,7 +228,7 @@ export const WidgetPricing = ({title, text, footer, projectPlatformShort}) => {
 
       <div className={`widget-footer`}>
         <div className={`widget-footer--text`}>
-          Source: <a className="link" target={"_blank"} href="https://www.coindesk.com/price/cardano">CoinDesk <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span></a>
+          Source: <a className="link" target={"_blank"} href="https://www.coindesk.com/price/cardano" rel="noreferrer">CoinDesk <span className="icon ml-1 -mb-0.5"><RiExternalLinkLine /></span></a>
         </div>
       </div>
 
