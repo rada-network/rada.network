@@ -95,7 +95,6 @@ Main Panels
 .pane-center--top {
   @apply flex flex-shrink-0 m-0;
   @apply border-b border-gray-100 dark:border-gray-800 z-50;
-  transition: margin 300ms linear;
 }
 
 .pane-center--main {
@@ -189,18 +188,47 @@ Reader / Page Area
 /* 
 Main Layout when scrolling
 --------------------------------------------- */
-.list-away-top .pane-center--top {
-  margin-top: calc( -1 * var(--topbar-height));
-}
+@media (max-width: 768px) {
 
-@screen md {
-  .list-away-top .pane-center--top {
-    @apply m-0;
+  .pane-center--top {
+    transition: margin 150ms linear;
   }
+
+  .list-away-top {
+    .pane-center--top {
+      margin-top: calc( -1 * var(--topbar-height));
+    }
+  }
+
+  .list-away-top.page-details,
+  body.page-details {
+
+    .pane-content--sec.pane-content-active  {
+      @apply top-0;
+    }
+
+    .pane-center--top {
+      @apply hidden;
+    }
+
+    .page {
+      @apply pt-10;
+    }
+
+    .page-back {
+      @apply fixed top-0 w-full z-50;
+      @apply bg-white dark:bg-deepgray-50 bg-opacity-80 backdrop-blur;
+    }
+    
+  }
+
+  .details-top-away {
+    .page-back {
+      @apply shadow-sm;
+    }
+  }
+
 }
-
-
-
 
 
 
@@ -485,7 +513,7 @@ Page Layout
 }
 
 .page-back {
-  @apply px-4 py-2 md:px-6 md:py-2;
+  @apply flex items-center px-4 py-2 md:px-6 md:pb-2 md:mt-4;
 }
 
 

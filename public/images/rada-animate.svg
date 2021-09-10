@@ -5,7 +5,7 @@
 
   <style><![CDATA[
   #eq9lvGFrgXI2_tr {
-    animation: eq9lvGFrgXI2_tr__tr 4000ms linear 1 normal forwards;
+    animation: eq9lvGFrgXI2_tr__tr 3000ms linear 1 normal forwards;
     animation-delay: 1s;
   }
   @keyframes eq9lvGFrgXI2_tr__tr { 
@@ -17,7 +17,7 @@
     }
   } 
   #eq9lvGFrgXI5_tr {
-    animation: eq9lvGFrgXI5_tr__tr 4000ms linear 1 normal forwards;
+    animation: eq9lvGFrgXI5_tr__tr 3000ms linear 1 normal forwards;
     animation-delay: 1s;
   }
   @keyframes eq9lvGFrgXI5_tr__tr { 
