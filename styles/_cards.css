@@ -81,7 +81,7 @@ Card Post (News, Projects,...)
 
 /* Active */
 .card-post.active {
-  @apply bg-yellow-100 bg-opacity-50 dark:bg-primary-900 border-opacity-80;
+  @apply bg-yellow-100 bg-opacity-50 dark:bg-primary-900 border-opacity-90;
 }
 
 /* Readed */

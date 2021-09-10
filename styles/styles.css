@@ -511,7 +511,7 @@ Title
 .post-title h1 {
   @apply text-lg font-semibold;
   .badge {
-    @apply relative -top-1;
+    @apply relative -top-0.5 md:-top-1;
   }
 }
 
@@ -760,8 +760,7 @@ Perfect Scrollbar
 }
 
 .scrollbar::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  @apply w-2 h-2 bg-gray-50 dark:bg-gray-900;
 }
 
 .scrollbar::-webkit-scrollbar-track {
@@ -770,7 +769,7 @@ Perfect Scrollbar
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-gray-200 dark:bg-gray-800;
+  @apply bg-gray-200 dark:bg-gray-700;
   border-radius: 12px;
 }
 
