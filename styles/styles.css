@@ -679,7 +679,7 @@ Tootips
 Perfect Scrollbar
 */
 .scrollbar {
-  @apply relative overflow-x-hidden overflow-y-scroll;
+  @apply overflow-x-hidden overflow-y-scroll;
   -webkit-overflow-scrolling: touch;
   /* -ms-overflow-style: none;
   overflow: -moz-scrollbars-none; */
