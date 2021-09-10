@@ -19,7 +19,7 @@ Layout
   .body-decor {
     @apply block fixed inset-0 w-full h-full -z-1;
     @apply filter brightness-50;
-    background-image: url("https://source.unsplash.com/random/1600x900/?aerial,drone+view");
+    background-image: url("https://source.unsplash.com/random/1600x900/?nature");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
