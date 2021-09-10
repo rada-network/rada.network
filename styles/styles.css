@@ -20,7 +20,7 @@ Layout
     @apply block fixed inset-0 w-full h-full -z-1;
     @apply filter brightness-50;
     background-image: url("https://source.unsplash.com/collection/1459961/1600x900");
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
   }
@@ -452,7 +452,7 @@ Title
 
 .post-title .btn-post-link {
   @apply relative transition;
-  top: -1px;
+  top: -2px;
 }
 
 .post-title:hover .btn-post-link {
@@ -506,7 +506,7 @@ Media
 }
 
 .post-detail-media .post-media {
-  @apply mt-0 mb-4 max-h-full;
+  @apply mt-0 mb-8 max-h-full;
 }
 
 /*
