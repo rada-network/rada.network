@@ -33,7 +33,7 @@ const ConnectedButton = ({wallet}) => (
     {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
     <WalletAvatar wallet={wallet} />
     <span className="btn--text text-xs ml-2">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
-    <span className="icon"><i className="fad fa-sign-out" /></span>
+    <span className="icon"><i className="fa-duotone fa-sign-out" /></span>
     <span className="hidden" onClick={e => wallet.reset()}>Logout</span>
   </div>
 )
@@ -43,7 +43,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
   return (
   <>
   <div onClick={ openModal } className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
-    <span className="icon"><i className="fad fa-wallet" /></span>
+    <span className="icon"><i className="fa-duotone fa-wallet" /></span>
     <span className="btn--text">{t("login")}</span>
   </div>
 
@@ -108,7 +108,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                         className="hasTooltip" 
                         data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
                         data-event="click"
-                      > wallet <i className="fad fa-info-circle text-base" />
+                      > wallet <i className="fa-duotone fa-info-circle text-base" />
                       </span> 
                     </h3>
                     <div className="mt-4 text-sm text-white text-opacity-70 leading-6">

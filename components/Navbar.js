@@ -34,7 +34,7 @@ export const Navbar = ({dataStore,detailStore}) => {
         <div className={`navbar-main`} >
 
           <NavItem dataStore={dataStore} detailStore={detailStore} href={"/" + dataStore.lang + "/apps/explore/all"} type={"all"}>
-            <span className="icon"><i className="fad fa-rss" /></span>
+            <span className="icon"><i className="fa-duotone fa-rss" /></span>
             <span className="nav-item--text">{t("Explore")}</span>
           </NavItem>
 
@@ -55,17 +55,17 @@ export const Navbar = ({dataStore,detailStore}) => {
           </NavItem>
 
           <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/apps/explore/news"} type={"news"}>
-            <span className="icon"><i className="fad fa-newspaper" /></span>
+            <span className="icon"><i className="fa-duotone fa-newspaper" /></span>
             <span className="nav-item--text">{t("News")}</span>
           </NavItem>
 
           <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/apps/explore/video"}  type={"video"}>
-            <span className="icon"><i className="fad fa-icons" /></span>
+            <span className="icon"><i className="fa-duotone fa-icons" /></span>
             <span className="nav-item--text">{t("Video")}</span>
           </NavItem>
 
           <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/apps/explore/social"} type={"social"} className="disabled">
-            <span className="icon"><i className="fad fa-fire-alt" /></span>
+            <span className="icon"><i className="fa-duotone fa-fire-alt" /></span>
             <span className="nav-item--text">{t("Signals")}</span>
             <span className="nav-item--badge">{t("Soon")}</span>
           </NavItem>
@@ -74,22 +74,22 @@ export const Navbar = ({dataStore,detailStore}) => {
           {/* <span className="nav-item--divider"></span> */}
 
           {/* <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/apps/explore/games"}  type={"games"} className="disabled">
-            <span className="icon"><i className="fad fa-chess-knight" /></span>
+            <span className="icon"><i className="fa-duotone fa-chess-knight" /></span>
             <span className="nav-item--text">{t("Games")}</span>
             <span className="nav-item--badge">{t("Soon")}</span>
           </NavItem>
           <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/apps/explore/defi"}  type={"defi"} className="disabled">
-            <span className="icon"><i className="fad fa-coins" /></span>
+            <span className="icon"><i className="fa-duotone fa-coins" /></span>
             <span className="nav-item--text">{t("DeFi")}</span>
             <span className="nav-item--badge">{t("Soon")}</span>
           </NavItem> */}
 
           {/*<NavItem href="/explore/projects">*/}
-          {/*  <span className="icon"><i className="fad fa-code-branch" /></span>*/}
+          {/*  <span className="icon"><i className="fa-duotone fa-code-branch" /></span>*/}
           {/*  <span className="nav-item--text">Projects</span>*/}
           {/*</NavItem>*/}
           {/*<NavItem href="/explore/blog">*/}
-          {/*  <span className="icon"><i className="fad fa-pen-nib" /></span>*/}
+          {/*  <span className="icon"><i className="fa-duotone fa-pen-nib" /></span>*/}
           {/*  <span className="nav-item--text">Blog</span>*/}
           {/*</NavItem>*/}
         </div>

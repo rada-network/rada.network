@@ -217,7 +217,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
               <CardPost key={item.id}
                         title={title}
                         mediaUri={mediaUri}
-                        type="fad fa-newspaper"
+                        type="fa-duotone fa-newspaper"
                         source={source}
                         commentCount={commentCount}
                         voteCount={voteCount} item={item}
@@ -263,7 +263,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           return <CardPost key={item.id}
                            title={title}
                            mediaUri={mediaUri}
-                           type="fad fa-code"
+                           type="fa-duotone fa-code"
                            source={"Project Catalyst"}
                            commentCount={commentCount}
                            voteCount={voteCount} item={item}
@@ -304,7 +304,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           return <CardPost key={item.id}
                            title="This Group of Investors Drives Bitcoin Bull Markets, According to Analyst Willy Woo – And It’s Not Whales"
                            mediaUri="https://picsum.photos/80/80?random=3"
-                           type="fad fa-spotify"
+                           type="fa-duotone fa-spotify"
                            source="DailyHodl"
                            commentCount="0"
                            voteCount="0" item={item}

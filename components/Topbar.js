@@ -56,7 +56,7 @@ export const Topbar = ({dataStore}) => {
 
         {/*<a className="btn nav-btn btn-open-widgets">*/}
         {/*  <span className="icon">*/}
-        {/*    <i className="fad fa-th-large" />*/}
+        {/*    <i className="fa-duotone fa-th-large" />*/}
         {/*  </span>*/}
         {/*</a>*/}
 

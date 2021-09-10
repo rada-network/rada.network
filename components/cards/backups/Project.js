@@ -64,7 +64,7 @@ export const Card = ({
         {Object.keys(projectIconUri).length === 0
         ? <div className={`card-media-blank`}>
             <Link href={`/item/${post.id}`}>
-             <span className={`icon text-blue-500`}><i className="fad fa-code-branch"></i></span>
+             <span className={`icon text-blue-500`}><i className="fa-duotone fa-code-branch"></i></span>
             </Link>
           </div>
         : <div className={`card-media-img`}>

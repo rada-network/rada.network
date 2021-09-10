@@ -5,7 +5,7 @@ export default function WidgetTitle ({title,titleIcon,titleIconColor,dataStore})
     <>
       {titleIcon &&
       <span className={`icon mr-3 text-${titleIconColor}`}>
-        <i className={`fad fa-${titleIcon}`}/>
+        <i className={`fa-duotone fa-${titleIcon}`}/>
       </span>}
       <span className="text-color-title">{title} <strong>{dataStore.query}</strong></span>
     </>

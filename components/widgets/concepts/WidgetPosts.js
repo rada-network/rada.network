@@ -15,7 +15,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
           <span className="text-color-title">{title}</span>
         </div>
         <span className={`widget-icon`}>
-          <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} widget-icon-fa`}/>
+          <i className={`fa-duotone fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} widget-icon-fa`}/>
         </span>
       </div> }
 
@@ -43,7 +43,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
               <div className="metadata-wrapper justify-between mt-1">
                 <div className="flex flex-shrink-0">
                   <div className="metadata metadata-source">
-                    <span className="icon mr-1"><i className="fad fa-newspaper"></i></span>
+                    <span className="icon mr-1"><i className="fa-duotone fa-newspaper"></i></span>
                     <span className="metadata-value" title="CoinTelegraph">DailyHodl</span>
                   </div>
                   <div className="metadata metadata-date">
@@ -86,7 +86,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
               <div className="metadata-wrapper justify-between mt-1">
                 <div className="flex flex-shrink-0">
                   <div className="metadata metadata-source">
-                    <span className="icon mr-1"><i className="fad fa-newspaper"></i></span>
+                    <span className="icon mr-1"><i className="fa-duotone fa-newspaper"></i></span>
                     <span className="metadata-value" title="CoinTelegraph">Project Catalyst</span>
                   </div>
                   <div className="metadata metadata-date">
@@ -129,7 +129,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
               <div className="metadata-wrapper justify-between mt-1">
                 <div className="flex flex-shrink-0">
                   <div className="metadata metadata-source">
-                    <span className="icon mr-1"><i className="fad fa-newspaper"></i></span>
+                    <span className="icon mr-1"><i className="fa-duotone fa-newspaper"></i></span>
                     <span className="metadata-value" title="CoinTelegraph">CryptoTalk</span>
                   </div>
                   <div className="metadata metadata-date">
@@ -172,7 +172,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
               <div className="metadata-wrapper justify-between mt-1">
                 <div className="flex flex-shrink-0">
                   <div className="metadata metadata-source">
-                    <span className="icon mr-1"><i className="fad fa-newspaper"></i></span>
+                    <span className="icon mr-1"><i className="fa-duotone fa-newspaper"></i></span>
                     <span className="metadata-value" title="CoinTelegraph">CoinTelegraph</span>
                   </div>
                   <div className="metadata metadata-date">
@@ -215,7 +215,7 @@ export const WidgetPosts = ({title, widgetIcon, widgetIconColor}) => {
               <div className="metadata-wrapper justify-between mt-1">
                 <div className="flex flex-shrink-0">
                   <div className="metadata metadata-source">
-                    <span className="icon mr-1"><i className="fad fa-newspaper"></i></span>
+                    <span className="icon mr-1"><i className="fa-duotone fa-newspaper"></i></span>
                     <span className="metadata-value" title="CoinTelegraph">U.Today</span>
                   </div>
                   <div className="metadata metadata-date">

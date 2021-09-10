@@ -12,6 +12,7 @@
 /* Components */
 @import '_buttons';
 @import '_forms';
+@import '_navbar';
 @import '_cards';
 @import '_widgets';
 @import '_contents';

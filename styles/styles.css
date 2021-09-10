@@ -19,8 +19,8 @@ Layout
   .body-decor {
     @apply block fixed inset-0 w-full h-full -z-1;
     @apply filter brightness-50;
-    background-image: url("https://source.unsplash.com/collection/220381/1600x900/");
-    background-size: cover;
+    background-image: url("https://source.unsplash.com/collection/1459961/1600x900");
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: bottom right;
   }
@@ -317,113 +317,6 @@ Tabbar (Comming Soon)
   @apply text-xs; 
 }
 
-/* 
-Navbar 
---------------------------------------------- */
-.navbar {
-  @apply relative flex flex-col w-full h-full;
-}
-
-.navbar-main {
-  height: var(--navbar-height);
-  @apply flex justify-evenly lg:flex-col w-full lg:h-auto;
-}
-
-/* 
-Nav Item
-*/
-.nav-item {
-  @apply relative flex flex-col lg:flex-row items-center w-full h-full px-2 py-0.5 lg:py-2;
-  @apply font-medium leading-normal whitespace-nowrap;
-  @apply text-gray-800 opacity-50;
-  @apply dark:text-gray-200;
-  @apply hover:opacity-100;
-  @apply lg:h-9;
-}
-
-.nav-item .icon {
-  @apply w-8 h-4;
-  @apply inline-flex justify-center mt-1.5 mb-2 lg:my-0 lg:mr-1 text-center;
-  @apply text-lg lg:text-base leading-none;
-  .fad {
-    @apply relative lg:-top-0.5;
-  }
-}
-
-/* Rada Nav */
-.nav-item .icon-rada svg {
-  @apply relative lg:-top-0.5;
-  transform: scale(1.18);  /* make the svg bigger */
-}
-
-.dark .nav-item .icon-rada svg {
-  .inline-rec {
-    fill: #D1D5DB;
-  }
-  .inline-circle {
-    fill: #6B7280;
-  }
-  .inline-stroke {
-    fill: #111827;
-  }
-}
-
-.nav-item--text {
-  @apply text-xxs lg:text-xs;
-}
-
-/* 
-Nav Item Active 
-*/
-.nav-item-active {
-  @apply text-primary-700 text-opacity-100 font-bold;
-  @apply dark:text-primary-400 dark:text-opacity-100;
-  @apply opacity-100;
-}
-
-.nav-item-active .icon-rada svg {
-  .inline-circle {
-    fill: #C4B5FD;
-  }
-  .inline-rec {
-    fill: #6D28D9;
-  }
-}
-
-.dark .nav-item-active .icon-rada svg {
-  .inline-rec {
-    fill: #6D28D9;
-  }
-  .inline-circle {
-    fill: #C4B5FD;
-  }
-  .inline-stroke {
-    fill: #111827;
-  }
-}
-
-/* 
-Nav Item Addons
-*/
-.nav-item--badge {
-  @apply text-xxxs rounded-full absolute;
-  @apply bg-red-500 text-white;
-  padding: 3px;
-  top: 10px;
-  right: auto;
-  left: auto;
-}
-
-@screen lg {
-  .nav-item--badge {
-    top: 0;
-    right: 20px;
-  }
-}
-
-.nav-item--divider {
-  @apply hidden lg:block h-1 mt-2 mb-2 border-t border-gray-500 border-opacity-10;
-}
 
 /* 
 Sidebar

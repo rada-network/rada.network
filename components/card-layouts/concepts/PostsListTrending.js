@@ -43,7 +43,7 @@ export const PostsListTrending = ({title, extraClass}) => {
           <CardPost
             title="China’s Digital Yuan Will Utilize Smart Contracts"
             mediaUri="https://picsum.photos/80/80?random=7"
-            type="fad fa-newspaper"
+            type="fa-duotone fa-newspaper"
             source="CoinDesk"
             commentCount="22"
             voteCount="35"
@@ -61,7 +61,7 @@ export const PostsListTrending = ({title, extraClass}) => {
           <CardPost
             title="Bitcoin: Is this a point of maximum financial opportunity?"
             mediaUri="https://picsum.photos/80/80?random=9"
-            type="fad fa-newspaper"
+            type="fa-duotone fa-newspaper"
             source="U.Today"
             commentCount="15"
             voteCount="57"
@@ -70,7 +70,7 @@ export const PostsListTrending = ({title, extraClass}) => {
           <CardPost
             title="Whales Are Quietly Pouncing on Ethereum As Crypto Market Meanders, According to Analytics Firm Santiment"
             mediaUri="https://picsum.photos/80/80?random=4"
-            type="fad fa-newspaper"
+            type="fa-duotone fa-newspaper"
             source="CoinDesk"
             commentCount="99"
             voteCount="12"
@@ -79,7 +79,7 @@ export const PostsListTrending = ({title, extraClass}) => {
           <CardPost
             title="China’s Digital Yuan Will Utilize Smart Contracts"
             mediaUri="https://picsum.photos/80/80?random=7"
-            type="fad fa-newspaper"
+            type="fa-duotone fa-newspaper"
             source="CoinDesk"
             commentCount="22"
             voteCount="35"
@@ -88,7 +88,7 @@ export const PostsListTrending = ({title, extraClass}) => {
           <CardPost
             title="Bitcoin: Is this a point of maximum financial opportunity?"
             mediaUri="https://picsum.photos/80/80?random=9"
-            type="fad fa-newspaper"
+            type="fa-duotone fa-newspaper"
             source="U.Today"
             commentCount="15"
             voteCount="57"

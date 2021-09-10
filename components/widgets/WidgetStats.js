@@ -32,7 +32,7 @@ export const WidgetStats = ({title, widgetIcon, widgetIconColor}) => {
           <span className="text-color-title">{title}</span>
         </div>
         <span className={`widget-icon`}>
-          <i className={`fad fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} widget-icon-fa`}/>
+          <i className={`fa-duotone fa-${widgetIcon || ''} text-${widgetIconColor || 'gray-400'} widget-icon-fa`}/>
         </span>
       </div> }
 

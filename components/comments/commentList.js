@@ -77,7 +77,7 @@ const CommentHeader = observer(function ({detailStore}){
   return (
     <div className="section-header">
       <div className="section-title">
-        <span className="icon mr-2"><i className="fad fa-comments"/></span>
+        <span className="icon mr-2"><i className="fa-duotone fa-comments"/></span>
         <span className="text-color-title">{item.item.totalComment} {t('comment')}</span>
       </div>
     </div>

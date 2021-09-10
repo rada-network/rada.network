@@ -75,7 +75,7 @@ export const SocialPostsList = observer( ({dataStore,extraClass, grid, gap, titl
 
             { titleIcon &&
             <span className={`icon mr-3 text-${titleIconColor}`}>
-              <i className={`fad fa-${titleIcon}`}/>
+              <i className={`fa-duotone fa-${titleIcon}`}/>
             </span> }
 
             {itemType !== undefined ?

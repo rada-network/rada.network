@@ -55,7 +55,7 @@ export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
       />
       <link
       rel="stylesheet"
-        href="/vendors/font-awesome5-pro/css/all.min.css"
+        href="/vendors/font-awesome6-pro/css/all.min.css"
         media="print"
         onLoad="this.media='all'"
         key="fontawesome"

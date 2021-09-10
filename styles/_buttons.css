@@ -189,19 +189,19 @@ Button Caret
 .btn--caret-left,
 .btn--caret-up {
   @apply relative;
-  height: 6px;
-  width: 6px;
+  height: 8px;
+  width: 8px;
   border-bottom: 2px solid;
   border-right: 2px solid;
 }
 
 .btn--caret-right {
-  @apply ml-1;
+  @apply ml-2;
   transform: rotate(-45deg);
 }
 
 .btn--caret-left {
-  @apply mr-1;
+  @apply mr-2;
   transform: rotate(135deg);
 }
 
