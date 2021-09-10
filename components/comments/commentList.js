@@ -1,13 +1,9 @@
 import {CommentForm} from "./commentForm";
-import {SubSideBar} from "../subSideBar";
 import {CommentThreads} from "./commentThreads";
-import {getSnapshot, types} from "mobx-state-tree";
 import getClient from "../../data/client";
 import itemComments from "../../data/query/itemComments";
-import useSWR from "swr";
 import {observer} from "mobx-react";
 import {useEffect, useState} from "react";
-import {getInfluencers} from "../../data/query/getSuggestUser";
 import {ThreadsStore, UserStore} from "../../lib/store";
 import {useTranslation} from "next-i18next";
 

@@ -4,8 +4,6 @@ import React, {createRef, useEffect} from "react";
 import Screen from "./utils/Responsive";
 import {Wallet} from "./Wallet";
 import {PostListDetail} from "./card-layouts/PostListDetail";
-import {Header} from "./headers/HeaderHome";
-import {Sidebar} from "./sidebar/Sidebar";
 import dynamic from "next/dynamic";
 
 export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
