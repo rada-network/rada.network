@@ -19,7 +19,7 @@ Layout
   .body-decor {
     @apply block fixed inset-0 w-full h-full -z-1;
     @apply filter brightness-50 ;
-    background-image: url("https://source.unsplash.com/collection/1459961/1600x900");
+    background-image: url("https://source.unsplash.com/collection/BI9MVMkHK1g/1600x900");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
@@ -39,7 +39,7 @@ Nav Panels
 */
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
-  @apply border-r border-gray-400 border-opacity-20 z-50;
+  @apply border-r border-gray-300 border-opacity-20 z-50;
   @apply bg-gray-50 dark:bg-deepgray-100 2xl:bg-white 2xl:dark:bg-deepgray-100;
   @apply 2xl:bg-opacity-80 2xl:dark:bg-opacity-60 2xl:backdrop-blur;
   width: var(--paneleft-width);
@@ -95,7 +95,7 @@ Main Panels
 
 .pane-center--top {
   @apply flex flex-shrink-0 m-0;
-  @apply border-b border-gray-400 border-opacity-20 z-50;
+  @apply border-b border-gray-300 border-opacity-20 z-50;
 }
 
 .pane-center--main {
@@ -130,7 +130,7 @@ Main Panels
 .pane-content--main--top,
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
-  @apply border-b border-gray-400 border-opacity-20;
+  @apply border-b border-gray-300 border-opacity-20;
   @apply bg-white dark:bg-deepgray-50;
   height: var(--toolbar-height);
 }
