@@ -1,49 +1,49 @@
 {
-  "name": "Dhunt - Top blockchain hub",
-  "short_name": "Dhunt PWA",
-  "theme_color": "#6D28D9",
-  "background_color": "#004740",
+  "name": "RADA Network",
+  "short_name": "RADA",
+  "theme_color": "#6366F1",
+  "background_color": "#FFFFFF",
   "display": "fullscreen",
   "orientation": "portrait",
   "start_url": "/",
   "icons": [
     {
-      "src": "icons/dhunt72x72.png",
+      "src": "icons/rada72x72.png",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "icons/dhunt96x96.png",
+      "src": "icons/rada96x96.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "icons/dhunt128x128.png",
+      "src": "icons/rada128x128.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "icons/dhunt144x144.png",
+      "src": "icons/rada144x144.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "icons/dhunt152x152.png",
+      "src": "icons/rada152x152.png",
       "sizes": "152x152",
       "type": "image/png"
     },
     {
-      "src": "icons/dhunt192x192.png",
+      "src": "icons/rada192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/dhunt384x384.png",
+      "src": "icons/rada384x384.png",
       "sizes": "384x384",
       "type": "image/png"
     },
     {
-      "src": "icons/dhunt512x512.png",
+      "src": "icons/rada512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

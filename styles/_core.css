@@ -6,12 +6,11 @@ Global Styles
 */
 html {
   @apply h-full;
-  scroll-behaviour: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-bluegray-50 text-gray-800 h-full overflow-hidden;
-  @apply dark:bg-deepgray-200 dark:text-gray-200;
+  @apply bg-bluegray-50 dark:bg-deepgray-200 h-full overflow-hidden;
 }
 
 #__next {

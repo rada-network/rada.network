@@ -2,10 +2,13 @@
 Typography Styles 
 */
 
-
 /* 
 Core Contents
 ----------------------------------- */
+body {
+  @apply text-gray-800 dark:text-gray-200;
+}
+
 .text-color-title,
 .comment-text {
   @apply text-gray-800 dark:text-gray-200;
@@ -23,6 +26,21 @@ Core Contents
 /* 
 Post Content Typo
 ----------------------------------- */
+.post-title h1 {
+  @apply text-lg md:text-xl font-semibold;
+  .badge {
+    @apply relative -top-1;
+  }
+}
+
+.post-content {
+}
+
+.post-detail-media .post-content--text {
+  @apply text-sm whitespace-pre-wrap;
+  word-break: break-word;
+}
+
 .post-content p,
 .post-content ul,
 .post-content figure, 
@@ -38,17 +56,25 @@ Post Content Typo
 }
 
 .post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content .pTitle,
+.post-content .pHead {
+  @apply font-semibold mb-4;
+}
+
+.post-content h2,
 .post-content .pTitle {
-  @apply text-lg md:text-base font-semibold mb-4;
+  @apply text-lg;
 }
 
 .post-content h3,
 .post-content .pHead {
-  @apply text-base md:text-sm font-semibold mb-4;
+  @apply text-sm;
 }
 
 .post-content h4 {
-  @apply text-base md:text-sm font-semibold mb-4;
+  @apply text-sm;
 }
 
 .post-content {
@@ -60,12 +86,19 @@ Post Content Typo
   }
 }
 
+.post-rada ol,
+.post-rada ul {
+  list-style: revert;
+  margin: revert;
+  padding: revert;
+}
+
 .post-content li {
   @apply py-1;
 }
 
 .post-content img {
-  @apply max-w-full text-center mx-auto;
+  @apply max-w-full text-center mx-auto rounded;
 }
 
 .post-content figure  {
@@ -126,11 +159,21 @@ Post Content Typo
   @apply mb-0;
 }
 
-
 .post-content .wp-smiley {
   @apply hidden;
 }
 
 .post-content .related-list__title {
   @apply font-semibold;
+}
+
+/* Hide unwanted elements */
+.post-content {
+  .tdb_single_post_share,
+  .tdb_breadcrumbs,
+  .tdb_single_categories,
+  .tdb-single-title,
+  .tdb-post-meta {
+    @apply hidden;
+  }
 }

@@ -85,11 +85,11 @@ export const Navbar = ({dataStore,detailStore}) => {
           </NavItem> */}
 
           {/*<NavItem href="/explore/projects">*/}
-          {/*  <span className="icon"><i className="fad fa-code-branch" /></span>*/}
+          {/*  <span className="icon"><i className="fa-duotone fa-code-branch" /></span>*/}
           {/*  <span className="nav-item--text">Projects</span>*/}
           {/*</NavItem>*/}
           {/*<NavItem href="/explore/blog">*/}
-          {/*  <span className="icon"><i className="fad fa-pen-nib" /></span>*/}
+          {/*  <span className="icon"><i className="fa-duotone fa-pen-nib" /></span>*/}
           {/*  <span className="nav-item--text">Blog</span>*/}
           {/*</NavItem>*/}
         </div>

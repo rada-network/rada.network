@@ -5,9 +5,9 @@ Layout
 --------------------------------*/
 .main-layout {
   @apply flex flex-col lg:flex-row h-full w-full items-stretch;
-  @apply max-w-screen-2xl;
-  @apply bg-white dark:bg-deepgray-50 2xl:bg-transparent 2xl:shadow-2xl;
-  animation: fadein 0.4s ease-in;
+  @apply max-w-screen-2xl 2xl:m-auto;
+  @apply bg-white dark:bg-deepgray-50 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-2xl;
+  animation: fadein 400ms linear;
 }
 
 .body-decor,
@@ -18,15 +18,15 @@ Layout
 @screen 2xl {
   .body-decor {
     @apply block fixed inset-0 w-full h-full -z-1;
-    @apply filter brightness-50;
-    background-image: url("https://source.unsplash.com/random/1600x900/?aerial,drone+view");
+    @apply filter brightness-50 ;
+    background-image: url("https://source.unsplash.com/collection/1459961/1600x900");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
   }
   .body-decor--text {
     @apply block absolute right-4 bottom-4 px-4 py-2 rounded;
-    @apply bg-gray-900 bg-opacity-10 text-white text-opacity-80 text-xs;
+    @apply bg-gray-900 bg-opacity-20 text-white text-opacity-80 text-xs;
     text-shadow: 0 1px 1px rgba(0,0,0,.2);
   }
   .body-decor--text a {
@@ -40,10 +40,12 @@ Nav Panels
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
   @apply border-r border-gray-100 dark:border-gray-800 z-50;
-  @apply bg-gray-50 dark:bg-deepgray-100;
+  @apply bg-gray-50 dark:bg-deepgray-100 2xl:bg-white 2xl:dark:bg-deepgray-100;
+  @apply 2xl:bg-opacity-80 2xl:dark:bg-opacity-60 2xl:backdrop-blur;
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
+
 
 .pane-left--bottom {
   @apply justify-between items-center p-2 space-y-2;
@@ -95,7 +97,6 @@ Main Panels
 .pane-center--top {
   @apply flex flex-shrink-0 m-0;
   @apply border-b border-gray-100 dark:border-gray-800 z-50;
-  transition: margin 300ms linear;
 }
 
 .pane-center--main {
@@ -103,7 +104,7 @@ Main Panels
 }
 
 .pane-content {
-  @apply h-full;
+  @apply w-full h-full;
   /* @apply flex flex-auto flex-wrap md:flex-nowrap h-full; */
   /* width: 0; Fix Layout */
 }
@@ -189,18 +190,51 @@ Reader / Page Area
 /* 
 Main Layout when scrolling
 --------------------------------------------- */
-.list-away-top .pane-center--top {
-  margin-top: calc( -1 * var(--topbar-height));
-}
+@media (max-width: 768px) {
 
-@screen md {
-  .list-away-top .pane-center--top {
-    @apply m-0;
+  .pane-center--top {
+    transition: margin 150ms linear;
   }
+
+  .list-away-top {
+    .pane-center--top {
+      margin-top: calc( -1 * var(--topbar-height));
+    }
+  }
+
+  .list-away-top.page-details,
+  body.page-details {
+
+    .pane-content--sec.pane-content-active  {
+      @apply top-0;
+    }
+
+    .pane-center--top {
+      @apply hidden;
+    }
+
+    .page {
+      @apply pt-12;
+    }
+
+    .page-back {
+      transition: all 150ms linear;
+      @apply fixed top-0 w-full z-50;
+      @apply pt-5 pb-1;
+    }
+    
+  }
+
+  body.page-details.details-top-away {
+    .page {
+      @apply pt-9;
+    }
+    .page-back {
+      @apply shadow-sm py-2;
+    }
+  }
+
 }
-
-
-
 
 
 
@@ -236,7 +270,7 @@ Top & Tool Bars
 }
 
 .logo--badge {
-  @apply text-xxxs mt-0.5 opacity-50 border-b-2 leading-3;
+  @apply text-xxxs mt-0.5 opacity-50 border-b-2 border-gray-400 leading-3;
   letter-spacing: 2px;
 }
 
@@ -288,109 +322,6 @@ Tabbar (Comming Soon)
   @apply text-xs; 
 }
 
-/* 
-Navbar 
---------------------------------------------- */
-.navbar {
-  @apply relative flex flex-col w-full h-full;
-}
-
-.navbar-main {
-  height: var(--navbar-height);
-  @apply flex justify-evenly lg:flex-col w-full lg:h-auto;
-}
-
-/* 
-Nav Item
-*/
-.nav-item {
-  @apply relative flex flex-col lg:flex-row items-center lg:items-baseline w-full h-full px-2 py-0.5 lg:py-2;
-  @apply font-medium leading-normal whitespace-nowrap;
-  @apply text-gray-800 opacity-50;
-  @apply dark:text-gray-200;
-  @apply hover:opacity-100;
-  @apply lg:h-9;
-}
-
-.nav-item .icon {
-  @apply w-8 h-4;
-  @apply inline-flex justify-center mt-1.5 mb-2 lg:my-0 lg:mr-1 text-center;
-  @apply text-lg lg:text-base leading-none;
-}
-
-.nav-item .icon-rada svg {
-  @apply relative -bottom-0.5;
-  transform: scale(1.15);  /* make the svg bigger */
-}
-
-.dark .nav-item .icon-rada svg {
-  .inline-rec {
-    fill: #D1D5DB;
-  }
-  .inline-circle {
-    fill: #6B7280;
-  }
-  .inline-stroke {
-    fill: #111827;
-  }
-}
-
-.nav-item--text {
-  @apply text-xxs lg:text-xs;
-}
-
-/* 
-Nav Item Active 
-*/
-.nav-item-active {
-  @apply text-primary-700 text-opacity-100 font-bold;
-  @apply dark:text-primary-400 dark:text-opacity-100;
-  @apply opacity-100;
-}
-
-.nav-item-active .icon-rada svg {
-  .inline-circle {
-    fill: #C4B5FD;
-  }
-  .inline-rec {
-    fill: #6D28D9;
-  }
-}
-
-.dark .nav-item-active .icon-rada svg {
-  .inline-rec {
-    fill: #6D28D9;
-  }
-  .inline-circle {
-    fill: #C4B5FD;
-  }
-  .inline-stroke {
-    fill: #111827;
-  }
-}
-
-/* 
-Nav Item Addons
-*/
-.nav-item--badge {
-  @apply text-xxxs rounded-full absolute;
-  @apply bg-red-500 text-white;
-  padding: 3px;
-  top: 10px;
-  right: auto;
-  left: auto;
-}
-
-@screen lg {
-  .nav-item--badge {
-    top: 0;
-    right: 20px;
-  }
-}
-
-.nav-item--divider {
-  @apply hidden lg:block h-1 mt-2 mb-2 border-t border-gray-500 border-opacity-10;
-}
 
 /* 
 Sidebar
@@ -422,10 +353,6 @@ Sections Layout
 
 .section-body {
   @apply pt-4 md:pt-6;
-}
-
-.section-body.scrollbar {
-  @apply flex flex-col w-full h-full overflow-x-hidden overflow-y-auto;
 }
 
 .section-footer {
@@ -485,7 +412,8 @@ Page Layout
 }
 
 .page-back {
-  @apply px-4 py-2 md:px-6 md:py-2;
+  @apply flex items-center px-4 pt-4 pb-2 md:px-6 md:pt-2 md:pb-2 md:mt-2;
+  @apply bg-white dark:bg-deepgray-50 bg-opacity-80 backdrop-blur;
 }
 
 
@@ -509,7 +437,9 @@ Post Details
 Title 
 */
 .post-title h1 {
-  @apply text-lg font-semibold;
+  .badge {
+    @apply relative -top-1;
+  }
 }
 
 .post-title--text {
@@ -522,7 +452,7 @@ Title
 
 .post-title .btn-post-link {
   @apply relative transition;
-  top: -1px;
+  top: -2px;
 }
 
 .post-title:hover .btn-post-link {
@@ -554,11 +484,11 @@ Metadata
 CTAs 
 */
 .post-detail .cta-wrapper {
-  @apply flex text-gray-800 dark:text-gray-200;
+  @apply flex text-gray-900 dark:text-gray-200;
 }
 
 .post-detail .cta-wrapper .btn {
-  @apply text-sm;
+  @apply text-sm leading-none relative;
 }
 
 .post-detail .cta-wrapper .btn-post-vote {
@@ -576,19 +506,15 @@ Media
 }
 
 .post-detail-media .post-media {
-  @apply mt-0 mb-4 max-h-full;
+  @apply mt-0 mb-6 max-h-full;
 }
 
 /*
 Content
 */
 .post-content {
-  @apply text-base md:text-sm;
 }
 
-.post-detail-media .post-content--text {
-  @apply whitespace-pre-wrap;
-}
 
 /* Post Actions */
 .post-actions {
@@ -665,7 +591,6 @@ Empty State
 
 .home-emptystate-deco {
   @apply hidden lg:block absolute inset-0 w-full h-full opacity-5 z-0;
-  background: url(/images/hero.png) no-repeat center 95%;
 }
 
 .empty-state .empty-state-content {
@@ -751,29 +676,36 @@ Tootips
 Perfect Scrollbar
 */
 .scrollbar {
-  @apply relative overflow-y-auto;
+  @apply relative overflow-x-hidden overflow-y-scroll;
   -webkit-overflow-scrolling: touch;
   /* -ms-overflow-style: none;
   overflow: -moz-scrollbars-none; */
 }
 
 .scrollbar::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  @apply w-2 h-2 bg-gray-200 dark:bg-gray-900 bg-opacity-30;
 }
 
 .scrollbar::-webkit-scrollbar-track {
   @apply bg-transparent;
-  border-radius: 12px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-gray-200 dark:bg-gray-800;
-  border-radius: 12px;
+  @apply bg-gray-300 dark:bg-gray-800 bg-opacity-40;
+  border-radius: 18px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
   @apply bg-primary-500;
+}
+
+/* Tweaks for Content Scrollbar */
+.pane-content--sec--main.scrollbar::-webkit-scrollbar {
+  @apply 2xl:bg-opacity-90;
+}
+
+.pane-content--sec--main.scrollbar::-webkit-scrollbar-thumb {
+  @apply 2xl:bg-opacity-100;
 }
 
 
@@ -810,16 +742,11 @@ Dragger
 */
 .pane-dragger {
   @apply hidden md:block absolute h-full w-2 -right-2 top-0 z-50;
-  @apply border-l-2 border-dashed border-transparent hover:border-primary-500;
+  @apply border-l-2 border-dashed border-transparent hover:border-primary-500 transition;
+  transition-delay: 100ms;
   cursor: col-resize;
 }
 
 .pane-dragger.dragging {
   user-select: none;
-}
-
-.post-rada ol,ul{
-  list-style: revert;
-  margin: revert;
-  padding: revert;
 }

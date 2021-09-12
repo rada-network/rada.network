@@ -5,28 +5,30 @@
 
   <style><![CDATA[
   #eq9lvGFrgXI2_tr {
-    animation: eq9lvGFrgXI2_tr__tr 4000ms linear 1 normal forwards;
+    animation: eq9lvGFrgXI2_tr__tr 3000ms linear 1 normal forwards;
     animation-delay: 1s;
   }
   @keyframes eq9lvGFrgXI2_tr__tr { 
     0% {
-      transform: translate(18px,20px) rotate(-180deg)
+      transform: translate(18px,20px) rotate(0);
     }
     100% {
-      transform: translate(18px,20px) rotate(0deg)
+      transform: translate(18px,20px) rotate(-180deg)
     }
   } 
   #eq9lvGFrgXI5_tr {
-    animation: eq9lvGFrgXI5_tr__tr 4000ms linear 1 normal forwards;
+    animation: eq9lvGFrgXI5_tr__tr 3000ms linear 1 normal forwards;
     animation-delay: 1s;
   }
   @keyframes eq9lvGFrgXI5_tr__tr { 
     0% {
-      transform: translate(18px,20px) rotate(900deg); 
-      animation-timing-function: cubic-bezier(0.49,0.49,0.32,1.275)
+      transform: translate(18px,20px) rotate(0); 
+      animation-timing-function: cubic-bezier(0.5,0.5,0.25,1.5);
+      opacity: 0;
     } 
     100% {
-      transform: translate(18px,20px) rotate(720deg)
+      transform: translate(18px,20px) rotate(180deg);
+      opacity: 1;
     }
   }
   ]]></style>

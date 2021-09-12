@@ -33,7 +33,7 @@ const ConnectedButton = ({wallet}) => (
     {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
     <WalletAvatar wallet={wallet} />
     <span className="btn--text text-xs ml-2">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
-    <span className="icon"><i className="fad fa-sign-out" /></span>
+    <span className="icon"><i className="fa-duotone fa-sign-out" /></span>
     <span className="hidden" onClick={e => wallet.reset()}>Logout</span>
   </div>
 )
@@ -43,7 +43,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
   return (
   <>
   <div onClick={ openModal } className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
-    <span className="icon"><i className="fad fa-wallet" /></span>
+    <span className="icon"><i className="fa-duotone fa-wallet" /></span>
     <span className="btn--text">{t("login")}</span>
   </div>
 
@@ -108,10 +108,10 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                         className="hasTooltip" 
                         data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
                         data-event="click"
-                      > wallet <i className="fad fa-info-circle text-base" />
+                      > wallet <i className="fa-duotone fa-info-circle text-base" />
                       </span> 
                     </h3>
-                    <div className="mt-4 text-sm text-white text-opacity-70 leading-6">
+                    <div className="mt-4 text-white text-opacity-70 leading-6">
                       <p className="">
                         Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics by connecting to your wallet or social networks
                       </p>
@@ -166,13 +166,13 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                       </ul>
                     </div>
 
-                    <div className={`divider ${styles.instruct}`}>
+                    <div className={`divider`}>
                       <span>Or Connect with</span>
                     </div>
 
                     <div className={`${styles.social_login}`}>
 
-                      <a className={`btn btn-default rounded-full ${styles.btn}`} onClick={() => wallet.connect()}>
+                      <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect()}>
                         <span className={`icon ${styles.btn_icon}`}>
                           <img src="/images/icons/google.svg" alt="Google" />
                         </span>
