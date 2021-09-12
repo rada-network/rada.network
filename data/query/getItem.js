@@ -49,6 +49,8 @@ const itemFeedGql = gql`
             news{
                 id
                 title
+                slug
+                slug_en
                 title_en
                 description
                 thumbnailUri
@@ -77,6 +79,7 @@ const itemFeedGql = gql`
             video{
                 id
                 title
+                slug
                 description
                 videoType
                 content
@@ -151,6 +154,8 @@ const itemByIdGql = gql`
                 id
                 title
                 title_en
+                slug
+                slug_en
                 description
                 thumbnailUri
                 source
@@ -178,6 +183,7 @@ const itemByIdGql = gql`
             video{
                 id
                 title
+                slug
                 description
                 content
                 videoType

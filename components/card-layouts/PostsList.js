@@ -165,7 +165,10 @@ export function getSourceVideoFromUri(item){
 }
 
 
-export function createPostUri(title,item,lang){
+export function createPostUri(title,slug,item,lang){
+  if (slug !== null){
+    return "/" + lang + "/post/" + slug
+  }
   return "/" + lang + "/post/" + item.id + "/" + utils.convertToSlug(title)
 }
 
@@ -196,7 +199,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
   return (
     <div className={`cards-list ${extraClass || ''}`}>
       {dataStore.tweets.map(function(item){
-        let title = null,mediaUri = null,source = null, voteCount=item.totalVote,commentCount=item.totalComment
+        let title = null,mediaUri = null,source = null, voteCount=item.totalVote,commentCount=item.totalComment,slug = null
         if (item.news !== null){
           item.news.item = {
             id : item.id,
@@ -206,14 +209,16 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           item.createdAt = item.news.createdAt
           source = getSourceFromUri(item.news)
           title = item.news.title
+          slug = item.news.slug
           if (item.news.lang === "all"){
             if (dataStore.lang === "en"){
               title = item.news.title_en
+              slug = item.news.slug_en
             }
           }
           mediaUri = item.news.thumbnailUri !== "" ? item.news.thumbnailUri : null
           return (
-            <a key={item.id} href={createPostUri(title,item,dataStore.lang)} onClick={(e)=>handleClickPost(e,item.news,"news")}>
+            <a key={item.id} href={createPostUri(title,slug,item,dataStore.lang)} onClick={(e)=>handleClickPost(e,item.news,"news")}>
               <CardPost key={item.id}
                         title={title}
                         mediaUri={mediaUri}
@@ -240,7 +245,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           mediaUri = item.tweet.tweetUser ? item.tweet.tweetUser.source.profile_image_url_https : null
           source = item.tweet.tweetUser ? item.tweet.tweetUser.source.screen_name : null
           return (
-            <a key={item.id} href={createPostUri(title,item,dataStore.lang)} onClick={(e)=>handleClickPost(e,item.tweet,"tweet")}>
+            <a key={item.id} href={createPostUri(title,slug,item,dataStore.lang)} onClick={(e)=>handleClickPost(e,item.tweet,"tweet")}>
               <CardPost key={item.id}
                         title={title}
                         mediaUri={mediaUri}
@@ -281,10 +286,11 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           }
           item.createdAt = item.video.createdAt
           title = item.video.title
+          slug = item.video.slug
           mediaUri = item.video.thumbnailUri
           source = getSourceVideoFromUri(item.video)
           return (
-            <a key={item.id} href={createPostUri(title,item,dataStore.lang)} onClick={(e)=>handleClickPost(e,item.video,"video")}>
+            <a key={item.id} href={createPostUri(title,slug,item,dataStore.lang)} onClick={(e)=>handleClickPost(e,item.video,"video")}>
             <CardPost key={item.id}
                       title={title}
                       mediaUri={mediaUri}
