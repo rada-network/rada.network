@@ -136,7 +136,7 @@ Main Panels
 }
 
 .pane-content--main--top {
-  @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur;
+  /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur; */
 }
 
 /* 
@@ -146,7 +146,7 @@ Card List Area
   /* height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height)); */
   @apply flex flex-auto flex-col w-full h-0 overflow-x-hidden overflow-y-auto;
   @apply bg-white dark:bg-deepgray-50;
-  @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur;
+  /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur; */
 }
 
 @screen lg {
