@@ -6,7 +6,7 @@ Layout
 .main-layout {
   @apply flex flex-col lg:flex-row h-full w-full items-stretch;
   @apply max-w-screen-2xl 2xl:m-auto;
-  @apply bg-white dark:bg-deepgray-50 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-2xl;
+  @apply bg-white dark:bg-deepgray-50 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-md;
   animation: fadein 400ms linear;
 }
 
@@ -39,7 +39,7 @@ Nav Panels
 */
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
-  @apply border-r border-gray-100 dark:border-gray-800 z-50;
+  @apply border-r border-gray-400 border-opacity-20 z-50;
   @apply bg-gray-50 dark:bg-deepgray-100 2xl:bg-white 2xl:dark:bg-deepgray-100;
   @apply 2xl:bg-opacity-80 2xl:dark:bg-opacity-60 2xl:backdrop-blur;
   width: var(--paneleft-width);
@@ -68,8 +68,7 @@ Navbars on Mobile Tablet
 */
 .pane-bottom {
   @apply flex justify-between w-full h-auto order-last;
-  @apply bg-bluegray-50 border-r border-gray-400 border-opacity-10 z-50;
-  @apply dark:bg-deepgray-100;
+  @apply bg-bluegray-50 dark:bg-deepgray-100 z-50;
   flex-basis: var(--navbar-height);
 }
 
@@ -96,7 +95,7 @@ Main Panels
 
 .pane-center--top {
   @apply flex flex-shrink-0 m-0;
-  @apply border-b border-gray-100 dark:border-gray-800 z-50;
+  @apply border-b border-gray-400 border-opacity-20 z-50;
 }
 
 .pane-center--main {
@@ -131,9 +130,13 @@ Main Panels
 .pane-content--main--top,
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
-  @apply border-b border-gray-100 dark:border-gray-800;
+  @apply border-b border-gray-400 border-opacity-20;
   @apply bg-white dark:bg-deepgray-50;
   height: var(--toolbar-height);
+}
+
+.pane-content--main--top {
+  @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur;
 }
 
 /* 
@@ -143,6 +146,7 @@ Card List Area
   /* height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height)); */
   @apply flex flex-auto flex-col w-full h-0 overflow-x-hidden overflow-y-auto;
   @apply bg-white dark:bg-deepgray-50;
+  @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur;
 }
 
 @screen lg {
@@ -676,7 +680,7 @@ Tootips
 Perfect Scrollbar
 */
 .scrollbar {
-  @apply relative overflow-x-hidden overflow-y-scroll;
+  @apply relative overflow-x-hidden overflow-y-visible;
   -webkit-overflow-scrolling: touch;
   /* -ms-overflow-style: none;
   overflow: -moz-scrollbars-none; */
