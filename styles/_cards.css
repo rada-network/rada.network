@@ -140,7 +140,7 @@ Card Post (News, Projects,...)
 }
 
 .card-post .card-media-blank {
-  @apply flex-shrink-0 w-px-40 h-px-40 opacity-20;
+  @apply flex-shrink-0 w-px-40 h-px-40 opacity-0;
   @apply overflow-hidden cursor-pointer;
   @apply bg-gray-200;
   @apply inline-flex justify-center items-center;

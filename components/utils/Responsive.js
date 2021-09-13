@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
 const SCREENS = ['xs', 'sm', 'md', 'lg', 'xl', '2xl']
-const SCREENS_WIDTH = [0, 640, 768, 1024, 1280, 1536]
+const SCREENS_WIDTH = [0, 640, 768, 1023, 1280, 1536]
 
 {/* <Screen from="md">xxxx</Screen>
 <Screen upto="md">xxxx</Screen> */}
