@@ -112,7 +112,7 @@ const CardPostNormal = observer(({title, mediaUri, type, source, commentCount, v
         </div>
         :
         <div className="card-media-blank">
-          <img layout='fill' className="logo--img" src="/images/rada.svg" alt="no image" />
+          <img layout='fill' className="logo--img" src="/images/rada-mono.svg" alt="no image" />
         </div>
       }
 
@@ -217,7 +217,7 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
         </div>
         :
         <div className="card-media-blank">
-          <img layout='fill' className="logo--img" src="/images/rada.svg" alt="no image" />
+          <img layout='fill' className="logo--img" src="/images/rada-mono.svg" alt="no image" />
         </div>
       }
 

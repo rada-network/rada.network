@@ -6,7 +6,7 @@ Layout
 .main-layout {
   @apply flex flex-col lg:flex-row h-full w-full items-stretch;
   @apply max-w-screen-2xl 2xl:m-auto;
-  @apply bg-white dark:bg-deepgray-50 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-md;
+  @apply bg-white dark:bg-deepgray-50 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-sm;
   animation: fadein 400ms linear;
 }
 
@@ -19,7 +19,7 @@ Layout
   .body-decor {
     @apply block fixed inset-0 w-full h-full -z-1;
     @apply filter brightness-50 ;
-    background-image: url("https://source.unsplash.com/collection/BI9MVMkHK1g/1600x900");
+    background-image: url("https://source.unsplash.com/collection/1459961/1600x900");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
