@@ -674,11 +674,7 @@ Perfect Scrollbar
 }
 
 .scrollbar::-webkit-scrollbar {
-  @apply w-1.5 bg-gray-200 dark:bg-gray-900 bg-opacity-20  transition-all;
-}
-
-.scrollbar:hover::-webkit-scrollbar {
-  @apply bg-opacity-40;
+  @apply w-1.5 bg-gray-200 dark:bg-gray-900 bg-opacity-20;
 }
 
 .scrollbar::-webkit-scrollbar-track {
@@ -686,12 +682,8 @@ Perfect Scrollbar
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-800 bg-opacity-20 transition-all;
+  @apply bg-gray-300 dark:bg-gray-800 bg-opacity-40 transition-all;
   border-radius: 18px;
-}
-
-.scrollbar:hover::-webkit-scrollbar-thumb {
-  @apply bg-opacity-60;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
