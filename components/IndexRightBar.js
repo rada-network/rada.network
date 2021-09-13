@@ -34,6 +34,16 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
         <Screen from="lg">
           <div className={`pane-content--sec--top`}>
             <div className="leading-10">
+
+              {/* Pageback Here */}
+              <div className="page-back">
+                <div className="btn" onClick={(e) => {handleBack(e)}}>
+                  <span className="btn--caret-left"></span>
+                  <span className="btn--text">Back</span>
+                </div>
+              </div>
+
+
             </div>
             <div className="flex items-center space-x-2">
               {/* <ThemeSwitch /> */}
