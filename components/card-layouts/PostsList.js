@@ -56,13 +56,22 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
     },[scrollBox1])
 
   // }
-
+  let lastPos = 0
   const mobileScroll = function(e){
+    const el = e.target
+    if (el.scrollTop > 100 && el.scrollTop > lastPos) {
+      document.body.classList.add(awayCls)
+    } else if (el.scrollTop < el.scrollHeight - el.clientHeight - 100 && el.scrollTop < lastPos) {
+      document.body.classList.remove(awayCls)
+    }
+    lastPos = el.scrollTop
+    /*
     if (e.target.scrollTop > 100) {
         document.body.classList.add(awayCls)
     } else {
         document.body.classList.remove(awayCls)
     }
+    */
 
     const bottom = e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight +100;
     if (bottom) handleLoadMoreItem()
