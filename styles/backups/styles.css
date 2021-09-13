@@ -200,8 +200,7 @@ Main Layout when scrolling
 @media (max-width: 768px) {
 
   .pane-center--top {
-    transition: margin-top 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition-delay: 150ms;
+    transition: margin 0.2s linear;
   }
 
   .list-away-top {
@@ -226,8 +225,7 @@ Main Layout when scrolling
     }
 
     .page-back {
-      transition: padding-top 300ms cubic-bezier(0.4, 0, 0.2, 1);
-      transition-delay: 150ms;
+      transition: all 0.2s linear;
       @apply fixed top-0 w-full z-50;
       @apply pt-5 pb-1;
     }
