@@ -177,10 +177,10 @@ const ResizeerWrapper = function({mainRef,dataStore,containerRef}){
   useEffect(() => {
     let mwp = store.get('main-width')
     if (_.isUndefined(mwp)) {
-      mwp = 45
+      mwp = 40
     }
     if (isNaN(mwp)) {
-      mwp = 45
+      mwp = 40
     }
     if (mwp > 70) mwp = 70
     if (mwp < 30) mwp = 30

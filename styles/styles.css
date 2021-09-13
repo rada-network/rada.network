@@ -111,7 +111,7 @@ Main Panels
 .pane-content--main {
   @apply relative float-left w-full;
   @apply flex flex-col w-full h-full;
-  @apply border-r border-gray-100 dark:border-gray-800;
+  @apply md:border-r border-gray-100 dark:border-gray-800;
 }
 
 @screen md {
@@ -133,11 +133,12 @@ Main Panels
   @apply border-b border-gray-300 border-opacity-20;
   @apply bg-white dark:bg-deepgray-50;
   height: var(--toolbar-height);
+  /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur 2xl:border-opacity-30; */
 }
 
-/* .pane-content--main--top {
-  @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur;
-} */
+.pane-content--main--top {
+  /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur 2xl:border-opacity-30; */
+}
 
 /* 
 Card List Area
@@ -189,6 +190,7 @@ Reader / Page Area
 .pane-content--sec--main {
   @apply w-full h-full;
   @apply bg-white dark:bg-deepgray-50;
+  /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur; */
 }
 
 /* 
@@ -197,7 +199,7 @@ Main Layout when scrolling
 @media (max-width: 768px) {
 
   .pane-center--top {
-    transition: margin 150ms linear;
+    transition: margin 0.2s linear;
   }
 
   .list-away-top {
@@ -222,7 +224,7 @@ Main Layout when scrolling
     }
 
     .page-back {
-      transition: all 150ms linear;
+      transition: all 0.2s linear;
       @apply fixed top-0 w-full z-50;
       @apply pt-5 pb-1;
     }
@@ -591,10 +593,18 @@ Empty State
   @apply p-4 md:p-8 xl:p-16 flex flex-col h-full;
   @apply text-sm;
   animation: fadein 1s ease-in;
+
 }
 
 .home-emptystate-deco {
-  @apply hidden lg:block absolute inset-0 w-full h-full opacity-5 z-0;
+  @apply hidden absolute bottom-0 left-8 right-8 xl:left-0 xl:right-0 h-full z-0;
+  /* background: url(/images/hero.svg) no-repeat center bottom; */
+}
+
+@media screen and (min-height: 768px) {
+  .home-emptystate-deco {
+    @apply md:block;
+  }
 }
 
 .empty-state .empty-state-content {
@@ -687,7 +697,7 @@ Perfect Scrollbar
 }
 
 .scrollbar::-webkit-scrollbar {
-  @apply w-2 h-2 bg-gray-200 dark:bg-gray-900 bg-opacity-30;
+  @apply w-1.5 bg-gray-200 dark:bg-gray-900 bg-opacity-30;
 }
 
 .scrollbar::-webkit-scrollbar-track {
@@ -705,11 +715,11 @@ Perfect Scrollbar
 
 /* Tweaks for Content Scrollbar */
 .pane-content--sec--main.scrollbar::-webkit-scrollbar {
-  @apply 2xl:bg-opacity-90;
+  @apply 2xl:bg-opacity-50;
 }
 
 .pane-content--sec--main.scrollbar::-webkit-scrollbar-thumb {
-  @apply 2xl:bg-opacity-100;
+  @apply 2xl:bg-opacity-60;
 }
 
 
@@ -747,7 +757,7 @@ Dragger
 .pane-dragger {
   @apply hidden md:block absolute h-full w-2 -right-2 top-0 z-50;
   @apply border-l-2 border-dashed border-transparent hover:border-primary-500 transition;
-  transition-delay: 100ms;
+  transition-delay: 0.2s;
   cursor: col-resize;
 }
 
