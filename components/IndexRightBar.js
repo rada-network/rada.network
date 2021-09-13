@@ -47,7 +47,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
 
         <div className={`pane-content--sec--top`}>
 
-          <div className="flex leading-10">
+          <div className="flex h-full">
 
             {/* Pageback Here */}
             {dataStore !== undefined && dataStore.showDetail ?

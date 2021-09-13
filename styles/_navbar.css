@@ -16,8 +16,7 @@ Nav Item
 .nav-item {
   @apply relative flex flex-col lg:flex-row items-center w-full h-full px-2 py-0.5 lg:py-2;
   @apply font-medium leading-normal whitespace-nowrap;
-  @apply text-gray-800 opacity-80 lg:opacity-50;
-  @apply dark:text-gray-200;
+  @apply opacity-80 lg:opacity-50;
   @apply hover:opacity-100;
   @apply lg:h-9;
 }
@@ -33,7 +32,6 @@ Nav Item
 
 /* Rada Nav */
 .nav-item .icon-rada svg {
-  @apply relative;
   transform: scale(1.18);  /* make the svg bigger */
 }
 

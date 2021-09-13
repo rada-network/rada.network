@@ -295,8 +295,8 @@ Tabbar
 }
 
 .tab-item {
-  @apply flex flex-1 justify-center items-center px-2 py-3 ml-2 h-full transition;
-  @apply border-b-2 border-transparent;
+  @apply flex flex-1 justify-center items-center px-2 py-2 ml-2 h-full transition;
+  @apply border-t-2 border-b-2 border-transparent;
   @apply text-sm font-medium opacity-50 hover:opacity-100;
 }
 
