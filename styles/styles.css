@@ -137,7 +137,7 @@ Main Panels
 }
 
 .pane-content--main--top {
-  @apply bg-bluegray-50 lg:bg-white lg:dark:bg-deepgray-50;
+  @apply bg-bluegray-50 dark:bg-deepgray-50 lg:bg-white lg:dark:bg-deepgray-50;
   /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur 2xl:border-opacity-30; */
 }
 
