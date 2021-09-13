@@ -16,6 +16,7 @@ import {useRouter} from "next/router";
 import * as ga from '../lib/ga'
 import { appWithTranslation } from 'next-i18next';
 import { getScreenName } from '../components/utils/Responsive';
+import { Provider } from 'next-auth/client'
 
 configure({
   enforceActions: "never",
@@ -61,9 +62,11 @@ const MyApp = ({Component, pageProps}) => {
   }, [])
 
   return (
-    <CookiesProvider>
-      <Component {...pageProps} />
+    <Provider session={pageProps.session}>
+      <CookiesProvider>
+        <Component {...pageProps} />
     </CookiesProvider>
+    </Provider>
   )
 }
 
