@@ -135,9 +135,9 @@ Main Panels
   height: var(--toolbar-height);
 }
 
-.pane-content--main--top {
-  /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur; */
-}
+/* .pane-content--main--top {
+  @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur;
+} */
 
 /* 
 Card List Area
