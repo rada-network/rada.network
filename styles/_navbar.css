@@ -24,16 +24,16 @@ Nav Item
 
 .nav-item .icon {
   @apply w-8 h-4;
-  @apply inline-flex justify-center mt-1.5 mb-2 lg:my-0 lg:mr-1 text-center;
+  @apply relative inline-flex justify-center mt-1.5 mb-2 lg:my-0 lg:mr-1 lg:-top-0.5 text-center;
   @apply text-lg lg:text-base leading-none;
   .fa-duotone {
-    @apply relative lg:-top-0.5;
+    @apply relative;
   }
 }
 
 /* Rada Nav */
 .nav-item .icon-rada svg {
-  @apply relative lg:-top-0.5;
+  @apply relative;
   transform: scale(1.18);  /* make the svg bigger */
 }
 

@@ -6,18 +6,18 @@ Layout
 .main-layout {
   @apply flex flex-col lg:flex-row h-full w-full items-stretch;
   @apply max-w-screen-2xl 2xl:m-auto;
-  @apply bg-white dark:bg-deepgray-50 2xl:bg-transparent 2xl:dark:bg-transparent 2xl:shadow-sm;
+  @apply bg-white dark:bg-deepgray-50;
   animation: fadein 400ms linear;
 }
 
-.body-decor,
+/* .body-decor,
 .body-decor--text {
   @apply hidden;
 }
 
 @screen 2xl {
   .body-decor {
-    @apply block fixed inset-0 w-full h-full -z-1;
+    @apply fixed inset-0 w-full h-full -z-1;
     @apply filter brightness-50 ;
     background-image: url("https://source.unsplash.com/collection/1459961/1600x900");
     background-size: cover;
@@ -25,23 +25,23 @@ Layout
     background-position: bottom right;
   }
   .body-decor--text {
-    @apply block absolute right-4 bottom-4 px-4 py-2 rounded;
+    @apply absolute right-4 bottom-4 px-4 py-2 rounded;
     @apply bg-gray-900 bg-opacity-20 text-white text-opacity-80 text-xs;
     text-shadow: 0 1px 1px rgba(0,0,0,.2);
   }
   .body-decor--text a {
     @apply hover:text-white hover:text-opacity-100 border-b border-b-white border-opacity-50 hover:border-opacity-100;
   }
-}
+} */
 
 /* 
 Nav Panels 
 */
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
-  @apply border-r border-gray-300 border-opacity-20 z-50;
-  @apply bg-gray-50 dark:bg-deepgray-100 2xl:bg-white 2xl:dark:bg-deepgray-100;
-  @apply 2xl:bg-opacity-80 2xl:dark:bg-opacity-60 2xl:backdrop-blur;
+  @apply border-r border-gray-100 dark:border-gray-800 z-50;
+  @apply bg-bluegray-50 dark:bg-deepgray-200;
+  /* @apply 2xl:bg-white 2xl:dark:bg-deepgray-100 2xl:bg-opacity-80 2xl:dark:bg-opacity-60 2xl:backdrop-blur; */
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
@@ -95,7 +95,7 @@ Main Panels
 
 .pane-center--top {
   @apply flex flex-shrink-0 m-0;
-  @apply border-b border-gray-300 border-opacity-20 z-50;
+  @apply border-b border-gray-100 dark:border-gray-800 z-50;
 }
 
 .pane-center--main {
@@ -130,13 +130,14 @@ Main Panels
 .pane-content--main--top,
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
-  @apply border-b border-gray-300 border-opacity-20;
+  @apply border-b border-gray-100 dark:border-gray-800;
   @apply bg-white dark:bg-deepgray-50;
   height: var(--toolbar-height);
   /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur 2xl:border-opacity-30; */
 }
 
 .pane-content--main--top {
+  @apply bg-bluegray-50 lg:bg-white lg:dark:bg-deepgray-50;
   /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur 2xl:border-opacity-30; */
 }
 

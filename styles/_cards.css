@@ -73,10 +73,9 @@ Generic Styles
 Card Post (News, Projects,...)
 ----------------------------------------------*/
 .card-post {
-  @apply border-t border-b border-t-transparent border-gray-300 border-opacity-20 cursor-pointer;
+  @apply border-t border-b border-t-transparent border-b-gray-100 dark:border-b-gray-800 cursor-pointer;
   @apply space-x-3 md:space-x-4;
   @apply hover:bg-yellow-100 hover:bg-opacity-20 dark:hover:bg-deeppurple-700;
-  @apply 2xl:border-opacity-30;
   /* @apply bg-white dark:bg-deepgray-50; */
 }
 

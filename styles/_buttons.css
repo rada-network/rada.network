@@ -151,7 +151,7 @@ Group Buttons
 }
 
 .btn-group-filter {
-  @apply rounded px-1 py-1 bg-gray-100 dark:bg-gray-900 text-xs;
+  @apply rounded px-1 py-1 bg-gray-400 bg-opacity-10 text-xs;
 }
 
 .btn-filter {
@@ -169,9 +169,9 @@ Group Buttons
 */
 .btn-nav {
   @apply justify-center py-2 px-4 w-full;
-  @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700 rounded;
+  @apply bg-gray-400 bg-opacity-10 hover:bg-purple-100 hover:text-purple-700 rounded;
   @apply text-sm;
-  @apply dark:text-white dark:bg-gray-900;
+  @apply dark:text-white;
   @apply dark:hover:bg-deeppurple-100;
 }
 

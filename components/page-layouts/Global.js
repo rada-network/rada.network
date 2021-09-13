@@ -35,7 +35,7 @@ export const Layout = observer(({children,meta,dataStore,detailStore}) => {
     <>
     <Head meta={meta} title={meta.title} description={meta.description} keyword={meta.keyword} facebook={meta.facebook} twitter={meta.twitter} />
 
-    <div className={`body-decor`}>
+    {/* <div className={`body-decor`}>
     </div>
 
     <div className={`body-decor--text`}>
@@ -44,7 +44,7 @@ export const Layout = observer(({children,meta,dataStore,detailStore}) => {
         <a href="#"><i className="far fa-random"></i> New Photo</a>
         <a href="#" className="ml-2"><i className="far fa-minus-circle"></i> Remove</a>
       </div>
-    </div>
+    </div> */}
 
     <div className={`main-layout`}>
 
