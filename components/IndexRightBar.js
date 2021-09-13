@@ -45,32 +45,50 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
     <>
       <div className={`pane-content--sec` + (dataStore.showDetail ? " pane-content-active" : "")}>
 
-        <Screen from="lg">
-          <div className={`pane-content--sec--top`}>
-            <div className="leading-10">
+        <div className={`pane-content--sec--top`}>
 
-              {/* Pageback Here */}
-              {dataStore !== undefined && dataStore.showDetail ?
-                <div className="page-back">
-                  <div className="btn" onClick={(e) => {handleBack(e)}}>
-                    <span className="btn--caret-left"></span>
-                    <span className="btn--text">{t("back")}</span>
-                  </div>
+          <div className="flex leading-10">
+
+            {/* Pageback Here */}
+            {dataStore !== undefined && dataStore.showDetail ?
+              <div className="page-back flex-shrink-0">
+                <div className="btn" onClick={(e) => {handleBack(e)}}>
+                  <span className="btn--caret-left"></span>
+                  <span className="btn--text">{t("back")}</span>
                 </div>
-                : ""
-              }
-              
+              </div>
+              : ""
+            }
 
-
-            </div>
-            <div className="flex items-center space-x-2">
-              {/* <ThemeSwitch /> */}
-              <div className="relative">
-                <Wallet />
+            {/* Page Tabs Here */}
+            <div className="tabbar pages-tab">
+              <div className="tabbar-main">
+                <a href="#" className="tab-item">
+                  Profile
+                </a>
+                <a href="#" className="tab-item tab-item--active">
+                  About
+                </a>
+                <a href="#" className="tab-item">
+                  Privacy
+                </a>
               </div>
             </div>
+
+
           </div>
-        </Screen>
+
+          <Screen from="lg">
+          <div className="flex items-center space-x-2">
+            {/* <ThemeSwitch /> */}
+            <div className="relative">
+              <Wallet />
+            </div>
+          </div>
+          </Screen>
+
+        </div>
+
 
         {dataStore.showDetail &&
           <PostListDetail detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />

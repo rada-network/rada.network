@@ -41,7 +41,6 @@ Nav Panels
   @apply flex flex-shrink-0 flex-col justify-between h-full;
   @apply border-r border-gray-100 dark:border-gray-800 z-50;
   @apply bg-gray-50 dark:bg-deepgray-200;
-  /* @apply 2xl:bg-white 2xl:dark:bg-deepgray-100 2xl:bg-opacity-80 2xl:dark:bg-opacity-60 2xl:backdrop-blur; */
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
@@ -131,14 +130,12 @@ Main Panels
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
   @apply border-b border-gray-100 dark:border-gray-800;
-  @apply bg-white dark:bg-deepgray-50;
   height: var(--toolbar-height);
-  /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur 2xl:border-opacity-30; */
 }
 
-.pane-content--main--top {
+.pane-content--main--top,
+.pane-content--sec--top {
   @apply bg-gray-50 dark:bg-deepgray-50 lg:bg-white lg:dark:bg-deepgray-50;
-  /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur 2xl:border-opacity-30; */
 }
 
 /* 
@@ -168,7 +165,7 @@ Reader / Page Area
 @screen md {
   .pane-content--sec {
     width:  calc(100% - var(--main-width));
-    height: calc(100vh - var(--topbar-height) - var(--toolbar-height));
+    height: calc(100vh - var(--topbar-height) - var(--topbar-height));
   }
 }
 
@@ -193,6 +190,7 @@ Reader / Page Area
   @apply bg-white dark:bg-deepgray-50;
   /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur; */
 }
+
 
 /* 
 Main Layout when scrolling
@@ -221,26 +219,9 @@ Main Layout when scrolling
       @apply hidden;
     }
 
-    .page {
-      @apply pt-12;
-    }
-
-    .page-back {
-      transition: padding-top 300ms cubic-bezier(0.4, 0, 0.2, 1);
-      transition-delay: 150ms;
-      @apply fixed top-0 w-full z-50;
-      @apply pt-5 pb-1;
-    }
-    
   }
 
   body.page-details.details-top-away {
-    .page {
-      @apply pt-9;
-    }
-    .page-back {
-      @apply shadow-sm py-2;
-    }
   }
 
 }
@@ -299,11 +280,14 @@ Top & Tool Bars
 
 
 /* 
-Tabbar (Comming Soon)
+Tabbar
 --------------------------------------------- */
 .tabbar {
-  @apply hidden md:flex justify-between px-4 w-full;
-  height: var(--tabbar-height);
+  @apply justify-between w-full pl-0 xl:pl-8;
+}
+
+.page-back + .tabbar {
+  @apply pl-2;
 }
 
 .tabbar-main {
@@ -311,24 +295,16 @@ Tabbar (Comming Soon)
 }
 
 .tab-item {
-  @apply flex flex-1 justify-center items-center px-6 h-full;
-  @apply opacity-50;
+  @apply flex flex-1 justify-center items-center px-2 py-1 ml-2 h-full;
+  @apply border border-transparent;
+  @apply text-sm font-medium opacity-50 rounded;
 }
 
 .tab-item--active {
-  @apply bg-primary-50 text-gray-800 opacity-100;
-}
-
-.tab-item--icon .cf {
-  @apply text-xs mr-1;
-}
-
-.tab-item--icon .cf-ada {
-  @apply text-sm;
+  @apply bg-primary-100 text-primary-700 opacity-100;
 }
 
 .tab-item--text {
-  @apply text-xs; 
 }
 
 
@@ -421,8 +397,7 @@ Page Layout
 }
 
 .page-back {
-  @apply flex items-center px-4 pt-4 pb-2 md:px-6 md:pt-2 md:pb-2 md:mt-2;
-  @apply bg-white dark:bg-deepgray-50 bg-opacity-80 backdrop-blur;
+  @apply flex items-center px-2;
 }
 
 
@@ -439,7 +414,6 @@ Post Details
 .post-body {}
 
 .post-detail {
-  @apply pt-0;
 }
 
 /* 
@@ -716,14 +690,14 @@ Perfect Scrollbar
   @apply bg-primary-500;
 }
 
-/* Tweaks for Content Scrollbar */
+/* Tweaks for Content Scrollbar
 .pane-content--sec--main.scrollbar::-webkit-scrollbar {
   @apply 2xl:bg-opacity-50;
 }
 
 .pane-content--sec--main.scrollbar::-webkit-scrollbar-thumb {
   @apply 2xl:bg-opacity-60;
-}
+} */
 
 
 /* 

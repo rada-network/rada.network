@@ -222,7 +222,7 @@ Button Caret
 
 /* Page Back Button */
 .page-back .btn {
-  @apply text-sm font-normal;
+  @apply text-sm;
   @apply hover:text-primary-700 dark:hover:text-primary-500;
 }
 

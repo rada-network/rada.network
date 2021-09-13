@@ -98,7 +98,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
         {/* Post Detail */}
         <div className="page">
 
-          {/* Close Button */}
+          {/* Close Button
           {dataStore !== undefined ?
             <div className="page-back">
               <div className="btn" onClick={(e) => {handleBack(e)}}>
@@ -107,7 +107,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
               </div>
             </div>
             : ""
-          }
+          } */}
 
           {/* News Post Detail Content */}
           {detailStore.type === "news" ?
