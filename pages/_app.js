@@ -21,7 +21,7 @@ configure({
   enforceActions: "never",
 })
 
-const MyApp = appWithTranslation(({Component, pageProps}) => {
+const MyApp = ({Component, pageProps}) => {
   const router = useRouter()
   const store = useStore()
   useEffect(() => {
@@ -65,7 +65,7 @@ const MyApp = appWithTranslation(({Component, pageProps}) => {
       <Component {...pageProps} />
     </CookiesProvider>
   )
-})
+}
 
 // Wrap everything in <UseWalletProvider />
 const TokenRankingStore = ({Component, pageProps}) => {
@@ -99,4 +99,4 @@ const TokenRankingStore = ({Component, pageProps}) => {
   )
 }
 
-export default TokenRankingStore
+export default appWithTranslation(TokenRankingStore)
