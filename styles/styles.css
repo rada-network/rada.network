@@ -291,17 +291,17 @@ Tabbar
 }
 
 .tabbar-main {
-  @apply flex justify-evenly items-center;
+  @apply flex justify-evenly items-center h-full;
 }
 
 .tab-item {
-  @apply flex flex-1 justify-center items-center px-2 py-1 ml-2 h-full;
-  @apply border border-transparent;
-  @apply text-sm font-medium opacity-50 rounded;
+  @apply flex flex-1 justify-center items-center px-2 py-3 ml-2 h-full transition;
+  @apply border-b-2 border-transparent;
+  @apply text-sm font-medium opacity-50 hover:opacity-100;
 }
 
 .tab-item--active {
-  @apply bg-primary-100 text-primary-700 opacity-100;
+  @apply border-b-primary-700 text-primary-700 dark:border-b-primary-500 dark:text-primary-500 opacity-100;
 }
 
 .tab-item--text {
