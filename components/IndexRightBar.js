@@ -5,6 +5,10 @@ import Screen from "./utils/Responsive";
 import {Wallet} from "./Wallet";
 import {PostListDetail} from "./card-layouts/PostListDetail";
 import dynamic from "next/dynamic";
+import { useTranslation } from "next-i18next";
+import {useStore} from "../lib/useStore";
+import {useRouter} from "next/router";
+
 
 export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   // const scrollBox2 = createRef();
@@ -17,6 +21,9 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   //     ps2.destroy()
   //   }
   // }, [scrollBox2]);
+  const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
+  const router = useRouter()
+  const store = useStore()
   useEffect(() => {
     if (dataStore.showDetail) {
       document.body.classList.add('page-details')
@@ -25,6 +32,13 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
     }
   }, [dataStore.showDetail])
   
+  const handleBack = (e) => {
+    detailStore.data = {}
+    dataStore.showDetail = false
+    store.setShallowConnect(true)
+    router.push(back,back,{shallow:true})
+  }
+  const {t} = useTranslation()
 
   const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
   return (
@@ -36,12 +50,16 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
             <div className="leading-10">
 
               {/* Pageback Here */}
-              <div className="page-back">
-                <div className="btn" onClick={(e) => {handleBack(e)}}>
-                  <span className="btn--caret-left"></span>
-                  <span className="btn--text">Back</span>
+              {dataStore !== undefined && dataStore.showDetail ?
+                <div className="page-back">
+                  <div className="btn" onClick={(e) => {handleBack(e)}}>
+                    <span className="btn--caret-left"></span>
+                    <span className="btn--text">{t("back")}</span>
+                  </div>
                 </div>
-              </div>
+                : ""
+              }
+              
 
 
             </div>
