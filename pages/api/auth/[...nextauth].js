@@ -5,20 +5,25 @@ import {getTokenFromYourAPIServer} from "./../../../data/query/user"
 const callbacks = {}
 
 callbacks.signIn = async function signIn(profile, account, oauthProfile) {
-    profile.accessToken = await getTokenFromYourAPIServer(profile,account,oauthProfile)
-    return true
+    let userFromApi = await getTokenFromYourAPIServer(profile,account,oauthProfile)
+    if (userFromApi !== null) {
+        console.log(userFromApi)
+        profile.access_token = userFromApi.access_token
+        return true;
+    }
+    return false
 }
 
 callbacks.jwt = async function jwt(token, user) {
     if (user) {
-        token = { accessToken: user.accessToken }
+        token = user
     }
 
     return token
 }
 
 callbacks.session = async function session(session, token) {
-    session.accessToken = token.accessToken
+    session.access_token = token.access_token
     return session
 }
 
@@ -51,7 +56,7 @@ const options = {
     // },
   },
   callbacks : callbacks,
-  debug: true
+  debug: false
 }
 
 export default (req, res) => NextAuth(req, res, options)

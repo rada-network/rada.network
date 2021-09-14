@@ -21,5 +21,5 @@ export async function getTokenFromYourAPIServer(profile, account, oauthProfile) 
             oauthProfile : oauthProfile
         }
     })
-    return data.createOrUpdateUser
+    return data.data.createOrUpdateUser
 }
