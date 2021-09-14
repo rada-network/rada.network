@@ -277,46 +277,6 @@ Top & Tool Bars
   @apply flex-shrink-0;
 }
 
-
-/* 
-Tabbar
---------------------------------------------- */
-.tabbar {
-  @apply justify-between w-full pl-0 xl:pl-8;
-}
-
-.page-back + .tabbar {
-  @apply pl-2;
-}
-
-.tabbar-main {
-  @apply flex justify-evenly items-center h-full space-x-2;
-}
-
-.tab-item {
-  @apply flex flex-1 justify-center items-center px-2 py-1 h-full transition-all relative;
-  @apply text-sm font-medium opacity-50 hover:opacity-100;
-}
-
-.tab-item:after {
-  @apply block w-full absolute bottom-0 left-0 right-0;
-  @apply bg-primary-700 dark:bg-primary-500;
-  content: " ";
-  height: 0;
-  transition: all 150ms linear;
-}
-
-.tab-item--active {
-  @apply text-primary-700 dark:text-primary-500 opacity-100;
-  &:after {
-    height: 3px;
-  }
-}
-
-.tab-item--text {
-}
-
-
 /* 
 Sidebar
 --------------------------------------------- */
@@ -328,7 +288,7 @@ Sidebar
 Sections Layout
 --------------------------------------------- */
 .section {
-  @apply p-4 md:p-6;
+  @apply p-4 md:p-6 xl:px-10 xl:py-8;
 }
 
 .section-header {
@@ -406,7 +366,23 @@ Page Layout
 }
 
 .page-back {
-  @apply flex items-center px-2;
+  @apply flex items-center pl-0 pr-2 md:pl-2 xl:pl-3;
+}
+
+.page-tabs {
+  @apply pl-2 md:pl-2 xl:pl-10;
+}
+
+.page-back + .page-tabs {
+  @apply pl-1 ml-1 md:pl-2 md:ml-2 xl:pl-3 xl:ml-3;
+  &:before {
+    @apply block absolute bg-gray-400 bg-opacity-30;
+    content: " ";
+    width: 1px;
+    height: 30%;
+    left: 0;
+    top: 35%;
+  }
 }
 
 
@@ -439,7 +415,7 @@ Title
 }
 
 .post-title:hover .post-title--text {
-  @apply text-primary-700 dark:text-primary-500;
+  /* @apply text-primary-700 dark:text-primary-500; */
 }
 
 .post-title .btn-post-link {
@@ -575,52 +551,51 @@ Dialogs
 /*
 Empty State
 */
-.empty-state {
+.page-about {
   @apply p-4 md:p-8 xl:p-16 flex flex-col h-full;
   @apply text-sm;
   animation: fadein 1s ease-in;
-
 }
 
-.home-emptystate-deco {
+.page-about-deco {
   @apply hidden absolute bottom-0 left-8 right-8 xl:left-0 xl:right-0 h-full z-0;
   /* background: url(/images/hero.svg) no-repeat center bottom; */
 }
 
 @media screen and (min-height: 768px) {
-  .home-emptystate-deco {
+  .page-about-deco {
     @apply md:block;
   }
 }
 
-.empty-state .empty-state-content {
+.page-about .page-about-content {
   @apply opacity-50 transition-all;
   transition-duration: 1s;
 }
 
-.empty-state:hover .empty-state-content {
+.page-about:hover .page-about-content {
   @apply opacity-90;
 }
 
-.empty-state-content {
+.page-about-content {
   @apply z-10;
 }
 
-.empty-state p {
+.page-about p {
   @apply mb-2;
 }
 
-.empty-state h3 {
+.page-about h3 {
   @apply text-base mb-2;
   @apply font-medium;
 }
 
-.empty-state p + h3 {
+.page-about p + h3 {
   @apply mt-4;
 }
 
 .about-social {
-  @apply flex items-center space-x-4 mt-4;
+  @apply flex items-center space-x-4 mt-8;
 }
 
 .about-social a {
@@ -668,7 +643,6 @@ Tootips
 
 
 .__react_component_tooltip.show {
-  
 }
 
 
@@ -698,15 +672,6 @@ Perfect Scrollbar
 .scrollbar::-webkit-scrollbar-thumb:hover {
   @apply bg-primary-500;
 }
-
-/* Tweaks for Content Scrollbar
-.pane-content--sec--main.scrollbar::-webkit-scrollbar {
-  @apply 2xl:bg-opacity-50;
-}
-
-.pane-content--sec--main.scrollbar::-webkit-scrollbar-thumb {
-  @apply 2xl:bg-opacity-60;
-} */
 
 
 /* 

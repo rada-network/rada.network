@@ -99,7 +99,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                     className={`${styles.dialog_header}`}
                   >
                     <button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
-                      <span className="icon"><IoChevronBackSharp/></span>
+                      <span class="btn--caret-left"></span>
                       <span className="btn--text font-normal">Back</span>
                     </button>
                     <h3 className="text-xl font-semibold">

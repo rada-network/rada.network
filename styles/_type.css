@@ -32,8 +32,6 @@ Post Content Typo
   }
 }
 
-.post-content {
-}
 
 .post-detail-media .post-content--text {
   @apply text-sm whitespace-pre-wrap;
@@ -64,8 +62,14 @@ Post Content Typo
 
 .post-content h2,
 .post-content .pTitle {
-  @apply text-lg mt-8;
+  @apply text-lg;
 }
+
+.post-content * + h2,
+.post-content * + .pTitle {
+  @apply mt-8;
+}
+
 
 .post-content h3,
 .post-content .pHead {
