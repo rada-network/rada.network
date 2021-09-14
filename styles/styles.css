@@ -134,10 +134,10 @@ Main Panels
   height: var(--toolbar-height);
 }
 
-/* .pane-content--main--top,
+.pane-content--main--top,
 .pane-content--sec--top {
   @apply bg-white dark:bg-deepgray-50;
-} */
+}
 
 /* 
 Card List Area
@@ -290,19 +290,20 @@ Tabbar
 }
 
 .tabbar-main {
-  @apply flex justify-evenly items-center h-full;
+  @apply flex justify-evenly items-center h-full space-x-2;
 }
 
 .tab-item {
-  @apply flex flex-1 justify-center items-center px-2 py-2 ml-2 h-full transition-all relative;
+  @apply flex flex-1 justify-center items-center px-2 py-1 h-full transition-all relative;
   @apply text-sm font-medium opacity-50 hover:opacity-100;
 }
 
 .tab-item:after {
-  @apply block w-full absolute bottom-0 left-0 right-0 transition-all;
+  @apply block w-full absolute bottom-0 left-0 right-0;
   @apply bg-primary-700 dark:bg-primary-500;
   content: " ";
   height: 0;
+  transition: all 150ms linear;
 }
 
 .tab-item--active {
