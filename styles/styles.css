@@ -39,7 +39,7 @@ Nav Panels
 */
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
-  @apply border-r border-gray-100 dark:border-gray-800 z-50;
+  @apply border-r border-gray-400 border-opacity-10 z-50;
   @apply bg-gray-50 dark:bg-deepgray-200;
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
@@ -94,11 +94,12 @@ Main Panels
 
 .pane-center--top {
   @apply flex flex-shrink-0 m-0;
-  @apply border-b border-gray-100 dark:border-gray-800 z-50;
+  @apply border-b border-gray-400 border-opacity-10 z-50;
 }
 
 .pane-center--main {
   @apply flex w-full h-full;
+  @apply border-r border-gray-400 border-opacity-10;
 }
 
 .pane-content {
@@ -110,7 +111,7 @@ Main Panels
 .pane-content--main {
   @apply relative float-left w-full;
   @apply flex flex-col w-full h-full;
-  @apply md:border-r border-gray-100 dark:border-gray-800;
+  @apply md:border-r border-gray-400 border-opacity-10;
 }
 
 @screen md {
@@ -129,23 +130,21 @@ Main Panels
 .pane-content--main--top,
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
-  @apply border-b border-gray-100 dark:border-gray-800;
+  @apply border-b border-gray-400 border-opacity-10;
   height: var(--toolbar-height);
 }
 
-.pane-content--main--top,
+/* .pane-content--main--top,
 .pane-content--sec--top {
-  @apply bg-gray-50 dark:bg-deepgray-50 lg:bg-white lg:dark:bg-deepgray-50;
-}
+  @apply bg-white dark:bg-deepgray-50;
+} */
 
 /* 
 Card List Area
 */
 .pane-content--main--main {
-  /* height: calc(100vh - var(--topbar-height) - var(--toolbar-height) - var(--navbar-height)); */
   @apply flex flex-auto flex-col w-full h-0 overflow-x-hidden overflow-y-auto;
   @apply bg-white dark:bg-deepgray-50;
-  /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur; */
 }
 
 @screen lg {
@@ -158,7 +157,7 @@ Card List Area
 Reader / Page Area
 */
 .pane-content--sec {
-  @apply float-left w-full;
+  @apply float-left w-full z-10;
   @apply hidden flex-auto md:flex flex-col overflow-x-hidden overflow-y-auto;
 }
 
@@ -295,13 +294,22 @@ Tabbar
 }
 
 .tab-item {
-  @apply flex flex-1 justify-center items-center px-2 py-2 ml-2 h-full transition;
-  @apply border-t-2 border-b-2 border-transparent;
+  @apply flex flex-1 justify-center items-center px-2 py-2 ml-2 h-full transition-all relative;
   @apply text-sm font-medium opacity-50 hover:opacity-100;
 }
 
+.tab-item:after {
+  @apply block w-full absolute bottom-0 left-0 right-0 transition-all;
+  @apply bg-primary-700 dark:bg-primary-500;
+  content: " ";
+  height: 0;
+}
+
 .tab-item--active {
-  @apply border-b-primary-700 text-primary-700 dark:border-b-primary-500 dark:text-primary-500 opacity-100;
+  @apply text-primary-700 dark:text-primary-500 opacity-100;
+  &:after {
+    height: 3px;
+  }
 }
 
 .tab-item--text {
@@ -501,7 +509,7 @@ Content
 
 /* Post Actions */
 .post-actions {
-  @apply mt-4;
+  @apply mt-8;
 }
 
 /* 
@@ -674,7 +682,7 @@ Perfect Scrollbar
 }
 
 .scrollbar::-webkit-scrollbar {
-  @apply w-1.5 bg-gray-200 dark:bg-gray-900 bg-opacity-20;
+  @apply w-1.5 bg-gray-200 dark:bg-gray-800 bg-opacity-20 dark:bg-opacity-20;
 }
 
 .scrollbar::-webkit-scrollbar-track {

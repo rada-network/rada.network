@@ -73,10 +73,9 @@ Generic Styles
 Card Post (News, Projects,...)
 ----------------------------------------------*/
 .card-post {
-  @apply border-t border-b border-t-transparent border-b-gray-100 dark:border-b-gray-800 cursor-pointer;
+  @apply border-t border-b border-t-transparent border-b-gray-400 border-opacity-10 cursor-pointer;
   @apply space-x-3 md:space-x-4;
   @apply hover:bg-yellow-100 hover:bg-opacity-20 dark:hover:bg-deeppurple-700;
-  /* @apply bg-white dark:bg-deepgray-50; */
 }
 
 /* Active */
@@ -131,17 +130,19 @@ Card Post (News, Projects,...)
 
 /* Media */
 .card-post .card-media {
-  @apply pr-0;
+  @apply relative top-0.5 pr-0 rounded overflow-hidden;
+}
+
+.card-post .card-media-img {
+  @apply rounded overflow-hidden w-px-40 h-px-40;
 }
 
 .card-post .card-media .card-img {
-  @apply flex-shrink-0 w-px-40 h-px-40;
-  @apply rounded-sm overflow-hidden cursor-pointer;
+  @apply flex-shrink-0 w-px-48 h-px-48 relative -top-1;
 }
 
 .card-post .card-media-blank {
   @apply flex-shrink-0 w-px-40 h-px-40 opacity-0;
-  @apply overflow-hidden cursor-pointer;
   @apply bg-gray-200;
   @apply inline-flex justify-center items-center;
 }

@@ -64,7 +64,7 @@ Post Content Typo
 
 .post-content h2,
 .post-content .pTitle {
-  @apply text-lg;
+  @apply text-lg mt-8;
 }
 
 .post-content h3,
