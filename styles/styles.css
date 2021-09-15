@@ -294,7 +294,7 @@ Sidebar
 Sections Layout
 --------------------------------------------- */
 .section {
-  @apply p-4 md:p-6 xl:px-10 xl:py-8;
+  @apply p-4 md:p-6 xl:px-10 xl:py-6;
 }
 
 .section-header {
