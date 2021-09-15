@@ -65,7 +65,7 @@ const MyApp = ({Component, pageProps}) => {
     <Provider session={pageProps.session}>
       <CookiesProvider>
         <Component {...pageProps} />
-    </CookiesProvider>
+      </CookiesProvider>
     </Provider>
   )
 }

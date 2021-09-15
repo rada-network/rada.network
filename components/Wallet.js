@@ -1,5 +1,5 @@
 import { useWallet, ConnectionRejectedError } from 'use-wallet'
-import { createRef, Fragment, useEffect, useRef } from "react"
+import { createRef, Fragment, useEffect, useRef,useState } from "react"
 import { observer, inject } from "mobx-react"
 import { useStore } from '../lib/useStore'
 
@@ -11,11 +11,10 @@ import Avatar from "boring-avatars";
 
 import ReactTooltip from 'react-tooltip'
 import {useTranslation} from "next-i18next";
+import { useSession, signOut, getProviders, signIn } from "next-auth/client"
 
-const btnRef = createRef()
-
-const WalletAvatar = ({wallet}) => {
-  const text = wallet.account
+const WalletAvatar = ({session}) => {
+  const text = session.user.name
   return (
     <div className="">
       <Avatar
@@ -28,18 +27,28 @@ const WalletAvatar = ({wallet}) => {
   )
 }
 
-const ConnectedButton = ({wallet}) => (
-  <div className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
-    {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
-    <WalletAvatar wallet={wallet} />
-    <span className="btn--text text-xs ml-2">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
-    <span className="icon"><i className="fa-duotone fa-sign-out" /></span>
-    <span className="hidden" onClick={e => wallet.reset()}>Logout</span>
-  </div>
-)
+const ConnectedButton = ({}) => {
 
-const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
+  const { data: session, status } = useSession()
+  return (
+    <div className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
+      <WalletAvatar session={session} />
+      <span className="btn--text text-xs ml-2">{session.user.name}</span>
+      <span className="icon"><i className="fa-duotone fa-sign-out" /></span>
+      <span className="hidden" onClick={e => signOut()}>Logout</span>
+    </div>
+  )
+}
+
+const NotConnectedButton = ({isOpen, openModal, closeModal}) => {
   const {t} = useTranslation()
+  const [providers,setProviders] = useState([])
+  useEffect(async () => {
+    const data = await getProviders()
+    setProviders(data)
+  },[])
+  const btnRef = createRef()
+
   return (
   <>
   <div onClick={ openModal } className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
@@ -103,13 +112,13 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                       <span className="btn--text font-normal">Back</span>
                     </button>
                     <h3 className="text-xl font-semibold">
-                      Connect your 
-                      <span 
+                      Login
+                      {/* <span 
                         className="hasTooltip" 
                         data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
                         data-event="click"
-                      > wallet <i className="fa-duotone fa-info-circle text-base" />
-                      </span> 
+                      >  <i className="fa-duotone fa-info-circle text-base" />
+                      </span>  */}
                     </h3>
                     <div className="mt-4 text-white text-opacity-70 leading-6">
                       <p className="">
@@ -125,7 +134,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
 
                   <div className={`${styles.dialog_body}`}>
 
-                    <div className={``}>
+                    {/* <div className={``}>
                       <ul>
                         <li ref={btnRef}>
                           <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect()}>
@@ -164,41 +173,26 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                           </a>
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
 
                     <div className={`divider`}>
                       <span>Or Connect with</span>
                     </div>
 
-                    <div className={`${styles.social_login}`}>
-
-                      <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect()}>
-                        <span className={`icon ${styles.btn_icon}`}>
-                          <img src="/images/icons/google.svg" alt="Google" />
-                        </span>
-                        <div className={`${styles.btn_text}`}>
-                          <span className="text-base font-semibold text-color-title">Google</span>
-                        </div>
-                      </a>
-
-                      <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletconnect')}>
-                        <span className={`icon ${styles.btn_icon}`}>
-                          <img src="/images/icons/facebook.svg" alt="Facebook" />
-                        </span>
-                        <div className={`${styles.btn_text}`}>
-                          <span className="text-base font-semibold text-color-title">Facebook</span>
-                        </div>
-                      </a>
-
-                      <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletlink')}>
-                        <span className={`icon ${styles.btn_icon}`}>
-                          <img src="/images/icons/twitter.svg" alt="Twitter" />
-                        </span>
-                        <div className={`${styles.btn_text}`}>
-                          <span className="text-base font-semibold text-color-title">Twitter</span>
-                        </div>
-                      </a>
-   
+                    <div className={`${styles.social_login}`} ref={btnRef}>
+                    {Object.values(providers).map((provider) => (
+                      <div key={provider.name}>
+                        <a className={`btn btn-default ${styles.btn}`} onClick={() => signIn(provider.id)}>
+                          <span className={`icon ${styles.btn_icon}`}>
+                            <img src={"/images/icons/"+provider.id+".svg"} alt={provider.name} />
+                          </span>
+                          <div className={`${styles.btn_text}`}>
+                            <span className="text-base font-semibold text-color-title">{provider.name}</span>
+                          </div>
+                        </a>
+                      </div>
+                      
+                    ))}
                     </div>
 
                     <div className="px-8 md:px-0 mt-6 md:mt-8">
@@ -219,8 +213,6 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
         </div>
 
       </Dialog>
-
-
     </Transition>    
   </>
 )}
@@ -229,27 +221,19 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
 export const Wallet = observer(() => {
 
   const store = useStore()
-  const wallet = useWallet()
+  const { session, loading } = useSession({
+    required: true,
+  })
 
-  if (wallet.status === 'connected') {
-      store.wallet.update(wallet.account)
-  } else {
-      store.wallet.update("")
-  }  
   const isOpen = store?.wallet.showingConnect
   const openModal = () => store.wallet.showConnect(true)
   const closeModal = () => { store.wallet.showConnect(false);  ReactTooltip.hide() }
-
-  // rebuild tooltip
-  useEffect(() => {
-    setTimeout(() => ReactTooltip.rebuild(), 500)
-  }, [isOpen]);
-
+  if (typeof window !== 'undefined' && loading) return null
   return (
     <div className="relative inline-block text-left">
-      { store.wallet.isConnected ? 
-      <ConnectedButton wallet={wallet} /> : 
-      <NotConnectedButton wallet={wallet} isOpen={isOpen} openModal={openModal} closeModal={closeModal} /> }
+      { session ? 
+      <ConnectedButton/> : 
+      <NotConnectedButton isOpen={isOpen} openModal={openModal} closeModal={closeModal} /> }
     </div>
   )
 })

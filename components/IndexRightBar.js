@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import {useStore} from "../lib/useStore";
 import {useRouter} from "next/router";
+import { useSession } from "next-auth/client";
 
 
 export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
@@ -41,6 +42,9 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   const {t} = useTranslation()
 
   const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
+
+  const { data: session, status } = useSession()
+
   return (
     <>
       <div className={`pane-content--sec` + (dataStore.showDetail ? " pane-content-active" : "")}>
@@ -82,6 +86,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
           <div className="flex items-center space-x-2">
             {/* <ThemeSwitch /> */}
             <div className="relative">
+              {session && <span className="btn--text text-xs ml-2">{session.user.name}</span>}
               <Wallet />
             </div>
           </div>
