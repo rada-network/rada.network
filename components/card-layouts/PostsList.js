@@ -100,7 +100,6 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
   return (
     <>
       <div className={`pane-content--main--top`}>
-
         <div className="search-wrapper">
           {/* Search */}
           <SearchInput dataStore={dataStore} detailStore={detailStore} voteStore={voteStore}/>
@@ -113,12 +112,10 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
             <a className={"btn " + (dataStore.currentTab === "latest" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "latest"})}}>{t("latest")}</a>
           </div>
         </div>
-        
       </div>
 
       <div className={`pane-content--main--main scrollbar`} ref={scrollBox1} cls="list-top-away">
         
-
         {/* HieuNN: Sample of Post from Rada */}
         {/* <ConceptCardPost
           title="Coinbase CEO Brian Armstrong Lashes Out At the SEC for Confusing Lending With Security"
@@ -128,7 +125,6 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
           commentCount="56"
           voteCount="145"
         /> */}
-
 
         <PostsList dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
         {dataStore.tweets.length == 0 && dataStore.isSearch && !dataStore.loadingButton ? 

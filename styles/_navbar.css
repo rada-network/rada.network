@@ -113,12 +113,12 @@ Tabbar
 }
 
 .tabbar-main {
-  @apply flex justify-evenly items-center h-full lg:space-x-2;
+  @apply flex justify-evenly items-center space-x-4 lg:space-x-6;
 }
 
 .tab-item {
-  @apply flex flex-1 justify-center items-center px-2 py-1 h-full transition-all relative;
-  @apply text-sm font-medium opacity-50 hover:opacity-100;
+  @apply flex flex-1 justify-center items-center px-0 py-1 transition-all relative;
+  @apply font-medium opacity-50 hover:opacity-100;
 }
 
 .tab-item:after {

@@ -130,14 +130,22 @@ Main Panels
 .pane-content--main--top,
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
-  @apply border-b border-gray-400 border-opacity-10;
+  @apply md:border-b border-gray-400 border-opacity-10;
+  @apply bg-white dark:bg-deepgray-50;
   height: var(--toolbar-height);
 }
 
-.pane-content--main--top,
-.pane-content--sec--top {
-  @apply bg-white dark:bg-deepgray-50;
+.page-details .pane-content--sec--top {
+  @apply border-b border-gray-400 border-opacity-10;
 }
+
+.pane-content--main--top {
+}
+
+/* .pane-content--main--top--inner {
+  @apply border border-gray-500 border-opacity-20 flex pl-1 justify-between items-center w-full rounded;
+} */
+ 
 
 /* 
 Card List Area
@@ -269,8 +277,7 @@ Top & Tool Bars
 
 /* Toolbar */
 .pane-content--main--top .search-wrapper {
-  /* max-width: 50%; */
-  @apply md:max-w-none md:w-full;
+  @apply mr-2 w-full;
 }
 
 .pane-content--main--top .cta-wrapper {
@@ -370,18 +377,18 @@ Page Layout
 }
 
 .page-tabs {
-  @apply pl-2 md:pl-2 xl:pl-10;
+  @apply pl-2 md:pl-4 lg:pl-4 xl:pl-12 text-sm;
 }
 
 .page-back + .page-tabs {
-  @apply pl-1 ml-1 md:pl-2 md:ml-2 xl:pl-3 xl:ml-3;
+  @apply pl-3 ml-1 lg:pl-4 lg:ml-3;
   &:before {
     @apply block absolute bg-gray-400 bg-opacity-30;
     content: " ";
     width: 1px;
-    height: 30%;
+    height: 50%;
     left: 0;
-    top: 35%;
+    top: 28%;
   }
 }
 

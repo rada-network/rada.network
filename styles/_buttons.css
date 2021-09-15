@@ -3,7 +3,6 @@
 /*
 Buttons
 */
-
 .btn {
   @apply inline-flex items-center font-medium focus:outline-none cursor-pointer transition;
   @apply rounded;
@@ -92,8 +91,8 @@ Nav Button
 */
 .nav-btn {
   @apply px-2 py-1 items-center justify-center;
-  @apply text-sm font-medium text-gray-900 bg-gray-400 bg-opacity-20 border border-transparent;
-  @apply dark:text-white;
+  @apply text-sm font-medium text-gray-900 dark:text-white border border-transparent;
+  @apply bg-gray-500 bg-opacity-10 dark:bg-gray-200 dark:bg-opacity-10;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -152,19 +151,46 @@ Group Buttons
 }
 
 .btn-group-filter {
-  @apply rounded bg-gray-400 bg-opacity-20 text-xs;
+  @apply rounded text-xs;
+  @apply bg-gray-400 bg-opacity-10 dark:bg-gray-200 dark:bg-opacity-10;
   padding: 3px;
 }
 
-.btn-filter {
-  @apply px-2 py-1 justify-center;
-  @apply rounded bg-transparent text-gray-900 dark:text-white text-opacity-50 dark:text-opacity-50;
+/* .btn-group-filter {
+  @apply text-xs space-x-2 lg:space-x-4;
+} */
+
+.btn-filter,
+.btn-filter-active {
+  @apply px-2 py-1 justify-center relative;
+  @apply rounded bg-transparent opacity-50;
 }
 
 .btn-filter-active {
-  @apply px-2 py-1 justify-center;
-  @apply rounded bg-white text-opacity-100 dark:text-white dark:bg-gray-900 shadow-sm;
+  @apply justify-center cursor-pointer pointer-events-none;
+  @apply bg-white text-opacity-100 dark:text-white dark:bg-deepgray-100 shadow-sm opacity-100;
 }
+
+/* .btn-filter:hover,
+.btn-filter-active {
+  @apply opacity-100;
+}
+
+.btn-filter::after,
+.btn-filter-active::after {
+  @apply block w-full absolute bottom-0 left-0 right-0;
+  @apply bg-gray-800 dark:bg-white;
+  content: " ";
+  height: 0;
+  transition: all 150ms linear;
+}
+
+.btn-filter-active {
+  @apply opacity-100;
+  &:after {
+    height: 3px;
+  }
+} */
 
 /*
 "Show More" Button
