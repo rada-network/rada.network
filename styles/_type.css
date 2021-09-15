@@ -32,9 +32,8 @@ Post Content Typo
   }
 }
 
-
 .post-detail-media .post-content--text {
-  @apply text-sm whitespace-pre-wrap;
+  @apply whitespace-pre-wrap;
   word-break: break-word;
 }
 
@@ -73,11 +72,11 @@ Post Content Typo
 
 .post-content h3,
 .post-content .pHead {
-  @apply text-sm;
+  @apply text-base;
 }
 
 .post-content h4 {
-  @apply text-sm;
+  @apply text-base;
 }
 
 .post-content {
