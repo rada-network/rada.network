@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import {useStore} from "../lib/useStore";
 import {useRouter} from "next/router";
+import Usermenu from "./Usermenu";
 
 
 export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
@@ -82,7 +83,8 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
           <div className="flex items-center space-x-2">
             {/* <ThemeSwitch /> */}
             <div className="relative">
-              <Wallet />
+              {/* <Wallet /> */}
+              <Usermenu />
             </div>
           </div>
           </Screen>

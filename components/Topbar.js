@@ -5,6 +5,7 @@ import {Wallet} from "./Wallet"
 import SearchInput from "./search"
 import ThemeSwitch from "./ThemeSwitch"
 import {LanguageSwitch} from "./LanguageSwitch";
+import Usermenu from "./Usermenu";
 
 export const Topbar = ({dataStore}) => {
   const router = useRouter()
@@ -65,7 +66,8 @@ export const Topbar = ({dataStore}) => {
 
         {/* Profile dropdown */}
         <div className="relative">
-          <Wallet />
+          {/* <Wallet /> */}
+          <Usermenu />
         </div>
 
       </div>
