@@ -94,7 +94,9 @@ Main Panels
 
 .pane-center--top {
   @apply flex flex-shrink-0 m-0;
-  @apply border-b border-gray-400 border-opacity-10 z-50;
+  @apply md:border-b border-gray-400 border-opacity-10 z-50;
+  @apply bg-gray-50 dark:bg-primary-900;
+  @apply md:bg-white md:dark:bg-deepgray-50;
 }
 
 .pane-center--main {
@@ -130,17 +132,14 @@ Main Panels
 .pane-content--main--top,
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
-  @apply md:border-b border-gray-400 border-opacity-10;
+  @apply border-b border-gray-400 border-opacity-10;
   @apply bg-white dark:bg-deepgray-50;
   height: var(--toolbar-height);
 }
 
-.page-details .pane-content--sec--top {
+/* .page-details .pane-content--sec--top {
   @apply border-b border-gray-400 border-opacity-10;
-}
-
-.pane-content--main--top {
-}
+} */
 
 /* .pane-content--main--top--inner {
   @apply border border-gray-500 border-opacity-20 flex pl-1 justify-between items-center w-full rounded;
@@ -261,7 +260,7 @@ Top & Tool Bars
 
 .logo--text {
   @apply bg-gradient-to-b from-purple-400 to-purple-700 font-semibold;
-  @apply dark:from-purple-500 dark:to-purple-700;
+  @apply dark:from-white dark:to-white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
