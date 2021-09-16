@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Intro({ dataStore }) {
   return (
-    <div className="section page-about">
+    <div className="page-about">
       <div className={`page-about-deco`} />
 
       <div className="page-about-content">

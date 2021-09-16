@@ -103,10 +103,9 @@ Post Content Typo
   @apply max-w-full text-center mx-auto rounded;
 }
 
-.post-content figure  {
-  @apply text-center text-xs;
+.post-content img:first-child {
+  @apply w-full max-h-80 object-cover;
 }
-
 .post-content figcaption,
 .post-content .pCaption {
   @apply text-center mt-2 text-xs;
