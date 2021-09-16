@@ -6,7 +6,7 @@ Layout
 .main-layout {
   @apply flex flex-col lg:flex-row h-full w-full items-stretch;
   @apply max-w-screen-2xl 2xl:mx-auto;
-  /* @apply bg-white dark:bg-deepgray-50; */
+  /* @apply bg-white dark:bg-gray-900; */
   animation: fadein 400ms linear;
 }
 
@@ -67,7 +67,7 @@ Navbars on Mobile Tablet
 */
 .pane-bottom {
   @apply flex justify-between w-full h-auto order-last;
-  @apply bg-bluegray-50 dark:bg-deepgray-100 z-50;
+  @apply bg-bluegray-50 dark:bg-deepgray-50 z-50;
   flex-basis: var(--navbar-height);
 }
 
@@ -77,12 +77,13 @@ Main Panels
 */
 .pane-center {
   @apply flex flex-auto flex-col transition;
+  @apply bg-white dark:bg-gray-900;
   @apply 2xl:shadow-sm;
 }
 
 @media (max-width: 1024px) {
   .pane-center {
-    @apply bg-gradient-to-r from-primary-50 to-yellow-50 dark:from-primary-900 dark:to-primary-800;
+    @apply bg-gradient-to-r from-primary-50 to-yellow-50 dark:from-primary-800 dark:to-primary-700;
   }
 }
 
@@ -102,7 +103,7 @@ Main Panels
   @apply flex flex-shrink-0 m-0 z-10;
   /* @apply md:border-b border-gray-400 border-opacity-10; */
   /* @apply bg-gradient-to-r from-primary-100 to-yellow-50 dark:bg-primary-900; */
-  /* @apply md:bg-white md:dark:bg-deepgray-50; */
+  /* @apply md:bg-white md:dark:bg-gray-900; */
 }
 
 .pane-center--main {
@@ -130,7 +131,7 @@ Main Panels
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
   @apply border-b border-gray-400 border-opacity-10;
-  @apply bg-white dark:bg-deepgray-50;
+  @apply bg-white dark:bg-gray-900;
   height: var(--toolbar-height);
 }
 
@@ -148,7 +149,7 @@ Card List Area
 */
 .pane-content--main--main {
   @apply flex flex-auto flex-col w-full h-0;
-  @apply bg-white dark:bg-deepgray-50;
+  @apply bg-white dark:bg-gray-900;
 }
 
 @screen lg {
@@ -190,7 +191,7 @@ Reader / Page Area
 
 .pane-content--sec--main {
   @apply w-full h-full;
-  @apply bg-white dark:bg-deepgray-50;
+  @apply bg-white dark:bg-gray-900;
   /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur; */
 }
 
@@ -216,6 +217,10 @@ Main Layout when scrolling
       margin-top: calc( -1 * var(--topbar-height));
     }
 
+  }
+
+  .list-away-top,
+  .page-details {
     .pane-content--main--top,
     .pane-content--sec--top {
       @apply fixed top-0 inset-x-0 z-50;
@@ -225,7 +230,7 @@ Main Layout when scrolling
 
   /* Reader Lists  */
   .list-away-top.page-details,
-  body.page-details {
+  .page-details {
 
     .pane-content--sec.pane-content-active {
       @apply top-0;
@@ -240,17 +245,6 @@ Main Layout when scrolling
       padding-top: var(--topbar-height);
     }
 
-  }
-
-  body.page-details {
-
-    .pane-content--sec--main {
-      @apply pt-0;
-    }
-
-  }
-
-  body.page-details.details-top-away {
   }
 
 }
@@ -383,7 +377,7 @@ Page Layout
 */
 .page {
   @apply w-full h-full relative;
-  /* @apply bg-white dark:bg-deepgray-50; */
+  /* @apply bg-white dark:bg-gray-900; */
 }
 
 .page-header {
@@ -526,7 +520,7 @@ Dialogs
 */
 .dialog-outside-wrapper {
   @apply fixed inset-0 z-50 overflow-y-auto bg-white md:bg-bluegray-50 bg-opacity-100;
-  @apply dark:bg-deepgray-100 md:dark:bg-deepgray-50;
+  @apply dark:bg-deepgray-100 md:dark:bg-gray-900;
 }
 
 .dialog-outside {
