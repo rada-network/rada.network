@@ -1,11 +1,10 @@
 import {gql} from '@apollo/client';
 
 export default gql`
-    mutation createComment($itemId : String!,
-                            $walletAddress : String!, 
+    mutation createUserComment($itemId : String!,
                             $content: String!,
                             $parentId: String){
-        createComment(itemId: $itemId,walletAddress: $walletAddress,content: $content,parentId: $parentId){
+        createUserComment(itemId: $itemId,content: $content,parentId: $parentId){
             id
             itemId
             content
@@ -13,6 +12,8 @@ export default gql`
             parent
             user{
                 id
+                name
+                email
                 walletAddress
             }
         }

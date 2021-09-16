@@ -42,9 +42,6 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   const {t} = useTranslation()
 
   const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
-
-  const { data: session, status } = useSession()
-
   return (
     <>
       <div className={`pane-content--sec` + (dataStore.showDetail ? " pane-content-active" : "")}>

@@ -29,6 +29,7 @@ export default function Profile(){
 		email : session.user.email,
 		image : session.user.image,
 		access_token : session.access_token,
+		walletAddress : "",
 	})
 	if (typeof localStorage !== 'undefined') {
 		localStorage.setItem('token', session.access_token)

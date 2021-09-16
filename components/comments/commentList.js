@@ -27,7 +27,14 @@ export const CommentList =({detailStore,dataStore}) => {
     users: []
   });
   for (let comment of comments){
-    let user = UserStore.create(comment.user)
+    let userObj = Object.assign({}, comment.user);
+    if (userObj.email === null){
+      userObj.email = ""
+    }
+    if (userObj.name === null){
+      userObj.name = ""
+    }
+    let user = UserStore.create(userObj)
     ItemCommentStore.addUser(user)
     let createdAt = new Date(comment.createdAt)
     ItemCommentStore.addComment({

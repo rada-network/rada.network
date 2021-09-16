@@ -9,6 +9,8 @@ export default gql`
             parent
             createdAt
             user{
+                name
+                email
                 id
                 walletAddress
             }

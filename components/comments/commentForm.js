@@ -9,20 +9,18 @@ import {observer} from "mobx-react";
 import {UserStore} from "../../lib/store";
 import {useTranslation} from "next-i18next";
 
-const client = getClient()
-
 export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore}) => {
   const {t} = useTranslation("common")
   const [commentContent, setCommentContent] = useState('')
   const user = useUser()
   const store = useStore()
-  const walletAddress = store.user.address
+  const access_token = store.user.access_token
 
   let currentUser;
-  if (!user?.address()) {
+  if (store.user.id === "") {
     currentUser = null
   } else {
-    currentUser = {walletAddress: user.address()}
+    currentUser = store.user
   }
   let btnText = t("submit")
   if (replyFor !== null) {
@@ -41,7 +39,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
   }
 
   const submitComment = async (event) => {
-    if (!walletAddress){
+    if (!access_token){
       return store.user.showConnect(true)
     }
     if (commentContent === ""){
@@ -53,8 +51,9 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
       itemId: item.item.id,
       content: _commentContent,
       parentId: replyFor,
-      walletAddress: user.address()
     }
+
+    const client = getClient()
     let {loading,errors,data} = await client.mutate({
       mutation : createComment,
       variables : comment
@@ -64,7 +63,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
       return false;
     }
     if (loading) return <p>Loading...</p  >;
-    let createdComment = data.createComment;
+    let createdComment = data.createUserComment;
     let curUser = UserStore.create(createdComment.user)
     ItemCommentStore.addUser(curUser)
     let createdAt = new Date(createdComment.createdAt)
@@ -93,7 +92,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
               title={t('comment input holder')}
               placeholder={t('comment login')}
             />
-            <button onClick={submitComment}className="btn comment-btn ml-2">
+            <button onClick={submitComment} className="btn comment-btn ml-2">
               {btnText}
             </button>
           </>

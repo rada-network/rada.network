@@ -2,15 +2,18 @@ import timeDifference from "../../lib/util";
 import utils from "../../lib/util";
 
 export function CommentHeader({comment,user, level, parent, ItemCommentStore}){
-  const createWalletAddressDisplay = (address) => {
-    return address.substr(0,4) + "..." + address.substr(address.length - 4,4)
+  const createWalletAddressDisplay = (user) => {
+    if (user.walletAddress && user.walletAddress !== "")
+      return user.walletAddress.substr(0,4) + "..." + user.walletAddress.substr(user.walletAddress.length - 4,4)
+
+    return user.email.substr(0,4) + "..." + user.email.substr(user.email.length - 4,4)
   }
   return (
     <div className="comment-header">
       <div className="flex">
         {/*name of user: show up by wallet address*/}
         <span className="metadata user-wallet--title">
-          {createWalletAddressDisplay(user.walletAddress)}
+          {createWalletAddressDisplay(user)}
         </span>
         <span className="metadata metadata-date text-xs text-color-desc">
           <span className="metadate-value">
@@ -26,7 +29,7 @@ export function CommentHeader({comment,user, level, parent, ItemCommentStore}){
             {/* reply to <span className="font-bold">{text.toUpperCase()}</span>*/}
             {/*reply to <span className="font-bold">{createWalletAddressDisplay(user.walletAddress)}</span>*/}
             reply to <span className="font-bold">{parent === null ?
-            "" : createWalletAddressDisplay(ItemCommentStore.getUser(parent.userId).walletAddress)}</span>
+            "" : createWalletAddressDisplay(ItemCommentStore.getUser(parent.userId))}</span>
           </span>  
         </div>:
         ""
