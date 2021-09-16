@@ -20,11 +20,9 @@ export const Topbar = ({dataStore}) => {
     return (
     <Link href={href}>
     <a href={href} className={cls.join(' ')}>
-
         <>
           {children}
         </>
-
     </a>
     </Link>
     )

@@ -29,12 +29,12 @@ const WalletAvatar = ({wallet}) => {
 }
 
 const ConnectedButton = ({wallet}) => (
-  <div className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
+  <div className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
     {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
-    <WalletAvatar wallet={wallet} />
+    <WalletAvatar wallet={wallet}  onClick={e => wallet.reset()} />
     <span className="btn--text text-xs ml-2">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
     <span className="icon"><i className="fa-duotone fa-sign-out" /></span>
-    <span className="hidden" onClick={e => wallet.reset()}>Logout</span>
+    <span className="sr-only">Logout</span>
   </div>
 )
 
@@ -42,7 +42,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
   const {t} = useTranslation()
   return (
   <>
-  <div onClick={ openModal } className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
+  <div onClick={ openModal } className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
     <span className="icon"><i className="fa-duotone fa-wallet" /></span>
     <span className="btn--text">{t("login")}</span>
   </div>

@@ -6,11 +6,11 @@ export default function Usermenu() {
 
     // HieuNN: Example of Button when User Login
     const Button = ({ wallet }) => (
-      <div className="btn nav-btn" aria-expanded="false" aria-haspopup="true">
+      <div className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
         <span className="avatar-xxs">
           <img src="https://picsum.photos/64" alt="User Name Here"/>
         </span>
-        <span className="btn--text ml-2">Hieu Nguyen</span>
+        <span className="hidden md:block btn--text ml-2">Hieu Nguyen</span>
       </div>
     );
 
