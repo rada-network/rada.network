@@ -1,6 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment, useEffect, useRef, useState } from 'react'
-
+import {Link} from "next/link"
 
 export default function Usermenu() {
 
@@ -36,8 +36,12 @@ export default function Usermenu() {
               <Menu.Item as="div" className="dropdown-item">
               {({ active }) => 
                 <>
-                <span className="icon"><i class="fa-duotone fa-user-gear"></i></span>
-                <span className="dropdown-item--text">Profile</span>
+                <a 
+                  href="/concepts/profile">
+                  <span className="icon"><i class="fa-duotone fa-user-gear"></i></span>
+                  <span className="dropdown-item--text">Profile</span>
+                </a>
+                
                 </>
               }
               </Menu.Item>

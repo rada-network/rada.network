@@ -7,13 +7,13 @@ export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
   useEffect(() => {
     setTooltipVisibility(true);
   }, []);
-
+  meta = meta || {};
   return (
     <>
     <HTMLHead>
-      <title>{title}</title>
-      <meta name="description" content={description}/>
-      <meta name="keyword" content={keyword}/>
+      <title>{title || ""}</title>
+      <meta name="description" content={description || ""}/>
+      <meta name="keyword" content={keyword || ""}/>
       {"og:type" in meta && <meta property="og:type" content={meta["og:type"]} />}
       {"og:title" in meta && <meta property="og:title" content={meta["og:title"]} />}
       {"og:description" in meta && <meta property="og:description" content={meta["og:description"]} />}
