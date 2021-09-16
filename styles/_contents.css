@@ -317,23 +317,28 @@ Info Row
 /* 
 Avatars 
 -------------------------------- */
-.user-wallet-avatar,
-.user-wallet-avatar-sm,
-.user-wallet-avatar-xs {
+.avatar,
+.avatar-sm,
+.avatar-xs,
+.avatar-xxs {
   @apply inline-flex flex-shrink-0 justify-items-center items-center justify-center overflow-hidden;
   @apply rounded-full;
 }
 
-.user-wallet-avatar {
+.avatar {
   @extend %Img40;
 }
 
-.user-wallet-avatar-sm {
+.avatar-sm {
   @extend %Img32;
 }
 
-.user-wallet-avatar-xs {
+.avatar-xs {
   @extend %Img24;
+}
+
+.avatar-xxs {
+  @extend %Img16;
 }
 
 
@@ -392,24 +397,24 @@ Comment Forms
 /*
 Avatars
 */
-.comment .user-wallet-avatar,
-.comment .user-wallet-avatar-sm,
-.comment .user-wallet-avatar-xs {
+.comment .avatar,
+.comment .avatar-sm,
+.comment .avatar-xs {
   @apply mr-3 mt-0.5 ring-2 ring-white dark:ring-deepgray-50;
   z-index: 2;
 }
 
 .comment-form,
 .comment-reply-form {
-  .user-wallet-avatar,
-  .user-wallet-avatar-sm,
-  .user-wallet-avatar-xs {
+  .avatar,
+  .avatar-sm,
+  .avatar-xs {
     @apply mr-2 mt-0.5;
     z-index: 2;
   }
 }
 
-.comment .user-wallet-avatar {
+.comment .avatar {
   @apply ring-4 ring-white dark:ring-deepgray-50;
 }
 

@@ -24,6 +24,10 @@ Buttons
   }
 }
 
+.btn-rounded {
+  @apply rounded-full;
+}
+
 /*
 Buttons Styles
 */

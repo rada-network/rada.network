@@ -499,31 +499,11 @@ Content
 Components
 --------------------------------------------- */
 /* 
-Popper
-*/
-.popper {
-  @apply z-10 flex flex-col w-full h-full relative;
-  @apply bg-white dark:bg-gray-900 py-2 rounded shadow;
-  min-width: 100px;
-  top: 32px;
-}
-
-.pane-left .popper {
-  top: -59px;
-  width: 111px;
-}
-
-.popper-item {
-  @apply py-2 px-2 text-center cursor-pointer;
-  @apply text-sm font-medium hover:text-primary-700 dark:hover:text-primary-500;
-}
-
-/* 
 Dialogs 
 */
 .dialog-outside-wrapper {
   @apply fixed inset-0 z-50 overflow-y-auto bg-white md:bg-bluegray-50 bg-opacity-100;
-  @apply dark:bg-deepgray-100 dark:md:bg-deepgray-50;
+  @apply dark:bg-deepgray-100 md:dark:bg-deepgray-50;
 }
 
 .dialog-outside {

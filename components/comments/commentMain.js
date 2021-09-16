@@ -29,7 +29,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
 
           <div className="comment-trail"></div>
 
-          <div className={`user-wallet-avatar${level === 1 ? "-sm" : "-xs"}`}>
+          <div className={`avatar${level === 1 ? "-sm" : "-xs"}`}>
             <CommentAvatar user={user} size={level > 1 ? 32 : 32} />
           </div>
 
