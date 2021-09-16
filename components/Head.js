@@ -62,7 +62,7 @@ export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
       />
 
       <link rel="manifest" href="/manifest.json" />
-      <meta name="theme-color" content="#C4B5FD" />
+      <meta name="theme-color" content="#E5E7EB" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="mobile-web-app-capable" content="yes" />
     </HTMLHead>

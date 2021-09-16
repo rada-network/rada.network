@@ -27,7 +27,7 @@ Empty State - About Page
 }
 
 .page-about h3 {
-  @apply font-semibold text-lg mb-2 text-gray-800 dark:text-gray-200;
+  @apply font-semibold text-lg mb-2 text-gray-600 dark:text-gray-300;
 }
 
 .page-about u {

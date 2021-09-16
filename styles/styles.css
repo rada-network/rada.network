@@ -93,7 +93,7 @@ Main Panels
 }
 
 .pane-center--top {
-  @apply flex flex-shrink-0 m-0 z-10;
+  @apply flex flex-shrink-0 mt-0 z-10;
 }
 
 .pane-center--main {
@@ -191,8 +191,7 @@ Main Layout when scrolling
 @media (max-width: 768px) {
 
   .pane-center--top {
-    opacity: 1;
-    transition: all 150ms linear;
+    transition: margin-top 150ms linear;
   }
 
   /* Post Lists */
@@ -202,11 +201,16 @@ Main Layout when scrolling
     }
 
     .pane-center--top {
-      opacity: 0;
       margin-top: calc( -1 * var(--topbar-height));
     }
 
   }
+
+  /* .pane-content--main--top,
+  .pane-content--sec--top {
+    transition: all 150ms linear;
+    transition-delay: 300ms;
+  } */
 
   .list-away-top,
   .page-details {
