@@ -83,17 +83,20 @@ Card Post (News, Projects,...)
   @apply bg-yellow-100 bg-opacity-50 dark:bg-primary-900;
 }
 
-/* Readed */
-.card-post.readed .card-title,
-.card-post.readed .metadata-source,
-.card-post.readed .metadata-date {
-  @apply opacity-50;
+/* Read */
+a:visited .card-post,
+.card-post.read {
+  .card-title,
+  .metadata-source,
+  .metadata-date {
+    @apply opacity-50;
+  }
 }
 
 /* Metadata */
 .card-post .metadata-source .metadata-value {
   @apply whitespace-nowrap overflow-hidden overflow-ellipsis;
-  max-width: 160px;
+  max-width: 140px;
 }
 
 /* has Comment */
