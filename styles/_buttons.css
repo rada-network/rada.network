@@ -5,7 +5,7 @@ Buttons
 */
 .btn {
   @apply inline-flex items-center relative transition ;
-  @apply rounded font-medium focus:outline-none cursor-pointer;
+  @apply rounded-md font-medium focus:outline-none cursor-pointer;
 
   .icon {
     @apply relative;
@@ -190,7 +190,7 @@ Group Buttons
 }
 
 .btn-group-filter {
-  @apply rounded text-xs;
+  @apply rounded-md text-xs transition;
   @apply bg-gray-400 bg-opacity-10 dark:bg-gray-200 dark:bg-opacity-10;
   padding: 3px;
 }
@@ -201,8 +201,8 @@ Group Buttons
 
 .btn-filter,
 .btn-filter-active {
-  @apply px-2 py-1 justify-center relative overflow-hidden transition-none;
-  @apply rounded bg-transparent opacity-50;
+  @apply px-2 py-1 justify-center relative overflow-hidden;
+  @apply rounded-md bg-transparent opacity-50;
   &:hover {
     @apply opacity-100;
   }
@@ -299,6 +299,6 @@ Button Caret
 
 /* Comment Form Button */
 .comment-btn {
-  @apply text-sm justify-center px-0 w-20 text-gray-500 rounded bg-gray-400 bg-opacity-20 hover:bg-primary-100 hover:text-primary-700 border border-transparent hover:border-primary-500 leading-4;
+  @apply text-sm justify-center px-0 w-20 text-gray-500 bg-gray-400 bg-opacity-20 hover:bg-primary-100 hover:text-primary-700 border border-transparent hover:border-primary-500 leading-4;
   @apply dark:hover:bg-deeppurple-300 dark:text-gray-200 dark:hover:text-white;
 }

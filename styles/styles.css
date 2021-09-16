@@ -91,14 +91,14 @@ Main Panels
 }
 
 .pane-center--main {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
   @apply flex w-full h-full;
   @apply rounded-t-xl lg:rounded-none lg:shadow-none overflow-hidden;
 }
 
 @media (max-width: 1024px) {
   .dark .pane-center--main {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 1); /* Increase shadow on Dark Theme */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5 ); /* Increase shadow on Dark Theme */
   }
 }
 
