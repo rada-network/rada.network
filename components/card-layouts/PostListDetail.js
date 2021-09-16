@@ -22,6 +22,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
   const router = useRouter()
   let item = detailStore.data
+  console.log(item.item.id)
   item.currentLang = dataStore.lang;
   const scrollBox2 = createRef();
   const store = useStore()

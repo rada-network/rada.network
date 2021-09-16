@@ -6,6 +6,8 @@ const mutation =  gql`
     createOrUpdateUser(profile: $profile, account: $account, oauthProfile : $oauthProfile){
       id
       access_token
+      name
+      image
     }
   }
 `

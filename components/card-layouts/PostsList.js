@@ -95,7 +95,7 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
   }
 
   const store = useStore()
-  voteStore.walletAddress = store.wallet.address
+  voteStore.access_token = store.user.access_token
   voteStore.addVotesV2(dataStore.tweets)
   return (
     <>

@@ -16,7 +16,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
   const [commentContent, setCommentContent] = useState('')
   const user = useUser()
   const store = useStore()
-  const walletAddress = store.wallet.address
+  const walletAddress = store.user.address
 
   let currentUser;
   if (!user?.address()) {
@@ -42,7 +42,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
 
   const submitComment = async (event) => {
     if (!walletAddress){
-      return store.wallet.showConnect(true)
+      return store.user.showConnect(true)
     }
     if (commentContent === ""){
       return false
@@ -87,7 +87,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
       {
         currentUser == null
         ? <>
-            <TextareaAutosize onClick={(e) => {store.wallet.showConnect(true);}}
+            <TextareaAutosize onClick={(e) => {store.user.showConnect(true);}}
               className="comment-textarea"
               row="1"
               title={t('comment input holder')}

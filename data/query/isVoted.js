@@ -2,8 +2,8 @@ import {gql} from '@apollo/client';
 import getClient from "../client";
 
 const isVotes = gql`
-  query isVotes($ids: [String], $walletAddress: String!) {
-      isVotes(ids: $ids, walletAddress: $walletAddress){
+  query isUserVotes($ids: [String]) {
+    isUserVotes(ids: $ids){
           itemId
       }
   }
@@ -11,11 +11,11 @@ const isVotes = gql`
 
 export default isVotes
 
-export async function getIsVotes(walletAddress,ids) {
+export async function getIsVotes(ids) {
     const client = getClient()
     const isVote_ = await client.query({
         query: isVotes,
-        variables: {ids : ids,walletAddress: walletAddress}
+        variables: {ids : ids}
     })
-    return isVote_.data.isVotes
+    return isVote_.data.isUserVotes
 }

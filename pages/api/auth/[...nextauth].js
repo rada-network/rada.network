@@ -9,6 +9,9 @@ callbacks.signIn = async function signIn(profile, account, oauthProfile) {
     if (userFromApi !== null) {
         console.log(userFromApi)
         profile.access_token = userFromApi.access_token
+        profile.id = userFromApi.id
+        profile.name = userFromApi.name
+        profile.image = userFromApi.image
         return true;
     }
     return false
@@ -24,6 +27,9 @@ callbacks.jwt = async function jwt(token, user) {
 
 callbacks.session = async function session(session, token) {
     session.access_token = token.access_token
+    session.user.name = token.name
+    session.user.image = token.image
+    session.user.id = token.id
     return session
 }
 

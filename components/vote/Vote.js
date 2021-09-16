@@ -1,16 +1,13 @@
 import {RiArrowUpSFill} from "react-icons/ri"
-import getClient from "../../data/client"
-import tgVote from "../../data/query/tgVote"
+import {toggleUserVote} from "../../data/query/tgVote"
 import React, {useState} from "react"
-import { observer, inject } from "mobx-react"
+import { observer } from "mobx-react"
 import { useStore } from "../../lib/useStore"
-import isVote from "../../data/query/isVoted";
 
 
 export const Vote = observer(({itemId, page,voteStore}) => {
   const store = useStore()
-  const walletAddress = store.wallet.address
-  const client = getClient();
+  const access_token = store.user.access_token
   let totalVote = 0
   let isVote = false
   let vote = voteStore.votes.filter(el =>{
@@ -22,22 +19,21 @@ export const Vote = observer(({itemId, page,voteStore}) => {
   }
   const [rqToggleVote,setRqToggleVote] = useState(false)
   const toggleVote = async (e) => {
-    if (!walletAddress) {
-      return store.wallet.showConnect(true)
+    if (!access_token) {
+      return store.user.showConnect(true)
     }
     if (rqToggleVote){
       return false;
     }
     setRqToggleVote(true)
-    const res = await client.mutate({
-      mutation : tgVote,
-      variables : {itemId: itemId, walletAddress}
-    });
-    voteStore.updateVote({
-      id : itemId,
-      isVoted : res.data.toggleVote.isVoted,
-      totalVote : res.data.toggleVote.totalVote
-    })
+    const res = await toggleUserVote(itemId)
+    if (res.data.toggleUserVote !== null) {
+      voteStore.updateVote({
+        id : itemId,
+        isVoted : res.data.toggleUserVote.isVoted,
+        totalVote : res.data.toggleUserVote.totalVote
+      })
+    }
     setRqToggleVote(false)
   }
 
