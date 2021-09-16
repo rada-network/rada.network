@@ -9,7 +9,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {IndexRightBar} from "../components/IndexRightBar";
 import _ from "lodash"
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { getSession } from "next-auth/client";
+
 import { Resizer } from "../components/utils/Resizer";
 import store from "store"
 
@@ -279,7 +279,6 @@ export async function getStaticProps(context) {
   props = Object.assign(props,{
     ...await serverSideTranslations(context.locale, ['common', 'navbar']),
   })
-
   return {
     props,
     revalidate: 60

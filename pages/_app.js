@@ -22,7 +22,7 @@ configure({
   enforceActions: "never",
 })
 
-const MyApp = ({Component, pageProps}) => {
+const MyApp = ({Component, pageProps: { session, ...pageProps }}) => {
   const router = useRouter()
   const store = useStore()
   useEffect(() => {

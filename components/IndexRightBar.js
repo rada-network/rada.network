@@ -2,13 +2,13 @@ import {observer} from "mobx-react";
 import React, {createRef, useEffect} from "react";
 // import PerfectScrollbar from "perfect-scrollbar";
 import Screen from "./utils/Responsive";
-import {Wallet} from "./Wallet";
 import {PostListDetail} from "./card-layouts/PostListDetail";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import {useStore} from "../lib/useStore";
 import {useRouter} from "next/router";
 import { useSession } from "next-auth/client";
+import Profile from "./Profile";
 
 
 export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
@@ -79,15 +79,14 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
               </div>
             </div>
 
-
+            
           </div>
 
           <Screen from="lg">
           <div className="flex items-center space-x-2">
             {/* <ThemeSwitch /> */}
             <div className="relative">
-              {session && <span className="btn--text text-xs ml-2">{session.user.name}</span>}
-              <Wallet />
+              <Profile />
             </div>
           </div>
           </Screen>

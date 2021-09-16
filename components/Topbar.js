@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import {Wallet} from "./Wallet"
+import Profile from "./Profile"
 import SearchInput from "./search"
 import ThemeSwitch from "./ThemeSwitch"
 import {LanguageSwitch} from "./LanguageSwitch";
@@ -65,7 +65,7 @@ export const Topbar = ({dataStore}) => {
 
         {/* Profile dropdown */}
         <div className="relative">
-          <Wallet />
+          <Profile />
         </div>
 
       </div>

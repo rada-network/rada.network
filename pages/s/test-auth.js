@@ -28,3 +28,10 @@ export default function Page () {
     </>
   )
 }
+
+export async function getStaticProps(context) {
+  console.log(context)
+  return { 
+    props: {}
+  }
+}
