@@ -108,8 +108,12 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
         <div className="cta-wrapper">
           {/* Sort */}
           <div className="btn-group btn-group-filter">
-            <a className={"btn " + (dataStore.currentTab === "popular" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "popular"})}}>{t("popular")}</a>
-            <a className={"btn " + (dataStore.currentTab === "latest" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "latest"})}}>{t("latest")}</a>
+            <a className={"btn " + (dataStore.currentTab === "popular" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "popular"})}}>
+              <span className="btn--text">{t("popular")}</span>
+            </a>
+            <a className={"btn " + (dataStore.currentTab === "latest" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "latest"})}}>
+              <span className="btn--text">{t("latest")}</span>
+            </a>
           </div>
         </div>
       </div>

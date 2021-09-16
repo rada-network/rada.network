@@ -4,11 +4,14 @@
 Buttons
 */
 .btn {
-  @apply inline-flex items-center font-medium focus:outline-none cursor-pointer transition;
-  @apply rounded;
+  @apply inline-flex items-center relative transition ;
+  @apply rounded font-medium focus:outline-none cursor-pointer;
 
   .icon {
     @apply relative;
+  }
+
+  .btn--text {
   }
 
   .btn--text + .icon {
@@ -23,6 +26,23 @@ Buttons
     outline: none;
   }
 }
+
+/* NNTH: Fill Effects
+.btn:after {
+  @apply block absolute bottom-0 left-0 right-0;
+  @apply bg-primary-500 dark:bg-white;
+  content: " ";
+  height: 0;
+  width: 100%;
+  transition: all 150ms linear;
+}
+
+.btn:hover {
+  &:after {
+    height: 100%;
+  }
+} */
+
 
 .btn-rounded {
   @apply rounded-full;
@@ -124,9 +144,24 @@ Nav Button
 /* 
 Wallet Button 
 */
-.btn-connect-wallet {
+.btn-login {
+  .avatar {
+    @apply w-px-16 h-px-16;
+  }
+
   .btn--text {
-    @apply hidden md:inline-block;
+  }
+
+  min-height: 30px;
+
+}
+
+@media (max-width: 768px) {
+  .btn-login {
+    .btn--text {
+      @apply overflow-hidden whitespace-nowrap overflow-ellipsis;
+      max-width: 80px;
+    }
   }
 }
 
@@ -166,8 +201,11 @@ Group Buttons
 
 .btn-filter,
 .btn-filter-active {
-  @apply px-2 py-1 justify-center relative;
+  @apply px-2 py-1 justify-center relative overflow-hidden transition-none;
   @apply rounded bg-transparent opacity-50;
+  &:hover {
+    @apply opacity-100;
+  }
 }
 
 .btn-filter-active {
@@ -175,26 +213,7 @@ Group Buttons
   @apply bg-white text-opacity-100 dark:text-white dark:bg-deepgray-100 shadow-sm opacity-100;
 }
 
-/* .btn-filter:hover,
-.btn-filter-active {
-  @apply opacity-100;
-}
 
-.btn-filter::after,
-.btn-filter-active::after {
-  @apply block w-full absolute bottom-0 left-0 right-0;
-  @apply bg-gray-800 dark:bg-white;
-  content: " ";
-  height: 0;
-  transition: all 150ms linear;
-}
-
-.btn-filter-active {
-  @apply opacity-100;
-  &:after {
-    height: 3px;
-  }
-} */
 
 /*
 "Show More" Button
@@ -280,6 +299,6 @@ Button Caret
 
 /* Comment Form Button */
 .comment-btn {
-  @apply text-sm justify-center px-0 w-20 text-gray-500 rounded bg-gray-100 hover:bg-primary-100 hover:text-primary-700 border border-transparent hover:border-primary-500 leading-4;
-  @apply dark:bg-gray-700 dark:text-gray-200 dark:hover:text-white;
+  @apply text-sm justify-center px-0 w-20 text-gray-500 rounded bg-gray-400 bg-opacity-20 hover:bg-primary-100 hover:text-primary-700 border border-transparent hover:border-primary-500 leading-4;
+  @apply dark:hover:bg-deeppurple-300 dark:text-gray-200 dark:hover:text-white;
 }

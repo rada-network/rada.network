@@ -29,6 +29,7 @@ export const LanguageSwitch = observer(({dataStore}) => {
 
   return (
     <Popover className="relative">
+      
       <Popover.Panel ref={setPopperElement}
                      style={styles.popper}
                      {...attributes.popper}>
@@ -52,12 +53,14 @@ export const LanguageSwitch = observer(({dataStore}) => {
           </Transition>
         )}
       </Popover.Panel>
+
       <Popover.Button ref={buttonRef} className="btn nav-btn btn-switch-lang" title="Change Language">
         <div>
           <span className="icon"><i className="fal fa-globe"/></span>
           <span className="btn--text">{langDisplay.toUpperCase()}</span>
         </div>
       </Popover.Button>
+
     </Popover>
 
   )

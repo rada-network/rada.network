@@ -60,8 +60,11 @@ export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
         onLoad="this.media='all'"
         key="fontawesome"
       />
+
       <link rel="manifest" href="/manifest.json" />
-      <meta name="theme-color" content="#4338CA" />
+      <meta name="theme-color" content="#C4B5FD" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="mobile-web-app-capable" content="yes" />
     </HTMLHead>
 
     {isTooltipVisible && <ReactTooltip type="info" clickable={true} html={true} />}

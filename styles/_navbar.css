@@ -119,6 +119,9 @@ Tabbar
 .tab-item {
   @apply flex flex-1 justify-center items-center px-0 py-1 transition-all relative;
   @apply font-medium opacity-50 hover:opacity-100;
+  &:hover {
+    @apply opacity-100;
+  }
 }
 
 .tab-item:after {
@@ -130,8 +133,7 @@ Tabbar
   transition: all 150ms linear;
 }
 
-.tab-item--active,
-.tab-item:hover {
+.tab-item--active {
   @apply opacity-100;
   &:after {
     width: 100%;

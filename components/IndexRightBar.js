@@ -10,6 +10,8 @@ import {useStore} from "../lib/useStore";
 import {useRouter} from "next/router";
 import Usermenu from "./Usermenu";
 
+import { Transition } from '@headlessui/react';
+
 
 export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   // const scrollBox2 = createRef();

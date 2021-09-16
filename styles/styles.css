@@ -6,7 +6,6 @@ Layout
 .main-layout {
   @apply flex flex-col lg:flex-row h-full w-full items-stretch;
   @apply max-w-screen-2xl 2xl:mx-auto;
-  /* @apply bg-white dark:bg-gray-900; */
   animation: fadein 400ms linear;
 }
 
@@ -77,38 +76,30 @@ Main Panels
 */
 .pane-center {
   @apply flex flex-auto flex-col transition;
-  @apply bg-white dark:bg-gray-900;
-  @apply 2xl:shadow-sm;
+  @apply lg:border-r border-gray-400 border-opacity-10 z-50;
 }
 
+/* Add Color to Topbar on Mobile and Tablet */
 @media (max-width: 1024px) {
   .pane-center {
-    @apply bg-gradient-to-r from-primary-50 to-yellow-50 dark:from-primary-800 dark:to-primary-700;
+    @apply bg-gradient-to-r from-primary-50 to-yellow-50 dark:from-primary-800 dark:to-primary-900;
   }
 }
-
-/* @screen md {
-  .pane-center {
-    height: calc(100vh - var(--navbar-height) - var(--toolbar-height));
-  }
-}
-
-@screen lg {
-  .pane-center {
-    @apply h-full;
-  }
-} */
 
 .pane-center--top {
   @apply flex flex-shrink-0 m-0 z-10;
-  /* @apply md:border-b border-gray-400 border-opacity-10; */
-  /* @apply bg-gradient-to-r from-primary-100 to-yellow-50 dark:bg-primary-900; */
-  /* @apply md:bg-white md:dark:bg-gray-900; */
 }
 
 .pane-center--main {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   @apply flex w-full h-full;
-  @apply rounded-t-xl shadow-2xl lg:shadow-none lg:rounded-t-none overflow-hidden;
+  @apply rounded-t-xl lg:rounded-none lg:shadow-none overflow-hidden;
+}
+
+@media (max-width: 1024px) {
+  .dark .pane-center--main {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 1); /* Increase shadow on Dark Theme */
+  }
 }
 
 .pane-content {
@@ -135,15 +126,7 @@ Main Panels
   height: var(--toolbar-height);
 }
 
-/* .page-details .pane-content--sec--top {
-  @apply border-b border-gray-400 border-opacity-10;
-} */
-
-/* .pane-content--main--top--inner {
-  @apply border border-gray-500 border-opacity-20 flex pl-1 justify-between items-center w-full rounded;
-} */
  
-
 /* 
 Card List Area
 */
