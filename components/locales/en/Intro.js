@@ -3,31 +3,41 @@ import React from "react";
 export default function Intro({ dataStore }) {
   return (
     <div className="page-about">
+
       <div className={`page-about-deco`} />
 
       <div className="page-about-content">
-        <h3>What is Rada.co?</h3>
-        <p>Rada is a news aggregator for Blockchain and Crypto investors.</p>
 
-        <h3>How will Rada.co work?</h3>
-        <p>
-          Phase 1: The system will "scan" and collect all Blockchain/Crypto news
-          from major newspapers in the world and Vietnam.
-        </p>
+        <div className="page-about-content--section">
+          <span className="icon"><i class="fa-solid fa-info"></i></span>
+          <div>
+            <h3>What is RADA?</h3>
+            <p>Rada is a news aggregator for Blockchain and Crypto investors.</p>
+          </div>
+        </div>
 
-        <p>
-          Phase 2: Big data technology and AI recommend the most important news
-          and information to ensure you do not miss any important opportunities
-          in the Crypto market.
-        </p>
+        <div className="page-about-content--section">
+          <span className="icon"><i class="fa-regular fa-rocket"></i></span>
+          <div>
+            <h3>How will RADA work?</h3>
+            <p>
+              <u>Phase 1</u>: The system will "scan" and collect all Blockchain/Crypto news
+              from major newspapers in the world and Vietnam.
+            </p>
+            <p>
+              <u>Phase 2</u>: Big data technology and AI recommend the most important news
+              and information to ensure you do not miss any important opportunities
+              in the Crypto market.
+            </p>
+            <p>
+              Rada supports multi-language: users from any country will be navigated
+              to the local language, with news being gathered from sources from the
+              local press.
+            </p>
+          </div>
+        </div>
 
-        <p>
-          Rada supports multi-language: users from any country will be navigated
-          to the local language, with news being gathered from sources from the
-          local press.
-        </p>
-
-        <h3>Current version</h3>
+        {/* <h3>Current version</h3>
         <p>
           - The latest daily built version for Vietnam market at:{" "}
           <a className="link" target="_blank" href="https://rada.co/vi">
@@ -39,34 +49,42 @@ export default function Intro({ dataStore }) {
           <a className="link" target="_blank" href="https://rada.co/en">
             https://rada.co/en
           </a>
-        </p>
+        </p> */}
 
-        <h3>Community</h3>
-        <p>
-          Join the Rada.co community to join discussions, request new features
-          and get the latest updates about the project.
-        </p>
-        <div className="about-social">
-          <a
-            target="_blank"
-            href="https://www.facebook.com/RADA-Media-100147568952754"
-          >
-            <i className="fab fa-facebook" />
-          </a>
+        <div className="page-about-content--section">
+          {/* <h3>Community</h3>
+          <p>
+            Join the Rada.co community to join discussions, request new features
+            and get the latest updates about the project.
+          </p> */}
+          <div className="about-social">
+            <a
+              target="_blank"
+              href="https://www.facebook.com/RADA-Media-100147568952754"
+            >
+              <i className="fab fa-facebook" />
+            </a>
 
-          <a target="_blank" href="https://twitter.com/radamedia">
-            <i className="fab fa-twitter" />
-          </a>
+            <a
+              target="_blank"
+              href="https://discord.gg/ENm9SpQs"
+              rel="noreferrer"
+            >
+              <i className="fab fa-discord" />
+            </a>
 
-          <a target="_blank" href="https://medium.com/@radamedia">
-            <i className="fab fa-medium-m" />
-          </a>
+            <a target="_blank" href="https://twitter.com/radamedia">
+              <i className="fab fa-twitter" />
+            </a>
 
-          <a target="_blank" href="https://discord.gg/ENm9SpQs">
-            <i className="fab fa-discord" />
-          </a>
+            <a target="_blank" href="https://medium.com/@radamedia">
+              <i className="fab fa-medium-m" />
+            </a>
+          </div>
         </div>
+
       </div>
+
     </div>
   );
 }

@@ -70,6 +70,12 @@ Navbars on Mobile Tablet
   flex-basis: var(--navbar-height);
 }
 
+@media (max-width: 768px) {
+  .page-details .pane-bottom {
+    @apply hidden; /* Hide Mobile Navbar for more immersive look */
+  }
+}
+
 
 /* 
 Main Panels
@@ -168,7 +174,7 @@ Reader / Page Area
     @apply fixed flex;
     right: 0;
     top: var(--topbar-height);
-    bottom: var(--navbar-height);
+    bottom: 0;
   }
 }
 
@@ -231,7 +237,6 @@ Main Layout when scrolling
   }
 
 }
-
 
 
 /* 

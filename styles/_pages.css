@@ -2,49 +2,58 @@
 Empty State - About Page
 */
 .page-about {
-  @apply p-4 md:p-8 xl:p-16 flex flex-col h-full;
+  @apply flex flex-col justify-center h-full relative max-w-sm m-auto;
   @apply text-sm;
+  margin-top: -10%;
   animation: fadein 1s ease-in;
 }
 
 .page-about-deco {
-  @apply hidden absolute bottom-0 left-8 right-8 xl:left-0 xl:right-0 h-full z-0;
+  @apply hidden absolute float-right z-0;
+  background-image: url("https://source.unsplash.com/collection/1459961/1600x900");
 }
 
 @media screen and (min-height: 768px) {
   .page-about-deco {
-    @apply md:block;
+    @apply block;
   }
 }
 
-.page-about .page-about-content {
-  @apply opacity-50 transition-all;
-  transition-duration: 1s;
-}
-
-.page-about:hover .page-about-content {
-  @apply opacity-90;
-}
-
 .page-about-content {
-  @apply z-10;
 }
 
 .page-about p {
-  @apply mb-2;
+   @apply opacity-80 my-4 text-gray-500 dark:text-gray-400;
 }
 
 .page-about h3 {
-  @apply text-base mb-2;
-  @apply font-medium;
+  @apply font-semibold text-lg mb-2 text-gray-800 dark:text-gray-200;
 }
 
-.page-about p + h3 {
-  @apply mt-4;
+.page-about u {
+  @apply border-b border-gray-400 border-opacity-40;
+  text-decoration: none;
+}
+
+.page-about-content--section {
+  @apply flex py-2;
+  .icon {
+    @apply hidden inline-flex justify-center items-center flex-shrink-0 text-sm mr-4 -ml-10 rounded-full;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.content-section--1 .icon {
+  @apply bg-purple-100 text-primary-700;
+}
+
+.content-section--2 .icon {
+  @apply bg-yellow-100 text-yellow-500;
 }
 
 .about-social {
-  @apply flex items-center space-x-4 mt-8;
+  @apply flex items-center space-x-4 mt-2;
 }
 
 .about-social a {

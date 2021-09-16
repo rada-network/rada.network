@@ -13,17 +13,6 @@ import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib
 
 const Layout = observer((props) => {
 
-  // const [Scrollbar] = useState('')
-
-  // useEffect(() => {
-  //   // make scrollbar
-  //   ps = new PerfectScrollbar(scrollBox.current, {
-  //   });
-  
-  //   return () => {
-  //     ps.destroy();
-  //   }
-  // }, [scrollBox]);
   const homeStore = new HomeStore({isHome : false});
   const dataStore = new ObservableTweetStore({homeStore})
   const detailStore = new DetailStore();

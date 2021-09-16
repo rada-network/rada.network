@@ -9,7 +9,7 @@
 
 .dialog_header__deco {
   @apply absolute inset-0 w-full h-full opacity-50 z-0;
-  background: url(/images/hero-2.png) no-repeat 20px 50px;
+  background: url(/images/hero-2.png) no-repeat 20px 60px;
 }
 
 .dialog_body_wrapper {
