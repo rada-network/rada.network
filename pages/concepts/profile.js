@@ -1,16 +1,28 @@
-import { Head } from "../Head";
-import { Topbar } from "../Topbar";
-import { Navbar } from "../Navbar";
+import { Head } from "../../components/Head";
+import { Topbar } from "../../components/Topbar";
+import { Navbar } from "../../components/Navbar";
 
-import ThemeSwitch from "../ThemeSwitch"
+import ThemeSwitch from "../../components/ThemeSwitch"
 
 import { useState, useEffect, createRef } from 'react'
 
-import {LanguageSwitch} from "../LanguageSwitch";
-import Screen from "../utils/Responsive";
+import {LanguageSwitch} from "../../components/LanguageSwitch";
+import Screen from "../../components/utils/Responsive";
 import { observer } from "mobx-react";
 
 export const Layout = observer(({children,meta,dataStore,detailStore}) => {
+
+  // const [Scrollbar] = useState('')
+
+  // useEffect(() => {
+  //   // make scrollbar
+  //   ps = new PerfectScrollbar(scrollBox.current, {
+  //   });
+  
+  //   return () => {
+  //     ps.destroy();
+  //   }
+  // }, [scrollBox]);
 
   return (
     <>
@@ -57,7 +69,11 @@ export const Layout = observer(({children,meta,dataStore,detailStore}) => {
         </Screen>
 
         <div className="pane-center--main">
-          {children}
+          
+          {/* HieuNN */}
+          {/* Future Concept will be here */}
+          
+
         </div>
 
       </div>
