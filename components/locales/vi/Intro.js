@@ -77,15 +77,16 @@ export default function Intro({ dataStore }) {
             năng mới và nhận những cập nhật mới nhất về dự án.
           </p> */}
           <div className="about-social">
-            <a
+          <a
+              className="btn-facebook" 
               target="_blank"
               href="https://www.facebook.com/RADA-Media-100147568952754"
-              rel="noreferrer"
             >
               <i className="fab fa-facebook" />
             </a>
 
             <a
+              className="btn-discord" 
               target="_blank"
               href="https://discord.gg/ENm9SpQs"
               rel="noreferrer"
@@ -94,15 +95,17 @@ export default function Intro({ dataStore }) {
             </a>
 
             <a
-              target="_blank"
+              className="btn-twitter" 
+              target="_blank" 
               href="https://twitter.com/radamedia"
               rel="noreferrer"
             >
               <i className="fab fa-twitter" />
             </a>
 
-            <a
-              target="_blank"
+            <a 
+              className="btn-medium" 
+              target="_blank" 
               href="https://medium.com/@radamedia"
               rel="noreferrer"
             >
