@@ -82,7 +82,7 @@ Main Panels
 */
 .pane-center {
   @apply flex flex-auto flex-col transition;
-  @apply lg:border-r border-gray-400 border-opacity-10 z-50;
+  @apply lg:border-r border-gray-400 border-opacity-10 z-40;
 }
 
 /* Add Color to Topbar on Mobile and Tablet */
