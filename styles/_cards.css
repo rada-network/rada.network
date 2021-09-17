@@ -53,7 +53,7 @@ Generic Styles
 }
 
 .card-body-header {
-  @apply flex justify-between items-start;
+  @apply flex justify-between items-end relative -mt-1;
 }
 
 .card-footer {
@@ -61,7 +61,7 @@ Generic Styles
 }
 
 .card-badges {
-  @apply relative ml-2 -top-1;
+  @apply relative ml-2;
 }
 
 .card-badges .badge {
@@ -129,7 +129,7 @@ a:visited .card-post,
 .card-post .metadata-votecount {
   @apply mr-1 hidden transition;
   .icon {
-    @apply text-base relative;
+    @apply text-base relative leading-none;
     bottom: -1px;
   }
 }

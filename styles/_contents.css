@@ -141,7 +141,7 @@ Metadata
 Badges
 -------------------------------- */
 .badge {
-  @apply text-xxs leading-none font-medium px-2 py-0.5 whitespace-nowrap;
+  @apply text-xxs leading-none font-medium px-1.5 py-0.5 whitespace-nowrap;
   @apply bg-gray-400 bg-opacity-20 text-gray-400;
   @apply rounded-full;
 
