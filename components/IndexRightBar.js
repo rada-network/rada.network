@@ -63,8 +63,11 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
               : ""
             }
 
-            {/* Page Tabs Here */}
-            <div className="tabbar page-tabs">
+            {/* 
+            HieuNN:
+            Example of Page Tabs Here 
+            */}
+            {/* <div className="tabbar page-tabs">
               <div className="tabbar-main">
                 <a href="#" className="tab-item">
                   Profile
@@ -76,8 +79,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
                   Privacy
                 </a>
               </div>
-            </div>
-
+            </div> */}
 
           </div>
 

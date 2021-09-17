@@ -5,7 +5,6 @@ Empty State - About Page
   @apply flex flex-col justify-center h-full relative max-w-sm m-auto;
   @apply text-sm;
   margin-top: -10%;
-  animation: fadein 1s ease-in;
 }
 
 .page-about-deco {
@@ -23,22 +22,22 @@ Empty State - About Page
 }
 
 .page-about p {
-   @apply opacity-80 my-4 text-gray-500 dark:text-gray-400;
+   @apply mb-4 text-gray-400;
 }
 
 .page-about h3 {
-  @apply font-semibold text-lg mb-2 text-gray-600 dark:text-gray-300;
+  @apply font-semibold text-lg mb-4 text-gray-600 dark:text-gray-300;
 }
 
 .page-about u {
-  @apply border-b border-gray-400 border-opacity-40;
+  @apply font-semibold;
   text-decoration: none;
 }
 
 .page-about-content--section {
-  @apply flex py-2;
+  @apply pb-2;
   .icon {
-    @apply hidden inline-flex justify-center items-center flex-shrink-0 text-sm mr-4 -ml-10 rounded-full;
+    @apply hidden justify-center items-center flex-shrink-0 text-sm mr-4 -ml-10 rounded-full;
     width: 28px;
     height: 28px;
   }
@@ -57,11 +56,29 @@ Empty State - About Page
 }
 
 .about-social a {
-  @apply flex flex-col justify-center items-center w-px-32 h-px-32 rounded-md;
-  @apply bg-gray-400 bg-opacity-20 ;
+  @apply flex flex-col justify-center items-center w-px-32 h-px-32 rounded-full;
+  @apply bg-gray-400 bg-opacity-10 text-gray-700 dark:text-gray-200;
   @apply hover:bg-primary-500 hover:text-white;
 }
 
 .about-social i {
   @apply text-base;
+}
+
+.about-links {
+  @apply flex mb-4 pt-4;
+  li {
+    @apply flex;
+  }
+  li + li {
+    @apply ml-2;
+  }
+  li + li::before {
+    @apply block mr-2 text-xl leading-5 opacity-50;
+    content: "\00B7";
+  }
+}
+
+.about-links a {
+  @apply text-gray-400 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300;
 }

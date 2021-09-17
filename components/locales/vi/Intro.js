@@ -45,37 +45,45 @@ export default function Intro({ dataStore }) {
           </div>
         </div>
 
-        <div className="page-about-content--section">
-          {/* <h3 className="text-color-title">Phiên bản hiện tại</h3>
-          <p>
-            - Bản daily built mới nhất cho thị trường Việt Nam tại:{" "}
-            <a
-              className="link"
-              target="_blank"
-              href="https://rada.co/vi"
-              rel="noreferrer"
-            >
-              https://rada.co/vi
-            </a>
-          </p>
-          <p>
-            - Phiên bản dành cho cho những người sử dụng tiếng Anh sẽ được hoàn
-            thiện tại:{" "}
-            <a
-              className="link"
-              target="_blank"
-              href="https://rada.co/en"
-              rel="noreferrer"
-            >
-              https://rada.co/en
-            </a>
-          </p> */}
+        {/* <h3 className="text-color-title">Phiên bản hiện tại</h3>
+        <p>
+          - Bản daily built mới nhất cho thị trường Việt Nam tại:{" "}
+          <a
+            className="link"
+            target="_blank"
+            href="https://rada.co/vi"
+            rel="noreferrer"
+          >
+            https://rada.co/vi
+          </a>
+        </p>
+        <p>
+          - Phiên bản dành cho cho những người sử dụng tiếng Anh sẽ được hoàn
+          thiện tại:{" "}
+          <a
+            className="link"
+            target="_blank"
+            href="https://rada.co/en"
+            rel="noreferrer"
+          >
+            https://rada.co/en
+          </a>
+        </p> */}
 
-          {/* <h3 className="text-color-title">Cộng đồng</h3>
-          <p>
-            Tham gia vào cộng đồng Rada.co để tham gia thảo luận, yêu cầu tính
-            năng mới và nhận những cập nhật mới nhất về dự án.
-          </p> */}
+        {/* <h3 className="text-color-title">Cộng đồng</h3>
+        <p>
+          Tham gia vào cộng đồng Rada.co để tham gia thảo luận, yêu cầu tính
+          năng mới và nhận những cập nhật mới nhất về dự án.
+        </p> */}
+
+          <div className="page-about-content--section">
+
+          <ul className="about-links">
+            <li><a href="#">Copyright</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+          </ul>
+
           <div className="about-social">
           <a
               className="btn-facebook" 

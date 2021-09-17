@@ -70,7 +70,7 @@ Navbars on Mobile Tablet
   flex-basis: var(--navbar-height);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .page-details .pane-bottom {
     @apply hidden; /* Hide Mobile Navbar for more immersive look */
   }
@@ -132,6 +132,16 @@ Main Panels
   height: var(--toolbar-height);
 }
 
+/* Hide content toolbar on Tablet */
+.pane-content--sec--top {
+  @apply md:hidden lg:flex;
+}
+
+/* Unhide content toolbar when Reading */
+.page-details .pane-content--sec--top {
+  @apply md:flex;
+}
+
  
 /* 
 Card List Area
@@ -188,7 +198,7 @@ Reader / Page Area
 /* 
 Main Layout when scrolling
 --------------------------------------------- */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
   .pane-center--top {
     transition: margin-top 150ms linear;

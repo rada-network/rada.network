@@ -12,7 +12,7 @@ export default function Intro({ dataStore }) {
           <span className="icon"><i class="fa-solid fa-info"></i></span>
           <div>
             <h3>What is RADA?</h3>
-            <p>Rada is a news aggregator for Blockchain and Crypto investors.</p>
+            <p>RADA is a news aggregator for Blockchain and Crypto investors.</p>
           </div>
         </div>
 
@@ -52,11 +52,13 @@ export default function Intro({ dataStore }) {
         </p> */}
 
         <div className="page-about-content--section">
-          {/* <h3>Community</h3>
-          <p>
-            Join the Rada.co community to join discussions, request new features
-            and get the latest updates about the project.
-          </p> */}
+
+          <ul className="about-links">
+            <li><a href="#">Copyright</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+          </ul>
+
           <div className="about-social">
             <a
               className="btn-facebook" 
@@ -93,6 +95,7 @@ export default function Intro({ dataStore }) {
               <i className="fab fa-medium-m" />
             </a>
           </div>
+
         </div>
 
       </div>
