@@ -15,7 +15,7 @@ Nav Item
 */
 .nav-item {
   @apply relative flex flex-col lg:flex-row items-center w-full h-full px-2 py-0.5 lg:py-2;
-  @apply font-medium leading-normal whitespace-nowrap;
+  @apply font-medium lg:font-semibold leading-normal whitespace-nowrap;
   @apply opacity-80 lg:opacity-50;
   @apply hover:opacity-100;
   @apply lg:h-9;
@@ -55,7 +55,7 @@ Nav Item
 Nav Item Active 
 */
 .nav-item-active {
-  @apply text-primary-700 text-opacity-100 font-bold;
+  @apply text-primary-700 text-opacity-100 font-semibold;
   @apply dark:text-primary-400 dark:text-opacity-100;
   @apply opacity-100;
 }

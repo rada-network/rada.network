@@ -1,3 +1,7 @@
+/*
+Content Elements
+*/
+
 @import '_presets';
 
 /*
@@ -6,18 +10,61 @@ Lists Styles
 .list-group {
 }
 
-.list-group-item {
-  @apply flex justify-between items-center px-1 py-3;
-  @apply border-b border-gray-100;
+.list-group--link {
+  @apply block cursor-pointer;
 }
 
-.list-group-sm .list-group-item {
-  @apply px-1 py-2;
+.list-group--link:hover {
+  @apply bg-shadeyellow-100 dark:bg-deeppurple-500;
 }
 
-.list-group-v .list-group-item {
-  @apply flex flex-col justify-between items-center px-1 py-4;
+.list-group--item {
+  @apply flex justify-between items-center;
+  @apply p-4;
+  @apply border-b border-gray-500 border-opacity-10;
 }
+
+.list-group--item--title {
+  @apply flex items-center text-xs uppercase font-medium;
+}
+
+.list-group--item--text {
+  @apply text-sm mt-2 line-clamp-3;
+}
+
+.list-group--item--media {
+  @apply flex justify-center items-center w-px-32 h-px-32 mr-4 rounded-full flex-shrink-0 overflow-hidden;
+  @apply bg-primary-100 text-primary-500;
+  img {
+    @apply object-cover h-full;
+  }
+  .icon {
+    @apply text-base;
+  }
+}
+
+
+/*
+Lists Group Compact
+-------------------------------- */
+.list-group-sm {
+  @extend .list-group;
+}
+
+.list-group-sm--link {
+  @extend .list-group--link;
+}
+
+.list-group-sm--link:hover {
+  @apply bg-gray-50;
+}
+
+.list-group-sm--item {
+  @extend .widget-list--item;
+  @apply px-4 py-3;
+}
+
+
 
 
 /* 
@@ -320,7 +367,7 @@ Avatars
 .avatar,
 .avatar-sm,
 .avatar-xs,
-.avatar-xxs {
+.avatar-2xs {
   @apply inline-flex flex-shrink-0 justify-items-center items-center justify-center overflow-hidden;
   @apply rounded-full;
 }
@@ -337,10 +384,21 @@ Avatars
   @extend %Img24;
 }
 
-.avatar-xxs {
+.avatar-2xs {
   @extend %Img16;
 }
 
+.avatar-lg {
+  @extend %Img48;
+}
+
+.avatar-xl {
+  @extend %Img64;
+}
+
+.avatar-2xl {
+  @extend %Img80;
+}
 
 
 /*

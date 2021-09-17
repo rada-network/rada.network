@@ -1,3 +1,59 @@
+/* 
+Pages
+--------------------------------------------- */
+/* 
+Page Layout
+*/
+.page {
+  @apply w-full h-full relative;
+  /* @apply bg-white dark:bg-gray-900; */
+}
+
+.page-header {
+  @apply md:flex;
+}
+
+.page-title {
+  @apply text-xl md:text-2xl font-semibold mb-1;
+}
+
+.page-back {
+  @apply flex items-center pl-0 pr-2 md:pl-2 xl:pl-3;
+}
+
+.page-tabs {
+  @apply pl-2 md:pl-4 lg:pl-4 xl:pl-12 text-sm;
+}
+
+.page-back + .page-tabs {
+  @apply pl-3 ml-1 lg:pl-4 lg:ml-3;
+  &:before {
+    @apply block absolute bg-gray-400 bg-opacity-30;
+    content: " ";
+    width: 1px;
+    height: 50%;
+    left: 0;
+    top: 28%;
+  }
+}
+
+/* Page Full */
+.page-full {
+  @apply flex justify-center;
+  @apply bg-white dark:bg-gray-900;
+
+  .page-full--inner {
+    @apply w-full max-w-screen-sm pt-4 lg:pt-8;
+  }
+  .page-section {
+    @apply py-4 text-sm;
+  }
+  .card + .card {
+    @apply mt-8;
+  }
+}
+
+
 /*
 Empty State - About Page
 */

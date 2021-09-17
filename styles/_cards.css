@@ -167,36 +167,39 @@ Card Social
   @apply relative transition-all;
   @apply border-t border-gray-500 border-opacity-10 md:border md:border-opacity-10 md:rounded;
   @apply lg:hover:bg-shadeyellow-100;
+
+
+  .card-body {
+    @apply h-full justify-items-stretch py-4;
+  }
+  
+  .card-header {
+    @apply p-0 flex flex-row justify-between items-center;
+  }
+  
+  .card-footer {
+    @apply w-full text-sm p-0;
+  }
+  
+  .card-body--header {
+    @apply mb-4 flex flex-row justify-between;
+  }
+  
+  .card-body--main {
+    @apply flex flex-col pb-1;
+  }
+  
+  .card-title {
+    @apply text-sm md:text-base font-semibold;
+  }
+  
+  .card-text {
+    @apply text-sm text-gray-700 transition-colors;
+    @apply dark:text-gray-300;
+  }
+
 }
 
-.card-social .card-body {
-  @apply h-full justify-items-stretch py-4;
-}
-
-.card-social .card-header {
-  @apply p-0 flex flex-row justify-between items-center;
-}
-
-.card-social .card-footer {
-  @apply w-full text-sm p-0;
-}
-
-.card-social .card-body--header {
-  @apply mb-4 flex flex-row justify-between;
-}
-
-.card-social .card-body--main {
-  @apply flex flex-col pb-1;
-}
-
-.card-social .card-title {
-  @apply text-sm md:text-base font-semibold;
-}
-
-.card-social .card-text {
-  @apply text-sm text-gray-700 transition-colors;
-  @apply dark:text-gray-300;
-}
 
 /* Media */
 .card-social .card-media {
@@ -219,39 +222,60 @@ Card Social
 }
 
 /* Metadata */
-.card-social .metadata {
-  @apply mr-1.5;
-}
+.card-social {
+  .metadata {
+    @apply mr-1.5;
+  }
 
-.card-social .metadata + .metadata {
-  &::before {
-    @apply mr-1 leading-4;
+  .metadata + .metadata {
+    &::before {
+      @apply mr-1 leading-4;
+    }
+  }
+
+  .card-header .metadata-wrapper {
+    @apply pr-5 ;
+  }
+
+  .card-header .metadata-wrapper + .metadata-wrapper {
+    @apply pr-0 flex-wrap;
+  }
+
+  .card-footer .metadata-wrapper {
+    @apply w-full justify-between;
   }
 }
 
-.card-social .card-header .metadata-wrapper {
-  @apply pr-5 ;
-}
-
-.card-social .card-header .metadata-wrapper + .metadata-wrapper {
-  @apply pr-0 flex-wrap;
-}
-
-.card-social .card-footer .metadata-wrapper {
-  @apply w-full justify-between;
-}
-
 /* Card Icon */
-.card-social .icon-twitter {
-  @apply text-lg text-blue-200 transition transform scale-90;
-  @apply absolute right-4 top-4;
-}
+.card-social {
+  .icon-twitter {
+    @apply text-lg text-blue-200 transition transform scale-90;
+    @apply absolute right-4 top-4;
+  }
 
-.card-social:hover .icon-twitter {
-  @apply text-blue-500 scale-100;
+  &:hover .icon-twitter {
+    @apply text-blue-500 scale-100;
+  }
 }
 
 .dark .card-social .icon svg {
   stroke: #fff;
   fill: #fff;
+}
+
+
+/* Cards in Page 
+--------------------------------------*/
+.card-pagecontent {
+  @apply flex-col p-0;
+  @apply border border-gray-400 border-opacity-20 rounded-md;
+
+  .card-header {
+    @apply p-4;
+  }
+
+  .card-title {
+    @apply font-semibold text-base;
+  }
+
 }

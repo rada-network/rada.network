@@ -95,28 +95,27 @@ const Layout = observer((props) => {
                       <div className="grid">
                         <div className="list-group">
 
-                          {/* Wallet connected --> Show DisConnect Buttons */}
+                          {/* Wallet not connected --> Show Connect Buttons */}
                           <div className="list-group--item">
                             <div className="list-group--item--title w-1/3">
                               <div className="list-group--item--media">
-                                <span className="icon"><i class="fa-solid fa-wallet"></i></span>
+                                <span className="icon"><i class="fa-duotone fa-wallet"></i></span>
                               </div>
                               <label for="blockchain-wallet" className="text-color-desc">
                                 Wallet
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative flex items-center">
-                                <strong>0xDB33...345f</strong>
-                                <span className="badge relative -top-0.5 ml-2">ETHEREUM</span>
+                              <div className="relative">
+                                <span>No wallet connected</span>
                               </div>
                             </div>
                             <div className="flex-1 text-right">
-                              <btn className="btn nav-btn">Disconnect</btn>
+                              <btn className="btn nav-btn">Connect</btn>
                             </div>
                           </div>
 
-                          {/* Google disconnected --> Show Connect Buttons */}
+                          {/* Twitter connected --> Show DisConnect Buttons */}
                           <div className="list-group--item">
                             <div className="list-group--item--title w-1/3">
                               <div className="list-group--item--media">
@@ -132,7 +131,7 @@ const Layout = observer((props) => {
                               </div>
                             </div>
                             <div className="flex-1 text-right">
-                              <btn className="btn nav-btn">Connect</btn>
+                              <btn className="btn nav-btn">Disconnect</btn>
                             </div>
                           </div>
 
@@ -156,7 +155,7 @@ const Layout = observer((props) => {
                             </div>
                           </div>
 
-                          {/* Twitter connected --> Show DisConnect Buttons */}
+                          {/* Google disconnected --> Show Connect Buttons */}
                           <div className="list-group--item">
                             <div className="list-group--item--title w-1/3">
                               <div className="list-group--item--media">
@@ -183,13 +182,9 @@ const Layout = observer((props) => {
                   </div>
 
                   <div className="card card-pagecontent">
-
-                    <div className="card-header">
-                      <span className="card-title">
-                        Activities
-                      </span>
-                    </div>
-
+                    <span className="card-title">
+                      Activities
+                    </span>
                   </div>
 
                 </div>

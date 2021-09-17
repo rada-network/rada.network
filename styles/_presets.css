@@ -10,49 +10,49 @@ Global Padding
 Media 
 */
 %Img16 {
-  @apply w-px-16 h-px-16 inline-block overflow-hidden;
+  @apply w-px-16 h-px-16 overflow-hidden;
 }
 
 %Img24 {
-  @apply w-px-24 h-px-24 inline-block overflow-hidden;
+  @apply w-px-24 h-px-24 overflow-hidden;
 }
 
 %Img32 {
-  @apply w-px-32 h-px-32 inline-block overflow-hidden;
+  @apply w-px-32 h-px-32 overflow-hidden;
 }
 
 %Img40 {
-  @apply w-px-40 h-px-40 inline-block overflow-hidden;
+  @apply w-px-40 h-px-40 overflow-hidden;
 }
 
 %Img48 {
-  @apply w-px-48 h-px-48 inline-block overflow-hidden;
+  @apply w-px-48 h-px-48 overflow-hidden;
 }
 
 %Img56 {
-  @apply w-px-56 h-px-56 inline-block overflow-hidden;
+  @apply w-px-56 h-px-56 overflow-hidden;
 }
 
 %Img64 {
-  @apply w-px-64 h-px-64 inline-block overflow-hidden;
+  @apply w-px-64 h-px-64 overflow-hidden;
 }
 
 %Img80 {
-  @apply w-px-80 h-px-80 inline-block overflow-hidden;
+  @apply w-px-80 h-px-80 overflow-hidden;
 }
 
 %Img88 {
-  @apply w-px-88 h-px-88 inline-block overflow-hidden;
+  @apply w-px-88 h-px-88 overflow-hidden;
 }
 
 %Img96 {
-  @apply w-px-96 h-px-96 inline-block overflow-hidden;
+  @apply w-px-96 h-px-96 overflow-hidden;
 }
 
 %Img104 {
-  @apply w-px-104 h-px-104 inline-block overflow-hidden;
+  @apply w-px-104 h-px-104 overflow-hidden;
 }
 
 %Img128 {
-  @apply w-px-128 h-px-128 inline-block overflow-hidden;
+  @apply w-px-128 h-px-128 overflow-hidden;
 }
