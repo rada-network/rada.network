@@ -61,7 +61,7 @@ Generic Styles
 }
 
 .card-badges {
-  @apply ml-2 -mt-1;
+  @apply relative ml-2 -top-1;
 }
 
 .card-badges .badge {
@@ -74,7 +74,7 @@ Card Post (News, Projects,...)
 ----------------------------------------------*/
 .card-post {
   @apply border-t border-b border-t-transparent border-b-gray-400 border-opacity-10 cursor-pointer;
-  @apply space-x-3 md:space-x-4;
+  @apply px-3 md:px-4 space-x-3 md:space-x-4;
   @apply hover:bg-yellow-100 hover:bg-opacity-20 dark:hover:bg-deeppurple-700;
 }
 
@@ -99,6 +99,23 @@ a:visited .card-post,
   max-width: 140px;
 }
 
+/* Coin Badge */
+.card-post .badge-coin {
+  @apply opacity-80;
+}
+
+.card-post.active .badge-coin,
+.card-post:hover .badge-coin {
+  @apply opacity-100 shadow-sm;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-post .badge-coin {
+    @apply opacity-50;
+  }
+}
+
+
 /* has Comment */
 .card-post .metadata-commentcount {
   @apply mr-1 hidden transition;
@@ -111,6 +128,10 @@ a:visited .card-post,
 /* has Vote */
 .card-post .metadata-votecount {
   @apply mr-1 hidden transition;
+  .icon {
+    @apply text-base relative;
+    bottom: -1px;
+  }
 }
 
 .card-post.hasVote .metadata-votecount {

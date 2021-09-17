@@ -168,6 +168,12 @@ a.badge {
   @apply bg-transparent;
 }
 
+.badge-coin {
+  @apply px-2 rounded;
+  @apply text-gray-500 dark:text-gray-200 bg-transparent border border-gray-400 border-opacity-30;
+  @apply text-xxs font-semibold;
+}
+
 .badge-rada {
   @apply bg-gradient-to-r from-purple-500 to-yellow-400;
   @apply text-white;

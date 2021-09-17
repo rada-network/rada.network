@@ -113,31 +113,36 @@ Tabbar
 }
 
 .tabbar-main {
-  @apply flex justify-evenly items-center space-x-4 lg:space-x-6;
+  @apply flex items-center space-x-2;
 }
 
 .tab-item {
-  @apply flex flex-1 justify-center items-center px-0 py-1 transition-all relative;
+  @apply flex flex-1 justify-center items-center px-2 lg:px-3 py-1 transition-all relative whitespace-nowrap rounded-md;
   @apply font-medium opacity-50 hover:opacity-100;
-  &:hover {
-    @apply opacity-100;
-  }
 }
 
-.tab-item:after {
-  @apply block absolute bottom-0 left-0 right-0;
+/* .tab-item:after {
+  @apply block absolute bottom-0 left-auto right-auto;
   @apply bg-gray-800 dark:bg-white;
   content: " ";
-  height: 3px;
-  width: 0;
+  height: 0;
+  width: 100%;
   transition: all 150ms linear;
+} */
+
+.tab-item--divider {
+  @apply block;
+  @apply bg-gray-500 bg-opacity-20;
+  height: 1rem;
+  width: 1px;
 }
 
+.tab-item:hover,
 .tab-item--active {
   @apply opacity-100;
-  &:after {
-    width: 100%;
-  }
+  /* &::after {
+    height: 3px;
+  } */
 }
 
 .tab-item--text {

@@ -56,8 +56,10 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
             {dataStore !== undefined && dataStore.showDetail ?
               <div className="page-back flex-shrink-0">
                 <div className="btn" onClick={(e) => {handleBack(e)}}>
-                  <span className="btn--caret-left"></span>
-                  <span className="btn--text">{t("back")}</span>
+                  <span className="icon">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </span>
+                  <span className="btn--text sr-only">{t("back")}</span>
                 </div>
               </div>
               : ""
@@ -67,19 +69,29 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
             HieuNN:
             Example of Page Tabs Here 
             */}
-            {/* <div className="tabbar page-tabs">
+            <div className="tabbar page-tabs">
               <div className="tabbar-main">
-                <a href="#" className="tab-item">
-                  Profile
-                </a>
+
                 <a href="#" className="tab-item tab-item--active">
-                  About
+                  Bài Viết
                 </a>
+
+                <span className="tab-item--divider" />
+
                 <a href="#" className="tab-item">
-                  Privacy
+                  AXS
                 </a>
+
+                <a href="#" className="tab-item">
+                  Team
+                </a>
+
+                <a href="#" className="tab-item">
+                  Social
+                </a>
+                
               </div>
-            </div> */}
+            </div>
 
           </div>
 

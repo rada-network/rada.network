@@ -1,6 +1,10 @@
 /* 
 Pages
 --------------------------------------------- */
+
+/* 
+Pages
+--------------------------------------------- */
 /* 
 Page Layout
 */
@@ -18,23 +22,21 @@ Page Layout
 }
 
 .page-back {
-  @apply flex items-center pl-0 pr-2 md:pl-2 xl:pl-3;
+  @apply flex items-center -ml-2 md:-ml-1 xl:ml-3;
+  .btn {
+    @apply py-1.5 p-3 hover:bg-gray-400 hover:bg-opacity-20 rounded-full opacity-100;
+  }
 }
 
 .page-tabs {
-  @apply pl-2 md:pl-4 lg:pl-4 xl:pl-12 text-sm;
+  @apply hidden text-sm;
+}
+
+.page-details .page-tabs {
+  @apply flex; /* Temporary Hide the Tab on Home */
 }
 
 .page-back + .page-tabs {
-  @apply pl-3 ml-1 lg:pl-4 lg:ml-3;
-  &:before {
-    @apply block absolute bg-gray-400 bg-opacity-30;
-    content: " ";
-    width: 1px;
-    height: 50%;
-    left: 0;
-    top: 28%;
-  }
 }
 
 /* Page Full */

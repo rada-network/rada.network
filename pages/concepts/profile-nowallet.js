@@ -181,12 +181,6 @@ const Layout = observer((props) => {
 
                   </div>
 
-                  <div className="card card-pagecontent">
-                    <span className="card-title">
-                      Activities
-                    </span>
-                  </div>
-
                 </div>
 
               </div>

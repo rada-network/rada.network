@@ -224,20 +224,11 @@ Main Layout when scrolling
       @apply pt-12;
     }
 
-    .page-back {
-      transition: all 0.2s linear;
-      @apply fixed top-0 w-full z-50;
-      @apply pt-5 pb-1;
-    }
-    
   }
 
   body.page-details.details-top-away {
     .page {
       @apply pt-9;
-    }
-    .page-back {
-      @apply shadow-sm py-2;
     }
   }
 
@@ -397,30 +388,6 @@ Comments List
 */
 .section-comments {
   @apply border-t border-gray-500 border-opacity-10;
-}
-
-/* 
-Pages
---------------------------------------------- */
-/* 
-Page Layout
-*/
-.page {
-  @apply w-full h-full relative;
-  /* @apply bg-white dark:bg-deepgray-50; */
-}
-
-.page-header {
-  @apply md:flex;
-}
-
-.page-title {
-  @apply text-xl md:text-2xl font-semibold mb-1;
-}
-
-.page-back {
-  @apply flex items-center px-4 pt-4 pb-2 md:px-6 md:pt-2 md:pb-2 md:mt-2;
-  @apply bg-white dark:bg-deepgray-50 bg-opacity-80 backdrop-blur;
 }
 
 

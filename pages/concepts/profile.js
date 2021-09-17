@@ -87,6 +87,20 @@ const Layout = observer((props) => {
 
                     <div className="card-header">
                       <span className="card-title">
+                        Information
+                      </span>
+                    </div>
+
+                    <div className="card-body">
+                      
+                    </div>
+
+                  </div>
+
+                  <div className="card card-pagecontent">
+
+                    <div className="card-header">
+                      <span className="card-title">
                         Connections
                       </span>
                     </div>
@@ -178,16 +192,6 @@ const Layout = observer((props) => {
 
                         </div>
                       </div>
-                    </div>
-
-                  </div>
-
-                  <div className="card card-pagecontent">
-
-                    <div className="card-header">
-                      <span className="card-title">
-                        Activities
-                      </span>
                     </div>
 
                   </div>
