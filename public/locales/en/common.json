@@ -10,5 +10,11 @@
   "login" : "Login",
   "search not found" : " not found in any document.",
   "back" : "Back",
-  "visit website": "Visit Website"
+  "visit website": "Visit Website",
+  "hello": "Welcome",
+  "information": "Information",
+  "connection": "Connection",
+  "connect" : "Connect",
+  "disconnect" : "Disconnect",
+  "no connection" : "No {{provider}} account connected"
 }

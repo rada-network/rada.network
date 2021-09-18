@@ -10,5 +10,11 @@
   "login" : "Đăng nhập",
   "search not found" : " Không tìm thấy trong tài liệu nào.",
   "back" : "Quay lại",
-  "visit website": "Truy cập bài viết"
+  "visit website": "Truy cập bài viết",
+  "hello": "Xin chào",
+  "information": "Thông tin",
+  "connection": "Kết nối",
+  "connect" : "Kết nối",
+  "disconnect" : "Ngắt kết nối",
+  "no connection" : "Chưa kết nối tài khoản {{provider}}"
 }

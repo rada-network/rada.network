@@ -98,12 +98,12 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
           </div>
 
           <Screen from="lg">
-          <div className="flex items-center space-x-2">
-            {/* <ThemeSwitch /> */}
-            <div className="relative">
-              <Profile />
+            <div className="flex items-center space-x-2">
+              {/* <ThemeSwitch /> */}
+              <div className="relative">
+                <Profile />
+              </div>
             </div>
-          </div>
           </Screen>
 
         </div>

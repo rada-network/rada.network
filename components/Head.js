@@ -11,7 +11,7 @@ export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
   return (
     <>
     <HTMLHead>
-      <title>{title || ""}</title>
+      <title>{meta.title || ""}</title>
       <meta name="description" content={description || ""}/>
       <meta name="keyword" content={keyword || ""}/>
       {"og:type" in meta && <meta property="og:type" content={meta["og:type"]} />}

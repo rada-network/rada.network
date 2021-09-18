@@ -10,10 +10,10 @@ export const LanguageSwitch = observer(({dataStore}) => {
   const router = useRouter()
   const handleChangeLanguage = (e) => {
     const lang = e.currentTarget.getAttribute("lang")
-    dataStore.lang = lang
+    ///dataStore.lang = lang
     setCookie("NEXT_LOCALE",lang,{path : "/",maxAge: 24*7*3600})
-    router.push(router.asPath,undefined,{locale:lang})
     buttonRef.current?.click()
+    router.push(router.asPath,undefined,{locale:lang})
   }
   let langDisplay = ''
   if (dataStore.lang === 'vi' ){

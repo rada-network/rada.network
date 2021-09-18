@@ -12,6 +12,22 @@ const mutation =  gql`
   }
 `
 
+const getUserGql =  gql`
+  query{
+    me {
+      id
+      name
+      image
+      email
+      account { 
+      provider
+      oauth_profile
+    }
+    }
+    
+  }
+`
+
 
 export async function getTokenFromYourAPIServer(profile, account, oauthProfile) {
     const client = getClient();
@@ -24,4 +40,12 @@ export async function getTokenFromYourAPIServer(profile, account, oauthProfile) 
         }
     })
     return data.data.createOrUpdateUser
+}
+
+export async function getCurrentUser() {
+  const client = getClient();
+  let data = await client.query({
+      query : getUserGql
+  })
+  return data.data.me
 }

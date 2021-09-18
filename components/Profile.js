@@ -11,8 +11,10 @@ import Avatar from "boring-avatars";
 
 import ReactTooltip from 'react-tooltip'
 import {useTranslation} from "next-i18next";
-import { signOut, getProviders, signIn,getSession } from "next-auth/client"
+import { getProviders, signIn } from "next-auth/client"
 import { useSession} from "next-auth/client"
+import Usermenu from "./Usermenu"
+import {useCookies} from "react-cookie";
 
 export default function Profile(){
   const [ session, loading ] = useSession()
@@ -31,9 +33,8 @@ export default function Profile(){
 		access_token : session.access_token,
 		walletAddress : "",
 	})
-	if (typeof localStorage !== 'undefined') {
-		localStorage.setItem('token', session.access_token)
-	}
+	const [cookies, setCookie] = useCookies(['access_token']);
+	setCookie("access_token",session.access_token,{path : "/",maxAge: 24*7*3600})
   return (
 	<>
 	  <ConnectedButton user={session.user} />
@@ -44,12 +45,7 @@ export default function Profile(){
 const ConnectedButton = ({user}) => {
 	if (user.id === "") return null
 	return (
-	  <div className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
-		<WalletAvatar user={user} />
-		<span className="btn--text text-xs ml-2">{user.name}</span>
-		<span className="icon"><a onClick={e => signOut()}><i className="fa-duotone fa-sign-out" /></a></span>
-		<span className="hidden" >Logout</span>
-	  </div>
+	  <Usermenu user={user} />
 	)
 }
 
