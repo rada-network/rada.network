@@ -197,8 +197,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
     e.preventDefault()
     e.stopPropagation()
     store.setShallowConnect(true)
-    dataStore.showDetail = true;
-    detailStore.data = obj
+    detailStore.data = Object.assign({},obj);
     detailStore.type = type
     const meta = utils.createSiteMetadata({page:"ItemDetail",data : {...obj,type},dataStore})
     document.title = meta.title

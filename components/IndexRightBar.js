@@ -9,6 +9,7 @@ import {useStore} from "../lib/useStore";
 import {useRouter} from "next/router";
 import { useSession } from "next-auth/client";
 import Profile from "./Profile";
+import _ from "lodash";
 
 
 export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
@@ -26,16 +27,15 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   const router = useRouter()
   const store = useStore()
   useEffect(() => {
-    if (dataStore.showDetail) {
+    if (!_.isEmpty(detailStore.data)) {
       document.body.classList.add('page-details')
     } else {
       document.body.classList.remove('page-details')
     }
-  }, [dataStore.showDetail])
+  }, [detailStore.data])
   
   const handleBack = (e) => {
     detailStore.data = {}
-    dataStore.showDetail = false
     store.setShallowConnect(true)
     router.push(back,back,{shallow:true})
   }
@@ -44,14 +44,14 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
   return (
     <>
-      <div className={`pane-content--sec` + (dataStore.showDetail ? " pane-content-active" : "")}>
+      <div className={`pane-content--sec` + (!_.isEmpty(detailStore.data) ? " pane-content-active" : "")}>
 
         <div className={`pane-content--sec--top`}>
 
           <div className="flex h-full">
 
             {/* Pageback Here */}
-            {dataStore !== undefined && dataStore.showDetail ?
+            {dataStore !== undefined && !_.isEmpty(detailStore.data) ?
               <div className="page-back flex-shrink-0">
                 <div className="btn" onClick={(e) => {handleBack(e)}}>
                   <span className="btn--caret-left"></span>
@@ -91,11 +91,11 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
         </div>
 
 
-        {dataStore.showDetail &&
+        {!_.isEmpty(detailStore.data) &&
           <PostListDetail detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
         }
 
-        <div className={`pane-content--sec--main scrollbar ` + (dataStore.showDetail ? "hidden" : "")}>
+        <div className={`pane-content--sec--main scrollbar ` + (!_.isEmpty(detailStore.data) ? "hidden" : "")}>
 
 
           <Intro dataStore={dataStore} />

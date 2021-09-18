@@ -7,19 +7,20 @@ import {useEffect, useState} from "react";
 import {ThreadsStore, UserStore} from "../../lib/store";
 import {useTranslation} from "next-i18next";
 
-export const CommentList =({detailStore,dataStore}) => {
-  let item = detailStore.data
-
+export const CommentList = ({detailStore,dataStore}) => {
   const [comments,setComments] = useState([]);
   useEffect(() => {
     const client = getClient()
+    console.log("load comment")
     client.query({
       query : itemComments,
-      variables : {itemId : item.item.id,orderBy : {createdAt : "desc"}}
+      variables : {itemId : detailStore.data.item.id,orderBy : {createdAt : "desc"}},
+      fetchPolicy: "no-cache"
     }).then(function(res){
       setComments(res.data.commentFeed)
     })
-  },[item])
+  },[detailStore.data])
+  let item = detailStore.data
   let threads = {}
   threads[item.item.id] = []
   const ItemCommentStore = ThreadsStore.create({
@@ -27,6 +28,7 @@ export const CommentList =({detailStore,dataStore}) => {
     users: []
   });
   for (let comment of comments){
+    
     let userObj = Object.assign({}, comment.user);
     if (userObj.email === null){
       userObj.email = ""

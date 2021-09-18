@@ -114,7 +114,6 @@ const NavItem = ({className, href, children,type,dataStore,detailStore}) => {
     dataStore.type = e.currentTarget.getAttribute("datatype")
     dataStore.tweets = []
     dataStore.loadingButton = true;
-    dataStore.showDetail = false;
     detailStore.data = {}
     store.setShallowConnect(true);
     router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})

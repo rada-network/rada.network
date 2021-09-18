@@ -106,7 +106,6 @@ export const Index  = ({props,observableItemStore,voteStore,detailStore}) => {
 
     observableItemStore.tweets = props.itemFeed
     observableItemStore.type = props.type
-    observableItemStore.showDetail = false
     meta = utils.createSiteMetadata(
     {
       page : 'Explore',
@@ -120,7 +119,6 @@ export const Index  = ({props,observableItemStore,voteStore,detailStore}) => {
     observableItemStore.query = props.query
     observableItemStore.tweets = props.itemFeed
     observableItemStore.lang = props.lang
-    observableItemStore.showDetail = true
     let item = {}
     if (props.item.news !== null){
       detailStore.type = "news"

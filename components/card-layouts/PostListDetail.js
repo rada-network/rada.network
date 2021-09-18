@@ -4,25 +4,14 @@ import {CommentList} from "../comments/commentList";
 import React, {createRef, useEffect, useRef} from "react";
 // import PerfectScrollbar from "perfect-scrollbar";
 
-import {observer, useStaticRendering} from "mobx-react";
+import {observer} from "mobx-react";
 import {getSourceFromUri, getSourceVideoFromUri} from "./PostsList";
 import utils from "../../lib/util";
 import {Vote} from "../vote/Vote";
-import {useRouter} from "next/router";
-import {useStore} from "../../lib/useStore";
-
-import {
-  DesktopView,
-  isMobile,
-  MobileView
-} from "react-device-detect";
 import { useTranslation } from "next-i18next";
 
 export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
-  const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
-  const router = useRouter()
   let item = detailStore.data
-  console.log(item.item.id)
   voteStore.addVotesV2([
     {
       id : item.item.id,
@@ -31,8 +20,6 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
     }
   ])
   item.currentLang = dataStore.lang;
-  const scrollBox2 = createRef();
-  const store = useStore()
 
   const scrollRef = useRef()
   const awayCls = 'details-top-away'
@@ -53,23 +40,9 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
     return onUnload
   }, [])
 
-  useEffect(() => {
-    scrollRef.current.removeEventListener('scroll', onScroll)
-    scrollRef.current.addEventListener('scroll', onScroll)
-    return onUnload
-  }, [])
 
   useEffect(() => {
-      // make scrollbar
-      // let iframes = document.querySelectorAll('iframe')
-      // iframes.forEach((iframe) => {
-      //   // iframe.addEventListener('load', function() {
-      //   //   const iframeBody = this.contentWindow.document.body;
-      //   //   const height = Math.max(iframeBody.scrollHeight, iframeBody.offsetHeight);
-      //   //   this.style.height = `${height}px`;
-      //   // })
-      //   iframe.setAttribute("src",iframe.getAttribute("data-src"))
-      // })
+      
     if (typeof twttr.widgets !== "undefined") {
       twttr.widgets.load()
     }
@@ -88,13 +61,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
     },500)
   }
 
-  const handleBack = (e) => {
-    detailStore.data = {}
-    dataStore.showDetail = false
-    store.setShallowConnect(true)
-    router.push(back,back,{shallow:true})
-    
-  }
+
   const {t} = useTranslation()
   const date = utils.timeDifference(new Date(), new Date(item.createdAt))
   const dateTitle = utils.titleTime(item.createdAt)

@@ -8,11 +8,11 @@ import { useStore } from "../../lib/useStore";
 import {observer} from "mobx-react";
 import {UserStore} from "../../lib/store";
 import {useTranslation} from "next-i18next";
+import _ from "lodash";
 
-export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore}) => {
+export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore,detailStore}) => {
   const {t} = useTranslation("common")
   const [commentContent, setCommentContent] = useState('')
-  const user = useUser()
   const store = useStore()
   const access_token = store.user.access_token
 
@@ -80,6 +80,9 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore})
         dataStore.tweets[index].totalComment+=1
       }
     })
+    if (!_.isEmpty(detailStore.data)){
+      detailStore.data.item.totalComment+=1
+    }
   }
   return (
     <>
