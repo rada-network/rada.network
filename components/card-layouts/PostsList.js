@@ -31,49 +31,32 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
   const {t} = useTranslation("common")
   const scrollBox1 = useRef();
 
-  let ps1;
-
-  // if (!isMobile){
-  //   useEffect(() => {
-  //     // make scrollbar
-  //     ps1 = new PerfectScrollbar(scrollBox1.current, {});
-  //     scrollBox1.current.removeEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
-  //     scrollBox1.current.addEventListener('ps-y-reach-end', () => {handleLoadMoreItem()});
-  //     return () => {
-  //       ps1.destroy();
-  //     }
-  //   }, [scrollBox1]);
-  // }
-  // else{
-
   const awayCls = 'list-away-top'
-    useEffect(() =>{
-      scrollBox1.current.removeEventListener('scroll', mobileScroll);
-      scrollBox1.current.addEventListener('scroll', mobileScroll);
-      return () => {
-        document.body.classList.remove(awayCls)
+  useEffect(() =>{
+    scrollBox1.current.removeEventListener('scroll', mobileScroll);
+    scrollBox1.current.addEventListener('scroll', mobileScroll);
+    //mobileScroll()
+    return () => {
+      document.body.classList.remove(awayCls)
+      if (scrollBox1?.current) {
+        scrollBox1.current.scrollTo(0, 0)    
+        scrollBox1.current.removeEventListener('scroll', mobileScroll);
       }
-    },[scrollBox1])
+    }
+  },[dataStore.type + dataStore.currentTab])
 
-  // }
+    // }
   let lastPos = 0
   const mobileScroll = function(e){
-    const el = e.target
-    if (el.scrollTop > 100 && el.scrollTop > lastPos) {
+    const el = scrollBox1.current
+    if (el.scrollTop > 100 && el.scrollTop >= lastPos) {
       document.body.classList.add(awayCls)
     } else if (el.scrollTop < el.scrollHeight - el.clientHeight - 100 && el.scrollTop < lastPos) {
       document.body.classList.remove(awayCls)
     }
     lastPos = el.scrollTop
-    /*
-    if (e.target.scrollTop > 100) {
-        document.body.classList.add(awayCls)
-    } else {
-        document.body.classList.remove(awayCls)
-    }
-    */
 
-    const bottom = e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight +100;
+    const bottom = el.scrollHeight - el.scrollTop < el.clientHeight +100;
     if (bottom) handleLoadMoreItem()
   }
 
@@ -90,7 +73,6 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
     }).then(function (res){
       dataStore.addTweet(res.data.itemFeed)
       dataStore.loadingButton = false;
-      if (ps1) ps1.update()
     })
   }
 
