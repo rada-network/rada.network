@@ -124,18 +124,12 @@ const CardPostNormal = observer(({title, mediaUri, type, source, commentCount, v
             </span>
           </div>
 
-          {/* Tạm ẩn Badges vì chưa có Data */}
-          {/* <div className={`card-badges`}>
-            <Link href="/">
-              <span className="badge badge-btc">BTC</span>
-            </Link>
-            <Link href="/">
-              <span className="badge badge-cardano">ADA</span>
-            </Link>
-            <Link href="/">
-              <span className="badge badge-ethereum">ETH</span>
-            </Link>
-          </div> */}
+
+          <div className={`card-badges`}>
+            <a href="/">
+              <span className="badge badge-coin">AXS</span>
+            </a>
+          </div>
 
         </div>
 
@@ -160,7 +154,7 @@ const CardPostNormal = observer(({title, mediaUri, type, source, commentCount, v
             </div>
             <div className="metadata metadata-votecount">
               <span className="icon mr-1">
-                <i className="fa fa-arrow-up" />
+                <i className="fa-solid fa-caret-up" />
               </span>
               <span>{voteCount}</span>
             </div>
@@ -255,7 +249,7 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
             </div>
             <div className="metadata metadata-votecount">
               <span className="icon mr-1">
-                <i className="fa fa-arrow-up" />
+                <i className="fa-solid fa-caret-up" />
               </span>
               <span>{voteCount}</span>
             </div>

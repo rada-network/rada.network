@@ -39,7 +39,6 @@ Nav Panels
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
   @apply border-r border-gray-400 border-opacity-10 z-50;
-  /* @apply bg-gray-50 dark:bg-deepgray-200; */
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
@@ -70,13 +69,19 @@ Navbars on Mobile Tablet
   flex-basis: var(--navbar-height);
 }
 
+@media (max-width: 767px) {
+  .page-details .pane-bottom {
+    @apply hidden; /* Hide Mobile Navbar for more immersive look */
+  }
+}
+
 
 /* 
 Main Panels
 */
 .pane-center {
   @apply flex flex-auto flex-col transition;
-  @apply lg:border-r border-gray-400 border-opacity-10 z-50;
+  @apply lg:border-r border-gray-400 border-opacity-10 z-40;
 }
 
 /* Add Color to Topbar on Mobile and Tablet */
@@ -87,7 +92,7 @@ Main Panels
 }
 
 .pane-center--top {
-  @apply flex flex-shrink-0 m-0 z-10;
+  @apply flex flex-shrink-0 mt-0 z-10;
 }
 
 .pane-center--main {
@@ -124,6 +129,16 @@ Main Panels
   @apply border-b border-gray-400 border-opacity-10;
   @apply bg-white dark:bg-gray-900;
   height: var(--toolbar-height);
+}
+
+/* Hide content toolbar on Tablet */
+.pane-content--sec--top {
+  @apply md:hidden lg:flex;
+}
+
+/* Unhide content toolbar when Reading */
+.page-details .pane-content--sec--top {
+  @apply md:flex;
 }
 
  
@@ -168,7 +183,7 @@ Reader / Page Area
     @apply fixed flex;
     right: 0;
     top: var(--topbar-height);
-    bottom: var(--navbar-height);
+    bottom: 0;
   }
 }
 
@@ -182,11 +197,10 @@ Reader / Page Area
 /* 
 Main Layout when scrolling
 --------------------------------------------- */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
   .pane-center--top {
-    opacity: 1;
-    transition: all 150ms linear;
+    transition: margin-top 150ms linear;
   }
 
   /* Post Lists */
@@ -196,11 +210,16 @@ Main Layout when scrolling
     }
 
     .pane-center--top {
-      opacity: 0;
       margin-top: calc( -1 * var(--topbar-height));
     }
 
   }
+
+  /* .pane-content--main--top,
+  .pane-content--sec--top {
+    transition: all 150ms linear;
+    transition-delay: 300ms;
+  } */
 
   .list-away-top,
   .page-details {
@@ -231,7 +250,6 @@ Main Layout when scrolling
   }
 
 }
-
 
 
 /* 
@@ -351,46 +369,6 @@ Comments List
 .section-comments {
   @apply border-t border-gray-500 border-opacity-10;
 }
-
-/* 
-Pages
---------------------------------------------- */
-/* 
-Page Layout
-*/
-.page {
-  @apply w-full h-full relative;
-  /* @apply bg-white dark:bg-gray-900; */
-}
-
-.page-header {
-  @apply md:flex;
-}
-
-.page-title {
-  @apply text-xl md:text-2xl font-semibold mb-1;
-}
-
-.page-back {
-  @apply flex items-center pl-0 pr-2 md:pl-2 xl:pl-3;
-}
-
-.page-tabs {
-  @apply pl-2 md:pl-4 lg:pl-4 xl:pl-12 text-sm;
-}
-
-.page-back + .page-tabs {
-  @apply pl-3 ml-1 lg:pl-4 lg:ml-3;
-  &:before {
-    @apply block absolute bg-gray-400 bg-opacity-30;
-    content: " ";
-    width: 1px;
-    height: 50%;
-    left: 0;
-    top: 28%;
-  }
-}
-
 
 /* 
 Post Details

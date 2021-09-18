@@ -41,7 +41,9 @@ export const Vote = observer(({itemId, page,voteStore}) => {
     <button className={`btn btn-post-vote
     ${!isVote ? "" : "active"}`}
           onClick={toggleVote}>
-      <span className="icon -mb-0.5 -ml-1 text-2xl"><RiArrowUpSFill /></span>
+      <span className="icon mr-1 text-lg leading-none relative -bottom-0.5">
+        <i class="fa-solid fa-caret-up"></i>
+      </span>
       <span className="btn-post-vote_total ml-1 whitespace-nowrap">
         <span className="inline-block font-medium">{isVote? "Upvoted" : "Upvote"}</span>
         <strong className="inline-block ml-2 font-bold">{`${totalVote}`}</strong>
@@ -52,10 +54,10 @@ export const Vote = observer(({itemId, page,voteStore}) => {
     <button className={`btn btn-post-vote
     ${!isVote ? "" : "active"}`}
             onClick={toggleVote}>
-                          <span className="icon mr-1">
-                           <i className="fas fa-arrow-up"></i>
+                          <span className="icon mr-1 text-lg leading-none relative -bottom-0.5">
+                            <i class="fa-solid fa-caret-up"></i>
                           </span>
-      <span className="btn-post-vote_total ml-1 whitespace-nowrap">
+                          <span className="btn-post-vote_total ml-1 whitespace-nowrap">
                             <span className="inline-block">{isVote? "Upvoted" : "Upvote"}</span>
                             <strong className="inline-block ml-2 font-bold">
                               {totalVote}
@@ -67,7 +69,9 @@ export const Vote = observer(({itemId, page,voteStore}) => {
     <button title={isVote? "Upvoted" : "Upvote"} className={`btn btn-post-vote_sm flex flex-col  
     ${!isVote ? "" : "active"}`}
         onClick={toggleVote}>
-      <span className="icon text-xl"><RiArrowUpSFill /></span>
+      <span className="icon mr-1 text-lg leading-none relative -bottom-0.5">
+        <i class="fa-solid fa-caret-up"></i>
+      </span>
       <span className="btn-post-vote_total whitespace-nowrap">
         <strong className="inline-block text-sm">{`${totalVote}`}</strong>
       </span>

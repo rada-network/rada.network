@@ -1,58 +1,142 @@
+/* 
+Pages
+--------------------------------------------- */
+
+/* 
+Pages
+--------------------------------------------- */
+/* 
+Page Layout
+*/
+.page {
+  @apply w-full h-full relative;
+  /* @apply bg-white dark:bg-gray-900; */
+}
+
+.page-header {
+  @apply md:flex;
+}
+
+.page-title {
+  @apply text-xl md:text-2xl font-semibold mb-1;
+}
+
+.page-back {
+  @apply flex items-center -ml-2 md:-ml-1 xl:ml-3;
+  .btn {
+    @apply py-1.5 p-3 hover:bg-gray-400 hover:bg-opacity-20 rounded-full opacity-100;
+  }
+}
+
+.page-tabs {
+  @apply hidden text-sm;
+}
+
+.page-details .page-tabs {
+  @apply flex; /* Temporary Hide the Tab on Home */
+}
+
+.page-back + .page-tabs {
+}
+
+/* Page Full */
+.page-full {
+  @apply flex justify-center;
+  @apply bg-white dark:bg-gray-900;
+
+  .page-full--inner {
+    @apply w-full max-w-screen-sm pt-4 lg:pt-8;
+  }
+  .page-section {
+    @apply py-4 text-sm;
+  }
+  .card + .card {
+    @apply mt-8;
+  }
+}
+
+
 /*
 Empty State - About Page
 */
 .page-about {
-  @apply p-4 md:p-8 xl:p-16 flex flex-col h-full;
+  @apply flex flex-col justify-center h-full relative max-w-sm m-auto;
   @apply text-sm;
-  animation: fadein 1s ease-in;
+  margin-top: -10%;
 }
 
 .page-about-deco {
-  @apply hidden absolute bottom-0 left-8 right-8 xl:left-0 xl:right-0 h-full z-0;
+  @apply hidden absolute float-right z-0;
+  background-image: url("https://source.unsplash.com/collection/1459961/1600x900");
 }
 
 @media screen and (min-height: 768px) {
   .page-about-deco {
-    @apply md:block;
+    @apply block;
   }
 }
 
-.page-about .page-about-content {
-  @apply opacity-50 transition-all;
-  transition-duration: 1s;
-}
-
-.page-about:hover .page-about-content {
-  @apply opacity-90;
-}
-
 .page-about-content {
-  @apply z-10;
 }
 
 .page-about p {
-  @apply mb-2;
+   @apply mb-4 text-gray-400;
 }
 
 .page-about h3 {
-  @apply text-base mb-2;
-  @apply font-medium;
+  @apply font-semibold text-lg mb-4 text-gray-600 dark:text-gray-300;
 }
 
-.page-about p + h3 {
-  @apply mt-4;
+.page-about u {
+  @apply font-semibold;
+  text-decoration: none;
+}
+
+.page-about-content--section {
+  @apply pb-2;
+  .icon {
+    @apply hidden justify-center items-center flex-shrink-0 text-sm mr-4 -ml-10 rounded-full;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.content-section--1 .icon {
+  @apply bg-purple-100 text-primary-700;
+}
+
+.content-section--2 .icon {
+  @apply bg-yellow-100 text-yellow-500;
 }
 
 .about-social {
-  @apply flex items-center space-x-4 mt-8;
+  @apply flex items-center space-x-4 mt-2;
 }
 
 .about-social a {
-  @apply flex flex-col justify-center items-center w-px-32 h-px-32;
-  @apply bg-gray-400 bg-opacity-20 rounded;
-  @apply hover:bg-primary-700 hover:text-white;
+  @apply flex flex-col justify-center items-center w-px-32 h-px-32 rounded-full;
+  @apply bg-gray-400 bg-opacity-10 text-gray-700 dark:text-gray-200;
+  @apply hover:bg-primary-500 hover:text-white;
 }
 
 .about-social i {
   @apply text-base;
+}
+
+.about-links {
+  @apply flex mb-4 pt-4;
+  li {
+    @apply flex;
+  }
+  li + li {
+    @apply ml-2;
+  }
+  li + li::before {
+    @apply block mr-2 text-xl leading-5 opacity-50;
+    content: "\00B7";
+  }
+}
+
+.about-links a {
+  @apply text-gray-400 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300;
 }
