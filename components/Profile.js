@@ -67,10 +67,10 @@ const NotConnectedButton = observer(({}) => {
 	const closeModal = () => { store.user.showConnect(false);  ReactTooltip.hide() }
 	return (
 	<>
-	<div onClick={ openModal } className="btn nav-btn btn-connect-wallet" aria-expanded="false" aria-haspopup="true">
-	  <span className="icon"><i className="fa-duotone fa-wallet" /></span>
-	  <span className="btn--text">{t("login")}</span>
-	</div>
+	<div onClick={ openModal } className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
+    <span className="icon"><i className="fa-duotone fa-wallet" /></span>
+    <span className="btn--text">{t("login")}</span>
+  </div>
   
 	<Transition show={isOpen} as={Fragment}>
 	  <Dialog
@@ -191,9 +191,9 @@ const NotConnectedButton = observer(({}) => {
 						</ul>
 					  </div> */}
   
-					  <div className={`divider`}>
+					  {/* <div className={`divider`}>
 						<span>Or Connect with</span>
-					  </div>
+					  </div> */}
   
 					  <div className={`${styles.social_login}`} ref={btnRef}>
 					  {Object.values(providers).map((provider) => (
