@@ -1,18 +1,18 @@
 import React, {useCallback, useEffect, useMemo, useState, createRef, useRef} from 'react';
+import Link from 'next/link'
 
 //ReactIcons
 import {observer} from "mobx-react";
 import {CardPost, CardPostLoader} from "../cards/Post";
-
-import "perfect-scrollbar/css/perfect-scrollbar.css";
 import SearchInput from "../search";
+
 import {getItems} from "../../data/query/getItem";
 import {HOME_ITEM_TAKE} from "../../config/paging";
-import PerfectScrollbar from "perfect-scrollbar";
+
 import utils from "../../lib/util";
 import {useRouter} from "next/router";
 import {useStore} from "../../lib/useStore";
-import { isMobile } from "react-device-detect";
+
 import { useTranslation } from 'next-i18next';
 import { data } from 'autoprefixer';
 
@@ -100,7 +100,6 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
   return (
     <>
       <div className={`pane-content--main--top`}>
-
         <div className="search-wrapper">
           {/* Search */}
           <SearchInput dataStore={dataStore} detailStore={detailStore} voteStore={voteStore}/>
@@ -109,28 +108,20 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
         <div className="cta-wrapper">
           {/* Sort */}
           <div className="btn-group btn-group-filter">
-            <a className={"btn " + (dataStore.currentTab === "popular" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "popular"})}}>{t("popular")}</a>
-            <a className={"btn " + (dataStore.currentTab === "latest" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "latest"})}}>{t("latest")}</a>
+            <a className={"btn " + (dataStore.currentTab === "popular" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "popular"})}}>
+              <span className="btn--text">{t("popular")}</span>
+            </a>
+            <a className={"btn " + (dataStore.currentTab === "latest" ? "btn-filter-active" : "btn-filter")} onClick={() => {handleChangeFilter({filter: "latest"})}}>
+              <span className="btn--text">{t("latest")}</span>
+            </a>
           </div>
         </div>
-        
       </div>
 
       <div className={`pane-content--main--main scrollbar`} ref={scrollBox1} cls="list-top-away">
-        
-
-        {/* HieuNN: Sample of Post from Rada */}
-        {/* <ConceptCardPost
-          title="Coinbase CEO Brian Armstrong Lashes Out At the SEC for Confusing Lending With Security"
-          mediaUri="https://picsum.photos/80/80?random=1"
-          type="rada"
-          source="Hung Dinh"
-          commentCount="56"
-          voteCount="145"
-        /> */}
-
 
         <PostsList dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
+
         {dataStore.tweets.length == 0 && dataStore.isSearch && !dataStore.loadingButton ? 
         <p className="search-not-found">
           <strong>{dataStore.query}</strong>&nbsp;{t("search not found")}
@@ -138,10 +129,12 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
         :
         ""
         }
+
         {dataStore.loadingButton ?
           <PostsListLoader />
           :""
         }
+
       </div>
     </>
   )

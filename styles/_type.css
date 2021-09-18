@@ -26,17 +26,14 @@ body {
 Post Content Typo
 ----------------------------------- */
 .post-title h1 {
-  @apply text-lg md:text-xl font-semibold;
+  @apply text-xl font-semibold;
   .badge {
     @apply relative -top-1;
   }
 }
 
-.post-content {
-}
-
 .post-detail-media .post-content--text {
-  @apply text-sm whitespace-pre-wrap;
+  @apply whitespace-pre-wrap;
   word-break: break-word;
 }
 
@@ -64,16 +61,22 @@ Post Content Typo
 
 .post-content h2,
 .post-content .pTitle {
-  @apply text-lg mt-8;
+  @apply text-lg;
 }
+
+.post-content * + h2,
+.post-content * + .pTitle {
+  @apply mt-8;
+}
+
 
 .post-content h3,
 .post-content .pHead {
-  @apply text-sm;
+  @apply text-base;
 }
 
 .post-content h4 {
-  @apply text-sm;
+  @apply text-base;
 }
 
 .post-content {
@@ -100,10 +103,9 @@ Post Content Typo
   @apply max-w-full text-center mx-auto rounded;
 }
 
-.post-content figure  {
-  @apply text-center text-xs;
+.post-content img:first-child {
+  @apply w-full max-h-80 object-cover;
 }
-
 .post-content figcaption,
 .post-content .pCaption {
   @apply text-center mt-2 text-xs;

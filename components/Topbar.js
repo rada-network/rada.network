@@ -5,6 +5,7 @@ import Profile from "./Profile"
 import SearchInput from "./search"
 import ThemeSwitch from "./ThemeSwitch"
 import {LanguageSwitch} from "./LanguageSwitch";
+import Usermenu from "./Usermenu";
 
 export const Topbar = ({dataStore}) => {
   const router = useRouter()
@@ -19,11 +20,9 @@ export const Topbar = ({dataStore}) => {
     return (
     <Link href={href}>
     <a href={href} className={cls.join(' ')}>
-
         <>
           {children}
         </>
-
     </a>
     </Link>
     )

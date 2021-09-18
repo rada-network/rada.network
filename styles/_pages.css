@@ -1,0 +1,58 @@
+/*
+Empty State - About Page
+*/
+.page-about {
+  @apply p-4 md:p-8 xl:p-16 flex flex-col h-full;
+  @apply text-sm;
+  animation: fadein 1s ease-in;
+}
+
+.page-about-deco {
+  @apply hidden absolute bottom-0 left-8 right-8 xl:left-0 xl:right-0 h-full z-0;
+}
+
+@media screen and (min-height: 768px) {
+  .page-about-deco {
+    @apply md:block;
+  }
+}
+
+.page-about .page-about-content {
+  @apply opacity-50 transition-all;
+  transition-duration: 1s;
+}
+
+.page-about:hover .page-about-content {
+  @apply opacity-90;
+}
+
+.page-about-content {
+  @apply z-10;
+}
+
+.page-about p {
+  @apply mb-2;
+}
+
+.page-about h3 {
+  @apply text-base mb-2;
+  @apply font-medium;
+}
+
+.page-about p + h3 {
+  @apply mt-4;
+}
+
+.about-social {
+  @apply flex items-center space-x-4 mt-8;
+}
+
+.about-social a {
+  @apply flex flex-col justify-center items-center w-px-32 h-px-32;
+  @apply bg-gray-400 bg-opacity-20 rounded;
+  @apply hover:bg-primary-700 hover:text-white;
+}
+
+.about-social i {
+  @apply text-base;
+}

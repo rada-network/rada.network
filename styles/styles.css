@@ -6,7 +6,6 @@ Layout
 .main-layout {
   @apply flex flex-col lg:flex-row h-full w-full items-stretch;
   @apply max-w-screen-2xl 2xl:mx-auto;
-  @apply bg-white dark:bg-deepgray-50;
   animation: fadein 400ms linear;
 }
 
@@ -40,7 +39,7 @@ Nav Panels
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
   @apply border-r border-gray-400 border-opacity-10 z-50;
-  @apply bg-gray-50 dark:bg-deepgray-200;
+  /* @apply bg-gray-50 dark:bg-deepgray-200; */
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
@@ -67,7 +66,7 @@ Navbars on Mobile Tablet
 */
 .pane-bottom {
   @apply flex justify-between w-full h-auto order-last;
-  @apply bg-bluegray-50 dark:bg-deepgray-100 z-50;
+  @apply bg-bluegray-50 dark:bg-deepgray-50 z-50;
   flex-basis: var(--navbar-height);
 }
 
@@ -77,41 +76,40 @@ Main Panels
 */
 .pane-center {
   @apply flex flex-auto flex-col transition;
-  flex-basis: 0;
+  @apply lg:border-r border-gray-400 border-opacity-10 z-50;
 }
 
-/* @screen md {
+/* Add Color to Topbar on Mobile and Tablet */
+@media (max-width: 1024px) {
   .pane-center {
-    height: calc(100vh - var(--navbar-height) - var(--toolbar-height));
+    @apply bg-gradient-to-r from-primary-50 to-yellow-50 dark:from-primary-800 dark:to-primary-900;
   }
 }
-
-@screen lg {
-  .pane-center {
-    @apply h-full;
-  }
-} */
 
 .pane-center--top {
-  @apply flex flex-shrink-0 m-0;
-  @apply border-b border-gray-400 border-opacity-10 z-50;
+  @apply flex flex-shrink-0 m-0 z-10;
 }
 
 .pane-center--main {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
   @apply flex w-full h-full;
-  @apply border-r border-gray-400 border-opacity-10;
+  @apply rounded-t-xl lg:rounded-none lg:shadow-none overflow-hidden;
+}
+
+@media (max-width: 1024px) {
+  .dark .pane-center--main {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5 ); /* Increase shadow on Dark Theme */
+  }
 }
 
 .pane-content {
   @apply w-full h-full;
-  /* @apply flex flex-auto flex-wrap md:flex-nowrap h-full; */
-  /* width: 0; Fix Layout */
 }
 
 .pane-content--main {
   @apply relative float-left w-full;
   @apply flex flex-col w-full h-full;
-  @apply md:border-r border-gray-400 border-opacity-10;
+  @apply md:border-r border-gray-100 dark:border-gray-800 dark:border-opacity-90;
 }
 
 @screen md {
@@ -120,31 +118,21 @@ Main Panels
   }
 }
 
-/* @screen lg {
-  .pane-content--main {
-    width: 45%;
-  }
-} */
-
-
 .pane-content--main--top,
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
   @apply border-b border-gray-400 border-opacity-10;
+  @apply bg-white dark:bg-gray-900;
   height: var(--toolbar-height);
 }
 
-.pane-content--main--top,
-.pane-content--sec--top {
-  @apply bg-white dark:bg-deepgray-50;
-}
-
+ 
 /* 
 Card List Area
 */
 .pane-content--main--main {
-  @apply flex flex-auto flex-col w-full h-0 overflow-x-hidden overflow-y-auto;
-  @apply bg-white dark:bg-deepgray-50;
+  @apply flex flex-auto flex-col w-full h-0;
+  @apply bg-white dark:bg-gray-900;
 }
 
 @screen lg {
@@ -158,7 +146,7 @@ Reader / Page Area
 */
 .pane-content--sec {
   @apply float-left w-full z-10;
-  @apply hidden flex-auto md:flex flex-col overflow-x-hidden overflow-y-auto;
+  @apply hidden flex-auto md:flex flex-col;
 }
 
 @screen md {
@@ -186,7 +174,7 @@ Reader / Page Area
 
 .pane-content--sec--main {
   @apply w-full h-full;
-  @apply bg-white dark:bg-deepgray-50;
+  @apply bg-white dark:bg-gray-900;
   /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur; */
 }
 
@@ -197,30 +185,49 @@ Main Layout when scrolling
 @media (max-width: 768px) {
 
   .pane-center--top {
-    transition: margin-top 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition-delay: 150ms;
+    opacity: 1;
+    transition: all 150ms linear;
   }
 
+  /* Post Lists */
   .list-away-top {
+    .pane-center--main {
+      @apply rounded-none;
+    }
+
     .pane-center--top {
+      opacity: 0;
       margin-top: calc( -1 * var(--topbar-height));
+    }
+
+  }
+
+  .list-away-top,
+  .page-details {
+    .pane-content--main--top,
+    .pane-content--sec--top {
+      @apply fixed top-0 inset-x-0 z-50;
+      @apply bg-opacity-80 dark:bg-opacity-80 backdrop-blur;
     }
   }
 
+  /* Reader Lists  */
   .list-away-top.page-details,
-  body.page-details {
+  .page-details {
 
-    .pane-content--sec.pane-content-active  {
+    .pane-content--sec.pane-content-active {
       @apply top-0;
     }
 
-    .pane-center--top {
+    .pane-center--top,
+    .pane-content--main--top {
       @apply hidden;
     }
 
-  }
+    .pane-content--sec--main {
+      padding-top: var(--topbar-height);
+    }
 
-  body.page-details.details-top-away {
   }
 
 }
@@ -253,7 +260,7 @@ Top & Tool Bars
 
 .logo--text {
   @apply bg-gradient-to-b from-purple-400 to-purple-700 font-semibold;
-  @apply dark:from-purple-500 dark:to-purple-700;
+  @apply dark:from-white dark:to-white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -269,53 +276,12 @@ Top & Tool Bars
 
 /* Toolbar */
 .pane-content--main--top .search-wrapper {
-  /* max-width: 50%; */
-  @apply md:max-w-none md:w-full;
+  @apply mr-2 w-full;
 }
 
 .pane-content--main--top .cta-wrapper {
   @apply flex-shrink-0;
 }
-
-
-/* 
-Tabbar
---------------------------------------------- */
-.tabbar {
-  @apply justify-between w-full pl-0 xl:pl-8;
-}
-
-.page-back + .tabbar {
-  @apply pl-2;
-}
-
-.tabbar-main {
-  @apply flex justify-evenly items-center h-full space-x-2;
-}
-
-.tab-item {
-  @apply flex flex-1 justify-center items-center px-2 py-1 h-full transition-all relative;
-  @apply text-sm font-medium opacity-50 hover:opacity-100;
-}
-
-.tab-item:after {
-  @apply block w-full absolute bottom-0 left-0 right-0;
-  @apply bg-primary-700 dark:bg-primary-500;
-  content: " ";
-  height: 0;
-  transition: all 150ms linear;
-}
-
-.tab-item--active {
-  @apply text-primary-700 dark:text-primary-500 opacity-100;
-  &:after {
-    height: 3px;
-  }
-}
-
-.tab-item--text {
-}
-
 
 /* 
 Sidebar
@@ -328,7 +294,7 @@ Sidebar
 Sections Layout
 --------------------------------------------- */
 .section {
-  @apply p-4 md:p-6;
+  @apply p-4 md:p-6 xl:px-10 xl:py-6;
 }
 
 .section-header {
@@ -394,7 +360,7 @@ Page Layout
 */
 .page {
   @apply w-full h-full relative;
-  /* @apply bg-white dark:bg-deepgray-50; */
+  /* @apply bg-white dark:bg-gray-900; */
 }
 
 .page-header {
@@ -406,7 +372,23 @@ Page Layout
 }
 
 .page-back {
-  @apply flex items-center px-2;
+  @apply flex items-center pl-0 pr-2 md:pl-2 xl:pl-3;
+}
+
+.page-tabs {
+  @apply pl-2 md:pl-4 lg:pl-4 xl:pl-12 text-sm;
+}
+
+.page-back + .page-tabs {
+  @apply pl-3 ml-1 lg:pl-4 lg:ml-3;
+  &:before {
+    @apply block absolute bg-gray-400 bg-opacity-30;
+    content: " ";
+    width: 1px;
+    height: 50%;
+    left: 0;
+    top: 28%;
+  }
 }
 
 
@@ -439,7 +421,7 @@ Title
 }
 
 .post-title:hover .post-title--text {
-  @apply text-primary-700 dark:text-primary-500;
+  /* @apply text-primary-700 dark:text-primary-500; */
 }
 
 .post-title .btn-post-link {
@@ -517,31 +499,11 @@ Content
 Components
 --------------------------------------------- */
 /* 
-Popper
-*/
-.popper {
-  @apply z-10 flex flex-col w-full h-full relative;
-  @apply bg-white dark:bg-gray-900 py-2 rounded shadow;
-  min-width: 100px;
-  top: 32px;
-}
-
-.pane-left .popper {
-  top: -59px;
-  width: 111px;
-}
-
-.popper-item {
-  @apply py-2 px-2 text-center cursor-pointer;
-  @apply text-sm font-medium hover:text-primary-700 dark:hover:text-primary-500;
-}
-
-/* 
 Dialogs 
 */
 .dialog-outside-wrapper {
   @apply fixed inset-0 z-50 overflow-y-auto bg-white md:bg-bluegray-50 bg-opacity-100;
-  @apply dark:bg-deepgray-100 dark:md:bg-deepgray-50;
+  @apply dark:bg-deepgray-100 md:dark:bg-gray-900;
 }
 
 .dialog-outside {
@@ -570,67 +532,6 @@ Dialogs
 
 .dialog .divider span {
   @apply bg-bluegray-50 dark:bg-gray-900 text-xs uppercase z-0 px-4;
-}
-
-/*
-Empty State
-*/
-.empty-state {
-  @apply p-4 md:p-8 xl:p-16 flex flex-col h-full;
-  @apply text-sm;
-  animation: fadein 1s ease-in;
-
-}
-
-.home-emptystate-deco {
-  @apply hidden absolute bottom-0 left-8 right-8 xl:left-0 xl:right-0 h-full z-0;
-  /* background: url(/images/hero.svg) no-repeat center bottom; */
-}
-
-@media screen and (min-height: 768px) {
-  .home-emptystate-deco {
-    @apply md:block;
-  }
-}
-
-.empty-state .empty-state-content {
-  @apply opacity-50 transition-all;
-  transition-duration: 1s;
-}
-
-.empty-state:hover .empty-state-content {
-  @apply opacity-90;
-}
-
-.empty-state-content {
-  @apply z-10;
-}
-
-.empty-state p {
-  @apply mb-2;
-}
-
-.empty-state h3 {
-  @apply text-base mb-2;
-  @apply font-medium;
-}
-
-.empty-state p + h3 {
-  @apply mt-4;
-}
-
-.about-social {
-  @apply flex items-center space-x-4 mt-4;
-}
-
-.about-social a {
-  @apply flex flex-col justify-center items-center w-px-32 h-px-32;
-  @apply bg-gray-400 bg-opacity-20 rounded;
-  @apply hover:bg-primary-700 hover:text-white;
-}
-
-.about-social i {
-  @apply text-base;
 }
 
 
@@ -668,7 +569,6 @@ Tootips
 
 
 .__react_component_tooltip.show {
-  
 }
 
 
@@ -698,15 +598,6 @@ Perfect Scrollbar
 .scrollbar::-webkit-scrollbar-thumb:hover {
   @apply bg-primary-500;
 }
-
-/* Tweaks for Content Scrollbar
-.pane-content--sec--main.scrollbar::-webkit-scrollbar {
-  @apply 2xl:bg-opacity-50;
-}
-
-.pane-content--sec--main.scrollbar::-webkit-scrollbar-thumb {
-  @apply 2xl:bg-opacity-60;
-} */
 
 
 /* 

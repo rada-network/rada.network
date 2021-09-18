@@ -63,9 +63,9 @@ module.exports = {
         'shadeyellow-100': '#fff5cc',
         'shadeyellow-200': '#feeec5',
 
-        'deepgray-50': '#0b0f18',
-        'deepgray-100': '#090c13',
-        'deepgray-200': '#06090f',
+        'deepgray-50':  '#0c121d',
+        'deepgray-100': '#0a0e17',
+        'deepgray-200': '#080b12',
       },
 
       // Extra Font Sizes

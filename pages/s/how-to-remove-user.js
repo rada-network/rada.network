@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import {observer} from "mobx-react";
 
-
 export default function HowToRemoveUser(props){
   return (
     <>

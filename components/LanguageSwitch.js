@@ -1,7 +1,7 @@
 import {observer} from "mobx-react";
 import {useCookies} from "react-cookie";
 import {useRouter} from "next/router";
-import {Menu,Popover} from "@headlessui/react"
+import {Transition,Popover} from "@headlessui/react"
 import { usePopper } from 'react-popper'
 import {useRef, useState} from "react";
 
@@ -29,10 +29,19 @@ export const LanguageSwitch = observer(({dataStore}) => {
 
   return (
     <Popover className="relative">
+      
       <Popover.Panel ref={setPopperElement}
                      style={styles.popper}
                      {...attributes.popper}>
         {({ close }) => (
+          <Transition
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-0"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+          >
           <div className={`popper`}>
             <div className="popper-item" onClick={async (e) => {handleChangeLanguage(e)}} lang={'vi'}>
               <span className="popper-item--text">Tiếng Việt</span>
@@ -41,14 +50,18 @@ export const LanguageSwitch = observer(({dataStore}) => {
               <span className="popper-item--text">English</span>
             </div>
           </div>
+          </Transition>
         )}
       </Popover.Panel>
+
       <Popover.Button ref={buttonRef} className="btn nav-btn btn-switch-lang" title="Change Language">
         <div>
           <span className="icon"><i className="fal fa-globe"/></span>
           <span className="btn--text">{langDisplay.toUpperCase()}</span>
         </div>
       </Popover.Button>
+
     </Popover>
+
   )
 })

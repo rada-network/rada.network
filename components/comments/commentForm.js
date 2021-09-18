@@ -100,7 +100,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore,d
             </button>
           </>
           : <>
-            <div className="user-wallet-avatar-sm">
+            <div className="avatar-sm">
               <CommentAvatar user={currentUser} size={replyFor === null ? 32 : 32} />
             </div>
             <TextareaAutosize

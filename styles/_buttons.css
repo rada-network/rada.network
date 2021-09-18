@@ -3,16 +3,15 @@
 /*
 Buttons
 */
-
 .btn {
-  @apply inline-flex items-center font-medium focus:outline-none cursor-pointer transition;
-
-  .btn--text + .icon {
-    @apply ml-2;
-  }
+  @apply inline-flex items-center relative transition ;
+  @apply rounded-md font-medium focus:outline-none cursor-pointer;
 
   .icon {
-    @apply relative right-0;
+    @apply relative;
+  }
+
+  .btn--text {
   }
 
   .btn--text + .icon {
@@ -28,11 +27,31 @@ Buttons
   }
 }
 
+/* NNTH: Fill Effects
+.btn:after {
+  @apply block absolute bottom-0 left-0 right-0;
+  @apply bg-primary-500 dark:bg-white;
+  content: " ";
+  height: 0;
+  width: 100%;
+  transition: all 150ms linear;
+}
+
+.btn:hover {
+  &:after {
+    height: 100%;
+  }
+} */
+
+
+.btn-rounded {
+  @apply rounded-full;
+}
+
 /*
 Buttons Styles
 */
 .btn-default {
-  @apply rounded-md;
   @apply text-sm font-medium text-gray-900 bg-white border border-transparent;
   @apply hover:bg-primary-50 hover:border-primary-500 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white;
   @apply dark:text-white dark:bg-gray-800;
@@ -52,7 +71,7 @@ Vote Buttons
 */
 .btn-post-vote {
   @apply px-2 py-1 justify-center;
-  @apply border border-gray-400 border-opacity-40 rounded;
+  @apply border border-gray-400 border-opacity-40;
   @apply hover:border-green-500 hover:bg-green-50 hover:text-green-500;
   @apply dark:hover:bg-transparent dark:hover:text-white;
 }
@@ -84,7 +103,7 @@ Vote Buttons
 Link Visit Button 
 */
 .btn-post-link {
-  @apply text-sm justify-center items-center px-0 py-1 rounded relative;
+  @apply text-sm justify-center items-center px-0 py-1 relative;
 }
 
 .btn-post-link .icon {
@@ -95,11 +114,16 @@ Link Visit Button
 Nav Button
 */
 .nav-btn {
-  @apply px-2 py-1 items-center justify-center rounded;
-  @apply text-sm font-medium text-gray-900 bg-gray-500 bg-opacity-10 border border-transparent;
-  @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-0;
-  @apply dark:text-white dark:bg-gray-400 dark:bg-opacity-20;
-  @apply dark:hover:bg-deeppurple-300 dark:hover:border-primary-500;
+  @apply px-2 py-1 items-center justify-center;
+  @apply text-sm font-medium text-gray-900 dark:text-white border border-transparent;
+  @apply bg-gray-500 bg-opacity-10 dark:bg-gray-200 dark:bg-opacity-10;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-btn {
+    @apply hover:bg-primary-50 hover:border-purple-500 hover:text-primary-700 focus:outline-none focus:ring-0;
+    @apply dark:hover:text-white dark:hover:bg-deeppurple-300 dark:hover:border-primary-500;
+  }
 }
 
 .nav-btn.active {
@@ -120,9 +144,24 @@ Nav Button
 /* 
 Wallet Button 
 */
-.btn-connect-wallet {
+.btn-login {
+  .avatar {
+    @apply w-px-16 h-px-16;
+  }
+
   .btn--text {
-    @apply hidden md:inline-block;
+  }
+
+  min-height: 30px;
+
+}
+
+@media (max-width: 768px) {
+  .btn-login {
+    .btn--text {
+      @apply overflow-hidden whitespace-nowrap overflow-ellipsis;
+      max-width: 80px;
+    }
   }
 }
 
@@ -151,32 +190,44 @@ Group Buttons
 }
 
 .btn-group-filter {
-  @apply rounded px-1 py-1 bg-gray-400 bg-opacity-10 text-xs;
+  @apply rounded-md text-xs transition;
+  @apply bg-gray-400 bg-opacity-10 dark:bg-gray-200 dark:bg-opacity-10;
+  padding: 3px;
 }
 
-.btn-filter {
-  @apply px-2 lg:px-4 py-1 justify-center;
-  @apply rounded bg-transparent text-gray-900 dark:text-white text-opacity-50 dark:text-opacity-50;
+/* .btn-group-filter {
+  @apply text-xs space-x-2 lg:space-x-4;
+} */
+
+.btn-filter,
+.btn-filter-active {
+  @apply px-2 py-1 justify-center relative overflow-hidden;
+  @apply rounded-md bg-transparent opacity-50;
+  &:hover {
+    @apply opacity-100;
+  }
 }
 
 .btn-filter-active {
-  @apply px-2 lg:px-4 py-1 justify-center;
-  @apply rounded bg-white text-opacity-100 dark:text-white dark:bg-gray-600 shadow-sm;
+  @apply justify-center cursor-pointer pointer-events-none;
+  @apply bg-white text-opacity-100 dark:text-white dark:bg-deepgray-100 shadow-sm opacity-100;
 }
+
+
 
 /*
 "Show More" Button
 */
 .btn-nav {
   @apply justify-center py-2 px-4 w-full;
-  @apply bg-gray-400 bg-opacity-10 hover:bg-purple-100 hover:text-purple-700 rounded;
+  @apply bg-gray-400 bg-opacity-10 hover:bg-purple-100 hover:text-purple-700;
   @apply text-sm;
   @apply dark:text-white dark:hover:bg-deeppurple-100;
 }
 
 .btn-loading {
   @apply justify-center py-2 px-4 w-full;
-  @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700 rounded;
+  @apply bg-gray-100 hover:bg-purple-100 hover:text-purple-700;
   @apply text-sm;
 }
 
@@ -187,7 +238,7 @@ Button Caret
 .btn--caret-right,
 .btn--caret-left,
 .btn--caret-up {
-  @apply relative;
+  @apply relative transition-all left-0 right-0;
   height: 8px;
   width: 8px;
   border-bottom: 2px solid;
@@ -195,22 +246,30 @@ Button Caret
 }
 
 .btn--caret-right {
-  @apply ml-2;
+  @apply ml-1.5;
   transform: rotate(-45deg);
 }
 
+.btn:hover .btn--caret-right {
+  @apply -right-0.5;
+}
+
 .btn--caret-left {
-  @apply mr-2;
+  @apply mr-1;
   transform: rotate(135deg);
 }
 
+.btn:hover .btn--caret-left {
+  @apply -left-0.5;
+}
+
 .btn--caret-down {
-  @apply ml-2 -mt-0.5;
+  @apply ml-1 -mt-0.5;
   transform: rotate(45deg);
 }
 
 .btn--caret-up {
-  @apply ml-2 -mb-0.5;
+  @apply ml-1 -mb-0.5;
   transform: rotate(-135deg);
 }
 
@@ -240,6 +299,6 @@ Button Caret
 
 /* Comment Form Button */
 .comment-btn {
-  @apply text-sm justify-center px-0 w-20 text-gray-500 rounded bg-gray-100 hover:bg-primary-100 hover:text-primary-700 border border-transparent hover:border-primary-500 leading-4;
-  @apply dark:bg-gray-700 dark:text-gray-200 dark:hover:text-white;
+  @apply text-sm justify-center px-0 w-20 text-gray-500 bg-gray-400 bg-opacity-20 hover:bg-primary-100 hover:text-primary-700 border border-transparent hover:border-primary-500 leading-4;
+  @apply dark:hover:bg-deeppurple-300 dark:text-gray-200 dark:hover:text-white;
 }

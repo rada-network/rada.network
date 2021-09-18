@@ -10,6 +10,9 @@ import {useRouter} from "next/router";
 import { useSession } from "next-auth/client";
 import Profile from "./Profile";
 import _ from "lodash";
+import Usermenu from "./Usermenu";
+
+import { Transition } from '@headlessui/react';
 
 
 export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
@@ -48,7 +51,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
 
         <div className={`pane-content--sec--top`}>
 
-          <div className="flex h-full">
+          <div className="flex">
 
             {/* Pageback Here */}
             {dataStore !== undefined && !_.isEmpty(detailStore.data) ?
@@ -62,7 +65,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
             }
 
             {/* Page Tabs Here */}
-            <div className="tabbar pages-tab">
+            <div className="tabbar page-tabs">
               <div className="tabbar-main">
                 <a href="#" className="tab-item">
                   Profile

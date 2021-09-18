@@ -103,3 +103,42 @@ Nav Item Addons
 .nav-item--divider {
   @apply hidden lg:block h-1 mt-2 mb-2 border-t border-gray-500 border-opacity-10;
 }
+
+
+/* 
+Tabbar
+--------------------------------------------- */
+.tabbar {
+  @apply justify-between w-full relative;
+}
+
+.tabbar-main {
+  @apply flex justify-evenly items-center space-x-4 lg:space-x-6;
+}
+
+.tab-item {
+  @apply flex flex-1 justify-center items-center px-0 py-1 transition-all relative;
+  @apply font-medium opacity-50 hover:opacity-100;
+  &:hover {
+    @apply opacity-100;
+  }
+}
+
+.tab-item:after {
+  @apply block absolute bottom-0 left-0 right-0;
+  @apply bg-gray-800 dark:bg-white;
+  content: " ";
+  height: 3px;
+  width: 0;
+  transition: all 150ms linear;
+}
+
+.tab-item--active {
+  @apply opacity-100;
+  &:after {
+    width: 100%;
+  }
+}
+
+.tab-item--text {
+}

@@ -3,7 +3,7 @@
 @import '_variables';
 @import '_presets';
 
-/* Grid and Layout*/
+/* Type */
 @import '_type';
 
 /* Core HTML elements */
@@ -12,11 +12,13 @@
 /* Components */
 @import '_buttons';
 @import '_forms';
-@import '_navbar';
+@import '_navbars';
+@import '_menus';
 @import '_cards';
 @import '_widgets';
 @import '_contents';
-@import '_headers';
+@import '_pages';
+/* @import '_headers'; */
 
 /* Theme */
 @import '_dark';

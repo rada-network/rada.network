@@ -1,20 +1,37 @@
-import { Head } from "../Head";
-import { Topbar } from "../Topbar";
-import { Navbar } from "../Navbar";
+import { Head } from "../../components/Head";
+import { Topbar } from "../../components/Topbar";
+import { Navbar } from "../../components/Navbar";
 
-import ThemeSwitch from "../ThemeSwitch"
+import ThemeSwitch from "../../components/ThemeSwitch"
 
 import { useState, useEffect, createRef } from 'react'
 
-import {LanguageSwitch} from "../LanguageSwitch";
-import Screen from "../utils/Responsive";
+import {LanguageSwitch} from "../../components/LanguageSwitch";
+import Screen from "../../components/utils/Responsive";
 import { observer } from "mobx-react";
+import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 
-export const Layout = observer(({children,meta,dataStore,detailStore}) => {
+const Layout = observer((props) => {
 
+  // const [Scrollbar] = useState('')
+
+  // useEffect(() => {
+  //   // make scrollbar
+  //   ps = new PerfectScrollbar(scrollBox.current, {
+  //   });
+  
+  //   return () => {
+  //     ps.destroy();
+  //   }
+  // }, [scrollBox]);
+  const homeStore = new HomeStore({isHome : false});
+  const dataStore = new ObservableTweetStore({homeStore})
+  const detailStore = new DetailStore();
+  dataStore.lang = props.lang
+  const meta = {}
   return (
     <>
-    <Head meta={meta} title={meta.title} description={meta.description} keyword={meta.keyword} facebook={meta.facebook} twitter={meta.twitter} />
+    <Head meta={meta} />
 
     {/* <div className={`body-decor`}>
     </div>
@@ -57,7 +74,11 @@ export const Layout = observer(({children,meta,dataStore,detailStore}) => {
         </Screen>
 
         <div className="pane-center--main">
-          {children}
+          
+          {/* HieuNN */}
+          {/* Future Concept will be here */}
+          
+
         </div>
 
       </div>
@@ -67,3 +88,15 @@ export const Layout = observer(({children,meta,dataStore,detailStore}) => {
     </>
   );
 })
+
+
+export async function getStaticProps(context) {
+  console.log(context)
+  return { 
+    props: {
+      lang : context.locale
+    }
+  }
+}
+
+export default Layout;
