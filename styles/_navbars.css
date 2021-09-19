@@ -14,7 +14,7 @@ Navbar
 Nav Item
 */
 .nav-item {
-  @apply relative flex flex-col lg:flex-row items-center w-full h-full px-2 py-0.5 lg:py-2;
+  @apply relative flex flex-col lg:flex-row items-center w-full h-full px-1.5 py-0.5 lg:py-2;
   @apply font-medium lg:font-semibold leading-normal whitespace-nowrap;
   @apply opacity-80 lg:opacity-50;
   @apply hover:opacity-100;
@@ -139,7 +139,7 @@ Tabbar
 
 .tab-item:hover,
 .tab-item--active {
-  @apply opacity-100;
+  @apply opacity-100 text-primary-700 dark:text-primary-500;
   /* &::after {
     height: 3px;
   } */

@@ -111,7 +111,7 @@ const Layout = observer((props) => {
 
                           {/* Wallet connected --> Show DisConnect Buttons */}
                           <div className="list-group--item">
-                            <div className="list-group--item--title w-1/3">
+                            <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon"><i class="fa-solid fa-wallet"></i></span>
                               </div>
@@ -120,19 +120,19 @@ const Layout = observer((props) => {
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative flex items-center">
+                              <div className="relative pl-8 md:pl-0 w-full flex items-center">
                                 <strong>0xDB33...345f</strong>
-                                <span className="badge relative -top-0.5 ml-2">ETHEREUM</span>
+                                <span className="badge badge-coin relative ml-2">ETHEREUM</span>
                               </div>
                             </div>
-                            <div className="flex-1 text-right">
+                            <div className="text-right">
                               <btn className="btn nav-btn">Disconnect</btn>
                             </div>
                           </div>
 
                           {/* Google disconnected --> Show Connect Buttons */}
                           <div className="list-group--item">
-                            <div className="list-group--item--title w-1/3">
+                            <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon"><i class="fa-brands fa-google"></i></span>
                               </div>
@@ -141,18 +141,18 @@ const Layout = observer((props) => {
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative">
+                              <div className="relative pl-8 md:pl-0 w-full">
                                 <span>No Google account connected</span>
                               </div>
                             </div>
-                            <div className="flex-1 text-right">
+                            <div className="text-right">
                               <btn className="btn nav-btn">Connect</btn>
                             </div>
                           </div>
 
                           {/* Facebook connected --> Show DisConnect Buttons */}
                           <div className="list-group--item">
-                            <div className="list-group--item--title w-1/3">
+                            <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon"><i class="fa-brands fa-facebook-f"></i></span>
                               </div>
@@ -161,18 +161,18 @@ const Layout = observer((props) => {
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative">
+                              <div className="relative pl-8 md:pl-0 w-full">
                                 <strong>Hieu Nguyen</strong>
                               </div>
                             </div>
-                            <div className="flex-1 text-right">
+                            <div className="text-right">
                               <btn className="btn nav-btn">Disconnect</btn>
                             </div>
                           </div>
 
                           {/* Twitter connected --> Show DisConnect Buttons */}
                           <div className="list-group--item">
-                            <div className="list-group--item--title w-1/3">
+                            <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon"><i class="fa-brands fa-twitter"></i></span>
                               </div>
@@ -181,11 +181,11 @@ const Layout = observer((props) => {
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative">
+                              <div className="relative pl-8 md:pl-0 w-full">
                                 <strong>@nnth83</strong>
                               </div>
                             </div>
-                            <div className="flex-1 text-right">
+                            <div className="text-right">
                               <btn className="btn nav-btn">Disconnect</btn>
                             </div>
                           </div>

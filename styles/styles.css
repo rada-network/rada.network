@@ -261,11 +261,11 @@ Top & Tool Bars
 }
 
 .logo {
-  @apply flex items-center justify-center;
+  @apply flex justify-center;
 }
 
 .navbar .logo {
-  @apply hidden lg:flex py-4;
+  @apply py-6 justify-start;
 }
 
 .logo--img {
@@ -277,10 +277,11 @@ Top & Tool Bars
 }
 
 .logo--text {
-  @apply bg-gradient-to-b from-purple-400 to-purple-700 font-semibold;
+  @apply bg-gradient-to-b from-primary-400 to-primary-500 font-semibold;
   @apply dark:from-white dark:to-white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-family: "SF Pro Rounded";
 }
 
 .logo--badge {
