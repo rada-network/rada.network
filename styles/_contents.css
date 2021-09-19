@@ -19,13 +19,13 @@ Lists Styles
 }
 
 .list-group--item {
-  @apply flex justify-between items-center;
+  @apply flex flex-wrap justify-between items-center;
   @apply p-4;
   @apply border-b border-gray-500 border-opacity-10;
 }
 
 .list-group--item--title {
-  @apply flex items-center text-xs uppercase font-medium;
+  @apply flex items-center md:items-center text-xs uppercase font-medium;
 }
 
 .list-group--item--text {
@@ -33,13 +33,13 @@ Lists Styles
 }
 
 .list-group--item--media {
-  @apply flex justify-center items-center w-px-32 h-px-32 mr-4 rounded-full flex-shrink-0 overflow-hidden;
+  @apply flex justify-center items-center w-px-24 h-px-24 md:w-px-32 md:h-px-32 mr-2 md:mr-4 rounded-full flex-shrink-0 overflow-hidden;
   @apply bg-primary-100 text-primary-500;
   img {
     @apply object-cover h-full;
   }
   .icon {
-    @apply text-base;
+    @apply md:text-base;
   }
 }
 

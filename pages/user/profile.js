@@ -116,7 +116,7 @@ export default function UserProfile (props) {
 
                 <div className="page-section">
 
-                  <div className="card card-pagecontent">
+                  {/* <div className="card card-pagecontent">
 
                     <div className="card-header">
                       <span className="card-title">
@@ -128,7 +128,7 @@ export default function UserProfile (props) {
                       
                     </div>
 
-                  </div>
+                  </div> */}
 
                   <div className="card card-pagecontent">
 
@@ -144,7 +144,7 @@ export default function UserProfile (props) {
 
                           {/* Wallet connected --> Show DisConnect Buttons */}
                           <div className="list-group--item">
-                            <div className="list-group--item--title w-1/3">
+                            <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon"><i className="fa-solid fa-wallet"></i></span>
                               </div>
@@ -153,16 +153,16 @@ export default function UserProfile (props) {
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative flex items-center">
+                              <div className="relative pl-8 md:pl-0 w-full flex items-center">
                                 {_.isEmpty(wallet) ? 
                                 <span>{t("no connection",{"provider" : "wallet"})}</span>
                                 :
                                 <><strong>0xDB33...345f</strong>
-                                <span className="badge relative -top-0.5 ml-2">ETHEREUM</span></>
+                                <span className="badge badge-coin relative ml-2">ETHEREUM</span></>
                                 }
                               </div>
                             </div>
-                            <div className="flex-1 text-right">
+                            <div className="text-right">
                                 {_.isEmpty(wallet) ? 
                                 <button className="btn nav-btn">{t("connect")}</button>
                                 :
@@ -174,7 +174,7 @@ export default function UserProfile (props) {
 
                           {/* Google disconnected --> Show Connect Buttons */}
                           <div className="list-group--item">
-                            <div className="list-group--item--title w-1/3">
+                            <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon"><i className="fa-brands fa-google"></i></span>
                               </div>
@@ -183,7 +183,7 @@ export default function UserProfile (props) {
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative">
+                              <div className="relative pl-8 md:pl-0 w-full">
                               {_.isEmpty(google) ? 
                                 <span>{t("no connection",{"provider" : "Google"})}</span>
                                 :
@@ -191,7 +191,7 @@ export default function UserProfile (props) {
                                 }
                               </div>
                             </div>
-                            <div className="flex-1 text-right">
+                            <div className="text-right">
                                 {_.isEmpty(google) ? 
                                 <button className="btn nav-btn">{t("connect")}</button>
                                 :
@@ -202,7 +202,7 @@ export default function UserProfile (props) {
 
                           {/* Facebook connected --> Show DisConnect Buttons */}
                           <div className="list-group--item">
-                            <div className="list-group--item--title w-1/3">
+                            <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon"><i className="fa-brands fa-facebook-f"></i></span>
                               </div>
@@ -211,7 +211,7 @@ export default function UserProfile (props) {
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative">
+                              <div className="relative pl-8 md:pl-0 w-full">
                               {_.isEmpty(facebook) ? 
                                 <span>{t("no connection",{"provider" : "Facebook"})}</span>
                                 :
@@ -219,7 +219,7 @@ export default function UserProfile (props) {
                                 }
                               </div>
                             </div>
-                            <div className="flex-1 text-right">
+                            <div className="text-right">
                             {_.isEmpty(facebook) ? 
                                 <button className="btn nav-btn">{t("connect")}</button>
                                 :
@@ -230,7 +230,7 @@ export default function UserProfile (props) {
 
                           {/* Twitter connected --> Show DisConnect Buttons */}
                           <div className="list-group--item">
-                            <div className="list-group--item--title w-1/3">
+                            <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon"><i className="fa-brands fa-twitter"></i></span>
                               </div>
@@ -239,7 +239,7 @@ export default function UserProfile (props) {
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative">
+                              <div className="relative pl-8 md:pl-0 w-full">
                               {_.isEmpty(twitter) ? 
                                 <span>{t("no connection",{"provider" : "Twitter"})}</span>
                                 :
@@ -247,7 +247,7 @@ export default function UserProfile (props) {
                                 }
                               </div>
                             </div>
-                            <div className="flex-1 text-right">
+                            <div className="text-right">
                             {_.isEmpty(twitter) ? 
                                 <button className="btn nav-btn">{t("connect")}</button>
                                 :
