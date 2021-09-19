@@ -6,7 +6,7 @@ import {CommentForm} from "./commentForm";
 import {getSnapshot} from "mobx-state-tree";
 import {observer} from "mobx-react";
 
-export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, parent,dataStore}) =>{
+export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, parent,dataStore,detailStore}) =>{
   const [showReply,setShowReply] = useState(false)
   let comments = getSnapshot(ItemCommentStore.getChildComment(comment.id))
   let sortComments = comments.slice(0)
@@ -76,7 +76,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
         {showReply ?
           <div className="comment-reply-form">
             <div className="comment-trail"></div>
-            <CommentForm key={'cmform' + comment.id}  item={item} ItemCommentStore={ItemCommentStore} replyFor={comment.id} dataStore={dataStore}  />
+            <CommentForm key={'cmform' + comment.id}  item={item} ItemCommentStore={ItemCommentStore} replyFor={comment.id} dataStore={dataStore} detailStore={detailStore} />
           </div>
           : ""
         }
@@ -84,7 +84,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
           sortComments.map(function (c) {
             let user = getSnapshot(ItemCommentStore.getUser(c.userId))
             return (
-              <CommentMain key={c.id} item={item} comment={c} user={user} ItemCommentStore={ItemCommentStore} level={nextLevel} parent={comment} dataStore={dataStore}  />
+              <CommentMain key={c.id} item={item} comment={c} user={user} ItemCommentStore={ItemCommentStore} level={nextLevel} parent={comment} dataStore={dataStore} detailStore={detailStore}  />
             )
           })
         }

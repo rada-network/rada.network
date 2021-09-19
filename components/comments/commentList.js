@@ -62,10 +62,10 @@ export const CommentList = ({detailStore,dataStore}) => {
             <div className="col-span-12">
               {/* Comment Form */}
               <div className="comment-form">
-                <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} dataStore={dataStore}/>
+                <CommentForm replyFor={null}  item={item} ItemCommentStore={ItemCommentStore} dataStore={dataStore} detailStore={detailStore} />
               </div>
               {/* Comment Threads */}
-              <CommentThreads key={'commentThreads' + item.item.id} item={item} ItemCommentStore={ItemCommentStore} dataStore={dataStore} />
+              <CommentThreads key={'commentThreads' + item.item.id} item={item} ItemCommentStore={ItemCommentStore} dataStore={dataStore} detailStore={detailStore} />
             </div>
             
           </div>
