@@ -120,23 +120,23 @@ const NotConnectedButton = observer(({}) => {
 					  className={`${styles.dialog_header}`}
 					>
 					  <button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
-						<span className="icon"><IoChevronBackSharp/></span>
-						<span className="btn--text font-normal">Back</span>
-					  </button>
-					  <h3 className="text-xl font-semibold">
-						Login
-						{/* <span 
-						  className="hasTooltip" 
-						  data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
-						  data-event="click"
-						>  <i className="fa-duotone fa-info-circle text-base" />
-						</span>  */}
-					  </h3>
-					  <div className="mt-4 text-white text-opacity-70 leading-6">
-						<p className="">
-						  Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics by connecting to your wallet or social networks
-						</p>
-					  </div>
+							<span class="btn--caret-left"></span>
+							<span className="btn--text font-normal">Back</span>
+						</button>
+						<h3 className="text-xl font-semibold">
+							Connect your 
+							<span 
+								className="hasTooltip" 
+								data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
+								data-event="click"
+							> wallet <i className="fa-duotone fa-info-circle text-base" />
+							</span> 
+						</h3>
+						<div className="mt-4 text-white text-opacity-70 leading-6">
+							<p className="">
+								Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics by connecting to your wallet or social networks
+							</p>
+						</div>
 					</Dialog.Title>
 					<div className={`${styles.dialog_header__deco}`} />
 				  </div>
@@ -146,10 +146,10 @@ const NotConnectedButton = observer(({}) => {
   
 					<div className={`${styles.dialog_body}`}>
   
-					  {/* <div className={``}>
+					  <div className={``}>
 						<ul>
 						  <li ref={btnRef}>
-							<a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect()}>
+							<a className={`btn btn-default disabled ${styles.btn}`} onClick={() => wallet.connect()}>
 							  <span className={`icon ${styles.btn_icon}`}>
 								<img src="/images/icons/metamask-24.png" alt="Metamask - Secure wallets with great flexibility" />
 							  </span>
@@ -161,7 +161,7 @@ const NotConnectedButton = observer(({}) => {
 							</a>
 						  </li>
 						  <li>
-							<a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletconnect')}>
+							<a className={`btn btn-default disabled ${styles.btn}`} onClick={() => wallet.connect('walletconnect')}>
 							  <span className={`icon ${styles.btn_icon}`}>
 								<img src="/images/icons/walletconnect-24.png" alt="WalletConnect - Connect with Rainbow, Trust, Argent..." />
 							  </span>
@@ -173,7 +173,7 @@ const NotConnectedButton = observer(({}) => {
 							</a>
 						  </li>
 						  <li>
-							<a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletlink')}>
+							<a className={`btn btn-default disabled ${styles.btn}`} onClick={() => wallet.connect('walletlink')}>
 							  <span className={`icon ${styles.btn_icon}`}>
 								<img src="/images/icons/walletlink-24.png" alt="WalletLink - Connect with Coinbase wallet" />
 							  </span>
@@ -185,11 +185,11 @@ const NotConnectedButton = observer(({}) => {
 							</a>
 						  </li>
 						</ul>
-					  </div> */}
+					  </div>
   
-					  {/* <div className={`divider`}>
+					  <div className={`divider`}>
 						<span>Or Connect with</span>
-					  </div> */}
+					  </div>
   
 					  <div className={`${styles.social_login}`} ref={btnRef}>
 					  {Object.values(providers).map((provider) => (
