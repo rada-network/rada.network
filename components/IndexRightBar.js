@@ -11,6 +11,7 @@ import { useSession } from "next-auth/client";
 import Profile from "./Profile";
 import _ from "lodash";
 import Usermenu from "./Usermenu";
+import Link from "next/link";
 
 import { Transition } from '@headlessui/react';
 
@@ -70,34 +71,40 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
             HieuNN:
             Example of Page Tabs Here 
             */}
-            {!_.isEmpty(detailStore.data) && detailStore.data.item.token !== null ? 
+            {dataStore !== undefined && !_.isEmpty(detailStore.data) ?
             <div className="tabbar page-tabs">
               <div className="tabbar-main">
 
                 <a href="#" className="tab-item tab-item--active">
-                  Bài Viết
+                  {t("article")}
                 </a>
-
+                {!_.isEmpty(detailStore.data) && detailStore.data.token !== null ? 
+                <>
                 <span className="tab-item--divider" />
 
-                <a href="#" className="tab-item">
-                  AXS
-                </a>
-
-                <a href="#" className="tab-item">
-                  Team
-                </a>
-
-                <a href="#" className="tab-item">
-                  Events
-                </a>
-                
+                <Link href={`/tokens/` + detailStore.data.token.symbol}>
+                  <a href="#" className="tab-item">
+                    {detailStore.data.token.symbol}
+                  </a>
+                </Link>
+                <Link href={`/tokens/` + detailStore.data.token.symbol + "/team"}>
+                  <a href="#" className="tab-item">
+                  {t("team")}
+                  </a>
+                </Link>
+                <Link href={`/tokens/` + detailStore.data.token.symbol + "/events"}>
+                  <a href="#" className="tab-item">
+                  {t("events")}
+                  </a>
+                </Link>
+            
+                </>
+                :""
+                }
               </div>
             </div>
-            :""
+            : ""
             }
-            
-
             
           </div>
 

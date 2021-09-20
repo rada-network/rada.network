@@ -16,5 +16,8 @@
   "connection": "Kết nối",
   "connect" : "Kết nối",
   "disconnect" : "Ngắt kết nối",
-  "no connection" : "Chưa kết nối tài khoản {{provider}}"
+  "no connection" : "Chưa kết nối tài khoản {{provider}}",
+  "article" : "Bài viết",
+  "team" : "Đội ngũ",
+  "events" : "Sự Kiện"
 }

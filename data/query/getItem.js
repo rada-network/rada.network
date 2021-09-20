@@ -45,6 +45,10 @@ const itemFeedGql = gql`
                     id
                     source
                 }
+                token{
+                    name
+                    symbol
+                }
             }
             news{
                 id
@@ -72,6 +76,10 @@ const itemFeedGql = gql`
                     name
                     id
                 }
+                token{
+                    name
+                    symbol
+                }
             }
             video{
                 id
@@ -94,13 +102,13 @@ const itemFeedGql = gql`
                         url
                     }
                 }
+                token{
+                    name
+                    symbol
+                }
             }
             media{
                 id
-            }
-            token{
-                name
-                symbol
             }
         }
     }
@@ -150,6 +158,10 @@ const itemByIdGql = gql`
                     id
                     source
                 }
+                token{
+                    name
+                    symbol
+                }
             }
             news{
                 id
@@ -180,6 +192,10 @@ const itemByIdGql = gql`
                     name
                     id
                 }
+                token{
+                    name
+                    symbol
+                }
             }
             video{
                 id
@@ -201,13 +217,13 @@ const itemByIdGql = gql`
                         url
                     }
                 }
+                token{
+                    name
+                    symbol
+                }
             }
             media{
                 id
-            }
-            token{
-                name
-                symbol
             }
         }
     }

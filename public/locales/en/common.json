@@ -16,5 +16,9 @@
   "connection": "Connection",
   "connect" : "Connect",
   "disconnect" : "Disconnect",
-  "no connection" : "No {{provider}} account connected"
+  "no connection" : "No {{provider}} account connected",
+  "article" : "Article",
+  "team" : "Team",
+  "events" : "Events"
+  
 }

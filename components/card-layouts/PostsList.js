@@ -188,8 +188,8 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
             id : item.id,
             totalVote: item.totalVote,
             totalComment: item.totalComment,
-            token : item.token
           }
+          item.token = item.news.token
           item.createdAt = item.news.createdAt
           source = getSourceFromUri(item.news)
           title = item.news.title
@@ -223,8 +223,8 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
             id : item.id,
             totalVote: item.totalVote,
             totalComment: item.totalComment,
-            token : item.token
           }
+          item.token = item.tweet.token
           item.createdAt = item.tweet.createdAt
           title = item.tweet.source.full_text
           mediaUri = item.tweet.tweetUser ? item.tweet.tweetUser.source.profile_image_url_https : null
@@ -266,8 +266,8 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
             id : item.id,
             totalVote: item.totalVote,
             totalComment: item.totalComment,
-            token : item.token
           }
+          item.token = item.video.token
           item.createdAt = item.video.createdAt
           title = item.video.title
           slug = item.video.slug
