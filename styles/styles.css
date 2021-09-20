@@ -277,7 +277,7 @@ Top & Tool Bars
 }
 
 .logo--text {
-  @apply bg-gradient-to-b from-primary-400 to-primary-500 font-semibold;
+  @apply bg-gradient-to-b from-yellow-400 to-yellow-500 font-semibold;
   @apply dark:from-white dark:to-white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -391,7 +391,7 @@ Title
 */
 .post-title h1 {
   .badge-rada {
-    @apply relative -top-1;
+    @apply relative -top-0.5 text-sm rounded-full;
   }
   .badge-coin {
     @apply ml-2;

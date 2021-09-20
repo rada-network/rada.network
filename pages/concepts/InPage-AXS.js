@@ -148,6 +148,7 @@ const Layout = observer((props) => {
                               <span className="badge badge-lg badge-red">Trending</span>
                               <span className="badge badge-lg">GameFi</span>
                               <span className="badge badge-lg">NFT</span>
+                              <span className="badge badge-lg">Play to Earn</span>
                             </div>
                           </div>
 
@@ -243,7 +244,7 @@ const Layout = observer((props) => {
                         {/* End: Post Header */}
 
                         {/* Post Content */}
-                        <div className="w-full mt-6">
+                        <div className="w-full mt-4">
 
                           <div className="post-media">
                             <img src="/images/examples/axs-intro.jpeg" className="" alt="AXS"/>
