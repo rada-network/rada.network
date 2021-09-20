@@ -285,7 +285,7 @@ Top & Tool Bars
 }
 
 .logo--badge {
-  @apply text-xxxs mt-0.5 opacity-50 border-b-2 border-gray-400 leading-3;
+  @apply text-3xs mt-0.5 opacity-50 border-b-2 border-gray-400 leading-3;
   letter-spacing: 2px;
 }
 
@@ -390,8 +390,11 @@ Post Details
 Title 
 */
 .post-title h1 {
-  .badge {
+  .badge-rada {
     @apply relative -top-1;
+  }
+  .badge-coin {
+    @apply ml-2;
   }
 }
 
@@ -451,7 +454,7 @@ CTAs
 Media
 */
 .post-media {
-  @apply w-full max-h-56 lg:max-h-72 overflow-hidden rounded mt-4;
+  @apply w-full max-h-56 lg:max-h-72 overflow-hidden rounded-md mt-4;
 }
 
 .post-media--img {

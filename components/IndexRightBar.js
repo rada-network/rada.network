@@ -88,7 +88,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
                 </a>
 
                 <a href="#" className="tab-item">
-                  Social
+                  Events
                 </a>
                 
               </div>
