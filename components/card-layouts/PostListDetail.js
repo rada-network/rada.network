@@ -9,6 +9,7 @@ import {getSourceFromUri, getSourceVideoFromUri} from "./PostsList";
 import utils from "../../lib/util";
 import {Vote} from "../vote/Vote";
 import { useTranslation } from "next-i18next";
+import { getItemById } from "../../data/query/getItem";
 
 export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
   let item = detailStore.data
@@ -48,9 +49,19 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
     }
     window.removeEventListener('resize', handleResize)
     window.addEventListener('resize', handleResize)
-
     scrollRef.current.scrollTop = 0; // For Safari
-  }, [item]);
+    if (detailStore.type === "news"){
+      getItemById({id : item.item.id}).then(function (res) {
+        if (res.data.itemById.news !== null){
+          detailStore.data.content = res.data.itemById.news.content
+          detailStore.data.content_en = res.data.itemById.news.content_en
+          detailStore.data.contentDisplay = res.data.itemById.news.contentDisplay
+          detailStore.data.content_en_display = res.data.itemById.news.content_en_display
+        }
+      })
+    }
+  
+  }, [item.item]);
   let resizeTimeout = 0;
   const handleResize = (event) => {
     clearTimeout(resizeTimeout);

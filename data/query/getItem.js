@@ -55,10 +55,7 @@ const itemFeedGql = gql`
                 description
                 thumbnailUri
                 source
-                content
                 isshowcontent
-                contentDisplay
-                content_en_display
                 keywords
                 createdAt
                 websiteUri
