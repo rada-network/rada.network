@@ -143,7 +143,7 @@ Badges
 .badge {
   @apply text-2xs leading-none px-1.5 py-0.5 whitespace-nowrap;
   @apply bg-gray-400 bg-opacity-20 text-gray-400;
-  @apply rounded;
+  @apply rounded-full;
 
   &::before {
     display: none !important;
@@ -160,7 +160,7 @@ Badges
 
 /* Sizes */
 .badge-lg {
-  @apply text-xs px-1.5 py-0.5;
+  @apply text-xs px-2 py-0.5;
 }
 
 /* Colors */
@@ -182,7 +182,7 @@ Badges
 }
 
 .badge-coin {
-  @apply px-1;
+  @apply px-1 rounded;
   @apply text-gray-500 dark:text-gray-200 bg-transparent border border-gray-400 border-opacity-30;
   @apply text-2xs font-semibold;
 }
@@ -193,7 +193,7 @@ Badges
 }
 
 .badge-rada {
-  @apply bg-gradient-to-b from-yellow-400 to-yellow-400;
+  @apply bg-gradient-to-b from-yellow-400 to-yellow-400 rounded-full;
   @apply text-white;
 }
 
