@@ -134,12 +134,11 @@ Nav Button
   @apply text-sm;
 }
 
-.btn-open-widgets {
-  @apply md:hidden;
-  .btn--text {
-    @apply hidden lg:inline-block;
-  }
+/* Small Size */
+.nav-btn-sm {
+  @apply text-xs;
 }
+
 
 /* 
 Wallet Button 

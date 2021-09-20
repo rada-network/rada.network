@@ -141,7 +141,7 @@ Metadata
 Badges
 -------------------------------- */
 .badge {
-  @apply text-2xs leading-none font-medium px-1.5 py-0.5 whitespace-nowrap;
+  @apply text-2xs leading-none px-1.5 py-0.5 whitespace-nowrap;
   @apply bg-gray-400 bg-opacity-20 text-gray-400;
   @apply rounded;
 
@@ -154,14 +154,13 @@ Badges
   }
 
   .cf {
-    @apply md:text-base;
   }
 
 }
 
 /* Sizes */
 .badge-lg {
-  @apply text-sm px-1.5 py-0.5;
+  @apply text-xs px-1.5 py-0.5;
 }
 
 /* Colors */
@@ -309,7 +308,6 @@ Icons Styles
 }
 
 .cf {
-  @apply text-base;
 }
 
 .cf-btc {
