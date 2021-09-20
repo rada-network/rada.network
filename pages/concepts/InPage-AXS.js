@@ -132,11 +132,11 @@ const Layout = observer((props) => {
                       <div className="grid grid-cols-1">
 
                         {/* Post Header */}
-                        <div className="">
+                        <div className="flex flex-col">
 
-                          <div className="flex justify-between items-end w-full">
-                            <div className="flex flex-1 flex-wrap">
-                              <span className="icon w-full md:w-auto">
+                          <div className="flex flex-wrap justify-between items-center items-center w-full">
+                            <div className="flex flex-0 flex-shrink-0 mb-4">
+                              <span className="icon flex-shrink-0">
                                 <img src="/images/coins/axs.png" className="mr-2 h-px-32 w-px-32" alt="AXS Symbol"/>
                               </span>
                               <h1 className="flex items-center">
@@ -144,49 +144,55 @@ const Layout = observer((props) => {
                                 <span className="badge badge-coin badge-coin-lg ml-2">AXS</span>
                               </h1>
                             </div>
-                            <div className="flex flex-wrap space-x-2">
+                            <div className="flex flex-wrap space-x-2 mb-4">
                               <span className="badge badge-lg badge-red">Trending</span>
                               <span className="badge badge-lg">GameFi</span>
                               <span className="badge badge-lg">NFT</span>
                             </div>
                           </div>
 
-                          <div className="mt-8">
+                          <div className="mt-4">
                             <div className="flex w-full">
-                              <div className="list-group-sm text-sm w-full">
-                                <div className="list-group-sm--item">
-                                  <span className="uppercase opacity-50 text-xs">Website</span>
-                                  <span className="font-semibold">
-                                    <a href="https://axieinfinity.com/" className="btn nav-btn" rel="nofollow" target="blank">
+
+                              <div className="text-sm w-full">
+                                <div className="flex flex-wrap justify-between items-center">
+                                  <div className="w-full lg:w-auto mb-2">
+                                    <span className="uppercase opacity-50 text-xs">Website</span>
+                                  </div>
+                                  <div className="space-x-2 mb-2">
+                                    <a href="https://axieinfinity.com/" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
                                       <span className="icon">
                                         <i class="fa-regular fa-globe"></i>
                                       </span>
                                       <span className="btn--text">https://axieinfinity.com/</span>
                                     </a>
-                                  </span>
+                                  </div>
                                 </div>
-                                <div className="list-group-sm--item">
-                                  <span className="uppercase opacity-50 text-xs">Community</span>
-                                  <div className="space-x-2">
-                                    <a href="https://twitter.com/axieinfinity" className="btn nav-btn" rel="nofollow" target="blank">
+
+                                <div className="flex flex-wrap justify-between items-center">
+                                  <div className="w-full lg:w-auto mb-2">
+                                    <span className="uppercase opacity-50 text-xs">Community</span>
+                                  </div>
+                                  <div className="space-x-2 mb-2">
+                                    <a href="https://twitter.com/axieinfinity" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
                                       <span className="icon">
                                         <i class="fa-brands fa-twitter"></i>
                                       </span>
                                       <span className="btn--text">Twitter</span>
                                     </a>
-                                    <a href="https://t.me/axieinfinity" className="btn nav-btn" rel="nofollow" target="blank">
+                                    <a href="https://t.me/axieinfinity" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
                                       <span className="icon">
                                         <i class="fa-brands fa-telegram"></i>
                                       </span>
                                       <span className="btn--text">Telegram</span>
                                     </a>
-                                    <a href="https://discord.com/invite/axie" className="btn nav-btn" rel="nofollow" target="blank">
+                                    <a href="https://discord.com/invite/axie" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
                                       <span className="icon">
                                         <i class="fa-brands fa-discord"></i>
                                       </span>
                                       <span className="btn--text">Discord</span>
                                     </a>
-                                    <a href="https://axieinfinity.medium.com/" className="btn nav-btn" rel="nofollow" target="blank">
+                                    <a href="https://axieinfinity.medium.com/" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
                                       <span className="icon">
                                         <i class="fa-brands fa-medium"></i>
                                       </span>
@@ -194,23 +200,30 @@ const Layout = observer((props) => {
                                     </a>
                                   </div>
                                 </div>
-                                <div className="list-group-sm--item">
-                                  <span className="uppercase opacity-50 text-xs">Explorer</span>
-                                  <div className="space-x-2">
-                                    <a href="https://etherscan.io/token/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn nav-btn" rel="nofollow" target="blank">
+
+                                <div className="flex flex-wrap justify-between items-center">
+                                  <div className="w-full lg:w-auto mb-2">
+                                    <span className="uppercase opacity-50 text-xs">Explorer</span>
+                                  </div>
+                                  <div className="space-x-2 mb-2">
+                                    <a href="https://etherscan.io/token/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
                                       <span className="btn--text">etherscan</span>
                                     </a>
-                                    <a href="https://ethplorer.io/address/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn nav-btn" rel="nofollow" target="blank">
+                                    <a href="https://ethplorer.io/address/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
                                       <span className="btn--text">ethplorer</span>
                                     </a>
-                                    <a href="https://bscscan.com/token/0x715D400F88C167884bbCc41C5FeA407ed4D2f8A0" className="btn nav-btn" rel="nofollow" target="blank">
+                                    <a href="https://bscscan.com/token/0x715D400F88C167884bbCc41C5FeA407ed4D2f8A0" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
                                       <span className="btn--text">bscscan</span>
                                     </a>
                                   </div>
                                 </div>
-                                <div className="list-group-sm--item">
-                                  <span className="uppercase opacity-50 text-xs">Contract</span>
-                                    <a href="#" className="btn nav-btn">
+
+                                <div className="flex flex-wrap justify-between items-center">
+                                  <div className="w-full lg:w-auto mb-2">
+                                    <span className="uppercase opacity-50 text-xs">Contract</span>
+                                  </div>
+                                  <div className="space-x-2 mb-2">
+                                    <a href="#" className="btn nav-btn nav-btn-sm">
                                       <span className="icon">
                                         <i class="cf cf-eth"></i>
                                       </span>
@@ -219,7 +232,9 @@ const Layout = observer((props) => {
                                         <i class="fa-regular fa-copy text-2xs"></i>
                                       </span>
                                     </a>
+                                  </div>
                                 </div>
+
                               </div>
                             </div>
                           </div>
@@ -228,7 +243,7 @@ const Layout = observer((props) => {
                         {/* End: Post Header */}
 
                         {/* Post Content */}
-                        <div className="w-full mt-8">
+                        <div className="w-full mt-6">
 
                           <div className="post-media">
                             <img src="/images/examples/axs-intro.jpeg" className="" alt="AXS"/>
