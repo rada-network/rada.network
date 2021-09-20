@@ -27,9 +27,6 @@ Post Content Typo
 ----------------------------------- */
 .post-title h1 {
   @apply text-xl font-semibold;
-  .badge {
-    @apply relative -top-1;
-  }
 }
 
 .post-detail-media .post-content--text {

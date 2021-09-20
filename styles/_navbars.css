@@ -37,10 +37,10 @@ Nav Item
 
 .dark .nav-item .icon-rada svg {
   .inline-rec {
-    fill: #D1D5DB;
+    fill: #6B7280;
   }
   .inline-circle {
-    fill: #6B7280;
+    fill: #D1D5DB;
   }
   .inline-stroke {
     fill: #111827;
@@ -48,7 +48,7 @@ Nav Item
 }
 
 .nav-item--text {
-  @apply text-xxs lg:text-xs;
+  @apply text-2xs lg:text-xs;
 }
 
 /* 
@@ -62,19 +62,19 @@ Nav Item Active
 
 .nav-item-active .icon-rada svg {
   .inline-circle {
-    fill: #C4B5FD;
+    fill: #6D28D9;
   }
   .inline-rec {
-    fill: #6D28D9;
+    fill: #A78BFA;
   }
 }
 
 .dark .nav-item-active .icon-rada svg {
   .inline-rec {
-    fill: #6D28D9;
+    fill: #8B5CF6;
   }
   .inline-circle {
-    fill: #C4B5FD;
+    fill: #DDD6FE;
   }
   .inline-stroke {
     fill: #111827;
@@ -85,7 +85,7 @@ Nav Item Active
 Nav Item Addons
 */
 .nav-item--badge {
-  @apply text-xxxs rounded-full absolute;
+  @apply text-3xs rounded-full absolute;
   @apply bg-red-500 text-white;
   padding: 3px;
   top: 10px;
@@ -137,9 +137,8 @@ Tabbar
   width: 1px;
 }
 
-.tab-item:hover,
 .tab-item--active {
-  @apply opacity-100 text-primary-700 dark:text-primary-500;
+  @apply opacity-100 text-primary-700 dark:text-primary-400 font-semibold;
   /* &::after {
     height: 3px;
   } */

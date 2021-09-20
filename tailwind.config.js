@@ -16,7 +16,7 @@ module.exports = {
   theme: {
     // Add Font to Sans Font Array
     fontFamily: {
-      sans: ['"Inter"', ...defaultTheme.fontFamily.sans],
+      sans: [ '-apple-system', 'BlinkMacSystemFont', '"Inter"', 'ui-sans-serif', 'system-ui', "Helvetica Neue", 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
       serif: ['"Literata"', ...defaultTheme.fontFamily.serif],
     },
 
@@ -70,8 +70,8 @@ module.exports = {
 
       // Extra Font Sizes
       fontSize: {
-        xxs: ['0.65rem', '1'],
-        xxxs: ['0.5rem', '1'],
+        '2xs': ['0.65rem', '1'],
+        '3xs': ['0.5rem', '1'],
       },
 
       // Added Percentage Spacing

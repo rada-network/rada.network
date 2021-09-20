@@ -65,7 +65,7 @@ Generic Styles
 }
 
 .card-badges .badge {
-  @apply text-xxs px-1 py-0.5 ml-1 mt-0;
+  @apply text-2xs px-1 py-0.5 ml-1 mt-0;
 }
 
 

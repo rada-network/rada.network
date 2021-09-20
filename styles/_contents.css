@@ -60,8 +60,8 @@ Lists Group Compact
 }
 
 .list-group-sm--item {
-  @extend .widget-list--item;
-  @apply px-4 py-3;
+  @extend .list-group--item;
+  @apply px-0 py-2;
 }
 
 
@@ -141,9 +141,9 @@ Metadata
 Badges
 -------------------------------- */
 .badge {
-  @apply text-xxs leading-none font-medium px-1.5 py-0.5 whitespace-nowrap;
+  @apply text-2xs leading-none font-medium px-1.5 py-0.5 whitespace-nowrap;
   @apply bg-gray-400 bg-opacity-20 text-gray-400;
-  @apply rounded-full;
+  @apply rounded;
 
   &::before {
     display: none !important;
@@ -159,8 +159,22 @@ Badges
 
 }
 
-a.badge {
-  @apply hover:bg-opacity-20 hover:text-gray-700 dark:hover:text-white;
+/* Sizes */
+.badge-lg {
+  @apply text-sm px-1.5 py-0.5;
+}
+
+/* Colors */
+.badge-red {
+  @apply bg-red-500 text-white;
+}
+
+.badge-blue {
+  @apply bg-blue-500 text-white;
+}
+
+.badge-purple {
+  @apply bg-purple-500 text-white;
 }
 
 /* Type */
@@ -169,13 +183,18 @@ a.badge {
 }
 
 .badge-coin {
-  @apply px-2 rounded;
+  @apply px-1;
   @apply text-gray-500 dark:text-gray-200 bg-transparent border border-gray-400 border-opacity-30;
-  @apply text-xxs font-semibold;
+  @apply text-2xs font-semibold;
+}
+
+.badge-coin-lg {
+  @apply px-2 py-0 shadow-sm;
+  @apply text-sm;
 }
 
 .badge-rada {
-  @apply bg-gradient-to-r from-purple-500 to-yellow-400;
+  @apply bg-gradient-to-b from-yellow-400 to-yellow-400;
   @apply text-white;
 }
 
@@ -221,7 +240,7 @@ a.badge {
 Small Badges
 */
 .badge-sm {
-  @apply border-none rounded-sm rounded-tl-md rounded-br-md text-xxs px-2 pt-1px pb-1px;
+  @apply border-none rounded-sm rounded-tl-md rounded-br-md text-2xs px-2 pt-1px pb-1px;
   @apply bg-gray-100 border text-gray-500;
 }
 
