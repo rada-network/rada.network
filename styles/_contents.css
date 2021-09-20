@@ -316,7 +316,7 @@ Icons Styles
 
 .cf-eth,
 .cf-rip {
-  @apply text-gray-900;
+  @apply text-gray-800 dark:text-gray-200;
 }
 
 .cf-ada,
