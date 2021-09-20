@@ -56,12 +56,12 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
             {/* Pageback Here */}
             {dataStore !== undefined && !_.isEmpty(detailStore.data) ?
               <div className="page-back flex-shrink-0">
-                <div className="btn" onClick={(e) => {handleBack(e)}}>
+                <a title="Back" className="btn" onClick={(e) => {handleBack(e)}}>
                   <span className="icon">
                     <i class="fa-solid fa-chevron-left"></i>
                   </span>
                   <span className="btn--text sr-only">{t("back")}</span>
-                </div>
+                </a>
               </div>
               : ""
             }
@@ -70,6 +70,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
             HieuNN:
             Example of Page Tabs Here 
             */}
+            {!_.isEmpty(detailStore.data) && detailStore.data.item.token !== null ? 
             <div className="tabbar page-tabs">
               <div className="tabbar-main">
 
@@ -93,6 +94,9 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
                 
               </div>
             </div>
+            :""
+            }
+            
 
             
           </div>

@@ -141,6 +141,7 @@ export const Index  = ({props,observableItemStore,voteStore,detailStore}) => {
       id : props.item.id,
       totalVote : props.item.totalVote,
       totalComment : props.item.totalComment,
+      token : props.item.token,
     }
     detailStore.data = item
     meta = utils.createSiteMetadata({page : 'ItemDetail',data : {...item,type : detailStore.type},dataStore : observableItemStore})

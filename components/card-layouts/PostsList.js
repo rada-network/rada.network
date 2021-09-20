@@ -187,7 +187,8 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           item.news.item = {
             id : item.id,
             totalVote: item.totalVote,
-            totalComment: item.totalComment
+            totalComment: item.totalComment,
+            token : item.token
           }
           item.createdAt = item.news.createdAt
           source = getSourceFromUri(item.news)
@@ -221,7 +222,8 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
           item.tweet.item = {
             id : item.id,
             totalVote: item.totalVote,
-            totalComment: item.totalComment
+            totalComment: item.totalComment,
+            token : item.token
           }
           item.createdAt = item.tweet.createdAt
           title = item.tweet.source.full_text
@@ -243,29 +245,28 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
             </a>
           )
         }
-
-        if (item.idea !== null){
-          item.createdAt = item.idea.createdAt
-          title = item.idea.title
-          mediaUri = Object.keys(item.idea.imagesUri).length === 0 ? null : item.idea.imagesUri[0]
-          return <CardPost key={item.id}
-                           title={title}
-                           mediaUri={mediaUri}
-                           type="fa-duotone fa-code"
-                           source={"Project Catalyst"}
-                           commentCount={commentCount}
-                           voteCount={voteCount} item={item}
-                           detailStore={detailStore}
-                           voteStore={voteStore}
-                           dataStore={dataStore}
-          />
-        }
-
+        // if (item.idea !== null){
+        //   item.createdAt = item.idea.createdAt
+        //   title = item.idea.title
+        //   mediaUri = Object.keys(item.idea.imagesUri).length === 0 ? null : item.idea.imagesUri[0]
+        //   return <CardPost key={item.id}
+        //                    title={title}
+        //                    mediaUri={mediaUri}
+        //                    type="fa-duotone fa-code"
+        //                    source={"Project Catalyst"}
+        //                    commentCount={commentCount}
+        //                    voteCount={voteCount} item={item}
+        //                    detailStore={detailStore}
+        //                    voteStore={voteStore}
+        //                    dataStore={dataStore}
+        //   />
+        // }
         if (item.video !== null){
           item.video.item = {
             id : item.id,
             totalVote: item.totalVote,
-            totalComment: item.totalComment
+            totalComment: item.totalComment,
+            token : item.token
           }
           item.createdAt = item.video.createdAt
           title = item.video.title
@@ -288,21 +289,19 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
             </a>
           )
         }
-
-        if (item.media !== null){
-          return <CardPost key={item.id}
-                           title="This Group of Investors Drives Bitcoin Bull Markets, According to Analyst Willy Woo – And It’s Not Whales"
-                           mediaUri="https://picsum.photos/80/80?random=3"
-                           type="fa-duotone fa-spotify"
-                           source="DailyHodl"
-                           commentCount="0"
-                           voteCount="0" item={item}
-                           detailStore={detailStore}
-                           voteStore={voteStore}
-                           dataStore={dataStore}
-          />
-        }
-
+        // if (item.media !== null){
+        //   return <CardPost key={item.id}
+        //                    title="This Group of Investors Drives Bitcoin Bull Markets, According to Analyst Willy Woo – And It’s Not Whales"
+        //                    mediaUri="https://picsum.photos/80/80?random=3"
+        //                    type="fa-duotone fa-spotify"
+        //                    source="DailyHodl"
+        //                    commentCount="0"
+        //                    voteCount="0" item={item}
+        //                    detailStore={detailStore}
+        //                    voteStore={voteStore}
+        //                    dataStore={dataStore}
+        //   />
+        // }
       })
       }
     </div>

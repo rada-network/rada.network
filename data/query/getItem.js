@@ -98,6 +98,10 @@ const itemFeedGql = gql`
             media{
                 id
             }
+            token{
+                name
+                symbol
+            }
         }
     }
 `
@@ -200,6 +204,10 @@ const itemByIdGql = gql`
             }
             media{
                 id
+            }
+            token{
+                name
+                symbol
             }
         }
     }

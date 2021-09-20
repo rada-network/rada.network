@@ -124,13 +124,7 @@ const CardPostNormal = observer(({title, mediaUri, type, source, commentCount, v
             </span>
           </div>
 
-
-          <div className={`card-badges`}>
-            <a href="/">
-              <span className="badge badge-coin">AXS</span>
-            </a>
-          </div>
-
+          <PostTokenHolder token={item.token} />
         </div>
 
         <div className="metadata-wrapper justify-between">
@@ -217,15 +211,19 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
 
       <div className={`card-body`}>
 
-        <div className={`card-title`}>
-          <div className="card-link group" href={"/"}>
-            {dataStore.type !== "rada" ? 
-            <span className="badge badge-rada">RADA</span> 
-            : ""}
-            <span className="text-color-title mr-2">{title}</span>
+        <div className={`card-body-header`}>
+          <div className={`card-title`}>
+            <div className="card-link group" href={"/"}>
+              {dataStore.type !== "rada" ? 
+              <span className="badge badge-rada">RADA</span> 
+              : ""}
+              <span className="text-color-title mr-2">{title}</span>
+            </div>
           </div>
-        </div>
 
+          <PostTokenHolder token={item.token} />
+        </div>
+        
         <div className="metadata-wrapper justify-between mt-1">
 
           <div className="flex flex-shrink-0">
@@ -262,3 +260,14 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
     </div>
   )
 })
+
+const PostTokenHolder = function({token}){
+  if (token == null){return null}
+  return (
+    <div className={`card-badges`}>
+      <a href="/">
+        <span className="badge badge-coin">{token.symbol}</span>
+      </a>
+    </div>
+  )
+}
