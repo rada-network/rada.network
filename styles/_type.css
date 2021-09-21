@@ -21,6 +21,10 @@ body {
   @apply text-gray-800 text-opacity-50 dark:text-gray-200 dark:text-opacity-50;
 }
 
+strong {
+  @apply font-semibold;
+}
+
 /* Headings
 -----------------------------------*/
 h2.heading-2 {

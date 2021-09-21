@@ -125,9 +125,9 @@ const Layout = observer((props) => {
 
                 {/* Main Content */}
                 <div className="pane-content--sec--main grid scrollbar">
-                  <div className="page page-coininfo">
+                  <div className="page page-coinmarket">
 
-                    <div className="section section-coininfo--general">
+                    <div className="section">
 
                       <div className="grid grid-cols-1">
 

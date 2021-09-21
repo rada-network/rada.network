@@ -515,27 +515,41 @@ Pricing & Market
 }
 
 .pricing-indicator {
-  @apply ml-2 px-2 mt-1 leading-none;
+  @apply flex items-center ml-2 px-2 py-0.5 relative -top-1;
   @apply text-base rounded-md;
+  .fa-solid {
+    @apply text-sm relative;
+  }
 }
 
 .pricing-indicator[type="up"] {
-  @apply text-green-500;
+  @apply bg-green-50 text-green-500;
+  .fa-solid {
+    @apply -bottom-0.5;
+  }
 }
 
 .pricing-indicator[type="down"] {
-  @apply text-red-500;
+  @apply bg-red-50 text-red-500;
 }
 
 /* Small Pricing */
 .pricing-sm {
-  @apply items-center;
+
+  @apply items-center bg-transparent;
+
   .pricing-value {
     @apply font-normal text-base tracking-normal;
   }
   .pricing-indicator {
-    @apply ml-2 px-1 mt-0;
+    @apply ml-2 px-1 py-0 top-0;
     @apply text-base rounded-md;
+  }
+  .pricing-indicator[type="up"] {
+    @apply text-green-500 bg-transparent;
+  }
+  .pricing-indicator[type="down"] {
+    @apply text-red-500 bg-transparent;
   }
 }
 

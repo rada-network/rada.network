@@ -23,16 +23,16 @@ function Concept() {
                   <img src="/images/coins/axs.png" className="mr-2 h-px-24 w-px-24" alt="AXS Symbol"/>
                 </span>
                 <h1 className="flex items-center">
-                  <strong className="text-lg font-medium">Axie Infinity</strong>
+                  <strong className="text-lg font-semibold">Axie Infinity</strong>
                   <span className="badge badge-coin ml-2">AXS</span>
                 </h1>
                 {/* Price */}
               </div>
               <div className="flex flex-wrap space-x-2 mb-4">
+                <span className="badge badge-lg badge-red">Trending</span>
                 <span className="badge badge-lg">GameFi</span>
                 <span className="badge badge-lg">NFT</span>
                 <span className="badge badge-lg">Play to Earn</span>
-                <span className="badge badge-lg badge-red">Trending</span>
               </div>
             </div>
 
@@ -40,15 +40,15 @@ function Concept() {
               <div className="flex flex-wrap md:flex-nowrap items-start w-full">
 
                 {/* Pricing */}
-                <div className="flex flex-col flex-shrink-0 flex-0 mb-2">
-                  <div className="pricing mb-1">
+                <div className="flex flex-col flex-shrink-0 flex-0 mb-4">
+                  <div className="pricing">
                     <span className="pricing-value">$51.15</span>
                     <span className="pricing-indicator" type="down">
                       <i class="fa-solid fa-caret-down mr-1"></i>
                       9.37%
                     </span>
                   </div>
-                  <div className="pricing pricing-sm">
+                  <div className="pricing pricing-sm mt-2">
                     <span className="pricing-value opacity-50">0.001241 BTC</span>
                     <span className="pricing-indicator" type="up">
                       <i class="fa-solid fa-caret-up mr-1"></i>
@@ -59,11 +59,11 @@ function Concept() {
                 {/* END: Pricing */}
 
                 {/* Pricing Info */}
-                <div className="flex flex-wrap md:flex-nowrap w-full justify-evenly space-x-2 divide-x divide-gray-400 divide-opacity-20">
+                <div className="flex flex-wrap md:flex-nowrap w-full md:ml-6 md:space-x-2 md:divide-x divide-gray-400 divide-opacity-20">
 
                   <div className="md:text-center md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-xs">Market Cap</span>
+                      <span className="uppercase opacity-50 text-2xs md:text-xs">Market Cap</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -72,9 +72,9 @@ function Concept() {
                     </div>
                   </div>
 
-                  <div className="md:text-center md:w-1/2 lg:w-full">
+                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-xs">Volume 24h</span>
+                      <span className="uppercase opacity-50 text-2xs md:text-xs">Volume 24h</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -83,9 +83,9 @@ function Concept() {
                     </div>
                   </div>
                   
-                  <div className="md:text-center md:w-1/2 lg:w-full">
+                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-xs" title="Circulating Supply">C. Supply</span>
+                      <span className="uppercase opacity-50 text-2xs md:text-xs" title="Circulating Supply">C. Supply</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -94,9 +94,9 @@ function Concept() {
                     </div>
                   </div>  
                   
-                  <div className="md:text-center md:w-1/2 lg:w-full">
+                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-xs">Total Supply</span>
+                      <span className="uppercase opacity-50 text-2xs md:text-xs">Total Supply</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -115,18 +115,18 @@ function Concept() {
           {/* End: Post Header */}
 
           {/* Post Content */}
-          <div className="w-full mt-8">
+          <div className="w-full mt-6">
 
-            <div className="flex items-center justify-between mb-4 w-full">
-              <h2 className="heading-2">
+            <div className="flex flex-wrap md:flex-nowrap items-center justify-between w-full">
+              <h2 className="heading-2 mb-4">
                 Axie Infinity Price Chart
               </h2>
-              <div className="flex justify-between w-auto">
+              <div className="flex justify-between w-full md:w-auto mb-4">
                 <div class="btn-group btn-group-filter w-auto">
                   <a class="btn w-full btn-filter-active">USD</a>
                   <a class="btn w-full btn-filter">BTC</a>
                 </div>
-                <div class="btn-group btn-group-filter justify-evenly w-auto ml-2">
+                <div class="btn-group btn-group-filter justify-evenly w-2/3 w-auto ml-2">
                   <a class="btn w-full btn-filter">1D</a>
                   <a class="btn w-full btn-filter-active">7D</a>
                   <a class="btn w-full btn-filter">1M</a>
@@ -144,7 +144,7 @@ function Concept() {
           </div>
 
 
-          <div className="w-full mt-8"> 
+          <div className="w-full mt-4"> 
 
             <div className="post-content mt-8">
 
