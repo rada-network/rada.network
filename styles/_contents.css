@@ -534,7 +534,9 @@ Pricing & Market
     @apply font-normal text-base tracking-normal;
   }
   .pricing-indicator {
-    @apply ml-1 px-1 mt-0;
+    @apply ml-2 px-1 mt-0;
     @apply text-base rounded-md;
   }
 }
+
+/* Concept: Chart */

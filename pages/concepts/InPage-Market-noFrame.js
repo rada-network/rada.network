@@ -23,7 +23,7 @@ function Concept() {
                   <img src="/images/coins/axs.png" className="mr-2 h-px-24 w-px-24" alt="AXS Symbol"/>
                 </span>
                 <h1 className="flex items-center">
-                  <strong className="text-base font-medium">Axie Infinity Price</strong>
+                  <strong className="text-lg font-medium">Axie Infinity</strong>
                   <span className="badge badge-coin ml-2">AXS</span>
                 </h1>
                 {/* Price */}
@@ -36,10 +36,11 @@ function Concept() {
               </div>
             </div>
 
-            <div className="mt-4 md:ml-7">
-              <div className="flex w-full">
+            <div className="mt-4">
+              <div className="flex flex-wrap md:flex-nowrap items-start w-full">
 
-                <div className="flex flex-col">
+                {/* Pricing */}
+                <div className="flex flex-col flex-shrink-0 flex-0 mb-2">
                   <div className="pricing mb-1">
                     <span className="pricing-value">$51.15</span>
                     <span className="pricing-indicator" type="down">
@@ -55,6 +56,57 @@ function Concept() {
                     </span>
                   </div>
                 </div>
+                {/* END: Pricing */}
+
+                {/* Pricing Info */}
+                <div className="flex flex-wrap md:flex-nowrap w-full justify-evenly space-x-2 divide-x divide-gray-400 divide-opacity-20">
+
+                  <div className="md:text-center md:w-1/2 lg:w-full">
+                    <div className="w-full lg:w-auto">
+                      <span className="uppercase opacity-50 text-xs">Market Cap</span>
+                    </div>
+                    <div className="mb-2">
+                      <strong href="#" className="">
+                        $770.1B
+                      </strong>
+                    </div>
+                  </div>
+
+                  <div className="md:text-center md:w-1/2 lg:w-full">
+                    <div className="w-full lg:w-auto">
+                      <span className="uppercase opacity-50 text-xs">Volume 24h</span>
+                    </div>
+                    <div className="mb-2">
+                      <strong href="#" className="">
+                        $58.8B
+                      </strong>
+                    </div>
+                  </div>
+                  
+                  <div className="md:text-center md:w-1/2 lg:w-full">
+                    <div className="w-full lg:w-auto">
+                      <span className="uppercase opacity-50 text-xs" title="Circulating Supply">C. Supply</span>
+                    </div>
+                    <div className="mb-2">
+                      <strong href="#" className="">
+                      18,822,487
+                      </strong>
+                    </div>
+                  </div>  
+                  
+                  <div className="md:text-center md:w-1/2 lg:w-full">
+                    <div className="w-full lg:w-auto">
+                      <span className="uppercase opacity-50 text-xs">Total Supply</span>
+                    </div>
+                    <div className="mb-2">
+                      <strong href="#" className="">
+                        21,000,000
+                      </strong>
+                    </div>
+                  </div>  
+                
+                </div>
+                {/* END: Pricing Info */}
 
               </div>
             </div>
@@ -63,33 +115,44 @@ function Concept() {
           {/* End: Post Header */}
 
           {/* Post Content */}
-          <div className="w-full mt-4">
+          <div className="w-full mt-8">
+
+            <div className="flex items-center justify-between mb-4 w-full">
+              <h2 className="heading-2">
+                Axie Infinity Price Chart
+              </h2>
+              <div className="flex justify-between w-auto">
+                <div class="btn-group btn-group-filter w-auto">
+                  <a class="btn w-full btn-filter-active">USD</a>
+                  <a class="btn w-full btn-filter">BTC</a>
+                </div>
+                <div class="btn-group btn-group-filter justify-evenly w-auto ml-2">
+                  <a class="btn w-full btn-filter">1D</a>
+                  <a class="btn w-full btn-filter-active">7D</a>
+                  <a class="btn w-full btn-filter">1M</a>
+                  <a class="btn w-full btn-filter">3M</a>
+                  <a class="btn w-full btn-filter">1Y</a>
+                  <a class="btn w-full btn-filter">ALL</a>
+                </div>
+              </div>
+            </div>
 
             <div className="chart-coinpricing">
               <img src="/images/examples/chart-cmc.png" className="" alt="AXS"/>
             </div>
 
+          </div>
+
+
+          <div className="w-full mt-8"> 
+
             <div className="post-content mt-8">
 
-              <h2>About Axie Infinity</h2>
+              <h2>Axie Infinity Live Price</h2>
 
-              <p>Axie Infinity is a blockchain-based trading and battling game that is partially owned and operated by its players.</p>
+              <p>The live <strong>Axie Infinity price today</strong> is $52,18 USD with a 24-hour trading volume of $294.605.161 USD. We update our AXS to USD price in real-time. Axie Infinity is down 9,16% in the last 24 hours. The current CoinMarketCap ranking is #43, with a live market cap of $3.177.981.900 USD. It has a circulating supply of 60.907.500 AXS coins and a max. supply of 270.000.000 AXS coins.</p>
 
-              <p>Inspired by popular games like Pokémon and Tamagotchi, Axie Infinity allows players to collect, breed, raise, battle and trade token-based creatures known as Axies.</p>
-
-              <p>These Axies can take various forms, and there are more than 500 different body parts available, including aquatic, beast, bird, bug, plant and reptile parts. Parts from each type class come in four different rarity scales: common, rare, ultra rare and legendary — and Axies can have any combination of body parts, making them highly variable and often rare and unique.</p>
-
-              <h2>What Axie Infinity does?</h2>
-
-              <p>Each Axie is a non-fungible token (NFT) with different attributes and strengths and can be entered into 3v3 battles, with the winning team earning more experience (exp) points that are used to level up an Axie's stats or evolve their body parts. These Axies can be bred together to produce new and unique offspring, which can be used or sold on the Axie marketplace.</p>
-
-              <p>The Axie Infinity ecosystem also has its own unique governance token, known as Axie Infinity Shards (AXS). These are used to participate in key governance votes and will give holders a say in how funds in the Axie Community Treasury are spent.</p>
-
-              <h2>What Makes Axie Infinity Unique?</h2>
-
-              <p>Each Axie is a non-fungible token (NFT) with different attributes and strengths and can be entered into 3v3 battles, with the winning team earning more experience (exp) points that are used to level up an Axie's stats or evolve their body parts. These Axies can be bred together to produce new and unique offspring, which can be used or sold on the Axie marketplace.</p>
-
-              <p>The Axie Infinity ecosystem also has its own unique governance token, known as Axie Infinity Shards (AXS). These are used to participate in key governance votes and will give holders a say in how funds in the Axie Community Treasury are spent.</p>
+              <p>If you would like to know where to buy Axie Infinity, the top exchanges for trading in Axie Infinity are currently <a href="#">Binance</a>, <a href="#">Mandala Exchange</a>, <a href="#">Huobi Global</a>, <a href="#">OKEx</a>, and <a href="#">FTX</a>.</p>
 
 
             </div>

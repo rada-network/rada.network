@@ -21,6 +21,12 @@ body {
   @apply text-gray-800 text-opacity-50 dark:text-gray-200 dark:text-opacity-50;
 }
 
+/* Headings
+-----------------------------------*/
+h2.heading-2 {
+  @apply text-lg font-semibold;
+}
+
 
 /* 
 Post Content Typo
@@ -65,7 +71,6 @@ Post Content Typo
 .post-content * + .pTitle {
   @apply mt-8;
 }
-
 
 .post-content h3,
 .post-content .pHead {
