@@ -73,6 +73,9 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
     }).then(function (res){
       dataStore.addTweet(res.data.itemFeed)
       dataStore.loadingButton = false;
+      if (res.data.itemFeed.length !== HOME_ITEM_TAKE){
+        scrollBox1.current.removeEventListener('scroll', mobileScroll);
+      }
     })
   }
 
