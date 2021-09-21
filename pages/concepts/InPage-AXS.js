@@ -272,6 +272,7 @@ const Layout = observer((props) => {
 
                             <p>The Axie Infinity ecosystem also has its own unique governance token, known as Axie Infinity Shards (AXS). These are used to participate in key governance votes and will give holders a say in how funds in the Axie Community Treasury are spent.</p>
 
+
                           </div>
                         </div>
                         {/* End: Post Content */}

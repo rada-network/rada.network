@@ -310,37 +310,6 @@ Icons Styles
 .cf {
 }
 
-.cf-btc {
-  @apply text-yellow-600;
-}
-
-.cf-eth,
-.cf-rip {
-  @apply text-gray-800 dark:text-gray-200;
-}
-
-.cf-ada,
-.cf-car {
-  @apply text-purple-700;
-}
-
-.cf-bnb,
-.cf-bsc {
-  @apply text-yellow-400;
-}
-
-.cf-sol {
-  @apply text-green-600;
-}
-
-.cf-dot,
-.cf-pol {
-  @apply text-pink-500;
-}
-
-.cf-tro {
-  @apply text-red-700;
-}
 
 /* External Indicator */
 .ico-external-link {

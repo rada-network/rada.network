@@ -211,6 +211,15 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
                                         <i class="fa-regular fa-copy text-2xs"></i>
                                       </span>
                                     </a>
+                                    <a href="#" className="btn nav-btn nav-btn-sm">
+                                      <span className="icon">
+                                        <i class="cf cf-bnb"></i>
+                                      </span>
+                                      <span className="btn--text">0xF5D6696273...8dd940327b28b</span>
+                                      <span className="icon">
+                                        <i class="fa-regular fa-copy text-2xs"></i>
+                                      </span>
+                                    </a>
                                   </div>
                                 </div>
 
@@ -249,6 +258,25 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
                             <p>Each Axie is a non-fungible token (NFT) with different attributes and strengths and can be entered into 3v3 battles, with the winning team earning more experience (exp) points that are used to level up an Axie's stats or evolve their body parts. These Axies can be bred together to produce new and unique offspring, which can be used or sold on the Axie marketplace.</p>
 
                             <p>The Axie Infinity ecosystem also has its own unique governance token, known as Axie Infinity Shards (AXS). These are used to participate in key governance votes and will give holders a say in how funds in the Axie Community Treasury are spent.</p>
+
+                            <h2>AXS's Tokenomic</h2>
+
+                            <ul>
+                              <li>Staking Reward: 29%.</li>
+                              <li>Team: 21%.</li>
+                              <li>Play To Earn: 20%.</li>
+                              <li>Binance Launchpad Sale: 11%.</li>
+                              <li>Ecosystem Fund: 8%.</li>
+                              <li>Advisors: 7%.</li>
+                              <li>Private Sale: 4%.</li>
+                            </ul>
+
+                            <h2>Roadmap</h2>
+
+                            <ul>
+                              <li>Q4/2020: Tích hợp Lands và các Items lên Ronin.</li>
+                              <li>2021: Launch Axie Infinity Beta.</li>
+                            </ul>
 
                           </div>
                         </div>
