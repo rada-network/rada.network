@@ -502,3 +502,39 @@ Comment Trail
 .comment_reply:last-child .comment-trail {
   display: none;
 }
+
+/* 
+Pricing & Market 
+------------------------------------ */
+.pricing {
+  @apply flex items-end relative;
+}
+
+.pricing-value {
+  @apply font-semibold text-5xl leading-none truncate tracking-wide;
+}
+
+.pricing-indicator {
+  @apply ml-2 px-2 mt-1 leading-none;
+  @apply text-base rounded-md;
+}
+
+.pricing-indicator[type="up"] {
+  @apply text-green-500;
+}
+
+.pricing-indicator[type="down"] {
+  @apply text-red-500;
+}
+
+/* Small Pricing */
+.pricing-sm {
+  @apply items-center;
+  .pricing-value {
+    @apply font-normal text-base tracking-normal;
+  }
+  .pricing-indicator {
+    @apply ml-1 px-1 mt-0;
+    @apply text-base rounded-md;
+  }
+}
