@@ -78,7 +78,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
                 <a href="#" className="tab-item tab-item--active">
                   {t("article")}
                 </a>
-                {!_.isEmpty(detailStore.data) && detailStore.data.token !== null ? 
+                {!_.isEmpty(detailStore.data) && detailStore.data.token && detailStore.data.token !== null ? 
                 <>
                 <span className="tab-item--divider" />
 
