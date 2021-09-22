@@ -31,10 +31,10 @@ function Concept() {
                     </h1>
                   </div>
                   <div className="flex flex-wrap space-x-2 mb-4">
-                    <span className="badge badge-lg badge-red">Trending</span>
                     <span className="badge badge-lg">GameFi</span>
                     <span className="badge badge-lg">NFT</span>
                     <span className="badge badge-lg">Play to Earn</span>
+                    <span className="badge badge-lg badge-red">Trending</span>
                   </div>
                 </div>
 
@@ -127,14 +127,14 @@ function Concept() {
                     <div className="text-sm w-full">
                       <div className="flex flex-wrap justify-between items-center">
                         <div className="w-full lg:w-auto mb-2">
-                          <span className="uppercase opacity-50 text-xs">
+                          <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Website
                           </span>
                         </div>
                         <div className="space-x-2 mb-2">
                           <a
                             href="https://axieinfinity.com/"
-                            className="btn nav-btn nav-btn-sm"
+                            className="btn btn-default btn-default-sm"
                             rel="nofollow"
                             target="blank"
                           >
@@ -150,14 +150,14 @@ function Concept() {
 
                       <div className="flex flex-wrap justify-between items-center">
                         <div className="w-full lg:w-auto mb-2">
-                          <span className="uppercase opacity-50 text-xs">
+                          <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Community
                           </span>
                         </div>
                         <div className="space-x-2 mb-2">
                           <a
                             href="https://twitter.com/axieinfinity"
-                            className="btn nav-btn nav-btn-sm"
+                            className="btn btn-default btn-default-sm"
                             rel="nofollow"
                             target="blank"
                           >
@@ -168,7 +168,7 @@ function Concept() {
                           </a>
                           <a
                             href="https://t.me/axieinfinity"
-                            className="btn nav-btn nav-btn-sm"
+                            className="btn btn-default btn-default-sm"
                             rel="nofollow"
                             target="blank"
                           >
@@ -179,7 +179,7 @@ function Concept() {
                           </a>
                           <a
                             href="https://discord.com/invite/axie"
-                            className="btn nav-btn nav-btn-sm"
+                            className="btn btn-default btn-default-sm"
                             rel="nofollow"
                             target="blank"
                           >
@@ -190,7 +190,7 @@ function Concept() {
                           </a>
                           <a
                             href="https://axieinfinity.medium.com/"
-                            className="btn nav-btn nav-btn-sm"
+                            className="btn btn-default btn-default-sm"
                             rel="nofollow"
                             target="blank"
                           >
@@ -204,14 +204,14 @@ function Concept() {
 
                       <div className="flex flex-wrap justify-between items-center">
                         <div className="w-full lg:w-auto mb-2">
-                          <span className="uppercase opacity-50 text-xs">
+                          <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Explorer
                           </span>
                         </div>
                         <div className="space-x-2 mb-2">
                           <a
                             href="https://etherscan.io/token/0xf5d669627376ebd411e34b98f19c868c8aba5ada"
-                            className="btn nav-btn nav-btn-sm"
+                            className="btn btn-default btn-default-sm"
                             rel="nofollow"
                             target="blank"
                           >
@@ -219,7 +219,7 @@ function Concept() {
                           </a>
                           <a
                             href="https://ethplorer.io/address/0xf5d669627376ebd411e34b98f19c868c8aba5ada"
-                            className="btn nav-btn nav-btn-sm"
+                            className="btn btn-default btn-default-sm"
                             rel="nofollow"
                             target="blank"
                           >
@@ -227,7 +227,7 @@ function Concept() {
                           </a>
                           <a
                             href="https://bscscan.com/token/0x715D400F88C167884bbCc41C5FeA407ed4D2f8A0"
-                            className="btn nav-btn nav-btn-sm"
+                            className="btn btn-default btn-default-sm"
                             rel="nofollow"
                             target="blank"
                           >
@@ -238,12 +238,12 @@ function Concept() {
 
                       <div className="flex flex-wrap justify-between items-center">
                         <div className="w-full lg:w-auto mb-2">
-                          <span className="uppercase opacity-50 text-xs">
+                          <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Contract
                           </span>
                         </div>
-                        <div className="space-x-2 mb-2">
-                          <a href="#" className="btn nav-btn nav-btn-sm">
+                        <div className="space-x-2">
+                          <a href="#" className="btn btn-default btn-default-sm mb-2">
                             <span className="icon">
                               <i class="cf cf-eth"></i>
                             </span>
@@ -254,7 +254,7 @@ function Concept() {
                               <i class="fa-regular fa-copy text-2xs"></i>
                             </span>
                           </a>
-                          <a href="#" className="btn nav-btn nav-btn-sm">
+                          <a href="#" className="btn btn-default btn-default-sm mb-2">
                             <span className="icon">
                               <i class="cf cf-bsc"></i>
                             </span>
@@ -357,7 +357,7 @@ function Concept() {
                     <li>Advisors: 7%.</li>
                     <li>Private Sale: 4%.</li>
                   </ul>
-                  
+
                   <h2>Roadmap</h2>
                   <ul>
                     <li>Q4/2020: Tích hợp Lands và các Items lên Ronin.</li>

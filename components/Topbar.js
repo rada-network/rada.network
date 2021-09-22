@@ -53,7 +53,7 @@ export const Topbar = ({dataStore}) => {
 
         <ThemeSwitch />
 
-        {/*<a className="btn nav-btn btn-open-widgets">*/}
+        {/*<a className="btn btn-default btn-open-widgets">*/}
         {/*  <span className="icon">*/}
         {/*    <i className="fa-duotone fa-th-large" />*/}
         {/*  </span>*/}

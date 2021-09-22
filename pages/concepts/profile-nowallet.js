@@ -111,7 +111,7 @@ const Layout = observer((props) => {
                               </div>
                             </div>
                             <div className="flex-1 text-right">
-                              <btn className="btn nav-btn">Connect</btn>
+                              <btn className="btn btn-default">Connect</btn>
                             </div>
                           </div>
 
@@ -131,7 +131,7 @@ const Layout = observer((props) => {
                               </div>
                             </div>
                             <div className="flex-1 text-right">
-                              <btn className="btn nav-btn">Disconnect</btn>
+                              <btn className="btn btn-default">Disconnect</btn>
                             </div>
                           </div>
 
@@ -151,7 +151,7 @@ const Layout = observer((props) => {
                               </div>
                             </div>
                             <div className="flex-1 text-right">
-                              <btn className="btn nav-btn">Disconnect</btn>
+                              <btn className="btn btn-default">Disconnect</btn>
                             </div>
                           </div>
 
@@ -171,7 +171,7 @@ const Layout = observer((props) => {
                               </div>
                             </div>
                             <div className="flex-1 text-right">
-                              <btn className="btn nav-btn">Disconnect</btn>
+                              <btn className="btn btn-default">Disconnect</btn>
                             </div>
                           </div>
 
