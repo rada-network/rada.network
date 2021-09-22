@@ -27,14 +27,11 @@ Post Content Typo
 ----------------------------------- */
 .post-title h1 {
   @apply text-xl font-semibold;
-  .badge {
-    @apply relative -top-1;
-  }
 }
 
 .post-detail-media .post-content--text {
   @apply whitespace-pre-wrap;
-  word-break: break-word;
+  word-break: break-all;
 }
 
 .post-content p,
@@ -48,7 +45,7 @@ Post Content Typo
 }
 
 .post-content a {
-  word-break: break-word;
+  word-break: break-all;
 }
 
 .post-content h2,
@@ -88,14 +85,16 @@ Post Content Typo
   }
 }
 
+.post-content ul,
+.post-content ol,
 .post-rada ol,
 .post-rada ul {
+  @apply ml-2 pl-2;
   list-style: revert;
-  margin: revert;
-  padding: revert;
 }
 
-.post-content li {
+.post-content li,
+.post-rada li {
   @apply py-1;
 }
 

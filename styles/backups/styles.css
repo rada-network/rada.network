@@ -268,7 +268,7 @@ Top & Tool Bars
 }
 
 .logo--badge {
-  @apply text-xxxs mt-0.5 opacity-50 border-b-2 border-gray-400 leading-3;
+  @apply text-3xs mt-0.5 opacity-50 border-b-2 border-gray-400 leading-3;
   letter-spacing: 2px;
 }
 

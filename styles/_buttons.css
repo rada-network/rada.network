@@ -134,12 +134,11 @@ Nav Button
   @apply text-sm;
 }
 
-.btn-open-widgets {
-  @apply md:hidden;
-  .btn--text {
-    @apply hidden lg:inline-block;
-  }
+/* Small Size */
+.nav-btn-sm {
+  @apply text-xs;
 }
+
 
 /* 
 Wallet Button 
@@ -159,7 +158,7 @@ Wallet Button
 @media (max-width: 768px) {
   .btn-login {
     .btn--text {
-      @apply overflow-hidden whitespace-nowrap overflow-ellipsis;
+      @apply sr-only overflow-hidden whitespace-nowrap overflow-ellipsis;
       max-width: 80px;
     }
   }
@@ -293,7 +292,7 @@ Button Caret
 }
 
 .btn-close .btn--text {
-  @apply text-xxxs uppercase !mx-0;
+  @apply text-3xs uppercase !mx-0;
 }
 
 

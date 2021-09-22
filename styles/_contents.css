@@ -19,13 +19,13 @@ Lists Styles
 }
 
 .list-group--item {
-  @apply flex justify-between items-center;
+  @apply flex flex-wrap justify-between items-center;
   @apply p-4;
   @apply border-b border-gray-500 border-opacity-10;
 }
 
 .list-group--item--title {
-  @apply flex items-center text-xs uppercase font-medium;
+  @apply flex items-center md:items-center text-xs uppercase font-medium;
 }
 
 .list-group--item--text {
@@ -33,13 +33,13 @@ Lists Styles
 }
 
 .list-group--item--media {
-  @apply flex justify-center items-center w-px-32 h-px-32 mr-4 rounded-full flex-shrink-0 overflow-hidden;
+  @apply flex justify-center items-center w-px-24 h-px-24 md:w-px-32 md:h-px-32 mr-2 md:mr-4 rounded-full flex-shrink-0 overflow-hidden;
   @apply bg-primary-100 text-primary-500;
   img {
     @apply object-cover h-full;
   }
   .icon {
-    @apply text-base;
+    @apply md:text-base;
   }
 }
 
@@ -60,8 +60,8 @@ Lists Group Compact
 }
 
 .list-group-sm--item {
-  @extend .widget-list--item;
-  @apply px-4 py-3;
+  @extend .list-group--item;
+  @apply px-0 py-2;
 }
 
 
@@ -141,7 +141,7 @@ Metadata
 Badges
 -------------------------------- */
 .badge {
-  @apply text-xxs leading-none font-medium px-1.5 py-0.5 whitespace-nowrap;
+  @apply text-2xs leading-none px-1.5 py-0.5 whitespace-nowrap;
   @apply bg-gray-400 bg-opacity-20 text-gray-400;
   @apply rounded-full;
 
@@ -154,13 +154,26 @@ Badges
   }
 
   .cf {
-    @apply md:text-base;
   }
 
 }
 
-a.badge {
-  @apply hover:bg-opacity-20 hover:text-gray-700 dark:hover:text-white;
+/* Sizes */
+.badge-lg {
+  @apply text-xs px-2 py-0.5;
+}
+
+/* Colors */
+.badge-red {
+  @apply bg-red-500 text-white;
+}
+
+.badge-blue {
+  @apply bg-blue-500 text-white;
+}
+
+.badge-purple {
+  @apply bg-purple-500 text-white;
 }
 
 /* Type */
@@ -169,13 +182,18 @@ a.badge {
 }
 
 .badge-coin {
-  @apply px-2 rounded;
+  @apply px-1 rounded;
   @apply text-gray-500 dark:text-gray-200 bg-transparent border border-gray-400 border-opacity-30;
-  @apply text-xxs font-semibold;
+  @apply text-2xs font-semibold;
+}
+
+.badge-coin-lg {
+  @apply px-2 py-0 shadow-sm;
+  @apply text-sm;
 }
 
 .badge-rada {
-  @apply bg-gradient-to-r from-purple-500 to-yellow-400;
+  @apply bg-gradient-to-b from-yellow-400 to-yellow-400 rounded-full;
   @apply text-white;
 }
 
@@ -221,7 +239,7 @@ a.badge {
 Small Badges
 */
 .badge-sm {
-  @apply border-none rounded-sm rounded-tl-md rounded-br-md text-xxs px-2 pt-1px pb-1px;
+  @apply border-none rounded-sm rounded-tl-md rounded-br-md text-2xs px-2 pt-1px pb-1px;
   @apply bg-gray-100 border text-gray-500;
 }
 
@@ -290,40 +308,8 @@ Icons Styles
 }
 
 .cf {
-  @apply text-base;
 }
 
-.cf-btc {
-  @apply text-yellow-600;
-}
-
-.cf-eth,
-.cf-rip {
-  @apply text-gray-900;
-}
-
-.cf-ada,
-.cf-car {
-  @apply text-purple-700;
-}
-
-.cf-bnb,
-.cf-bsc {
-  @apply text-yellow-400;
-}
-
-.cf-sol {
-  @apply text-green-600;
-}
-
-.cf-dot,
-.cf-pol {
-  @apply text-pink-500;
-}
-
-.cf-tro {
-  @apply text-red-700;
-}
 
 /* External Indicator */
 .ico-external-link {
