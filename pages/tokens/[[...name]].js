@@ -139,7 +139,7 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
                                     <span className="uppercase opacity-50 text-xs">Website</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
-                                    <a href="https://axieinfinity.com/" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
+                                    <a href="https://axieinfinity.com/" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                                       <span className="icon">
                                         <i class="fa-regular fa-globe"></i>
                                       </span>
@@ -153,25 +153,25 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
                                     <span className="uppercase opacity-50 text-xs">Community</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
-                                    <a href="https://twitter.com/axieinfinity" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
+                                    <a href="https://twitter.com/axieinfinity" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                                       <span className="icon">
                                         <i class="fa-brands fa-twitter"></i>
                                       </span>
                                       <span className="btn--text">Twitter</span>
                                     </a>
-                                    <a href="https://t.me/axieinfinity" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
+                                    <a href="https://t.me/axieinfinity" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                                       <span className="icon">
                                         <i class="fa-brands fa-telegram"></i>
                                       </span>
                                       <span className="btn--text">Telegram</span>
                                     </a>
-                                    <a href="https://discord.com/invite/axie" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
+                                    <a href="https://discord.com/invite/axie" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                                       <span className="icon">
                                         <i class="fa-brands fa-discord"></i>
                                       </span>
                                       <span className="btn--text">Discord</span>
                                     </a>
-                                    <a href="https://axieinfinity.medium.com/" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
+                                    <a href="https://axieinfinity.medium.com/" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                                       <span className="icon">
                                         <i class="fa-brands fa-medium"></i>
                                       </span>
@@ -185,13 +185,13 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
                                     <span className="uppercase opacity-50 text-xs">Explorer</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
-                                    <a href="https://etherscan.io/token/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
+                                    <a href="https://etherscan.io/token/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                                       <span className="btn--text">etherscan</span>
                                     </a>
-                                    <a href="https://ethplorer.io/address/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
+                                    <a href="https://ethplorer.io/address/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                                       <span className="btn--text">ethplorer</span>
                                     </a>
-                                    <a href="https://bscscan.com/token/0x715D400F88C167884bbCc41C5FeA407ed4D2f8A0" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
+                                    <a href="https://bscscan.com/token/0x715D400F88C167884bbCc41C5FeA407ed4D2f8A0" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                                       <span className="btn--text">bscscan</span>
                                     </a>
                                   </div>
@@ -612,24 +612,24 @@ const TokenTopbar = ({props}) => {
           <span className="tab-item--divider"></span>
           <Link href={`/tokens/` + props.token}>
             <a href="#" className={"tab-item" + (props.sub === ""? " tab-item--active" : "") }>
-              {props.token}
+              {props.token} Info
             </a>
           </Link>
-          <Link href={`/tokens/` + props.token + "/market"}>
+          {/* <Link href={`/tokens/` + props.token + "/market"}>
             <a href="#" className={"tab-item" + (props.sub === "market"? " tab-item--active" : "") }>
               Market
             </a>
-          </Link>
+          </Link> */}
           <Link href={`/tokens/` + props.token + "/team"}>
             <a href="#" className={"tab-item" + (props.sub === "team"? " tab-item--active" : "") }>
-            Team
+            Team &amp; Partners
             </a>
           </Link>
-          <Link href={`/tokens/` + props.token + "/events"}>
+          {/* <Link href={`/tokens/` + props.token + "/events"}>
             <a href="#" className={"tab-item" + (props.sub === "events"? " tab-item--active" : "") }>
             Event
             </a>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

@@ -22,10 +22,15 @@ Page Layout
 }
 
 .page-back {
-  @apply flex items-center -ml-2 md:-ml-1 xl:ml-3;
+  @apply flex items-center;
   .btn {
     @apply py-1.5 p-3 hover:bg-gray-400 hover:bg-opacity-20 rounded-full opacity-100;
   }
+}
+
+.pane-content--sec--top .page-back,
+.page .page-back {
+  @apply -ml-2 md:-ml-1 xl:ml-3;
 }
 
 .page-tabs {
@@ -37,6 +42,7 @@ Page Layout
 } */
 
 .page-back + .page-tabs {
+  @apply ml-2
 }
 
 /* Page Full */

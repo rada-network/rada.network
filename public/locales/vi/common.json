@@ -8,6 +8,7 @@
   "comment input holder" : "Để lại bình luận của bạn",
   "comment login" : "Đăng nhập để bình luận",
   "login" : "Đăng nhập",
+  "sign in" : "Đăng nhập",
   "search not found" : " Không tìm thấy trong tài liệu nào.",
   "back" : "Quay lại",
   "visit website": "Truy cập bài viết",
@@ -18,6 +19,6 @@
   "disconnect" : "Ngắt kết nối",
   "no connection" : "Chưa kết nối tài khoản {{provider}}",
   "article" : "Bài viết",
-  "team" : "Đội ngũ",
+  "team & partners" : "Team & Partners",
   "events" : "Sự Kiện"
 }

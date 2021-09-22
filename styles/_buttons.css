@@ -58,7 +58,7 @@ Default Button
 .btn-default {
   @apply px-2 py-1 items-center justify-center;
   @apply text-sm font-medium text-gray-900 dark:text-white border border-transparent;
-  @apply bg-gray-500 bg-opacity-10 dark:bg-gray-200 dark:bg-opacity-10;
+  @apply bg-gray-500 bg-opacity-10 dark:bg-gray-300 dark:bg-opacity-10;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -88,6 +88,10 @@ Default Button
 
 .btn-secondary {
   @apply bg-secondary-400 text-secondary-900 hover:bg-primary-100 hover:text-primary-700;
+}
+
+.btn-neutral {
+  @apply bg-white dark:bg-gray-700 dark:bg-opacity-50;
 }
 
 /*

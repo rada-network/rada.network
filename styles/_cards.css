@@ -285,6 +285,19 @@ Card Social
 }
 
 
+/* Cards Team 
+--------------------------------------*/
+.card-team {
+  @apply flex-col justify-center;
+  .card-body {
+    @apply mt-6 text-sm;
+  }
+  .card-body h3 {
+    @apply mb-2;
+  }
+}
+
+
 /* Cards in Page 
 --------------------------------------*/
 .card-pagecontent {

@@ -63,9 +63,11 @@ const NotConnectedButton = observer(({}) => {
 	const closeModal = () => { store.user.showConnect(false);  ReactTooltip.hide() }
 	return (
 	<>
-	<div onClick={ openModal } className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
-    <span className="icon"><i className="fa-duotone fa-wallet" /></span>
-    <span className="btn--text">{t("login")}</span>
+	<div onClick={ openModal } className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
+    <span className="icon">
+			<i class="fa-duotone fa-arrow-right-to-bracket"></i>
+		</span>
+    <span className="btn--text">{t("sign in")}</span>
   </div>
 	<Transition show={isOpen} as={Fragment}>
 	  <Dialog
@@ -118,22 +120,25 @@ const NotConnectedButton = observer(({}) => {
 					  as="div"
 					  className={`${styles.dialog_header}`}
 					>
-					  <button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
-						<span className="icon"><IoChevronBackSharp/></span>
-						<span className="btn--text font-normal">Back</span>
-					  </button>
-					  <h3 className="text-xl font-semibold">
-						Login
-						{/* <span
-						  className="hasTooltip"
-						  data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
-						  data-event="click"
-						>  <i className="fa-duotone fa-info-circle text-base" />
-						</span>  */}
-					  </h3>
-					  <div className="mt-4 text-white text-opacity-70 leading-6">
+						<div className="flex">
+							<div className="page-back -mt-0.5 mr-1 -ml-2">
+								<button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
+									<span className="icon"><i class="fa-solid fa-chevron-left"></i></span>
+								</button>
+							</div>
+							<h3 className="text-xl font-semibold">
+								Sign in
+								{/* <span
+									className="hasTooltip"
+									data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
+									data-event="click"
+								>  <i className="fa-duotone fa-info-circle text-base" />
+								</span>  */}
+							</h3>
+						</div>
+					  <div className="mt-2 text-white text-opacity-70 leading-6">
 						<p className="">
-						  Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics by connecting to your wallet or social networks
+						  Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics
 						</p>
 					  </div>
 					</Dialog.Title>
@@ -192,25 +197,27 @@ const NotConnectedButton = observer(({}) => {
 
 					  <div className={`${styles.social_login}`} ref={btnRef}>
 					  {Object.values(providers).map((provider) => (
-						<div key={provider.name}>
-						  <a className={`btn btn-default ${styles.btn}`} onClick={() => signIn(provider.id)}>
-							<span className={`icon ${styles.btn_icon}`}>
-							  <img src={"/images/icons/"+provider.id+".svg"} alt={provider.name} />
-							</span>
-							<div className={`${styles.btn_text}`}>
-							  <span className="text-base font-semibold text-color-title">{provider.name}</span>
+							<div key={provider.name}>
+								<a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => signIn(provider.id)}>
+								<span className={`icon ${styles.btn_icon}`}>
+									<img src={"/images/icons/"+provider.id+".svg"} alt={provider.name} />
+								</span>
+								<div className={`${styles.btn_text}`}>
+									<span className="text-base font-semibold text-color-title">
+										{provider.name}
+									</span>
+								</div>
+								<i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
+								</a>
 							</div>
-						  </a>
-						</div>
-
 					  ))}
 					  </div>
 
-					  <div className="px-8 md:px-0 mt-6 md:mt-8">
-						<p className="text-xs text-gray-400">
-						  We have no access to your private key and funds without your confirmation
-						</p>
-					  </div>
+					  {/* <div className="px-8 md:px-0 mt-6 md:mt-8">
+							<p className="text-xs text-gray-400">
+								We have no access to your private key and funds without your confirmation
+							</p>
+					  </div> */}
 
 					</div>
 

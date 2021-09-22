@@ -392,6 +392,10 @@ Avatars
   @extend %Img80;
 }
 
+.avatar-3xl {
+  @extend %Img128;
+}
+
 
 /*
 Comment
