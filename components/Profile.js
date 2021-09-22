@@ -63,11 +63,6 @@ const NotConnectedButton = observer(({}) => {
 	const closeModal = () => { store.user.showConnect(false);  ReactTooltip.hide() }
 	return (
 	<>
-	<div onClick={ openModal } className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
-    <span className="icon"><i className="fa-duotone fa-wallet" /></span>
-    <span className="btn--text">{t("login")}</span>
-  </div>
-  
 	<Transition show={isOpen} as={Fragment}>
 	  <Dialog
 		  as="div"
@@ -78,7 +73,7 @@ const NotConnectedButton = observer(({}) => {
 		  onClose={closeModal}
 		>
 		  <div className={`min-h-screen dialog-outside`}>
-		  
+
 			<Transition.Child
 			  as={Fragment}
 			  enter="ease-out duration-300"
@@ -90,7 +85,7 @@ const NotConnectedButton = observer(({}) => {
 			>
 			  <Dialog.Overlay className="fixed inset-0" onClick={closeModal} />
 			</Transition.Child>
-  
+
 			{/* This element is to trick the browser into centering the modal contents. */}
 			<span
 			  className="inline-block h-screen align-middle"
@@ -98,7 +93,7 @@ const NotConnectedButton = observer(({}) => {
 			>
 			  &#8203;
 			</span>
-  
+
 			<Transition.Child
 			  as={Fragment}
 			  enter="ease-out duration-300"
@@ -108,11 +103,11 @@ const NotConnectedButton = observer(({}) => {
 			  leaveFrom="opacity-100 scale-100"
 			  leaveTo="opacity-0 scale-0"
 			>
-  
+
 			  <div className={`inline-block w-full z-200 relative dialog`}>
-  
+
 				<div className={`dialog-wrapper`}>
-  
+
 				  {/* Dialog Header */}
 				  <div className={`dialog_header ${styles.dialog_header_wrapper}`}>
 					<Dialog.Title
@@ -120,33 +115,33 @@ const NotConnectedButton = observer(({}) => {
 					  className={`${styles.dialog_header}`}
 					>
 					  <button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
-							<span class="btn--caret-left"></span>
-							<span className="btn--text font-normal">Back</span>
-						</button>
-						<h3 className="text-xl font-semibold">
-							Connect your 
-							<span 
-								className="hasTooltip" 
-								data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
-								data-event="click"
-							> wallet <i className="fa-duotone fa-info-circle text-base" />
-							</span> 
-						</h3>
-						<div className="mt-4 text-white text-opacity-70 leading-6">
-							<p className="">
-								Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics by connecting to your wallet or social networks
-							</p>
-						</div>
+						<span className="icon"><IoChevronBackSharp/></span>
+						<span className="btn--text font-normal">Back</span>
+					  </button>
+					  <h3 className="text-xl font-semibold">
+						Login
+						{/* <span
+						  className="hasTooltip"
+						  data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
+						  data-event="click"
+						>  <i className="fa-duotone fa-info-circle text-base" />
+						</span>  */}
+					  </h3>
+					  <div className="mt-4 text-white text-opacity-70 leading-6">
+						<p className="">
+						  Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics by connecting to your wallet or social networks
+						</p>
+					  </div>
 					</Dialog.Title>
 					<div className={`${styles.dialog_header__deco}`} />
 				  </div>
-  
+
 				  {/* Dialog Body */}
 				  <div className={`${styles.dialog_body_wrapper}`}>
-  
+
 					<div className={`${styles.dialog_body}`}>
-  
-					  <div className={``}>
+
+					  {/* <div className={``}>
 						<ul>
 						  <li ref={btnRef}>
 							<a className={`btn btn-default disabled ${styles.btn}`} onClick={() => wallet.connect()}>
@@ -185,12 +180,12 @@ const NotConnectedButton = observer(({}) => {
 							</a>
 						  </li>
 						</ul>
-					  </div>
-  
-					  <div className={`divider`}>
+					  </div> */}
+
+					  {/* <div className={`divider`}>
 						<span>Or Connect with</span>
-					  </div>
-  
+					  </div> */}
+
 					  <div className={`${styles.social_login}`} ref={btnRef}>
 					  {Object.values(providers).map((provider) => (
 						<div key={provider.name}>
@@ -203,29 +198,29 @@ const NotConnectedButton = observer(({}) => {
 							</div>
 						  </a>
 						</div>
-						
+
 					  ))}
 					  </div>
-  
+
 					  <div className="px-8 md:px-0 mt-6 md:mt-8">
 						<p className="text-xs text-gray-400">
 						  We have no access to your private key and funds without your confirmation
 						</p>
 					  </div>
-  
+
 					</div>
-				  
+
 				  </div>
-				
+
 				</div>
-  
+
 			  </div>
 			</Transition.Child>
-  
+
 		  </div>
-  
+
 		</Dialog>
-	  </Transition>    
+	  </Transition>
 	</>
   )})
 

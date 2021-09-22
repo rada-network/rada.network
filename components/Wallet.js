@@ -1,7 +1,9 @@
 import { useWallet, ConnectionRejectedError } from 'use-wallet'
-import { createRef, Fragment, useEffect, useRef } from "react"
+import { createRef, Fragment, useEffect, useRef, useState} from "react"
 import { observer, inject } from "mobx-react"
 import { useStore } from '../lib/useStore'
+import {connectWallet} from "../data/query/wallet"
+import {getCurrentUser} from "../data/query/user"
 
 import {IoChevronBackSharp} from "react-icons/io5";
 
@@ -31,22 +33,17 @@ const WalletAvatar = ({wallet}) => {
 const ConnectedButton = ({wallet}) => (
   <div className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
     {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
-    <WalletAvatar wallet={wallet}  onClick={e => wallet.reset()} />
+    {/* <WalletAvatar wallet={wallet}  onClick={e => wallet.reset()} />
     <span className="btn--text text-xs ml-2">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>
     <span className="icon"><i className="fa-duotone fa-sign-out" /></span>
-    <span className="sr-only">Logout</span>
+    <span className="sr-only">Logout</span> */}
   </div>
 )
 
-const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
+const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletType}) => {
   const {t} = useTranslation()
   return (
   <>
-  <div onClick={ openModal } className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
-    <span className="icon"><i className="fa-duotone fa-wallet" /></span>
-    <span className="btn--text">{t("login")}</span>
-  </div>
-
   <Transition show={isOpen} as={Fragment}>
     <Dialog
         as="div"
@@ -57,7 +54,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
         onClose={closeModal}
       >
         <div className={`min-h-screen dialog-outside`}>
-        
+
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -103,13 +100,13 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                       <span className="btn--text font-normal">Back</span>
                     </button>
                     <h3 className="text-xl font-semibold">
-                      Connect your 
-                      <span 
-                        className="hasTooltip" 
+                      Connect your
+                      <span
+                        className="hasTooltip"
                         data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
                         data-event="click"
                       > wallet <i className="fa-duotone fa-info-circle text-base" />
-                      </span> 
+                      </span>
                     </h3>
                     <div className="mt-4 text-white text-opacity-70 leading-6">
                       <p className="">
@@ -128,7 +125,11 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                     <div className={``}>
                       <ul>
                         <li ref={btnRef}>
-                          <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect()}>
+                          <a className={`btn btn-default ${styles.btn}`} onClick={() => {
+                            wallet.connect()
+                          setWalletType('metamask')
+                        }
+                          }>
                             <span className={`icon ${styles.btn_icon}`}>
                               <img src="/images/icons/metamask-24.png" alt="Metamask - Secure wallets with great flexibility" />
                             </span>
@@ -140,7 +141,11 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                           </a>
                         </li>
                         <li>
-                          <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletconnect')}>
+                          <a className={`btn btn-default ${styles.btn}`} onClick={() => {
+                            wallet.connect('walletconnect')
+                             setWalletType('walletconnect')
+                            }
+                             }>
                             <span className={`icon ${styles.btn_icon}`}>
                               <img src="/images/icons/walletconnect-24.png" alt="WalletConnect - Connect with Rainbow, Trust, Argent..." />
                             </span>
@@ -152,7 +157,11 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                           </a>
                         </li>
                         <li>
-                          <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletlink')}>
+                          <a className={`btn btn-default ${styles.btn}`} onClick={() => {
+                            wallet.connect('walletlink')
+                             setWalletType('walletlink')
+                            }
+                             }>
                             <span className={`icon ${styles.btn_icon}`}>
                               <img src="/images/icons/walletlink-24.png" alt="WalletLink - Connect with Coinbase wallet" />
                             </span>
@@ -166,41 +175,6 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                       </ul>
                     </div>
 
-                    <div className={`divider`}>
-                      <span>Or Connect with</span>
-                    </div>
-
-                    <div className={`${styles.social_login}`}>
-
-                      <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect()}>
-                        <span className={`icon ${styles.btn_icon}`}>
-                          <img src="/images/icons/google.svg" alt="Google" />
-                        </span>
-                        <div className={`${styles.btn_text}`}>
-                          <span className="text-base font-semibold text-color-title">Google</span>
-                        </div>
-                      </a>
-
-                      <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletconnect')}>
-                        <span className={`icon ${styles.btn_icon}`}>
-                          <img src="/images/icons/facebook.svg" alt="Facebook" />
-                        </span>
-                        <div className={`${styles.btn_text}`}>
-                          <span className="text-base font-semibold text-color-title">Facebook</span>
-                        </div>
-                      </a>
-
-                      <a className={`btn btn-default ${styles.btn}`} onClick={() => wallet.connect('walletlink')}>
-                        <span className={`icon ${styles.btn_icon}`}>
-                          <img src="/images/icons/twitter.svg" alt="Twitter" />
-                        </span>
-                        <div className={`${styles.btn_text}`}>
-                          <span className="text-base font-semibold text-color-title">Twitter</span>
-                        </div>
-                      </a>
-   
-                    </div>
-
                     <div className="px-8 md:px-0 mt-6 md:mt-8">
                       <p className="text-xs text-gray-400">
                         We have no access to your private key and funds without your confirmation
@@ -208,9 +182,9 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
                     </div>
 
                   </div>
-                
+
                 </div>
-              
+
               </div>
 
             </div>
@@ -221,21 +195,49 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal}) => {
       </Dialog>
 
 
-    </Transition>    
+    </Transition>
   </>
 )}
 
 
-export const Wallet = observer(() => {
+export const Wallet = observer(({handleConnectSuccess}) => {
 
   const store = useStore()
   const wallet = useWallet()
 
-  if (wallet.status === 'connected') {
+  const [walletType, setWalletType] = useState('')
+
+  const connect = async (walletInfo) =>{
+    const res = await connectWallet(walletInfo)
+     if(res.data.userConnect?.status === 'success'){
+      handleConnectSuccess()
+    }
+  }
+
+  useEffect(() => {
+    if (wallet.status === 'connected') {
       store.wallet.update(wallet.account)
+      const network = wallet['ethereum']
+      if(walletType === 'walletconnect'){
+        const walletInfo = {
+          provider: "wallet",
+          provider_account_id: wallet.account[0],
+          type: walletType
+        }
+        connect(walletInfo)
+      }
+      const walletInfo = {
+        provider: "wallet",
+        provider_network: network ? "etherium mainnet":'',
+        provider_account_id: wallet.account,
+        type: walletType
+      }
+      connect(walletInfo)
   } else {
       store.wallet.update("")
-  }  
+  }
+  }, [wallet.status])
+
   const isOpen = store?.wallet.showingConnect
   const openModal = () => store.wallet.showConnect(true)
   const closeModal = () => { store.wallet.showConnect(false);  ReactTooltip.hide() }
@@ -245,11 +247,13 @@ export const Wallet = observer(() => {
     setTimeout(() => ReactTooltip.rebuild(), 500)
   }, [isOpen]);
 
+
+
   return (
     <div className="relative inline-block text-left">
-      { store.wallet.isConnected ? 
-      <ConnectedButton wallet={wallet} /> : 
-      <NotConnectedButton wallet={wallet} isOpen={isOpen} openModal={openModal} closeModal={closeModal} /> }
+      { store.wallet.isConnected ?
+      <ConnectedButton wallet={wallet} /> :
+      <NotConnectedButton wallet={wallet} isOpen={isOpen} openModal={openModal} closeModal={closeModal} setWalletType={(type)=>setWalletType(type)} /> }
     </div>
   )
 })
