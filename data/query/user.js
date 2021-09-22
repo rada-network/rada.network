@@ -19,12 +19,21 @@ const getUserGql =  gql`
       name
       image
       email
-      account { 
+      account {
+      id
       provider
       oauth_profile
+      sort
+      date_created
+      userid
+      type
+      provider
+      provider_account_id
+      token_type
+      scope
     }
     }
-    
+
   }
 `
 

@@ -6,6 +6,7 @@ import { Topbar } from "../../components/Topbar";
 import { Navbar } from "../../components/Navbar";
 
 import ThemeSwitch from "../../components/ThemeSwitch"
+import {Wallet} from "../../components/Wallet"
 
 import { useState, useEffect, createRef } from 'react'
 
@@ -17,21 +18,24 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Profile from "../../components/Profile";
 import {getCurrentUser} from "../../data/query/user"
+import {disconnectWallet} from "../../data/query/wallet"
 import _ from "lodash";
+import {useStore} from "../../lib/useStore";
 
 export default function UserProfile (props) {
   const [ session, loading ] = useSession()
   const [user,setUser] = useState({})
   const {t} = useTranslation()
+  const store = useStore()
   useEffect(() => {
     getCurrentUser().then(res => {
       setUser(res)
     })
   },[])
-  
+
   // When rendering client side don't display anything until loading is complete
   if (typeof window !== 'undefined' && loading) return null
-  
+
   // If no session exists, display access denied message
   if (!session) { return <AccessDenied/> }
 
@@ -41,30 +45,52 @@ export default function UserProfile (props) {
   const dataStore = new ObservableTweetStore({homeStore})
   const detailStore = new DetailStore();
   dataStore.lang = props.lang
-  
-  
+
+
   let google = {}, wallet = {}, facebook = {}, twitter = {}
   if (_.isEmpty(user)){
     return ""
   }
-  google = user.account.find((item) => { 
+  google = user.account.find((item) => {
     return item.provider === "google"
   })
-  wallet = user.account.find((item) => { 
-    return item.provider === "wallet" 
+  wallet = user.account.find((item) => {
+    return item.provider === "wallet"
   })
-  facebook = user.account.find((item) => { 
-    return item.provider === "facebook" 
+  facebook = user.account.find((item) => {
+    return item.provider === "facebook"
   })
-  twitter = user.account.find((item) => { 
+  twitter = user.account.find((item) => {
     return item.provider === "twitter"
   })
   const meta = {
     "title" : session.user.name + " profile"
   }
+
+  const handleConnectWallet = ()=>{
+    store.wallet.showConnect(true)
+  }
+
+  const handleDisconnectWallet = async (id) =>{
+    const res = await disconnectWallet(id)
+    if(res.data.userDisconnect.status === 'success'){
+      getCurrentUser().then(res => {
+        setUser(res)
+      })
+    }
+
+  }
+
+const handleConnectSuccess = ()=>{
+  getCurrentUser().then(res => {
+    setUser(res)
+  })
+}
+
   return (
     <>
       <Head meta={meta} />
+      <Wallet handleConnectSuccess={handleConnectSuccess} />
 
       <div className={`main-layout`}>
         {/* Mobile / Tablet Navbar */}
@@ -96,7 +122,7 @@ export default function UserProfile (props) {
           <div className="pane-center--main w-full">
 
             <div className="page page-full">
-              
+
               <div className="page-full--inner">
 
                 {/* <div className="page-title">
@@ -116,7 +142,7 @@ export default function UserProfile (props) {
 
                 <div className="page-section">
 
-                  <div className="card card-pagecontent">
+                  {/* <div className="card card-pagecontent">
 
                     <div className="card-header">
                       <span className="card-title">
@@ -125,10 +151,10 @@ export default function UserProfile (props) {
                     </div>
 
                     <div className="card-body">
-                      
+
                     </div>
 
-                  </div>
+                  </div> */}
 
                   <div className="card card-pagecontent">
 
@@ -144,7 +170,7 @@ export default function UserProfile (props) {
 
                           {/* Wallet connected --> Show DisConnect Buttons */}
                           <div className="list-group--item">
-                            <div className="list-group--item--title w-1/3">
+                            <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon"><i className="fa-solid fa-wallet"></i></span>
                               </div>
@@ -153,28 +179,34 @@ export default function UserProfile (props) {
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative flex items-center">
-                                {_.isEmpty(wallet) ? 
+                              <div className="relative pl-8 md:pl-0 w-full flex items-center">
+                                {_.isEmpty(wallet) ?
                                 <span>{t("no connection",{"provider" : "wallet"})}</span>
                                 :
-                                <><strong>0xDB33...345f</strong>
-                                <span className="badge relative -top-0.5 ml-2">ETHEREUM</span></>
+                                <>
+                                <div>
+                                {user?.account?.map(address => {
+                                  return address.provider === 'wallet' && <span className="btn--text text-xs ml-2">{ `${address.provider_account_id.substr(0, 4)}...${address.provider_account_id.substr(-4)} `}</span>
+                                })}
+                                </div>
+                                <strong></strong>
+                                <span className="badge badge-coin relative ml-2">ETHEREUM</span></>
                                 }
                               </div>
                             </div>
-                            <div className="flex-1 text-right">
-                                {_.isEmpty(wallet) ? 
-                                <button className="btn nav-btn">{t("connect")}</button>
+                            <div className="text-right">
+                                {_.isEmpty(wallet) ?
+                                <button className="btn nav-btn" onClick={handleConnectWallet}>{t("connect")}</button>
                                 :
-                                <button className="btn nav-btn">{t("disconnect")}</button>
-                                } 
-                              
+                                <button className="btn nav-btn" onClick={()=>handleDisconnectWallet(wallet.id)}>{t("disconnect")}</button>
+                                }
+
                             </div>
                           </div>
 
                           {/* Google disconnected --> Show Connect Buttons */}
                           <div className="list-group--item">
-                            <div className="list-group--item--title w-1/3">
+                            <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon"><i className="fa-brands fa-google"></i></span>
                               </div>
@@ -183,26 +215,26 @@ export default function UserProfile (props) {
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative">
-                              {_.isEmpty(google) ? 
+                              <div className="relative pl-8 md:pl-0 w-full">
+                              {_.isEmpty(google) ?
                                 <span>{t("no connection",{"provider" : "Google"})}</span>
                                 :
                                 <strong>{google.oauth_profile.email}</strong>
                                 }
                               </div>
                             </div>
-                            <div className="flex-1 text-right">
-                                {_.isEmpty(google) ? 
+                            <div className="text-right">
+                                {_.isEmpty(google) ?
                                 <button className="btn nav-btn">{t("connect")}</button>
                                 :
                                 <button className="btn nav-btn">{t("disconnect")}</button>
-                                } 
+                                }
                             </div>
                           </div>
 
                           {/* Facebook connected --> Show DisConnect Buttons */}
                           <div className="list-group--item">
-                            <div className="list-group--item--title w-1/3">
+                            <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon"><i className="fa-brands fa-facebook-f"></i></span>
                               </div>
@@ -211,26 +243,26 @@ export default function UserProfile (props) {
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative">
-                              {_.isEmpty(facebook) ? 
+                              <div className="relative pl-8 md:pl-0 w-full">
+                              {_.isEmpty(facebook) ?
                                 <span>{t("no connection",{"provider" : "Facebook"})}</span>
                                 :
                                 <strong>{facebook.oauth_profile.email}</strong>
                                 }
                               </div>
                             </div>
-                            <div className="flex-1 text-right">
-                            {_.isEmpty(facebook) ? 
+                            <div className="text-right">
+                            {_.isEmpty(facebook) ?
                                 <button className="btn nav-btn">{t("connect")}</button>
                                 :
                                 <button className="btn nav-btn">{t("disconnect")}</button>
-                                } 
+                                }
                             </div>
                           </div>
 
                           {/* Twitter connected --> Show DisConnect Buttons */}
                           <div className="list-group--item">
-                            <div className="list-group--item--title w-1/3">
+                            <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon"><i className="fa-brands fa-twitter"></i></span>
                               </div>
@@ -239,20 +271,20 @@ export default function UserProfile (props) {
                               </label>
                             </div>
                             <div className="flex-1">
-                              <div className="relative">
-                              {_.isEmpty(twitter) ? 
+                              <div className="relative pl-8 md:pl-0 w-full">
+                              {_.isEmpty(twitter) ?
                                 <span>{t("no connection",{"provider" : "Twitter"})}</span>
                                 :
                                 <strong>@{twitter.oauth_profile.screen_name}</strong>
                                 }
                               </div>
                             </div>
-                            <div className="flex-1 text-right">
-                            {_.isEmpty(twitter) ? 
+                            <div className="text-right">
+                            {_.isEmpty(twitter) ?
                                 <button className="btn nav-btn">{t("connect")}</button>
                                 :
                                 <button className="btn nav-btn">{t("disconnect")}</button>
-                                } 
+                                }
                             </div>
                           </div>
 
@@ -277,7 +309,7 @@ export default function UserProfile (props) {
 
 export async function getStaticProps(context) {
   console.log(context)
-  return { 
+  return {
     props: {
       ...await serverSideTranslations(context.locale, ['common', 'navbar']),
       lang : context.locale
