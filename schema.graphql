@@ -1,309 +1,358 @@
 # This file was generated based on ".graphqlconfig". Do not edit manually.
 
 schema {
-    query: Query
-    mutation: Mutation
+  query: Query
+  mutation: Mutation
 }
 
 type CardanoEvent {
-    createdAt: DateTime
-    description: String
-    endedAt: DateTime
-    facebook: String
-    id: String
-    keywords: String
-    startedAt: DateTime
-    telegram: String
-    title: String
-    twitter: String
-    website: String
-    youtube: String
+  createdAt: DateTime
+  description: String
+  endedAt: DateTime
+  facebook: String
+  id: String
+  keywords: String
+  startedAt: DateTime
+  telegram: String
+  title: String
+  twitter: String
+  website: String
+  youtube: String
 }
 
 type Category {
-    id: String!
-    slug: String!
-    title: String!
+  id: String!
+  slug: String!
+  title: String!
 }
 
 type Comment {
-    content: String
-    createdAt: DateTime
-    id: String!
-    itemId: String!
-    parent: String!
-    parentId: String
-    user: User
-    userId: String
+  content: String
+  createdAt: DateTime
+  id: String!
+  itemId: String!
+  parent: String!
+  parentId: String
+  user: User
+  userId: String
+}
+
+type Wallet {
+  status: String
 }
 
 type GrabTopic {
-    baseKeywords: String
-    id: String
-    lang: String
-    linkSelector: String
-    name: String
-    url: String!
-    urlType: String
-    website: GrabWebsite
-    websiteId: String
+  baseKeywords: String
+  id: String
+  lang: String
+  linkSelector: String
+  name: String
+  url: String!
+  urlType: String
+  website: GrabWebsite
+  websiteId: String
 }
 
 type GrabWebsite {
-    contentSelector: String
-    createdDateSelector: String
-    descriptionSelector: String
-    grabCategory: String
-    id: String
-    name: String
-    thumbnailSelector: String
-    titleSelector: String
-    url: String!
+  contentSelector: String
+  createdDateSelector: String
+  descriptionSelector: String
+  grabCategory: String
+  id: String
+  name: String
+  thumbnailSelector: String
+  titleSelector: String
+  url: String!
 }
 
 type Idea {
-    category: Category
-    categoryId: String
-    content: String
-    contentJson: JSONObject
-    createdAt: DateTime
-    description: String
-    id: String!
-    ideaType: String
-    ideaUser: IdeaUser
-    ideaUserId: String
-    imageUri: String
-    images: String
-    imagesUri: JSONObject
-    item: Item
-    keywords: String!
-    platform: Platform
-    platformId: String
-    thumbnail: String
-    title: String!
-    token: Token
-    tokenId: String
-    updatedAt: DateTime
-    video: String
-    websiteUri: String
+  category: Category
+  categoryId: String
+  content: String
+  contentJson: JSONObject
+  createdAt: DateTime
+  description: String
+  id: String!
+  ideaType: String
+  ideaUser: IdeaUser
+  ideaUserId: String
+  imageUri: String
+  images: String
+  imagesUri: JSONObject
+  item: Item
+  keywords: String!
+  platform: Platform
+  platformId: String
+  thumbnail: String
+  title: String!
+  token: Token
+  tokenId: String
+  updatedAt: DateTime
+  video: String
+  websiteUri: String
 }
 
 type IdeaType {
-    description: String
-    ideaCount: Int
-    ideaType: String
-    title: String
+  description: String
+  ideaCount: Int
+  ideaType: String
+  title: String
 }
 
 type IdeaUser {
-    avatarUri: String
-    description: String
-    id: String!
-    name: String
-    thumbnail: String
-    url: String
+  avatarUri: String
+  description: String
+  id: String!
+  name: String
+  thumbnail: String
+  url: String
 }
 
 type Item {
-    id: String!
-    idea: Idea
-    ideaId: String
-    media: Media
-    news: News
-    newsId: String
-    totalComment: Int
-    totalVote: Int
-    tweet: Tweet
-    tweetId: String
-    video: Video
-    videoId: String
+  id: String!
+  idea: Idea
+  ideaId: String
+  media: Media
+  news: News
+  newsId: String
+  totalComment: Int
+  totalVote: Int
+  tweet: Tweet
+  tweetId: String
+  video: Video
+  videoId: String
 }
 
 type ItemMetadata {
-    itemId: String!
-    name: String!
-    value: String
-    valueNumber: Float
+  itemId: String!
+  name: String!
+  value: String
+  valueNumber: Float
 }
 
 type ItemType {
-    description: String
-    ideaCount: Int
-    itemType: String
-    title: String
+  description: String
+  ideaCount: Int
+  itemType: String
+  title: String
 }
 
 type Media {
-    id: String!
+  id: String!
 }
 
 type Mutation {
-    createComment(content: String!, itemId: String!, parentId: String, walletAddress: String!): Comment
-    submitNews(newsData: JSONObject): News
-    submitNewsV2(newsData: JSONObject): News
-    submitTweet(tweetData: JSONObject!, userData: JSONObject!): Tweet
-    submitTweetKeyword(id: String!, keywords: String!): Tweet
-    submitVideo(videoData: JSONObject): Video
-    toggleVote(itemId: String!, walletAddress: String!): ToggleVote
-    updateItem(id: String!, itemType: String): Item
+  userConnect(
+    provider: String!
+    provider_network: String!
+    provider_account_id: String
+    type: String!
+  ): Wallet
+  createComment(
+    content: String!
+    itemId: String!
+    parentId: String
+    walletAddress: String!
+  ): Comment
+  submitNews(newsData: JSONObject): News
+  submitNewsV2(newsData: JSONObject): News
+  submitTweet(tweetData: JSONObject!, userData: JSONObject!): Tweet
+  submitTweetKeyword(id: String!, keywords: String!): Tweet
+  submitVideo(videoData: JSONObject): Video
+  toggleVote(itemId: String!, walletAddress: String!): ToggleVote
+  updateItem(id: String!, itemType: String): Item
 }
 
 type News {
-    content: String!
-    createdAt: DateTime
-    description: String
-    grabTopic: GrabTopic
-    grabTopicId: String
-    id: String!
-    isApproved: Boolean
-    isEditorPick: Boolean
-    item: Item
-    keywords: String
-    source: String
-    thumbnail: String
-    thumbnailUri: String
-    title: String!
-    updatedAt: DateTime
-    websiteUri: String
+  content: String!
+  createdAt: DateTime
+  description: String
+  grabTopic: GrabTopic
+  grabTopicId: String
+  id: String!
+  isApproved: Boolean
+  isEditorPick: Boolean
+  item: Item
+  keywords: String
+  source: String
+  thumbnail: String
+  thumbnailUri: String
+  title: String!
+  updatedAt: DateTime
+  websiteUri: String
 }
 
 type Platform {
-    description: String
-    id: String!
-    name: String
-    networkName: String
-    websiteUri: String
+  description: String
+  id: String!
+  name: String
+  networkName: String
+  websiteUri: String
 }
 
 type Query {
-    cardanoEventFeed(skip: Int = 0, take: Int = 4): [CardanoEvent]
-    commentFeed(itemId: String!, orderBy: CommentOrderInput, skip: Int = 0, take: Int = 4): [Comment]
-    grabTopicFeed(lang: String = "all", skip: Int = 0, take: Int = 200, urlType: String = "html"): [GrabTopic]
-    ideaById(id: String!): Idea
-    ideaFeed(ideaType: String, orderBy: IdeaOrderInput, query: String, skip: Int = 0, take: Int = 4): [Idea]
-    ideaTypeCount: [IdeaType]
-    ideaWithoutKeyword(skip: Int = 0, take: Int = 4): [Idea]
-    isVote(itemId: String!, walletAddress: String!): Vote
-    isVotes(ids: [String], walletAddress: String!): [Vote]
-    itemById(id: String!): Item
-    itemFeed(lang: String = "en", orderBy: ItemOrderInput, query: String, skip: Int = 0, t: String, take: Int = 4): [Item]
-    itemTypeCount: [IdeaType]
-    newsById(id: String): News
-    newsFeed(orderBy: ItemOrderInput, query: String, skip: Int = 0, take: Int = 4): [News]
-    newsRelated(id: String!, skip: Int = 0, take: Int = 4): [News]
-    suggestUserFeed(skip: Int = 0, take: Int = 4): [SuggestUser]
-    tweetById(id: String!): Tweet
-    tweetFeed(day: Int = 1, lang: String = "all", orderBy: TweetOrderInput, query: String, skip: Int = 0, take: Int = 4): [Tweet]
-    tweetWithoutKeyword(skip: Int = 0, take: Int = 4): [Tweet]
-    tweetWithoutUser(skip: Int = 0, take: Int = 4): [Tweet]
+  cardanoEventFeed(skip: Int = 0, take: Int = 4): [CardanoEvent]
+  commentFeed(
+    itemId: String!
+    orderBy: CommentOrderInput
+    skip: Int = 0
+    take: Int = 4
+  ): [Comment]
+  grabTopicFeed(
+    lang: String = "all"
+    skip: Int = 0
+    take: Int = 200
+    urlType: String = "html"
+  ): [GrabTopic]
+  ideaById(id: String!): Idea
+  ideaFeed(
+    ideaType: String
+    orderBy: IdeaOrderInput
+    query: String
+    skip: Int = 0
+    take: Int = 4
+  ): [Idea]
+  ideaTypeCount: [IdeaType]
+  ideaWithoutKeyword(skip: Int = 0, take: Int = 4): [Idea]
+  isVote(itemId: String!, walletAddress: String!): Vote
+  isVotes(ids: [String], walletAddress: String!): [Vote]
+  itemById(id: String!): Item
+  itemFeed(
+    lang: String = "en"
+    orderBy: ItemOrderInput
+    query: String
+    skip: Int = 0
+    t: String
+    take: Int = 4
+  ): [Item]
+  itemTypeCount: [IdeaType]
+  newsById(id: String): News
+  newsFeed(
+    orderBy: ItemOrderInput
+    query: String
+    skip: Int = 0
+    take: Int = 4
+  ): [News]
+  newsRelated(id: String!, skip: Int = 0, take: Int = 4): [News]
+  suggestUserFeed(skip: Int = 0, take: Int = 4): [SuggestUser]
+  tweetById(id: String!): Tweet
+  tweetFeed(
+    day: Int = 1
+    lang: String = "all"
+    orderBy: TweetOrderInput
+    query: String
+    skip: Int = 0
+    take: Int = 4
+  ): [Tweet]
+  tweetWithoutKeyword(skip: Int = 0, take: Int = 4): [Tweet]
+  tweetWithoutUser(skip: Int = 0, take: Int = 4): [Tweet]
 }
 
 type SuggestUser {
-    description: String
-    facebook: String
-    id: String
-    image: String
-    keywords: String
-    linkedin: String
-    name: String
-    telegram: String
-    twitter: String
-    website: String
+  description: String
+  facebook: String
+  id: String
+  image: String
+  keywords: String
+  linkedin: String
+  name: String
+  telegram: String
+  twitter: String
+  website: String
 }
 
 type ToggleVote {
-    isVoted: Boolean
-    totalVote: Int
+  isVoted: Boolean
+  totalVote: Int
 }
 
 type Token {
-    id: String!
-    name: String
-    price: Float
-    symbol: String
+  id: String!
+  name: String
+  price: Float
+  symbol: String
 }
 
 type Tweet {
-    createdAt: DateTime!
-    favoriteCount: Int!
-    id: String!
-    item: Item
-    keywords: String
-    lang: String
-    quoteCount: Int!
-    replyCount: Int!
-    retweetCount: Int!
-    source: JSONObject!
-    tweetUser: TweetUser
-    tweetUserId: String
+  createdAt: DateTime!
+  favoriteCount: Int!
+  id: String!
+  item: Item
+  keywords: String
+  lang: String
+  quoteCount: Int!
+  replyCount: Int!
+  retweetCount: Int!
+  source: JSONObject!
+  tweetUser: TweetUser
+  tweetUserId: String
 }
 
 type TweetUser {
-    id: String!
-    source: JSONObject!
+  id: String!
+  source: JSONObject!
 }
 
 type User {
-    id: String!
-    walletAddress: String!
+  id: String!
+  walletAddress: String!
 }
 
 type Video {
-    createdAt: DateTime
-    description: String
-    grabTopic: GrabTopic
-    grabTopicId: String
-    id: String!
-    keywords: String
-    source: String
-    thumbnailUri: String
-    title: String
-    updatedAt: DateTime
-    url: String!
-    videoType: String!
-    youtubeId: String!
+  createdAt: DateTime
+  description: String
+  grabTopic: GrabTopic
+  grabTopicId: String
+  id: String!
+  keywords: String
+  source: String
+  thumbnailUri: String
+  title: String
+  updatedAt: DateTime
+  url: String!
+  videoType: String!
+  youtubeId: String!
 }
 
 type Vote {
-    cnt: Int!
-    createdAt: DateTime!
-    itemId: String!
-    user: User
-    userId: String!
+  cnt: Int!
+  createdAt: DateTime!
+  itemId: String!
+  user: User
+  userId: String!
 }
 
 enum SortOrder {
-    asc
-    desc
+  asc
+  desc
 }
 
 input CommentOrderInput {
-    createdAt: SortOrder
+  createdAt: SortOrder
 }
 
 input IdeaOrderInput {
-    createdAt: SortOrder
-    totalComment: SortOrder
-    totalVote: SortOrder
+  createdAt: SortOrder
+  totalComment: SortOrder
+  totalVote: SortOrder
 }
 
 input ImageItemInput {
-    images: [String]
-    videos: [String]
+  images: [String]
+  videos: [String]
 }
 
 input ItemOrderInput {
-    createdAt: SortOrder
-    totalComment: SortOrder
-    totalVote: SortOrder
+  createdAt: SortOrder
+  totalComment: SortOrder
+  totalVote: SortOrder
 }
 
 input TweetOrderInput {
-    createdAt: SortOrder
-    favoriteCount: SortOrder
-    retweetCount: SortOrder
+  createdAt: SortOrder
+  favoriteCount: SortOrder
+  retweetCount: SortOrder
 }
-
 
 "A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."
 scalar DateTime
