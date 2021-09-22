@@ -154,7 +154,6 @@ function Concept() {
 
               <p>If you would like to know where to buy Axie Infinity, the top exchanges for trading in Axie Infinity are currently <a href="#">Binance</a>, <a href="#">Mandala Exchange</a>, <a href="#">Huobi Global</a>, <a href="#">OKEx</a>, and <a href="#">FTX</a>.</p>
 
-
             </div>
           </div>
           {/* End: Post Content */}
