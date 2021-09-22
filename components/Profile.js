@@ -63,6 +63,10 @@ const NotConnectedButton = observer(({}) => {
 	const closeModal = () => { store.user.showConnect(false);  ReactTooltip.hide() }
 	return (
 	<>
+	<div onClick={ openModal } className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
+    <span className="icon"><i className="fa-duotone fa-wallet" /></span>
+    <span className="btn--text">{t("login")}</span>
+  </div>
 	<Transition show={isOpen} as={Fragment}>
 	  <Dialog
 		  as="div"
