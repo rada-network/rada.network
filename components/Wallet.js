@@ -31,7 +31,7 @@ const WalletAvatar = ({wallet}) => {
 }
 
 const ConnectedButton = ({wallet}) => (
-  <div className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
+  <div className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
     {/* <span>{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span> */}
     {/* <WalletAvatar wallet={wallet}  onClick={e => wallet.reset()} />
     <span className="btn--text text-xs ml-2">{ `${wallet.account.substr(0, 4)}...${wallet.account.substr(-4)} `}</span>

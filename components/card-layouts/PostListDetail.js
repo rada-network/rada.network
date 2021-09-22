@@ -180,7 +180,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
         </div>
         <div className="post-actions">
           <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
-            <span className="btn nav-btn" title={t("visit website")}>
+            <span className="btn btn-default" title={t("visit website")}>
               <span className="icon"><i className="fa-duotone fa-external-link" /></span>
               <span className="btn--text">{t("visit website")}</span>
             </span>
@@ -299,7 +299,7 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
         } */}
         <div className="post-actions">
           <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
-            <span className="btn nav-btn" title={t("visit website")}>
+            <span className="btn btn-default" title={t("visit website")}>
               <span className="icon"><i className="fa-duotone fa-external-link" /></span>
               <span className="btn--text">{t("visit website")}</span>
             </span>
@@ -447,7 +447,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
         </div>
         <div className="post-actions">
           <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
-            <span className="btn nav-btn" title="Visit Website">
+            <span className="btn btn-default" title="Visit Website">
               <span className="icon"><i className="fa-duotone fa-external-link" /></span>
               <span className="btn--text">Visit Website</span>
             </span>

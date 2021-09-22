@@ -111,7 +111,7 @@ const Layout = observer((props) => {
                   <Screen from="md">
                   <div className="flex items-center space-x-2">
                     <div className="relative">
-                      <div className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
+                      <div className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
                         <span className="icon">
                           <i className="fa-duotone fa-wallet"></i>
                         </span>
@@ -161,7 +161,7 @@ const Layout = observer((props) => {
                                     <span className="uppercase opacity-50 text-xs">Website</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
-                                    <a href="https://axieinfinity.com/" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
+                                    <a href="https://axieinfinity.com/" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
                                       <span className="icon">
                                         <i class="fa-regular fa-globe"></i>
                                       </span>
@@ -175,25 +175,25 @@ const Layout = observer((props) => {
                                     <span className="uppercase opacity-50 text-xs">Community</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
-                                    <a href="https://twitter.com/axieinfinity" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
+                                    <a href="https://twitter.com/axieinfinity" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
                                       <span className="icon">
                                         <i class="fa-brands fa-twitter"></i>
                                       </span>
                                       <span className="btn--text">Twitter</span>
                                     </a>
-                                    <a href="https://t.me/axieinfinity" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
+                                    <a href="https://t.me/axieinfinity" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
                                       <span className="icon">
                                         <i class="fa-brands fa-telegram"></i>
                                       </span>
                                       <span className="btn--text">Telegram</span>
                                     </a>
-                                    <a href="https://discord.com/invite/axie" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
+                                    <a href="https://discord.com/invite/axie" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
                                       <span className="icon">
                                         <i class="fa-brands fa-discord"></i>
                                       </span>
                                       <span className="btn--text">Discord</span>
                                     </a>
-                                    <a href="https://axieinfinity.medium.com/" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
+                                    <a href="https://axieinfinity.medium.com/" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
                                       <span className="icon">
                                         <i class="fa-brands fa-medium"></i>
                                       </span>
@@ -207,13 +207,13 @@ const Layout = observer((props) => {
                                     <span className="uppercase opacity-50 text-xs">Explorer</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
-                                    <a href="https://etherscan.io/token/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
+                                    <a href="https://etherscan.io/token/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
                                       <span className="btn--text">etherscan</span>
                                     </a>
-                                    <a href="https://ethplorer.io/address/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
+                                    <a href="https://ethplorer.io/address/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
                                       <span className="btn--text">ethplorer</span>
                                     </a>
-                                    <a href="https://bscscan.com/token/0x715D400F88C167884bbCc41C5FeA407ed4D2f8A0" className="btn nav-btn nav-btn-sm" rel="nofollow" target="blank">
+                                    <a href="https://bscscan.com/token/0x715D400F88C167884bbCc41C5FeA407ed4D2f8A0" className="btn btn-default btn-default-sm" rel="nofollow" target="blank">
                                       <span className="btn--text">bscscan</span>
                                     </a>
                                   </div>
@@ -224,7 +224,7 @@ const Layout = observer((props) => {
                                     <span className="uppercase opacity-50 text-xs">Contract</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
-                                    <a href="#" className="btn nav-btn nav-btn-sm">
+                                    <a href="#" className="btn btn-default btn-default-sm">
                                       <span className="icon">
                                         <i class="cf cf-eth"></i>
                                       </span>

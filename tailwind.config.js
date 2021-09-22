@@ -39,8 +39,8 @@ module.exports = {
       // Mapping Colors
       colors: {
         primary: colors.purple,
-        secondary: colors.green,
-        alternative: colors.yellow,
+        secondary: colors.yellow,
+        alternative: colors.green,
 
         'bluegray-50': '#f8fafd',
         'bluegray-100': '#ebf1f9',

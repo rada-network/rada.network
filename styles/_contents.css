@@ -515,7 +515,7 @@ Pricing & Market
 }
 
 .pricing-indicator {
-  @apply flex items-center ml-2 px-2 py-0.5 relative -top-1;
+  @apply flex items-center ml-2 px-2 py-0 relative;
   @apply text-base rounded-md;
   .fa-solid {
     @apply text-sm relative;
@@ -523,14 +523,14 @@ Pricing & Market
 }
 
 .pricing-indicator[type="up"] {
-  @apply bg-green-50 text-green-500;
+  @apply text-green-500;
   .fa-solid {
     @apply -bottom-0.5;
   }
 }
 
 .pricing-indicator[type="down"] {
-  @apply bg-red-50 text-red-500;
+  @apply text-red-500;
 }
 
 /* Small Pricing */

@@ -196,9 +196,9 @@ const handleConnectSuccess = ()=>{
                             </div>
                             <div className="text-right">
                                 {_.isEmpty(wallet) ?
-                                <button className="btn nav-btn" onClick={handleConnectWallet}>{t("connect")}</button>
+                                <button className="btn btn-default" onClick={handleConnectWallet}>{t("connect")}</button>
                                 :
-                                <button className="btn nav-btn" onClick={()=>handleDisconnectWallet(wallet.id)}>{t("disconnect")}</button>
+                                <button className="btn btn-default" onClick={()=>handleDisconnectWallet(wallet.id)}>{t("disconnect")}</button>
                                 }
 
                             </div>
@@ -225,9 +225,9 @@ const handleConnectSuccess = ()=>{
                             </div>
                             <div className="text-right">
                                 {_.isEmpty(google) ?
-                                <button className="btn nav-btn">{t("connect")}</button>
+                                <button className="btn btn-default">{t("connect")}</button>
                                 :
-                                <button className="btn nav-btn">{t("disconnect")}</button>
+                                <button className="btn btn-default">{t("disconnect")}</button>
                                 }
                             </div>
                           </div>
@@ -253,9 +253,9 @@ const handleConnectSuccess = ()=>{
                             </div>
                             <div className="text-right">
                             {_.isEmpty(facebook) ?
-                                <button className="btn nav-btn">{t("connect")}</button>
+                                <button className="btn btn-default">{t("connect")}</button>
                                 :
-                                <button className="btn nav-btn">{t("disconnect")}</button>
+                                <button className="btn btn-default">{t("disconnect")}</button>
                                 }
                             </div>
                           </div>
@@ -281,9 +281,9 @@ const handleConnectSuccess = ()=>{
                             </div>
                             <div className="text-right">
                             {_.isEmpty(twitter) ?
-                                <button className="btn nav-btn">{t("connect")}</button>
+                                <button className="btn btn-default">{t("connect")}</button>
                                 :
-                                <button className="btn nav-btn">{t("disconnect")}</button>
+                                <button className="btn btn-default">{t("disconnect")}</button>
                                 }
                             </div>
                           </div>

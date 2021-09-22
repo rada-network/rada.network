@@ -107,7 +107,7 @@ const Layout = observer((props) => {
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="relative">
-                      <div className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
+                      <div className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
                         <span className="icon">
                           <i className="fa-duotone fa-wallet"></i>
                         </span>

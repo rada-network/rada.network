@@ -12,7 +12,7 @@ export default function Usermenu({user}) {
   const {t} = useTranslation()
     // HieuNN: Example of Button when User Login
     const Button = ({ wallet }) => (
-      <div className="btn nav-btn btn-login" aria-expanded="false" aria-haspopup="true">
+      <div className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
         <span className="avatar leading-10">
           <img src={user.image} alt={user.name}/>
         </span>
