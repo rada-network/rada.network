@@ -42,7 +42,7 @@ function Concept() {
                 {/* General Info */}
                 <div className="flex flex-wrap md:flex-nowrap w-full md:space-x-2 md:divide-x divide-gray-400 divide-opacity-20">
 
-                  <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
+                  <div className="md:text-center pr-8 md:pr-0 md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs">
                         Location
@@ -55,7 +55,7 @@ function Concept() {
                     </div>
                   </div>
 
-                  <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
+                  <div className="md:text-center pr-8 md:pr-0 md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs">
                         Founded
@@ -68,7 +68,7 @@ function Concept() {
                     </div>
                   </div>
 
-                  <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
+                  <div className="md:text-center pr-8 md:pr-0 md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs">
                         Employees
@@ -81,7 +81,7 @@ function Concept() {
                     </div>
                   </div>
 
-                  <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
+                  <div className="md:text-center pr-8 md:pr-0 md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span
                         className="uppercase opacity-50 text-2xs md:text-xs"
@@ -130,7 +130,7 @@ function Concept() {
 
             <div className="mt-8">
 
-              <h2 className="text-center text-2xl font-semibold">Who is building Axie Infinity?</h2>
+              <h2 className="md:text-center text-2xl font-semibold">Who is building Axie Infinity?</h2>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8">
 
@@ -272,7 +272,7 @@ function Concept() {
 
             <div className="mt-8">
 
-              <h2 className="text-center text-2xl font-semibold">Axie Infinity's Partners</h2>
+              <h2 className="md:text-center text-2xl font-semibold">Axie Infinity's Partners</h2>
 
               <div className="flex flex-wrap mt-4 list-partners">
                 <a href="" className="mt-4" rel="nofollow" target="_blank">
