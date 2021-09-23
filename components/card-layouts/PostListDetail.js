@@ -60,6 +60,9 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
         }
       })
     }
+    return () => { 
+      window.removeEventListener('resize', handleResize)
+    }
   
   }, [item.item]);
   let resizeTimeout = 0;
