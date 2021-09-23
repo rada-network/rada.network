@@ -83,13 +83,13 @@ const NotConnectedButton = observer(({}) => {
 			<Transition.Child
 			  as={Fragment}
 			  enter="ease-out duration-300"
-			  enterFrom="opacity-0 scale-0"
-			  enterTo="opacity-100 scale-100"
+			  enterFrom="opacity-0"
+			  enterTo="opacity-100"
 			  leave="ease-in duration-200"
-			  leaveFrom="opacity-100 scale-100"
-			  leaveTo="opacity-0 scale-0"
+			  leaveFrom="opacity-100"
+			  leaveTo="opacity-0"
 			>
-			  <Dialog.Overlay className="fixed inset-0" onClick={closeModal} />
+			  <Dialog.Overlay className="dialog-overlay fixed inset-0" />
 			</Transition.Child>
 
 			{/* This element is to trick the browser into centering the modal contents. */}
@@ -103,11 +103,11 @@ const NotConnectedButton = observer(({}) => {
 			<Transition.Child
 			  as={Fragment}
 			  enter="ease-out duration-300"
-			  enterFrom="opacity-0 scale-0"
-			  enterTo="opacity-100 scale-100"
+			  enterFrom="opacity-0 scale-y-0"
+			  enterTo="opacity-100 scale-y-100"
 			  leave="ease-in duration-200"
-			  leaveFrom="opacity-100 scale-100"
-			  leaveTo="opacity-0 scale-0"
+			  leaveFrom="opacity-100 scale-y-100"
+			  leaveTo="opacity-0 scale-y-0"
 			>
 
 			  <div className={`inline-block w-full z-200 relative dialog`}>

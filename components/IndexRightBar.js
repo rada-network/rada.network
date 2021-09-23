@@ -85,7 +85,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
 
                 <Link href={`/tokens/` + detailStore.data.token.symbol}>
                   <a href="#" className="tab-item">
-                    {detailStore.data.token.symbol} Info
+                    About {detailStore.data.token.symbol}
                   </a>
                 </Link>
                 <Link href={`/tokens/` + detailStore.data.token.symbol + "/team"}>
