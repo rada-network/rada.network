@@ -23,9 +23,6 @@ Page Layout
 
 .page-back {
   @apply flex items-center;
-  .btn {
-    @apply py-1.5 p-3 hover:bg-gray-400 hover:bg-opacity-20 rounded-full opacity-100;
-  }
 }
 
 .pane-content--sec--top .page-back,

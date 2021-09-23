@@ -64,16 +64,18 @@ const NotConnectedButton = observer(({}) => {
 	return (
 	<>
 	<div onClick={ openModal } className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
+		
     <span className="icon">
 			<i class="fa-duotone fa-arrow-right-to-bracket"></i>
 		</span>
     <span className="btn--text">{t("sign in")}</span>
   </div>
+
 	<Transition show={isOpen} as={Fragment}>
 	  <Dialog
 		  as="div"
 		  id="modal"
-		  className={`fixed inset-0 z-10 overflow-y-auto dialog-outside-wrapper`}
+		  className={`dialog-outside-wrapper fixed inset-0 z-10 overflow-y-auto`}
 		  initialFocus={btnRef}
 		  static
 		  onClose={closeModal}
