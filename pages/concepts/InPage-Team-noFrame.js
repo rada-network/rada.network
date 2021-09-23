@@ -266,6 +266,7 @@ function Concept() {
             </div>
           </div>
           {/* END: Post Content - Team */}
+
           
           {/* Post Content - Partners */}
           <div className="w-full mt-8"> 
@@ -275,19 +276,19 @@ function Concept() {
               <h2 className="md:text-center text-2xl font-semibold">Axie Infinity's Partners</h2>
 
               <div className="flex flex-wrap mt-4 list-partners">
-                <a href="" className="mt-4" rel="nofollow" target="_blank">
+                <a href="" className="" rel="nofollow" target="_blank">
                   <img src="/images/examples/logo-samsung.png" />
                 </a>
-                <a href="" className="mt-4" rel="nofollow" target="_blank">
+                <a href="" className="" rel="nofollow" target="_blank">
                   <img src="/images/examples/logo-binance.png" />
                 </a>
-                <a href="" className="mt-4" rel="nofollow" target="_blank">
+                <a href="" className="" rel="nofollow" target="_blank">
                   <img src="/images/examples/logo-ubisoft.png" />
                 </a>
-                <a href="" className="mt-4" rel="nofollow" target="_blank">
+                <a href="" className="" rel="nofollow" target="_blank">
                   <img src="/images/examples/logo-kyber.png" />
                 </a>
-                <a href="" className="mt-4" rel="nofollow" target="_blank">
+                <a href="" className="" rel="nofollow" target="_blank">
                   <img src="/images/examples/logo-makerdao.png" />
                 </a>
               </div>
