@@ -65,7 +65,7 @@ function Concept() {
                     {/* Pricing Info */}
                     <div className="flex flex-wrap md:flex-nowrap w-full md:ml-6 md:space-x-2 md:divide-x divide-gray-400 divide-opacity-20">
 
-                      <div className="md:text-center md:w-1/2 lg:w-full">
+                      <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
                         <div className="w-full lg:w-auto">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Market Cap
@@ -78,7 +78,7 @@ function Concept() {
                         </div>
                       </div>
 
-                      <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                      <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
                         <div className="w-full lg:w-auto">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Volume 24h
@@ -91,7 +91,7 @@ function Concept() {
                         </div>
                       </div>
 
-                      <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                      <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
                         <div className="w-full lg:w-auto">
                           <span
                             className="uppercase opacity-50 text-2xs md:text-xs"
@@ -107,7 +107,7 @@ function Concept() {
                         </div>
                       </div>
 
-                      <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                      <div className="md:text-center md:w-1/2 lg:w-full">
                         <div className="w-full lg:w-auto">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Total Supply
@@ -134,10 +134,10 @@ function Concept() {
                             Website
                           </span>
                         </div>
-                        <div className="space-x-2 mb-2">
+                        <div className="">
                           <a
                             href="https://axieinfinity.com/"
-                            className="btn btn-default btn-default-sm"
+                            className="btn btn-default btn-default-sm mb-2"
                             rel="nofollow"
                             target="_blank"
                           >
@@ -157,10 +157,10 @@ function Concept() {
                             Community
                           </span>
                         </div>
-                        <div className="space-x-2 mb-2">
+                        <div className="">
                           <a
                             href="https://twitter.com/axieinfinity"
-                            className="btn btn-default btn-default-sm"
+                            className="btn btn-default btn-default-sm mb-2 mr-2"
                             rel="nofollow"
                             target="_blank"
                           >
@@ -171,7 +171,7 @@ function Concept() {
                           </a>
                           <a
                             href="https://t.me/axieinfinity"
-                            className="btn btn-default btn-default-sm"
+                            className="btn btn-default btn-default-sm mb-2 mr-2"
                             rel="nofollow"
                             target="_blank"
                           >
@@ -182,7 +182,7 @@ function Concept() {
                           </a>
                           <a
                             href="https://discord.com/invite/axie"
-                            className="btn btn-default btn-default-sm"
+                            className="btn btn-default btn-default-sm mb-2 mr-2"
                             rel="nofollow"
                             target="_blank"
                           >
@@ -211,10 +211,10 @@ function Concept() {
                             Explorer
                           </span>
                         </div>
-                        <div className="space-x-2 mb-2">
+                        <div className="">
                           <a
                             href="https://etherscan.io/token/0xf5d669627376ebd411e34b98f19c868c8aba5ada"
-                            className="btn btn-default btn-default-sm"
+                            className="btn btn-default btn-default-sm mb-2 mr-2"
                             rel="nofollow"
                             target="_blank"
                           >
@@ -222,7 +222,7 @@ function Concept() {
                           </a>
                           <a
                             href="https://ethplorer.io/address/0xf5d669627376ebd411e34b98f19c868c8aba5ada"
-                            className="btn btn-default btn-default-sm"
+                            className="btn btn-default btn-default-sm mb-2 mr-2"
                             rel="nofollow"
                             target="_blank"
                           >
@@ -245,10 +245,10 @@ function Concept() {
                             Contract
                           </span>
                         </div>
-                        <div className="space-x-2">
+                        <div className="">
                           <a
                             href="#"
-                            className="btn btn-default btn-default-sm mb-2"
+                            className="btn btn-default btn-default-sm mb-2 mr-2"
                           >
                             <span className="icon">
                               <i class="cf cf-eth"></i>
