@@ -10,6 +10,7 @@ function Concept() {
         <div className="page page-coininfo max-w-screen-md mx-auto">
           <div className="section section-coininfo--general">
             <div className="grid grid-cols-1">
+
               {/* Post Header */}
               <div className="flex flex-col">
                 <div className="flex flex-wrap justify-between items-center w-full">
@@ -63,7 +64,8 @@ function Concept() {
 
                     {/* Pricing Info */}
                     <div className="flex flex-wrap md:flex-nowrap w-full md:ml-6 md:space-x-2 md:divide-x divide-gray-400 divide-opacity-20">
-                      <div className="md:text-center md:w-1/2 lg:w-full">
+
+                      <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
                         <div className="w-full lg:w-auto">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Market Cap
@@ -76,7 +78,7 @@ function Concept() {
                         </div>
                       </div>
 
-                      <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                      <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
                         <div className="w-full lg:w-auto">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Volume 24h
@@ -89,7 +91,7 @@ function Concept() {
                         </div>
                       </div>
 
-                      <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                      <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
                         <div className="w-full lg:w-auto">
                           <span
                             className="uppercase opacity-50 text-2xs md:text-xs"
@@ -105,7 +107,7 @@ function Concept() {
                         </div>
                       </div>
 
-                      <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                      <div className="md:text-center md:w-1/2 lg:w-full">
                         <div className="w-full lg:w-auto">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Total Supply
@@ -117,6 +119,7 @@ function Concept() {
                           </strong>
                         </div>
                       </div>
+
                     </div>
                     {/* END: Pricing Info */}
                   </div>
@@ -131,12 +134,12 @@ function Concept() {
                             Website
                           </span>
                         </div>
-                        <div className="space-x-2 mb-2">
+                        <div className="">
                           <a
                             href="https://axieinfinity.com/"
-                            className="btn btn-default btn-default-sm"
+                            className="btn btn-default btn-default-sm mb-2"
                             rel="nofollow"
-                            target="blank"
+                            target="_blank"
                           >
                             <span className="icon">
                               <i class="fa-regular fa-globe"></i>
@@ -154,12 +157,12 @@ function Concept() {
                             Community
                           </span>
                         </div>
-                        <div className="space-x-2 mb-2">
+                        <div className="">
                           <a
                             href="https://twitter.com/axieinfinity"
-                            className="btn btn-default btn-default-sm"
+                            className="btn btn-default btn-default-sm mb-2 mr-2"
                             rel="nofollow"
-                            target="blank"
+                            target="_blank"
                           >
                             <span className="icon">
                               <i class="fa-brands fa-twitter"></i>
@@ -168,9 +171,9 @@ function Concept() {
                           </a>
                           <a
                             href="https://t.me/axieinfinity"
-                            className="btn btn-default btn-default-sm"
+                            className="btn btn-default btn-default-sm mb-2 mr-2"
                             rel="nofollow"
-                            target="blank"
+                            target="_blank"
                           >
                             <span className="icon">
                               <i class="fa-brands fa-telegram"></i>
@@ -179,9 +182,9 @@ function Concept() {
                           </a>
                           <a
                             href="https://discord.com/invite/axie"
-                            className="btn btn-default btn-default-sm"
+                            className="btn btn-default btn-default-sm mb-2 mr-2"
                             rel="nofollow"
-                            target="blank"
+                            target="_blank"
                           >
                             <span className="icon">
                               <i class="fa-brands fa-discord"></i>
@@ -192,7 +195,7 @@ function Concept() {
                             href="https://axieinfinity.medium.com/"
                             className="btn btn-default btn-default-sm"
                             rel="nofollow"
-                            target="blank"
+                            target="_blank"
                           >
                             <span className="icon">
                               <i class="fa-brands fa-medium"></i>
@@ -208,20 +211,20 @@ function Concept() {
                             Explorer
                           </span>
                         </div>
-                        <div className="space-x-2 mb-2">
+                        <div className="">
                           <a
                             href="https://etherscan.io/token/0xf5d669627376ebd411e34b98f19c868c8aba5ada"
-                            className="btn btn-default btn-default-sm"
+                            className="btn btn-default btn-default-sm mb-2 mr-2"
                             rel="nofollow"
-                            target="blank"
+                            target="_blank"
                           >
                             <span className="btn--text">etherscan</span>
                           </a>
                           <a
                             href="https://ethplorer.io/address/0xf5d669627376ebd411e34b98f19c868c8aba5ada"
-                            className="btn btn-default btn-default-sm"
+                            className="btn btn-default btn-default-sm mb-2 mr-2"
                             rel="nofollow"
-                            target="blank"
+                            target="_blank"
                           >
                             <span className="btn--text">ethplorer</span>
                           </a>
@@ -229,7 +232,7 @@ function Concept() {
                             href="https://bscscan.com/token/0x715D400F88C167884bbCc41C5FeA407ed4D2f8A0"
                             className="btn btn-default btn-default-sm"
                             rel="nofollow"
-                            target="blank"
+                            target="_blank"
                           >
                             <span className="btn--text">bscscan</span>
                           </a>
@@ -242,8 +245,11 @@ function Concept() {
                             Contract
                           </span>
                         </div>
-                        <div className="space-x-2">
-                          <a href="#" className="btn btn-default btn-default-sm mb-2">
+                        <div className="">
+                          <a
+                            href="#"
+                            className="btn btn-default btn-default-sm mb-2 mr-2"
+                          >
                             <span className="icon">
                               <i class="cf cf-eth"></i>
                             </span>
@@ -254,7 +260,10 @@ function Concept() {
                               <i class="fa-regular fa-copy text-2xs"></i>
                             </span>
                           </a>
-                          <a href="#" className="btn btn-default btn-default-sm mb-2">
+                          <a
+                            href="#"
+                            className="btn btn-default btn-default-sm mb-2"
+                          >
                             <span className="icon">
                               <i class="cf cf-bsc"></i>
                             </span>
@@ -270,6 +279,7 @@ function Concept() {
                     </div>
                   </div>
                 </div>
+              
               </div>
               {/* End: Post Header */}
 

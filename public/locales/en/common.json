@@ -8,6 +8,7 @@
   "comment input holder" : "Write your comment",
   "comment login" : "Connect wallet to discuss",
   "login" : "Login",
+  "sign in" : "Sign in",
   "search not found" : " not found in any document.",
   "back" : "Back",
   "visit website": "Visit Website",
@@ -18,7 +19,7 @@
   "disconnect" : "Disconnect",
   "no connection" : "No {{provider}} account connected",
   "article" : "Article",
-  "team" : "Team",
+  "team & partners" : "Team & Partners",
   "events" : "Events"
   
 }

@@ -113,11 +113,11 @@ Tabbar
 }
 
 .tabbar-main {
-  @apply flex items-center space-x-2;
+  @apply flex items-center space-x-4;
 }
 
 .tab-item {
-  @apply flex flex-1 justify-center items-center px-2 lg:px-3 py-1 transition-all relative whitespace-nowrap rounded-md;
+  @apply flex flex-1 justify-center items-center px-0 lg:px-0 py-1 transition-all relative whitespace-nowrap rounded-md;
   @apply font-medium opacity-50 hover:opacity-100;
 }
 

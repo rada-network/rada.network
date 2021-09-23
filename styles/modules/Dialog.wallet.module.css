@@ -1,28 +1,29 @@
 .dialog_header_wrapper {
-  @apply flex w-full lg:w-5/12 relative;
+  @apply flex w-full md:w-5/12 relative;
   @apply bg-gradient-to-br from-purple-700 to-purple-500 text-white overflow-hidden;
 }
 
 .dialog_header {
-  @apply flex flex-col py-8 px-8 lg:px-6 z-10;
+  @apply flex flex-col py-6 px-6 md:px-6 md:py-8 z-10;
 }
 
 .dialog_header__deco {
-  @apply absolute inset-0 w-full h-full opacity-50 z-0;
-  background: url(/images/hero-2.png) no-repeat 20px 60px;
+  @apply hidden md:block absolute inset-0 w-full h-full opacity-50 z-0;
+  background: url(/images/hero-2.png) no-repeat 0 20px;
 }
 
+
 .dialog_body_wrapper {
-  @apply flex lg:w-7/12;
+  @apply flex md:w-7/12;
 }
 
 .dialog_body {
-  @apply pt-0 pb-4 px-0 md:py-8 md:px-8 w-full;
+  @apply py-4 px-6 md:py-6 md:px-8 w-full;
 }
 
 
 .btn {
-  @apply flex rounded-none md:rounded-md py-4 px-6 my-1 md:mb-4 w-full;
+  @apply flex rounded-md py-4 px-6 my-2 w-full;
 }
 
 .btn_rounded {
@@ -58,16 +59,15 @@
   @apply translate-x-1;
 }
 
-
 .social_login {
-  @apply flex w-full justify-evenly space-x-4 px-6 md:px-0;
+  @apply flex flex-col w-full justify-evenly;
 }
 
 .social_login .btn {
-  @apply justify-center px-4 rounded-md md:rounded-md;
+  @apply justify-center px-6 rounded-md;
 }
 
 .social_login .btn_text {
-  @apply hidden md:block ml-2 mr-0;
+  @apply ml-4 mr-0;
 }
 

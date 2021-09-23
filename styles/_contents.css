@@ -392,6 +392,10 @@ Avatars
   @extend %Img80;
 }
 
+.avatar-3xl {
+  @extend %Img128;
+}
+
 
 /*
 Comment
@@ -553,4 +557,22 @@ Pricing & Market
   }
 }
 
-/* Concept: Chart */
+/* Partner List 
+--------------------------------- */
+.list-partners {
+  @apply flex md:justify-center items-center; 
+  a {
+    @apply border-0 m-4 md:mx-8 md:mt-4;
+    max-width: 20%;
+  }
+  a img {
+    max-width: 100%;
+    max-height: 60px;
+  }
+}
+
+@media (max-width: 767px) {
+  .list-partners a {
+    max-width: 40%;
+  }
+}
