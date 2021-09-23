@@ -71,6 +71,10 @@ Post Content Typo
   @apply text-lg;
 }
 
+.post-content h2.text-2xl {
+  @apply text-2xl;
+}
+
 .post-content * + h2,
 .post-content * + .pTitle {
   @apply mt-8;

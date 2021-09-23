@@ -288,13 +288,37 @@ Card Social
 /* Cards Team 
 --------------------------------------*/
 .card-team {
-  @apply flex-col justify-center;
+  @apply flex-col justify-center items-center h-full text-center;
+  @apply p-0;
+
   .card-body {
-    @apply mt-6 text-sm;
+    @apply flex-col items-stretch h-full mt-6 text-sm;
   }
-  .card-body h3 {
-    @apply mb-2;
+
+  .card-body-header {
+    @apply flex-col justify-center items-center mb-4;
   }
+  
+  .card-body-header h3 {
+    @apply mb-0 text-base font-semibold max-w-max whitespace-nowrap overflow-ellipsis;
+  }
+
+  .card-body-header p {
+    @apply mb-0 text-secondary-500;
+  }
+
+  .card-body-main p {
+    @apply hidden opacity-50;
+  }
+
+  .cta-wrapper {
+    @apply mt-0 space-x-2;
+  }
+
+  .cta-wrapper .btn {
+    @apply border-0;
+  }
+
 }
 
 

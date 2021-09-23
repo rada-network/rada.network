@@ -42,7 +42,7 @@ function Concept() {
                 {/* General Info */}
                 <div className="flex flex-wrap md:flex-nowrap w-full md:space-x-2 md:divide-x divide-gray-400 divide-opacity-20">
 
-                  <div className="md:text-center md:w-1/2 lg:w-full">
+                  <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs">
                         Location
@@ -55,7 +55,7 @@ function Concept() {
                     </div>
                   </div>
 
-                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                  <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs">
                         Founded
@@ -68,7 +68,7 @@ function Concept() {
                     </div>
                   </div>
 
-                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                  <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs">
                         Employees
@@ -81,7 +81,7 @@ function Concept() {
                     </div>
                   </div>
 
-                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                  <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span
                         className="uppercase opacity-50 text-2xs md:text-xs"
@@ -97,7 +97,7 @@ function Concept() {
                     </div>
                   </div>
 
-                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                  <div className="md:text-center md:w-1/2 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs">
                         Headquarter
@@ -125,13 +125,14 @@ function Concept() {
           </div>
           {/* End: Post Header */}
 
-          {/* Post Content */}
-
+          {/* Post Content - Team */}
           <div className="w-full mt-4"> 
 
-            <div className="post-content mt-8">
-              <h2 className="text-center">Who is building Axie Infinity?</h2>
-              <div className="grid md:grid-cols-2">
+            <div className="mt-8">
+
+              <h2 className="text-center text-2xl font-semibold">Who is building Axie Infinity?</h2>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8">
 
                 <div className="card card-team">
                   <div className="card-media">
@@ -142,18 +143,159 @@ function Concept() {
                   <div className="card-body">
                     <div className="card-body-header">
                       <h3 className="">Trung Nguyen</h3>
-                      <a href="" rel="nofollow" target="_blank"></a>
+                      <p>CEO &amp; Founder</p>
                     </div>
-                    <p className="">
-                      Trung Nguyen is CEO of Sky Mavis. He is an entrepreneur who started 5 years on Wall Street in 2007 and left to create an open source community which grew to over 100,000 members.
-                    </p>
+                    <div className="card-body-main">
+                      <p className="">
+                        Trung Nguyen is CEO of Sky Mavis. He is an entrepreneur who started 5 years on Wall Street in 2007 and left to create an open source community which grew to over 100,000 members.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="card-body-footer">
+                    <div className="cta-wrapper about-social">
+                      <a className="btn" href="" rel="nofollow" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                      </a>
+                      <a className="btn" href="" rel="nofollow" target="_blank">
+                        <i class="fa-brands fa-twitter"></i>
+                      </a>
+                      <a className="btn" href="" rel="nofollow" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card card-team">
+                  <div className="card-media">
+                    <div className="avatar avatar-3xl">
+                      <img src="https://skymavis.com/static/Alek.fb1be3cd.png" />
+                    </div>
+                  </div>
+                  <div className="card-body">
+                    <div className="card-body-header">
+                      <h3 className="">Aleksander L. Larsen</h3>
+                      <p>COO &amp; Co-Founder</p>
+                    </div>
+                    <div className="card-body-main">
+                      <p className="">
+                        Trung Nguyen is CEO of Sky Mavis. He is an entrepreneur who started 5 years on Wall Street in 2007 and left to create an open source community which grew to over 100,000 members.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="card-body-footer">
+                    <div className="cta-wrapper about-social">
+                      <a className="btn" href="" rel="nofollow" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                      </a>
+                      <a className="btn" href="" rel="nofollow" target="_blank">
+                        <i class="fa-brands fa-twitter"></i>
+                      </a>
+                      <a className="btn" href="" rel="nofollow" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card card-team">
+                  <div className="card-media">
+                    <div className="avatar avatar-3xl">
+                      <img src="https://skymavis.com/static/VietAnh.a8852a8b.png" />
+                    </div>
+                  </div>
+                  <div className="card-body">
+                    <div className="card-body-header">
+                      <h3 className="">Viet Anh Ho</h3>
+                      <p>CTO</p>
+                    </div>
+                    <div className="card-body-main">
+                      <p className="">
+                        Trung Nguyen is CEO of Sky Mavis. He is an entrepreneur who started 5 years on Wall Street in 2007 and left to create an open source community which grew to over 100,000 members.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="card-body-footer">
+                    <div className="cta-wrapper about-social">
+                      <a className="btn" href="" rel="nofollow" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                      </a>
+                      <a className="btn" href="" rel="nofollow" target="_blank">
+                        <i class="fa-brands fa-twitter"></i>
+                      </a>
+                      <a className="btn" href="" rel="nofollow" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card card-team">
+                  <div className="card-media">
+                    <div className="avatar avatar-3xl">
+                      <img src="https://skymavis.com/static/TuDoan.7b832689.png" />
+                    </div>
+                  </div>
+                  <div className="card-body">
+                    <div className="card-body-header">
+                      <h3 className="">Tu Doan</h3>
+                      <p>Art Director</p>
+                    </div>
+                    <div className="card-body-main">
+                      <p className="">
+                        Trung Nguyen is CEO of Sky Mavis. He is an entrepreneur who started 5 years on Wall Street in 2007 and left to create an open source community which grew to over 100,000 members.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="card-body-footer">
+                    <div className="cta-wrapper about-social">
+                      <a className="btn" href="" rel="nofollow" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                      </a>
+                      <a className="btn" href="" rel="nofollow" target="_blank">
+                        <i class="fa-brands fa-twitter"></i>
+                      </a>
+                      <a className="btn" href="" rel="nofollow" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                      </a>
+                    </div>
                   </div>
                 </div>
 
               </div>
             </div>
           </div>
-          {/* End: Post Content */}
+          {/* END: Post Content - Team */}
+          
+          {/* Post Content - Partners */}
+          <div className="w-full mt-8"> 
+
+            <div className="mt-8">
+
+              <h2 className="text-center text-2xl font-semibold">Axie Infinity's Partners</h2>
+
+              <div className="flex flex-wrap mt-4 list-partners">
+                <a href="" className="mt-4" rel="nofollow" target="_blank">
+                  <img src="/images/examples/logo-samsung.png" />
+                </a>
+                <a href="" className="mt-4" rel="nofollow" target="_blank">
+                  <img src="/images/examples/logo-binance.png" />
+                </a>
+                <a href="" className="mt-4" rel="nofollow" target="_blank">
+                  <img src="/images/examples/logo-ubisoft.png" />
+                </a>
+                <a href="" className="mt-4" rel="nofollow" target="_blank">
+                  <img src="/images/examples/logo-kyber.png" />
+                </a>
+                <a href="" className="mt-4" rel="nofollow" target="_blank">
+                  <img src="/images/examples/logo-makerdao.png" />
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+          {/* END: Post Content - Partners */}
 
         </div>
 
