@@ -47,14 +47,18 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
 
     // }
   let lastPos = 0
+  let listLoaded = false
   const mobileScroll = function(e){
     const el = scrollBox1.current
+    
     if (el.scrollTop > 100 && el.scrollTop >= lastPos) {
       document.body.classList.add(awayCls)
-    } else if (el.scrollTop < el.scrollHeight - el.clientHeight - 100 && el.scrollTop < lastPos) {
+    } else if ((el.scrollTop < el.scrollHeight - el.clientHeight - 100 && el.scrollTop < lastPos) || el.scrollTop < 20) {
       document.body.classList.remove(awayCls)
     }
     lastPos = el.scrollTop
+
+    if (listLoaded) return
 
     const bottom = el.scrollHeight - el.scrollTop < el.clientHeight +100;
     if (bottom) handleLoadMoreItem()
@@ -74,7 +78,8 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
       dataStore.addTweet(res.data.itemFeed)
       dataStore.loadingButton = false;
       if (res.data.itemFeed.length !== HOME_ITEM_TAKE){
-        scrollBox1.current.removeEventListener('scroll', mobileScroll);
+        // scrollBox1.current.removeEventListener('scroll', mobileScroll);
+        listLoaded = true
       }
     })
   }
