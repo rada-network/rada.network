@@ -20,5 +20,12 @@
   "no connection" : "Chưa kết nối tài khoản {{provider}}",
   "article" : "Bài viết",
   "team & partners" : "Team & Partners",
-  "events" : "Sự Kiện"
+  "events" : "Sự Kiện",
+  "Location" : "Địa điểm",
+  "Founded" : "Năm thành lập",
+  "Employees" : "Nhân viên",
+  "Last Funding" : "Vòng gọi vốn",
+  "Headquarter" : "Trụ sở chính",
+  "Who is building Axie Infinity" : "Ai đang xây dựng {{provider}}?",
+  "Axie Infinity Partners" : "Đối tác của {{provider}}"
 }

@@ -21,13 +21,20 @@ import {getCurrentUser} from "../../data/query/user"
 import {disconnectWallet} from "../../data/query/wallet"
 import _ from "lodash";
 import {useStore} from "../../lib/useStore";
+import { useRouter } from 'next/router';
 
 export default function UserProfile (props) {
   const [ session, loading ] = useSession()
   const [user,setUser] = useState({})
   const {t} = useTranslation()
+  const router = useRouter()
   const store = useStore()
   useEffect(() => {
+  // If session exists, display content
+    if (!session) {
+      router.push('/')
+      return
+    }
     getCurrentUser().then(res => {
       setUser(res)
     })
