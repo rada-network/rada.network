@@ -484,16 +484,19 @@ Components
 Dialogs 
 */
 .dialog-outside-wrapper {
-  @apply fixed inset-0 z-50 overflow-y-auto bg-opacity-100;
-  @apply bg-gray-100 dark:bg-gray-900;
+  @apply fixed inset-0 z-50 overflow-y-auto;
 }
 
 .dialog-outside {
-  @apply md:px-4 text-center bg-bluegray-50 dark:bg-gray-900;
+  @apply text-center;
+}
+
+.dialog-overlay {
+  @apply bg-gray-200 dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-lg;
 }
 
 .dialog {
-  @apply max-w-xs md:max-w-xl overflow-hidden text-left align-middle transition-all transform;
+  @apply max-w-xs md:max-w-xl overflow-hidden text-left align-middle;
   @apply text-left bg-gray-50 dark:bg-gray-800 shadow-xl rounded-lg;
 }
 

@@ -64,16 +64,18 @@ const NotConnectedButton = observer(({}) => {
 	return (
 	<>
 	<div onClick={ openModal } className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
+
     <span className="icon">
 			<i class="fa-duotone fa-arrow-right-to-bracket"></i>
 		</span>
     <span className="btn--text">{t("sign in")}</span>
   </div>
+
 	<Transition show={isOpen} as={Fragment}>
 	  <Dialog
 		  as="div"
 		  id="modal"
-		  className={`fixed inset-0 z-10 overflow-y-auto dialog-outside-wrapper`}
+		  className={`dialog-outside-wrapper fixed inset-0 z-10 overflow-y-auto`}
 		  initialFocus={btnRef}
 		  static
 		  onClose={closeModal}
@@ -83,13 +85,13 @@ const NotConnectedButton = observer(({}) => {
 			<Transition.Child
 			  as={Fragment}
 			  enter="ease-out duration-300"
-			  enterFrom="opacity-0 scale-0"
-			  enterTo="opacity-100 scale-100"
+			  enterFrom="opacity-0"
+			  enterTo="opacity-100"
 			  leave="ease-in duration-200"
-			  leaveFrom="opacity-100 scale-100"
-			  leaveTo="opacity-0 scale-0"
+			  leaveFrom="opacity-100"
+			  leaveTo="opacity-0"
 			>
-			  <Dialog.Overlay className="fixed inset-0" onClick={closeModal} />
+			  <Dialog.Overlay className="dialog-overlay fixed inset-0" />
 			</Transition.Child>
 
 			{/* This element is to trick the browser into centering the modal contents. */}
@@ -103,11 +105,11 @@ const NotConnectedButton = observer(({}) => {
 			<Transition.Child
 			  as={Fragment}
 			  enter="ease-out duration-300"
-			  enterFrom="opacity-0 scale-0"
-			  enterTo="opacity-100 scale-100"
+			  enterFrom="opacity-0 scale-y-0"
+			  enterTo="opacity-100 scale-y-100"
 			  leave="ease-in duration-200"
-			  leaveFrom="opacity-100 scale-100"
-			  leaveTo="opacity-0 scale-0"
+			  leaveFrom="opacity-100 scale-y-100"
+			  leaveTo="opacity-0 scale-y-0"
 			>
 
 			  <div className={`inline-block w-full z-200 relative dialog`}>
@@ -138,7 +140,7 @@ const NotConnectedButton = observer(({}) => {
 						</div>
 					  <div className="mt-2 text-white text-opacity-70 leading-6">
 						<p className="">
-						  Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics
+						  Signing in to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics
 						</p>
 					  </div>
 					</Dialog.Title>

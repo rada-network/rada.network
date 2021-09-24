@@ -279,7 +279,8 @@ Button Caret
 
 /* Page Back Button */
 .page-back .btn {
-  @apply text-sm opacity-50 hover:opacity-100;
+  @apply py-1.5 px-3 rounded-full;
+  @apply text-sm opacity-50 hover:opacity-100 hover:bg-gray-400 hover:bg-opacity-20 ;
 }
 
 /* Close Button */
