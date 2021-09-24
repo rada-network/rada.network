@@ -134,6 +134,7 @@ const itemByIdGql = gql`
                     websiteUri
                 }
                 token{
+                    id
                     name
                 }
                 categoryId
@@ -193,9 +194,11 @@ const itemByIdGql = gql`
                     id
                 }
                 token{
+                    id
                     name
                     symbol
-                }
+                    slug
+            }
             }
             video{
                 id
@@ -218,8 +221,10 @@ const itemByIdGql = gql`
                     }
                 }
                 token{
+                    id
                     name
                     symbol
+                    slug
                 }
             }
             media{

@@ -1,7 +1,7 @@
 import {RiExternalLinkLine} from "react-icons/ri";
 import Link from "next/link";
 import {CommentList} from "../comments/commentList";
-import React, {createRef, useEffect, useRef} from "react";
+import React, {createRef, useEffect, useRef, useState} from "react";
 // import PerfectScrollbar from "perfect-scrollbar";
 
 import {observer} from "mobx-react";
@@ -10,8 +10,10 @@ import utils from "../../lib/util";
 import {Vote} from "../vote/Vote";
 import { useTranslation } from "next-i18next";
 import { getItemById } from "../../data/query/getItem";
+import { getTokenById } from "../../data/query/getTokenById";
+import { TrendingStore } from "../../lib/store";
 
-export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
+export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore}) => {
   let item = detailStore.data
   voteStore.addVotesV2([
     {
@@ -43,7 +45,7 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
 
 
   useEffect(() => {
-      
+
     if (typeof twttr.widgets !== "undefined") {
       twttr.widgets.load()
     }
@@ -57,13 +59,14 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
           detailStore.data.content_en = res.data.itemById.news.content_en
           detailStore.data.contentDisplay = res.data.itemById.news.contentDisplay
           detailStore.data.content_en_display = res.data.itemById.news.content_en_display
+          detailStore.data.token = res.data.itemById.news.token
         }
       })
     }
-    return () => { 
+    return () => {
       window.removeEventListener('resize', handleResize)
     }
-  
+
   }, [item.item]);
   let resizeTimeout = 0;
   const handleResize = (event) => {
@@ -99,9 +102,9 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
           } */}
 
           {/* News Post Detail Content */}
-          {detailStore.type === "news" ?
+          {detailStore.type === "news" ?(tabName === 'article'?
             <NewsDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
-            : ""
+            : <TokenInfo token={detailStore.data.token} tabName={tabName} />) :''
           }
 
           {detailStore.type === "video" ?
@@ -123,6 +126,313 @@ export const PostListDetail = observer(({detailStore,dataStore,voteStore}) => {
     </>
   )
 })
+
+const TokenInfo = ({token, tabName})=>{
+  const trendingStore = new TrendingStore()
+  const [tokenData, setTokenData] = useState({})
+  const {t, i18n} = useTranslation()
+  useEffect(() => {
+   token?.slug && getTokenById({id : token?.slug, lang: i18n.language}).then(function (res) {
+   setTokenData(res.data.tokenById)
+  })
+  }, [token])
+
+  return tabName ==='axs'? <div className="pane-content--sec--main grid scrollbar">
+    <div className="page page-coininfo">
+
+      <div className="section section-coininfo--general">
+
+        <div className="grid grid-cols-1">
+
+          {/* Post Header */}
+          <div className="flex flex-col">
+
+            <div className="flex flex-wrap justify-between items-center w-full">
+              <div className="flex flex-0 flex-shrink-0 mb-4">
+                <span className="icon flex-shrink-0">
+                  <img src="/images/coins/axs.png" className="mr-2 h-px-32 w-px-32" alt="AXS Symbol"/>
+                </span>
+                <h1 className="flex items-center">
+                  <strong className="text-2xl font-semibold">{tokenData?.name}</strong>
+                  <span className="badge badge-coin badge-coin-lg ml-2">{tokenData?.symbol}</span>
+                </h1>
+              </div>
+              <div className="flex flex-wrap space-x-2 mb-4">
+                {tokenData.tag?.map(item => <span key={item.id} className={`badge badge-lg ${trendingStore.data.find(t => t === item.slug) ? 'badge-red':''}`}>{item.name}</span>)}
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <div className="flex w-full">
+
+                <div className="text-sm w-full">
+                  <div className="flex flex-wrap justify-between items-center">
+                    <div className="w-full lg:w-auto mb-2">
+                      <span className="uppercase opacity-50 text-xs">Website</span>
+                    </div>
+                    <div className="space-x-2 mb-2">
+                      <a href="https://axieinfinity.com/" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
+                        <span className="icon">
+                          <i class="fa-regular fa-globe"></i>
+                        </span>
+                        <span className="btn--text">{tokenData?.link?.find(item => item.group === 'homepage')?.url}</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap justify-between items-center">
+                    <div className="w-full lg:w-auto mb-2">
+                      <span className="uppercase opacity-50 text-xs">Community</span>
+                    </div>
+                    <div className="space-x-2 mb-2">
+                      {tokenData?.link?.map(item => item.group === 'community' && (
+                      <a key={item.id} href={item.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
+                        <span className="icon">
+                          <i class={`fa-brands fa-${item.name.toLowerCase()}`}></i>
+                        </span>
+                        <span className="btn--text">{item.name}</span>
+                      </a>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap justify-between items-center">
+                    <div className="w-full lg:w-auto mb-2">
+                      <span className="uppercase opacity-50 text-xs">Explorer</span>
+                    </div>
+                    <div className="space-x-2 mb-2">
+                      {tokenData?.link?.map((item, index) => item.group === 'explorers' && (
+                        <a key={item.id} href={item.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
+                          <span className="btn--text">{item.name}</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap justify-between items-center">
+                    <div className="w-full lg:w-auto mb-2">
+                      <span className="uppercase opacity-50 text-xs">Contract</span>
+                    </div>
+                    <div className="space-x-2 mb-2">
+                      <a href="#" className="btn btn-default btn-default-sm">
+                        <span className="icon">
+                          <i class="cf cf-eth"></i>
+                        </span>
+                        <span className="btn--text">{tokenData?.contract_address}</span>
+                        <span className="icon">
+                          <i class="fa-regular fa-copy text-2xs"></i>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          {/* End: Post Header */}
+
+          {/* Post Content */}
+          <div className="w-full mt-4">
+              {tokenData.token_description?.map((item) =>  <div key={item.id} className="post-content mt-8" dangerouslySetInnerHTML={{__html:item.content}}/>)}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div> :<div className="section section-coininfo--team">
+
+<div className="grid grid-cols-1">
+
+  {/* Post Header */}
+  <div className="flex flex-col">
+
+    <div className="flex flex-wrap justify-between items-center w-full">
+      <div className="flex flex-0 flex-shrink-0 mb-4">
+        <span className="icon flex-shrink-0">
+          <img src="/images/coins/axs.png" className="mr-2 h-px-24 w-px-24" alt="AXS Symbol"/>
+        </span>
+        <h1 className="flex items-center">
+          <strong className="text-lg font-semibold">{tokenData?.name}</strong>
+          <span className="badge badge-coin ml-2">{tokenData?.symbol}</span>
+        </h1>
+        {/* Price */}
+      </div>
+      <div className="flex flex-wrap space-x-2 mb-4">
+      {tokenData.tag?.map(item => <span key={item.id} className={`badge badge-lg ${trendingStore.data.find(t => t === item.slug) ? 'badge-red':''}`}>{item.name}</span>)}
+      </div>
+    </div>
+
+    <div className="mt-4">
+      <div className="flex flex-wrap md:flex-nowrap items-start w-full">
+
+        {/* General Info */}
+        <div className="flex flex-wrap md:flex-nowrap w-full md:space-x-2 md:divide-x divide-gray-400 divide-opacity-20">
+
+          <div className="md:text-center pr-8 md:pr-0 md:w-1/2 lg:w-full">
+            <div className="w-full lg:w-auto">
+              <span className="uppercase opacity-50 text-2xs md:text-xs">
+                {t('Location')}
+              </span>
+            </div>
+            <div className="mb-2">
+              <strong className="">
+                {tokenData?.team?.location}
+              </strong>
+            </div>
+          </div>
+
+          <div className="md:text-center pr-8 md:pr-0 md:w-1/2 lg:w-full">
+            <div className="w-full lg:w-auto">
+              <span className="uppercase opacity-50 text-2xs md:text-xs">
+                {t('Founded')}
+              </span>
+            </div>
+            <div className="mb-2">
+              <strong className="">
+                {tokenData?.team?.founded}
+              </strong>
+            </div>
+          </div>
+
+          <div className="md:text-center pr-8 md:pr-0 md:w-1/2 lg:w-full">
+            <div className="w-full lg:w-auto">
+              <span className="uppercase opacity-50 text-2xs md:text-xs">
+                {t('Employees')}
+              </span>
+            </div>
+            <div className="mb-2">
+              <strong className="">
+              {tokenData?.team?.employees}
+              </strong>
+            </div>
+          </div>
+
+          <div className="md:text-center pr-8 md:pr-0 md:w-1/2 lg:w-full">
+            <div className="w-full lg:w-auto">
+              <span
+                className="uppercase opacity-50 text-2xs md:text-xs"
+                title="Last Funding Type"
+              >
+                {t('Last Funding')}
+              </span>
+            </div>
+            <div className="mb-2">
+              <strong className="">
+              {tokenData?.team?.last_funding}
+              </strong>
+            </div>
+          </div>
+
+          <div className="md:text-center md:w-1/2 lg:w-full">
+            <div className="w-full lg:w-auto">
+              <span className="uppercase opacity-50 text-2xs md:text-xs">
+                {t('Headquarter')}
+              </span>
+            </div>
+            <div className="mb-2">
+              <a
+                href={tokenData?.team?.headquarter_url}
+                rel="nofollow"
+                target="_blank"
+              >
+                <strong className="">
+                {tokenData?.team?.headquarter}
+                </strong>
+                <span class="icon ml-1 relative -top-0.5"><i class="fa-duotone fa-external-link text-2xs"></i></span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+        {/* END: General Info */}
+      </div>
+    </div>
+
+  </div>
+  {/* End: Post Header */}
+
+  {/* Post Content - Team */}
+  <div className="w-full mt-4">
+
+    <div className="mt-8">
+
+      <h2 className="md:text-center text-2xl font-semibold">
+      {t("Who is building Axie Infinity",{"provider" : tokenData.name})}
+      </h2>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8">
+
+        {tokenData?.team?.author?.map(item =>(
+          <div key={item.id} className="card card-team">
+          <div className="card-media">
+            <div className="avatar avatar-3xl">
+              <img src={item.image.medium} />
+            </div>
+          </div>
+          <div className="card-body">
+            <div className="card-body-header">
+              <h3 className="">{item.name}</h3>
+              <p>{item.position}</p>
+            </div>
+            <div className="card-body-main">
+              <p className="">
+                Trung Nguyen is CEO of Sky Mavis. He is an entrepreneur who started 5 years on Wall Street in 2007 and left to create an open source community which grew to over 100,000 members.
+              </p>
+            </div>
+          </div>
+          <div className="card-body-footer">
+            <div className="cta-wrapper about-social">
+              <a className="btn" href={item.linkedin} rel="nofollow" target="_blank">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a className="btn" href={item.twitter} rel="nofollow" target="_blank">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a className="btn" href={item.facebook} rel="nofollow" target="_blank">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        ))}
+
+      </div>
+    </div>
+  </div>
+  {/* END: Post Content - Team */}
+
+
+  {/* Post Content - Partners */}
+  <div className="w-full mt-8">
+
+    <div className="mt-8">
+
+      <h2 className="md:text-center text-2xl font-semibold">
+        {t("Axie Infinity Partners",{"provider" : tokenData.name})}
+      </h2>
+
+      <div className="flex flex-wrap mt-4 list-partners">
+        {tokenData?.partner?.map(item => (
+          <a key={item.id} href={item.url} className="" rel="nofollow" target="_blank">
+          <img src={item.image.medium} />
+        </a>
+        ))}
+      </div>
+
+    </div>
+
+  </div>
+  {/* END: Post Content - Partners */}
+
+</div>
+
+</div>
+
+}
 
 const VideoDetail = function({item,dateTitle,date,voteStore}){
   const source = getSourceVideoFromUri(item)
@@ -211,7 +521,7 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
       content = item.content_en_display
     }
   }
-  
+
   useEffect(() => {
     // make scrollbar
     // let iframes = document.querySelectorAll('iframe')
@@ -236,8 +546,8 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
         <div className="post-title">
           <h1 className="inline">
             <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
-              {isRada ? 
-              <span className="badge badge-rada mr-2">RADA</span> 
+              {isRada ?
+              <span className="badge badge-rada mr-2">RADA</span>
               : ""}
               <span className="post-title--text">
                 {title}
@@ -252,15 +562,15 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
         <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
-              {isRada ? 
+              {isRada ?
               <span className="icon icon-rada w-3.5 mr-1">
                 <img layout='fill' src="/images/rada-mono.svg" alt="RADA NETWORK" />
               </span>
-              : 
+              :
               <span className="icon mr-1">
                 <i className="fa-duotone fa-newspaper"></i>
-              </span>} 
-              
+              </span>}
+
               <span className="metadata-value" title={getSourceFromUri(item)}>
                 {getSourceFromUri(item)}
               </span>
@@ -280,17 +590,17 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
 
       <div className="section-body post-body">
         <div className="post-content">
-          {item.isshowcontent ? 
-            <div dangerouslySetInnerHTML={{__html: content}}/> 
+          {item.isshowcontent ?
+            <div dangerouslySetInnerHTML={{__html: content}}/>
             :
-            // (item.description.length > 100 ? 
-            //   <div dangerouslySetInnerHTML={{__html: item.description}}/> 
+            // (item.description.length > 100 ?
+            //   <div dangerouslySetInnerHTML={{__html: item.description}}/>
             //   :
-            //   ""  
+            //   ""
             // )
-            <div dangerouslySetInnerHTML={{__html: content}}/> 
+            <div dangerouslySetInnerHTML={{__html: content}}/>
           }
-          
+
         </div>
         {/* {item.thumbnailUri !== "" ?
           <div className="post-media">
@@ -356,7 +666,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
           <PostVisitVoteDetail voteStore={voteStore} item={item} />
         </div>
       </div>
-      
+
       <div className="section-body post-body">
         <div className="post-content">
           {/* Card Social Post Here */}

@@ -20,6 +20,12 @@
   "no connection" : "No {{provider}} account connected",
   "article" : "Article",
   "team & partners" : "Team & Partners",
-  "events" : "Events"
-  
+  "events" : "Events",
+  "Location" : "Location",
+  "Founded" : "Founded",
+  "Employees" : "Employees",
+  "Last Funding" : "Last Funding",
+  "Headquarter" : "Headquarter",
+  "Who is building Axie Infinity" : "Who is building {{provider}}?",
+  "Axie Infinity Partners" : "{{provider}}'s Partners"
 }

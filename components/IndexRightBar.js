@@ -1,5 +1,5 @@
 import {observer} from "mobx-react";
-import React, {createRef, useEffect} from "react";
+import React, {createRef, useEffect, useState} from "react";
 // import PerfectScrollbar from "perfect-scrollbar";
 import Screen from "./utils/Responsive";
 import {PostListDetail} from "./card-layouts/PostListDetail";
@@ -27,17 +27,20 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   //     ps2.destroy()
   //   }
   // }, [scrollBox2]);
+  const [tabName, setTabName] = useState('article')
   const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
   const router = useRouter()
   const store = useStore()
+
   useEffect(() => {
+    setTabName('article')
     if (!_.isEmpty(detailStore.data)) {
       document.body.classList.add('page-details')
     } else {
       document.body.classList.remove('page-details')
     }
   }, [detailStore.data])
-  
+
   const handleBack = (e) => {
     detailStore.data = {}
     store.setShallowConnect(true)
@@ -67,38 +70,34 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
               : ""
             }
 
-            {/* 
+            {/*
             HieuNN:
-            Example of Page Tabs Here 
+            Example of Page Tabs Here
             */}
             {dataStore !== undefined && !_.isEmpty(detailStore.data) ?
             <div className="tabbar page-tabs">
               <div className="tabbar-main">
 
-                {!_.isEmpty(detailStore.data) && detailStore.data.token && detailStore.data.token !== null ? 
+                {!_.isEmpty(detailStore.data) && detailStore.data.token && detailStore.data.token !== null ?
                 <>
-                <a href="#" className="tab-item tab-item--active">
+                <a href="#" className={`tab-item ${tabName === 'article' ?'tab-item--active':'' }`} onClick={()=>setTabName('article')}>
                   {t("article")}
                 </a>
-                
+
                 <span className="tab-item--divider" />
 
-                <Link href={`/tokens/` + detailStore.data.token.symbol}>
-                  <a href="#" className="tab-item">
-                    About {detailStore.data.token.symbol}
+                  <a href="#" className={`tab-item ${tabName === 'axs' ?'tab-item--active':'' }`} onClick={()=>setTabName('axs')}>
+                    {detailStore.data.token.symbol} Info
                   </a>
-                </Link>
-                <Link href={`/tokens/` + detailStore.data.token.symbol + "/team"}>
-                  <a href="#" className="tab-item">
+                <a href="#" className={`tab-item ${tabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setTabName('team')}>
                   {t("team & partners")}
                   </a>
-                </Link>
                 {/* <Link href={`/tokens/` + detailStore.data.token.symbol + "/events"}>
                   <a href="#" className="tab-item">
                   {t("events")}
                   </a>
                 </Link> */}
-            
+
                 </>
                 :""
                 }
@@ -106,7 +105,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
             </div>
             : ""
             }
-            
+
           </div>
 
           <Screen from="lg">
@@ -122,7 +121,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
 
 
         {!_.isEmpty(detailStore.data) &&
-          <PostListDetail detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
+          <PostListDetail tabName={tabName} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
         }
 
         <div className={`pane-content--sec--main scrollbar ` + (!_.isEmpty(detailStore.data) ? "hidden" : "")}>
