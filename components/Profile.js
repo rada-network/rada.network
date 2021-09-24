@@ -64,7 +64,7 @@ const NotConnectedButton = observer(({}) => {
 	return (
 	<>
 	<div onClick={ openModal } className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
-		
+
     <span className="icon">
 			<i class="fa-duotone fa-arrow-right-to-bracket"></i>
 		</span>
@@ -140,7 +140,7 @@ const NotConnectedButton = observer(({}) => {
 						</div>
 					  <div className="mt-2 text-white text-opacity-70 leading-6">
 						<p className="">
-						  Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics
+						  Signing in to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics
 						</p>
 					  </div>
 					</Dialog.Title>
