@@ -35,6 +35,11 @@ export default function Profile(){
 	})
 	const [cookies, setCookie] = useCookies(['access_token']);
 	setCookie("access_token",session.access_token,{path : "/",maxAge: 24*7*3600})
+	useEffect(() => {
+		return () => {
+			
+		}
+	},[])
   return (
 	<>
 	  <ConnectedButton user={session.user} />

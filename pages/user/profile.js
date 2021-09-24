@@ -33,19 +33,18 @@ export default function UserProfile (props) {
     })
   },[])
 
-  // When rendering client side don't display anything until loading is complete
-  if (typeof window !== 'undefined' && loading) return null
-
-  // If no session exists, display access denied message
-  if (!session) { return <AccessDenied/> }
-
-  // If session exists, display content
-
   const homeStore = new HomeStore({isHome : false});
   const dataStore = new ObservableTweetStore({homeStore})
   const detailStore = new DetailStore();
   dataStore.lang = props.lang
 
+  // When rendering client side don't display anything until loading is complete
+  if (typeof window !== 'undefined' && loading) return null
+
+  // If no session exists, display access denied message
+  if (!session) { return <ProfileAccessDenied  dataStore={dataStore} detailStore={detailStore} /> }
+
+  // If session exists, display content
 
   let google = {}, wallet = {}, facebook = {}, twitter = {}
   if (_.isEmpty(user)){
@@ -306,6 +305,72 @@ const handleConnectSuccess = ()=>{
     </>
   );
 }
+
+const ProfileAccessDenied = ({dataStore,detailStore}) => {
+  const store = useStore()
+  useEffect(() => {
+    store.user.showConnect(true)
+  },[]);
+  const meta = {
+    "title" : "User profile"
+  }
+  return (
+    <>
+      <Head meta={meta} />
+
+      <div className={`main-layout`}>
+        {/* Mobile / Tablet Navbar */}
+        <Screen upto="md">
+          <div className="pane-bottom">
+            <Navbar dataStore={dataStore} detailStore={detailStore} />
+          </div>
+        </Screen>
+
+        {/* Desktop Navbar */}
+        <Screen from="lg">
+          <div className="pane-left">
+            <Navbar dataStore={dataStore} detailStore={detailStore} />
+            <div className="pane-left--bottom">
+              <LanguageSwitch dataStore={dataStore} />
+              <ThemeSwitch />
+            </div>
+          </div>
+        </Screen>
+
+        <div className={`pane-center`}>
+          <Screen upto="md">
+            <div className="pane-center--top">
+              {/* <Tabbar /> */}
+              <Topbar dataStore={dataStore} />
+            </div>
+          </Screen>
+
+          <div className="pane-center--main w-full">
+
+            <div className="page page-full">
+
+              <div className="page-full--inner">
+
+                {/* <div className="page-title">
+                  Your Profile
+                </div> */}
+
+                <div className="page-section text-center">
+                  <div className="mt-4">
+                    <h1 className="text-2xl">403 forbidden</h1>
+                  </div>
+                  <Profile />
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </>
+  )
+};
 
 export async function getStaticProps(context) {
   console.log(context)
