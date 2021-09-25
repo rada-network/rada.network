@@ -47,11 +47,13 @@ const getDataHome = async ({query,lang}) => {
     lang : lang
   })
   query = query || ""
+  const intro = await getPage({slug: 'intro', lang})
   return {
     query : query,
     lang : lang,
     type : "all",
-    itemFeed : itemFeed.data.itemFeed
+    itemFeed : itemFeed.data.itemFeed,
+    intro
   }
 }
 
