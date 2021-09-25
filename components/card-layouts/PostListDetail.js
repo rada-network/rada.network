@@ -13,6 +13,8 @@ import { getItemById } from "../../data/query/getItem";
 import { getTokenById } from "../../data/query/getTokenById";
 import { TrendingStore } from "../../lib/store";
 import ContentLoader from 'react-content-loader'
+import numberFormatter from "../utils/numberFormatter";
+import roundNumber from "../utils/roundNumber"
 
 
 export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore}) => {
@@ -132,12 +134,23 @@ export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore
 const TokenInfo = ({token, tabName})=>{
   const trendingStore = new TrendingStore()
   const [tokenData, setTokenData] = useState({})
+  const [usdCoinInfo, setUSDCoinInfo] = useState({})
+  const [btcCoinInfo, setBTCCoinInfo] = useState({})
   const {t, i18n} = useTranslation()
   useEffect(() => {
    token?.slug && getTokenById({id : token?.slug, lang: i18n.language}).then(function (res) {
    setTokenData(res.data.tokenById)
+   getCoinInfo(res.data.tokenById.symbol)
   })
   }, [token])
+
+  const getCoinInfo =  async (fsym)=>{
+    await fetch(`/api/coin-info?fsym=${fsym}&tsym=USD`).then(response => response.json())
+    .then(data => setUSDCoinInfo(data.Data));
+
+    await fetch(`/api/coin-info?fsym=${fsym}&tsym=BTC`).then(response => response.json())
+    .then(data => setBTCCoinInfo(data.Data));
+  }
 
   return tabName ==='axs'? <div className="pane-content--sec--main grid scrollbar">
     <div className="page page-coininfo">
@@ -165,7 +178,111 @@ const TokenInfo = ({token, tabName})=>{
             </div>
 
             <div className="mt-4">
+              <div className="flex flex-wrap md:flex-nowrap items-start w-full">
+
+                {/* Pricing */}
+                <div className="flex flex-col flex-shrink-0 flex-0 mb-4">
+                  <div className="pricing">
+                    <span className="pricing-value">
+                      {numberFormatter(usdCoinInfo?.AggregatedData?.PRICE || 0,{
+                          style: 'currency',
+                          currency: 'USD',
+                          notation: 'compact',
+                          minimumFractionDigits: 1
+                      })}
+                    </span>
+                    <span className="pricing-indicator" type={usdCoinInfo?.AggregatedData?.CHANGE24HOUR > 0 ?"up":"down"}>
+                      <i className={`fa-solid fa-caret-${usdCoinInfo?.AggregatedData?.CHANGE24HOUR > 0 ?"up":"down"} mr-1`}></i>
+                      {/* {usdCoinInfo?.AggregatedData?.CHANGE24HOUR < 0 && '-'} */}
+                      {roundNumber(Math.abs(usdCoinInfo?.AggregatedData?.CHANGE24HOUR || 0), 6)}%
+                    </span>
+                  </div>
+                  <div className="pricing pricing-sm mt-2">
+                    <span className="pricing-value opacity-50">
+                      {btcCoinInfo?.AggregatedData?.PRICE} BTC</span>
+                    <span className="pricing-indicator" type={usdCoinInfo?.AggregatedData?.CHANGE24HOUR > 0 ?"up":"down"}>
+                      <i className={`fa-solid fa-caret-${btcCoinInfo?.AggregatedData?.CHANGE24HOUR > 0 ?"up":"down"} mr-1`}></i>
+                      {/* {btcCoinInfo?.AggregatedData?.CHANGE24HOUR < 0 && '-'} */}
+                      {roundNumber(Math.abs(btcCoinInfo?.AggregatedData?.CHANGE24HOUR || 0), 6) }%
+                    </span>
+                  </div>
+                </div>
+                {/* END: Pricing */}
+
+                {/* Pricing Info */}
+                <div className="flex flex-wrap md:flex-nowrap w-full md:ml-5 md:space-x-2 md:divide-x divide-gray-400 divide-opacity-20">
+
+                  <div className="md:text-center md:w-1/2 lg:w-full">
+                    <div className="w-full lg:w-auto">
+                      <span className="uppercase opacity-50 text-2xs md:text-xs">Market Cap</span>
+                    </div>
+                    <div className="mb-2">
+                      <strong href="#" className="">
+                      {numberFormatter(usdCoinInfo?.AggregatedData?.MKTCAP || 0,{
+                        style: 'currency',
+                        currency: 'USD',
+                        notation: 'compact',
+                        minimumFractionDigits: 1
+                      })}
+                      </strong>
+                    </div>
+                  </div>
+
+                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                    <div className="w-full lg:w-auto">
+                      <span className="uppercase opacity-50 text-2xs md:text-xs">Volume 24h</span>
+                    </div>
+                    <div className="mb-2">
+                      <strong href="#" className="">
+                        {numberFormatter(usdCoinInfo?.AggregatedData?.VOLUME24HOUR|| 0,{
+                          style: 'currency',
+                          currency: 'USD',
+                          notation: 'compact',
+                          minimumFractionDigits: 1
+                        })}
+                      </strong>
+                    </div>
+                  </div>
+
+                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                    <div className="w-full lg:w-auto">
+                      <span className="uppercase opacity-50 text-2xs md:text-xs" title="Circulating Supply">C. Supply</span>
+                    </div>
+                    <div className="mb-2">
+                      <strong href="#" className="">
+                      {numberFormatter(usdCoinInfo?.AggregatedData?.CIRCULATINGSUPPLY|| 0,{
+                        notation: 'compact',
+                        minimumFractionDigits: 1
+                      })}
+                      </strong>
+                    </div>
+                  </div>
+
+                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                    <div className="w-full lg:w-auto">
+                      <span className="uppercase opacity-50 text-2xs md:text-xs">Total Supply</span>
+                    </div>
+                    <div className="mb-2">
+                      <strong href="#" className="">
+                      {numberFormatter(usdCoinInfo?.AggregatedData?.SUPPLY|| 0,{
+                        notation: 'compact',
+                        minimumFractionDigits: 1
+                      })}
+                      </strong>
+                    </div>
+                  </div>
+
+                </div>
+                {/* END: Pricing Info */}
+
+              </div>
+            </div>
+
+            <div className="mt-4">
               <div className="flex w-full">
+
+
+
 
                 <div className="text-sm w-full">
                   <div className="flex flex-wrap justify-between items-center">
@@ -231,6 +348,7 @@ const TokenInfo = ({token, tabName})=>{
                 </div>
               </div>
             </div>
+
 
           </div>
           {/* End: Post Header */}
@@ -592,7 +710,7 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
 
       <div className="section-body post-body">
         {!item.content ?
-        <NewsLoader /> 
+        <NewsLoader />
         : ""
         }
         <div className="post-content">
@@ -629,7 +747,7 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
   )
 })
 
-const NewsLoader = () => { 
+const NewsLoader = () => {
   return <ContentLoader viewBox="0 0 400 160" >
           <rect x="0" y="13" rx="4" ry="4" width="400" height="9" />
           <rect x="0" y="29" rx="4" ry="4" width="100" height="8" />

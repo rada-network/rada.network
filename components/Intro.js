@@ -5,10 +5,10 @@ export default function Siteintro({ intro }) {
       <div className={`page-about-deco`} />
 
       <div className="page-about-content">
-        
+
         <div className="page-about-content--section content-section--1">
             <span className="icon"><i class="fa-solid fa-info"></i></span>
-            <div dangerouslySetInnerHTML={{__html: intro.content}}></div>
+            <div dangerouslySetInnerHTML={{__html: intro?.content}}></div>
         </div>
 
         <div className="page-about-content--section content-section--2">
@@ -21,7 +21,7 @@ export default function Siteintro({ intro }) {
 
           <div className="about-social">
             <a
-              className="btn-facebook" 
+              className="btn-facebook"
               target="_blank"
               href="https://www.facebook.com/RADA-Media-100147568952754"
             >
@@ -29,7 +29,7 @@ export default function Siteintro({ intro }) {
             </a>
 
             <a
-              className="btn-discord" 
+              className="btn-discord"
               target="_blank"
               href="https://discord.gg/ENm9SpQs"
               rel="noreferrer"
@@ -38,17 +38,17 @@ export default function Siteintro({ intro }) {
             </a>
 
             <a
-              className="btn-twitter" 
-              target="_blank" 
+              className="btn-twitter"
+              target="_blank"
               href="https://twitter.com/radamedia"
               rel="noreferrer"
             >
               <i className="fab fa-twitter" />
             </a>
 
-            <a 
-              className="btn-medium" 
-              target="_blank" 
+            <a
+              className="btn-medium"
+              target="_blank"
               href="https://medium.com/@radamedia"
               rel="noreferrer"
             >
