@@ -560,9 +560,9 @@ Pricing & Market
 /* Partner List 
 --------------------------------- */
 .list-partners {
-  @apply flex md:justify-center items-center; 
+  @apply flex justify-center items-center; 
   a {
-    @apply border-0 m-4 md:mx-8 md:mt-4;
+    @apply border-0 m-2 lg:mx-8 lg:mt-4;
     max-width: 20%;
   }
   a img {

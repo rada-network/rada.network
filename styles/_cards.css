@@ -288,7 +288,7 @@ Card Social
 /* Cards Team 
 --------------------------------------*/
 .card-team {
-  @apply flex-col md:justify-center md:items-center h-full text-center;
+  @apply flex-col justify-center items-center h-full text-center;
   @apply p-0;
 
   .card-body {
@@ -296,7 +296,7 @@ Card Social
   }
 
   .card-body-header {
-    @apply flex-col items-start md:justify-center md:items-center mb-4;
+    @apply flex-col items-start justify-center items-center mb-4;
   }
   
   .card-body-header h3 {

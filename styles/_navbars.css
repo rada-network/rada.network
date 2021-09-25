@@ -138,7 +138,7 @@ Tabbar
 }
 
 .tab-item--active {
-  @apply opacity-100 text-primary-700 dark:text-primary-400 font-semibold;
+  @apply opacity-100 text-primary-700 dark:text-primary-400 font-semibold pointer-events-none;
   /* &::after {
     height: 3px;
   } */

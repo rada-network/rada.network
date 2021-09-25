@@ -612,7 +612,7 @@ const TokenTopbar = ({props}) => {
           <span className="tab-item--divider"></span>
           <Link href={`/tokens/` + props.token}>
             <a href="#" className={"tab-item" + (props.sub === ""? " tab-item--active" : "") }>
-              {props.token} Info
+              About {props.token}
             </a>
           </Link>
           {/* <Link href={`/tokens/` + props.token + "/market"}>
