@@ -29,7 +29,7 @@ export default function Intro({ dataStore }) {
           <div>
             <h3>RADA sẽ hoạt động như thế nào?</h3>
             <p>
-              <u>Bước 1</u>: Hệ thống sẽ “quyét” toàn bộ các tin tức về Blockchain/Crypto
+              <u>Bước 1</u>: Hệ thống sẽ “quét” toàn bộ các tin tức về Blockchain/Crypto
               các trang tin lớn trên thế giới và Việt Nam.
             </p>
             <p>

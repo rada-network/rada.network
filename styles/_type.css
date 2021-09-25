@@ -46,6 +46,7 @@ Post Content Typo
 
 .post-content p,
 .post-content ul,
+.post-content ol,
 .post-content figure, 
 .post-content blockquote,
 .post-content hr,
@@ -102,7 +103,7 @@ Post Content Typo
 .post-content ol,
 .post-rada ol,
 .post-rada ul {
-  @apply ml-2 pl-2;
+  @apply ml-8 pl-2;
   list-style: revert;
 }
 
