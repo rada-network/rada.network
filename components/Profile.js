@@ -66,12 +66,15 @@ const NotConnectedButton = observer(({}) => {
 	<div onClick={ openModal } className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
 
     <span className="icon">
-			<i class="fa-duotone fa-arrow-right-to-bracket"></i>
+			<i class="fa-duotone fa-user"></i>
 		</span>
     <span className="btn--text">{t("sign in")}</span>
   </div>
 
-	<Transition show={isOpen} as={Fragment}>
+	<Transition 
+		show={isOpen} 
+		as={Fragment}
+	>
 	  <Dialog
 		  as="div"
 		  id="modal"
@@ -87,7 +90,7 @@ const NotConnectedButton = observer(({}) => {
 			  enter="ease-out duration-300"
 			  enterFrom="opacity-0"
 			  enterTo="opacity-100"
-			  leave="ease-in duration-200"
+			  leave="ease-in duration-1600"
 			  leaveFrom="opacity-100"
 			  leaveTo="opacity-0"
 			>
