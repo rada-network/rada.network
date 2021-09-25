@@ -145,13 +145,13 @@ Wallet Button
 */
 .btn-login {
   .avatar {
-    @apply w-px-16 h-px-16;
+    @apply w-5 h-5;
   }
 
   .btn--text {
   }
 
-  min-height: 30px;
+  max-height: 30px;
 
 }
 

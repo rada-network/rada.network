@@ -126,14 +126,18 @@ Main Panels
 .pane-content--main--top,
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0;
-  @apply border-b border-gray-400 border-opacity-10;
   @apply bg-white dark:bg-gray-900;
   height: var(--toolbar-height);
+}
+
+.pane-content--main--top {
+  @apply border-b border-gray-400 border-opacity-10;
 }
 
 /* Hide content toolbar on Tablet */
 .pane-content--sec--top {
   @apply md:hidden lg:flex;
+  @apply md:border-b border-gray-400 border-opacity-10;
 }
 
 /* Unhide content toolbar when Reading */
@@ -313,7 +317,7 @@ Sidebar
 Sections Layout
 --------------------------------------------- */
 .section {
-  @apply p-4 md:p-6 xl:px-10 xl:py-6;
+  @apply px-4 pt-2 pb-4 md:p-6 xl:px-10 xl:py-6;
 }
 
 .section-header {
@@ -331,7 +335,7 @@ Sections Layout
 }
 
 .section-body {
-  @apply pt-4 md:pt-6;
+  @apply pt-6 md:pt-8;
 }
 
 .section-footer {

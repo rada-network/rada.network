@@ -6,7 +6,7 @@ export function CommentHeader({comment,user, level, parent, ItemCommentStore}){
     if (user.walletAddress && user.walletAddress !== "")
       return user.walletAddress.substr(0,4) + "..." + user.walletAddress.substr(user.walletAddress.length - 4,4)
 
-    return user.email.substr(0,4) + "..." + user.email.substr(user.email.length - 4,4)
+    return user.email.substr(0,3) + "..@.." + user.email.substr(user.email.length - 3,3)
   }
   return (
     <div className="comment-header">

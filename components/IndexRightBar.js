@@ -63,7 +63,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore, intro})
               <div className="page-back flex-shrink-0">
                 <a title="Back" className="btn" onClick={(e) => {handleBack(e)}}>
                   <span className="icon">
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i className="fa-solid fa-chevron-left"></i>
                   </span>
                   <span className="btn--text sr-only">{t("back")}</span>
                 </a>
@@ -88,7 +88,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore, intro})
                 <span className="tab-item--divider" />
 
                   <a href="#" className={`tab-item ${tabName === 'axs' ?'tab-item--active':'' }`} onClick={()=>setTabName('axs')}>
-                    {detailStore.data.token.symbol} Info
+                    About {detailStore.data.token.symbol}
                   </a>
                 <a href="#" className={`tab-item ${tabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setTabName('team')}>
                   {t("team & partners")}
@@ -134,7 +134,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore, intro})
           }}/> */}
 
           {/* Temporary Disable Widgets */}
-          {/* <Sidebar className={`sidebar`} extraClass="" /> */}
+          {/* <Sidebar className={`sidebar`} extraClassName="" /> */}
         </div>
 
       </div>

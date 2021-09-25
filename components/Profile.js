@@ -19,22 +19,30 @@ import {useCookies} from "react-cookie";
 export default function Profile(){
   const [ session, loading ] = useSession()
 	const store = useStore()
+	const [cookies, setCookie] = useCookies(['access_token']);
+	useEffect(() => {
+		if (session) {
+			store.user.update({
+				id : session.user.id,
+				name : session.user.name,
+				email : session.user.email,
+				image : session.user.image,
+				access_token : session.access_token,
+				walletAddress : "",
+			})
+			setCookie("access_token",session.access_token,{path : "/",maxAge: 24*7*3600})
+		}
+		return () => {
+			
+		}
+	},[session,store])
   // When rendering client side don't display anything until loading is complete
   if (typeof window !== 'undefined' && loading) return null
 
   // If no session exists, display access denied message
   if (!session) { return <NotConnectedButton/> }
   // If session exists, display content
-	store.user.update({
-		id : session.user.id,
-		name : session.user.name,
-		email : session.user.email,
-		image : session.user.image,
-		access_token : session.access_token,
-		walletAddress : "",
-	})
-	const [cookies, setCookie] = useCookies(['access_token']);
-	setCookie("access_token",session.access_token,{path : "/",maxAge: 24*7*3600})
+	
   return (
 	<>
 	  <ConnectedButton user={session.user} />
@@ -66,12 +74,15 @@ const NotConnectedButton = observer(({}) => {
 	<div onClick={ openModal } className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
 
     <span className="icon">
-			<i class="fa-duotone fa-arrow-right-to-bracket"></i>
+			<i class="fa-duotone fa-user"></i>
 		</span>
     <span className="btn--text">{t("sign in")}</span>
   </div>
 
-	<Transition show={isOpen} as={Fragment}>
+	<Transition 
+		show={isOpen} 
+		as={Fragment}
+	>
 	  <Dialog
 		  as="div"
 		  id="modal"
@@ -87,7 +98,7 @@ const NotConnectedButton = observer(({}) => {
 			  enter="ease-out duration-300"
 			  enterFrom="opacity-0"
 			  enterTo="opacity-100"
-			  leave="ease-in duration-200"
+			  leave="ease-in duration-1600"
 			  leaveFrom="opacity-100"
 			  leaveTo="opacity-0"
 			>
