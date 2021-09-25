@@ -564,7 +564,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
         <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
-              <span className="icon mr-1">
+              <span className="icon mr-1.5">
                 <i className="fab fa-youtube"></i>
               </span>
               <span className="metadata-value" title={source}>
@@ -670,11 +670,11 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
               {isRada ?
-              <span className="icon icon-rada w-3.5 mr-1">
+              <span className="icon icon-rada w-3.5 mr-1.5 opacity-80">
                 <img layout='fill' src="/images/rada-mono.svg" alt="RADA NETWORK" />
               </span>
               :
-              <span className="icon mr-1">
+              <span className="icon mr-1.5">
                 <i className="fa-duotone fa-newspaper"></i>
               </span>}
 
@@ -776,7 +776,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
         <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
-              <span className="icon mr-1">
+              <span className="icon mr-1.5">
                 <i className="fab fa-twitter"></i>
               </span>
               <span className="metadata-value" title={source}>
@@ -845,7 +845,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
             <div className="card-footer">
               <div className="metadata-wrapper metadata-wrapper_nodivide">
                 <div className="metadata">
-                  <span className="icon mr-1 text-base opacity-40">
+                  <span className="icon mr-1.5 text-base opacity-40">
                     <svg viewBox="0 0 24 24" aria-hidden="true" width="1em" heigh="1em">
                       <g>
                         <path
@@ -857,7 +857,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
                   <span title="likes">{item.replyCount}</span>
                 </div>
                 <div className="metadata ml-2">
-                  <span className="icon mr-1 text-base opacity-40">
+                  <span className="icon mr-1.5 text-base opacity-40">
                     <svg viewBox="0 0 24 24" aria-hidden="true" width="1em" heigh="1em">
                       <g>
                         <path
@@ -869,7 +869,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
                   <span title="retweet count">{item.retweetCount}</span>
                 </div>
                 <div className="metadata ml-2">
-                  <span className="icon mr-1 text-base opacity-40">
+                  <span className="icon mr-1.5 text-base opacity-40">
                     <svg viewBox="0 0 24 24" aria-hidden="true" width="1em" heigh="1em">
                       <g>
                         <path

@@ -130,7 +130,7 @@ const CardPostNormal = observer(({title, mediaUri, type, source, commentCount, v
         <div className="metadata-wrapper justify-between">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
-              <span className="icon mr-1">
+              <span className="icon mr-1.5">
                 <i className={`${type}`} />
               </span>
               <span className="metadata-value" title={source}>{source}</span>
@@ -141,13 +141,13 @@ const CardPostNormal = observer(({title, mediaUri, type, source, commentCount, v
           </div>
           <div className="flex flex-shrink-0 metadata-wrapper_nodivide">
             <div className="metadata metadata-commentcount">
-              <span className="icon mr-1">
+              <span className="icon mr-1.5">
                 <i className="fa fa-comment" />
               </span>
               <span className="">{commentCount}</span>
             </div>
             <div className="metadata metadata-votecount">
-              <span className="icon mr-1">
+              <span className="icon mr-1.5">
                 <i className="fa-solid fa-caret-up" />
               </span>
               <span>{voteCount}</span>
@@ -228,7 +228,7 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
 
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
-              <span className="icon icon-rada w-3.5 mr-1">
+              <span className="icon icon-rada w-3.5 mr-1.5 opacity-70">
                 <img layout='fill' src="/images/rada-mono.svg" alt="RADA NETWORK" />
               </span>
               <span className="metadata-value" title={source}>{source}</span>
@@ -240,13 +240,13 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
 
           <div className="flex flex-shrink-0 metadata-wrapper_nodivide">
             <div className="metadata metadata-commentcount">
-              <span className="icon mr-1">
+              <span className="icon mr-1.5">
                 <i className="fa fa-comment" />
               </span>
               <span className="">{commentCount}</span>
             </div>
             <div className="metadata metadata-votecount">
-              <span className="icon mr-1">
+              <span className="icon mr-1.5">
                 <i className="fa-solid fa-caret-up" />
               </span>
               <span>{voteCount}</span>

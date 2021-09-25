@@ -47,7 +47,7 @@ export const CommentMain = observer(({item,comment,user,ItemCommentStore,level, 
                 {/* Todo: Comment Votte function */}
                 <button
                   className="btn btn-post-vote disabled">
-                  <span className="icon mr-1"><RiThumbUpFill/></span>
+                  <span className="icon mr-1.5"><RiThumbUpFill/></span>
                   <span className="font-bold mr-1">1</span><span>Likes</span>
                 </button>
 

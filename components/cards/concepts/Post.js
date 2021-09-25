@@ -51,7 +51,7 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
 
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
-              <span className="icon mr-1">
+              <span className="icon mr-1.5">
                 <i className={`${type}`} />
               </span>
               <span className="metadata-value" title="CoinTelegraph">{source}</span>
@@ -64,13 +64,13 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
           <div className="flex metadata-wrapper_nodivide">
             <div className="flex flex-shrink-0 metadata-wrapper_nodivide">
               <div className="metadata">
-                <span className="icon mr-1">
+                <span className="icon mr-1.5">
                   <i className="far fa-comment-alt" />
                 </span>
                 <span className="">{commentCount}</span>
               </div>
               <div className="metadata">
-                <span className="icon mr-1">
+                <span className="icon mr-1.5">
                   <i className="far fa-arrow-up" />
                 </span>
                 <span>{voteCount}</span>

@@ -80,16 +80,16 @@ Metadata
 }
 
 .metadata + .metadata {
-  @apply ml-1;
+  @apply ml-1.5;
   &::before {
-    @apply block mr-1 text-xl leading-4;
+    @apply block mr-1.5 text-xl leading-4;
     content: "\00B7";
   }
 }
 
 .metadata-wrapper_nodivide {
   .metadata + .metadata {
-    @apply ml-1;
+    @apply ml-1.5;
     &::before {
       @apply hidden;
     }
@@ -142,7 +142,7 @@ Badges
 -------------------------------- */
 .badge {
   @apply text-2xs leading-none px-1.5 py-0.5 whitespace-nowrap;
-  @apply bg-gray-400 bg-opacity-20 text-gray-400;
+  @apply bg-gray-400 bg-opacity-20;
   @apply rounded-full;
 
   &::before {

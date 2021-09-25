@@ -41,7 +41,7 @@ export const Vote = observer(({itemId, page,voteStore}) => {
     <button className={`btn btn-post-vote
     ${!isVote ? "" : "active"}`}
           onClick={toggleVote}>
-      <span className="icon mr-1 text-lg leading-none relative -bottom-0.5">
+      <span className="icon mr-1.5 text-lg leading-none relative -bottom-0.5">
         <i class="fa-solid fa-caret-up"></i>
       </span>
       <span className="btn-post-vote_total ml-1 whitespace-nowrap">
@@ -54,7 +54,7 @@ export const Vote = observer(({itemId, page,voteStore}) => {
     <button className={`btn btn-post-vote
     ${!isVote ? "" : "active"}`}
             onClick={toggleVote}>
-                          <span className="icon mr-1 text-lg leading-none relative -bottom-0.5">
+                          <span className="icon mr-1.5 text-lg leading-none relative -bottom-0.5">
                             <i class="fa-solid fa-caret-up"></i>
                           </span>
                           <span className="btn-post-vote_total ml-1 whitespace-nowrap">
@@ -69,7 +69,7 @@ export const Vote = observer(({itemId, page,voteStore}) => {
     <button title={isVote? "Upvoted" : "Upvote"} className={`btn btn-post-vote_sm flex flex-col  
     ${!isVote ? "" : "active"}`}
         onClick={toggleVote}>
-      <span className="icon mr-1 text-lg leading-none relative -bottom-0.5">
+      <span className="icon mr-1.5 text-lg leading-none relative -bottom-0.5">
         <i class="fa-solid fa-caret-up"></i>
       </span>
       <span className="btn-post-vote_total whitespace-nowrap">
