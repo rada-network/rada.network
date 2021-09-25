@@ -19,27 +19,30 @@ import {useCookies} from "react-cookie";
 export default function Profile(){
   const [ session, loading ] = useSession()
 	const store = useStore()
+	const [cookies, setCookie] = useCookies(['access_token']);
+	useEffect(() => {
+		if (session) {
+			store.user.update({
+				id : session.user.id,
+				name : session.user.name,
+				email : session.user.email,
+				image : session.user.image,
+				access_token : session.access_token,
+				walletAddress : "",
+			})
+			setCookie("access_token",session.access_token,{path : "/",maxAge: 24*7*3600})
+		}
+		return () => {
+			
+		}
+	},[session,store])
   // When rendering client side don't display anything until loading is complete
   if (typeof window !== 'undefined' && loading) return null
 
   // If no session exists, display access denied message
   if (!session) { return <NotConnectedButton/> }
   // If session exists, display content
-	store.user.update({
-		id : session.user.id,
-		name : session.user.name,
-		email : session.user.email,
-		image : session.user.image,
-		access_token : session.access_token,
-		walletAddress : "",
-	})
-	const [cookies, setCookie] = useCookies(['access_token']);
-	setCookie("access_token",session.access_token,{path : "/",maxAge: 24*7*3600})
-	useEffect(() => {
-		return () => {
-			
-		}
-	},[])
+	
   return (
 	<>
 	  <ConnectedButton user={session.user} />

@@ -29,27 +29,25 @@ export default function UserProfile (props) {
   const {t} = useTranslation()
   const router = useRouter()
   const store = useStore()
-  useEffect(() => {
-  // If session exists, display content
-    if (!session) {
-      router.push('/')
-      return
-    }
-    getCurrentUser().then(res => {
-      setUser(res)
-    })
-  },[])
-
+  
   const homeStore = new HomeStore({isHome : false});
   const dataStore = new ObservableTweetStore({homeStore})
   const detailStore = new DetailStore();
   dataStore.lang = props.lang
+  useEffect(() => {
+    // If session exists, display content
+      getCurrentUser().then(res => {
+        setUser(res)
+      })
+    },[session])
 
   // When rendering client side don't display anything until loading is complete
   if (typeof window !== 'undefined' && loading) return null
 
   // If no session exists, display access denied message
   if (!session) { return <ProfileAccessDenied  dataStore={dataStore} detailStore={detailStore} /> }
+
+  
 
   // If session exists, display content
 
