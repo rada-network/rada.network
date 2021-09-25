@@ -12,6 +12,8 @@ import { useTranslation } from "next-i18next";
 import { getItemById } from "../../data/query/getItem";
 import { getTokenById } from "../../data/query/getTokenById";
 import { TrendingStore } from "../../lib/store";
+import ContentLoader from 'react-content-loader'
+
 
 export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore}) => {
   let item = detailStore.data
@@ -589,6 +591,10 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
       </div>
 
       <div className="section-body post-body">
+        {!item.content ?
+        <NewsLoader /> 
+        : ""
+        }
         <div className="post-content">
           {item.isshowcontent ?
             <div dangerouslySetInnerHTML={{__html: content}}/>
@@ -622,6 +628,21 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
     </div>
   )
 })
+
+const NewsLoader = () => { 
+  return <ContentLoader viewBox="0 0 400 160" >
+          <rect x="0" y="13" rx="4" ry="4" width="400" height="9" />
+          <rect x="0" y="29" rx="4" ry="4" width="100" height="8" />
+          <rect x="0" y="50" rx="4" ry="4" width="400" height="10" />
+          <rect x="0" y="65" rx="4" ry="4" width="400" height="10" />
+          <rect x="0" y="79" rx="4" ry="4" width="100" height="10" />
+          <rect x="0" y="93" rx="4" ry="4" width="400" height="9" />
+          <rect x="0" y="106" rx="4" ry="4" width="100" height="8" />
+          <rect x="0" y="118" rx="4" ry="4" width="400" height="10" />
+          <rect x="0" y="132" rx="4" ry="4" width="400" height="10" />
+          <rect x="0" y="146" rx="4" ry="4" width="100" height="10" />
+        </ContentLoader>
+}
 
 const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
   let title = item.source.full_text
