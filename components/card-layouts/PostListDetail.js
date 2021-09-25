@@ -177,7 +177,7 @@ const TokenInfo = ({token, tabName})=>{
             </div>
 
             <div className="mt-4">
-              <div className="flex flex-wrap md:flex-nowrap items-start w-full">
+              <div className="flex flex-wrap lg:flex-nowrap items-start w-full">
 
                 {/* Pricing */}
                 <div className="flex flex-col flex-shrink-0 flex-0 mb-4">
@@ -209,9 +209,9 @@ const TokenInfo = ({token, tabName})=>{
                 {/* END: Pricing */}
 
                 {/* Pricing Info */}
-                <div className="flex flex-wrap md:flex-nowrap w-full md:ml-5 md:space-x-2 md:divide-x divide-gray-400 divide-opacity-20">
+                <div className="flex flex-wrap lg:flex-nowrap w-full lg:ml-5 lg:space-x-2 lg:divide-x divide-gray-400 divide-opacity-20">
 
-                  <div className="md:text-center md:w-1/2 lg:w-full">
+                  <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs">Market Cap</span>
                     </div>
@@ -227,7 +227,7 @@ const TokenInfo = ({token, tabName})=>{
                     </div>
                   </div>
 
-                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                  <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs">Volume 24h</span>
                     </div>
@@ -243,7 +243,7 @@ const TokenInfo = ({token, tabName})=>{
                     </div>
                   </div>
 
-                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                  <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs" title="Circulating Supply">C. Supply</span>
                     </div>
@@ -257,7 +257,7 @@ const TokenInfo = ({token, tabName})=>{
                     </div>
                   </div>
 
-                  <div className="md:text-center pl-4 md:w-1/2 lg:w-full">
+                  <div className="lg:text-center flex-0 flex-srink-0 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs">Total Supply</span>
                     </div>
@@ -279,9 +279,6 @@ const TokenInfo = ({token, tabName})=>{
 
             <div className="mt-4">
               <div className="flex w-full">
-
-
-
 
                 <div className="text-sm w-full">
                   <div className="flex flex-wrap justify-between items-center">
@@ -379,18 +376,17 @@ const TokenInfo = ({token, tabName})=>{
               <strong className="text-lg font-semibold">{tokenData?.name}</strong>
               <span className="badge badge-coin ml-2">{tokenData?.symbol}</span>
             </h1>
-            {/* Price */}
           </div>
-          <div className="flex flex-wrap space-x-2 mb-4">
-          {tokenData.tag?.map(item => <span key={item.id} className={`badge badge-lg ${trendingStore.data.find(t => t === item.slug) ? 'badge-red':''}`}>{item.name}</span>)}
+          <div className="flex flex-wrap space-x-2 mb-2">
+          {tokenData.tag?.map(item => <span key={item.id} className={`badge badge-lg mb-2 ${trendingStore.data.find(t => t === item.slug) ? 'badge-red':''}`}>{item.name}</span>)}
           </div>
         </div>
 
         <div className="mt-4">
           {/* General Info */}
-          <div className="flex flex-wrap justify-evenly lg:flex-nowrap w-full lg:space-x-2 lg:divide-x divide-gray-400 divide-opacity-20">
+          <div className="flex flex-wrap lg:justify-evenly lg:flex-nowrap w-full lg:space-x-2 lg:divide-x divide-gray-400 divide-opacity-20">
 
-            <div className="text-center flex-0 flex-srink-0 lg:w-full px-2">
+            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
                 <span className="uppercase opacity-50 text-2xs lg:text-xs">
                   {t('Location')}
@@ -403,7 +399,7 @@ const TokenInfo = ({token, tabName})=>{
               </div>
             </div>
 
-            <div className="text-center flex-0 flex-srink-0 lg:w-full px-2">
+            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
                 <span className="uppercase opacity-50 text-2xs lg:text-xs">
                   {t('Founded')}
@@ -416,7 +412,7 @@ const TokenInfo = ({token, tabName})=>{
               </div>
             </div>
 
-            <div className="text-center flex-0 flex-srink-0 lg:w-full px-2">
+            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
                 <span className="uppercase opacity-50 text-2xs lg:text-xs">
                   {t('Employees')}
@@ -429,7 +425,7 @@ const TokenInfo = ({token, tabName})=>{
               </div>
             </div>
 
-            <div className="text-center flex-0 flex-srink-0 lg:w-full px-2">
+            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
                 <span
                   className="uppercase opacity-50 text-2xs lg:text-xs"
@@ -445,7 +441,7 @@ const TokenInfo = ({token, tabName})=>{
               </div>
             </div>
 
-            <div className="text-center flex-0 flex-srink-0 lg:w-full px-2">
+            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full">
               <div className="w-full lg:w-auto">
                 <span className="uppercase opacity-50 text-2xs lg:text-xs">
                   {t('Headquarter')}
@@ -473,9 +469,9 @@ const TokenInfo = ({token, tabName})=>{
       {/* End: Post Header */}
 
       {/* Post Content - Team */}
-      <div className="w-full mt-8">
+      <div className="w-full mt-8 lg:mt-16">
 
-        <h2 className="text-center text-xl lg:text-2xl font-semibold">
+        <h2 className="lg:text-center text-xl lg:text-2xl font-semibold">
         {t("Who is building Axie Infinity",{"provider" : tokenData.name})}
         </h2>
 
@@ -522,13 +518,13 @@ const TokenInfo = ({token, tabName})=>{
 
 
       {/* Post Content - Partners */}
-      <div className="w-full mt-8 pt-8">
+      <div className="w-full mt-10 lg:mt-16">
 
-        <h2 className="text-center text-xl lg:text-2xl font-semibold">
+        <h2 className="lg:text-center text-xl lg:text-2xl font-semibold">
           {t("Axie Infinity Partners",{"provider" : tokenData.name})}
         </h2>
 
-        <div className="flex flex-wrap mt-4 list-partners">
+        <div className="flex flex-wrap mt-6 list-partners">
           {tokenData?.partner?.map(item => (
             <a key={item.id} href={item.url} className="" rel="nofollow" target="_blank">
             <img src={item.image.medium} />

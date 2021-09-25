@@ -56,7 +56,11 @@ Post Content Typo
 }
 
 .post-content a {
-  word-break: break-all;
+  word-break: break-word;
+}
+
+.post-detail-media .post-content a {
+  word-break: break-all; /* Fix Youtube content */
 }
 
 .post-content h2,

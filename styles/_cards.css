@@ -288,19 +288,23 @@ Card Social
 /* Cards Team 
 --------------------------------------*/
 .card-team {
-  @apply flex-col justify-center items-center h-full text-center;
+  @apply flex-col justify-center lg:items-center h-full text-center;
   @apply p-0;
+
+  .avatar {
+    @apply rounded-md lg:rounded-full;
+  }
 
   .card-body {
     @apply flex-col items-stretch h-full mt-6 text-sm;
   }
 
   .card-body-header {
-    @apply flex-col items-start justify-center items-center mb-4;
+    @apply flex-col items-start justify-center lg:items-center mb-4;
   }
   
   .card-body-header h3 {
-    @apply mb-0 text-base font-semibold max-w-max whitespace-nowrap overflow-ellipsis;
+    @apply mb-0 text-base font-semibold max-w-max lg:whitespace-nowrap overflow-ellipsis;
   }
 
   .card-body-header p {
