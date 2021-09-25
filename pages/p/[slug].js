@@ -1,6 +1,6 @@
 import {getPage} from "../../data/query/page";
 
-export default function StaticPage({slug, page}) {
+export default function StaticPage({page}) {
     if (!page) return <h1>Page not found</h1>
 
     return (
@@ -19,12 +19,11 @@ export async function getStaticPaths() {
     }
 }
   
-export async function getStaticProps({params}) {
-    const page = await getPage({slug: params.slug})
+export async function getStaticProps({params, locale}) {
+    const page = await getPage({slug: params.slug, lang: locale})
     return {
         props: {
-            slug: params.slug,
-            page: page.data.pageBySlug
+            page
         }
     }
 }

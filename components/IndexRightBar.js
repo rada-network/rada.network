@@ -14,9 +14,10 @@ import Usermenu from "./Usermenu";
 import Link from "next/link";
 
 import { Transition } from '@headlessui/react';
+import Siteintro from "./Intro";
 
 
-export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
+export const IndexRightBar = observer(({dataStore,detailStore,voteStore, intro}) => {
   // const scrollBox2 = createRef();
   // let ps2;
 
@@ -48,7 +49,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
   }
   const {t} = useTranslation()
 
-  const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
+  // const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
   return (
     <>
       <div className={`pane-content--sec` + (!_.isEmpty(detailStore.data) ? " pane-content-active" : "")}>
@@ -126,8 +127,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore}) => {
 
         <div className={`pane-content--sec--main scrollbar ` + (!_.isEmpty(detailStore.data) ? "hidden" : "")}>
 
-
-          <Intro dataStore={dataStore} />
+          <Siteintro intro={intro} />
 
           {/* <Header props={{
             itemType : "home",

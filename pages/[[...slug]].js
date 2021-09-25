@@ -5,6 +5,7 @@ import {PostsListWrapper} from "../components/card-layouts/PostsList";
 import {observer} from "mobx-react";
 import {HOME_ITEM_TAKE} from "../config/paging";
 import {getItemById, getItems} from "../data/query/getItem";
+import { getPage } from "../data/query/page";
 import React, {useEffect, useRef, useState} from "react";
 import {IndexRightBar} from "../components/IndexRightBar";
 import _ from "lodash"
@@ -26,11 +27,14 @@ const getDataExplore = async ({query,type,lang}) => {
     lang : lang
   })
   query = query || ""
+  const intro = await getPage({slug: 'intro', lang})
+
   return {
     query : query,
     type : type,
     lang : lang,
-    itemFeed : itemFeed.data.itemFeed
+    itemFeed : itemFeed.data.itemFeed,
+    intro
   }
 }
 
@@ -164,7 +168,7 @@ export const Index  = ({props,observableItemStore,voteStore,detailStore}) => {
         </div>
 
         {/* secondary content pane */}
-        <IndexRightBar back={ "/" + props.lang + "/apps/explore/"+props.type} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} />
+        <IndexRightBar back={ "/" + props.lang + "/apps/explore/"+props.type} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} intro={props.intro} />
       </div>
     </Layout>
   )
@@ -244,6 +248,7 @@ export async function getStaticProps(context) {
   if (type === "explore"){
     let exType = context.params.slug[1] === undefined ? "" : context.params.slug[1]
     props = await getDataExplore({type : exType,lang : context.locale});
+
     if (!props){
       return {
         notFound: true

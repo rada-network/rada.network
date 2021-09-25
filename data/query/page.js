@@ -15,14 +15,24 @@ const pageSql = gql`
     }
 `
 
-export async function getPage({slug}){
-  console.log('get page data: ', slug)    
+const getField = (page, field, lang) => {
+  return page[field + '_' + lang] || page[field]
+}
 
+export async function getPage({slug, lang}){
   const client = getClient()
-  return await client.query({
+  const page = await client.query({
     query: pageSql,
     variables: {
       slug: slug
     }
   })
+
+  let title = '', content = ''
+  if (page.data.pageBySlug) {
+    title = getField(page.data.pageBySlug, 'title', lang)
+    content = getField(page.data.pageBySlug, 'content', lang)
+  }
+
+  return {slug, title, content}
 }
