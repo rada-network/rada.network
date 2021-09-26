@@ -16,15 +16,34 @@ import {useRouter} from "next/router";
 import * as ga from '../lib/ga'
 import { appWithTranslation } from 'next-i18next';
 import { getScreenName } from '../components/utils/Responsive';
-import { Provider } from 'next-auth/client'
+import { Provider,useSession } from 'next-auth/client'
+import {useCookies} from "react-cookie";
 
 configure({
   enforceActions: "never",
 })
 
-const MyApp = ({Component, pageProps: { session, ...pageProps }}) => {
+const MyApp = ({Component, pageProps}) => {
   const router = useRouter()
   const store = useStore()
+  const [ session, loading ] = useSession()
+	const [cookies, setCookie] = useCookies(['access_token']);
+	useEffect(() => {
+		if (session) {
+			store.user.update({
+				id : session.user.id,
+				name : session.user.name,
+				email : session.user.email,
+				image : session.user.image,
+				access_token : session.access_token,
+				walletAddress : "",
+			})
+			setCookie("access_token",session.access_token,{path : "/",maxAge: 24*7*3600})
+		}
+		return () => {
+			
+		}
+	},[session,store])
   useEffect(() => {
     const handleRouteChange = (url,{shallow}) => {
 
@@ -47,6 +66,7 @@ const MyApp = ({Component, pageProps: { session, ...pageProps }}) => {
     }
   }, [router.events])
 
+
   // resize monitor, for responsive/device info
   useEffect(() => {
       const onResize = () => {
@@ -62,16 +82,12 @@ const MyApp = ({Component, pageProps: { session, ...pageProps }}) => {
   }, [])
 
   return (
-    <Provider session={pageProps.session}>
-      <CookiesProvider>
-        <Component {...pageProps} />
-      </CookiesProvider>
-    </Provider>
+    <Component {...pageProps} />
   )
 }
 
 // Wrap everything in <UseWalletProvider />
-const TokenRankingStore = ({Component, pageProps}) => {
+const TokenRankingStore = ({Component, pageProps: { session, ...pageProps }}) => {
   // const store = useStore(pageProps.initialState)
 
   return (
@@ -95,7 +111,11 @@ const TokenRankingStore = ({Component, pageProps}) => {
             height={3}
             showOnShallow={true}
           />
-          <MyApp Component={Component} pageProps={pageProps}/>
+          <CookiesProvider>
+            <Provider session={pageProps.session}>
+              <MyApp Component={Component} pageProps={pageProps}/>  
+            </Provider>
+          </CookiesProvider>
         </StoreProvider>
       </UseWalletProvider>
     </ThemeProvider>

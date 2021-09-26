@@ -11,6 +11,7 @@ export default gql`
             user{
                 name
                 email
+                image
                 id
                 walletAddress
             }

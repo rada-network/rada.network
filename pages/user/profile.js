@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSession } from 'next-auth/client'
-import AccessDenied from '../../components/AccessDenied'
 import { Head } from "../../components/Head";
 import { Topbar } from "../../components/Topbar";
 import { Navbar } from "../../components/Navbar";
@@ -22,6 +21,7 @@ import {disconnectWallet} from "../../data/query/wallet"
 import _ from "lodash";
 import {useStore} from "../../lib/useStore";
 import { useRouter } from 'next/router';
+import {signIn} from 'next-auth/client'
 
 export default function UserProfile (props) {
   const [ session, loading ] = useSession()
@@ -62,7 +62,7 @@ export default function UserProfile (props) {
     return item.provider === "wallet"
   })
   facebook = user.account.find((item) => {
-    return item.provider === "facebook"
+    return item.provider === "facebook" 
   })
   twitter = user.account.find((item) => {
     return item.provider === "twitter"
@@ -82,7 +82,6 @@ export default function UserProfile (props) {
         setUser(res)
       })
     }
-
   }
 
 const handleConnectSuccess = ()=>{
@@ -229,9 +228,9 @@ const handleConnectSuccess = ()=>{
                             </div>
                             <div className="text-right">
                                 {_.isEmpty(google) ?
-                                <button className="btn btn-default">{t("connect")}</button>
+                                <button className="btn btn-default disabled" onClick={(e) => signIn("google")} >{t("connect")}</button>
                                 :
-                                <button className="btn btn-default">{t("disconnect")}</button>
+                                <button className="btn btn-default disabled">{t("disconnect")}</button>
                                 }
                             </div>
                           </div>
@@ -257,9 +256,9 @@ const handleConnectSuccess = ()=>{
                             </div>
                             <div className="text-right">
                             {_.isEmpty(facebook) ?
-                                <button className="btn btn-default">{t("connect")}</button>
+                                <button className="btn btn-default disabled" onClick={(e) => signIn("facebook")} >{t("connect")}</button>
                                 :
-                                <button className="btn btn-default">{t("disconnect")}</button>
+                                <button className="btn btn-default disabled">{t("disconnect")}</button>
                                 }
                             </div>
                           </div>
@@ -285,9 +284,9 @@ const handleConnectSuccess = ()=>{
                             </div>
                             <div className="text-right">
                             {_.isEmpty(twitter) ?
-                                <button className="btn btn-default">{t("connect")}</button>
+                                <button className="btn btn-default disabled" onClick={(e) => signIn("twitter")} >{t("connect")}</button>
                                 :
-                                <button className="btn btn-default">{t("disconnect")}</button>
+                                <button className="btn btn-default disabled">{t("disconnect")}</button>
                                 }
                             </div>
                           </div>

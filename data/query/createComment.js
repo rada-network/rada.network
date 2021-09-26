@@ -14,6 +14,7 @@ export default gql`
                 id
                 name
                 email
+                image
                 walletAddress
             }
         }

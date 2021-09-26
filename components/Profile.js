@@ -14,28 +14,10 @@ import {useTranslation} from "next-i18next";
 import { getProviders, signIn } from "next-auth/client"
 import { useSession} from "next-auth/client"
 import Usermenu from "./Usermenu"
-import {useCookies} from "react-cookie";
+
 
 export default function Profile(){
-  const [ session, loading ] = useSession()
-	const store = useStore()
-	const [cookies, setCookie] = useCookies(['access_token']);
-	useEffect(() => {
-		if (session) {
-			store.user.update({
-				id : session.user.id,
-				name : session.user.name,
-				email : session.user.email,
-				image : session.user.image,
-				access_token : session.access_token,
-				walletAddress : "",
-			})
-			setCookie("access_token",session.access_token,{path : "/",maxAge: 24*7*3600})
-		}
-		return () => {
-			
-		}
-	},[session,store])
+	const [ session, loading ] = useSession()
   // When rendering client side don't display anything until loading is complete
   if (typeof window !== 'undefined' && loading) return null
 
