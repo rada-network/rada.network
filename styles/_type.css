@@ -46,6 +46,7 @@ Post Content Typo
 
 .post-content p,
 .post-content ul,
+.post-content div,
 .post-content ol,
 .post-content figure, 
 .post-content blockquote,
@@ -53,6 +54,7 @@ Post Content Typo
 .post-content table,
 .post-content iframe {
   @apply mb-4 max-w-full;
+  word-break: break-word; 
 }
 
 .post-content a {
