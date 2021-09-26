@@ -75,6 +75,7 @@ const getDataPostDetail = async ({query,id,lang}) => {
   else if (newsDetail.data.itemById.idea !== null){
     type = "projects"
   }
+  const intro = await getPage({slug: 'intro', lang})
   const itemFeed = await getItems({
     take : HOME_ITEM_TAKE,
     skip : 0,
@@ -90,6 +91,7 @@ const getDataPostDetail = async ({query,id,lang}) => {
     type : type,
     itemFeed : itemFeed.data.itemFeed,
     item : newsDetail.data.itemById,
+    intro
   }
 }
 
