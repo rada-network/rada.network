@@ -48,20 +48,20 @@ export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
       />
       <link
         rel="stylesheet"
-        href="/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
+        href={process.env.NEXT_PUBLIC_CDN +"/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"}
         media="print"
         onLoad="this.media='all'"
         key="cryptoicons"
       />
       <link
       rel="stylesheet"
-        href="/vendors/font-awesome6-pro/css/all.min.css"
+        href={process.env.NEXT_PUBLIC_CDN + "/vendors/font-awesome6-pro/css/all.min.css"}
         media="print"
         onLoad="this.media='all'"
         key="fontawesome"
       />
 
-      <link rel="manifest" href="/manifest.json" />
+      <link rel="manifest" href={process.env.NEXT_PUBLIC_CDN +"/manifest.json"} />
       <meta name="theme-color" content="#E5E7EB" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="mobile-web-app-capable" content="yes" />

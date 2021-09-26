@@ -131,7 +131,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                         }
                           }>
                             <span className={`icon ${styles.btn_icon}`}>
-                              <img src="/images/icons/metamask-24.png" alt="Metamask - Secure wallets with great flexibility" />
+                              <img src={process.env.NEXT_PUBLIC_CDN +"/images/icons/metamask-24.png"} alt="Metamask - Secure wallets with great flexibility" />
                             </span>
                             <div className={`${styles.btn_text}`}>
                               <span className="text-base font-semibold text-color-title">Metamask</span>
@@ -147,7 +147,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                             }
                              }>
                             <span className={`icon ${styles.btn_icon}`}>
-                              <img src="/images/icons/walletconnect-24.png" alt="WalletConnect - Connect with Rainbow, Trust, Argent..." />
+                              <img src={process.env.NEXT_PUBLIC_CDN + "/images/icons/walletconnect-24.png"} alt="WalletConnect - Connect with Rainbow, Trust, Argent..." />
                             </span>
                             <div className={`${styles.btn_text}`}>
                               <span className="text-base font-semibold text-color-title">WalletConnect</span>
@@ -163,7 +163,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                             }
                              }>
                             <span className={`icon ${styles.btn_icon}`}>
-                              <img src="/images/icons/walletlink-24.png" alt="WalletLink - Connect with Coinbase wallet" />
+                              <img src={process.env.NEXT_PUBLIC_CDN + "/images/icons/walletlink-24.png"} alt="WalletLink - Connect with Coinbase wallet" />
                             </span>
                             <div className={`${styles.btn_text}`}>
                               <span className="text-base font-semibold text-color-title">WalletLink</span>

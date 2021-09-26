@@ -195,7 +195,7 @@ const NotConnectedButton = observer(({}) => {
 							<div key={provider.name}>
 								<a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => signIn(provider.id)}>
 								<span className={`icon ${styles.btn_icon}`}>
-									<img src={"/images/icons/"+provider.id+".svg"} alt={provider.name} />
+									<img src={process.env.NEXT_PUBLIC_CDN + "/images/icons/"+provider.id+".svg"} alt={provider.name} />
 								</span>
 								<div className={`${styles.btn_text}`}>
 									<span className="text-base font-semibold text-color-title">

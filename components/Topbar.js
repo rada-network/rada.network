@@ -38,7 +38,7 @@ export const Topbar = ({dataStore}) => {
           {/* Logo */}
           <Link href={`/`}>
             <a className="flex justify-center items-center">
-              <img className="logo--img" src="/images/rada-animate.svg" alt="RADA NETWORK" />
+              <img className="logo--img" src={process.env.NEXT_PUBLIC_CDN +"/images/rada-animate.svg"} alt="RADA NETWORK" />
               <strong className="logo--text ml-2">
                 <span>RADA</span>
               </strong>

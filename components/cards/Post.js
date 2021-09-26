@@ -112,7 +112,7 @@ const CardPostNormal = observer(({title, mediaUri, type, source, commentCount, v
         </div>
         :
         <div className="card-media-blank">
-          <img layout='fill' className="logo--img" src="/images/rada-mono.svg" alt="no image" />
+          <img layout='fill' className="logo--img" src={process.env.NEXT_PUBLIC_CDN + "/images/rada-mono.svg"} alt="no image" />
         </div>
       }
 
@@ -205,7 +205,7 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
         </div>
         :
         <div className="card-media-blank">
-          <img layout='fill' className="logo--img" src="/images/rada-mono.svg" alt="no image" />
+          <img layout='fill' className="logo--img" src={process.env.NEXT_PUBLIC_CDN +"/images/rada-mono.svg"} alt="no image" />
         </div>
       }
 
@@ -229,7 +229,7 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
               <span className="icon icon-rada w-3.5 mr-1.5 opacity-70">
-                <img layout='fill' src="/images/rada-mono.svg" alt="RADA NETWORK" />
+                <img layout='fill' src={process.env.NEXT_PUBLIC_CDN +"/images/rada-mono.svg"} alt="RADA NETWORK" />
               </span>
               <span className="metadata-value" title={source}>{source}</span>
             </div>

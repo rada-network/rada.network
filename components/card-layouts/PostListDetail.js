@@ -164,7 +164,7 @@ const TokenInfo = ({token, tabName})=>{
             <div className="flex flex-wrap justify-between items-center w-full">
               <div className="flex flex-0 flex-shrink-0 mb-4">
                 <span className="icon flex-shrink-0">
-                  <img src={`https://cdn.rada.network/static/img/coins/128x128/${token.slug}.png`} className="mr-2 h-px-32 w-px-32" alt={token.name}/>
+                  <img src={`https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`} className="mr-2 h-px-32 w-px-32" alt={token?.name}/>
                 </span>
                 <h1 className="flex items-center">
                   <strong className="text-2xl font-semibold">{tokenData?.name}</strong>
@@ -370,7 +370,7 @@ const TokenInfo = ({token, tabName})=>{
         <div className="flex flex-wrap justify-between items-center w-full">
           <div className="flex flex-0 flex-shrink-0 mb-4">
             <span className="icon flex-shrink-0">
-              <img src={`https://cdn.rada.network/static/img/coins/128x128/${token.slug}.png`} className="mr-2 h-px-24 w-px-24" alt={token.name}/>
+              <img src={`https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`} className="mr-2 h-px-24 w-px-24" alt={token?.name}/>
             </span>
             <h1 className="flex items-center">
               <strong className="text-lg font-semibold">{tokenData?.name}</strong>
@@ -671,7 +671,7 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
             <div className="metadata metadata-source">
               {isRada ?
               <span className="icon icon-rada w-3.5 mr-1.5 opacity-80">
-                <img layout='fill' src="/images/rada-mono.svg" alt="RADA NETWORK" />
+                <img layout='fill' src={process.env.NEXT_PUBLIC_CDN +"/images/rada-mono.svg"} alt="RADA NETWORK" />
               </span>
               :
               <span className="icon mr-1.5">
