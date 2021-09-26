@@ -93,7 +93,7 @@ const handleConnectSuccess = ()=>{
   return (
     <>
       <Head meta={meta} />
-      <Wallet handleConnectSuccess={handleConnectSuccess} />
+      
 
       <div className={`main-layout`}>
         {/* Mobile / Tablet Navbar */}
@@ -123,7 +123,7 @@ const handleConnectSuccess = ()=>{
           </Screen>
 
           <div className="pane-center--main w-full">
-
+            <Wallet handleConnectSuccess={handleConnectSuccess} />
             <div className="page page-full scrollbar">
 
               <div className="page-full--inner">
