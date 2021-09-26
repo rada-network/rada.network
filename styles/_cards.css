@@ -328,18 +328,13 @@ Card Social
 
 /* Cards in Page 
 --------------------------------------*/
-.card-pagecontent {
+.card-pagecontent  {
   @apply flex-col p-0;
   @apply border border-gray-400 border-opacity-20 rounded-lg;
-  @apply bg-gray-100 dark:bg-gray-900;
+  @apply bg-gray-50 dark:bg-gray-900;
 
   .card-header {
     @apply p-4;
-  }
-
-  .card-body {
-    @apply overflow-hidden rounded-t-lg;
-    @apply bg-white;
   }
 
   .card-title {
@@ -347,3 +342,8 @@ Card Social
   }
 
 }
+
+.card-pagecontent .card-body {
+    @apply overflow-hidden rounded-lg;
+    @apply bg-white dark:bg-gray-800;
+  }
