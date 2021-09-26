@@ -182,6 +182,7 @@ const Layout = observer((props) => {
 
                   </div>
                   {/* END: Connection */}
+                  
                   {/* Distribution */}
                   <div className="card card-pagecontent">
 
@@ -254,7 +255,7 @@ const Layout = observer((props) => {
                     </div>
 
                   </div>
-                  {/* Distribution */}
+                  {/* END: Distribution */}
 
                 </div>
 
