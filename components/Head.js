@@ -61,7 +61,7 @@ export const Head = ({title,description,facebook,twitter,keyword,meta}) => {
         key="fontawesome"
       />
 
-      <link rel="manifest" href={process.env.NEXT_PUBLIC_CDN +"/manifest.json"} />
+      <link rel="manifest" href={"/manifest.json"} />
       <meta name="theme-color" content="#E5E7EB" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="mobile-web-app-capable" content="yes" />
