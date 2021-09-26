@@ -285,7 +285,7 @@ Top & Tool Bars
   @apply dark:from-white dark:to-white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: "SF Pro Rounded";
+  font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Inter", sans-serfif;
 }
 
 .logo--badge {

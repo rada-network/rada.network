@@ -58,13 +58,13 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
-            enterFrom="opacity-0 scale-0"
-            enterTo="opacity-100 scale-100"
-            leave="ease-in duration-300"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-0"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-1600"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0" onClick={closeModal} />
+            <Dialog.Overlay className="dialog-overlay fixed inset-0" onClick={closeModal} />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
@@ -78,11 +78,11 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
-            enterFrom="opacity-0 scale-0"
-            enterTo="opacity-100 scale-100"
+            enterFrom="opacity-0 scale-y-0"
+            enterTo="opacity-100 scale-y-100"
             leave="ease-in duration-200"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-0"
+            leaveFrom="opacity-100 scale-y-100"
+            leaveTo="opacity-0 scale-y-0"
           >
 
             <div className={`inline-block w-full z-200 relative dialog`}>
@@ -100,7 +100,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                       <span className="btn--text font-normal">Back</span>
                     </button>
                     <h3 className="text-xl font-semibold">
-                      Connect your
+                      Connect 
                       <span
                         className="hasTooltip"
                         data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
@@ -110,7 +110,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                     </h3>
                     <div className="mt-4 text-white text-opacity-70 leading-6">
                       <p className="">
-                        Create an account to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics by connecting to your wallet or social networks
+                        Connect your wallet to receive our exclusive rewards and airdrops
                       </p>
                     </div>
                   </Dialog.Title>
@@ -125,7 +125,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                     <div className={``}>
                       <ul>
                         <li ref={btnRef}>
-                          <a className={`btn btn-default ${styles.btn}`} onClick={() => {
+                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {
                             wallet.connect()
                           setWalletType('metamask')
                         }
@@ -135,13 +135,13 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                             </span>
                             <div className={`${styles.btn_text}`}>
                               <span className="text-base font-semibold text-color-title">Metamask</span>
-                              <span className="text-color-desc text-sm">Secure wallets with great flexibility</span>
+                              {/* <span className="text-color-desc text-sm">Secure wallets with great flexibility</span> */}
                             </div>
                             <i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
                           </a>
                         </li>
                         <li>
-                          <a className={`btn btn-default ${styles.btn}`} onClick={() => {
+                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {
                             wallet.connect('walletconnect')
                              setWalletType('walletconnect')
                             }
@@ -151,13 +151,13 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                             </span>
                             <div className={`${styles.btn_text}`}>
                               <span className="text-base font-semibold text-color-title">WalletConnect</span>
-                              <span className="text-color-desc text-sm">Connect with <b>Rainbow</b>, <b>Trust</b>, <b>Argent</b>...</span>
+                              {/* <span className="text-color-desc text-sm">Connect with <b>Rainbow</b>, <b>Trust</b>, <b>Argent</b>...</span> */}
                             </div>
                             <i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
                           </a>
                         </li>
                         <li>
-                          <a className={`btn btn-default ${styles.btn}`} onClick={() => {
+                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {
                             wallet.connect('walletlink')
                              setWalletType('walletlink')
                             }
@@ -167,7 +167,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                             </span>
                             <div className={`${styles.btn_text}`}>
                               <span className="text-base font-semibold text-color-title">WalletLink</span>
-                              <span className="text-color-desc text-sm">Connect with <b>Coinbase</b> wallet</span>
+                              {/* <span className="text-color-desc text-sm">Connect with <b>Coinbase</b> wallet</span> */}
                             </div>
                             <i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
                           </a>
@@ -175,7 +175,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                       </ul>
                     </div>
 
-                    <div className="px-8 md:px-0 mt-6 md:mt-8">
+                    <div className="px-4 md:px-4 mt-6 md:mt-8">
                       <p className="text-xs text-gray-400">
                         We have no access to your private key and funds without your confirmation
                       </p>

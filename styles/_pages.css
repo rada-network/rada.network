@@ -44,17 +44,22 @@ Page Layout
 
 /* Page Full */
 .page-full {
-  @apply flex justify-center;
+  @apply flex justify-center py-4 lg:py-8;
   @apply bg-white dark:bg-gray-900;
 
   .page-full--inner {
-    @apply w-full max-w-screen-sm pt-4 lg:pt-8;
+    @apply flex flex-col w-full h-full max-w-screen-sm;
+    .card {
+      @apply h-auto;
+    }
   }
+
   .page-section {
-    @apply py-4 text-sm;
+    @apply pt-4 text-sm;
   }
+
   .card + .card {
-    @apply mt-8;
+    @apply mt-4 md:mt-8;
   }
 }
 

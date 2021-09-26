@@ -10,6 +10,7 @@ Lists Styles
 .list-group {
 }
 
+
 .list-group--link {
   @apply block cursor-pointer;
 }
@@ -22,10 +23,18 @@ Lists Styles
   @apply flex flex-wrap justify-between items-center;
   @apply p-4;
   @apply border-b border-gray-500 border-opacity-10;
+  &:last-child {
+    @apply border-opacity-0;
+  }
 }
 
+.list-group-v .list-group--item {
+  @apply flex-col justify-start items-start;
+}
+
+
 .list-group--item--title {
-  @apply flex items-center md:items-center text-xs uppercase font-medium;
+  @apply flex items-start md:items-center text-xs uppercase font-medium;
 }
 
 .list-group--item--text {

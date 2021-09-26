@@ -115,23 +115,23 @@ const NotConnectedButton = observer(({}) => {
 					  as="div"
 					  className={`${styles.dialog_header}`}
 					>
-						<div className="flex">
-							<div className="page-back -mt-0.5 mr-1 -ml-2">
-								<button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
-									<span className="icon"><i class="fa-solid fa-chevron-left"></i></span>
-								</button>
-							</div>
-							<h3 className="text-xl font-semibold">
-								Sign in
-								{/* <span
-									className="hasTooltip"
-									data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
-									data-event="click"
-								>  <i className="fa-duotone fa-info-circle text-base" />
-								</span>  */}
-							</h3>
-						</div>
-					  <div className="mt-2 text-white text-opacity-70 leading-6">
+
+						<button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
+							<span class="btn--caret-left"></span>
+							<span className="btn--text font-normal">Back</span>
+						</button>
+
+						<h3 className="text-xl font-semibold">
+							Sign in
+							{/* <span
+								className="hasTooltip"
+								data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
+								data-event="click"
+							>  <i className="fa-duotone fa-info-circle text-base" />
+							</span>  */}
+						</h3>
+
+					  <div className="mt-4 text-white text-opacity-70 leading-6">
 						<p className="">
 						  Signing in to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics
 						</p>
