@@ -146,20 +146,7 @@ const handleConnectSuccess = ()=>{
 
                 <div className="page-section">
 
-                  {/* <div className="card card-pagecontent">
-
-                    <div className="card-header">
-                      <span className="card-title">
-                        {t("information")}
-                      </span>
-                    </div>
-
-                    <div className="card-body">
-
-                    </div>
-
-                  </div> */}
-
+                  {/* Connection */}
                   <div className="card card-pagecontent">
 
                     <div className="card-header">
@@ -297,6 +284,35 @@ const handleConnectSuccess = ()=>{
                     </div>
 
                   </div>
+                  {/* END: Connection */}
+
+                  {/* Distribution */}
+                  <div className="card card-pagecontent">
+
+                    <div className="card-header">
+                      <span className="card-title">
+                        Contribution (required)
+                      </span>
+                    </div>
+
+                    <div className="card-body">
+                      <ol>
+                        <li>Follow our twitter @radamedia</li>
+                        <li>Subscribe to our youtube at xxxđ</li>
+                        <li>Join our FB group</li>
+                        <li>Join our Dicord</li>
+                      </ol>
+
+                      <p>People with folllowing contribution will certainly get the guaranty for the private allocation</p>
+                      <ol>
+                        <li>Have at least 1 post on FB group</li>
+                        <li>Invite at least 100 people to Rada</li>
+                        <li>Translating at least 1 post to a new language</li>
+                      </ol>
+                    </div>
+
+                  </div>
+                  {/* Distribution */}
 
                 </div>
 
