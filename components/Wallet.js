@@ -125,7 +125,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                     <div className={``}>
                       <ul>
                         <li ref={btnRef}>
-                          <a className={`btn btn-default ${styles.btn}`} onClick={() => {
+                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {
                             wallet.connect()
                           setWalletType('metamask')
                         }
@@ -141,7 +141,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                           </a>
                         </li>
                         <li>
-                          <a className={`btn btn-default ${styles.btn}`} onClick={() => {
+                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {
                             wallet.connect('walletconnect')
                              setWalletType('walletconnect')
                             }
@@ -157,7 +157,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                           </a>
                         </li>
                         <li>
-                          <a className={`btn btn-default ${styles.btn}`} onClick={() => {
+                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {
                             wallet.connect('walletlink')
                              setWalletType('walletlink')
                             }
@@ -175,7 +175,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                       </ul>
                     </div>
 
-                    <div className="px-8 md:px-0 mt-6 md:mt-8">
+                    <div className="px-4 md:px-4 mt-6 md:mt-8">
                       <p className="text-xs text-gray-400">
                         We have no access to your private key and funds without your confirmation
                       </p>

@@ -16,10 +16,13 @@ Dropdown
 }
 
 .dropdown-item {
-  @apply px-2 py-2 cursor-pointer;
+  @apply cursor-pointer;
   @apply text-sm font-medium hover:text-primary-700 dark:hover:text-primary-500;
   .icon {
     @apply mr-1 w-px-24;
+  }
+  a {
+    @apply block px-2 py-2 ;
   }
 }
 
