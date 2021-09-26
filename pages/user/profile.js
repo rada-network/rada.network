@@ -45,7 +45,7 @@ export default function UserProfile (props) {
   if (typeof window !== 'undefined' && loading) return null
 
   // If no session exists, display access denied message
-  if (!session) { return <ProfileAccessDenied  dataStore={dataStore} detailStore={detailStore} /> }
+  if (!session && !loading) { return <ProfileAccessDenied  dataStore={dataStore} detailStore={detailStore} /> }
 
   
 
