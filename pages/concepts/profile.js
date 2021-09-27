@@ -201,7 +201,7 @@ const Layout = observer((props) => {
                           <i class="fa-solid fa-circle-1 mr-2 md:mr-4 text-xl md:text-3xl text-purple-500"></i>
 
                           <div>
-                            <h3 className="font-semibold mb-4">
+                            <h3 className="font-semibold mt-1 mb-2 lg:mt-2">
                               TIER 1: $50 allocation <span className="font-normal">(first come first serve)</span>
                             </h3>
 
@@ -221,7 +221,7 @@ const Layout = observer((props) => {
                           <i class="fa-solid fa-circle-2 mr-2 md:mr-4 text-xl md:text-3xl text-yellow-500"></i>
 
                           <div>
-                            <h3 className="font-semibold mb-4">
+                            <h3 className="font-semibold mt-1 mb-2 lg:mt-2">
                               TIER 2: $100 allocation <span className="font-normal">(Guaranty)</span>
                             </h3>
 
@@ -242,7 +242,7 @@ const Layout = observer((props) => {
                           <i class="fa-solid fa-circle-3 mr-2 md:mr-4 text-xl md:text-3xl text-green-500"></i>
 
                           <div>
-                            <h3 className="font-semibold mb-4">TIER 3:  $200</h3>
+                            <h3 className="font-semibold mt-1 mb-2 lg:mt-2">TIER 3:  $200</h3>
 
                             <ol>
                               <li>Officially become a Rada (working team)</li>
