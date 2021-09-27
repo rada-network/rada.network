@@ -273,7 +273,7 @@ Top & Tool Bars
 }
 
 .logo--img {
-  @apply block w-auto h-10;
+  @apply block w-auto h-8;
 }
 
 .topbar .logo--img {

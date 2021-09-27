@@ -72,8 +72,8 @@ const Layout = observer((props) => {
 
                 <div className="page-section text-center">
                   <div className="">
-                    <span className="avatar avatar-2xl shadow">
-                      <img src="/images/examples/avatar.png" alt="User Name Here"/>
+                    <span className="avatar avatar-3xl shadow">
+                      <img className="w-full" src="/images/examples/avatar.png" alt="User Name Here"/>
                     </span>
                   </div>
                   <div className="mt-4">

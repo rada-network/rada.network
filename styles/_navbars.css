@@ -35,18 +35,6 @@ Nav Item
   transform: scale(1.18);  /* make the svg bigger */
 }
 
-.dark .nav-item .icon-rada svg {
-  .inline-rec {
-    fill: #6B7280;
-  }
-  .inline-circle {
-    fill: #D1D5DB;
-  }
-  .inline-stroke {
-    fill: #111827;
-  }
-}
-
 .nav-item--text {
   @apply text-2xs lg:text-xs;
 }
