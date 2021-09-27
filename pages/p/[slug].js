@@ -14,10 +14,6 @@ export default function StaticPage(props) {
         "title" : props.page['title']
     }
     let content = props.page.content,title = props.page.title
-    if (props.lang == "en"){
-        content = props.page.content_en
-        title = props.page.title_en
-    }
     return (
         <StaticLayout meta={meta} detailStore={detailStore} dataStore={dataStore}>
             <div className={`page-section`}  >
