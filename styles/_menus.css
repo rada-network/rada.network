@@ -4,7 +4,7 @@ Dropdown
 .dropdown {
   @apply z-50 flex flex-col mt-1;
   @apply bg-white dark:bg-gray-800 rounded-md shadow;
-  min-width: 10rem;
+  min-width: 12rem;
 }
 
 .dropdown-section {

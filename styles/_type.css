@@ -166,7 +166,7 @@ Post Content Typo
   }
 }
 
-.post-content .post-img {
+.page-full .post-content .post-img {
   @apply bg-gray-100 p-4 rounded-md my-6;
   p {
     @apply m-0;
