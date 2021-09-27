@@ -29,9 +29,12 @@ export async function getPage({slug, lang}){
   })
 
   let title = '', content = ''
-  if (page.data.pageBySlug) {
+  if (page.data.pageBySlug !== null) {
     title = getField(page.data.pageBySlug, 'title', lang)
     content = getField(page.data.pageBySlug, 'content', lang)
+  }
+  else { 
+    return null
   }
 
   return {slug, title, content}

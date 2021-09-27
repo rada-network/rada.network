@@ -5,7 +5,6 @@ import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib
 
 
 export default function StaticPage(props) {
-    if (!props.page) return <h1>Page not found</h1>
     const homeStore = new HomeStore({isHome : false});
     const dataStore = new ObservableTweetStore({homeStore})
     const detailStore = new DetailStore();
@@ -39,7 +38,7 @@ export async function getStaticPaths() {
   
 export async function getStaticProps({params,locale}) {
     const page = await getPage({slug: params.slug, lang: locale})
-    if (!page){
+    if (page === null) {
         return {
             notFound: true
           }
