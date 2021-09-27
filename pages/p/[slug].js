@@ -48,6 +48,7 @@ export async function getStaticProps({params,locale}) {
             ...await serverSideTranslations(locale, ['common', 'navbar']),
             lang : locale,
             page : page
-        }
+        },
+        revalidate: 10
     }
 }
