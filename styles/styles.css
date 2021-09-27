@@ -326,7 +326,7 @@ Sections Layout
 
 .section-title {
   @apply flex flex-wrap;
-  @apply text-sm font-medium
+  @apply font-medium
 }
 
 .section-title strong {

@@ -98,6 +98,10 @@ Empty State - About Page
   @apply font-semibold text-lg mb-4 text-gray-600 dark:text-gray-300;
 }
 
+.page-about p + h3 {
+  @apply mt-8;
+}
+
 .page-about u {
   @apply font-semibold;
   text-decoration: none;
@@ -121,7 +125,7 @@ Empty State - About Page
 }
 
 .about-social {
-  @apply flex items-center space-x-4 mt-2;
+  @apply flex items-center space-x-4 mt-4;
 }
 
 .about-social a {

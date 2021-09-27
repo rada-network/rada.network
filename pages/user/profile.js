@@ -132,7 +132,7 @@ return (
                         <>
                         <div>
                         {user?.account?.map(address => {
-                          return address.provider === 'wallet' && <span className="btn--text text-xs ml-2">{ `${address.provider_account_id.substr(0, 4)}...${address.provider_account_id.substr(-4)} `}</span>
+                          return address.provider === 'wallet' && <strong>{ `${address.provider_account_id.substr(0, 4)}...${address.provider_account_id.substr(-4)} `}</strong>
                         })}
                         </div>
                         <strong></strong>
