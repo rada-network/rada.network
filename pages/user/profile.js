@@ -89,7 +89,7 @@ return (
         
         <div className="page-section text-center mt-1 mb-2 lg:mt-2">
           <div className="">
-            <span className="avatar avatar-2xl shadow">
+            <span className="avatar avatar-3xl shadow">
               <img src={user.image} alt={user.name}/>
             </span>
             <Wallet handleConnectSuccess={handleConnectSuccess} />

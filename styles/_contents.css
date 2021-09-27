@@ -383,6 +383,9 @@ Avatars
 .avatar-2xs {
   @apply inline-flex flex-shrink-0 justify-items-center items-center justify-center overflow-hidden;
   @apply rounded-full;
+  img {
+    @apply w-full object-cover;
+  }
 }
 
 .avatar {

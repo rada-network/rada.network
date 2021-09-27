@@ -109,7 +109,7 @@ Post Content Typo
 .post-content ol,
 .post-rada ol,
 .post-rada ul {
-  @apply ml-8 pl-2;
+  @apply ml-3 pl-2;
   list-style: revert;
 }
 

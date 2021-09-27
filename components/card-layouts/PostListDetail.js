@@ -489,11 +489,11 @@ const TokenInfo = ({token, tabName})=>{
                 <h3 className="">{item.name}</h3>
                 <p>{item.position}</p>
               </div>
-              <div className="card-body-main">
+              {/* <div className="card-body-main">
                 <p className="">
                   Trung Nguyen is CEO of Sky Mavis. He is an entrepreneur who started 5 years on Wall Street in 2007 and left to create an open source community which grew to over 100,000 members.
                 </p>
-              </div>
+              </div> */}
             </div>
             <div className="card-body-footer">
               <div className="cta-wrapper about-social">
