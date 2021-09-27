@@ -458,7 +458,7 @@ CTAs
 Media
 */
 .post-media {
-  @apply w-full max-h-56 lg:max-h-72 overflow-hidden rounded-md mt-4;
+  @apply w-full max-h-56 lg:max-h-72 overflow-hidden rounded-lg mt-4;
 }
 
 .post-media--img {

@@ -119,7 +119,7 @@ Post Content Typo
 }
 
 .post-content img {
-  @apply max-w-full text-center mx-auto rounded;
+  @apply max-w-full text-center mx-auto rounded-lg;
 }
 
 .post-content figcaption,
@@ -164,7 +164,7 @@ Post Content Typo
 }
 
 .page-full .post-content img {
-  @apply bg-gray-100 p-4 my-6 rounded-md;
+  @apply bg-gray-100 p-4 my-6 rounded-lg;
   @apply w-full max-h-full rounded-md;
 }
 
