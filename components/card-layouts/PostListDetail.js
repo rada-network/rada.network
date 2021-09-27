@@ -19,13 +19,15 @@ import roundNumber from "../utils/roundNumber"
 
 export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore}) => {
   let item = detailStore.data
-  voteStore.addVotesV2([
-    {
-      id : item.item.id,
-      totalVote : item.item.totalVote,
-      isVote : item.item.isVote
-    }
-  ])
+  if (item.item){
+    voteStore.addVotesV2([
+      {
+        id : item.item.id,
+        totalVote : item.item.totalVote,
+        isVote : item.item.isVote
+      }
+    ])
+  }
   item.currentLang = dataStore.lang;
 
   const scrollRef = useRef()
