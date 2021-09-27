@@ -87,7 +87,7 @@ return (
     <>
       <StaticLayout meta={meta} detailStore={detailStore} dataStore={dataStore} >
         
-        <div className="page-section text-center">
+        <div className="page-section text-center mb-4">
           <div className="">
             <span className="avatar avatar-2xl shadow">
               <img src={user.image} alt={user.name}/>
