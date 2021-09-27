@@ -316,6 +316,18 @@ Icons Styles
   }
 }
 
+.dark .icon-rada svg {
+  .inline-rec {
+    fill: #6B7280;
+  }
+  .inline-circle {
+    fill: #D1D5DB;
+  }
+  .inline-stroke {
+    fill: #111827;
+  }
+}
+
 .cf {
 }
 

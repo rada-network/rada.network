@@ -13,11 +13,12 @@ export default function Siteintro({ intro }) {
 
         <div className="page-about-content--section content-section--2">
 
-          <ul className="about-links">
-            <li><a href="#">Copyright</a></li>
+          {/* <ul className="about-links">
+            {/* <li><a href="#">Copyright</a></li>
             <li><a href="#">Privacy</a></li>
             <li><a href="#">Terms of Use</a></li>
-          </ul>
+            <li><a href="/p/How to invest with RADA?">Invest with RADA?</a></li>
+          </ul> */}
 
           <div className="about-social">
             <a

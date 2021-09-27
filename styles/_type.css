@@ -122,9 +122,6 @@ Post Content Typo
   @apply max-w-full text-center mx-auto rounded;
 }
 
-.post-content img:first-child {
-  @apply w-full max-h-80 object-cover;
-}
 .post-content figcaption,
 .post-content .pCaption {
   @apply text-center mt-2 text-xs;
@@ -162,18 +159,13 @@ Post Content Typo
 .page-full .post-title {
   @apply mb-8;
   h1 {
-    @apply text-2xl lg:text-3xl;
+    @apply text-2xl;
   }
 }
 
-.page-full .post-content .post-img {
-  @apply bg-gray-100 p-4 rounded-md my-6;
-  p {
-    @apply m-0;
-  }
-  img {
-    @apply w-full max-h-full rounded-md m-0;
-  }
+.page-full .post-content img {
+  @apply bg-gray-100 p-4 my-6 rounded-md;
+  @apply w-full max-h-full rounded-md;
 }
 
 /* Tweaks */
