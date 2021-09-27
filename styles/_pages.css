@@ -55,7 +55,7 @@ Page Layout
   }
 
   .page-section {
-    @apply pt-4 text-sm;
+    @apply pt-4;
   }
 
   .card + .card {
