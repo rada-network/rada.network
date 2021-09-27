@@ -91,8 +91,11 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore, intro})
                   <a href="#" className={`tab-item ${tabName === 'axs' ?'tab-item--active':'' }`} onClick={()=>setTabName('axs')}>
                     About {detailStore.data.token.symbol}
                   </a>
-                <a href="#" className={`tab-item ${tabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setTabName('team')}>
-                  {t("team & partners")}
+                  <a href="#" className={`tab-item ${tabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setTabName('team')}>
+                    {t("team & partners")}
+                  </a>
+                  <a href="#" className={`tab-item ${tabName === 'market' ?'tab-item--active':'' }`} onClick={()=>setTabName('market')}>
+                    {t("Market")}
                   </a>
                 {/* <Link href={`/tokens/` + detailStore.data.token.symbol + "/events"}>
                   <a href="#" className="tab-item">

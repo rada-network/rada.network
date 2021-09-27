@@ -16,6 +16,8 @@ import ContentLoader from 'react-content-loader'
 import numberFormatter from "../utils/numberFormatter";
 import roundNumber from "../utils/roundNumber"
 
+import Market from '../../pages/concepts/InPage-Market-noFrame'
+
 
 export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore}) => {
   let item = detailStore.data
@@ -108,14 +110,18 @@ export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore
           } */}
 
           {/* News Post Detail Content */}
-          {detailStore.type === "news" ?(tabName === 'article'?
-            <NewsDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
-            : <TokenInfo token={detailStore.data.token} tabName={tabName} />) :''
+          {detailStore.type === "news" ?
+            (tabName === 'article' ?
+              <NewsDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
+              : tabName === 'axs' || tabName === 'team' ? <TokenInfo token={detailStore.data.token} tabName={tabName} /> : '')
+            :''
           }
 
           {detailStore.type === "video" ?
-            <VideoDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
-            : ""
+            (tabName === 'article' ?
+              <VideoDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
+              : tabName === 'axs' || tabName === 'team' ? <TokenInfo token={detailStore.data.token} tabName={tabName} /> : '')
+            :''
           }
 
           {detailStore.type === "tweet" ?
@@ -123,8 +129,12 @@ export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore
             : ""
           }
 
+
+
+          {tabName === 'market' && <Market token={detailStore.data.token} />}
+
           {/* Comments */}
-          <CommentList detailStore={detailStore} dataStore={dataStore}/>
+          {tabName === 'article' && <CommentList detailStore={detailStore} dataStore={dataStore}/>}
           {/* //Comments */}
         </div>
       </div>
@@ -154,7 +164,7 @@ const TokenInfo = ({token, tabName})=>{
     .then(data => setBTCCoinInfo(data.Data));
   }
 
-  return tabName ==='axs'? 
+  return tabName ==='axs'?
 
   <div className="section section-coininfo--general">
 
@@ -360,8 +370,8 @@ const TokenInfo = ({token, tabName})=>{
 
       </div>
 
-  : 
-  
+  :
+
   <div className="section section-coininfo--team">
 
     <div className="grid grid-cols-1">
