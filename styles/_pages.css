@@ -70,7 +70,6 @@ Empty State - About Page
 .page-about {
   @apply flex flex-col justify-center h-full relative max-w-sm m-auto;
   @apply text-sm;
-  margin-top: -10%;
 }
 
 .page-about-deco {

@@ -158,6 +158,24 @@ Post Content Typo
   }
 }
 
+/* Page Styles */
+.page-full .post-title {
+  @apply mb-8;
+  h1 {
+    @apply text-2xl lg:text-3xl;
+  }
+}
+
+.post-content .post-img {
+  @apply bg-gray-100 p-4 rounded-md my-6;
+  p {
+    @apply m-0;
+  }
+  img {
+    @apply w-full max-h-full rounded-md m-0;
+  }
+}
+
 /* Tweaks */
 .post-content blockquote.twitter-tweet,
 .post-content .wp-caption {
