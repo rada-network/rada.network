@@ -50,7 +50,7 @@ export default function Usermenu({user}) {
               {({ active }) => 
                 <>
                 <a 
-                  href="/p/">
+                  href="/user/profile">
                   <span className="icon"><i class="fa-duotone fa-user-gear"></i></span>
                   <span className="dropdown-item--text">Profile</span>
                 </a>
@@ -61,7 +61,7 @@ export default function Usermenu({user}) {
               {({ active }) => 
                 <>
                 <a 
-                  href="/p/how_to_invest_with_rada">
+                  href="/p/how-to-invest-with-rada">
                   <span className="icon"><i class="fa-duotone fa-coins"></i></span>
                   <span className="dropdown-item--text">How to invest?</span>
                 </a>
