@@ -277,11 +277,11 @@ function Concept() {
               {/* Post Content */}
               <div className="w-full mt-4">
                 <div className="post-content mt-8">
-                  <div className="empty-state lg:text-center py-8 lg:px-8">
+                  <div className="empty-state text-center py-8 lg:px-8">
                     <span className="icon">
                       <i class="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
                     </span>
-                    <p className="opacity-50 pt-8 pb-2">
+                    <p className="opacity-50 pt-8 pb-2 m-auto">
                       We don't have article about <strong>Axie Infinity (AXS)</strong> yet.
                     </p>
                     <button className="btn btn-default btn-lg btn-primary">

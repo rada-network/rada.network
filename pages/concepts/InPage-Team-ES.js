@@ -130,11 +130,11 @@ function Concept() {
 
             <div className="mt-8">
 
-              <div className="post-content empty-state lg:text-center py-8 lg:px-8">
+              <div className="post-content empty-state text-center py-8 lg:px-8">
                 <span className="icon">
                   <i class="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
                 </span>
-                <p className="opacity-50 pt-8 pb-2">
+                <p className="opacity-50 pt-8 pb-2 m-auto">
                   We don't have information about <strong>Axie Infinity (AXS)</strong>'s Team &amp; Partners yet.
                 </p>
                 <button className="btn btn-default btn-lg btn-primary">
