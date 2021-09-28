@@ -300,11 +300,11 @@ Card Social
   }
 
   .card-body-header {
-    @apply flex-col items-start justify-center lg:items-center mb-4;
+    @apply flex-col items-start lg:justify-center lg:items-center mb-4;
   }
   
   .card-body-header h3 {
-    @apply mb-0 text-base font-semibold max-w-max lg:whitespace-nowrap overflow-ellipsis;
+    @apply mb-0 text-base font-semibold max-w-max whitespace-nowrap overflow-ellipsis;
   }
 
   .card-body-header p {

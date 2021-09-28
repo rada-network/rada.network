@@ -44,10 +44,6 @@ Buttons
 } */
 
 
-.btn-rounded {
-  @apply rounded-full;
-}
-
 /*
 Buttons Styles
 ------------------------------------ */
@@ -83,7 +79,7 @@ Default Button
 
 /* Colors */
 .btn-primary {
-  @apply bg-primary-700 text-primary-100 hover:bg-primary-900 hover:text-white;
+  @apply border-transparent hover:border-transparent bg-primary-700 text-primary-100 hover:bg-primary-900 hover:text-white;
 }
 
 .btn-secondary {
@@ -92,6 +88,18 @@ Default Button
 
 .btn-neutral {
   @apply bg-white dark:bg-gray-700 dark:bg-opacity-50;
+}
+
+/* Sizes */
+.btn-lg {
+  @apply py-1 px-4;
+}
+.btn-lg .btn--text {
+  @apply text-base;
+}
+
+.btn-rounded {
+  @apply rounded-full;
 }
 
 /*

@@ -101,8 +101,8 @@ const NotConnectedButton = observer(({}) => {
 			  enterFrom="opacity-0 scale-y-0"
 			  enterTo="opacity-100 scale-y-100"
 			  leave="ease-in duration-200"
-			  leaveFrom="opacity-100 scale-y-100"
-			  leaveTo="opacity-0 scale-y-0"
+			  leaveFrom="opacity-100 scale-y-100 h-full"
+			  leaveTo="opacity-0 scale-y-0 h-0"
 			>
 
 			  <div className={`inline-block w-full z-200 relative dialog`}>
