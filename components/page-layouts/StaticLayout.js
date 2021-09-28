@@ -9,9 +9,10 @@ import { useState, useEffect, createRef } from 'react'
 import {LanguageSwitch} from "../LanguageSwitch";
 import Screen from "../utils/Responsive";
 import { observer } from "mobx-react";
+import { usePageStore } from "../../lib/usePageStore";
 
-export const StaticLayout = observer(({children,meta,dataStore,detailStore}) => {
-
+export const StaticLayout = observer(({children,meta}) => {
+  const {dataStore,detailStore} = usePageStore()
   return (
     <>
       <Head meta={meta} />

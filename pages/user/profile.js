@@ -5,7 +5,6 @@ import {Wallet} from "../../components/Wallet"
 
 import { useState, useEffect, createRef } from 'react'
 
-import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Profile from "../../components/Profile";
@@ -16,52 +15,46 @@ import {useStore} from "../../lib/useStore";
 import { useRouter } from 'next/router';
 import {signIn} from 'next-auth/client'
 import { StaticLayout } from '../../components/page-layouts/StaticLayout';
-import { getPage } from '../../data/query/page';
+import { UserDistribution } from '../../components/user/UserDistribution';
+import { usePageStore } from '../../lib/usePageStore';
 
 export default function UserProfile (props) {
-  const [ session, loading ] = useSession()
   const [user,setUser] = useState({})
   const {t} = useTranslation()
   const router = useRouter()
   const store = useStore()
-  const homeStore = new HomeStore({isHome : false});
-  const dataStore = new ObservableTweetStore({homeStore})
-  const detailStore = new DetailStore();
+  const {dataStore,detailStore} = usePageStore()
   dataStore.lang = props.lang
   useEffect(() => {
     // If session exists, display content
       getCurrentUser().then(res => {
         setUser(res)
       })
-      return () => { 
-        setUser({})
-      }
-    },[session])
+                },[])
 
   // When rendering client side don't display anything until loading is complete
-  if (typeof window !== 'undefined' && loading) return null
+  if (typeof window !== 'undefined' && _.isEmpty(user)){
+    return null
+  }
 
   // If no session exists, display access denied message
-  if (!session && !loading) { return <ProfileAccessDenied  dataStore={dataStore} detailStore={detailStore} /> }
+  if ( _.isEmpty(user)) { return <ProfileAccessDenied /> }
   // If session exists, display content
   let google = {}, wallet = {}, facebook = {}, twitter = {}
-  if (_.isEmpty(user)){
-    return ""
-  }
-  google = user.account.find((item) => {
+  google = user.account?.find((item) => {
     return item.provider === "google"
   })
-  wallet = user.account.find((item) => {
+  wallet = user.account?.find((item) => {
     return item.provider === "wallet"
   })
-  facebook = user.account.find((item) => {
+  facebook = user.account?.find((item) => {
     return item.provider === "facebook" 
   })
-  twitter = user.account.find((item) => {
+  twitter = user.account?.find((item) => {
     return item.provider === "twitter"
   })
   const meta = {
-    "title" : session.user.name + " profile"
+    "title" : user?.name + " profile"
   }
 
   const handleConnectWallet = ()=>{
@@ -85,7 +78,7 @@ const handleConnectSuccess = ()=>{
 
 return (
     <>
-      <StaticLayout meta={meta} detailStore={detailStore} dataStore={dataStore} >
+      <StaticLayout meta={meta} >
         
         <div className="page-section text-center mt-1 mb-2 lg:mt-2">
           <div className="">
@@ -249,178 +242,9 @@ return (
   );
 }
 
-const UserDistribution = ({props}) => { 
-  return (
-    <>
-    {/* Distribution */}
-      <div className="card card-pagecontent">
-        <div className="card-header">
-          <span className="card-title">
-            Contribution (required)
-          </span>
-        </div>
-        {props.lang == "vi" ? 
-        <ContentVi /> : 
-        <ContentEn />
-        }
-        
 
-      </div>
-      {/* END: Distribution */}
-    </>
-  )
-}
 
-const ContentVi = function(){
-  return (
-    <div className="card-body">
-      <div className="list-group">
-
-        <div className="list-group--item !justify-start !items-start">
-          
-          <i class="fa-solid fa-circle-1 mr-2 md:mr-4 text-xl md:text-3xl text-purple-500"></i>
-
-          <div>
-            <h3 className="font-semibold mt-1 mb-2 lg:mt-2">
-            Level 1: <strong>Raders</strong>
-            </h3>
-            <ul className="grid grid-cols-1 w-full">
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Yêu cầu:</strong> Subscribe các channel RADA</li>
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Quyền lợi:</strong> Token trị giá $20 (Private Sale)</li>
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Số lượng:</strong> 100 người</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="list-group--item !justify-start !items-start">
-
-          <i class="fa-solid fa-circle-2 mr-2 md:mr-4 text-xl md:text-3xl text-yellow-500"></i>
-
-          <div>
-            <h3 className="font-semibold mt-1 mb-2 lg:mt-2">
-            Level 2: <strong>RADA Contributor</strong>(Những người có đóng góp cho RADA)
-            </h3>
-            <ul className="grid grid-cols-1 w-full">
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Yêu cầu:</strong> Đáp ứng ít nhất 1 trong các tiêu chí sau</li>
-              <ul className="grid grid-cols-1 w-full ml-8">
-                <li className="mb-1">
-                  <i class="fa-thin fa-circle text-green-200 mr-2"></i>
-                  Đăng bài trong RADA Group
-                </li>
-                <li className="mb-1"><i class="fa-thin fa-circle text-green-200 mr-2"></i>Dịch thuật 1 bài viết sang ngôn ngữ bất kỳ</li>
-                <li className="mb-1"><i class="fa-thin fa-circle text-green-200 mr-2"></i>Ít nhất 1 commit lên RADA Repository</li>
-                <li className="mb-1"><i class="fa-thin fa-circle text-green-200 mr-2"></i>Đã điền đơn đăng ký</li>
-              </ul>
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Quyền lợi:</strong> Token trị giá $100 (Private Sale)</li>
-              <li className="mb-1">
-                <i class="fa-solid fa-check text-green-400 mr-2"></i> 
-                <strong>Số lượng:</strong> <a href="https://forms.gle/SkhQPsauBeQLSq6J8" target="_blank">100 người đầu tiên điền đơn</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="list-group--item !justify-start !items-start">
-
-          <i class="fa-solid fa-circle-3 mr-2 md:mr-4 text-xl md:text-3xl text-green-500"></i>
-
-          <div>
-            <h3 className="font-semibold mt-1 mb-2 lg:mt-2">
-            Level 3: <strong>RADA Team & RADA Advisors</strong>
-            </h3>
-            <ul className="grid grid-cols-1 w-full">
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Yêu cầu:</strong> đáp ứng một trong 2 tiêu chí sau</li>
-              <ul className="grid grid-cols-1 w-full ml-8">
-                <li className="mb-1"><i class="fa-thin fa-circle text-green-200 mr-2"></i>Thành viên, <strong>cống hiến, làm việc full time</strong> cho RADA.</li>
-                <li className="mb-1"><i class="fa-thin fa-circle text-green-200 mr-2"></i><strong>Advisor</strong> của RADA</li>
-              </ul>
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Quyền lợi:</strong> Token trị giá $200 (Private Sale)</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-                  
-    </div>
-  )
-}
-
-const ContentEn = function(){
-  return (
-    <div className="card-body">
-      <div className="list-group">
-
-        <div className="list-group--item !justify-start !items-start">
-          
-          <i class="fa-solid fa-circle-1 mr-2 md:mr-4 text-xl md:text-3xl text-purple-500"></i>
-
-          <div>
-            <h3 className="font-semibold mt-1 mb-2 lg:mt-2">
-            Level 1: <strong>Raders</strong>
-            </h3>
-            <ul className="grid grid-cols-1 w-full">
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Requirements:</strong> Subscribe to RADA channels</li>
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Benefits:</strong> $20 worth of tokens (Private Sale)</li>
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Quantity:</strong> 100 people</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="list-group--item !justify-start !items-start">
-
-          <i class="fa-solid fa-circle-2 mr-2 md:mr-4 text-xl md:text-3xl text-yellow-500"></i>
-
-          <div>
-            <h3 className="font-semibold mt-1 mb-2 lg:mt-2">
-            Level 2: <strong>RADA Contributor</strong>(RADA Contributors)
-            </h3>
-            <ul className="grid grid-cols-1 w-full">
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Requirements:</strong>Meet at least 1 of the following criteria</li>
-              <ul className="grid grid-cols-1 w-full ml-8">
-                <li className="mb-1">
-                  <i class="fa-thin fa-circle text-green-200 mr-2"></i>
-                  Least 1 post in RADA's FB Group
-                </li>
-                <li className="mb-1"><i class="fa-thin fa-circle text-green-200 mr-2"></i>Least 1 translation into 2nd language</li>
-                <li className="mb-1"><i class="fa-thin fa-circle text-green-200 mr-2"></i>Least 1 git commit to RADA's repository</li>
-                <li className="mb-1"><i class="fa-thin fa-circle text-green-200 mr-2"></i>Submitted this form application</li>
-              </ul>
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Benefits:</strong> $100 worth of tokens(Private sale)</li>
-              <li className="mb-1">
-                <i class="fa-solid fa-check text-green-400 mr-2"></i> 
-                <strong>Quantity:</strong>
-                <a rel="nofollow " href="https://forms.gle/SkhQPsauBeQLSq6J8" target="_blank">First 100 people to fill out the application</a>
-               </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="list-group--item !justify-start !items-start">
-
-          <i class="fa-solid fa-circle-3 mr-2 md:mr-4 text-xl md:text-3xl text-green-500"></i>
-
-          <div>
-            <h3 className="font-semibold mt-1 mb-2 lg:mt-2">
-            Level 3: <strong>RADA Team & RADA Advisors</strong>
-            </h3>
-            <ul className="grid grid-cols-1 w-full">
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Requirements:</strong> meet one of the following 2 criteria</li>
-              <ul className="grid grid-cols-1 w-full ml-8">
-                <li className="mb-1"><i class="fa-thin fa-circle text-green-200 mr-2"></i>Devoted member, working full time for RADA.</li>
-                <li className="mb-1"><i class="fa-thin fa-circle text-green-200 mr-2"></i><strong>Advisor</strong> for RADA</li>
-              </ul>
-              <li className="mb-1"><i class="fa-solid fa-check text-green-400 mr-2"></i> <strong>Benefits:</strong> $200 worth of tokens (Private sale)</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-                  
-    </div>
-  )
-}
-
-const ProfileAccessDenied = ({dataStore,detailStore}) => {
+const ProfileAccessDenied = ({}) => {
   const store = useStore()
   useEffect(() => {
     store.user.showConnect(true)
@@ -430,7 +254,7 @@ const ProfileAccessDenied = ({dataStore,detailStore}) => {
   }
   return (
     <>
-      <StaticLayout meta={meta} detailStore={detailStore} dataStore={dataStore}>
+      <StaticLayout meta={meta}>
         <div className="page-section text-center">
           <div className="mt-4">
             <h1 className="text-2xl">403 forbidden</h1>

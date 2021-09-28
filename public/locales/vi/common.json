@@ -29,5 +29,8 @@
   "Who is building Axie Infinity" : "Ai đang xây dựng {{provider}}?",
   "Axie Infinity Partners" : "Đối tác của {{provider}}",
   "Video":"Video",
-  "Tweet":"Tweet"
+  "Tweet":"Tweet",
+  "contribute":"Đóng góp",
+  "no token description" : "Chúng tôi chưa có bài viết về {{name}}.",
+  "no token info" : "Chúng tôi chưa có thông tin về {{name}}."
 }

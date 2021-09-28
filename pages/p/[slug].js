@@ -14,7 +14,7 @@ export default function StaticPage(props) {
     }
     let content = props.page.content,title = props.page.title
     return (
-        <StaticLayout meta={meta} detailStore={detailStore} dataStore={dataStore}>
+        <StaticLayout meta={meta}>
             <div className={`page-section`}  >
                 <div className={`post-content`}  >
                 <div className="post-title">

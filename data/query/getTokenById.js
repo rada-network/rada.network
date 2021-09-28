@@ -10,6 +10,8 @@ const tokenByIdGql = gql`
           contract_address
           max_supply
           total_supply
+          logo
+          cover
           team{
             id
             headquarter

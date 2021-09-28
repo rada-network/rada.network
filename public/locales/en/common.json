@@ -29,5 +29,8 @@
   "Who is building Axie Infinity" : "Who is building {{provider}}?",
   "Axie Infinity Partners" : "{{provider}}'s Partners",
   "Video":"Video",
-  "Tweet":"Tweet"
+  "Tweet":"Tweet",
+  "contribute":"Contribute",
+  "no token description" : "We don't have article about {{name}} yet.",
+  "no token info" : "We don't have information about {{name}} yet."
 }

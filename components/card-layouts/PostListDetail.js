@@ -10,12 +10,8 @@ import utils from "../../lib/util";
 import {Vote} from "../vote/Vote";
 import { useTranslation } from "next-i18next";
 import { getItemById } from "../../data/query/getItem";
-import { getTokenById } from "../../data/query/getTokenById";
-import { TrendingStore } from "../../lib/store";
 import ContentLoader from 'react-content-loader'
-import numberFormatter from "../utils/numberFormatter";
-import roundNumber from "../utils/roundNumber"
-
+import TokenInfo from "../token/TokenInfo";
 
 export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore}) => {
   let item = detailStore.data
@@ -135,415 +131,7 @@ export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore
   )
 })
 
-const TokenInfo = ({token, tabName})=>{
-  const trendingStore = new TrendingStore()
-  const [tokenData, setTokenData] = useState({})
-  const [usdCoinInfo, setUSDCoinInfo] = useState({})
-  const [btcCoinInfo, setBTCCoinInfo] = useState({})
-  const {t, i18n} = useTranslation()
-  useEffect(() => {
-   token?.slug && getTokenById({id : token?.slug, lang: i18n.language}).then(function (res) {
-   setTokenData(res.data.tokenById)
-   getCoinInfo(res.data.tokenById.symbol)
-  })
-  }, [token])
 
-  const getCoinInfo =  async (fsym)=>{
-    await fetch(`/api/coin-info?fsym=${fsym}&tsym=USD`).then(response => response.json())
-    .then(data => setUSDCoinInfo(data.Data));
-
-    await fetch(`/api/coin-info?fsym=${fsym}&tsym=BTC`).then(response => response.json())
-    .then(data => setBTCCoinInfo(data.Data));
-  }
-
-  return tabName ==='axs'?
-
-  <div className="section section-coininfo--general">
-
-        <div className="grid grid-cols-1">
-
-          {/* Post Header */}
-          <div className="flex flex-col">
-
-            <div className="flex flex-wrap justify-between items-center w-full">
-              <div className="flex flex-0 flex-shrink-0 mb-4">
-                <span className="icon flex-shrink-0">
-                  <img src={`https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`} className="mr-2 h-px-32 w-px-32" alt={token?.name}/>
-                </span>
-                <h1 className="flex items-center">
-                  <strong className="text-2xl font-semibold">{tokenData?.name}</strong>
-                  <span className="badge badge-coin badge-coin-lg ml-2">{tokenData?.symbol}</span>
-                </h1>
-              </div>
-              <div className="flex flex-wrap space-x-2 mb-4">
-                {tokenData.tag?.map(item => <span key={item.id} className={`badge badge-lg ${trendingStore.data.find(t => t === item.slug) ? 'badge-red':''}`}>{item.name}</span>)}
-              </div>
-            </div>
-
-            <div className="mt-4">
-              <div className="flex flex-wrap lg:flex-nowrap items-start w-full">
-
-                {/* Pricing */}
-                <div className="flex flex-col flex-shrink-0 flex-0 mb-4">
-                  <div className="pricing">
-                    <span className="pricing-value">
-                      {numberFormatter(usdCoinInfo?.AggregatedData?.PRICE || 0,{
-                          style: 'currency',
-                          currency: 'USD',
-                          notation: 'compact',
-                          minimumFractionDigits: 1
-                      })}
-                    </span>
-                    <span className="pricing-indicator" type={usdCoinInfo?.AggregatedData?.CHANGE24HOUR > 0 ?"up":"down"}>
-                      <i className={`fa-solid fa-caret-${usdCoinInfo?.AggregatedData?.CHANGE24HOUR > 0 ?"up":"down"} mr-1`}></i>
-                      {/* {usdCoinInfo?.AggregatedData?.CHANGE24HOUR < 0 && '-'} */}
-                      {roundNumber(Math.abs(usdCoinInfo?.AggregatedData?.CHANGE24HOUR || 0), 6)}%
-                    </span>
-                  </div>
-                  <div className="pricing pricing-sm mt-2">
-                    <span className="pricing-value opacity-50">
-                      {btcCoinInfo?.AggregatedData?.PRICE} BTC</span>
-                    <span className="pricing-indicator" type={usdCoinInfo?.AggregatedData?.CHANGE24HOUR > 0 ?"up":"down"}>
-                      <i className={`fa-solid fa-caret-${btcCoinInfo?.AggregatedData?.CHANGE24HOUR > 0 ?"up":"down"} mr-1`}></i>
-                      {/* {btcCoinInfo?.AggregatedData?.CHANGE24HOUR < 0 && '-'} */}
-                      {roundNumber(Math.abs(btcCoinInfo?.AggregatedData?.CHANGE24HOUR || 0), 6) }%
-                    </span>
-                  </div>
-                </div>
-                {/* END: Pricing */}
-
-                {/* Pricing Info */}
-                <div className="flex flex-wrap lg:flex-nowrap w-full lg:ml-5 lg:space-x-2 lg:divide-x divide-gray-400 divide-opacity-20">
-
-                  <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
-                    <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs md:text-xs">Market Cap</span>
-                    </div>
-                    <div className="mb-2">
-                      <strong href="#" className="">
-                      {numberFormatter(usdCoinInfo?.AggregatedData?.MKTCAP || 0,{
-                        style: 'currency',
-                        currency: 'USD',
-                        notation: 'compact',
-                        minimumFractionDigits: 1
-                      })}
-                      </strong>
-                    </div>
-                  </div>
-
-                  <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
-                    <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs md:text-xs">Volume 24h</span>
-                    </div>
-                    <div className="mb-2">
-                      <strong href="#" className="">
-                        {numberFormatter(usdCoinInfo?.AggregatedData?.VOLUME24HOUR|| 0,{
-                          style: 'currency',
-                          currency: 'USD',
-                          notation: 'compact',
-                          minimumFractionDigits: 1
-                        })}
-                      </strong>
-                    </div>
-                  </div>
-
-                  <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
-                    <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs md:text-xs" title="Circulating Supply">C. Supply</span>
-                    </div>
-                    <div className="mb-2">
-                      <strong href="#" className="">
-                      {numberFormatter(usdCoinInfo?.AggregatedData?.CIRCULATINGSUPPLY|| 0,{
-                        notation: 'compact',
-                        minimumFractionDigits: 1
-                      })}
-                      </strong>
-                    </div>
-                  </div>
-
-                  <div className="lg:text-center flex-0 flex-srink-0 lg:w-full">
-                    <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs md:text-xs">Total Supply</span>
-                    </div>
-                    <div className="mb-2">
-                      <strong href="#" className="">
-                      {numberFormatter(usdCoinInfo?.AggregatedData?.SUPPLY|| 0,{
-                        notation: 'compact',
-                        minimumFractionDigits: 1
-                      })}
-                      </strong>
-                    </div>
-                  </div>
-
-                </div>
-                {/* END: Pricing Info */}
-
-              </div>
-            </div>
-
-            <div className="mt-4">
-              <div className="flex w-full">
-
-                <div className="text-sm w-full">
-                  <div className="flex flex-wrap justify-between items-center">
-                    <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-xs">Website</span>
-                    </div>
-                    <div className="space-x-2 mb-2">
-                      <a href="https://axieinfinity.com/" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
-                        <span className="icon">
-                          <i class="fa-regular fa-globe"></i>
-                        </span>
-                        <span className="btn--text">{tokenData?.link?.find(item => item.group === 'homepage')?.url}</span>
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap justify-between items-center">
-                    <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-xs">Community</span>
-                    </div>
-                    <div className="space-x-2 mb-2">
-                      {tokenData?.link?.map(item => item.group === 'community' && (
-                      <a key={item.id} href={item.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
-                        <span className="icon">
-                          <i class={`fa-brands fa-${item.name.toLowerCase()}`}></i>
-                        </span>
-                        <span className="btn--text">{item.name}</span>
-                      </a>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap justify-between items-center">
-                    <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-xs">Explorer</span>
-                    </div>
-                    <div className="space-x-2 mb-2">
-                      {tokenData?.link?.map((item, index) => item.group === 'explorers' && (
-                        <a key={item.id} href={item.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
-                          <span className="btn--text">{item.name}</span>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap justify-between items-center">
-                    <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-xs">Contract</span>
-                    </div>
-                    <div className="space-x-2 mb-2">
-                      <a href="#" className="btn btn-default btn-default-sm">
-                        <span className="icon">
-                          <i class="cf cf-eth"></i>
-                        </span>
-                        <span className="btn--text">{tokenData?.contract_address}</span>
-                        <span className="icon">
-                          <i class="fa-regular fa-copy text-2xs"></i>
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-          {/* End: Post Header */}
-
-          {/* Post Content */}
-          <div className="w-full mt-4">
-              {tokenData.token_description?.map((item) =>  <div key={item.id} className="post-content mt-8" dangerouslySetInnerHTML={{__html:item.content}}/>)}
-          </div>
-
-        </div>
-
-      </div>
-
-  :
-
-  <div className="section section-coininfo--team">
-
-    <div className="grid grid-cols-1">
-
-      {/* Post Header */}
-      <div className="flex flex-col">
-
-        <div className="flex flex-wrap justify-between items-center w-full">
-          <div className="flex flex-0 flex-shrink-0 mb-4">
-            <span className="icon flex-shrink-0">
-              <img src={`https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`} className="mr-2 h-px-24 w-px-24" alt={token?.name}/>
-            </span>
-            <h1 className="flex items-center">
-              <strong className="text-lg font-semibold">{tokenData?.name}</strong>
-              <span className="badge badge-coin ml-2">{tokenData?.symbol}</span>
-            </h1>
-          </div>
-          <div className="flex flex-wrap space-x-2 mb-2">
-          {tokenData.tag?.map(item => <span key={item.id} className={`badge badge-lg mb-2 ${trendingStore.data.find(t => t === item.slug) ? 'badge-red':''}`}>{item.name}</span>)}
-          </div>
-        </div>
-
-        <div className="mt-4">
-          {/* General Info */}
-          <div className="flex flex-wrap lg:justify-evenly lg:flex-nowrap w-full lg:space-x-2 lg:divide-x divide-gray-400 divide-opacity-20">
-
-            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
-              <div className="w-full lg:w-auto">
-                <span className="uppercase opacity-50 text-2xs lg:text-xs">
-                  {t('Location')}
-                </span>
-              </div>
-              <div className="mb-2">
-                <strong className="">
-                  {tokenData?.team?.location}
-                </strong>
-              </div>
-            </div>
-
-            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
-              <div className="w-full lg:w-auto">
-                <span className="uppercase opacity-50 text-2xs lg:text-xs">
-                  {t('Founded')}
-                </span>
-              </div>
-              <div className="mb-2">
-                <strong className="">
-                  {tokenData?.team?.founded}
-                </strong>
-              </div>
-            </div>
-
-            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
-              <div className="w-full lg:w-auto">
-                <span className="uppercase opacity-50 text-2xs lg:text-xs">
-                  {t('Employees')}
-                </span>
-              </div>
-              <div className="mb-2">
-                <strong className="">
-                {tokenData?.team?.employees}
-                </strong>
-              </div>
-            </div>
-
-            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
-              <div className="w-full lg:w-auto">
-                <span
-                  className="uppercase opacity-50 text-2xs lg:text-xs"
-                  title="Last Funding Type"
-                >
-                  {t('Last Funding')}
-                </span>
-              </div>
-              <div className="mb-2">
-                <strong className="">
-                {tokenData?.team?.last_funding}
-                </strong>
-              </div>
-            </div>
-
-            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full">
-              <div className="w-full lg:w-auto">
-                <span className="uppercase opacity-50 text-2xs lg:text-xs">
-                  {t('Headquarter')}
-                </span>
-              </div>
-              <div className="mb-2">
-                <a
-                  href={tokenData?.team?.headquarter_url}
-                  rel="nofollow"
-                  target="_blank"
-                >
-                  <strong className="">
-                  {tokenData?.team?.headquarter}
-                  </strong>
-                  <span class="icon ml-1 relative -top-0.5"><i class="fa-duotone fa-external-link text-2xs"></i></span>
-                </a>
-              </div>
-            </div>
-
-          </div>
-          {/* END: General Info */}
-        </div>
-
-      </div>
-      {/* End: Post Header */}
-
-      {/* Post Content - Team */}
-      <div className="w-full mt-8 lg:mt-16">
-
-        <h2 className="lg:text-center text-xl lg:text-2xl font-semibold">
-        {t("Who is building Axie Infinity",{"provider" : tokenData.name})}
-        </h2>
-
-        <div className="grid grid-cols-2 xl:grid-cols-4 gap-8 mt-8">
-
-          {tokenData?.team?.author?.map(item =>(
-            <div key={item.id} className="card card-team">
-            <div className="card-media">
-              <div className="avatar avatar-3xl">
-                <img src={item.image.medium} />
-              </div>
-            </div>
-            <div className="card-body">
-              <div className="card-body-header">
-                <h3 className="">{item.name}</h3>
-                <p>{item.position}</p>
-              </div>
-              {/* <div className="card-body-main">
-                <p className="">
-                  Trung Nguyen is CEO of Sky Mavis. He is an entrepreneur who started 5 years on Wall Street in 2007 and left to create an open source community which grew to over 100,000 members.
-                </p>
-              </div> */}
-            </div>
-            <div className="card-body-footer">
-              <div className="cta-wrapper about-social">
-                <a className="btn" href={item.linkedin} rel="nofollow" target="_blank">
-                  <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <a className="btn" href={item.twitter} rel="nofollow" target="_blank">
-                  <i class="fa-brands fa-twitter"></i>
-                </a>
-                <a className="btn" href={item.facebook} rel="nofollow" target="_blank">
-                  <i class="fa-brands fa-facebook-f"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          ))}
-
-        </div>
-
-      </div>
-      {/* END: Post Content - Team */}
-
-
-      {/* Post Content - Partners */}
-      <div className="w-full mt-10 lg:mt-16">
-
-        <h2 className="lg:text-center text-xl lg:text-2xl font-semibold">
-          {t("Axie Infinity Partners",{"provider" : tokenData.name})}
-        </h2>
-
-        <div className="flex flex-wrap mt-6 list-partners">
-          {tokenData?.partner?.map(item => (
-            <a key={item.id} href={item.url} className="" rel="nofollow" target="_blank">
-            <img src={item.image.medium} />
-          </a>
-          ))}
-        </div>
-
-      </div>
-      {/* END: Post Content - Partners */}
-
-    </div>
-
-</div>
-
-}
 
 const VideoDetail = function({item,dateTitle,date,voteStore}){
   const source = getSourceVideoFromUri(item)
@@ -602,6 +190,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
         <div className="post-content">
           <div className="post-content--text" dangerouslySetInnerHTML={{__html:item.content}}></div>
         </div>
+        {item.websiteUri !== null && 
         <div className="post-actions">
           <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
             <span className="btn btn-default" title={t("visit website")}>
@@ -610,6 +199,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
             </span>
           </a>
         </div>
+        }
       </div>
     </div>
   )
@@ -663,16 +253,18 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
               <span className="post-title--text">
                 {title}
               </span>
+              {item.websiteUri !== null && 
               <span className="btn btn-post-link" title={t("visit website")}>
                 <span className="icon"><i className="fa-duotone fa-external-link" /></span>
                 <span className="btn--text sr-only">{t("visit website")}</span>
               </span>
+              }
             </a>
           </h1>
         </div>
         <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
-            <div className="metadata metadata-source">
+            <div className="metadata metadata-soursce">
               {isRada ?
               <span className="icon icon-rada w-3.5 mr-1.5 opacity-70">
                 <svg class="rada-svg" viewBox="4 4 32 32" xmlns="http://www.w3.org/2000/svg"><path class="inline-rec" d="M18 11.1547C19.2376 10.4402 20.7624 10.4402 22 11.1547L26.6603 13.8453C27.8979 14.5598 28.6603 15.8803 28.6603 17.3094V22.6906C28.6603 24.1197 27.8979 25.4402 26.6603 26.1547L22 28.8453C20.7624 29.5598 19.2376 29.5598 18 28.8453L13.3397 26.1547C12.1021 25.4402 11.3397 24.1197 11.3397 22.6906V17.3094C11.3397 15.8803 12.1021 14.5598 13.3397 13.8453L18 11.1547Z" fill="#9CA3AF"></path><path class="inline-stroke" d="M20 2L20.8806 15.1519C20.9757 16.5717 22.4811 17.4409 23.7582 16.8133L35.5885 11L24.6389 18.3386C23.4568 19.1308 23.4568 20.8692 24.6389 21.6614L35.5885 29L23.7582 23.1867C22.4811 22.5591 20.9757 23.4283 20.8806 24.848L20 38L19.1194 24.8481C19.0243 23.4283 17.5189 22.5591 16.2418 23.1867L4.41154 29L15.3611 21.6614C16.5432 20.8692 16.5432 19.1308 15.3611 18.3386L4.41154 11L16.2418 16.8133C17.5189 17.4409 19.0243 16.5717 19.1194 15.152L20 2Z" fill="#fff"></path><circle class="inline-circle" cx="20" cy="7" r="3" fill="#374151"></circle><circle class="inline-circle" cx="20" cy="33" r="3" fill="#374151"></circle><circle class="inline-circle" cx="31.2583" cy="13.5" r="3" transform="rotate(60 31.2583 13.5)" fill="#374151"></circle><circle class="inline-circle" cx="8.74167" cy="26.5" r="3" transform="rotate(60 8.74167 26.5)" fill="#374151"></circle><circle class="inline-circle" cx="8.74167" cy="13.5" r="3" transform="rotate(-60 8.74167 13.5)" fill="#374151"></circle><circle class="inline-circle" cx="31.2583" cy="26.5" r="3" transform="rotate(-60 31.2583 26.5)" fill="#374151"></circle></svg>
@@ -725,6 +317,7 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
           </div>
           : ""
         } */}
+        {item.websiteUri !== null && 
         <div className="post-actions">
           <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
             <span className="btn btn-default" title={t("visit website")}>
@@ -733,6 +326,7 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
             </span>
           </a>
         </div>
+        }
       </div>
     </div>
   )
