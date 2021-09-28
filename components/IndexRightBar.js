@@ -79,8 +79,10 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore, intro})
             <div className="tabbar page-tabs">
               <div className="tabbar-main">
 
-                <a href="#" className={`tab-item ${tabName === 'article' ?'tab-item--active':'' }`} onClick={()=>setTabName('article')}>
-                  {t("article")}
+                <a href="#" className={`tab-item ${tabName === 'article' && !_.isEmpty(detailStore.data) && detailStore.data.token && detailStore.data.token !== null ?'tab-item--active':'' }`} onClick={()=>setTabName('article')}>
+                  {detailStore.type === 'news' && t("article")}
+                  {detailStore.type === 'video' && t("Video")}
+                  {detailStore.type === 'tweet' && t("Tweet")}
                 </a>
 
                 {!_.isEmpty(detailStore.data) && detailStore.data.token && detailStore.data.token !== null ?
@@ -91,11 +93,8 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore, intro})
                   <a href="#" className={`tab-item ${tabName === 'axs' ?'tab-item--active':'' }`} onClick={()=>setTabName('axs')}>
                     About {detailStore.data.token.symbol}
                   </a>
-                  <a href="#" className={`tab-item ${tabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setTabName('team')}>
-                    {t("team & partners")}
-                  </a>
-                  <a href="#" className={`tab-item ${tabName === 'market' ?'tab-item--active':'' }`} onClick={()=>setTabName('market')}>
-                    {t("Market")}
+                <a href="#" className={`tab-item ${tabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setTabName('team')}>
+                  {t("team & partners")}
                   </a>
                 {/* <Link href={`/tokens/` + detailStore.data.token.symbol + "/events"}>
                   <a href="#" className="tab-item">

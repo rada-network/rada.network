@@ -16,20 +16,16 @@ import ContentLoader from 'react-content-loader'
 import numberFormatter from "../utils/numberFormatter";
 import roundNumber from "../utils/roundNumber"
 
-import Market from '../../pages/concepts/InPage-Market-noFrame'
-
 
 export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore}) => {
   let item = detailStore.data
-  if (item.item){
-    voteStore.addVotesV2([
-      {
-        id : item.item.id,
-        totalVote : item.item.totalVote,
-        isVote : item.item.isVote
-      }
-    ])
-  }
+  voteStore.addVotesV2([
+    {
+      id : item.item?.id,
+      totalVote : item.item.totalVote,
+      isVote : item.item.isVote
+    }
+  ])
   item.currentLang = dataStore.lang;
 
   const scrollRef = useRef()
@@ -113,14 +109,14 @@ export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore
           {detailStore.type === "news" ?
             (tabName === 'article' ?
               <NewsDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
-              : tabName === 'axs' || tabName === 'team' ? <TokenInfo token={detailStore.data.token} tabName={tabName} /> : '')
+              : <TokenInfo token={detailStore.data.token} tabName={tabName} />)
             :''
           }
 
           {detailStore.type === "video" ?
             (tabName === 'article' ?
               <VideoDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
-              : tabName === 'axs' || tabName === 'team' ? <TokenInfo token={detailStore.data.token} tabName={tabName} /> : '')
+              : <TokenInfo token={detailStore.data.token} tabName={tabName} />)
             :''
           }
 
@@ -128,10 +124,6 @@ export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore
             <SocialTweetDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
             : ""
           }
-
-
-
-          {tabName === 'market' && <Market token={detailStore.data.token} />}
 
           {/* Comments */}
           {tabName === 'article' && <CommentList detailStore={detailStore} dataStore={dataStore}/>}

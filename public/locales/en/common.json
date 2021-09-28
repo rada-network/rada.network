@@ -27,5 +27,7 @@
   "Last Funding" : "Last Funding",
   "Headquarter" : "Headquarter",
   "Who is building Axie Infinity" : "Who is building {{provider}}?",
-  "Axie Infinity Partners" : "{{provider}}'s Partners"
+  "Axie Infinity Partners" : "{{provider}}'s Partners",
+  "Video":"Video",
+  "Tweet":"Tweet"
 }
