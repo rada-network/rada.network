@@ -3,7 +3,7 @@ const TokenInfoHeader = function({tokenData,token}){
   const trendingStore = new TrendingStore()
   return (
     <div className="flex flex-wrap justify-between items-center w-full">
-      <div className="flex flex-0 flex-shrink-0 mb-4">
+      <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
         <span className="icon flex-shrink-0">
         {token?.slug && 
         <img src={`https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`} className="mr-2 h-px-24 w-px-24" alt={token?.name}/>

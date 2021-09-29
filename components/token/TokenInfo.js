@@ -40,7 +40,7 @@ const TokenInfo = ({token, tabName})=>{
             <TokenInfoHeader tokenData={tokenData} token={token} />
 
             <div className="mt-4">
-              <div className="flex flex-wrap md:flex-nowrap items-start w-full">
+              <div className="flex flex-wrap xl:flex-nowrap items-start w-full">
 
                 {/* Pricing */}
                 <div className="flex flex-col flex-shrink-0 flex-0 mb-4">
@@ -72,11 +72,11 @@ const TokenInfo = ({token, tabName})=>{
                 {/* END: Pricing */}
 
                 {/* Pricing Info */}
-                <div className="flex flex-wrap md:flex-nowrap w-full md:ml-6 md:space-x-2 md:divide-x divide-gray-400 divide-opacity-20">
+                <div className="flex flex-wrap md:flex-nowrap w-full xl:ml-6 md:space-x-2 md:divide-x divide-gray-400 divide-opacity-20">
 
-                  <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
+                  <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs md:text-xs">Market Cap</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Market Cap</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -90,9 +90,9 @@ const TokenInfo = ({token, tabName})=>{
                     </div>
                   </div>
 
-                  <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
+                  <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs md:text-xs">Volume 24h</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Volume 24h</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -106,9 +106,9 @@ const TokenInfo = ({token, tabName})=>{
                     </div>
                   </div>
 
-                  <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
+                  <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs md:text-xs" title="Circulating Supply">C. Supply</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs" title="Circulating Supply">C. Supply</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -120,9 +120,9 @@ const TokenInfo = ({token, tabName})=>{
                     </div>
                   </div>
 
-                  <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
+                  <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs md:text-xs">Total Supply</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Total Supply</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -221,7 +221,7 @@ const TokenInfo = ({token, tabName})=>{
             {tokenData?.cover !== null && <div className="post-media"><img src={tokenData?.cover} alt={tokenData?.name}/></div>}
             {tokenData.token_description?.map((item) =>  <div key={item.id} className="post-content mt-8" dangerouslySetInnerHTML={{__html:item.content}}/>)}
             {tokenData.token_description?.length == 0 && 
-            <div className="empty-state text-center py-8 lg:px-8">
+            <div className="post-content empty-state text-center py-8 lg:px-8">
               <span class="icon"><i class="fa-duotone fa-telescope text-5xl text-yellow-500"></i></span>
               <p class="opacity-50 pt-8 pb-2 m-auto" dangerouslySetInnerHTML={{__html:t('no token description',{"name" : `<strong>${tokenData?.name} (${tokenData?.symbol})</strong>`})}} >{}</p>
               <button class="btn btn-default btn-lg btn-primary">
