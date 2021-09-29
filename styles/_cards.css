@@ -329,8 +329,8 @@ Card Social
 /* Cards in Page 
 --------------------------------------*/
 .card-pagecontent  {
-  @apply flex-col p-0 text-sm;
-  @apply border border-gray-400 border-opacity-20 rounded-lg;
+  @apply flex-col p-0 text-sm mb-8;
+  @apply border border-gray-400 border-opacity-10 rounded-lg;
   @apply bg-gray-50 dark:bg-gray-900;
 
   .card-header {

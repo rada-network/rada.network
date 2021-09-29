@@ -36,7 +36,7 @@ h2.heading-2 {
 Post Content Typo
 ----------------------------------- */
 .post-title h1 {
-  @apply text-xl font-semibold;
+  @apply text-xl lg:text-2xl font-semibold;
 }
 
 .post-detail-media .post-content--text {

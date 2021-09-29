@@ -10,6 +10,7 @@ Page Layout
 */
 .page {
   @apply w-full h-full relative;
+  /* @apply max-w-screen-md m-auto; */
   /* @apply bg-white dark:bg-gray-900; */
 }
 
