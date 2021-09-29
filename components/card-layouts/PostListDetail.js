@@ -12,6 +12,7 @@ import { useTranslation } from "next-i18next";
 import { getItemById } from "../../data/query/getItem";
 import ContentLoader from 'react-content-loader'
 import TokenInfo from "../token/TokenInfo";
+import Footnote from "../Footnote";
 
 export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore}) => {
   let item = detailStore.data
@@ -189,6 +190,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
         </div>
         <div className="post-content">
           <div className="post-content--text" dangerouslySetInnerHTML={{__html:item.content}}></div>
+          {item?.is_footnote && <Footnote />}
         </div>
         {item.websiteUri !== null && 
         <div className="post-actions">
@@ -307,6 +309,7 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
             // )
             <div dangerouslySetInnerHTML={{__html: content}}/>
           }
+          {item?.is_footnote && <Footnote />}
 
         </div>
         {/* {item.thumbnailUri !== "" ?

@@ -80,6 +80,7 @@ const itemFeedGql = gql`
                     name
                     symbol
                 }
+                is_footnote
             }
             video{
                 id
@@ -106,6 +107,7 @@ const itemFeedGql = gql`
                     name
                     symbol
                 }
+                is_footnote
             }
             media{
                 id
@@ -198,7 +200,8 @@ const itemByIdGql = gql`
                     name
                     symbol
                     slug
-            }
+                }
+                is_footnote
             }
             video{
                 id
@@ -226,6 +229,7 @@ const itemByIdGql = gql`
                     symbol
                     slug
                 }
+                is_footnote
             }
             media{
                 id
