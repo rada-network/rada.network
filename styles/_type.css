@@ -207,3 +207,10 @@ Post Content Typo
     @apply hidden;
   }
 }
+
+
+/* RADA Posts 
+-------------------------------- */
+.post-footer--rada {
+  @apply pt-8 mt-4 border-t border-gray-500 dark:border-white;
+}
