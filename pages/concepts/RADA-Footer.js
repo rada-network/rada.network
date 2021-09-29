@@ -15,34 +15,34 @@ function Concept() {
 
               <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 
-              <div class="post-footer post-footer--rada">
+              <div className="post-footer post-footer--rada">
 
-                <div class="flex flex-col">
-                  <div class="flex items-center !mb-1">
-                    <img class="w-7 inline-block !ml-0 !mr-3" src="https://cdn.rada.network/images/rada.svg" alt="RADA NETWORK" />
-                    <strong class="text-lg font-bold">
+                <div className="flex flex-col">
+                  <div className="flex items-center !mb-1">
+                    <img className="w-7 inline-block !ml-0 !mr-3" src="https://cdn.rada.network/images/rada.svg" alt="RADA NETWORK" />
+                    <strong className="text-lg font-bold">
                       RADA
                     </strong>
                   </div>
-                  <div class="ml-10 !mb-0">DAO based blockchain investment community</div>
+                  <div className="ml-10 !mb-0">DAO based blockchain investment community</div>
                 </div>
 
-                <div class="flex items-center !mb-2">
-                  <span class="icon w-7 text-center">
-                    <i class="fa-solid fa-envelope text-lg text-yellow-500"></i>
+                <div className="flex items-center !mb-2">
+                  <span className="icon w-7 text-center">
+                    <i className="fa-solid fa-envelope text-lg text-yellow-500"></i>
                   </span>
-                  <span class="ml-3">
-                    <strong class="text-xs uppercase inline-block font-normal w-full xl:w-32">Email for work:</strong> 
+                  <span className="ml-3">
+                    <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Email for work:</strong> 
                     <a href="mailto:rada.workingdrive@gmail.com">rada.workingdrive@gmail.com</a>
                   </span>
                 </div>
 
-                <div class="flex items-center !mb-2">
-                  <span class="icon w-7 text-center">
-                    <i class="fa-solid fa-globe text-lg text-primary-500"></i>
+                <div className="flex items-center !mb-2">
+                  <span className="icon w-7 text-center">
+                    <i className="fa-solid fa-globe text-lg text-primary-500"></i>
                   </span>
-                  <span class="ml-3">
-                    <strong class="text-xs uppercase inline-block font-normal w-full xl:w-32">Website:</strong> 
+                  <span className="ml-3">
+                    <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Website:</strong> 
                     <a
                     href="https://rada.network/"
                     target="_blank"
@@ -53,12 +53,12 @@ function Concept() {
                   </span>
                 </div>
 
-                <div class="flex items-center !mb-2">
-                  <span class="icon w-7 text-center">
-                    <i class="fa-brands fa-twitter text-lg text-blue-400"></i>
+                <div className="flex items-center !mb-2">
+                  <span className="icon w-7 text-center">
+                    <i className="fa-brands fa-twitter text-lg text-blue-400"></i>
                   </span>
-                  <span class="ml-3">
-                    <strong class="text-xs uppercase inline-block font-normal w-full xl:w-32">Twitter:</strong> 
+                  <span className="ml-3">
+                    <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Twitter:</strong> 
                     <a
                     href="https://twitter.com/radamedia"
                     target="_blank"
@@ -69,12 +69,12 @@ function Concept() {
                   </span>
                 </div>
 
-                <div class="flex items-center !mb-2">
-                  <span class="icon w-7 text-center">
-                    <i class="fa-brands fa-telegram text-lg text-blue-500"></i>
+                <div className="flex items-center !mb-2">
+                  <span className="icon w-7 text-center">
+                    <i className="fa-brands fa-telegram text-lg text-blue-500"></i>
                   </span>
-                  <span class="ml-3">
-                    <strong class="text-xs uppercase inline-block font-normal w-full xl:w-32">Telegram:</strong> 
+                  <span className="ml-3">
+                    <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Telegram:</strong> 
                     <a
                     href="https://t.me/joinchat/l39iN84IeUwxZjBl"
                     target="_blank"
@@ -85,12 +85,12 @@ function Concept() {
                   </span>
                 </div>
 
-                <div class="flex items-center !mb-2">
-                  <span class="icon w-7 text-center">
-                    <i class="fa-solid fa-heart text-lg text-red-500"></i>
+                <div className="flex items-center !mb-2">
+                  <span className="icon w-7 text-center">
+                    <i className="fa-solid fa-heart text-lg text-red-500"></i>
                   </span>
-                  <span class="ml-3">
-                    <strong class="text-xs uppercase inline-block font-normal w-full xl:w-32">Fanpage:</strong> 
+                  <span className="ml-3">
+                    <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Fanpage:</strong> 
                     <a
                     href="https://www.facebook.com/rada.daocomm..."
                     target="_blank"
@@ -101,12 +101,12 @@ function Concept() {
                   </span>
                 </div>
 
-                <div class="flex items-center !mb-2">
-                  <span class="icon w-7 text-center">
-                    <i class="fa-brands fa-facebook text-lg text-blue-500"></i>
+                <div className="flex items-center !mb-2">
+                  <span className="icon w-7 text-center">
+                    <i className="fa-brands fa-facebook text-lg text-blue-500"></i>
                   </span>
-                  <span class="ml-3">
-                    <strong class="text-xs uppercase inline-block font-normal w-full xl:w-32">Community:</strong> 
+                  <span className="ml-3">
+                    <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Community:</strong> 
                     <a
                     href="https://www.facebook.com/groups/rada.co"
                     target="_blank"
@@ -117,12 +117,12 @@ function Concept() {
                   </span>
                 </div>
 
-                <div class="flex items-center !mb-2">
-                  <span class="icon w-7 text-center">
-                    <i class="fa-brands fa-discord text-lg text-purple-500"></i>
+                <div className="flex items-center !mb-2">
+                  <span className="icon w-7 text-center">
+                    <i className="fa-brands fa-discord text-lg text-purple-500"></i>
                   </span>
-                  <span class="ml-3">
-                    <strong class="text-xs uppercase inline-block font-normal w-full xl:w-32">Discord:</strong> 
+                  <span className="ml-3">
+                    <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Discord:</strong> 
                     <a
                     href="https://discord.link/rada"
                     target="_blank"
@@ -133,12 +133,12 @@ function Concept() {
                   </span>
                 </div>
 
-                <div class="flex items-center !mb-2">
-                  <span class="icon w-7 text-center">
-                    <i class="fa-brands fa-linkedin-in text-lg text-blue-800"></i>
+                <div className="flex items-center !mb-2">
+                  <span className="icon w-7 text-center">
+                    <i className="fa-brands fa-linkedin-in text-lg text-blue-800"></i>
                   </span>
-                  <span class="ml-3">
-                    <strong class="text-xs uppercase inline-block font-normal w-full xl:w-32">LinkedIn:</strong> 
+                  <span className="ml-3">
+                    <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">LinkedIn:</strong> 
                     <a
                     href="https://www.linkedin.com/company/rada..."
                     target="_blank"

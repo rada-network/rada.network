@@ -168,7 +168,8 @@ Post Content Typo
   @apply w-full max-h-full rounded-md;
 }
 
-/* Tweaks */
+/* Tweaks 
+--------------------------------------- */
 .post-content blockquote.twitter-tweet,
 .post-content .wp-caption {
   @apply !w-full;
@@ -197,6 +198,40 @@ Post Content Typo
   @apply font-semibold;
 }
 
+/* source: cointelegraph */
+.post-content .related-list {
+  div {
+    @apply my-0;
+  }
+  .related-list__title {
+    @apply mb-4;
+  }
+  .related-list__item-title {
+    @apply inline;
+  }
+  .related-list__item-image {
+    @apply !hidden;
+  }
+}
+
+/* source: blogtienao */
+.post-content .td_module_wrap {
+  @apply flex items-center;
+}
+
+.post-content .td-module-thumb {
+  @apply mr-4;
+}
+
+.post-content .td-module-title {
+  @apply mb-1;
+}
+
+.post-content .ccpw-live {
+  @apply !hidden;
+}
+
+
 /* Hide unwanted elements */
 .post-content {
   .tdb_single_post_share,
@@ -204,7 +239,7 @@ Post Content Typo
   .tdb_single_categories,
   .tdb-single-title,
   .tdb-post-meta {
-    @apply hidden;
+    @apply !hidden;
   }
 }
 
