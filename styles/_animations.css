@@ -7,6 +7,22 @@
   }
 }
 
+
+@keyframes fadeinout {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 100;
+  }
+  70% {
+    opacity: 50;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
 @keyframes expanded-width {
   0% {
     width: 0%;

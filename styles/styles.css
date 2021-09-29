@@ -625,7 +625,7 @@ Dragger
 */
 .pane-dragger {
   @apply hidden md:block absolute h-full w-2 -right-2 top-0 z-50;
-  @apply border-l-2 border-dashed border-transparent hover:border-primary-500 transition;
+  @apply border-l-2 border-dashed border-primary-500 opacity-0 hover:opacity-100 transition;
   transition-delay: 0.2s;
   cursor: col-resize;
 }

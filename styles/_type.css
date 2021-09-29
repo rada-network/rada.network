@@ -246,6 +246,11 @@ Post Content Typo
 
 /* RADA Posts 
 -------------------------------- */
+.post-rada {
+  img + em {
+    @apply flex justify-center w-full text-xs not-italic mt-2;
+  }
+}
 .post-footer--rada {
   @apply pt-8 mt-4 border-t border-gray-500 dark:border-white;
 }
