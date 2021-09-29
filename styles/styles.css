@@ -394,7 +394,7 @@ Post Details
 Title 
 */
 .post-title {
-  @apply mb-1;
+  @apply mb-2;
 }
 .post-title h1 {
   .badge-rada {
