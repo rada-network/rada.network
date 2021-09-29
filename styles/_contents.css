@@ -539,7 +539,7 @@ Pricing & Market
 }
 
 .pricing-value {
-  @apply font-semibold text-5xl leading-none truncate tracking-wide;
+  @apply font-semibold text-4xl lg:text-5xl leading-none truncate tracking-wide;
 }
 
 .pricing-indicator {
