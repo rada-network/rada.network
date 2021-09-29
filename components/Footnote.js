@@ -72,7 +72,7 @@ const Footnote = ({}) => {
         rel="nofollow noopener"
       >
         <span className="icon">
-          <i className="fa-brands fa-telegram"></i>
+          <i className="fa-brands fa-telegram-plane"></i>
         </span>
         <span className="btn--text">
           Telegram
