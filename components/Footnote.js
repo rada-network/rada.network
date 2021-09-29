@@ -18,7 +18,7 @@ const Footnote = ({}) => {
         <i className="fa-solid fa-envelope text-lg text-yellow-500"></i>
       </span>
       <span className="ml-3">
-        <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Email for work:</strong> 
+        <strong className="text-xs uppercase inline-block font-normal w-full lg:w-32">Email for work:</strong> 
         <a href="mailto:rada.workingdrive@gmail.com">rada.workingdrive@gmail.com</a>
       </span>
     </div>
@@ -28,7 +28,7 @@ const Footnote = ({}) => {
         <i className="fa-solid fa-globe text-lg text-primary-500"></i>
       </span>
       <span className="ml-3">
-        <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Website:</strong> 
+        <strong className="text-xs uppercase inline-block font-normal w-full lg:w-32">Website:</strong> 
         <a
         href="https://rada.network/"
         target="_blank"
@@ -44,7 +44,7 @@ const Footnote = ({}) => {
         <i className="fa-brands fa-twitter text-lg text-blue-400"></i>
       </span>
       <span className="ml-3">
-        <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Twitter:</strong> 
+        <strong className="text-xs uppercase inline-block font-normal w-full lg:w-32">Twitter:</strong> 
         <a
         href="https://twitter.com/radamedia"
         target="_blank"
@@ -60,7 +60,7 @@ const Footnote = ({}) => {
         <i className="fa-brands fa-telegram text-lg text-blue-500"></i>
       </span>
       <span className="ml-3">
-        <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Telegram:</strong> 
+        <strong className="text-xs uppercase inline-block font-normal w-full lg:w-32">Telegram:</strong> 
         <a
         href="https://t.me/joinchat/l39iN84IeUwxZjBl"
         target="_blank"
@@ -76,7 +76,7 @@ const Footnote = ({}) => {
         <i className="fa-solid fa-heart text-lg text-red-500"></i>
       </span>
       <span className="ml-3">
-        <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Fanpage:</strong> 
+        <strong className="text-xs uppercase inline-block font-normal w-full lg:w-32">Fanpage:</strong> 
         <a
         href="https://www.facebook.com/rada.daocomm..."
         target="_blank"
@@ -92,7 +92,7 @@ const Footnote = ({}) => {
         <i className="fa-brands fa-facebook text-lg text-blue-500"></i>
       </span>
       <span className="ml-3">
-        <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Community:</strong> 
+        <strong className="text-xs uppercase inline-block font-normal w-full lg:w-32">Community:</strong> 
         <a
         href="https://www.facebook.com/groups/rada.co"
         target="_blank"
@@ -108,7 +108,7 @@ const Footnote = ({}) => {
         <i className="fa-brands fa-discord text-lg text-purple-500"></i>
       </span>
       <span className="ml-3">
-        <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">Discord:</strong> 
+        <strong className="text-xs uppercase inline-block font-normal w-full lg:w-32">Discord:</strong> 
         <a
         href="https://discord.link/rada"
         target="_blank"
@@ -124,7 +124,7 @@ const Footnote = ({}) => {
         <i className="fa-brands fa-linkedin-in text-lg text-blue-800"></i>
       </span>
       <span className="ml-3">
-        <strong className="text-xs uppercase inline-block font-normal w-full xl:w-32">LinkedIn:</strong> 
+        <strong className="text-xs uppercase inline-block font-normal w-full lg:w-32">LinkedIn:</strong> 
         <a
         href="https://www.linkedin.com/company/rada..."
         target="_blank"

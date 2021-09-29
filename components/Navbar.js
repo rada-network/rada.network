@@ -38,6 +38,16 @@ export const Navbar = ({dataStore,detailStore}) => {
             <span className="nav-item--text">{t("Explore")}</span>
           </NavItem>
 
+          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/explore/news"} type={"news"}>
+            <span className="icon"><i className="fad fa-newspaper" /></span>
+            <span className="nav-item--text">{t("News")}</span>
+          </NavItem>
+
+          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/explore/video"}  type={"video"}>
+            <span className="icon"><i className="fad fa-icons" /></span>
+            <span className="nav-item--text">{t("Video")}</span>
+          </NavItem>
+
           <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/explore/rada"} type={"rada"}>
             <span className="icon icon-rada">
               <svg className="rada-svg" viewBox="4 4 32 32" xmlns="http://www.w3.org/2000/svg">
@@ -52,16 +62,6 @@ export const Navbar = ({dataStore,detailStore}) => {
               </svg>
             </span>
             <span className="nav-item--text">{t("RADA")}</span>
-          </NavItem>
-
-          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/explore/news"} type={"news"}>
-            <span className="icon"><i className="fad fa-newspaper" /></span>
-            <span className="nav-item--text">{t("News")}</span>
-          </NavItem>
-
-          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/explore/video"}  type={"video"}>
-            <span className="icon"><i className="fad fa-icons" /></span>
-            <span className="nav-item--text">{t("Video")}</span>
           </NavItem>
 
           <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/explore/social"} type={"social"} className="disabled">
