@@ -13,6 +13,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { Resizer } from "../components/utils/Resizer";
 import store from "store"
+import { usePageStore } from "../lib/usePageStore";
 
 const getDataExplore = async ({query,type,lang}) => {
   if (['news','media','video','rada','social','all',''].indexOf(type) === -1){
@@ -96,13 +97,9 @@ const getDataPostDetail = async ({query,id,lang}) => {
 }
 
 export default observer(function(props) {
-  const voteStore = new VoteStore();
-  const homeStore = new HomeStore({isHome : true})
-
-  const observableItemStore =  new ObservableTweetStore({homeStore});
-  const detailStore = new DetailStore()
+  const {dataStore,detailStore,voteStore} = usePageStore()
   return (
-    <Index props={props} observableItemStore={observableItemStore} voteStore={voteStore} detailStore={detailStore} />
+    <Index props={props} observableItemStore={dataStore} voteStore={voteStore} detailStore={detailStore} />
   )
 })
 
