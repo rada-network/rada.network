@@ -6,10 +6,10 @@ export const NewsLoader = (props) => (
     <div className={`card-body`}>
       <ContentLoader
         speed={2}
-        backgroundColor="#F3F4F6"
-        foregroundColor="#ecebeb"
+        backgroundColor="#9CA3AF"
+        foregroundColor="#E5E7EB"
+        style={{ opacity: '20%' }}
         viewBox="0 0 380 100"
-        // style={{ width: '100%' }}
         {...props}
       >
         <rect x="0" y="0" rx="3" ry="3" width="40" height="40" />
