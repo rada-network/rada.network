@@ -90,6 +90,56 @@ Default Button
   @apply bg-white dark:bg-gray-700 dark:bg-opacity-50;
 }
 
+.btn-red {
+  @apply !bg-red-500 hover:!bg-red-700 !text-white hover:!text-white;
+}
+
+.btn-yellow {
+  @apply !bg-yellow-500 hover:!bg-yellow-700 !text-white hover:!text-white;
+}
+
+.btn-blue {
+  @apply !bg-blue-500 hover:!bg-blue-700 !text-white hover:!text-white;
+}
+
+.btn-blue-400 {
+  @apply !bg-blue-400 hover:!bg-blue-600 !text-white hover:!text-white;
+}
+
+.btn-blue-700 {
+  @apply !bg-blue-700 hover:!bg-blue-900 !text-white hover:!text-white;
+}
+
+.btn-purple {
+  @apply !bg-purple-500 hover:!bg-purple-700 !text-white hover:!text-white;
+}
+
+.btn--twitter {
+  background: rgb(29,161,242) !important;
+  color: #fff !important;
+}
+
+.btn--telegram {
+  background: #1d98dc !important;
+  color: #fff !important;
+}
+
+.btn--facebook {
+  background: rgb(66,103,178) !important;
+  color: #fff !important;
+}
+
+.btn--discord {
+  background: #5865f2 !important;
+  color: #fff !important;
+}
+
+.btn--linkedin {
+  background: rgb(40,103,178) !important;
+  color: #fff !important;
+}
+
+
 /* Sizes */
 .btn-lg {
   @apply py-1 px-4;

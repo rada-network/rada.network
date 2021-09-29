@@ -258,9 +258,8 @@ Post Content Typo
 
 .post-footer--rada .btn-default {
   @apply w-px-32 h-px-32 lg:w-auto lg:h-auto px-2 lg:px-3;
-  @apply text-gray-700 dark:text-gray-200 border-transparent dark:border-transparent;
-  @apply bg-gray-500 bg-opacity-10 dark:bg-gray-300 dark:bg-opacity-10 hover:border-transparent dark:hover:border-transparent;
-  @apply hover:bg-primary-500 dark:hover:bg-primary-700 hover:text-white;
+  @apply border-transparent dark:border-transparent hover:border-transparent dark:hover:border-transparent;
+  @apply opacity-100 hover:opacity-80;
   .btn--text {
     @apply hidden lg:block;
   }
