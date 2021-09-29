@@ -40,7 +40,7 @@ const TokenInfo = ({token, tabName})=>{
             <TokenInfoHeader tokenData={tokenData} token={token} />
 
             <div className="mt-4">
-              <div className="flex flex-wrap xl:flex-nowrap items-start w-full">
+              <div className="flex flex-wrap xl:flex-nowrap items-center w-full">
 
                 {/* Pricing */}
                 <div className="flex flex-col flex-shrink-0 flex-0 mb-4">
@@ -72,7 +72,7 @@ const TokenInfo = ({token, tabName})=>{
                 {/* END: Pricing */}
 
                 {/* Pricing Info */}
-                <div className="flex flex-wrap md:flex-nowrap w-full xl:ml-6 md:space-x-2 md:divide-x divide-gray-400 divide-opacity-20">
+                <div className="flex flex-wrap md:flex-nowrap w-full lg:ml-6 lg:space-x-2 lg:divide-x divide-gray-400 divide-opacity-20">
 
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">

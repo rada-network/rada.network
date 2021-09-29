@@ -10,7 +10,7 @@ const TokenInfoHeader = function({tokenData,token}){
         }
         </span>
         <h1 className="flex items-center">
-          <strong className="text-2xl font-semibold">{tokenData?.name}</strong>
+          <strong className="text-xl lg:text-2xl font-semibold">{tokenData?.name}</strong>
           <span className="badge badge-coin badge-coin-lg ml-2">{tokenData?.symbol}</span>
         </h1>
       </div>
