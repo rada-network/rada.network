@@ -250,6 +250,9 @@ Post Content Typo
   img + em {
     @apply flex justify-center w-full text-xs not-italic mt-2;
   }
+  .media-player {
+    @apply aspect-w-16 aspect-h-9 rounded-lg overflow-hidden;
+  }
 }
 
 .post-footer--rada {
