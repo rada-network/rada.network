@@ -3,8 +3,6 @@ const {
   PHASE_PRODUCTION_BUILD,
 } = require('next/constants')
 const { i18n } = require('./next-i18next.config');
-const withPWA = require('next-pwa')
-const runtimeCaching = require('next-pwa/cache')
 const isProd = process.env.NODE_ENV === 'production'
 
 
@@ -16,12 +14,6 @@ module.exports = (phase) => {
   console.log(`isDev:${isDev}  isProd:${isProd}`)
 
   const env = {
-    pwa: {
-      dest: 'public',
-      publicExcludes: ["!vendors/*", "!vendors/**/*", "!vendors/**/**/*", "!vendors/**/**/**/*"],
-      buildExcludes: [/chunks\/.*$/],
-      disable: isDev
-    },
     i18n,
     images : {
       domains: [
@@ -40,6 +32,7 @@ module.exports = (phase) => {
     assetPrefix: isProd ? 'https://cdn.rada.network' : '',
   }
 
+  return env
   // next.config.js object
-  return withPWA(env)
+  //return withPWA(env)
 }

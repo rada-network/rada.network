@@ -2,7 +2,6 @@ import '../styles/tw.css'
 import '../styles/globals.css'
 import '../styles/styles.css'
 
-import {useWallet, UseWalletProvider} from 'use-wallet'
 import NextNprogress from 'nextjs-progressbar';
 import { CookiesProvider } from 'react-cookie';
 // import { Provider } from 'mobx-react'
@@ -93,16 +92,6 @@ const TokenRankingStore = ({Component, pageProps: { session, ...pageProps }}) =>
 
   return (
     <ThemeProvider attribute="class">
-      <UseWalletProvider
-        chainId={1}
-        connectors={{
-          // This is how connectors get configured
-          portis: {dAppId: 'my-dapp-id-123-xyz'},
-          fortmatic: {apiKey: 'formatic api key'},
-          walletconnect: {rpcUrl: 'https://mainnet.infura.io/v3/92d8c48b74034b8cb45aa0af1bc30d2c'},
-          walletlink: {url: 'https://mainnet.infura.io/v3/92d8c48b74034b8cb45aa0af1bc30d2c'},
-        }}
-      >
         <PageStoreProvider>
           <StoreProvider>
             <NextNprogress
@@ -120,7 +109,6 @@ const TokenRankingStore = ({Component, pageProps: { session, ...pageProps }}) =>
             </CookiesProvider>
           </StoreProvider>
         </PageStoreProvider>
-      </UseWalletProvider>
     </ThemeProvider>
   )
 }
