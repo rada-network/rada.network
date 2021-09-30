@@ -4,14 +4,14 @@ import { Navbar } from "../Navbar";
 
 import ThemeSwitch from "../ThemeSwitch"
 
-import { useState, useEffect, createRef } from 'react'
-
 import {LanguageSwitch} from "../LanguageSwitch";
 import Screen from "../utils/Responsive";
 import { observer } from "mobx-react";
-
-export const Layout = observer(({children,meta,dataStore,detailStore}) => {
-
+import { usePageStore } from "../../lib/usePageStore";
+import _ from "lodash";
+export const Layout = observer( ({children,meta}) => {
+  const {dataStore,detailStore} = usePageStore()
+  meta = _.isEmpty(dataStore.meta) ? meta : dataStore.meta
   return (
     <>
     <Head meta={meta} title={meta.title} description={meta.description} keyword={meta.keyword} facebook={meta.facebook} twitter={meta.twitter} />

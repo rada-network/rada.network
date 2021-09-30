@@ -13,14 +13,16 @@ import { getItemById } from "../../data/query/getItem";
 import ContentLoader from 'react-content-loader'
 import TokenInfo from "../token/TokenInfo";
 import Footnote from "../Footnote";
+import { usePageStore } from "../../lib/usePageStore";
 
-export const PostListDetail = observer(({tabName,detailStore,dataStore,voteStore}) => {
+export const PostListDetail = observer(({tabName}) => {
+  const {detailStore,dataStore,voteStore} = usePageStore()
   let item = detailStore.data
   voteStore.addVotesV2([
     {
       id : item.item?.id,
-      totalVote : item.item.totalVote,
-      isVote : item.item.isVote
+      totalVote : item.item?.totalVote,
+      isVote : item.item?.isVote
     }
   ])
   item.currentLang = dataStore.lang;

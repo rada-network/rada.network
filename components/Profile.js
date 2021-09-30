@@ -11,15 +11,22 @@ import Avatar from "boring-avatars";
 
 import ReactTooltip from 'react-tooltip'
 import {useTranslation} from "next-i18next";
-import { getProviders, signIn } from "next-auth/client"
+import { getProviders, getSession, signIn } from "next-auth/client"
 import { useSession} from "next-auth/client"
 import Usermenu from "./Usermenu"
 
 
 export default function Profile(){
-	const [ session, loading ] = useSession()
+	const [session,setSession] = useState()
+	useEffect(() => { 
+		let loadSession = getSession().then((sess) => {
+			setSession(sess);
+		})
+		return () => { 
+			
+		}
+	},[])
   // When rendering client side don't display anything until loading is complete
-  if (typeof window !== 'undefined' && loading) return null
 
   // If no session exists, display access denied message
   if (!session) { return <NotConnectedButton/> }

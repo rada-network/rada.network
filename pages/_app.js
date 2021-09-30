@@ -83,7 +83,10 @@ const MyApp = ({Component, pageProps}) => {
   }, [])
 
   return (
-    <Component {...pageProps} />
+    <PageStoreProvider>
+      <Component {...pageProps} />
+    </PageStoreProvider>
+    
   )
 }
 
@@ -103,7 +106,7 @@ const TokenRankingStore = ({Component, pageProps: { session, ...pageProps }}) =>
           walletlink: {url: 'https://mainnet.infura.io/v3/92d8c48b74034b8cb45aa0af1bc30d2c'},
         }}
       >
-        <PageStoreProvider>
+        
           <StoreProvider>
             <NextNprogress
               options={{showSpinner: false}}
@@ -119,7 +122,6 @@ const TokenRankingStore = ({Component, pageProps: { session, ...pageProps }}) =>
               </Provider>
             </CookiesProvider>
           </StoreProvider>
-        </PageStoreProvider>
       </UseWalletProvider>
     </ThemeProvider>
   )

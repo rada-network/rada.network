@@ -6,8 +6,10 @@ import SearchInput from "./search"
 import ThemeSwitch from "./ThemeSwitch"
 import {LanguageSwitch} from "./LanguageSwitch";
 import Usermenu from "./Usermenu";
+import { usePageStore } from '../lib/usePageStore'
 
-export const Topbar = ({dataStore}) => {
+export const Topbar = ({}) => {
+  const {dataStore} = usePageStore()
   const router = useRouter()
 
   const NavItem = ({className, href, children}) => {

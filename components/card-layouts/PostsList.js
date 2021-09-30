@@ -14,25 +14,19 @@ import {useRouter} from "next/router";
 import {useStore} from "../../lib/useStore";
 
 import { useTranslation } from 'next-i18next';
-import { data } from 'autoprefixer';
+import { usePageStore } from '../../lib/usePageStore';
 
 // Concepts
-import {ConceptCardPost} from "../cards/concepts/PostRada";
 
-
-export const PostsListWrapper = observer(function ({dataStore,detailStore,voteStore}){
-  const handleChangeFilter = ({filter}) =>{
-    if (dataStore.loadingButton) return false
-    dataStore.currentTab = filter;
-    dataStore.tweets = []
-    //dataStore.loadingButton = false;
-    handleLoadMoreItem();
-  }
+export const PostsListWrapper = observer(function ({}){
+  const {dataStore,detailStore,voteStore} = usePageStore()
   const {t} = useTranslation("common")
   const scrollBox1 = useRef();
-
+  const store = useStore()
   const awayCls = 'list-away-top'
   useEffect(() =>{
+    voteStore.access_token = store.user.access_token
+    voteStore.addVotesV2(dataStore.tweets)
     scrollBox1.current.removeEventListener('scroll', mobileScroll);
     scrollBox1.current.addEventListener('scroll', mobileScroll);
     //mobileScroll()
@@ -43,9 +37,8 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
         scrollBox1.current.removeEventListener('scroll', mobileScroll);
       }
     }
-  },[dataStore.type + dataStore.currentTab])
+  },[dataStore])
 
-    // }
   let lastPos = 0
   let listLoaded = false
   const mobileScroll = function(e){
@@ -83,10 +76,13 @@ export const PostsListWrapper = observer(function ({dataStore,detailStore,voteSt
       }
     })
   }
-
-  const store = useStore()
-  voteStore.access_token = store.user.access_token
-  voteStore.addVotesV2(dataStore.tweets)
+  const handleChangeFilter = ({filter}) =>{
+    if (dataStore.loadingButton) return false
+    dataStore.currentTab = filter;
+    dataStore.tweets = []
+    //dataStore.loadingButton = false;
+    handleLoadMoreItem();
+  }
   return (
     <>
       <div className={`pane-content--main--top`}>
@@ -174,7 +170,8 @@ const PostsListLoader = () => {
   )
 }
 
-export const PostsList = observer(({title, extraClass,dataStore,detailStore,voteStore}) => {
+export const PostsList = observer(({title, extraClass}) => {
+  const {dataStore,detailStore,voteStore} = usePageStore()
   const router = useRouter();
   const handleClickPost = (e,obj,type) => {
     e.preventDefault()
@@ -183,7 +180,7 @@ export const PostsList = observer(({title, extraClass,dataStore,detailStore,vote
     detailStore.data = Object.assign({},obj);
     detailStore.type = type
     const meta = utils.createSiteMetadata({page:"ItemDetail",data : {...obj,type},dataStore})
-    document.title = meta.title
+    dataStore.meta = meta
     router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
     return false
   }

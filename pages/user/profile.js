@@ -17,12 +17,17 @@ import {signIn} from 'next-auth/client'
 import { StaticLayout } from '../../components/page-layouts/StaticLayout';
 import { UserDistribution } from '../../components/user/UserDistribution';
 import { usePageStore } from '../../lib/usePageStore';
+import {getSession} from "next-auth/client"
+
 
 export default function UserProfile (props) {
+  const [session,setSession] = useState()
+  const [loading,setLoading] = useState(true)
   const [user,setUser] = useState({})
   const {t} = useTranslation()
   const router = useRouter()
   const store = useStore()
+  
   const {dataStore,detailStore} = usePageStore()
   dataStore.lang = props.lang
   useEffect(() => {
@@ -30,15 +35,18 @@ export default function UserProfile (props) {
       getCurrentUser().then(res => {
         setUser(res)
       })
-                },[])
+   },[session])
+  useEffect(() => { 
+    getSession().then((sess) => {
+      setSession(sess);
+    }).finally(() => {
+      setLoading(false);
+    })
+  },[])
 
-  // When rendering client side don't display anything until loading is complete
-  if (typeof window !== 'undefined' && _.isEmpty(user)){
-    return null
-  }
-
+  if (loading) return null;
   // If no session exists, display access denied message
-  if ( _.isEmpty(user)) { return <ProfileAccessDenied /> }
+  if (!session) { return <ProfileAccessDenied  dataStore={dataStore} detailStore={detailStore} /> }
   // If session exists, display content
   let google = {}, wallet = {}, facebook = {}, twitter = {}
   google = user.account?.find((item) => {
@@ -271,7 +279,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       ...await serverSideTranslations(context.locale, ['common', 'navbar']),
-      lang : context.locale,
+      lang : context.locale
     }
   }
 }

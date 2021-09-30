@@ -3,21 +3,20 @@ import React, {createRef, useEffect, useState} from "react";
 // import PerfectScrollbar from "perfect-scrollbar";
 import Screen from "./utils/Responsive";
 import {PostListDetail} from "./card-layouts/PostListDetail";
-import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import {useStore} from "../lib/useStore";
 import {useRouter} from "next/router";
-import { useSession } from "next-auth/client";
 import Profile from "./Profile";
 import _ from "lodash";
-import Usermenu from "./Usermenu";
-import Link from "next/link";
 
 import { Transition } from '@headlessui/react';
 import Siteintro from "./Intro";
+import { usePageStore } from "../lib/usePageStore";
+import utils from "../lib/util";
 
 
-export const IndexRightBar = observer(({dataStore,detailStore,voteStore, intro}) => {
+export const IndexRightBar = observer(({intro}) => {
+  const {dataStore,detailStore,voteStore} = usePageStore()
   // const scrollBox2 = createRef();
   // let ps2;
 
@@ -44,6 +43,7 @@ export const IndexRightBar = observer(({dataStore,detailStore,voteStore, intro})
 
   const handleBack = (e) => {
     detailStore.data = {}
+    dataStore.meta = utils.createSiteMetadata({page:"Explore",data : {query : dataStore.type}})
     store.setShallowConnect(true)
     router.push(back,back,{shallow:true})
   }

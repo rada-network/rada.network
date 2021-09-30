@@ -14,6 +14,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Resizer } from "../components/utils/Resizer";
 import store from "store"
 import { usePageStore } from "../lib/usePageStore";
+import {getSession} from "next-auth/client"
 
 const getDataExplore = async ({query,type,lang}) => {
   if (['news','media','video','rada','social','all',''].indexOf(type) === -1){
@@ -98,32 +99,25 @@ const getDataPostDetail = async ({query,id,lang}) => {
 
 export default observer(function(props) {
   const {dataStore,detailStore,voteStore} = usePageStore()
-  return (
-    <Index props={props} observableItemStore={dataStore} voteStore={voteStore} detailStore={detailStore} />
-  )
-})
-
-export const Index  = ({props,observableItemStore,voteStore,detailStore}) => {
-  let meta
   if (props.item === undefined) {
-    observableItemStore.query = props.query
-    observableItemStore.lang = props.lang
+    dataStore.query = props.query
+    dataStore.lang = props.lang
 
-    observableItemStore.tweets = props.itemFeed
-    observableItemStore.type = props.type
-    meta = utils.createSiteMetadata(
+    dataStore.tweets = props.itemFeed
+    dataStore.type = props.type
+    dataStore.meta = utils.createSiteMetadata(
     {
       page : 'Explore',
       data : {
         query:props.type == "all" ? props.query : props.type
       },
-      dataStore : observableItemStore
+      dataStore : dataStore
     })
   }
   else{
-    observableItemStore.query = props.query
-    observableItemStore.tweets = props.itemFeed
-    observableItemStore.lang = props.lang
+    dataStore.query = props.query
+    dataStore.tweets = props.itemFeed
+    dataStore.lang = props.lang
     let item = {}
     if (props.item.news !== null){
       detailStore.type = "news"
@@ -141,7 +135,7 @@ export const Index  = ({props,observableItemStore,voteStore,detailStore}) => {
       detailStore.type = "idea"
       item = Object.assign({},props.item.idea);
     }
-    observableItemStore.type = detailStore.type.slice(0);
+    dataStore.type = detailStore.type.slice(0);
     item.item = {
       id : props.item.id,
       totalVote : props.item.totalVote,
@@ -149,9 +143,15 @@ export const Index  = ({props,observableItemStore,voteStore,detailStore}) => {
       token : props.item.token,
     }
     detailStore.data = item
-    meta = utils.createSiteMetadata({page : 'ItemDetail',data : {...item,type : detailStore.type},dataStore : observableItemStore})
+    dataStore.meta = utils.createSiteMetadata({page : 'ItemDetail',data : {...item,type : detailStore.type},dataStore : dataStore})
   }
+  return (
+    <Index props={props} dataStore={dataStore} voteStore={voteStore} detailStore={detailStore} />
+  )
+})
 
+export const Index  = ({props,dataStore,voteStore,detailStore}) => {
+  let meta
   /* Dragger to resize main col */
   const mainRef = useRef()
   const containerRef = useRef()
@@ -159,17 +159,17 @@ export const Index  = ({props,observableItemStore,voteStore,detailStore}) => {
     
 
   return (
-    <Layout dataStore={observableItemStore} detailStore={detailStore} extraClass="page-home" meta={meta}>
+    <Layout dataStore={dataStore} detailStore={detailStore} extraClass="page-home" meta={meta}>
 
       <div className={`pane-content`} ref={containerRef} >
         {/* main content pane */}
         <div className={`pane-content--main`} ref={mainRef}>
-          <PostsListWrapper  dataStore={observableItemStore} detailStore={detailStore} voteStore={voteStore} />
-          <ResizeerWrapper dataStore={observableItemStore} mainRef={mainRef} containerRef={containerRef} />
+          <PostsListWrapper  dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
+          <ResizeerWrapper dataStore={dataStore} mainRef={mainRef} containerRef={containerRef} />
         </div>
 
         {/* secondary content pane */}
-        <IndexRightBar back={ "/" + props.lang + "/apps/explore/"+props.type} dataStore={observableItemStore} detailStore={detailStore} props={props} voteStore={voteStore} intro={props.intro} />
+        <IndexRightBar back={ "/" + props.lang + "/apps/explore/"+props.type} dataStore={dataStore} detailStore={detailStore} props={props} voteStore={voteStore} intro={props.intro} />
       </div>
     </Layout>
   )

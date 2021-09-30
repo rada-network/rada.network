@@ -8,8 +8,10 @@ import { useTranslation } from 'next-i18next';
 import utils from "../lib/util";
 
 import Screen from "./utils/Responsive";
+import { usePageStore } from '../lib/usePageStore';
 
-export const Navbar = ({dataStore,detailStore}) => {
+export const Navbar = ({}) => {
+  const {dataStore,detailStore} = usePageStore()
   const { t } = useTranslation("navbar")
   return (
     <>
@@ -99,7 +101,8 @@ export const Navbar = ({dataStore,detailStore}) => {
   );
 }
 
-const NavItem = ({className, href, children,type,dataStore,detailStore}) => {
+const NavItem = ({className, href, children,type}) => {
+  const {dataStore,detailStore} = usePageStore()
   const router = useRouter()
   const store = useStore()
   const cls = []
@@ -117,8 +120,7 @@ const NavItem = ({className, href, children,type,dataStore,detailStore}) => {
     detailStore.data = {}
     store.setShallowConnect(true);
     router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
-    const meta = utils.createSiteMetadata({page:"Explore",data : {query : dataStore.type}})
-    document.title = meta.title
+    dataStore.meta = utils.createSiteMetadata({page:"Explore",data : {query : dataStore.type}})
     getItems({
       take : HOME_ITEM_TAKE,
       skip : dataStore.tweets.length,
