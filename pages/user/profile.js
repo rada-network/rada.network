@@ -29,7 +29,6 @@ export default function UserProfile (props) {
   const store = useStore()
   
   const {dataStore,detailStore} = usePageStore()
-  dataStore.lang = props.lang
   useEffect(() => {
     // If session exists, display content
       getCurrentUser().then(res => {

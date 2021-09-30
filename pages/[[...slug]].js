@@ -101,7 +101,6 @@ export default observer(function(props) {
   const {dataStore,detailStore,voteStore} = usePageStore()
   if (props.item === undefined) {
     dataStore.query = props.query
-    dataStore.lang = props.lang
 
     dataStore.tweets = props.itemFeed
     dataStore.type = props.type
@@ -117,7 +116,6 @@ export default observer(function(props) {
   else{
     dataStore.query = props.query
     dataStore.tweets = props.itemFeed
-    dataStore.lang = props.lang
     let item = {}
     if (props.item.news !== null){
       detailStore.type = "news"
@@ -155,16 +153,13 @@ export const Index  = ({props,dataStore,voteStore,detailStore}) => {
   /* Dragger to resize main col */
   const mainRef = useRef()
   const containerRef = useRef()
-  
-    
-
   return (
     <Layout dataStore={dataStore} detailStore={detailStore} extraClass="page-home" meta={meta}>
 
       <div className={`pane-content`} ref={containerRef} >
         {/* main content pane */}
         <div className={`pane-content--main`} ref={mainRef}>
-          <PostsListWrapper  dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
+          <PostsListWrapper  />
           <ResizeerWrapper dataStore={dataStore} mainRef={mainRef} containerRef={containerRef} />
         </div>
 

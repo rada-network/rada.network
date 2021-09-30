@@ -4,8 +4,12 @@ import { useEffect } from "react";
 import {useTranslation} from "next-i18next";
 import { getItems } from "../data/query/getItem";
 import { HOME_ITEM_TAKE } from "../config/paging";
+import {usePageStore} from "../lib/usePageStore"
+import {observer} from "mobx-react";
 
-export default function SearchInput({dataStore,detailStore}){
+
+const SearchInput = observer(({}) => {
+  const {dataStore} = usePageStore()
   let query = dataStore !== undefined ? dataStore.query : ""
   const {t} = useTranslation("common")
   const router = useRouter()
@@ -69,4 +73,6 @@ export default function SearchInput({dataStore,detailStore}){
     </div>
   
   )
-}
+})
+
+export default SearchInput

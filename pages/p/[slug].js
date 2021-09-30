@@ -5,10 +5,6 @@ import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib
 
 
 export default function StaticPage(props) {
-    const homeStore = new HomeStore({isHome : false});
-    const dataStore = new ObservableTweetStore({homeStore})
-    const detailStore = new DetailStore();
-    dataStore.lang = props.lang
     const meta = {
         "title" : props.page['title']
     }

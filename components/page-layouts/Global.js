@@ -6,15 +6,11 @@ import ThemeSwitch from "../ThemeSwitch"
 
 import {LanguageSwitch} from "../LanguageSwitch";
 import Screen from "../utils/Responsive";
-import { observer } from "mobx-react";
-import { usePageStore } from "../../lib/usePageStore";
-import _ from "lodash";
-export const Layout = observer( ({children,meta}) => {
-  const {dataStore,detailStore} = usePageStore()
-  meta = _.isEmpty(dataStore.meta) ? meta : dataStore.meta
+
+export const Layout =  ({children,meta}) => {
   return (
     <>
-    <Head meta={meta} title={meta.title} description={meta.description} keyword={meta.keyword} facebook={meta.facebook} twitter={meta.twitter} />
+    <Head meta={meta} />
 
     {/* <div className={`body-decor`}>
     </div>
@@ -32,16 +28,16 @@ export const Layout = observer( ({children,meta}) => {
       {/* Mobile / Tablet Navbar */}
       <Screen upto="md">
       <div className="pane-bottom">
-        <Navbar dataStore={dataStore} detailStore={detailStore} />
+        <Navbar />
       </div>
       </Screen>
 
       {/* Desktop Navbar */}
       <Screen from="lg">
       <div className="pane-left">
-        <Navbar dataStore={dataStore} detailStore={detailStore} />
+        <Navbar />
         <div className="pane-left--bottom">
-          <LanguageSwitch dataStore={dataStore} />
+          <LanguageSwitch />
           <ThemeSwitch />
         </div>
       </div>
@@ -52,7 +48,7 @@ export const Layout = observer( ({children,meta}) => {
         <Screen upto="md">
         <div className="pane-center--top">
           {/* <Tabbar /> */}
-          <Topbar dataStore={dataStore} />
+          <Topbar />
         </div>
         </Screen>
 
@@ -66,4 +62,4 @@ export const Layout = observer( ({children,meta}) => {
 
     </>
   );
-})
+}

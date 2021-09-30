@@ -21,14 +21,14 @@ export const StaticLayout = observer(({children,meta}) => {
         {/* Mobile / Tablet Navbar */}
         <Screen upto="md">
           <div className="pane-bottom">
-            <Navbar dataStore={dataStore} detailStore={detailStore} />
+            <Navbar  />
           </div>
         </Screen>
 
         {/* Desktop Navbar */}
         <Screen from="lg">
           <div className="pane-left">
-            <Navbar dataStore={dataStore} detailStore={detailStore} />
+            <Navbar  />
             <div className="pane-left--bottom">
               <LanguageSwitch dataStore={dataStore} />
               <ThemeSwitch />
@@ -40,7 +40,7 @@ export const StaticLayout = observer(({children,meta}) => {
           <Screen upto="md">
             <div className="pane-center--top">
               {/* <Tabbar /> */}
-              <Topbar dataStore={dataStore} />
+              <Topbar  />
             </div>
           </Screen>
 

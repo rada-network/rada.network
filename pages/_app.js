@@ -18,7 +18,7 @@ import { appWithTranslation } from 'next-i18next';
 import { getScreenName } from '../components/utils/Responsive';
 import { Provider,useSession } from 'next-auth/client'
 import {useCookies} from "react-cookie";
-import { PageStoreProvider } from '../lib/usePageStore';
+import { PageStoreProvider, usePageStore } from '../lib/usePageStore';
 
 configure({
   enforceActions: "never",
@@ -29,6 +29,8 @@ const MyApp = ({Component, pageProps}) => {
   const store = useStore()
   const [ session, loading ] = useSession()
 	const [cookies, setCookie] = useCookies(['access_token']);
+  const {dataStore} = usePageStore()
+  dataStore.lang = pageProps.lang || "vi"
 	useEffect(() => {
 		if (session) {
 			store.user.update({
@@ -81,11 +83,10 @@ const MyApp = ({Component, pageProps}) => {
           window.removeEventListener("resize", onResize);
         }
   }, [])
-
+  
   return (
-    <PageStoreProvider>
+    
       <Component {...pageProps} />
-    </PageStoreProvider>
     
   )
 }
@@ -106,7 +107,7 @@ const TokenRankingStore = ({Component, pageProps: { session, ...pageProps }}) =>
           walletlink: {url: 'https://mainnet.infura.io/v3/92d8c48b74034b8cb45aa0af1bc30d2c'},
         }}
       >
-        
+        <PageStoreProvider>
           <StoreProvider>
             <NextNprogress
               options={{showSpinner: false}}
@@ -122,6 +123,7 @@ const TokenRankingStore = ({Component, pageProps: { session, ...pageProps }}) =>
               </Provider>
             </CookiesProvider>
           </StoreProvider>
+        </PageStoreProvider>
       </UseWalletProvider>
     </ThemeProvider>
   )

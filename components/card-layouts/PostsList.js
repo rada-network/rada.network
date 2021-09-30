@@ -19,7 +19,7 @@ import { usePageStore } from '../../lib/usePageStore';
 // Concepts
 
 export const PostsListWrapper = observer(function ({}){
-  const {dataStore,detailStore,voteStore} = usePageStore()
+  const {dataStore,voteStore} = usePageStore()
   const {t} = useTranslation("common")
   const scrollBox1 = useRef();
   const store = useStore()
@@ -88,7 +88,7 @@ export const PostsListWrapper = observer(function ({}){
       <div className={`pane-content--main--top`}>
         <div className="search-wrapper">
           {/* Search */}
-          <SearchInput dataStore={dataStore} detailStore={detailStore} voteStore={voteStore}/>
+          <SearchInput />
         </div>
 
         <div className="cta-wrapper">
@@ -106,7 +106,7 @@ export const PostsListWrapper = observer(function ({}){
 
       <div className={`pane-content--main--main scrollbar`} ref={scrollBox1} cls="list-top-away">
 
-        <PostsList dataStore={dataStore} detailStore={detailStore} voteStore={voteStore} />
+        <PostsList  />
 
         {dataStore.tweets.length == 0 && dataStore.isSearch && !dataStore.loadingButton ? 
         <p className="search-not-found">

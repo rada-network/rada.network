@@ -4,8 +4,9 @@ import {useRouter} from "next/router";
 import {Transition,Popover} from "@headlessui/react"
 import { usePopper } from 'react-popper'
 import {useRef, useState} from "react";
-
-export const LanguageSwitch = observer(({dataStore}) => {
+import { usePageStore} from "../lib/usePageStore"
+export const LanguageSwitch = observer(({}) => {
+  const {dataStore,detailStore} = usePageStore()
   const [cookies, setCookie] = useCookies(['NEXT_LOCALE']);
   const router = useRouter()
   const handleChangeLanguage = (e) => {

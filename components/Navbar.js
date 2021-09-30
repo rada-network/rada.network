@@ -10,7 +10,8 @@ import utils from "../lib/util";
 import Screen from "./utils/Responsive";
 import { usePageStore } from '../lib/usePageStore';
 
-export const Navbar = ({}) => {
+export const Navbar = observer(({}) => {
+  console.log("navbar")
   const {dataStore,detailStore} = usePageStore()
   const { t } = useTranslation("navbar")
   return (
@@ -35,22 +36,22 @@ export const Navbar = ({}) => {
         {/* Main Nav */}
         <div className={`navbar-main`} >
 
-          <NavItem dataStore={dataStore} detailStore={detailStore} href={"/" + dataStore.lang + "/explore/all"} type={"all"}>
+          <NavItem href={"/" + dataStore.lang + "/explore/all"} type={"all"}>
             <span className="icon"><i className="fad fa-rss" /></span>
             <span className="nav-item--text">{t("Explore")}</span>
           </NavItem>
 
-          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/explore/news"} type={"news"}>
+          <NavItem   href={"/" + dataStore.lang + "/explore/news"} type={"news"}>
             <span className="icon"><i className="fad fa-newspaper" /></span>
             <span className="nav-item--text">{t("News")}</span>
           </NavItem>
 
-          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/explore/video"}  type={"video"}>
+          <NavItem  href={"/" + dataStore.lang + "/explore/video"}  type={"video"}>
             <span className="icon"><i className="fad fa-icons" /></span>
             <span className="nav-item--text">{t("Video")}</span>
           </NavItem>
 
-          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/explore/rada"} type={"rada"}>
+          <NavItem   href={"/" + dataStore.lang + "/explore/rada"} type={"rada"}>
             <span className="icon icon-rada">
               <svg className="rada-svg" viewBox="4 4 32 32" xmlns="http://www.w3.org/2000/svg">
                 <path className="inline-rec" d="M18 11.1547C19.2376 10.4402 20.7624 10.4402 22 11.1547L26.6603 13.8453C27.8979 14.5598 28.6603 15.8803 28.6603 17.3094V22.6906C28.6603 24.1197 27.8979 25.4402 26.6603 26.1547L22 28.8453C20.7624 29.5598 19.2376 29.5598 18 28.8453L13.3397 26.1547C12.1021 25.4402 11.3397 24.1197 11.3397 22.6906V17.3094C11.3397 15.8803 12.1021 14.5598 13.3397 13.8453L18 11.1547Z" fill="#9CA3AF"/>
@@ -66,7 +67,7 @@ export const Navbar = ({}) => {
             <span className="nav-item--text">{t("RADA")}</span>
           </NavItem>
 
-          <NavItem dataStore={dataStore} detailStore={detailStore}  href={"/" + dataStore.lang + "/explore/social"} type={"social"} className="disabled">
+          <NavItem  href={"/" + dataStore.lang + "/explore/social"} type={"social"} className="disabled">
             <span className="icon"><i className="fad fa-fire-alt" /></span>
             <span className="nav-item--text">{t("Signals")}</span>
             <span className="nav-item--badge">{t("Soon")}</span>
@@ -99,7 +100,7 @@ export const Navbar = ({}) => {
 
     </>
   );
-}
+})
 
 const NavItem = ({className, href, children,type}) => {
   const {dataStore,detailStore} = usePageStore()
