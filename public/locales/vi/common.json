@@ -33,5 +33,9 @@
   "Tweet":"Tweet",
   "contribute":"Đóng góp",
   "no token description" : "Chúng tôi chưa có bài viết về {{name}}.",
-  "no token info" : "Chúng tôi chưa có thông tin về {{name}}."
+  "no token info" : "Chúng tôi chưa có thông tin về {{name}}.",
+  "post notice start" : "Bài viết này được lược dẫn từ",
+  "about keyword"  : "viết về",
+  "post notice video start" : "Video này được lược dẫn từ",
+  "about video keyword"  : "nói về"
 }

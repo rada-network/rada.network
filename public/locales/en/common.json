@@ -33,5 +33,8 @@
   "Tweet":"Tweet",
   "contribute":"Contribute",
   "no token description" : "We don't have article about {{name}} yet.",
-  "no token info" : "We don't have information about {{name}} yet."
+  "no token info" : "We don't have information about {{name}} yet.",
+  "post notice start" : "This article is excerpted from",
+  "about keyword"  : "about",
+  "post notice video start" : "This video is excerpted from"
 }

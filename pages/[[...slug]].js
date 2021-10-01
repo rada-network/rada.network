@@ -17,7 +17,7 @@ import { usePageStore } from "../lib/usePageStore";
 import {getSession} from "next-auth/client"
 
 const getDataExplore = async ({query,type,lang}) => {
-  if (['news','media','video','rada','social','all',''].indexOf(type) === -1){
+  if (['news','projects','video','rada','social','all',''].indexOf(type) === -1){
     return false
   }
   const itemFeed = await getItems({

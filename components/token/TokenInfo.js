@@ -414,19 +414,27 @@ const TokenInfo = ({token, tabName})=>{
         <h2 className="lg:text-center text-xl lg:text-2xl font-semibold">
           {t("Axie Infinity Partners",{"provider" : tokenData.name})}
         </h2>
-        {tokenData?.partner?.length ?
+        {tokenData?.partner?.length > 1 ?
         <div className="flex flex-wrap mt-6 list-partners">
           {tokenData?.partner?.map(item => (
             <a key={item.id} href={item.url} className="" rel="nofollow" target="_blank">
             <img src={item.image.small} />
-          </a>
+            </a>
           ))}
         </div>
         :
         <div className="w-full mt-4"> 
 
           <div className="mt-8">
-
+            {tokenData?.partner?.length ?
+            <div className="post-content text-center">
+              {tokenData?.partner?.map(item => (
+                <a key={item.id} href={item.url} className="" rel="nofollow" target="_blank">
+                <img src={item.image.full} />
+                </a>
+              ))}
+            </div>
+            :
             <div className="post-content empty-state text-center py-8 lg:px-8">
               <span className="icon">
                 <i class="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
@@ -439,6 +447,7 @@ const TokenInfo = ({token, tabName})=>{
                 <span className="btn--text">{t("contribute")}</span>
               </button>
             </div>
+            }
 
           </div>
         </div>

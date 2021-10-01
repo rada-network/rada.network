@@ -135,8 +135,8 @@ export function getSourceFromUri(item){
     return item.grabTopic.website.name
   }
   const websiteUri = item.websiteUri !== null ? item.websiteUri : ""
-  const displaySources = ['Cardano Foundation', 'IOHK', 'CoinDesk', 'CoinTelegraph', 'AdaPulse', 'CoinGape',"CryptoSlate"]
-  const listSources = ['forum.cardano', 'iohk', 'coindesk', 'cointele', 'adapulse', 'coingape','cryptoslate']
+  const displaySources = DISPLAY_SOURCES
+  const listSources = LIST_SOURCE
   for (const [i, value] of listSources.entries()) {
     if (websiteUri.toLowerCase().includes(value)) {
       return displaySources[i]
