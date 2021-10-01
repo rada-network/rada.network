@@ -1,6 +1,11 @@
-import ReactMarkdown from 'react-markdown'
+import { useEffect, useState } from 'react'
 
 const VideoDetail = function({item}){
+    const [youtubeId, setYoutubeId] = useState(item.youtubeId)
+    useEffect(() => {
+        setYoutubeId(item.youtubeId)
+    }, [item.youtubeId])
+
     return (
       <div className="section post-detail post-detail-media">
         {/* Post Header */}
@@ -22,14 +27,14 @@ const VideoDetail = function({item}){
             <div className="media-player">
               <div className="w-full h-full">
                 <div className={`aspect-w-16 aspect-h-9`}>
-                  <iframe  src={"https://www.youtube.com/embed/" + item.youtubeId} title={item.title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" />
+                  <iframe  src={"https://www.youtube.com/embed/" + youtubeId} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowFullScreen" />
                 </div>
               </div>
             </div>
           </div>
           <div className="post-content">
             <div className="post-content--text">
-                <ReactMarkdown>{item.content}</ReactMarkdown>
+            <div dangerouslySetInnerHTML={{__html: item.content}}></div>
             </div>
           </div>
         </div>

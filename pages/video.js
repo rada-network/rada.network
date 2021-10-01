@@ -8,22 +8,16 @@ export default function Index() {
     const [youtubeId, setYoutubeId] = useState('1BYT4gjP3fQ')
     const [content, setContent] = useState('Video Description')
 
+    const info = {title, setTitle, content, setContent, youtubeId, setYoutubeId}
+
     const Preview = () => {
-        return <VideoView item = {{
-            title, 
-            youtubeId,
-            content
-        }}
+        return <VideoView item = {info}
         />
     }
 
     return (
         <Layout Preview={Preview}>
-            <VideoForm 
-                title={title} setTitle={setTitle} 
-                youtubeId={youtubeId} setYoutubeId={setYoutubeId} 
-                content={content} setContent={setContent} 
-            />
+            <VideoForm info={info} />
         </Layout>
     )
 }

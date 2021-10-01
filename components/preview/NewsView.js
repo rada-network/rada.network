@@ -1,6 +1,3 @@
-import ReactMarkdown from 'react-markdown'
-
-
 const NewsDetail = function ({item}){
     return (
       <div className="section post-detail post-detail-news post-rada">
@@ -21,7 +18,7 @@ const NewsDetail = function ({item}){
   
         <div className="section-body post-body">
           <div className="post-content">
-            <ReactMarkdown>{item.content}</ReactMarkdown>
+            <div dangerouslySetInnerHTML={{__html: item.content}}></div>
             {item?.is_footnote && <Footnote />}
           </div>
         </div>
