@@ -75,7 +75,7 @@ Post Content Typo
 
 .post-content h2,
 .post-content .pTitle {
-  @apply text-lg;
+  @apply text-lg lg:text-xl;
 }
 
 .post-content h2.text-2xl {
@@ -89,7 +89,7 @@ Post Content Typo
 
 .post-content h3,
 .post-content .pHead {
-  @apply text-base;
+  @apply text-base lg:text-lg;
 }
 
 .post-content h4 {

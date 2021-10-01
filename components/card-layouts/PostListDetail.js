@@ -12,7 +12,11 @@ import { useTranslation } from "next-i18next";
 import { getItemById } from "../../data/query/getItem";
 import ContentLoader from 'react-content-loader'
 import TokenInfo from "../token/TokenInfo";
+
 import Footnote from "../Footnote";
+import PostNotice from "../PostNotice";
+import PostNoticeVideo from "../PostNoticeVideo";
+
 import { usePageStore } from "../../lib/usePageStore";
 
 export const PostListDetail = observer(({tabName}) => {
@@ -104,6 +108,7 @@ export const PostListDetail = observer(({tabName}) => {
             : ""
           } */}
 
+
           {/* News Post Detail Content */}
           {detailStore.type === "news" ?
             (tabName === 'article' ?
@@ -178,6 +183,8 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
           <PostVisitVoteDetail item={item} voteStore={voteStore} />
         </div>
       </div>
+
+      <PostNoticeVideo />
 
       <div className="section-body post-body">
         <div className="post-media">
@@ -294,6 +301,8 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
           <PostVisitVoteDetail item={item} voteStore={voteStore} />
         </div>
       </div>
+
+      <PostNotice />
 
       <div className="section-body post-body">
         {!item.content ?

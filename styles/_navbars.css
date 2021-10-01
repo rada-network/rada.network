@@ -97,7 +97,7 @@ Nav Item Addons
 Tabbar
 --------------------------------------------- */
 .tabbar {
-  @apply justify-between w-full relative;
+  @apply flex justify-between w-full relative;
 }
 
 .tabbar--main {
@@ -151,6 +151,7 @@ Tabbar
 
 /* Sub Tabbar */
 .tabbar-sub {
+  @apply flex justify-between w-full relative;
   @apply bg-gray-50 dark:bg-gray-800 bg-opacity-80 backdrop-blur border-b border-gray-400 border-opacity-10;
 }
 
