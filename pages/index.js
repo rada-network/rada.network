@@ -15,7 +15,7 @@ export default function Index() {
         <Layout Preview={Preview}>
             <NewsForm 
                 title={title} setTitle={setTitle} 
-                content={content} setContent={setContent} 
+                setContent={setContent} 
             />
         </Layout>
     )

@@ -1,3 +1,10 @@
+// import MyEditor from "./Editor"
+import dynamic from 'next/dynamic'
+
+const MyEditor = dynamic(() => import("./Editor"), {
+    ssr: false
+})
+
 export default function NewsForm({
     title, setTitle,
     content, setContent
@@ -9,7 +16,8 @@ export default function NewsForm({
             <label>Title</label>
             <input name="title" value={title} onChange={e => setTitle(e.target.value)} />
             <label>Content</label>
-            <textarea name="content" value={content} onChange={e => setContent(e.target.value)} />
+            <MyEditor name="content" content={content} setContent={setContent} />
+            {/* <textarea name="content" value={content} onChange={e => setContent(e.target.value)} /> */}
         </div>
         </>
     )
