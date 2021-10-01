@@ -23,12 +23,6 @@ const itemFeedGql = gql`
                 token{
                     name
                 }
-                categoryId
-                category{
-                    id
-                    slug
-                    title
-                }
                 createdAt
                 keywords
             }
@@ -138,12 +132,6 @@ const itemByIdGql = gql`
                 token{
                     id
                     name
-                }
-                categoryId
-                category{
-                    id
-                    slug
-                    title
                 }
                 createdAt
                 keywords

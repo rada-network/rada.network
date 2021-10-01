@@ -20,12 +20,6 @@ const postsGql = gql`
       token{
         name
       }
-      categoryId
-      category{
-        id
-        slug
-        title
-      }
         item{
             id
             totalComment
