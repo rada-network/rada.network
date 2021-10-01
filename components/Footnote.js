@@ -52,6 +52,20 @@ const Footnote = ({}) => {
       </a>
 
       <a 
+        className="btn btn-default btn-red btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
+        href="https://www.youtube.com/channel/UCZUun_BIo0GZgvBNsYSUjwQ"
+        target="_blank"
+        rel="nofollow noopener"
+      >
+        <span className="icon">
+          <i className="fa-brands fa-youtube"></i>
+        </span>
+        <span className="btn--text">
+          Youtube
+        </span>
+      </a>
+
+      <a 
         className="btn btn-default btn--twitter btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
         href="https://twitter.com/radamedia"
         target="_blank"

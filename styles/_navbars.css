@@ -100,12 +100,12 @@ Tabbar
   @apply justify-between w-full relative;
 }
 
-.tabbar-main {
+.tabbar--main {
   @apply flex items-center space-x-4;
 }
 
 .tab-item {
-  @apply flex flex-1 justify-center items-center px-0 lg:px-0 py-1 transition-all relative whitespace-nowrap rounded-md;
+  @apply flex justify-center items-center px-0 lg:px-0 py-1 transition-all relative whitespace-nowrap rounded-md;
   @apply font-medium opacity-50 hover:opacity-100;
 }
 
@@ -147,4 +147,16 @@ Tabbar
 
 .tabbar-group-title {
   @apply bg-white opacity-100;
+}
+
+/* Sub Tabbar */
+.tabbar-sub {
+  @apply bg-gray-50 dark:bg-gray-800 bg-opacity-80 backdrop-blur border-b border-gray-400 border-opacity-10;
+}
+
+.tabbar-sub--main {
+  @apply flex w-full items-center space-x-4;
+  .tab-item {
+    @apply w-auto py-2;
+  }
 }

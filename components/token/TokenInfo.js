@@ -76,7 +76,7 @@ const TokenInfo = ({token, tabName})=>{
 
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Market Cap</span>
+                      <span className="uppercase opacity-50 text-2xs">Market Cap</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -92,7 +92,7 @@ const TokenInfo = ({token, tabName})=>{
 
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Volume 24h</span>
+                      <span className="uppercase opacity-50 text-2xs">Volume 24h</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -108,7 +108,7 @@ const TokenInfo = ({token, tabName})=>{
 
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs" title="Circulating Supply">C. Supply</span>
+                      <span className="uppercase opacity-50 text-2xs" title="Circulating Supply">C. Supply</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -122,7 +122,7 @@ const TokenInfo = ({token, tabName})=>{
 
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Total Supply</span>
+                      <span className="uppercase opacity-50 text-2xs">Total Supply</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -253,7 +253,7 @@ const TokenInfo = ({token, tabName})=>{
 
             <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
-                <span className="uppercase opacity-50 text-2xs lg:text-xs">
+                <span className="uppercase opacity-50 text-2xs">
                   {t('Location')}
                 </span>
               </div>
@@ -266,7 +266,7 @@ const TokenInfo = ({token, tabName})=>{
 
             <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
-                <span className="uppercase opacity-50 text-2xs lg:text-xs">
+                <span className="uppercase opacity-50 text-2xs">
                   {t('Founded')}
                 </span>
               </div>
@@ -279,7 +279,7 @@ const TokenInfo = ({token, tabName})=>{
 
             <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
-                <span className="uppercase opacity-50 text-2xs lg:text-xs">
+                <span className="uppercase opacity-50 text-2xs">
                   {t('Employees')}
                 </span>
               </div>
@@ -293,7 +293,7 @@ const TokenInfo = ({token, tabName})=>{
             <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
                 <span
-                  className="uppercase opacity-50 text-2xs lg:text-xs"
+                  className="uppercase opacity-50 text-2xs"
                   title="Last Funding Type"
                 >
                   {t('Last Funding')}
@@ -308,7 +308,7 @@ const TokenInfo = ({token, tabName})=>{
 
             <div className="lg:text-center flex-0 flex-srink-0 lg:w-full">
               <div className="w-full lg:w-auto">
-                <span className="uppercase opacity-50 text-2xs lg:text-xs">
+                <span className="uppercase opacity-50 text-2xs">
                   {t('Headquarter')}
                 </span>
               </div>

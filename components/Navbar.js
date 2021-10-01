@@ -64,14 +64,19 @@ export const Navbar = observer(({}) => {
                 <circle className="inline-circle" cx="31.2583" cy="26.5" r="3" transform="rotate(-60 31.2583 26.5)" fill="#374151"/>
               </svg>
             </span>
-            <span className="nav-item--text">{t("RADA")}</span>
+            <span className="nav-item--text">{t("Raders")}</span>
           </NavItem>
 
-          <NavItem  href={"/" + dataStore.lang + "/explore/social"} type={"social"} className="disabled">
+          <NavItem  href={"/" + dataStore.lang + "/explore/projects"} type={"projects"}>
+            <span className="icon"><i className="fad fa-coins" /></span>
+            <span className="nav-item--text">{t("Projects")}</span>
+          </NavItem>
+
+          {/* <NavItem  href={"/" + dataStore.lang + "/explore/social"} type={"social"} className="disabled">
             <span className="icon"><i className="fad fa-fire-alt" /></span>
             <span className="nav-item--text">{t("Signals")}</span>
             <span className="nav-item--badge">{t("Soon")}</span>
-          </NavItem>
+          </NavItem> */}
 
           {/* Example of additional filters */}
           {/* <span className="nav-item--divider"></span> */}

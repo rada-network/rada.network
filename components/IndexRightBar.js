@@ -77,7 +77,7 @@ export const IndexRightBar = observer(({intro}) => {
             */}
             {dataStore !== undefined && !_.isEmpty(detailStore.data) ?
             <div className="tabbar page-tabs">
-              <div className="tabbar-main">
+              <div className="tabbar--main">
 
                 <a href="#" className={`tab-item ${tabName === 'article' && !_.isEmpty(detailStore.data) && detailStore.data.token && detailStore.data.token !== null ?'tab-item--active':'' }`} onClick={()=>setTabName('article')}>
                   {detailStore.type === 'news' && t("article")}
@@ -91,11 +91,23 @@ export const IndexRightBar = observer(({intro}) => {
                 <span className="tab-item--divider" />
 
                   <a href="#" className={`tab-item ${tabName === 'axs' ?'tab-item--active':'' }`} onClick={()=>setTabName('axs')}>
-                    About {detailStore.data.token.symbol}
+                    {detailStore.data.token.symbol}
                   </a>
-                <a href="#" className={`tab-item ${tabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setTabName('team')}>
-                  {t("team & partners")}
+
+                  {/* HieuNN: Examples of Token Lists */}
+
+                  <a href="#" className={`tab-item ${tabName === 'axs' ?'tab-item--active':'' }`} onClick={()=>setTabName('axs')}>
+                    ADA
                   </a>
+
+                  <a href="#" className={`tab-item ${tabName === 'axs' ?'tab-item--active':'' }`} onClick={()=>setTabName('axs')}>
+                    BNB
+                  </a>
+
+                  <a href="#" className={`tab-item ${tabName === 'axs' ?'tab-item--active':'' }`} onClick={()=>setTabName('axs')}>
+                    DOT
+                  </a>
+
                 {/* <Link href={`/tokens/` + detailStore.data.token.symbol + "/events"}>
                   <a href="#" className="tab-item">
                   {t("events")}
@@ -106,6 +118,7 @@ export const IndexRightBar = observer(({intro}) => {
                 :""
                 }
               </div>
+
             </div>
             : ""
             }
@@ -121,6 +134,24 @@ export const IndexRightBar = observer(({intro}) => {
             </div>
           </Screen>
 
+        </div>
+
+        <div className="tabbar-sub page-subtabs">
+          <div className="tabbar-sub--main">
+
+            <a href="#" className={`tab-item tab-item--active`} onClick={()=>setTabName('team')}>
+              Information
+            </a>
+
+            <a href="#" className={`tab-item ${tabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setTabName('team')}>
+              {t("team & backers")}
+            </a>
+
+            <a href="#" className={`tab-item ${tabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setTabName('team')}>
+              More Articles
+            </a>
+
+          </div>
         </div>
 
 
