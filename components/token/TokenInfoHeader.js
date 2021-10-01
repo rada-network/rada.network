@@ -6,7 +6,7 @@ const TokenInfoHeader = function({tokenData,token}){
       <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
         <span className="icon flex-shrink-0">
         {token?.slug && 
-        <img src={`https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`} className="mr-2 h-px-24 w-px-24" alt={token?.name}/>
+        <img src={tokenData?.logo !== null ? tokenData.logo : `https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`} className="mr-2 h-px-24 w-px-24" alt={token?.name}/>
         }
         </span>
         <h1 className="flex items-center">
