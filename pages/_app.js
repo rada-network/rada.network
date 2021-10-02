@@ -29,7 +29,7 @@ const MyApp = ({Component, pageProps}) => {
   const store = useStore()
   const [ session, loading ] = useSession()
 	const [cookies, setCookie] = useCookies(['access_token']);
-  const {dataStore} = usePageStore()
+  const {dataStore,detailStore} = usePageStore()
   dataStore.lang = pageProps.lang || "vi"
 	useEffect(() => {
 		if (session) {
@@ -49,9 +49,18 @@ const MyApp = ({Component, pageProps}) => {
 	},[session,store])
   useEffect(() => {
     const handleRouteChange = (url,{shallow}) => {
-
-      if (shallow && !store.shallowInternal){
-        router.push(url,url)
+      console.log(`${url} is a shallow store ${shallow} ${store.shallowInternal}`)
+      if (shallow){
+        if (!store.shallowInternal){
+          detailStore.data = {}
+          router.push(url,url)
+        }
+        else{
+          //router.push(url,url)
+          ga.pageview(url)
+          store.setShallowConnect(false)
+        }
+        
       }
       else{
         ga.pageview(url)

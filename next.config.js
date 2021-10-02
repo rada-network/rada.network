@@ -37,7 +37,7 @@ module.exports = (phase) => {
         'blogtienao.com',
       ],
     },
-    assetPrefix: isProd ? 'https://cdn.rada.network' : '',
+    assetPrefix: isProd ? process.env.NEXT_PUBLIC_CDN : '',
   }
 
   // next.config.js object

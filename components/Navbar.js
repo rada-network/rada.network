@@ -11,7 +11,6 @@ import Screen from "./utils/Responsive";
 import { usePageStore } from '../lib/usePageStore';
 
 export const Navbar = observer(({}) => {
-  console.log("navbar")
   const {dataStore,detailStore} = usePageStore()
   const { t } = useTranslation("navbar")
   return (

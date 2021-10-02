@@ -16,6 +16,8 @@ import {useStore} from "../../lib/useStore";
 import { useTranslation } from 'next-i18next';
 import { usePageStore } from '../../lib/usePageStore';
 import _ from "lodash";
+import { DISPLAY_SOURCES, LIST_SOURCE } from "../../config/links"
+
 
 // Concepts
 
@@ -187,7 +189,6 @@ export const PostsList = observer(({title, extraClass}) => {
   }
   // if in item page, render list later
   const [showlist, setShowlist] = useState(_.isEmpty(detailStore.data)) 
-  console.log('show: ', showlist)
   useEffect(() => {
     setShowlist(true) // showlist in detail
   })
