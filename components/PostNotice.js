@@ -33,7 +33,7 @@ const PostNotice = observer(({}) => {
     <strong>${source.name}</strong> 
     <span class="icon ml-1"><i class="fa-duotone fa-external-link text-2xs relative -top-0.5"></i></span>
   </a>`
-  let about = `<span class="mx-2">${t("about keyword")}</span> `
+  let about = `<span class="mx-2">${t("about keyword")}</span>`
   keywordText = keywordText.join(", ")
   let text = keywordMap.length > 0 ? startString + about + keywordText : startString
   return (
