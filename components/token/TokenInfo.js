@@ -76,7 +76,7 @@ const TokenInfo = ({token, tabName})=>{
 
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs">Market Cap</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Market Cap</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -92,7 +92,7 @@ const TokenInfo = ({token, tabName})=>{
 
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs">Volume 24h</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Volume 24h</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -108,7 +108,7 @@ const TokenInfo = ({token, tabName})=>{
 
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs" title="Circulating Supply">C. Supply</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs" title="Circulating Supply">C. Supply</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -122,7 +122,7 @@ const TokenInfo = ({token, tabName})=>{
 
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs">Total Supply</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Total Supply</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -147,7 +147,7 @@ const TokenInfo = ({token, tabName})=>{
                   {tokenData?.link?.find(item => item.group === 'homepage') && 
                   <div className="flex flex-wrap justify-between items-center">
                     <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-xs">Website</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Website</span>
                     </div>
                     <div className="space-x-2 mb-2">
                       <a href={tokenData?.link?.find(item => item.group === 'homepage')?.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
@@ -162,7 +162,7 @@ const TokenInfo = ({token, tabName})=>{
                   {tokenData?.link?.find(item => item.group === 'community') && 
                   <div className="flex flex-wrap justify-between items-center">
                     <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-xs">Community</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Community</span>
                     </div>
                     <div className="space-x-2 mb-2">
                       {tokenData?.link?.map(item => item.group === 'community' && (
@@ -179,7 +179,7 @@ const TokenInfo = ({token, tabName})=>{
                   {tokenData?.link?.find(item => item.group === 'explorers') && 
                   <div className="flex flex-wrap justify-between items-center">
                     <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-xs">Explorer</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Explorer</span>
                     </div>
                     <div className="space-x-2 mb-2">
                       {tokenData?.link?.map((item, index) => item.group === 'explorers' && (
@@ -193,7 +193,7 @@ const TokenInfo = ({token, tabName})=>{
                   {tokenData?.contract_address && 
                   <div className="flex flex-wrap justify-between items-center">
                     <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-xs">Contract</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Contract</span>
                     </div>
                     <div className="space-x-2 mb-2">
                       <a href="#" className="btn btn-default btn-default-sm">
@@ -253,7 +253,7 @@ const TokenInfo = ({token, tabName})=>{
 
             <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
-                <span className="uppercase opacity-50 text-2xs">
+                <span className="uppercase opacity-50 text-2xs lg:text-xs">
                   {t('Location')}
                 </span>
               </div>
@@ -266,7 +266,7 @@ const TokenInfo = ({token, tabName})=>{
 
             <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
-                <span className="uppercase opacity-50 text-2xs">
+                <span className="uppercase opacity-50 text-2xs lg:text-xs">
                   {t('Founded')}
                 </span>
               </div>
@@ -279,7 +279,7 @@ const TokenInfo = ({token, tabName})=>{
 
             <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
-                <span className="uppercase opacity-50 text-2xs">
+                <span className="uppercase opacity-50 text-2xs lg:text-xs">
                   {t('Employees')}
                 </span>
               </div>
@@ -293,7 +293,7 @@ const TokenInfo = ({token, tabName})=>{
             <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
                 <span
-                  className="uppercase opacity-50 text-2xs"
+                  className="uppercase opacity-50 text-2xs lg:text-xs"
                   title="Last Funding Type"
                 >
                   {t('Last Funding')}
@@ -308,7 +308,7 @@ const TokenInfo = ({token, tabName})=>{
 
             <div className="lg:text-center flex-0 flex-srink-0 lg:w-full">
               <div className="w-full lg:w-auto">
-                <span className="uppercase opacity-50 text-2xs">
+                <span className="uppercase opacity-50 text-2xs lg:text-xs">
                   {t('Headquarter')}
                 </span>
               </div>
@@ -417,9 +417,9 @@ const TokenInfo = ({token, tabName})=>{
         {tokenData?.partner?.length > 1 ?
         <div className="flex flex-wrap mt-6 list-partners">
           {tokenData?.partner?.map(item => (
-            <a key={item.id} href={item.url} className="" rel="nofollow" target="_blank">
-            <img src={item.image.small} />
-            </a>
+            <div key={item.id} href={item.url} className="">
+              <img src={item.image.small} />
+            </div>
           ))}
         </div>
         :
@@ -429,9 +429,9 @@ const TokenInfo = ({token, tabName})=>{
             {tokenData?.partner?.length ?
             <div className="post-content text-center">
               {tokenData?.partner?.map(item => (
-                <a key={item.id} href={item.url} className="" rel="nofollow" target="_blank">
-                <img src={item.image.full} />
-                </a>
+                <div key={item.id} href={item.url} className="">
+                  <img src={item.image.full} />
+                </div>
               ))}
             </div>
             :

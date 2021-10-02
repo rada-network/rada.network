@@ -304,7 +304,7 @@ Card Social
   }
   
   .card-body-header h3 {
-    @apply mb-0 font-semibold max-w-max;
+    @apply mb-0 text-base font-semibold max-w-max;
   }
 
   .card-body-header p {

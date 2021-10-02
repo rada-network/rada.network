@@ -585,20 +585,21 @@ Pricing & Market
 --------------------------------- */
 .list-partners {
   @apply flex lg:justify-center items-center; 
-  a {
-    @apply h-px-96 px-4 mr-4 mb-4 lg:mx-8 rounded-lg;
-    @apply bg-gray-100;
-    max-width: 20%;
-  }
-  a img {
-    @apply h-px-80 rounded-lg object-cover;
-    max-width: 100%;
-  }
+}
+
+.list-partners div {
+  @apply flex justify-center items-center h-px-96 px-4 mr-4 mb-4 rounded-lg;
+  @apply bg-gray-100;
+}
+
+.list-partners div img {
+  @apply h-px-64 rounded-lg object-cover;
+  max-width: 100%;
 }
 
 @media (max-width: 767px) {
-  .list-partners a {
-    max-width: 40%;
+  .list-partners div {
+    width: 100%;
   }
 }
 
