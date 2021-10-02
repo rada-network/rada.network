@@ -23,6 +23,9 @@ import _ from "lodash";
 export const PostListDetail = observer(({tabName}) => {
   const {detailStore,dataStore,voteStore} = usePageStore()
   let item = detailStore.data
+  if (!item){
+    return null;
+  }
   if (item.item){
     voteStore.addVotesV2([
       {
@@ -525,6 +528,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
 }
 
 const PostVisitVoteDetail = function({item,voteStore}){
+  if (!item) return null;
   return (
     <div className="flex flex-shrink-0">
       <div className="cta-wrapper">

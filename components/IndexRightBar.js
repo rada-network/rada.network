@@ -75,7 +75,7 @@ export const IndexRightBar = observer(({intro}) => {
             HieuNN:
             Example of Page Tabs Here
             */}
-            {dataStore !== undefined && !_.isEmpty(detailStore.data) ?
+            {dataStore !== undefined && !_.isEmpty(detailStore.data) && detailStore.data.id ?
             <div className="tabbar page-tabs">
               <div className="tabbar--main">
 
@@ -155,7 +155,7 @@ export const IndexRightBar = observer(({intro}) => {
         </div>
 
 
-        {!_.isEmpty(detailStore.data) &&
+        {!_.isEmpty(detailStore.data) && detailStore.data.id &&
           <PostListDetail tabName={tabName} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
         }
 

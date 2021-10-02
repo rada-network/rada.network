@@ -133,13 +133,13 @@ export const PostsListWrapper = observer(function ({}){
 
 
 export function getSourceFromUri(item){
-  if (item.author !== null){
+  if (item.author &&item.author !== null){
     return item.author.name
   }
-  if (item.grabTopic !== null){
+  if (item.grabTopic && item.grabTopic !== null){
     return item.grabTopic.website.name
   }
-  const websiteUri = item.websiteUri !== null ? item.websiteUri : ""
+  const websiteUri = (item.websiteUri && item.websiteUri !== null) ? item.websiteUri : ""
   const displaySources = DISPLAY_SOURCES
   const listSources = LIST_SOURCE
   for (const [i, value] of listSources.entries()) {
@@ -162,7 +162,8 @@ export function createPostUri(title,slug,item,lang){
   if (slug !== null){
     return "/" + lang + "/post/" + slug
   }
-  return "/" + lang + "/post/" + item.id + "/" + utils.convertToSlug(title)
+  console.log(title)
+  return "/" + lang + "/post/" + item.id + "/" + (title !== null ? utils.convertToSlug(title) : "")
 }
 
 const PostsListLoader = () => {
