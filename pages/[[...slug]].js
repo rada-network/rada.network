@@ -20,6 +20,9 @@ const getDataExplore = async ({query,type,lang}) => {
   if (['news','projects','video','rada','social','all',''].indexOf(type) === -1){
     return false
   }
+  if (type == ""){
+    type = "projects"
+  }
   const itemFeed = await getItems({
     take : HOME_ITEM_TAKE,
     skip : 0,
@@ -46,14 +49,15 @@ const getDataHome = async ({query,lang}) => {
     skip : 0,
     orderBy : {createdAt : "desc"},
     query : query,
-    lang : lang
+    lang : lang,
+    type : "projects"
   })
   query = query || ""
   const intro = await getPage({slug: 'intro', lang})
   return {
     query : query,
     lang : lang,
-    type : "all",
+    type : "projects",
     itemFeed : itemFeed.data.itemFeed,
     intro
   }
@@ -73,9 +77,6 @@ const getDataPostDetail = async ({query,id,lang}) => {
   }
   else if (newsDetail.data.itemById.tweet !== null){
     type = "social"
-  }
-  else if (newsDetail.data.itemById.idea !== null){
-    type = "projects"
   }
   const intro = await getPage({slug: 'intro', lang})
   const itemFeed = await getItems({

@@ -34,7 +34,10 @@ export const Navbar = observer(({}) => {
 
         {/* Main Nav */}
         <div className={`navbar-main`} >
-
+          <NavItem  href={"/" + dataStore.lang + "/explore/projects"} type={"projects"}>
+            <span className="icon"><i className="fad fa-coins" /></span>
+            <span className="nav-item--text">{t("Projects")}</span>
+          </NavItem>
           <NavItem href={"/" + dataStore.lang + "/explore/all"} type={"all"}>
             <span className="icon"><i className="fad fa-rss" /></span>
             <span className="nav-item--text">{t("Explore")}</span>
@@ -64,11 +67,6 @@ export const Navbar = observer(({}) => {
               </svg>
             </span>
             <span className="nav-item--text">{t("Raders")}</span>
-          </NavItem>
-
-          <NavItem  href={"/" + dataStore.lang + "/explore/projects"} type={"projects"}>
-            <span className="icon"><i className="fad fa-coins" /></span>
-            <span className="nav-item--text">{t("Projects")}</span>
           </NavItem>
 
           {/* <NavItem  href={"/" + dataStore.lang + "/explore/social"} type={"social"} className="disabled">

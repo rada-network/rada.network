@@ -75,6 +75,12 @@ const itemFeedGql = gql`
                     symbol
                 }
                 is_footnote
+                tokens{
+                    id
+                    name
+                    slug
+                    symbol
+                }
             }
             video{
                 id
@@ -102,6 +108,12 @@ const itemFeedGql = gql`
                     symbol
                 }
                 is_footnote
+                tokens{
+                    id
+                    name
+                    slug
+                    symbol
+                }
             }
             media{
                 id
@@ -190,6 +202,12 @@ const itemByIdGql = gql`
                     slug
                 }
                 is_footnote
+                tokens{
+                    id
+                    name
+                    slug
+                    symbol
+                }
             }
             video{
                 id
@@ -218,6 +236,12 @@ const itemByIdGql = gql`
                     slug
                 }
                 is_footnote
+                tokens{
+                    id
+                    name
+                    slug
+                    symbol
+                }
             }
             media{
                 id

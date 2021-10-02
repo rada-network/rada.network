@@ -28,8 +28,7 @@ export const PostsListWrapper = observer(function ({}){
   const store = useStore()
   const awayCls = 'list-away-top'
   useEffect(() =>{
-    voteStore.access_token = store.user.access_token
-    voteStore.addVotesV2(dataStore.tweets)
+    
     scrollBox1.current.removeEventListener('scroll', mobileScroll);
     scrollBox1.current.addEventListener('scroll', mobileScroll);
     //mobileScroll()
@@ -86,6 +85,9 @@ export const PostsListWrapper = observer(function ({}){
     //dataStore.loadingButton = false;
     handleLoadMoreItem();
   }
+
+  voteStore.access_token = store.user.access_token
+  voteStore.addVotesV2(dataStore.tweets)
   return (
     <>
       <div className={`pane-content--main--top`}>
@@ -188,13 +190,10 @@ export const PostsList = observer(({title, extraClass}) => {
     return false
   }
   // if in item page, render list later
-  const [showlist, setShowlist] = useState(_.isEmpty(detailStore.data)) 
-  useEffect(() => {
-    setShowlist(true) // showlist in detail
-  })
+  
   return (
     <div className={`cards-list ${extraClass || ''}`}>
-      {showlist && dataStore.tweets.map(function(item){
+      {dataStore.tweets.map(function(item){
         let title = null,mediaUri = null,source = null, voteCount=item.totalVote,commentCount=item.totalComment,slug = null
         if (item.news !== null){
           item.news.item = {

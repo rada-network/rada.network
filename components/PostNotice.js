@@ -3,42 +3,61 @@ import {usePageStore} from "../lib/usePageStore"
 import _ from "lodash"
 import { useTranslation } from "next-i18next"
 import { DISPLAY_SOURCES, LIST_SOURCE, LIST_URLS } from "../config/links"
-const PostNotice = observer(({}) => {
+import { useRef,useEffect } from "react"
+
+
+const PostNotice = observer(({type}) => {
   const {detailStore} = usePageStore()
   const {t} = useTranslation()
+  const mainNotice = useRef()
   if (_.isEmpty(detailStore.data)){
     return null
   }
-  if (detailStore.data.websiteUri === null) return null
-
-  const source = getSourceNewsFromUri(detailStore.data)
-  let keywords,keywordMap = []
-  if (detailStore.data.keywords !== null){ 
-    try{
-      keywords = JSON.parse(detailStore.data.keywords);
-      keywords = Object.entries(keywords)
-      keywordMap = keywords.map(function(item){
-        return item[0]
+  useEffect(() => {
+    if (mainNotice.current) {
+      mainNotice.current.querySelectorAll('.post-token').forEach((el) => {
+        console.log("bind event")
+        el.addEventListener('click', handleClickToken)
       })
     }
-    catch(e){
-      keywordMap = detailStore.data.keywords !== null ? data.keywords.split(",") : [];
+    return () => {
+      if (mainNotice.current) {
+        mainNotice.current.querySelectorAll('.post-token').forEach((el) => {
+          el.removeEventListener('click', handleClickToken);
+        })
+      }
     }
-  }
-  let keywordText = keywordMap.map((item) => {
-    return `<a href="/tags/${item.toLowerCase()}" rel="nofollow" target="_blank" class="link"><strong>${item.toUpperCase()}</strong></a>`
+  },[detailStore.data])
+  type = type || "news"
+  if (detailStore.data.websiteUri === null) return null
+  const source = type == "news" ? getSourceNewsFromUri(detailStore.data) : getSourceVideoFromUri(detailStore.data)
+  let keywordText = detailStore.data.tokens.map((item) => {
+    return `<a href="" data-key="${item.slug}" rel="nofollow" class="link post-token"><strong>${item.name.toUpperCase()}</strong></a>`
   })
-  let startString = ` ${t("post notice start")}
+  let startString = type == "news" ? ` ${t("post notice start")}
   <a href="${source.url}" rel="nofollow noreferrer" target="_blank" class="link ml-2">
     <strong>${source.name}</strong> 
     <span class="icon ml-1"><i class="fa-duotone fa-external-link text-2xs relative -top-0.5"></i></span>
   </a>`
-  let about = `<span class="mx-2">${t("about keyword")}</span>`
+  :
+  ` ${t("post notice video start")}
+  <a href="${source.url}" rel="nofollow noreferrer" target="_blank" class="link ml-2">
+    <strong>${source.name}</strong> 
+    <span class="icon ml-1"><i class="fa-duotone fa-external-link text-2xs relative -top-0.5"></i></span>
+  </a>`;
+  let about = type == "news" ? `<span class="mx-2">${t("about keyword")}</span>` : `<span class="mx-2">${t("about video keyword")}</span>`
   keywordText = keywordText.join(", ")
-  let text = keywordMap.length > 0 ? startString + about + keywordText : startString
+  let text = detailStore.data.tokens.length > 0 ? startString + about + keywordText : startString
+  
+  const handleClickToken = (e) => { 
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(e.currentTarget.getAttribute('data-key'));
+    return false
+  }
   return (
     <>
-    <div className="post-notice">
+    <div className="post-notice" ref={mainNotice}>
 
       <div className="flex items-center">
         <p dangerouslySetInnerHTML={{__html: text}} />
@@ -63,6 +82,12 @@ function getSourceNewsFromUri(item){
     }
   }
   return ""
+}
+function getSourceVideoFromUri(item){
+  if (item.grabTopic !== null){
+    return {name : item.grabTopic.name,url : item.grabTopic.url}
+  }
+  return {name : "RADA",url : "https://rada.network"}
 }
 
 export default PostNotice

@@ -18,17 +18,21 @@ import PostNotice from "../PostNotice";
 import PostNoticeVideo from "../PostNoticeVideo";
 
 import { usePageStore } from "../../lib/usePageStore";
+import _ from "lodash";
 
 export const PostListDetail = observer(({tabName}) => {
   const {detailStore,dataStore,voteStore} = usePageStore()
   let item = detailStore.data
-  voteStore.addVotesV2([
-    {
-      id : item.item?.id,
-      totalVote : item.item?.totalVote,
-      isVote : item.item?.isVote
-    }
-  ])
+  if (item.item){
+    voteStore.addVotesV2([
+      {
+        id : item.item.id,
+        totalVote : item.item.totalVote,
+        isVote : item.item.isVote
+      }
+    ])
+  }
+  
   item.currentLang = dataStore.lang;
 
   const scrollRef = useRef()
@@ -184,7 +188,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
         </div>
       </div>
 
-      <PostNoticeVideo />
+      <PostNotice type={`video`} />
 
       <div className="section-body post-body">
         <div className="post-media">
@@ -217,10 +221,13 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
 }
 
 const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
+  if (_.isEmpty(item)){
+    return null;
+  }
   let title = item.title
   let content = item.contentDisplay
   let isRada = false;
-  if (item.grabTopic !== null && item.grabTopic.url.indexOf("rada") !== -1) {
+  if (item.grabTopic && item.grabTopic !== null && item.grabTopic.url.indexOf("rada") !== -1) {
     isRada = true;
   }
   if (item.lang === "all"){
@@ -302,7 +309,7 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
         </div>
       </div>
 
-      <PostNotice />
+      <PostNotice type={`news`} />
 
       <div className="section-body post-body">
         {!item.content ?
