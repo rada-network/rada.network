@@ -15,6 +15,7 @@ import {useStore} from "../../lib/useStore";
 
 import { useTranslation } from 'next-i18next';
 import { usePageStore } from '../../lib/usePageStore';
+import _ from "lodash";
 
 // Concepts
 
@@ -184,9 +185,15 @@ export const PostsList = observer(({title, extraClass}) => {
     router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
     return false
   }
+  // if in item page, render list later
+  const [showlist, setShowlist] = useState(_.isEmpty(detailStore.data)) 
+  console.log('show: ', showlist)
+  useEffect(() => {
+    setShowlist(true) // showlist in detail
+  })
   return (
     <div className={`cards-list ${extraClass || ''}`}>
-      {dataStore.tweets.map(function(item){
+      {showlist && dataStore.tweets.map(function(item){
         let title = null,mediaUri = null,source = null, voteCount=item.totalVote,commentCount=item.totalComment,slug = null
         if (item.news !== null){
           item.news.item = {
