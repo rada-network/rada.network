@@ -586,12 +586,13 @@ Pricing & Market
 .list-partners {
   @apply flex lg:justify-center items-center; 
   a {
-    @apply border-0 mr-4 mb-4 lg:mx-8;
+    @apply h-px-96 px-4 mr-4 mb-4 lg:mx-8 rounded-lg;
+    @apply bg-gray-100;
     max-width: 20%;
   }
   a img {
+    @apply h-px-80 rounded-lg object-cover;
     max-width: 100%;
-    max-height: 60px;
   }
 }
 

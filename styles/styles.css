@@ -461,7 +461,7 @@ CTAs
 Media
 */
 .post-media {
-  @apply w-full max-h-56 lg:max-h-72 overflow-hidden rounded-lg mt-4;
+  @apply w-full max-h-56 lg:max-h-72 overflow-hidden md:rounded-lg mt-4;
 }
 
 .post-media--img {
@@ -469,7 +469,7 @@ Media
 }
 
 .post-detail-media .post-media {
-  @apply mt-0 mb-6 max-h-full;
+  @apply -mx-4 md:mx-auto w-auto mt-0 mb-6 max-h-full;
 }
 
 /*

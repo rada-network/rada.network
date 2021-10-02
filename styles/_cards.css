@@ -304,11 +304,11 @@ Card Social
   }
   
   .card-body-header h3 {
-    @apply mb-0 text-base font-semibold max-w-max whitespace-nowrap overflow-ellipsis;
+    @apply mb-0 font-semibold max-w-max;
   }
 
   .card-body-header p {
-    @apply mb-0 text-secondary-500;
+    @apply text-sm mb-0 text-secondary-500;
   }
 
   .card-body-main p {

@@ -198,6 +198,14 @@ Post Content Typo
   @apply font-semibold;
 }
 
+.post-content .advertised {
+  .ad-placeholder {
+    @apply text-2xs;
+  }
+
+}
+
+
 /* source: cointelegraph */
 .post-content .related-list {
   div {
