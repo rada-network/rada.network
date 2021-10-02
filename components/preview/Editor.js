@@ -8,7 +8,7 @@ import {stateFromHTML} from 'draft-js-import-html'
 import {stateToHTML} from 'draft-js-export-html'
 import {Converter} from 'showdown'
 
-export default function MyEditor({info}) {
+export default function MyEditor({info, className}) {
     const [mdContent, setMdContent] = useState()
     const [editorState, setEditorState] = useState(null)
 
@@ -50,15 +50,23 @@ export default function MyEditor({info}) {
         )    
     }
 
+    const Button = ({type, children}) => {
+        const cls = type == editor ? 
+            'text-blue-500 hover:text-teal-800 text-sm py-1 px-1 rounded'
+            :
+            'text-teal-500 hover:text-teal-800 text-sm py-1 px-1 rounded'
+        return <button className={cls} type="button" onClick={e => setEditor(type)}>{children}</button>
+    }
+
     return (
         <>
-            <div>
-                <button onClick={e => setEditor('html')}>HTML</button>
-                <button onClick={e => setEditor('markdown')}>Markdown</button>
-                <button onClick={e => setEditor('text')}>Text</button>    
-            </div>            
-            {editor == 'text' && <textarea name="content" value={info.content} onChange={e => info.setContent(e.target.value)} />}
-            {editor == 'markdown' && <textarea name="content" value={mdContent} onChange={mdChange} />}
+            <div className="absolute -mt-8 mb-3 right-3">
+                <Button type="html">HTML</Button>
+                <Button type="markdown">Markdown</Button>
+                <Button type="text">Text</Button>
+            </div>   
+            {editor == 'text' && <textarea className={className} style={{height: '70vh'}} name="content" value={info.content} onChange={e => info.setContent(e.target.value)} />}
+            {editor == 'markdown' && <textarea className={className} style={{height: '70vh'}} name="content" value={mdContent} onChange={mdChange} />}
             {editor == 'html' && <Editor
                 editorState={editorState}
                 toolbarClassName="toolbarClassName"
