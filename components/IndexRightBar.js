@@ -140,7 +140,7 @@ export const IndexRightBar = observer(({intro}) => {
         </div>
         }
 
-        {!_.isEmpty(detailStore.data) &&
+        {detailStore.data.id &&
           <PostListDetail tabName={tabName} subTabName={subTabName} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
         }
         {(!detailStore.data.id) &&
