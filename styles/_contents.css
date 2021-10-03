@@ -606,6 +606,6 @@ Pricing & Market
 /* Post Notice
 --------------------------------- */
 .post-notice {
-  @apply bg-gray-50 dark:bg-gray-800;
-  @apply px-4 py-2 text-base mt-8 rounded-lg text-sm;
+  @apply bg-primary-50 dark:bg-gray-800;
+  @apply px-4 py-2 text-base mt-8 -mb-4 rounded-lg text-sm;
 }

@@ -35,7 +35,7 @@ const PostNotice = observer(({type}) => {
     return `<a href="" data-key="${item.slug}" rel="nofollow" class="link post-token"><strong>${item.name.toUpperCase()}</strong></a>`
   })
   let startString = type == "news" ? ` ${t("post notice start")}
-  <a href="${source.url}" rel="nofollow noreferrer" target="_blank" class="link ml-2">
+  <a href="${source.url}" rel="nofollow noreferrer" target="_blank" class="link ml-1">
     <strong>${source.name}</strong> 
     <span class="icon ml-1"><i class="fa-duotone fa-external-link text-2xs relative -top-0.5"></i></span>
   </a>`
