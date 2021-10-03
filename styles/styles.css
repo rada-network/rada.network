@@ -85,7 +85,7 @@ Nav Panels
 }
 
 .pane-left--bottom-section {
-  @apply flex justify-between border-t items-center pt-2 mt-2;
+  @apply flex justify-between border-t items-center pt-2 mt-2 mx-1;
 
   .btn.btn-switch-lang,
   .btn.btn-switch-theme {
