@@ -19,7 +19,7 @@ import PostNoticeVideo from "../PostNoticeVideo";
 
 import { usePageStore } from "../../lib/usePageStore";
 
-export const PostListDetail = observer(({tabName, subTabName}) => {
+export const PostListDetail = observer(({tabName, subTabName,setTabCallback}) => {
   const {detailStore,dataStore,voteStore} = usePageStore()
   let item = detailStore.data
   voteStore.addVotesV2([
@@ -112,20 +112,20 @@ export const PostListDetail = observer(({tabName, subTabName}) => {
           {/* News Post Detail Content */}
           {detailStore.type === "news" || detailStore.type === "rada" || detailStore.type === "projects" ?
             (tabName === 'article' ?
-              <NewsDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
+              <NewsDetail item={item} date={date} dateTitle={dateTitle} setTabCallback={setTabCallback}/>
               : <TokenInfo tokenId={tabName} subTabName={subTabName} />)
             :''
           }
 
           {detailStore.type === "video" ?
             (tabName === 'article' ?
-              <VideoDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
+              <VideoDetail item={item} date={date} dateTitle={dateTitle} setTabCallback={setTabCallback} />
               : <TokenInfo tokenId={tabName} subTabName={subTabName} />)
             :''
           }
 
           {detailStore.type === "tweet" ?
-            <SocialTweetDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
+            <SocialTweetDetail item={item} date={date} dateTitle={dateTitle} setTabCallback={setTabCallback}/>
             : ""
           }
 
@@ -141,7 +141,7 @@ export const PostListDetail = observer(({tabName, subTabName}) => {
 
 
 
-const VideoDetail = function({item,dateTitle,date,voteStore}){
+const VideoDetail = function({item,dateTitle,date,setTabCallback}){
   const source = getSourceVideoFromUri(item)
   const {t} = useTranslation()
   return (
@@ -180,11 +180,11 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
               </span>
             </div>
           </div>
-          <PostVisitVoteDetail item={item} voteStore={voteStore} />
+          <PostVisitVoteDetail item={item} />
         </div>
       </div>
 
-      <PostNoticeVideo />
+      <PostNotice setTabCallback={setTabCallback} type={`video`} />
 
       <div className="section-body post-body">
         <div className="post-media">
@@ -216,7 +216,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
   )
 }
 
-const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
+const NewsDetail = observer(function ({item,dateTitle,date,setTabCallback}){
   let title = item.title
   let content = item.contentDisplay
   let isRada = false;
@@ -298,11 +298,11 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
               </span>
             </div>
           </div>
-          <PostVisitVoteDetail item={item} voteStore={voteStore} />
+          <PostVisitVoteDetail item={item} />
         </div>
       </div>
 
-      <PostNotice />
+      <PostNotice setTabCallback={setTabCallback} type={`news`} />
 
       <div className="section-body post-body">
         {!item.content ?
@@ -368,7 +368,7 @@ const NewsLoader = () => {
           </ContentLoader>
 }
 
-const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
+const SocialTweetDetail = function({item,date,dateTitle,setTabCallback}){
   let title = item.source.full_text
   let mediaUri = item.tweetUser ? item.tweetUser.source.profile_image_url_https : null
   let source = item.tweetUser ? item.tweetUser.source.screen_name : null
@@ -408,7 +408,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
               </span>
             </div>
           </div>
-          <PostVisitVoteDetail voteStore={voteStore} item={item} />
+          <PostVisitVoteDetail item={item} />
         </div>
       </div>
 
@@ -517,7 +517,8 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
   )
 }
 
-const PostVisitVoteDetail = function({item,voteStore}){
+const PostVisitVoteDetail = function({item}){
+  const {voteStore} = usePageStore()
   return (
     <div className="flex flex-shrink-0">
       <div className="cta-wrapper">

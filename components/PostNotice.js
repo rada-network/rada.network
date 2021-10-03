@@ -6,7 +6,7 @@ import { DISPLAY_SOURCES, LIST_SOURCE, LIST_URLS } from "../config/links"
 import { useRef,useEffect } from "react"
 
 
-const PostNotice = observer(({type}) => {
+const PostNotice = observer(({type,setTabCallback}) => {
   const {detailStore} = usePageStore()
   const {t} = useTranslation()
   const mainNotice = useRef()
@@ -16,7 +16,6 @@ const PostNotice = observer(({type}) => {
   useEffect(() => {
     if (mainNotice.current) {
       mainNotice.current.querySelectorAll('.post-token').forEach((el) => {
-        console.log("bind event")
         el.addEventListener('click', handleClickToken)
       })
     }
@@ -32,7 +31,7 @@ const PostNotice = observer(({type}) => {
   if (detailStore.data.websiteUri === null) return null
   const source = type == "news" ? getSourceNewsFromUri(detailStore.data) : getSourceVideoFromUri(detailStore.data)
   let keywordText = detailStore.data.tokens.map((item) => {
-    return `<a href="" data-key="${item.slug}" rel="nofollow" class="link post-token"><strong>${item.name.toUpperCase()}</strong></a>`
+    return `<a href="" data-key="${item.id}" rel="nofollow" class="link post-token"><strong>${item.name.toUpperCase()}</strong></a>`
   })
   let startString = type == "news" ? ` ${t("post notice start")}
   <a href="${source.url}" rel="nofollow noreferrer" target="_blank" class="link ml-1">
@@ -52,7 +51,7 @@ const PostNotice = observer(({type}) => {
   const handleClickToken = (e) => { 
     e.preventDefault();
     e.stopPropagation();
-    console.log(e.currentTarget.getAttribute('data-key'));
+    setTabCallback(e.currentTarget.getAttribute('data-key'))
     return false
   }
   return (

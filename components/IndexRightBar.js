@@ -149,7 +149,7 @@ export const IndexRightBar = observer(({intro}) => {
         
 
         {detailStore.data.id &&
-          <PostListDetail tabName={tabName} subTabName={subTabName} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
+          <PostListDetail tabName={tabName} subTabName={subTabName} setTabCallback={setTabName} />
         }
         {(!detailStore.data.id) &&
         <div className={`pane-content--sec--main scrollbar`}>
