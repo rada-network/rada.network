@@ -16,15 +16,17 @@ const ThemeSwitch = () => {
   return theme == "light" ?
   (
     <button className="btn btn-default btn-switch-theme" onClick={e => setTheme('dark')} title="Enable Dark Theme">
-      <span className="icon"><i className="fa-duotone fa-moon" /></span>
+      <span className="icon"><i className="fa-solid fa-moon" /></span>
+      <span className="icon"><i className="fa-solid fa-sun" /></span>
       <span className="btn--text">Dark</span>
     </button>
   ) 
   :
   (
     <button className="btn btn-default btn-switch-theme active" onClick={e => setTheme('light')} title="Disable Dark Theme">
-      <span className="icon"><i className="fa-duotone fa-moon" /></span>
-      <span className="btn--text">Dark</span>
+      <span className="icon"><i className="fa-solid fa-moon" /></span>
+      <span className="icon"><i className="fa-solid fa-sun" /></span>
+      <span className="btn--text">Light</span>
     </button>
   ) 
 

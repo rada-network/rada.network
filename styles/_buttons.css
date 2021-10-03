@@ -65,7 +65,7 @@ Default Button
 }
 
 .btn-default.active {
-  @apply text-primary-700 dark:text-primary-400;
+  @apply text-primary-700 dark:text-white;
 }
 
 .btn-default .icon {
@@ -228,7 +228,22 @@ Theme / Language Button
 */
 .btn-switch-theme {
   .btn--text {
-    @apply hidden lg:inline-block;
+    @apply sr-only;
+  }
+  .fa-moon {
+    @apply opacity-20;
+  }
+  .fa-sun {
+    @apply ml-1 text-yellow-500 opacity-100;
+  }
+}
+
+.btn-switch-theme.active {
+  .fa-moon {
+    @apply opacity-100;
+  }
+  .fa-sun {
+    @apply opacity-20;
   }
 }
 
