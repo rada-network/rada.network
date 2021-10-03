@@ -658,7 +658,7 @@ Uitilities
 }
 
 .disabled {
-  @apply opacity-50 pointer-events-none;
+  @apply opacity-20 pointer-events-none cursor-not-allowed;
 }
 
 .nav-item.disabled {
