@@ -231,10 +231,10 @@ Theme / Language Button
     @apply sr-only;
   }
   .fa-moon {
-    @apply opacity-20;
+    @apply opacity-20 transition;
   }
   .fa-sun {
-    @apply ml-0.5 text-yellow-500 opacity-100;
+    @apply ml-0.5 text-yellow-500 opacity-100 transition;
   }
 }
 

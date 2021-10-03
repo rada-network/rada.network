@@ -61,7 +61,6 @@ const NotConnectedButton = observer(({}) => {
 	return (
 	<>
 	<div onClick={ openModal } className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
-
     <span className="icon">
 			<i class="fa-solid fa-user-circle"></i>
 		</span>
@@ -241,12 +240,12 @@ const WalletAvatar = ({user}) => {
 	const text = user.name
 	return (
 	  <div className="">
-		<Avatar
-		  size={16}
-		  name={text}
-		  variant="beam"
-		  colors={["#8B5CF6", "#34D399", "#FEF3C7", "#FBBF24", "#EF4444"]}
-		/>
+			<Avatar
+				size={16}
+				name={text}
+				variant="beam"
+				colors={["#8B5CF6", "#34D399", "#FEF3C7", "#FBBF24", "#EF4444"]}
+			/>
 	  </div>
 	)
   }
