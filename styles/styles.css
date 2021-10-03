@@ -426,6 +426,14 @@ Comments List
 }
 
 /* 
+Coins 
+*/
+.section-coininfo--general,
+.section-coininfo--team {
+  animation: fadein 600ms linear;
+}
+
+/* 
 Post Details
 --------------- */
 .post {

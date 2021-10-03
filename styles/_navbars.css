@@ -153,7 +153,7 @@ Tabbar
 .tabbar-sub {
   @apply flex justify-between w-full relative;
   @apply bg-white dark:bg-gray-900 bg-opacity-90 backdrop-blur border-b border-gray-400 border-opacity-10;
-  animation: fadein 300ms linear;
+  animation: fadein 600ms linear;
 }
 
 .tabbar-sub--main {
