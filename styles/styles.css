@@ -449,7 +449,7 @@ Title
 
 .post-title h1 {
   .badges-tags {
-    @apply relative md:-top-2 mb-1 md:mb-0 flex items-start;
+    @apply relative md:-top-2 mb-2 md:mb-0 flex items-start;
   }
   .badge-rada {
     @apply inline-block rounded-full px-2 text-xs;
