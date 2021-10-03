@@ -258,9 +258,6 @@ Post Content Typo
   img + em {
     @apply flex justify-center w-full text-xs not-italic mt-2;
   }
-  .media-player {
-    @apply -mx-4 w-auto max-w-none md:-mx-6 lg:mx-auto aspect-w-16 aspect-h-9 lg:rounded-lg overflow-hidden;
-  }
 }
 
 .post-footer--rada {
@@ -268,6 +265,11 @@ Post Content Typo
   div {
     @apply mb-2;
   }
+}
+
+.post-rada .media-player,
+.section-coininfo--general .media-player {
+  @apply -mx-4 w-auto max-w-none md:-mx-6 lg:mx-auto aspect-w-16 aspect-h-9 lg:rounded-lg overflow-hidden;
 }
 
 .post-footer--rada .btn-default {
