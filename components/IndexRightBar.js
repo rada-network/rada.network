@@ -52,14 +52,14 @@ export const IndexRightBar = observer(({intro}) => {
   // const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
   return (
     <>
-      <div className={`pane-content--sec` + (!_.isEmpty(detailStore.data) ? " pane-content-active" : "")}>
+      <div className={`pane-content--sec` + ((detailStore.data.id) ? " pane-content-active" : "")}>
 
         <div className={`pane-content--sec--top`}>
 
           <div className="flex">
 
             {/* Pageback Here */}
-            {dataStore !== undefined && !_.isEmpty(detailStore.data) ?
+            {dataStore !== undefined && !_.isEmpty(detailStore.data) && detailStore.data.id ?
               <div className="page-back flex-shrink-0">
                 <a title="Back" className="btn" onClick={(e) => {handleBack(e)}}>
                   <span className="icon">
@@ -158,18 +158,20 @@ export const IndexRightBar = observer(({intro}) => {
         {!_.isEmpty(detailStore.data) && detailStore.data.id &&
           <PostListDetail tabName={tabName} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
         }
-
-        <div className={`pane-content--sec--main scrollbar ` + (!_.isEmpty(detailStore.data) ? "hidden" : "")}>
-
+        {(!detailStore.data.id) &&
+        <div className={`pane-content--sec--main scrollbar`}>
+          {detailStore.data.id}
           <Siteintro intro={intro} />
 
-          {/* <Header props={{
-            itemType : "home",
-          }}/> */}
+        {/* <Header props={{
+          itemType : "home",
+        }}/> */}
 
-          {/* Temporary Disable Widgets */}
-          {/* <Sidebar className={`sidebar`} extraClassName="" /> */}
+        {/* Temporary Disable Widgets */}
+        {/* <Sidebar className={`sidebar`} extraClassName="" /> */}
         </div>
+        }
+        
 
       </div>
     </>
