@@ -1,4 +1,7 @@
 export const UserDistribution = ({props}) => { 
+  // will so later
+  return ''
+  
   return (
     <>
     {/* Distribution */}

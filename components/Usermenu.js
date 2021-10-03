@@ -60,11 +60,11 @@ export default function Usermenu({user}) {
               <Menu.Item as="div" className="dropdown-item">
               {({ active }) => 
                 <>
-                <a 
+                {/* <a 
                   href="/p/how-to-invest-with-rada">
                   <span className="icon"><i class="fa-duotone fa-coins"></i></span>
                   <span className="dropdown-item--text">How to invest?</span>
-                </a>
+                </a> */}
                 </>
               }
               </Menu.Item>
