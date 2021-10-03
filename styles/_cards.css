@@ -61,7 +61,7 @@ Generic Styles
 }
 
 .card-badges {
-  @apply relative;
+  @apply relative ml-1 -mt-1;
 }
 
 .card-badges .badge {
