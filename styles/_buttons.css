@@ -234,7 +234,7 @@ Theme / Language Button
     @apply opacity-20 transition;
   }
   .fa-sun {
-    @apply ml-0.5 opacity-100 transition;
+    @apply ml-1 opacity-90 transition;
   }
 }
 
