@@ -259,7 +259,7 @@ Post Content Typo
     @apply flex justify-center w-full text-xs not-italic mt-2;
   }
   .media-player {
-    @apply aspect-w-16 aspect-h-9 rounded-lg overflow-hidden;
+    @apply -mx-4 w-auto max-w-none md:-mx-6 lg:mx-auto aspect-w-16 aspect-h-9 lg:rounded-lg overflow-hidden;
   }
 }
 

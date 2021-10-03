@@ -89,7 +89,7 @@ Nav Panels
 
   .btn.btn-switch-lang,
   .btn.btn-switch-theme {
-    @apply bg-transparent border-0 px-2 w-auto;
+    @apply bg-transparent border-0 px-1 w-auto;
   }
 
   .btn.btn-switch-lang {
@@ -511,7 +511,7 @@ CTAs
 Media
 */
 .post-media {
-  @apply w-full max-h-56 lg:max-h-72 overflow-hidden md:rounded-lg mt-4;
+  @apply w-full max-h-56 lg:max-h-72 overflow-hidden lg:rounded-lg mt-4;
 }
 
 .post-media--img {
@@ -519,7 +519,7 @@ Media
 }
 
 .post-detail-media .post-media {
-  @apply -mx-4 md:mx-auto w-auto mt-0 mb-6 max-h-full;
+  @apply -mx-4 md:-mx-6 lg:mx-auto w-auto mt-0 mb-6 max-h-full;
 }
 
 /*
