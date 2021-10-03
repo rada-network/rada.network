@@ -3,6 +3,7 @@ import { Topbar } from "../Topbar";
 import { Navbar } from "../Navbar";
 
 import ThemeSwitch from "../ThemeSwitch"
+import Profile from "../Profile";
 
 import {LanguageSwitch} from "../LanguageSwitch";
 import Screen from "../utils/Responsive";
@@ -37,8 +38,11 @@ export const Layout =  ({children,meta}) => {
       <div className="pane-left">
         <Navbar />
         <div className="pane-left--bottom">
-          <LanguageSwitch />
-          <ThemeSwitch />
+          <Profile />
+          <div className="pane-left--bottom-section">
+            <LanguageSwitch />
+            <ThemeSwitch />
+          </div>
         </div>
       </div>
       </Screen>

@@ -64,7 +64,8 @@ export const IndexRightBar = observer(({intro}) => {
               <div className="page-back flex-shrink-0">
                 <a title="Back" className="btn" onClick={(e) => {handleBack(e)}}>
                   <span className="icon">
-                    <i className="fa-solid fa-chevron-left"></i>
+                    <i className="fa-solid fa-chevron-left md:hidden"></i>
+                    <i className="fa-solid fa-times hidden md:!block"></i>
                   </span>
                   <span className="btn--text sr-only">{t("back")}</span>
                 </a>
@@ -108,14 +109,13 @@ export const IndexRightBar = observer(({intro}) => {
 
           </div>
 
-          <Screen from="lg">
+          {/* <Screen from="lg">
             <div className="flex items-center space-x-2">
-              {/* <ThemeSwitch /> */}
               <div className="relative">
                 <Profile />
               </div>
             </div>
-          </Screen>
+          </Screen> */}
 
         </div>
 

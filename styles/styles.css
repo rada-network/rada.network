@@ -45,21 +45,71 @@ Nav Panels
 
 
 .pane-left--bottom {
-  @apply justify-between items-center p-2 space-y-2;
+  @apply justify-between items-center px-1 py-2;
+
   .btn {
-    @apply w-full justify-start flex-shrink-0;
+    @apply justify-start flex-shrink-0;
   }
-  .btn.btn-switch-lang {
-    @apply justify-between;
-  }
-  .btn .icon {
-    @apply w-px-16;
-  }
+
   .btn .btn--text {
     @apply text-xs;
   }
+
+  .btn.btn-login {
+    @apply bg-transparent border-0 max-h-16;
+    .icon {
+      @apply text-base;
+    }
+    .btn--text {
+      @apply whitespace-nowrap;
+    }
+  }
+
+  .dropdown-wrapper {
+    @apply w-full text-center;
+    .btn.btn-login {
+      @apply p-1 rounded-full max-h-16 hover:ring-2 hover:ring-primary-500;
+      .btn--text {
+        @apply hidden;
+      }
+      .avatar {
+        @apply w-px-40 h-px-40;
+      }
+    }
+  }
+
+  .dropdown {
+    bottom: 52px;
+    right: -90%;
+  }
 }
 
+.pane-left--bottom-section {
+  @apply flex justify-between border-t items-center pt-2 mt-2 mx-1;
+
+  .btn.btn-switch-lang,
+  .btn.btn-switch-theme {
+    @apply bg-transparent border-0 px-2 w-auto;
+  }
+
+  .btn.btn-switch-lang {
+    @apply justify-between;
+    .icon {
+    }
+    .btn--text {
+    }
+  }
+
+  .btn.btn-switch-theme {
+    .btn--text {
+      @apply hidden;
+    }
+  }
+
+}
+
+
+ 
 /* 
 Navbars on Mobile Tablet
 */
@@ -136,13 +186,13 @@ Main Panels
 
 /* Hide content toolbar on Tablet */
 .pane-content--sec--top {
-  @apply md:hidden lg:flex;
+  @apply hidden;
   @apply border-b border-gray-400 border-opacity-10;
 }
 
 /* Unhide content toolbar when Reading */
 .page-details .pane-content--sec--top {
-  @apply md:flex;
+  @apply flex;
 }
 
  
@@ -608,7 +658,7 @@ Uitilities
 }
 
 .disabled {
-  @apply opacity-50 pointer-events-none;
+  @apply opacity-20 pointer-events-none cursor-not-allowed;
 }
 
 .nav-item.disabled {
