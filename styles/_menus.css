@@ -2,7 +2,7 @@
 Dropdown
 ------------------------------- */
 .dropdown {
-  @apply z-50 flex flex-col mt-1;
+  @apply z-50 flex flex-col mt-1 text-left;
   @apply bg-white dark:bg-gray-800 rounded-md shadow;
   min-width: 12rem;
 }
@@ -37,8 +37,8 @@ Popper
 }
 
 .pane-left .popper {
-  top: -59px;
-  width: 111px;
+  top: -88px;
+  width: 112px;
 }
 
 .popper-item {

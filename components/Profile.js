@@ -63,7 +63,7 @@ const NotConnectedButton = observer(({}) => {
 	<div onClick={ openModal } className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
 
     <span className="icon">
-			<i class="fa-solid fa-user-circle text-base"></i>
+			<i class="fa-solid fa-user-circle"></i>
 		</span>
     <span className="btn--text">{t("sign in")}</span>
   </div>

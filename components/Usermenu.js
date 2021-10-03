@@ -28,7 +28,7 @@ export default function Usermenu({user}) {
     }
 
     return (
-      <Menu as="div" className="relative inline-block text-left">
+      <Menu as="div" className="dropdown-wrapper relative inline-block text-left">
 
         <Menu.Button>
           <Button />

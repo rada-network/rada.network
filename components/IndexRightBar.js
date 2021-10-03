@@ -108,14 +108,13 @@ export const IndexRightBar = observer(({intro}) => {
 
           </div>
 
-          <Screen from="lg">
+          {/* <Screen from="lg">
             <div className="flex items-center space-x-2">
-              {/* <ThemeSwitch /> */}
               <div className="relative">
                 <Profile />
               </div>
             </div>
-          </Screen>
+          </Screen> */}
 
         </div>
 
