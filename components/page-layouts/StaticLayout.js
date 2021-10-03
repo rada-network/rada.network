@@ -33,8 +33,10 @@ export const StaticLayout = observer(({children,meta}) => {
             <Navbar  />
             <div className="pane-left--bottom">
               <Profile />
-              <LanguageSwitch dataStore={dataStore} />
-              <ThemeSwitch />
+              <div className="pane-left--bottom-section">
+                <LanguageSwitch dataStore={dataStore} />
+                <ThemeSwitch />
+              </div>
             </div>
           </div>
         </Screen>
