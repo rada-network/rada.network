@@ -446,9 +446,13 @@ Title
 .post-title {
   @apply mb-2;
 }
+
 .post-title h1 {
+  .badges-tags {
+    @apply -mt-1;
+  }
   .badge-rada {
-    @apply relative -top-0.5 text-sm rounded-full;
+    @apply inline-block relative -top-1 text-sm rounded-full px-2 text-xs;
   }
   .badge-coin {
     @apply ml-2;

@@ -149,7 +149,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
       {/* Post Header */}
       <div className="section-header post-header">
         <div className="post-title">
-          <h1 className="inline">
+          <h1>
             <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
               <span className="post-title--text">
                 {item.title}
@@ -256,10 +256,10 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
       {/* Post Header */}
       <div className="section-header post-header">
         <div className="post-title">
-          <h1 className="inline">
+          <h1>
             <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
               {isRada ?
-              <span className="badge badge-rada mr-2">RADA</span>
+              <div className="badges-tags"><span className="badge badge-rada mr-2">RADA</span></div>
               : ""}
               <span className="post-title--text">
                 {title}
@@ -380,7 +380,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
       {/* Post Header */}
       <div className="section-header post-header">
         <div className="post-title">
-          <h1 className="inline">
+          <h1>
             <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
               <span className="post-title--text">
                 {item.title}
