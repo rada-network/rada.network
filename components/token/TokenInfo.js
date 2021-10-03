@@ -129,7 +129,7 @@ const TokenInfo = ({tokenId, subTabName})=>{
                   </div>
                   <div className="mb-2">
                     <strong href="#" className="">
-                    {numberFormatter(usdCoinInfo?.AggregatedData?.SUPPLY|| 0,{
+                    {numberFormatter(usdCoinInfo?.AggregatedData?.SUPPLY|| parseInt(tokenData?.total_supply?.replaceAll(",","").replaceAll(".","")) || 0,{
                       notation: 'compact',
                       minimumFractionDigits: 1
                     })}
@@ -147,17 +147,17 @@ const TokenInfo = ({tokenId, subTabName})=>{
             <div className="flex w-full">
 
               <div className="text-sm w-full">
-                {tokenData?.link?.find(item => item.group === 'homepage') &&
+                {tokenData?.link?.find(item => (item.group !== null && item.group.toLowerCase() === 'homepage')) &&
                 <div className="flex flex-wrap justify-between items-center">
                   <div className="w-full lg:w-auto mb-2">
                     <span className="uppercase opacity-50 text-2xs lg:text-xs">Website</span>
                   </div>
                   <div className="space-x-2 mb-2">
-                    <a href={tokenData?.link?.find(item => item.group === 'homepage')?.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
+                    <a href={tokenData?.link?.find(item => (item.group !== null && item.group.toLowerCase() === 'homepage'))?.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                       <span className="icon">
                         <i class="fa-regular fa-globe"></i>
                       </span>
-                      <span className="btn--text">{tokenData?.link?.find(item => item.group === 'homepage')?.url}</span>
+                      <span className="btn--text">{tokenData?.link?.find(item => (item.group !== null && item.group.toLowerCase() === 'homepage'))?.url}</span>
                     </a>
                   </div>
                 </div>
