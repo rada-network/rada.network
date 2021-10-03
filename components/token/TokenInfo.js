@@ -36,14 +36,14 @@ const TokenInfo = ({token, tabName})=>{
 
           {/* Post Header */}
           <TokenInfoHeader tokenData={tokenData} token={token} />
-
-          <div className="grid grid-cols-1 md:grid-cols-2">
+          
+          <div className="flex flex-col">
 
             <div className="mt-4">
-              <div className="flex flex-wrap items-center w-full">
+              <div className="flex flex-wrap xl:flex-nowrap items-center w-full">
 
                 {/* Pricing */}
-                <div className="flex flex-col flex-shrink-0 flex-0 mb-4 w-full">
+                <div className="flex flex-col flex-shrink-0 flex-0 mb-4">
                   <div className="pricing">
                     <span className="pricing-value">
                       {numberFormatter(usdCoinInfo?.AggregatedData?.PRICE || 0,{
@@ -72,9 +72,9 @@ const TokenInfo = ({token, tabName})=>{
                 {/* END: Pricing */}
 
                 {/* Pricing Info */}
-                <div className="grid grid-cols-2 gap-2 w-full">
+                <div className="flex flex-wrap md:flex-nowrap w-full lg:ml-6 lg:space-x-2 lg:divide-x divide-gray-400 divide-opacity-20">
 
-                  <div className="w-full">
+                  <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs lg:text-xs">Market Cap</span>
                     </div>
@@ -90,7 +90,7 @@ const TokenInfo = ({token, tabName})=>{
                     </div>
                   </div>
 
-                  <div className="w-full">
+                  <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs lg:text-xs">Volume 24h</span>
                     </div>
@@ -106,7 +106,7 @@ const TokenInfo = ({token, tabName})=>{
                     </div>
                   </div>
 
-                  <div className="w-full">
+                  <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs lg:text-xs" title="Circulating Supply">C. Supply</span>
                     </div>
@@ -120,7 +120,7 @@ const TokenInfo = ({token, tabName})=>{
                     </div>
                   </div>
 
-                  <div className="w-full">
+                  <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs lg:text-xs">Total Supply</span>
                     </div>
@@ -251,7 +251,7 @@ const TokenInfo = ({token, tabName})=>{
           {/* General Info */}
           <div className="flex flex-wrap lg:justify-evenly lg:flex-nowrap w-full lg:space-x-2 lg:divide-x divide-gray-400 divide-opacity-20">
 
-            <div className="flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
+            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
                 <span className="uppercase opacity-50 text-2xs lg:text-xs">
                   {t('Location')}
@@ -264,7 +264,7 @@ const TokenInfo = ({token, tabName})=>{
               </div>
             </div>
 
-            <div className="flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
+            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
                 <span className="uppercase opacity-50 text-2xs lg:text-xs">
                   {t('Founded')}
@@ -277,7 +277,7 @@ const TokenInfo = ({token, tabName})=>{
               </div>
             </div>
 
-            <div className="flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
+            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
                 <span className="uppercase opacity-50 text-2xs lg:text-xs">
                   {t('Employees')}
@@ -290,7 +290,7 @@ const TokenInfo = ({token, tabName})=>{
               </div>
             </div>
 
-            <div className="flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
+            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
               <div className="w-full lg:w-auto">
                 <span
                   className="uppercase opacity-50 text-2xs lg:text-xs"
@@ -306,7 +306,7 @@ const TokenInfo = ({token, tabName})=>{
               </div>
             </div>
 
-            <div className="flex-0 flex-srink-0 lg:w-full">
+            <div className="lg:text-center flex-0 flex-srink-0 lg:w-full">
               <div className="w-full lg:w-auto">
                 <span className="uppercase opacity-50 text-2xs lg:text-xs">
                   {t('Headquarter')}
@@ -341,7 +341,7 @@ const TokenInfo = ({token, tabName})=>{
       <div>
       <div className="w-full mt-8 lg:mt-16">
 
-      <h2 className="text-xl lg:text-2xl font-semibold">
+      <h2 className="lg:text-center text-xl lg:text-2xl font-semibold">
       {t("Who is building Axie Infinity",{"provider" : tokenData.name})}
       </h2>
       {tokenData?.team?.author ? 
@@ -411,7 +411,7 @@ const TokenInfo = ({token, tabName})=>{
       {/* Post Content - Partners */}
       <div className="w-full mt-10 lg:mt-16">
 
-        <h2 className="text-xl lg:text-2xl font-semibold">
+        <h2 className="lg:text-center text-xl lg:text-2xl font-semibold">
           {t("Axie Infinity Partners",{"provider" : tokenData.name})}
         </h2>
         {tokenData?.partner?.length > 1 ?
