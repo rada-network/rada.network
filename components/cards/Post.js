@@ -218,7 +218,7 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
               {dataStore.type !== "rada"  && dataStore.type !== "projects" ? 
               <span className="badge badge-rada">RADA</span> 
               : ""}
-              <span className="text-color-title mr-2">{title}</span>
+              <span className="text-color-title">{title}</span>
             </div>
           </div>
           <div className={`card-badges`}>
