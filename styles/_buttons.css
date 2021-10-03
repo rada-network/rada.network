@@ -243,7 +243,7 @@ Theme / Language Button
     @apply opacity-100;
   }
   .fa-sun {
-    @apply opacity-20;
+    @apply opacity-20 text-white;
   }
 }
 
