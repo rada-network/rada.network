@@ -268,10 +268,13 @@ Post Content Typo
 }
 
 .post-footer--rada .btn-default {
-  @apply w-px-32 h-px-32 lg:w-auto lg:h-auto px-2 lg:px-3;
+  @apply w-px-40 h-px-40 lg:w-auto lg:h-auto px-2 lg:px-3;
   @apply border-transparent dark:border-transparent hover:border-transparent dark:hover:border-transparent;
   @apply opacity-100 hover:opacity-80;
   .btn--text {
     @apply hidden lg:block;
+  }
+  .icon {
+    @apply text-base;
   }
 }

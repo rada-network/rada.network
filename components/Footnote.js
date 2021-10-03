@@ -4,7 +4,7 @@ const Footnote = ({}) => {
     <div className="post-footer post-footer--rada">
 
     <div className="flex flex-col">
-      <div className="flex items-center !mb-1">
+      <div className="flex lg:items-center !mb-1">
         <img className="w-5 lg:w-7 inline-block !ml-0 !mr-3" src="https://cdn.rada.network/images/rada.svg" alt="RADA NETWORK" />
         <strong className="lg:text-lg font-bold">
           RADA
