@@ -599,7 +599,7 @@ Pricing & Market
 
 @media (max-width: 767px) {
   .list-partners div {
-    width: 100%;
+    width: calc(50% - 1rem);
   }
 }
 

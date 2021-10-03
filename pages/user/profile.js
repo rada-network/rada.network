@@ -264,8 +264,8 @@ const ProfileAccessDenied = ({}) => {
     <>
       <StaticLayout meta={meta}>
         <div className="page-section text-center">
-          <div className="mt-4">
-            <h1 className="text-2xl">403 forbidden</h1>
+          <div className="my-8">
+            <h1 className="text-3xl">403 forbidden</h1>
           </div>
           <Profile />
         </div>

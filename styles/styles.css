@@ -433,6 +433,15 @@ Coins
   animation: fadein 600ms linear;
 }
 
+.section-coininfo--general {
+  .btn {
+    @apply mr-2 mb-2;
+  }
+  .btn:last-child {
+    @apply mr-0;
+  }
+}
+
 /* 
 Post Details
 --------------- */
@@ -460,7 +469,7 @@ Title
     @apply relative md:-top-2 mb-2 md:mb-0 flex items-start;
   }
   .badge-rada {
-    @apply inline-block rounded-full px-2 text-xs;
+    @apply inline-block rounded-full px-2 text-sm;
   }
   .badge-coin {
     @apply ml-2;
