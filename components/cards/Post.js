@@ -123,8 +123,9 @@ const CardPostNormal = observer(({title, mediaUri, type, source, commentCount, v
               <span className="text-color-title" dangerouslySetInnerHTML={{__html: title}}></span>
             </span>
           </div>
-
-          <PostTokenHolder tokens={item.tokens} />
+          <div className={`card-badges`}>
+            <PostTokenHolder tokens={item.tokens} />
+          </div>
         </div>
 
         <div className="metadata-wrapper justify-between">
@@ -220,8 +221,9 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
               <span className="text-color-title mr-2">{title}</span>
             </div>
           </div>
-
-          <PostTokenHolder tokens={item.tokens} />
+          <div className={`card-badges`}>
+            <PostTokenHolder tokens={item.tokens} />
+          </div>
         </div>
         
         <div className="metadata-wrapper justify-between mt-1">
@@ -266,11 +268,9 @@ const PostTokenHolder = function({tokens}){
   return (
     <>
       {tokens.map(item => (
-        <div className={`card-badges`}>
-          <a href="/">
-            <span className="badge badge-coin">{item.symbol}</span>
-          </a>
-        </div>
+        <a href="/">
+          <span className="badge badge-coin">{item.symbol}</span>
+        </a>
       ))}
     </>
   )
