@@ -62,7 +62,7 @@ export default function UserProfile (props) {
     return item.provider === "twitter"
   })
   const meta = {
-    "title" : user?.name + " profile"
+    "title" : (user?.name ? user?.name  : "User").replace(/(^|\s)\S/g, letter => letter.toUpperCase()) + " Profile"
   }
 
   const handleConnectWallet = ()=>{

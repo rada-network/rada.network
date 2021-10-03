@@ -398,15 +398,15 @@ const TokenInfo = ({tokenId, subTabName})=>{
               </div>
               <div className="card-body-footer">
                 <div className="cta-wrapper about-social">
-                  <a className="btn" href={item.linkedin} rel="nofollow" target="_blank">
+                  {item.linkedin && <a className="btn" href={item.linkedin} rel="nofollow" target="_blank">
                     <i class="fa-brands fa-linkedin-in"></i>
-                  </a>
-                  <a className="btn" href={item.twitter} rel="nofollow" target="_blank">
-                    <i class="fa-brands fa-twitter"></i>
-                  </a>
-                  <a className="btn" href={item.facebook} rel="nofollow" target="_blank">
-                    <i class="fa-brands fa-facebook-f"></i>
-                  </a>
+                  </a>}
+                  {item.twitter && <a className="btn" href={item.twitter} rel="nofollow" target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>}
+                  {item.facebook && <a className="btn" href={item.facebook} rel="nofollow" target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>}
                 </div>
               </div>
             </div>
