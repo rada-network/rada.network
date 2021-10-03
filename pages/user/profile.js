@@ -18,6 +18,7 @@ import { StaticLayout } from '../../components/page-layouts/StaticLayout';
 import { UserDistribution } from '../../components/user/UserDistribution';
 import { usePageStore } from '../../lib/usePageStore';
 import {getSession} from "next-auth/client"
+import {getPage} from "../../data/query/page";
 
 
 export default function UserProfile (props) {
@@ -275,10 +276,13 @@ const ProfileAccessDenied = ({}) => {
 };
 
 export async function getStaticProps(context) {
+  const info = await getPage({slug: 'profile-info', lang: context.locale})
+  
   return {
     props: {
       ...await serverSideTranslations(context.locale, ['common', 'navbar']),
-      lang : context.locale
+      lang : context.locale,
+      info
     }
   }
 }

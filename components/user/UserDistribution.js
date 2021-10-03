@@ -1,7 +1,19 @@
 export const UserDistribution = ({props}) => { 
+  if (!props.info) return ''
   // will so later
-  return ''
-  
+  let content = props.info.content,title = props.info.title
+  return (
+    <div className="card card-pagecontent">
+        <div className="card-header">
+          <span className="card-title">
+            {title}
+          </span>
+        </div>
+        <div className="card-body" dangerouslySetInnerHTML={{__html: content}}>
+        </div>
+    </div>      
+  )
+
   return (
     <>
     {/* Distribution */}
