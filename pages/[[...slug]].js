@@ -71,6 +71,9 @@ const getDataPostDetail = async ({query,id,lang}) => {
   let type = "all"
   if (newsDetail.data.itemById.news !== null){
     type = "news"
+    if (newsDetail.data.itemById.news.category !== null) {
+      type = newsDetail.data.itemById.news.category.slug
+    }
   }
   else if (newsDetail.data.itemById.video !== null){
     type = "media"
@@ -88,6 +91,7 @@ const getDataPostDetail = async ({query,id,lang}) => {
     type : type
   })
   query = query || ""
+  console.log(type)
   return {
     query : query,
     lang : lang,
@@ -119,7 +123,12 @@ export default observer(function(props) {
     dataStore.tweets = props.itemFeed
     let item = {}
     if (props.item.news !== null){
-      detailStore.type = "news"
+      if (props.item.news.category !== null) {
+        detailStore.type = props.item.news.category.slug
+      }
+      else{
+        detailStore.type = "news"
+      }
       item = Object.assign({},props.item.news);
     }
     else if (props.item.video !== null){

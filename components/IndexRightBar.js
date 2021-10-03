@@ -84,6 +84,8 @@ export const IndexRightBar = observer(({intro}) => {
 
                 <a href="#" className={`tab-item ${tabName === 'article' && !_.isEmpty(detailStore.data) && detailStore.data.tokens && detailStore.data.tokens.length ?'tab-item--active':'' }`} onClick={()=>setTabName('article')}>
                   {detailStore.type === 'news' && t("article")}
+                  {detailStore.type === 'projects' && t("Projects")}
+                  {detailStore.type === 'rada' && t("Rader")}
                   {detailStore.type === 'video' && t("Video")}
                   {detailStore.type === 'tweet' && t("Tweet")}
                 </a>
@@ -119,26 +121,32 @@ export const IndexRightBar = observer(({intro}) => {
 
 
         </div>
+        {detailStore.data.id && detailStore.data.tokens.map(item => { 
+          return (
+            <>
+            {tabName === item.id &&
+            <div className="tabbar-sub page-subtabs">
+              <div className="tabbar-sub--main">
 
-        {tabName !== 'article' &&
-        <div className="tabbar-sub page-subtabs">
-          <div className="tabbar-sub--main">
+                <a href="#" className={`tab-item ${subTabName === 'information' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('information')}>
+                  Overview
+                </a>
 
-            <a href="#" className={`tab-item ${subTabName === 'information' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('information')}>
-              Overview
-            </a>
+                <a href="#" className={`tab-item ${subTabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('team')}>
+                  {t("team & backers")}
+                </a>
 
-            <a href="#" className={`tab-item ${subTabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('team')}>
-              {t("team & backers")}
-            </a>
+                <a href="#" className={`tab-item ${subTabName === 'more-article' ?'tab-item--active':'' } disabled`} onClick={()=>setSubTabName('more-article')}>
+                  More Articles
+                </a>
 
-            <a href="#" className={`tab-item ${subTabName === 'more-article' ?'tab-item--active':'' } disabled`} onClick={()=>setSubTabName('more-article')}>
-              More Articles
-            </a>
-
-          </div>
-        </div>
-        }
+              </div>
+            </div>
+            }
+            </>
+          )
+        })}
+        
 
         {detailStore.data.id &&
           <PostListDetail tabName={tabName} subTabName={subTabName} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
