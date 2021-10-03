@@ -64,7 +64,8 @@ export const IndexRightBar = observer(({intro}) => {
               <div className="page-back flex-shrink-0">
                 <a title="Back" className="btn" onClick={(e) => {handleBack(e)}}>
                   <span className="icon">
-                    <i className="fa-solid fa-chevron-left"></i>
+                    <i className="fa-solid fa-chevron-left md:hidden"></i>
+                    <i className="fa-solid fa-times hidden md:!block"></i>
                   </span>
                   <span className="btn--text sr-only">{t("back")}</span>
                 </a>
