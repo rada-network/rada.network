@@ -156,7 +156,7 @@ Default Button
 Vote Buttons
 */
 .btn-post-vote {
-  @apply px-2 py-0.5 justify-center;
+  @apply px-2 py-1 justify-center;
   @apply border border-gray-400 border-opacity-40;
   @apply hover:border-green-500 hover:bg-green-50 hover:text-green-500;
   @apply dark:hover:bg-transparent dark:hover:text-white;

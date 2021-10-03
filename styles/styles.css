@@ -444,15 +444,15 @@ Post Details
 Title 
 */
 .post-title {
-  @apply mb-2;
+  @apply mb-1;
 }
 
 .post-title h1 {
   .badges-tags {
-    @apply -mt-1;
+    @apply relative md:-top-2 mb-1 md:mb-0 flex items-start;
   }
   .badge-rada {
-    @apply inline-block relative -top-1 text-sm rounded-full px-2 text-xs;
+    @apply inline-block rounded-full px-2 text-xs;
   }
   .badge-coin {
     @apply ml-2;
@@ -488,7 +488,6 @@ Metadata
 }
 
 .post-header .metadata {
-  @apply mt-1 mb-1;
 }
 
 .post-header .metadata-source .metadata-value {
