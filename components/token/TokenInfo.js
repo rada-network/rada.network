@@ -152,7 +152,7 @@ const TokenInfo = ({tokenId, subTabName})=>{
                   <div className="w-full lg:w-auto mb-2">
                     <span className="uppercase opacity-50 text-2xs lg:text-xs">Website</span>
                   </div>
-                  <div className="space-x-2 mb-2">
+                  <div className="">
                     <a href={tokenData?.link?.find(item => item.group === 'homepage')?.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                       <span className="icon">
                         <i class="fa-regular fa-globe"></i>
@@ -167,7 +167,7 @@ const TokenInfo = ({tokenId, subTabName})=>{
                   <div className="w-full lg:w-auto mb-2">
                     <span className="uppercase opacity-50 text-2xs lg:text-xs">Community</span>
                   </div>
-                  <div className="space-x-2 mb-2">
+                  <div className="">
                     {tokenData?.link?.map(item => item.group === 'community' && (
                     <a key={item.id} href={item.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                       <span className="icon">
@@ -184,7 +184,7 @@ const TokenInfo = ({tokenId, subTabName})=>{
                   <div className="w-full lg:w-auto mb-2">
                     <span className="uppercase opacity-50 text-2xs lg:text-xs">Explorer</span>
                   </div>
-                  <div className="space-x-2 mb-2">
+                  <div className="">
                     {tokenData?.link?.map((item, index) => item.group === 'explorers' && (
                       <a key={item.id} href={item.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                         <span className="btn--text">{item.name}</span>
@@ -198,7 +198,7 @@ const TokenInfo = ({tokenId, subTabName})=>{
                   <div className="w-full lg:w-auto mb-2">
                     <span className="uppercase opacity-50 text-2xs lg:text-xs">Contract</span>
                   </div>
-                  <div className="space-x-2 mb-2">
+                  <div className="">
                     <a href="#" className="btn btn-default btn-default-sm">
                       <span className="icon">
                         <i class="cf cf-eth"></i>
