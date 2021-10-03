@@ -35,24 +35,9 @@ export const Navbar = observer(({}) => {
         {/* Main Nav */}
         <div className={`navbar-main`} >
 
-          <NavItem href={"/" + dataStore.lang + "/explore/all"} type={"all"}>
-            <span className="icon"><i className="fad fa-rss" /></span>
-            <span className="nav-item--text">{t("Explore")}</span>
-          </NavItem>
-
           <NavItem  href={"/" + dataStore.lang + "/explore/projects"} type={"projects"}>
             <span className="icon"><i className="fad fa-coins" /></span>
             <span className="nav-item--text">{t("Projects")}</span>
-          </NavItem>
-
-          <NavItem   href={"/" + dataStore.lang + "/explore/news"} type={"news"}>
-            <span className="icon"><i className="fad fa-newspaper" /></span>
-            <span className="nav-item--text">{t("News")}</span>
-          </NavItem>
-
-          <NavItem  href={"/" + dataStore.lang + "/explore/video"}  type={"video"}>
-            <span className="icon"><i className="fad fa-icons" /></span>
-            <span className="nav-item--text">{t("Video")}</span>
           </NavItem>
 
           <NavItem   href={"/" + dataStore.lang + "/explore/rada"} type={"rada"}>
@@ -71,6 +56,22 @@ export const Navbar = observer(({}) => {
             <span className="nav-item--text">{t("Raders")}</span>
           </NavItem>
 
+
+          <NavItem   href={"/" + dataStore.lang + "/explore/news"} type={"news"}>
+            <span className="icon"><i className="fad fa-newspaper" /></span>
+            <span className="nav-item--text">{t("News")}</span>
+          </NavItem>
+
+          <NavItem  href={"/" + dataStore.lang + "/explore/video"}  type={"video"}>
+            <span className="icon"><i className="fad fa-icons" /></span>
+            <span className="nav-item--text">{t("Video")}</span>
+          </NavItem>
+
+          <NavItem href={"/" + dataStore.lang + "/explore/all"} type={"all"}>
+            <span className="icon"><i className="fad fa-rss" /></span>
+            <span className="nav-item--text">{t("Explore")}</span>
+          </NavItem>
+          
           {/* <NavItem  href={"/" + dataStore.lang + "/explore/social"} type={"social"} className="disabled">
             <span className="icon"><i className="fad fa-fire-alt" /></span>
             <span className="nav-item--text">{t("Signals")}</span>
