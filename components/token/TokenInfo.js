@@ -35,9 +35,9 @@ const TokenInfo = ({token, tabName})=>{
         <div className="grid grid-cols-1">
 
           {/* Post Header */}
+          <TokenInfoHeader tokenData={tokenData} token={token} />
+          
           <div className="flex flex-col">
-
-            <TokenInfoHeader tokenData={tokenData} token={token} />
 
             <div className="mt-4">
               <div className="flex flex-wrap xl:flex-nowrap items-center w-full">
@@ -78,7 +78,7 @@ const TokenInfo = ({token, tabName})=>{
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs lg:text-xs">Market Cap</span>
                     </div>
-                    <div className="mb-2">
+                    <div className="">
                       <strong href="#" className="">
                       {numberFormatter(usdCoinInfo?.AggregatedData?.MKTCAP || 0,{
                         style: 'currency',
@@ -94,7 +94,7 @@ const TokenInfo = ({token, tabName})=>{
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs lg:text-xs">Volume 24h</span>
                     </div>
-                    <div className="mb-2">
+                    <div className="">
                       <strong href="#" className="">
                         {numberFormatter(usdCoinInfo?.AggregatedData?.VOLUME24HOUR|| 0,{
                           style: 'currency',
@@ -110,7 +110,7 @@ const TokenInfo = ({token, tabName})=>{
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs lg:text-xs" title="Circulating Supply">C. Supply</span>
                     </div>
-                    <div className="mb-2">
+                    <div className="">
                       <strong href="#" className="">
                       {numberFormatter(usdCoinInfo?.AggregatedData?.CIRCULATINGSUPPLY|| 0,{
                         notation: 'compact',
@@ -124,7 +124,7 @@ const TokenInfo = ({token, tabName})=>{
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs lg:text-xs">Total Supply</span>
                     </div>
-                    <div className="mb-2">
+                    <div className="">
                       <strong href="#" className="">
                       {numberFormatter(usdCoinInfo?.AggregatedData?.SUPPLY|| 0,{
                         notation: 'compact',
@@ -257,7 +257,7 @@ const TokenInfo = ({token, tabName})=>{
                   {t('Location')}
                 </span>
               </div>
-              <div className="mb-2">
+              <div className="">
                 <strong className="">
                 {tokenData?.team?.location ? tokenData?.team?.location : "N/A"}
                 </strong>
@@ -270,7 +270,7 @@ const TokenInfo = ({token, tabName})=>{
                   {t('Founded')}
                 </span>
               </div>
-              <div className="mb-2">
+              <div className="">
                 <strong className="">
                   {tokenData?.team?.founded ? tokenData?.team?.founded : "N/A"}
                 </strong>
@@ -283,7 +283,7 @@ const TokenInfo = ({token, tabName})=>{
                   {t('Employees')}
                 </span>
               </div>
-              <div className="mb-2">
+              <div className="">
                 <strong className="">
                 {tokenData?.team?.employees ? tokenData?.team?.employees : "N/A"}
                 </strong>
@@ -299,7 +299,7 @@ const TokenInfo = ({token, tabName})=>{
                   {t('Last Funding')}
                 </span>
               </div>
-              <div className="mb-2">
+              <div className="">
                 <strong className="">
                 {tokenData?.team?.last_funding ? tokenData?.team?.last_funding : "N/A"}
                 </strong>
@@ -312,7 +312,7 @@ const TokenInfo = ({token, tabName})=>{
                   {t('Headquarter')}
                 </span>
               </div>
-              <div className="mb-2">
+              <div className="">
                 {tokenData?.team?.headquarter ? 
                 <a
                   href={tokenData?.team?.headquarter_url}
