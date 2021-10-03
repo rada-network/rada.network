@@ -68,7 +68,7 @@ Nav Panels
   .dropdown-wrapper {
     @apply w-full text-center;
     .btn.btn-login {
-      @apply p-1 rounded-full max-h-16 hover:ring-2 hover:ring-primary-500;
+      @apply p-1 rounded-full max-h-16 hover:ring-2 focus:ring-2 hover:ring-primary-500 focus:ring-primary-500;
       .btn--text {
         @apply hidden;
       }
@@ -446,9 +446,13 @@ Title
 .post-title {
   @apply mb-2;
 }
+
 .post-title h1 {
+  .badges-tags {
+    @apply -mt-1;
+  }
   .badge-rada {
-    @apply relative -top-0.5 text-sm rounded-full;
+    @apply inline-block relative -top-1 text-sm rounded-full px-2 text-xs;
   }
   .badge-coin {
     @apply ml-2;

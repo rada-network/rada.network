@@ -59,9 +59,9 @@ export const PostListDetail = observer(({tabName, subTabName}) => {
     window.removeEventListener('resize', handleResize)
     window.addEventListener('resize', handleResize)
     scrollRef.current.scrollTop = 0; // For Safari
-    if (detailStore.type === "news"){
+    if (detailStore.type === "news" || detailStore.type === "rada" || detailStore.type === "projects"){
       getItemById({id : item.item.id}).then(function (res) {
-        if (res.data.itemById.news !== null){
+        if (res.data.itemById.news !== null && detailStore.data.id && detailStore.data.id === res.data.itemById.news.id){
           detailStore.data.content = res.data.itemById.news.content
           detailStore.data.content_en = res.data.itemById.news.content_en
           detailStore.data.contentDisplay = res.data.itemById.news.contentDisplay
@@ -110,7 +110,7 @@ export const PostListDetail = observer(({tabName, subTabName}) => {
 
 
           {/* News Post Detail Content */}
-          {detailStore.type === "news" ?
+          {detailStore.type === "news" || detailStore.type === "rada" || detailStore.type === "projects" ?
             (tabName === 'article' ?
               <NewsDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
               : <TokenInfo tokenId={tabName} subTabName={subTabName} />)
@@ -149,7 +149,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
       {/* Post Header */}
       <div className="section-header post-header">
         <div className="post-title">
-          <h1 className="inline">
+          <h1>
             <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
               <span className="post-title--text">
                 {item.title}
@@ -256,10 +256,10 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
       {/* Post Header */}
       <div className="section-header post-header">
         <div className="post-title">
-          <h1 className="inline">
+          <h1>
             <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
               {isRada ?
-              <span className="badge badge-rada mr-2">RADA</span>
+              <div className="badges-tags"><span className="badge badge-rada mr-2">RADA</span></div>
               : ""}
               <span className="post-title--text">
                 {title}
@@ -380,7 +380,7 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
       {/* Post Header */}
       <div className="section-header post-header">
         <div className="post-title">
-          <h1 className="inline">
+          <h1>
             <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
               <span className="post-title--text">
                 {item.title}

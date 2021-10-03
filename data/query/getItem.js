@@ -91,6 +91,9 @@ const itemFeedGql = gql`
                     logo
                 }
                 is_footnote
+                category { 
+                    slug
+                }
             }
             video{
                 id
@@ -126,6 +129,9 @@ const itemFeedGql = gql`
                     logo
                 }
                 is_footnote
+                category { 
+                    slug
+                }
             }
             media{
                 id
@@ -228,6 +234,9 @@ const itemByIdGql = gql`
                     logo
                 }
                 is_footnote
+                category { 
+                    slug
+                }
             }
             video{
                 id
@@ -264,6 +273,9 @@ const itemByIdGql = gql`
                     logo
                 }
                 is_footnote
+                category { 
+                    slug
+                }
             }
             media{
                 id
