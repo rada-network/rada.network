@@ -28,6 +28,7 @@ export const IndexRightBar = observer(({intro}) => {
   //   }
   // }, [scrollBox2]);
   const [tabName, setTabName] = useState('article')
+  const [subTabName, setSubTabName] = useState('information')
   const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
   const router = useRouter()
   const store = useStore()
@@ -63,8 +64,7 @@ export const IndexRightBar = observer(({intro}) => {
               <div className="page-back flex-shrink-0">
                 <a title="Back" className="btn" onClick={(e) => {handleBack(e)}}>
                   <span className="icon">
-                    <i className="fa-solid fa-chevron-left md:hidden"></i>
-                    <i className="fa-solid fa-times hidden md:!block"></i>
+                    <i className="fa-solid fa-chevron-left"></i>
                   </span>
                   <span className="btn--text sr-only">{t("back")}</span>
                 </a>
@@ -80,40 +80,22 @@ export const IndexRightBar = observer(({intro}) => {
             <div className="tabbar page-tabs">
               <div className="tabbar--main">
 
-                <a href="#" className={`tab-item ${tabName === 'article' && !_.isEmpty(detailStore.data) && detailStore.data.token && detailStore.data.token !== null ?'tab-item--active':'' }`} onClick={()=>setTabName('article')}>
+                <a href="#" className={`tab-item ${tabName === 'article' && !_.isEmpty(detailStore.data) && detailStore.data.tokens && detailStore.data.tokens.length ?'tab-item--active':'' }`} onClick={()=>setTabName('article')}>
                   {detailStore.type === 'news' && t("article")}
                   {detailStore.type === 'video' && t("Video")}
                   {detailStore.type === 'tweet' && t("Tweet")}
                 </a>
 
-                {!_.isEmpty(detailStore.data) && detailStore.data.token && detailStore.data.token !== null ?
+                {!_.isEmpty(detailStore.data) && detailStore.data.tokens && detailStore.data.tokens.length ?
                 <>
 
                 <span className="tab-item--divider" />
 
-                  <a href="#" className={`tab-item ${tabName === 'axs' ?'tab-item--active':'' }`} onClick={()=>setTabName('axs')}>
-                    {detailStore.data.token.symbol}
-                  </a>
-
-                  {/* HieuNN: Examples of Token Lists */}
-
-                  <a href="#" className={`tab-item ${tabName === 'axs' ?'tab-item--active':'' }`} onClick={()=>setTabName('axs')}>
-                    ADA
-                  </a>
-
-                  <a href="#" className={`tab-item ${tabName === 'axs' ?'tab-item--active':'' }`} onClick={()=>setTabName('axs')}>
-                    BNB
-                  </a>
-
-                  <a href="#" className={`tab-item ${tabName === 'axs' ?'tab-item--active':'' }`} onClick={()=>setTabName('axs')}>
-                    DOT
-                  </a>
-
-                {/* <Link href={`/tokens/` + detailStore.data.token.symbol + "/events"}>
-                  <a href="#" className="tab-item">
-                  {t("events")}
-                  </a>
-                </Link> */}
+                  {detailStore.data.tokens?.map(token => (
+                    <a href="#" className={`tab-item ${tabName === token.id ?'tab-item--active':'' }`} onClick={()=>setTabName(token.id)}>
+                      {token.symbol}
+                    </a>
+                  ))}
 
                 </>
                 :""
@@ -137,27 +119,28 @@ export const IndexRightBar = observer(({intro}) => {
 
         </div>
 
+        {tabName !== 'article' &&
         <div className="tabbar-sub page-subtabs">
           <div className="tabbar-sub--main">
 
-            <a href="#" className={`tab-item tab-item--active`} onClick={()=>setTabName('team')}>
+            <a href="#" className={`tab-item ${subTabName === 'information' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('information')}>
               Information
             </a>
 
-            <a href="#" className={`tab-item ${tabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setTabName('team')}>
+            <a href="#" className={`tab-item ${subTabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('team')}>
               {t("team & backers")}
             </a>
 
-            <a href="#" className={`tab-item ${tabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setTabName('team')}>
+            <a href="#" className={`tab-item ${subTabName === 'more-article' ?'tab-item--active':'' } disabled`} onClick={()=>setSubTabName('more-article')}>
               More Articles
             </a>
 
           </div>
         </div>
-
+        }
 
         {!_.isEmpty(detailStore.data) &&
-          <PostListDetail tabName={tabName} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
+          <PostListDetail tabName={tabName} subTabName={subTabName} detailStore={detailStore} dataStore={dataStore} voteStore={voteStore} />
         }
         {(!detailStore.data.id) &&
         <div className={`pane-content--sec--main scrollbar`}>
