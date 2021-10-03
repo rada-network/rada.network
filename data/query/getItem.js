@@ -43,6 +43,12 @@ const itemFeedGql = gql`
                     name
                     symbol
                 }
+                tokens {
+                    id
+                    name
+                    symbol
+                    slug
+                }
             }
             news{
                 id
@@ -74,13 +80,13 @@ const itemFeedGql = gql`
                     name
                     symbol
                 }
-                is_footnote
-                tokens{
+                tokens {
                     id
                     name
-                    slug
                     symbol
+                    slug
                 }
+                is_footnote
             }
             video{
                 id
@@ -107,13 +113,13 @@ const itemFeedGql = gql`
                     name
                     symbol
                 }
-                is_footnote
-                tokens{
+                tokens {
                     id
                     name
-                    slug
                     symbol
+                    slug
                 }
+                is_footnote
             }
             media{
                 id
@@ -165,6 +171,12 @@ const itemByIdGql = gql`
                     name
                     symbol
                 }
+                tokens {
+                    id
+                    name
+                    symbol
+                    slug
+                }
             }
             news{
                 id
@@ -201,13 +213,13 @@ const itemByIdGql = gql`
                     symbol
                     slug
                 }
-                is_footnote
-                tokens{
+                tokens {
                     id
                     name
-                    slug
                     symbol
+                    slug
                 }
+                is_footnote
             }
             video{
                 id
@@ -235,13 +247,13 @@ const itemByIdGql = gql`
                     symbol
                     slug
                 }
-                is_footnote
-                tokens{
+                tokens {
                     id
                     name
-                    slug
                     symbol
+                    slug
                 }
+                is_footnote
             }
             media{
                 id

@@ -18,24 +18,17 @@ import PostNotice from "../PostNotice";
 import PostNoticeVideo from "../PostNoticeVideo";
 
 import { usePageStore } from "../../lib/usePageStore";
-import _ from "lodash";
 
-export const PostListDetail = observer(({tabName}) => {
+export const PostListDetail = observer(({tabName, subTabName}) => {
   const {detailStore,dataStore,voteStore} = usePageStore()
   let item = detailStore.data
-  if (!item){
-    return null;
-  }
-  if (item.item){
-    voteStore.addVotesV2([
-      {
-        id : item.item.id,
-        totalVote : item.item.totalVote,
-        isVote : item.item.isVote
-      }
-    ])
-  }
-  
+  voteStore.addVotesV2([
+    {
+      id : item.item?.id,
+      totalVote : item.item?.totalVote,
+      isVote : item.item?.isVote
+    }
+  ])
   item.currentLang = dataStore.lang;
 
   const scrollRef = useRef()
@@ -120,14 +113,14 @@ export const PostListDetail = observer(({tabName}) => {
           {detailStore.type === "news" ?
             (tabName === 'article' ?
               <NewsDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
-              : <TokenInfo token={detailStore.data.token} tabName={tabName} />)
+              : <TokenInfo tokenId={tabName} subTabName={subTabName} />)
             :''
           }
 
           {detailStore.type === "video" ?
             (tabName === 'article' ?
               <VideoDetail item={item} date={date} dateTitle={dateTitle} voteStore={voteStore}/>
-              : <TokenInfo token={detailStore.data.token} tabName={tabName} />)
+              : <TokenInfo tokenId={tabName} subTabName={subTabName} />)
             :''
           }
 
@@ -163,7 +156,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
               </span>
               <span className="btn btn-post-link" title={t("visit website")}>
                 <span className="icon"><i className="fa-duotone fa-external-link" /></span>
-                <span className="btn--text sr-only">{t("visit website")}</span>
+                <span className="btn--text sr-hidden">{t("visit website")}</span>
               </span>
             </a>
           </h1>
@@ -191,7 +184,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
         </div>
       </div>
 
-      <PostNotice type={`video`} />
+      <PostNoticeVideo />
 
       <div className="section-body post-body">
         <div className="post-media">
@@ -208,7 +201,7 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
           <div className="post-content--text" dangerouslySetInnerHTML={{__html:item.content}}></div>
           {item?.is_footnote && <Footnote />}
         </div>
-        {item.websiteUri !== null && 
+        {item.websiteUri !== null &&
         <div className="post-actions">
           <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
             <span className="btn btn-default" title={t("visit website")}>
@@ -224,13 +217,10 @@ const VideoDetail = function({item,dateTitle,date,voteStore}){
 }
 
 const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
-  if (_.isEmpty(item)){
-    return null;
-  }
   let title = item.title
   let content = item.contentDisplay
   let isRada = false;
-  if (item.grabTopic && item.grabTopic !== null && item.grabTopic.url.indexOf("rada") !== -1) {
+  if (item.grabTopic !== null && item.grabTopic.url.indexOf("rada") !== -1) {
     isRada = true;
   }
   if (item.lang === "all"){
@@ -274,7 +264,7 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
               <span className="post-title--text">
                 {title}
               </span>
-              {item.websiteUri !== null && 
+              {item.websiteUri !== null &&
               <span className="btn btn-post-link" title={t("visit website")}>
                 <span className="icon"><i className="fa-duotone fa-external-link" /></span>
                 <span className="btn--text sr-only">{t("visit website")}</span>
@@ -312,7 +302,7 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
         </div>
       </div>
 
-      <PostNotice type={`news`} />
+      <PostNotice />
 
       <div className="section-body post-body">
         {!item.content ?
@@ -341,7 +331,7 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
           </div>
           : ""
         } */}
-        {item.websiteUri !== null && 
+        {item.websiteUri !== null &&
         <div className="post-actions">
           <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
             <span className="btn btn-default" title={t("visit website")}>
@@ -357,8 +347,8 @@ const NewsDetail = observer(function ({item,dateTitle,date,voteStore}){
 })
 
 const NewsLoader = () => {
-  return <ContentLoader 
-            viewBox="0 0 600 200" 
+  return <ContentLoader
+            viewBox="0 0 600 200"
             speed={2}
             backgroundColor="#9CA3AF"
             foregroundColor="#E5E7EB"
@@ -528,7 +518,6 @@ const SocialTweetDetail = function({item,voteStore,date,dateTitle}){
 }
 
 const PostVisitVoteDetail = function({item,voteStore}){
-  if (!item) return null;
   return (
     <div className="flex flex-shrink-0">
       <div className="cta-wrapper">
