@@ -7,6 +7,7 @@ import { useTranslation } from "next-i18next";
 import {useStore} from "../lib/useStore";
 import {useRouter} from "next/router";
 import Profile from "./Profile";
+import ContentTools from "./ContentTools";
 import _ from "lodash";
 
 import { Transition } from '@headlessui/react';
@@ -109,13 +110,13 @@ export const IndexRightBar = observer(({intro}) => {
 
           </div>
 
-          {/* <Screen from="lg">
-            <div className="flex items-center space-x-2">
-              <div className="relative">
-                <Profile />
-              </div>
+
+          <div className="flex items-center space-x-2">
+            <div className="relative">
+              <ContentTools />
             </div>
-          </Screen> */}
+          </div>
+
 
         </div>
 
@@ -124,7 +125,7 @@ export const IndexRightBar = observer(({intro}) => {
           <div className="tabbar-sub--main">
 
             <a href="#" className={`tab-item ${subTabName === 'information' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('information')}>
-              Information
+              Overview
             </a>
 
             <a href="#" className={`tab-item ${subTabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('team')}>
