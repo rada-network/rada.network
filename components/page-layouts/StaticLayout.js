@@ -7,9 +7,11 @@ import ThemeSwitch from "../ThemeSwitch"
 import { useState, useEffect, createRef } from 'react'
 
 import {LanguageSwitch} from "../LanguageSwitch";
+import Profile from "../Profile";
 import Screen from "../utils/Responsive";
 import { observer } from "mobx-react";
 import { usePageStore } from "../../lib/usePageStore";
+
 
 export const StaticLayout = observer(({children,meta}) => {
   const {dataStore,detailStore} = usePageStore()
@@ -30,6 +32,7 @@ export const StaticLayout = observer(({children,meta}) => {
           <div className="pane-left">
             <Navbar  />
             <div className="pane-left--bottom">
+              <Profile />
               <LanguageSwitch dataStore={dataStore} />
               <ThemeSwitch />
             </div>
