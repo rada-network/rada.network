@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useMemo, useState, createRef, useRef} from 'react';
-import Link from 'next/link'
 
 //ReactIcons
 import {observer} from "mobx-react";

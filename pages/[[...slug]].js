@@ -1,4 +1,3 @@
-import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../lib/store";
 import utils from "../lib/util";
 import {Layout} from "../components/page-layouts/Global";
 import {PostsListWrapper} from "../components/card-layouts/PostsList";
@@ -14,7 +13,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Resizer } from "../components/utils/Resizer";
 import store from "store"
 import { usePageStore } from "../lib/usePageStore";
-import {getSession} from "next-auth/client"
 
 const getDataExplore = async ({query,type,lang}) => {
   if (['news','projects','video','rada','social','all',''].indexOf(type) === -1){

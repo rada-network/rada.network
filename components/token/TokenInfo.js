@@ -421,7 +421,7 @@ const TokenInfo = ({tokenId, subTabName})=>{
             <div className="flex flex-wrap mt-6 list-partners">
               {tokenData?.partner?.map(item => (
                 <div key={item.id} href={item.url} className="">
-                  <img src={item.image.small} />
+                  <img src={item.image.small} alt={item.name} />
                 </div>
               ))}
             </div>

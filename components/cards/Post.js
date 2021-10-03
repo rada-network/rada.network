@@ -269,9 +269,11 @@ const PostTokenHolder = function({tokens}){
     <>
     {tokens.map((item,index) => {
        if (index == 0) {
-        <a href="/">
+        return (
+          <a href="/">
           <span className="badge badge-coin">{item.symbol}</span>
-        </a>
+          </a>
+        )
        }
       })}
     </>
