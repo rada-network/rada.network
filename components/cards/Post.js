@@ -124,7 +124,7 @@ const CardPostNormal = observer(({title, mediaUri, type, source, commentCount, v
             </span>
           </div>
 
-          <PostTokenHolder token={item.token} />
+          <PostTokenHolder tokens={item.tokens} />
         </div>
 
         <div className="metadata-wrapper justify-between">
@@ -214,14 +214,14 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
         <div className={`card-body-header`}>
           <div className={`card-title`}>
             <div className="card-link group" href={"/"}>
-              {dataStore.type !== "rada" ? 
+              {dataStore.type !== "rada"  && dataStore.type !== "projects" ? 
               <span className="badge badge-rada">RADA</span> 
               : ""}
               <span className="text-color-title mr-2">{title}</span>
             </div>
           </div>
 
-          <PostTokenHolder token={item.token} />
+          <PostTokenHolder tokens={item.tokens} />
         </div>
         
         <div className="metadata-wrapper justify-between mt-1">
@@ -261,13 +261,19 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
   )
 })
 
-const PostTokenHolder = function({token}){
-  if (token == null){return null}
+const PostTokenHolder = function({tokens}){
+  if (tokens.length == 0) return null;
   return (
-    <div className={`card-badges`}>
-      <a href="/">
-        <span className="badge badge-coin">{token.symbol}</span>
-      </a>
-    </div>
+    <>
+      {tokens.map(item => (
+        <div className={`card-badges`}>
+          <a href="/">
+            <span className="badge badge-coin">{item.symbol}</span>
+          </a>
+        </div>
+      ))}
+    </>
   )
+    
+  
 }

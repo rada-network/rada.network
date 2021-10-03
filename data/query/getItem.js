@@ -42,12 +42,14 @@ const itemFeedGql = gql`
                 token{
                     name
                     symbol
+                    logo
                 }
                 tokens {
                     id
                     name
                     symbol
                     slug
+                    logo
                 }
             }
             news{
@@ -79,12 +81,14 @@ const itemFeedGql = gql`
                 token{
                     name
                     symbol
+                    logo
                 }
                 tokens {
                     id
                     name
                     symbol
                     slug
+                    logo
                 }
                 is_footnote
             }
@@ -112,12 +116,14 @@ const itemFeedGql = gql`
                 token{
                     name
                     symbol
+                    logo
                 }
                 tokens {
                     id
                     name
                     symbol
                     slug
+                    logo
                 }
                 is_footnote
             }
@@ -212,12 +218,14 @@ const itemByIdGql = gql`
                     name
                     symbol
                     slug
+                    logo
                 }
                 tokens {
                     id
                     name
                     symbol
                     slug
+                    logo
                 }
                 is_footnote
             }
@@ -246,12 +254,14 @@ const itemByIdGql = gql`
                     name
                     symbol
                     slug
+                    logo
                 }
                 tokens {
                     id
                     name
                     symbol
                     slug
+                    logo
                 }
                 is_footnote
             }
