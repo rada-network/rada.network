@@ -211,6 +211,34 @@ const TokenInfo = ({tokenId, subTabName})=>{
                   </div>
                 </div>
                 }
+                {tokenData?.link?.find(item => item.group === 'whitepaper') &&
+                <div className="flex flex-wrap justify-between items-center">
+                  <div className="w-full lg:w-auto mb-2">
+                    <span className="uppercase opacity-50 text-2xs lg:text-xs">Whitepaper</span>
+                  </div>
+                  <div className="">
+                    {tokenData?.link?.map((item, index) => item.group === 'whitepaper' && (
+                      <a key={item.id} href={item.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
+                        <span className="btn--text">{item.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                }
+                {tokenData?.link?.find(item => item.group === 'tokenomic') &&
+                <div className="flex flex-wrap justify-between items-center">
+                  <div className="w-full lg:w-auto mb-2">
+                    <span className="uppercase opacity-50 text-2xs lg:text-xs">Tokenomics</span>
+                  </div>
+                  <div className="">
+                    {tokenData?.link?.map((item, index) => item.group === 'tokenomic' && (
+                      <a key={item.id} href={item.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
+                        <span className="btn--text">{item.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                }
               </div>
             </div>
           </div>
