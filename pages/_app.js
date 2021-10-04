@@ -16,13 +16,26 @@ import {useRouter} from "next/router";
 import * as ga from '../lib/ga'
 import { appWithTranslation } from 'next-i18next';
 import { getScreenName } from '../components/utils/Responsive';
-import { Provider,useSession } from 'next-auth/client'
+import { Provider,useSession,signOut } from 'next-auth/client'
 import {useCookies} from "react-cookie";
 import { PageStoreProvider, usePageStore } from '../lib/usePageStore';
-
+import { decode} from 'jsonwebtoken'
 configure({
   enforceActions: "never",
 })
+export function getTokenState(token) {
+  if (!token) {
+      return { valid: false, needRefresh: true }
+  }
+  const decoded = decode(token)
+  if (!decoded) {
+      return { valid: false, needRefresh: true }
+  } else if (decoded.exp && (Math.floor(Date.now() / 1000) + 300) > decoded.exp) {
+      return { valid: false, needRefresh: true }
+  } else {
+      return { valid: true, needRefresh: false }
+  }
+}
 
 const MyApp = ({Component, pageProps}) => {
   const router = useRouter()
@@ -33,15 +46,22 @@ const MyApp = ({Component, pageProps}) => {
   dataStore.lang = pageProps.lang || "vi"
 	useEffect(() => {
 		if (session) {
-			store.user.update({
-				id : session.user.id,
-				name : session.user.name,
-				email : session.user.email,
-				image : session.user.image,
-				access_token : session.access_token,
-				walletAddress : "",
-			})
-			setCookie("access_token",session.access_token,{path : "/",maxAge: 24*7*3600})
+      const {valid} = getTokenState(session.access_token)
+      if (valid){
+        store.user.update({
+          id : session.user.id,
+          name : session.user.name,
+          email : session.user.email,
+          image : session.user.image,
+          access_token : session.access_token,
+          walletAddress : "",
+        })
+        setCookie("access_token",session.access_token,{path : "/",maxAge: 24*7*3600})
+      }
+      else{
+        signOut()
+      }
+			
 		}
 		return () => {
 			

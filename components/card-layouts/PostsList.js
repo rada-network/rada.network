@@ -31,6 +31,7 @@ export const PostsListWrapper = observer(function ({}){
     scrollBox1.current.removeEventListener('scroll', mobileScroll);
     scrollBox1.current.addEventListener('scroll', mobileScroll);
     //mobileScroll()
+    handleLoadMoreItem()
     return () => {
       document.body.classList.remove(awayCls)
       if (scrollBox1?.current) {
@@ -38,10 +39,9 @@ export const PostsListWrapper = observer(function ({}){
         scrollBox1.current.removeEventListener('scroll', mobileScroll);
       }
     }
-  },[dataStore])
+  },[dataStore.currentTab,dataStore.query,dataStore.type,dataStore.forceUpdate,])
 
   let lastPos = 0
-  let listLoaded = false
   const mobileScroll = function(e){
     const el = scrollBox1.current
     
@@ -51,8 +51,6 @@ export const PostsListWrapper = observer(function ({}){
       document.body.classList.remove(awayCls)
     }
     lastPos = el.scrollTop
-
-    if (listLoaded) return
 
     const bottom = el.scrollHeight - el.scrollTop < el.clientHeight +100;
     if (bottom) handleLoadMoreItem()
@@ -71,9 +69,9 @@ export const PostsListWrapper = observer(function ({}){
     }).then(function (res){
       dataStore.addTweet(res.data.itemFeed)
       dataStore.loadingButton = false;
+      voteStore.addVotesV2(res.data.itemFeed)
       if (res.data.itemFeed.length !== HOME_ITEM_TAKE){
-        // scrollBox1.current.removeEventListener('scroll', mobileScroll);
-        listLoaded = true
+        scrollBox1.current.removeEventListener('scroll', mobileScroll);
       }
     })
   }

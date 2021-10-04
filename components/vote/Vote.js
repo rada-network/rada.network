@@ -27,7 +27,7 @@ export const Vote = observer(({itemId, page,voteStore}) => {
     }
     setRqToggleVote(true)
     const res = await toggleUserVote(itemId)
-    if (res.data.toggleUserVote !== null) {
+    if (res && res.data.toggleUserVote !== null) {
       voteStore.updateVote({
         id : itemId,
         isVoted : res.data.toggleUserVote.isVoted,

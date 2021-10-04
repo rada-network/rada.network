@@ -119,29 +119,28 @@ const NavItem = ({className, href, children,type}) => {
   const handleClickNavBar = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    if (dataStore.loadingButton) return false
-    dataStore.type = e.currentTarget.getAttribute("datatype")
-    dataStore.tweets = []
-    dataStore.loadingButton = true;
-    detailStore.data = {}
-    store.setShallowConnect(true);
-    router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
-    dataStore.meta = utils.createSiteMetadata({page:"Explore",data : {query : dataStore.type}})
-    getItems({
-      take : HOME_ITEM_TAKE,
-      skip : dataStore.tweets.length,
-      orderBy : dataStore.currentTab === "latest" ? {createdAt : "desc"} : {totalVote : "desc"},
-      query : dataStore.query,
-      type : dataStore.type,
-      lang : dataStore.lang
-    }).then(function (res){
-      dataStore.loadingButton = false;
-      dataStore.addTweet(res.data.itemFeed)
-    })
+    if (dataStore.type != e.currentTarget.getAttribute("datatype")){
+      dataStore.type = e.currentTarget.getAttribute("datatype")
+      dataStore.tweets = []
+      detailStore.data = {}
+      store.setShallowConnect(true);
+      router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
+      dataStore.meta = utils.createSiteMetadata({page:"Explore",data : {query : dataStore.type}})
+    }
+    return false
+  }
+  const handleDoubleClick = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (dataStore.type == e.currentTarget.getAttribute("datatype")){
+      dataStore.type = e.currentTarget.getAttribute("datatype")
+      dataStore.tweets = []
+      dataStore.forceUpdate++
+    }
     return false
   }
   return (
-    <a href={href} className={cls.join(' ')} datatype={type}  onClick={(e) => {handleClickNavBar(e)}}>
+    <a href={href} className={cls.join(' ')} datatype={type} onDoubleClick={handleDoubleClick}  onClick={(e) => {handleClickNavBar(e)}}>
       <>
         {children}
       </>

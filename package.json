@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "upload:static" : "rsync -avz -P .next/static  dhunt-web:/opt/web/cdnlogo.rada/_next/",
-    "upload:public" : "rsync -avz -P public/*  dhunt-web:/opt/web/cdnlogo.rada/",
+    "upload:static": "rsync -avz -P .next/static  dhunt-web:/opt/web/cdnlogo.rada/_next/",
+    "upload:public": "rsync -avz -P public/*  dhunt-web:/opt/web/cdnlogo.rada/",
     "build": "next build",
     "build:rada": "next build && npm run upload:static && npm run upload:public",
     "build:devdhunt": "next build",
@@ -24,6 +24,7 @@
     "form-data": "^4.0.0",
     "graphql": "15.5.0",
     "graphql-request": "3.4.0",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mobx": "^6.3.0",
     "mobx-react": "^7.1.0",
