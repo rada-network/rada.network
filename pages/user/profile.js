@@ -170,7 +170,7 @@ return (
                         }
                       </div>
                     </div>
-                    <div className="text-right relative -top-4 md:top-0">
+                    <div className="text-right relative -top-4 md:top-0 hidden">
                         {_.isEmpty(google) ?
                         <button className="btn btn-default disabled" onClick={(e) => signIn("google")} >{t("connect")}</button>
                         :
@@ -198,12 +198,12 @@ return (
                         }
                       </div>
                     </div>
-                    <div className="text-right relative -top-4 md:top-0">
-                    {_.isEmpty(facebook) ?
+                    <div className="text-right relative -top-4 md:top-0 hidden">
+                      {_.isEmpty(facebook) ?
                         <button className="btn btn-default disabled" onClick={(e) => signIn("facebook")} >{t("connect")}</button>
                         :
                         <button className="btn btn-default disabled">{t("disconnect")}</button>
-                        }
+                        } 
                     </div>
                   </div>
 
@@ -226,7 +226,7 @@ return (
                         }
                       </div>
                     </div>
-                    <div className="text-right relative -top-4 md:top-0">
+                    <div className="text-right relative -top-4 md:top-0 hidden">
                     {_.isEmpty(twitter) ?
                         <button className="btn btn-default disabled" onClick={(e) => signIn("twitter")} >{t("connect")}</button>
                         :
