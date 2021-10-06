@@ -19,11 +19,13 @@ import Usermenu from "./Usermenu"
 export default function Profile(){
 	const [session,setSession] = useState()
 	useEffect(() => { 
-		let loadSession = getSession().then((sess) => {
+		let cancel = false
+		getSession().then((sess) => {
+			if(cancel) return 
 			setSession(sess);
 		})
 		return () => { 
-			
+			cancel = true;
 		}
 	},[])
   // When rendering client side don't display anything until loading is complete
@@ -50,9 +52,15 @@ const NotConnectedButton = observer(({}) => {
 	const store = useStore()
 	const {t} = useTranslation()
 	const [providers,setProviders] = useState([])
-	useEffect(async () => {
-	  const data = await getProviders()
-	  setProviders(data)
+	useEffect(() => {
+		let cancel = false;
+	  getProviders().then(res => {
+			if (cancel) return;
+			setProviders(res)
+		})
+	  return () =>{
+			cancel = true
+		}
 	},[])
 	const btnRef = createRef()
 	const isOpen = store?.user.showingConnect

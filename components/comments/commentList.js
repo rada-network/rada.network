@@ -11,14 +11,18 @@ export const CommentList = ({detailStore,dataStore}) => {
   const [comments,setComments] = useState([]);
   useEffect(() => {
     const client = getClient()
-    console.log("load comment")
+    let cancel = false;
     client.query({
       query : itemComments,
       variables : {itemId : detailStore.data.item.id,orderBy : {createdAt : "desc"}},
       fetchPolicy: "no-cache"
     }).then(function(res){
+      if (cancel) return;
       setComments(res.data.commentFeed)
     })
+    return () => { 
+      cancel = true;
+    }
   },[detailStore.data])
   let item = detailStore.data
   let threads = {}

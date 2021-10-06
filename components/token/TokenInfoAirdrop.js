@@ -29,47 +29,7 @@ export default function TokenInfoAirdrop({tokenData, tokenInfo, airdrop}) {
                   <TokenInfoHeader tokenData={tokenData} token={tokenInfo} />
                   <h2 className="mb-3 text-yellow-500 font-semibold">Airdrop</h2>
                 </div>
-
-                <div className="mt-4">
-                  <div class="flex flex-wrap justify-between items-center">
-                    <div class="w-auto mb-2">
-                      <span class="uppercase opacity-50 text-xs">Total Winners</span>
-                    </div>
-                    <div class="mb-2">
-                      <strong className="text-sm">5,000</strong>
-                    </div>
-                  </div>
-
-                  <div class="flex flex-wrap justify-between items-center">
-                    <div class="w-auto mb-2">
-                      <span class="uppercase opacity-50 text-xs">Total Aidrops</span>
-                    </div>
-                    <div class="mb-2">
-                      <strong className="text-sm">2,000,000 FIWA</strong>
-                    </div>
-                  </div>
-
-                  <div class="flex flex-wrap justify-between items-center">
-                    <div class="w-auto mb-2">
-                      <span class="uppercase opacity-50 text-xs">Airdrop Time</span>
-                    </div>
-                    <div class="mb-2">
-                      <strong className="text-sm">20 Sep, 2021 - 20 Nov, 2021</strong>
-                    </div>
-                  </div>
-
-                  <div class="flex flex-wrap justify-between items-center">
-                    <div class="w-auto mb-2">
-                      <span class="uppercase opacity-50 text-xs">Reward Distribution</span>
-                    </div>
-                    <div class="mb-2">
-                      <strong className="text-sm">20 Dec, 2021</strong>
-                    </div>
-                  </div>
-
-                </div>
-
-                {/* <div dangerouslySetInnerHTML={{__html:airdrop?.description}}></div> */}
+                <div className="mt-4" dangerouslySetInnerHTML={{__html:airdrop?.description}}></div>
 
               </div>
 
@@ -79,11 +39,11 @@ export default function TokenInfoAirdrop({tokenData, tokenInfo, airdrop}) {
 
               </div>
 
-              <div className="post-content max-w-lg w-full mx-auto mt-8 text-sm">
+              {/* <div className="post-content max-w-lg w-full mx-auto mt-8 text-sm">
                 <p>Fill in the airdrop form and leave your BSC address. The form will be available on https://coinmarketcap.com/currencies/forward-protocol/ once the event starts.</p>
 
                 <p>DISCLAIMER: Forward Protocol is responsible for selecting the winning participants who completed all the required steps for the airdrop campaign and the distribution of the tokens. A list detailing the winners will be announced on the 15th of Oct, 2021 on Forward Protocol's twitter account. Forward Protocol will proceed with the airdrop distribution a week after TGE.</p>
-              </div>
+              </div> */}
 
             </div>
 
