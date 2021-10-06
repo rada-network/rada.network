@@ -18,7 +18,7 @@ const TokenInfo = ({tokenId, subTabName})=>{
   const [usdCoinInfo, setUSDCoinInfo] = useState({})
   const [btcCoinInfo, setBTCCoinInfo] = useState({})
   const {t, i18n} = useTranslation()
-  const tokenInfo = detailStore?.data?.tokens?.find(t => t.id === tokenId)
+  const tokenInfo = detailStore?.data?.tokens?.find(t => t.symbol === tokenId)
   useEffect(() => {
    tokenInfo && getTokenById({id : tokenInfo?.slug, lang: i18n.language}).then(function (res) {
    setTokenData(res.data.tokenById)

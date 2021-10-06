@@ -35,7 +35,14 @@ export const IndexRightBar = observer(({intro}) => {
   const store = useStore()
 
   useEffect(() => {
-    // detect from hash
+    if (!_.isEmpty(detailStore.data)) {
+      document.body.classList.add('page-details')
+    } else {
+      document.body.classList.remove('page-details')
+    }
+  }, [detailStore.data])
+
+  useEffect(() => {
     if (window.location.hash) {
       const hash = window.location.hash.substr(1)
       if (hash) {
@@ -49,18 +56,11 @@ export const IndexRightBar = observer(({intro}) => {
           }
         }      
       }
-
-    }
-  })  
-
-  useEffect(() => {
-    setTabName('article')
-    if (!_.isEmpty(detailStore.data)) {
-      document.body.classList.add('page-details')
     } else {
-      document.body.classList.remove('page-details')
+      setTabName('article')
     }
-  }, [detailStore.data])
+  }, [router.asPath])  
+
 
   const handleBack = (e) => {
     detailStore.data = {}
@@ -115,7 +115,7 @@ export const IndexRightBar = observer(({intro}) => {
                 <span className="tab-item--divider" />
 
                   {detailStore.data.tokens?.map(token => (
-                    <a href="#" className={`tab-item ${tabName === token.symbol ?'tab-item--active':'' }`} onClick={()=>setTabName(token.symbol)}>
+                    <a href={`#${token.symbol.toLowerCase()}`} className={`tab-item ${tabName === token.symbol ?'tab-item--active':'' }`} onClick={()=>{setTabName(token.symbol); setSubTabName('information')}}>
                       {token.symbol}
                     </a>
                   ))}
@@ -147,19 +147,19 @@ export const IndexRightBar = observer(({intro}) => {
             <div className="tabbar-sub page-subtabs">
               <div className="tabbar-sub--main">
 
-                <a href="#" className={`tab-item ${subTabName === 'information' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('information')}>
+                <a href={`#${tabName.toLowerCase()}`} className={`tab-item ${subTabName === 'information' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('information')}>
                   Overview
                 </a>
 
-                <a href="#" className={`tab-item ${subTabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('team')}>
+                <a href={`#${tabName.toLowerCase()}/team`} className={`tab-item ${subTabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('team')}>
                   {t("team & backers")}
                 </a>
 
-                <a href="#" className={`tab-item ${subTabName === 'more-article' ?'tab-item--active':'' } disabled`} onClick={()=>setSubTabName('more-article')}>
+                <a href={`#${tabName.toLowerCase()}/more-articles`} className={`tab-item ${subTabName === 'more-article' ?'tab-item--active':'' } disabled`} onClick={()=>setSubTabName('more-articles')}>
                   More Articles
                 </a>
 
-                { token.airdrop && <a href="#" className={`tab-item ${subTabName === 'airdrop' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('airdrop')}>
+                { token.airdrop && <a href={`#${tabName.toLowerCase()}/airdrop`} className={`tab-item ${subTabName === 'airdrop' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('airdrop')}>
                   {t("Airdrop")}
                 </a> }
 
