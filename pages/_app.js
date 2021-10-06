@@ -19,7 +19,14 @@ import { getScreenName } from '../components/utils/Responsive';
 import { Provider,useSession,signOut } from 'next-auth/client'
 import {useCookies} from "react-cookie";
 import { PageStoreProvider, usePageStore } from '../lib/usePageStore';
-import { decode} from 'jsonwebtoken'
+
+
+function parseJwt(token) {
+  var base64Payload = token.split('.')[1];
+  var payload = Buffer.from(base64Payload, 'base64');
+  return JSON.parse(payload.toString());
+}
+
 configure({
   enforceActions: "never",
 })
@@ -27,7 +34,7 @@ export function getTokenState(token) {
   if (!token) {
       return { valid: false, needRefresh: true }
   }
-  const decoded = decode(token)
+  const decoded = parseJwt(token)
   if (!decoded) {
       return { valid: false, needRefresh: true }
   } else if (decoded.exp && (Math.floor(Date.now() / 1000) + 300) > decoded.exp) {
