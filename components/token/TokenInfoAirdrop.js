@@ -25,7 +25,7 @@ export default function TokenInfoAirdrop({tokenData, tokenInfo, airdrop}) {
             <TokenInfoHeader tokenData={tokenData} token={tokenInfo} />
 
             <div className="mt-4">
-                <p>{airdrop?.description}</p>
+                <div dangerouslySetInnerHTML={{__html:airdrop?.description}}></div>
                 <a class="e-widget no-button" href={`https://gleam.io/${airdrop?.code}`} rel="nofollow" target="_blank" title={airdrop?.title}>{airdrop?.title}</a>
             </div>
         </div>
