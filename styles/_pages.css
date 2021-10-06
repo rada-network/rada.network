@@ -42,7 +42,7 @@ Page Layout
 
 @media (max-width: 639px) {
   .page-subtabs {
-    @apply relative z-10;
+    @apply fixed z-10;
     top: var(--toolbar-height);
   }
 }

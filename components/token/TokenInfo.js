@@ -62,11 +62,12 @@ const TokenInfo = ({tokenId})=>{
           {t("team & backers")}
         </a>
 
-        <a href={`#${symbol}/more-articles`} className={`tab-item ${subTabName === 'more-article' ?'tab-item--active':'' } disabled`} onClick={()=>setSubTabName('more-articles')}>
+        {/* <a href={`#${symbol}/more-articles`} className={`tab-item ${subTabName === 'more-article' ?'tab-item--active':'' } disabled`} onClick={()=>setSubTabName('more-articles')}>
           More Articles
-        </a>
+        </a> */}
 
         { airdrop && <a href={`#${symbol}/airdrop`} className={`tab-item ${subTabName === 'airdrop' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('airdrop')}>
+          <span className="icon mr-1"><i class="fa-duotone fa-gift"></i></span>
           {t("Airdrop")}
         </a> }
 

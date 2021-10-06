@@ -308,7 +308,7 @@ Card Social
   }
 
   .card-body-header p {
-    @apply text-sm mb-0 text-secondary-500;
+    @apply text-sm mb-0 text-left lg:text-center text-secondary-500;
   }
 
   .card-body-main p {
