@@ -139,6 +139,16 @@ export const PostListDetail = observer(({tabName, subTabName,setTabCallback}) =>
   )
 })
 
+const PostContent = ({item}) => {
+  const content = item.content
+  
+  return (
+  <div className="post-content">
+    <div className="post-content--text" dangerouslySetInnerHTML={{__html:item.content}}></div>
+    {item?.is_footnote && <Footnote />}
+  </div>
+  )
+}
 
 
 const VideoDetail = function({item,dateTitle,date,setTabCallback}){

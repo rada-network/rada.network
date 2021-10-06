@@ -35,6 +35,25 @@ export const IndexRightBar = observer(({intro}) => {
   const store = useStore()
 
   useEffect(() => {
+    // detect from hash
+    if (window.location.hash) {
+      const hash = window.location.hash.substr(1)
+      if (hash) {
+        const arr = hash.split('/')
+        const symbol = arr[0].toUpperCase()
+        if (detailStore.data.tokens?.find(token => token.symbol == symbol)) {
+          setTabName(symbol)
+          if (arr.length > 1) {
+            // set subtab
+            setSubTabName(arr[1])
+          }
+        }      
+      }
+
+    }
+  })  
+
+  useEffect(() => {
     setTabName('article')
     if (!_.isEmpty(detailStore.data)) {
       document.body.classList.add('page-details')
@@ -96,7 +115,7 @@ export const IndexRightBar = observer(({intro}) => {
                 <span className="tab-item--divider" />
 
                   {detailStore.data.tokens?.map(token => (
-                    <a href="#" className={`tab-item ${tabName === token.id ?'tab-item--active':'' }`} onClick={()=>setTabName(token.id)}>
+                    <a href="#" className={`tab-item ${tabName === token.symbol ?'tab-item--active':'' }`} onClick={()=>setTabName(token.symbol)}>
                       {token.symbol}
                     </a>
                   ))}
@@ -121,10 +140,10 @@ export const IndexRightBar = observer(({intro}) => {
 
 
         </div>
-        {detailStore.data.id && detailStore.data.tokens.map(item => { 
+        {detailStore.data.id && detailStore.data.tokens.map(token => { 
           return (
             <>
-            {tabName === item.id &&
+            {tabName === token.symbol &&
             <div className="tabbar-sub page-subtabs">
               <div className="tabbar-sub--main">
 
@@ -139,6 +158,10 @@ export const IndexRightBar = observer(({intro}) => {
                 <a href="#" className={`tab-item ${subTabName === 'more-article' ?'tab-item--active':'' } disabled`} onClick={()=>setSubTabName('more-article')}>
                   More Articles
                 </a>
+
+                { token.airdrop && <a href="#" className={`tab-item ${subTabName === 'airdrop' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('airdrop')}>
+                  {t("Airdrop")}
+                </a> }
 
               </div>
             </div>
