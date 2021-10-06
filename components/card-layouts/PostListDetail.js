@@ -19,7 +19,7 @@ import PostNoticeVideo from "../PostNoticeVideo";
 
 import { usePageStore } from "../../lib/usePageStore";
 
-export const PostListDetail = observer(({tabName, subTabName,setTabCallback}) => {
+export const PostListDetail = observer(({tabName, setTabCallback}) => {
   const {detailStore,dataStore,voteStore} = usePageStore()
   let item = detailStore.data
   voteStore.addVotesV2([
@@ -113,14 +113,14 @@ export const PostListDetail = observer(({tabName, subTabName,setTabCallback}) =>
           {detailStore.type === "news" || detailStore.type === "rada" || detailStore.type === "projects" ?
             (tabName === 'article' ?
               <NewsDetail item={item} date={date} dateTitle={dateTitle} setTabCallback={setTabCallback}/>
-              : <TokenInfo tokenId={tabName} subTabName={subTabName} />)
+              : <TokenInfo tokenId={tabName} />)
             :''
           }
 
           {detailStore.type === "video" ?
             (tabName === 'article' ?
               <VideoDetail item={item} date={date} dateTitle={dateTitle} setTabCallback={setTabCallback} />
-              : <TokenInfo tokenId={tabName} subTabName={subTabName} />)
+              : <TokenInfo tokenId={tabName} />)
             :''
           }
 

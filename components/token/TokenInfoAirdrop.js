@@ -2,7 +2,7 @@ import TokenInfoHeader from "./TokenInfoHeader";
 import { useTranslation } from "next-i18next";
 import { useEffect } from "react"
 
-export default function TokenInfoAirdrop({tokenData, tokenInfo}) {
+export default function TokenInfoAirdrop({tokenData, tokenInfo, airdrop}) {
     const {t, i18n} = useTranslation()
     useEffect(() => {
         const script = document.createElement('script');
@@ -25,7 +25,8 @@ export default function TokenInfoAirdrop({tokenData, tokenInfo}) {
             <TokenInfoHeader tokenData={tokenData} token={tokenInfo} />
 
             <div className="mt-4">
-                <a class="e-widget no-button" href="https://gleam.io/{tokenData.airdrop?.code}" rel="nofollow" target="_blank" title="{tokenData.airdrop?.title}">{tokenData.airdrop?.title}</a>
+                <p>{airdrop?.description}</p>
+                <a class="e-widget no-button" href={`https://gleam.io/${airdrop?.code}`} rel="nofollow" target="_blank" title={airdrop?.title}>{airdrop?.title}</a>
             </div>
         </div>
         </div>

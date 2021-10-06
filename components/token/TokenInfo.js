@@ -11,7 +11,9 @@ import TokenInfoTeam from "./TokenInfoTeam";
 import TokenInfoAirdrop from "./TokenInfoAirdrop";
 
 
-const TokenInfo = ({tokenId, subTabName})=>{
+const TokenInfo = ({tokenId})=>{
+  const [subTabName, setSubTabName] = useState('information')
+
   const {detailStore} = usePageStore()
   const trendingStore = new TrendingStore()
   const [tokenData, setTokenData] = useState({})
@@ -26,6 +28,15 @@ const TokenInfo = ({tokenId, subTabName})=>{
   })
   }, [tokenInfo])
 
+  // detect subtab
+  useEffect(() => {
+      const arr = window.location.hash.substr(1).split('/')
+      if (arr.length > 1) {
+        // set subtab
+        setSubTabName(arr[1])
+      }
+  }, [])  
+
   const getCoinInfo =  async (fsym)=>{
     await fetch(`/api/coin-info?fsym=${fsym}&tsym=USD`).then(response => response.json())
     .then(data => setUSDCoinInfo(data.Data));
@@ -34,11 +45,37 @@ const TokenInfo = ({tokenId, subTabName})=>{
     .then(data => setBTCCoinInfo(data.Data));
   }
 
+  const symbol = tokenInfo?.symbol.toLowerCase()
+  // find active airdrop
+  const airdrop = tokenData?.airdrop?.find(ad => ad.status == 'published')
+
   return (
     <>
+    <div className="tabbar-sub page-subtabs">
+      <div className="tabbar-sub--main">
+
+        <a href={`#${symbol}`} className={`tab-item ${subTabName === 'information' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('information')}>
+          Overview
+        </a>
+
+        <a href={`#${symbol}/team`} className={`tab-item ${subTabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('team')}>
+          {t("team & backers")}
+        </a>
+
+        <a href={`#${symbol}/more-articles`} className={`tab-item ${subTabName === 'more-article' ?'tab-item--active':'' } disabled`} onClick={()=>setSubTabName('more-articles')}>
+          More Articles
+        </a>
+
+        { airdrop && <a href={`#${symbol}/airdrop`} className={`tab-item ${subTabName === 'airdrop' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('airdrop')}>
+          {t("Airdrop")}
+        </a> }
+
+      </div>
+    </div>
+            
     { subTabName ==='information' && <TokenInfoGeneral tokenData={tokenData} usdCoinInfo={usdCoinInfo} btcCoinInfo={btcCoinInfo} tokenInfo={tokenInfo} /> }
     { subTabName ==='team' && <TokenInfoTeam tokenData={tokenData} tokenInfo={tokenInfo} /> }
-    { subTabName ==='airdrop' && <TokenInfoAirdrop tokenData={tokenData} tokenInfo={tokenInfo} /> }
+    { subTabName ==='airdrop' && <TokenInfoAirdrop tokenData={tokenData} tokenInfo={tokenInfo} airdrop={airdrop} /> }
     </>
   )
 

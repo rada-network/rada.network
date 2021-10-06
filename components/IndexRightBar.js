@@ -29,7 +29,6 @@ export const IndexRightBar = observer(({intro}) => {
   //   }
   // }, [scrollBox2]);
   const [tabName, setTabName] = useState('article')
-  const [subTabName, setSubTabName] = useState('information')
   const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type
   const router = useRouter()
   const store = useStore()
@@ -50,10 +49,6 @@ export const IndexRightBar = observer(({intro}) => {
         const symbol = arr[0].toUpperCase()
         if (detailStore.data.tokens?.find(token => token.symbol == symbol)) {
           setTabName(symbol)
-          if (arr.length > 1) {
-            // set subtab
-            setSubTabName(arr[1])
-          }
         }      
       }
     } else {
@@ -115,7 +110,7 @@ export const IndexRightBar = observer(({intro}) => {
                 <span className="tab-item--divider" />
 
                   {detailStore.data.tokens?.map(token => (
-                    <a href={`#${token.symbol.toLowerCase()}`} className={`tab-item ${tabName === token.symbol ?'tab-item--active':'' }`} onClick={()=>{setTabName(token.symbol); setSubTabName('information')}}>
+                    <a href={`#${token.symbol.toLowerCase()}`} className={`tab-item ${tabName === token.symbol ?'tab-item--active':'' }`} onClick={()=>{setTabName(token.symbol)}}>
                       {token.symbol}
                     </a>
                   ))}
@@ -140,39 +135,9 @@ export const IndexRightBar = observer(({intro}) => {
 
 
         </div>
-        {detailStore.data.id && detailStore.data.tokens.map(token => { 
-          return (
-            <>
-            {tabName === token.symbol &&
-            <div className="tabbar-sub page-subtabs">
-              <div className="tabbar-sub--main">
-
-                <a href={`#${tabName.toLowerCase()}`} className={`tab-item ${subTabName === 'information' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('information')}>
-                  Overview
-                </a>
-
-                <a href={`#${tabName.toLowerCase()}/team`} className={`tab-item ${subTabName === 'team' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('team')}>
-                  {t("team & backers")}
-                </a>
-
-                <a href={`#${tabName.toLowerCase()}/more-articles`} className={`tab-item ${subTabName === 'more-article' ?'tab-item--active':'' } disabled`} onClick={()=>setSubTabName('more-articles')}>
-                  More Articles
-                </a>
-
-                { token.airdrop && <a href={`#${tabName.toLowerCase()}/airdrop`} className={`tab-item ${subTabName === 'airdrop' ?'tab-item--active':'' }`} onClick={()=>setSubTabName('airdrop')}>
-                  {t("Airdrop")}
-                </a> }
-
-              </div>
-            </div>
-            }
-            </>
-          )
-        })}
-        
 
         {detailStore.data.id &&
-          <PostListDetail tabName={tabName} subTabName={subTabName} setTabCallback={setTabName} />
+          <PostListDetail tabName={tabName} setTabCallback={setTabName} />
         }
         {(!detailStore.data.id) &&
         <div className={`pane-content--sec--main scrollbar`}>

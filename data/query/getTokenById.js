@@ -61,6 +61,12 @@ const tokenByIdGql = gql`
             name
             url
           }
+          airdrop {
+            title
+            code
+            description
+            status
+          }
         }
     }
 `
