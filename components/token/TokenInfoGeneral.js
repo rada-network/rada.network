@@ -1,9 +1,11 @@
 import numberFormatter from "../utils/numberFormatter";
 import roundNumber from "../utils/roundNumber"
 import TokenInfoHeader from "./TokenInfoHeader";
+import { useTranslation } from "next-i18next"
+
 
 export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btcCoinInfo}) {
-
+  const {t} = useTranslation()
     return (
         <div className="section section-coininfo--general">
 

@@ -31,7 +31,7 @@ const PostNotice = observer(({type,setTabCallback}) => {
   if (detailStore.data.websiteUri === null) return null
   const source = type == "news" ? getSourceNewsFromUri(detailStore.data) : getSourceVideoFromUri(detailStore.data)
   let keywordText = detailStore.data.tokens.map((item) => {
-    return `<a href="" data-key="${item.id}" rel="nofollow" class="link post-token"><strong>${item.name.toUpperCase()}</strong></a>`
+    return `<a href="" data-key="${item.symbol}" rel="nofollow" class="link post-token"><strong>${item.name.toUpperCase()}</strong></a>`
   })
   let startString = type == "news" ? ` ${t("post notice start")}
   <a href="${source.url}" rel="nofollow noreferrer" target="_blank" class="link ml-1">
