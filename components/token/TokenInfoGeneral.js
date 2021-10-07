@@ -122,15 +122,20 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                   {tokenData?.link?.find(item => (item.group !== null && item.group.toLowerCase() === 'homepage')) &&
                   <div className="flex flex-wrap justify-between items-center">
                     <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Website</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs">
+                      {tokenData?.link?.map(item => (item.group !== null && item.group.toLowerCase() === 'homepage')).length > 1 ? "Websites" : "Website" }
+                      </span>
                     </div>
                     <div className="">
-                      <a href={tokenData?.link?.find(item => (item.group !== null && item.group.toLowerCase() === 'homepage'))?.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
+                    {tokenData?.link?.map(item => (item.group !== null && item.group.toLowerCase() === 'homepage') && (
+                      <a href={item.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                         <span className="icon">
                           <i class="fa-regular fa-globe"></i>
                         </span>
-                        <span className="btn--text">{tokenData?.link?.find(item => (item.group !== null && item.group.toLowerCase() === 'homepage'))?.url}</span>
+                        <span className="btn--text">{item.name}</span>
                       </a>
+                      ))}
+                      
                     </div>
                   </div>
                   }
@@ -183,10 +188,10 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                     </div>
                   </div>
                   }
-                  {tokenData?.link?.find(item => item.group === 'whitepaper') &&
+                  {tokenData?.link?.find(item => item.group === 'whitepaper' || item.group === 'tokenomic') &&
                   <div className="flex flex-wrap justify-between items-center">
                     <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Whitepaper</span>
+                      <span className="uppercase opacity-50 text-2xs lg:text-xs">More</span>
                     </div>
                     <div className="">
                       {tokenData?.link?.map((item, index) => item.group === 'whitepaper' && (
@@ -194,15 +199,6 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                           <span className="btn--text">{item.name}</span>
                         </a>
                       ))}
-                    </div>
-                  </div>
-                  }
-                  {tokenData?.link?.find(item => item.group === 'tokenomic') &&
-                  <div className="flex flex-wrap justify-between items-center">
-                    <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Tokenomics</span>
-                    </div>
-                    <div className="">
                       {tokenData?.link?.map((item, index) => item.group === 'tokenomic' && (
                         <a key={item.id} href={item.url} className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
                           <span className="btn--text">{item.name}</span>
