@@ -1,3 +1,4 @@
+import { useEffect,useState } from "react";
 import numberFormatter from "../utils/numberFormatter";
 import roundNumber from "../utils/roundNumber"
 import TokenInfoHeader from "./TokenInfoHeader";
