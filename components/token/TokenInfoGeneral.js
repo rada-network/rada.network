@@ -6,6 +6,10 @@ import { useTranslation } from "next-i18next"
 
 export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btcCoinInfo}) {
   const {t} = useTranslation()
+  useEffect(() => { 
+    window.Gleam = window.Gleam || [];
+    window.Gleam.push(['token-info-pageview', tokenInfo?.symbol]);
+  },[])
     return (
         <div className="section section-coininfo--general">
 

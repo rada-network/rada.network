@@ -25,8 +25,6 @@ const TokenInfo = ({tokenId})=>{
    tokenInfo && getTokenById({id : tokenInfo?.slug, lang: i18n.language}).then(function (res) {
     setTokenData(res.data.tokenById)
     getCoinInfo(res.data.tokenById?.id)
-    window.Gleam = window.Gleam || [];
-    window.Gleam.push(['token-info-pageview', tokenInfo?.symbol]);
   })
   }, [tokenInfo])
 

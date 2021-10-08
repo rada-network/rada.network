@@ -68,7 +68,7 @@ export const IndexRightBar = observer(({intro}) => {
   // const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
   return (
     <>
-      <div className={`pane-content--sec` + ((detailStore.data.id) ? " pane-content-active" : "")}>
+      <div className={`pane-content--sec` +  (tabName == 'article'? " article" : " token") + ((detailStore.data.id) ? " pane-content-active" : "")}>
 
         <div className={`pane-content--sec--top`}>
 
