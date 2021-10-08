@@ -166,7 +166,7 @@ const VideoDetail = function({item,dateTitle,date,setTabCallback}){
               </span>
               <span className="btn btn-post-link" title={t("visit website")}>
                 <span className="icon"><i className="fa-duotone fa-external-link" /></span>
-                <span className="btn--text sr-hidden">{t("visit website")}</span>
+                <span className="btn--text sr-only">{t("visit website")}</span>
               </span>
             </a>
           </h1>
