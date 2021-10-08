@@ -85,7 +85,7 @@ Nav Panels
 }
 
 .pane-left--bottom-section {
-  @apply flex justify-between border-t items-center pt-2 mt-2 mx-1;
+  @apply flex justify-between border-t border-gray-400 border-opacity-20 items-center pt-2 mt-2 mx-1;
 
   .btn.btn-switch-lang,
   .btn.btn-switch-theme {
@@ -471,7 +471,7 @@ Title
 
 .post-title h1 {
   .badges-tags {
-    @apply relative md:-top-2 mb-2 md:mb-0 flex items-start;
+    @apply relative mb-2 flex items-start;
   }
   .badge-rada {
     @apply inline-block rounded-full px-2 text-sm;
