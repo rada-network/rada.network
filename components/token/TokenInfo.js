@@ -23,8 +23,10 @@ const TokenInfo = ({tokenId})=>{
   const tokenInfo = detailStore?.data?.tokens?.find(t => t.symbol === tokenId)
   useEffect(() => {
    tokenInfo && getTokenById({id : tokenInfo?.slug, lang: i18n.language}).then(function (res) {
-   setTokenData(res.data.tokenById)
-   getCoinInfo(res.data.tokenById?.id)
+    setTokenData(res.data.tokenById)
+    getCoinInfo(res.data.tokenById?.id)
+    window.Gleam = window.Gleam || [];
+    window.Gleam.push(['token-info-pageview', tokenInfo?.symbol]);
   })
   }, [tokenInfo])
 
