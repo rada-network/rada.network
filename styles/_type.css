@@ -122,6 +122,10 @@ Post Content Typo
   @apply max-w-full text-center mx-auto rounded-lg;
 }
 
+.post-content .image-frame {
+  @apply p-4 rounded-lg bg-gray-100 dark:bg-gray-800;
+}
+
 .post-content figcaption,
 .post-content .pCaption {
   @apply text-center mt-2 text-xs;
