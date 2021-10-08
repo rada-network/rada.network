@@ -372,7 +372,7 @@ Sidebar
 Sections Layout
 --------------------------------------------- */
 .section {
-  @apply px-4 pt-4 pb-6 md:p-6 xl:px-10 xl:py-6;
+  @apply px-4 pt-4 pb-6 md:p-6 xl:px-16 xl:py-8;
 }
 
 .section-header {
@@ -459,7 +459,10 @@ Post Details
 
 .post-body {}
 
-.post-detail {
+.post-detail {}
+
+
+.post-detail-news {
 }
 
 /* 
@@ -482,7 +485,7 @@ Title
 }
 
 .post-title--text {
-  @apply text-gray-800 dark:text-gray-200 transition mr-2;
+  @apply transition mr-2;
 }
 
 .post-title:hover .post-title--text {
@@ -649,21 +652,23 @@ Perfect Scrollbar
   overflow: -moz-scrollbars-none; */
 }
 
-.scrollbar::-webkit-scrollbar {
-  @apply w-1.5 bg-gray-200 dark:bg-gray-800 bg-opacity-20 dark:bg-opacity-20;
-}
+@media (hover: hover) and (pointer: fine) {
+  .scrollbar::-webkit-scrollbar {
+    @apply w-1.5 bg-gray-200 dark:bg-gray-800 bg-opacity-20 dark:bg-opacity-20;
+  }
 
-.scrollbar::-webkit-scrollbar-track {
-  @apply bg-transparent;
-}
+  .scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
 
-.scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-800 bg-opacity-40 transition-all;
-  border-radius: 18px;
-}
+  .scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-800 bg-opacity-40 transition-all;
+    border-radius: 18px;
+  }
 
-.scrollbar::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary-500;
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-500;
+  }
 }
 
 
