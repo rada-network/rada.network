@@ -20,9 +20,6 @@ const itemFeedGql = gql`
                     networkName
                     websiteUri
                 }
-                token{
-                    name
-                }
                 createdAt
                 keywords
             }
@@ -38,11 +35,6 @@ const itemFeedGql = gql`
                 tweetUser {
                     id
                     source
-                }
-                token{
-                    name
-                    symbol
-                    logo
                 }
                 tokens {
                     id
@@ -78,11 +70,6 @@ const itemFeedGql = gql`
                     name
                     id
                 }
-                token{
-                    name
-                    symbol
-                    logo
-                }
                 tokens {
                     id
                     name
@@ -115,11 +102,6 @@ const itemFeedGql = gql`
                         name
                         url
                     }
-                }
-                token{
-                    name
-                    symbol
-                    logo
                 }
                 tokens {
                     id
@@ -159,10 +141,6 @@ const itemByIdGql = gql`
                     networkName
                     websiteUri
                 }
-                token{
-                    id
-                    name
-                }
                 createdAt
                 keywords
             }
@@ -178,10 +156,6 @@ const itemByIdGql = gql`
                 tweetUser {
                     id
                     source
-                }
-                token{
-                    name
-                    symbol
                 }
                 tokens {
                     id
@@ -219,13 +193,6 @@ const itemByIdGql = gql`
                     name
                     id
                 }
-                token{
-                    id
-                    name
-                    symbol
-                    slug
-                    logo
-                }
                 tokens {
                     id
                     name
@@ -257,13 +224,6 @@ const itemByIdGql = gql`
                         name
                         url
                     }
-                }
-                token{
-                    id
-                    name
-                    symbol
-                    slug
-                    logo
                 }
                 tokens {
                     id

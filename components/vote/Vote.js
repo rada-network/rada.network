@@ -3,6 +3,7 @@ import {toggleUserVote} from "../../data/query/tgVote"
 import React, {useState} from "react"
 import { observer } from "mobx-react"
 import { useStore } from "../../lib/useStore"
+import { useEffect } from "react"
 
 
 export const Vote = observer(({itemId, page,voteStore}) => {
@@ -17,6 +18,12 @@ export const Vote = observer(({itemId, page,voteStore}) => {
     totalVote = vote[0].totalVote
     isVote = vote[0].isVoted
   }
+  useEffect(() => {
+    if (isVote){
+      window.Gleam = window.Gleam || [];
+      window.Gleam.push(['vote', true]);
+    }
+  },[isVote])
   const [rqToggleVote,setRqToggleVote] = useState(false)
   const toggleVote = async (e) => {
     if (!access_token) {
@@ -25,9 +32,14 @@ export const Vote = observer(({itemId, page,voteStore}) => {
     if (rqToggleVote){
       return false;
     }
+    if (isVote){
+      return false;
+    }
     setRqToggleVote(true)
     const res = await toggleUserVote(itemId)
     if (res && res.data.toggleUserVote !== null) {
+      window.Gleam = window.Gleam || [];
+      window.Gleam.push(['vote', res.data.toggleUserVote.isVoted]);
       voteStore.updateVote({
         id : itemId,
         isVoted : res.data.toggleUserVote.isVoted,

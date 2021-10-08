@@ -75,6 +75,8 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore,d
       itemId : createdComment.itemId,
       userId : createdComment.user.id
     })
+    window.Gleam = window.Gleam || [];
+    window.Gleam.push(['comment', createdComment.content]);
     dataStore.tweets.forEach((el,index) => {
       if (el.id === item.item.id){
         dataStore.tweets[index].totalComment+=1

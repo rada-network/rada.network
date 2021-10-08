@@ -13,6 +13,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Resizer } from "../components/utils/Resizer";
 import store from "store"
 import { usePageStore } from "../lib/usePageStore";
+import { getTokenById } from "../data/query/getTokenById";
 
 const getDataExplore = async ({query,type,lang}) => {
   if (['news','projects','video','rada','social','all',''].indexOf(type) === -1){
@@ -67,14 +68,27 @@ const getDataPostDetail = async ({query,id,lang}) => {
     return false
   }
   let type = "all"
+  let airdrop = null
   if (newsDetail.data.itemById.news !== null){
     type = "news"
     if (newsDetail.data.itemById.news.category !== null) {
       type = newsDetail.data.itemById.news.category.slug
     }
+    if (newsDetail.data.itemById.news.tokens !== null && newsDetail.data.itemById.news.tokens.length > 0) {
+      airdrop = await getTokenById({
+        id : newsDetail.data.itemById.news.tokens[0]['slug'],
+        lang : lang
+      })
+    }
   }
   else if (newsDetail.data.itemById.video !== null){
-    type = "media"
+    type = "video"
+    if (newsDetail.data.itemById.video.tokens !== null && newsDetail.data.itemById.video.tokens.length > 0) {
+      airdrop = await getTokenById({
+        id : newsDetail.data.itemById.video.tokens[0]['slug'],
+        lang : lang
+      })
+    }
   }
   else if (newsDetail.data.itemById.tweet !== null){
     type = "social"
@@ -89,14 +103,17 @@ const getDataPostDetail = async ({query,id,lang}) => {
     type : type
   })
   query = query || ""
-  console.log(type)
+  if (airdrop !== null){
+    airdrop = airdrop.data.tokenById.airdrop.length > 0 ? airdrop.data.tokenById.airdrop[0] : null
+  }
   return {
     query : query,
     lang : lang,
     type : type,
     itemFeed : itemFeed.data.itemFeed,
     item : newsDetail.data.itemById,
-    intro
+    intro,
+    airdrop
   }
 }
 
@@ -148,6 +165,7 @@ export default observer(function(props) {
       totalComment : props.item.totalComment,
       token : props.item.token,
     }
+    item.airdrop = props.airdrop
     detailStore.data = item
     dataStore.meta = utils.createSiteMetadata({page : 'ItemDetail',data : {...item,type : detailStore.type},dataStore : dataStore})
   }

@@ -66,6 +66,7 @@ const tokenByIdGql = gql`
             code
             description
             status
+            gleam_tracking_code
           }
         }
     }
