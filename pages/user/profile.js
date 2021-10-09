@@ -96,7 +96,7 @@ return (
             <Wallet handleConnectSuccess={handleConnectSuccess} />
           </div>
           <div className="mt-4">
-            <h1 className="text-2xl">{t("hello")}&nbsp;<strong>{user.name}</strong> #{user.id.substr(-12)}</h1>
+            <h1 className="text-2xl">{t("hello")}&nbsp;<strong>{user.name}</strong> #{user.id?.substr(-12)}</h1>
           </div>
         </div>
 
