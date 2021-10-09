@@ -78,13 +78,12 @@ const MyApp = ({Component, pageProps}) => {
     const handleRouteChange = (url,{shallow}) => {
       console.log(`${url} is a shallow store ${shallow} ${store.shallowInternal}`)
       if (shallow){
-        if (!store.shallowInternal){
-          detailStore.data = {}
-          router.push(url,url)
+        if (store.shallowInternal){
+          ga.pageview(url)
+          store.setShallowConnect(false)
         }
         else{
-          //router.push(url,url)
-          ga.pageview(url)
+          router.push(url,url)
           store.setShallowConnect(false)
         }
         
