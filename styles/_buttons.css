@@ -114,30 +114,6 @@ Default Button
   @apply !bg-purple-500 hover:!bg-purple-700 !text-white hover:!text-white;
 }
 
-.btn--twitter {
-  background: rgb(29,161,242) !important;
-  color: #fff !important;
-}
-
-.btn--telegram {
-  background: #1d98dc !important;
-  color: #fff !important;
-}
-
-.btn--facebook {
-  background: rgb(66,103,178) !important;
-  color: #fff !important;
-}
-
-.btn--discord {
-  background: #5865f2 !important;
-  color: #fff !important;
-}
-
-.btn--linkedin {
-  background: rgb(40,103,178) !important;
-  color: #fff !important;
-}
 
 
 /* Sizes */

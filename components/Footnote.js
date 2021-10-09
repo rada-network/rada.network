@@ -66,7 +66,7 @@ const Footnote = ({}) => {
       </a>
 
       <a 
-        className="btn btn-default btn--twitter btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
+        className="btn btn-default brand--twitter btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
         href="https://twitter.com/radamedia"
         target="_blank"
         rel="nofollow noopener"
@@ -80,7 +80,7 @@ const Footnote = ({}) => {
       </a>
 
       <a 
-        className="btn btn-default btn--telegram btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
+        className="btn btn-default brand--telegram btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
         href="https://t.me/joinchat/l39iN84IeUwxZjBl"
         target="_blank"
         rel="nofollow noopener"
@@ -94,7 +94,7 @@ const Footnote = ({}) => {
       </a>
 
       <a 
-        className="btn btn-default btn--facebook btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
+        className="btn btn-default brand--facebook btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
         href="https://www.facebook.com/rada.daocomm..."
         target="_blank"
         rel="nofollow noopener"
@@ -108,7 +108,7 @@ const Footnote = ({}) => {
       </a>
 
       <a 
-        className="btn btn-default btn--facebook btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
+        className="btn btn-default brand--facebook btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
         href="https://www.facebook.com/groups/rada.co"
         target="_blank"
         rel="nofollow noopener"
@@ -122,7 +122,7 @@ const Footnote = ({}) => {
       </a>
 
       <a 
-        className="btn btn-default btn--discord btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
+        className="btn btn-default brand--discord btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
         href="https://discord.link/rada"
         target="_blank"
         rel="nofollow noopener"
@@ -136,8 +136,8 @@ const Footnote = ({}) => {
       </a>
 
       <a 
-        className="btn btn-default btn--linkedin btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
-        href="https://discord.link/rada"
+        className="btn btn-default brand--linkedin btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
+        href="https://www.linkedin.com/company/radadao/"
         target="_blank"
         rel="nofollow noopener"
       >

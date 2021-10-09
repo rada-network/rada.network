@@ -96,7 +96,11 @@ return (
             <Wallet handleConnectSuccess={handleConnectSuccess} />
           </div>
           <div className="mt-4">
-            <h1 className="text-2xl">{t("hello")}&nbsp;<strong>{user.name}</strong> #{user.id?.substr(-12)}</h1>
+            <h1 className="text-2xl">
+              {t("hello")}<br />
+              <strong>{user.name}</strong>&nbsp;
+              <span className="text-base opacity-50">#{user.id?.substr(-12)}</span>
+            </h1>
           </div>
         </div>
 
@@ -116,16 +120,16 @@ return (
                 <div className="list-group">
 
                   {/* Wallet connected --> Show DisConnect Buttons */}
-                  <div className="list-group--item !pb-0 md:!pb-4">
+                  <div className="list-group--item md:!pb-4">
                     <div className="list-group--item--title w-full md:w-1/4">
                       <div className="list-group--item--media">
-                        <span className="icon"><i className="fa-solid fa-wallet"></i></span>
+                        <span className="icon"><i className="fa-duotone fa-wallet"></i></span>
                       </div>
                       <label htmlFor="blockchain-wallet" className="text-color-desc">
                         Wallet
                       </label>
                     </div>
-                    <div className="flex-1 -mt-4 md:mt-0">
+                    <div className="flex-1 -mt-1 md:mt-0">
                       <div className="relative pl-8 md:pl-0 w-full flex items-center">
                         {_.isEmpty(wallet) ?
                         <span>{t("no connection",{"provider" : "wallet"})}</span>
@@ -152,16 +156,16 @@ return (
                   </div>
 
                   {/* Google disconnected --> Show Connect Buttons */}
-                  <div className="list-group--item !pb-0 md:!pb-4">
+                  <div className="list-group--item">
                     <div className="list-group--item--title w-full md:w-1/4">
-                      <div className="list-group--item--media">
+                      <div className="list-group--item--media brand--google">
                         <span className="icon"><i className="fa-brands fa-google"></i></span>
                       </div>
                       <label htmlFor="blockchain-wallet" className="text-color-desc">
                         Google
                       </label>
                     </div>
-                    <div className="flex-1 -mt-4 md:mt-0">
+                    <div className="flex-1 -mt-1 md:mt-0">
                       <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(google) ?
                         <span>{t("no connection",{"provider" : "Google"})}</span>
@@ -180,16 +184,16 @@ return (
                   </div>
 
                   {/* Facebook connected --> Show DisConnect Buttons */}
-                  <div className="list-group--item !pb-0 md:!pb-4">
+                  <div className="list-group--item">
                     <div className="list-group--item--title w-full md:w-1/4">
-                      <div className="list-group--item--media">
+                      <div className="list-group--item--media brand--facebook">
                         <span className="icon"><i className="fa-brands fa-facebook-f"></i></span>
                       </div>
                       <label htmlFor="blockchain-wallet" className="text-color-desc">
                         Facebook
                       </label>
                     </div>
-                    <div className="flex-1 -mt-4 md:mt-0">
+                    <div className="flex-1 -mt-1 md:mt-0">
                       <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(facebook) ?
                         <span>{t("no connection",{"provider" : "Facebook"})}</span>
@@ -208,16 +212,16 @@ return (
                   </div>
 
                   {/* Twitter connected --> Show DisConnect Buttons */}
-                  <div className="list-group--item !pb-0 md:!pb-4">
+                  <div className="list-group--item">
                     <div className="list-group--item--title w-full md:w-1/4">
-                      <div className="list-group--item--media">
+                      <div className="list-group--item--media brand--twitter">
                         <span className="icon"><i className="fa-brands fa-twitter"></i></span>
                       </div>
                       <label htmlFor="blockchain-wallet" className="text-color-desc">
                         Twitter
                       </label>
                     </div>
-                    <div className="flex-1 -mt-4 md:mt-0">
+                    <div className="flex-1 -mt-1 md:mt-0">
                       <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(twitter) ?
                         <span>{t("no connection",{"provider" : "Twitter"})}</span>
