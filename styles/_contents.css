@@ -43,7 +43,7 @@ Lists Styles
 
 .list-group--item--media {
   @apply flex justify-center items-center w-px-24 h-px-24 md:w-px-32 md:h-px-32 mr-2 md:mr-4 rounded-full flex-shrink-0 overflow-hidden;
-  @apply bg-primary-100 text-primary-500;
+  @apply bg-primary-500 text-white;
   img {
     @apply object-cover h-full;
   }
@@ -335,6 +335,40 @@ Icons Styles
 /* External Indicator */
 .ico-external-link {
   @apply transition opacity-0 transform scale-0 group-hover:opacity-100 group-hover:scale-100;
+}
+
+
+/*
+Brands Colors
+-------------------------------- */
+.brand--google {
+  background: rgb(219,68,55) !important;
+  color: #fff !important;
+}
+
+.brand--twitter {
+  background: rgb(29,161,242) !important;
+  color: #fff !important;
+}
+
+.brand--telegram {
+  background: #1d98dc !important;
+  color: #fff !important;
+}
+
+.brand--facebook {
+  background: rgb(66,103,178) !important;
+  color: #fff !important;
+}
+
+.brand--discord {
+  background: #5865f2 !important;
+  color: #fff !important;
+}
+
+.brand--linkedin {
+  background: rgb(40,103,178) !important;
+  color: #fff !important;
 }
 
 
