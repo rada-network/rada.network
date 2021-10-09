@@ -6,11 +6,15 @@ Typography Styles
 Core Contents
 ----------------------------------- */
 body {
-  @apply text-gray-800 dark:text-gray-200;
+  @apply text-gray-700 dark:text-gray-300;
 }
 
 .text-color-title,
-.comment-text {
+.comment-text,
+.post-title--text,
+.post-content h2,
+.post-content h3,
+.post-content h4 {
   @apply text-gray-800 dark:text-gray-200;
 }
 
@@ -53,7 +57,7 @@ Post Content Typo
 .post-content hr,
 .post-content table,
 .post-content iframe {
-  @apply mb-4 max-w-full;
+  @apply mb-5 max-w-full;
   word-break: break-word; 
 }
 
@@ -70,7 +74,7 @@ Post Content Typo
 .post-content h4,
 .post-content .pTitle,
 .post-content .pHead {
-  @apply font-semibold mb-4;
+  @apply font-semibold mb-5;
 }
 
 .post-content h2,
@@ -83,7 +87,8 @@ Post Content Typo
 }
 
 .post-content * + h2,
-.post-content * + .pTitle {
+.post-content * + .pTitle,
+.post-content * + h3 {
   @apply mt-8;
 }
 
