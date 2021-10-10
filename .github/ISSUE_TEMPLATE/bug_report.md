@@ -1,26 +1,18 @@
----
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
+1. **Steps to reproduce the behavior:**
+- Go to '...'
+- Click on '....'
+- Scroll down to '....'
+- See error
 
----
+2. **Expected behavior**
+- A clear and concise description of what you expected to happen.
 
-### Mô tả lỗi
-Mô tả ngắn gọn về lỗi
+3. **Screenshots**
+- If applicable, add screenshots to help explain your problem.
 
-### Hướng dẫn tái hiện lỗi
+4. **OS (please complete the following information):**
+ - OS: [e.g. PC, Android, iOS]
+ - Browser: [e.g. chrome, safari, Firefox..]
 
-Ghi rõ chi tiết cách thức tái hiện lỗi (Nếu có thể đính kèm linh Loom)
-
-
-### Screenshots
-If applicable, add screenshots to help explain your problem.
-
-
-### Môi trường
-
-(Ghi chi tiết bug phát hiện trên Desktop hay Mobile, trình duyệt nào ..etc)
-- VD:
- Desktop (Firefox)
+5. **Additional context**
+ Add any other context about the problem here. (Loom video URL)
