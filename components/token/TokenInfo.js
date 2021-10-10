@@ -24,7 +24,7 @@ const TokenInfo = ({tokenId})=>{
   useEffect(() => {
    tokenInfo && getTokenById({id : tokenInfo?.slug, lang: i18n.language}).then(function (res) {
     setTokenData(res.data.tokenById)
-    getCoinInfo(res.data.tokenById?.id)
+    getCoinInfo(res.data.tokenById?.symbol)
   })
   }, [tokenInfo])
 
