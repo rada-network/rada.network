@@ -1,0 +1,39 @@
+/** Badges, labels, messages, step indication, ect **/
+
+
+
+/*** labels ***/
+.label {
+    @apply px-2 py-1 items-center justify-center rounded;
+    @apply text-2xs font-medium uppercase tracking-wide;
+    @apply bg-opacity-10;
+}
+.label--active {
+    @apply bg-green-500 text-white;
+}
+.label--warning {
+    @apply bg-red-500 text-white;
+}
+.label--inactive {
+    @apply bg-gray-400 text-gray-200;
+}
+
+/** steps **/
+
+.step--wrapper {
+    @apply mt-4 rounded;
+}
+.step--header {
+    @apply px-3 py-2 flex items-center;
+    @apply text-base rounded-t border-t border-l border-r border-gray-200 text-gray-800 dark:text-gray-400 dark:border-transparent;
+    @apply bg-gray-100 dark:bg-gray-800;
+}
+.step--indicator {
+    @apply mr-2 px-3 py-1;
+    @apply bg-white dark:bg-purple-600 dark:bg-gray-700 rounded-full uppercase font-semibold text-xs text-gray-400;
+}
+.step--content {
+    @apply p-3;
+    @apply rounded-b;
+    @apply border-b border-l border-r border-gray-200 dark:border-gray-800;
+}
