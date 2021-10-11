@@ -101,13 +101,20 @@ const CardPostNormal = observer(({title, mediaUri, type, source, commentCount, v
   if (isVote > 0 || voteCount > 0){
     state += " hasVote"
   }
+  let srcSet = mediaUri;
+  let imgSrc = mediaUri
+  if (mediaUri && mediaUri.indexOf("https://gql.dhunt.io/media") > -1){
+    imgSrc = mediaUri.replace(/(format=)[^\&]+/, '$1' + "png")
+    srcSet = mediaUri + ', ' + imgSrc
+    
+  }
   return (
     <div className={`card card-post ${state}`}>
 
       {mediaUri !== null ?
         <div className={`card-media`}>
           <div className={`card-media-img`}>
-            <img layout='fill' className={`card-img`} src={mediaUri} alt={title}/>
+            <img layout='fill' className={`card-img`} srcSet={srcSet} src={imgSrc} alt={title}/>
           </div>
         </div>
         :
@@ -195,13 +202,20 @@ const CardPostRada = observer(({title, mediaUri, type, source, commentCount, vot
       }
     }
   }
+  let srcSet = mediaUri;
+  let imgSrc = mediaUri
+  if (mediaUri && mediaUri.indexOf("https://gql.dhunt.io/media") > -1){
+    imgSrc = mediaUri.replace(/(format=)[^\&]+/, '$1' + "png")
+    srcSet = mediaUri + ', ' + imgSrc
+    
+  }
   return (
     <div className={`card card-post ${state}`}>
 
       {mediaUri !== null ?
         <div className={`card-media`}>
           <div className={`card-media-img`}>
-            <img layout='fill' className={`card-img`} src={mediaUri} alt={title}/>
+            <img layout='fill' className={`card-img`} srcSet={srcSet} src={imgSrc} alt={title}/>
           </div>
         </div>
         :
