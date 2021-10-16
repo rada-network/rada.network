@@ -29,7 +29,7 @@
 }
 
 .step--header {
-   @apply pb-4;
+   @apply items-center mb-3;
 }
 .step--wrapper{
     @apply p-3 lg:p-5 dark:bg-gray-800 sm:p-3;
@@ -45,5 +45,8 @@
     @apply text-gray-800 rounded-t-lg bg-white dark:text-gray-400 dark:bg-gray-800 overflow-hidden;
 }
 .card--footer{
-    @apply px-6 py-3 bg-white border-t border-t-gray-200 dark:text-gray-400 dark:bg-gray-800 dark:border-t-gray-900;;
+    @apply bg-white border-t border-t-gray-200 dark:text-gray-400 dark:bg-gray-800 dark:border-t-gray-900;;
+}
+.sep {
+    @apply border-b border-gray-100 dark:border-gray-900 opacity-60;
 }
