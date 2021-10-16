@@ -51,7 +51,7 @@ function Concept() {
                               className="hasTooltip"
                               data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                               data-event="click"
-                            > wallet <i className="fa-duotone fa-info-circle text-base" />
+                            > <i className="fa-duotone fa-info-circle text-base" />
                             </span>
                           </div>
                       </div>
@@ -62,14 +62,17 @@ function Concept() {
                         </div>
                       </div>
                     </div>
+
+                    
+
                     <div className="flex flex-wrap items-end justify-between mb-2">
                       <div className="w-full lg:w-auto">
                         <div className="uppercase opacity-50 text-2xs md:text-xs">
-                          Available RIR  <span
+                          Available RIR for this project  <span
                               className="hasTooltip"
                               data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                               data-event="click"
-                            > wallet <i className="fa-duotone fa-info-circle text-base" />
+                            > <i className="fa-duotone fa-info-circle text-base" />
                             </span>
                         </div>
                       </div>
@@ -87,7 +90,7 @@ function Concept() {
                               className="hasTooltip"
                               data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                               data-event="click"
-                            > wallet <i className="fa-duotone fa-info-circle text-base" />
+                            > <i className="fa-duotone fa-info-circle text-base" />
                             </span>
                         </span>
                       </div>
@@ -99,7 +102,12 @@ function Concept() {
                     <div className="flex flex-wrap justify-between mb-2">
                       <div className="w-full lg:w-auto">
                         <span className="uppercase opacity-50 text-2xs md:text-xs">
-                         Unlocked at TGE
+                         Unlocked at TGE <span
+                              className="hasTooltip"
+                              data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                              data-event="click"
+                            > <i className="fa-duotone fa-info-circle text-base" />
+                            </span>
                         </span>
                       </div>
                       <div className="">
@@ -161,7 +169,7 @@ function Concept() {
                     <div className="step--wrapper">
                       <div className="step--header flex">
                       <span className="step--indicator">2</span>
-                        <h3>Confirm your transaction</h3>
+                        <h3>Your wallet</h3>
                       </div>
                       <div className="step--content">
                         <form>                          

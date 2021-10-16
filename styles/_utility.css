@@ -50,3 +50,14 @@
 .sep {
     @apply border-b border-gray-100 dark:border-gray-900 opacity-60;
 }
+/* .empty-state--illustration {
+    @apply max-w-lg bg-center bg-no-repeat mx-auto;
+    background-image: url(/images/rader-empty.svg);
+    padding-bottom:100%;
+}
+.dark .empty-state--illustration {
+    @apply max-w-sm bg-top bg-no-repeat;
+    background-image: url(/images/empty-dark.svg);
+    padding-bottom:100%;
+    background-size:100%;
+} */
