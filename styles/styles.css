@@ -472,7 +472,7 @@ Title
   @apply mb-1;
 }
 
-.post-title h1 {
+.post-title {
   .badges-tags {
     @apply relative mb-2 flex items-start;
   }

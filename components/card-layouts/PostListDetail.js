@@ -266,11 +266,11 @@ const NewsDetail = observer(function ({item,dateTitle,date,setTabCallback}){
       {/* Post Header */}
       <div className="section-header post-header">
         <div className="post-title">
+          {isRada ?
+          <div className="badges-tags"><span className="badge badge-rada mr-2">RADA</span></div>
+          : ""}
           <h1>
             <a target="_blank" rel="nofollow noreferrer" href={item.websiteUri ? item.websiteUri : item.url} className="">
-              {isRada ?
-              <div className="badges-tags"><span className="badge badge-rada mr-2">RADA</span></div>
-              : ""}
               <span className="post-title--text">
                 {title}
               </span>
