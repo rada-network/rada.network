@@ -20,20 +20,30 @@
 
 /** steps **/
 
-.step--wrapper {
-    @apply mt-4 rounded;
+.card--header{
+    @apply px-3 py-2 font-medium lg:px-6 lg:py-4 flex items-start text-gray-600 dark:text-gray-400;
+    @apply text-base rounded-t-lg bg-gray-100 dark:bg-gray-900 border-gray-200;
 }
+.card--wrapper{
+    @apply rounded-lg border border-gray-200 overflow-hidden dark:border-gray-800;
+}
+
 .step--header {
-    @apply px-3 py-2 flex items-center;
-    @apply text-base rounded-t border-t border-l border-r border-gray-200 text-gray-800 dark:text-gray-400 dark:border-transparent;
-    @apply bg-gray-100 dark:bg-gray-800;
+   @apply pb-4;
 }
-.step--indicator {
-    @apply mr-2 px-3 py-1;
-    @apply bg-white dark:bg-purple-600 dark:bg-gray-700 rounded-full uppercase font-semibold text-xs text-gray-400;
+.step--wrapper{
+    @apply p-3 lg:p-5 dark:bg-gray-800 sm:p-3;
 }
 .step--content {
-    @apply p-3;
-    @apply rounded-b;
-    @apply border-b border-l border-r border-gray-200 dark:border-gray-800;
+    
+}
+.step--indicator {
+    @apply mr-3 py-1.5 flex-shrink-0 w-7 h-7;
+    @apply bg-gray-200 text-center dark:bg-gray-700 rounded-full uppercase font-semibold text-xs text-gray-400;
+}
+.card--body{
+    @apply text-gray-800 rounded-t-lg bg-white dark:text-gray-400 dark:bg-gray-800 overflow-hidden;
+}
+.card--footer{
+    @apply px-6 py-3 bg-white border-t border-t-gray-200 dark:text-gray-400 dark:bg-gray-800 dark:border-t-gray-900;;
 }

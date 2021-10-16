@@ -57,8 +57,7 @@ Comment Form
 }
 .inline-field--wrapper{
 }
-.inline--field {
-}
+
 .inline--label {
   @apply mb-2 w-full block opacity-80 text-sm;
 }
@@ -67,4 +66,7 @@ Comment Form
   @apply focus:ring-purple-500 focus:border-purple-500;
   @apply rounded border-gray-200 dark:border-gray-700 dark:bg-gray-900;
 
+}
+.inline--field.border-l-none{
+  @apply rounded-l-none border-l-0;
 }
