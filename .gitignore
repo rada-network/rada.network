@@ -38,3 +38,4 @@ yarn-error.log*
 /public/workbox-ea903bce.js
 package-lock.json
 .env.production
+yarn.lock
