@@ -112,7 +112,7 @@ export default function UserProfile(props) {
           </div>
           <div className="mt-4">
             <div className="flex">
-              <h1 className="ml-auto text-2xl">
+              <h1 className="ml-auto mr-auto text-2xl">
                 {t("hello")}&nbsp;<strong>{user.name}</strong> #
                 {
                   user?.id?.split("-")[
@@ -120,9 +120,11 @@ export default function UserProfile(props) {
                   ]
                 }
               </h1>
-              <a
+              
+            </div>
+            <a
                 href="../concepts/TopUp"
-                className="mr-auto ml-2 inline-flex px-3 py-1 items-center rounded bg-gray-200 dark:bg-gray-800"
+                className="mr-auto mt-3 ml-2 inline-flex px-3 py-1 items-center rounded bg-gray-200 dark:bg-gray-800"
               >
                 <span className="text-xs text-gray-500 mr-2 uppercase font-semibold">
                   Balance
@@ -205,9 +207,8 @@ export default function UserProfile(props) {
                 </span>
                 <span className="ml-1">{topupInfo.approved_rir} RIR</span>
               </a>
-            </div>
 
-            {/* code {user.id.substr(-12)} bị lỗi nên anh dùng placeholder */}
+            
 
             {topupInfo.max_rir > 0 &&
               topupInfo.approved_rir < topupInfo.max_rir && (

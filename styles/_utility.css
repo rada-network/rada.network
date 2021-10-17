@@ -25,7 +25,7 @@
     @apply text-base rounded-t-lg bg-gray-100 dark:bg-gray-900 border-gray-200;
 }
 .card--wrapper{
-    @apply rounded-lg border border-gray-200 overflow-hidden dark:border-gray-800;
+    @apply rounded-lg border bg-gray-100 dark:bg-gray-900 border-gray-200 overflow-hidden dark:border-gray-800;
 }
 
 .step--header {

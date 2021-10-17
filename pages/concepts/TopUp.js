@@ -516,12 +516,12 @@ export default function UserProfile(props) {
             </div>
           </div>
 
-          <div className="card--wrapper mt-5">
-            <h3 className="text-gray-400 card--header">Transaction history</h3>
+          <div className="card--wrapper my-5">
+            <h3 className="text-gray-400 card--header text-center">Transaction history</h3>
             <div className="card--body">
               {investDeposit.map((invest) => (
-                <div className="p-3 lg:p-5 flex items-center">
-                  <span className="opacity-70 mr-3">
+                <div className="p-3 lg:p-5 flex items-start">
+                  <span className="opacity-70 w-1/4 mr-2">
                     {utils.titleTime(invest.date_created)}
                   </span>
                   <span className="w-3/6">TOP UP</span>

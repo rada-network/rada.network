@@ -662,7 +662,7 @@ export default function TokenInfoInvest({
                       onChange={handleInputChange}
                     />
                     <div className="opacity-70 rounded text-sm p-2 mt-2 form-message text-gray-900 form-message--notice bg-green-400">
-                      {tokenData?.name} runs on{" "}
+                      {tokenData?.name} is running on{" "}
                       {tokenData?.platform.networkName}. Please make sure that
                       you enter the correct {tokenData?.platform.networkName}{" "}
                       wallet address.
@@ -676,10 +676,10 @@ export default function TokenInfoInvest({
 
             <div className="card--footer">
               <button
-                className="btn mt-3 btn-primary py-2 px-3"
+                className="btn m-3 lg:m-5 btn-primary py-2 px-3"
                 onClick={handleSubmitInvest}
               >
-                Confirm
+                Invest
               </button>
             </div>
           </div>
