@@ -48,7 +48,7 @@ const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   const store = useStore();
   const [session, loading] = useSession();
-  const [cookies, setCookie] = useCookies(["access_token"]);
+  const [cookies, setCookie,removeCookie] = useCookies(["access_token"]);
   const { dataStore, detailStore } = usePageStore();
   dataStore.lang = pageProps.lang || "vi";
   useEffect(() => {
@@ -68,7 +68,11 @@ const MyApp = ({ Component, pageProps }) => {
           maxAge: 24 * 7 * 3600,
         });
       } else {
-        signOut();
+        signOut(true).then(() => {
+          removeCookie("access_token",{
+            path: "/", expires: -1,
+          });
+        })
       }
     }
     return () => {};

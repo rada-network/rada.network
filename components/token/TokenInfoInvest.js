@@ -29,6 +29,8 @@ export default function TokenInfoInvest({
     investCampaign &&
       getInvestById({ id: investCampaign.id }).then(function (res) {
         setInvestData(res.data.investCampaignById);
+      },function(err){
+        
       });
   }, [investCampaign]);
 

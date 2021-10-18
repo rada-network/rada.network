@@ -27,7 +27,7 @@ export default investCampaignByIdGql
 
 export async function getInvestById({id}){
   const client = getClient()
-  return await client.query({
+  return client.query({
     query: investCampaignByIdGql,
     variables: {
       id : id,
