@@ -57,8 +57,8 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                 <div className="flex flex-wrap md:flex-nowrap w-full lg:ml-6 lg:space-x-2 lg:divide-x divide-gray-400 divide-opacity-20">
   
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
-                    <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Market Cap</span>
+                    <div className="field-label">
+                      <span className="field-label--text">Market Cap</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -73,8 +73,8 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                   </div>
   
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
-                    <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Volume 24h</span>
+                    <div className="field-label">
+                      <span className="field-label--text">Volume 24h</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -89,8 +89,8 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                   </div>
   
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
-                    <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs" title="Circulating Supply">C. Supply</span>
+                    <div className="field-label">
+                      <span className="field-label--text" title="Circulating Supply">C. Supply</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -103,8 +103,8 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                   </div>
   
                   <div className="lg:text-center pr-4 lg:pr-0 lg:w-full">
-                    <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Total Supply</span>
+                    <div className="field-label">
+                      <span className="field-label--text">Total Supply</span>
                     </div>
                     <div className="mb-2">
                       <strong href="#" className="">
@@ -127,9 +127,9 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
   
                 <div className="text-sm w-full">
                   {tokenData?.link?.find(item => (item.group !== null && item.group.toLowerCase() === 'homepage')) &&
-                  <div className="flex flex-wrap justify-between items-center">
-                    <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">
+                  <div className="field">
+                    <div className="field-label">
+                      <span className="field-label--text">
                       {tokenData?.link?.map(item => (item.group !== null && item.group.toLowerCase() === 'homepage')).length > 1 ? "Websites" : "Website" }
                       </span>
                     </div>
@@ -147,9 +147,9 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                   </div>
                   }
                   {tokenData?.link?.find(item => item.group === 'community') &&
-                  <div className="flex flex-wrap justify-between items-center">
-                    <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Community</span>
+                  <div className="field">
+                    <div className="field-label">
+                      <span className="field-label--text">Community</span>
                     </div>
                     <div className="">
                       {tokenData?.link?.map(item => item.group === 'community' && (
@@ -164,9 +164,9 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                   </div>
                   }
                   {tokenData?.link?.find(item => item.group === 'explorers') &&
-                  <div className="flex flex-wrap justify-between items-center">
-                    <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Explorer</span>
+                  <div className="field">
+                    <div className="field-label">
+                      <span className="field-label--text">Explorer</span>
                     </div>
                     <div className="">
                       {tokenData?.link?.map((item, index) => item.group === 'explorers' && (
@@ -178,16 +178,16 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                   </div>
                   }
                   {tokenData?.contract_address &&
-                  <div className="flex flex-wrap justify-between items-center">
-                    <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">Contract</span>
+                  <div className="field">
+                    <div className="field-label">
+                      <span className="field-label--text">Contract</span>
                     </div>
                     <div className="">
                       <a href="#" className="btn btn-default btn-default-sm">
                         <span className="icon">
                           <i class="cf cf-eth"></i>
                         </span>
-                        <span className="btn--text">{ `${tokenData?.contract_address.substr(0, 4)}...${tokenData?.contract_address.substr(-4)} `}</span>
+                        <span className="btn--text">{ `${tokenData?.contract_address.substr(0, 6)}...${tokenData?.contract_address.substr(-6)} `}</span>
                         <span className="icon">
                           <i class="fa-regular fa-copy text-2xs"></i>
                         </span>
@@ -196,9 +196,9 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                   </div>
                   }
                   {tokenData?.link?.find(item => item.group === 'whitepaper' || item.group === 'tokenomic') &&
-                  <div className="flex flex-wrap justify-between items-center">
-                    <div className="w-full lg:w-auto mb-2">
-                      <span className="uppercase opacity-50 text-2xs lg:text-xs">More</span>
+                  <div className="field">
+                    <div className="field-label">
+                      <span className="field-label--text">More</span>
                     </div>
                     <div className="">
                       {tokenData?.link?.map((item, index) => item.group === 'whitepaper' && (

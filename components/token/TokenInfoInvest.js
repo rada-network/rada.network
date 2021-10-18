@@ -50,7 +50,7 @@ export default function TokenInfoInvest({
           <div className="flex w-full">
             <div className="text-sm w-full">
               <div className="flex flex-wrap items-end justify-between mb-2">
-                <div className="w-full lg:w-auto">
+                <div className="field-label">
                   <div className="uppercase opacity-50 text-2xs md:text-xs">
                     {t("Your maximum allocation")}
                     <span
@@ -70,7 +70,7 @@ export default function TokenInfoInvest({
                 </div>
               </div>
               <div className="flex flex-wrap items-end justify-between mb-2">
-                <div className="w-full lg:w-auto">
+                <div className="field-label">
                   <div className="uppercase opacity-50 text-2xs md:text-xs">
                     {t("Available allocation for this project")}
                     <span
@@ -93,7 +93,7 @@ export default function TokenInfoInvest({
                 </div>
               </div>
               <div className="flex flex-wrap justify-between mb-2">
-                <div className="w-full lg:w-auto">
+                <div className="field-label">
                   <span className="uppercase opacity-50 text-2xs md:text-xs">
                     {t("Token Generation Events (TGE)")}
                     <span
@@ -113,7 +113,7 @@ export default function TokenInfoInvest({
               </div>
 
               <div className="flex flex-wrap justify-between mb-2">
-                <div className="w-full lg:w-auto">
+                <div className="field-label">
                   <span className="uppercase opacity-50 text-2xs md:text-xs">
                     {t("Unlocked token ratio at TGE")}{" "}
                     <span
@@ -130,7 +130,7 @@ export default function TokenInfoInvest({
               </div>
 
               <div className="flex flex-wrap justify-between mb-2">
-                <div className="w-full lg:w-auto">
+                <div className="field-label">
                   <span className="uppercase opacity-50 text-2xs md:text-xs">
                     {t("Project status")}
                   </span>

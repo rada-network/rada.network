@@ -66,7 +66,7 @@ function Concept() {
                     <div className="flex flex-wrap md:flex-nowrap w-full md:ml-6 md:space-x-2 md:divide-x divide-gray-400 divide-opacity-20">
 
                       <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
-                        <div className="w-full lg:w-auto">
+                        <div className="field-label">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Market Cap
                           </span>
@@ -79,7 +79,7 @@ function Concept() {
                       </div>
 
                       <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
-                        <div className="w-full lg:w-auto">
+                        <div className="field-label">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Volume 24h
                           </span>
@@ -92,7 +92,7 @@ function Concept() {
                       </div>
 
                       <div className="md:text-center pr-4 md:pr-0 md:w-1/2 lg:w-full">
-                        <div className="w-full lg:w-auto">
+                        <div className="field-label">
                           <span
                             className="uppercase opacity-50 text-2xs md:text-xs"
                             title="Circulating Supply"
@@ -108,7 +108,7 @@ function Concept() {
                       </div>
 
                       <div className="md:text-center md:w-1/2 lg:w-full">
-                        <div className="w-full lg:w-auto">
+                        <div className="field-label">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Total Supply
                           </span>
@@ -130,7 +130,7 @@ function Concept() {
                     <div className="text-sm w-full">
 
                       {/* <div className="flex flex-wrap justify-between items-center">
-                        <div className="w-full lg:w-auto mb-2">
+                        <div className="field-label">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Website
                           </span>
@@ -143,7 +143,7 @@ function Concept() {
                       </div> */}
 
                       <div className="flex flex-wrap justify-between items-center">
-                        <div className="w-full lg:w-auto mb-2">
+                        <div className="field-label">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Community
                           </span>
@@ -197,7 +197,7 @@ function Concept() {
                       </div>
 
                       {/* <div className="flex flex-wrap justify-between items-center">
-                        <div className="w-full lg:w-auto mb-2">
+                        <div className="field-label">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Explorer
                           </span>
@@ -231,7 +231,7 @@ function Concept() {
                       </div> */}
 
                       <div className="flex flex-wrap justify-between items-center">
-                        <div className="w-full lg:w-auto mb-2">
+                        <div className="field-label">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Contract
                           </span>

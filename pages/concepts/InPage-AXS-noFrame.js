@@ -129,7 +129,7 @@ function Concept() {
                   <div className="flex w-full">
                     <div className="text-sm w-full">
                       <div className="flex flex-wrap justify-between items-center">
-                        <div className="w-full lg:w-auto mb-2">
+                        <div className="field-label">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Website
                           </span>
@@ -152,7 +152,7 @@ function Concept() {
                       </div>
 
                       <div className="flex flex-wrap justify-between items-center">
-                        <div className="w-full lg:w-auto mb-2">
+                        <div className="field-label">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Community
                           </span>
@@ -206,7 +206,7 @@ function Concept() {
                       </div>
 
                       <div className="flex flex-wrap justify-between items-center">
-                        <div className="w-full lg:w-auto mb-2">
+                        <div className="field-label">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Explorer
                           </span>
@@ -240,7 +240,7 @@ function Concept() {
                       </div>
 
                       <div className="flex flex-wrap justify-between items-center">
-                        <div className="w-full lg:w-auto mb-2">
+                        <div className="field-label">
                           <span className="uppercase opacity-50 text-2xs md:text-xs">
                             Contract
                           </span>

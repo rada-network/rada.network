@@ -157,7 +157,7 @@ const Layout = observer((props) => {
 
                               <div className="text-sm w-full">
                                 <div className="flex flex-wrap justify-between items-center">
-                                  <div className="w-full lg:w-auto mb-2">
+                                  <div className="field-label">
                                     <span className="uppercase opacity-50 text-xs">Website</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
@@ -171,7 +171,7 @@ const Layout = observer((props) => {
                                 </div>
 
                                 <div className="flex flex-wrap justify-between items-center">
-                                  <div className="w-full lg:w-auto mb-2">
+                                  <div className="field-label">
                                     <span className="uppercase opacity-50 text-xs">Community</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
@@ -203,7 +203,7 @@ const Layout = observer((props) => {
                                 </div>
 
                                 <div className="flex flex-wrap justify-between items-center">
-                                  <div className="w-full lg:w-auto mb-2">
+                                  <div className="field-label">
                                     <span className="uppercase opacity-50 text-xs">Explorer</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
@@ -220,7 +220,7 @@ const Layout = observer((props) => {
                                 </div>
 
                                 <div className="flex flex-wrap justify-between items-center">
-                                  <div className="w-full lg:w-auto mb-2">
+                                  <div className="field-label">
                                     <span className="uppercase opacity-50 text-xs">Contract</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
