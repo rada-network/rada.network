@@ -210,106 +210,68 @@ export default function UserProfile(props) {
               <div className="grid">
                 <div className="list-group">
                   {/* Wallet connected --> Show DisConnect Buttons */}
-                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">
-                    
-                    <div className="flex-1 -mt-4 flex md:mt-0">
+                  <a href="link_to_invest_tab" className="list-group--item flex items-center hover:bg-gray-700">
+                    <div className="flex-1 flex">
                       <strong className="w-3/4 pr-2">Moniwar</strong>
                       <strong className="w-1/4">1 RIR</strong>
                     </div>
-                    <div className="text-right relative -top-4 md:top-0 w-1/5">
-                      <span className="label label--active">TGE</span>
+                    <div className="text-right  w-1/4">
+                      <span className="label label--active  ml-auto">TGE</span>
                     </div>
                   </a>
 
-                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">    
-                    <div className="flex-1 -mt-4 flex md:mt-0">
-                      <strong className="w-3/4  pr-2">DareNFT</strong>
-                      <strong className="w-1/4">1 RIR</strong>
-                    </div>
-                    <div className="text-right relative -top-4 md:top-0 w-1/5">
-                      <span className="label label--active">Public</span>
-                    </div>
-                  </a>
-                  
-                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">    
-                    <div className="flex-1 -mt-4 flex md:mt-0">
-                      <strong className="w-3/4 pr-2">DareNFT</strong>
-                      <strong className="w-1/4">1 RIR</strong>
-                    </div>
-                    <div className="text-right relative -top-4 md:top-0 w-1/5">
-                      <span className="label label--neutral">Private</span>
-                    </div>
-                  </a>
-
-                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">    
-                    <div className="flex-1 -mt-4 flex md:mt-0 ">
-                      <strong className="w-3/4  pr-2">DareNFT</strong>
-                      <strong className="w-1/4">1 RIR</strong>
-                    </div>
-                    <div className="text-right relative -top-4 md:top-0 w-1/5">
-                      <span className="label label--neutral">Private</span>
-                    </div>
-                  </a>
-
-                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">    
-                    <div className="flex-1 -mt-4 flex md:mt-0">
-                      <strong className="w-3/4  pr-2">DareNFT</strong>
-                      <strong className="w-1/4">1 RIR</strong>
-                    </div>
-                    <div className="text-right relative -top-4 md:top-0 w-1/5">
-                      <span className="label label--neutral">Private</span>
-                    </div>
-                  </a>
-                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">
-                    
-                    <div className="flex-1 -mt-4 flex md:mt-0">
+                  <a href="link_to_invest_tab" className="list-group--item flex items-center hover:bg-gray-700">                    
+                    <div className="flex-1 flex">
                       <strong className="w-3/4 pr-2">Moniwar</strong>
                       <strong className="w-1/4">1 RIR</strong>
                     </div>
-                    <div className="text-right relative -top-4 md:top-0 w-1/5">
-                      <span className="label label--active">TGE</span>
+                    <div className="text-right w-1/4">
+                      <span className="label label--neutral  ml-auto">Private</span>
                     </div>
                   </a>
 
-                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">    
-                    <div className="flex-1 -mt-4 flex md:mt-0">
-                      <strong className="w-3/4  pr-2">DareNFT</strong>
+                  <a href="link_to_invest_tab" className="list-group--item flex items-center hover:bg-gray-700">
+                    <div className="flex-1 flex">
+                      <strong className="w-3/4 pr-2">Moniwar</strong>
                       <strong className="w-1/4">1 RIR</strong>
                     </div>
-                    <div className="text-right relative -top-4 md:top-0 w-1/5">
-                      <span className="label label--active">Public</span>
+                    <div className="text-right  w-1/4">
+                      <span className="label label--active ml-auto">Public</span>
                     </div>
                   </a>
+
+                  <a href="link_to_invest_tab" className="list-group--item flex items-center hover:bg-gray-700">                    
+                    <div className="flex-1 flex">
+                      <strong className="w-3/4 pr-2">Moniwar</strong>
+                      <strong className="w-1/4">1 RIR</strong>
+                    </div>
+                    <div className="text-right w-1/4">
+                      <span className="label label--neutral  ml-auto">Private</span>
+                    </div>
+                  </a>
+
+                  <a href="link_to_invest_tab" className="list-group--item flex items-center hover:bg-gray-700">
+                    <div className="flex-1 flex">
+                      <strong className="w-3/4 pr-2">Moniwar</strong>
+                      <strong className="w-1/4">1 RIR</strong>
+                    </div>
+                    <div className="text-right  w-1/4">
+                      <span className="label label--active  ml-auto">TGE</span>
+                    </div>
+                  </a>
+
+                  <a href="link_to_invest_tab" className="list-group--item flex items-center hover:bg-gray-700">                    
+                    <div className="flex-1 flex">
+                      <strong className="w-3/4 pr-2">Moniwar</strong>
+                      <strong className="w-1/4">1 RIR</strong>
+                    </div>
+                    <div className="text-right w-1/4">
+                      <span className="label label--neutral  ml-auto">Private</span>
+                    </div>
+                  </a>
+                 
                   
-                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">    
-                    <div className="flex-1 -mt-4 flex md:mt-0">
-                      <strong className="w-3/4 pr-2">DareNFT</strong>
-                      <strong className="w-1/4">1 RIR</strong>
-                    </div>
-                    <div className="text-right relative -top-4 md:top-0 w-1/5">
-                      <span className="label label--neutral">Private</span>
-                    </div>
-                  </a>
 
-                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">    
-                    <div className="flex-1 -mt-4 flex md:mt-0 ">
-                      <strong className="w-3/4  pr-2">DareNFT</strong>
-                      <strong className="w-1/4">1 RIR</strong>
-                    </div>
-                    <div className="text-right relative -top-4 md:top-0 w-1/5">
-                      <span className="label label--neutral">Private</span>
-                    </div>
-                  </a>
-
-                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">    
-                    <div className="flex-1 -mt-4 flex md:mt-0">
-                      <strong className="w-3/4  pr-2">DareNFT</strong>
-                      <strong className="w-1/4">1 RIR</strong>
-                    </div>
-                    <div className="text-right relative -top-4 md:top-0 w-1/5">
-                      <span className="label label--neutral">Private</span>
-                    </div>
-                  </a>
 
                 </div>
               </div>
