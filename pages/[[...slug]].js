@@ -303,7 +303,7 @@ export async function getStaticProps(context) {
     }
   }
   props = Object.assign(props,{
-    ...await serverSideTranslations(context.locale, ['common', 'navbar']),
+    ...await serverSideTranslations(context.locale, ['common', 'navbar','invest']),
   })
   return {
     props,

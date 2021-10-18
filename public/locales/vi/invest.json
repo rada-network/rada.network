@@ -1,0 +1,16 @@
+{
+  "Your maximum allocation" : "Hạn mức đầu tư tối đa của bạn",
+  "Your maximum allocation tooltip" : "Hạn mức đầu tư tối đa có nghĩa là số tiền (số RIR) tối đa mà bạn có thể đầu tư cho một dự án. Hạn mức này có thể được thay đổi dựa trên đóng góp của bạn cho tổ chức RADA hoặc tùy theo quy mô của dự án. ",
+  "Available allocation for this project" : "Hạn mức khả dụng của dự án",
+  "Available allocation for this project tooltip" : "Vì tính chất của vòng mở bán token không công khai (private sale) mang lại rất nhiều lợi thế cho những nhà đầu tư sớm, nên số lượng RIR khả dụng cho từng dự án cũng sẽ bị hạn chế và có thể nhanh chóng được mua hết chỉ khong khoảng thời gian ngắn.",
+  "Token Generation Events (TGE)" : "Sự kiện phát hành token - TGE",
+  "Token Generation Events (TGE) tooltip" : "TGE nhằm đánh dấu thời điểm một loại tiền điện tử được phát hành. Việc phát hành này có thể thông qua các hình như private sale (mở bán không công khai) hay ICO, hoặc như một phần thưởng khi đào token.",
+  "Unlocked token ratio at TGE" : "Tỷ lệ token mở khóa ngày phát hành",
+  "Unlocked token ratio at TGE tooltip" : "Trong các TGE, để đảm bảo giá trị đồng token, một số lượng mã token nhất định được mở khóa (unlocked token). Điều này giúp ngăn chặn những người đang nắm giữ số lượng lớn các token bán hết tài sản cùng một lúc ra thị trường làm sụt giảm nhanh giá trị token.",
+  "Project status" : "Trạng thái của dự án",
+  "invest header" : "Đầu tư cho dự án trong vòng 5 phút chỉ với 2 bước đơn giản sau:",
+  "invest input rir" : "Bước 1: Nhập số lượng RIR bạn muốn đầu tư cho dự án này",
+  "invest input wallet" : "Nhập địa chỉ ví {{network_name}} của bạn.",
+  "invest input wallet tip" : "Số lượng {{token_name}} bạn vừa mua sẽ được gửi về địa chỉ ví bạn đã nhập.",
+  "invest input wallet note" : "Lưu ý: Token {{token_name}} vận hành trên mạng {{network_name}}. Vui lòng đảm bảo việc bạn đã nhập đúng địa chỉ ví {{network_name}}."
+}
