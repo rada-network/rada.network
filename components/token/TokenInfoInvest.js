@@ -11,6 +11,7 @@ import RadaSvg from "../svg/rada";
 import useStore from "../../lib/useStore"
 import { toast } from "react-toastify";
 import moment from "moment";
+import ReactTooltip from 'react-tooltip';
 
 export default function TokenInfoInvest({
   tokenData,
@@ -37,6 +38,9 @@ export default function TokenInfoInvest({
 
   return (
     <div className="section section-coininfo--team">
+      <div onClick={e => e.stopPropagation()}>
+        <ReactTooltip type="info" multiline={true} globalEventOff="click" clickable={true} html={true} />
+      </div>
       <div className="grid grid-cols-1">
         {/* Post Header */}
         <div className="flex flex-col">
@@ -56,6 +60,7 @@ export default function TokenInfoInvest({
                     <span
                       className="hasTooltip"
                       data-tip={t("Your maximum allocation tooltip")}
+                      data-event="click"
                     >
                       {" "}
                       <i className="fa-duotone fa-info-circle text-base" />
