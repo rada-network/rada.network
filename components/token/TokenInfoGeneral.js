@@ -187,7 +187,7 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                         <span className="icon">
                           <i class="cf cf-eth"></i>
                         </span>
-                        <span className="btn--text">{ `${tokenData?.contract_address.substr(0, 4)}...${tokenData?.contract_address.substr(-4)} `}</span>
+                        <span className="btn--text">{ `${tokenData?.contract_address.substr(0, 6)}...${tokenData?.contract_address.substr(-6)} `}</span>
                         <span className="icon">
                           <i class="fa-regular fa-copy text-2xs"></i>
                         </span>
