@@ -1,9 +1,19 @@
 /** Badges, labels, messages, step indication, ect **/
 
 /* Fields */
-.field-label {
-  @apply opacity-50 text-2xs lg:text-xs;
+.field {
+  @apply flex flex-wrap justify-between items-center;
 }
+
+.field-label {
+  @apply w-full lg:w-auto;
+}
+
+.field-label--text {
+  @apply opacity-50 text-xs;
+}
+
+
 
 /*** labels ***/
 .label {

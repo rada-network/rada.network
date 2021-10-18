@@ -19,8 +19,8 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
             <div className="flex flex-wrap lg:justify-evenly lg:flex-nowrap w-full lg:space-x-2 lg:divide-x divide-gray-400 divide-opacity-20">
 
                 <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
-                <div className="w-full lg:w-auto">
-                    <span className="field-label">
+                <div className="field-label">
+                    <span className="field-label--text">
                     {t('Location')}
                     </span>
                 </div>
@@ -32,8 +32,8 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
                 </div>
 
                 <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
-                <div className="w-full lg:w-auto">
-                    <span className="field-label">
+                <div className="field-label">
+                    <span className="field-label--text">
                     {t('Founded')}
                     </span>
                 </div>
@@ -45,8 +45,8 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
                 </div>
 
                 <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
-                <div className="w-full lg:w-auto">
-                    <span className="field-label">
+                <div className="field-label">
+                    <span className="field-label--text">
                     {t('Employees')}
                     </span>
                 </div>
@@ -58,9 +58,9 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
                 </div>
 
                 <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
-                <div className="w-full lg:w-auto">
+                <div className="field-label">
                     <span
-                    className="field-label"
+                    className="field-label--text"
                     title="Last Funding Type"
                     >
                     {t('Last Funding')}
@@ -74,8 +74,8 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
                 </div>
 
                 <div className="lg:text-center flex-0 flex-srink-0 lg:w-full">
-                <div className="w-full lg:w-auto">
-                    <span className="field-label">
+                <div className="field-label">
+                    <span className="field-label--text">
                     {t('Headquarter')}
                     </span>
                 </div>

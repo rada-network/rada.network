@@ -112,7 +112,7 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
                         {/* Post Header */}
                         <div className="flex flex-col">
 
-                          <div className="flex flex-wrap justify-between items-center items-center w-full">
+                          <div className="field w-full">
                             <div className="flex flex-0 flex-shrink-0 mb-4">
                               <span className="icon flex-shrink-0">
                                 <img src="/images/coins/axs.png" className="mr-2 h-px-32 w-px-32" alt="AXS Symbol"/>
@@ -134,9 +134,9 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
                             <div className="flex w-full">
 
                               <div className="text-sm w-full">
-                                <div className="flex flex-wrap justify-between items-center">
-                                  <div className="w-full lg:w-auto mb-2">
-                                    <span className="field-label">Website</span>
+                                <div className="field">
+                                  <div className="field-label">
+                                    <span className="field-label--text">Website</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
                                     <a href="https://axieinfinity.com/" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
@@ -148,9 +148,9 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
                                   </div>
                                 </div>
 
-                                <div className="flex flex-wrap justify-between items-center">
-                                  <div className="w-full lg:w-auto mb-2">
-                                    <span className="field-label">Community</span>
+                                <div className="field">
+                                  <div className="field-label">
+                                    <span className="field-label--text">Community</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
                                     <a href="https://twitter.com/axieinfinity" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
@@ -180,9 +180,9 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
                                   </div>
                                 </div>
 
-                                <div className="flex flex-wrap justify-between items-center">
-                                  <div className="w-full lg:w-auto mb-2">
-                                    <span className="field-label">Explorer</span>
+                                <div className="field">
+                                  <div className="field-label">
+                                    <span className="field-label--text">Explorer</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
                                     <a href="https://etherscan.io/token/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
@@ -197,9 +197,9 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
                                   </div>
                                 </div>
 
-                                <div className="flex flex-wrap justify-between items-center">
-                                  <div className="w-full lg:w-auto mb-2">
-                                    <span className="field-label">Contract</span>
+                                <div className="field">
+                                  <div className="field-label">
+                                    <span className="field-label--text">Contract</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
                                     <a href="#" className="btn btn-default btn-default-sm">
@@ -417,19 +417,19 @@ const TokenMarket = ({props,dataStore,detailStore}) => {
                           <div className="flex w-full mt-8 md:mt-0">
                             <div className="list-group-sm text-sm w-full">
                               <div className="list-group-sm--item">
-                                <span className="field-label">Market Cap</span>
+                                <span className="field-label--text">Market Cap</span>
                                 <span className="font-semibold">$3.7B</span>
                               </div>
                               <div className="list-group-sm--item">
-                                <span className="field-label">Volume 24h</span>
+                                <span className="field-label--text">Volume 24h</span>
                                 <span className="font-semibold">$217.0M</span>
                               </div>
                               <div className="list-group-sm--item">
-                                <span className="field-label">Available Supply</span>
+                                <span className="field-label--text">Available Supply</span>
                                 <span className="font-semibold">57,849,238</span>
                               </div>
                               <div className="list-group-sm--item">
-                                <span className="field-label">Total Supply</span>
+                                <span className="field-label--text">Total Supply</span>
                                 <span className="font-semibold">270,000,000</span>
                               </div>
                             </div>
