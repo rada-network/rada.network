@@ -435,6 +435,74 @@ export default function UserProfile(props) {
             </div>
           </div>
           {/* END: Connection */}
+
+
+
+          <div className="card card-pagecontent">
+            <div className="card-header flex">
+              <span className="card-title">Your recent investments</span>
+              <a href="../concepts/All-Investments" className="ml-auto btn-neutral rounded px-2 py-1">View all</a>
+            </div>
+
+            <div className="card-body">
+              <div className="grid">
+                <div className="list-group">
+                  {/* Wallet connected --> Show DisConnect Buttons */}
+                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">
+                    
+                    <div className="flex-1 -mt-4 flex md:mt-0">
+                      <strong className="w-3/4 pr-2">Moniwar</strong>
+                      <strong className="w-1/4">1 RIR</strong>
+                    </div>
+                    <div className="text-right relative -top-4 md:top-0 w-1/5">
+                      <span className="label label--active">TGE</span>
+                    </div>
+                  </a>
+
+                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">    
+                    <div className="flex-1 -mt-4 flex md:mt-0">
+                      <strong className="w-3/4  pr-2">DareNFT</strong>
+                      <strong className="w-1/4">1 RIR</strong>
+                    </div>
+                    <div className="text-right relative -top-4 md:top-0 w-1/5">
+                      <span className="label label--active">Public</span>
+                    </div>
+                  </a>
+                  
+                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">    
+                    <div className="flex-1 -mt-4 flex md:mt-0">
+                      <strong className="w-3/4 pr-2">DareNFT</strong>
+                      <strong className="w-1/4">1 RIR</strong>
+                    </div>
+                    <div className="text-right relative -top-4 md:top-0 w-1/5">
+                      <span className="label label--neutral">Private</span>
+                    </div>
+                  </a>
+
+                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">    
+                    <div className="flex-1 -mt-4 flex md:mt-0 ">
+                      <strong className="w-3/4  pr-2">DareNFT</strong>
+                      <strong className="w-1/4">1 RIR</strong>
+                    </div>
+                    <div className="text-right relative -top-4 md:top-0 w-1/5">
+                      <span className="label label--neutral">Private</span>
+                    </div>
+                  </a>
+
+                  <a href="link_to_invest_tab" className="list-group--item !pb-0 md:!pb-4 hover:bg-gray-700">    
+                    <div className="flex-1 -mt-4 flex md:mt-0">
+                      <strong className="w-3/4  pr-2">DareNFT</strong>
+                      <strong className="w-1/4">1 RIR</strong>
+                    </div>
+                    <div className="text-right relative -top-4 md:top-0 w-1/5">
+                      <span className="label label--neutral">Private</span>
+                    </div>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
           <UserDistribution props={props} />
         </div>
       </StaticLayout>

@@ -122,9 +122,9 @@ function Concept() {
                   </div>
                   {/* Card body */} 
                   <div className="card--footer p-3 lg:p-5">
-                    <button className="btn btn-primary px-3 py-2">
-                      Contribute
-                    </button>
+                    <a className="btn btn-primary px-3 py-2">
+                      How to invest?
+                    </a>
                   </div>
                 </div>
 
