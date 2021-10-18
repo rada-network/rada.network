@@ -136,7 +136,7 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
                               <div className="text-sm w-full">
                                 <div className="flex flex-wrap justify-between items-center">
                                   <div className="w-full lg:w-auto mb-2">
-                                    <span className="uppercase opacity-50 text-2xs lg:text-xs">Website</span>
+                                    <span className="field-label">Website</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
                                     <a href="https://axieinfinity.com/" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
@@ -150,7 +150,7 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
 
                                 <div className="flex flex-wrap justify-between items-center">
                                   <div className="w-full lg:w-auto mb-2">
-                                    <span className="uppercase opacity-50 text-2xs lg:text-xs">Community</span>
+                                    <span className="field-label">Community</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
                                     <a href="https://twitter.com/axieinfinity" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
@@ -182,7 +182,7 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
 
                                 <div className="flex flex-wrap justify-between items-center">
                                   <div className="w-full lg:w-auto mb-2">
-                                    <span className="uppercase opacity-50 text-2xs lg:text-xs">Explorer</span>
+                                    <span className="field-label">Explorer</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
                                     <a href="https://etherscan.io/token/0xf5d669627376ebd411e34b98f19c868c8aba5ada" className="btn btn-default btn-default-sm" rel="nofollow" target="_blank">
@@ -199,7 +199,7 @@ const TokenDetail = ({props,dataStore,detailStore}) => {
 
                                 <div className="flex flex-wrap justify-between items-center">
                                   <div className="w-full lg:w-auto mb-2">
-                                    <span className="uppercase opacity-50 text-2xs lg:text-xs">Contract</span>
+                                    <span className="field-label">Contract</span>
                                   </div>
                                   <div className="space-x-2 mb-2">
                                     <a href="#" className="btn btn-default btn-default-sm">
@@ -417,19 +417,19 @@ const TokenMarket = ({props,dataStore,detailStore}) => {
                           <div className="flex w-full mt-8 md:mt-0">
                             <div className="list-group-sm text-sm w-full">
                               <div className="list-group-sm--item">
-                                <span className="uppercase opacity-50 text-2xs lg:text-xs">Market Cap</span>
+                                <span className="field-label">Market Cap</span>
                                 <span className="font-semibold">$3.7B</span>
                               </div>
                               <div className="list-group-sm--item">
-                                <span className="uppercase opacity-50 text-2xs lg:text-xs">Volume 24h</span>
+                                <span className="field-label">Volume 24h</span>
                                 <span className="font-semibold">$217.0M</span>
                               </div>
                               <div className="list-group-sm--item">
-                                <span className="uppercase opacity-50 text-2xs lg:text-xs">Available Supply</span>
+                                <span className="field-label">Available Supply</span>
                                 <span className="font-semibold">57,849,238</span>
                               </div>
                               <div className="list-group-sm--item">
-                                <span className="uppercase opacity-50 text-2xs lg:text-xs">Total Supply</span>
+                                <span className="field-label">Total Supply</span>
                                 <span className="font-semibold">270,000,000</span>
                               </div>
                             </div>

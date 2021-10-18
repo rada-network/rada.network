@@ -20,7 +20,7 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
 
                 <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
                 <div className="w-full lg:w-auto">
-                    <span className="uppercase opacity-50 text-2xs lg:text-xs">
+                    <span className="field-label">
                     {t('Location')}
                     </span>
                 </div>
@@ -33,7 +33,7 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
 
                 <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
                 <div className="w-full lg:w-auto">
-                    <span className="uppercase opacity-50 text-2xs lg:text-xs">
+                    <span className="field-label">
                     {t('Founded')}
                     </span>
                 </div>
@@ -46,7 +46,7 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
 
                 <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
                 <div className="w-full lg:w-auto">
-                    <span className="uppercase opacity-50 text-2xs lg:text-xs">
+                    <span className="field-label">
                     {t('Employees')}
                     </span>
                 </div>
@@ -60,7 +60,7 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
                 <div className="lg:text-center flex-0 flex-srink-0 lg:w-full pr-6 lg:pr-0">
                 <div className="w-full lg:w-auto">
                     <span
-                    className="uppercase opacity-50 text-2xs lg:text-xs"
+                    className="field-label"
                     title="Last Funding Type"
                     >
                     {t('Last Funding')}
@@ -75,7 +75,7 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
 
                 <div className="lg:text-center flex-0 flex-srink-0 lg:w-full">
                 <div className="w-full lg:w-auto">
-                    <span className="uppercase opacity-50 text-2xs lg:text-xs">
+                    <span className="field-label">
                     {t('Headquarter')}
                     </span>
                 </div>
