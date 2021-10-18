@@ -16,7 +16,7 @@ import { useTranslation } from 'next-i18next';
 import { usePageStore } from '../../lib/usePageStore';
 import _ from "lodash";
 import { DISPLAY_SOURCES, LIST_SOURCE } from "../../config/links"
-
+import Link from "next/link"
 
 // Concepts
 
@@ -176,17 +176,7 @@ const PostsListLoader = () => {
 export const PostsList = observer(({title, extraClass}) => {
   const {dataStore,detailStore,voteStore} = usePageStore()
   const router = useRouter();
-  const handleClickPost = (e,obj,type) => {
-    e.preventDefault()
-    e.stopPropagation()
-    store.setShallowConnect(true)
-    detailStore.data = Object.assign({},obj);
-    detailStore.type = type
-    const meta = utils.createSiteMetadata({page:"ItemDetail",data : {...obj,type},dataStore})
-    dataStore.meta = meta
-    router.push(e.currentTarget.getAttribute("href"),e.currentTarget.getAttribute("href"),{shallow:true})
-    return false
-  }
+  
   // if in item page, render list later
   
   return (
@@ -213,19 +203,15 @@ export const PostsList = observer(({title, extraClass}) => {
           }
           mediaUri = item.news.thumbnailUri !== "" ? item.news.thumbnailUri : null
           return (
-            <a key={item.id} href={createPostUri(title,slug,item,dataStore.lang)} onClick={(e)=>handleClickPost(e,item.news,"news")}>
               <CardPost key={item.id}
                         title={title}
                         mediaUri={mediaUri}
                         type="fa-duotone fa-newspaper"
                         source={source}
+                        slug={slug}
                         commentCount={commentCount}
                         voteCount={voteCount} item={item}
-                        detailStore={detailStore}
-                        voteStore={voteStore}
-                        dataStore={dataStore}
               />
-            </a>
           )
         }
 
@@ -248,11 +234,9 @@ export const PostsList = observer(({title, extraClass}) => {
                         mediaUri={mediaUri}
                         type="fab fa-twitter"
                         source={source}
+                        slug={slug}
                         commentCount={commentCount}
                         voteCount={voteCount} item={item}
-                        detailStore={detailStore}
-                        voteStore={voteStore}
-                        dataStore={dataStore}
               />
             </a>
           )
@@ -287,19 +271,15 @@ export const PostsList = observer(({title, extraClass}) => {
           mediaUri = item.video.thumbnailUri
           source = getSourceVideoFromUri(item.video)
           return (
-            <a key={item.id} href={createPostUri(title,slug,item,dataStore.lang)} onClick={(e)=>handleClickPost(e,item.video,"video")}>
             <CardPost key={item.id}
                       title={title}
                       mediaUri={mediaUri}
                       type="fab fa-youtube"
                       source={source}
+                      slug={slug}
                       commentCount={commentCount}
                       voteCount={voteCount} item={item}
-                      detailStore={detailStore}
-                      voteStore={voteStore}
-                      dataStore={dataStore}
             />
-            </a>
           )
         }
         // if (item.media !== null){
