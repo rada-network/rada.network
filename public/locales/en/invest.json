@@ -1,0 +1,16 @@
+{
+  "Your maximum allocation" : "Your maximum allocation",
+  "Your maximum allocation tooltip" : "Your maximum allocation means the amount of investment right (RIR) you could spend for the project. This number can be changed based on your contribution to RADA organization or project size.",
+  "Available allocation for this project" : "Available allocation for this project",
+  "Available allocation for this project tooltip" : "Since private sale has big bonuses and discounts compared to presales and crowdsales, the number of available investment allocation for each project are also limited and could be sold out quickly.",
+  "Token Generation Events (TGE)" : "Token Generation Events (TGE)",
+  "Token Generation Events (TGE) tooltip" : "Token Generation Event marks the time at which a certain cryptocurrency was issued. This could be through a pre-sale, through an ICO, as a mining reward etc.",
+  "Unlocked token ratio at TGE" : "Unlocked token ratio at TGE",
+  "Unlocked token ratio at TGE tooltip" : "At the Token generate events, to ensure a preventive strategy to maintain a stable long-term value of a particular asset, only a certain amount of tokens are unlocked. This may help to prevent the holders of big bags to sell their tokens all at once in the market, which would likely cause prices to tank very quickly.",
+  "Project status" : "Project status",
+  "invest header" : "Invest in this project in 5 minutes following these simple steps",
+  "invest input rir" : "Enter the amount of RIR you want to invest in this project",
+  "invest input wallet" : "Enter your {{network_name}} wallet address.",
+  "invest input wallet tip" : "Your purchased {{token_name}} tokens will be sent to this address.",
+  "invest input wallet note" : "Note: The {{token_name}} token runs on {{token_name}}. Please make sure that you enter the correct {{network_name}} wallet address."
+}
