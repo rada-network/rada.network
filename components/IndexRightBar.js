@@ -98,7 +98,7 @@ export const IndexRightBar = observer(({ intro }) => {
         }
       >
         <div className={`pane-content--sec--top`}>
-          <div className="flex">
+          <div className="flex h-full">
             {/* Pageback Here */}
             {dataStore !== undefined &&
             !_.isEmpty(detailStore.data) &&
@@ -143,7 +143,7 @@ export const IndexRightBar = observer(({ intro }) => {
                   >
                     {detailStore.type === "news" && t("article")}
                     {detailStore.type === "projects" && t("Projects")}
-                    {detailStore.type === "rada" && t("Rader")}
+                    {detailStore.type === "rada" && t("article")}
                     {detailStore.type === "video" && t("Video")}
                     {detailStore.type === "tweet" && t("Tweet")}
                   </a>
@@ -154,7 +154,7 @@ export const IndexRightBar = observer(({ intro }) => {
                     <>
                       <span className="tab-item--divider" />
 
-                      {detailStore.data.tokens?.map((token) => (
+                      {/* {detailStore.data.tokens?.map((token) => (
                         <a
                           href={`#${token.symbol.toLowerCase()}`}
                           className={`tab-item ${
@@ -163,8 +163,21 @@ export const IndexRightBar = observer(({ intro }) => {
                         >
                           {token.symbol}
                         </a>
-                      ))}
+                      ))} */}
 
+                      {/* {detailStore.data.tokens?.map((token) => (
+                        <div
+                          className={`tab-item ${
+                            tabName === token.symbol ? "tab-item--active" : ""
+                          }`}
+                        >
+                          <span className="badge badge-coin badge-coin-lg">
+                            {token.symbol}
+                          </span>
+                        </div>
+                      ))} */}
+
+                      {detailStore.data.tokens?.map((token) => (
                       <a
                         href="#overview"
                         className={`tab-item ${
@@ -174,8 +187,15 @@ export const IndexRightBar = observer(({ intro }) => {
                           setTabName("overview");
                         }}
                       >
-                        {t("overview")}
+                        <span className="token-symbol mr-2">
+                          <img src="https://gql.dhunt.io/media/assets/171ff579-8dcf-4751-be36-553a6a434021?format=webp&amp;width=128" class="h-px-16 w-px-16" alt="Elemon" />
+                        </span>
+                        <span className="tab-item--text !block">
+                          {token.symbol}
+                        </span>
                       </a>
+                      ))}
+
                       <a
                         href="#team"
                         className={`tab-item ${
@@ -186,8 +206,14 @@ export const IndexRightBar = observer(({ intro }) => {
                         }}
                       >
                         {/* {t("team & backers")} */}
-                        Team
+                        <span className="icon">
+                          <i class="fa-duotone fa-users"></i>
+                        </span>
+                        <span className="tab-item--text">
+                          {t("team")}
+                        </span>
                       </a>
+
                       {investCampaign && (
                         <a
                           href="#invest"
@@ -198,9 +224,15 @@ export const IndexRightBar = observer(({ intro }) => {
                             setTabName("invest");
                           }}
                         >
-                          {t("invest")}
+                          <span className="icon">
+                            <i class="fa-duotone fa-sack-dollar"></i>
+                          </span>
+                          <span className="tab-item--text">
+                            {t("invest")}
+                          </span>
                         </a>
                       )}
+
                       {airdrop && (
                         <a
                           href="#airdrop"
@@ -211,10 +243,15 @@ export const IndexRightBar = observer(({ intro }) => {
                             setTabName("airdrop");
                           }}
                         >
-                          {/* {t("airdrop")} */}
-                          Airdrop
+                          <span className="icon">
+                            <i class="fa-duotone fa-gift"></i>
+                          </span>
+                          <span className="tab-item--text">
+                            {t("airdrop")}
+                          </span>
                         </a>
                       )}
+
                     </>
                   ) : (
                     ""

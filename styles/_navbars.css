@@ -101,22 +101,38 @@ Tabbar
 }
 
 .tabbar--main {
-  @apply flex items-center space-x-4;
+  @apply flex items-center space-x-4 lg:space-x-6;
 }
 
 .tab-item {
-  @apply flex justify-center items-center px-0 lg:px-0 py-1 transition-all relative whitespace-nowrap rounded-md;
-  @apply font-medium opacity-50 hover:opacity-100;
+  @apply flex justify-center items-center px-1 py-0 transition-all relative whitespace-nowrap h-full;
+  @apply font-medium opacity-70 hover:opacity-100;
+  .icon {
+    @apply text-lg lg:text-sm lg:mr-2;
+  }
+  .token-symbol {
+    @apply filter grayscale;
+  }
 }
 
-/* .tab-item:after {
+.tab-item:after {
   @apply block absolute bottom-0 left-auto right-auto;
-  @apply bg-gray-800 dark:bg-white;
+  @apply bg-primary-700 dark:bg-primary-500;
   content: " ";
   height: 0;
   width: 100%;
-  transition: all 150ms linear;
+  transition: all 200ms ease-out;
+}
+
+/* .tab-item:hover::after {
+  height: 3px;
+  @apply bg-gray-500 dark:bg-gray-200;
 } */
+
+
+.tab-item--text {
+  @apply hidden lg:block;
+}
 
 .tab-item--divider {
   @apply block;
@@ -127,9 +143,9 @@ Tabbar
 
 .tab-item--active {
   @apply opacity-100 text-primary-700 dark:text-primary-400 font-medium pointer-events-none;
-  /* &::after {
+  &::after {
     height: 3px;
-  } */
+  }
 }
 
 /* Tab Group */
