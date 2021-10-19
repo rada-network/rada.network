@@ -146,6 +146,9 @@ Tabbar
   &::after {
     height: 3px;
   }
+  .token-symbol {
+    @apply filter grayscale-0;
+  }
 }
 
 /* Tab Group */

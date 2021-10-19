@@ -23,7 +23,7 @@ export default function TokenInfoAirdrop({tokenData, tokenInfo, airdrop}) {
 
               {/* <TokenInfoHeader tokenData={tokenData} token={tokenInfo} /> */}
 
-              <div className="text-center max-w-lg w-full mx-auto lg:mt-8">
+              <div className="text-center max-w-lg w-full mx-auto">
 
                 <div className="flex justify-between items-center w-full">
                   <TokenInfoHeader tokenData={tokenData} token={tokenInfo} />

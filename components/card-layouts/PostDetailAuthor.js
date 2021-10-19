@@ -35,12 +35,14 @@ export const PostDetailAuthor = observer(({item,isRada}) => {
         )}
       </Popover.Panel>
 
-      <Popover.Button className="flex justify-center" ref={buttonRef} title="Author">
+      <Popover.Button className="btn flex justify-center hover:opacity-100" ref={buttonRef} title="Author">
       <>
       {isRada ? (
-        <span className="">
+        <span className="mr-1.5">
           {authorImg && authorImg !== "" ? 
-          <span className="avatar-xs"><img src={authorImg} alt={getSourceFromUri(item)}/></span> 
+          <span className="avatar-sm">
+            <img src={authorImg} alt={getSourceFromUri(item)}/>
+          </span> 
           : <RadaPost />}
         </span>
       ) : (
