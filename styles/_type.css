@@ -44,7 +44,7 @@ Post Content Typo
 }
 
 .post-detail-media .post-content--text {
-  @apply whitespace-pre-wrap;
+  @apply whitespace-pre-wrap text-sm;
   word-break: break-word;
 }
 

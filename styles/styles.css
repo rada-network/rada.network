@@ -542,7 +542,7 @@ Media
 }
 
 .post-detail-media .post-media {
-  @apply -mx-4 md:-mx-6 lg:mx-auto w-auto mt-0 mb-6 max-h-full;
+  @apply -mx-4 md:-mx-6 lg:mx-auto w-auto mt-0 mb-8 max-h-full;
 }
 
 /*
