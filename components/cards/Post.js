@@ -155,10 +155,10 @@ const CardPostNormal = observer(({title,slug, mediaUri, type, source, commentCou
       <div className={`card-body`}>
         <div className={`card-body-header`}>
           <div className={`card-title`}>
-              {isRada && dataStore.type !== "rada"  && dataStore.type !== "projects" ? 
-              <span className="badge badge-rada">RADA</span> 
-              : ""}
-              <a className="text-color-title" key={item.id} href={createPostUri(title,slug,item,dataStore.lang)} onClick={(e)=>handleClickPost(e)}>{title}</a>
+            {isRada && dataStore.type !== "rada"  && dataStore.type !== "projects" ? 
+            <span className="badge badge-rada">RADA</span> 
+            : ""}
+            <a className="text-color-title" key={item.id} href={createPostUri(title,slug,item,dataStore.lang)} onClick={(e)=>handleClickPost(e)}>{title}</a>
           </div>
           <div className={`card-badges`}>
             <PostTokenHolder tokens={item.tokens} />
@@ -199,6 +199,10 @@ const CardPostNormal = observer(({title,slug, mediaUri, type, source, commentCou
 
       </div>
 
+      <Link className="card-link--overlay" key={item.id} href={createPostUri(title,slug,item,dataStore.lang)} onClick={(e)=>handleClickPost(e)}>
+        <div className="card-link--overlay"></div>
+      </Link>
+
     </div>
   )
 })
@@ -211,7 +215,7 @@ const PostTokenHolder = function({tokens}){
        if (index == 0) {
         return (
           <a href="#">
-          <span className="badge badge-coin">{item.symbol}</span>
+            <span className="badge badge-coin">{item.symbol}</span>
           </a>
         )
        }

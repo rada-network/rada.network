@@ -68,6 +68,11 @@ Generic Styles
   @apply text-2xs px-1 py-0.5 ml-1 mt-0;
 }
 
+/* Overlay */
+.card-link--overlay {
+  @apply absolute inset-0 !m-0 z-0;
+}
+
 
 /* 
 Card Post (News, Projects,...)
