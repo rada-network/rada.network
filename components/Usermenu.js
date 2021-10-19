@@ -9,7 +9,7 @@ import {useCookies} from "react-cookie";
 
 export default function Usermenu({user}) {
   const [cookies, setCookie,removeCookie] = useCookies(['access_token']);
-  const {t} = useTranslation()
+  const {t,i18n} = useTranslation()
     // HieuNN: Example of Button when User Login
     const Button = ({ wallet }) => (
       <div className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
@@ -53,7 +53,7 @@ export default function Usermenu({user}) {
               {({ active }) => 
                 <>
                 <a 
-                  href="/user/profile">
+                  href={`/${i18n.language}/user/profile`}>
                   <span className="icon"><i class="fa-duotone fa-user-gear"></i></span>
                   <span className="dropdown-item--text">Profile</span>
                 </a>

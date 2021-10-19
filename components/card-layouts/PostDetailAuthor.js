@@ -3,6 +3,7 @@ import {Transition,Popover} from "@headlessui/react"
 import { usePopper } from 'react-popper'
 import {useRef, useState} from "react";
 import { getSourceFromUri } from "./PostsList";
+import RadaPost from "./../svg/RadaPost";
 export const PostDetailAuthor = observer(({item,isRada}) => {
   let [referenceElement, setReferenceElement] = useState()
   let [popperElement, setPopperElement] = useState()

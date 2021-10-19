@@ -5,6 +5,7 @@ const investProfileGql = gql`
   query {
     investProfile {
       user_id
+      rada_treasury_address
       max_rir
       locked_rir
       pending_rir

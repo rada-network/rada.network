@@ -9,6 +9,8 @@ const investCampaignByIdGql = gql`
             total_rir
             total_rir_approved
             max_rir_per_user
+            min_rir_per_user
+            block_step
             tge_date
             tge_unlock
             invest_log{

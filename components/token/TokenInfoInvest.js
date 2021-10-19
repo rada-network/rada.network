@@ -12,6 +12,8 @@ import useStore from "../../lib/useStore";
 import { toast } from "react-toastify";
 import moment from "moment";
 import ReactTooltip from 'react-tooltip';
+import { getInvestProfile } from "../../data/query/getInvestProfile";
+import Link from "next/link";
 
 export default function TokenInfoInvest({
   tokenData,
@@ -21,13 +23,20 @@ export default function TokenInfoInvest({
   btcCoinInfo,
 }) {
   const { t, i18n } = useTranslation("invest");
+  console.log(i18n)
   const [investData, setInvestData] = useState({});
+  const [investProfile, setInvestProfile] = useState({});
 
   useEffect(() => {
     getDataCampaign();
   }, [investCampaign]);
 
   const getDataCampaign = function () {
+    getInvestProfile().then(function(res){
+      setInvestProfile(res.data.investProfile)
+    },function(err){
+
+    })
     investCampaign &&
       getInvestById({ id: investCampaign.id }).then(
         function (res) {
@@ -115,97 +124,26 @@ export default function TokenInfoInvest({
                     </span>
                   </div>
                 </div>
+                {Object.keys(investProfile).length !== 0 && 
                 <div className="flex items-center">
                   <span className="text-gray-500">
                     <strong className="text-gray-900 dark:text-white">
-                      13
+                      {investProfile.approved_rir - investProfile.used_rir}
                     </strong>
-                    /20
+                    /{investProfile.approved_rir}
                   </span>
                   RIR
                   <div className="w-4 h-4 ml-2 dark:opacity-100 opacity-90">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 22.14 23.04"
-                    >
-                      <path
-                        d="M11.07,22.84c-2.83,0-8.39-3.2-9.81-5.66s-1.41-8.87,0-11.32S8.24.2,11.07.2s8.39,3.21,9.8,5.66,1.42,8.87,0,11.32S13.9,22.84,11.07,22.84Z"
-                        fill="#374050"
-                        stroke="#9ca2af"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="0.4"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M6.72,11.51a10.4,10.4,0,0,1,.1-1.58c.07-.38.25-.35.39-.27l1.41.92a1.14,1.14,0,0,1,.47.93v0a1.13,1.13,0,0,1-.47.93l-1.41.92c-.14.08-.32.1-.39-.27a10.4,10.4,0,0,1-.1-1.58h0Z"
-                        fill="#9ca2af"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M15.41,11.51a9.26,9.26,0,0,0-.11-1.58c-.06-.38-.25-.35-.39-.27l-1.4.92a1.14,1.14,0,0,0-.47.93v0a1.13,1.13,0,0,0,.47.93l1.4.92c.14.08.33.1.39-.27a9.26,9.26,0,0,0,.11-1.58h0Z"
-                        fill="#9ca2af"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M8.9,7.75a10.4,10.4,0,0,1,1.42-.7c.36-.13.43,0,.43.2l-.1,1.68a1.13,1.13,0,0,1-.57.87h0a1.13,1.13,0,0,1-1,.06l-1.5-.76c-.14-.07-.25-.22,0-.47a10.45,10.45,0,0,1,1.32-.88h0Z"
-                        fill="#9ca2af"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M13.24,15.28a9.77,9.77,0,0,0,1.32-.88c.29-.25.18-.4,0-.47l-1.5-.76a1.13,1.13,0,0,0-1,.06h0a1.15,1.15,0,0,0-.57.87l-.09,1.67c0,.16.07.34.42.2a9.46,9.46,0,0,0,1.43-.7Z"
-                        fill="#9ca2af"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M13.23,7.75a10.52,10.52,0,0,0-1.43-.7c-.35-.13-.43,0-.42.2l.1,1.68A1.12,1.12,0,0,0,12,9.8h0a1.12,1.12,0,0,0,1,.06l1.5-.76c.13-.07.25-.22,0-.47a10.45,10.45,0,0,0-1.32-.88h0Z"
-                        fill="#9ca2af"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M8.88,15.28a10.45,10.45,0,0,1-1.32-.88c-.29-.25-.18-.4,0-.47L9,13.17a1.12,1.12,0,0,1,1,.06h0a1.13,1.13,0,0,1,.56.87l.1,1.68c0,.16-.07.33-.42.2a10.52,10.52,0,0,1-1.43-.7h0Z"
-                        fill="#9ca2af"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M11.07,3.36A1.56,1.56,0,1,1,9.51,4.92,1.57,1.57,0,0,1,11.07,3.36Z"
-                        fill="#fff"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M11.07,16.56a1.56,1.56,0,1,1-1.56,1.56A1.56,1.56,0,0,1,11.07,16.56Z"
-                        fill="#fff"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M18.13,7.44A1.55,1.55,0,1,1,16,6.87,1.55,1.55,0,0,1,18.13,7.44Z"
-                        fill="#fff"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M6.7,14a1.55,1.55,0,1,1-2.12-.57A1.55,1.55,0,0,1,6.7,14Z"
-                        fill="#fff"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M4,7.44a1.55,1.55,0,1,1,.57,2.13A1.55,1.55,0,0,1,4,7.44Z"
-                        fill="#fff"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M15.44,14A1.55,1.55,0,1,1,16,16.17,1.55,1.55,0,0,1,15.44,14Z"
-                        fill="#fff"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
+                    <RadaSvg />
                   </div>
-                  <a
-                    href="#"
+                  <Link
+                    href={`/${i18n.language}/user/topUp`}
                     className="ml-2 btn-neutral rounded px-1.5 py-0.5"
                   >
                     Top up
-                  </a>
+                  </Link>
                 </div>
+                }
               </div>
 
               <div className="flex flex-wrap justify-between mb-2">
@@ -284,7 +222,7 @@ const InvestForm = function ({
   investCampaign,
 }) {
   const [investInfo, setInvestInfo] = useState({
-    number_rir: "",
+    number_rir: 0,
     wallet_address: "",
   });
   const [buttonInvestDisabled, setButtonInvestDisabled] = useState(false);
@@ -304,7 +242,9 @@ const InvestForm = function ({
     });
   };
 
-  const handleNumberRirChange = (value) => {
+  const handleNumberRirChange = (e,value) => {
+    e.preventDefault()
+    e.stopPropagation()
     let valueChanged = +investInfo.number_rir + value;
     if (valueChanged < 0 || valueChanged > investData?.max_rir_per_user) return;
     setInvestInfo({
@@ -374,19 +314,19 @@ const InvestForm = function ({
   if (store.user?.id === "") {
     return (
       <div className="card--wrapper mt-4">
-        <h3 className="text-gray-400 card--header">Contribute to invest</h3>
-                  <div className="card--body p-3 lg:p-5 flex">
-                    <div className="flex mt-2 mr-3 w-12 h-12 p-2.5 mb-2 border-4 border-purple-300 bg-purple-300 text-purple-500 dark:bg-purple-400 rounded-full">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>check</title><path fill="currentColor" d="M23.146,5.4,20.354,2.6a.5.5,0,0,0-.708,0L7.854,14.4a.5.5,0,0,1-.708,0L4.354,11.6a.5.5,0,0,0-.708,0L.854,14.4a.5.5,0,0,0,0,.707L7.146,21.4a.5.5,0,0,0,.708,0L23.146,6.1A.5.5,0,0,0,23.146,5.4Z"/></svg>
-                    </div>
-                    <p className="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                  </div>
-                  {/* Card body */}
-                  <div className="card--footer p-3 lg:p-5">
-                    <a className="btn btn-primary px-3 py-2">
-                      How to invest?
-                    </a>
-                  </div>
+        <h3 className="text-gray-400 card--header">{t("Contribute to invest")}</h3>
+        <div className="card--body p-3 lg:p-5 flex">
+          <div className="flex mt-2 mr-3 w-12 h-12 p-2.5 mb-2 border-4 border-purple-300 bg-purple-300 text-purple-500 dark:bg-purple-400 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>check</title><path fill="currentColor" d="M23.146,5.4,20.354,2.6a.5.5,0,0,0-.708,0L7.854,14.4a.5.5,0,0,1-.708,0L4.354,11.6a.5.5,0,0,0-.708,0L.854,14.4a.5.5,0,0,0,0,.707L7.146,21.4a.5.5,0,0,0,.708,0L23.146,6.1A.5.5,0,0,0,23.146,5.4Z"/></svg>
+          </div>
+          <p className="text-sm">{t("how to invest tip")}</p>
+        </div>
+        {/* Card body */}
+        <div className="card--footer p-3 lg:p-5">
+          <a className="btn btn-primary px-3 py-2">
+            {t("how to invest")}
+          </a>
+        </div>
       </div>
     );
   }
@@ -421,16 +361,16 @@ const InvestForm = function ({
                       onChange={handleInputChange}
                     />
                     <div className="absolute flex right-2 top-2">
-                      <button
+                      <button type="button"
                         disabled={investInfo.number_rir === ""}
-                        onClick={() => handleNumberRirChange(1)}
+                        onClick={(e) => handleNumberRirChange(e,investData.block_step)}
                         className="mr-1 leading-0 w-6 center bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-600"
                       >
                         +
                       </button>
-                      <button
+                      <button type="button"
                         disabled={investInfo.number_rir === ""}
-                        onClick={() => handleNumberRirChange(1)}
+                        onClick={(e) => handleNumberRirChange(e,0-investData.block_step)}
                         className="w-6 leading-0 center bg-gray-200 dark:bg-gray-800"
                       >
                         -
