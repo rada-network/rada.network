@@ -172,18 +172,24 @@ const CardPostNormal = observer(({title,slug, mediaUri, type, source, commentCou
         <div className="metadata-wrapper justify-between">
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
-              {isRada ?
-              <span className="icon icon-rada w-3.5 mr-1.5 opacity-70">
+              {isRada ? (
+                <>
                 {authorImg && authorImg !== "" ? 
-                <div className="avatar"><img alt={source} src={authorImg} /></div> 
-                : 
-                <RadaPost />}
-              </span>
-              :
-              <span className="icon mr-1.5">
-                <i className={`${type}`} />
-              </span>
-              }
+                <span className="mr-1.5">
+                  <span className="avatar-sm">
+                    <img src={authorImg} alt={source}/>
+                  </span> 
+                </span>
+                : <span className="icon icon-rada w-3.5 mr-1.5 opacity-70">
+                  <RadaPost />
+                  </span>
+                }
+                </>
+              ) : (
+                <span className="icon mr-1.5">
+                  <i className="fa-duotone fa-newspaper"></i>
+                </span>
+              )}
               <span className="metadata-value" title={source}>{source}</span>
             </div>
             <div className="metadata metadata-date">
