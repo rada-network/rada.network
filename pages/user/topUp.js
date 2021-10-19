@@ -132,7 +132,7 @@ export default function UserProfile(props) {
   };
 
   const handleNumberRirChange = (value) => {
-    let valueChanged = +topupForm.number_rir + value;
+    let valueChanged = (+topupForm.number_rir || 0) + value;
     if (
       valueChanged < 0 ||
       valueChanged >
@@ -405,18 +405,16 @@ export default function UserProfile(props) {
                     />
                     <div className="absolute flex right-2 top-2">
                       <button
-                        disabled={topupForm.number_rir === ""}
                         onClick={() => handleNumberRirChange(1)}
-                        className={`mr-1 leading-0 w-6 center bg-gray-200 dark:bg-gray-800 ${
-                          topupForm.number_rir !== ""
-                            ? "hover:bg-gray-300 dark:hover:bg-gray-600"
-                            : ""
-                        }`}
+                        className={`mr-1 leading-0 w-6 center bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-600`}
                       >
                         +
                       </button>
                       <button
-                        disabled={topupForm.number_rir === ""}
+                        disabled={
+                          topupForm.number_rir === "" ||
+                          topupForm.number_rir === 0
+                        }
                         onClick={() => handleNumberRirChange(-1)}
                         className={`mr-1 leading-0 w-6 center bg-gray-200 dark:bg-gray-800 ${
                           topupForm.number_rir !== ""

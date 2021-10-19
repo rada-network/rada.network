@@ -142,9 +142,13 @@ function Concept() {
                     </div>
                     <p>You invested <span className="text-gray-900 dark:text-gray-100 font-bold">3 RIR</span> in Moniwar successfully. 5% of the tokens will be transfered to your wallet on October 16, 2021  </p>                  
                   </div>
-                  {/* Card body */}
+                  {/* Card body */} 
 
-                 
+                  <div className="card--footer p-3 lg:p-5">
+                    <button className="btn btn-primary py-2 px-3">Adjust your investment</button>
+                  </div>
+
+
                 </div>
 
 

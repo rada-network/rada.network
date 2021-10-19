@@ -31,6 +31,10 @@
   @apply bg-gray-400 text-gray-200;
 }
 
+.label--neutral {
+    @apply bg-gray-300 text-gray-700;
+}
+
 /** steps **/
 
 .card--header {

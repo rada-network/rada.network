@@ -10,6 +10,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Profile from "../../components/Profile";
 import { getCurrentUser } from "../../data/query/user";
 import { getInvestProfile } from "../../data/query/getInvestProfile";
+import { getInvestLog } from "../../data/query/getInvestLog";
 import { disconnectWallet } from "../../data/query/wallet";
 import _ from "lodash";
 import { useStore } from "../../lib/useStore";
@@ -26,6 +27,7 @@ export default function UserProfile(props) {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
   const [topupInfo, setTopupInfo] = useState({});
+  const [investLog, setInvestLog] = useState([]);
   const { t } = useTranslation();
   const router = useRouter();
   const store = useStore();
@@ -38,6 +40,9 @@ export default function UserProfile(props) {
     });
     getInvestProfile().then(function (res) {
       setTopupInfo(res.data.investProfile);
+    });
+    getInvestLog().then((res) => {
+      setInvestLog(res.data.investLog);
     });
   }, [session]);
   useEffect(() => {
@@ -430,6 +435,48 @@ export default function UserProfile(props) {
             </div>
           </div>
           {/* END: Connection */}
+
+          <div className="card card-pagecontent">
+            <div className="card-header flex">
+              <span className="card-title">Your recent investments</span>
+              <a
+                href="./allInvest"
+                className="ml-auto btn-neutral rounded px-2 py-1"
+              >
+                View all
+              </a>
+            </div>
+
+            <div className="card-body">
+              <div className="grid">
+                <div className="list-group">
+                  {/* Wallet connected --> Show DisConnect Buttons */}
+                  {investLog.length > 0 &&
+                    investLog.map((item) => (
+                      <a
+                        key={item.id}
+                        href="./allInvest"
+                        className="list-group--item flex items-center hover:bg-gray-700"
+                      >
+                        <div className="flex-1 flex">
+                          <strong className="w-3/4 pr-2">
+                            {item.invest_campaign?.token?.name}
+                          </strong>
+                          <strong className="w-1/4">
+                            {item.number_rir} RIR
+                          </strong>
+                        </div>
+                        <div className="text-right  w-1/4">
+                          <span className="label label--neutral  ml-auto">
+                            {item.invest_campaign.invest_status}
+                          </span>
+                        </div>
+                      </a>
+                    ))}
+                </div>
+              </div>
+            </div>
+          </div>
           <UserDistribution props={props} />
         </div>
       </StaticLayout>
