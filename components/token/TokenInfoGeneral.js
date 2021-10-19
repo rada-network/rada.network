@@ -185,7 +185,7 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                     <div className="">
                       <a href="#" className="btn btn-default btn-default-sm">
                         <span className="icon">
-                          <i class={`cf cf-${tokenData?.platform.networkName}`}></i>
+                          <i class={`cf cf-${tokenData?.platform?.networkName}`}></i>
                         </span>
                         <span className="btn--text">{ `${tokenData?.contract_address.substr(0, 6)}...${tokenData?.contract_address.substr(-6)} `}</span>
                         <span className="icon">
