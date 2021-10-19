@@ -23,17 +23,18 @@ export default function TokenInfoAirdrop({tokenData, tokenInfo, airdrop}) {
 
               {/* <TokenInfoHeader tokenData={tokenData} token={tokenInfo} /> */}
 
-              <div className="text-center max-w-lg w-full mx-auto mt-8">
+              <div className="text-center max-w-lg w-full mx-auto lg:mt-8">
 
                 <div className="flex justify-between items-center w-full">
                   <TokenInfoHeader tokenData={tokenData} token={tokenInfo} />
                   <h2 className="mb-3 text-yellow-500 font-semibold">Airdrop</h2>
                 </div>
-                <div className="mt-4" dangerouslySetInnerHTML={{__html:airdrop?.description}}></div>
+
+                <div className="" dangerouslySetInnerHTML={{__html:airdrop?.description}}></div>
 
               </div>
 
-              <div className="mt-8">
+              <div className="mt-4">
 
                 <a class="e-widget no-button" href={`https://gleam.io/${airdrop?.code}`} rel="nofollow" target="_blank" title={airdrop?.title}>{airdrop?.title}</a>
 

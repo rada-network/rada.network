@@ -185,7 +185,8 @@ export const IndexRightBar = observer(({ intro }) => {
                           setTabName("team");
                         }}
                       >
-                        {t("team & backers")}
+                        {/* {t("team & backers")} */}
+                        Team
                       </a>
                       {investCampaign && (
                         <a
@@ -210,7 +211,8 @@ export const IndexRightBar = observer(({ intro }) => {
                             setTabName("airdrop");
                           }}
                         >
-                          {t("airdrop")}
+                          {/* {t("airdrop")} */}
+                          Airdrop
                         </a>
                       )}
                     </>
@@ -224,11 +226,11 @@ export const IndexRightBar = observer(({ intro }) => {
             )}
           </div>
 
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
             <div className="relative">
               <ContentTools />
             </div>
-          </div>
+          </div> */}
         </div>
 
         {detailStore.data.id && (
