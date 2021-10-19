@@ -22,9 +22,12 @@ export default function Usermenu({user}) {
 
     const Logout = function(e){
       const client = getClient();
-      removeCookie("access_token");
       client.resetStore()
-      signOut()
+      signOut(true).then(() => {
+        removeCookie("access_token",{
+          path: "/", expires: -1,
+        });
+      })
     }
 
     return (

@@ -55,3 +55,18 @@ Comment Form
   @apply w-full px-4 py-2 text-sm border border-gray-400 border-opacity-20 rounded-md resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0;
   @apply dark:bg-gray-900 dark:focus:border-primary-500;
 }
+.inline-field--wrapper{
+}
+
+.inline--label {
+  @apply mb-2 w-full block opacity-80 text-sm;
+}
+.inline--field[type="text"] {
+  @apply dark:bg-transparent w-full;
+  @apply focus:ring-purple-500 focus:border-purple-500;
+  @apply rounded border-gray-200 dark:border-gray-700 dark:bg-gray-900;
+
+}
+.inline--field.border-l-none{
+  @apply rounded-l-none border-l-0;
+}
