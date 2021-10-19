@@ -302,11 +302,6 @@ Main Layout when scrolling
     }
 
   }
-  .token{
-    .pane-content--sec--main {
-      padding-top: var(--topbar-heightx2);
-    }
-  }
 
 }
 

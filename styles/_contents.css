@@ -482,6 +482,8 @@ Comment
 }
 
 .comment-text {
+  @apply inline-flex p-2 rounded-lg;
+  @apply bg-gray-100 dark:bg-gray-700;
 }
 
 .comment-footer {
