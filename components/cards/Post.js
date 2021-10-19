@@ -99,6 +99,10 @@ const CardPostNormal = observer(({title,slug, mediaUri, type, source, commentCou
   if (isVote > 0 || voteCount > 0){
     state += " hasVote"
   }
+  let authorImg = ""
+  if (item.news !== null && item.news.author && item.news.author.image.small){
+    authorImg = item.news.author.image.small
+  }
   const handleClickPost = (e) => {
     e.preventDefault()
     e.stopPropagation()
@@ -169,7 +173,12 @@ const CardPostNormal = observer(({title,slug, mediaUri, type, source, commentCou
           <div className="flex flex-shrink-0">
             <div className="metadata metadata-source">
               {isRada ?
-              <span className="icon icon-rada w-3.5 mr-1.5 opacity-70"><RadaPost /></span>
+              <span className="icon icon-rada w-3.5 mr-1.5 opacity-70">
+                {authorImg && authorImg !== "" ? 
+                <div className="avatar"><img alt={source} src={authorImg} /></div> 
+                : 
+                <RadaPost />}
+              </span>
               :
               <span className="icon mr-1.5">
                 <i className={`${type}`} />
@@ -199,9 +208,9 @@ const CardPostNormal = observer(({title,slug, mediaUri, type, source, commentCou
 
       </div>
 
-      <Link className="card-link--overlay" key={item.id} href={createPostUri(title,slug,item,dataStore.lang)} onClick={(e)=>handleClickPost(e)}>
+      <div className="card-link--overlay" key={item.id} href={createPostUri(title,slug,item,dataStore.lang)} onClick={(e)=>handleClickPost(e)}>
         <div className="card-link--overlay"></div>
-      </Link>
+      </div>
 
     </div>
   )

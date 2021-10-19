@@ -69,6 +69,7 @@ const itemFeedGql = gql`
                 author {
                     name
                     id
+                    image
                 }
                 tokens {
                     id
@@ -192,6 +193,7 @@ const itemByIdGql = gql`
                 author {
                     name
                     id
+                    image
                 }
                 tokens {
                     id
