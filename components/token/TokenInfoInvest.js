@@ -48,7 +48,7 @@ export default function TokenInfoInvest({
   return (
     <div className="section section-coininfo--team">
       <div onClick={e => e.stopPropagation()}>
-        <ReactTooltip type="info" multiline={true} globalEventOff="click" clickable={true} html={true} />
+        <ReactTooltip type="info" multiline={true} globalEventOff="click" clickable={true} html={true} offset={{right: 100}} />
       </div>
       <div className="grid grid-cols-1">
         {/* Post Header */}
