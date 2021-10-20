@@ -23,7 +23,6 @@ export default function TokenInfoInvest({
   btcCoinInfo,
 }) {
   const { t, i18n } = useTranslation("invest");
-  console.log(i18n)
   const [investData, setInvestData] = useState({});
   const [investProfile, setInvestProfile] = useState({});
 
@@ -49,7 +48,7 @@ export default function TokenInfoInvest({
   return (
     <div className="section section-coininfo--team">
       <div onClick={e => e.stopPropagation()}>
-        <ReactTooltip type="info" multiline={true} globalEventOff="click" clickable={true} html={true} />
+        <ReactTooltip type="info" multiline={true} globalEventOff="click" clickable={true} html={true} offset={{right: 100}} />
       </div>
       <div className="grid grid-cols-1">
         {/* Post Header */}
@@ -113,10 +112,10 @@ export default function TokenInfoInvest({
               <div className="flex flex-wrap items-end justify-between mb-2">
                 <div className="w-full lg:w-auto">
                   <div className="uppercase opacity-50 text-2xs md:text-xs">
-                    Your balance
+                    {t("Your balance")}
                     <span
                       className="hasTooltip"
-                      data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                      data-tip={t("Your balance tip")}
                       data-event="click"
                     >
                       {" "}
@@ -314,17 +313,17 @@ const InvestForm = function ({
   if (store.user?.id === "") {
     return (
       <div className="card--wrapper mt-4">
-        <h3 className="text-gray-400 card--header">{t("Contribute to invest")}</h3>
+        <h3 className="text-gray-400 card--header">{t("Invest with RADA today")}</h3>
         <div className="card--body p-3 lg:p-5 flex">
           <div className="flex mt-2 mr-3 w-12 h-12 p-2.5 mb-2 border-4 border-purple-300 bg-purple-300 text-purple-500 dark:bg-purple-400 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>check</title><path fill="currentColor" d="M23.146,5.4,20.354,2.6a.5.5,0,0,0-.708,0L7.854,14.4a.5.5,0,0,1-.708,0L4.354,11.6a.5.5,0,0,0-.708,0L.854,14.4a.5.5,0,0,0,0,.707L7.146,21.4a.5.5,0,0,0,.708,0L23.146,6.1A.5.5,0,0,0,23.146,5.4Z"/></svg>
           </div>
-          <p className="text-sm">{t("how to invest tip")}</p>
+          <p className="text-sm">{t("Invest with RADA tip")}</p>
         </div>
         {/* Card body */}
         <div className="card--footer p-3 lg:p-5">
           <a className="btn btn-primary px-3 py-2">
-            {t("how to invest")}
+            {t("apply now")}
           </a>
         </div>
       </div>
@@ -344,7 +343,7 @@ const InvestForm = function ({
               <div className="step--content">
                 <form>
                   <label
-                    for="rir-amount"
+                    htmlFor="rir-amount"
                     className="flex inline-field--wrapper relative items-stretch"
                   >
                     <div className="w-12 flex items-center bg-gray-100 border border-gray-200 rounded-l dark:border-gray-700 dark:bg-gray-800">
@@ -386,11 +385,13 @@ const InvestForm = function ({
             <div className="step--wrapper">
               <div className="step--header flex">
                 <span className="step--indicator">2</span>
-                <h3>{t("invest input wallet")}</h3>
+                <h3>{t("invest input wallet",
+                  {network_name : tokenData?.platform?.name}
+                )}</h3>
               </div>
               <div className="step--content">
                 <form>
-                  <label for="wallet" className="inline--label">
+                  <label htmlFor="wallet" className="inline--label">
                     {t("invest input wallet tip", {
                       network_name: tokenData?.platform?.name,
                       token_name: tokenData?.name,

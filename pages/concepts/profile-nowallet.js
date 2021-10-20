@@ -101,7 +101,7 @@ const Layout = observer((props) => {
                               <div className="list-group--item--media">
                                 <span className="icon"><i class="fa-duotone fa-wallet"></i></span>
                               </div>
-                              <label for="blockchain-wallet" className="text-color-desc">
+                              <label htmlFor="blockchain-wallet" className="text-color-desc">
                                 Wallet
                               </label>
                             </div>
@@ -121,7 +121,7 @@ const Layout = observer((props) => {
                               <div className="list-group--item--media">
                                 <span className="icon"><i class="fa-brands fa-google"></i></span>
                               </div>
-                              <label for="blockchain-wallet" className="text-color-desc">
+                              <label htmlFor="blockchain-wallet" className="text-color-desc">
                                 Google
                               </label>
                             </div>
@@ -141,7 +141,7 @@ const Layout = observer((props) => {
                               <div className="list-group--item--media">
                                 <span className="icon"><i class="fa-brands fa-facebook-f"></i></span>
                               </div>
-                              <label for="blockchain-wallet" className="text-color-desc">
+                              <label htmlFor="blockchain-wallet" className="text-color-desc">
                                 Facebook
                               </label>
                             </div>
@@ -161,7 +161,7 @@ const Layout = observer((props) => {
                               <div className="list-group--item--media">
                                 <span className="icon"><i class="fa-brands fa-twitter"></i></span>
                               </div>
-                              <label for="blockchain-wallet" className="text-color-desc">
+                              <label htmlFor="blockchain-wallet" className="text-color-desc">
                                 Twitter
                               </label>
                             </div>

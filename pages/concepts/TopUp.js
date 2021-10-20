@@ -303,7 +303,7 @@ export default function UserProfile(props) {
                 <div className="step--content">
                   {/* <form> */}
                   <label
-                    for="rir-amount"
+                    htmlFor="rir-amount"
                     className="flex inline-field--wrapper relative items-stretch"
                   >
                     <div className="w-12 flex items-center bg-gray-100 border border-gray-200 rounded-l dark:border-gray-700 dark:bg-gray-800">
@@ -482,7 +482,7 @@ export default function UserProfile(props) {
                 <div className="step--content">
                   <form>
                     <div className="inline-field--wrapper">
-                      <label for="txh" className="inline--label">
+                      <label htmlFor="txh" className="inline--label">
                         TXH of the transaction
                       </label>
                       <input
