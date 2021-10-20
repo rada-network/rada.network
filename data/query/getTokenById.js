@@ -35,6 +35,7 @@ const tokenByIdGql = gql`
           twitter
           linkedin
           team_id
+          description
         }
       }
       partner {

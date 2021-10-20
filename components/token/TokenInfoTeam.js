@@ -128,7 +128,7 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
                 </div>
                 <div className="card-body-main">
                   <p className="">
-                    Thông tin phụ của team member, nên ngắn gọn.
+                    {item.description}
                   </p>
                 </div>
             </div>
