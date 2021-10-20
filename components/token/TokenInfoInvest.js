@@ -343,7 +343,7 @@ const InvestForm = function ({
               <div className="step--content">
                 <form>
                   <label
-                    for="rir-amount"
+                    htmlFor="rir-amount"
                     className="flex inline-field--wrapper relative items-stretch"
                   >
                     <div className="w-12 flex items-center bg-gray-100 border border-gray-200 rounded-l dark:border-gray-700 dark:bg-gray-800">
@@ -391,7 +391,7 @@ const InvestForm = function ({
               </div>
               <div className="step--content">
                 <form>
-                  <label for="wallet" className="inline--label">
+                  <label htmlFor="wallet" className="inline--label">
                     {t("invest input wallet tip", {
                       network_name: tokenData?.platform?.name,
                       token_name: tokenData?.name,

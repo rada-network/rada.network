@@ -47,12 +47,8 @@ export const IndexRightBar = observer(({ intro }) => {
   useEffect(() => {
     if (window.location.hash) {
       const hash = window.location.hash.substr(1);
-      if (hash) {
-        const arr = hash.split("/");
-        const symbol = arr[0].toUpperCase();
-        if (detailStore.data.tokens?.find((token) => token.symbol == symbol)) {
-          setTabName(symbol);
-        }
+      if (["overview","","invest","team","airdrop"].indexOf(hash) !== -1) {
+        setTabName(hash)
       }
     } else {
       setTabName("article");
@@ -177,26 +173,30 @@ export const IndexRightBar = observer(({ intro }) => {
                         </div>
                       ))} */}
 
-                      {detailStore.data.tokens?.map((token) => (
-                      <a
-                        href="#overview"
-                        className={`tab-item ${
-                          tabName === "overview" ? "tab-item--active" : ""
-                        }`}
-                        onClick={() => {
-                          setTabName("overview");
-                        }}
-                      >
-                        <span className="token-symbol mr-2">
-                          {token &&
-                          <img src={token?.logo !== null ? token.logo : `https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`} className="h-px-16 w-px-16" alt={token?.name}/>
-                          }
-                        </span>
-                        <span className="tab-item--text !block">
-                          {token.symbol}
-                        </span>
-                      </a>
-                      ))}
+                      {detailStore.data.tokens?.map((token,index) =>{
+                        if (index === 0) {
+                          return (
+                            <a
+                              href="#overview"
+                              className={`tab-item ${
+                                tabName === "overview" ? "tab-item--active" : ""
+                              }`}
+                              onClick={() => {
+                                setTabName("overview");
+                              }}
+                            >
+                              <span className="token-symbol mr-2">
+                                {token &&
+                                <img src={token?.logo !== null ? token.logo : `https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`} className="h-px-16 w-px-16" alt={token?.name}/>
+                                }
+                              </span>
+                              <span className="tab-item--text !block">
+                                {token.symbol}
+                              </span>
+                            </a>
+                            )
+                        }
+                      })}
 
                       <a
                         href="#team"

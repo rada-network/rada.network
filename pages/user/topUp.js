@@ -146,6 +146,12 @@ export default function UserProfile(props) {
     }, 500);
   };
 
+  const handleBack = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    router.back()
+  };
+
   return (
     <>
       <StaticLayout meta={meta}>
@@ -153,7 +159,7 @@ export default function UserProfile(props) {
 
         <div className="page-section">
           <a
-            href="../user/profile"
+            href="../user/profile" onClick={handleBack}
             className="flex opacity-70 hover:opacity-100 items-center mb-4 uppercase"
           >
             <span className="w-4 h-4 mr-2">
@@ -200,7 +206,7 @@ export default function UserProfile(props) {
                 <div className="step--content">
                   {/* <form> */}
                   <label
-                    for="rir-amount"
+                    htmlFor="rir-amount"
                     className="flex inline-field--wrapper relative items-stretch"
                   >
                     <div className="w-12 flex items-center bg-gray-100 border border-gray-200 rounded-l dark:border-gray-700 dark:bg-gray-800">
@@ -317,7 +323,7 @@ export default function UserProfile(props) {
                 <div className="step--content">
                   <form>
                     <div className="inline-field--wrapper">
-                      <label for="txh" className="inline--label">
+                      <label htmlFor="txh" className="inline--label">
                         {t("Paste your Transaction")}
                       </label>
                       <input

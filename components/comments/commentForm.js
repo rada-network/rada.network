@@ -96,7 +96,7 @@ export const CommentForm = observer(({replyFor,item,ItemCommentStore,dataStore,d
               row="1"
               title={t('comment input holder')}
               placeholder={t('comment login')}
-              readonly="readonly"
+              readOnly="readonly"
             />
             <button onClick={submitComment} className="btn comment-btn ml-2">
               {btnText}

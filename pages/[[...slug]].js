@@ -258,7 +258,7 @@ export async function getStaticProps(context) {
   if (context.params.slug === undefined){
     let props = await getDataHome({lang : context.locale});
     props = Object.assign(props,{
-      ...await serverSideTranslations(context.locale, ['common', 'navbar']),
+      ...await serverSideTranslations(context.locale, ['common', 'navbar','invest']),
     })
     return {
       props,

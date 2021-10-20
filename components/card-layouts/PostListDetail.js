@@ -68,7 +68,7 @@ export const PostListDetail = observer(
       tokenId &&
         getTokenById({ id: tokenId, lang: i18n.language }).then(function (res) {
           setTokenData(res.data.tokenById);
-          getCoinInfo(res.data.tokenById?.id);
+          getCoinInfo(res.data.tokenById?.symbol);
         });
     }, [tokenId]);
 

@@ -51,7 +51,12 @@ const PostNotice = observer(({type,setTabCallback}) => {
   const handleClickToken = (e) => { 
     e.preventDefault();
     e.stopPropagation();
-    setTabCallback(e.currentTarget.getAttribute('data-key'))
+    if (detailStore.data.tokens.length > 0){
+      if (detailStore.data.tokens[0]["symbol"] === e.currentTarget.getAttribute('data-key')){
+        setTabCallback("overview")
+      }
+    }
+    
     return false
   }
   return (
