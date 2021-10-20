@@ -82,6 +82,10 @@ Nav Panels
     bottom: 52px;
     right: -90%;
   }
+  .popper {
+    top: -88px;
+    width: 112px;
+  }
 }
 
 .pane-left--bottom-section {
@@ -367,7 +371,7 @@ Sidebar
 Sections Layout
 --------------------------------------------- */
 .section {
-  @apply px-4 pt-4 pb-6 md:p-6 xl:px-16 xl:py-8;
+  @apply px-4 pt-6 pb-6 md:p-6 xl:px-16 xl:py-8;
 }
 
 .section-header {
@@ -464,7 +468,7 @@ Post Details
 Title 
 */
 .post-title {
-  @apply mb-1;
+  @apply mb-2;
 }
 
 .post-title {
@@ -504,10 +508,14 @@ Title
 Metadata 
 */
 .post-header .metadata-wrapper {
-  @apply text-sm justify-between;
+  @apply text-sm justify-between items-center;
 }
 
 .post-header .metadata {
+}
+
+.post-header .metadata-source {
+  @apply text-gray-800 dark:text-gray-200;
 }
 
 .post-header .metadata-source .metadata-value {

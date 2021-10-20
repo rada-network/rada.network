@@ -133,7 +133,7 @@ Vote Buttons
 */
 .btn-post-vote {
   @apply px-2 py-1 justify-center;
-  @apply border border-gray-400 border-opacity-40;
+  @apply border border-green-500 text-green-500;
   @apply hover:border-green-500 hover:bg-green-50 hover:text-green-500;
   @apply dark:hover:bg-transparent dark:hover:text-white;
 }
@@ -326,8 +326,9 @@ Button Caret
 
 }
 
-/* Page Back Button */
-.page-back .btn {
+/* Page Back + Close Button */
+.page-back .btn,
+.page-close .btn {
   @apply  w-px-32 h-px-32 justify-center items-center  rounded-full;
   @apply text-sm opacity-50 hover:opacity-100 hover:bg-gray-400 hover:bg-opacity-20 ;
 }

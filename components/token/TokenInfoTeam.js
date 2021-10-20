@@ -123,14 +123,14 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
             </div>
             <div className="card-body">
                 <div className="card-body-header">
-                <h3 className="">{item.name}</h3>
+                <h3 className="" title={item.name}>{item.name}</h3>
                 <p>{item.position}</p>
                 </div>
-                {/* <div className="card-body-main">
-                <p className="">
-                    Trung Nguyen is CEO of Sky Mavis. He is an entrepreneur who started 5 years on Wall Street in 2007 and left to create an open source community which grew to over 100,000 members.
-                </p>
-                </div> */}
+                <div className="card-body-main">
+                  <p className="">
+                    Thông tin phụ của team member, nên ngắn gọn.
+                  </p>
+                </div>
             </div>
             <div className="card-body-footer">
                 <div className="cta-wrapper about-social">

@@ -133,16 +133,6 @@ Empty State - About Page
   @apply bg-yellow-100 text-yellow-500;
 }
 
-.about-social {
-  @apply flex items-center space-x-4 mt-4;
-}
-
-.about-social a {
-  @apply flex flex-col justify-center items-center w-px-32 h-px-32 rounded-full;
-  @apply bg-gray-400 bg-opacity-10 text-gray-700 dark:text-gray-200;
-  @apply hover:bg-primary-500 hover:text-white;
-}
-
 .about-social i {
   @apply text-base;
 }

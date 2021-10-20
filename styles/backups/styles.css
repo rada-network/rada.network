@@ -448,6 +448,10 @@ Metadata
   @apply mt-1 mb-1;
 }
 
+.post-header .metadata-source {
+  @apply text-gray-800;
+}
+
 .post-header .metadata-source .metadata-value {
   max-width: 160px;
   @apply whitespace-nowrap md:max-w-none overflow-hidden overflow-ellipsis;

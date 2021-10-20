@@ -428,7 +428,7 @@ const NewsDetail = observer(function ({
         </div>
         <div className="metadata-wrapper">
           <div className="flex flex-shrink-0">
-            <div className="metadata metadata-soursce">
+            <div className="metadata metadata-source">
               <PostDetailAuthor isRada={isRada} item={item} />
             </div>
             <div className="metadata metadata-date">

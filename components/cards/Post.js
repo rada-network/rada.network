@@ -175,8 +175,8 @@ const CardPostNormal = observer(({title,slug, mediaUri, type, source, commentCou
               {isRada ? (
                 <>
                 {authorImg && authorImg !== "" ? 
-                <span className="mr-1.5">
-                  <span className="avatar-sm">
+                <span className="mr-1.5 -mb-0.5">
+                  <span className="avatar-2xs">
                     <img src={authorImg} alt={source}/>
                   </span> 
                 </span>

@@ -37,12 +37,12 @@ export const LanguageSwitch = observer(({}) => {
                      {...attributes.popper}>
         {({ close }) => (
           <Transition
-          enter="transition ease-out duration-100"
-          enterFrom="transform opacity-0 scale-0"
-          enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95"
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-0"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-0"
           >
           <div className={`popper`}>
             <div className="popper-item" onClick={async (e) => {handleChangeLanguage(e)}} lang={'vi'}>

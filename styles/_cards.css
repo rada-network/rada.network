@@ -305,11 +305,13 @@ Card Social
   }
 
   .card-body-header {
-    @apply flex-col items-start lg:justify-center lg:items-center mb-4;
+    @apply flex-col items-start lg:justify-center lg:items-center mb-2;
   }
   
   .card-body-header h3 {
     @apply mb-0 text-left lg:text-center text-base font-semibold max-w-max;
+    @apply whitespace-nowrap overflow-hidden overflow-ellipsis;
+    max-width: 140px;
   }
 
   .card-body-header p {
@@ -317,11 +319,11 @@ Card Social
   }
 
   .card-body-main p {
-    @apply hidden opacity-50;
+    @apply opacity-50 text-left lg:text-center;
   }
 
   .cta-wrapper {
-    @apply mt-0 space-x-2;
+    @apply mt-4 space-x-2;
   }
 
   .cta-wrapper .btn {

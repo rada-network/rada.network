@@ -121,7 +121,7 @@ Tabbar
   content: " ";
   height: 0;
   width: 100%;
-  transition: all 200ms ease-out;
+  transition: all 200ms ease-in;
 }
 
 /* .tab-item:hover::after {
