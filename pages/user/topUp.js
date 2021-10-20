@@ -39,7 +39,7 @@ export default function UserProfile(props) {
     txid: "",
   });
   const [isCopied, setIsCopied] = useState(false);
-  const { t } = useTranslation();
+  const { t } = useTranslation("invest");
   const router = useRouter();
   const store = useStore();
 
@@ -74,48 +74,12 @@ export default function UserProfile(props) {
     );
   }
   // If session exists, display content
-  let google = {},
-    wallet = {},
-    facebook = {},
-    twitter = {};
-  google = user.account?.find((item) => {
-    return item.provider === "google";
-  });
-  wallet = user.account?.find((item) => {
-    return item.provider === "wallet";
-  });
-  facebook = user.account?.find((item) => {
-    return item.provider === "facebook";
-  });
-  twitter = user.account?.find((item) => {
-    return item.provider === "twitter";
-  });
   const meta = {
     title:
       (user?.name ? user?.name : "User").replace(/(^|\s)\S/g, (letter) =>
         letter.toUpperCase()
-      ) + " Profile",
+      ) + " Top up",
   };
-
-  const handleConnectWallet = () => {
-    store.wallet.showConnect(true);
-  };
-
-  const handleDisconnectWallet = async (id) => {
-    const res = await disconnectWallet(id);
-    if (res.data.userDisconnect.status === "success") {
-      getCurrentUser().then((res) => {
-        setUser(res);
-      });
-    }
-  };
-
-  const handleConnectSuccess = () => {
-    getCurrentUser().then((res) => {
-      setUser(res);
-    });
-  };
-
   const handleTopupChange = (e) => {
     const { name, value, type } = e.target;
     if (
@@ -206,7 +170,7 @@ export default function UserProfile(props) {
           <div className="flex items-center">
             <div className="mr-auto inline-flex px-3 py-1 items-center rounded bg-gray-200 dark:bg-gray-800">
               <span className="text-xs text-gray-500 mr-2 uppercase font-semibold">
-                Balance
+                {t("balance")}
               </span>
               <span className="flex w-5 h-5 m-auto opacity-80">
                 <RadaSvg />
@@ -217,21 +181,21 @@ export default function UserProfile(props) {
             </div>
             <div className="flex-1 mt-2 ml-2 w-100 text-gray-500">
               <span>
-                Your allocation is {topupInfo.max_rir} RIR. You can top up{" "}
-                {topupInfo.max_rir -
-                  topupInfo.pending_rir -
-                  topupInfo.approved_rir}{" "}
-                RIR to your account.
+                {t("balance note",{
+                      number : topupInfo.max_rir - topupInfo.approved_rir - topupInfo.pending_rir
+                    })}
               </span>
             </div>
           </div>
           <div className="card--wrapper mt-4">
-            <h3 className="text-gray-400 card--header">Top up your balance</h3>
+            <h3 className="text-gray-400 card--header">
+              {t("Top-up your balance")}
+            </h3>
             <div className="card--body">
               <div className="step--wrapper">
                 <div className="step--header flex">
                   <span className="step--indicator">1</span>
-                  <h3>Amount of RIR you want to top up</h3>
+                  <h3>{t("Amount of RIR")}</h3>
                 </div>
                 <div className="step--content">
                   {/* <form> */}
@@ -294,12 +258,11 @@ export default function UserProfile(props) {
               <div className="step--wrapper">
                 <div className="step--header flex">
                   <span className="step--indicator">2</span>
-                  <h3>
-                    Send{" "}
-                    <span className="font-semibold dark:text-white">
-                      {topupForm.number_rir * 100}USDT{" "}
-                    </span>{" "}
-                    to RADA&rsquo;s Treasury Wallet
+                  <h3 dangerouslySetInnerHTML={{__html : t("Send USDT",{
+                    number : `<span class="font-semibold dark:text-white">
+                    ${topupForm.number_rir * 100}USDT
+                    </span>`
+                  })}}>
                   </h3>
                   {/* add 100 if user enter 1RIR, 200 for 2RIR*/}
                 </div>
@@ -307,7 +270,7 @@ export default function UserProfile(props) {
                   <div className="flex flex-wrap justify-between mb-1">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs">
-                        Wallet Address
+                        {t("wallet address")}
                       </span>
                     </div>
                     <div className="">
@@ -332,7 +295,7 @@ export default function UserProfile(props) {
                   <div className="flex flex-wrap justify-between mb-1">
                     <div className="w-full lg:w-auto">
                       <span className="uppercase opacity-50 text-2xs md:text-xs">
-                        Network
+                        {t("network")}
                       </span>
                     </div>
                     <div className="text-sm">
@@ -349,13 +312,13 @@ export default function UserProfile(props) {
               <div className="step--wrapper">
                 <div className="step--header flex">
                   <span className="step--indicator">3</span>
-                  <h3>Confirm your transaction</h3>
+                  <h3>{t("Confirm your transaction")}</h3>
                 </div>
                 <div className="step--content">
                   <form>
                     <div className="inline-field--wrapper">
                       <label for="txh" className="inline--label">
-                        TXH of the transaction
+                        {t("Paste your Transaction")}
                       </label>
                       <input
                         className="inline--field"
@@ -389,7 +352,7 @@ export default function UserProfile(props) {
           </div>
 
           <div className="card--wrapper mt-5">
-            <h3 className="text-gray-400 card--header">Transaction history</h3>
+            <h3 className="text-gray-400 card--header">{t("Transaction history")}</h3>
             <div className="card--body">
               {investDeposit.map((invest) => (
                 <div className="p-3 lg:p-5 flex items-center">
@@ -448,7 +411,7 @@ export async function getStaticProps(context) {
   const info = await getPage({ slug: "profile-info", lang: context.locale });
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ["common", "navbar"])),
+      ...(await serverSideTranslations(context.locale, ["common", "navbar","invest"])),
       lang: context.locale,
       info,
     },
