@@ -70,6 +70,10 @@ const itemFeedGql = gql`
                     name
                     id
                     image
+                    description
+                    facebook
+                    twitter
+                    linkedin
                 }
                 tokens {
                     id
@@ -194,6 +198,10 @@ const itemByIdGql = gql`
                     name
                     id
                     image
+                    description
+                    facebook
+                    twitter
+                    linkedin
                 }
                 tokens {
                     id
