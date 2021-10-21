@@ -44,8 +44,8 @@ function Concept() {
                 <div className="flex w-full">
                   <div className="text-sm w-full">
                     <div className="flex flex-wrap items-end justify-between mb-2">
-                      <div className="w-full lg:w-auto">
-                        <div className="uppercase opacity-50 text-2xs md:text-xs">
+                      <div className="w-auto">
+                        <div className="field-label">
                           Your maximum allocation 
                             <span
                               className="hasTooltip"
@@ -66,8 +66,8 @@ function Concept() {
                     
 
                     <div className="flex flex-wrap items-end justify-between mb-2">
-                      <div className="w-full lg:w-auto">
-                        <div className="uppercase opacity-50 text-2xs md:text-xs">
+                      <div className="w-auto">
+                        <div className="field-label">
                           Available RIR for this project  <span
                               className="hasTooltip"
                               data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
@@ -84,8 +84,8 @@ function Concept() {
                       </div>
                     </div>
                     <div className="flex flex-wrap justify-between mb-2">
-                      <div className="w-full lg:w-auto">
-                        <span className="uppercase opacity-50 text-2xs md:text-xs">
+                      <div className="w-auto">
+                        <span className="field-label">
                          Token Generated Events (TGE)<span
                               className="hasTooltip"
                               data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
@@ -100,8 +100,8 @@ function Concept() {
                     </div>
 
                     <div className="flex flex-wrap justify-between mb-2">
-                      <div className="w-full lg:w-auto">
-                        <span className="uppercase opacity-50 text-2xs md:text-xs">
+                      <div className="w-auto">
+                        <span className="field-label">
                          Unlocked at TGE <span
                               className="hasTooltip"
                               data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
@@ -116,8 +116,8 @@ function Concept() {
                     </div>
 
                     <div className="flex flex-wrap justify-between mb-2">
-                      <div className="w-full lg:w-auto">
-                        <span className="uppercase opacity-50 text-2xs md:text-xs">
+                      <div className="w-auto">
+                        <span className="field-label">
                           Status
                         </span>
                       </div>
