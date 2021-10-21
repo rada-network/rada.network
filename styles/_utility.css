@@ -6,27 +6,30 @@
 }
 
 .field-label {
-  @apply w-full;
+  @apply w-full lg:w-auto mb-1 lg:mb-0;
 }
 
 .field-label--text {
-  @apply opacity-50 text-xs;
+  @apply opacity-50 text-sm;
 }
 
 
 
 /*** labels ***/
 .label {
-  @apply px-2 py-1 items-center justify-center rounded;
+  @apply px-2 py-1.5 items-center justify-center rounded-full;
   @apply text-2xs font-medium uppercase tracking-wide;
   @apply bg-opacity-10;
 }
+
 .label--active {
   @apply bg-green-500 text-white;
 }
+
 .label--warning {
   @apply bg-red-500 text-white;
 }
+
 .label--inactive {
   @apply bg-gray-400 text-gray-200;
 }
@@ -41,31 +44,43 @@
   @apply px-3 py-2 font-medium lg:px-6 lg:py-4 flex items-start text-gray-600 dark:text-gray-400;
   @apply text-base rounded-t-lg bg-gray-100 dark:bg-gray-900 border-gray-200;
 }
+
 .card--wrapper {
   @apply rounded-lg border bg-gray-100 dark:bg-gray-900 border-gray-200 overflow-hidden dark:border-gray-800;
 }
 
 .step--header {
   @apply items-center mb-3;
+  h3 {
+    @apply font-medium;
+  }
 }
+
 .step--wrapper {
   @apply p-3 lg:p-5 dark:bg-gray-800 sm:p-3;
 }
+
 .step--content {
+  /* @apply pl-10; */
 }
+
 .step--indicator {
   @apply mr-3 py-1.5 flex-shrink-0 w-7 h-7;
   @apply bg-gray-200 text-center dark:bg-gray-700 rounded-full uppercase font-semibold text-xs text-gray-400;
 }
+
 .card--body {
   @apply text-gray-800 rounded-t-lg bg-white dark:text-gray-400 dark:bg-gray-800 overflow-hidden;
 }
+
 .card--footer {
   @apply bg-white border-t border-t-gray-200 dark:text-gray-400 dark:bg-gray-800 dark:border-t-gray-900;
 }
+
 .sep {
   @apply border-b border-gray-100 dark:border-gray-900 opacity-60;
 }
+
 /* .empty-state--illustration {
     @apply max-w-lg bg-center bg-no-repeat mx-auto;
     background-image: url(/images/rader-empty.svg);

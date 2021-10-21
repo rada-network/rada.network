@@ -33,7 +33,7 @@ export const PostDetailAuthor = observer(({item,isRada}) => {
               <div>
                 <div className="page-close">
                   <button onClick={() => {buttonRef.current?.click()}} className="btn popper-close-btn">
-                    <span class="icon"><i class="fa-solid fa-times hidden md:!block"></i></span>
+                    <span class="icon"><i class="fa-solid fa-times"></i></span>
                   </button>
                 </div>
                 <div className="popper-header">

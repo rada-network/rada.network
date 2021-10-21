@@ -64,7 +64,7 @@ export default function TokenInfoInvest({
             <div className="text-sm w-full">
               <div className="flex items-end justify-between mb-2">
                 <div className="field-label">
-                  <div className="opacity-70 text-2xs md:text-sm">
+                  <div className="field-label--text">
                     {t("Your maximum allocation")}
                     <span
                       className="hasTooltip"
@@ -76,7 +76,7 @@ export default function TokenInfoInvest({
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center flex-grow flex-shrink-0">
+                <div className="flex items-center flex-shrink-0">
                   {investData.max_rir_per_user} RIR
                   <div className="w-4 h-4 ml-2">
                     <RadaSvg />
@@ -85,7 +85,7 @@ export default function TokenInfoInvest({
               </div>
               <div className="flex items-end justify-between mb-2">
                 <div className="field-label">
-                  <div className="opacity-70 text-2xs md:text-sm">
+                  <div className="field-label--text">
                     {t("Available allocation for this project")}
                     <span
                       className="hasTooltip"
@@ -99,7 +99,7 @@ export default function TokenInfoInvest({
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center flex-grow flex-shrink-0">
+                <div className="flex items-center flex-shrink-0">
                   {investData.total_rir - investData.total_rir_approved}/
                   <span className="text-gray-500">{investData.total_rir}</span>
                   RIR
@@ -111,7 +111,7 @@ export default function TokenInfoInvest({
 
               <div className="flex items-end justify-between mb-2">
                 <div className="field-label">
-                  <div className="opacity-70 text-2xs md:text-sm">
+                  <div className="field-label--text">
                     {t("Your balance")}
                     <span
                       className="hasTooltip"
@@ -123,7 +123,7 @@ export default function TokenInfoInvest({
                   </div>
                 </div>
                 {Object.keys(investProfile).length !== 0 && 
-                <div className="flex items-center flex-grow flex-shrink-0">
+                <div className="flex items-center flex-shrink-0">
                   <span className="mr-1">
                     {investProfile.approved_rir - investProfile.used_rir}
                   </span> RIR
@@ -140,9 +140,9 @@ export default function TokenInfoInvest({
                 }
               </div>
 
-              <div className="flex mb-2">
+              <div className="flex justify-between mb-2">
                 <div className="field-label">
-                  <span className="opacity-70 text-2xs md:text-sm">
+                  <span className="field-label--text">
                     {t("Token Generation Events (TGE)")}
                     <span
                       className="hasTooltip"
@@ -154,7 +154,7 @@ export default function TokenInfoInvest({
                     </span>
                   </span>
                 </div>
-                <div className="flex-grow flex-shrink-0">
+                <div className="flex items-center flex-shrink-0">
                   {investData.tge_date &&
                     moment(investData.tge_date).format("DD MMMM YYYY")}
                 </div>
@@ -162,7 +162,7 @@ export default function TokenInfoInvest({
 
               <div className="flex justify-between mb-2">
                 <div className="field-label">
-                  <span className="opacity-70 text-2xs md:text-sm">
+                  <span className="field-label--text">
                     {t("end date")}
                     {/* <span
                       className="hasTooltip"
@@ -174,15 +174,15 @@ export default function TokenInfoInvest({
                     </span> */}
                   </span>
                 </div>
-                <div className="flex-grow flex-shrink-0">
+                <div className="flex items-center flex-shrink-0">
                   {investData.end_date &&
                     moment(investData.end_date).format("DD MMMM YYYY")}
                 </div>
               </div>
 
-              <div className="flex mb-2">
+              <div className="flex justify-between mb-2">
                 <div className="field-label">
-                  <span className="opacity-70 text-2xs md:text-sm">
+                  <span className="field-label--text">
                     {t("Unlocked token ratio at TGE")}{" "}
                     <span
                       className="hasTooltip"
@@ -194,12 +194,12 @@ export default function TokenInfoInvest({
                     </span>
                   </span>
                 </div>
-                <div className="flex-grow flex-shrink-0">{investData.tge_unlock}%</div>
+                <div className="flex items-center flex-shrink-0">{investData.tge_unlock}%</div>
               </div>
 
-              <div className="flex justify-between mb-2">
+              <div className="flex justify-between mb-2 items-center">
                 <div className="field-label">
-                  <span className="opacity-70 text-2xs md:text-sm">
+                  <span className="field-label--text">
                     {t("Project status")}
                   </span>
                 </div>
@@ -434,9 +434,9 @@ const InvestForm = function ({
           </div>
           {/* Card body */}
 
-          <div className="card--footer">
+          <div className="card--footer p-3">
             <button
-              className={`btn m-3 lg:m-5 btn-primary py-2 px-3 ` + (buttonInvestDisabled? "disabled" : "")}
+              className={`btn btn-primary py-2 px-4 ` + (buttonInvestDisabled? "disabled" : "")}
               onClick={handleSubmitInvest}
             >
               Invest

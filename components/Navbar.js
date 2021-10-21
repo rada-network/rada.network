@@ -26,7 +26,7 @@ export const Navbar = observer(({}) => {
               <strong className="logo--text mt-1">
                 <span>RADA</span>
               </strong>
-              <span className="logo--badge">BETA</span>
+              <span className="logo--badge">βETA</span>
             </a>
           </Link>
         </div>
