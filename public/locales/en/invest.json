@@ -5,6 +5,7 @@
   "Available allocation for this project tooltip" : "Number of available RIRs that Raders can apply to invest in this project.",
   "Your balance" : "Your balance",
   "Your balance tip" : "Number of available RIRs that Raders can apply to invest",
+  "end date" : "Finished Date",
   "Token Generation Events (TGE)" : "TGE",
   "Token Generation Events (TGE) tooltip" : "TGE - Token Generation Event is the date at which the project's token is issued.",
   "Unlocked token ratio at TGE" : "UNLOCKED AT TGE",

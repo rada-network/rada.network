@@ -137,9 +137,8 @@ export default function TokenInfoInvest({
                   </div>
                   <Link
                     href={`/${i18n.language}/user/topUp`}
-                    className="ml-2 btn-neutral rounded px-1.5 py-0.5"
                   >
-                    Top up
+                    <a href={`/${i18n.language}/user/topUp`} className="ml-2 rounded px-1.5 py-0.5 bg-gray-200 dark:bg-gray-800">Top Up</a>
                   </Link>
                 </div>
                 }
@@ -162,6 +161,26 @@ export default function TokenInfoInvest({
                 <div className="">
                   {investData.tge_date &&
                     moment(investData.tge_date).format("DD MMMM YYYY")}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap justify-between mb-2">
+                <div className="field-label">
+                  <span className="uppercase opacity-50 text-2xs md:text-xs">
+                    {t("end date")}
+                    {/* <span
+                      className="hasTooltip"
+                      data-tip={t("Token Generation Events (TGE) tooltip")}
+                      data-event="click"
+                    >
+                      {" "}
+                      <i className="fa-duotone fa-info-circle text-base" />
+                    </span> */}
+                  </span>
+                </div>
+                <div className="">
+                  {investData.end_date &&
+                    moment(investData.end_date).format("DD MMMM YYYY")}
                 </div>
               </div>
 
@@ -282,6 +301,7 @@ const InvestForm = function ({
       return false;
     }
     const { status, msg } = data.submitInvest;
+    setButtonInvestDisabled(false)
     if (status === "error") {
       toast.error(msg, {
         position: "top-right",
@@ -420,7 +440,7 @@ const InvestForm = function ({
 
           <div className="card--footer">
             <button
-              className="btn m-3 lg:m-5 btn-primary py-2 px-3"
+              className={`btn m-3 lg:m-5 btn-primary py-2 px-3 ` + (buttonInvestDisabled? "disabled" : "")}
               onClick={handleSubmitInvest}
             >
               Invest
@@ -454,11 +474,11 @@ const InvestForm = function ({
                 moment(investData.tge_date).format("DD MMMM YYYY")}{" "}
             </p>
           </div>
-          <div className="card--footer p-3 lg:p-5">
+          {/* <div className="card--footer p-3 lg:p-5">
             <button className="btn btn-primary py-2 px-3">
               Adjust your investment
             </button>
-          </div>
+          </div> */}
         </div>
       )}
     </>

@@ -13,6 +13,7 @@ const investCampaignByIdGql = gql`
             block_step
             tge_date
             tge_unlock
+            end_date
             invest_log{
                 user_id
                 number_rir
