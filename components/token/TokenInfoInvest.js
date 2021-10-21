@@ -62,9 +62,9 @@ export default function TokenInfoInvest({
           {/* investment meta */}
           <div className="flex w-full">
             <div className="text-sm w-full">
-              <div className="flex flex-wrap items-end justify-between mb-2">
+              <div className="flex items-end justify-between mb-2">
                 <div className="field-label">
-                  <div className="uppercase opacity-50 text-2xs md:text-xs">
+                  <div className="opacity-70 text-2xs md:text-sm">
                     {t("Your maximum allocation")}
                     <span
                       className="hasTooltip"
@@ -76,16 +76,16 @@ export default function TokenInfoInvest({
                     </span>
                   </div>
                 </div>
-                <div className="text-lg font-semibold flex items-center">
-                  {investData.max_rir_per_user}RIR
+                <div className="flex items-center flex-grow flex-shrink-0">
+                  {investData.max_rir_per_user} RIR
                   <div className="w-4 h-4 ml-2">
                     <RadaSvg />
                   </div>
                 </div>
               </div>
-              <div className="flex flex-wrap items-end justify-between mb-2">
+              <div className="flex items-end justify-between mb-2">
                 <div className="field-label">
-                  <div className="uppercase opacity-50 text-2xs md:text-xs">
+                  <div className="opacity-70 text-2xs md:text-sm">
                     {t("Available allocation for this project")}
                     <span
                       className="hasTooltip"
@@ -99,7 +99,7 @@ export default function TokenInfoInvest({
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center flex-grow flex-shrink-0">
                   {investData.total_rir - investData.total_rir_approved}/
                   <span className="text-gray-500">{investData.total_rir}</span>
                   RIR
@@ -109,44 +109,40 @@ export default function TokenInfoInvest({
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-end justify-between mb-2">
-                <div className="w-full lg:w-auto">
-                  <div className="uppercase opacity-50 text-2xs md:text-xs">
+              <div className="flex items-end justify-between mb-2">
+                <div className="field-label">
+                  <div className="opacity-70 text-2xs md:text-sm">
                     {t("Your balance")}
                     <span
                       className="hasTooltip"
                       data-tip={t("Your balance tip")}
                       data-event="click"
-                    >
-                      {" "}
+                    > {" "}
                       <i className="fa-duotone fa-info-circle text-base" />
                     </span>
                   </div>
                 </div>
                 {Object.keys(investProfile).length !== 0 && 
-                <div className="flex items-center">
-                  <span className="text-gray-500">
-                    <strong className="text-gray-900 dark:text-white">
-                      {investProfile.approved_rir - investProfile.used_rir}
-                    </strong>
-                    /{investProfile.approved_rir}
-                  </span>
-                  RIR
+                <div className="flex items-center flex-grow flex-shrink-0">
+                  <span className="mr-1">
+                    {investProfile.approved_rir - investProfile.used_rir}
+                  </span> RIR
+                  
                   <div className="w-4 h-4 ml-2 dark:opacity-100 opacity-90">
                     <RadaSvg />
                   </div>
                   <Link
                     href={`/${i18n.language}/user/topUp`}
                   >
-                    <a href={`/${i18n.language}/user/topUp`} className="ml-2 rounded px-1.5 py-0.5 bg-gray-200 dark:bg-gray-800">Top Up</a>
+                    <a href={`/${i18n.language}/user/topUp`} className="ml-2 text-xs uppercase rounded px-1.5 py-0.5 bg-gray-200 dark:bg-gray-800">Top Up</a>
                   </Link>
                 </div>
                 }
               </div>
 
-              <div className="flex flex-wrap justify-between mb-2">
+              <div className="flex mb-2">
                 <div className="field-label">
-                  <span className="uppercase opacity-50 text-2xs md:text-xs">
+                  <span className="opacity-70 text-2xs md:text-sm">
                     {t("Token Generation Events (TGE)")}
                     <span
                       className="hasTooltip"
@@ -158,15 +154,15 @@ export default function TokenInfoInvest({
                     </span>
                   </span>
                 </div>
-                <div className="">
+                <div className="flex-grow flex-shrink-0">
                   {investData.tge_date &&
                     moment(investData.tge_date).format("DD MMMM YYYY")}
                 </div>
               </div>
 
-              <div className="flex flex-wrap justify-between mb-2">
+              <div className="flex justify-between mb-2">
                 <div className="field-label">
-                  <span className="uppercase opacity-50 text-2xs md:text-xs">
+                  <span className="opacity-70 text-2xs md:text-sm">
                     {t("end date")}
                     {/* <span
                       className="hasTooltip"
@@ -178,15 +174,15 @@ export default function TokenInfoInvest({
                     </span> */}
                   </span>
                 </div>
-                <div className="">
+                <div className="flex-grow flex-shrink-0">
                   {investData.end_date &&
                     moment(investData.end_date).format("DD MMMM YYYY")}
                 </div>
               </div>
 
-              <div className="flex flex-wrap justify-between mb-2">
+              <div className="flex mb-2">
                 <div className="field-label">
-                  <span className="uppercase opacity-50 text-2xs md:text-xs">
+                  <span className="opacity-70 text-2xs md:text-sm">
                     {t("Unlocked token ratio at TGE")}{" "}
                     <span
                       className="hasTooltip"
@@ -198,12 +194,12 @@ export default function TokenInfoInvest({
                     </span>
                   </span>
                 </div>
-                <div className="">{investData.tge_unlock}%</div>
+                <div className="flex-grow flex-shrink-0">{investData.tge_unlock}%</div>
               </div>
 
-              <div className="flex flex-wrap justify-between mb-2">
+              <div className="flex justify-between mb-2">
                 <div className="field-label">
-                  <span className="uppercase opacity-50 text-2xs md:text-xs">
+                  <span className="opacity-70 text-2xs md:text-sm">
                     {t("Project status")}
                   </span>
                 </div>

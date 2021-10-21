@@ -110,58 +110,119 @@ export default function UserProfile(props) {
     <>
       <StaticLayout meta={meta}>
         <div className="page-section mt-1 mb-2 lg:mt-2">
-          <div className="flex">
+          <div className="text-center">
 
-          <div className="mr-4 lg:mr-8">
-            <span className="avatar avatar-3xl shadow">
-              <img src={user.image} alt={user.name} />
-            </span>
-            <Wallet handleConnectSuccess={handleConnectSuccess} />
-          </div>
-
-          <div className="mt-4">
-
-            <div className="flex">
-              <h1 className="mx-auto text-xl lg:text-2xl">
-                {t("hello")}&nbsp;
-                <strong>{user.name}</strong>&nbsp;
-                <span className="text-base opacity-70">#{user?.id?.split("-")[user?.id?.split("-").length - 1]}</span>
-              </h1>
+            <div className="">
+              <span className="avatar avatar-xl md:avatar-3xl shadow">
+                <img src={user.image} alt={user.name} />
+              </span>
+              <Wallet handleConnectSuccess={handleConnectSuccess} />
             </div>
 
-            <div className="flex mt-3">
-              <a
-                href="./topUp"
-                className="mr-auto inline-flex px-3 py-1 items-center rounded bg-gray-200 dark:bg-gray-800"
-              >
-                <span className="text-xs text-gray-500 mr-2 uppercase font-semibold">
-                  {t("balance")}
-                </span>
-                <span className="flex w-5 h-5 m-auto opacity-80">
-                  <RadaSvg />
-                </span>
-                <span className="ml-1">
-                  {topupInfo.approved_rir - topupInfo.used_rir} RIR
-                </span>
-              </a>
-
-              {topupInfo.max_rir > 0 &&
-                topupInfo.approved_rir < topupInfo.max_rir && (
-                  <div className="flex-1 mt-2 w-100 text-gray-500">
-                    <span>
-                      {t("balance note",{
-                        number : topupInfo.max_rir - topupInfo.approved_rir - topupInfo.pending_rir
-                      })}
-                    </span>
-                    <a
-                      href="./topUp"
-                      className="btn-neutral px-2 py-1 rounded ml-2 text-sm uppercase font-semibold"
-                    >
-                      Top up
-                    </a>
-                  </div>
-                )}
+            <div className="w-full mt-1 md:mt-3">
+              <div className="flex items-cente">
+                <h1 className="text-md lg:text-xl mx-auto text-center">
+                  {t("hello")}&nbsp;
+                  <strong>{user.name}</strong>&nbsp;
+                </h1>
               </div>
+
+              <div className="md:px-4 md:py-2 px-2 mt-4 rounded-lg border border-gray-100 dark:border-gray-800">
+              <div className="w-full mt-2">
+                <div className="flex flex-wrap items-end justify-between mb-2">
+                  <div className="w-auto">
+                    <div className="field-label opacity-70 text-2xs md:text-sm opacity-70">
+                      ID
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                  #{user?.id?.split("-")[user?.id?.split("-").length - 1]}
+                  </div>
+                  
+                </div>
+              </div>
+              <div className="w-full mt-2">
+                <div className="flex flex-wrap items-end justify-between mb-2">
+                  <div className="w-auto">
+                    <div className="field-label opacity-70 text-2xs md:text-sm opacity-70">
+                      {t("balance")}
+                        <span
+                          className="hasTooltip"
+                          data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                          data-event="click"
+                        > <i className="fa-duotone fa-info-circle text-base" />
+                        </span>
+                      </div>
+                  </div>
+                  <div className="flex items-center">
+                    <a
+                    href="./topUp"
+                    className="mr-auto inline-flex px-2 py-0.5 items-center rounded bg-gray-200 dark:bg-gray-800"
+                    >
+
+                    <span className="flex w-4 h-4 mr-1 opacity-80">
+                      <RadaSvg />
+                    </span>
+                    <span>
+                      {topupInfo.approved_rir - topupInfo.used_rir} RIR
+                    </span>
+                  </a>
+
+                  {topupInfo.max_rir > 0 &&
+                    topupInfo.approved_rir < topupInfo.max_rir && (
+                      <div className="flex-1 mt-2 w-100 text-gray-500">
+                        <span>
+                          {t("balance note",{
+                            number : topupInfo.max_rir - topupInfo.approved_rir - topupInfo.pending_rir
+                          })}
+                        </span>
+                        <a
+                          href="./topUp"
+                          className="btn-neutral px-2 py-1 rounded ml-2 text-sm uppercase font-semibold"
+                        >
+                          Top up
+                        </a>
+                      </div>
+                )}
+                  </div>
+                </div>
+              </div>
+               {/* End: balance */}
+
+              <div className="w-full mt-2">
+                <div className="flex flex-wrap items-end justify-between mb-2">
+                  <div className="w-auto">
+                    <div className="field-label opacity-70 text-2xs md:text-sm opacity-70">
+                      Tối đa
+                    </div>
+                  </div>
+                  <div className="flex items-center flex-shrink-0 tabular-nums">
+                    <span className="w-4 h-4 mr-1"><RadaSvg /></span> 20 RIR
+                    <a href="#" className="ml-2 text-xs uppercase rounded px-1.5 py-0.5 bg-gray-200 dark:bg-gray-800">Top Up</a>
+
+                  </div>
+                  
+                </div>
+              </div>
+              {/* End: max allocation */}
+              <div className="w-full mt-2">
+                <div className="flex flex-wrap items-end justify-between mb-2">
+                  <div className="w-auto">
+                    <div className="field-label opacity-70 text-2xs md:text-sm opacity-70">
+                      Bạn có thể nạp thêm
+                    </div>
+                  </div>
+                  <div className="flex items-center  flex-shrink-0 tabular-nums">
+                    <span className="w-4 h-4 mr-1"><RadaSvg /></span> 11 RIR 
+                  </div>
+                  
+                </div>
+              </div>
+
+
+
+              </div>
+              {/* end of meta  */}
 
             </div>
 
