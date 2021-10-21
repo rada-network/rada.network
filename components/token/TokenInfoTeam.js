@@ -138,10 +138,10 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
                     <i class="fa-brands fa-linkedin-in"></i>
                 </a>}
                 {item.twitter && <a className="btn" href={item.twitter} rel="nofollow" target="_blank">
-                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-twitter"></i>
                 </a>}
                 {item.facebook && <a className="btn" href={item.facebook} rel="nofollow" target="_blank">
-                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-facebook"></i>
                 </a>}
                 </div>
             </div>
