@@ -3,6 +3,8 @@ import numberFormatter from "../utils/numberFormatter";
 import roundNumber from "../utils/roundNumber"
 import TokenInfoHeader from "./TokenInfoHeader";
 import { useTranslation } from "next-i18next"
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { toast } from "react-toastify";
 
 
 export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btcCoinInfo}) {
@@ -11,6 +13,9 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
     window.Gleam = window.Gleam || [];
     window.Gleam.push(['token-info-pageview', tokenInfo?.symbol]);
   },[])
+  const handleCopy = () => {
+    toast.success("Copied to clipboard", {})
+  };
     return (
         <div className="section section-coininfo--general">
 
@@ -183,7 +188,11 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                       <span className="field-label--text">Contract</span>
                     </div>
                     <div className="">
-                      <a href="#" className="btn btn-default btn-default-sm">
+                      <CopyToClipboard
+                        onCopy={handleCopy}
+                        text={tokenData?.contract_address}
+                      >
+                        <a href="#" className="btn btn-default btn-default-sm">
                         <span className="icon">
                           <i class={`cf cf-${tokenData?.platform?.networkName}`}></i>
                         </span>
@@ -191,7 +200,9 @@ export default function TokenInfoGeneral({tokenData, tokenInfo, usdCoinInfo, btc
                         <span className="icon">
                           <i class="fa-regular fa-copy text-2xs"></i>
                         </span>
-                      </a>
+                        </a>
+                      </CopyToClipboard>
+                      
                     </div>
                   </div>
                   }
