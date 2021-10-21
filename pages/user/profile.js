@@ -109,51 +109,62 @@ export default function UserProfile(props) {
   return (
     <>
       <StaticLayout meta={meta}>
-        <div className="page-section text-center mt-1 mb-2 lg:mt-2">
-          <div className="">
+        <div className="page-section mt-1 mb-2 lg:mt-2">
+          <div className="flex">
+
+          <div className="mr-4 lg:mr-8">
             <span className="avatar avatar-3xl shadow">
               <img src={user.image} alt={user.name} />
             </span>
             <Wallet handleConnectSuccess={handleConnectSuccess} />
           </div>
+
           <div className="mt-4">
+
             <div className="flex">
-              <h1 className="ml-auto mr-auto text-2xl">
-                {t("hello")}&nbsp;<strong>{user.name}</strong> #
-                {user?.id?.split("-")[user?.id?.split("-").length - 1]}
+              <h1 className="mx-auto text-xl lg:text-2xl">
+                {t("hello")}&nbsp;
+                <strong>{user.name}</strong>&nbsp;
+                <span className="text-base opacity-70">#{user?.id?.split("-")[user?.id?.split("-").length - 1]}</span>
               </h1>
             </div>
-            <a
-              href="./topUp"
-              className="mr-auto mt-3 ml-2 inline-flex px-3 py-1 items-center rounded bg-gray-200 dark:bg-gray-800"
-            >
-              <span className="text-xs text-gray-500 mr-2 uppercase font-semibold">
-                {t("balance")}
-              </span>
-              <span className="flex w-5 h-5 m-auto opacity-80">
-                <RadaSvg />
-              </span>
-              <span className="ml-1">
-                {topupInfo.approved_rir - topupInfo.used_rir} RIR
-              </span>
-            </a>
 
-            {topupInfo.max_rir > 0 &&
-              topupInfo.approved_rir < topupInfo.max_rir && (
-                <div className="flex-1 mt-2 w-100 text-gray-500">
-                  <span>
-                    {t("balance note",{
-                      number : topupInfo.max_rir - topupInfo.approved_rir - topupInfo.pending_rir
-                    })}
-                  </span>
-                  <a
-                    href="./topUp"
-                    className="btn-neutral px-2 py-1 rounded ml-2 text-sm uppercase font-semibold"
-                  >
-                    Top up
-                  </a>
-                </div>
-              )}
+            <div className="flex mt-3">
+              <a
+                href="./topUp"
+                className="mr-auto inline-flex px-3 py-1 items-center rounded bg-gray-200 dark:bg-gray-800"
+              >
+                <span className="text-xs text-gray-500 mr-2 uppercase font-semibold">
+                  {t("balance")}
+                </span>
+                <span className="flex w-5 h-5 m-auto opacity-80">
+                  <RadaSvg />
+                </span>
+                <span className="ml-1">
+                  {topupInfo.approved_rir - topupInfo.used_rir} RIR
+                </span>
+              </a>
+
+              {topupInfo.max_rir > 0 &&
+                topupInfo.approved_rir < topupInfo.max_rir && (
+                  <div className="flex-1 mt-2 w-100 text-gray-500">
+                    <span>
+                      {t("balance note",{
+                        number : topupInfo.max_rir - topupInfo.approved_rir - topupInfo.pending_rir
+                      })}
+                    </span>
+                    <a
+                      href="./topUp"
+                      className="btn-neutral px-2 py-1 rounded ml-2 text-sm uppercase font-semibold"
+                    >
+                      Top up
+                    </a>
+                  </div>
+                )}
+              </div>
+
+            </div>
+
           </div>
         </div>
 
@@ -182,7 +193,7 @@ export default function UserProfile(props) {
                         Wallet
                       </label>
                     </div>
-                    <div className="flex-1 -mt-1 md:mt-0">
+                    <div className="flex-1 md:mt-0">
                       <div className="relative pl-8 md:pl-0 w-full flex items-center">
                         {_.isEmpty(wallet) ? (
                           <span>
@@ -212,7 +223,7 @@ export default function UserProfile(props) {
                         )}
                       </div>
                     </div>
-                    <div className="text-right relative -top-4 md:top-0">
+                    <div className="text-right -mt-2 md:mt-0">
                       {_.isEmpty(wallet) ? (
                         <button
                           className="btn btn-default"
@@ -234,7 +245,7 @@ export default function UserProfile(props) {
                   {/* Google disconnected --> Show Connect Buttons */}
                   <div className="list-group--item">
                     <div className="list-group--item--title w-full md:w-1/4">
-                      <div className="list-group--item--media">
+                      <div className="list-group--item--media brand--google">
                         <span className="icon">
                           <i className="fa-brands fa-google"></i>
                         </span>
@@ -246,7 +257,7 @@ export default function UserProfile(props) {
                         Google
                       </label>
                     </div>
-                    <div className="flex-1 -mt-1 md:mt-0">
+                    <div className="flex-1">
                       <div className="relative pl-8 md:pl-0 w-full">
                         {_.isEmpty(google) ? (
                           <span>
@@ -276,7 +287,7 @@ export default function UserProfile(props) {
                   {/* Facebook connected --> Show DisConnect Buttons */}
                   <div className="list-group--item">
                     <div className="list-group--item--title w-full md:w-1/4">
-                      <div className="list-group--item--media">
+                      <div className="list-group--item--media brand--facebook">
                         <span className="icon">
                           <i className="fa-brands fa-facebook-f"></i>
                         </span>
@@ -288,7 +299,7 @@ export default function UserProfile(props) {
                         Facebook
                       </label>
                     </div>
-                    <div className="flex-1 -mt-1 md:mt-0">
+                    <div className="flex-1">
                       <div className="relative pl-8 md:pl-0 w-full">
                         {_.isEmpty(facebook) ? (
                           <span>
@@ -318,7 +329,7 @@ export default function UserProfile(props) {
                   {/* Twitter connected --> Show DisConnect Buttons */}
                   <div className="list-group--item">
                     <div className="list-group--item--title w-full md:w-1/4">
-                      <div className="list-group--item--media">
+                      <div className="list-group--item--media brand--twitter">
                         <span className="icon">
                           <i className="fa-brands fa-twitter"></i>
                         </span>
@@ -330,7 +341,7 @@ export default function UserProfile(props) {
                         Twitter
                       </label>
                     </div>
-                    <div className="flex-1 -mt-1 md:mt-0">
+                    <div className="flex-1">
                       <div className="relative pl-8 md:pl-0 w-full">
                         {_.isEmpty(twitter) ? (
                           <span>
