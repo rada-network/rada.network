@@ -210,11 +210,6 @@ export default function TokenInfoInvest({
                 <div className="label label--active">
                   {t(investData.invest_status)}
                 </div>
-                {/*
-                      <div className="label label--inactive">
-                        Close for investment
-                      </div>
-                      */}
               </div>
             </div>
           </div>
@@ -244,6 +239,7 @@ const InvestForm = function ({
     wallet_address: "",
   });
   const [buttonInvestDisabled, setButtonInvestDisabled] = useState(false);
+  const [adjustInvest, setAdjustInvest] = useState(false);
   const store = useStore();
   const { t } = useTranslation("invest");
 
@@ -298,10 +294,12 @@ const InvestForm = function ({
         progress: undefined,
       });
       setButtonInvestDisabled(false);
+      setAdjustInvest(false);
       return false;
     }
     const { status, msg } = data.submitInvest;
     setButtonInvestDisabled(false)
+    setAdjustInvest(false)
     if (status === "error") {
       toast.error(msg, {
         position: "top-right",
@@ -330,6 +328,17 @@ const InvestForm = function ({
     }
   };
 
+  const handleAdjustInvestment = () => {
+    setAdjustInvest(true)
+    if (investData?.invest_log?.length > 0){
+      setInvestInfo({
+        ...investInfo,
+        number_rir: investData?.invest_log[0].number_rir,
+        wallet_address: investData?.invest_log[0].wallet_address,
+      });
+    }
+  };
+
   if (store.user?.id === "") {
     return (
       <div className="card--wrapper mt-4">
@@ -351,7 +360,7 @@ const InvestForm = function ({
   }
   return (
     <>
-      {investData?.invest_log?.length === 0 ? (
+      {investData?.invest_log?.length === 0 || adjustInvest  ? (
         <div className="card--wrapper mt-4">
           <h3 className="text-gray-400 card--header">{t("invest header")}</h3>
           <div className="card--body">
@@ -445,6 +454,12 @@ const InvestForm = function ({
             >
               Invest
             </button>
+            {adjustInvest && <button
+              className={`btn m-3 lg:m-5 btn-primary py-2 px-3 `  + (buttonInvestDisabled? "disabled" : "")}
+              onClick={() => {setAdjustInvest(false)}}
+            >
+              Cancel
+            </button>}
           </div>
         </div>
       ) : (
@@ -474,11 +489,11 @@ const InvestForm = function ({
                 moment(investData.tge_date).format("DD MMMM YYYY")}{" "}
             </p>
           </div>
-          {/* <div className="card--footer p-3 lg:p-5">
-            <button className="btn btn-primary py-2 px-3">
+          <div className="card--footer p-3 lg:p-5">
+            <button onClick={handleAdjustInvestment} className="btn btn-primary py-2 px-3">
               Adjust your investment
             </button>
-          </div> */}
+          </div>
         </div>
       )}
     </>

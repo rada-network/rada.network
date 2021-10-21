@@ -26,6 +26,7 @@
   "connect" : "Connect",
   "disconnect" : "Disconnect",
   "no connection" : "No {{provider}} account connected",
+  "balance" : "Balance",
   "balance note" : "You now have {{number}} unclaimed RIR. Please top-up to redeem your investment right.",
   "Top-up your balance" : "Top-up your balance",
   "Amount of RIR" : "Amount of RIR you want to top-up",

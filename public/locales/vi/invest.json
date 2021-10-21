@@ -26,7 +26,7 @@
   "connect" : "Kết nối",
   "disconnect" : "Ngắt kết nối",
   "no connection" : "Chưa kết nối tài khoản {{provider}}",
-  "balance" : "SỐ DƯ",
+  "balance" : "Số dư",
   "balance note" : "Bạn đang có {{number}} RIR chưa được thanh toán. Hãy đóng tiền để nhận toàn quyền đầu tư.",
   "Top-up your balance" : "Thanh toán để nhận RIR vào tài khoản",
   "Amount of RIR" : "Số lượng RIR bạn muốn thanh toán",
