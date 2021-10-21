@@ -71,7 +71,7 @@ export const IndexRightBar = observer(({ intro }) => {
     (ic) => ic.status == "published"
   );
 
-  const tokenInfo = detailStore?.data?.tokens
+  const tokenInfo = detailStore?.data?.tokens && detailStore?.data?.tokens.length
     ? detailStore?.data?.tokens[0]
     : null;
   useEffect(() => {
@@ -277,6 +277,7 @@ export const IndexRightBar = observer(({ intro }) => {
             tabName={tabName}
             setTabCallback={setTabName}
             tokenId={tokenData?.id}
+            tokenData={tokenData}
           />
         )}
         {!detailStore.data.id && (
