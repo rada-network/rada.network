@@ -187,7 +187,7 @@ export const IndexRightBar = observer(({ intro }) => {
                             >
                               <span className="token-symbol mr-2">
                                 {token &&
-                                <img src={token?.logo !== null ? token.logo : `https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`} className="h-px-16 w-px-16" alt={token?.name}/>
+                                <img src={token?.logo !== null ? token.logo : `https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`} className="h-px-20 w-px-20" alt={token?.name}/>
                                 }
                               </span>
                               <span className="tab-item--text !block">

@@ -22,11 +22,11 @@ export const PostDetailAuthor = observer(({item,isRada}) => {
                        {...attributes.popper}>
           {({ close }) => (
             <Transition
-              enter="transition ease duration-100"
-              enterFrom="transform origin-top-left scale-0"
-              enterTo="transform origin-top-left scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
+              enter="transition ease-out duration-100"
+              enterFrom="transform origin-top-left opacity-100 scale-0"
+              enterTo="transform origin-top-left opacity-100 scale-100"
+              leave="transition origin-bottom-right ease-in duration-75"
+              leaveFrom="transform origin-bottom-right opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-0"
             >
             <div className={`popper popper-author-info`}>

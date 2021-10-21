@@ -96,6 +96,7 @@ module.exports = {
       // Added Icon Sizes
       width: {
         'px-16':  '16px',
+        'px-20':  '20px',
         'px-24':  '24px',
         'px-32':  '32px',
         'px-40':  '40px',
@@ -112,6 +113,7 @@ module.exports = {
       
       height: {
         'px-16':  '16px',
+        'px-20':  '20px',
         'px-24':  '24px',
         'px-32':  '32px',
         'px-40':  '40px',

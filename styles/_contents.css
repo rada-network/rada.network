@@ -34,7 +34,7 @@ Lists Styles
 
 
 .list-group--item--title {
-  @apply flex items-start md:items-center text-xs uppercase font-medium;
+  @apply flex items-center md:items-center text-xs uppercase font-medium;
 }
 
 .list-group--item--text {
