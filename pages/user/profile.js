@@ -131,7 +131,7 @@ export default function UserProfile(props) {
               <div className="w-full mt-2">
                 <div className="flex flex-wrap items-end justify-between mb-2">
                   <div className="w-auto">
-                    <div className="field-label opacity-70 text-2xs md:text-sm opacity-70">
+                    <div className="field-label--text">
                       ID
                     </div>
                   </div>
@@ -144,7 +144,7 @@ export default function UserProfile(props) {
               <div className="w-full mt-2">
                 <div className="flex flex-wrap items-end justify-between mb-2">
                   <div className="w-auto">
-                    <div className="field-label opacity-70 text-2xs md:text-sm opacity-70">
+                    <div className="field-label--text">
                       {t("balance")}
                         <span
                           className="hasTooltip"
@@ -192,7 +192,7 @@ export default function UserProfile(props) {
               <div className="w-full mt-2">
                 <div className="flex flex-wrap items-end justify-between mb-2">
                   <div className="w-auto">
-                    <div className="field-label opacity-70 text-2xs md:text-sm opacity-70">
+                    <div className="field-label--text">
                       Tối đa
                     </div>
                   </div>
@@ -208,7 +208,7 @@ export default function UserProfile(props) {
               <div className="w-full mt-2">
                 <div className="flex flex-wrap items-end justify-between mb-2">
                   <div className="w-auto">
-                    <div className="field-label opacity-70 text-2xs md:text-sm opacity-70">
+                    <div className="field-label--text">
                       Bạn có thể nạp thêm
                     </div>
                   </div>

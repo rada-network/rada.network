@@ -343,8 +343,8 @@ Top & Tool Bars
 }
 
 .logo--badge {
-  @apply text-3xs mt-0.5 opacity-50 border-b-2 border-gray-400 leading-3;
-  letter-spacing: 2px;
+  @apply text-3xs mt-0.5 leading-3 px-1.5 py-0.5 rounded-full;
+  @apply text-gray-700 bg-gray-300 dark:bg-gray-700 dark:text-gray-200;
 }
 
 .topbar .logo--badge {

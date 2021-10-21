@@ -417,9 +417,9 @@ Avatars
 .avatar-xs,
 .avatar-2xs {
   @apply inline-flex flex-shrink-0 justify-items-center items-center justify-center overflow-hidden;
-  @apply rounded-full;
+  @apply ring-1 ring-gray-400 ring-opacity-20 rounded-full;
   img {
-    @apply w-full object-cover;
+    @apply w-full h-full object-cover rounded-full;
   }
 }
 
@@ -429,14 +429,17 @@ Avatars
 
 .avatar-sm {
   @extend %Img32;
+  @apply ring-1;
 }
 
 .avatar-xs {
   @extend %Img24;
+  @apply ring-1;
 }
 
 .avatar-2xs {
   @extend %Img16;
+  @apply ring-1;
 }
 
 .avatar-lg {
