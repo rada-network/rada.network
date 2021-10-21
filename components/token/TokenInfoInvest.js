@@ -337,7 +337,7 @@ const InvestForm = function ({
           <p className="text-sm">{t("Invest with RADA tip")}</p>
         </div>
         {/* Card body */}
-        <div className="card--footer p-3 lg:p-5">
+        <div className="card--footer px-3 py-2 lg:px-5">
           <a className="btn btn-primary px-3 py-2">
             {t("apply now")}
           </a>
@@ -434,7 +434,7 @@ const InvestForm = function ({
           </div>
           {/* Card body */}
 
-          <div className="card--footer p-3">
+          <div className="card--footer px-3 py-2 lg:px-5">
             <button
               className={`btn btn-primary py-2 px-4 ` + (buttonInvestDisabled? "disabled" : "")}
               onClick={handleSubmitInvest}
