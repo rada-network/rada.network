@@ -27,19 +27,12 @@ import { usePageStore } from "../../lib/usePageStore";
 import { PostDetailAuthor } from "./PostDetailAuthor";
 
 export const PostListDetail = observer(
-  ({ tokenId, tabName, setTabCallback }) => {
+  ({ tokenId, tabName, setTabCallback,tokenData }) => {
     const { detailStore, dataStore, voteStore } = usePageStore();
     let item = detailStore.data;
-    voteStore.addVotesV2([
-      {
-        id: item.item?.id,
-        totalVote: item.item?.totalVote,
-        isVote: item.item?.isVote,
-      },
-    ]);
+    
     item.currentLang = dataStore.lang;
 
-    const [tokenData, setTokenData] = useState({});
     const [usdCoinInfo, setUSDCoinInfo] = useState({});
     const [btcCoinInfo, setBTCCoinInfo] = useState({});
     const { t, i18n } = useTranslation();
@@ -66,10 +59,7 @@ export const PostListDetail = observer(
     );
     useEffect(() => {
       tokenId &&
-        getTokenById({ id: tokenId, lang: i18n.language }).then(function (res) {
-          setTokenData(res.data.tokenById);
-          getCoinInfo(res.data.tokenById?.symbol);
-        });
+          getCoinInfo(tokenData?.symbol);
     }, [tokenId]);
 
     useEffect(() => {
@@ -79,6 +69,13 @@ export const PostListDetail = observer(
     }, []);
 
     useEffect(() => {
+      voteStore.addVotesV2([
+        {
+          id: item.item?.id,
+          totalVote: item.item?.totalVote,
+          isVote: item.item?.isVote,
+        },
+      ]);
       if (typeof twttr.widgets !== "undefined") {
         twttr.widgets.load();
       }
@@ -102,7 +99,7 @@ export const PostListDetail = observer(
               res.data.itemById.news.contentDisplay;
             detailStore.data.content_en_display =
               res.data.itemById.news.content_en_display;
-            detailStore.data.token = res.data.itemById.news.token;
+            //detailStore.data.token = res.data.itemById.news.token;
           }
         });
       }
