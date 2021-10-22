@@ -155,7 +155,6 @@ export default function UserProfile(props) {
   return (
     <>
       <StaticLayout meta={meta}>
-        
         <div className="page-section">
           <div className="flex items-center mb-4 text-gray-500">
             <div className="page-back flex-shrink-0 ml-0 relative -left-0.5">

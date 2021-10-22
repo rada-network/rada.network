@@ -53,10 +53,10 @@ export default function TokenInfoInvest({
   const countdownRenderer = ({days, hours, minutes, seconds, completed }) => {
     if (completed) {
       // Render a completed state
-      router.reload()
+      return ""
     } else {
       // Render a countdown
-      return <span className="label label--active">{zeroPad(days)}:{zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}</span>;
+      return <span className="label label--active">{days !== 0 && `${zeroPad(days)}:`}{zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}</span>;
     }
   };
 
@@ -77,7 +77,7 @@ export default function TokenInfoInvest({
           {/* investment meta */}
           <div className="flex w-full">
             <div className="text-sm w-full">
-              <div className="flex items-end justify-between mb-2">
+              <div className="flex items-center justify-between mb-2">
                 <div className="field-label">
                   <div className="field-label--text">
                     {t("Your maximum allocation")}
@@ -98,7 +98,7 @@ export default function TokenInfoInvest({
                   </div>
                 </div>
               </div>
-              <div className="flex items-end justify-between mb-2">
+              <div className="flex items-center justify-between mb-2">
                 <div className="field-label">
                   <div className="field-label--text">
                     {t("Available allocation for this project")}
@@ -124,7 +124,7 @@ export default function TokenInfoInvest({
                 </div>
               </div>
 
-              <div className="flex items-end justify-between mb-2">
+              <div className="flex items-center justify-between mb-2">
                 <div className="field-label">
                   <div className="field-label--text">
                     {t("Your balance")}
@@ -230,7 +230,9 @@ export default function TokenInfoInvest({
                 </div>
               </div>
               :
-              <div className="flex justify-between mb-2">
+              <>
+              {investData.end_date && (new Date(investData.end_date)) > (new Date()) &&
+                <div className="flex justify-between mb-2">
                 <div className="field-label">
                   <span className="field-label--text">
                     {t("end date")}
@@ -245,17 +247,17 @@ export default function TokenInfoInvest({
                 </div>
               </div>
               }
+              </>
+              }
             </div>
           </div>
           {/* End: Investment Meta */}
-          {(investData.start_date === null || (new Date(investData.start_date)) < (new Date())) && 
           <InvestForm
             investData={investData}
             tokenData={tokenData}
             getDataCampaign={getDataCampaign}
             investCampaign={investCampaign}
           />
-          }
         </div>
         {/* End: Post Content */}
       </div>
@@ -386,13 +388,63 @@ const InvestForm = function ({
         </div>
         {/* Card body */}
         <div className="card--footer px-3 py-2 lg:px-5">
-          <a className="btn btn-primary px-3 py-2">
+          <a href={`https://www.jotform.com/form/212882028654459`} target="_blank" rel="nofollow noreferrer" className="btn btn-primary px-3 py-2">
             {t("apply now")}
           </a>
         </div>
       </div>
     );
   }
+  //campaign has't started yet
+  if ((investData.start_date !== null && (new Date(investData.start_date)) > (new Date()))){
+    const {days} = calcTimeDelta(new Date(investData.start_date))
+    return (
+      <div className="card--wrapper mt-4">
+        {/* <h3 className="text-gray-400 card--header">
+          {t("invest start in header",{day : days})}
+        </h3> */}
+        <div className="card--body p-3 lg:p-5 flex">
+          <div className="flex mr-3 w-12 h-12 p-2.5 mb-2 border-4 border-purple-300 bg-purple-300 text-purple-500 dark:bg-purple-400 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>check</title>
+              <path
+                fill="currentColor"
+                d="M23.146,5.4,20.354,2.6a.5.5,0,0,0-.708,0L7.854,14.4a.5.5,0,0,1-.708,0L4.354,11.6a.5.5,0,0,0-.708,0L.854,14.4a.5.5,0,0,0,0,.707L7.146,21.4a.5.5,0,0,0,.708,0L23.146,6.1A.5.5,0,0,0,23.146,5.4Z"
+              />
+            </svg>
+          </div>
+          <p>
+            {t("invest start in note")}
+          </p>
+        </div>
+      </div>
+    )
+  }
+
+  if ((investData.end_date !== null && (new Date(investData.end_date)) < (new Date())) && investData?.invest_log.length == 0){
+    return (
+      <div className="card--wrapper mt-4">
+        <h3 className="text-gray-400 card--header">
+          {t("invest closed")}
+        </h3>
+        <div className="card--body p-3 lg:p-5 flex">
+          <div className="flex mr-3 w-12 h-12 p-2.5 mb-2 border-4 border-purple-300 bg-purple-300 text-purple-500 dark:bg-purple-400 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>check</title>
+              <path
+                fill="currentColor"
+                d="M23.146,5.4,20.354,2.6a.5.5,0,0,0-.708,0L7.854,14.4a.5.5,0,0,1-.708,0L4.354,11.6a.5.5,0,0,0-.708,0L.854,14.4a.5.5,0,0,0,0,.707L7.146,21.4a.5.5,0,0,0,.708,0L23.146,6.1A.5.5,0,0,0,23.146,5.4Z"
+              />
+            </svg>
+          </div>
+          <p>
+            {t("invest closed note")}
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <>
       {(investData.end_date === null || (new Date(investData.end_date)) > (new Date())) &&(investData?.invest_log?.length === 0 || adjustInvest) ? (
@@ -503,37 +555,37 @@ const InvestForm = function ({
         <>
         {investData?.invest_log?.length > 0 &&
           <div className="card--wrapper mt-4">
-          <h3 className="text-gray-400 card--header">
-            Thanks for your investment!
-          </h3>
-          <div className="card--body p-3 lg:p-5 flex">
-            <div className="flex mr-3 w-12 h-12 p-2.5 mb-2 border-4 border-purple-300 bg-purple-300 text-purple-500 dark:bg-purple-400 rounded-full">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <title>check</title>
-                <path
-                  fill="currentColor"
-                  d="M23.146,5.4,20.354,2.6a.5.5,0,0,0-.708,0L7.854,14.4a.5.5,0,0,1-.708,0L4.354,11.6a.5.5,0,0,0-.708,0L.854,14.4a.5.5,0,0,0,0,.707L7.146,21.4a.5.5,0,0,0,.708,0L23.146,6.1A.5.5,0,0,0,23.146,5.4Z"
-                />
-              </svg>
+            <h3 className="text-gray-400 card--header">
+              Thanks for your investment!
+            </h3>
+            <div className="card--body p-3 lg:p-5 flex">
+              <div className="flex mr-3 w-12 h-12 p-2.5 mb-2 border-4 border-purple-300 bg-purple-300 text-purple-500 dark:bg-purple-400 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <title>check</title>
+                  <path
+                    fill="currentColor"
+                    d="M23.146,5.4,20.354,2.6a.5.5,0,0,0-.708,0L7.854,14.4a.5.5,0,0,1-.708,0L4.354,11.6a.5.5,0,0,0-.708,0L.854,14.4a.5.5,0,0,0,0,.707L7.146,21.4a.5.5,0,0,0,.708,0L23.146,6.1A.5.5,0,0,0,23.146,5.4Z"
+                  />
+                </svg>
+              </div>
+              <p>
+                You invested{" "}
+                <span className="text-gray-900 dark:text-gray-100 font-bold">
+                  {investData?.invest_log && investData?.invest_log[0].number_rir}{" "}
+                  RIR
+                </span>{" "}
+                in {tokenData?.name} successfully. {investData?.tge_unlock}% of
+                the tokens will be transfered to your wallet on{" "}
+                {investData.tge_date &&
+                  moment(investData.tge_date).format("DD MMMM YYYY")}{" "}
+              </p>
             </div>
-            <p>
-              You invested{" "}
-              <span className="text-gray-900 dark:text-gray-100 font-bold">
-                {investData?.invest_log && investData?.invest_log[0].number_rir}{" "}
-                RIR
-              </span>{" "}
-              in {tokenData?.name} successfully. {investData?.tge_unlock}% of
-              the tokens will be transfered to your wallet on{" "}
-              {investData.tge_date &&
-                moment(investData.tge_date).format("DD MMMM YYYY")}{" "}
-            </p>
+            {(investData.end_date === null || (new Date(investData.end_date)) > (new Date()))&& <div className="card--footer p-3 lg:p-5">
+              <button onClick={handleAdjustInvestment} className="btn btn-primary py-2 px-3">
+                Adjust your investment
+              </button>
+            </div>}
           </div>
-          {(investData.end_date === null || (new Date(investData.end_date)) > (new Date()))&& <div className="card--footer p-3 lg:p-5">
-            <button onClick={handleAdjustInvestment} className="btn btn-primary py-2 px-3">
-              Adjust your investment
-            </button>
-          </div>}
-        </div>
         }
         </>
       )}

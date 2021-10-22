@@ -416,7 +416,7 @@ export default function UserProfile(props) {
             </div>
           </div>
           {/* END: Connection */}
-
+          {investLog.length > 0 &&
           <div className="card card-pagecontent">
             <div className="card-header flex">
               <span className="card-title">Your recent investments</span>
@@ -458,6 +458,7 @@ export default function UserProfile(props) {
               </div>
             </div>
           </div>
+          }
           <UserDistribution props={props} />
         </div>
       </StaticLayout>
