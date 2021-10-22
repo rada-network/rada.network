@@ -158,7 +158,7 @@ export default function UserProfile(props) {
         <div className="page-section">
           <div className="flex items-center mb-4 text-gray-500">
             <div className="page-back flex-shrink-0 ml-0 relative -left-0.5">
-              <div className="btn">
+              <div className="btn" onClick={handleBack}>
                 <span className="icon">
                   <i className="fa-solid fa-chevron-left"></i>
                 </span>
