@@ -14,6 +14,8 @@ const investCampaignByIdGql = gql`
             tge_date
             tge_unlock
             end_date
+            start_date
+            price
             invest_log{
                 wallet_address
                 number_rir

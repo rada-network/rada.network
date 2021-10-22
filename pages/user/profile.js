@@ -166,24 +166,7 @@ export default function UserProfile(props) {
                     <span>
                       {topupInfo.approved_rir - topupInfo.used_rir} RIR
                     </span>
-                  </a>
-
-                  {topupInfo.max_rir > 0 &&
-                    topupInfo.approved_rir < topupInfo.max_rir && (
-                      <div className="flex-1 mt-2 w-100 text-gray-500">
-                        <span>
-                          {t("balance note",{
-                            number : topupInfo.max_rir - topupInfo.approved_rir - topupInfo.pending_rir
-                          })}
-                        </span>
-                        <a
-                          href="./topUp"
-                          className="btn-neutral px-2 py-1 rounded ml-2 text-sm uppercase font-semibold"
-                        >
-                          Top up
-                        </a>
-                      </div>
-                )}
+                    </a>
                   </div>
                 </div>
               </div>
@@ -193,12 +176,12 @@ export default function UserProfile(props) {
                 <div className="flex flex-wrap items-end justify-between mb-2">
                   <div className="w-auto">
                     <div className="field-label--text">
-                      Tối đa
+                      {t("max balance")}
                     </div>
                   </div>
                   <div className="flex items-center flex-shrink-0 tabular-nums">
-                    <span className="w-4 h-4 mr-1"><RadaSvg /></span> 20 RIR
-                    <a href="#" className="ml-2 text-xs uppercase rounded px-1.5 py-0.5 bg-gray-200 dark:bg-gray-800">Top Up</a>
+                    <span className="w-4 h-4 mr-1"><RadaSvg /></span> {topupInfo.max_rir} RIR
+                    <a href="./topUp" className="ml-2 text-xs uppercase rounded px-1.5 py-0.5 bg-gray-200 dark:bg-gray-800">Top Up</a>
 
                   </div>
                   
@@ -209,11 +192,11 @@ export default function UserProfile(props) {
                 <div className="flex flex-wrap items-end justify-between mb-2">
                   <div className="w-auto">
                     <div className="field-label--text">
-                      Bạn có thể nạp thêm
+                    {t("max balance topup")}
                     </div>
                   </div>
                   <div className="flex items-center  flex-shrink-0 tabular-nums">
-                    <span className="w-4 h-4 mr-1"><RadaSvg /></span> 11 RIR 
+                    <span className="w-4 h-4 mr-1"><RadaSvg /></span> {topupInfo.max_rir - topupInfo.approved_rir - topupInfo.pending_rir} RIR 
                   </div>
                   
                 </div>
