@@ -14,6 +14,9 @@ import moment from "moment";
 import ReactTooltip from 'react-tooltip';
 import { getInvestProfile } from "../../data/query/getInvestProfile";
 import Link from "next/link";
+import Countdown, { zeroPad, calcTimeDelta, formatTimeDelta } from 'react-countdown';
+import router from "next/router";
+
 
 export default function TokenInfoInvest({
   tokenData,
@@ -43,6 +46,18 @@ export default function TokenInfoInvest({
         },
         function (err) {}
       );
+  };
+
+
+  // Renderer callback with condition
+  const countdownRenderer = ({days, hours, minutes, seconds, completed }) => {
+    if (completed) {
+      // Render a completed state
+      router.reload()
+    } else {
+      // Render a countdown
+      return <span className="label label--active">{zeroPad(days)}:{zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}</span>;
+    }
   };
 
   return (
@@ -163,26 +178,6 @@ export default function TokenInfoInvest({
               <div className="flex justify-between mb-2">
                 <div className="field-label">
                   <span className="field-label--text">
-                    {t("end date")}
-                    {/* <span
-                      className="hasTooltip"
-                      data-tip={t("Token Generation Events (TGE) tooltip")}
-                      data-event="click"
-                    >
-                      {" "}
-                      <i className="fa-duotone fa-info-circle text-base" />
-                    </span> */}
-                  </span>
-                </div>
-                <div className="flex items-center flex-shrink-0">
-                  {investData.end_date &&
-                    moment(investData.end_date).format("DD MMMM YYYY")}
-                </div>
-              </div>
-
-              <div className="flex justify-between mb-2">
-                <div className="field-label">
-                  <span className="field-label--text">
                     {t("Unlocked token ratio at TGE")}{" "}
                     <span
                       className="hasTooltip"
@@ -206,22 +201,61 @@ export default function TokenInfoInvest({
                 <div className="label label--active">
                   {t(investData.invest_status)}
                 </div>
-                {/*
-                      <div className="label label--inactive">
-                        Close for investment
-                      </div>
-                      */}
               </div>
+              {investData?.price !== 0 && 
+              <div className="flex justify-between mb-2 items-center">
+                <div className="field-label">
+                  <span className="field-label--text">
+                    {t("Token price")}
+                  </span>
+                </div>
+                <div className="flex items-center flex-shrink-0">{investData.price} USDT</div>
+              </div>
+              }
+              {investData.start_date && (new Date(investData.start_date)) > (new Date()) ?
+              <div className="flex justify-between mb-2">
+                <div className="field-label">
+                  <span className="field-label--text">
+                    {t("start date")}
+                  </span>
+                </div>
+                <div className="flex items-center flex-shrink-0">
+                  {investData.start_date &&
+                    <Countdown
+                    zeroPadTime={2}
+                    zeroPadDays={2}
+                    date={new Date(investData.start_date)}
+                    renderer={countdownRenderer}
+                  />}
+                </div>
+              </div>
+              :
+              <div className="flex justify-between mb-2">
+                <div className="field-label">
+                  <span className="field-label--text">
+                    {t("end date")}
+                  </span>
+                </div>
+                <div className="flex items-center flex-shrink-0">
+                  {investData.end_date && (new Date(investData.end_date)) > (new Date()) &&
+                    <Countdown
+                    date={new Date(investData.end_date)}
+                    renderer={countdownRenderer}
+                  />}
+                </div>
+              </div>
+              }
             </div>
           </div>
           {/* End: Investment Meta */}
-
+          {(investData.start_date === null || (new Date(investData.start_date)) < (new Date())) && 
           <InvestForm
             investData={investData}
             tokenData={tokenData}
             getDataCampaign={getDataCampaign}
             investCampaign={investCampaign}
           />
+          }
         </div>
         {/* End: Post Content */}
       </div>
@@ -240,30 +274,31 @@ const InvestForm = function ({
     wallet_address: "",
   });
   const [buttonInvestDisabled, setButtonInvestDisabled] = useState(false);
+  const [adjustInvest, setAdjustInvest] = useState(false);
   const store = useStore();
   const { t } = useTranslation("invest");
 
   const handleInputChange = (e) => {
-    const { name, value, type } = e.target;
+    let { name, value, t } = e.target;
     if (
       name === "number_rir" &&
-      (isNaN(value) || +value > investData?.max_rir_per_user)
+      (isNaN(value) || value > investData?.max_rir_per_user)
     )
       return;
     setInvestInfo({
       ...investInfo,
-      [name]: type === "number" ? +value : value,
+      [name]: t === "number" ? value : value,
     });
   };
 
   const handleNumberRirChange = (e,value) => {
     e.preventDefault()
     e.stopPropagation()
-    let valueChanged = +investInfo.number_rir + value;
+    let valueChanged = parseFloat(investInfo.number_rir) + value;
     if (valueChanged < 0 || valueChanged > investData?.max_rir_per_user) return;
     setInvestInfo({
       ...investInfo,
-      number_rir: valueChanged,
+      number_rir: valueChanged.toFixed(1),
     });
   };
 
@@ -294,10 +329,12 @@ const InvestForm = function ({
         progress: undefined,
       });
       setButtonInvestDisabled(false);
+      setAdjustInvest(false);
       return false;
     }
     const { status, msg } = data.submitInvest;
     setButtonInvestDisabled(false)
+    setAdjustInvest(false)
     if (status === "error") {
       toast.error(msg, {
         position: "top-right",
@@ -326,6 +363,17 @@ const InvestForm = function ({
     }
   };
 
+  const handleAdjustInvestment = () => {
+    setAdjustInvest(true)
+    if (investData?.invest_log?.length > 0){
+      setInvestInfo({
+        ...investInfo,
+        number_rir: investData?.invest_log[0].number_rir,
+        wallet_address: investData?.invest_log[0].wallet_address,
+      });
+    }
+  };
+
   if (store.user?.id === "") {
     return (
       <div className="card--wrapper mt-4">
@@ -337,7 +385,7 @@ const InvestForm = function ({
           <p className="text-sm">{t("Invest with RADA tip")}</p>
         </div>
         {/* Card body */}
-        <div className="card--footer p-3 lg:p-5">
+        <div className="card--footer px-3 py-2 lg:px-5">
           <a className="btn btn-primary px-3 py-2">
             {t("apply now")}
           </a>
@@ -347,7 +395,7 @@ const InvestForm = function ({
   }
   return (
     <>
-      {investData?.invest_log?.length === 0 ? (
+      {(investData.end_date === null || (new Date(investData.end_date)) > (new Date())) &&(investData?.invest_log?.length === 0 || adjustInvest) ? (
         <div className="card--wrapper mt-4">
           <h3 className="text-gray-400 card--header">{t("invest header")}</h3>
           <div className="card--body">
@@ -371,6 +419,7 @@ const InvestForm = function ({
                       className="inline--field border-l-none pr-16"
                       id="rir-amount"
                       type="text"
+                      t="number"
                       name="number_rir"
                       value={investInfo.number_rir}
                       onChange={handleInputChange}
@@ -417,6 +466,7 @@ const InvestForm = function ({
                     id="wallet"
                     className="inline--field"
                     type="text"
+                    t="text"
                     name="wallet_address"
                     value={investInfo.wallet_address}
                     onChange={handleInputChange}
@@ -434,17 +484,25 @@ const InvestForm = function ({
           </div>
           {/* Card body */}
 
-          <div className="card--footer p-3">
+          <div className="card--footer px-3 py-2 lg:px-5">
             <button
               className={`btn btn-primary py-2 px-4 ` + (buttonInvestDisabled? "disabled" : "")}
               onClick={handleSubmitInvest}
             >
               Invest
             </button>
+            {adjustInvest && <button
+              className={`btn m-3 lg:m-5 btn-neutral py-2 px-3 `  + (buttonInvestDisabled? "disabled" : "")}
+              onClick={() => {setAdjustInvest(false)}}
+            >
+              Cancel
+            </button>}
           </div>
         </div>
       ) : (
-        <div className="card--wrapper mt-4">
+        <>
+        {investData?.invest_log?.length > 0 &&
+          <div className="card--wrapper mt-4">
           <h3 className="text-gray-400 card--header">
             Thanks for your investment!
           </h3>
@@ -470,12 +528,14 @@ const InvestForm = function ({
                 moment(investData.tge_date).format("DD MMMM YYYY")}{" "}
             </p>
           </div>
-          {/* <div className="card--footer p-3 lg:p-5">
-            <button className="btn btn-primary py-2 px-3">
+          {(investData.end_date === null || (new Date(investData.end_date)) > (new Date()))&& <div className="card--footer p-3 lg:p-5">
+            <button onClick={handleAdjustInvestment} className="btn btn-primary py-2 px-3">
               Adjust your investment
             </button>
-          </div> */}
+          </div>}
         </div>
+        }
+        </>
       )}
     </>
   );

@@ -14,13 +14,11 @@ const investCampaignByIdGql = gql`
             tge_date
             tge_unlock
             end_date
+            start_date
+            price
             invest_log{
-                user_id
+                wallet_address
                 number_rir
-            }
-            invest_allocation{
-                user_id
-                total_allocation
             }
         }
     }
