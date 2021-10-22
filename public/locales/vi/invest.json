@@ -39,5 +39,9 @@
   "network" : "Mạng",
   "Confirm your transaction" : "Xác nhận giao dịch của bạn",
   "Paste your Transaction" : "Dán Transaction ID (TXH) của bạn tại đây",
-  "Transaction history" : "Lịch sử giao dịch"
+  "Transaction history" : "Lịch sử giao dịch",
+  "invest start in header" : "Mở bán trong {{day}}",
+  "invest start in note" : "Lượng RIR tối đa cho mỗi dự án sẽ luôn có giới hạn. Nếu bạn có hứng thú đầu tư vào dự án này, hãy chú ý theo dõi và chuẩn bị sẵn sàng số dư RIR của bạn.",
+  "invest closed" : "Dự án đã đóng",
+  "invest closed note" : "Hiện dự án đã đóng đầu tư. Cảm ơn bạn đã tham gia."
 }
