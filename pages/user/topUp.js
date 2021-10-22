@@ -156,25 +156,25 @@ export default function UserProfile(props) {
     <>
       <StaticLayout meta={meta}>
         <div className="page-section text-center mt-1 mb-2 lg:mt-2"></div>
-
         <div className="page-section">
-          <a
-            href="../user/profile" onClick={handleBack}
-            className="flex opacity-70 hover:opacity-100 items-center mb-4 uppercase"
-          >
-            <span className="w-4 h-4 mr-2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <title>arrow-left</title>
-                <path
-                  fill="currentColor"
-                  d="M22.548,10.561H5.437a.251.251,0,0,1-.165-.438l8.637-7.6a1.44,1.44,0,0,0-1.9-2.162L.828,10.2a2.4,2.4,0,0,0,0,3.6l11.179,9.837a1.44,1.44,0,0,0,1.9-2.161l-8.637-7.6a.251.251,0,0,1,.165-.438H22.548a1.44,1.44,0,0,0,0-2.879Z"
-                />
-              </svg>
-            </span>
-            Back
-          </a>
-          <div className="flex items-center">
-            <div className="mr-auto inline-flex px-3 py-1 items-center rounded bg-gray-200 dark:bg-gray-800">
+          <div className="flex items-center mb-4">
+            <a
+              href="../user/profile" onClick={handleBack}
+              className="flex opacity-70 hover:opacity-100 items-center uppercase"
+            >
+              <span className="w-4 h-4 mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <title>arrow-left</title>
+                  <path
+                    fill="currentColor"
+                    d="M22.548,10.561H5.437a.251.251,0,0,1-.165-.438l8.637-7.6a1.44,1.44,0,0,0-1.9-2.162L.828,10.2a2.4,2.4,0,0,0,0,3.6l11.179,9.837a1.44,1.44,0,0,0,1.9-2.161l-8.637-7.6a.251.251,0,0,1,.165-.438H22.548a1.44,1.44,0,0,0,0-2.879Z"
+                  />
+                </svg>
+              </span>
+              Back
+            </a>
+
+            <div className="ml-auto sm:mr-2 inline-flex px-3 py-1 items-center rounded bg-gray-200 dark:bg-gray-800">
               <span className="text-xs text-gray-500 mr-2 uppercase font-semibold">
                 {t("balance")}
               </span>
@@ -185,7 +185,12 @@ export default function UserProfile(props) {
                 {topupInfo.approved_rir - topupInfo.used_rir} RIR
               </span>
             </div>
-            <div className="flex-1 mt-2 ml-2 w-100 text-gray-500">
+
+
+          </div>
+          <div className="flex items-center">
+            
+            <div className="flex-1 mt-2 w-100 text-gray-500">
               <span>
                 {t("balance note",{
                       number : topupInfo.max_rir - topupInfo.approved_rir - topupInfo.pending_rir
