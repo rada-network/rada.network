@@ -395,7 +395,7 @@ const InvestForm = function ({
   }
   return (
     <>
-      {investData?.invest_log?.length === 0 || adjustInvest  ? (
+      {(investData.end_date === null || (new Date(investData.end_date)) > (new Date())) &&(investData?.invest_log?.length === 0 || adjustInvest) ? (
         <div className="card--wrapper mt-4">
           <h3 className="text-gray-400 card--header">{t("invest header")}</h3>
           <div className="card--body">
@@ -492,7 +492,7 @@ const InvestForm = function ({
               Invest
             </button>
             {adjustInvest && <button
-              className={`btn m-3 lg:m-5 btn-primary py-2 px-3 `  + (buttonInvestDisabled? "disabled" : "")}
+              className={`btn m-3 lg:m-5 btn-neutral py-2 px-3 `  + (buttonInvestDisabled? "disabled" : "")}
               onClick={() => {setAdjustInvest(false)}}
             >
               Cancel
@@ -500,7 +500,9 @@ const InvestForm = function ({
           </div>
         </div>
       ) : (
-        <div className="card--wrapper mt-4">
+        <>
+        {investData?.invest_log?.length > 0 &&
+          <div className="card--wrapper mt-4">
           <h3 className="text-gray-400 card--header">
             Thanks for your investment!
           </h3>
@@ -526,12 +528,14 @@ const InvestForm = function ({
                 moment(investData.tge_date).format("DD MMMM YYYY")}{" "}
             </p>
           </div>
-          <div className="card--footer p-3 lg:p-5">
+          {(investData.end_date === null || (new Date(investData.end_date)) > (new Date()))&& <div className="card--footer p-3 lg:p-5">
             <button onClick={handleAdjustInvestment} className="btn btn-primary py-2 px-3">
               Adjust your investment
             </button>
-          </div>
+          </div>}
         </div>
+        }
+        </>
       )}
     </>
   );
