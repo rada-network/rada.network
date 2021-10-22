@@ -3,14 +3,17 @@ const Footnote = ({}) => {
     <>
     <div className="post-footer post-footer--rada">
 
-    <div className="flex flex-col">
-      <div className="flex lg:items-center !mb-0">
-        <img className="w-5 lg:w-7 inline-block !ml-0 !mr-3" src="https://cdn.rada.network/images/rada.svg" alt="RADA NETWORK" />
-        <strong className="lg:text-lg font-bold">
-          RADA
-        </strong>
+    <div className="flex flex-col items-start">
+      <div className="flex flex-col lg:flex-row lg:items-start !mb-0">
+        <img className="w-5 lg:w-7 inline-block !ml-0 !mr-3 mb-2" src="https://cdn.rada.network/images/rada.svg" alt="RADA NETWORK" />
+        <div className="flex flex-row lg:flex-col items-center lg:items-start">
+          <strong className="logo--text lg:text-lg font-bold">
+            RADA
+          </strong>
+          <span className="mx-1.5 text-base block lg:hidden">&bull;</span>
+          <div className="text-sm lg:text-base lg:ml-0 !mb-0">The DAO-based Angellist for Blockchain</div>
+        </div>
       </div>
-      <div className="text-sm lg:text-base ml-8 lg:ml-10 !mb-0">DAO based Angellist for Blockchain</div>
     </div>
 
     {/* <div className="flex items-center !mb-2">
@@ -22,7 +25,7 @@ const Footnote = ({}) => {
       </span>
     </div> */}
 
-    <div className="flex flex-wrap ml-8 lg:ml-10 !mb-0">
+    <div className="flex flex-wrap lg:ml-10 !mb-0">
 
       {/* <a 
         className="btn btn-default btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
@@ -39,35 +42,36 @@ const Footnote = ({}) => {
       </a> */}
 
       <a 
-        className="btn btn-default btn-yellow btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
-        href="mailto:rada.workingdrive@gmail.com"
-        target="_blank"
-      >
-        <span className="icon">
-          <i className="fa-solid fa-envelope"></i>
-        </span>
-        <span className="btn--text">
-          Mail for Work
-        </span>
-      </a>
-
-      <a 
-        className="btn btn-default btn-red btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
-        href="https://www.youtube.com/channel/UCZUun_BIo0GZgvBNsYSUjwQ"
+        className="btn btn-default brand--telegram btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
+        href="https://t.me/radanetwork"
         target="_blank"
         rel="nofollow noopener"
       >
         <span className="icon">
-          <i className="fa-brands fa-youtube"></i>
+          <i className="fa-brands fa-telegram"></i>
         </span>
         <span className="btn--text">
-          Youtube
+          Announcement
+        </span>
+      </a>
+
+      <a 
+        className="btn btn-default brand--telegram btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
+        href="https://t.me/radadao"
+        target="_blank"
+        rel="nofollow noopener"
+      >
+        <span className="icon">
+          <i className="fa-brands fa-telegram"></i>
+        </span>
+        <span className="btn--text">
+          Global Community
         </span>
       </a>
 
       <a 
         className="btn btn-default brand--twitter btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
-        href="https://twitter.com/radamedia"
+        href="https://twitter.com/rada_network"
         target="_blank"
         rel="nofollow noopener"
       >
@@ -79,28 +83,15 @@ const Footnote = ({}) => {
         </span>
       </a>
 
-      <a 
-        className="btn btn-default brand--telegram btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
-        href="https://t.me/joinchat/l39iN84IeUwxZjBl"
-        target="_blank"
-        rel="nofollow noopener"
-      >
-        <span className="icon">
-          <i className="fa-brands fa-telegram-plane"></i>
-        </span>
-        <span className="btn--text">
-          Telegram
-        </span>
-      </a>
 
       <a 
         className="btn btn-default brand--facebook btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
-        href="https://www.facebook.com/rada.daocomm..."
+        href="https://www.facebook.com/radanetwork.official"
         target="_blank"
         rel="nofollow noopener"
       >
         <span className="icon">
-          <i className="fa-solid fa-heart"></i>
+          <i className="fa-brands fa-facebook"></i>
         </span>
         <span className="btn--text">
           Fanpage
@@ -117,35 +108,49 @@ const Footnote = ({}) => {
           <i className="fa-brands fa-facebook"></i>
         </span>
         <span className="btn--text">
-          Commnunity
+          Vietnam Community
         </span>
       </a>
 
       <a 
-        className="btn btn-default brand--discord btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
-        href="https://discord.link/rada"
+        className="btn btn-default brand--google btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
+        href="https://www.youtube.com/c/radatvofficial"
         target="_blank"
         rel="nofollow noopener"
       >
         <span className="icon">
-          <i className="fa-brands fa-discord"></i>
+          <i className="fa-brands fa-youtube"></i>
         </span>
         <span className="btn--text">
-          Discord
+          RADA TV
         </span>
       </a>
 
       <a 
-        className="btn btn-default brand--linkedin btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
-        href="https://www.linkedin.com/company/radadao/"
+        className="btn btn-default brand--instagram btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
+        href="https://www.instagram.com/rada.offficial/"
         target="_blank"
         rel="nofollow noopener"
       >
         <span className="icon">
-          <i className="fa-brands fa-linkedin-in"></i>
+          <i className="fa-brands fa-instagram"></i>
         </span>
         <span className="btn--text">
-          LinkedIn
+          Instagram
+        </span>
+      </a>
+
+      <a 
+        className="btn btn-default brand--tiktok btn-rounded mr-2 mt-2 lg:mr-3 lg:mt-3"
+        href="https://vt.tiktok.com/ZSeY1p2yB/"
+        target="_blank"
+        rel="nofollow noopener"
+      >
+        <span className="icon">
+          <i className="fa-brands fa-tiktok"></i>
+        </span>
+        <span className="btn--text">
+          Tiktok
         </span>
       </a>
 

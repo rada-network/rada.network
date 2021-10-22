@@ -270,7 +270,8 @@ Post Content Typo
 }
 
 .post-footer--rada {
-  @apply p-4 lg:p-8 mt-8 bg-gray-50 dark:bg-gray-800 rounded-lg;
+  @apply w-auto pt-8 lg:p-8 mt-8 bg-transparent lg:bg-gray-50 lg:dark:bg-gray-800 lg:rounded-lg;
+  @apply border-t;
   div {
     @apply mb-2;
   }
@@ -282,16 +283,14 @@ Post Content Typo
 }
 
 .post-footer--rada .btn-default {
-  width: 28px;
-  height: 28px;
-  @apply lg:w-auto lg:h-auto px-2 lg:px-3;
+  @apply h-px-32 lg:w-auto px-2 lg:px-3;
   @apply border-transparent dark:border-transparent hover:border-transparent dark:hover:border-transparent;
   @apply opacity-100 hover:opacity-80;
   .btn--text {
-    @apply hidden lg:block;
+    @apply text-xs;
   }
   .icon {
-    @apply text-sm;
+    @apply text-sm leading-none;
   }
   .fa-telegram {
     @apply text-lg;

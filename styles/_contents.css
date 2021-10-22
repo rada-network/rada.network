@@ -346,6 +346,11 @@ Brands Colors
   color: #fff !important;
 }
 
+.brand--youtube {
+  background: rgb(219,68,55) !important;
+  color: #fff !important;
+}
+
 .brand--twitter {
   background: rgb(29,161,242) !important;
   color: #fff !important;
@@ -371,6 +376,15 @@ Brands Colors
   color: #fff !important;
 }
 
+.brand--instagram {
+  background: rgb(193,53,132) !important;
+  color: #fff !important;
+}
+
+.brand--tiktok {
+  background: rgb(0,0,0) !important;
+  color: #fff !important;
+}
 
 /*
 Info Row
