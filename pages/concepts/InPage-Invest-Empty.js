@@ -115,7 +115,7 @@ function Concept() {
                 <div className="card--wrapper mt-4">
                   <h3 className="text-gray-400 card--header">Contribute to invest</h3>
                   <div className="card--body p-3 lg:p-5 flex">
-                    <div className="flex mt-2 mr-3 w-12 h-12 p-2.5 mb-2 border-4 border-purple-300 bg-purple-300 text-purple-500 dark:bg-purple-400 rounded-full">
+                    <div className="flex mt-2 mr-3 w-12 h-12 p-2.5 mb-2 border-4 border-purple-200 bg-purple-300 text-purple-500 dark:bg-purple-400 rounded-full">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>check</title><path fill="currentColor" d="M23.146,5.4,20.354,2.6a.5.5,0,0,0-.708,0L7.854,14.4a.5.5,0,0,1-.708,0L4.354,11.6a.5.5,0,0,0-.708,0L.854,14.4a.5.5,0,0,0,0,.707L7.146,21.4a.5.5,0,0,0,.708,0L23.146,6.1A.5.5,0,0,0,23.146,5.4Z"/></svg>
                     </div>
                     <p className="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>                  
@@ -126,6 +126,32 @@ function Concept() {
                       How to invest?
                     </a>
                   </div>
+                </div>
+                
+
+                <div className="card--wrapper mt-4">
+                  <h3 className="text-gray-400 card--header">Dự án sẽ được mở trong 2 ngày nữa</h3>
+                  <div className="card--body p-3 lg:p-5 flex">
+                    <div className="flex mt-2 mr-3 w-12 h-12 p-2 mb-2 border-4 border-purple-200 bg-purple-300 text-purple-500 dark:bg-purple-300 rounded-full">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>hourglass-alternate</title><path fill='currentColor' d="M20.5,22h-1V18.5A7.505,7.505,0,0,0,15.739,12,7.5,7.5,0,0,0,19.5,5.5V2h1a1,1,0,0,0,0-2H3.5a1,1,0,0,0,0,2h1V5.5A7.5,7.5,0,0,0,8.261,12,7.505,7.505,0,0,0,4.5,18.5V22h-1a1,1,0,0,0,0,2h17a1,1,0,0,0,0-2Zm-14-3.5a5.507,5.507,0,0,1,6.051-5.473A5.668,5.668,0,0,1,17.5,18.747V21.5a.5.5,0,0,1-.5.5H7a.5.5,0,0,1-.5-.5ZM7,2H17a.5.5,0,0,1,.5.5V5.256a5.667,5.667,0,0,1-4.949,5.718A5.506,5.506,0,0,1,6.5,5.5v-3A.5.5,0,0,1,7,2Z"/><path fill='currentColor' d="M12,9.626a4.042,4.042,0,0,0,3.433-2.165A.5.5,0,0,0,15,6.71H9a.5.5,0,0,0-.433.751A4.042,4.042,0,0,0,12,9.626Z"/><path fill='currentColor'  d="M12.748,15.59a1.035,1.035,0,0,0-1.5,0L7.925,19.337A1,1,0,0,0,8.671,21h6.658a1,1,0,0,0,.747-1.664Z"/></svg>
+                    </div>
+                    <p className="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>                  
+                  </div>
+                  {/* Card body */} 
+                  
+                </div>
+
+
+                <div className="card--wrapper mt-4">
+                  <h3 className="text-gray-400 card--header">Dự án đã hết hạn đầu tư</h3>
+                  <div className="card--body p-3 lg:p-5 flex">
+                    <div className="flex mt-2 mr-3 w-12 h-12 p-2 mb-2 border-4 border-yellow-100 bg-yellow-300 text-yellow-600 dark:bg-yellow-300 rounded-full">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>time-clock-file-warning</title><path fill="currentColor" d="M23.362,3.053,20.947.638A1.749,1.749,0,0,0,19.71.126H8.124a1.75,1.75,0,0,0-1.75,1.75v7.8a.245.245,0,0,0,.222.248,7.37,7.37,0,0,1,.963.152.249.249,0,0,0,.315-.24V1.876a.251.251,0,0,1,.25-.25H19.71l.177.073L22.3,4.113a.249.249,0,0,1,.073.177V18.376a.251.251,0,0,1-.25.25h-8.9c-.134,0-.151.133-.1.232l.6,1.134a.251.251,0,0,0,.222.134h8.187a1.75,1.75,0,0,0,1.75-1.75V4.29A1.749,1.749,0,0,0,23.362,3.053Z"/><path fill="currentColor" d="M7.905,12.147a1.449,1.449,0,0,0-2.561,0L.289,21.781a1.426,1.426,0,0,0,.047,1.408,1.454,1.454,0,0,0,1.233.687H11.68a1.456,1.456,0,0,0,1.233-.686,1.428,1.428,0,0,0,.047-1.409ZM5.874,15.876a.75.75,0,0,1,1.5,0v3a.75.75,0,0,1-1.5,0Zm.75,6.25a1,1,0,1,1,1-1A1,1,0,0,1,6.624,22.126Z"/><path fill="currentColor" d="M20.374,8.376a4.75,4.75,0,1,0-4.75,4.75A4.755,4.755,0,0,0,20.374,8.376Zm-8,0a3.25,3.25,0,1,1,3.25,3.25A3.254,3.254,0,0,1,12.374,8.376Z"/><path fill="currentColor" d="M17.392,9.126a.75.75,0,1,0,0-1.5h-.766a.252.252,0,0,1-.252-.252V6.608a.75.75,0,0,0-1.5,0V8.376a.75.75,0,0,0,.75.75Z"/></svg>
+                    </div>
+                    <p className="text-sm">Dự án đã hết hạn đầu tư. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec sed odio dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>                  
+                  </div>
+                  {/* Card body */} 
+                  
                 </div>
 
 

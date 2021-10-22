@@ -155,26 +155,19 @@ export default function UserProfile(props) {
   return (
     <>
       <StaticLayout meta={meta}>
-        <div className="page-section text-center mt-1 mb-2 lg:mt-2"></div>
+        
         <div className="page-section">
-          <div className="flex items-center mb-4">
-            <a
-              href="../user/profile" onClick={handleBack}
-              className="flex opacity-70 hover:opacity-100 items-center uppercase"
-            >
-              <span className="w-4 h-4 mr-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>arrow-left</title>
-                  <path
-                    fill="currentColor"
-                    d="M22.548,10.561H5.437a.251.251,0,0,1-.165-.438l8.637-7.6a1.44,1.44,0,0,0-1.9-2.162L.828,10.2a2.4,2.4,0,0,0,0,3.6l11.179,9.837a1.44,1.44,0,0,0,1.9-2.161l-8.637-7.6a.251.251,0,0,1,.165-.438H22.548a1.44,1.44,0,0,0,0-2.879Z"
-                  />
-                </svg>
-              </span>
-              Back
-            </a>
-
-            <div className="ml-auto sm:mr-2 inline-flex px-3 py-1 items-center rounded bg-gray-200 dark:bg-gray-800">
+          <div className="flex items-center mb-4 text-gray-500">
+            <div className="page-back flex-shrink-0 ml-0 relative -left-0.5">
+              <div className="btn">
+                <span className="icon">
+                  <i className="fa-solid fa-chevron-left"></i>
+                </span>
+                <span className="btn--text sr-only">Quay lại</span>
+              </div>
+            </div>
+            <span className="">Top up</span>  
+            <div className="ml-auto inline-flex px-3 py-1 items-center rounded border border-gray-100 dark:border-gray-800">
               <span className="text-xs text-gray-500 mr-2 uppercase font-semibold">
                 {t("balance")}
               </span>

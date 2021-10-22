@@ -157,9 +157,8 @@ export default function UserProfile(props) {
                   <div className="flex items-center">
                     <a
                     href="./topUp"
-                    className="mr-auto inline-flex px-2 py-0.5 items-center rounded bg-gray-200 dark:bg-gray-800"
+                    className="mr-auto inline-flex items-center"
                     >
-
                     <span className="flex w-4 h-4 mr-1 opacity-80">
                       <RadaSvg />
                     </span>
@@ -181,7 +180,8 @@ export default function UserProfile(props) {
                   </div>
                   <div className="flex items-center flex-shrink-0 tabular-nums">
                     <span className="w-4 h-4 mr-1"><RadaSvg /></span> {topupInfo.max_rir} RIR
-                    <a href="./topUp" className="ml-2 text-xs uppercase rounded px-1.5 py-0.5 bg-gray-200 dark:bg-gray-800">Top Up</a>
+                    <a href="./topUp" className="ml-2 text-xs uppercase rounded px-1.5 py-0.5 border border-gray-100 
+                    dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">Top Up</a>
 
                   </div>
                   

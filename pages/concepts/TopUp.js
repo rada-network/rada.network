@@ -181,7 +181,7 @@ export default function UserProfile(props) {
   return (
     <>
       <StaticLayout meta={meta}>
-        <div className="page-section text-center mt-1 mb-2 lg:mt-2"></div>
+        
 
         <div className="page-section">
           <a
