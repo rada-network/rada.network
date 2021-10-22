@@ -77,7 +77,7 @@ export default function TokenInfoInvest({
           {/* investment meta */}
           <div className="flex w-full">
             <div className="text-sm w-full">
-              <div className="flex items-end justify-between mb-2">
+              <div className="flex items-center justify-between mb-2">
                 <div className="field-label">
                   <div className="field-label--text">
                     {t("Your maximum allocation")}
@@ -98,7 +98,7 @@ export default function TokenInfoInvest({
                   </div>
                 </div>
               </div>
-              <div className="flex items-end justify-between mb-2">
+              <div className="flex items-center justify-between mb-2">
                 <div className="field-label">
                   <div className="field-label--text">
                     {t("Available allocation for this project")}
@@ -124,7 +124,7 @@ export default function TokenInfoInvest({
                 </div>
               </div>
 
-              <div className="flex items-end justify-between mb-2">
+              <div className="flex items-center justify-between mb-2">
                 <div className="field-label">
                   <div className="field-label--text">
                     {t("Your balance")}
