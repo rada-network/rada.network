@@ -418,7 +418,7 @@ export default function UserProfile(props) {
                     </div>
                   </label>
                   <div className="mt-1 text-right text-sm opacity-40">
-                    {topupForm.number_rir * 100}USDT
+                    {topupForm.number_rir * 100}
                   </div>
                   {/* </form> */}
                 </div>

@@ -263,7 +263,7 @@ export default function UserProfile(props) {
                   <span className="step--indicator">2</span>
                   <h3 dangerouslySetInnerHTML={{__html : t("Send USDT",{
                     number : `<span class="font-semibold dark:text-white">
-                    ${topupForm.number_rir * 100}USDT
+                    ${topupForm.number_rir * 100}
                     </span>`
                   })}}>
                   </h3>
