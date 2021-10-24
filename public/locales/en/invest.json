@@ -34,7 +34,7 @@
   "balance note" : "You now have {{number}} unclaimed RIR. Please top-up to redeem your investment right.",
   "Top-up your balance" : "Top-up your balance",
   "Amount of RIR" : "Amount of RIR you want to top-up",
-  "Send USDT" : "Send {{number}} USDT to RADA's Treasury Wallet",
+  "Send USDT" : "Send {{number}} to RADA's Treasury Wallet",
   "wallet address" : "WALLET ADDRESS",
   "network" : "NETWORK",
   "Confirm your transaction" : "Confirm your transaction",

@@ -34,7 +34,7 @@
   "balance note" : "Bạn đang có {{number}} RIR chưa được thanh toán. Hãy đóng tiền để nhận toàn quyền đầu tư.",
   "Top-up your balance" : "Thanh toán để nhận RIR vào tài khoản",
   "Amount of RIR" : "Số lượng RIR bạn muốn thanh toán",
-  "Send USDT" : "2. Chuyển {{number}} USDT vào kho bạc của RADA",
+  "Send USDT" : "2. Chuyển {{number}} vào kho bạc của RADA",
   "wallet address" : "Địa chỉ ví",
   "network" : "Mạng",
   "Confirm your transaction" : "Xác nhận giao dịch của bạn",
