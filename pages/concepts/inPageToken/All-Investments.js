@@ -1,30 +1,30 @@
 import React from "react";
 import { useSession } from "next-auth/client";
 
-import { Wallet } from "../../components/Wallet";
+import { Wallet } from "../../../components/Wallet";
 
 import { useState, useEffect, createRef } from "react";
 
 import { toast } from "react-toastify";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Profile from "../../components/Profile";
-import { getCurrentUser } from "../../data/query/user";
-import { getInvestProfile } from "../../data/query/getInvestProfile";
-import { getInvestDeposit } from "../../data/query/getInvestDeposit";
-import { disconnectWallet } from "../../data/query/wallet";
+import Profile from "../../../components/Profile";
+import { getCurrentUser } from "../../../data/query/user";
+import { getInvestProfile } from "../../../data/query/getInvestProfile";
+import { getInvestDeposit } from "../../../data/query/getInvestDeposit";
+import { disconnectWallet } from "../../../data/query/wallet";
 import _ from "lodash";
-import { useStore } from "../../lib/useStore";
+import { useStore } from "../../../lib/useStore";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/client";
-import { StaticLayout } from "../../components/page-layouts/StaticLayout";
-import { UserDistribution } from "../../components/user/UserDistribution";
-import { usePageStore } from "../../lib/usePageStore";
+import { StaticLayout } from "../../../components/page-layouts/StaticLayout";
+import { UserDistribution } from "../../../components/user/UserDistribution";
+import { usePageStore } from "../../../lib/usePageStore";
 import { getSession } from "next-auth/client";
-import { getPage } from "../../data/query/page";
-import submitInvestDeposit from "../../data/query/submitInvestDeposit";
-import getClient from "../../data/client";
-import utils from "../../lib/util";
+import { getPage } from "../../../data/query/page";
+import submitInvestDeposit from "../../../data/query/submitInvestDeposit";
+import getClient from "../../../data/client";
+import utils from "../../../lib/util";
 
 export default function UserProfile(props) {
   const [session, setSession] = useState();

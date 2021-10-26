@@ -1,15 +1,15 @@
-import { Head } from "../../components/Head";
-import { Topbar } from "../../components/Topbar";
-import { Navbar } from "../../components/Navbar";
+import { Head } from "../../../components/Head";
+import { Topbar } from "../../../components/Topbar";
+import { Navbar } from "../../../components/Navbar";
 
-import ThemeSwitch from "../../components/ThemeSwitch"
+import ThemeSwitch from "../../../components/ThemeSwitch"
 
 import { useState, useEffect, createRef } from 'react'
 
-import {LanguageSwitch} from "../../components/LanguageSwitch";
-import Screen from "../../components/utils/Responsive";
+import {LanguageSwitch} from "../../../components/LanguageSwitch";
+import Screen from "../../../components/utils/Responsive";
 import { observer } from "mobx-react";
-import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../lib/store";
+import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../../lib/store";
 
 const Layout = observer((props) => {
 

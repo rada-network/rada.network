@@ -1,4 +1,4 @@
-import { Head } from "../../components/Head";
+import { Head } from "../../../components/Head";
 import ReactTooltip from 'react-tooltip'
 function Concept() {
   return (
