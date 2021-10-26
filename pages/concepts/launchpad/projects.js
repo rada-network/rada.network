@@ -9,13 +9,11 @@ import { useState, useEffect, createRef } from 'react'
 import {LanguageSwitch} from "../../../components/LanguageSwitch";
 import Screen from "../../../components/utils/Responsive";
 import { observer } from "mobx-react";
-import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../../lib/store";
-
+import { usePageStore } from "../../../lib/usePageStore";
 const Layout = observer((props) => {
 
-  const homeStore = new HomeStore({isHome : false});
-  const dataStore = new ObservableTweetStore({homeStore})
-  const detailStore = new DetailStore();
+  const {dataStore,detailStore,voteStore} = usePageStore()
+  dataStore.type = "projects"
   dataStore.lang = props.lang
   const meta = {}
   return (
