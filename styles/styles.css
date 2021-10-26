@@ -227,6 +227,10 @@ Reader / Page Area
     width:  calc(100% - var(--main-width));
     height: calc(100vh - var(--topbar-height) - var(--topbar-height));
   }
+  .pane-projects {
+    width:  100%;
+    height: calc(100vh - var(--topbar-height) - var(--topbar-height));
+  }
 }
 
 @screen lg {
