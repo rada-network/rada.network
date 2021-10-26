@@ -1,7 +1,4 @@
 import React from "react";
-import { useSession } from "next-auth/client";
-
-import { Wallet } from "../../components/Wallet";
 
 import { useState, useEffect, createRef } from "react";
 
@@ -14,16 +11,12 @@ import Profile from "../../components/Profile";
 import { getCurrentUser } from "../../data/query/user";
 import { getInvestProfile } from "../../data/query/getInvestProfile";
 import { getInvestDeposit } from "../../data/query/getInvestDeposit";
-import { disconnectWallet } from "../../data/query/wallet";
 import _ from "lodash";
 import { useStore } from "../../lib/useStore";
 import { useRouter } from "next/router";
-import { signIn } from "next-auth/client";
 import { StaticLayout } from "../../components/page-layouts/StaticLayout";
-import { UserDistribution } from "../../components/user/UserDistribution";
 import { usePageStore } from "../../lib/usePageStore";
 import { getSession } from "next-auth/client";
-import { getPage } from "../../data/query/page";
 import submitInvestDeposit from "../../data/query/submitInvestDeposit";
 import getClient from "../../data/client";
 import RadaSvg from "../../components/svg/rada";
@@ -140,10 +133,7 @@ export default function UserProfile(props) {
   };
 
   const handleCopy = () => {
-    setIsCopied(true);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 500);
+    toast.success("Copied to clipboard", {})
   };
 
   const handleBack = (e) => {
@@ -255,86 +245,85 @@ export default function UserProfile(props) {
                 </div>
               </div>
               {/* End: Step 1 */}
-
-              <div className="sep"></div>
-
-              <div className="step--wrapper">
-                <div className="step--header flex">
-                  <span className="step--indicator">2</span>
-                  <h3 dangerouslySetInnerHTML={{__html : t("Send USDT",{
-                    number : `<span class="font-semibold dark:text-white">
-                    ${topupForm.number_rir * 100}USDT
-                    </span>`
-                  })}}>
-                  </h3>
-                  {/* add 100 if user enter 1RIR, 200 for 2RIR*/}
-                </div>
-                <div className="step--content">
-                  <div className="flex flex-wrap justify-between mb-1">
-                    <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs md:text-xs">
-                        {t("wallet address")}
-                      </span>
-                    </div>
-                    <div className="">
-                      <CopyToClipboard
-                        onCopy={handleCopy}
-                        text={topupInfo?.rada_treasury_address}
-                      >
-                        <a href="#" className="btn btn-default btn-default-sm">
-                          <span className="btn--text break-all">
-                            {topupInfo?.rada_treasury_address}
-                          </span>
-                          <span className="icon">
-                            <i class="fa-regular fa-copy text-2xs"></i>
-                          </span>
-                          {isCopied && (
-                            <span className="btn--text">Copied</span>
-                          )}
-                        </a>
-                      </CopyToClipboard>
-                    </div>
+              {topupForm.number_rir > 0 && 
+              <>
+                <div className="sep"></div>
+                <div className="step--wrapper">
+                  <div className="step--header flex">
+                    <span className="step--indicator">2</span>
+                    <h3 dangerouslySetInnerHTML={{__html : t("Send USDT",{
+                      number : `<span class="font-semibold dark:text-white">
+                      ${topupForm.number_rir * 100}USDT
+                      </span>`
+                    })}}>
+                    </h3>
+                    {/* add 100 if user enter 1RIR, 200 for 2RIR*/}
                   </div>
-                  <div className="flex flex-wrap justify-between mb-1">
-                    <div className="w-full lg:w-auto">
-                      <span className="uppercase opacity-50 text-2xs md:text-xs">
-                        {t("network")}
-                      </span>
+                  <div className="step--content">
+                    <div className="flex flex-wrap justify-between mb-1">
+                      <div className="w-full lg:w-auto">
+                        <span className="uppercase opacity-50 text-2xs md:text-xs">
+                          {t("wallet address")}
+                        </span>
+                      </div>
+                      <div className="">
+                        <CopyToClipboard
+                          onCopy={handleCopy}
+                          text={topupInfo?.rada_treasury_address}
+                        >
+                          <a href="#" className="btn btn-default btn-default-sm">
+                            <span className="btn--text break-all">
+                              {topupInfo?.rada_treasury_address}
+                            </span>
+                            <span className="icon">
+                              <i class="fa-regular fa-copy text-2xs"></i>
+                            </span>
+                          </a>
+                        </CopyToClipboard>
+                      </div>
                     </div>
-                    <div className="text-sm">
-                      BSC{" "}
-                      <span className="text-gray-500">
-                        Binance Smart Chain (BEP20)
-                      </span>
+                    <div className="flex flex-wrap justify-between mb-1">
+                      <div className="w-full lg:w-auto">
+                        <span className="uppercase opacity-50 text-2xs md:text-xs">
+                          {t("network")}
+                        </span>
+                      </div>
+                      <div className="text-sm">
+                        BSC{" "}
+                        <span className="text-gray-500">
+                          Binance Smart Chain (BEP20)
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
               {/* End: Step 2 */}
-              <div className="sep"></div>
-              <div className="step--wrapper">
-                <div className="step--header flex">
-                  <span className="step--indicator">3</span>
-                  <h3>{t("Confirm your transaction")}</h3>
+                <div className="sep"></div>
+                <div className="step--wrapper">
+                  <div className="step--header flex">
+                    <span className="step--indicator">3</span>
+                    <h3>{t("Confirm your transaction")}</h3>
+                  </div>
+                  <div className="step--content">
+                    <form>
+                      <div className="inline-field--wrapper">
+                        <label htmlFor="txh" className="inline--label">
+                          {t("Paste your Transaction")}
+                        </label>
+                        <input
+                          className="inline--field"
+                          id="txh"
+                          type="text"
+                          name="txid"
+                          value={topupForm.txid}
+                          onChange={handleTopupChange}
+                        />
+                      </div>
+                    </form>
+                  </div>
                 </div>
-                <div className="step--content">
-                  <form>
-                    <div className="inline-field--wrapper">
-                      <label htmlFor="txh" className="inline--label">
-                        {t("Paste your Transaction")}
-                      </label>
-                      <input
-                        className="inline--field"
-                        id="txh"
-                        type="text"
-                        name="txid"
-                        value={topupForm.txid}
-                        onChange={handleTopupChange}
-                      />
-                    </div>
-                  </form>
-                </div>
-              </div>
+              </>
+              }
               {/* End: Step 3 */}
             </div>
             {/* Card body */}
@@ -381,7 +370,6 @@ export default function UserProfile(props) {
             </div>
             {/* Card body */}
           </div>
-          <UserDistribution props={props} />
         </div>
       </StaticLayout>
     </>
@@ -411,12 +399,10 @@ const ProfileAccessDenied = ({}) => {
 };
 
 export async function getStaticProps(context) {
-  const info = await getPage({ slug: "profile-info", lang: context.locale });
   return {
     props: {
       ...(await serverSideTranslations(context.locale, ["common", "navbar","invest"])),
       lang: context.locale,
-      info,
     },
   };
 }
