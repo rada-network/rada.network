@@ -6,7 +6,7 @@ import {observer} from "mobx-react";
 import {useStore} from "../lib/useStore";
 import { useTranslation } from 'next-i18next';
 import utils from "../lib/util";
-
+import LaunchSvg from "./svg/SvgIcons";
 import Screen from "./utils/Responsive";
 import { usePageStore } from '../lib/usePageStore';
 
@@ -34,9 +34,13 @@ export const Navbar = observer(({}) => {
 
         {/* Main Nav */}
         <div className={`navbar-main`} >
+       
+
 
           <NavItem  href={"/" + dataStore.lang + "/explore/projects"} type={"projects"}>
-            <span className="icon"><i className="fad fa-coins" /></span>
+            <span className="w-5 h-5 mx-2 flex items-center">
+              <LaunchSvg />
+            </span>
             <span className="nav-item--text">{t("Projects")}</span>
           </NavItem>
 
