@@ -37,7 +37,7 @@ export const Navbar = observer(({}) => {
        
 
 
-          <NavItem  href={"/" + dataStore.lang + "/explore/projects"} type={"projects"}>
+          <NavItem  href={"concepts/launchpad/projects"} type={"projects"}>
             <span className="w-5 h-5 mx-2 flex items-center">
               <LaunchSvg />
             </span>
