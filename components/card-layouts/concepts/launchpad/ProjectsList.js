@@ -7,17 +7,12 @@ import {observer} from "mobx-react";
 import {CardProject} from "../../../cards/concepts/launchpad/Project";
 import ContentLoader from "react-content-loader";
 
-import PerfectScrollbar from 'perfect-scrollbar';
-import "perfect-scrollbar/css/perfect-scrollbar.css";
-
-const scrollBox = createRef();
-let ps;
 
 export const ProjectsList = ({title, extraClass}) => {
 
   return (
     <div className="page page-full page-projects-list">
-      <div className="w-limiter-lg no-padding scrollbar" ref={scrollBox}>
+      <div className="w-limiter-lg no-padding scrollbar">
 
         <div className="section">
 
