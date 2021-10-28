@@ -1,7 +1,7 @@
 const MainActions = ({}) => {
   return (
     <>
-    <div className="post-notice">
+    <div className="project-main-actions box p-5">
 
       <div className="flex items-center">
         <p>
@@ -19,7 +19,6 @@ const MainActions = ({}) => {
       </div>
 
     </div>
-
     </>
   )
 }

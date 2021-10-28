@@ -1,9 +1,12 @@
 import { Head } from "../../../components/Head";
 import { Topbar } from "../../../components/Topbar";
 import { Navbar } from "../../../components/Navbar";
-import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
 import { ProjectsList } from "../../../components/card-layouts/concepts/launchpad/ProjectsList";
 import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
+
+// Cards Concepts
+import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
+import MainActions from "../../../components/cards/concepts/launchpad/MainActions";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";
@@ -59,40 +62,59 @@ const Layout = observer((props) => {
 
         <div className={`pane-center`}>
 
-         
-
           <div className="pane-center--main scrollbar">
 
             <div className="pane-content">
 
-              <div className="pane-content--full ">
-                <div className="project-info flex">
-                  <div className="w-full md:w-1/3 mt-2.5 ml-2.5">
-                    <div className="project-brief flex-shrink-0 flex-grow p-5 mt-2.5 ml-2.5 mr-2.5 mb-5 box">
-                      <h3 className="mb-5">Project Brief</h3>
-                      <TokenMeta />
-                    </div>
-                    {/* end of project-brief */}
-                    <div className="project-process flex-shrink-0 flex-grow p-5 m-2.5 box">
-                      <h3 className="mb-5">How to invest</h3>
-                      <div className="text-sm text-gray-700 dark:text-gray-400">
-                      Nullam quis risus eget urna mollis ornare vel eu leo. 
-                      Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </div>
-                    </div>
-                    {/* end of project-process */}
-                  </div>
-                  <div className="project-sale-info mb-2.5 mt-5 ml-2.5 mr-5 w-full md:w-2/3 p-5 box">
-                    Sale info
-                  </div>
-                  
-                  
+              <div className="pane-content--full">
 
+                <div className="page page-full page-project-details">
+                  <div className="w-limiter-lg no-padding scrollbar">
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+                      <div className="project-brief p-5 box">
+                        <h3 className="mb-5">Project Brief</h3>
+                        <TokenMeta />
+                      </div>
+                      {/* end of project-brief */}
+
+                      <div className="project-process p-5 box">
+                        <h3 className="mb-5">How to invest</h3>
+                        <div className="text-sm text-gray-700 dark:text-gray-400">
+                        Nullam quis risus eget urna mollis ornare vel eu leo. 
+                        Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis.
+                        </div>
+                      </div>
+                      {/* end of project-process */}
+
+                      <div className="project-process p-5 box">
+                        <h3 className="mb-5">How to invest</h3>
+                        <div className="text-sm text-gray-700 dark:text-gray-400">
+                        Nullam quis risus eget urna mollis ornare vel eu leo. 
+                        Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis.
+                        </div>
+                      </div>
+                      {/* end of project-process */}
+
+                    </div>
+
+                    {/* <div className="project-sale-info mb-2.5 mt-5 ml-2.5 mr-5 w-full md:w-2/3 p-5 box">
+                      Sale info
+                    </div> */}
+
+                    {/* Main Action Card */}
+                    <div className="grid grid-cols-1 mt-4">
+                      <MainActions />
+                    </div>
+                    {/* END: Main Action Card */}
+                    
+                  
+                  </div>
+                  
                 </div>
-                
               </div>
 
-              
             </div>
 
           </div>
