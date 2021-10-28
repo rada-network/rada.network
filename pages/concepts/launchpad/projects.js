@@ -82,8 +82,6 @@ const Layout = observer((props) => {
                 </div>
                 {/* END: Top Bar */}
 
-              
-
               </div>
 
             </div>
