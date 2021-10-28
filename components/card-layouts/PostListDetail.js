@@ -177,7 +177,7 @@ export const PostListDetail = observer(
       <>
         <div className="pane-content--sec--main grid scrollbar" ref={scrollRef}>
           {/* Post Detail */}
-          <div className="page">
+          <div className="page w-limiter">
             {/* Close Button
           {dataStore !== undefined ?
             <div className="page-back">

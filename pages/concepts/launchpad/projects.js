@@ -3,7 +3,9 @@ import { Topbar } from "../../../components/Topbar";
 import { Navbar } from "../../../components/Navbar";
 import { ProjectsList } from "../../../components/card-layouts/concepts/launchpad/ProjectsList";
 import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
+
 import ThemeSwitch from "../../../components/ThemeSwitch"
+import Profile from "../../../components/Profile";
 
 import { useState, useEffect, createRef } from 'react'
 
@@ -45,8 +47,11 @@ const Layout = observer((props) => {
           <div className="pane-left">
             <Navbar dataStore={dataStore} detailStore={detailStore} />
             <div className="pane-left--bottom">
-              <LanguageSwitch dataStore={dataStore} />
-              <ThemeSwitch />
+              <Profile />
+              <div className="pane-left--bottom-section">
+                <LanguageSwitch />
+                <ThemeSwitch />
+              </div>
             </div>
           </div>
         </Screen>
