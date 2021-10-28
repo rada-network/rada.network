@@ -68,7 +68,7 @@ Navbars on Mobile Tablet
 */
 .pane-bottom {
   @apply flex justify-between w-full h-auto order-last;
-  @apply bg-bluegray-50 dark:bg-deepgray-100 z-50;
+  @apply bg-gray-50 dark:bg-deepgray-100 z-50;
   flex-basis: var(--navbar-height);
 }
 
@@ -526,17 +526,17 @@ Popper
 Dialogs 
 */
 .dialog-outside-wrapper {
-  @apply fixed inset-0 z-50 overflow-y-auto bg-white md:bg-bluegray-50 bg-opacity-100;
+  @apply fixed inset-0 z-50 overflow-y-auto bg-white md:bg-gray-50 bg-opacity-100;
   @apply dark:bg-deepgray-100 dark:md:bg-deepgray-50;
 }
 
 .dialog-outside {
-  @apply md:px-4 text-center bg-bluegray-50 dark:bg-gray-900;
+  @apply md:px-4 text-center bg-gray-50 dark:bg-gray-900;
 }
 
 .dialog {
   @apply max-w-2xl lg:max-w-4xl overflow-hidden text-left align-top md:align-middle transition-all transform;
-  @apply text-left bg-bluegray-50 dark:bg-gray-900 md:shadow-2xl md:rounded;
+  @apply text-left bg-gray-50 dark:bg-gray-900 md:shadow-2xl md:rounded;
 }
 
 .dialog-wrapper {
@@ -555,7 +555,7 @@ Dialogs
 }
 
 .dialog .divider span {
-  @apply bg-bluegray-50 dark:bg-gray-900 text-xs uppercase z-0 px-4;
+  @apply bg-gray-50 dark:bg-gray-900 text-xs uppercase z-0 px-4;
 }
 
 /*
