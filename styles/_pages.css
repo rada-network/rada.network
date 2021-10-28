@@ -51,7 +51,9 @@ Page Layout
   @apply ml-2
 }
 
-/* Page Full */
+/* 
+Page Full 
+*/
 .page-full {
   @apply flex justify-center px-2 py-4 lg:py-8;
   @apply bg-white dark:bg-gray-900;
@@ -61,6 +63,10 @@ Page Layout
     .card {
       @apply h-auto;
     }
+  }
+
+  .page-full--inner--lg {
+    @apply flex flex-col w-full h-full max-w-screen-lg;
   }
 
   .page-section {
@@ -73,6 +79,15 @@ Page Layout
 
   .post-content {
     @apply px-2;
+  }
+}
+
+/* 
+Page Projects
+-----------------------------------*/
+.page-projects-list {
+  &.page-full {
+    @apply bg-gray-50;
   }
 }
 

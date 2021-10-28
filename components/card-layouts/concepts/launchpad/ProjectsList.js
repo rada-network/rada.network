@@ -16,8 +16,8 @@ let ps;
 export const ProjectsList = ({title, extraClass}) => {
 
   return (
-    <div className="section section-projects-list max-w-7xl mx-auto">
-      <div className="section-body no-padding scrollbar" ref={scrollBox}>
+    <div className="page page-full page-projects-list">
+      <div className="page-full--inner--lg no-padding scrollbar" ref={scrollBox}>
         <h2 className="p-4 font-semibold text-center">Public sales</h2>
         <div className="projects--wrapper">
 
