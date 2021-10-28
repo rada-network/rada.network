@@ -52,7 +52,7 @@ const Layout = observer((props) => {
         </Screen>
 
         <div className={`pane-center`}>
-          <div className="pane-center--main">
+          <div className="pane-center--main scrollbar">
             <div className="pane-content">
               <div className="pane-content--full">
                  <ProjectsList />              
