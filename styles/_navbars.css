@@ -56,7 +56,9 @@ Nav Item Active
   }
 } */
 
-.nav-item-active .icon-rada svg {
+.nav-item-active .icon-rada svg,
+.dark .nav-item-active .icon-rada svg,
+.pane-left .nav-item-active .icon-rada svg, {
   .inline-rec {
     fill: #8B5CF6;
   }
