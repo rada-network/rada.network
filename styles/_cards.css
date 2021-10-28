@@ -2,7 +2,8 @@
 Generic Styles
 ----------------------------------------------*/
 .cards-list {
-  @apply flex flex-col;
+ @apply flex flex-col; 
+  
 }
 
 .card {

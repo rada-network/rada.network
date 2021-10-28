@@ -1,0 +1,36 @@
+
+.projects--wrapper{
+  @apply p-3 grid grid-cols-1 gap-x-5 gap-y-6 md:grid-cols-3 md:gap-y-4 md:p-4;
+}
+.project-thumb {
+  @apply rounded;
+}
+.project-desc{
+  @apply text-sm my-2;
+}
+.projects--wrapper .card--wrapper {
+  @apply mt-2 transition-shadow transition-transform  overflow-visible ;
+}
+.card--wrapper .card--header {
+  @apply text-center relative pb-2 pt-4;
+}
+.projects--wrapper .card--footer{
+  @apply rounded-b-lg;
+}
+.projects--wrapper .card--body {
+  @apply flex flex-col;
+}
+.card--header .token-logo {;
+  width: 40px;
+  height: 40px;
+  @apply block absolute top-0 left-1/2 p-0.5 overflow-hidden  rounded-full border-2 border-white shadow-md;
+  margin-left:-20px;
+  margin-top:-26px;
+  background:#fff;
+}
+.projects--wrapper .card--header h3,.projects--wrapper .card--header a {
+  @apply flex mx-auto;
+}
+.projects--wrapper .card--wrapper:hover {
+  @apply shadow-md border-purple-500;
+}
