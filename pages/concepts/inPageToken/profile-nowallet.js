@@ -64,7 +64,7 @@ const Layout = observer((props) => {
 
             <div className="page page-full">
 
-              <div className="page-full--inner">
+              <div className="w-limiter">
 
                 {/* <div className="page-title">
                   Your Profile

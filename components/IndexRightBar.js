@@ -94,7 +94,7 @@ export const IndexRightBar = observer(({ intro }) => {
         }
       >
         <div className={`pane-content--sec--top`}>
-          <div className="flex h-full">
+          <div className="flex h-full w-limiter relative">
             {/* Pageback Here */}
             {dataStore !== undefined &&
             !_.isEmpty(detailStore.data) &&

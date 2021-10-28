@@ -15,15 +15,14 @@ Nav Item
 */
 .nav-item {
   @apply relative flex flex-col lg:flex-row items-center w-full h-full px-1.5 py-0.5 lg:py-2 transition;
-  @apply font-medium lg:font-semibold leading-normal whitespace-nowrap;
-  @apply opacity-80 lg:opacity-50;
+  @apply font-medium whitespace-nowrap;
+  @apply opacity-80;
   @apply hover:opacity-100;
-  @apply lg:h-9;
 }
 
 .nav-item .icon {
   @apply w-8 h-4;
-  @apply relative inline-flex justify-center mt-1.5 mb-2 lg:my-0 lg:mr-1 lg:-top-0.5 text-center;
+  @apply relative inline-flex justify-center mt-1.5 mb-2 lg:my-0 lg:mr-1.5 lg:-top-0.5 text-center;
   @apply text-lg lg:text-base leading-none;
   .fa-duotone {
     @apply relative;
@@ -36,28 +35,28 @@ Nav Item
 }
 
 .nav-item--text {
-  @apply text-2xs lg:text-xs;
+  @apply text-2xs lg:text-sm;
 }
 
 /* 
 Nav Item Active 
 */
 .nav-item-active {
-  @apply text-primary-700 text-opacity-100 font-semibold;
+  @apply text-primary-700 text-opacity-100;
   @apply dark:text-primary-400 dark:text-opacity-100;
   @apply opacity-100;
 }
 
-.nav-item-active .icon-rada svg {
+/* .nav-item-active .icon-rada svg {
   .inline-circle {
     fill: #6D28D9;
   }
   .inline-rec {
     fill: #A78BFA;
   }
-}
+} */
 
-.dark .nav-item-active .icon-rada svg {
+.nav-item-active .icon-rada svg {
   .inline-rec {
     fill: #8B5CF6;
   }
@@ -97,7 +96,7 @@ Nav Item Addons
 Tabbar
 --------------------------------------------- */
 .tabbar {
-  @apply flex justify-between w-full relative;
+  @apply flex justify-between w-auto relative;
 }
 
 .tabbar--main {

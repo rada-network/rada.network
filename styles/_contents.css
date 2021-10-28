@@ -316,6 +316,7 @@ Icons Styles
   }
 }
 
+.pane-left .icon-rada svg,
 .dark .icon-rada svg {
   .inline-rec {
     fill: #6B7280;
