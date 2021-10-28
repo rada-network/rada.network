@@ -56,7 +56,7 @@ const Layout = observer((props) => {
 
          
 
-          <div className="pane-center--main">
+          <div className="pane-center--main scrollbar">
 
             <div className="pane-content">
 
