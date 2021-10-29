@@ -86,7 +86,7 @@ const Layout = observer((props) => {
 
                   <div className="section-body">
 
-                    <div className="grid grid-cols-1 lg:grid-cols-1 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                       <div className="box project-brief">
                         <div className="box-header">
@@ -98,16 +98,46 @@ const Layout = observer((props) => {
                       </div>
                       {/* end of project-brief */}
 
-                      {/* <div className="box project-process">
+                      <div className="box project-process">
                         <div className="box-header">
                           <h3>Requirements</h3>
                         </div>
                         <div className="box-body">
-                          <p>Nullam quis risus eget urna mollis ornare vel eu leo. 
-                          Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis.</p>
+                          <p className="flex justify-between items-center my-2">
+                            <span>
+                              <span className="icon text-base mr-2 text-green-500"><i class="fas fa-check-circle"></i></span>
+                              Connect your Wallet
+                            </span>
+                          </p>
+                          <p className="flex justify-between items-center my-2">
+                            <span>
+                              <span className="icon text-base mr-2 text-red-500"><i class="fas fa-times-circle"></i></span>
+                              KYC
+                            </span>
+                            <a className="btn btn-default w-24">KYC Now</a>
+                          </p>
+                          <p className="flex justify-between items-center my-2">
+                            <span>
+                              <span className="icon text-base mr-2 text-red-500"><i class="fas fa-check-circle"></i></span>
+                              Have a minimum <strong>5 RIR</strong>
+                            </span>
+                            <a className="btn btn-default w-24">Earn RIR</a>
+                          </p>
+                          <p className="my-1">
+                            <span>
+                              <span className="icon text-base mr-2 text-red-500"><i class="fas fa-times-circle"></i></span>
+                              Requirement 4
+                            </span>
+                          </p>
+                          <p className="flex justify-between items-center my-2">
+                            <span>
+                              <span className="icon text-base mr-2 text-green-500"><i class="fas fa-check-circle"></i></span>
+                              Requirement 5
+                            </span>
+                          </p>
                         </div>
                       </div>
-                      end of project-process */}
+                      {/* end of project-process */}
 
                     </div>
 

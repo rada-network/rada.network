@@ -23,12 +23,12 @@ const MainActions = ({}) => {
                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                       </svg>
                     </span>
-                    <span className="ml-4 text-sm font-medium text-gray-900">Overview</span>
+                    <span className="ml-4 text-sm font-medium text-gray-900 dark:text-gray-200">Overview</span>
                   </span>
                 </a>
                 {/* Arrow separator for lg screens and up */}
                 <div className="step--arrow" aria-hidden="true">
-                  <svg className="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
+                  <svg className="h-full w-full text-gray-300 dark:text-gray-700" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
                     <path d="M0 -2L20 40L0 82" vector-effect="non-scaling-stroke" stroke="currentcolor" stroke-linejoin="round" />
                   </svg>
                 </div>
@@ -38,13 +38,13 @@ const MainActions = ({}) => {
                 {/* Current Step */}
                 <a href="#" className="px-4 py-3 flex items-center text-sm font-medium" aria-current="step">
                   <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center border-2 border-primary-600 rounded-full">
-                    <span className="text-primary-600">02</span>
+                    <span className="text-primary-600 dark:text-primary-400">02</span>
                   </span>
-                  <span className="ml-4 text-sm font-medium text-primary-600">Application</span>
+                  <span className="ml-4 text-sm font-medium text-primary-600 dark:text-primary-400">Application</span>
                 </a>
                 {/* Arrow separator for lg screens and up */}
                 <div className="step--arrow" aria-hidden="true">
-                  <svg className="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
+                  <svg className="h-full w-full text-gray-300 dark:text-gray-700" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
                     <path d="M0 -2L20 40L0 82" vector-effect="non-scaling-stroke" stroke="currentcolor" stroke-linejoin="round" />
                   </svg>
                 </div>
