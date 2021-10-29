@@ -57,37 +57,11 @@ const Layout = observer((props) => {
         </Screen>
 
         <div className={`pane-center`}>
-          <div className="pane-center--main scrollbar">
-            <div className="pane-content">
-              <div className="pane-content--full">
-                 <ProjectsList />              
-              </div>
-              <div className="pane-content--sec pane-content-active">
-
-                {/* Top Bar */}
-                <div className="pane-content--sec--top">
-                  
-                  <Screen from="md">
-                  <div className="flex items-center space-x-2">
-                    <div className="relative">
-                      <div className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
-                        <span className="icon">
-                          <i className="fa-duotone fa-wallet"></i>
-                        </span>
-                        <span className="btn--text">Đăng nhập</span>
-                      </div>
-                    </div>
-                  </div>
-                  </Screen>
-                </div>
-                {/* END: Top Bar */}
-
-              </div>
-
-            </div>
-
+          <div className="pane-center--main">
+             <ProjectsList />              
           </div>
         </div>
+
       </div>
     </>
   );
