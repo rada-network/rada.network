@@ -17,7 +17,7 @@ export const ProjectsList = ({title, extraClass}) => {
         <div className="section">
 
           <div className="section-header !justify-center">
-            <h2 className="p-4 font-semibold text-center">Public sales</h2>
+            <h2 className="p-4 font-semibold text-center">Open Projects</h2>
           </div>
 
           <div className="section-body projects--wrapper">
@@ -58,7 +58,7 @@ export const ProjectsList = ({title, extraClass}) => {
         <div className="section">
           
           <div className="section-header !justify-center">
-            <h2 className="p-4 font-semibold">Private sales</h2>
+            <h2 className="p-4 font-semibold">Closed Projects</h2>
           </div>
 
           <div className="section-body projects--wrapper">
