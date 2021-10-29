@@ -68,48 +68,64 @@ const Layout = observer((props) => {
 
               <div className="pane-content--full">
 
-                <div className="page page-full page-project-details">
-                  <div className="w-limiter-lg no-padding scrollbar">
+                <div className="page page-full page-project-details w-limiter-lg scrollbar">
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                  <div className="section">
 
-                      <div className="project-brief p-5 box">
-                        <h3 className="mb-5">Project Brief</h3>
-                        <TokenMeta />
-                      </div>
-                      {/* end of project-brief */}
-
-                      <div className="project-process p-5 box">
-                        <h3 className="mb-5">How to invest</h3>
-                        <div className="text-sm text-gray-700 dark:text-gray-400">
-                        Nullam quis risus eget urna mollis ornare vel eu leo. 
-                        Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis.
+                    <div className="section-header">
+                      <div className="post-title">
+                        <h1 className="post-title--text">Project Title</h1>
+                        <div className="mt-4">
+                          Nullam quis risus eget urna mollis ornare vel eu leo.  
+                        </div>
+                        <div className="mt-1">
+                          Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris 
                         </div>
                       </div>
-                      {/* end of project-process */}
-
-                      <div className="project-process p-5 box">
-                        <h3 className="mb-5">How to invest</h3>
-                        <div className="text-sm text-gray-700 dark:text-gray-400">
-                        Nullam quis risus eget urna mollis ornare vel eu leo. 
-                        Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis.
-                        </div>
+                      <div className="ml-8">
+                        Status Here
                       </div>
-                      {/* end of project-process */}
-
                     </div>
 
-                    {/* <div className="project-sale-info mb-2.5 mt-5 ml-2.5 mr-5 w-full md:w-2/3 p-5 box">
-                      Sale info
-                    </div> */}
+                    <div className="section-body">
 
-                    {/* Main Action Card */}
-                    <div className="grid grid-cols-1 mt-4">
-                      <MainActions />
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+                        <div className="box project-brief">
+                          <div className="box-header">
+                            <h3>Project Brief</h3>
+                          </div>
+                          <div className="box-body">
+                            <TokenMeta />
+                          </div>
+                        </div>
+                        {/* end of project-brief */}
+
+                        <div className="box project-process">
+                          <div className="box-header">
+                            <h3>How to invest</h3>
+                          </div>
+                          <div className="box-body">
+                            <p>Nullam quis risus eget urna mollis ornare vel eu leo. 
+                            Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis.</p>
+                          </div>
+                        </div>
+                        {/* end of project-process */}
+
+                      </div>
+
+                      {/* <div className="project-sale-info mb-2.5 mt-5 ml-2.5 mr-5 w-full md:w-2/3 p-5 box">
+                        Sale info
+                      </div> */}
+
+                      {/* Main Action Card */}
+                      <div className="grid grid-cols-1 mt-4">
+                        <MainActions />
+                      </div>
+                      {/* END: Main Action Card */}
+
                     </div>
-                    {/* END: Main Action Card */}
                     
-                  
                   </div>
                   
                 </div>

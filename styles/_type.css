@@ -166,10 +166,6 @@ Post Content Typo
 
 /* Page Styles */
 .page-full .post-title {
-  @apply mb-8;
-  h1 {
-    @apply text-2xl;
-  }
 }
 
 .page-full .post-content img {
