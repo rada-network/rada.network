@@ -8,7 +8,7 @@ const MainActions = ({}) => {
       </div>
 
       <div className="steps steps-h flex items-center">
-
+        
       </div>
 
 

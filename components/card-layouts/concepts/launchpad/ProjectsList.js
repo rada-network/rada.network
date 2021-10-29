@@ -11,8 +11,8 @@ import ContentLoader from "react-content-loader";
 export const ProjectsList = ({title, extraClass}) => {
 
   return (
-    <div className="page page-full page-projects-list">
-      <div className="w-limiter-lg no-padding">
+    <div className="page page-full page-projects-list scrollbar">
+      <div className="w-limiter-lg">
 
         <div className="section">
 
