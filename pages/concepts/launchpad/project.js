@@ -86,7 +86,7 @@ const Layout = observer((props) => {
 
                   <div className="section-body">
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-1 gap-4">
 
                       <div className="box project-brief">
                         <div className="box-header">
@@ -98,7 +98,7 @@ const Layout = observer((props) => {
                       </div>
                       {/* end of project-brief */}
 
-                      <div className="box project-process">
+                      {/* <div className="box project-process">
                         <div className="box-header">
                           <h3>Requirements</h3>
                         </div>
@@ -107,7 +107,7 @@ const Layout = observer((props) => {
                           Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis.</p>
                         </div>
                       </div>
-                      {/* end of project-process */}
+                      end of project-process */}
 
                     </div>
 
@@ -118,6 +118,15 @@ const Layout = observer((props) => {
                     {/* Main Action Card */}
                     <div className="grid grid-cols-1 mt-4">
                       <MainActions />
+                    </div>
+                    {/* END: Main Action Card */}
+
+
+                    {/* Main Action Card */}
+                    <div className="grid grid-cols-1 mt-4">
+                      <div className="box project-info">
+                        Project Infomation Here
+                      </div>
                     </div>
                     {/* END: Main Action Card */}
 
