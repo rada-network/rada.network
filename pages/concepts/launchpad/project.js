@@ -90,7 +90,7 @@ const Layout = observer((props) => {
 
                       <div className="box project-brief">
                         <div className="box-header">
-                          <h3>Project Brief</h3>
+                          <h3>Information</h3>
                         </div>
                         <div className="box-body">
                           <TokenMeta />
@@ -100,7 +100,7 @@ const Layout = observer((props) => {
 
                       <div className="box project-process">
                         <div className="box-header">
-                          <h3>How to invest</h3>
+                          <h3>Requirements</h3>
                         </div>
                         <div className="box-body">
                           <p>Nullam quis risus eget urna mollis ornare vel eu leo. 
