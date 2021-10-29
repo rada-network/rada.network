@@ -103,6 +103,25 @@
   @apply w-1/2 mt-1 opacity-60;
 }
 
-.box{
-  @apply bg-white  border border-gray-200 dark:border-gray-800 dark:bg-gray-900 rounded-lg;
+
+/* Boxes 
+-------------------------------*/
+.box {
+  @apply p-4 lg:p-6;
+  @apply bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-900 rounded-lg;
+  @apply text-sm;
+}
+
+.box-header {
+  @apply mb-4;
+  h3 {
+    @apply text-base font-medium;
+  }
+}
+
+
+/* Steps
+-------------------------------*/
+.steps {
+  @apply flex;
 }

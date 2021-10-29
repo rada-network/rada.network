@@ -67,10 +67,6 @@ Page Full
     }
   }
 
-  .page-full--inner--lg {
-    @apply flex flex-col w-full h-full max-w-screen-lg;
-  }
-
   .page-section {
     @apply pt-4;
   }
