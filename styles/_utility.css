@@ -18,8 +18,7 @@
 /*** labels ***/
 .label {
   @apply px-2 py-1.5 items-center justify-center rounded-full;
-  @apply text-2xs font-medium uppercase tracking-wide;
-  @apply bg-opacity-10;
+  @apply text-2xs font-medium uppercase tracking-wide 
 }
 
 .label--active {

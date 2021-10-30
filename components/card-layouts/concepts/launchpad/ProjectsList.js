@@ -13,11 +13,10 @@ export const ProjectsList = ({title, extraClass}) => {
   return (
     <div className="page page-full page-projects-list scrollbar">
       <div className="w-limiter-lg">
-
         <div className="section">
 
           <div className="section-header !justify-center">
-            <h2 className="p-4 font-semibold text-center">Open Projects</h2>
+            <h2 className="p-2 font-semibold text-center">Open Projects</h2>
           </div>
 
           <div className="section-body projects--wrapper">
@@ -26,31 +25,31 @@ export const ProjectsList = ({title, extraClass}) => {
               title="Moniwar" 
               img="https://picsum.photos/600/300?random=1"
               tokenLogo="./../../token-logos/moniwar.png"
-              description="Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. "
-              type="Contributor-only"
-              requirement="Requirement"
-              allocation="1"
+              raise="45,000 USDT"
+              progressToken="72,000"
+              target="100,000"
+              progressPercentage="70%"
+              type="private"
+              token="MOWA"
+              countdown="4 days"
+              status="open"
             />
 
             <CardProject
               title="Pegaxy"
               img="https://picsum.photos/600/300?random=2"
               tokenLogo="./../../token-logos/pegaxy.png"
-              description="Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit."
-              type="Contributor-only"
-              requirement="Requirement"
-              allocation="1"
+              raise="45,000 USDT"
+              progressToken="95,000"
+              target="100,000"
+              progressPercentage="95%"
+              type="public"
+              token="PGX"
+              countdown="12 hours"
+              status="open"
             />
 
-            <CardProject
-              title="DareNFT"
-              img="https://picsum.photos/600/300?random=3"
-              tokenLogo="./../../token-logos/darenft.png"
-              description="Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit."
-              type="Contributor-only"
-              requirement="Requirement"
-              allocation="1"
-            />
+           
             
           </div>
         </div>
@@ -58,40 +57,39 @@ export const ProjectsList = ({title, extraClass}) => {
         <div className="section">
           
           <div className="section-header !justify-center">
-            <h2 className="p-4 font-semibold">Closed Projects</h2>
+            <h2 className="p-2 font-semibold">Closed Projects</h2>
           </div>
 
           <div className="section-body projects--wrapper">
-
             <CardProject
-              title="Thetan Arena" 
-              img="https://picsum.photos/600/300?random=4"
-              tokenLogo="./../../token-logos/thetan.png"
-              description="Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. "
-              type="Contributor-only"
-              requirement="Requirement"
-              allocation="1"
+              title="Moniwar" 
+              img="https://picsum.photos/600/300?random=1"
+              tokenLogo="./../../token-logos/moniwar.png"
+              raise="45,000 USDT"
+              progressToken="100,000"
+              target="100,000"
+              progressPercentage="100%"
+              type="public"
+              token="MOWA"
+              countdown="2 hours"
+              status="closed"
             />
 
             <CardProject
-              title="Elemon"
-              img="https://picsum.photos/600/300?random=5"
-              tokenLogo="./../../token-logos/elemon.png"
-              description="Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit."
-              type="Contributor-only"
-              requirement="Requirement"
-              allocation="1"
+              title="Pegaxy"
+              img="https://picsum.photos/600/300?random=2"
+              tokenLogo="./../../token-logos/pegaxy.png"
+              raise="45,000 USDT"
+              progressToken="100,000"
+              target="100,000"
+              progressPercentage="100%"
+              type="public"
+              token="PGX"
+              status="closed"
             />
+           
 
-            <CardProject
-              title="DareNFT"
-              img="https://picsum.photos/600/300?random=6"
-              tokenLogo="./../../token-logos/darenft.png"
-              description="Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit."
-              type="Contributor-only"
-              requirement="Requirement"
-              allocation="1"
-            />
+           
             
           </div>
         </div>

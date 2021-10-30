@@ -1,6 +1,6 @@
 
 .projects--wrapper{
-  @apply p-3 grid grid-cols-1 gap-x-5 gap-y-6 md:grid-cols-3 md:gap-y-4 md:p-4;
+  @apply p-3 grid grid-cols-1 gap-x-5 gap-y-6 md:grid-cols-2 md:gap-y-4 md:p-4;
 }
 .project-thumb {
   @apply rounded;
@@ -33,4 +33,15 @@
 }
 .projects--wrapper .card--wrapper:hover {
   @apply shadow-md border-purple-500;
+}
+
+.label.private {
+  @apply bg-purple-500 text-white;
+}
+.label.public {
+  @apply bg-green-500 text-white;
+}
+
+.btn-primary.closed {
+  @apply bg-gray-300 text-gray-400 dark:bg-gray-700 dark:text-gray-500;
 }
