@@ -3,43 +3,51 @@
 /* 
 Layout 
 --------------------------------*/
-.main-layout {
-  @apply flex flex-col lg:flex-row h-full w-full items-stretch;
-  /* @apply max-w-screen-2xl 2xl:mx-auto; */
-  animation: fadein 400ms linear;
+.main-layout--wrapper {
+  @apply w-full h-full 2xl:p-4;
 }
 
-/* .body-decor,
+.main-layout {
+  @apply flex flex-col lg:flex-row h-full w-full items-stretch overflow-hidden;
+  @apply max-w-screen-2xl 2xl:mx-auto 2xl:rounded-2xl;
+  animation: fadein 400ms linear;
+  box-shadow: 0 0 16px 0 rgba(0,0,0,.2);
+}
+
+.body-decor,
 .body-decor--text {
-  @apply hidden;
+  @apply hidden 2xl:block;
 }
 
 @screen 2xl {
   .body-decor {
     @apply fixed inset-0 w-full h-full -z-1;
-    @apply filter brightness-50 ;
-    background-image: url("https://source.unsplash.com/collection/1459961/1600x900");
+    @apply filter brightness-50;
+    background-image: url("https://source.unsplash.com/user/nnth/likes/1600x900");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
   }
   .body-decor--text {
     @apply absolute right-4 bottom-4 px-4 py-2 rounded;
-    @apply bg-gray-900 bg-opacity-20 text-white text-opacity-80 text-xs;
+    @apply bg-gray-900 bg-opacity-50 text-white text-opacity-70 text-xs;
     text-shadow: 0 1px 1px rgba(0,0,0,.2);
   }
   .body-decor--text a {
     @apply hover:text-white hover:text-opacity-100 border-b border-b-white border-opacity-50 hover:border-opacity-100;
   }
-} */
+  .body-decor--text a + a {
+      @apply ml-4;
+    }
+}
 
 /* 
 Nav Panels 
 */
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
-  @apply border-r border-gray-400 border-opacity-10;
-  @apply bg-gray-800 dark:bg-gray-900;
+  @apply border-r border-gray-400 border-opacity-20;
+  @apply bg-gray-800 2xl:bg-opacity-70 2xl:dark:bg-opacity-50 2xl:backdrop-blur-md;
   @apply w-32 z-50;
   /* width: var(--paneleft-width); */
   /* flex-basis: var(--paneleft-width); */
@@ -47,7 +55,7 @@ Nav Panels
 
 
 .pane-left--bottom {
-  @apply justify-between items-center px-1 py-2;
+  @apply justify-between items-center px-2 py-2;
 
   .btn {
     @apply justify-start flex-shrink-0;
@@ -131,7 +139,7 @@ Navbars on Mobile Tablet
 */
 .pane-bottom {
   @apply flex justify-between w-full h-auto order-last;
-  @apply bg-gray-50 dark:bg-deepgray-50 z-50;
+  @apply bg-gray-50 dark:bg-gray-800 z-50;
   flex-basis: var(--navbar-height);
 }
 
@@ -146,8 +154,8 @@ Navbars on Mobile Tablet
 Main Panels
 */
 .pane-center {
-  @apply flex flex-auto flex-col transition;
-  @apply lg:border-r border-gray-400 border-opacity-10 z-40;
+  @apply flex flex-auto flex-col transition z-40;
+  /* @apply lg:border-r border-gray-400 border-opacity-20; */
 }
 
 /* Add Color to Topbar on Mobile and Tablet */
@@ -180,10 +188,10 @@ Main Panels
 .pane-content--main {
   @apply relative float-left w-full;
   @apply flex flex-col w-full h-full;
-  @apply md:border-r border-gray-100 dark:border-gray-800 dark:border-opacity-90;
+  @apply md:border-r border-gray-100 dark:border-gray-700 dark:border-opacity-90;
 }
 
-@screen md {
+@screen lg {
   .pane-content--main {
     width: var(--main-width);
   }
@@ -192,18 +200,18 @@ Main Panels
 .pane-content--main--top,
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0 relative;
-  @apply bg-white dark:bg-gray-900;
+  @apply bg-white dark:bg-gray-800;
   height: var(--toolbar-height);
 }
 
 .pane-content--main--top {
-  @apply border-b border-gray-400 border-opacity-10;
+  @apply border-b border-gray-400 border-opacity-20;
 }
 
 /* Hide content toolbar on Tablet */
 .pane-content--sec--top {
   @apply hidden;
-  @apply border-b border-gray-400 border-opacity-10;
+  @apply border-b border-gray-400 border-opacity-20;
 }
 
 /* Unhide content toolbar when Reading */
@@ -217,7 +225,7 @@ Card List Area
 */
 .pane-content--main--main {
   @apply flex flex-auto flex-col w-full h-0;
-  @apply bg-white dark:bg-gray-900;
+  @apply bg-white dark:bg-gray-800;
 }
 
 @screen lg {
@@ -231,7 +239,7 @@ Reader / Page Area
 */
 .pane-content--sec {
   @apply float-left w-full z-10;
-  @apply hidden flex-auto md:flex flex-col;
+  @apply hidden flex-auto lg:flex flex-col;
 }
 
 @screen md {
@@ -263,7 +271,7 @@ Reader / Page Area
 
 .pane-content--sec--main {
   @apply w-full h-full;
-  @apply bg-white dark:bg-gray-900;
+  @apply bg-white dark:bg-gray-800;
   /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur; */
 }
 
@@ -400,8 +408,7 @@ Sidebar
 Sections Layout
 --------------------------------------------- */
 .section {
-  /* @apply px-4 pt-6 pb-6 md:p-6 xl:px-16 xl:py-8; */
-  @apply px-4 pt-6 pb-6 md:p-6 xl:py-8 xl:px-8;
+  @apply px-4 pt-6 pb-6 md:p-6 xl:px-16 xl:py-8;
 }
 
 .section-header {
@@ -534,7 +541,7 @@ Perfect Scrollbar
 
 @media (hover: hover) and (pointer: fine) {
   .scrollbar::-webkit-scrollbar {
-    @apply w-1.5 bg-gray-200 dark:bg-gray-800 bg-opacity-20 dark:bg-opacity-20;
+    @apply w-1.5 bg-gray-200 dark:bg-gray-900 bg-opacity-20 dark:bg-opacity-20;
   }
 
   .scrollbar::-webkit-scrollbar-track {
@@ -542,7 +549,7 @@ Perfect Scrollbar
   }
 
   .scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 dark:bg-gray-800 bg-opacity-40 transition-all;
+    @apply bg-gray-300 dark:bg-gray-700 bg-opacity-40 transition-all;
     border-radius: 18px;
   }
 
