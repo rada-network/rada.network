@@ -47,14 +47,17 @@ Nav Item Active
   @apply opacity-100;
 }
 
-/* .nav-item-active .icon-rada svg {
+.pane-bottom .nav-item-active .icon-rada svg {
   .inline-circle {
     fill: #6D28D9;
   }
   .inline-rec {
     fill: #A78BFA;
   }
-} */
+  .inline-stroke {
+    fill: #F9FAFB;
+  }
+}
 
 .nav-item-active .icon-rada svg,
 .dark .nav-item-active .icon-rada svg,
