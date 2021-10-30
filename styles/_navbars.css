@@ -58,7 +58,7 @@ Nav Item Active
 
 .nav-item-active .icon-rada svg,
 .dark .nav-item-active .icon-rada svg,
-.pane-left .nav-item-active .icon-rada svg, {
+.pane-left .nav-item-active .icon-rada svg {
   .inline-rec {
     fill: #8B5CF6;
   }
@@ -137,7 +137,7 @@ Tabbar
 
 .tab-item--divider {
   @apply block;
-  @apply bg-gray-500 bg-opacity-20;
+  @apply bg-gray-400 bg-opacity-50;
   height: 1rem;
   width: 1px;
 }
