@@ -13,13 +13,13 @@ export const ProjectsList = ({title, extraClass}) => {
   return (
     <div className="page page-full page-projects-list scrollbar">
       <div className="w-limiter-lg">
-        <div className="section">
+        <div className="">
 
-          <div className="section-header !justify-center">
-            <h2 className="p-2 font-semibold text-center">Open Projects</h2>
+          <div className="section-header ml-2">
+            <h2 className="p-2 font-semibold">Open Projects</h2>
           </div>
 
-          <div className="section-body projects--wrapper">
+          <div className="projects--wrapper">
 
             <CardProject
               title="Moniwar" 
@@ -45,7 +45,7 @@ export const ProjectsList = ({title, extraClass}) => {
               progressPercentage="95%"
               type="public"
               token="PGX"
-              countdown="12 hours"
+              countdown="12 hours 44 minutes"
               status="open"
             />
 
@@ -54,13 +54,13 @@ export const ProjectsList = ({title, extraClass}) => {
           </div>
         </div>
 
-        <div className="section">
+        <div className="mt-6">
           
-          <div className="section-header !justify-center">
+          <div className="section-header ml-2">
             <h2 className="p-2 font-semibold">Closed Projects</h2>
           </div>
 
-          <div className="section-body projects--wrapper">
+          <div className="projects--wrapper">
             <CardProject
               title="Moniwar" 
               img="https://picsum.photos/600/300?random=1"

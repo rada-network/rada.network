@@ -69,25 +69,26 @@ const Layout = observer((props) => {
               <div className="w-limiter-lg">
 
                 <div className="section">
-                  <a
-                    href="../user/profile"
-                    className="flex opacity-70 hover:opacity-100 items-center mb-4 "
-                  >
-                    <span className="w-4 h-4 mr-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <title>arrow-left</title>
-                        <path
-                          fill="currentColor"
-                          d="M22.548,10.561H5.437a.251.251,0,0,1-.165-.438l8.637-7.6a1.44,1.44,0,0,0-1.9-2.162L.828,10.2a2.4,2.4,0,0,0,0,3.6l11.179,9.837a1.44,1.44,0,0,0,1.9-2.161l-8.637-7.6a.251.251,0,0,1,.165-.438H22.548a1.44,1.44,0,0,0,0-2.879Z"
-                        />
-                      </svg>
-                    </span>
-                    Projects
-                  </a>
+                  
                   <div className="section-header">
                     
                     <div className="post-title">
-                      <h1 className="post-title--text">Project Title</h1>
+                      <h1 className="post-title--text">
+                        <a
+                          href="projects"
+                          className="inline-flex text-md mr-2 opacity-70 hover:opacity-100 items-center mb-4 rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800 "
+                        >
+                          <span className="w-4 h-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                              <title>arrow-left</title>
+                              <path
+                                fill="currentColor"
+                                d="M22.548,10.561H5.437a.251.251,0,0,1-.165-.438l8.637-7.6a1.44,1.44,0,0,0-1.9-2.162L.828,10.2a2.4,2.4,0,0,0,0,3.6l11.179,9.837a1.44,1.44,0,0,0,1.9-2.161l-8.637-7.6a.251.251,0,0,1,.165-.438H22.548a1.44,1.44,0,0,0,0-2.879Z"
+                              />
+                            </svg>
+                          </span>
+                        </a>
+                        Project Title</h1>
                       <div className="text-sm mt-4">
                         Nullam quis risus eget urna mollis ornare vel eu leo.  
                       </div>
@@ -95,7 +96,7 @@ const Layout = observer((props) => {
                         Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris 
                       </div>
                     </div>
-                    <div className="ml-auto">
+                    <div className="ml-auto mt-4">
                       <div className="label private">Private</div>
                     </div>
                   </div>
@@ -142,11 +143,10 @@ const Layout = observer((props) => {
                               <span className="list-value ml-auto">
                                 <span className="font-semibold">72000</span>
                                 <span className="opacity-70">/100,0000</span> MOWA
-                                <span className="ml-2 label text-gray-800 bg-gray-200 dark:bg-gray-600 dark:text-gray-100">72%</span>
                               </span>
                             </li>
                           </ul>
-                          <div className="progress-bar mt-5 bg-gray-300 w-full h-3 rounded-lg">
+                          <div className="progress-bar mt-5 bg-gray-300 dark:bg-gray-700 w-full h-3 rounded-lg">
                               <div className="progress-bar--percentage h-3 bg-green-600 rounded-lg" style={{width: "70%"}}></div>
                           </div>
                         </div>
