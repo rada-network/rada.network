@@ -9,8 +9,9 @@ Layout
 
 .main-layout {
   @apply flex flex-col lg:flex-row h-full w-full items-stretch overflow-hidden;
-  @apply max-w-screen-2xl 2xl:mx-auto 2xl:rounded-2xl 2xl:shadow-2xl;
+  @apply max-w-screen-2xl 2xl:mx-auto 2xl:rounded-2xl;
   animation: fadein 400ms linear;
+  box-shadow: 0 0 16px 0 rgba(0,0,0,.2);
 }
 
 .body-decor,
