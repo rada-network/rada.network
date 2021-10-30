@@ -102,7 +102,7 @@ Empty State - About Page
 
 .page-about-deco {
   @apply hidden absolute float-right z-0;
-  background-image: url("https://source.unsplash.com/collection/1459961/1600x900");
+  background-image: url("https://source.unsplash.com/random");
 }
 
 @media screen and (min-height: 768px) {
