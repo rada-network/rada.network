@@ -65,8 +65,8 @@ const Layout = observer((props) => {
                 <div className="pane-content--sec pane-content-active !w-full">
 
                   <div class="pane-content--sec--top !block">
-                    <div class="flex h-full w-limiter-lg relative">
-                      <div class="page-back flex-shrink-0">
+                    <div class="flex h-full w-limiter-lg relative lg:px-3">
+                      <div class="page-back flex-shrink-0 lg:!right-14">
                         <a title="Back" class="btn">
                         <span class="icon">
                           <i class="fa-solid fa-chevron-left md:hidden"></i>
@@ -97,22 +97,10 @@ const Layout = observer((props) => {
                     </div>
                   </div>
 
-                  <div className="pane-content--sec--main">
+                  <div className="pane-content--sec--main grid scrollbar">
 
-                    <div className="page page-full page-project-details scrollbar !pt-0">
+                    <div className="page page-full page-project-details !pt-0">
                       <div className="w-limiter-lg">
-                        <div className="mx-6 relative">
-                          <div class="tabbar-sub page-subtabs !px-0 !bg-transparent">
-                            <div class="tabbar--main">
-                              <a href="#" class="tab-item !py-4 tab-item--active ">IDO</a>
-                              <a href="#" class="tab-item !py-4">Overview</a>
-                              <a href="#" class="tab-item !py-4">Airdrop</a>
-                            </div>
-                            <div class="page-back flex-shrink-0 !right-0">
-                              <a title="Back" class="btn"><span class="icon"><i class="fa-solid fa-chevron-left md:hidden"></i><i class="fa-solid fa-times hidden md:!block"></i></span><span class="btn--text sr-only">Quay lại</span></a>
-                            </div>
-                          </div> 
-                        </div>
 
                         <div className="section">
                           
@@ -121,20 +109,24 @@ const Layout = observer((props) => {
                             <div className="post-title lg:flex w-full">
                               <h1 className="post-title--text mb-2">
                                 Moniwar</h1>
-                              <div className="post-header--meta py-2 flex ml-auto text-gray-600 dark:text-gray-300">
-                                <div className="label private">Private</div>
-                                <div className="flex items-center ml-2 text-sm ">
-                                  <span className="w-4 h-4">
+                              <div className="post-header--meta py-2 flex ml-auto space-x-4 text-gray-600 dark:text-gray-300">
+
+                                <div className="flex items-center text-sm">
+                                  <span className="w-5 h-5">
                                     <UsdtSvg />
                                   </span>
                                   <span className="ml-1">USDT</span>
                                 </div>
-                                <div className="flex items-center ml-2 text-sm">
+
+                                <div className="flex items-center text-sm">
                                   <span className="w-4 h-4">
                                     <BscSvg />
                                   </span>
-                                  <span className="ml-1">Biance Smart Chain</span>
+                                  <span className="ml-1">Binance Smart Chain</span>
                                 </div>
+
+                                <div className="label private">Private</div>
+
                               </div>
                             </div>
                           

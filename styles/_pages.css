@@ -26,7 +26,7 @@ Page Layout
 .pane-content--sec--top .page-back,
 .page .page-back {
   @apply -ml-2 md:-ml-1 xl:ml-2;
-  @apply xl:absolute xl:right-12 xl:top-2;
+  @apply lg:absolute lg:right-12 lg:top-2;
 }
 
 .page-tabs,
