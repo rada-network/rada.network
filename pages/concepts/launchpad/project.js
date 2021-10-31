@@ -7,7 +7,7 @@ import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
 
 // Cards Concepts
 import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
-import MainActions from "../../../components/cards/concepts/launchpad/MainActions";
+import MainActions from "./MainActions";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";
@@ -273,7 +273,12 @@ const Layout = observer((props) => {
                       </div>
                       {/* END: Main Action Card */}
 
-                      <div className="mt-4"><TokenInfo /></div>
+                      {/* Project Info */}
+                      <div className="box mt-4">
+                        <TokenInfo />
+                      </div>
+                      {/* END: Project Info */}
+
                     </div>          
                   </div>
                 </div>

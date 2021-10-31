@@ -3,7 +3,6 @@ Generic Styles
 ----------------------------------------------*/
 .cards-list {
  @apply flex flex-col; 
-  
 }
 
 .card {
@@ -72,6 +71,28 @@ Generic Styles
 /* Overlay */
 .card-link--overlay {
   @apply absolute inset-0 !m-0 z-0;
+}
+
+
+/* 
+Generic Card 
+----------------------------------------------*/
+.card-default {
+  @apply p-4 lg:p-6;
+  @apply bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-800 rounded-lg;
+  @apply text-sm;
+  /* Clean Inline Modules' padding */
+  .section,
+  .tabbar-sub {
+    @apply px-0;
+  }
+}
+
+.card-default .box-header {
+  @apply mb-4;
+  h3 {
+    @apply text-base font-medium;
+  }
 }
 
 

@@ -107,8 +107,13 @@
 -------------------------------*/
 .box {
   @apply p-4 lg:p-6;
-  @apply bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-900 rounded-lg;
+  @apply bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-800 rounded-lg;
   @apply text-sm;
+  /* Clean Inline Modules' padding */
+  .section,
+  .tabbar-sub {
+    @apply px-0;
+  }
 }
 
 .box-header {
