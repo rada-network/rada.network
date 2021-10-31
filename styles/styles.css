@@ -158,7 +158,7 @@ Main Panels
 }
 
 /* Add Color to Topbar on Mobile and Tablet */
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .pane-center {
     @apply bg-gradient-to-r from-primary-50 to-yellow-50 dark:from-primary-800 dark:to-primary-900;
   }
@@ -174,7 +174,7 @@ Main Panels
   @apply rounded-t-xl lg:rounded-none lg:shadow-none overflow-hidden;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .dark .pane-center--main {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5 ); /* Increase shadow on Dark Theme */
   }
@@ -238,10 +238,10 @@ Reader / Page Area
 */
 .pane-content--sec {
   @apply float-left w-full z-10;
-  @apply hidden flex-auto lg:flex flex-col;
+  @apply hidden flex-auto md:flex flex-col;
 }
 
-@screen md {
+@screen lg {
   .pane-content--sec {
     width:  calc(100% - var(--main-width));
     height: calc(100vh - var(--topbar-height) - var(--topbar-height));
@@ -259,7 +259,7 @@ Reader / Page Area
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .pane-content--sec.pane-content-active {
     @apply fixed flex;
     right: 0;
