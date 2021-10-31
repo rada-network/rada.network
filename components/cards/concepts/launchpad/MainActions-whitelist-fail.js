@@ -30,7 +30,7 @@ const MainActions = ({}) => {
                 <span className="inline-block icon text-4xl text-red-500">
                   <i class="fad fa-times-circle"></i>
                 </span>
-                <p className="font-normal text-base mt-2">
+                <p className="font-normal mt-2">
                   Ngã ở đâu, gấp đôi ở đó! Chúc bạn may mắn lần sau nhé!
                 </p>
               </div>
