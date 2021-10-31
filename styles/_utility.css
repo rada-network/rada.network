@@ -106,30 +106,17 @@
 /* Boxes 
 -------------------------------*/
 .box {
-  @apply bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-900 rounded-lg;
+  @apply bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-800 rounded-lg;
   @apply text-sm flex flex-col;
 }
 
 .box-header {
-  @apply p-4 lg:px-6 lg:py-4 text-base font-medium border-b border-gray-200 dark:border-gray-800; 
+  @apply p-4 lg:px-6 lg:py-4 text-base font-medium border-b border-gray-200 dark:border-gray-700; 
 }
 .box-body {
   @apply p-4 lg:p-6 flex-shrink-0 flex-grow;
 }
 
-/* Steps
--------------------------------*/
-.steps {
-  @apply border border-gray-200 dark:border-gray-700 rounded-md divide-y divide-gray-200 dark:divide-gray-700 md:flex md:divide-y-0;
-}
-
-.step {
-  @apply relative md:flex-1 md:flex;
-}
-
-.step--arrow {
-  @apply hidden md:block absolute top-0 right-2 h-full w-6;
-}
 
 /* Video embed 
 --------------------------------*/
@@ -147,3 +134,14 @@
   .step-wrapper {
     
   }
+
+
+/* Effects
+--------------------------------*/
+
+/* glassmorphism : refefence only. define in actual element */
+@screen 2xl {
+  .glassmorphism {
+    @apply bg-opacity-95 dark:bg-opacity-80 backdrop-blur;
+  }
+}

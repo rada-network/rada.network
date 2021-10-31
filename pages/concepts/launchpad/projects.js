@@ -30,6 +30,7 @@ const Layout = observer((props) => {
       <BackgroundWrapper />
 
       <div className={`main-layout--wrapper`}>
+
         <div className={`main-layout`}>
           {/* Mobile / Tablet Navbar */}
           <Screen upto="md">
@@ -54,11 +55,30 @@ const Layout = observer((props) => {
 
           <div className={`pane-center`}>
             <div className="pane-center--main">
-              <ProjectsList />              
+
+              <div className="pane-content">
+                <div className="pane-content--sec pane-content-active !w-full">
+
+                  <div class="pane-content--sec--top !block">
+
+                  </div>
+
+                  <div className="pane-content--sec--main grid scrollbar">
+
+                    <div className="page page-full page-project-details !pt-0">
+                      <ProjectsList /> 
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
             </div>
           </div>
-
         </div>
+
       </div>
     </>
   );

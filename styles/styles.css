@@ -272,7 +272,6 @@ Reader / Page Area
 .pane-content--sec--main {
   @apply w-full h-full;
   @apply bg-white dark:bg-gray-800;
-  /* @apply 2xl:bg-opacity-95 2xl:dark:bg-opacity-80 2xl:backdrop-blur; */
 }
 
 

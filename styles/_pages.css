@@ -1,10 +1,10 @@
 /* 
 Pages
---------------------------------------------- */
+*/
 
 /* 
 Page Layout
-*/
+--------------------------------------------- */
 .page {
   @apply w-full h-full relative;
   /* @apply max-w-screen-md m-auto; */
@@ -55,10 +55,10 @@ Page Layout
 
 /* 
 Page Full 
-*/
+--------------------------------------------- */
 .page-full {
   @apply flex justify-center px-2 py-4 lg:py-8;
-  @apply bg-white dark:bg-gray-900;
+  /* @apply bg-white dark:bg-gray-900; */
 
   .page-full--inner {
     @apply flex flex-col w-full h-full max-w-screen-sm;
@@ -83,18 +83,18 @@ Page Full
 
 /* 
 Page Projects
-*/
+--------------------------------------------- */
 .page-projects-list,
 .page-project-details {
   &.page-full {
-    @apply bg-gray-100 dark:bg-gray-900;
+    /* @apply bg-gray-100 dark:bg-gray-900; */
   }
 }
 
 
 /*
 Empty State - About Page
-*/
+--------------------------------------------- */
 .page-about {
   @apply flex flex-col justify-center h-full relative max-w-sm m-auto;
   @apply text-sm;

@@ -3,8 +3,8 @@ const CountDownLg = ({}) => {
     <>
       <div class="">
 
-        <h3 class="text-3xl text-center mb-3 font-medium">
-          Whitelist opens
+        <h3 class="text-3xl text-center mb-4 font-normal">
+          <span className="text-color-title">Moniwar's Whitelist opens</span>
         </h3>
 
         <div class="text-6xl text-center flex w-full items-center justify-center">
@@ -35,9 +35,9 @@ const CountDownLg = ({}) => {
 
         </div>
 
-        <p class="text-sm text-center mt-3">
-          You need to apply for whitelist to joint the pool.<br />
-          Whitelist opens in: <strong>6:00 PM 28 Jan, 2022 (GMT +7)</strong>
+        <p class="text-sm text-center mt-4">
+          <span className="text-color-desc">You need to apply for whitelist to joint the pool.</span><br />
+          <span className="text-color-desc">Whitelist opens in:</span> <strong>6:00 PM 28 Jan, 2022 (GMT +7)</strong>
         </p>
 
       </div>
