@@ -18,28 +18,20 @@ import { observer } from "mobx-react";
 import { usePageStore } from "../../../lib/usePageStore";
 
 import { useRef,useEffect } from "react";
+import BackgroundWrapper from "../../../components/card-layouts/concepts/launchpad/BackgroundWrapper";
 
 const Layout = observer((props) => {
 
   const {dataStore,detailStore,voteStore} = usePageStore()
   dataStore.type = "projects"
   dataStore.lang = props.lang
-  const meta = {}
+  const meta = {'title' : "Project X"}
 
   return (
     <>
       <Head meta={meta} />
 
-      <div className={`body-decor`}>
-      </div>
-
-      <div className={`body-decor--text`}>
-        <p className="mb-1">&copy; Photo from Unsplash</p>
-        <div className="flex">
-          <a href="#"><i className="far fa-random"></i> New Photo</a>
-          <a href="#"><i className="far fa-minus-circle"></i> Remove</a>
-        </div>
-      </div>
+      <BackgroundWrapper />
 
       <div className={`main-layout--wrapper`}>
         <div className={`main-layout`}>
@@ -275,7 +267,7 @@ const Layout = observer((props) => {
 
                       {/* Project Info */}
                       <div className="box mt-4">
-                        <TokenInfo />
+                        <TokenInfo tokenId={`THC`} />
                       </div>
                       {/* END: Project Info */}
 
