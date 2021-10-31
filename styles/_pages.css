@@ -71,10 +71,6 @@ Page Full
     @apply pt-4;
   }
 
-  .card + .card {
-    @apply mt-4 md:mt-8;
-  }
-
   .post-content {
     @apply px-2;
   }

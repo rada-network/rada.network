@@ -208,6 +208,11 @@ Main Panels
   @apply border-b border-gray-400 border-opacity-20;
 }
 
+.glassmorphism .pane-content--sec--top {
+  @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur;
+}
+
+
 /* Hide content toolbar on Tablet */
 .pane-content--sec--top {
   @apply hidden;
@@ -274,6 +279,10 @@ Reader / Page Area
   @apply bg-white dark:bg-gray-800;
 }
 
+.glassmorphism .pane-content--sec--main {
+  @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur;
+}
+
 
 /* 
 Layout Uitlites 
@@ -298,7 +307,7 @@ Layout Uitlites
 }
 
 .no-padding {
-  @apply p-0;
+  @apply !p-0;
 }
 
 .no-padding-t {

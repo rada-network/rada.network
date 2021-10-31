@@ -10,7 +10,7 @@ const MainActions = ({}) => {
           <h3>Public Sale</h3>
         </div>
 
-        <div className="card-body">
+        <div className="card-body no-padding">
 
           <div className="flex flex-col">
 

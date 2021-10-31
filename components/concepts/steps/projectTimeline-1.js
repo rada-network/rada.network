@@ -35,15 +35,13 @@ const ProjectTimeline1 = ({}) => {
 
         <li className="step">
           {/* Upcoming Step */}
-          <a href="#" className="group flex items-center">
-            <span className="step-body">
-              <span className="step-body--icon">
-                <span className="step-body--icon--text">03</span>
-              </span>
-              <span className="step-body--content">
-                <span className="step-body--title">Claim</span>
-                <span className="step-body--text">Claim your tokens</span>
-              </span>
+          <a href="#" className="step-body">
+            <span className="step-body--icon">
+              <span className="step-body--icon--text">03</span>
+            </span>
+            <span className="step-body--content">
+              <span className="step-body--title">Claim</span>
+              <span className="step-body--text">Claim your tokens</span>
             </span>
           </a>
         </li>

@@ -34,7 +34,7 @@ const Layout = observer((props) => {
 
       <BackgroundWrapper />
 
-      <div className={`main-layout--wrapper`}>
+      <div className={`main-layout--wrapper glassmorphism`}>
 
         <div className={`main-layout`}>
           {/* Mobile / Tablet Navbar */}
@@ -88,10 +88,6 @@ const Layout = observer((props) => {
                             <span class="icon"><i class="fa-duotone fa-users"></i></span>
                             <span class="tab-item--text">Team</span>
                           </a>
-                          <a href="#invest" class="tab-item ">
-                            <span class="icon"><i class="fa-duotone fa-sack-dollar"></i></span>
-                            <span class="tab-item--text">Invest</span>
-                          </a>
                         </div>
                       </div>
                     </div>
@@ -106,10 +102,18 @@ const Layout = observer((props) => {
                           
                           <div className="section-header mb-4">
                             
-                            <div className="post-title lg:flex w-full">
-                              <h1 className="post-title--text mb-2">
-                                Moniwar</h1>
-                              <div className="post-header--meta py-2 flex ml-auto space-x-4 text-gray-600 dark:text-gray-300">
+                            <div class="flex flex-wrap justify-between items-center w-full">
+                              <div class="flex flex-0 flex-shrink-0 mb-4 items-center">
+                                <span class="icon flex-shrink-0 mr-2">
+                                  <img src="https://media.rada.network/assets/514649e2-bf3c-4836-afbd-2c3ccd50293a?format=webp&width=128" class="h-px-32 w-px-32" alt="Moniwar" />
+                                </span>
+                                <h1 class="flex items-center">
+                                  <strong class="text-color-title text-xl lg:text-2xl font-semibold">Moniwar</strong>
+                                  <span class="badge badge-coin badge-coin-lg ml-2 -mb-1">MOWA</span>
+                                </h1>
+                              </div>
+
+                              <div class="flex flex-wrap space-x-4 mb-4">
 
                                 <div className="flex items-center text-sm">
                                   <span className="w-5 h-5">
@@ -126,10 +130,9 @@ const Layout = observer((props) => {
                                 </div>
 
                                 <div className="label private">Private</div>
-
                               </div>
                             </div>
-                          
+
                           </div>
 
 
@@ -155,11 +158,11 @@ const Layout = observer((props) => {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                              <div className="box project-brief">
-                                <div className="box-header">
-                                  <h3>Information</h3>
+                              <div className="card card-default project-brief">
+                                <div className="card-header">
+                                  <h3>Launchpad Overview</h3>
                                 </div>
-                                <div className="box-body flex flex-col">
+                                <div className="card-body flex flex-col">
                                   <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">   
                                     <li className="list-pair mb-2">
                                       <span className="list-key">
@@ -200,44 +203,19 @@ const Layout = observer((props) => {
                               </div>
                               {/* end of project-brief */}
 
-                              <div className="box project-process">
-                                <div className="box-header">
-                                  <h3>Requirements</h3>
+                              <div className="card card-default project-process">
+                                <div className="card-header">
+                                  <h3>Moniwar's Info</h3>
                                 </div>
-                                <div className="box-body">
-                                  <p className="flex justify-between items-center my-2 step-wrapper">
-                                    <span>
-                                      <span className="icon text-base mr-2 text-green-500"><i class="fas fa-check-circle"></i></span>
-                                      Connect your Wallet
-                                    </span>
+                                <div className="card-body">
+                                  <p className="">
+                                    Moniwar là một tựa game blockchain lấy cảm hứng từ những câu chuyện sử thi thần thoại của Hy Lạp cổ đại, với những hình tượng nhân vật vô cùng hấp dẫn. Trò chơi thuộc thể loại Puzzle với cơ chế PvP cùng lối chơi đơn giản, ai cũng có thể chơi được.
                                   </p>
-                                  <p className="flex justify-between items-center my-2  step-wrapper">
-                                    <span>
-                                      <span className="icon text-base mr-2 text-red-500"><i class="fas fa-times-circle"></i></span>
-                                      KYC
-                                    </span>
-                                    <a className="btn btn-default w-24">KYC Now</a>
-                                  </p>
-                                  <p className="flex justify-between items-center my-2  step-wrapper">
-                                    <span>
-                                      <span className="icon text-base mr-2 text-red-500"><i class="fas fa-check-circle"></i></span>
-                                      Have a minimum <strong>5 RIR</strong>
-                                    </span>
-                                    <a className="btn btn-default w-24">Earn RIR</a>
-                                  </p>
-                                  <p className="my-1  step-wrapper">
-                                    <span>
-                                      <span className="icon text-base mr-2 text-red-500"><i class="fas fa-times-circle"></i></span>
-                                      Requirement 4
-                                    </span>
-                                  </p>
-                                  <p className="flex justify-between items-center my-2 step-wrapper">
-                                    <span>
-                                      <span className="icon text-base mr-2 text-green-500"><i class="fas fa-check-circle"></i></span>
-                                      Requirement 5
-                                    </span>
+                                  <p className="mt-auto">
+                                    <a href="#" className="link">Read full research</a> <span class="icon text-2xs ml-0.5"><i class="fa-duotone fa-external-link"></i></span>
                                   </p>
                                 </div>
+
                               </div>
                               {/* end of project-process */}
 

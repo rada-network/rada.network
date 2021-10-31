@@ -78,21 +78,17 @@ Generic Styles
 Generic Card 
 ----------------------------------------------*/
 .card-default {
-  @apply p-4 lg:p-6;
-  @apply bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-800 rounded-lg;
+  @apply flex-col p-0;
+  @apply bg-white border-0 dark:bg-gray-800 rounded-lg shadow;
   @apply text-sm;
-  /* Clean Inline Modules' padding */
-  .section,
-  .tabbar-sub {
-    @apply px-0;
-  }
 }
 
-.card-default .box-header {
-  @apply mb-4;
-  h3 {
-    @apply text-base font-medium;
-  }
+.card-default .card-header {
+  @apply p-4 lg:px-6 lg:py-4 text-base font-medium border-b border-gray-200 dark:border-gray-700; 
+}
+
+.card-default .card-body {
+  @apply p-4 lg:p-6 flex-shrink-0 flex-grow;
 }
 
 

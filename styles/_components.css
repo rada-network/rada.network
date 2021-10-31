@@ -7,7 +7,7 @@ Various UI Components Style
 -------------------------------*/
 .steps {
   @apply flex;
-  @apply bg-gray-100 dark:bg-primary-900 divide-x divide-gray-400 divide-opacity-20;
+  @apply bg-gray-100 dark:bg-gray-900 divide-x divide-gray-400 divide-opacity-20;
 }
 
 .step {
@@ -15,12 +15,11 @@ Various UI Components Style
 }
 
 .step-body {
-  @apply px-6 py-4 flex w-full items-center text-sm font-medium;
+  @apply px-6 py-4 flex w-full items-center text-sm font-medium cursor-default;
 }
 
 /* Current */
 .step--current {
-
 }
 
 /* 
@@ -28,12 +27,12 @@ Step Icons
 */
 .step-body--icon {
   @apply flex flex-shrink-0 w-8 h-8 items-center justify-center rounded-full;
-  @apply border-2 border-gray-300 group-hover:border-gray-400;
+  @apply border-2 border-gray-500 group-hover:border-gray-400;
 }
 
 /* Current */
 .step--current .step-body--icon {
-  @apply border-primary-600 rounded-full;
+  @apply border-primary-600 dark:border-primary-500 rounded-full;
 }
 
 /* Completed */
@@ -49,12 +48,12 @@ Step Icons Text
 
 /* Current */
 .step--current .step-body--icon--text {
-  @apply text-primary-600 dark:text-white;
+  @apply text-primary-600 dark:text-primary-500;
 }
 
 /* Completed */
 .step--completed .step-body--icon--text {
-  @apply text-primary-600 dark:text-primary-400;
+  @apply text-primary-600 dark:text-primary-500;
 }
 
 /* 
@@ -73,7 +72,7 @@ Step Title
 
 /* Current */
 .step--current .step-body--title {
-  @apply font-medium text-primary-600 dark:text-white;
+  @apply font-medium text-primary-600 dark:text-primary-500;
 }
 
 /* Completed */
@@ -86,17 +85,15 @@ Step Title
 Step Text
 */
 .step-body--text {
-  @apply text-xs mt-0.5 opacity-50;
+  @apply hidden md:block text-xs mt-0.5 opacity-50;
 }
 
 /* Current */
 .step--current .step-body--text {
-  @apply opacity-50;
 }
 
 /* Completed */
 .step--completed .step-body--text {
-  @apply border-primary-600 rounded-full;
 }
 
 /* .step--arrow {
