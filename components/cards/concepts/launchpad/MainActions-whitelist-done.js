@@ -39,11 +39,12 @@ const MainActions = ({}) => {
                   </div>
                   <div class="flex-1 md:mt-0">
                     <div class="relative pl-8 md:pl-0 w-full flex items-center">
-                      <span>Chưa kết nối tài khoản ví</span>
+                      <strong>0xDB33...345f</strong>
+                      <span className="badge badge-coin relative ml-2">ETHEREUM</span>
                     </div>
                   </div>
-                  <div class="text-right -mt-2 md:mt-0 w-1/5">
-                    <button class="btn btn-default w-full">Kết nối</button>
+                  <div class="text-right -mt-2 md:mt-0 w-1/6">
+                    <span class="flex label label--success w-full">Done</span>
                   </div>
                 </div>
 
@@ -56,13 +57,20 @@ const MainActions = ({}) => {
                   </div>
                   <div class="flex-1 md:mt-0">
                     <div class="relative pl-8 md:pl-0 w-full flex items-center">
-                      <span>Chưa hoàn thành KYC</span>
+                      <strong>Đã hoàn thành KYC</strong>
                     </div>
                   </div>
-                  <div class="text-right -mt-2 md:mt-0 w-1/5">
-                    <button class="btn btn-default w-full">KYC</button>
+                  <div class="text-right -mt-2 md:mt-0 w-1/6">
+                    <span class="flex label label--success w-full">Done</span>
                   </div>
                 </div>
+              </div>
+
+              <div className="mt-8 box box--info global-padding-sm">
+                <p class="text-center font-normal">
+                  Bạn đã hoàn thành việc đăng ký whitelist.<br />
+                  Vui lòng chờ email thông báo kết quả từ RADA nhé!
+                </p>
               </div>
 
             </div>
@@ -73,7 +81,7 @@ const MainActions = ({}) => {
 
       </div>
 
-      <div className="card-default project-main-actions no-padding overflow-hidden mt-8">
+      <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
 
         <div className="card-header items-center">
           <h3>Winners (1000)</h3>

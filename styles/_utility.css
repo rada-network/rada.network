@@ -21,7 +21,9 @@
   @apply text-2xs font-medium uppercase tracking-wide 
 }
 
-.label--active {
+.label--active,
+.label--success,
+.label--green {
   @apply bg-green-500 text-white;
 }
 
@@ -113,9 +115,22 @@
 .box-header {
   @apply p-4 lg:px-6 lg:py-4 text-base font-medium border-b border-gray-200 dark:border-gray-700; 
 }
+
 .box-body {
   @apply p-4 lg:p-6 flex-shrink-0 flex-grow;
 }
+
+/* 
+Box Colors
+*/
+.box--success {
+  @apply bg-green-200 dark:bg-green-200 text-gray-800;
+}
+
+.box--info {
+  @apply bg-primary-200 dark:bg-primary-200 text-gray-800;
+}
+
 
 
 /* Video embed 

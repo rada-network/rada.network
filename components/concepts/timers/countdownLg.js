@@ -12,24 +12,24 @@ const CountDownLg = ({}) => {
             <div class="text-2xl mr-1 opacity-50 font-light">in</div>
 
             <div class="w-24 mx-1 p-2 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:text-opacity-90 rounded-lg">
-              <div class="font-mono leading-none" x-text="days">00</div>
+              <div class="font-mono leading-none" x-text="days">6</div>
               <div class="font-mono uppercase text-xs leading-none">Days</div>
             </div>
 
             <div class="w-24 mx-1 p-2 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:text-opacity-90 rounded-lg">
-              <div class="font-mono leading-none" x-text="hours">00</div>
+              <div class="font-mono leading-none" x-text="hours">14</div>
               <div class="font-mono uppercase text-xs leading-none">Hours</div>
             </div>
 
             <div class="w-24 mx-1 p-2 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:text-opacity-90 rounded-lg">
-              <div class="font-mono leading-none" x-text="minutes">00</div>
+              <div class="font-mono leading-none" x-text="minutes">20</div>
               <div class="font-mono uppercase text-xs leading-none">Minutes</div>
             </div>
 
             <div class="text-2xl mx-1 opacity-50 font-light">and</div>
 
             <div class="w-24 mx-1 p-2 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:text-opacity-90 rounded-lg">
-              <div class="font-mono leading-none" x-text="seconds">00</div>
+              <div class="font-mono leading-none" x-text="seconds">45</div>
               <div class="font-mono uppercase text-xs leading-none">Seconds</div>
             </div>
 

@@ -306,6 +306,10 @@ Layout Uitlites
   @apply p-6 lg:p-10;
 }
 
+.global-padding-sm {
+  @apply p-2 lg:p-4;
+}
+
 .no-padding {
   @apply !p-0;
 }

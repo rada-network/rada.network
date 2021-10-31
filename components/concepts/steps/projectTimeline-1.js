@@ -1,4 +1,4 @@
-const ProjectTimeline1 = ({}) => {
+const ProjectTimeline = ({}) => {
   return (
     <>
     {/* Steps Progress */}
@@ -53,4 +53,4 @@ const ProjectTimeline1 = ({}) => {
   )
 }
 
-export default ProjectTimeline1
+export default ProjectTimeline

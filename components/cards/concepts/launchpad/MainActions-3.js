@@ -29,40 +29,10 @@ const MainActions = ({}) => {
                 </p>
               </div>
 
-              <div className="list-group">
-                <div class="list-group--item md:!pb-4">
-                  <div class="list-group--item--title w-full md:w-1/4">
-                    <div class="list-group--item--media">
-                      <span class="icon"><i class="fa-solid fa-wallet"></i></span>
-                    </div>
-                    <label for="blockchain-wallet" class="text-color-desc">Wallet</label>
-                  </div>
-                  <div class="flex-1 md:mt-0">
-                    <div class="relative pl-8 md:pl-0 w-full flex items-center">
-                      <span>Chưa kết nối tài khoản ví</span>
-                    </div>
-                  </div>
-                  <div class="text-right -mt-2 md:mt-0 w-1/5">
-                    <button class="btn btn-default w-full">Kết nối</button>
-                  </div>
-                </div>
-
-                <div class="list-group--item md:!pb-4">
-                  <div class="list-group--item--title w-full md:w-1/4">
-                    <div class="list-group--item--media">
-                      <span class="icon"><i class="fas fa-user-check"></i></span>
-                    </div>
-                    <label for="blockchain-wallet" class="text-color-desc">KYC</label>
-                  </div>
-                  <div class="flex-1 md:mt-0">
-                    <div class="relative pl-8 md:pl-0 w-full flex items-center">
-                      <span>Chưa hoàn thành KYC</span>
-                    </div>
-                  </div>
-                  <div class="text-right -mt-2 md:mt-0 w-1/5">
-                    <button class="btn btn-default w-full">KYC</button>
-                  </div>
-                </div>
+              <div className="mt-8 box box--success global-padding-sm">
+                <p class="text-center font-normal text-lg">
+                  Xin chúc mừng! Bạn đã là người chiến thắng trong vòng whitelist.
+                </p>
               </div>
 
             </div>
@@ -73,7 +43,7 @@ const MainActions = ({}) => {
 
       </div>
 
-      <div className="card-default project-main-actions no-padding overflow-hidden mt-8">
+      <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
 
         <div className="card-header items-center">
           <h3>Winners (1000)</h3>

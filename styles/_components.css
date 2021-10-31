@@ -7,7 +7,7 @@ Various UI Components Style
 -------------------------------*/
 .steps {
   @apply flex;
-  @apply bg-gray-100 dark:bg-gray-900 divide-x divide-gray-400 divide-opacity-20;
+  @apply bg-gray-100 dark:bg-primary-900 divide-x divide-gray-400 divide-opacity-20;
 }
 
 .step {
@@ -32,7 +32,7 @@ Step Icons
 
 /* Current */
 .step--current .step-body--icon {
-  @apply border-primary-600 dark:border-primary-500 rounded-full;
+  @apply border-primary-600 dark:border-white rounded-full;
 }
 
 /* Completed */
@@ -48,12 +48,12 @@ Step Icons Text
 
 /* Current */
 .step--current .step-body--icon--text {
-  @apply text-primary-600 dark:text-primary-500;
+  @apply text-primary-600 dark:text-white;
 }
 
 /* Completed */
 .step--completed .step-body--icon--text {
-  @apply text-primary-600 dark:text-primary-500;
+  @apply text-primary-600 dark:text-white;
 }
 
 /* 
@@ -72,7 +72,7 @@ Step Title
 
 /* Current */
 .step--current .step-body--title {
-  @apply font-medium text-primary-600 dark:text-primary-500;
+  @apply font-medium text-primary-600 dark:text-white;
 }
 
 /* Completed */
