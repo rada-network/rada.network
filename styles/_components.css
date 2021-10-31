@@ -6,7 +6,8 @@ Various UI Components Style
 /* Steps
 -------------------------------*/
 .steps {
-  @apply flex flex-row lg:flex-col;
+  @apply flex;
+  @apply bg-gray-100;
 }
 
 .step {
@@ -14,12 +15,12 @@ Various UI Components Style
 }
 
 .step-body {
-  @apply px-4 py-4 flex w-full items-center text-sm font-medium;
+  @apply px-6 py-4 flex w-full items-center text-sm font-medium;
 }
 
 /* Current */
 .step--current {
-  
+
 }
 
 /* 
@@ -40,7 +41,6 @@ Step Icons
   @apply border-primary-600 rounded-full;
 }
 
-
 /* 
 Step Icons Text
 */
@@ -59,19 +59,44 @@ Step Icons Text
 }
 
 /* 
+Step Content
+*/
+.step-body--content {
+  @apply flex flex-col ml-4;
+}
+
+/* 
 Step Title 
 */
 .step-body--title {
-  @apply ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900;
+  @apply text-base font-medium text-gray-500 group-hover:text-gray-900;
 }
 
 /* Current */
 .step--current .step-body--title {
-  @apply ml-4 text-sm font-medium text-primary-600 dark:text-primary-400;
+  @apply font-medium text-primary-600 dark:text-primary-400;
 }
 
 /* Completed */
 .step--completed .step-body--title {
+  @apply border-primary-600 rounded-full;
+}
+
+
+/* 
+Step Text
+*/
+.step-body--text {
+  @apply text-xs text-gray-500 group-hover:text-gray-900;
+}
+
+/* Current */
+.step--current .step-body--text {
+  @apply font-medium text-primary-600 dark:text-primary-400;
+}
+
+/* Completed */
+.step--completed .step-body--text {
   @apply border-primary-600 rounded-full;
 }
 

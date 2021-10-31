@@ -289,6 +289,20 @@ Layout Uitlites
   @apply w-full max-w-screen-lg mx-auto;
 }
 
+/* Paddings */
+.global-padding {
+  @apply p-4 lg:p-6;
+}
+
+.no-padding {
+  @apply p-0;
+}
+
+.no-padding-t {
+  @apply pt-0;
+}
+
+
 
 /* 
 Main Layout when scrolling
@@ -562,14 +576,6 @@ Perfect Scrollbar
 /* 
 Uitilities 
 */
-.no-padding {
-  @apply p-0;
-}
-
-.no-padding-t {
-  @apply pt-0;
-}
-
 .hidden {
   display: none;
 }

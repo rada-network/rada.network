@@ -11,7 +11,12 @@ const ProjectTimeline1 = ({}) => {
             <span className="step-body--icon">
               <span className="step-body--icon--text">01</span>
             </span>
-            <span className="step-body--title">Overview</span>
+            <span className="step-body--content">
+              <span className="step-body--title">Whitelist</span>
+              <span className="step-body--text">
+                Apply for whitelist
+              </span>
+            </span>
           </a>
         </li>
 
@@ -21,7 +26,10 @@ const ProjectTimeline1 = ({}) => {
             <span className="step-body--icon">
               <span className="step-body--icon--text">02</span>
             </span>
-            <span className="step-body--title">Application</span>
+            <span className="step-body--content">
+              <span className="step-body--title">Swap</span>
+              <span className="step-body--text">Start buying tokens</span>
+            </span>
           </a>
         </li>
 
@@ -32,7 +40,10 @@ const ProjectTimeline1 = ({}) => {
               <span className="step-body--icon">
                 <span className="step-body--icon--text">03</span>
               </span>
-              <span className="step-body--title">Preview</span>
+              <span className="step-body--content">
+                <span className="step-body--title">Claim</span>
+                <span className="step-body--text">Claim your tokens</span>
+              </span>
             </span>
           </a>
         </li>
