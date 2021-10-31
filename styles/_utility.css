@@ -123,17 +123,3 @@
   }
 }
 
-
-/* Steps
--------------------------------*/
-.steps {
-  @apply border border-gray-200 dark:border-gray-700 rounded-md divide-y divide-gray-200 dark:divide-gray-700 md:flex md:divide-y-0;
-}
-
-.step {
-  @apply relative md:flex-1 md:flex;
-}
-
-.step--arrow {
-  @apply hidden md:block absolute top-0 right-2 h-full w-6;
-}

@@ -1,4 +1,5 @@
 import RadaSvg from "../../../svg/rada";
+
 const TokenMeta = function ({ }) {
   return (
     <div className="flex w-full">
