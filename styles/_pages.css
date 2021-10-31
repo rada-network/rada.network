@@ -300,6 +300,7 @@ CTAs
 /*
 Media
 */
+.page-media,
 .post-media {
   @apply w-full max-h-56 lg:max-h-72 overflow-hidden lg:rounded-lg mt-4;
 }
@@ -310,6 +311,10 @@ Media
 
 .post-detail-media .post-media {
   @apply -mx-4 md:-mx-6 lg:mx-auto w-auto mt-0 mb-8 max-h-full;
+}
+
+.page-media {
+  @apply  max-h-full;
 }
 
 /*

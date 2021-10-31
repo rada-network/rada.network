@@ -18,7 +18,7 @@ const MainActions = ({}) => {
               <ProjectTimeline1 />
             </div>
 
-            <div className="global-padding">
+            <div className="global-padding-lg min-h-full">
 
               <div className="">
                 <CountDownLg />
