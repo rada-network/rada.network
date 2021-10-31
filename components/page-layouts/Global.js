@@ -12,12 +12,12 @@ import { useRef,useEffect } from "react";
 export const Layout =  ({children,meta}) => {
   const ref = useRef()
   useEffect(() => {
-    ref.current.setAttribute("style",`background-image: url("https://source.unsplash.com/random/1600x900")`)
+    ref.current.setAttribute("style",`background-image: url("https://source.unsplash.com/user/nnth/likes/1600x900")`)
   },[])
   const handleChangeBg = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    ref.current.setAttribute("style",`background-image: url("https://source.unsplash.com/random/1600x900?time=${(new Date()).getTime()}")`)
+    ref.current.setAttribute("style",`background-image: url("https://source.unsplash.com/user/nnth/likes/1600x900?time=${(new Date()).getTime()}")`)
   }
 
   const handleRemoveBg = (e) => {
