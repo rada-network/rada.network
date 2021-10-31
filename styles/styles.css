@@ -23,6 +23,7 @@ Layout
   .body-decor {
     @apply fixed inset-0 w-full h-full -z-1;
     @apply filter brightness-50;
+    background-image: url("https://source.unsplash.com/user/nnth/likes/1600x900");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
