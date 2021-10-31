@@ -47,11 +47,17 @@ export const CardProject = ({title, img, status, raise, tokenLogo, countdown, to
         
           <li className="list-pair mt-auto mb-0">
             <span className="list-key">
-              Raised
+              Raise
             </span>
             <span className="ml-auto list-value font-semibold">
               {raise}
             </span>
+          </li>
+          <li className="list-pair">
+            <span className="list-key">
+              Token price
+            </span>
+            <span className="list-value ml-auto">0.1 USDT <strong className="text-gray-500 font-normal">(0.001 RIR)</strong> </span>
           </li>
           <li className="list-pair">
             <span className="list-key">
@@ -63,8 +69,8 @@ export const CardProject = ({title, img, status, raise, tokenLogo, countdown, to
             </span>
           </li>
         </ul>
-        <div className="progress-bar mt-3 bg-gray-300 w-full h-3 rounded-lg">
-            <div className="progress-bar--percentage h-3 bg-green-600 rounded-lg" style={{width: `${progressPercentage}`}}></div>
+        <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
+            <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-5 bg-green-600 rounded-full" style={{width: `${progressPercentage}`}}>{progressPercentage}</div>
         </div>
       </div>
       {/* End of card--body */}

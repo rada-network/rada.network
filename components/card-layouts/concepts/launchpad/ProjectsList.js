@@ -12,13 +12,11 @@ export const ProjectsList = ({title, extraClass}) => {
 
   return (
     <div className="page page-full page-projects-list scrollbar">
-      <div className="w-limiter-lg">
+      <div className="">
         <div className="">
-
           <div className="section-header ml-2">
             <h2 className="p-2 font-semibold">Open Projects</h2>
           </div>
-
           <div className="projects--wrapper">
 
             <CardProject
@@ -53,9 +51,9 @@ export const ProjectsList = ({title, extraClass}) => {
             
           </div>
         </div>
-
-        <div className="mt-6">
-          
+        <div className="border-t border-gray-200 mx-4 mt-2">
+        </div>
+        <div className="mt-4">
           <div className="section-header ml-2">
             <h2 className="p-2 font-semibold">Closed Projects</h2>
           </div>

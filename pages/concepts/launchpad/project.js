@@ -4,6 +4,7 @@ import { Navbar } from "../../../components/Navbar";
 import TokenInfo from "../../../components/token/TokenInfo";
 import { ProjectsList } from "../../../components/card-layouts/concepts/launchpad/ProjectsList";
 import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
+import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
 
 // Cards Concepts
 import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
@@ -62,43 +63,49 @@ const Layout = observer((props) => {
         </Screen>
 
         <div className={`pane-center`}>
-
           <div className="pane-center--main">
-
-            <div className="page page-full page-project-details scrollbar">
+            <div className="page page-full page-project-details scrollbar !pt-0">
               <div className="w-limiter-lg">
+                <div className="mx-6 relative">
+                  <div class="tabbar-sub page-subtabs !px-0 !bg-transparent">
+                    <div class="tabbar--main">
+                      <a href="#" class="tab-item !py-4 tab-item--active ">IDO</a>
+                      <a href="#" class="tab-item !py-4">Overview</a>
+                      <a href="#" class="tab-item !py-4">Airdrop</a>
+                    </div>
+                    <div class="page-back flex-shrink-0 !right-0">
+                      <a title="Back" class="btn"><span class="icon"><i class="fa-solid fa-chevron-left md:hidden"></i><i class="fa-solid fa-times hidden md:!block"></i></span><span class="btn--text sr-only">Quay lại</span></a>
+                    </div>
+                  </div> 
+                </div>
 
                 <div className="section">
                   
-                  <div className="section-header">
+                  <div className="section-header mb-4">
                     
-                    <div className="post-title">
-                      <h1 className="post-title--text">
-                        <a
-                          href="projects"
-                          className="inline-flex text-md mr-2 opacity-70 hover:opacity-100 items-center mb-4 rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800 "
-                        >
+                    <div className="post-title lg:flex w-full">
+                      <h1 className="post-title--text mb-2">
+                        Moniwar</h1>
+                      <div className="post-header--meta py-2 flex ml-auto text-gray-600 dark:text-gray-400">
+                        <div className="label private">Private</div>
+                        <div className="flex items-center ml-4 text-sm ">
                           <span className="w-4 h-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                              <title>arrow-left</title>
-                              <path
-                                fill="currentColor"
-                                d="M22.548,10.561H5.437a.251.251,0,0,1-.165-.438l8.637-7.6a1.44,1.44,0,0,0-1.9-2.162L.828,10.2a2.4,2.4,0,0,0,0,3.6l11.179,9.837a1.44,1.44,0,0,0,1.9-2.161l-8.637-7.6a.251.251,0,0,1,.165-.438H22.548a1.44,1.44,0,0,0,0-2.879Z"
-                              />
-                            </svg>
+                            <UsdtSvg />
                           </span>
-                        </a>
-                        Project Title</h1>
-                      <div className="text-sm mt-4">
-                        Nullam quis risus eget urna mollis ornare vel eu leo.  
-                      </div>
-                      <div className="text-sm mt-1">
-                        Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris 
+                          <span className="ml-1">USDT</span>
+                        </div>
+                        <div className="flex items-center ml-4 text-sm">
+                          <span className="w-4 h-4">
+                            <BscSvg />
+                          </span>
+                          <span className="ml-1">Biance Smart Chain</span>
+                        </div>
                       </div>
                     </div>
-                    <div className="ml-auto mt-4">
-                      <div className="label private">Private</div>
-                    </div>
+                  
+                  </div>
+                  <div className="video-container rounded-lg">
+                    <iframe src="https://www.youtube.com/embed/aTksaWSW65s" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                   </div>
 
                   <div className="section-body">
@@ -109,8 +116,8 @@ const Layout = observer((props) => {
                         <div className="box-header">
                           <h3>Information</h3>
                         </div>
-                        <div className="box-body">
-                        <ul className="mb-0 mt-auto pt-2 border-t border-gray-200 dark:border-gray-900">   
+                        <div className="box-body flex flex-col">
+                          <ul className="mb-0 mt-0 flex-shrink-0 flex-grow">   
                             <li className="list-pair mb-2">
                               <span className="list-key">
                                 Raise
@@ -131,10 +138,7 @@ const Layout = observer((props) => {
                               <span className="list-key">
                                 Token Price
                               </span>
-                              <span className="flex flex-col ml-auto list-value font-semibold">
-                                <span>0.001 RIR </span>
-                                <span>0.1 USDT </span>
-                              </span>
+                              <span className="ml-auto font-semibold">0.1 USDT </span>
                             </li>
                             <li className="list-pair mb-2">
                               <span className="list-key">
@@ -146,8 +150,8 @@ const Layout = observer((props) => {
                               </span>
                             </li>
                           </ul>
-                          <div className="progress-bar mt-5 bg-gray-300 dark:bg-gray-700 w-full h-3 rounded-lg">
-                              <div className="progress-bar--percentage h-3 bg-green-600 rounded-lg" style={{width: "70%"}}></div>
+                          <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
+                            <div className="text-2xs font-semibold  flex px-2 text-white items-center progress-bar--percentage h-5 bg-green-600 rounded-full" style={{width: `72%`}}>72%</div>
                           </div>
                         </div>
                       </div>
@@ -158,33 +162,33 @@ const Layout = observer((props) => {
                           <h3>Requirements</h3>
                         </div>
                         <div className="box-body">
-                          <p className="flex justify-between items-center my-2">
+                          <p className="flex justify-between items-center my-2 step-wrapper">
                             <span>
                               <span className="icon text-base mr-2 text-green-500"><i class="fas fa-check-circle"></i></span>
                               Connect your Wallet
                             </span>
                           </p>
-                          <p className="flex justify-between items-center my-2">
+                          <p className="flex justify-between items-center my-2  step-wrapper">
                             <span>
                               <span className="icon text-base mr-2 text-red-500"><i class="fas fa-times-circle"></i></span>
                               KYC
                             </span>
                             <a className="btn btn-default w-24">KYC Now</a>
                           </p>
-                          <p className="flex justify-between items-center my-2">
+                          <p className="flex justify-between items-center my-2  step-wrapper">
                             <span>
                               <span className="icon text-base mr-2 text-red-500"><i class="fas fa-check-circle"></i></span>
                               Have a minimum <strong>5 RIR</strong>
                             </span>
                             <a className="btn btn-default w-24">Earn RIR</a>
                           </p>
-                          <p className="my-1">
+                          <p className="my-1  step-wrapper">
                             <span>
                               <span className="icon text-base mr-2 text-red-500"><i class="fas fa-times-circle"></i></span>
                               Requirement 4
                             </span>
                           </p>
-                          <p className="flex justify-between items-center my-2">
+                          <p className="flex justify-between items-center my-2 step-wrapper">
                             <span>
                               <span className="icon text-base mr-2 text-green-500"><i class="fas fa-check-circle"></i></span>
                               Requirement 5
@@ -270,7 +274,6 @@ const Layout = observer((props) => {
                     </div>
                     {/* END: Main Action Card */}
 
-                    <div className="mt-4"><TokenInfo /></div>
                   </div>          
                 </div>
               </div>
