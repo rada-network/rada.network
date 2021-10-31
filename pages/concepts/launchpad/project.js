@@ -8,7 +8,7 @@ import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
 
 // Cards Concepts
 import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
-// import MainActions from "../../../components/cards/concepts/launchpad/MainActions";
+import MainActions from "../../../components/cards/concepts/launchpad/MainActions-1";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";
@@ -200,77 +200,10 @@ const Layout = observer((props) => {
 
                     </div>
 
-                    {/* <div className="project-sale-info mb-2.5 mt-5 ml-2.5 mr-5 w-full md:w-2/3 p-5 box">
-                      Sale info
-                    </div> */}
 
                     {/* Main Action Card */}
                     <div className="grid grid-cols-1 mt-4">
-                      {/* <MainActions /> */}
-                    </div>
-                    {/* END: Main Action Card */}
-
-
-                    {/* Main Action Card */}
-                    <div className="card--wrapper mt-4">
-                      <div className="card--header">
-                        <h4 className="mb-2">Invest in this project in 5 minutes following these simple steps</h4>
-                      </div>
-                      <div className="card--body">
-                        <div className="step--wrapper">
-                          <div className="step--header flex">
-                            <h3>Amount of RIR you want to invest</h3>  
-                          </div>           
-                          <div className="step--content">
-                            <form>
-                              <label htmlFor="rir-amount" className="flex inline-field--wrapper relative items-stretch">
-                                <div className="w-12 flex items-center bg-gray-100 border border-gray-200 rounded-l dark:border-gray-700 dark:bg-gray-800">
-                                  <span className="flex w-5 h-5 m-auto opacity-60">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.14 23.04"><path d="M11.07,22.84c-2.83,0-8.39-3.2-9.81-5.66s-1.41-8.87,0-11.32S8.24.2,11.07.2s8.39,3.21,9.8,5.66,1.42,8.87,0,11.32S13.9,22.84,11.07,22.84Z" fill="#374050" stroke="#9ca2af" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.4" fill-rule="evenodd"/><path d="M6.72,11.51a10.4,10.4,0,0,1,.1-1.58c.07-.38.25-.35.39-.27l1.41.92a1.14,1.14,0,0,1,.47.93v0a1.13,1.13,0,0,1-.47.93l-1.41.92c-.14.08-.32.1-.39-.27a10.4,10.4,0,0,1-.1-1.58h0Z" fill="#9ca2af" fill-rule="evenodd"/><path d="M15.41,11.51a9.26,9.26,0,0,0-.11-1.58c-.06-.38-.25-.35-.39-.27l-1.4.92a1.14,1.14,0,0,0-.47.93v0a1.13,1.13,0,0,0,.47.93l1.4.92c.14.08.33.1.39-.27a9.26,9.26,0,0,0,.11-1.58h0Z" fill="#9ca2af" fill-rule="evenodd"/><path d="M8.9,7.75a10.4,10.4,0,0,1,1.42-.7c.36-.13.43,0,.43.2l-.1,1.68a1.13,1.13,0,0,1-.57.87h0a1.13,1.13,0,0,1-1,.06l-1.5-.76c-.14-.07-.25-.22,0-.47a10.45,10.45,0,0,1,1.32-.88h0Z" fill="#9ca2af" fill-rule="evenodd"/><path d="M13.24,15.28a9.77,9.77,0,0,0,1.32-.88c.29-.25.18-.4,0-.47l-1.5-.76a1.13,1.13,0,0,0-1,.06h0a1.15,1.15,0,0,0-.57.87l-.09,1.67c0,.16.07.34.42.2a9.46,9.46,0,0,0,1.43-.7Z" fill="#9ca2af" fill-rule="evenodd"/><path d="M13.23,7.75a10.52,10.52,0,0,0-1.43-.7c-.35-.13-.43,0-.42.2l.1,1.68A1.12,1.12,0,0,0,12,9.8h0a1.12,1.12,0,0,0,1,.06l1.5-.76c.13-.07.25-.22,0-.47a10.45,10.45,0,0,0-1.32-.88h0Z" fill="#9ca2af" fill-rule="evenodd"/><path d="M8.88,15.28a10.45,10.45,0,0,1-1.32-.88c-.29-.25-.18-.4,0-.47L9,13.17a1.12,1.12,0,0,1,1,.06h0a1.13,1.13,0,0,1,.56.87l.1,1.68c0,.16-.07.33-.42.2a10.52,10.52,0,0,1-1.43-.7h0Z" fill="#9ca2af" fill-rule="evenodd"/><path d="M11.07,3.36A1.56,1.56,0,1,1,9.51,4.92,1.57,1.57,0,0,1,11.07,3.36Z" fill="#fff" fill-rule="evenodd"/><path d="M11.07,16.56a1.56,1.56,0,1,1-1.56,1.56A1.56,1.56,0,0,1,11.07,16.56Z" fill="#fff" fill-rule="evenodd"/><path d="M18.13,7.44A1.55,1.55,0,1,1,16,6.87,1.55,1.55,0,0,1,18.13,7.44Z" fill="#fff" fill-rule="evenodd"/><path d="M6.7,14a1.55,1.55,0,1,1-2.12-.57A1.55,1.55,0,0,1,6.7,14Z" fill="#fff" fill-rule="evenodd"/><path d="M4,7.44a1.55,1.55,0,1,1,.57,2.13A1.55,1.55,0,0,1,4,7.44Z" fill="#fff" fill-rule="evenodd"/><path d="M15.44,14A1.55,1.55,0,1,1,16,16.17,1.55,1.55,0,0,1,15.44,14Z" fill="#fff" fill-rule="evenodd"/></svg>
-                                  </span>
-                                </div>
-                                <input className="inline--field border-l-none pr-16" id="rir-amount" type="text" />
-                                <div className="absolute h-6 flex right-2 top-2">
-                                  <button className="mr-1 leading-0 w-6 center bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-600">
-                                    +
-                                  </button>
-                                  <button className="w-6 leading-0 center bg-gray-200 dark:bg-gray-800">
-                                    -
-                                  </button>
-                                </div>
-                              </label>
-                            </form>
-                          </div>
-                        </div>
-                        {/* End: Step 1 */}
-
-                        {/* <div className="sep"></div>
-                        <div className="step--wrapper">
-                          <div className="step--header flex">
-                          <span className="step--indicator">2</span>
-                            <h3>Your wallet</h3>
-                          </div>
-                          <div className="step--content">
-                            <form>                          
-                              <label htmlFor="wallet" className="inline--label">
-                                  Your [network_name] wallet address
-                              </label>
-                              <input id="wallet" className="inline--field" type="text" />                
-                              <div className="opacity-70 rounded text-sm p-2 mt-2 form-message text-gray-900 form-message--notice bg-green-400">
-                                [token_name] runs on [network_name]. Please make sure that you enter the correct [network_name] wallet address.
-                              </div>
-                            </form>
-                          </div>
-                        </div> */}
-                        {/* End: Step 3 */}
-
-                        
-                      </div>
-                      {/* Card body */}
-
-                      <div className="card--footer p-3 lg:p-5  rounded-b-lg">
-                        <button className="btn btn-primary py-2 px-3">Submit</button>
-                      </div>
+                      <MainActions />
                     </div>
                     {/* END: Main Action Card */}
 
