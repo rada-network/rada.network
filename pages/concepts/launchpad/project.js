@@ -7,7 +7,7 @@ import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
 
 // Cards Concepts
 import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
-import MainActions from "./MainActions";
+import MainActions from "../../../components/cards/concepts/launchpad/MainActions-1";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";

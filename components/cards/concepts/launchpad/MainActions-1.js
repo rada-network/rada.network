@@ -1,7 +1,7 @@
 const MainActions = ({}) => {
   return (
     <>
-      <div className="card project-main-actions">
+      <div className="card-default project-main-actions">
 
         <div className="card-header text-center sr-only">
           <h3>Public Sale</h3>
