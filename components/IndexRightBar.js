@@ -108,8 +108,8 @@ export const IndexRightBar = observer(({ intro }) => {
                   }}
                 >
                   <span className="icon">
-                    <i className="fa-solid fa-chevron-left md:hidden"></i>
-                    <i className="fa-solid fa-times hidden md:!block"></i>
+                    <i className="fa-solid fa-arrow-left lg:hidden"></i>
+                    <i className="fa-solid fa-times hidden lg:!block"></i>
                   </span>
                   <span className="btn--text sr-only">{t("back")}</span>
                 </a>

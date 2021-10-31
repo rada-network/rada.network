@@ -8,7 +8,7 @@ import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
 
 // Cards Concepts
 import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
-import MainActions from "../../../components/cards/concepts/launchpad/MainActions";
+// import MainActions from "../../../components/cards/concepts/launchpad/MainActions";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";
@@ -86,15 +86,15 @@ const Layout = observer((props) => {
                     <div className="post-title lg:flex w-full">
                       <h1 className="post-title--text mb-2">
                         Moniwar</h1>
-                      <div className="post-header--meta py-2 flex ml-auto text-gray-600 dark:text-gray-400">
+                      <div className="post-header--meta py-2 flex ml-auto text-gray-600 dark:text-gray-300">
                         <div className="label private">Private</div>
-                        <div className="flex items-center ml-4 text-sm ">
+                        <div className="flex items-center ml-2 text-sm ">
                           <span className="w-4 h-4">
                             <UsdtSvg />
                           </span>
                           <span className="ml-1">USDT</span>
                         </div>
-                        <div className="flex items-center ml-4 text-sm">
+                        <div className="flex items-center ml-2 text-sm">
                           <span className="w-4 h-4">
                             <BscSvg />
                           </span>
@@ -117,7 +117,7 @@ const Layout = observer((props) => {
                           <h3>Information</h3>
                         </div>
                         <div className="box-body flex flex-col">
-                          <ul className="mb-0 mt-0 flex-shrink-0 flex-grow">   
+                          <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">   
                             <li className="list-pair mb-2">
                               <span className="list-key">
                                 Raise
@@ -150,7 +150,7 @@ const Layout = observer((props) => {
                               </span>
                             </li>
                           </ul>
-                          <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
+                          <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
                             <div className="text-2xs font-semibold  flex px-2 text-white items-center progress-bar--percentage h-5 bg-green-600 rounded-full" style={{width: `72%`}}>72%</div>
                           </div>
                         </div>
@@ -206,7 +206,7 @@ const Layout = observer((props) => {
 
                     {/* Main Action Card */}
                     <div className="grid grid-cols-1 mt-4">
-                      <MainActions />
+                      {/* <MainActions /> */}
                     </div>
                     {/* END: Main Action Card */}
 

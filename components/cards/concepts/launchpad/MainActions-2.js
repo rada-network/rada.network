@@ -1,13 +1,13 @@
 const MainActions = ({}) => {
   return (
     <>
-      <div className="box project-main-actions">
+      <div className="card-default project-main-actions">
 
-        <div className="box-header text-center sr-only">
+        <div className="card-header text-center sr-only">
           <h3>Public Sale</h3>
         </div>
 
-        <div className="box-body">
+        <div className="card-body">
 
           {/* Steps Progress */}
           <nav aria-label="Progress">

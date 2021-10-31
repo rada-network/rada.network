@@ -87,7 +87,7 @@ Page Projects
 .page-projects-list,
 .page-project-details {
   &.page-full {
-    @apply bg-gray-50 dark:bg-gray-900;
+    @apply bg-gray-100 dark:bg-gray-900;
   }
 }
 
