@@ -17,7 +17,8 @@ export const ProjectsList = ({title, extraClass}) => {
           <div className="section-header ml-2">
             <h2 className="p-2 font-semibold">Open Projects</h2>
           </div>
-          <div className="projects--wrapper">
+          <div className="projects--wrapper single">
+            {/* add class "single" if there's only 1 live project*/}
 
             <CardProject
               title="Moniwar" 

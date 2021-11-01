@@ -1,9 +1,41 @@
 
 .projects--wrapper{
-  @apply p-3 grid grid-cols-1 gap-x-4 gap-y-2 md:grid-cols-2 md:gap-y-4 md:p-4;
+  @apply p-3 grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-2 md:gap-y-6 md:p-4;
+}
+.projects--wrapper .card-project {
+  @apply overflow-hidden p-4 border rounded-lg border-gray-200 dark:border-gray-800;
 }
 .project-thumb {
-  @apply rounded;
+  @apply rounded-lg;
+}
+.project-content--meta {
+  @apply mt-2;
+}
+.projects--wrapper.single .project-content--meta {
+  @apply mt-0;
+}
+.projects--wrapper.single {
+  @apply md:grid-cols-1;
+}
+.card-project .list-pair {
+  @apply mb-1;
+}
+.projects--wrapper.single .card--body {
+  @apply flex;
+}
+.projects--wrapper .project-content--meta {
+  @apply flex flex-col;
+}
+.projects--wrapper .project-content--meta > ul {
+  @apply flex-grow flex-shrink-0;
+
+}
+.projects--wrapper.single .project-content {
+  @apply flex w-full;
+
+}
+.projects--wrapper.single  .project-content--meta {
+  @apply pl-4 flex-shrink-0 flex-grow w-1/2;
 }
 .project-desc{
   @apply text-sm my-2;
