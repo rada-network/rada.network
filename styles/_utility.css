@@ -139,6 +139,10 @@ Box Colors
   @apply border-b border-gray-200 dark:border-gray-800; 
 }
 
+.box--transparent {
+  @apply bg-transparent dark:bg-transparent border-transparent dark:border-transparent;
+}
+
 
 /* Video embed 
 --------------------------------*/

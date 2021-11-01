@@ -24,9 +24,11 @@ const MainActions = ({}) => {
 
               <div className="grid gap-8 lg:grid-cols-2">
 
-                <div className="global-padding">
+                <div className="box box--transparent">
 
-                  <ul class="mb-4 mt-auto flex-shrink-0 flex-grow">
+                  <div className="box-header !px-0">Your Allocation</div>
+
+                  <ul class="mt-4 flex-shrink-0 flex-grow">
                     <li class="list-pair mb-2">
                       <span class="list-key">Max Allocation</span>
                       <span class="ml-auto list-value font-semibold">
