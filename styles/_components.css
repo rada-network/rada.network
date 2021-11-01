@@ -7,7 +7,7 @@ Various UI Components Style
 -------------------------------*/
 .steps {
   @apply flex;
-  @apply bg-gray-100 dark:bg-primary-900 divide-x divide-gray-400 divide-opacity-20 lg:divide-x-0;
+  @apply bg-gray-100 bg-gradient-to-r dark:bg-primary-900 dark:from-primary-900 dark:to-primary-900 divide-x divide-gray-400 divide-opacity-20 lg:divide-x-0;
 }
 
 .step {
