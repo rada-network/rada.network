@@ -15,8 +15,8 @@ const MainActions = ({}) => {
               <ProjectTimeline />
             </div>
 
-            <div className="global-padding-lg !px-4 min-h-full w-full mx-auto">
-              <div className="mb-8">
+            <div className="global-padding-lg !px-6 min-h-full w-full mx-auto">
+              <div className="mb-8 sr-only">
                 <h3 className="text-3xl text-center font-normal">
                   <span className="text-color-title">Swap Tokens</span>
                 </h3>
@@ -60,7 +60,8 @@ const MainActions = ({}) => {
 
                 </div>
 
-                <div className="box box--gray global-padding">
+                <div className="box box--gray">
+                  <div className="box-header">Swap Token</div>
                   <SwapTokens />
                 </div>
 

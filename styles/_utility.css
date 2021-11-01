@@ -135,6 +135,10 @@ Box Colors
   @apply bg-gray-100 dark:bg-gray-900 border-gray-100 dark:border-gray-900;
 }
 
+.box--gray .box-header {
+  @apply border-b border-gray-200 dark:border-gray-800; 
+}
+
 
 /* Video embed 
 --------------------------------*/

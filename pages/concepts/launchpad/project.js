@@ -158,22 +158,6 @@ const Layout = observer((props) => {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                              <div className="card card-default project-process">
-                                <div className="card-header">
-                                  <h3>Moniwar's Info</h3>
-                                </div>
-                                <div className="card-body">
-                                  <p className="">
-                                    Moniwar là một tựa game blockchain lấy cảm hứng từ những câu chuyện sử thi thần thoại của Hy Lạp cổ đại, với những hình tượng nhân vật vô cùng hấp dẫn. Trò chơi thuộc thể loại Puzzle với cơ chế PvP cùng lối chơi đơn giản, ai cũng có thể chơi được.
-                                  </p>
-                                  <p className="mt-auto">
-                                    <a href="#" className="link">Read full research</a> <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span>
-                                  </p>
-                                </div>
-
-                              </div>
-                              {/* end of project-process */}
-
                               <div className="card card-default project-brief">
                                 <div className="card-header">
                                   <h3>Launchpad Overview</h3>
@@ -219,8 +203,22 @@ const Layout = observer((props) => {
                               </div>
                               {/* end of project-brief */}
 
-                            </div>
+                              <div className="card card-default project-process">
+                                <div className="card-header">
+                                  <h3>Moniwar's Info</h3>
+                                </div>
+                                <div className="card-body">
+                                  <p className="">
+                                    Moniwar là một tựa game blockchain lấy cảm hứng từ những câu chuyện sử thi thần thoại của Hy Lạp cổ đại, với những hình tượng nhân vật vô cùng hấp dẫn. Trò chơi thuộc thể loại Puzzle với cơ chế PvP cùng lối chơi đơn giản, ai cũng có thể chơi được.
+                                  </p>
+                                  <p className="mt-auto">
+                                    <a href="#" className="link">Read full research</a> <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span>
+                                  </p>
+                                </div>
 
+                              </div>
+                              {/* end of project-process */}
+                            </div>
 
                             {/* Main Action Card */}
                             <div className="grid grid-cols-1 mt-4">
