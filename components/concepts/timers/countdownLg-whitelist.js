@@ -7,24 +7,24 @@ const CountDownLg = ({}) => {
 
             <div className="text-2xl mr-1 opacity-50 font-light">in</div>
 
-            <div className="w-24 mx-1 p-2 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:text-opacity-90 rounded-lg">
+            <div className="w-24 mx-1 p-2 bg-white text-gray-700 dark:bg-gray-800 dark:text-white dark:text-opacity-90 rounded-lg">
               <div className="font-mono leading-none" x-text="days">6</div>
               <div className="font-mono uppercase text-xs leading-none">Days</div>
             </div>
 
-            <div className="w-24 mx-1 p-2 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:text-opacity-90 rounded-lg">
+            <div className="w-24 mx-1 p-2 bg-white text-gray-700 dark:bg-gray-800 dark:text-white dark:text-opacity-90 rounded-lg">
               <div className="font-mono leading-none" x-text="hours">14</div>
               <div className="font-mono uppercase text-xs leading-none">Hours</div>
             </div>
 
-            <div className="w-24 mx-1 p-2 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:text-opacity-90 rounded-lg">
+            <div className="w-24 mx-1 p-2 bg-white text-gray-700 dark:bg-gray-800 dark:text-white dark:text-opacity-90 rounded-lg">
               <div className="font-mono leading-none" x-text="minutes">20</div>
               <div className="font-mono uppercase text-xs leading-none">Minutes</div>
             </div>
 
-            <div className="text-2xl mx-1 opacity-50 font-light">and</div>
+            <div className="text-2xl mx-1 opacity-50 font-light">:</div>
 
-            <div className="w-24 mx-1 p-2 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:text-opacity-90 rounded-lg">
+            <div className="w-24 mx-1 p-2 bg-white text-gray-700 dark:bg-gray-800 dark:text-white dark:text-opacity-90 rounded-lg">
               <div className="font-mono leading-none" x-text="seconds">45</div>
               <div className="font-mono uppercase text-xs leading-none">Seconds</div>
             </div>

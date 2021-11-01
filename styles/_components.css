@@ -7,7 +7,7 @@ Various UI Components Style
 -------------------------------*/
 .steps {
   @apply flex;
-  @apply bg-gray-100 dark:bg-primary-900 divide-x divide-gray-400 divide-opacity-20;
+  @apply bg-gray-100 dark:bg-primary-900 divide-x divide-gray-400 divide-opacity-20 lg:divide-x-0;
 }
 
 .step {
@@ -27,7 +27,7 @@ Step Icons
 */
 .step-body--icon {
   @apply flex flex-shrink-0 w-8 h-8 items-center justify-center rounded-full;
-  @apply border-2 border-gray-500 group-hover:border-gray-400;
+  @apply border-2 border-gray-400;
 }
 
 /* Current */
