@@ -22,7 +22,7 @@ const MainActions = ({}) => {
 
               <div className="mb-8">
                 <h3 className="text-3xl text-center font-normal">
-                  <span className="text-color-title">Moniwar's Whitelist</span>
+                  <span className="text-color-title">You failed to joint Whitelist</span>
                 </h3>
               </div>
 
@@ -30,7 +30,7 @@ const MainActions = ({}) => {
                 <span className="inline-block icon text-4xl">
                   <i className="fad fa-times-circle"></i>
                 </span>
-                <p className="font-normal mt-2">
+                <p className="font-normal mt-4">
                   Ngã ở đâu, gấp đôi ở đó! Chúc bạn may mắn lần sau!
                 </p>
               </div>
