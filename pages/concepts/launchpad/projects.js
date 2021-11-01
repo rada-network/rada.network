@@ -59,7 +59,7 @@ const Layout = observer((props) => {
               <div className="pane-content">
                 <div className="pane-content--sec pane-content-active !w-full">
 
-                  <div class="pane-content--sec--top !block">
+                  <div className="pane-content--sec--top !block">
 
                   </div>
 

@@ -8,7 +8,7 @@ import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
 
 // Cards Concepts
 import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
-import MainActions from "../../../components/cards/concepts/launchpad/MainActions-2";
+import MainActions from "../../../components/cards/concepts/launchpad/MainActions-swap-countdown";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";

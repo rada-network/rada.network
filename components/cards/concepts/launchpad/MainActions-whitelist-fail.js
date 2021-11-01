@@ -1,5 +1,5 @@
 import ProjectTimeline from "../../../concepts/steps/projectTimeline-1";
-import CountDownLg from "../../../concepts/timers/countdownLg";
+import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
 
 const MainActions = ({}) => {
   return (
@@ -27,11 +27,11 @@ const MainActions = ({}) => {
               </div>
 
               <div className="mt-8 box box--fail global-padding-sm text-center">
-                <span className="inline-block icon text-4xl text-red-500">
-                  <i class="fad fa-times-circle"></i>
+                <span className="inline-block icon text-4xl">
+                  <i className="fad fa-times-circle"></i>
                 </span>
                 <p className="font-normal mt-2">
-                  Ngã ở đâu, gấp đôi ở đó! Chúc bạn may mắn lần sau nhé!
+                  Ngã ở đâu, gấp đôi ở đó! Chúc bạn may mắn lần sau!
                 </p>
               </div>
 

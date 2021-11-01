@@ -1,5 +1,5 @@
-import ProjectTimeline from "../../../concepts/steps/projectTimeline-1";
-import CountDownLg from "../../../concepts/timers/countdownLg";
+import ProjectTimeline from "../../../concepts/steps/projectTimeline-2";
+import CountDownLg from "../../../concepts/timers/countdownLg-swap";
 
 const MainActions = ({}) => {
   return (
@@ -20,19 +20,21 @@ const MainActions = ({}) => {
 
             <div className="global-padding-lg !px-4 min-h-full max-w-xl w-full mx-auto">
 
-              <div className="mb-8">
-                <h3 class="text-3xl text-center font-normal">
-                  <span class="text-color-title">Moniwar's Whitelist</span>
-                </h3>
-                <p class="text-center mt-2 font-normal">
-                  Complete all the requirements below to joint the pool.
+              <div className="mb-8 box box--success global-padding-sm">
+                <p className="text-center font-normal">
+                  Xin chúc mừng! Bạn đã là người chiến thắng trong vòng whitelist.<br />
+                  Hãy chờ tới ngày swap token nhé!
                 </p>
               </div>
 
-              <div className="mt-8 box box--success global-padding-sm">
-                <p class="text-center font-normal text-lg">
-                  Xin chúc mừng! Bạn đã là người chiến thắng trong vòng whitelist.
-                </p>
+              <div className="mb-8">
+                <h3 className="text-3xl text-center font-normal">
+                  <span className="text-color-title">Swap Tokens</span>
+                </h3>
+              </div>
+
+              <div className="">
+                <CountDownLg />
               </div>
 
             </div>
@@ -47,12 +49,12 @@ const MainActions = ({}) => {
 
         <div className="card-header items-center">
           <h3>Winners (1000)</h3>
-          <div class="search-wrapper">
-            <div class="form-search rounded-full">
-              <span class="icon form-search--icon">
-                <i class="fa fa-search"></i>
+          <div className="search-wrapper">
+            <div className="form-search rounded-full">
+              <span className="icon form-search--icon">
+                <i className="fa fa-search"></i>
               </span>
-              <input type="text" value="" class="form-search--input" placeholder="Search for winner" />
+              <input type="text" value="" className="form-search--input" placeholder="Search for winner" />
             </div>
           </div>
         </div>
@@ -65,7 +67,7 @@ const MainActions = ({}) => {
 
               <div className="">
 
-                <h3 class="text-3xl text-center mb-8 font-normal"><span class="text-color-title">List of Winners Here</span></h3>
+                <h3 className="text-3xl text-center mb-8 font-normal"><span className="text-color-title">List of Winners Here</span></h3>
 
               </div>
 

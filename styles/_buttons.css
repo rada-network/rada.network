@@ -72,9 +72,15 @@ Default Button
   @apply text-sm;
 }
 
-/* Small Size */
+/*
+Sizes 
+*/
 .btn-default-sm {
   @apply text-xs;
+}
+
+.btn-default-lg {
+  @apply text-base py-2 px-8;
 }
 
 /* Colors */
@@ -111,8 +117,10 @@ Default Button
 }
 
 .btn-purple {
-  @apply !bg-purple-500 hover:!bg-purple-700 !text-white hover:!text-white;
+  @apply bg-purple-600 hover:bg-purple-700 hover:border-transparent text-white hover:text-white;
+  @apply dark:bg-purple-900 dark:hover:bg-purple-800 dark:hover:border-transparent;
 }
+
 
 
 

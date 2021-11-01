@@ -37,7 +37,7 @@ Step Icons
 
 /* Completed */
 .step--completed .step-body--icon {
-  @apply border-primary-600 rounded-full;
+  @apply border-green-400 bg-green-400 dark:border-green-600 dark:bg-green-600 rounded-full;
 }
 
 /* 
@@ -53,7 +53,7 @@ Step Icons Text
 
 /* Completed */
 .step--completed .step-body--icon--text {
-  @apply text-primary-600 dark:text-white;
+  @apply text-white dark:text-white;
 }
 
 /* 

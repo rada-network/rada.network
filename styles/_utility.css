@@ -108,7 +108,7 @@
 /* Boxes 
 -------------------------------*/
 .box {
-  @apply bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-700 rounded-lg;
+  @apply bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-700 rounded-lg;
   @apply text-sm flex flex-col;
 }
 
@@ -131,6 +131,9 @@ Box Colors
   @apply bg-primary-200 dark:bg-primary-200 text-gray-800;
 }
 
+.box--gray {
+  @apply bg-gray-100 dark:bg-gray-900 border-gray-100 dark:border-gray-900;
+}
 
 
 /* Video embed 

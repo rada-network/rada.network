@@ -8,7 +8,7 @@ import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
 
 // Cards Concepts
 import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
-import MainActions from "../../../components/cards/concepts/launchpad/MainActions-3";
+import MainActions from "../../../components/cards/concepts/launchpad/MainActions-swap-open";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";
@@ -64,29 +64,29 @@ const Layout = observer((props) => {
               <div className="pane-content">
                 <div className="pane-content--sec pane-content-active !w-full">
 
-                  <div class="pane-content--sec--top !block">
-                    <div class="flex h-full w-limiter-lg relative lg:px-3">
-                      <div class="page-back flex-shrink-0 lg:!right-14">
-                        <a title="Back" class="btn">
-                        <span class="icon">
-                          <i class="fa-solid fa-chevron-left md:hidden"></i>
-                          <i class="fa-solid fa-times hidden md:!block"></i>
+                  <div className="pane-content--sec--top !block">
+                    <div className="flex h-full w-limiter-lg relative lg:px-3">
+                      <div className="page-back flex-shrink-0 lg:!right-14">
+                        <a title="Back" className="btn">
+                        <span className="icon">
+                          <i className="fa-solid fa-chevron-left md:hidden"></i>
+                          <i className="fa-solid fa-times hidden md:!block"></i>
                         </span>
-                        <span class="btn--text sr-only">Quay lại</span></a>
+                        <span className="btn--text sr-only">Quay lại</span></a>
                       </div>
-                      <div class="tabbar page-tabs">
-                        <div class="tabbar--main">
-                          <a href="#" class="tab-item tab-item--active">Launchpad</a>
-                          <span class="tab-item--divider"></span>
-                          <a href="#overview" class="tab-item ">
-                            <span class="token-symbol mr-2">
-                              <img src="https://media.rada.network/assets/514649e2-bf3c-4836-afbd-2c3ccd50293a?format=webp&amp;width=128" class="h-px-20 w-px-20" alt="Moniwar" />
+                      <div className="tabbar page-tabs">
+                        <div className="tabbar--main">
+                          <a href="#" className="tab-item tab-item--active">Launchpad</a>
+                          <span className="tab-item--divider"></span>
+                          <a href="#overview" className="tab-item ">
+                            <span className="token-symbol mr-2">
+                              <img src="https://media.rada.network/assets/514649e2-bf3c-4836-afbd-2c3ccd50293a?format=webp&amp;width=128" className="h-px-20 w-px-20" alt="Moniwar" />
                             </span>
-                            <span class="tab-item--text !block">MOWA</span>
+                            <span className="tab-item--text !block">MOWA</span>
                           </a>
-                          <a href="#team" class="tab-item ">
-                            <span class="icon"><i class="fa-duotone fa-users"></i></span>
-                            <span class="tab-item--text">Team</span>
+                          <a href="#team" className="tab-item ">
+                            <span className="icon"><i className="fa-duotone fa-users"></i></span>
+                            <span className="tab-item--text">Team</span>
                           </a>
                         </div>
                       </div>
@@ -102,18 +102,18 @@ const Layout = observer((props) => {
                           
                           <div className="section-header mb-4">
                             
-                            <div class="flex flex-wrap justify-between items-center w-full">
-                              <div class="flex flex-0 flex-shrink-0 mb-4 items-center">
-                                <span class="icon flex-shrink-0 mr-2">
-                                  <img src="https://media.rada.network/assets/514649e2-bf3c-4836-afbd-2c3ccd50293a?format=webp&width=128" class="h-px-32 w-px-32" alt="Moniwar" />
+                            <div className="flex flex-wrap justify-between items-center w-full">
+                              <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
+                                <span className="icon flex-shrink-0 mr-2">
+                                  <img src="https://media.rada.network/assets/514649e2-bf3c-4836-afbd-2c3ccd50293a?format=webp&width=128" className="h-px-32 w-px-32" alt="Moniwar" />
                                 </span>
-                                <h1 class="flex items-center">
-                                  <strong class="text-color-title text-xl lg:text-2xl font-semibold">Moniwar</strong>
-                                  <span class="badge badge-coin badge-coin-lg ml-2 -mb-1">MOWA</span>
+                                <h1 className="flex items-center">
+                                  <strong className="text-color-title text-xl lg:text-2xl font-semibold">Moniwar</strong>
+                                  <span className="badge badge-coin badge-coin-lg ml-2 -mb-1">MOWA</span>
                                 </h1>
                               </div>
 
-                              <div class="flex flex-wrap space-x-4 mb-4">
+                              <div className="flex flex-wrap space-x-4 mb-4">
 
                                 <div className="flex items-center text-sm">
                                   <span className="w-5 h-5">
@@ -167,7 +167,7 @@ const Layout = observer((props) => {
                                     Moniwar là một tựa game blockchain lấy cảm hứng từ những câu chuyện sử thi thần thoại của Hy Lạp cổ đại, với những hình tượng nhân vật vô cùng hấp dẫn. Trò chơi thuộc thể loại Puzzle với cơ chế PvP cùng lối chơi đơn giản, ai cũng có thể chơi được.
                                   </p>
                                   <p className="mt-auto">
-                                    <a href="#" className="link">Read full research</a> <span class="icon text-2xs ml-0.5"><i class="fa-duotone fa-external-link"></i></span>
+                                    <a href="#" className="link">Read full research</a> <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span>
                                   </p>
                                 </div>
 

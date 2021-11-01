@@ -3,11 +3,20 @@ Generic Input
 */
 
 .inputbox {
-  @apply focus:ring-primary-500 focus:border-primary-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md;
+  @apply block w-full pl-4 pr-12 rounded-lg;
+  @apply border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:focus:bg-gray-800;
+  @apply focus:ring-primary-500 focus:border-primary-500;
+}
+
+.inputbox-lg {
+  @apply text-base;
+}
+
+.inputbox-numbers {
+  @apply font-mono;
 }
 
 label {
-
 }
 
 /* 

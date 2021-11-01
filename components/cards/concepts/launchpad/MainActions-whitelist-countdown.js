@@ -1,5 +1,5 @@
 import ProjectTimeline from "../../../concepts/steps/projectTimeline-1";
-import CountDownLg from "../../../concepts/timers/countdownLg";
+import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
 
 const MainActions = ({}) => {
   return (
@@ -21,6 +21,9 @@ const MainActions = ({}) => {
             <div className="global-padding-lg min-h-full">
 
               <div className="">
+                <h3 class="text-3xl text-center mb-8 font-normal">
+                  <span className="text-color-title">Moniwar's Whitelist opens</span>
+                </h3>
                 <CountDownLg />
               </div>
 

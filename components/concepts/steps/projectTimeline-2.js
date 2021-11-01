@@ -5,11 +5,11 @@ const ProjectTimeline = ({}) => {
     <nav aria-label="Progress">
       <ol role="list" className="steps">
 
-        <li className="step step--current">
+        <li className="step step--completed">
           {/* Current Step */}
-          <a href="#" className="step-body" aria-current="step">
+          <a href="#" className="step-body">
             <span className="step-body--icon">
-              <span className="step-body--icon--text">01</span>
+              <span className="step-body--icon--text"><i class="fas fa-check"></i></span>
             </span>
             <span className="step-body--content">
               <span className="step-body--title">Whitelist</span>
@@ -20,9 +20,9 @@ const ProjectTimeline = ({}) => {
           </a>
         </li>
 
-        <li className="step">
+        <li className="step step--current">
           {/* Upcoming Step */}
-          <a href="#" className="step-body">
+          <a href="#" className="step-body" aria-current="step">
             <span className="step-body--icon">
               <span className="step-body--icon--text">02</span>
             </span>
