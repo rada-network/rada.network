@@ -8,7 +8,7 @@ import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
 
 // Cards Concepts
 import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
-import MainActions from "../../../components/cards/concepts/launchpad/MainActions-whitelist-countdown";
+import MainActions from "../../../components/cards/concepts/launchpad/MainActions-whitelist-fail";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";
@@ -218,7 +218,9 @@ const Layout = observer((props) => {
 
                               </div>
                               {/* end of project-process */}
+
                             </div>
+
 
                             {/* Main Action Card */}
                             <div className="grid grid-cols-1 mt-4">

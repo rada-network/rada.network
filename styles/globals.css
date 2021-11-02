@@ -16,8 +16,9 @@
 @import '_navbars';
 @import '_menus';
 @import '_cards';
-@import '_widgets';
+/* @import '_widgets'; */
 @import '_contents';
+@import '_components';
 @import '_pages';
 @import '_projects';
 /* @import '_headers'; */

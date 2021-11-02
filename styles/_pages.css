@@ -1,10 +1,10 @@
 /* 
 Pages
---------------------------------------------- */
+*/
 
 /* 
 Page Layout
-*/
+--------------------------------------------- */
 .page {
   @apply w-full h-full relative;
   /* @apply max-w-screen-md m-auto; */
@@ -26,7 +26,7 @@ Page Layout
 .pane-content--sec--top .page-back,
 .page .page-back {
   @apply -ml-2 md:-ml-1 xl:ml-2;
-  @apply xl:absolute xl:right-12 xl:top-2;
+  @apply lg:absolute lg:right-12 lg:top-2;
 }
 
 .page-tabs,
@@ -55,10 +55,10 @@ Page Layout
 
 /* 
 Page Full 
-*/
+--------------------------------------------- */
 .page-full {
   @apply flex justify-center px-2 py-4 lg:py-8;
-  @apply bg-white dark:bg-gray-900;
+  /* @apply bg-white dark:bg-gray-900; */
 
   .page-full--inner {
     @apply flex flex-col w-full h-full max-w-screen-sm;
@@ -71,10 +71,6 @@ Page Full
     @apply pt-4;
   }
 
-  .card + .card {
-    @apply mt-4 md:mt-8;
-  }
-
   .post-content {
     @apply px-2;
   }
@@ -83,18 +79,18 @@ Page Full
 
 /* 
 Page Projects
-*/
+--------------------------------------------- */
 .page-projects-list,
 .page-project-details {
   &.page-full {
-    @apply bg-gray-50 dark:bg-gray-900;
+    /* @apply bg-gray-100 dark:bg-gray-900; */
   }
 }
 
 
 /*
 Empty State - About Page
-*/
+--------------------------------------------- */
 .page-about {
   @apply flex flex-col justify-center h-full relative max-w-sm m-auto;
   @apply text-sm;
@@ -300,6 +296,7 @@ CTAs
 /*
 Media
 */
+.page-media,
 .post-media {
   @apply w-full max-h-56 lg:max-h-72 overflow-hidden lg:rounded-lg mt-4;
 }
@@ -310,6 +307,10 @@ Media
 
 .post-detail-media .post-media {
   @apply -mx-4 md:-mx-6 lg:mx-auto w-auto mt-0 mb-8 max-h-full;
+}
+
+.page-media {
+  @apply  max-h-full;
 }
 
 /*

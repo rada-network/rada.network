@@ -14,7 +14,8 @@ body {
 .post-title--text,
 .post-content h2,
 .post-content h3,
-.post-content h4 {
+.post-content h4,
+.card-header h3 {
   @apply text-gray-800 dark:text-gray-200;
 }
 

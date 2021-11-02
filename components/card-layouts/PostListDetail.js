@@ -215,7 +215,7 @@ export const PostListDetail = observer(
                   setTabCallback={setTabCallback}
                 />
               ) : (
-                <TokenInfo tokenId={tabName} />
+                renderTokenByTabName(tabName)
               )
             ) : (
               ""

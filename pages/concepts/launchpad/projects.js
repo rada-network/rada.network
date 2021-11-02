@@ -7,58 +7,75 @@ import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";
 
-import { useState, useEffect, createRef } from 'react'
 
 import {LanguageSwitch} from "../../../components/LanguageSwitch";
 import Screen from "../../../components/utils/Responsive";
 import { observer } from "mobx-react";
 import { usePageStore } from "../../../lib/usePageStore";
+
+import { useRef,useEffect } from "react";
+import BackgroundWrapper from "../../../components/card-layouts/concepts/launchpad/BackgroundWrapper";
+
 const Layout = observer((props) => {
 
   const {dataStore,detailStore,voteStore} = usePageStore()
   dataStore.type = "projects"
   dataStore.lang = props.lang
   const meta = {}
+
   return (
     <>
       <Head meta={meta} />
 
-      {/* <div className={`body-decor`}>
-    </div>
+      <BackgroundWrapper />
 
-    <div className={`body-decor--text`}>
-      <p className="mb-1">&copy; Photo from Unsplash</p>
-      <div className="flex">
-        <a href="#"><i className="far fa-random"></i> New Photo</a>
-        <a href="#" className="ml-2"><i className="far fa-minus-circle"></i> Remove</a>
-      </div>
-    </div> */}
+      <div className={`main-layout--wrapper`}>
 
-      <div className={`main-layout`}>
-        {/* Mobile / Tablet Navbar */}
-        <Screen upto="md">
-          <div className="pane-bottom">
-            <Navbar dataStore={dataStore} detailStore={detailStore} />
-          </div>
-        </Screen>
+        <div className={`main-layout`}>
+          {/* Mobile / Tablet Navbar */}
+          <Screen upto="md">
+            <div className="pane-bottom">
+              <Navbar dataStore={dataStore} detailStore={detailStore} />
+            </div>
+          </Screen>
 
-        {/* Desktop Navbar */}
-        <Screen from="lg">
-          <div className="pane-left">
-            <Navbar dataStore={dataStore} detailStore={detailStore} />
-            <div className="pane-left--bottom">
-              <Profile />
-              <div className="pane-left--bottom-section">
-                <LanguageSwitch />
-                <ThemeSwitch />
+          {/* Desktop Navbar */}
+          <Screen from="lg">
+            <div className="pane-left">
+              <Navbar dataStore={dataStore} detailStore={detailStore} />
+              <div className="pane-left--bottom">
+                <Profile />
+                <div className="pane-left--bottom-section">
+                  <LanguageSwitch />
+                  <ThemeSwitch />
+                </div>
               </div>
             </div>
-          </div>
-        </Screen>
+          </Screen>
 
-        <div className={`pane-center`}>
-          <div className="pane-center--main">
-             <ProjectsList />              
+          <div className={`pane-center`}>
+            <div className="pane-center--main">
+
+              <div className="pane-content">
+                <div className="pane-content--sec pane-content-active !w-full">
+
+                  <div className="pane-content--sec--top !block">
+
+                  </div>
+
+                  <div className="pane-content--sec--main grid scrollbar">
+
+                    <div className="page page-full page-project-details !pt-0">
+                      <ProjectsList /> 
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
           </div>
         </div>
 

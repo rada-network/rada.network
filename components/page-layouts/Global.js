@@ -10,10 +10,12 @@ import Screen from "../utils/Responsive";
 import { useRef,useEffect } from "react";
 
 export const Layout =  ({children,meta}) => {
+
   const ref = useRef()
   useEffect(() => {
     ref.current.setAttribute("style",`background-image: url("https://source.unsplash.com/user/nnth/likes/1600x900")`)
   },[])
+
   const handleChangeBg = (e) => {
     e.preventDefault()
     e.stopPropagation()
@@ -25,6 +27,7 @@ export const Layout =  ({children,meta}) => {
     e.stopPropagation()
     ref.current.setAttribute("style",`background-image: none`)
   }
+  
   return (
     <>
     <Head meta={meta} />
