@@ -35,7 +35,7 @@ export const Navbar = observer(({}) => {
         {/* Main Nav */}
         <div className={`navbar-main`} >
        
-          <NavItem  href={"concepts/launchpad/projects"} type={"projects"}>
+          <NavItem  href={`/projects/`} type={"projects"}>
             {/* <span className="w-5 h-5 mx-2 flex items-center">
               <LaunchSvg />
             </span> */}
