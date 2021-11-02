@@ -18,7 +18,7 @@ const MainActions = ({}) => {
             <div className="global-padding-lg !px-6 min-h-full w-full mx-auto">
               <div className="mb-8 sr-only">
                 <h3 className="text-3xl text-center font-normal">
-                  <span className="text-color-title">Swap Tokens</span>
+                  <span className="text-color-title">Chuyển đổi Token</span>
                 </h3>
               </div>
 
@@ -26,23 +26,23 @@ const MainActions = ({}) => {
 
                 <div className="box box--transparent">
 
-                  <div className="box-header !px-0">Your Allocation</div>
+                  <div className="box-header !px-0">Quyền mua của bạn</div>
 
                   <ul class="mt-4 flex-shrink-0 flex-grow">
                     <li class="list-pair mb-2">
-                      <span class="list-key">Max Allocation</span>
+                      <span class="list-key">Quyền mua tối đa</span>
                       <span class="ml-auto list-value font-semibold">
                         300 USDT (3 RIR)
                       </span>
                     </li>
                     <li class="list-pair mb-2">
-                      <span class="list-key">Have bought</span>
+                      <span class="list-key">Đã mua</span>
                       <span class="ml-auto list-value font-semibold">
                         100 USDT (1 RIR)
                       </span>
                     </li>
                     <li class="list-pair mb-2">
-                      <span class="list-key">Remaining</span>
+                      <span class="list-key">Còn lại</span>
                       <span class="ml-auto font-semibold">
                         200 USDT (2 RIR)
                       </span>

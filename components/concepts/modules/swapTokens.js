@@ -24,7 +24,7 @@ const SwapTokens = ({}) => {
             <div className="absolute inset-y-0 right-0 flex items-center px-4">
               <label for="currency" className="sr-only">Currency</label>
               <span id="currency" name="currency" className="pr-4">
-                MOWA
+                PRL
               </span>
             </div>
           </div>

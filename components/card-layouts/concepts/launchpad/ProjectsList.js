@@ -21,9 +21,9 @@ export const ProjectsList = ({title, extraClass}) => {
             {/* add class "single" if there's only 1 live project*/}
 
             <CardProject
-              title="Moniwar" 
-              img="https://picsum.photos/600/300?random=1"
-              tokenLogo="./../../token-logos/moniwar.png"
+              title="Parallel" 
+              img="/placeholders/parallel-thumb.jpg"
+              tokenLogo="/placeholders/parallel-token.png"
               raise="45,000 USDT"
               progressToken="72,000"
               target="100,000"
@@ -52,8 +52,7 @@ export const ProjectsList = ({title, extraClass}) => {
             
           </div>
         </div>
-        <div className="border-t border-gray-200 mx-4 mt-2">
-        </div>
+       
         <div className="mt-4">
           <div className="section-header ml-2">
             <h2 className="p-2 font-semibold">Closed Projects</h2>

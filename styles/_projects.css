@@ -3,16 +3,22 @@
   @apply p-3 grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-2 md:gap-y-6 md:p-4;
 }
 .projects--wrapper .card-project {
-  @apply overflow-hidden p-4 border rounded-lg border-gray-200 dark:border-gray-800;
+  @apply p-4 border rounded-lg border-gray-200 dark:bg-gray-800 dark:border-gray-700;
 }
-.project-thumb {
+.project-thumb--img {
   @apply rounded-lg;
+}
+.projects--wrapper.single .project-thumb {
+  @apply w-1/2;
 }
 .project-content--meta {
   @apply mt-2;
 }
 .projects--wrapper.single .project-content--meta {
   @apply mt-0;
+}
+.projects--wrapper.single .project-thumb {
+  @apply pr-4;
 }
 .projects--wrapper.single {
   @apply md:grid-cols-1;

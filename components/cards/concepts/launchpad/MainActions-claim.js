@@ -16,9 +16,9 @@ const MainActions = ({}) => {
               <div className="max-w-md mx-auto">
                 <ul class="mb-4 mt-auto flex-shrink-0 flex-grow">
                   <li class="list-pair mb-2">
-                    <span class="list-key !opacity-100">Ready for claim</span>
-                    <div class="ml-auto list-value font-semibold">6,000 MIWA
-                      <button className="btn-primary py-2 px-4 rounded-md ml-2">Claim now</button>
+                    <span class="list-key !opacity-100">Bạn có thể rút về ví</span>
+                    <div class="ml-auto list-value font-semibold">6,000 PRL
+                      <button className="btn-primary py-2 px-4 rounded-md ml-2">Rút token</button>
                     </div>
                   </li>
                 </ul>
@@ -26,25 +26,25 @@ const MainActions = ({}) => {
                 <div className="box p-4">
                   <div className="flex items-baseline border-b pb-2 border-gray-200">
                     <h4 className="text-md items-baseline font-semibold">
-                      You already claimed
+                      Bạn đã rút
                     </h4>
                     <span className="ml-auto font-semibold">
-                      4800 MIWA
+                      2,500 PRL
                     </span>
                   </div>
                   <ul class="mb-0 mt-auto flex-shrink-0 flex-grow">
                     <li class="list-pair py-2 border-b border-gray-200">
                       <span class="list-key text-semibold !text-gray-800"><span className="text-gray-500 mr-1">on</span>
-                        <date>September 15, 2021</date></span>
+                        <date>15 tháng 9, 2021</date></span>
                       <div class="ml-auto font-semibold list-value">
-                        2,400 MIWA
+                      2,500 PRL
                       </div>
                     </li>
                     <li class="list-pair py-2">
                       <span class="list-key text-semibold !text-gray-800"><span className="text-gray-500 mr-1">on</span>
-                        <date>August 15, 2021</date></span>
+                        <date>15 tháng 9, 2021</date></span>
                       <div class="ml-auto font-semibold list-value">
-                        2,400 MIWA
+                      2,500 PRL
                       </div>
                     </li>
 

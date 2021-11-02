@@ -39,7 +39,9 @@ export const CardProject = ({title, img, status, raise, tokenLogo, countdown, to
           </div>
         </div>
         <div className="project-content">
-          <img className="project-thumb" src={img} alt="{title}" />
+          <div className="project-thumb">
+            <img className="project-thumb--img" src={img} alt="{title}" />
+          </div>
           <div class="project-content--meta">
             <ul className="mb-0 mt-auto">
             <li className="list-pair mt-auto mb-0">

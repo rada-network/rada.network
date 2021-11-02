@@ -22,10 +22,10 @@ const MainActions = ({}) => {
 
               <div className="mb-8">
                 <h3 className="text-3xl text-center font-normal">
-                  <span className="text-color-title">Moniwar's Whitelist</span>
+                  <span className="text-color-title">Paralel's Whitelist</span>
                 </h3>
                 <p className="text-center mt-2 font-normal">
-                  Complete all the requirements below to joint the pool.
+                  Đăng ký để được xét duyệt tham gia dự án
                 </p>
               </div>
 
