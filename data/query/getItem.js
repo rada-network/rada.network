@@ -7,22 +7,6 @@ const itemFeedGql = gql`
             id
             totalComment
             totalVote
-            idea{
-                id
-                title
-                description
-                contentJson
-                imageUri
-                imagesUri
-                ideaType
-                platform{
-                    name
-                    networkName
-                    websiteUri
-                }
-                createdAt
-                keywords
-            }
             tweet{
                 id
                 favoriteCount
@@ -86,6 +70,10 @@ const itemFeedGql = gql`
                 category { 
                     slug
                 }
+                multilang{
+                    video
+                    news
+                }
             }
             video{
                 id
@@ -119,6 +107,10 @@ const itemFeedGql = gql`
                 category { 
                     slug
                 }
+                multilang{
+                    video
+                    news
+                }
             }
             media{
                 id
@@ -133,22 +125,6 @@ const itemByIdGql = gql`
             id
             totalComment
             totalVote
-            idea{
-                id
-                title
-                description
-                contentJson
-                imageUri
-                imagesUri
-                ideaType
-                platform{
-                    name
-                    networkName
-                    websiteUri
-                }
-                createdAt
-                keywords
-            }
             tweet{
                 id
                 favoriteCount
@@ -214,6 +190,10 @@ const itemByIdGql = gql`
                 category { 
                     slug
                 }
+                multilang{
+                    video
+                    news
+                }
             }
             video{
                 id
@@ -245,6 +225,10 @@ const itemByIdGql = gql`
                 is_footnote
                 category { 
                     slug
+                }
+                multilang{
+                    video
+                    news
                 }
             }
             media{
