@@ -67,7 +67,7 @@
     "postcss-extend": "^1.0.5",
     "postcss-nested": "^5.0.5",
     "postcss-nesting": "^7.0.1",
-    "tailwindcss": "^2.1.1"
+    "tailwindcss": "^2.2.4"
   },
   "browserslist": {
     "production": [
