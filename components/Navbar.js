@@ -35,7 +35,7 @@ export const Navbar = observer(({}) => {
         {/* Main Nav */}
         <div className={`navbar-main`} >
        
-          <NavItem  href={`/projects/`} type={"projects"}>
+          <NavItem  href={`/projects/`}>
             {/* <span className="w-5 h-5 mx-2 flex items-center">
               <LaunchSvg />
             </span> */}
@@ -142,11 +142,15 @@ const NavItem = ({className, href, children,type}) => {
     }
     return false
   }
-  return (
+  return type ? (
     <a href={href} className={cls.join(' ')} datatype={type} onDoubleClick={handleDoubleClick}  onClick={(e) => {handleClickNavBar(e)}}>
       <>
         {children}
       </>
     </a>
+  ) : (
+    <Link href={href}>
+      <a className={cls.join(' ')} datatype="link">{children}</a>
+    </Link>
   )
 }
