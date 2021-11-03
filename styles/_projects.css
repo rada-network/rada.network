@@ -1,24 +1,21 @@
 
 .projects--wrapper{
-  @apply p-3 grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-2 md:gap-y-6 md:p-4;
+  @apply md:p-3 grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-3 md:gap-y-6 md:p-4;
 }
 .projects--wrapper .card-project {
-  @apply p-4 border rounded-lg border-gray-200 dark:bg-gray-800 dark:border-gray-700;
+  @apply border rounded-lg  border-gray-200 dark:bg-gray-800 dark:border-gray-900;
 }
 .project-thumb--img {
   @apply rounded-lg;
 }
-.projects--wrapper.single .project-thumb {
-  @apply w-1/2;
+.is-open .project-thumb {
+  @apply w-full md:w-1/2 md:pr-2;
 }
 .project-content--meta {
-  @apply mt-2;
+  @apply md:mt-2;
 }
-.projects--wrapper.single .project-content--meta {
-  @apply mt-0;
-}
-.projects--wrapper.single .project-thumb {
-  @apply pr-4;
+.is-closed .project-content--meta {
+  @apply md:mt-0;
 }
 .projects--wrapper.single {
   @apply md:grid-cols-1;
@@ -26,22 +23,26 @@
 .card-project .list-pair {
   @apply mb-1;
 }
+.card-project.is-open .list-pair {
+  @apply mb-2;
+}
 .projects--wrapper.single .card--body {
   @apply flex;
 }
+
 .projects--wrapper .project-content--meta {
   @apply flex flex-col;
 }
-.projects--wrapper .project-content--meta > ul {
-  @apply flex-grow flex-shrink-0;
 
+.project-content--meta{
+  @apply p-4;
 }
-.projects--wrapper.single .project-content {
-  @apply flex w-full;
+.is-open .project-content {
+  @apply md:flex w-full;
+}
 
-}
 .projects--wrapper.single  .project-content--meta {
-  @apply pl-4 flex-shrink-0 flex-grow w-1/2;
+  @apply flex-shrink-0 flex-grow md:w-1/2;
 }
 .project-desc{
   @apply text-sm my-2;
@@ -80,6 +81,40 @@
   @apply bg-green-500 text-white;
 }
 
-.btn-primary.closed {
-  @apply bg-gray-300 text-gray-400 dark:bg-gray-700 dark:text-gray-500;
+.btn-primary.is-closed {
+  @apply bg-gray-300 text-gray-400 dark:bg-gray-700 dark:text-gray-500 w-full;
+}
+.btn-primary.is-open {
+  @apply md:ml-4 flex-shrink-0 flex-grow mt-4 flex items-center;
+}
+.btn-primary.is-open  {
+  @apply !mt-0;
+}
+.btn-primary.is-open span {
+  @apply mx-auto uppercase;
+}
+.card-project.is-open {
+  @apply p-0;
+}
+.project-title  {
+  @apply md:text-2xl text-base pb-2 md:py-4 text-center;
+  @apply md:pt-2 md:border-b md:dark:border-gray-700 md:border-gray-200 flex items-center;
+}
+.is-closed .project-title {
+  @apply md:py-2 md:text-base md:pt-0 md:mt-0;
+}
+.card-project.is-open .list-pair{
+  @apply md:text-lg;
+}
+.list-pair:first-child{
+  @apply md:mt-2;
+}
+.is-open .project--cta {
+  @apply md:mt-auto md:mb-0 md:flex;
+}
+.is-open .countdown--wrapper {
+  @apply text-center my-4 md:w-1/2 md:my-0;
+}
+.is-open .btn-primary {
+  @apply md:w-1/2;
 }

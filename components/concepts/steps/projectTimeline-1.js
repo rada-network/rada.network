@@ -1,11 +1,11 @@
-const ProjectTimeline = ({}) => {
+const ProjectTimeline = ({step}) => {
   return (
     <>
     {/* Steps Progress */}
     <nav aria-label="Progress">
       <ol role="list" className="steps">
 
-        <li className="step step--current">
+        <li className={`step ${step == "1" ? "step--current" : ""} `}>
           {/* Current Step */}
           <a href="#" className="step-body" aria-current="step">
             <span className="step-body--icon">
@@ -24,7 +24,6 @@ const ProjectTimeline = ({}) => {
             </svg>
           </div>
         </li>
-
         <li className="step">
           {/* Upcoming Step */}
           <a href="#" className="step-body">
@@ -49,10 +48,10 @@ const ProjectTimeline = ({}) => {
             <span className="step-body--icon">
               <span className="step-body--icon--text">03</span>
             </span>
-            <span className="step-body--content">
+            <div className="step-body--content">
               <span className="step-body--title">Claim</span>
               <span className="step-body--text">Claim your tokens</span>
-            </span>
+            </div>
           </a>
         </li>
 

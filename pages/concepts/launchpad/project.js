@@ -23,13 +23,14 @@ import TokenContent from "./TokenContent";
 import TokenBrief from "./TokenBrief";
 import TokenNav from "./TokenNav";
 import BackgroundWrapper from "../../../components/card-layouts/concepts/launchpad/BackgroundWrapper";
-
+let step = 1;
 const Layout = observer((props) => {
 
   const {dataStore,detailStore,voteStore} = usePageStore()
   dataStore.type = "projects"
   dataStore.lang = props.lang
   const meta = {}
+  let step = 1;
   return (
     <>
       <Head meta={meta} />

@@ -1,6 +1,6 @@
-import ProjectTimeline from "../../../concepts/steps/projectTimeline-3";
+import ProjectTimeline from "../../../concepts/steps/projectTimeline";
 import SwapTokens from "../../../concepts/modules/swapTokens";
-
+import Winners from "./Winners";
 const MainActions = ({}) => {
   return (
     <>
@@ -9,7 +9,7 @@ const MainActions = ({}) => {
         <div className="card-body no-padding">
           <div className="flex flex-col">
             <div className="">
-              <ProjectTimeline />
+              <ProjectTimeline step="3" />
             </div>
 
             <div className="global-padding-lg !px-6 min-h-full w-full mx-auto">
@@ -24,7 +24,7 @@ const MainActions = ({}) => {
                 </ul>
 
                 <div className="box p-4">
-                  <div className="flex items-baseline border-b pb-2 border-gray-200">
+                  <div className="flex items-baseline border-b pb-1  border-gray-200 dark:border-gray-800">
                     <h4 className="text-md items-baseline font-semibold">
                       Bạn đã rút
                     </h4>
@@ -33,21 +33,20 @@ const MainActions = ({}) => {
                     </span>
                   </div>
                   <ul class="mb-0 mt-auto flex-shrink-0 flex-grow">
-                    <li class="list-pair py-2 border-b border-gray-200">
-                      <span class="list-key text-semibold !text-gray-800"><span className="text-gray-500 mr-1">on</span>
+                    <li class="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
+                      <span class="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 text-gray-700 mr-1">on</span>
                         <date>15 tháng 9, 2021</date></span>
                       <div class="ml-auto font-semibold list-value">
                       2,500 PRL
                       </div>
                     </li>
-                    <li class="list-pair py-2">
-                      <span class="list-key text-semibold !text-gray-800"><span className="text-gray-500 mr-1">on</span>
-                        <date>15 tháng 9, 2021</date></span>
+                    <li class="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
+                      <span class="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 dark-gray-700 mr-1">on</span>
+                        <date>01 tháng 9, 2021</date></span>
                       <div class="ml-auto font-semibold list-value">
                       2,500 PRL
                       </div>
                     </li>
-
                   </ul>
                 </div>
               </div>
@@ -79,9 +78,7 @@ const MainActions = ({}) => {
           <div className="flex flex-col">
             <div className="global-padding-lg min-h-full">
               <div className="">
-                <h3 className="text-3xl text-center mb-8 font-normal">
-                  <span className="text-color-title">List of Winners Here</span>
-                </h3>
+                <Winners />
               </div>
             </div>
           </div>

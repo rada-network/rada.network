@@ -14,9 +14,6 @@ export const ProjectsList = ({title, extraClass}) => {
     <div className="page page-full page-projects-list scrollbar">
       <div className="">
         <div className="">
-          <div className="section-header ml-2">
-            <h2 className="p-2 font-semibold">Open Projects</h2>
-          </div>
           <div className="projects--wrapper single">
             {/* add class "single" if there's only 1 live project*/}
 
@@ -32,24 +29,8 @@ export const ProjectsList = ({title, extraClass}) => {
               token="MOWA"
               countdown="4 days"
               status="open"
-            />
-
-            <CardProject
-              title="Pegaxy"
-              img="https://picsum.photos/600/300?random=2"
-              tokenLogo="./../../token-logos/pegaxy.png"
-              raise="45,000 USDT"
-              progressToken="95,000"
-              target="100,000"
-              progressPercentage="95%"
-              type="public"
-              token="PGX"
-              countdown="12 hours 44 minutes"
-              status="open"
-            />
-
-           
-            
+              network="Binance Smart Chain"
+            />    
           </div>
         </div>
        
@@ -85,7 +66,18 @@ export const ProjectsList = ({title, extraClass}) => {
               token="PGX"
               status="closed"
             />
-           
+            <CardProject
+              title="Pegaxy"
+              img="https://picsum.photos/600/300?random=3"
+              tokenLogo="./../../token-logos/pegaxy.png"
+              raise="45,000 USDT"
+              progressToken="100,000"
+              target="100,000"
+              progressPercentage="100%"
+              type="public"
+              token="PGX"
+              status="closed"
+            />
 
            
             

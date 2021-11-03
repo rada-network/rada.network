@@ -1,4 +1,4 @@
-import ProjectTimeline from "../../../concepts/steps/projectTimeline-1";
+import ProjectTimeline from "../../../concepts/steps/projectTimeline";
 import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
 
 const MainActions = ({}) => {
@@ -15,7 +15,7 @@ const MainActions = ({}) => {
           <div className="flex flex-col">
 
             <div className="">
-              <ProjectTimeline />
+              <ProjectTimeline step="1" />
             </div>
 
             <div className="global-padding-lg min-h-full">

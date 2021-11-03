@@ -43,7 +43,7 @@ const TokenBrief = function(){
         <div className="media-player">
           <div className="w-full h-full">
             <div className={`aspect-w-16 aspect-h-9`}>
-              <img src="/placeholders/parallel-cover.jpg" />
+              <img className="rounded-lg" src="/placeholders/parallel-cover.jpg" />
             </div>
           </div>
         </div>

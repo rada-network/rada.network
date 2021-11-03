@@ -15,7 +15,6 @@ import { usePageStore } from "../../../lib/usePageStore";
 
 import { useRef,useEffect } from "react";
 import BackgroundWrapper from "../../../components/card-layouts/concepts/launchpad/BackgroundWrapper";
-
 const Layout = observer((props) => {
 
   const {dataStore,detailStore,voteStore} = usePageStore()
@@ -54,7 +53,7 @@ const Layout = observer((props) => {
           </Screen>
 
           <div className={`pane-center`}>
-            <div className="pane-center--main">
+            <div className="pane-center--main glassmorphism">
 
               <div className="pane-content">
                 <div className="pane-content--sec pane-content-active !w-full">
@@ -63,7 +62,7 @@ const Layout = observer((props) => {
 
                   </div>
 
-                  <div className="pane-content--sec--main grid scrollbar">
+                  <div className="pane-content--sec--main grid scrollbar dark:!bg-gray-900 !bg-opacity-70">
 
                     <div className="page page-full page-project-details !pt-0">
                       <ProjectsList /> 

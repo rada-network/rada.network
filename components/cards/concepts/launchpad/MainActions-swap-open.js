@@ -1,6 +1,6 @@
-import ProjectTimeline from "../../../concepts/steps/projectTimeline-2";
+import ProjectTimeline from "../../../concepts/steps/projectTimeline";
 import SwapTokens from "../../../concepts/modules/swapTokens";
-
+import Winners from "./Winners";
 const MainActions = ({}) => {
   return (
     <>
@@ -12,7 +12,7 @@ const MainActions = ({}) => {
         <div className="card-body no-padding">
           <div className="flex flex-col">
             <div className="">
-              <ProjectTimeline />
+              <ProjectTimeline step="2" />
             </div>
 
             <div className="global-padding-lg !px-6 min-h-full w-full mx-auto">
@@ -94,11 +94,8 @@ const MainActions = ({}) => {
         <div className="card-body no-padding">
           <div className="flex flex-col">
             <div className="global-padding-lg min-h-full">
-              <div className="">
-                <h3 className="text-3xl text-center mb-8 font-normal">
-                  <span className="text-color-title">List of Winners Here</span>
-                </h3>
-              </div>
+              
+              <Winners />
             </div>
           </div>
         </div>
