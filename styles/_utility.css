@@ -18,11 +18,12 @@
 /*** labels ***/
 .label {
   @apply px-2 py-1.5 items-center justify-center rounded-full;
-  @apply text-2xs font-medium uppercase tracking-wide;
-  @apply bg-opacity-10;
+  @apply text-2xs font-medium uppercase tracking-wide 
 }
 
-.label--active {
+.label--active,
+.label--success,
+.label--green {
   @apply bg-green-500 text-white;
 }
 
@@ -41,12 +42,12 @@
 /** steps **/
 
 .card--header {
-  @apply px-3 py-2 font-medium lg:px-6 lg:py-4 flex items-start text-gray-600 dark:text-gray-400;
+  @apply px-3 py-2 font-medium lg:px-6 lg:py-3 flex items-start text-gray-600 dark:text-gray-400;
   @apply text-base rounded-t-lg bg-gray-100 dark:bg-gray-900 border-gray-200;
 }
 
 .card--wrapper {
-  @apply rounded-lg border bg-gray-100 dark:bg-gray-900 border-gray-200 overflow-hidden dark:border-gray-800;
+  @apply rounded-lg border bg-gray-100 dark:bg-gray-900 border-gray-200 overflow-hidden dark:border-gray-800 flex flex-col;
 }
 
 .step--header {
@@ -57,7 +58,7 @@
 }
 
 .step--wrapper {
-  @apply p-3 lg:p-5 dark:bg-gray-800 sm:p-3;
+  @apply p-3 lg:p-5 dark:bg-gray-800 sm:p-3 flex flex-col;
 }
 
 .step--content {
@@ -70,7 +71,7 @@
 }
 
 .card--body {
-  @apply text-gray-800 rounded-t-lg bg-white dark:text-gray-400 dark:bg-gray-800 overflow-hidden;
+  @apply text-gray-800 rounded-t-lg bg-white dark:text-gray-400 dark:bg-gray-800 overflow-hidden flex-shrink-0 flex-grow;
 }
 
 .card--footer {
@@ -92,3 +93,136 @@
     padding-bottom:100%;
     background-size:100%;
 } */
+
+.secondary-icon-color {
+    opacity:.6;
+}
+.list-pair {
+  @apply flex text-sm items-baseline;
+}
+.list-key {
+  @apply w-1/2 mt-1 opacity-60;
+}
+
+
+/* Boxes 
+-------------------------------*/
+.box {
+  @apply bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-700 rounded-lg;
+  @apply text-sm flex flex-col;
+}
+
+.box-header {
+  @apply p-4 lg:px-6 lg:py-4 text-base font-medium border-b border-gray-200 dark:border-gray-700; 
+}
+
+.box-body {
+  @apply p-4 lg:p-6 flex-shrink-0 flex-grow;
+}
+
+/* 
+Box Colors
+*/
+.box--success {
+  @apply bg-green-200 dark:bg-green-200 text-gray-800;
+}
+
+.box--info {
+  @apply bg-primary-200 dark:bg-primary-200 text-gray-800;
+}
+
+.box--gray {
+  @apply bg-gray-100 dark:bg-gray-900 border-gray-100 dark:border-gray-900;
+}
+
+.box--gray .box-header {
+  @apply border-b border-gray-200 dark:border-gray-800; 
+}
+
+.box--transparent {
+  @apply bg-transparent dark:bg-transparent border-transparent dark:border-transparent;
+}
+
+
+/* Video embed 
+--------------------------------*/
+.video-container { 
+  @apply relative w-full h-0 overflow-hidden;
+  padding-bottom: 56.25%; 
+  padding-top: 30px; 
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+  @apply absolute w-full h-full top-0 left-0 }
+
+  /* Steps 
+  ------------------------------*/
+  .step-wrapper {
+    
+  }
+
+
+/* Effects
+--------------------------------*/
+
+/* glassmorphism : refefence only. define in actual element
+@screen 2xl {
+  .glassmorphism {
+    @apply bg-opacity-95 dark:bg-opacity-80 backdrop-blur;
+  }
+} */
+
+/* Countdown */
+.countdown--mini {
+  @apply flex border dark:border-gray-700 border-gray-300 rounded-lg sm:w-full;
+}
+.countdown--mini > * {
+}
+.countdown--mini > *:last-child{
+  @apply mr-auto;
+}
+.countdown--mini > *:first-child{
+  @apply ml-auto;
+}
+
+.countdown--mini--body {
+  @apply  p-2 flex flex-col text-center w-14;
+}
+.countdown--mini time{
+  @apply font-mono text-lg;
+}
+.countdown--mini--body span {
+  @apply text-xs opacity-60;
+}
+
+.list-header {
+  @apply bg-gray-200 dark:bg-gray-700 font-semibold;
+}
+
+.winners {
+  @apply max-w-full mx-auto text-sm;
+}
+.winners li {
+  @apply flex opacity-80 border-b border-gray-200 dark:border-gray-700 overflow-hidden;
+}
+.winner--no {
+  @apply w-10 text-right p-2;
+}
+.winner--address {
+  @apply flex-shrink-0 flex-grow text-right p-2 overflow-ellipsis overflow-hidden;
+}
+.pagination {
+  @apply ml-auto mr-0 flex mt-4;
+}
+.pagination li {
+  @apply mx-1 ;
+}
+.pagination li:first-child{
+  @apply ml-auto;
+}
+.pagination li a {
+  @apply text-gray-500 px-2 py-1 border border-gray-200 dark:border-gray-900 rounded-md;
+}
+.pagination li a.current{
+  @apply dark:bg-gray-900 bg-gray-100 text-gray-800 dark:text-gray-100;
+}

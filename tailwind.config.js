@@ -16,8 +16,9 @@ module.exports = {
   theme: {
     // Add Font to Sans Font Array
     fontFamily: {
-      sans: [ '-apple-system', 'BlinkMacSystemFont', '"Inter"', 'ui-sans-serif', 'system-ui', "Helvetica Neue", 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
+      sans: ['-apple-system', 'BlinkMacSystemFont', '"Inter"', 'ui-sans-serif', 'system-ui', "Helvetica Neue", 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
       serif: ['"Literata"', ...defaultTheme.fontFamily.serif],
+      mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
     },
 
     // screens: {
@@ -36,14 +37,24 @@ module.exports = {
 
     extend: {
 
+      //
       // Mapping Colors
       colors: {
         primary: colors.purple,
         secondary: colors.yellow,
         alternative: colors.green,
 
-        'bluegray-50': '#f8fafd',
-        'bluegray-100': '#ebf1f9',
+        // Gray
+        // 'gray-50':  '#F2F6FA',
+        // 'gray-100': '#E4E8EE',
+        // 'gray-200': '#CED4DA',
+        // 'gray-300': '#C4CAD0',
+        // 'gray-400': '#C0C6D0',
+        // 'gray-500': '#505464',
+        // 'gray-600': '#484A50',
+        // 'gray-700': '#383A3E',
+        // 'gray-800': '#282C2E',
+        // 'gray-900': '#1C1E20',
 
         'shadepurple-50': '#fafaff',
         'shadepurple-100': '#eff0fe',

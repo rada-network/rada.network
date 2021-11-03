@@ -316,6 +316,7 @@ Icons Styles
   }
 }
 
+.pane-left .icon-rada svg,
 .dark .icon-rada svg {
   .inline-rec {
     fill: #6B7280;
@@ -660,7 +661,7 @@ Pricing & Market
 /* Post Notice
 --------------------------------- */
 .post-notice {
-  @apply bg-primary-50 dark:bg-gray-800;
+  @apply bg-primary-50 dark:bg-gray-700;
   @apply px-4 py-2 mt-8 -mb-2 rounded-lg text-sm;
 }
 

@@ -94,7 +94,7 @@ export const IndexRightBar = observer(({ intro }) => {
         }
       >
         <div className={`pane-content--sec--top`}>
-          <div className="flex h-full">
+          <div className="flex h-full w-full relative">
             {/* Pageback Here */}
             {dataStore !== undefined &&
             !_.isEmpty(detailStore.data) &&
@@ -108,8 +108,8 @@ export const IndexRightBar = observer(({ intro }) => {
                   }}
                 >
                   <span className="icon">
-                    <i className="fa-solid fa-chevron-left md:hidden"></i>
-                    <i className="fa-solid fa-times hidden md:!block"></i>
+                    <i className="fa-solid fa-arrow-left lg:hidden"></i>
+                    <i className="fa-solid fa-times hidden lg:!block"></i>
                   </span>
                   <span className="btn--text sr-only">{t("back")}</span>
                 </a>

@@ -3,11 +3,20 @@ Generic Input
 */
 
 .inputbox {
-  @apply focus:ring-primary-500 focus:border-primary-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md;
+  @apply block w-full pl-4 pr-12 rounded-lg;
+  @apply border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:focus:bg-gray-800;
+  @apply focus:ring-primary-500 focus:border-primary-500;
+}
+
+.inputbox-lg {
+  @apply text-base;
+}
+
+.inputbox-numbers {
+  @apply font-mono;
 }
 
 label {
-
 }
 
 /* 
@@ -47,13 +56,50 @@ Nav Search
   }
 }
 
+/* 
+Search 
+*/
+.form-search {
+  @apply relative h-full items-center;
+}
+
+.form-search--icon {
+  @apply absolute left-2 top-2;
+  @apply pointer-events-none text-sm w-px-24 text-center flex-shrink-0;
+}
+
+.form-search--icon i {
+  @apply text-gray-900 text-opacity-80;
+  @apply dark:text-white dark:text-opacity-80;
+}
+
+.form-search--input {
+  @apply bg-gray-100 dark:bg-gray-800 border border-gray-400 border-opacity-20 pr-9 py-2 text-sm transition w-full rounded-full;
+  @apply focus:ring-0 focus:border-primary-500;
+  padding-left: calc(24px + 1rem);
+}
+
+.form-search--input::placeholder {
+}
+
+.form-search--close {
+  @apply absolute right-0 top-1.5 w-4 h-4 cursor-pointer opacity-80;
+  &:before {
+    @apply block;
+    font-family: "Font Awesome 6 Pro";
+    content: "\f057";
+    font-weight: bold;
+    line-height: 1;
+  }
+}
+
 
 /* 
 Comment Form 
 */
 .comment-textarea {
   @apply w-full px-4 py-2 text-sm border border-gray-400 border-opacity-20 rounded-md resize-none bg-gray-50 focus:bg-white focus:shadow focus:border-primary-700 focus:outline-none focus:ring-0;
-  @apply dark:bg-gray-900 dark:focus:border-primary-500;
+  @apply dark:bg-gray-700 dark:focus:border-primary-500;
 }
 .inline-field--wrapper{
 }

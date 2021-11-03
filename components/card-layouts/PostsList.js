@@ -108,7 +108,11 @@ export const PostsListWrapper = observer(function ({}){
 
       <div className={`pane-content--main--main scrollbar`} ref={scrollBox1} cls="list-top-away">
 
-        <PostsList  />
+        {dataStore.type === "projects" ? 
+        <PostsListGrid />
+        :
+        <PostsList /> 
+        }
 
         {dataStore.tweets.length == 0 && dataStore.isSearch && !dataStore.loadingButton ? 
         <p className="search-not-found">
@@ -118,10 +122,7 @@ export const PostsListWrapper = observer(function ({}){
         ""
         }
 
-        {dataStore.loadingButton ?
-          <PostsListLoader />
-          :""
-        }
+        {dataStore.loadingButton && <PostsListLoader />}
 
       </div>
     </>
@@ -295,6 +296,54 @@ export const PostsList = observer(({title, extraClass}) => {
         //                    dataStore={dataStore}
         //   />
         // }
+      })
+      }
+    </div>
+  )
+})
+
+
+export const PostsListGrid = observer(({title, extraClass}) => {
+  const {dataStore} = usePageStore()
+  const router = useRouter();
+  
+  // if in item page, render list later
+  
+  return (
+    <div className={`cards-list grid ${extraClass || ''}`}>
+      {dataStore.tweets.map(function(item){
+        let title = null,mediaUri = null,source = null, voteCount=item.totalVote,commentCount=item.totalComment,slug = null
+        if (item.news !== null){
+          item.news.item = {
+            id : item.id,
+            totalVote: item.totalVote,
+            totalComment: item.totalComment,
+          }
+          item.token = item.news.token
+          item.tokens = item.news.tokens
+          item.createdAt = item.news.createdAt
+          source = getSourceFromUri(item.news)
+          title = item.news.title
+          slug = item.news.slug
+          if (item.news.lang === "all"){
+            if (dataStore.lang === "en"){
+              title = item.news.title_en
+              slug = item.news.slug_en
+            }
+          }
+          mediaUri = item.news.thumbnailUri !== "" ? item.news.thumbnailUri : null
+          return (
+              <CardPost key={item.id}
+                        title={title}
+                        mediaUri={mediaUri}
+                        type="fa-duotone fa-newspaper"
+                        source={source}
+                        slug={slug}
+                        commentCount={commentCount}
+                        voteCount={voteCount} item={item}
+              />
+          )
+        }
       })
       }
     </div>

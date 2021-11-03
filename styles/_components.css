@@ -1,0 +1,152 @@
+/* 
+Various UI Components Style
+*/
+
+
+/* Steps
+-------------------------------*/
+.steps {
+  @apply flex;
+  @apply bg-gray-100 bg-gradient-to-r dark:bg-primary-900 dark:from-primary-900 dark:to-primary-900 divide-x divide-gray-400 divide-opacity-20 lg:divide-x-0;
+}
+.steps-compact {
+  @apply rounded-t-lg flex w-full dark:border-t-gray-800 border-b border-b-gray-300 
+  dark:border-l-gray-900 dark:border-r-gray-900  dark:border-b-gray-700 bg-gray-100 dark:bg-gray-900;
+}
+.step-compact {
+  @apply px-4 py-2 md:px-6 md:pt-4 md:pb-6 flex-shrink-0 flex-grow relative;
+}
+.step-compact a {
+  @apply flex;
+}
+.step-compact-body--icon {
+  @apply dark:bg-gray-500 bg-gray-300 w-6 h-6 md:w-8 md:h-8 font-semibold flex items-center text-center rounded-full mr-2 static md:absolute -bottom-4;
+}
+.step-compact-body--icon--text {
+  @apply m-auto text-xs;
+}
+
+.step-compact-body--content {
+}
+.step-compact-body--title {
+  @apply block flex-shrink-0 flex-grow w-full text-sm md:text-lg text-gray-600 dark:text-gray-300 ;
+}
+.step-compact-body--text {
+  @apply flex-shrink-0 flex-grow w-full text-gray-500 text-xs md:text-xs hidden md:block;
+}
+
+
+/* Current state */
+.step-compact.is-current .step-compact-body--icon{
+  @apply bg-yellow-500;
+}
+.step-compact.is-current .step-compact-body--icon .step-compact-body--icon--text {
+  @apply text-white;
+}
+.step-compact.is-current .step-compact-body--title {
+  @apply flex-shrink-0 flex-grow w-full text-gray-800 dark:text-gray-100 ;
+}
+
+
+/* Complete state*/
+.step-compact.is-complete .step-compact-body--icon{
+  @apply bg-green-500;
+}
+.step-compact.is-complete .step-compact-body--icon .step-compact-body--icon--text {
+  @apply text-white;
+}
+.step-compact.is-complete .step-compact-body--title{
+  @apply text-gray-500 dark:text-gray-400;
+
+}
+.step-compact-body--text {
+  @apply flex-shrink-0 flex-grow w-full text-gray-500;
+}
+
+.step-body {
+  @apply px-6 py-4 flex w-full items-center text-sm font-medium cursor-default;
+}
+
+/* Current */
+.step--current {
+}
+.step {
+  @apply flex flex-1 relative;
+}
+/* 
+Step Icons 
+*/
+.step-body--icon {
+  @apply flex flex-shrink-0 w-8 h-8 items-center justify-center rounded-full;
+  @apply border-2 border-gray-400;
+}
+
+/* Current */
+.step--current .step-body--icon {
+  @apply border-primary-600 dark:border-white rounded-full;
+}
+
+/* Completed */
+.step--completed .step-body--icon {
+  @apply border-green-400 bg-green-400 dark:border-green-600 dark:bg-green-600 rounded-full;
+}
+
+/* 
+Step Icons Text
+*/
+.step-body--icon--text {
+}
+
+/* Current */
+.step--current .step-body--icon--text {
+  @apply text-primary-600 dark:text-white;
+}
+
+/* Completed */
+.step--completed .step-body--icon--text {
+  @apply text-white dark:text-white;
+}
+
+/* 
+Step Content
+*/
+.step-body--content {
+  @apply flex flex-col ml-4;
+}
+
+/* 
+Step Title 
+*/
+.step-body--title {
+  @apply text-base font-medium;
+}
+
+/* Current */
+.step--current .step-body--title {
+  @apply font-medium text-primary-600 dark:text-white;
+}
+
+/* Completed */
+.step--completed .step-body--title {
+  @apply border-primary-600 rounded-full;
+}
+
+
+/* 
+Step Text
+*/
+.step-body--text {
+  @apply hidden md:block text-xs mt-0.5 opacity-50;
+}
+
+/* Current */
+.step--current .step-body--text {
+}
+
+/* Completed */
+.step--completed .step-body--text {
+}
+
+/* .step--arrow {
+  @apply hidden md:block absolute top-0 right-2 h-full w-6;
+} */

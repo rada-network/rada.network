@@ -207,12 +207,12 @@ export default function TokenInfoTeam({tokenData, tokenInfo}) {
                     <i class="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
                 </span>
                 <p class="opacity-50 pt-8 pb-2 m-auto" dangerouslySetInnerHTML={{__html:t('no token info',{"name" : `<strong>${tokenData?.name} (${tokenData?.symbol})</strong>`})}} >{}</p>
-                <button className="btn btn-default btn-lg btn-primary">
+                <a target="_blank" rel="nofollow noreferrer" href={`https://www.jotform.com/form/212882028654459`} className="btn btn-default btn-lg btn-primary">
                     <span className="icon">
                     <i class="fa-solid fa-heart"></i>
                     </span>
                     <span className="btn--text">{t("contribute")}</span>
-                </button>
+                </a>
                 </div>
                 }
 

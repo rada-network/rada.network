@@ -1,9 +1,10 @@
 /* 
 Pages
---------------------------------------------- */
+*/
+
 /* 
 Page Layout
-*/
+--------------------------------------------- */
 .page {
   @apply w-full h-full relative;
   /* @apply max-w-screen-md m-auto; */
@@ -25,6 +26,7 @@ Page Layout
 .pane-content--sec--top .page-back,
 .page .page-back {
   @apply -ml-2 md:-ml-1 xl:ml-2;
+  @apply lg:absolute lg:right-12 lg:top-2;
 }
 
 .page-tabs,
@@ -48,13 +50,15 @@ Page Layout
 } */
 
 .page-back + .page-tabs {
-  @apply ml-2
+  @apply ml-2 xl:ml-12;
 }
 
-/* Page Full */
+/* 
+Page Full 
+--------------------------------------------- */
 .page-full {
   @apply flex justify-center px-2 py-4 lg:py-8;
-  @apply bg-white dark:bg-gray-900;
+  /* @apply bg-white dark:bg-gray-900; */
 
   .page-full--inner {
     @apply flex flex-col w-full h-full max-w-screen-sm;
@@ -67,19 +71,26 @@ Page Layout
     @apply pt-4;
   }
 
-  .card + .card {
-    @apply mt-4 md:mt-8;
-  }
-
   .post-content {
     @apply px-2;
   }
 }
 
 
+/* 
+Page Projects
+--------------------------------------------- */
+.page-projects-list,
+.page-project-details {
+  &.page-full {
+    /* @apply bg-gray-100 dark:bg-gray-900; */
+  }
+}
+
+
 /*
 Empty State - About Page
-*/
+--------------------------------------------- */
 .page-about {
   @apply flex flex-col justify-center h-full relative max-w-sm m-auto;
   @apply text-sm;
@@ -87,7 +98,7 @@ Empty State - About Page
 
 .page-about-deco {
   @apply hidden absolute float-right z-0;
-  background-image: url("https://source.unsplash.com/collection/1459961/1600x900");
+  background-image: url("https://source.unsplash.com/random");
 }
 
 @media screen and (min-height: 768px) {
@@ -100,11 +111,11 @@ Empty State - About Page
 }
 
 .page-about p {
-   @apply mb-4 text-gray-400;
+   @apply mb-4 text-gray-500 dark:text-gray-400;
 }
 
 .page-about h3 {
-  @apply font-semibold text-lg mb-4 text-gray-600 dark:text-gray-300;
+  @apply font-semibold text-lg mb-4 text-gray-700 dark:text-gray-300;
 }
 
 .page-about p + h3 {
@@ -153,4 +164,163 @@ Empty State - About Page
 
 .about-links a {
   @apply text-gray-400 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300;
+}
+
+
+/* 
+Sections
+--------------------------------------------- */
+/* 
+Media 
+*/
+.media-player {
+}
+
+
+/* 
+Comments List 
+*/
+.section-comments {
+  @apply border-t border-gray-500 border-opacity-10;
+}
+
+/* 
+Coins 
+*/
+.section-coininfo--general,
+.section-coininfo--team {
+  animation: fadein 600ms linear;
+}
+
+.section-coininfo--general {
+  .btn {
+    @apply mr-2 mb-2;
+  }
+  .btn:last-child {
+    @apply mr-0;
+  }
+}
+
+/* 
+Post Details
+--------------- */
+.post {
+}
+
+.post-header {
+  @apply flex flex-col;
+}
+
+.post-body {}
+
+.post-detail {}
+
+
+.post-detail-news {
+}
+
+/* 
+Title 
+*/
+.post-title {
+  @apply mb-2;
+}
+
+.post-title {
+  .badges-tags {
+    @apply relative mb-2 flex items-start;
+  }
+  .badge-rada {
+    @apply inline-block rounded-full px-2 text-sm;
+  }
+  .badge-coin {
+    @apply ml-2;
+  }
+}
+
+.post-title--text {
+  @apply transition mr-2;
+}
+
+.post-title:hover .post-title--text {
+  /* @apply text-primary-700 dark:text-primary-500; */
+}
+
+.post-title .btn-post-link {
+  @apply relative transition;
+  top: -2px;
+}
+
+.post-title:hover .btn-post-link {
+  @apply text-primary-700 dark:text-primary-500 opacity-100;
+}
+
+.post-detail-social .post-title {
+  @apply line-clamp-2 overflow-ellipsis;
+}
+
+/* 
+Metadata 
+*/
+.post-header .metadata-wrapper {
+  @apply text-sm justify-between items-center;
+}
+
+.post-header .metadata {
+}
+
+.post-header .metadata-source {
+  @apply text-gray-800 dark:text-gray-200;
+}
+
+.post-header .metadata-source .metadata-value {
+  max-width: 160px;
+  @apply whitespace-nowrap md:max-w-none overflow-hidden overflow-ellipsis;
+}
+
+
+/* 
+CTAs 
+*/
+.post-detail .cta-wrapper {
+  @apply flex text-gray-900 dark:text-gray-200;
+}
+
+.post-detail .cta-wrapper .btn {
+  @apply text-sm leading-none relative;
+}
+
+.post-detail .cta-wrapper .btn-post-vote {
+}
+
+/*
+Media
+*/
+.page-media,
+.post-media {
+  @apply w-full max-h-56 lg:max-h-72 overflow-hidden lg:rounded-lg mt-4;
+}
+
+.post-media--img {
+  @apply object-cover w-full h-full;
+}
+
+.post-detail-media .post-media {
+  @apply -mx-4 md:-mx-6 lg:mx-auto w-auto mt-0 mb-8 max-h-full;
+}
+
+.page-media {
+  @apply  max-h-full;
+}
+
+/*
+Content
+*/
+.post-content {
+}
+
+
+/* Post Actions */
+.post-actions {
+  @apply mt-8;
 }
