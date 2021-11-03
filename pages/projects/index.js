@@ -42,7 +42,7 @@ export default function ProjectsIndex({ projects }) {
 }
 
 export async function getStaticProps(context) {
-    const projects = await getProjects()
+    const projects = await getProjects({lang: context.lang})
     console.log('Projects: ', projects)
 
     const props = { projects }

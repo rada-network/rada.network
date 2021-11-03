@@ -26,11 +26,12 @@ export const NewsLoader = (props) => (
 )
 
 export const CardProject = ({project}) => {
+console.log('project: ', project)  
     // const {symbol, title, img, description, tokenLogo, max_allocation, total_allocation, min_allocation, price} = project
-    const {title, img, status, raise, tokenLogo, countdown, token, progressToken, target, progressPercentage, type, symbol} = project
-  
+    const {title, img, status, raise, tokenLogo, countdown, token, progressToken, target, progressPercentage, type, slug} = project
+
     return (
-      <Link href={`/projects/${symbol.toLowerCase()}`}>
+      <Link href={`/projects/${slug.toLowerCase()}`}>
       <a className="card-project">
         <div className="project-header--wrapper flex items-center mb-4">    
             <div className="project-title flex items-center">
@@ -74,7 +75,7 @@ export const CardProject = ({project}) => {
                   </span>
                   <span className="list-value ml-auto">
                     <span className="font-semibold">{progressToken}</span>
-                    <span className="opacity-70">/{target}</span> {token}
+                    <span className="opacity-70">/{target}</span> {token.name}
                   </span>
                 </li>
               </ul>
@@ -93,7 +94,7 @@ export const CardProject = ({project}) => {
                   <div className="opacity-70 text-sm">Ends in</div>
                   <div className="text-md font-semibold ml-auto">{countdown}</div>
                 </div>
-                <Link href={`/projects/${symbol.toLowerCase()}`}>
+                <Link href={`/projects/${slug.toLowerCase()}`}>
                 <a className={`rounded-lg btn-primary block mt-4 p-3 text-center ${status}`}>
                   {status == "closed" ? "Closed" : "Invest"}
                 </a>

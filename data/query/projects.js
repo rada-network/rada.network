@@ -1,49 +1,92 @@
-import {getItemById, getItems} from "./getItem";
+import {gql} from '@apollo/client';
+import getClient from "../client";
 
-const details = {
-    title: '',
-    description: '',
-    thumbnailUri: '',
-    source: '',
-    content: '',
-    keywords: '',
-    createdAt: '',
-    websiteUri: '',
-}
-
-const launch_info = {
-    symbol: 'MAT',
-    name: 'Moniwar',
-    img: "https://picsum.photos/600/300?random=1",
-    tokenLogo: "./../../token-logos/moniwar.png",
-    total: 450,
-    price: 0.1,
-    max_allocation: 1,
-    min_allocation: 0.5,
-    title: 'Moniwar',
-    description: 'Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue.',
-    start_time: '',
-}
-
-// get project information by symbol
-export async function getProject({symbol}) {
-    return {
-        ...launch_info,
-        id: `project-1`,
-        details
+const projectBySlugGql = gql`
+    query ProjectBySlug($slug: String!, $lang: String!) {
+        projectBySlug(slug : $slug,lang : $lang) {
+        id
+        slug
+        thumbnail_uri
+        cover_uri
+        background_uri
+        title
+        open_date
+        cover_embed
+        thumbnail_embed
+        thumbnail_embed
+        launchpad_status
+        token{
+            name
+            logo
+            symbol
+        }
+        platform{
+            name
+            networkName
+        }
+        news{
+            title
+            slug
+            thumbnailUri
+            content
+        }
+        multilang{
+            project
+        }
+        }
     }
+    `
+const projectFeedGql = gql`
+    query ProjectFeed($lang: String!) {
+        projectFeed(lang: $lang) {
+        id
+        slug
+        thumbnail_uri
+        cover_uri
+        background_uri
+        title
+        open_date
+        cover_embed
+        thumbnail_embed
+        thumbnail_embed
+        token{
+            name
+            logo
+            symbol
+        }
+        platform{
+            name
+            networkName
+        }
+        news{
+            title
+            slug
+            thumbnailUri
+        }
+        }
+    }
+    `
+
+export async function getProjects({ lang }) {
+    const client = getClient()
+    const res = await client.query({
+        query: projectFeedGql,
+        variables: {
+            lang: lang || 'en'
+        }
+    })
+    return res.data.projectFeed || []
 }
 
-export async function getProjects() {
-    const projects = []
-    const project_news = await getItems({take: 10,skip: 0, orderBy: {createdAt : "desc"},query: '', type: 'projects', lang: 'en'})
-    project_news.data.itemFeed.forEach((item, i) => {
-        projects.push({
-            ...launch_info, 
-            id: `project-${i+1}`,
-            details: {...item}
-        })
 
+export async function getProject({ slug, lang }) {
+    const client = getClient()
+    const res = await client.query({
+        query: projectBySlugGql,
+        variables: {
+            lang: lang || 'en',
+            slug
+        }
     })
-    return projects
+    return res.data.projectBySlug || {}
 }

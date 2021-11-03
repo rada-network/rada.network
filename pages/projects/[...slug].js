@@ -42,8 +42,8 @@ export default function ProjectPage({ symbol, slug, project }) {
               <div className="pane-content--sec--main grid scrollbar">
                 <div className="page page-full page-project-details !pt-0">
                   <div className="w-limiter-lg">
-                    {page == 'index' && <ProjectLaunchpad />}
-                    {page == 'research' && <ProjectDetails />}
+                    {page == 'index' && <ProjectLaunchpad project={project} />}
+                    {page == 'research' && <ProjectDetails project={project} />}
                   </div>
                 </div>
 
@@ -71,8 +71,9 @@ export async function getStaticProps(context) {
   const props = {
     symbol: context.params.slug[0],
     slug: context.params.slug,
-    project: await getProject({ symbol: context.params.slug[0] })
+    project: await getProject({ slug: context.params.slug[0] })
   }
+console.log('xx: ', props)  
   return {
     props,
     revalidate: 60
