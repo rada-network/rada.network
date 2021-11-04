@@ -24,7 +24,7 @@ export const NewsLoader = (props) => (
     </div>
   </div>
 )
-export const CardProject = ({title, img, status, raise, tokenLogo, countdown, token, progressToken, target, progressPercentage, type, network}) => {
+export const CardProject = ({title, img, status, raise, tokenLogo, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
   
   return (
     <a href="project" className={`card-project is-${status}`}>
@@ -46,24 +46,22 @@ export const CardProject = ({title, img, status, raise, tokenLogo, countdown, to
         </div>
         <div class="project-content--meta">
           
-          <div className="project-title flex items-center">
-            <div className="project-title--token-logo bg-white w-6 h-6 md:w-8 md:h-8 p-0.5 mr-1 rounded-full">
+          <div className="project-title">
+            <div className="project-title--token-logo bg-white w-6 h-6 md:w-10 md:h-10 p-0.5 mr-1 rounded-full">
               <img src={tokenLogo} />
             </div>
-            <div className="project-title--token-name ml-1 font-semibold">
+            <div className="project-title--token-name ">
               {title}
             </div>
+            <div className="project-type">
+              <span className={`label ml-auto ${type}`}>{type}</span>
+            </div>
           </div>
-          
+          <div className="project-desc">
+            {desc}
+          </div>
           <ul className="">
-            <li className="list-pair mt-0">
-              <span className="list-key">
-                Type
-              </span>
-              <div className="ml-auto list-value font-semibold">
-                <span className={`label ml-auto ${type}`}>{type}</span>
-              </div>
-            </li>
+            
             <li className="list-pair mt-auto mb-0">
               <span className="list-key">
                 Raise
@@ -96,9 +94,11 @@ export const CardProject = ({title, img, status, raise, tokenLogo, countdown, to
               </span>
             </li>
           </ul>
+          {status=="open" ? 
           <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
             <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-5 bg-green-600 rounded-full" style={{width: `${progressPercentage}`}}>{progressPercentage}</div>
           </div>
+          : ""}
           <div className="project--cta ">
             <div className={`countdown--wrapper ${status == "closed" ? "hidden" : ""}`}>
               {/* <div className="opacity-70 flex items-center my-2">
@@ -134,10 +134,10 @@ export const CardProject = ({title, img, status, raise, tokenLogo, countdown, to
               
             </div>
 
-            <a href="project" className={`rounded-lg btn-primary block mt-4 p-3 text-center is-${status}`}><span>
+            {status!="upcoming"?<a href="project" className={`rounded-lg btn-primary block mt-4 p-3 text-center is-${status}`}><span>
               {status == "closed" ? "Closed" : "Invest now"}
               </span>
-            </a>
+            </a> : ""}
           </div>
           {/* End of project-cta */}
         </div>

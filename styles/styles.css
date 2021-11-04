@@ -579,7 +579,7 @@ Perfect Scrollbar
   }
 
   .scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 dark:bg-gray-700 bg-opacity-40 transition-all;
+    @apply bg-gray-300 dark:bg-gray-700 bg-opacity-40 transition-all ;
     border-radius: 18px;
   }
 

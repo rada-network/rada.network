@@ -6,17 +6,16 @@
   @apply border rounded-lg  border-gray-200 dark:bg-gray-800 dark:border-gray-900;
 }
 .project-thumb--img {
-  @apply rounded-lg;
+  @apply rounded-lg object-cover;
 }
+
 .is-open .project-thumb {
   @apply w-full md:w-1/2 md:pr-2;
 }
 .project-content--meta {
   @apply md:mt-2;
 }
-.is-closed .project-content--meta {
-  @apply md:mt-0;
-}
+
 .projects--wrapper.single {
   @apply md:grid-cols-1;
 }
@@ -36,6 +35,9 @@
 
 .project-content--meta{
   @apply p-4;
+}
+.projects-grid .project-content--meta{
+  @apply relative -mt-11;
 }
 .is-open .project-content {
   @apply md:flex w-full;
@@ -62,7 +64,7 @@
 .card--header .token-logo {;
   width: 40px;
   height: 40px;
-  @apply block absolute top-0 left-1/2 p-0.5 overflow-hidden  rounded-full border-2 border-white shadow-md;
+  @apply block absolute top-0 left-1/2 p-0.5 overflow-hidden  rounded-full border-2 border-white shadow-lg;
   margin-left:-20px;
   margin-top:-26px;
   background:#fff;
@@ -97,14 +99,29 @@
   @apply p-0;
 }
 .project-title  {
-  @apply md:text-2xl text-base pb-2 md:py-4 text-center;
-  @apply md:pt-2 md:border-b md:dark:border-gray-700 md:border-gray-200 flex items-center;
+  @apply md:text-2xl text-base pb-2 md:py-2;
+  @apply flex flex-col relative;
 }
-.is-closed .project-title {
-  @apply md:py-2 md:text-base md:pt-0 md:mt-0;
+
+.project-type {
+  @apply absolute right-0 bottom-3;
+}
+.projects--wrapper.single .project-title  {
+  @apply md:flex-row md:items-center;
+}
+.projects--wrapper.single .project-title--token-name {
+  @apply md:ml-2;
+}
+.projects-grid .project-title--token-name {
+  @apply mt-2 text-base font-semibold;
+}
+.project-title--token-logo {
+  @apply flex items-center;
+}
+.project-desc {
+  @apply opacity-90;
 }
 .card-project.is-open .list-pair{
-  @apply md:text-lg;
 }
 .list-pair:first-child{
   @apply md:mt-2;

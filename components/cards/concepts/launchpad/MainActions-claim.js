@@ -24,7 +24,7 @@ const MainActions = ({}) => {
                 </ul>
 
                 <div className="box p-4">
-                  <div className="flex items-baseline border-b pb-1  border-gray-200 dark:border-gray-800">
+                  <div className="flex items-baseline border-b pb-2  border-gray-200 dark:border-gray-800">
                     <h4 className="text-md items-baseline font-semibold">
                       Bạn đã rút
                     </h4>

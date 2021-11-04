@@ -57,10 +57,18 @@ const Layout = observer((props) => {
 
               <div className="pane-content">
                 <div className="pane-content--sec pane-content-active !w-full">
-
-                  <div className="pane-content--sec--top !block">
-
+                <div className="pane-content--sec--top !block">
+                  <div className="flex h-full relative lg:px-3">
+                    
+                    <div className="tabbar page-tabs">
+                      <div className="tabbar--main">
+                        <a href="#" className="tab-item tab-item--active">Public</a>
+                        <span className="tab-item--divider"></span>
+                        <a href="#" className="tab-item">Private</a>
+                      </div>
+                    </div>
                   </div>
+                </div>
 
                   <div className="pane-content--sec--main grid scrollbar dark:!bg-gray-900 !bg-opacity-70">
 
