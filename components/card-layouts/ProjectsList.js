@@ -25,7 +25,6 @@ export const ProjectsList = ({ projects }) => {
     list[name].sort((a, b) => a.open_date >= b.open_date ? -1 : 1)
   }
   useEffect(() => {
-    console.log(list, projects)
   }, [])
   return (
     <div className="page page-full page-projects-list scrollbar">
@@ -55,6 +54,8 @@ export const ProjectsList = ({ projects }) => {
             {list.closed.map(project => <CardProject project={project} />)}
           </div>
         </div>
+
+        
       </div>
     </div>
   )

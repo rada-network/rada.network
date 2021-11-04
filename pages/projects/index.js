@@ -1,26 +1,17 @@
-import utils from "../../lib/util";
 import { Layout } from "../../components/page-layouts/Global";
-import { observer } from "mobx-react";
-import { HOME_ITEM_TAKE } from "../../config/paging";
-//import {getItemById, getItems} from "../../data/query/getItem";
-//import { getPage } from "../../data/query/page";
-import React, { useEffect, useRef, useState } from "react";
-import _ from "lodash"
-// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import React, { useRef } from "react";
+ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import store from "store"
-import { usePageStore } from "../../lib/usePageStore";
-import { getTokenById } from "../../data/query/getTokenById";
-//import { ProjectsList } from "../../components/card-layouts/concepts/launchpad/ProjectsList";
 import { ProjectsList } from "../../components/card-layouts/ProjectsList";
 
 import { getProjects } from "../../data/query/projects";
 
 export default function ProjectsIndex({ projects }) {
-    let meta
+    let meta = {}
     /* Dragger to resize main col */
     const mainRef = useRef()
     const containerRef = useRef()
+    meta.title = "Launchpad Projects"
     return (
         <Layout extraClass="page-home" meta={meta}>
             <div className={`pane-content`} ref={containerRef} >
@@ -29,7 +20,7 @@ export default function ProjectsIndex({ projects }) {
 
                     </div>
 
-                    <div className="pane-content--sec--main grid scrollbar">
+                    <div className="pane-content--sec--main grid scrollbar dark:!bg-gray-900 !bg-opacity-70">
                         <div className="page page-full page-project-details !pt-0">
                             <ProjectsList projects={projects} />
                         </div>
@@ -42,10 +33,11 @@ export default function ProjectsIndex({ projects }) {
 }
 
 export async function getStaticProps(context) {
-    const projects = await getProjects({lang: context.lang})
-    console.log('Projects: ', projects)
-
-    const props = { projects }
+    const projects = await getProjects({lang: context.locale})
+    let props = { projects }
+    props = Object.assign(props,{
+        ...await serverSideTranslations(context.locale, ['common', 'navbar','invest']),
+      })
     return {
         props,
         revalidate: 60

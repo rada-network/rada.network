@@ -6,14 +6,9 @@ import Link from "next/link";
 //import {getItemById, getItems} from "../../data/query/getItem";
 //import { getPage } from "../../data/query/page";
 import React, { useEffect, useRef, useState } from "react";
-import _ from "lodash"
-// import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import store from "store"
-import { usePageStore } from "../../lib/usePageStore";
-import { getTokenById } from "../../data/query/getTokenById";
-import TokenMeta from "../../components/cards/concepts/launchpad/TokenMeta";
-import MainActions from "../../components/cards/concepts/launchpad/MainActions";
+
 
 import ProjectLaunchpad from "../../components/project/Launchpad"
 import { getProject } from "../../data/query/projects"
@@ -68,12 +63,14 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
 
-  const props = {
+  let props = {
     symbol: context.params.slug[0],
     slug: context.params.slug,
-    project: await getProject({ slug: context.params.slug[0] })
+    project: await getProject({ slug: context.params.slug[0],lang : context.locale })
   }
-console.log('xx: ', props)  
+  props = Object.assign(props,{
+    ...await serverSideTranslations(context.locale, ['common', 'navbar','invest']),
+  })
   return {
     props,
     revalidate: 60

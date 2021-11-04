@@ -9,7 +9,6 @@ const ProjectLaunchpad = ({project}) => {
     const {dataStore} = usePageStore()
     const { t } = useTranslation("invest")
     useEffect(() => {
-        console.log('d:', project)
     },[])
 
     const {token} = project
@@ -110,7 +109,7 @@ const ProjectLaunchpad = ({project}) => {
                                         {t("Progress")}
                                         </span>
                                         <span className="list-value ml-auto">
-                                            <span className="font-semibold">72000</span>
+                                            <span className="font-semibold">72,000</span>
                                             <span className="opacity-70">/100,0000</span> MOWA
                                         </span>
                                     </li>
@@ -127,7 +126,7 @@ const ProjectLaunchpad = ({project}) => {
                                 <h3>Moniwar's Info</h3>
                             </div>
                             <div className="card-body">
-                                <div className="" dangerouslySetInnerHTML={{__html: project.description}}>
+                                <div className="" dangerouslySetInnerHTML={{__html: project.content.description}}>
                                 </div>
                                 <p className="mt-auto">
                                     <Link href={`/${dataStore.lang}/projects/${project.slug}/research`}>

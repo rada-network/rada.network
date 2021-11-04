@@ -3,6 +3,7 @@ import utils from "../../lib/util";
 import ContentLoader from "react-content-loader";
 import RadaSvg from "../svg/rada";
 import Link from "next/link"
+import numberFormatter from "../utils/numberFormatter";
 export const NewsLoader = (props) => (
   <div className={`card card-post`}>
     <div className={`card-body`}>
@@ -26,18 +27,17 @@ export const NewsLoader = (props) => (
 )
 
 export const CardProject = ({ project }) => {
-  console.log('project: ', project)
   // title, img, status, raise, tokenLogo, countdown, token, progressToken, target, progressPercentage, type, network
-  const title = project.title
+  const title = project.content.title
   const img = project.thumbnail_uri
   const status = project.status == 'active' ? 'open' : project.status
   const raise = 10000
   const tokenLogo = project.token.logo
   const countdown = 'countdown'
   const token = project.token.symbol
-  const progressToken = 'progressToken'
-  const target = 'target'
-  const progressPercentage = 'progressPercentage'
+  const progressToken = numberFormatter(72000)
+  const target = numberFormatter(100000)
+  const progressPercentage = 72000/100000 * 100
   const type = project.type
   const network = project.platform.name
   const slug = project.slug
@@ -45,7 +45,7 @@ export const CardProject = ({ project }) => {
   return (
     <Link href={`/projects/${slug}`}>
 
-      <a href="project" className={`card-project is-${status}`}>
+      <a href={`/projects/${slug}`} className={`card-project is-${status}`}>
         {/* {status=="closed"?
         <div className="project-header--wrapper flex items-center mb-4">    
           <div className="project-title p-4 flex items-center">
@@ -115,7 +115,7 @@ export const CardProject = ({ project }) => {
               </li>
             </ul>
             <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
-              <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-5 bg-green-600 rounded-full" style={{ width: `${progressPercentage}` }}>{progressPercentage}</div>
+              <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-5 bg-green-600 rounded-full" style={{ width: `${progressPercentage}%` }}>{progressPercentage}</div>
             </div>
             <div className="project--cta ">
               <div className={`countdown--wrapper ${status == "closed" ? "hidden" : ""}`}>
@@ -152,7 +152,7 @@ export const CardProject = ({ project }) => {
 
               </div>
 
-              <a href="project" className={`rounded-lg btn-primary block mt-4 p-3 text-center is-${status}`}><span>
+              <a href={`/projects/${slug}`} className={`rounded-lg btn-primary block mt-4 p-3 text-center is-${status}`}><span>
                 {status == "closed" ? "Closed" : "Invest now"}
               </span>
               </a>
