@@ -38,6 +38,9 @@ module.exports = (phase) => {
       ],
     },
     assetPrefix: isProd ? process.env.NEXT_PUBLIC_CDN : '',
+    serverRuntimeConfig: {
+      PROJECT_ROOT: __dirname
+    }
   }
 
   // next.config.js object
