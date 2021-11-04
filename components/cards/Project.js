@@ -28,7 +28,7 @@ export const NewsLoader = (props) => (
 
 export const CardProject = ({ project }) => {
   // title, img, status, raise, tokenLogo, countdown, token, progressToken, target, progressPercentage, type, network
-  const title = project.content.title
+  const title = project.content?.title
   const img = project.thumbnail_uri
   const status = project.status == 'active' ? 'open' : project.status
   const raise = 10000

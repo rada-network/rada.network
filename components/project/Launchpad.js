@@ -126,7 +126,7 @@ const ProjectLaunchpad = ({project}) => {
                                 <h3>Moniwar's Info</h3>
                             </div>
                             <div className="card-body">
-                                <div className="" dangerouslySetInnerHTML={{__html: project.content.description}}>
+                                <div className="" dangerouslySetInnerHTML={{__html: project.content?.description}}>
                                 </div>
                                 <p className="mt-auto">
                                     <Link href={`/${dataStore.lang}/projects/${project.slug}/research`}>

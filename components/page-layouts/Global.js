@@ -76,7 +76,7 @@ export const Layout =  ({children,meta}) => {
           </div>
           </Screen>
 
-          <div className="pane-center--main glassmorphism">
+          <div className="pane-center--main">
             {children}
           </div>
 
