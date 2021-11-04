@@ -10,11 +10,13 @@ const projectBySlugGql = gql`
         cover_uri
         background_uri
         title
+        description
         open_date
         cover_embed
         thumbnail_embed
         thumbnail_embed
-        launchpad_status
+        type
+        status
         token{
             name
             logo
@@ -45,10 +47,13 @@ const projectFeedGql = gql`
         cover_uri
         background_uri
         title
+        description
         open_date
         cover_embed
         thumbnail_embed
         thumbnail_embed
+        type
+        status
         token{
             name
             logo
