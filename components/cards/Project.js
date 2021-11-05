@@ -39,7 +39,7 @@ export const CardProject = ({ project }) => {
   const target = numberFormatter(100000)
   const progressPercentage = 72000/100000 * 100
   const type = project.type
-  const network = project.platform.name
+  const network = project.platform?.name
   const slug = project.slug
 
   return (
