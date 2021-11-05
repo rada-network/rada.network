@@ -1,7 +1,18 @@
 import { BscSvg, UsdtSvg, LaunchSvg } from "../svg/SvgIcons"
 import MainActions from "../cards/concepts/launchpad/MainActions"
+import { useEffect } from "react"
+import { useTranslation } from 'next-i18next';
+import Link from "next/link";
+import { usePageStore } from "../../lib/usePageStore"
 
-const ProjectLaunchpad = (props) => {
+const ProjectLaunchpad = ({project}) => {
+    const {dataStore} = usePageStore()
+    const { t } = useTranslation("invest")
+    useEffect(() => {
+    },[])
+
+    const {token} = project
+
     return (
         <>
             <div className="section">
@@ -11,11 +22,11 @@ const ProjectLaunchpad = (props) => {
                     <div className="flex flex-wrap justify-between items-center w-full">
                         <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
                             <span className="icon flex-shrink-0 mr-2">
-                                <img src="https://media.rada.network/assets/514649e2-bf3c-4836-afbd-2c3ccd50293a?format=webp&width=128" className="h-px-32 w-px-32" alt="Moniwar" />
+                                <img src={token.logo} className="h-px-32 w-px-32" alt={token.name} />
                             </span>
                             <h1 className="flex items-center">
-                                <strong className="text-color-title text-xl lg:text-2xl font-semibold">Moniwar</strong>
-                                <span className="badge badge-coin badge-coin-lg ml-2 -mb-1">MOWA</span>
+                                <strong className="text-color-title text-xl lg:text-2xl font-semibold">{token.name}</strong>
+                                <span className="badge badge-coin badge-coin-lg ml-2 -mb-1">{token.symbol}</span>
                             </h1>
                         </div>
 
@@ -32,10 +43,10 @@ const ProjectLaunchpad = (props) => {
                                 <span className="w-4 h-4">
                                     <BscSvg />
                                 </span>
-                                <span className="ml-1">Binance Smart Chain</span>
+                                <span className="ml-1">{project.platform.name}</span>
                             </div>
 
-                            <div className="label private">Private</div>
+                            <div className={`label ${project.type}`}>{project.type}</div>
                         </div>
                     </div>
 
@@ -47,13 +58,14 @@ const ProjectLaunchpad = (props) => {
                     <div className="media-player">
                         <div className="w-full h-full">
                             <div className={`aspect-w-16 aspect-h-9`}>
-                                <iframe
+                                {/* <iframe
                                     src="https://www.youtube.com/embed/_jX5T-JrEhI"
                                     title="Video Title"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen="allowFullScreen"
-                                />
+                                /> */}
+                                <img src={project.cover_uri} />
                             </div>
                         </div>
                     </div>
@@ -66,13 +78,13 @@ const ProjectLaunchpad = (props) => {
 
                         <div className="card card-default project-brief">
                             <div className="card-header">
-                                <h3>Launchverse Overview</h3>
+                                <h3>{t("Launchverse Overview")}</h3>
                             </div>
                             <div className="card-body flex flex-col">
                                 <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
                                     <li className="list-pair mb-2">
                                         <span className="list-key">
-                                            Raise
+                                            {t("Raise")}
                                         </span>
                                         <span className="ml-auto list-value font-semibold">
                                             45,000 USDT
@@ -80,7 +92,7 @@ const ProjectLaunchpad = (props) => {
                                     </li>
                                     <li className="list-pair mb-2">
                                         <span className="list-key">
-                                            Participants
+                                        {t("Participants")}
                                         </span>
                                         <span className="ml-auto list-value font-semibold">
                                             2,200
@@ -88,16 +100,16 @@ const ProjectLaunchpad = (props) => {
                                     </li>
                                     <li className="list-pair mb-2">
                                         <span className="list-key">
-                                            Token Price
+                                        {t("Token Price")}
                                         </span>
                                         <span className="ml-auto font-semibold">0.1 USDT </span>
                                     </li>
                                     <li className="list-pair mb-2">
                                         <span className="list-key">
-                                            Progress
+                                        {t("Progress")}
                                         </span>
                                         <span className="list-value ml-auto">
-                                            <span className="font-semibold">72000</span>
+                                            <span className="font-semibold">72,000</span>
                                             <span className="opacity-70">/100,0000</span> MOWA
                                         </span>
                                     </li>
@@ -114,11 +126,13 @@ const ProjectLaunchpad = (props) => {
                                 <h3>Moniwar's Info</h3>
                             </div>
                             <div className="card-body">
-                                <p className="">
-                                    Moniwar là một tựa game blockchain lấy cảm hứng từ những câu chuyện sử thi thần thoại của Hy Lạp cổ đại, với những hình tượng nhân vật vô cùng hấp dẫn. Trò chơi thuộc thể loại Puzzle với cơ chế PvP cùng lối chơi đơn giản, ai cũng có thể chơi được.
-                                </p>
+                                <div className="" dangerouslySetInnerHTML={{__html: project.content?.description}}>
+                                </div>
                                 <p className="mt-auto">
-                                    <a href="#" className="link">Read full research</a> <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span>
+                                    <Link href={`/${dataStore.lang}/projects/${project.slug}/research`}>
+                                    <a className="link">Read full research</a>
+                                    </Link>
+                                    {/* <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span> */}
                                 </p>
                             </div>
 

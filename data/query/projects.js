@@ -9,12 +9,12 @@ const projectBySlugGql = gql`
         thumbnail_uri
         cover_uri
         background_uri
-        title
         open_date
         cover_embed
         thumbnail_embed
         thumbnail_embed
-        launchpad_status
+        type
+        status
         token{
             name
             logo
@@ -30,8 +30,9 @@ const projectBySlugGql = gql`
             thumbnailUri
             content
         }
-        multilang{
-            project
+        content{
+            title
+            description
         }
         }
     }
@@ -44,11 +45,12 @@ const projectFeedGql = gql`
         thumbnail_uri
         cover_uri
         background_uri
-        title
         open_date
         cover_embed
         thumbnail_embed
         thumbnail_embed
+        type
+        status
         token{
             name
             logo
@@ -63,9 +65,13 @@ const projectFeedGql = gql`
             slug
             thumbnailUri
         }
+        content{
+            title
+            description
         }
     }
-    `
+}
+`
 
 export async function getProjects({ lang }) {
     const client = getClient()
