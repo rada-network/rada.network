@@ -31,7 +31,7 @@ export const ProjectsList = ({ projects }) => {
       <div className="">
         <div className="">
           <div className="projects--wrapper single">
-            {list.active.map(project => <CardProject project={project} />)}
+            {list.active.map(project => <CardProject key={project.id} project={project} />)}
           </div>
         </div>
 
@@ -41,7 +41,7 @@ export const ProjectsList = ({ projects }) => {
           </div>
 
           <div className="projects--wrapper">
-            {list.upcoming.map(project => <CardProject project={project} />)}
+            {list.upcoming.map(project => <CardProject key={project.id} project={project} />)}
           </div>
         </div>
 
@@ -51,7 +51,7 @@ export const ProjectsList = ({ projects }) => {
           </div>
 
           <div className="projects--wrapper">
-            {list.closed.map(project => <CardProject project={project} />)}
+            {list.closed.map(project => <CardProject key={project.id} project={project} />)}
           </div>
         </div>
 

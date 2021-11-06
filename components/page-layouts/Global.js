@@ -43,7 +43,7 @@ export const Layout =  ({children,meta}) => {
       </div>
     </div>
 
-    <div className="main-layout--wrapper">
+    <div className="main-layout--wrapper glassmorphism">
       <div className={`main-layout`}>
 
         {/* Mobile / Tablet Navbar */}

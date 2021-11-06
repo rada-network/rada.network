@@ -119,6 +119,7 @@ const getDataPostDetail = async ({query,id,lang}) => {
 
 export default observer(function(props) {
   const {dataStore,detailStore,voteStore} = usePageStore()
+  dataStore.page = "item"
   if (props.item === undefined) {
     dataStore.query = props.query
 

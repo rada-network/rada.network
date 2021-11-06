@@ -70,7 +70,7 @@ export const PostsListWrapper = observer(function ({}){
       dataStore.addTweet(res.data.itemFeed)
       dataStore.loadingButton = false;
       voteStore.addVotesV2(res.data.itemFeed)
-      if (res.data.itemFeed.length !== HOME_ITEM_TAKE){
+      if (res.data.itemFeed.length !== HOME_ITEM_TAKE && scrollBox1.current){
         scrollBox1.current.removeEventListener('scroll', mobileScroll);
       }
     })

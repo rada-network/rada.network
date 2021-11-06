@@ -35,7 +35,7 @@ export const Navbar = observer(({}) => {
         {/* Main Nav */}
         <div className={`navbar-main`} >
        
-          <NavItem  href={`/projects/`}>
+          <NavItem  href={`/projects/`} page={`project`} type={`projects`}>
             {/* <span className="w-5 h-5 mx-2 flex items-center">
               <LaunchSvg />
             </span> */}
@@ -43,7 +43,7 @@ export const Navbar = observer(({}) => {
             <span className="nav-item--text">{t("Projects")}</span>
           </NavItem>
 
-          <NavItem   href={"/" + dataStore.lang + "/explore/rada"} type={"rada"}>
+          <NavItem   href={"/" + dataStore.lang + "/explore/rada"} page={`item`} type={"rada"}>
             <span className="icon icon-rada">
               <svg className="rada-svg" viewBox="4 4 32 32" xmlns="http://www.w3.org/2000/svg">
                 <path className="inline-rec" d="M18 11.1547C19.2376 10.4402 20.7624 10.4402 22 11.1547L26.6603 13.8453C27.8979 14.5598 28.6603 15.8803 28.6603 17.3094V22.6906C28.6603 24.1197 27.8979 25.4402 26.6603 26.1547L22 28.8453C20.7624 29.5598 19.2376 29.5598 18 28.8453L13.3397 26.1547C12.1021 25.4402 11.3397 24.1197 11.3397 22.6906V17.3094C11.3397 15.8803 12.1021 14.5598 13.3397 13.8453L18 11.1547Z" fill="#9CA3AF"/>
@@ -60,17 +60,17 @@ export const Navbar = observer(({}) => {
           </NavItem>
 
 
-          <NavItem href={"/" + dataStore.lang + "/explore/news"} type={"news"}>
+          <NavItem href={"/" + dataStore.lang + "/explore/news"} page={`item`} type={"news"}>
             <span className="icon"><i className="fad fa-newspaper" /></span>
             <span className="nav-item--text">{t("News")}</span>
           </NavItem>
 
-          <NavItem href={"/" + dataStore.lang + "/explore/video"}  type={"video"}>
+          <NavItem href={"/" + dataStore.lang + "/explore/video"} page={`item`}  type={"video"}>
             <span className="icon"><i className="fad fa-icons" /></span>
             <span className="nav-item--text">{t("Video")}</span>
           </NavItem>
 
-          <NavItem href={"/" + dataStore.lang + "/explore/all"} type={"all"}>
+          <NavItem href={"/" + dataStore.lang + "/explore/all"} page={`item`} type={"all"}>
             <span className="icon"><i className="fad fa-rss" /></span>
             <span className="nav-item--text">{t("Explore")}</span>
           </NavItem>
@@ -110,15 +110,19 @@ export const Navbar = observer(({}) => {
   );
 })
 
-const NavItem = ({className, href, children,type}) => {
+const NavItem = ({className, href, children,type,page}) => {
   const {dataStore,detailStore} = usePageStore()
   const router = useRouter()
   const store = useStore()
   const cls = []
   cls.push(`nav-item`)
   cls.push(className)
-  if (dataStore.type === type || (type === "all" && dataStore.type === "")) cls.push(`nav-item-active`)
-
+  if (dataStore.page === "item"){
+    if ((dataStore.page === page && (dataStore.type === type || (type === "all" && dataStore.type === "")))) cls.push(`nav-item-active`)
+  }
+  if (dataStore.page === "project"){
+    if (dataStore.page === page) cls.push(`nav-item-active`)
+  }
   const handleClickNavBar = (e) => {
     e.preventDefault()
     e.stopPropagation()

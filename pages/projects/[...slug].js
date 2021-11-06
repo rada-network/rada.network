@@ -14,9 +14,12 @@ import ProjectLaunchpad from "../../components/project/Launchpad"
 import { getProject } from "../../data/query/projects"
 import ProjectDetails from "../../components/project/Details";
 import ProjectNavbar from "../../components/project/Navbar";
+import {usePageStore} from "../../lib/usePageStore"
 
-export default function ProjectPage({ symbol, slug, project }) {
-  console.log('page: ', symbol)
+export default function ProjectPage({ symbol, slug, project,locale }) {
+  const {dataStore} = usePageStore()
+  dataStore.page = "project"
+  dataStore.lang = locale
   const page = slug.length > 1 ? slug[1] : 'index'
 
   let meta
@@ -27,23 +30,20 @@ export default function ProjectPage({ symbol, slug, project }) {
     <Layout extraClass="page-home" meta={meta}>
 
       <div className={`pane-content`} ref={containerRef} >
-        <div className="pane-center--main">
-          <div className="pane-content">
-            <div className="pane-content--sec pane-content-active !w-full">
-              <div className="pane-content--sec--top !block">
-                <ProjectNavbar symbol={symbol} page={page} project={project} slug={slug.join('/')} />
-              </div>
+        
+        <div className="pane-content--sec pane-content-active !w-full">
+          <div className="pane-content--sec--top !block">
+            <ProjectNavbar symbol={symbol} page={page} project={project} slug={slug.join('/')} />
+          </div>
 
-              <div className="pane-content--sec--main grid scrollbar">
-                <div className="page page-full page-project-details !pt-0">
-                  <div className="w-limiter-lg">
-                    {page == 'index' && <ProjectLaunchpad project={project} />}
-                    {page == 'research' && <ProjectDetails project={project} />}
-                  </div>
-                </div>
-
+          <div className="pane-content--sec--main grid scrollbar">
+            <div className="page page-full page-project-details !pt-0">
+              <div className="w-limiter-lg">
+                {page == 'index' && <ProjectLaunchpad project={project} />}
+                {page == 'research' && <ProjectDetails project={project} />}
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -64,6 +64,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
 
   let props = {
+    locale : context.locale,
     symbol: context.params.slug[0],
     slug: context.params.slug,
     project: await getProject({ slug: context.params.slug[0],lang : context.locale })
