@@ -1,11 +1,6 @@
-import { useWallet, ConnectionRejectedError } from 'use-wallet'
 import { createRef, Fragment, useEffect, useRef, useState} from "react"
-import { observer, inject } from "mobx-react"
+import { observer } from "mobx-react"
 import { useStore } from '../lib/useStore'
-import {connectWallet} from "../data/query/wallet"
-import {getCurrentUser} from "../data/query/user"
-
-import {IoChevronBackSharp} from "react-icons/io5";
 
 import { Dialog, Transition } from "@headlessui/react"
 import styles from '../styles/modules/Dialog.wallet.module.css'
@@ -13,6 +8,9 @@ import Avatar from "boring-avatars";
 
 import ReactTooltip from 'react-tooltip'
 import {useTranslation} from "next-i18next";
+import useActiveWeb3React from "../utils/useActiveWeb3React"
+import {useEagerConnect,useInactiveListener} from "../utils/hooks"
+import useChainConfig from "../utils/web3/useChainConfig"
 
 const btnRef = createRef()
 
@@ -40,8 +38,24 @@ const ConnectedButton = ({wallet}) => (
   </div>
 )
 
-const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletType}) => {
+const NotConnectedButton = ({isOpen, openModal, closeModal, setWalletType}) => {
   const {t} = useTranslation()
+  const context = useActiveWeb3React()
+  const { connector, library, chainId, account, activate, deactivate, active, error } = context
+  const {injected,walletconnect} = useChainConfig()
+  // handle logic to recognize the connector currently being activated
+  const [activatingConnector, setActivatingConnector] =useState()
+  useEffect(() => {
+    if (activatingConnector && activatingConnector === connector) {
+      setActivatingConnector(undefined)
+    }
+  }, [activatingConnector, connector])
+
+  // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
+  const triedEager = useEagerConnect()
+
+  // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
+  useInactiveListener(!triedEager || !!activatingConnector)
   return (
   <>
   <Transition show={isOpen} as={Fragment}>
@@ -125,10 +139,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                     <div className={``}>
                       <ul>
                         <li ref={btnRef}>
-                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {
-                            wallet.connect()
-                          setWalletType('metamask')
-                        }
+                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {activate(injected)}
                           }>
                             <span className={`icon ${styles.btn_icon}`}>
                               <img src={process.env.NEXT_PUBLIC_CDN +"/images/icons/metamask-24.png"} alt="Metamask - Secure wallets with great flexibility" />
@@ -141,11 +152,7 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                           </a>
                         </li>
                         <li>
-                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {
-                            wallet.connect('walletconnect')
-                             setWalletType('walletconnect')
-                            }
-                             }>
+                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {}}>
                             <span className={`icon ${styles.btn_icon}`}>
                               <img src={process.env.NEXT_PUBLIC_CDN + "/images/icons/walletconnect-24.png"} alt="WalletConnect - Connect with Rainbow, Trust, Argent..." />
                             </span>
@@ -156,22 +163,17 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
                             <i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
                           </a>
                         </li>
-                        <li>
-                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {
-                            wallet.connect('walletlink')
-                             setWalletType('walletlink')
-                            }
-                             }>
+                        {/* <li>
+                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {}}>
                             <span className={`icon ${styles.btn_icon}`}>
                               <img src={process.env.NEXT_PUBLIC_CDN + "/images/icons/walletlink-24.png"} alt="WalletLink - Connect with Coinbase wallet" />
                             </span>
                             <div className={`${styles.btn_text}`}>
                               <span className="text-base font-semibold text-color-title">WalletLink</span>
-                              {/* <span className="text-color-desc text-sm">Connect with <b>Coinbase</b> wallet</span> */}
                             </div>
                             <i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
                           </a>
-                        </li>
+                        </li> */}
                       </ul>
                     </div>
 
@@ -200,60 +202,18 @@ const NotConnectedButton = ({wallet, isOpen, openModal, closeModal, setWalletTyp
 )}
 
 
-export const Wallet = observer(({handleConnectSuccess}) => {
+export const Wallet = observer(({}) => {
 
   const store = useStore()
-  const wallet = useWallet()
-
-  const [walletType, setWalletType] = useState('')
-
-  const connect = async (walletInfo) =>{
-    const res = await connectWallet(walletInfo)
-     if(res.data.userConnect?.status === 'success'){
-      handleConnectSuccess()
-    }
-  }
-
-  useEffect(() => {
-    if (wallet.status === 'connected') {
-      store.wallet.update(wallet.account)
-      const network = wallet['ethereum']
-      if(walletType === 'walletconnect'){
-        const walletInfo = {
-          provider: "wallet",
-          provider_account_id: wallet.account[0],
-          type: walletType
-        }
-        connect(walletInfo)
-      }
-      const walletInfo = {
-        provider: "wallet",
-        provider_network: network ? "etherium mainnet":'',
-        provider_account_id: wallet.account,
-        type: walletType
-      }
-      connect(walletInfo)
-  } else {
-      store.wallet.update("")
-  }
-  }, [wallet.status])
 
   const isOpen = store?.wallet.showingConnect
   const openModal = () => store.wallet.showConnect(true)
   const closeModal = () => { store.wallet.showConnect(false);  ReactTooltip.hide() }
-
-  // rebuild tooltip
-  useEffect(() => {
-    setTimeout(() => ReactTooltip.rebuild(), 500)
-  }, [isOpen]);
-
-
-
   return (
     <div className="relative inline-block text-left">
       { store.wallet.isConnected ?
-      <ConnectedButton wallet={wallet} /> :
-      <NotConnectedButton wallet={wallet} isOpen={isOpen} openModal={openModal} closeModal={closeModal} setWalletType={(type)=>setWalletType(type)} /> }
+      <ConnectedButton /> :
+      <NotConnectedButton isOpen={isOpen} openModal={openModal} closeModal={closeModal} /> }
     </div>
   )
 })

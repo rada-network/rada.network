@@ -1,6 +1,5 @@
 import TextareaAutosize from "react-textarea-autosize";
 import {CommentAvatar} from "./commentAvatar";
-import useUser from "../../lib/useUser";
 import createComment from "../../data/query/createComment";
 import {useState} from "react";
 import getClient from "../../data/client";

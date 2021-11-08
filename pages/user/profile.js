@@ -116,7 +116,7 @@ export default function UserProfile(props) {
               <span className="avatar avatar-xl md:avatar-3xl shadow">
                 <img src={user.image} alt={user.name} />
               </span>
-              <Wallet handleConnectSuccess={handleConnectSuccess} />
+              <Wallet />
             </div>
 
             <div className="w-full mt-1 md:mt-3">
