@@ -55,7 +55,7 @@ const TokenContent = function({tokenData,token}){
           <p className="">
           A world built on Runes and 3D cubes to enhance your creativity. You can build your unique character (Paragon) and have its copyright, then trade your Paragon for tokens or join the battle for amazing rewards.
           </p>
-          <p className="mt-auto">
+          <p className="mt-auto pt-4">
             <a href="#" className="link">Read full research</a> <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span>
           </p>
         </div>

@@ -21,7 +21,7 @@ const MainActions = ({}) => {
             <div className="global-padding-lg min-h-full">
 
               <div className="">
-                <h3 class="text-3xl text-center mb-8 font-normal">
+                <h3 class="text-2xl text-center mb-8 font-normal">
                   <span className="text-color-title">Danh sách đăng ký mua Parallel sẽ được mở trong</span>
                 </h3>
                 <CountDownLg />
