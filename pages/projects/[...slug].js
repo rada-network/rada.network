@@ -18,6 +18,10 @@ export default function ProjectPage({ slug, project, locale }) {
   dataStore.lang = locale
   const page = slug.length > 1 ? slug[1] : 'index'
 
+  useEffect(() => {
+    console.log('p:', project)
+  }, [])
+
   let meta
   /* Dragger to resize main col */
   const mainRef = useRef()

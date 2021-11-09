@@ -29,7 +29,7 @@ const ProjectLaunchpad = ({project}) => {
 
                     {/* Main Action Card */}
                     <div className="grid grid-cols-1 mt-4">
-                        <LaunchpadActions />
+                        <LaunchpadActions project={project} />
                     </div>
                     {/* END: Main Action Card */}
 
