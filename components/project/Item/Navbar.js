@@ -1,5 +1,5 @@
 import Link from "next/dist/client/link"
-import { usePageStore } from "../../lib/usePageStore"
+import { usePageStore } from "../../../lib/usePageStore"
 
 export default function ProjectNavbar({ symbol, project, slug }) {
     const {dataStore} = usePageStore()

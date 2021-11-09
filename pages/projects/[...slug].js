@@ -6,18 +6,14 @@ import Link from "next/link";
 //import {getItemById, getItems} from "../../data/query/getItem";
 //import { getPage } from "../../data/query/page";
 import React, { useEffect, useRef, useState } from "react";
- import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-
-
-import ProjectLaunchpad from "../../components/project/Launchpad"
 import { getProject } from "../../data/query/projects"
-import ProjectDetails from "../../components/project/Details";
-import ProjectNavbar from "../../components/project/Navbar";
-import {usePageStore} from "../../lib/usePageStore"
+import { usePageStore } from "../../lib/usePageStore"
+import ProjectItem from "../../components/project/Item/Index";
 
-export default function ProjectPage({ symbol, slug, project,locale }) {
-  const {dataStore} = usePageStore()
+export default function ProjectPage({ slug, project, locale }) {
+  const { dataStore } = usePageStore()
   dataStore.page = "project"
   dataStore.lang = locale
   const page = slug.length > 1 ? slug[1] : 'index'
@@ -30,22 +26,8 @@ export default function ProjectPage({ symbol, slug, project,locale }) {
     <Layout extraClass="page-home" meta={meta}>
 
       <div className={`pane-content`} ref={containerRef} >
-        
-        <div className="pane-content--sec pane-content-active !w-full">
-          <div className="pane-content--sec--top !block">
-            <ProjectNavbar symbol={symbol} page={page} project={project} slug={slug.join('/')} />
-          </div>
 
-          <div className="pane-content--sec--main grid scrollbar">
-            <div className="page page-full page-project-details !pt-0">
-              <div className="w-limiter-lg">
-                {page == 'index' && <ProjectLaunchpad project={project} />}
-                {page == 'research' && <ProjectDetails project={project} />}
-              </div>
-            </div>
-
-          </div>
-        </div>
+        <ProjectItem project={project} slug={slug} page={page} />
       </div>
     </Layout>
   )
@@ -64,13 +46,12 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
 
   let props = {
-    locale : context.locale,
-    symbol: context.params.slug[0],
+    locale: context.locale,
     slug: context.params.slug,
-    project: await getProject({ slug: context.params.slug[0],lang : context.locale })
+    project: await getProject({ slug: context.params.slug[0], lang: context.locale })
   }
-  props = Object.assign(props,{
-    ...await serverSideTranslations(context.locale, ['common', 'navbar','invest']),
+  props = Object.assign(props, {
+    ...await serverSideTranslations(context.locale, ['common', 'navbar', 'invest']),
   })
   return {
     props,
