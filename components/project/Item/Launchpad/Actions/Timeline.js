@@ -1,4 +1,4 @@
-import { CheckSvg } from "../../../svg/SvgIcons";
+import { CheckSvg } from "../../../../svg/SvgIcons";
 
 const Timeline = ({ step }) => {
     const cstep = step || 1

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { usePageStore } from "../../../lib/usePageStore"
+import { usePageStore } from "../../../../lib/usePageStore"
 
 export default function LaunchpadContent({ project }) {
     const { dataStore } = usePageStore()

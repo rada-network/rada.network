@@ -1,4 +1,4 @@
-import { BscSvg, UsdtSvg, LaunchSvg } from "../../svg/SvgIcons";
+import { BscSvg, UsdtSvg, LaunchSvg } from "../../../svg/SvgIcons";
 export default function LaunchpadOverview({ project }) {
     const { token } = project
     return (
