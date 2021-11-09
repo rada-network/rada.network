@@ -56,7 +56,7 @@ export default function LaunchpadContent({ project }) {
                 </div>
                 <div className="card-body">
                     <div className="" dangerouslySetInnerHTML={{ __html: project.content?.description }}></div>
-                    <p className="mt-auto">
+                    <p className="mt-auto pt-4">
                         <Link href={`/${dataStore.lang}/projects/${project.slug}/research`}>
                             <a className="link">Read full research</a>
                         </Link>
