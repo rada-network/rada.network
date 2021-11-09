@@ -22,7 +22,7 @@ const MainActions = ({}) => {
 
               <div className="">
                 <h3 class="text-3xl text-center mb-8 font-normal">
-                  <span className="text-color-title">Danh sách đăng ký mua Parallel sẽ được mở trong</span>
+                  <span className="text-color-title">The whitelist will open in</span>
                 </h3>
                 <CountDownLg />
               </div>

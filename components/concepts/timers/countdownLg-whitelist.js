@@ -8,32 +8,32 @@ const CountDownLg = ({}) => {
 
             <div className="w-24 mx-1 p-2 bg-white text-gray-700 dark:bg-gray-800 dark:text-white dark:text-opacity-90 rounded-lg">
               <div className="font-mono leading-none" x-text="days">6</div>
-              <div className="font-mono uppercase text-xs leading-none">ngày</div>
+              <div className="font-mono uppercase text-xs leading-none">days</div>
             </div>
 
             <div className="w-24 mx-1 p-2 bg-white text-gray-700 dark:bg-gray-800 dark:text-white dark:text-opacity-90 rounded-lg">
               <div className="font-mono leading-none" x-text="hours">14</div>
-              <div className="font-mono uppercase text-xs leading-none">giờ</div>
+              <div className="font-mono uppercase text-xs leading-none">hours</div>
             </div>
 
             <div className="w-24 mx-1 p-2 bg-white text-gray-700 dark:bg-gray-800 dark:text-white dark:text-opacity-90 rounded-lg">
               <div className="font-mono leading-none" x-text="minutes">20</div>
-              <div className="font-mono uppercase text-xs leading-none">phút</div>
+              <div className="font-mono uppercase text-xs leading-none">minutes</div>
             </div>
 
             <div className="text-2xl mx-1 opacity-50 font-light">:</div>
 
             <div className="w-24 mx-1 p-2 bg-white text-gray-700 dark:bg-gray-800 dark:text-white dark:text-opacity-90 rounded-lg">
               <div className="font-mono leading-none" x-text="seconds">45</div>
-              <div className="font-mono uppercase text-xs leading-none">giây</div>
+              <div className="font-mono uppercase text-xs leading-none">seconds</div>
             </div>
 
         </div>
 
         <p className="text-sm text-center mt-8 leading-7">
-          <span className="text-color-desc">Bạn vui lòng chờ cho đến khi danh sách được mở!</span><br />
-          <span className="text-color-desc">Bạn cần đăng ký để tham gia mua.</span><br />
-          <span className="text-color-desc">Ngày mở:</span> <strong>6:00 PM 28 tháng 2, 2022 (GMT +7)</strong>
+          <span className="text-color-desc">Please wait until the whitelist opens!</span><br />
+          <span className="text-color-desc">You need to apply to join the whitelist.</span><br />
+          <span className="text-color-desc">Open at:</span> <strong>6:00 PM February, 2022 (GMT +7)</strong>
         </p>
 
       </div>

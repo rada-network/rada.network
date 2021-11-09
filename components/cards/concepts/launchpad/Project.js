@@ -24,10 +24,10 @@ export const NewsLoader = (props) => (
     </div>
   </div>
 )
-export const CardProject = ({title, img, status, raise, tokenLogo, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
+export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
   
   return (
-    <a href="project" className={`card-project is-${status}`}>
+    <a href={link} className={`card-project is-${status}`}>
       {/* {status=="closed"?
         <div className="project-header--wrapper flex items-center mb-4">    
           <div className="project-title p-4 flex items-center">
@@ -42,13 +42,15 @@ export const CardProject = ({title, img, status, raise, tokenLogo, countdown, to
       :""} */}
       <div className="project-content">
         <div className="project-thumb">
-          <img className="project-thumb--img" src={img} alt="{title}" />
+          <div className="project-thumb--wrapper">
+            <img className="project-thumb--img" src={img} alt="{title}" />
+          </div>
         </div>
         <div class="project-content--meta">
           
           <div className="project-title">
             <div className="project-title--token-logo bg-white w-6 h-6 md:w-10 md:h-10 p-0.5 mr-1 rounded-full">
-              <img src={tokenLogo} />
+              <img src={tokenLogo} className="rounded-full" />
             </div>
             <div className="project-title--token-name ">
               {title}
@@ -67,14 +69,14 @@ export const CardProject = ({title, img, status, raise, tokenLogo, countdown, to
                 Raise
               </span>
               <span className="ml-auto list-value font-semibold">
-                {raise}
+              {raise}
               </span>
             </li>
             <li className="list-pair">
               <span className="list-key">
                 Token price
               </span>
-              <span className="list-value ml-auto">0.1 USDT <strong className="text-gray-500 font-normal">(0.001 RIR)</strong> </span>
+              <span className="list-value ml-auto"> {tokenPrice}</span>
             </li>
             {/* {status=="open"? 
             <li className="list-pair">

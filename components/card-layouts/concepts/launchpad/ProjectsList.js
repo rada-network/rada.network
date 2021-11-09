@@ -16,22 +16,42 @@ export const ProjectsList = ({title, extraClass}) => {
         <div className="">
           <div className="projects--wrapper single">
             {/* add class "single" if there's only 1 live project*/}
-
+{/* 
             <CardProject
               title="Parallel" 
               img="/placeholders/parallel-thumb.jpg"
               tokenLogo="/placeholders/parallel-token.png"
-              raise="45,000 USDT"
+              raise="360,000 USDT"
               progressToken="72,000"
-              target="100,000"
+              target="10,000,000"
               progressPercentage="70%"
-              type="private"
-              token="MOWA"
+              type="public"
+              token="PRL"
               countdown="4 days"
               status="open"
               network="Binance Smart Chain"
-              desc=" You can build your unique character (Paragon) and have its copyright, then trade your Paragon for tokens or join the battle for amazing rewards."
-            />    
+              link="project"
+              tokenPrice="0.036 USDT"
+              desc="You can build your unique character (Paragon) and have its copyright, then trade your Paragon for tokens or join the battle for amazing rewards."
+            />    */}
+
+             <CardProject
+              title="Widiland" 
+              img="/placeholders/widiland-thumb.jpg"
+              tokenLogo="/token-logos/widiland.jpg"
+              raise="350,000 USDT"
+              progressToken="6,000,000"
+              target="10,000,000"
+              progressPercentage="60%"
+              type="public"
+              token="WIDI"
+              countdown="4 days"
+              status="open"
+              network="Binance Smart Chain"
+              link="project-widi"
+              tokenPrice="0.035 USDT"
+              desc="WidiLand is an NFT Game aiming to become a globally well-known social networking game."
+            />     
           </div>
         </div>
         <div className="mt-4">
@@ -52,6 +72,7 @@ export const ProjectsList = ({title, extraClass}) => {
               token="MOWA"
               countdown="2 hours"
               status="upcoming"
+              tokenPrice="0.035 USDT"
               desc="Reviving a legendary dragon hunting game with built-in blockchain technology."
             />
 
@@ -66,6 +87,7 @@ export const ProjectsList = ({title, extraClass}) => {
               type="public"
               token="THG"
               status="upcoming"
+              tokenPrice="0.035 USDT"
               desc="Form a team and battle with others while you earn token rewards based on your skills"
             />
             <CardProject
@@ -101,6 +123,7 @@ export const ProjectsList = ({title, extraClass}) => {
               token="HER"
               countdown="2 hours"
               status="closed"
+              tokenPrice="0.035 USDT"
               desc="Pioneering #gamefi by integrating the mobile game category called Match-3 Games into blockchain and #gamefi"
             />
 
@@ -115,6 +138,7 @@ export const ProjectsList = ({title, extraClass}) => {
               type="public"
               token="Elmon"
               status="closed"
+              tokenPrice="0.035 USDT"
               desc="Elemon seeks to improve the limitations of the traditional gaming industry with transparency, inclusion, governance, and Play2Earn (P2E)"
             />
             <CardProject
@@ -128,6 +152,7 @@ export const ProjectsList = ({title, extraClass}) => {
               type="public"
               token="MAT"
               status="closed"
+              tokenPrice="0.035 USDT"
               desc="Reminiscent of the long lost Three Kingdoms period, MyMasterWar enables Players to build their own empire in the MMW MetaVerse"
             />
           </div>

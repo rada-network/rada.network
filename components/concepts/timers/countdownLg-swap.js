@@ -9,24 +9,24 @@ const CountDownLg = ({}) => {
 
             <div className="w-24 mx-1 p-2 bg-white text-gray-700 dark:bg-gray-800 dark:text-white dark:text-opacity-90 rounded-lg">
               <div className="font-mono leading-none" x-text="days">6</div>
-              <div className="font-mono uppercase text-xs leading-none">ngày</div>
+              <div className="font-mono uppercase text-xs leading-none">days</div>
             </div>
 
             <div className="w-24 mx-1 p-2 bg-white text-gray-700 dark:bg-gray-800 dark:text-white dark:text-opacity-90 rounded-lg">
               <div className="font-mono leading-none" x-text="hours">14</div>
-              <div className="font-mono uppercase text-xs leading-none">giờ</div>
+              <div className="font-mono uppercase text-xs leading-none">hours</div>
             </div>
 
             <div className="w-24 mx-1 p-2 bg-white text-gray-700 dark:bg-gray-800 dark:text-white dark:text-opacity-90 rounded-lg">
               <div className="font-mono leading-none" x-text="minutes">20</div>
-              <div className="font-mono uppercase text-xs leading-none">phút</div>
+              <div className="font-mono uppercase text-xs leading-none">minutes</div>
             </div>
 
             <div className="text-2xl mx-1 opacity-50 font-light">:</div>
 
             <div className="w-24 mx-1 p-2 bg-white text-gray-700 dark:bg-gray-800 dark:text-white dark:text-opacity-90 rounded-lg">
               <div className="font-mono leading-none" x-text="seconds">45</div>
-              <div className="font-mono uppercase text-xs leading-none">giây</div>
+              <div className="font-mono uppercase text-xs leading-none">seconds</div>
             </div>
 
         </div>

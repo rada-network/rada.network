@@ -6,11 +6,16 @@
   @apply border rounded-lg  border-gray-200 dark:bg-gray-800 dark:border-gray-900;
 }
 .project-thumb--img {
-  @apply rounded-lg object-cover;
+  @apply object-cover absolute top-0 rounded-lg lg:rounded-none;  
 }
 
+.project-thumb--wrapper {
+  @apply relative object-cover;
+
+  padding-top: 56.25%;  
+}
 .is-open .project-thumb {
-  @apply w-full md:w-1/2 md:pr-2;
+  @apply w-full md:w-1/2 md:pr-2 overflow-hidden rounded-lg;
 }
 .project-content--meta {
   @apply md:mt-2;
@@ -21,9 +26,6 @@
 }
 .card-project .list-pair {
   @apply mb-1;
-}
-.card-project.is-open .list-pair {
-  @apply mb-2;
 }
 .projects--wrapper.single .card--body {
   @apply flex;
@@ -47,7 +49,7 @@
   @apply flex-shrink-0 flex-grow md:w-1/2;
 }
 .project-desc{
-  @apply text-sm my-2;
+  @apply text-sm my-1;
 }
 .projects--wrapper .card--wrapper {
   @apply mt-2 transition-shadow transition-transform  overflow-visible ;
@@ -121,13 +123,12 @@
 .project-desc {
   @apply opacity-90;
 }
-.card-project.is-open .list-pair{
-}
+
 .list-pair:first-child{
   @apply md:mt-2;
 }
 .is-open .project--cta {
-  @apply md:mt-auto md:mb-0 md:flex;
+  @apply md:mt-4 md:mb-0  md:flex;
 }
 .is-open .countdown--wrapper {
   @apply text-center my-4 md:w-1/2 md:my-0;

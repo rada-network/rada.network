@@ -17,9 +17,9 @@ const TokenNav = function(){
             <span className="tab-item--divider"></span>
             <a href="#overview" className="tab-item ">
               <span className="token-symbol mr-2">
-                <img src="/placeholders/parallel-token.png" className="h-px-20 w-px-20" alt="Moniwar" />
+                <img src="/token-logos/widiland.jpg" className="h-px-20 w-px-20 rounded-full" alt="Moniwar" />
               </span>
-              <span className="tab-item--text !block">PRL&rsquo;s research</span>
+              <span className="tab-item--text !block">WIDI&rsquo;s research</span>
             </a>
             <a href="#team" className="tab-item ">
               <span className="icon"><i className="fa-duotone fa-users"></i></span>
