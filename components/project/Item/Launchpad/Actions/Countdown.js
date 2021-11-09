@@ -10,7 +10,7 @@ const ProjectCountdown = ({ project }) => {
   
   const Completionist = () => <span>Done</span>
   
-  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+  const renderer = ({ formatted: {days, hours, minutes, seconds}, completed }) => {
     if (completed) {
       // Render a completed state
       return <Completionist />;

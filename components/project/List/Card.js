@@ -2,6 +2,7 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 import Link from "next/link"
 import numberFormatter from "../../utils/numberFormatter";
+import MiniCountdown from "./Countdown";
 
 export const NewsLoader = (props) => (
   <div className={`card card-post`}>
@@ -133,24 +134,7 @@ export const CardProject = ({ project }) => {
                 <span className="">Ends in</span>
               </div> */}
               
-              {status=="open" ? 
-              <div className="countdown--mini">
-                <div className="countdown--mini--body countdown--mini--body--day">
-                  <time>12</time> <span>days</span>
-                </div>
-                <div className="countdown--mini--body countdown--mini--body--hour">
-                  <time>15</time>
-                  <span>hrs</span>
-                </div>
-                <div className="countdown--mini--body countdown--mini--body--minute">
-                  <time> 48 </time>
-                  <span>min</span>
-                </div>
-                <div className="countdown--mini--body countdown--mini--second">
-                  <time> 24 </time>
-                  <span>sec</span>
-                </div>
-              </div> : ""}
+              {status=="open" && <MiniCountdown project={project} />}
               
               
             </div>
