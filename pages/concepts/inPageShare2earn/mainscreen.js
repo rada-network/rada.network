@@ -46,7 +46,7 @@ function Concept() {
               {/* Step 1 */}
               <li className="flex items-start">
 
-                <div className="flex w-12 mr-2 mt-1 flex-shrink-0 items-center justify-center">
+                <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
                   <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
                     <strong className="text-base">
                       <span className="sr-only">Step</span>
@@ -95,7 +95,7 @@ function Concept() {
               {/* Step 2 */}
               <li className="flex items-start">
 
-                <div className="flex w-12 mr-2 mt-1 flex-shrink-0 items-center justify-center">
+                <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
                   <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
                     <strong className="text-base">
                       <span className="sr-only">Step</span>
@@ -133,7 +133,7 @@ function Concept() {
               {/* Step 3 */}
               <li className="flex items-start">
 
-                <div className="flex w-12 mr-2 mt-1 flex-shrink-0 items-center justify-center">
+                <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
                   <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
                     <strong className="text-base">
                       <span className="sr-only">Step</span>
