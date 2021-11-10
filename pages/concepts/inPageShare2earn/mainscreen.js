@@ -55,20 +55,33 @@ function Concept() {
                   </span>
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col w-full">
 
                   <div className="flex flex-col">
                     <strong className="text-base text-color-title">Create banner</strong>
                     <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
 
-                    <div>
+                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
                       <SelectBannerType />
+
+                      <div className="p-4">
+                        <div class="aspect-w-16 aspect-h-9">
+                          <img class="rounded-lg" src="/placeholders/parallel-cover.jpg" />
+                        </div>
+                      </div>
+
+                      <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
+                        <btn class="btn btn-default">
+                          <span class="icon"><i class="fa-duotone fa-download text-xs"></i></span>
+                          <span class="btn--text">Download</span>
+                        </btn>
+                      </div>
                     </div>
                   </div>
 
                   <div className="flex flex-col mt-4">
-                    <strong className="text-color-title">Create Avatar</strong>
-                    <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
+                    <strong className="text-base text-color-title">Create Avatar</strong>
+                    <span className="text-gray-500 dark:text-gray-400">Download &amp; change your avatar on your social chanels</span>
 
                     <div>
                       Avatar
@@ -97,14 +110,14 @@ function Concept() {
                     <strong className="text-base text-color-title">Share on social media</strong>
                     <span className="text-gray-500 dark:text-gray-400">Copy this post below and share it on Facebook, Twitter or LinkedIn</span>
 
-                    <div className="text-base mt-4 bg-gray-50 border border-gray-200 dark:border-gray-600 rounded-lg">
+                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
                       <div className="p-4">
                         <p className="mb-4">This game is whole new generation metaverse. Never seen anything like this!
                         I can play and earn so well 💰✨✨</p>
                         <p>👉 &nbsp;Learn more here <a href="#" className="link">https://rada.network/en/post/widiland-a-dreamy-story-with-real-humane-values/ref=1018</a></p>
                       </div>
 
-                      <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-600">
+                      <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
                         <btn class="btn btn-default">
                           <span class="icon"><i class="fa-duotone fa-copy text-xs"></i></span>
                           <span class="btn--text">Copy to clipboard</span>
