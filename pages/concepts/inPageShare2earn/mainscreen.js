@@ -64,7 +64,7 @@ function Concept() {
                     <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
                       <SelectBannerType />
 
-                      <div className="p-4">
+                      <div className="p-4 pt-0">
                         <div class="aspect-w-16 aspect-h-9">
                           <img class="rounded-lg" src="/placeholders/parallel-cover.jpg" />
                         </div>

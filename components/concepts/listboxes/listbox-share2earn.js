@@ -16,11 +16,11 @@ export default function SelectBannerType() {
         <div className="relative mt-1">
           
           <Listbox.Button className="flex items-center relative w-full py-2 pl-3 pr-10">
-            <span class="flex justify-center items-center w-px-32 h-px-32 brand--facebook rounded-full">
+            <span class="flex justify-center items-center w-px-32 h-px-32 brand--facebook rounded-full mr-4">
               <span class="icon"><i class="fa-brands fa-facebook-f"></i></span>
             </span>
             <span className="block truncate">{selected.name}</span>
-            <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+            <span className="absolute inset-y-0 right-4 flex items-center pr-2 pointer-events-none">
               <i class="fa-solid fa-angle-down"></i>
             </span>
           </Listbox.Button>
