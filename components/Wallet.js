@@ -14,6 +14,7 @@ import useChainConfig from "../utils/web3/useChainConfig"
 import NetworkSwitch from "./NetworkSwitch"
 import { getErrorMessage } from "../utils"
 import { toast } from "react-toastify";
+import _ from "lodash"
 
 const btnRef = createRef()
 

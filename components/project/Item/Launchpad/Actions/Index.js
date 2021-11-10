@@ -1,8 +1,11 @@
 import Timeline from "./Timeline";
 import ProjectCountdown from "./Countdown";
+import { useState } from "react";
 // import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
+import ProjectOpening from "./Opening";
 
 const LaunchpadActions = ({project}) => {
+  const [countdownDone, setCountdownDone] = useState(Date.parse(project.open_date) < new Date())
   return (
     <>
       <div className="card-default project-main-actions no-padding overflow-hidden">
@@ -22,10 +25,11 @@ const LaunchpadActions = ({project}) => {
             <div className="global-padding-lg min-h-full">
 
               <div className="">
-                <h3 class="text-2xl text-center mb-8 font-normal">
-                  <span className="text-color-title">Danh sách đăng ký mua {project.token.name} sẽ được mở trong</span>
-                </h3>
-                <ProjectCountdown project={project} />
+                {
+                !countdownDone ? <ProjectCountdown project={project} setCountdownDone={setCountdownDone} />
+                :
+                  <ProjectOpening project={project} />
+                }
               </div>
 
             </div>
