@@ -6,7 +6,7 @@ import { useState,useEffect } from "react";
 export default function LaunchpadContent({ project }) {
     const { dataStore } = usePageStore()
     const [launchpadInfo,setLauchpadInfo] = useState({})
-    if (project.swap_contract !== ""){
+    if (!!project.swap_contract){
         const launchpadContract = useLaunchpadContract(project.swap_contract)
         useEffect(() => {
             //get contract info
