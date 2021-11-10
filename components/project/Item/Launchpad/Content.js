@@ -10,7 +10,8 @@ export default function LaunchpadContent({ project }) {
         const launchpadContract = useLaunchpadContract(project.swap_contract)
         useEffect(() => {
             //get contract info
-        },launchpadContract)
+            
+        },[launchpadContract])
     }
     else{
         setLauchpadInfo({})
