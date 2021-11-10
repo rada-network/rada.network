@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { usePageStore } from "@lib/usePageStore"
 import { useLaunchpadContract } from "@utils/hooks/useContracts";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 export default function LaunchpadContent({ project }) {
     const { dataStore } = usePageStore()
@@ -10,7 +10,7 @@ export default function LaunchpadContent({ project }) {
         const launchpadContract = useLaunchpadContract(project.swap_contract)
         useEffect(() => {
             //get contract info
-            
+
         },[launchpadContract])
     }
     else{
