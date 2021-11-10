@@ -43,7 +43,7 @@ function Concept() {
                   <i className="fa-duotone fa-user-plus"></i>
                 </span>
                 <div className="flex flex-col">
-                  <strong className="text-color-title">A Refferal Person join Share2Earn program</strong>
+                  <strong className="text-base text-color-title">A Refferal Person join Share2Earn program</strong>
                   <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+0.5 RIR</span> for each</span>
                 </div>
               </li>
@@ -53,7 +53,7 @@ function Concept() {
                   <i class="fa-duotone fa-hand-holding-heart"></i>
                 </span>
                 <div className="flex flex-col">
-                  <strong className="text-color-title">A Refferal Person join IDO and buy allocation</strong>
+                  <strong className="text-base text-color-title">A Refferal Person join IDO and buy allocation</strong>
                   <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+1 RIR</span> for each</span>
                 </div>
               </li>
@@ -63,7 +63,7 @@ function Concept() {
                   <i className="fa-duotone fa-users"></i>
                 </span>
                 <div className="flex flex-col">
-                  <strong className="text-color-title">Get refferal bonus for each new refferal level 2 member</strong>
+                  <strong className="text-base text-color-title">Get refferal bonus for each new refferal level 2 member</strong>
                   <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+0.1 RIR</span> for each</span>
                 </div>
               </li>

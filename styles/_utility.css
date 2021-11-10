@@ -134,6 +134,13 @@
   }
 } */
 
+.fadein {
+  animation: fadein 400ms linear;
+}
+
+
+/* Todo: Organizing Later
+--------------------------------*/
 /* Countdown */
 .countdown--mini {
   @apply flex border dark:border-gray-700 border-gray-300 rounded-lg sm:w-full;
