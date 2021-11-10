@@ -308,7 +308,6 @@ Small Badges
 /*
 Icons Styles
 ------------------------------ */
-
 .icon {
   @apply inline-block;
   svg {
@@ -336,6 +335,17 @@ Icons Styles
 /* External Indicator */
 .ico-external-link {
   @apply transition opacity-0 transform scale-0 group-hover:opacity-100 group-hover:scale-100;
+}
+
+/* Shapes */
+.shape--hexagon {
+  @apply relative;
+}
+
+.shape--hexagon .fa-hexagon {
+  @apply absolute inset-0 text-gray-300;
+  transform: rotate(30deg);
+  font-size: 40px;
 }
 
 

@@ -19,6 +19,7 @@ module.exports = {
       sans: ['-apple-system', 'BlinkMacSystemFont', '"Inter"', 'ui-sans-serif', 'system-ui', "Helvetica Neue", 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
       serif: ['"Literata"', ...defaultTheme.fontFamily.serif],
       mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+      altsans: ['"SF Pro Rounded"', '-apple-system', 'BlinkMacSystemFont', '"Inter"', 'ui-sans-serif', 'system-ui', "Helvetica Neue", 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
     },
 
     // screens: {

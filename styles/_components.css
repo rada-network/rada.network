@@ -198,6 +198,7 @@ Box Colors
 Specific Boxes Styles 
 */
 .box-share2earn {
-  @apply bg-no-repeat bg-right-bottom;
+  @apply bg-no-repeat bg-center;
   background-image: url(/images/misc/glass.png);
+  background-position: 92% 92%;
 }
