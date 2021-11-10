@@ -52,7 +52,7 @@ export default function LaunchpadContent({ project }) {
 
             <div className="card card-default project-process">
                 <div className="card-header">
-                    <h3>Parallel's Info</h3>
+                    <h3>{project?.token.name}'s Info</h3>
                 </div>
                 <div className="card-body">
                     <div className="" dangerouslySetInnerHTML={{ __html: project.content?.description }}></div>

@@ -28,7 +28,7 @@ export const NewsLoader = (props) => (
 
 export const CardProject = ({ project }) => {
   // title, img, status, raise, tokenLogo, countdown, token, progressToken, target, progressPercentage, type, network
-  const title = project.content?.title
+  const title = project?.content?.title
   const img = project.thumbnail_uri
   const status = project.status == 'active' ? 'open' : project.status
   const raise = 10000
@@ -42,7 +42,7 @@ export const CardProject = ({ project }) => {
   const type = project.type
   const network = project.platform?.name
   const slug = project.slug
-  const desc = project.description
+  const desc = project?.content?.description
 
   return (
     <Link href={`/projects/${slug}`}>
@@ -79,8 +79,8 @@ export const CardProject = ({ project }) => {
               <span className={`label ml-auto ${type}`}>{type}</span>
             </div>
           </div>
-          <div className="project-desc">
-            {desc}
+          <div className="project-desc" dangerouslySetInnerHTML={{__html : desc}}>
+            
           </div>
           <ul className="">
             
