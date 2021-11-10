@@ -1,8 +1,9 @@
 import React from "react";
-import utils from "../../../../lib/util";
 import ContentLoader from "react-content-loader";
-import RadaSvg from "../../../svg/rada";
 import Link from "next/link"
+import numberFormatter from "../../utils/numberFormatter";
+import MiniCountdown from "./Countdown";
+
 export const NewsLoader = (props) => (
   <div className={`card card-post`}>
     <div className={`card-body`}>
@@ -24,11 +25,30 @@ export const NewsLoader = (props) => (
     </div>
   </div>
 )
-export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
-  
+
+export const CardProject = ({ project }) => {
+  // title, img, status, raise, tokenLogo, countdown, token, progressToken, target, progressPercentage, type, network
+  const title = project.content?.title
+  const img = project.thumbnail_uri
+  const status = project.status == 'active' ? 'open' : project.status
+  const raise = 10000
+  const tokenLogo = project.token.logo
+  const tokenPrice = project.price
+  const countdown = 'countdown'
+  const token = project.token.symbol
+  const progressToken = numberFormatter(72000)
+  const target = numberFormatter(100000)
+  const progressPercentage = 72000/100000 * 100
+  const type = project.type
+  const network = project.platform?.name
+  const slug = project.slug
+  const desc = project.description
+
   return (
-    <a href={link} className={`card-project is-${status}`}>
-      {/* {status=="closed"?
+    <Link href={`/projects/${slug}`}>
+
+      <a href={`/projects/${slug}`} className={`card-project is-${status}`}>
+        {/* {status=="closed"?
         <div className="project-header--wrapper flex items-center mb-4">    
           <div className="project-title p-4 flex items-center">
             <div className="project-title--token-logo bg-white w-6 h-6 p-0.5 mr-1 rounded-full">
@@ -40,7 +60,7 @@ export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPr
           </div>
         </div>
       :""} */}
-      <div className="project-content">
+        <div className="project-content">
         <div className="project-thumb">
           <div className="project-thumb--wrapper">
             <img className="project-thumb--img" src={img} alt="{title}" />
@@ -114,24 +134,7 @@ export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPr
                 <span className="">Ends in</span>
               </div> */}
               
-              {status=="open" ? 
-              <div className="countdown--mini">
-                <div className="countdown--mini--body countdown--mini--body--day">
-                  <time>12</time> <span>days</span>
-                </div>
-                <div className="countdown--mini--body countdown--mini--body--hour">
-                  <time>15</time>
-                  <span>hrs</span>
-                </div>
-                <div className="countdown--mini--body countdown--mini--body--minute">
-                  <time> 48 </time>
-                  <span>min</span>
-                </div>
-                <div className="countdown--mini--body countdown--mini--second">
-                  <time> 24 </time>
-                  <span>sec</span>
-                </div>
-              </div> : ""}
+              {status=="open" && <MiniCountdown project={project} />}
               
               
             </div>
@@ -145,10 +148,12 @@ export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPr
         </div>
       </div>
         {/* End of project--content */}
-      {/* End of card--body */}
-     
-      {/* End of card--wrapper */}
-    </a>
-    
+        {/* End of card--body */}
+
+        {/* End of card--wrapper */}
+      </a>
+
+    </Link>
+
   )
 }

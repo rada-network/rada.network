@@ -65,7 +65,7 @@ const MainActions = ({}) => {
 
               <div className="">
 
-                <h3 className="text-3xl text-center mb-8 font-normal"><span className="text-color-title">List of Winners Here</span></h3>
+                <h3 className="text-2xl text-center mb-8 font-normal"><span className="text-color-title">List of Winners Here</span></h3>
 
               </div>
 

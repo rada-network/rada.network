@@ -257,13 +257,20 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   if (context.params.slug === undefined){
-    let props = await getDataHome({lang : context.locale});
-    props = Object.assign(props,{
-      ...await serverSideTranslations(context.locale, ['common', 'navbar','invest']),
-    })
+    // let props = await getDataHome({lang : context.locale});
+    // props = Object.assign(props,{
+    //   ...await serverSideTranslations(context.locale, ['common', 'navbar','invest']),
+    // })
+    // return {
+    //   props,
+    //   revalidate: 60
+    // }
     return {
-      props,
-      revalidate: 60
+      // returns a redirect to an internal page `/another-page`
+      redirect: {
+        destination: "/projects",
+        permanent: false
+      }
     }
   }
   const type = context.params.slug[0]

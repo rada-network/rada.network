@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  @apply bg-gray-100 dark:bg-gray-700 h-full overflow-hidden;
+  @apply bg-gray-100 dark:bg-gray-900 h-full overflow-hidden;
 }
 
 #__next {

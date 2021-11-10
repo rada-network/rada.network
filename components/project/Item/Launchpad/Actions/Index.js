@@ -1,7 +1,8 @@
-import ProjectTimeline from "../../../concepts/steps/projectTimeline";
-import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
+import Timeline from "./Timeline";
+import ProjectCountdown from "./Countdown";
+// import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
 
-const MainActions = ({}) => {
+const LaunchpadActions = ({project}) => {
   return (
     <>
       <div className="card-default project-main-actions no-padding overflow-hidden">
@@ -15,16 +16,16 @@ const MainActions = ({}) => {
           <div className="flex flex-col">
 
             <div className="">
-              <ProjectTimeline step="1" />
+              <Timeline step="1" />
             </div>
 
             <div className="global-padding-lg min-h-full">
 
               <div className="">
                 <h3 class="text-2xl text-center mb-8 font-normal">
-                  <span className="text-color-title">Danh sách đăng ký mua Parallel sẽ được mở trong</span>
+                  <span className="text-color-title">Danh sách đăng ký mua {project.token.name} sẽ được mở trong</span>
                 </h3>
-                <CountDownLg />
+                <ProjectCountdown project={project} />
               </div>
 
             </div>
@@ -38,4 +39,4 @@ const MainActions = ({}) => {
   );
 }
 
-export default MainActions
+export default LaunchpadActions

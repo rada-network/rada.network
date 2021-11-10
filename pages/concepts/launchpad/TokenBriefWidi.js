@@ -7,11 +7,11 @@ const TokenBrief = function(){
         <div className="flex flex-wrap justify-between items-center w-full">
           <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
             <span className="icon flex-shrink-0 mr-2">
-              <img src="/placeholders/parallel-token.png" className="h-px-32 w-px-32" alt="Parallel" />
+              <img src="/token-logos/widiland.jpg" className="rounded-full h-px-32 w-px-32" alt="Parallel" />
             </span>
             <h1 className="flex items-center">
-              <strong className="text-color-title text-xl lg:text-2xl font-semibold">Parallel</strong>
-              <span className="badge badge-coin badge-coin-lg ml-2 -mb-1">PRL</span>
+              <strong className="text-color-title text-xl lg:text-2xl font-semibold">Widiland</strong>
+              <span className="badge badge-coin badge-coin-lg ml-2 -mb-1">WIDI</span>
             </h1>
           </div>
 
@@ -38,7 +38,7 @@ const TokenBrief = function(){
         <div className="media-player">
           <div className="w-full h-full">
             <div className={`aspect-w-16 aspect-h-9`}>
-              <img className="rounded-lg" src="/placeholders/parallel-cover.jpg" />
+              <img className="rounded-lg" src="/placeholders/widiland-thumb.jpg" />
             </div>
           </div>
         </div>

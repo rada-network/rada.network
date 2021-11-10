@@ -13,7 +13,7 @@ const TokenContent = function({tokenData,token}){
                 Raise
               </span>
               <span className="ml-auto list-value font-semibold">
-                360,000 USDT
+                350,000 USDT
               </span>
             </li>
             <li className="list-pair mb-2">
@@ -28,15 +28,15 @@ const TokenContent = function({tokenData,token}){
               <span className="list-key">
                 Token Price
               </span>
-              <span className="ml-auto font-semibold">0.036 USDT </span>
+              <span className="ml-auto font-semibold">0.035 USDT </span>
             </li>
             <li className="list-pair mb-2">
               <span className="list-key">
                 Progress
               </span>
               <span className="list-value ml-auto">
-                <span className="font-semibold">7,200,000</span>
-                <span className="opacity-70">/10,000,000</span> PRL
+                <span className="font-semibold">6,000,000</span>
+                <span className="opacity-70">/10,000,000</span> WIDI
               </span>
             </li>
           </ul>
@@ -49,13 +49,13 @@ const TokenContent = function({tokenData,token}){
 
       <div className="card card-default project-process">
         <div className="card-header">
-          <h3>Parallel's Info</h3>
+          <h3>Widiland's Info</h3>
         </div>
         <div className="card-body">
           <p className="">
-          A world built on Runes and 3D cubes to enhance your creativity. You can build your unique character (Paragon) and have its copyright, then trade your Paragon for tokens or join the battle for amazing rewards.
+          WidiLand is an NFT Game aiming to become a globally well-known social networking game. Enabled by blockchain technology, these digital in-game items, lands, and characters have both recreational and financial value
           </p>
-          <p className="mt-auto pt-4">
+          <p className="mt-auto">
             <a href="#" className="link">Read full research</a> <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span>
           </p>
         </div>

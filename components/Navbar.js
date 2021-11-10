@@ -126,7 +126,7 @@ const NavItem = ({className, href, children,type,page}) => {
   const handleClickNavBar = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    if (dataStore.type != e.currentTarget.getAttribute("datatype")){
+    if (dataStore.type != e.currentTarget.getAttribute("datatype") || dataStore.page != e.currentTarget.getAttribute("page") ){
       dataStore.type = e.currentTarget.getAttribute("datatype")
       dataStore.tweets = []
       detailStore.data = {}
