@@ -1,16 +1,12 @@
-import utils from "../../lib/util";
-import { Layout } from "../../components/page-layouts/Global";
+import { Layout } from "@components/page-layouts/Global";
 import { observer } from "mobx-react";
-import { HOME_ITEM_TAKE } from "../../config/paging";
 import Link from "next/link";
-//import {getItemById, getItems} from "../../data/query/getItem";
-//import { getPage } from "../../data/query/page";
 import React, { useEffect, useRef, useState } from "react";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { getProject } from "../../data/query/projects"
-import { usePageStore } from "../../lib/usePageStore"
-import ProjectItem from "../../components/project/Item/Index";
+import { getProject } from "@data/query/projects"
+import { usePageStore } from "@lib/usePageStore"
+import ProjectItem from "@components/project/Item/Index";
 
 export default function ProjectPage({ slug, project, locale }) {
   const { dataStore } = usePageStore()
@@ -22,7 +18,12 @@ export default function ProjectPage({ slug, project, locale }) {
     console.log('p:', project)
   }, [])
 
-  let meta
+  let meta = {
+    title : project?.content.title + "",
+    description : project?.content.description + "",
+    "og:description" : project?.content.description + "",
+    "og:image" : project?.thumbnail_uri + ""
+  }
   /* Dragger to resize main col */
   const mainRef = useRef()
   const containerRef = useRef()

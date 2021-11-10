@@ -2,10 +2,10 @@ import { Layout } from "../../components/page-layouts/Global";
 import React, { useRef } from "react";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { ProjectsList } from "../../components/project/List/Index";
+import { ProjectsList } from "@components/project/List/Index";
 
-import { getProjects } from "../../data/query/projects";
-import { usePageStore } from "../../lib/usePageStore";
+import { getProjects } from "@data/query/projects";
+import { usePageStore } from "@lib/usePageStore";
 
 export default function ProjectsIndex({ projects, locale }) {
     let meta = {}

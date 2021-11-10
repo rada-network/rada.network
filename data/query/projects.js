@@ -10,11 +10,13 @@ const projectBySlugGql = gql`
         cover_uri
         background_uri
         open_date
+        end_date
         cover_embed
         thumbnail_embed
         thumbnail_embed
         type
         status
+        swap_contract
         token{
             name
             logo

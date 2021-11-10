@@ -1,8 +1,23 @@
 import Link from "next/link";
-import { usePageStore } from "../../../../lib/usePageStore"
+import { usePageStore } from "@lib/usePageStore"
+import { useLaunchpadContract } from "@utils/hooks/useContracts";
+import { useState } from "react";
 
 export default function LaunchpadContent({ project }) {
     const { dataStore } = usePageStore()
+    const [launchpadInfo,setLauchpadInfo] = useState({})
+    if (project.swap_contract !== ""){
+        const launchpadContract = useLaunchpadContract(project.swap_contract)
+        useEffect(() => {
+            //get contract info
+        },launchpadContract)
+    }
+    else{
+        setLauchpadInfo({})
+    }
+    
+    //console.log(launchpadContract)
+    
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="card card-default project-brief">
@@ -16,7 +31,7 @@ export default function LaunchpadContent({ project }) {
                                 Raise
                             </span>
                             <span className="ml-auto list-value font-semibold">
-                                360,000 USDT
+                                {launchpadInfo?.raise || "n/a"} USDT
                             </span>
                         </li>
                         <li className="list-pair mb-2">
@@ -24,22 +39,22 @@ export default function LaunchpadContent({ project }) {
                                 Participants
                             </span>
                             <span className="ml-auto list-value font-semibold">
-                                2,200
+                            {launchpadInfo?.participants || "n/a"} 
                             </span>
                         </li>
                         <li className="list-pair mb-2">
                             <span className="list-key">
                                 Token Price
                             </span>
-                            <span className="ml-auto font-semibold">0.036 USDT </span>
+                            <span className="ml-auto font-semibold">{launchpadInfo?.tokenPrice || "n/a"} USDT </span>
                         </li>
                         <li className="list-pair mb-2">
                             <span className="list-key">
                                 Progress
                             </span>
                             <span className="list-value ml-auto">
-                                <span className="font-semibold">7,200,000</span>
-                                <span className="opacity-70">/10,000,000</span> PRL
+                                <span className="font-semibold">{launchpadInfo?.tokensAllocated || "n/a"}</span>
+                                <span className="opacity-70">/{launchpadInfo?.tokensForSale || "n/a"}</span> {project?.token.symbol}
                             </span>
                         </li>
                     </ul>

@@ -1,5 +1,5 @@
 import {useMemo} from "react"
-import {getBep20Contract, getLotteryContract} from "../contractHelpers"
+import {getBep20Contract, getLotteryContract,getLaunchpadContract} from "../contractHelpers"
 import useActiveWeb3React from "./useActiveWeb3React"
 
 export const useERC20 = (address) => {
@@ -11,4 +11,9 @@ export const useERC20 = (address) => {
 export const useLotteryContract = (address) => {
   const { library } = useActiveWeb3React()
   return useMemo(() => getLotteryContract(address, library.getSigner()), [address, library])
+}
+
+export const useLaunchpadContract = (address) => {
+  const { library } = useActiveWeb3React()
+  return useMemo(() => getLaunchpadContract(address, library.getSigner()), [address, library])
 }

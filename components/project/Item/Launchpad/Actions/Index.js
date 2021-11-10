@@ -1,42 +1,23 @@
 import Timeline from "./Timeline";
 import ProjectCountdown from "./Countdown";
+import WhitelistCountdown from "./WhitelistCountdown";
+import SubscribeLaunchpad from "./SubscribeLaunchpad";
 // import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
 
 const LaunchpadActions = ({project}) => {
-  return (
-    <>
-      <div className="card-default project-main-actions no-padding overflow-hidden">
 
-        <div className="card-header text-center sr-only">
-          <h3>Public Sale</h3>
-        </div>
+  const curentTime = (new Date()).getTime()
+  const openTime = (new Date(project.open_date)).getTime()
+  const endTime = (new Date(project.end_date)).getTime()
+  if (openTime > curentTime){
+    return <WhitelistCountdown project={project} />
+  }
 
-        <div className="card-body no-padding">
-
-          <div className="flex flex-col">
-
-            <div className="">
-              <Timeline step="1" />
-            </div>
-
-            <div className="global-padding-lg min-h-full">
-
-              <div className="">
-                <h3 class="text-2xl text-center mb-8 font-normal">
-                  <span className="text-color-title">Danh sách đăng ký mua {project.token.name} sẽ được mở trong</span>
-                </h3>
-                <ProjectCountdown project={project} />
-              </div>
-
-            </div>
-
-          </div>
-            
-        </div>
-
-      </div>
-    </>
-  );
+  if (openTime < curentTime && curentTime < endTime){
+    return <SubscribeLaunchpad project={project} />
+  }
+  return null;
 }
+
 
 export default LaunchpadActions
