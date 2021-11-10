@@ -83,7 +83,7 @@ export default function SelectBannerType() {
                           className={`${
                             active ? '' : ''
                           }
-                                hidden absolute inset-y-0 right-3 flex items-center`}
+                                hidden absolute inset-y-0 right-3 items-center`}
                         >
                           <i class="fa-solid fa-check"></i>
                         </span>
