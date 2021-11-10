@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { useWeb3React } from '@web3-react/core'
-import useStore from '../lib/useStore'
-import useChainConfig from './web3/useChainConfig'
+import useStore from '../../lib/useStore'
+import useChainConfig from '../web3/useChainConfig'
 // eslint-disable-next-line import/no-unresolved
 
 /**

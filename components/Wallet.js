@@ -8,7 +8,7 @@ import Avatar from "boring-avatars";
 
 import ReactTooltip from 'react-tooltip'
 import {useTranslation} from "next-i18next";
-import useActiveWeb3React from "../utils/useActiveWeb3React"
+import useActiveWeb3React from "../utils/hooks/useActiveWeb3React"
 import {useEagerConnect,useInactiveListener} from "../utils/hooks"
 import useChainConfig from "../utils/web3/useChainConfig"
 

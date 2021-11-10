@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import useActiveWeb3React from './useActiveWeb3React'
+import useActiveWeb3React from './hooks/useActiveWeb3React'
 import useChainConfig from './web3/useChainConfig'
 
 export function useEagerConnect() {
