@@ -63,7 +63,7 @@
     "react-tooltip": "^4.2.21",
     "slug": "^5.1.0",
     "store": "^2.0.12",
-    "swr": "^0.5.5"
+    "swr": "^1.0.1"
   },
   "devDependencies": {
     "@tailwindcss/jit": "^0.1.18",
