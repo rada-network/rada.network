@@ -1,12 +1,10 @@
 import Link from "next/link";
 import { usePageStore } from "@lib/usePageStore"
-import { useLaunchpadContract } from "@utils/hooks/useContracts";
-import { useState,useEffect } from "react";
 
 export default function LaunchpadContent({ project }) {
     const { dataStore } = usePageStore()
-    const raise = parseInt(project.launchpadInfo.tokensForSale) * parseFloat(project.launchpadInfo.tokenPrice)
-    const progress = parseInt(project.launchpadInfo.tokensForSale) == 0 ? 0 : parseInt(project.launchpadInfo.tokensAllocated) / parseInt(project.launchpadInfo.tokensForSale)
+    const raise = parseInt(project?.launchpadInfo?.tokensForSale) * parseFloat(project?.launchpadInfo?.tokenPrice)
+    const progress = parseInt(project?.launchpadInfo?.tokensForSale) == 0 ? 0 : parseInt(project?.launchpadInfo?.tokensAllocated) / parseInt(project?.launchpadInfo?.tokensForSale)
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="card card-default project-brief">
