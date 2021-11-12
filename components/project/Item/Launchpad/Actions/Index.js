@@ -8,9 +8,9 @@ import ProjectOpening from "./Opening";
 
 const LaunchpadActions = ({project}) => {
 
-  const curentTime = (new Date()).getTime()
-  const openTime = (new Date(project.open_date)).getTime()
-  const endTime = (new Date(project.end_date)).getTime()
+  const curentTime = (new Date()).getTime()/1000
+  const openTime = parseInt(project.launchpadInfo.startDate)
+  const endTime = parseInt(project.launchpadInfo.endDate)
   if (openTime > curentTime){
     return <WhitelistCountdown project={project} />
   }

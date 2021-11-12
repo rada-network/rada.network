@@ -6,8 +6,11 @@ import launchpadAbi from '../config/abi/launchpad.json'
 
 
 const getContract = (abi, address, signer) => {
-  const signerOrProvider = signer
-  return new ethers.Contract(address, abi, signerOrProvider)
+  if (!!address){
+    const signerOrProvider = signer
+    return new ethers.Contract(address, abi, signerOrProvider)
+  }
+  return null
 }
 
 export const getBep20Contract = (address, signer) => {

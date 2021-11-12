@@ -2,6 +2,7 @@ import Subscriber from "./Subscriber";
 import Timeline from "./Timeline";
 import SwapTokens from "./SwapToken"
 const SubscribeSwapToken = ({project}) => {
+  
   return (
     <>
       <div className="card-default project-main-actions no-padding overflow-hidden">
@@ -32,10 +33,16 @@ const SubscribeSwapToken = ({project}) => {
                     <li class="list-pair mb-2">
                       <span class="list-key">Quyền mua tối đa</span>
                       <span class="ml-auto list-value font-semibold">
-                        300 USDT (3 RIR)
+                        {project.launchpadInfo.individualMaximumAmount} USDT ( {project.launchpadInfo.individualMaximumAmount/100} RIR )
                       </span>
                     </li>
                     <li class="list-pair mb-2">
+                      <span class="list-key">Quyền mua tối thiểu</span>
+                      <span class="ml-auto list-value font-semibold">
+                      {project.launchpadInfo.individualMinimumAmount} USDT ( {project.launchpadInfo.individualMinimumAmount/100} RIR )
+                      </span>
+                    </li>
+                    {/* <li class="list-pair mb-2">
                       <span class="list-key">Đã mua</span>
                       <span class="ml-auto list-value font-semibold">
                         100 USDT (1 RIR)
@@ -46,7 +53,7 @@ const SubscribeSwapToken = ({project}) => {
                       <span class="ml-auto font-semibold">
                         200 USDT (2 RIR)
                       </span>
-                    </li>
+                    </li> */}
                   </ul>
 
                   <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">

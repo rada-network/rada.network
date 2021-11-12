@@ -243,7 +243,6 @@ const App = function() {
   useInactiveListener(!triedEager || !!activatingConnector)
   
   const lotteryContract = useLotteryContract("0x997B0F0Eb59e664964550BA7850C5fE62B77E315")
-  console.log(lotteryContract)
   return (
     <>
       <Header />

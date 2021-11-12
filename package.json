@@ -8,8 +8,9 @@
     "upload:public": "rsync -avz -P public/*  dhunt-web:/opt/web/cdnlogo.rada/",
     "build": "next build",
     "build:rada": "next build && npm run upload:static && npm run upload:public",
-    "build:devdhunt": "next build",
-    "start": "next start"
+    "build:devdhunt": "NODE_ENV=staging && next build",
+    "start": "next start",
+    "start:staging": "NODE_ENV=staging && next start"
   },
   "dependencies": {
     "@apollo/client": "^3.3.12",
