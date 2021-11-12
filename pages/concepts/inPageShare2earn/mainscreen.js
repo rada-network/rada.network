@@ -62,6 +62,7 @@ function Concept() {
                     <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
 
                     <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+
                       <SelectBannerType />
 
                       <div className="p-4 pt-0">
@@ -71,7 +72,7 @@ function Concept() {
                       </div>
 
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn class="btn btn-default">
+                        <btn class="btn btn-default w-full !py-2">
                           <span class="icon"><i class="fa-duotone fa-download text-xs"></i></span>
                           <span class="btn--text">Download</span>
                         </btn>
@@ -83,9 +84,27 @@ function Concept() {
                     <strong className="text-base text-color-title">Create Avatar</strong>
                     <span className="text-gray-500 dark:text-gray-400">Download &amp; change your avatar on your social chanels</span>
 
-                    <div>
-                      Avatar
+                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+
+                      <div className="grid gap-4 grid-cols-3 p-4">
+                        <div className="flex justify-center">
+                          <img className="" src={process.env.NEXT_PUBLIC_CDN + "/placeholders/share2earn-1.png"} alt="" />
+                        </div>
+                        <div className="flex justify-center">
+                          <img className="" src={process.env.NEXT_PUBLIC_CDN + "/placeholders/share2earn-2.png"} alt="" />
+                        </div>
+                        <div className="flex justify-center">
+                          <img className="" src={process.env.NEXT_PUBLIC_CDN + "/placeholders/share2earn-3.png"} alt="" />
+                        </div>
+                      </div>
+                      <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
+                        <btn class="btn btn-default w-full !py-2">
+                          <span class="icon"><i class="fa-duotone fa-download text-xs"></i></span>
+                          <span class="btn--text">Download</span>
+                        </btn>
+                      </div>
                     </div>
+
                   </div>
 
                 </div>
@@ -118,7 +137,7 @@ function Concept() {
                       </div>
 
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn class="btn btn-default">
+                        <btn class="btn btn-default  w-full !py-2">
                           <span class="icon"><i class="fa-duotone fa-copy text-xs"></i></span>
                           <span class="btn--text">Copy to clipboard</span>
                         </btn>
