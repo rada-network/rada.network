@@ -1,8 +1,26 @@
 import Subscriber from "./Subscriber";
 import Timeline from "./Timeline";
 import SwapTokens from "./SwapToken"
+import { useERC20 } from "@utils/hooks/useContracts";
+import { useEffect,useState } from "react";
+import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
+import { utils } from "ethers";
 const SubscribeSwapToken = ({project}) => {
-  
+  const rirContract = useERC20(project.launchpadInfo.rirAddress)
+  const bUSDContract = useERC20(project.launchpadInfo.bUSDAddress)
+  const {account} = useActiveWeb3React()
+  const [accountBalance, setAccountBalance] = useState({})
+  useEffect(() => {
+    const fetchAccountBalance =  async function(){
+      let rirBalance = await rirContract.balanceOf(account);
+      let busdBalance = await bUSDContract.balanceOf(account);
+      setAccountBalance({
+        rirBalance : utils.formatEther(rirBalance),
+        busdBalance : utils.formatEther(busdBalance)
+      })
+    }
+    fetchAccountBalance();
+  },[rirContract,account])
   return (
     <>
       <div className="card-default project-main-actions no-padding overflow-hidden">
@@ -42,6 +60,18 @@ const SubscribeSwapToken = ({project}) => {
                       {project.launchpadInfo.individualMinimumAmount} USDT ( {project.launchpadInfo.individualMinimumAmount/100} RIR )
                       </span>
                     </li>
+                    <li class="list-pair mb-2">
+                      <span class="list-key">Your RIR</span>
+                      <span class="ml-auto list-value font-semibold">
+                      {accountBalance?.rirBalance} RIR
+                      </span>
+                    </li>
+                    <li class="list-pair mb-2">
+                      <span class="list-key">Your BUSD</span>
+                      <span class="ml-auto list-value font-semibold">
+                      {accountBalance?.rirBalance} BUSD
+                      </span>
+                    </li>
                     {/* <li class="list-pair mb-2">
                       <span class="list-key">Đã mua</span>
                       <span class="ml-auto list-value font-semibold">
@@ -71,7 +101,7 @@ const SubscribeSwapToken = ({project}) => {
 
                 <div className="box box--gray">
                   <div className="box-header">Swap Token</div>
-                  <SwapTokens project={project}/>
+                  <SwapTokens project={project} accountBalance={accountBalance} />
                 </div>
 
               </div>
@@ -98,14 +128,14 @@ const SubscribeSwapToken = ({project}) => {
           </div>
         </div>
 
-        <div className="card-body no-padding">
+        {/* <div className="card-body no-padding">
           <div className="flex flex-col">
             <div className="global-padding-lg min-h-full">
               
               <Subscriber project={project} />  
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
