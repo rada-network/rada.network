@@ -91,7 +91,7 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd}) => {
           Approve RIR
         </button>
         <button className={"btn btn-default btn-default-lg btn-purple" + (disableBuying ? " disabled" : "")} id="swap-button" width="100%" scale="md" onClick={e => {handleConfirm(),setNumberRIR(0)}}>
-          Confirm
+          Subscribe
         </button>
       </div>
       {accountBalance?.busdBalance > 0 && 
@@ -138,8 +138,11 @@ const SubcribeByBUSD = ({project,accountBalance,setIsBusd}) => {
       </div> */}
 
       <div className="mt-8">
-        <button class="btn btn-default btn-default-lg w-full btn-purple" disabled="" id="swap-button" width="100%" scale="md">
+        <button className={"btn btn-default btn-default-lg btn-purple mr-2"} disabled="" onClick={e => {handleApprove()}} id="swap-button" width="100%" scale="md">
           Approve BUSD
+        </button>
+        <button className={"btn btn-default btn-default-lg btn-purple"} id="swap-button" width="100%" scale="md" onClick={e => {handleConfirm(),setNumberRIR(0)}}>
+          Subscribe
         </button>
       </div>
       {accountBalance?.rirBalance > 0 && 

@@ -52,8 +52,11 @@ const LaunchpadActions = ({ project }) => {
         console.log("error to fetch launchpad info",error)
       }
     }
-    if (account && !!lauchpadContact){
+    if (!!account && !!lauchpadContact && account !== ""){
       fetchLaunchpadInfo()
+    }
+    else{
+      setLaunchpadInfo(null)
     }
   }, [account,lauchpadContact])
   let wProject = {launchpadInfo,...project}

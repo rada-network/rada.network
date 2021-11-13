@@ -1,10 +1,40 @@
 import Link from "next/link";
 import { usePageStore } from "@lib/usePageStore"
+import { useState,useEffect } from "react";
+import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
+import {useLaunchpadContract} from "@utils/hooks/useContracts";
+import {utils} from "ethers"
 
 export default function LaunchpadContent({ project }) {
     const { dataStore } = usePageStore()
-    const raise = parseInt(project?.launchpadInfo?.tokensForSale) * parseFloat(project?.launchpadInfo?.tokenPrice)
-    const progress = parseInt(project?.launchpadInfo?.tokensForSale) == 0 ? 0 : parseInt(project?.launchpadInfo?.tokensAllocated) / parseInt(project?.launchpadInfo?.tokensForSale)
+
+    const {account} = useActiveWeb3React()
+    const [launchpadInfo,setLaunchpadInfo] = useState(null)
+    const lauchpadContact = useLaunchpadContract(project.swap_contract)
+
+    useEffect(() => {
+        const fetchLaunchpadInfo = async () => {
+        try {
+            let tokensForSale = await lauchpadContact.tokensForSale()
+            let tokenPrice = await lauchpadContact.tokenPrice()
+            let tokensAllocated = await lauchpadContact.tokensAllocated()
+            let updateInfo = {
+                tokensForSale : utils.formatEther(tokensForSale),
+                tokenPrice : utils.formatEther(tokenPrice),
+                tokensAllocated : utils.formatEther(tokensAllocated),
+            }
+            setLaunchpadInfo(updateInfo)
+        } catch (error) {
+            console.log("error to fetch launchpad info",error)
+        }
+        }
+        if (!!account && !!lauchpadContact && account !== ""){
+            fetchLaunchpadInfo()
+        }
+    }, [account,lauchpadContact])
+    const raise = parseInt(launchpadInfo?.tokensForSale) * parseFloat(launchpadInfo?.tokenPrice)
+    const progress = parseInt(launchpadInfo?.tokensForSale) == 0 ? 0 : parseInt(launchpadInfo?.tokensAllocated) / parseInt(launchpadInfo?.tokensForSale)
+
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="card card-default project-brief">
@@ -33,15 +63,15 @@ export default function LaunchpadContent({ project }) {
                             <span className="list-key">
                                 Token Price
                             </span>
-                            <span className="ml-auto font-semibold">{project?.launchpadInfo?.tokenPrice || "n/a"} USDT </span>
+                            <span className="ml-auto font-semibold">{launchpadInfo?.tokenPrice || "n/a"} USDT </span>
                         </li>
                         <li className="list-pair mb-2">
                             <span className="list-key">
                                 Progress
                             </span>
                             <span className="list-value ml-auto">
-                                <span className="font-semibold">{project?.launchpadInfo?.tokensAllocated || "n/a"}</span>
-                                <span className="opacity-70">/{project?.launchpadInfo?.tokensForSale || "n/a"}</span> {project?.token.symbol}
+                                <span className="font-semibold">{launchpadInfo?.tokensAllocated || "n/a"}</span>
+                                <span className="opacity-70">/{launchpadInfo?.tokensForSale || "n/a"}</span> {project?.token.symbol}
                             </span>
                         </li>
                     </ul>

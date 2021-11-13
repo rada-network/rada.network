@@ -100,7 +100,7 @@ const SubscribeSwapToken = ({project}) => {
                 </div>
 
                 <div className="box box--gray">
-                  <div className="box-header">Swap Token</div>
+                  <div className="box-header">Subscribe launchpad</div>
                   <SwapTokens project={project} accountBalance={accountBalance} />
                 </div>
 
