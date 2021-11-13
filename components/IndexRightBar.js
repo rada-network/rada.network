@@ -47,7 +47,7 @@ export const IndexRightBar = observer(({ intro }) => {
   useEffect(() => {
     if (window.location.hash) {
       const hash = window.location.hash.substr(1);
-      if (["overview","","invest","team","airdrop"].indexOf(hash) !== -1) {
+      if (["overview","","invest","team","airdrop","share2earn"].indexOf(hash) !== -1) {
         setTabName(hash)
       }
     } else {
@@ -68,6 +68,11 @@ export const IndexRightBar = observer(({ intro }) => {
   const airdrop = tokenData?.airdrop?.find((ad) => ad.status == "published");
   // find active invest
   const investCampaign = tokenData?.invest_campaign?.find(
+    (ic) => ic.status == "published"
+  );
+
+  // for test
+  const share2earn = tokenData?.invest_campaign?.find(
     (ic) => ic.status == "published"
   );
 
@@ -250,6 +255,25 @@ export const IndexRightBar = observer(({ intro }) => {
                           </span>
                           <span className="tab-item--text">
                             {t("airdrop")}
+                          </span>
+                        </a>
+                      )}
+
+                      {share2earn && (
+                        <a
+                        href="#share2earn"
+                        className={`tab-item ${
+                          tabName === "share2earn" ? "tab-item--active" : ""
+                        }`}
+                        onClick={() => {
+                          setTabName("share2earn");
+                        }}
+                        >
+                          <span className="icon">
+                            <i class="fa-duotone fa-gift"></i>
+                          </span>
+                          <span className="tab-item--text">
+                            {t("share2earn")}
                           </span>
                         </a>
                       )}
