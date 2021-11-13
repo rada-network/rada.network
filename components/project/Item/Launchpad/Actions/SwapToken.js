@@ -24,18 +24,22 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd}) => {
   const launchpadContract = useLaunchpadContract(project.swap_contract)
   const {callWithGasPrice} = useCallWithGasPrice()
   const [numberRIR,setNumberRIR] = useState("")
+  const resetApproved = () => {
+    return callWithGasPrice(rirContract, 'approve', [launchpadContract.address, 0])
+  }
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
           const response = await rirContract.allowance(account, launchpadContract.address)
+          console.log(response)
           return response.gt(0)
         } catch (error) {
           return false
         }
       },
       onApprove: () => {
-        return callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+        return callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberRIR)])
       },
       onApproveSuccess: async ({ receipt }) => {
         console.log(receipt)
@@ -92,6 +96,11 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd}) => {
         </button>
         <button className={"btn btn-default btn-default-lg btn-purple" + (disableBuying ? " disabled" : "")} id="swap-button" width="100%" scale="md" onClick={e => {handleConfirm(),setNumberRIR(0)}}>
           Subscribe
+        </button>
+      </div>
+      <div className="mt-8">
+        <button className={"btn btn-default btn-default-lg btn-purple mr-2" + (isApproved || isApproving ? " " : "disabled")} disabled="" onClick={e => {resetApproved()}} id="swap-button" width="100%" scale="md">
+          Reset Approved
         </button>
       </div>
       {accountBalance?.busdBalance > 0 && 

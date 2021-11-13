@@ -5,6 +5,7 @@ import { useERC20 } from "@utils/hooks/useContracts";
 import { useEffect,useState } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { utils } from "ethers";
+import { WalletProfile } from "@components/Wallet";
 const SubscribeSwapToken = ({project}) => {
   const rirContract = useERC20(project.launchpadInfo.rirAddress)
   const bUSDContract = useERC20(project.launchpadInfo.bUSDAddress)
@@ -19,7 +20,9 @@ const SubscribeSwapToken = ({project}) => {
         busdBalance : utils.formatEther(busdBalance)
       })
     }
-    fetchAccountBalance();
+    if (!!rirContract && !!account){
+      fetchAccountBalance();
+    }
   },[rirContract,account])
   return (
     <>
@@ -72,6 +75,9 @@ const SubscribeSwapToken = ({project}) => {
                       {accountBalance?.rirBalance} BUSD
                       </span>
                     </li>
+                    <li class="list-pair mb-2">
+                      
+                    </li>
                     {/* <li class="list-pair mb-2">
                       <span class="list-key">Đã mua</span>
                       <span class="ml-auto list-value font-semibold">
@@ -87,6 +93,7 @@ const SubscribeSwapToken = ({project}) => {
                   </ul>
 
                   <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
+                    <WalletProfile />
                     <p>
                       <span className="icon mr-2 text-base">
                         <i class="fas fa-info-circle text-yellow-500"></i>
