@@ -1,13 +1,15 @@
 import { observer } from "mobx-react";
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { saveAs } from 'file-saver';
 
+import { useStore } from "../../lib/useStore";
 import { usePageStore } from "@lib/usePageStore";
 import { Head } from "../Head";
 import SelectBannerType from "../share2earn/listbox-share2earn";
+import { getCurrentUser } from "../../data/query/user";
 
-const Share2EarnMainScreen = observer( ({tokenData,}) => {
+const Share2EarnMainScreen = observer( ({tokenData}) => {
   const { detailStore } = usePageStore();
 
   // Banner component
@@ -24,6 +26,20 @@ const Share2EarnMainScreen = observer( ({tokenData,}) => {
     saveAs(bannerURL, detailStore.selectedBanner+".png");
   }
 
+  // Generate share url
+  const [user, setUser] = useState({});
+  const store = useStore()
+  useEffect(() => {
+    if (store.user.access_token !== "") {
+      getCurrentUser().then((res) => {
+        setUser(res);
+      });
+    }
+  }, [store.user.access_token]);
+
+  const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
+  
+  
   return (
     <>     
     <Head />
@@ -156,11 +172,13 @@ const Share2EarnMainScreen = observer( ({tokenData,}) => {
                       <div className="p-4">
                         <p className="mb-4">This game is whole new generation metaverse. Never seen anything like this!
                         I can play and earn so well 💰✨✨</p>
-                        <p>👉 &nbsp;Learn more here <a href="#" className="link">https://rada.network/en/post/widiland-a-dreamy-story-with-real-humane-values/ref=1018</a></p>
+                        <p>👉 &nbsp;Learn more here <a href="#" className="link">{window.location.href + "?ref=" + uid}</a></p>
                       </div>
 
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn class="btn btn-default  w-full !py-2">
+                        <btn class="btn btn-default  w-full !py-2"
+                          onClick={() =>  navigator.clipboard.writeText(window.location.href + "?ref=" + uid)}
+                        >
                           <span class="icon"><i class="fa-duotone fa-copy text-xs"></i></span>
                           <span class="btn--text">Copy to clipboard</span>
                         </btn>
