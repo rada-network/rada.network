@@ -73,8 +73,10 @@ export default function TokenInfoShare2Earn({
       }
     }, [store.user.access_token]);
 
+    const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
+
     // TODO: Save in config file
-    const share2earnAddress = "0xBe4d3486eaBC6d6790730962E12787155bB59B49"
+    const share2earnAddress = "0x7b9AEeD27F291625CbaED61Ac178D61709d62dCC"
     const share2earnContract = useShare2EarnContract(share2earnAddress)
     const {callWithGasPrice} = useCallWithGasPrice()
     const {callFunction} = useCallFunction()
@@ -83,7 +85,8 @@ export default function TokenInfoShare2Earn({
     const { isConfirmed, isConfirming, handleConfirm } =
     useApproveConfirmTransaction({
       onConfirm: () => {
-        return callWithGasPrice(share2earnContract, 'joinProgram', [tokenData.id, user?.id, referralCode])
+
+        return callWithGasPrice(share2earnContract, 'joinProgram', [tokenData.id, uid, referralCode])
       },
       onSuccess: async ({ receipt }) => {
         toast.success(`Subscribed successfully ${receipt.transactionHash}`)
@@ -106,7 +109,7 @@ export default function TokenInfoShare2Earn({
     }, [account,user]);
 
     React.useEffect(() => {
-      getInfoProgram()
+        getInfoProgram()
 
     }, [active, account,library]);
 
@@ -115,7 +118,7 @@ export default function TokenInfoShare2Earn({
 
       try {
         if (typeof  window.ethereum !== undefined) {
-          const addressJoined = await callFunction(share2earnContract, 'uidJoined', [tokenData.id, user?.id])
+          const addressJoined = await callFunction(share2earnContract, 'uidJoined', [tokenData.id, uid])
           if (addressJoined=='0x0000000000000000000000000000000000000000')
             setJoined('');
           else setJoined(addressJoined);
@@ -128,9 +131,13 @@ export default function TokenInfoShare2Earn({
 
       try {
           const p = await callFunction(share2earnContract, 'getInfoProgram', [tokenData.id])
-          setIncentive1(ethers.utils.formatEther(p.incentiveL0));
-          setIncentive2(ethers.utils.formatEther(p.incentiveL1));
+          if (p) {
+            setIncentive1(ethers.utils.formatEther(p.incentiveL0));
+            setIncentive2(ethers.utils.formatEther(p.incentiveL1));
+          }
       }catch(e) {
+        activate(injected);
+        console.log(e);
       }
     }
 
@@ -207,8 +214,8 @@ export default function TokenInfoShare2Earn({
                   <i className="fa-duotone fa-hand-holding-heart"></i>
                 </span>
                 <div className="flex flex-col">
-                  <strong className="text-base text-color-title">A Refferal Person join IDO and buy allocation ?????</strong>
-                  <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400" style={{textDecoration: "line-through"}}>+00??00 RIR</span> for each ?????</span>
+                  <strong className="text-base text-color-title">A Refferal Person join IDO and buy allocation</strong>
+                  <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400" style={{textDecoration: "line-through"}}>+0 RIR</span> for each</span>
                 </div>
               </li>
               <li className="flex items-center">
