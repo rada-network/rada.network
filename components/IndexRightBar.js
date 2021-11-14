@@ -71,7 +71,6 @@ export const IndexRightBar = observer(({ intro }) => {
     (ic) => ic.status == "published"
   );
 
-  // for test
   const share2earn = tokenData?.share_campaign?.find(
     (ic) => ic.status == "published"
   );

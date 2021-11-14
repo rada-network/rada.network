@@ -152,7 +152,7 @@ export default function TokenInfoShare2Earn({
     }
 
     if (joined !='' || isConfirmed) {
-      return <Share2EarnMainScreen></Share2EarnMainScreen>;
+      return <Share2EarnMainScreen tokenData={tokenData}/>;
     }
 
   return (
