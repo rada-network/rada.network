@@ -1,9 +1,13 @@
 import React from "react";
 import { useEffect, useState } from 'react';
-import { Head } from "../../components/Head";
-
+import { ethers } from 'ethers'
+import { toast } from "react-toastify";
 import {useTranslation} from "next-i18next";
 import _ from "lodash"
+
+import { Head } from "../../components/Head";
+import Share2EarnMainScreen from "../../components/share2earn/Share2EarnMainScreen";
+
 import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransaction"
 import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
 import {useCallFunction} from "@utils/hooks/useCallFunction"
@@ -19,7 +23,6 @@ import { useStore } from "../../lib/useStore";
 import { getCurrentUser } from "../../data/query/user";
 
 import { getErrorMessage } from "../../utils"
-import { toast } from "react-toastify";
 
 export default function TokenInfoShare2Earn({
   tokenData,
@@ -44,6 +47,18 @@ export default function TokenInfoShare2Earn({
     // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
     useInactiveListener(!triedEager || !!activatingConnector);
 
+
+    useEffect(() => {
+      setTimeout(()=>{
+        injected.isAuthorized().then(isAuthorized => {
+
+          if (isAuthorized) {
+            activate(injected)
+          }
+        });
+      }, 1000)
+
+    }, [activate]);
 
     // Handle join program
     const referralCode = "" // TODO: get from cookies and paramaters ?
@@ -81,6 +96,8 @@ export default function TokenInfoShare2Earn({
       }
     };
     const [joined, setJoined] = useState('')
+    const [incentive1, setIncentive1] = useState(0)
+    const [incentive2, setIncentive2] = useState(0)
 
     React.useEffect(() => {
       if (account && user) {
@@ -88,7 +105,14 @@ export default function TokenInfoShare2Earn({
       }
     }, [account,user]);
 
+    React.useEffect(() => {
+      getInfoProgram()
+
+    }, [active, account,library]);
+
+
     const checkJoined = async () => {
+
       try {
         if (typeof  window.ethereum !== undefined) {
           const addressJoined = await callFunction(share2earnContract, 'uidJoined', [tokenData.id, user?.id])
@@ -97,13 +121,22 @@ export default function TokenInfoShare2Earn({
           else setJoined(addressJoined);
         }
       }catch(e) {
+      }
+    }
 
+    const getInfoProgram = async () => {
+
+      try {
+          const p = await callFunction(share2earnContract, 'getInfoProgram', [tokenData.id])
+          setIncentive1(ethers.utils.formatEther(p.incentiveL0));
+          setIncentive2(ethers.utils.formatEther(p.incentiveL1));
+      }catch(e) {
       }
     }
 
     const getMessage = () => {
       if (isConfirming) {
-        return 'Vui lòng chờ giây lát';
+        return 'Vui lòng xác nhận Transaction và chờ  khoảng 15-30 giây';
       }
       else if (isConfirmed) {
         return 'Đã tham gia chương trình';
@@ -113,11 +146,14 @@ export default function TokenInfoShare2Earn({
       return '';
     }
     const allowJoin = getMessage() == '' && joined==''
-
-    const handleConnectWallet = () => {
-      activate(injected);setActivatingConnector(injected);
+    const handleConnectWallet =  () => {
+      activate(injected);
+      setActivatingConnector(injected);
     }
 
+    if (joined !='' || isConfirmed) {
+      return <Share2EarnMainScreen></Share2EarnMainScreen>;
+    }
 
   return (
     <>
@@ -162,7 +198,7 @@ export default function TokenInfoShare2Earn({
                 </span>
                 <div className="flex flex-col">
                   <strong className="text-base text-color-title">A Refferal Person join Share2Earn program</strong>
-                  <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+0.5 RIR</span> for each</span>
+                  <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{incentive1} RIR</span> for each</span>
                 </div>
               </li>
               <li className="flex items-center">
@@ -171,8 +207,8 @@ export default function TokenInfoShare2Earn({
                   <i className="fa-duotone fa-hand-holding-heart"></i>
                 </span>
                 <div className="flex flex-col">
-                  <strong className="text-base text-color-title">A Refferal Person join IDO and buy allocation</strong>
-                  <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+1 RIR</span> for each</span>
+                  <strong className="text-base text-color-title">A Refferal Person join IDO and buy allocation ?????</strong>
+                  <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400" style={{textDecoration: "line-through"}}>+00??00 RIR</span> for each ?????</span>
                 </div>
               </li>
               <li className="flex items-center">
@@ -182,7 +218,7 @@ export default function TokenInfoShare2Earn({
                 </span>
                 <div className="flex flex-col">
                   <strong className="text-base text-color-title">Get refferal bonus for each new refferal level 2 member</strong>
-                  <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+0.1 RIR</span> for each</span>
+                  <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{incentive2} RIR</span> for each</span>
                 </div>
               </li>
             </ul>
@@ -204,7 +240,7 @@ export default function TokenInfoShare2Earn({
               </fieldset>}
               {_.isEmpty(account) ? (
                   <span>
-                    {t("no connection", { provider: "wallet" })} <button onClick={() => handleConnectWallet()}>Kết nối</button>
+                    {t("no connection", { provider: "wallet" })} <button onClick={() => handleConnectWallet()}>Kết nối lại</button>
                   </span>
                 ) : (
               <>
