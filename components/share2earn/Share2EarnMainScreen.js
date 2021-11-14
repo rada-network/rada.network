@@ -1,8 +1,9 @@
 import { observer } from "mobx-react";
 import React from "react";
 import { useEffect } from "react";
-import { usePageStore } from "@lib/usePageStore";
+import { saveAs } from 'file-saver';
 
+import { usePageStore } from "@lib/usePageStore";
 import { Head } from "../Head";
 import SelectBannerType from "../share2earn/listbox-share2earn";
 
@@ -10,13 +11,17 @@ const Share2EarnMainScreen = observer( ({tokenData,}) => {
   const { detailStore } = usePageStore();
 
   // Banner component
-  let bannerComponent;
+  let bannerURL;
   if (detailStore.selectedBanner === "Facebook") {
-    bannerComponent = <img class="rounded-lg" src={tokenData.share_campaign[0].facebook_banner} />
+    bannerURL = tokenData.share_campaign[0].facebook_banner;
   } else if (detailStore.selectedBanner === "Twitter") {
-    bannerComponent = <img class="rounded-lg" src={tokenData.share_campaign[0].twitter_banner} />
+    bannerURL = tokenData.share_campaign[0].twitter_banner;
   } else {
-    bannerComponent = <img class="rounded-lg" src={tokenData.share_campaign[0].linkedin_banner} />
+    bannerURL = tokenData.share_campaign[0].linkedin_banner;
+  }
+
+  const handleDownload = () => {
+    saveAs(bannerURL, detailStore.selectedBanner+".png");
   }
 
   return (
@@ -83,14 +88,14 @@ const Share2EarnMainScreen = observer( ({tokenData,}) => {
 
                       <div className="p-4 pt-0">
                         <div class="aspect-w-16 aspect-h-9">
-                        {/* <img class="rounded-lg" src={tokenData.share_campaign[0].facebook_banner} /> */}
-                          {bannerComponent}
-                          {/* <img class="rounded-lg" src="/placeholders/parallel-cover.jpg" /> */}
+                        <img class="rounded-lg" src={bannerURL} />
                         </div>
                       </div>
 
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn class="btn btn-default w-full !py-2">
+                        <btn class="btn btn-default w-full !py-2"
+                          onClick={() => handleDownload()}
+                        >
                           <span class="icon"><i class="fa-duotone fa-download text-xs"></i></span>
                           <span class="btn--text">Download</span>
                         </btn>
