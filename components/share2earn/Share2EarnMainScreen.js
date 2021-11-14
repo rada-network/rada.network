@@ -169,8 +169,8 @@ const Share2EarnMainScreen = observer( ({tokenData,}) => {
                   </div>
 
                 </div>
-
               </li>
+              {/* End step 2 */}
 
               {/* Step 3 */}
               <li className="flex items-start">
@@ -185,22 +185,31 @@ const Share2EarnMainScreen = observer( ({tokenData,}) => {
                 </div>
 
                 <div className="flex flex-col">
-
                   <div className="flex flex-col">
                     <strong className="text-base text-color-title">Verify your refferal</strong>
                     <span className="text-gray-500 dark:text-gray-400">Insert your share links in the box below to verify your refferal</span>
-
-                    <div>
-                      <form className="mt-4">
-
-                      </form>
-                    </div>
-                  </div>
-
+                  </div> 
                 </div>
-
+              </li>
+              
+              <li>
+                <span>Facebook</span>
+                <input className="inline--field border-l-none pr-16" id="facebook-url" type="text"/>
+                <button class="btn btn-default">Submit</button>
+              </li>
+              
+              <li>
+                <span>Twitter</span>
+                <input className="inline--field border-l-none pr-16" id="twitter-url" type="text"/>
+                <button class="btn btn-default">Submit</button>
               </li>
 
+              <li>
+                <span>LinkedIn</span>
+                <input className="inline--field border-l-none pr-16" id="linkedin-url" type="text"/>
+                <button class="btn btn-default">Submit</button>
+              </li>
+              {/* End step 3 */}
             </ol>
 
           </div>
