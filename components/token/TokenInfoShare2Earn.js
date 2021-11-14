@@ -24,6 +24,7 @@ import { toast } from "react-toastify";
 export default function TokenInfoShare2Earn({
   tokenData,
 }) {
+  const {injected,walletconnect} = useChainConfig()
 
     const {t} = useTranslation()
 
@@ -91,7 +92,9 @@ export default function TokenInfoShare2Earn({
       try {
         if (typeof  window.ethereum !== undefined) {
           const addressJoined = await callFunction(share2earnContract, 'uidJoined', [tokenData.id, user?.id])
-          setJoined(addressJoined);
+          if (addressJoined=='0x0000000000000000000000000000000000000000')
+            setJoined('');
+          else setJoined(addressJoined);
         }
       }catch(e) {
 
@@ -109,8 +112,11 @@ export default function TokenInfoShare2Earn({
       }
       return '';
     }
-
     const allowJoin = getMessage() == '' && joined==''
+
+    const handleConnectWallet = () => {
+      activate(injected);setActivatingConnector(injected);
+    }
 
 
   return (
@@ -198,7 +204,7 @@ export default function TokenInfoShare2Earn({
               </fieldset>}
               {_.isEmpty(account) ? (
                   <span>
-                    {t("no connection", { provider: "wallet" })}
+                    {t("no connection", { provider: "wallet" })} <button onClick={() => handleConnectWallet()}>Kết nối</button>
                   </span>
                 ) : (
               <>
