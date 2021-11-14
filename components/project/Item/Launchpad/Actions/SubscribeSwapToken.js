@@ -6,24 +6,29 @@ import { useEffect,useState } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { utils } from "ethers";
 import { WalletProfile } from "@components/Wallet";
+import {useLaunchpadInfo} from "@utils/hooks/index"
 const SubscribeSwapToken = ({project}) => {
-  const rirContract = useERC20(project.launchpadInfo.rirAddress)
-  const bUSDContract = useERC20(project.launchpadInfo.bUSDAddress)
+
+  const {launchpadInfo} = useLaunchpadInfo({project})
+
+  const rirContract = useERC20(launchpadInfo.rirAddress)
+  const bUSDContract = useERC20(launchpadInfo.bUSDAddress)
   const {account} = useActiveWeb3React()
   const [accountBalance, setAccountBalance] = useState({})
   useEffect(() => {
-    const fetchAccountBalance =  async function(){
-      let rirBalance = await rirContract.balanceOf(account);
-      let busdBalance = await bUSDContract.balanceOf(account);
-      setAccountBalance({
-        rirBalance : utils.formatEther(rirBalance),
-        busdBalance : utils.formatEther(busdBalance)
-      })
-    }
     if (!!rirContract && !!account){
       fetchAccountBalance();
     }
   },[rirContract,account])
+  const fetchAccountBalance =  async function(){
+    let rirBalance = await rirContract.balanceOf(account);
+    let busdBalance = await bUSDContract.balanceOf(account);
+    setAccountBalance({
+      rirBalance : utils.formatEther(rirBalance),
+      busdBalance : utils.formatEther(busdBalance),
+    })
+  }
+  let orderUsd = launchpadInfo?.currentOrder?.amountBUSD ? launchpadInfo?.currentOrder?.amountBUSD : 0
   return (
     <>
       <div className="card-default project-main-actions no-padding overflow-hidden">
@@ -54,16 +59,16 @@ const SubscribeSwapToken = ({project}) => {
                     <li class="list-pair mb-2">
                       <span class="list-key">Quyền mua tối đa</span>
                       <span class="ml-auto list-value font-semibold">
-                        {project.launchpadInfo.individualMaximumAmount} USDT ( {project.launchpadInfo.individualMaximumAmount/100} RIR )
+                        {launchpadInfo?.individualMaximumAmount} USDT ( {launchpadInfo?.individualMaximumAmount/100} RIR )
                       </span>
                     </li>
                     <li class="list-pair mb-2">
                       <span class="list-key">Quyền mua tối thiểu</span>
                       <span class="ml-auto list-value font-semibold">
-                      {project.launchpadInfo.individualMinimumAmount} USDT ( {project.launchpadInfo.individualMinimumAmount/100} RIR )
+                      {launchpadInfo?.individualMinimumAmount} USDT ( {launchpadInfo?.individualMinimumAmount/100} RIR )
                       </span>
                     </li>
-                    <li class="list-pair mb-2">
+                    {/* <li class="list-pair mb-2">
                       <span class="list-key">Your RIR</span>
                       <span class="ml-auto list-value font-semibold">
                       {accountBalance?.rirBalance} RIR
@@ -72,24 +77,24 @@ const SubscribeSwapToken = ({project}) => {
                     <li class="list-pair mb-2">
                       <span class="list-key">Your BUSD</span>
                       <span class="ml-auto list-value font-semibold">
-                      {accountBalance?.rirBalance} BUSD
+                      {accountBalance?.busdBalance} BUSD
                       </span>
-                    </li>
+                    </li> */}
                     <li class="list-pair mb-2">
                       
                     </li>
-                    {/* <li class="list-pair mb-2">
+                    <li class="list-pair mb-2">
                       <span class="list-key">Đã mua</span>
                       <span class="ml-auto list-value font-semibold">
-                        100 USDT (1 RIR)
+                        {utils.formatEther(orderUsd)} USDT ({parseInt(utils.formatEther(orderUsd))/100} RIR)
                       </span>
                     </li>
                     <li class="list-pair mb-2">
                       <span class="list-key">Còn lại</span>
                       <span class="ml-auto font-semibold">
-                        200 USDT (2 RIR)
+                        {launchpadInfo?.individualMaximumAmount - parseInt(utils.formatEther(orderUsd))} USDT ({(launchpadInfo?.individualMaximumAmount - parseInt(utils.formatEther(orderUsd)))/100} RIR)
                       </span>
-                    </li> */}
+                    </li>
                   </ul>
 
                   <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
@@ -108,7 +113,7 @@ const SubscribeSwapToken = ({project}) => {
 
                 <div className="box box--gray">
                   <div className="box-header">Subscribe launchpad</div>
-                  <SwapTokens project={project} accountBalance={accountBalance} />
+                  <SwapTokens project={project} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} />
                 </div>
 
               </div>
@@ -119,7 +124,7 @@ const SubscribeSwapToken = ({project}) => {
 
       <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
         <div className="card-header items-center">
-          <h3>Subscriber (1000)</h3>
+          <h3>Subscriber ({launchpadInfo?.ordersBuyerCount})</h3>
           <div className="search-wrapper">
             <div className="form-search rounded-full">
               <span className="icon form-search--icon">
@@ -135,14 +140,14 @@ const SubscribeSwapToken = ({project}) => {
           </div>
         </div>
 
-        {/* <div className="card-body no-padding">
+        <div className="card-body no-padding">
           <div className="flex flex-col">
             <div className="global-padding-lg min-h-full">
               
-              <Subscriber project={project} />  
+              <Subscriber project={project} buyers={launchpadInfo.buyers} />  
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );

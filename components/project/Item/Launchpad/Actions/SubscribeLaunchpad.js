@@ -16,10 +16,7 @@ const SubscribeLaunchpad = ({ project }) => {
   if (data) store.kyc.update(data.status)
 
   console.log('User: ', store.user.id)
-  const { account, library } = useActiveWeb3React()
-  if (!!account) {
-    //return <SubscribeSwapToken project={project} />
-  }
+
   return (
     <>
       <div className="mb-8">
@@ -121,9 +118,6 @@ const KYC = () => {
 
   return (
     <>
-      <HTMLHead>
-        <script src='https://cdn.blockpass.org/widget/scripts/release/3.0.2/blockpass-kyc-connect.prod.js'></script>
-      </HTMLHead>
       <div className="list-group--item md:!pb-4">
         <div className="list-group--item--title w-full md:w-1/4">
           <div className="list-group--item--media">

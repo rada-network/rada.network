@@ -25,6 +25,7 @@ export default function LaunchpadContent({ project }) {
             }
             setLaunchpadInfo(updateInfo)
         } catch (error) {
+            console.log(account)
             console.log("error to fetch launchpad info",error)
         }
         }

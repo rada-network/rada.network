@@ -12,6 +12,12 @@ const initialState = {
 
 const reducer = (state, actions) => {
   switch (actions.type) {
+    case 'initial_state':
+      return {
+        ...state,
+        approvalState: 'idle',
+        confirmState: 'idle',
+      }
     case 'requires_approval':
       return {
         ...state,
@@ -52,7 +58,7 @@ const reducer = (state, actions) => {
   }
 }
 
-const useApproveConfirmTransaction = ({
+const useMultiApproveConfirmTransaction = ({
   onApprove,
   onConfirm,
   onRequiresApproval,
@@ -82,14 +88,25 @@ const useApproveConfirmTransaction = ({
     hasConfirmFailed: state.confirmState === 'fail',
     handleApprove: async () => {
       try {
-        const tx = await onApprove()
+        const txs = await onApprove()
         dispatch({ type: 'approve_sending' })
-        const receipt = await tx.wait()
-        if (receipt.status) {
+        let receipts  = []
+        for (const tx of txs) {
+          receipts.push(await tx.wait())
+        }
+        let status = true;
+        for (const receipt of receipts){
+          if (!receipt.status) {
+            status = false;
+            break;
+          }
+        }
+        if (status){
           dispatch({ type: 'approve_receipt' })
-          onApproveSuccess({ state, receipt })
+          onApproveSuccess({ state, receipts })
         }
       } catch (error) {
+        console.log(error)
         dispatch({ type: 'approve_error' })
         toast.error('Please try again. Confirm the transaction and make sure you are paying enough gas!')
       }
@@ -108,7 +125,17 @@ const useApproveConfirmTransaction = ({
         toast.error('Please try again. Confirm the transaction and make sure you are paying enough gas!')
       }
     },
+    handleReload: async (params = {}) => {
+      dispatch( {type: 'initial_state' })
+      if (account && handlePreApprove.current) {
+        handlePreApprove.current().then((result) => {
+          if (result) {
+            dispatch({ type: 'requires_approval' })
+          }
+        })
+      }
+    },
   }
 }
 
-export default useApproveConfirmTransaction
+export default useMultiApproveConfirmTransaction

@@ -10,6 +10,7 @@ import useStore from "@lib/useStore";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { useLaunchpadContract } from "@utils/hooks/useContracts";
 import {utils} from "ethers"
+import { useLaunchpadInfo } from "@utils/hooks/index";
 
 const LaunchpadActions = ({ project }) => {
   const store = useStore()
@@ -18,48 +19,8 @@ const LaunchpadActions = ({ project }) => {
   const openTime = (new Date(project.open_date)).getTime() / 1000
   const endTime = (new Date(project.end_date)).getTime() / 1000
 
-  const {account} = useActiveWeb3React()
-  const [launchpadInfo,setLaunchpadInfo] = useState(null)
-  const lauchpadContact = useLaunchpadContract(project.swap_contract)
-  useEffect(() => {
-    const fetchLaunchpadInfo = async () => {
-      try {
-        let tokenAddress = await lauchpadContact.tokenAddress()
-        let bUSDAddress = await lauchpadContact.bUSDAddress()
-        let rirAddress = await lauchpadContact.rirAddress()
-        let startDate = await lauchpadContact.startDate()
-        let endDate = await lauchpadContact.endDate()
-        let tokensForSale = await lauchpadContact.tokensForSale()
-        let tokenPrice = await lauchpadContact.tokenPrice()
-        let tokensAllocated = await lauchpadContact.tokensAllocated()
-        let individualMinimumAmount = await lauchpadContact.individualMinimumAmount()
-        let individualMaximumAmount = await lauchpadContact.individualMaximumAmount()
-        let updateInfo = {
-          startDate : utils.formatEther(startDate),
-          endDate : utils.formatEther(endDate),
-          tokensForSale : utils.formatEther(tokensForSale),
-          tokenPrice : utils.formatEther(tokenPrice),
-          tokensAllocated : utils.formatEther(tokensAllocated),
-          individualMinimumAmount : utils.formatEther(individualMinimumAmount),
-          individualMaximumAmount : utils.formatEther(individualMaximumAmount),
-          tokenAddress : utils.getAddress(tokenAddress),
-          bUSDAddress : utils.getAddress(bUSDAddress),
-          rirAddress : utils.getAddress(rirAddress),
-        }
-        setLaunchpadInfo(updateInfo)
-        console.log(updateInfo)
-      } catch (error) {
-        console.log("error to fetch launchpad info",error)
-      }
-    }
-    if (!!account && !!lauchpadContact && account !== ""){
-      fetchLaunchpadInfo()
-    }
-    else{
-      setLaunchpadInfo(null)
-    }
-  }, [account,lauchpadContact])
-  let wProject = {launchpadInfo,...project}
+  const {launchpadInfo} = useLaunchpadInfo({project})
+  
   if (openTime > curentTime) {
     return <WhitelistCountdown project={wProject} />
   }
@@ -68,7 +29,7 @@ const LaunchpadActions = ({ project }) => {
     return (
       <>
         {store.kyc.isKYC && launchpadInfo ?
-          <SubscribeSwapToken project={wProject} />
+          <SubscribeSwapToken project={project} />
           :
           <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">
             <div className="card-body no-padding">
@@ -78,7 +39,7 @@ const LaunchpadActions = ({ project }) => {
                 </div>
 
                 <div className="global-padding-lg !px-4 min-h-full max-w-xl w-full mx-auto">
-                    <SubscribeLaunchpad project={wProject} />
+                    <SubscribeLaunchpad project={project} />
                 </div>
 
               </div>
