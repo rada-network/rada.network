@@ -72,7 +72,7 @@ export const IndexRightBar = observer(({ intro }) => {
   );
 
   // for test
-  const share2earn = tokenData?.invest_campaign?.find(
+  const share2earn = tokenData?.share_campaign?.find(
     (ic) => ic.status == "published"
   );
 
