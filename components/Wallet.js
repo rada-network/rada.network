@@ -26,7 +26,7 @@ const ConnectWalletModal = observer(({}) => {
   const {injected,walletconnect} = useChainConfig()
   // handle logic to recognize the connector currently being activated
   const [activatingConnector, setActivatingConnector] = useState()
-  const closeModal = () => { store.wallet.showConnect(false); } 
+  const closeModal = () => { store.wallet.showConnect(false); }
   const isOpen = store?.wallet.showingConnect
   useEffect(() => {
     store.wallet.showConnect(false)
@@ -43,14 +43,14 @@ const ConnectWalletModal = observer(({}) => {
     }
   }, [activatingConnector, connector])
 
-  
+
 
   // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
   //const triedEager = useEagerConnect()
 
   // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
   //useInactiveListener(!triedEager || !!activatingConnector)
-  
+
   return (
   <>
   <Transition show={isOpen} as={Fragment}>
@@ -109,7 +109,7 @@ const ConnectWalletModal = observer(({}) => {
                       <span className="btn--text font-normal">Back</span>
                     </button>
                     <h3 className="text-xl font-semibold">
-                      Connect 
+                      Connect
                       <span
                         className="hasTooltip"
                         data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
@@ -257,7 +257,7 @@ export const WalletProfile = ({}) => {
               }
             </>
           )}
-          
+
         </div>
         {/* {!!error && <div className="relative pl-8 md:pl-0 w-full flex items-center">
           <h4 className="error">{getErrorMessage(error,store.network)}</h4>
