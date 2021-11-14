@@ -1,7 +1,24 @@
-import { Head } from "../Head";
-import SelectBannerType from "../concepts/listboxes/listbox-share2earn";
+import { observer } from "mobx-react";
+import React from "react";
+import { useEffect } from "react";
+import { usePageStore } from "@lib/usePageStore";
 
-export default function Share2EarnMainScreen() {
+import { Head } from "../Head";
+import SelectBannerType from "../share2earn/listbox-share2earn";
+
+const Share2EarnMainScreen = observer( ({tokenData,}) => {
+  const { detailStore } = usePageStore();
+
+  // Banner component
+  let bannerComponent;
+  if (detailStore.selectedBanner === "Facebook") {
+    bannerComponent = <img class="rounded-lg" src={tokenData.share_campaign[0].facebook_banner} />
+  } else if (detailStore.selectedBanner === "Twitter") {
+    bannerComponent = <img class="rounded-lg" src={tokenData.share_campaign[0].twitter_banner} />
+  } else {
+    bannerComponent = <img class="rounded-lg" src={tokenData.share_campaign[0].linkedin_banner} />
+  }
+
   return (
     <>     
     <Head />
@@ -66,7 +83,9 @@ export default function Share2EarnMainScreen() {
 
                       <div className="p-4 pt-0">
                         <div class="aspect-w-16 aspect-h-9">
-                          <img class="rounded-lg" src="/placeholders/parallel-cover.jpg" />
+                        {/* <img class="rounded-lg" src={tokenData.share_campaign[0].facebook_banner} /> */}
+                          {bannerComponent}
+                          {/* <img class="rounded-lg" src="/placeholders/parallel-cover.jpg" /> */}
                         </div>
                       </div>
 
@@ -189,4 +208,8 @@ export default function Share2EarnMainScreen() {
 
     </>
   )
-}
+
+})
+
+export default Share2EarnMainScreen
+  
