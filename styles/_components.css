@@ -53,10 +53,10 @@ Various UI Components Style
 
 /* Complete state*/
 .step-compact.is-complete .step-compact-body--icon{
-  @apply bg-gray-500;
+  @apply dark:bg-gray-500 bg-gray-300 ;
 }
 .step-compact.is-complete .step-compact-body--icon .step-compact-body--icon--text {
-  @apply text-white;
+  @apply dark:text-white text-gray-600;
 }
 .step-compact.is-complete .step-compact-body--title{
   @apply text-gray-500 dark:text-gray-400;

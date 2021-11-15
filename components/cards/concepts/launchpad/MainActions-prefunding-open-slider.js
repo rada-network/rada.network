@@ -70,7 +70,10 @@ const MainActions = ({}) => {
 
       <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
         <div className="card-header items-center">
-          <h3>Winners (1000)</h3>
+          <ul>
+            <li><a>Whitelisted</a></li>
+            <li><a>Winners</a></li>
+          </ul>
           <div className="search-wrapper">
             <div className="form-search rounded-full">
               <span className="icon form-search--icon">

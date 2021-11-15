@@ -31,16 +31,24 @@ const BscSvg = function ({ }) {
 const CheckSvg = function ({ }) {
   return (
     <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M1.5 2.5L4.5 5.5L9 1" stroke="white" stroke-width="2"/>
+      <path d="M1.5 2.5L4.5 5.5L9 1" stroke="currentColor" stroke-width="2"/>
     </svg>
   )
 }
+const BusdSvg = function ({ }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" style="fill:#282d35"/><path d="M16,6l2.53,2.58-6.36,6.35L9.63,12.41Z" style="fill:#f0b90b"/><path d="M19.81,9.83l2.53,2.58L12.15,22.59,9.63,20.07Z" style="fill:#f0b90b"/><path d="M8.32,13.66l2.53,2.58L8.32,18.76,5.8,16.24Z" style="fill:#f0b90b"/><path d="M23.64,13.66l2.53,2.58L16,26.43,13.46,23.9Z" style="fill:#f0b90b"/></svg>
+  )
+}
+
+
 
 module.exports = {
   CheckSvg: CheckSvg,
   LaunchSvg: LaunchSvg,
   UsdtSvg: UsdtSvg,
-  BscSvg: BscSvg
+  BscSvg: BscSvg,
+  BusdSvg: BusdSvg,
 }
 
 
