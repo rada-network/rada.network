@@ -17,6 +17,8 @@ const projectBySlugGql = gql`
         type
         status
         swap_contract
+        raise
+        price
         token{
             name
             logo
@@ -53,6 +55,8 @@ const projectFeedGql = gql`
         thumbnail_embed
         type
         status
+        raise
+        price
         token{
             name
             logo

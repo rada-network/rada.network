@@ -31,14 +31,14 @@ export const CardProject = ({ project }) => {
   const title = project?.content?.title
   const img = project.thumbnail_uri
   const status = project.status == 'active' ? 'open' : project.status
-  const raise = 10000
+  const raise = project.raise
   const tokenLogo = project.token.logo
   const tokenPrice = project.price
   const countdown = 'countdown'
   const token = project.token.symbol
-  const progressToken = numberFormatter(72000)
-  const target = numberFormatter(100000)
-  const progressPercentage = 72000/100000 * 100
+  const progressToken = 0
+  const target = numberFormatter(raise/tokenPrice)
+  const progressPercentage = 0
   const type = project.type
   const network = project.platform?.name
   const slug = project.slug
