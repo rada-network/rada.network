@@ -9,7 +9,7 @@ const MainActions = ({}) => {
         <div className="card-body no-padding">
           <div className="flex flex-col">
             <div className="">
-              <ProjectTimeline step="3" />
+              <ProjectTimeline step="4" />
             </div>
 
             <div className="global-padding-lg !px-6 min-h-full w-full mx-auto">

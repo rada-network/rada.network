@@ -45,7 +45,7 @@ export const CardProject = ({ project }) => {
   return (
     <Link href={`/projects/${slug}`}>
 
-      <a href={`/projects/${slug}`} className={`card-project is-${status}`}>
+      <a href={`/projects/${slug}`} className={`overflow-hidden card-project is-${status}`}>
         {/* {status=="closed"?
         <div className="project-header--wrapper flex items-center mb-4">    
           <div className="project-title p-4 flex items-center">
@@ -60,28 +60,25 @@ export const CardProject = ({ project }) => {
       :""} */}
         <div className="project-content">
           <div className="project-thumb">
-            <img className="project-thumb--img" src={img} alt="{title}" />
+            <div className="project-thumb--wrapper">
+              <img className="project-thumb--img" src={img} alt="{title}" />
+            </div>
           </div>
           <div class="project-content--meta">
 
-            <div className="project-title flex items-center">
-              <div className="project-title--token-logo bg-white w-6 h-6 md:w-8 md:h-8 p-0.5 mr-1 rounded-full">
-                <img src={tokenLogo} />
+            <div className="project-title">
+              <div className="project-title--token-logo bg-white w-6 h-6 md:w-10 md:h-10 p-0.5 mr-1 rounded-full">
+                <img src={tokenLogo} className="rounded-full" />
               </div>
-              <div className="project-title--token-name ml-1 font-semibold">
+              <div className="project-title--token-name ">
                 {title}
+              </div>
+              <div className="project-type">
+                <span className={`label ml-auto ${type}`}>{type}</span>
               </div>
             </div>
 
             <ul className="">
-              <li className="list-pair mt-0">
-                <span className="list-key">
-                  Type
-                </span>
-                <div className="ml-auto list-value font-semibold">
-                  <span className={`label ml-auto ${type}`}>{type}</span>
-                </div>
-              </li>
               <li className="list-pair mt-auto mb-0">
                 <span className="list-key">
                   Raise
@@ -114,9 +111,11 @@ export const CardProject = ({ project }) => {
                 </span>
               </li>
             </ul>
+            {status == "open" ?
             <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
               <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-5 bg-green-600 rounded-full" style={{ width: `${progressPercentage}%` }}>{progressPercentage}</div>
             </div>
+            :""}
             <div className="project--cta ">
               <div className={`countdown--wrapper ${status == "closed" ? "hidden" : ""}`}>
                 {/* <div className="opacity-70 flex items-center my-2">

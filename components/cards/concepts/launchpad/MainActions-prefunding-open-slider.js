@@ -1,6 +1,7 @@
 import ProjectTimeline from "../../../concepts/steps/projectTimeline";
-import SwapTokens from "../../../concepts/modules/swapTokens";
+import SwapTokens from "../../../concepts/modules/swapTokensSlider";
 import Winners from "./Winners";
+
 const MainActions = ({}) => {
   return (
     <>
@@ -18,7 +19,7 @@ const MainActions = ({}) => {
             <div className="global-padding-lg !px-6 min-h-full w-full mx-auto">
               <div className="mb-8 sr-only">
                 <h3 className="text-3xl text-center font-normal">
-                  <span className="text-color-title">Chuyển đổi Token</span>
+                  <span className="text-color-title">Swap tokens</span>
                 </h3>
               </div>
 
@@ -26,25 +27,19 @@ const MainActions = ({}) => {
 
                 <div className="box box--transparent">
 
-                  <div className="box-header !px-0">Quyền mua của bạn</div>
+                  <div className="box-header !px-0">Your allocation</div>
 
                   <ul class="mt-4 flex-shrink-0 flex-grow">
                     <li class="list-pair mb-2">
-                      <span class="list-key">Quyền mua tối đa</span>
+                      <span class="list-key">Your maximum allocation</span>
                       <span class="ml-auto list-value font-semibold">
-                        300 USDT (3 RIR)
+                        1000 USDT (3 RIR)
                       </span>
                     </li>
                     <li class="list-pair mb-2">
-                      <span class="list-key">Đã mua</span>
+                      <span class="list-key">Your minimum allocation </span>
                       <span class="ml-auto list-value font-semibold">
                         100 USDT (1 RIR)
-                      </span>
-                    </li>
-                    <li class="list-pair mb-2">
-                      <span class="list-key">Còn lại</span>
-                      <span class="ml-auto font-semibold">
-                        200 USDT (2 RIR)
                       </span>
                     </li>
                   </ul>

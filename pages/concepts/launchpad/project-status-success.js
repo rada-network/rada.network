@@ -8,7 +8,7 @@ import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
 
 // Cards Concepts
 import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
-import MainActions from "../../../components/cards/concepts/launchpad/MainActions-swap-open";
+import MainActions from "../../../components/cards/concepts/launchpad/MainActions-status-success";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";
@@ -63,29 +63,36 @@ const Layout = observer((props) => {
           <div className={`pane-center`}>
             <div className="pane-center--main">
 
-              <div className="pane-content">
-                <div className="pane-content--sec pane-content-active !w-full">
-                  <TokenNav />
-                  <div className="pane-content--sec--main grid scrollbar">
-                    <div className="page page-full page-project-details !pt-0">
-                      <div className="w-limiter-lg">
-                        <div className="section">                          
-                          <TokenBrief />
-                          <div className="section-body">
-                            <TokenContent />
+            <div className="pane-content--sec pane-content-active !w-full">
 
-                            {/* Main Action Card */}
-                            <div className="grid grid-cols-1 mt-4">
-                              <MainActions />
-                            </div>
-                            {/* END: Main Action Card */}
+              <TokenNav />
 
-                          </div>          
+              <div className="pane-content--sec--main grid scrollbar">
+
+                <div className="page page-full page-project-details !pt-0">
+                  <div className="w-limiter-lg">
+
+                    <div className="section">
+                      
+                      <TokenBrief />
+                  
+
+                      <div className="section-body">
+
+                        <TokenContent />
+
+                        {/* Main Action Card */}
+                        <div className="grid grid-cols-1 mt-4">
+                          <MainActions />
                         </div>
-                      </div>
+                        {/* END: Main Action Card */}
+
+                      </div>          
                     </div>
                   </div>
                 </div>
+              </div>
+
               </div>
 
             </div>
