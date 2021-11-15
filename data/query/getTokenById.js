@@ -85,6 +85,7 @@ const tokenByIdGql = gql`
         max_rir_per_user
       }
       share_campaign {
+        id
         status
         facebook_banner
         twitter_banner
