@@ -10,11 +10,15 @@ const projectBySlugGql = gql`
         cover_uri
         background_uri
         open_date
+        end_date
         cover_embed
         thumbnail_embed
         thumbnail_embed
         type
         status
+        swap_contract
+        raise
+        price
         token{
             name
             logo
@@ -51,6 +55,8 @@ const projectFeedGql = gql`
         thumbnail_embed
         type
         status
+        raise
+        price
         token{
             name
             logo

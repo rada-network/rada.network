@@ -37,7 +37,6 @@ export async function connectWallet({
   provider_account_id,
   type,
 }) {
-  console.log(provider)
   const client = getClient();
   const res = await client.mutate({
     mutation: connectWalletGql,

@@ -5,11 +5,13 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+        <script src='https://cdn.blockpass.org/widget/scripts/release/3.0.2/blockpass-kyc-connect.prod.js'></script>
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
           />
+
           <script
             dangerouslySetInnerHTML={{
               __html: `

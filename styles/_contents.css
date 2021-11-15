@@ -308,7 +308,6 @@ Small Badges
 /*
 Icons Styles
 ------------------------------ */
-
 .icon {
   @apply inline-block;
   svg {
@@ -338,51 +337,71 @@ Icons Styles
   @apply transition opacity-0 transform scale-0 group-hover:opacity-100 group-hover:scale-100;
 }
 
+/* Shapes */
+.shape--hexagon {
+  @apply relative;
+}
+
+.shape--hexagon .fa-hexagon {
+  @apply absolute inset-0 text-gray-300;
+  transform: rotate(30deg);
+  font-size: 40px;
+}
+
 
 /*
 Brands Colors
 -------------------------------- */
-.brand--google {
+.brand--google,
+.brand--Google {
   background: rgb(219,68,55) !important;
   color: #fff !important;
 }
 
-.brand--youtube {
+.brand--youtube,
+.brand--Youtube {
   background: rgb(219,68,55) !important;
   color: #fff !important;
 }
 
-.brand--twitter {
+.brand--twitter,
+.brand--Twitter {
   background: rgb(29,161,242) !important;
   color: #fff !important;
 }
 
-.brand--telegram {
+.brand--telegram,
+.brand--Telegram {
   background: #1d98dc !important;
   color: #fff !important;
 }
 
-.brand--facebook {
+.brand--facebook,
+.brand--Facebook {
   background: rgb(66,103,178) !important;
   color: #fff !important;
 }
 
-.brand--discord {
+.brand--discord,
+.brand--Discord {
   background: #5865f2 !important;
   color: #fff !important;
 }
 
-.brand--linkedin {
+.brand--linkedin,
+.brand--LinkedIn {
   background: rgb(40,103,178) !important;
   color: #fff !important;
 }
 
-.brand--instagram {
+.brand--instagram,
+.brand--Instagram {
   background: rgb(193,53,132) !important;
   color: #fff !important;
 }
 
-.brand--tiktok {
+.brand--tiktok,
+.brand--Tiktok {
   background: rgb(0,0,0) !important;
   color: #fff !important;
 }

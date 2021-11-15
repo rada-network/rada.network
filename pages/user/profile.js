@@ -1,7 +1,7 @@
 import React from "react";
 import { useSession } from "next-auth/client";
 
-import { Wallet } from "../../components/Wallet";
+import { WalletProfile } from "../../components/Wallet";
 
 import { useState, useEffect, createRef } from "react";
 
@@ -11,7 +11,6 @@ import Profile from "../../components/Profile";
 import { getCurrentUser } from "../../data/query/user";
 import { getInvestProfile } from "../../data/query/getInvestProfile";
 import { getInvestLog } from "../../data/query/getInvestLog";
-import { disconnectWallet } from "../../data/query/wallet";
 import _ from "lodash";
 import { useStore } from "../../lib/useStore";
 import { useRouter } from "next/router";
@@ -30,22 +29,8 @@ export default function UserProfile(props) {
   const [topupInfo, setTopupInfo] = useState({});
   const [investLog, setInvestLog] = useState([]);
   const { t } = useTranslation("invest");
-  const router = useRouter();
-  const store = useStore();
-
+  const store = useStore()
   const { dataStore, detailStore } = usePageStore();
-  useEffect(() => {
-    // If session exists, display content
-    getCurrentUser().then((res) => {
-      setUser(res);
-    });
-    getInvestProfile().then(function (res) {
-      setTopupInfo(res.data.investProfile);
-    });
-    getInvestLog().then((res) => {
-      setInvestLog(res.data.investLog);
-    });
-  }, [session]);
   useEffect(() => {
     getSession()
       .then((sess) => {
@@ -55,6 +40,22 @@ export default function UserProfile(props) {
         setLoading(false);
       });
   }, []);
+  useEffect(() => {
+    if (!!session && store.user.access_token !== "") {
+      getCurrentUser().then((res) => {
+        setUser(res);
+      });
+      getInvestProfile().then(function (res) {
+        setTopupInfo(res.data.investProfile);
+      });
+      getInvestLog().then((res) => {
+        setInvestLog(res.data.investLog);
+      });
+    }
+    // If session exists, display content
+    
+  }, [session,store.user.access_token]);
+  
 
   if (loading) return null;
   // If no session exists, display access denied message
@@ -87,24 +88,6 @@ export default function UserProfile(props) {
       ) + " Profile",
   };
 
-  const handleConnectWallet = () => {
-    store.wallet.showConnect(true);
-  };
-
-  const handleDisconnectWallet = async (id) => {
-    const res = await disconnectWallet(id);
-    if (res.data.userDisconnect.status === "success") {
-      getCurrentUser().then((res) => {
-        setUser(res);
-      });
-    }
-  };
-
-  const handleConnectSuccess = () => {
-    getCurrentUser().then((res) => {
-      setUser(res);
-    });
-  };
 
   return (
     <>
@@ -116,7 +99,6 @@ export default function UserProfile(props) {
               <span className="avatar avatar-xl md:avatar-3xl shadow">
                 <img src={user.image} alt={user.name} />
               </span>
-              <Wallet handleConnectSuccess={handleConnectSuccess} />
             </div>
 
             <div className="w-full mt-1 md:mt-3">
@@ -223,69 +205,8 @@ export default function UserProfile(props) {
               <div className="grid">
                 <div className="list-group">
                   {/* Wallet connected --> Show DisConnect Buttons */}
-                  <div className="list-group--item md:!pb-4">
-                    <div className="list-group--item--title w-full md:w-1/4">
-                      <div className="list-group--item--media">
-                        <span className="icon">
-                          <i className="fa-solid fa-wallet"></i>
-                        </span>
-                      </div>
-                      <label
-                        htmlFor="blockchain-wallet"
-                        className="text-color-desc"
-                      >
-                        Wallet
-                      </label>
-                    </div>
-                    <div className="flex-1 md:mt-0">
-                      <div className="relative pl-8 md:pl-0 w-full flex items-center">
-                        {_.isEmpty(wallet) ? (
-                          <span>
-                            {t("no connection", { provider: "wallet" })}
-                          </span>
-                        ) : (
-                          <>
-                            <div>
-                              {user?.account?.map((address) => {
-                                return (
-                                  address.provider === "wallet" && (
-                                    <strong>{`${address.provider_account_id.substr(
-                                      0,
-                                      4
-                                    )}...${address.provider_account_id.substr(
-                                      -4
-                                    )} `}</strong>
-                                  )
-                                );
-                              })}
-                            </div>
-                            <strong></strong>
-                            <span className="badge badge-coin relative ml-2">
-                              ETHEREUM
-                            </span>
-                          </>
-                        )}
-                      </div>
-                    </div>
-                    <div className="text-right -mt-2 md:mt-0">
-                      {_.isEmpty(wallet) ? (
-                        <button
-                          className="btn btn-default"
-                          onClick={handleConnectWallet}
-                        >
-                          {t("connect")}
-                        </button>
-                      ) : (
-                        <button
-                          className="btn btn-default"
-                          onClick={() => handleDisconnectWallet(wallet.id)}
-                        >
-                          {t("disconnect")}
-                        </button>
-                      )}
-                    </div>
-                  </div>
-
+                  <WalletProfile />
+                
                   {/* Google disconnected --> Show Connect Buttons */}
                   <div className="list-group--item">
                     <div className="list-group--item--title w-full md:w-1/4">

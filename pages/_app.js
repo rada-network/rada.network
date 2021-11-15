@@ -2,7 +2,6 @@ import "../styles/tw.css";
 import "../styles/globals.css";
 import "../styles/styles.css";
 
-import { useWallet, UseWalletProvider } from "use-wallet";
 import NextNprogress from "nextjs-progressbar";
 import { CookiesProvider } from "react-cookie";
 // import { Provider } from 'mobx-react'
@@ -20,6 +19,7 @@ import { getScreenName } from "../components/utils/Responsive";
 import { Provider, useSession, signOut } from "next-auth/client";
 import { useCookies } from "react-cookie";
 import { PageStoreProvider, usePageStore } from "../lib/usePageStore";
+import  Providers from "../utils/providers";
 
 function parseJwt(token) {
   var base64Payload = token.split(".")[1];
@@ -44,13 +44,13 @@ export function getTokenState(token) {
   }
 }
 
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = function MyApp({ Component, pageProps }){
   const router = useRouter();
   const store = useStore();
   const [session, loading] = useSession();
   const [cookies, setCookie,removeCookie] = useCookies(["access_token"]);
   const { dataStore, detailStore } = usePageStore();
-  dataStore.lang = pageProps.lang || "vi";
+  dataStore.lang = pageProps.lang || (pageProps.locale || 'vi');
   useEffect(() => {
     if (session) {
       const { valid } = getTokenState(session.access_token);
@@ -123,8 +123,8 @@ const MyApp = ({ Component, pageProps }) => {
       window.removeEventListener("resize", onResize);
     };
   }, []);
+  return <Providers ><Component {...pageProps} /></Providers>
 
-  return <Component {...pageProps} />;
 };
 // Wrap everything in <UseWalletProvider />
 const TokenRankingStore = ({
@@ -135,21 +135,6 @@ const TokenRankingStore = ({
 
   return (
     <ThemeProvider attribute="class">
-      <UseWalletProvider
-        chainId={1}
-        connectors={{
-          // This is how connectors get configured
-          portis: { dAppId: "my-dapp-id-123-xyz" },
-          fortmatic: { apiKey: "formatic api key" },
-          walletconnect: {
-            rpcUrl:
-              "https://mainnet.infura.io/v3/92d8c48b74034b8cb45aa0af1bc30d2c",
-          },
-          walletlink: {
-            url: "https://mainnet.infura.io/v3/92d8c48b74034b8cb45aa0af1bc30d2c",
-          },
-        }}
-      >
         <PageStoreProvider>
           <StoreProvider>
             <NextNprogress
@@ -180,7 +165,6 @@ const TokenRankingStore = ({
             </CookiesProvider>
           </StoreProvider>
         </PageStoreProvider>
-      </UseWalletProvider>
     </ThemeProvider>
   );
 };

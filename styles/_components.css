@@ -53,10 +53,10 @@ Various UI Components Style
 
 /* Complete state*/
 .step-compact.is-complete .step-compact-body--icon{
-  @apply bg-gray-500;
+  @apply dark:bg-gray-500 bg-gray-300 ;
 }
 .step-compact.is-complete .step-compact-body--icon .step-compact-body--icon--text {
-  @apply text-white;
+  @apply dark:text-white text-gray-600;
 }
 .step-compact.is-complete .step-compact-body--title{
   @apply text-gray-500 dark:text-gray-400;
@@ -153,3 +153,55 @@ Step Text
 /* .step--arrow {
   @apply hidden md:block absolute top-0 right-2 h-full w-6;
 } */
+
+
+/* Boxes (alternate for Card)
+-------------------------------*/
+.box {
+  @apply bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-700 rounded-lg;
+  @apply text-sm flex flex-col;
+}
+
+.box-header {
+  @apply p-4 lg:px-6 lg:py-4 text-base font-medium border-b border-gray-200 dark:border-gray-700; 
+}
+
+.box-body {
+  @apply p-4 lg:p-6 flex-shrink-0 flex-grow;
+}
+
+/* 
+Box Colors
+*/
+.box--primary {
+  @apply bg-primary-500 border-transparent dark:bg-primary-400 dark:border-transparent text-white;
+}
+
+.box--success {
+  @apply bg-green-200 dark:bg-green-200 text-gray-800;
+}
+
+.box--info {
+  @apply bg-primary-200 dark:bg-primary-200 text-gray-800;
+}
+
+.box--gray {
+  @apply bg-gray-100 dark:bg-gray-900 border-gray-100 dark:border-gray-900;
+}
+
+.box--gray .box-header {
+  @apply border-b border-gray-200 dark:border-gray-800; 
+}
+
+.box--transparent {
+  @apply bg-transparent dark:bg-transparent border-transparent dark:border-transparent;
+}
+
+/* 
+Specific Boxes Styles 
+*/
+.box-share2earn {
+  @apply bg-no-repeat bg-center;
+  background-image: url(/images/misc/glass.png);
+  background-position: 92% 92%;
+}

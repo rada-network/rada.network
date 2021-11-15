@@ -1,4 +1,4 @@
-import { CheckSvg } from "../../../svg/SvgIcons";
+import { CheckSvg } from "../../../../svg/SvgIcons";
 
 const Timeline = ({ step }) => {
     const cstep = step || 1
@@ -31,9 +31,9 @@ const Timeline = ({ step }) => {
             <nav aria-label="Progress">
                 <ol role="list" className="steps-compact ">
 
-                    <Step step="1" title="Whitelist" desc="Apply for whitelist" />
+                    <Step step="1" title="Awaiting Launchpad" desc="Apply for whitelist" />
 
-                    <Step step="2" title="Swap" desc="Swap for token" />
+                    <Step step="2" title="Subcribe Launchpad" desc="Subcribe Launchpad" />
 
                     <Step step="3" title="Claim" desc="Claim your token" />
 

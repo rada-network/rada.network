@@ -1,51 +1,38 @@
-import utils from "../../lib/util";
-import { Layout } from "../../components/page-layouts/Global";
+import { Layout } from "@components/page-layouts/Global";
 import { observer } from "mobx-react";
-import { HOME_ITEM_TAKE } from "../../config/paging";
 import Link from "next/link";
-//import {getItemById, getItems} from "../../data/query/getItem";
-//import { getPage } from "../../data/query/page";
 import React, { useEffect, useRef, useState } from "react";
- import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import {utils} from "ethers"
 
+import { getProject } from "@data/query/projects"
+import { usePageStore } from "@lib/usePageStore"
+import ProjectItem from "@components/project/Item/Index";
+import { WalletProfile } from "../../components/Wallet";
+import useActiveWeb3React from "../../utils/hooks/useActiveWeb3React";
+import useStore from "@lib/useStore"
+import { useLaunchpadContract } from "../../utils/hooks/useContracts";
 
-
-import ProjectLaunchpad from "../../components/project/Launchpad"
-import { getProject } from "../../data/query/projects"
-import ProjectDetails from "../../components/project/Details";
-import ProjectNavbar from "../../components/project/Navbar";
-import {usePageStore} from "../../lib/usePageStore"
-
-export default function ProjectPage({ symbol, slug, project,locale }) {
-  const {dataStore} = usePageStore()
+export default function ProjectPage({ slug, project, locale }) {
+  const { dataStore } = usePageStore()
   dataStore.page = "project"
   dataStore.lang = locale
   const page = slug.length > 1 ? slug[1] : 'index'
-
-  let meta
-  /* Dragger to resize main col */
-  const mainRef = useRef()
+  
+  let meta = {
+    title : project?.content?.title + "",
+    description : project?.content?.description + "",
+    "og:description" : project?.content?.description + "",
+    "og:image" : project?.thumbnail_uri + ""
+  }
+  /* Dragger to resize main col */  
   const containerRef = useRef()
+  let wProject = {...project}
   return (
     <Layout extraClass="page-home" meta={meta}>
 
       <div className={`pane-content`} ref={containerRef} >
-        
-        <div className="pane-content--sec pane-content-active !w-full">
-          <div className="pane-content--sec--top !block">
-            <ProjectNavbar symbol={symbol} page={page} project={project} slug={slug.join('/')} />
-          </div>
-
-          <div className="pane-content--sec--main grid scrollbar">
-            <div className="page page-full page-project-details !pt-0">
-              <div className="w-limiter-lg">
-                {page == 'index' && <ProjectLaunchpad project={project} />}
-                {page == 'research' && <ProjectDetails project={project} />}
-              </div>
-            </div>
-
-          </div>
-        </div>
+        <ProjectItem project={wProject} slug={slug} page={page} />
       </div>
     </Layout>
   )
@@ -62,15 +49,19 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps(context) {
-
-  let props = {
-    locale : context.locale,
-    symbol: context.params.slug[0],
-    slug: context.params.slug,
-    project: await getProject({ slug: context.params.slug[0],lang : context.locale })
+  let project = await getProject({ slug: context.params.slug[0], lang: context.locale })
+  if (Object.keys(project).length === 0) {
+    return {
+      notFound: true
+    }
   }
-  props = Object.assign(props,{
-    ...await serverSideTranslations(context.locale, ['common', 'navbar','invest']),
+  let props = {
+    locale: context.locale,
+    slug: context.params.slug,
+    project: await getProject({ slug: context.params.slug[0], lang: context.locale })
+  }
+  props = Object.assign(props, {
+    ...await serverSideTranslations(context.locale, ['common', 'navbar', 'invest']),
   })
   return {
     props,

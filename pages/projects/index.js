@@ -1,15 +1,15 @@
 import { Layout } from "../../components/page-layouts/Global";
 import React, { useRef } from "react";
- import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { ProjectsList } from "../../components/card-layouts/ProjectsList";
+import { ProjectsList } from "@components/project/List/Index";
 
-import { getProjects } from "../../data/query/projects";
-import { usePageStore } from "../../lib/usePageStore";
+import { getProjects } from "@data/query/projects";
+import { usePageStore } from "@lib/usePageStore";
 
-export default function ProjectsIndex({ projects,locale }) {
+export default function ProjectsIndex({ projects, locale }) {
     let meta = {}
-    const {dataStore} = usePageStore()
+    const { dataStore } = usePageStore()
     dataStore.page = "project"
     dataStore.lang = locale
     /* Dragger to resize main col */
@@ -19,29 +19,18 @@ export default function ProjectsIndex({ projects,locale }) {
     return (
         <Layout extraClass="page-home" meta={meta}>
             <div className={`pane-content`} ref={containerRef} >
-                <div className="pane-content--sec pane-content-active !w-full">
-                    <div className="pane-content--sec--top !block">
-
-                    </div>
-
-                    <div className="pane-content--sec--main grid scrollbar dark:!bg-gray-900 !bg-opacity-70">
-                        <div className="page page-full page-project-details !pt-0">
-                            <ProjectsList projects={projects} />
-                        </div>
-
-                    </div>
-                </div>
+                <ProjectsList projects={projects} />
             </div>
         </Layout>
     )
 }
 
 export async function getStaticProps(context) {
-    const projects = await getProjects({lang: context.locale})
-    let props = { projects,locale: context.locale}
-    props = Object.assign(props,{
-        ...await serverSideTranslations(context.locale, ['common', 'navbar','invest']),
-      })
+    const projects = await getProjects({ lang: context.locale })
+    let props = { projects, locale: context.locale }
+    props = Object.assign(props, {
+        ...await serverSideTranslations(context.locale, ['common', 'navbar', 'invest']),
+    })
     return {
         props,
         revalidate: 60

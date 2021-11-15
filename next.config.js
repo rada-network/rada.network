@@ -12,9 +12,8 @@ const isProd = process.env.NODE_ENV === 'production'
 module.exports = (phase) => {
   // when started in development mode `next dev` or `npm run dev` regardless of the value of STAGING environmental variable
   const isDev = phase === PHASE_DEVELOPMENT_SERVER
+  console.log(process.env.NEXT_PUBLIC_CHAIN)
   // when `next build` or `npm run build` is used
-  console.log(`isDev:${isDev}  isProd:${isProd}`)
-
   const env = {
     pwa: {
       dest: 'public',

@@ -29,15 +29,15 @@ const Layout = observer((props) => {
             <ol className="ml-4 list-decimal">
                 <li>Whitelist
                 <ol className="ml-4">
-                    <li><a href="./launchpad/project-whitelist-open">Whitelist Open</a></li>
                     <li><a href="./launchpad/project-whitelist-countdown">Whitelist Countdown</a></li>
+                    <li><a href="./launchpad/project-whitelist-open">Whitelist Open</a></li>
                     <li><a href="./launchpad/project-whitelist-open-done">Whitelist Open - done</a></li>
                     <li><a href="./launchpad/project-whitelist-open-fail">Whitelist Open - fail</a></li>
                 </ol>
                 </li>
                 <li>Prefunding
                     <ol className="ml-4">
-                        <li><a href="./launchpad/project-prefunding-open-slider">Prefunding Open</a></li>
+                        <li><a href="./launchpad/project-prefunding-open-dropdown">Prefunding Open</a></li>
                     </ol>
                 </li>
                 <li>Status

@@ -1,5 +1,5 @@
 import Link from "next/dist/client/link"
-import { usePageStore } from "../../lib/usePageStore"
+import { usePageStore } from "../../../lib/usePageStore"
 
 export default function ProjectNavbar({ symbol, project, slug }) {
     const {dataStore} = usePageStore()
@@ -34,7 +34,7 @@ export default function ProjectNavbar({ symbol, project, slug }) {
                         <span className="tab-item--divider"></span>
                         <NavItem uri={`${symbol}/research`}>
                             <span className="token-symbol mr-2">
-                                <img src="https://media.rada.network/assets/514649e2-bf3c-4836-afbd-2c3ccd50293a?format=webp&amp;width=128" className="h-px-20 w-px-20" alt="Moniwar" />
+                                <img src={project?.token?.logo} className="h-px-20 w-px-20" alt={project?.token?.name} />
                             </span>
                             <span className="tab-item--text !block">Research</span>
                         </NavItem>

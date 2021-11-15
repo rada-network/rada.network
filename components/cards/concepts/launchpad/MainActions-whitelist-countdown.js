@@ -17,9 +17,7 @@ const MainActions = ({}) => {
             <div className="">
               <ProjectTimeline step="1" />
             </div>
-
             <div className="global-padding-lg min-h-full">
-
               <div className="">
                 <h3 class="text-3xl text-center mb-8 font-normal">
                   <span className="text-color-title">The whitelist will open in</span>

@@ -50,7 +50,8 @@ const MainActions = ({}) => {
                         <i class="fas fa-info-circle text-yellow-500"></i>
                       </span>
                       <span>
-                        Some notices about rights or terms here.
+                        If you already have RIR, it's recommended to use RIR instead of 
+                        BUSD to quarantee your application.
                       </span>
                     </p>
                   </div>
@@ -78,7 +79,10 @@ const MainActions = ({}) => {
 
       <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
         <div className="card-header items-center">
-          <h3>Winners (1000)</h3>
+          <ul className="whitelist-nav">
+            <li><a>Whitelist</a></li>
+            <li className="is-active"><a>Winners</a><span>550</span></li>
+          </ul>
           <div className="search-wrapper">
             <div className="form-search rounded-full">
               <span className="icon form-search--icon">

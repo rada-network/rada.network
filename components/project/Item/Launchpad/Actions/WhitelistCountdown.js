@@ -1,8 +1,7 @@
 import Timeline from "./Timeline";
-import Countdown from "./Countdown";
-// import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
+import ProjectCountdown from "./Countdown";
 
-const LaunchpadActions = ({}) => {
+const WhitelistCountdown = ({project}) => {
   return (
     <>
       <div className="card-default project-main-actions no-padding overflow-hidden">
@@ -23,9 +22,9 @@ const LaunchpadActions = ({}) => {
 
               <div className="">
                 <h3 class="text-2xl text-center mb-8 font-normal">
-                  <span className="text-color-title">Danh sách đăng ký mua Parallel sẽ được mở trong</span>
+                  <span className="text-color-title">Danh sách đăng ký mua {project.token.name} sẽ được mở trong</span>
                 </h3>
-                <Countdown />
+                <ProjectCountdown project={project} />
               </div>
 
             </div>
@@ -39,4 +38,4 @@ const LaunchpadActions = ({}) => {
   );
 }
 
-export default LaunchpadActions
+export default WhitelistCountdown
