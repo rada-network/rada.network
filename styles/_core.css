@@ -1,9 +1,12 @@
 /* 
 Set a default styles for core elements
 */
+
+
 /*
 Global Styles
 */
+
 html {
   @apply h-full;
   scroll-behavior: smooth;

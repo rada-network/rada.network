@@ -64,7 +64,8 @@
     "react-tooltip": "^4.2.21",
     "slug": "^5.1.0",
     "store": "^2.0.12",
-    "swr": "^1.0.1"
+    "swr": "^1.0.1",
+    "tailwindcss": "2.2.4"
   },
   "devDependencies": {
     "@tailwindcss/jit": "^0.1.18",
@@ -74,8 +75,7 @@
     "postcss": "^8.2.9",
     "postcss-extend": "^1.0.5",
     "postcss-nested": "^5.0.5",
-    "postcss-nesting": "^7.0.1",
-    "tailwindcss": "^2.2.4"
+    "postcss-nesting": "^7.0.1"
   },
   "browserslist": {
     "production": [

@@ -55,7 +55,7 @@ export const Head = observer(({meta}) => {
       <meta name="theme-color" content="#E5E7EB" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="mobile-web-app-capable" content="yes" />
-      <link
+      {/* <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
         key="google-fonts-preconnect_1"
@@ -71,6 +71,11 @@ export const Head = observer(({meta}) => {
         href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" 
         rel="stylesheet"
         key="google-fonts"
+      /> */}
+      <link 
+        href="https://rsms.me/inter/inter.css" 
+        rel="stylesheet"
+        key="inter-font"
       />
       <link
         rel="stylesheet"
