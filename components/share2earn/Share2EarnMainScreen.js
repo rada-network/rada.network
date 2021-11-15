@@ -8,18 +8,24 @@ import { usePageStore } from "@lib/usePageStore";
 import { Head } from "../Head";
 import SelectBannerType from "../share2earn/listbox-share2earn";
 import { getCurrentUser } from "../../data/query/user";
+import { getShareLogById } from "../../data/query/getShareLog";
+import { createOrUpdateShareLogById } from "../../data/query/createOrUpdateShareLog";
+import link from "next/link";
 
 const Share2EarnMainScreen = observer( ({tokenData}) => {
   const { detailStore } = usePageStore();
+  const [facebook, setFacebook] = useState({url:'', disable: false});
+  const [twitter, setTwitter] = useState({url:'', disable: false});
+  const [linkedin, setLinkedin] = useState({url:'', disable: false});
 
-  // Banner component
+  // Banner component 
   let bannerURL;
-  if (detailStore.selectedBanner === "Facebook") {
-    bannerURL = tokenData.share_campaign[0].facebook_banner;
+  if (detailStore.selectedBanner === "LinkedIn") {
+    bannerURL = tokenData.share_campaign[0].linkedin_banner;
   } else if (detailStore.selectedBanner === "Twitter") {
     bannerURL = tokenData.share_campaign[0].twitter_banner;
   } else {
-    bannerURL = tokenData.share_campaign[0].linkedin_banner;
+    bannerURL = tokenData.share_campaign[0].facebook_banner;
   }
 
   const handleDownload = () => {
@@ -36,8 +42,75 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
       });
     }
   }, [store.user.access_token]);
-
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
+
+  // Save and update shared url
+  const tokenInfo = detailStore?.data?.tokens && detailStore?.data?.tokens.length
+    ? detailStore?.data?.tokens[0]
+    : null;
+  
+  useEffect(() => {
+    tokenInfo &&
+      getShareLogById({ campaignId: 1 }).then(function (
+        res 
+      ) {
+        let facebookURL = res.data.getShareLog[0].facebook;
+        if (facebookURL) {
+          setFacebook({disable: true, url: facebookURL});
+        }
+
+        let twitterURL = res.data.getShareLog[0].twitter;
+        if (twitterURL) {
+          setTwitter({disable: true, url: twitterURL});
+        }
+
+        let linkedinULR = res.data.getShareLog[0].linkedin;
+        if (linkedinULR) {
+          setLinkedin({disable: true, url: linkedinULR});
+        }
+      });
+  },[]);
+
+  // Create or update url
+  const facebookSubmit = async (e) => {
+    if (facebook.disable) {
+      setFacebook({disable: false, url: facebook.url})
+    } else {
+      submitShareURL(e)
+    }
+  }
+
+  const twitterSubmit = async (e) => {
+    if (twitter.disable) {
+      setTwitter({disable: false, url: twitter.url})
+    } else {
+      submitShareURL(e)
+    }
+  }
+
+  const linkedinSubmit = async (e) => {
+    if (linkedin.disable) {
+      setLinkedin({disable: false, url: facebook.url})
+    } else {
+      submitShareURL(e)
+    }
+  }
+
+  function submitShareURL(e) {
+    tokenInfo &&
+      createOrUpdateShareLogById({ campaignId: 1, walletAddress: "", twitter: twitter.url, facebook: facebook.url, linkedin: linkedin.url }).then(function (
+        res 
+      ) {
+        console.log("Create and update done");
+        if (e.target.id === "facebook") {
+          setFacebook({disable: true, url: facebook.url})
+        } else if (e.target.id === "twitter") {
+          setTwitter({disable: true, url: twitter.url})
+        } else if (e.target.id === "linkedin") {
+          setLinkedin({disable: true, url: facebook.url})
+        }
+    });
+  }
   
   
   return (
@@ -212,20 +285,26 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
               
               <li>
                 <span>Facebook</span>
-                <input className="inline--field border-l-none pr-16" id="facebook-url" type="text"/>
-                <button class="btn btn-default">Submit</button>
+                <input className="inline--field border-l-none pr-16" disabled={facebook.disable ? "disabled" : ""} id="facebook-url" type="text" value={facebook.url} onChange={(e) => {setFacebook({disable: false, url:e.target.value})}}/>
+                <button class="btn btn-default" id="facebook"
+                  onClick={facebookSubmit}
+                >{facebook.disable ? "Edit" : "Submit"}</button>
               </li>
               
               <li>
                 <span>Twitter</span>
-                <input className="inline--field border-l-none pr-16" id="twitter-url" type="text"/>
-                <button class="btn btn-default">Submit</button>
+                <input className="inline--field border-l-none pr-16" id="twitter-url" disabled={twitter.disable ? "disabled" : ""} type="text" value={twitter.url} onChange={(e) => {setTwitter({disable: false, url:e.target.value})}}/>
+                <button class="btn btn-default" id="twitter"
+                  onClick={twitterSubmit}
+                >{twitter.disable ? "Edit" : "Submit"}</button>
               </li>
 
               <li>
                 <span>LinkedIn</span>
-                <input className="inline--field border-l-none pr-16" id="linkedin-url" type="text"/>
-                <button class="btn btn-default">Submit</button>
+                <input className="inline--field border-l-none pr-16" id="linkedin-url" disabled={linkedin.disable ? "disabled" : ""}  type="text" value={linkedin.url} onChange={(e) => {setLinkedin({disable: false, url:e.target.value})}}/>
+                <button class="btn btn-default" id="linkedin"
+                  onClick={linkedinSubmit}
+                >{linkedin.disable ? "Edit" : "Submit"}</button>
               </li>
               {/* End step 3 */}
             </ol>

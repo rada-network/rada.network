@@ -26,6 +26,13 @@ const SelectBannerType  = observer( () => {
   const { detailStore } = usePageStore();
   const handleOnchange = (e) => {
      detailStore.selectedBanner = e.name;
+     if (e.name === "Facebook") {
+        setSelected(bannerTypes[0]);
+     } else if (e.name === "Twitter") {
+        setSelected(bannerTypes[1]);
+     } else if (e.name === "LinkedIn") {
+        setSelected(bannerTypes[2]);
+     }
   };
 
 
