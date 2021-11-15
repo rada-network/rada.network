@@ -22,7 +22,7 @@ const LaunchpadActions = ({ project }) => {
   const {launchpadInfo} = useLaunchpadInfo({project})
   
   if (openTime > curentTime) {
-    return <WhitelistCountdown project={wProject} />
+    return <WhitelistCountdown project={project} />
   }
   
   if (openTime < curentTime && curentTime < endTime) {
