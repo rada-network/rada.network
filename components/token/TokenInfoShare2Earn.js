@@ -4,6 +4,7 @@ import { ethers } from 'ethers'
 import { toast } from "react-toastify";
 import {useTranslation} from "next-i18next";
 import _ from "lodash"
+import { useCookies } from "react-cookie";
 
 import { Head } from "../../components/Head";
 import Share2EarnMainScreen from "../../components/share2earn/Share2EarnMainScreen";
@@ -27,12 +28,12 @@ import { getErrorMessage } from "../../utils"
 export default function TokenInfoShare2Earn({
   tokenData,
 }) {
-  const {injected,walletconnect} = useChainConfig()
+  const {injected,walletconnect, getChainId} = useChainConfig()
 
     const {t} = useTranslation()
 
     const context = useActiveWeb3React()
-    const { connector, library, chainId, account, activate, deactivate, active, error } = context
+    const { connector, library, account, activate, deactivate, active, error } = context
 
     // handle logic to recognize the connector currently being activated
     const [activatingConnector, setActivatingConnector] = React.useState();
@@ -61,7 +62,9 @@ export default function TokenInfoShare2Earn({
     }, [activate]);
 
     // Handle join program
-    const referralCode = "" // TODO: get from cookies and paramaters ?
+    const [cookies] = useCookies(["ref"]);
+
+    const referralCode = cookies.ref ?? '';
 
     const [user, setUser] = useState({});
     const store = useStore()
@@ -161,11 +164,15 @@ export default function TokenInfoShare2Earn({
     const handleConnectWallet =  () => {
       activate(injected);
       setActivatingConnector(injected);
+      if (error){
+        toast.error(getErrorMessage(error,store.network))
+      }
     }
-console.log(joined)
+
     if (joined !='' || isConfirmed) {
       return <Share2EarnMainScreen tokenData={tokenData}/>;
     }
+
 
   return (
     <>
