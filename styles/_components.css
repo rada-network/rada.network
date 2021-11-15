@@ -7,11 +7,14 @@ Various UI Components Style
 -------------------------------*/
 .steps {
   @apply flex;
-  @apply bg-gray-100 bg-gradient-to-r dark:bg-primary-900 dark:from-primary-900 dark:to-primary-900 divide-x divide-gray-400 divide-opacity-20 lg:divide-x-0;
+  @apply bg-gray-100 bg-gradient-to-r dark:bg-primary-900 dark:from-primary-900 dark:to-primary-900 divide-x divide-gray-300 divide-opacity-20 lg:divide-x-0;
 }
 .steps-compact {
   @apply rounded-t-lg flex w-full dark:border-t-gray-800 border-b border-b-gray-300 
-  dark:border-l-gray-900 dark:border-r-gray-900  dark:border-b-gray-700 bg-gray-100 dark:bg-gray-900;
+  dark:border-l-gray-900  dark:border-gray-700 bg-gray-100 dark:bg-gray-900;
+}
+.steps-compact > li {
+  @apply flex-1;
 }
 .step-compact {
   @apply px-4 py-2 md:px-6 md:pt-4 md:pb-6 flex-shrink-0 flex-grow relative;
@@ -38,19 +41,19 @@ Various UI Components Style
 
 /* Current state */
 .step-compact.is-current .step-compact-body--icon{
-  @apply bg-yellow-500;
+  @apply bg-green-600;
 }
 .step-compact.is-current .step-compact-body--icon .step-compact-body--icon--text {
   @apply text-white;
 }
 .step-compact.is-current .step-compact-body--title {
-  @apply flex-shrink-0 flex-grow w-full text-gray-800 dark:text-gray-100 ;
+  @apply flex-shrink-0 flex-grow w-full text-green-600 dark:text-green-400 ;
 }
 
 
 /* Complete state*/
 .step-compact.is-complete .step-compact-body--icon{
-  @apply bg-green-500;
+  @apply bg-gray-500;
 }
 .step-compact.is-complete .step-compact-body--icon .step-compact-body--icon--text {
   @apply text-white;

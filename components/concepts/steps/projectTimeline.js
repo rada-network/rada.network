@@ -8,12 +8,16 @@ const ProjectTimeline = ({step}) => {
 
         <li className={`step-compact ${step == "1" ? "is-current" : ""} 
         ${step == "2" ? "is-complete" : ""} 
-        ${step == "3" ? "is-complete" : ""}`}>
+        ${step == "3" ? "is-complete" : ""}
+        ${step == "4" ? "is-complete" : ""}`}>
           {/* Current Step */}
           <a href="#" className="step-compact-body" aria-current="step">
             <div className="step-compact-body--icon">
               <span className="step-compact-body--icon--text">
-              {step == "1" ? "1" : ""}{step == "2" ? <CheckSvg /> : ""}  {step == "3" ? <CheckSvg /> : ""}
+              {step == "1" ? "1" : ""}
+              {step == "2" ? <CheckSvg /> : ""}
+              {step == "3" ? <CheckSvg /> : ""}
+              {step == "4" ? <CheckSvg /> : ""}
               </span>
             </div>
             <div className="step-compact-body--content">
@@ -27,6 +31,7 @@ const ProjectTimeline = ({step}) => {
         </li>
         <li className={`step-compact ${step == "2" ? "is-current" : ""}
          ${step == "3" ? "is-complete" : ""}
+         ${step == "4" ? "is-complete" : ""}
          `}>
           {/* Upcoming Step */}
           <a href="#" className="step-compact-body" aria-current="step">
@@ -36,9 +41,9 @@ const ProjectTimeline = ({step}) => {
               </span>
             </div>
             <div className="step-compact-body--content">
-              <span className="step-compact-body--title">Swap</span>
+              <span className="step-compact-body--title">Prefunding</span>
               <span className="step-compact-body--text">
-                Swap for token
+                Deposit your fund
               </span>
             </div>
           </a>
@@ -46,11 +51,26 @@ const ProjectTimeline = ({step}) => {
         </li>
 
         <li className={`step-compact ${step == "3" ? "is-current" : ""}
+        ${step == "4" ? "is-complete" : ""}
          `}>
           {/* Upcoming Step */}
           <a href="#" className="step-compact-body" aria-current="step">
             <div className="step-compact-body--icon">
               <span className="step-compact-body--icon--text">03</span>
+            </div>
+            <div className="step-compact-body--content">
+              <span className="step-compact-body--title">Status</span>
+              <span className="step-compact-body--text">
+                Status of your application
+              </span>
+            </div>
+          </a>
+        </li>
+        <li className={`step-compact ${step == "4" ? "is-current" : ""}`}>
+          {/* Upcoming Step */}
+          <a href="#" className="step-compact-body" aria-current="step">
+            <div className="step-compact-body--icon">
+              <span className="step-compact-body--icon--text">04</span>
             </div>
             <div className="step-compact-body--content">
               <span className="step-compact-body--title">Claim</span>
