@@ -14,29 +14,34 @@ export const LanguageSwitch = observer(({}) => {
     ///dataStore.lang = lang
     setCookie("NEXT_LOCALE",lang,{path : "/",maxAge: 24*7*3600})
     buttonRef.current?.click()
-    if (detailStore.data && detailStore.data.multilang !== null){
-      let targetObj = null;
-      targetObj = detailStore.data.multilang?.news[lang]
-      if (!targetObj){
-        targetObj = detailStore.data.multilang?.video[lang]
-      }
-      if (targetObj){
-        router.push("/post/"+targetObj.slug,undefined,{locale:lang})
+    if (dataStore.page === "item"){
+      if (detailStore.data && detailStore.data.multilang !== null){
+        let targetObj = null;
+        targetObj = detailStore.data.multilang?.news[lang]
+        if (!targetObj){
+          targetObj = detailStore.data.multilang?.video[lang]
+        }
+        if (targetObj){
+          detailStore.data = {}
+          router.push("/post/"+targetObj.slug,"/post/"+targetObj.slug,{locale:lang})
+        }
+        else{
+          detailStore.data = {}
+          router.push("/explore/"+dataStore.type,undefined,{locale:lang})
+        }
       }
       else{
-        detailStore.data = {}
-        router.push("/explore/"+dataStore.type,undefined,{locale:lang})
+        if (detailStore.data){
+          detailStore.data = {}
+          router.push("/explore/"+dataStore.type,undefined,{locale:lang})
+        }
+        else{
+          router.push(router.asPath,undefined,{locale:lang})
+        }
       }
     }
     else{
-      if (detailStore.data){
-        detailStore.data = {}
-        router.push("/explore/"+dataStore.type,undefined,{locale:lang})
-      }
-      else{
-        router.push(router.asPath,undefined,{locale:lang})
-      }
-      
+      router.push(router.asPath,undefined,{locale:lang})
     }
     
     //router.reload()
