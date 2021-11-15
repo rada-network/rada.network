@@ -21,7 +21,7 @@
 @import '_components';
 @import '_pages';
 @import '_projects';
-/* @import '_headers'; */
+@import '_headers';
 
 /* Theme */
 @import '_dark';

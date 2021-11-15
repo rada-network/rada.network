@@ -168,7 +168,7 @@ Empty State - About Page
 
 
 /* 
-Sections
+Page Sections
 --------------------------------------------- */
 /* 
 Media 
@@ -319,8 +319,45 @@ Content
 .post-content {
 }
 
-
 /* Post Actions */
 .post-actions {
   @apply mt-8;
+}
+
+
+/* 
+Landing - The Parallel
+--------------------------------------------- */
+.page-landing--parallel {
+
+}
+
+/* 
+Logo
+*/
+.page-landing--parallel .page-logo {
+  background: url("public/images/logos/launchverse-theparallel-dark.svg");
+  @apply flex-shrink-0 relative;
+  background-size: 308px 54px;
+  width: 308px;
+  height: 54px;
+}
+
+.page-landing--parallel .page-title {
+}
+
+.page-landing--parallel .page-title h1 {
+  @apply font-altsans font-normal uppercase text-black dark:text-white;
+  letter-spacing: 0.25rem;
+}
+
+/* 
+Hero
+*/
+.page-landing--parallel .hero-deco {
+  background: url("public/images/launchverse-hero-dark.svg");
+  @apply flex-shrink-0 relative;
+  background-size: 400px 400px;
+  width: 400px;
+  height: 400px;
 }
