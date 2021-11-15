@@ -209,7 +209,7 @@ Main Panels
 }
 
 .glassmorphism .pane-content--sec--top {
-  @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur;
+  @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur;
 }
 
 
@@ -279,10 +279,11 @@ Reader / Page Area
   @apply bg-white dark:bg-gray-800;
 }
 
-.glassmorphism .pane-content--sec--main {
-  @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur;
+@screen lg {
+  .glassmorphism .pane-content--sec--main {
+    @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur;
+  }
 }
-
 
 /* 
 Layout Uitlites 
@@ -352,7 +353,7 @@ Main Layout when scrolling
     .pane-content--main--top,
     .pane-content--sec--top {
       @apply fixed top-0 inset-x-0 z-50;
-      @apply bg-opacity-80 dark:bg-opacity-80 backdrop-blur;
+      @apply bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur;
     }
   }
 

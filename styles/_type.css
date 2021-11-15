@@ -5,6 +5,10 @@ Typography Styles
 /* 
 Core Contents
 ----------------------------------- */
+html {
+  font-feature-settings: "cv02","cv03","cv04","cv11";
+}
+
 body {
   @apply text-gray-700 dark:text-gray-300;
 }
