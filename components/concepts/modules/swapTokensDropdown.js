@@ -7,12 +7,12 @@ const SwapTokens = ({}) => {
         <div className="mb-4">
           
           <div className="mt-1 relative flex">
-            <div className="flex-grow">
+            <div className="flex-1">
               <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">Currency</label>
               <SelectTokenType />
             </div>
             {/* remove the above block if user doesn't have RIR */}
-            <div className="flex-grow">
+            <div className="flex-1">
               <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">Amount</label>
               <select id="amount" name="amount" className="select-custom !rounded-l-none">
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
