@@ -9,7 +9,7 @@ import { WalletProfile } from "@components/Wallet";
 import {useLaunchpadInfo} from "@utils/hooks/index"
 const SubscribeSwapToken = ({project}) => {
 
-  const {launchpadInfo} = useLaunchpadInfo({project})
+  const {launchpadInfo,fetchLaunchpadInfo} = useLaunchpadInfo({project})
 
   const rirContract = useERC20(launchpadInfo.rirAddress)
   const bUSDContract = useERC20(launchpadInfo.bUSDAddress)
@@ -21,6 +21,7 @@ const SubscribeSwapToken = ({project}) => {
     }
   },[rirContract,account])
   const fetchAccountBalance =  async function(){
+    await fetchLaunchpadInfo()
     let rirBalance = await rirContract.balanceOf(account);
     let busdBalance = await bUSDContract.balanceOf(account);
     setAccountBalance({
