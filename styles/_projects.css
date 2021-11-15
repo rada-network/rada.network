@@ -136,3 +136,13 @@
 .is-open .btn-primary {
   @apply md:w-1/2;
 }
+
+.s2e-illustration {
+  width:150px;
+  height:248px;
+  background-size:150px 248px;
+  background-repeat: no-repeat;
+}
+.dark .s2e-illustration{
+  background-image:url('/icons/s2e-dark.svg');
+}

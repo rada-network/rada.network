@@ -3,11 +3,11 @@
 @import '_variables';
 @import '_presets';
 
-/* Type */
-@import '_type';
-
 /* Core HTML elements */
 @import '_core';
+
+/* Type */
+@import '_type';
 
 /* Components */
 @import '_buttons';
