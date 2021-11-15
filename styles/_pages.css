@@ -361,3 +361,17 @@ Hero
   width: 400px;
   height: 400px;
 }
+
+/* 
+Footer
+*/
+.page-landing--parallel .footer {
+  @apply pb-24;
+}
+
+.page-landing--parallel .footer-deco {
+  background-image: url("/images/launchverse-footer-dark.png");
+  @apply absolute bottom-0 left-0 right-0 bg-no-repeat;
+  background-size: cover;
+  height: 183px;
+}

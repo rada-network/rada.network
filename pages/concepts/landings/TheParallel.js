@@ -79,7 +79,9 @@ const Layout = observer((props) => {
                               Introducing 
                               <strong className="block text-yellow-400">RADA Launchverse</strong>
                             </h2>
-                            <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">LaunchVerse is a product of RADA - The DAO-based AngelList for Blockchain. As a leading decentralized community-driven LaunchPad, we fund and launch the most promising Gamefi and Blockchain projects.</p>
+                            <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 max-w-md">
+                              LaunchVerse is a product of RADA - The DAO-based AngelList for Blockchain. As a leading decentralized community-driven LaunchPad, we fund and launch the most promising Gamefi and Blockchain projects.
+                            </p>
                           </div>
                           <span className="hero-deco -mt-24 ml-16"></span>
                         </header>
@@ -94,24 +96,50 @@ const Layout = observer((props) => {
                             </h2>
                           </div>
 
-                          <div className="mt-8">
+                          <div className="mt-8 relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700">
 
                             <div className="flex-shrink-0">
-                              <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/media/the_parallel_screenshot.png"} alt="The Parallel" />
+                              {/* <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/media/the_parallel_screenshot.png"} alt="The Parallel" /> */}
+
+                              <div className="media-player">
+                                <div className="w-full h-full">
+                                  <div className={`aspect-w-16 aspect-h-9`}>
+                                    <iframe
+                                      src={"https://www.youtube.com/embed/DEWHvVE7xr4"}
+                                      title="Welcome to The Parallel - An Infinite Metaverse"
+                                      frameBorder="0"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                      allowFullScreen="allowFullScreen"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+
                             </div>
 
                             <div className="
-                                flex items-center border border-gray-200 dark:border-gray-700 px-8 py-4
+                                flex items-center px-8 py-4
+                                bg-gradient-to-br from-gray-800 to-gray-800 
                                 rounded-b-xl
                               "
                             >
+                            {/* <div className="
+                                flex items-center absolute bottom-0 left-0 right-0 px-8 py-4
+                                bg-gray-700 bg-opacity-70 backdrop-filter backdrop-blur 
+                                rounded-b-xl
+                              "
+                            > */}
                               <div className="flex-shrink-0">
                                 <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/theparallel.png"} alt="The Parallel" />
                               </div>
 
                               <div className="px-8">
-                                <h3 className="text-3xl leading-tight text-black dark:text-white font-semibold font-altsans">The Parallel</h3>
-                                <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-2">The Parallel is an Infinite Metaverse where players can limitlessly create everything, enjoy the unexpected experience that only Parallel can make.</p>
+                                <h3>
+                                  <span className="text-3xl leading-tight text-black dark:text-white font-semibold font-altsans">The Parallel</span>
+                                </h3>
+                                <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 max-w-md">
+                                  The Parallel is an Infinite Metaverse where players can limitlessly create everything, enjoy the unexpected experience that only Parallel can make.
+                                </p>
                               </div>
 
                               <div className="flex-shrink-0">
@@ -123,6 +151,163 @@ const Layout = observer((props) => {
                         </div>
                         {/* END: SECTION 1 */}
 
+                        {/* SECTION 2 */}
+                        <div className="mt-8">
+
+                          <div className="
+                              flex items-center justify-between p-8
+                              border border-gray-200 dark:border-gray-700 
+                              bg-gradient-to-br from-gray-900 to-gray-900 
+                              rounded-xl
+                            "
+                          >
+                            <div className="">
+                              <h3>
+                                <span className="block text-secondary-400 text-sm mb-2 font-medium">
+                                  WHAT MAKE US DIFFERENT
+                                </span>
+                                <span className="block text-3xl leading-tight text-black dark:text-white font-semibold font-altsans">
+                                  We drive community <br />
+                                  by Share2Earn
+                                </span>
+                              </h3>
+                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 max-w-md">
+                                We make a unique tokenomic that encourage community to share projects and earn RIR token. The more you share, the more you earn. Both parties can archive their goals easily.
+                              </p>
+                              <div className="mt-4">
+                                <a href="" className="group text-secondary-400">
+                                  Discover Now 
+                                  <span className="icon relative left-2 group-hover:left-3 transition-all"><i class="fas fa-angle-right"></i></span>
+                                </a>
+                              </div>
+                            </div>
+
+                            <div className="flex-shrink-0 ml-16 mr-16">
+                              <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/launchverse-s2e-dark.png"} alt="The Parallel" />
+                            </div>
+                          </div>
+
+                        </div>
+                        {/* END: SECTION 2 */}
+
+                        {/* SECTION 3 */}
+                        <div className="mt-16">
+
+                          <div className="">
+                            <h2 className="text-4xl leading-tight text-black dark:text-white font-semibold font-altsans">
+                              The Launchverse <strong className="text-yellow-400">for Everyone</strong> 
+                            </h2>
+                          </div>
+
+                          <div className="grid grid-cols-3 gap-8 mt-8">
+                            <div className="
+                                flex flex-col items-stretch justify-start p-8
+                                border border-gray-200 dark:border-gray-700 
+                                rounded-xl h-full
+                              "
+                            >
+                              <div className="flex-shrink-0">
+                                <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/shield-hexa-dark.svg"} alt="The Parallel" />
+                              </div>
+                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 max-w-md">
+                                We review projects and kyc team carefully so you can invest safely
+                              </p>
+                            </div>
+
+                            <div className="
+                                flex flex-col items-stretch justify-start p-8
+                                border border-gray-200 dark:border-gray-700 
+                                rounded-xl h-full
+                              "
+                            >
+                              <div className="flex-shrink-0">
+                                <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/bolt-hexa-dark.svg"} alt="The Parallel" />
+                              </div>
+                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 max-w-md">
+                                Tier system can help user that contribute most to project get more reward
+                              </p>
+                            </div>
+
+                            <div className="
+                                flex flex-col items-stretch justify-start p-8
+                                border border-gray-200 dark:border-gray-700 
+                                rounded-xl h-full
+                              "
+                            >
+                              <div className="flex-shrink-0">
+                                <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/net-hexa-dark.svg"} alt="The Parallel" />
+                              </div>
+                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 max-w-md">
+                                Launchverse support multi chain: Etherium, BSC and Polygon 
+                              </p>
+                            </div>
+
+                            <div className="
+                                flex flex-col items-stretch justify-start p-8
+                                border border-gray-200 dark:border-gray-700 
+                                rounded-xl h-full
+                              "
+                            >
+                              <div className="flex-shrink-0">
+                                <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/scale-hexa-dark.svg"} alt="The Parallel" />
+                              </div>
+                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 max-w-md">
+                                A Distribution Portal for projects to vest project sold tokens
+                              </p>
+                            </div>
+
+                            <div className="
+                                flex flex-col items-stretch justify-start p-8
+                                border border-gray-200 dark:border-gray-700 
+                                rounded-xl h-full
+                              "
+                            >
+                              <div className="flex-shrink-0">
+                                <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/incubate-hexa-dark.svg"} alt="The Parallel" />
+                              </div>
+                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 max-w-md">
+                                Help to incubate early stage project with our professional experts
+                              </p>
+                            </div>
+
+                            <div className="
+                                flex flex-col items-stretch justify-start p-8
+                                border border-gray-200 dark:border-gray-700 
+                                rounded-xl h-full
+                              "
+                            >
+                              <div className="flex-shrink-0">
+                                <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/dao-hexa-dark.svg"} alt="The Parallel" />
+                              </div>
+                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 max-w-md">
+                                Fully function DAO with Governance model and Permissionless listing
+                              </p>
+                            </div>
+                          </div>
+
+                        </div>
+                        {/* END: SECTION 3 */}
+
+                        <div className="footer mt-24 flex justify-between items-center">
+                          <small className="text-sm leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 max-w-md">
+                            &copy; Copyright Rada Network 2021. All rights reserved.
+                          </small>
+
+                          <div>
+                            <a href="#" target="_blank" 
+                              className="
+                               text-sm leading-relaxed max-w-md py-2 px-4 rounded-lg
+                               bg-gray-100 dark:bg-gray-800 hover:bg-primary-50 dark:hover:bg-primary-900
+                               font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 
+                               hover:text-opacity-100 dark:hover:text-opacity-100
+                              "
+                            >
+                              Launch your project on RADA ?
+                            </a>
+                          </div>
+
+                          <span className="footer-deco"></span>
+                        </div>
 
                       </div>
                     </div>
