@@ -85,7 +85,6 @@ export default function TokenInfoShare2Earn({
     const { isConfirmed, isConfirming, handleConfirm } =
     useApproveConfirmTransaction({
       onConfirm: () => {
-
         return callWithGasPrice(share2earnContract, 'joinProgram', [tokenData.id, uid, referralCode])
       },
       onSuccess: async ({ receipt }) => {
@@ -94,9 +93,7 @@ export default function TokenInfoShare2Earn({
     })
 
     const handleJoinProgram = async () => {
-      if (user?.id) {
-        handleConfirm();
-      }
+          handleConfirm();
     };
     const [joined, setJoined] = useState('')
     const [incentive1, setIncentive1] = useState(0)
@@ -109,9 +106,9 @@ export default function TokenInfoShare2Earn({
     }, [account,user]);
 
     React.useEffect(() => {
+      if (active)
         getInfoProgram()
-
-    }, [active, account,library]);
+    }, [active, library]);
 
 
     const checkJoined = async () => {
@@ -119,11 +116,17 @@ export default function TokenInfoShare2Earn({
       try {
         if (typeof  window.ethereum !== undefined) {
           const addressJoined = await callFunction(share2earnContract, 'uidJoined', [tokenData.id, uid])
-          if (addressJoined=='0x0000000000000000000000000000000000000000')
+          if (addressJoined=='0x0000000000000000000000000000000000000000') {
             setJoined('');
-          else setJoined(addressJoined);
+          }
+          else {
+            setJoined(addressJoined);
+            return addressJoined;
+          }
         }
+        return '';
       }catch(e) {
+        return '';
       }
     }
 
@@ -134,10 +137,12 @@ export default function TokenInfoShare2Earn({
           if (p) {
             setIncentive1(ethers.utils.formatEther(p.incentiveL0));
             setIncentive2(ethers.utils.formatEther(p.incentiveL1));
+            checkJoined();
           }
       }catch(e) {
-        activate(injected);
-        console.log(e);
+        if (injected) {
+          activate(injected);
+        }
       }
     }
 
@@ -157,7 +162,7 @@ export default function TokenInfoShare2Earn({
       activate(injected);
       setActivatingConnector(injected);
     }
-
+console.log(joined)
     if (joined !='' || isConfirmed) {
       return <Share2EarnMainScreen tokenData={tokenData}/>;
     }
@@ -205,7 +210,7 @@ export default function TokenInfoShare2Earn({
                 </span>
                 <div className="flex flex-col">
                   <strong className="text-base text-color-title">A Refferal Person join Share2Earn program</strong>
-                  <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{incentive1} RIR</span> for each</span>
+                  {incentive1>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{incentive1} RIR</span> for each</span>}
                 </div>
               </li>
               <li className="flex items-center">
@@ -225,12 +230,12 @@ export default function TokenInfoShare2Earn({
                 </span>
                 <div className="flex flex-col">
                   <strong className="text-base text-color-title">Get refferal bonus for each new refferal level 2 member</strong>
-                  <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{incentive2} RIR</span> for each</span>
+                  {incentive2>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{incentive2} RIR</span> for each</span>}
                 </div>
               </li>
             </ul>
 
-            <form className="mt-4">
+            {user?.id && <form className="mt-4">
 
               {allowJoin && <fieldset className="space-y-4 mb-4 text-gray-500 dark:text-gray-400">
                 <legend className="sr-only">Notifications</legend>
@@ -257,7 +262,7 @@ export default function TokenInfoShare2Earn({
                 }
             </>
             )}
-            </form>
+            </form>}
 
           </div>
 

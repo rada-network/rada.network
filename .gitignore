@@ -40,3 +40,4 @@ package-lock.json
 .env.production
 yarn.lock
 https_cert
+.env
