@@ -18,8 +18,10 @@ export default function LaunchpadContent({ project }) {
         const fetchLaunchpadInfo = async () => {
         try {
             let tokensAllocated = await lauchpadContact.tokensAllocated()
+            let availableBusd = await lauchpadContact.availableBusd()
             let updateInfo = {
                 tokensAllocated : utils.formatEther(tokensAllocated),
+                availableBusd : utils.formatEther(availableBusd),
             }
             setLaunchpadInfo(updateInfo)
         } catch (error) {
@@ -33,9 +35,9 @@ export default function LaunchpadContent({ project }) {
     }, [account,lauchpadContact])
     const raise = project.raise
     const tokenPrice = project.price
-    const progressToken = parseInt(launchpadInfo?.tokensAllocated) || 0
-    const target = numberFormatter(raise/tokenPrice)
-    const progressPercentage = progressToken/(raise/tokenPrice) * 100
+    const progressToken = parseInt(launchpadInfo?.tokensAllocated) || parseInt(launchpadInfo?.availableBusd) / tokenPrice || 0
+    const target = raise/tokenPrice
+    const progressPercentage = progressToken/target * 100
     
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -72,8 +74,8 @@ export default function LaunchpadContent({ project }) {
                                 Progress
                             </span>
                             <span className="list-value ml-auto">
-                                <span className="font-semibold">{progressToken}</span>
-                                <span className="opacity-70">/{target || "n/a"}</span> {project?.token.symbol}
+                                <span className="font-semibold">{numberFormatter(progressToken)}</span>
+                                <span className="opacity-70">/{numberFormatter(target) }</span> {project?.token.symbol}
                             </span>
                         </li>
                     </ul>
