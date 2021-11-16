@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
 import { saveAs } from 'file-saver';
 
 import { useStore } from "../../lib/useStore";
@@ -10,13 +10,19 @@ import SelectBannerType from "../share2earn/listbox-share2earn";
 import { getCurrentUser } from "../../data/query/user";
 import { getShareLogById } from "../../data/query/getShareLog";
 import { createOrUpdateShareLogById } from "../../data/query/createOrUpdateShareLog";
-import link from "next/link";
+import mergeImages from 'merge-images';
+import { result } from "lodash";
 
 const Share2EarnMainScreen = observer( ({tokenData}) => {
+  const [user, setUser] = useState({});
+  const store = useStore()
   const { detailStore } = usePageStore();
   const [facebook, setFacebook] = useState({url:'', disable: false});
   const [twitter, setTwitter] = useState({url:'', disable: false});
   const [linkedin, setLinkedin] = useState({url:'', disable: false});
+  // Merge image state
+  const [frames, setFrames] = useState([]);
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
   // Banner component 
   let bannerURL;
@@ -33,15 +39,13 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
   }
 
   // Generate share url
-  const [user, setUser] = useState({});
-  const store = useStore()
   useEffect(() => {
     if (store.user.access_token !== "") {
       getCurrentUser().then((res) => {
         setUser(res);
       });
     }
-  }, [store.user.access_token]);
+  }, []);
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
   // Save and update shared url
@@ -71,6 +75,7 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
       });
   },[]);
 
+ 
   // Create or update url
   const facebookSubmit = async (e) => {
     if (facebook.disable) {
@@ -89,6 +94,7 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
   }
 
   const linkedinSubmit = async (e) => {
+    addFrameImage()
     if (linkedin.disable) {
       setLinkedin({disable: false, url: facebook.url})
     } else {
@@ -101,7 +107,6 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
       createOrUpdateShareLogById({ campaignId: 1, walletAddress: "", twitter: twitter.url, facebook: facebook.url, linkedin: linkedin.url }).then(function (
         res 
       ) {
-        console.log("Create and update done");
         if (e.target.id === "facebook") {
           setFacebook({disable: true, url: facebook.url})
         } else if (e.target.id === "twitter") {
@@ -111,8 +116,81 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
         }
     });
   }
+
+  useEffect(()  => {
+    convertBase64Img()
+  }, []);
+
+  const getBase64FromUrl = async (url) => {
+    const data = await fetch(url);
+      const blob = await data.blob();
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(blob); 
+        reader.onloadend = () => {
+          const base64data = reader.result;
+          resolve(base64data);
+          localStorage.setItem("upload", base64data)
+        }
+      });
+  }
+
+  const convertBase64Img = () => {
+    // Convert frame 
+    tokenData.share_campaign[0].avatar_frame.map (url => {
+      getBase64FromUrl(url).then( e => {
+        frames.push(e)
+        setFrames(frames)
+      })
+    })
+  }
+
+  const handleFileInput = (e) => {
+    if (e.target.files[0]) {
+      return new Promise((resolve) => {
+        const fileReader = new FileReader()
+        fileReader.readAsDataURL(e.target.files[0])
+        fileReader.onload = () => {
+          resizeImage(fileReader.result).then(result => {
+
+            addFrameImage(result)
+          })
+        }
+
+        fileReader.onerror = () => {
+          console.log("Can not convert img")
+        }
+      })
+    }
+  }
+
+  function resizeImage(base64Str, maxWidth = 512, maxHeight = 512) {
+    return new Promise((resolve) => {
+      let img = new Image()
+      img.src = base64Str
+      img.onload = () => {
+        let canvas = document.createElement('canvas')
+        canvas.width = maxWidth
+        canvas.height = maxHeight
+        let ctx = canvas.getContext('2d')
+        ctx.drawImage(img, 0, 0, maxWidth, maxHeight)
+        resolve(canvas.toDataURL())
+      }
+    })
+  }
+
+
   
-  
+  const imageSources = new Array()
+  const addFrameImage = async (fileUpload) => {
+    frames.map( (data, index) => {   
+      mergeImages([fileUpload, data]).then(b64 => {
+        localStorage.setItem(index, b64)
+        forceUpdate();
+      })
+    })
+  };
+
   return (
     <>     
     <Head />
@@ -193,21 +271,27 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
                   </div>
 
                   <div className="flex flex-col mt-4">
-                    <strong className="text-base text-color-title">Create Avatar</strong>
+
+                    <strong className="text-base text-color-title">{frames.length}</strong> 
+                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onChange={handleFileInput}/>
                     <span className="text-gray-500 dark:text-gray-400">Download &amp; change your avatar on your social chanels</span>
 
                     <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
 
                       <div className="grid gap-4 grid-cols-3 p-4">
+                        
                         <div className="flex justify-center">
-                          <img className="" src={process.env.NEXT_PUBLIC_CDN + "/placeholders/share2earn-1.png"} alt="" />
+                          <img className="" src={localStorage.getItem(0) ? localStorage.getItem(0) : ""} alt="" />
                         </div>
+
                         <div className="flex justify-center">
-                          <img className="" src={process.env.NEXT_PUBLIC_CDN + "/placeholders/share2earn-2.png"} alt="" />
+                          <img className="" src={localStorage.getItem(1) ? localStorage.getItem(1) : ""} alt="" />
                         </div>
+                          
                         <div className="flex justify-center">
-                          <img className="" src={process.env.NEXT_PUBLIC_CDN + "/placeholders/share2earn-3.png"} alt="" />
+                          <img className="" src={localStorage.getItem(2) ? localStorage.getItem(2) : ""} alt="" />
                         </div>
+
                       </div>
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
                         <btn class="btn btn-default w-full !py-2">
