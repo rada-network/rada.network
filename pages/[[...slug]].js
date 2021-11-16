@@ -14,6 +14,7 @@ import { Resizer } from "../components/utils/Resizer";
 import store from "store"
 import { usePageStore } from "../lib/usePageStore";
 import { getTokenById } from "../data/query/getTokenById";
+import { useRouter } from "next/router";
 
 const getDataExplore = async ({query,type,lang}) => {
   if (['news','projects','video','rada','social','all',''].indexOf(type) === -1){
@@ -119,6 +120,9 @@ const getDataPostDetail = async ({query,id,lang}) => {
 
 export default observer(function(props) {
   const {dataStore,detailStore,voteStore} = usePageStore()
+
+  const { locales, asPath } = useRouter();
+
   dataStore.page = "item"
   if (props.item === undefined) {
     dataStore.query = props.query
@@ -126,13 +130,16 @@ export default observer(function(props) {
     dataStore.tweets = props.itemFeed
     dataStore.type = props.type
     dataStore.meta = utils.createSiteMetadata(
-    {
-      page : 'Explore',
-      data : {
-        query:props.type == "all" ? props.query : props.type
+      {
+        page : 'Explore',
+        data : {
+          query:props.type == "all" ? props.query : props.type
+        },
+        dataStore : dataStore
       },
-      dataStore : dataStore
-    })
+      locales,
+      asPath
+    );
   }
   else{
     dataStore.query = props.query
@@ -168,7 +175,7 @@ export default observer(function(props) {
     }
     item.airdrop = props.airdrop
     detailStore.data = item
-    dataStore.meta = utils.createSiteMetadata({page : 'ItemDetail',data : {...item,type : detailStore.type},dataStore : dataStore})
+    dataStore.meta = utils.createSiteMetadata({page : 'ItemDetail',data : {...item,type : detailStore.type},dataStore : dataStore}, locales, asPath)
   }
   return (
     <Index props={props} dataStore={dataStore} voteStore={voteStore} detailStore={detailStore} />

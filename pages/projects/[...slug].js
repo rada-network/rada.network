@@ -12,19 +12,27 @@ import { WalletProfile } from "../../components/Wallet";
 import useActiveWeb3React from "../../utils/hooks/useActiveWeb3React";
 import useStore from "@lib/useStore"
 import { useLaunchpadContract } from "../../utils/hooks/useContracts";
+import myUtils from "@lib/util";
+import { useRouter } from "next/router";
 
 export default function ProjectPage({ slug, project, locale }) {
   const { dataStore } = usePageStore()
+  const { locales, asPath } = useRouter();
+
   dataStore.page = "project"
   dataStore.lang = locale
   const page = slug.length > 1 ? slug[1] : 'index'
   
-  let meta = {
-    title : project?.content?.title + "",
-    description : project?.content?.description + "",
-    "og:description" : project?.content?.description + "",
-    "og:image" : project?.thumbnail_uri + ""
-  }
+  const meta = myUtils.createSiteMetadata(
+    {
+      page: "ProjectDetail",
+      dataStore: dataStore,
+      data: project,
+    },
+    locales,
+    asPath
+  );
+  
   /* Dragger to resize main col */  
   const containerRef = useRef()
   return (
