@@ -29,7 +29,7 @@ export default function LaunchpadOverview({ project }) {
                             <span className="w-4 h-4">
                                 <BscSvg />
                             </span>
-                            <span className="ml-1">{project.platform.name}</span>
+                            <span className="ml-1">{project?.platform?.name}</span>
                         </div>
 
                         <div className={`label ${project.type}`}>{project.type}</div>
