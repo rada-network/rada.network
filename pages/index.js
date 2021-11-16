@@ -12,16 +12,27 @@ import {LanguageSwitch} from "../components/LanguageSwitch";
 import Screen from "../components/utils/Responsive";
 import { observer } from "mobx-react";
 import { usePageStore } from "../lib/usePageStore";
+import {useRouter} from "next/router";
+import utils from "@lib/util";
 
 import BackgroundWrapper from "../components/card-layouts/concepts/launchpad/BackgroundWrapper";
-let step = 1;
 const Layout = observer((props) => {
 
   const {dataStore,detailStore,voteStore} = usePageStore()
-  dataStore.type = "projects"
   dataStore.lang = props.lang
-  const meta = {}
-  let step = 1;
+  const { locales, asPath } = useRouter();
+  dataStore.page = "index"
+  let meta = utils.createSiteMetadata(
+    {
+      page : 'Index',
+      data : {
+        query:props.type == "all" ? props.query : props.type
+      },
+      dataStore : dataStore
+    },
+    locales,
+    asPath
+  );
   return (
     <>
       <Head meta={meta} />

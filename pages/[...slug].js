@@ -121,25 +121,14 @@ const getDataPostDetail = async ({query,id,lang}) => {
 export default observer(function(props) {
   const {dataStore,detailStore,voteStore} = usePageStore()
 
-  const { locales, asPath } = useRouter();
+  //const { locales, asPath } = useRouter();
 
-  dataStore.page = "item"
   if (props.item === undefined) {
     dataStore.query = props.query
 
     dataStore.tweets = props.itemFeed
     dataStore.type = props.type
-    dataStore.meta = utils.createSiteMetadata(
-      {
-        page : 'Explore',
-        data : {
-          query:props.type == "all" ? props.query : props.type
-        },
-        dataStore : dataStore
-      },
-      locales,
-      asPath
-    );
+    
   }
   else{
     dataStore.query = props.query
@@ -147,7 +136,7 @@ export default observer(function(props) {
     let item = {}
     if (props.item.news !== null){
       if (props.item.news.category !== null) {
-        detailStore.type = props.item.news.category.slug
+        detailStore.type = "rada"
       }
       else{
         detailStore.type = "news"
@@ -175,7 +164,6 @@ export default observer(function(props) {
     }
     item.airdrop = props.airdrop
     detailStore.data = item
-    dataStore.meta = utils.createSiteMetadata({page : 'ItemDetail',data : {...item,type : detailStore.type},dataStore : dataStore}, locales, asPath)
   }
   return (
     <Index props={props} dataStore={dataStore} voteStore={voteStore} detailStore={detailStore} />
@@ -184,6 +172,46 @@ export default observer(function(props) {
 
 export const Index  = ({props,dataStore,voteStore,detailStore}) => {
   let meta
+  const { locales, asPath } = useRouter();
+
+  dataStore.page = "item"
+  if (props.item === undefined) {
+    meta = utils.createSiteMetadata(
+      {
+        page : 'Explore',
+        data : {
+          query:props.type == "all" ? props.query : props.type
+        },
+        dataStore : dataStore
+      },
+      locales,
+      asPath
+    );
+  }
+  else{
+    let item = {}
+    if (props.item.news !== null){
+
+      item = Object.assign({},props.item.news);
+    }
+    else if (props.item.video !== null){
+      item = Object.assign({},props.item.video);
+    }
+    else if (props.item.tweet !== null){
+      item = Object.assign({},props.item.tweet);
+    }
+    else if (props.item.idea !== null){
+      item = Object.assign({},props.item.idea);
+    }
+    item.item = {
+      id : props.item.id,
+      totalVote : props.item.totalVote,
+      totalComment : props.item.totalComment,
+      token : props.item.token,
+    }
+    item.airdrop = props.airdrop
+    meta = utils.createSiteMetadata({page : 'ItemDetail',data : {...item,type : detailStore.type},dataStore : dataStore}, locales, asPath)
+  }
   /* Dragger to resize main col */
   const mainRef = useRef()
   const containerRef = useRef()
