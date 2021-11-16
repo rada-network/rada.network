@@ -94,7 +94,7 @@ export const PostDetailAuthor = observer(({item,isRada}) => {
           </span>
         )}
   
-        <span className="metadata-value" title={getSourceFromUri(item)}>
+        <span itemProp="author" className="metadata-value" title={getSourceFromUri(item)}>
           {getSourceFromUri(item)}
         </span>
         </>
@@ -119,7 +119,7 @@ export const PostDetailAuthor = observer(({item,isRada}) => {
         </span>
       )}
 
-      <span className="metadata-value" title={getSourceFromUri(item)}>
+      <span itemProp="author" className="metadata-value" title={getSourceFromUri(item)}>
         {getSourceFromUri(item)}
       </span>
       </>

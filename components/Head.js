@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 import { observer } from 'mobx-react';
 import {usePageStore} from "../lib/usePageStore"
 import _ from "lodash";
-
+import utils from "@lib/util";
 
 export const Head = observer(({meta}) => {
 
@@ -30,7 +30,7 @@ export const Head = observer(({meta}) => {
         />
       }
       <title>{meta.title || ""}</title>
-      <meta name="description" content={meta.description || ""}/>
+      <meta name="description" content={utils.stripHTML(meta.description) || ""}/>
       <meta name="keyword" content={meta.keyword || ""}/>
       {"og:type" in meta && <meta property="og:type" content={meta["og:type"]} />}
       {!("og:type" in meta) && <meta property="og:type" content={`website`} />}
@@ -38,7 +38,7 @@ export const Head = observer(({meta}) => {
       {"og:title" in meta && <meta property="og:title" content={meta["og:title"]} />}
       {!("og:title" in meta) && <meta property="og:title" content={meta.title || ""} />}
 
-      {"og:description" in meta && <meta property="og:description" content={meta["og:description"]} />}
+      {"og:description" in meta && <meta property="og:description" content={utils.stripHTML(meta["og:description"])} />}
       {!("og:description" in meta) && <meta property="og:description" content="" />}
 
       {"og:image" in meta && <meta property="og:image" content={meta["og:image"]} />}

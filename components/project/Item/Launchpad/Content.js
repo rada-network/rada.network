@@ -40,7 +40,7 @@ export default function LaunchpadContent({ project }) {
     const progressPercentage = progressToken/target * 100
     
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4" itemProp="description">
             <div className="card card-default project-brief">
                 <div className="card-header">
                     <h3>Launchverse Overview</h3>
