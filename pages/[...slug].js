@@ -205,8 +205,8 @@ export const Index  = ({props,dataStore,voteStore,detailStore}) => {
 }
 
 const ResizeerWrapper = function({mainRef,dataStore,containerRef}){
-  let pw 
-  let mw 
+  let pw
+  let mw
   useEffect(() => {
     let mwp = store.get('main-width')
     if (_.isUndefined(mwp)) {
@@ -275,7 +275,7 @@ export async function getStaticProps(context) {
     return {
       // returns a redirect to an internal page `/another-page`
       redirect: {
-        destination: "/projects",
+        destination: "/",
         permanent: false
       }
     }
