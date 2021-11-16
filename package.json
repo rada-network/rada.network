@@ -35,6 +35,7 @@
     "graphql-request": "3.4.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
+    "merge-images": "^2.0.0",
     "mobx": "^6.3.0",
     "mobx-react": "^7.1.0",
     "mobx-state-tree": "^5.0.1",
