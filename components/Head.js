@@ -88,6 +88,10 @@ export const Head = observer(({meta}) => {
         key="fontawesome"
       />
 
+      {meta?.alternate?.map((alternate) => (
+        <link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />
+      ))}
+
       <link rel="manifest" href={"/manifest.json"} />
       
     </HTMLHead>

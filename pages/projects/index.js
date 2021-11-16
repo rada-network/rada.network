@@ -6,16 +6,27 @@ import { ProjectsList } from "@components/project/List/Index";
 
 import { getProjects } from "@data/query/projects";
 import { usePageStore } from "@lib/usePageStore";
+import utils from "@lib/util";
+import { useRouter } from "next/router";
 
 export default function ProjectsIndex({ projects, locale }) {
-    let meta = {}
     const { dataStore } = usePageStore()
+    const { locales, asPath } = useRouter();
+
     dataStore.page = "project"
     dataStore.lang = locale
     /* Dragger to resize main col */
     const mainRef = useRef()
     const containerRef = useRef()
-    meta.title = "Launchpad Projects"
+    const meta = utils.createSiteMetadata(
+        {
+            page: "Project",
+            dataStore: dataStore,
+        },
+        locales,
+        asPath
+    );
+
     return (
         <Layout extraClass="page-home" meta={meta}>
             <div className={`pane-content`} ref={containerRef} >
