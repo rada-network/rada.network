@@ -23,6 +23,7 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
   // Merge image state
   const [frames, setFrames] = useState([]);
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+  const [isUploadImage, setIsUploadImage] = useState(false);
 
   // Banner component 
   let bannerURL;
@@ -179,9 +180,6 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
     })
   }
 
-
-  
-  const imageSources = new Array()
   const addFrameImage = async (fileUpload) => {
     frames.map( (data, index) => {   
       mergeImages([fileUpload, data]).then(b64 => {
@@ -190,6 +188,15 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
       })
     })
   };
+
+  const handleDownloadAvt = () => {
+    tokenData.share_campaign[0].avatar_frame.map((data, index) => {
+      var a = document.createElement("a");
+      a.href = localStorage.getItem(index);
+      a.download = "Image.png";
+      a.click();
+    })
+  }
 
   return (
     <>     
@@ -271,9 +278,15 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
                   </div>
 
                   <div className="flex flex-col mt-4">
-
-                    <strong className="text-base text-color-title">{frames.length}</strong> 
-                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onChange={handleFileInput}/>
+                    <strong className="text-base text-color-title">Create Avatar</strong> 
+                    <span > Upload your avatar</span>
+                    <input type="checkbox" onChange={(e) => { setIsUploadImage(e.target.checked)}} />
+                    <>
+                      { isUploadImage ? (
+                        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onChange={handleFileInput}/>
+                        ) : null 
+                      }   
+                    </>
                     <span className="text-gray-500 dark:text-gray-400">Download &amp; change your avatar on your social chanels</span>
 
                     <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
@@ -294,7 +307,9 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
 
                       </div>
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn class="btn btn-default w-full !py-2">
+                        <btn class="btn btn-default w-full !py-2"
+                          onClick={ handleDownloadAvt }
+                        >
                           <span class="icon"><i class="fa-duotone fa-download text-xs"></i></span>
                           <span class="btn--text">Download</span>
                         </btn>
