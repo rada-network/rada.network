@@ -104,11 +104,9 @@ const useApproveConfirmTransaction = ({
           onSuccess({ state, receipt })
         }
       } catch (error) {
-
+        console.log(error)
         dispatch({ type: 'confirm_error' })
-        if (error.data?.message.indexOf('execution reverted') > -1 ) {
-          toast.error(error.data.message.replace('execution reverted: ',''))
-        } else toast.error('Please try again. Confirm the transaction and make sure you are paying enough gas!')
+        toast.error('Please try again. Confirm the transaction and make sure you are paying enough gas!')
       }
     },
   }
