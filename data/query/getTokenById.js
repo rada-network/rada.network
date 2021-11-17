@@ -85,6 +85,7 @@ const tokenByIdGql = gql`
         max_rir_per_user
       }
       share_campaign {
+        avatar_frame
         id
         status
         facebook_banner
