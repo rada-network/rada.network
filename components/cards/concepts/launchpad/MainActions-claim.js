@@ -12,7 +12,7 @@ const MainActions = ({}) => {
               <ProjectTimeline step="4" />
             </div>
 
-            <div className="global-padding-lg !px-6 min-h-full w-full mx-auto">
+            <div className="project-card--container">
               <div className="max-w-md mx-auto">
                 <ul class="mb-4 mt-auto flex-shrink-0 flex-grow">
                   <li class="list-pair mb-2">

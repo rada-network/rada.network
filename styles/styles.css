@@ -276,7 +276,7 @@ Reader / Page Area
 
 .pane-content--sec--main {
   @apply w-full h-full;
-  @apply bg-white dark:bg-gray-800;
+  @apply bg-white dark:bg-gray-900;
 }
 
 @screen lg {
