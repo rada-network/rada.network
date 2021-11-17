@@ -137,7 +137,7 @@ export default function TokenInfoShare2Earn({
     const getInfoProgram = async () => {
 
       try {
-          const p = await callFunction(share2earnContract, 'getInfoProgram', [tokenData.id])
+          const p = await callFunction(share2earnContract, 'programs', [tokenData.id])
           if (p) {
             setIncentive1(ethers.utils.formatEther(p.incentiveL0));
             setIncentive2(ethers.utils.formatEther(p.incentiveL1));
