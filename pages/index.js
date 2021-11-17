@@ -130,7 +130,8 @@ const Layout = observer((props) => {
 
                             <div className="
                                 flex items-center px-8 py-4
-                                bg-gradient-to-br from-gray-800 to-gray-800
+                                bg-gradient-to-br from-gray-100 to-gray-100
+                                dark:from-gray-800 dark:to-gray-800
                                 rounded-b-xl
                               "
                             >
@@ -168,7 +169,6 @@ const Layout = observer((props) => {
                           <div className="
                               flex items-center justify-between p-8
                               border border-gray-200 dark:border-gray-700
-                              bg-gradient-to-br from-gray-900 to-gray-900
                               rounded-xl
                             "
                           >
@@ -193,9 +193,10 @@ const Layout = observer((props) => {
                               </div>
                             </div>
 
-                            <div className="flex-shrink-0 ml-16 mr-16">
+                            {/* <div className="flex-shrink-0 ml-16 mr-16">
                               <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/launchverse-s2e-dark.png"} alt="The Parallel" />
-                            </div>
+                            </div> */}
+                            <span className="s2e-deco flex-shrink-0 ml-16 mr-16"></span>
                           </div>
 
                         </div>
@@ -308,9 +309,9 @@ const Layout = observer((props) => {
                             <a href="#" target="_blank"
                               className="
                                text-sm leading-relaxed max-w-md py-2 px-4 rounded-lg
-                               bg-gray-100 dark:bg-gray-800 hover:bg-primary-50 dark:hover:bg-primary-900
+                               bg-gray-100 dark:bg-gray-800 hover:bg-primary-500 dark:hover:bg-primary-900
                                font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70
-                               hover:text-opacity-100 dark:hover:text-opacity-100
+                               hover:text-opacity-100 hover:text-white dark:hover:text-opacity-100
                               "
                             >
                               Launch your project on RADA ?

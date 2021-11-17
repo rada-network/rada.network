@@ -119,7 +119,8 @@ const Layout = observer((props) => {
 
                             <div className="
                                 flex items-center px-8 py-4
-                                bg-gradient-to-br from-gray-800 to-gray-800 
+                                bg-gradient-to-br from-gray-100 to-gray-100
+                                dark:from-gray-800 dark:to-gray-800
                                 rounded-b-xl
                               "
                             >
@@ -182,9 +183,10 @@ const Layout = observer((props) => {
                               </div>
                             </div>
 
-                            <div className="flex-shrink-0 ml-16 mr-16">
+                            {/* <div className="flex-shrink-0 ml-16 mr-16">
                               <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/launchverse-s2e-dark.png"} alt="The Parallel" />
-                            </div>
+                            </div> */}
+                            <span className="s2e-deco flex-shrink-0 ml-16 mr-16"></span>
                           </div>
 
                         </div>
