@@ -12,7 +12,7 @@ const MainActions = ({}) => {
               <ProjectTimeline step="3" />
             </div>
 
-            <div className="global-padding-lg !px-6 min-h-full w-full mx-auto">
+            <div className="project-card--container">
               <div className="max-w-2xl mx-auto text-center">
               
                 <div className="mx-auto">

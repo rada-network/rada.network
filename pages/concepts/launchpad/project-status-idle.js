@@ -72,21 +72,15 @@ const Layout = observer((props) => {
                 <div className="page page-full page-project-details !pt-0">
                   <div className="w-limiter-lg">
 
-                    <div className="section">
-                      
+                    <div className="section">                   
                       <TokenBrief />
-                  
-
                       <div className="section-body">
-
                         <TokenContent />
-
                         {/* Main Action Card */}
                         <div className="grid grid-cols-1 mt-4">
                           <MainActions />
                         </div>
                         {/* END: Main Action Card */}
-
                       </div>          
                     </div>
                   </div>

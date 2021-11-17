@@ -6,11 +6,11 @@ import RadaSvg from "../../../components/svg/rada";
 const tokenTypes = [
   { 
     name: 'RIR',
-    icon: <RadaSvg />,
+    icon: '',
   },
   { 
     name: 'BUSD',
-    icon: <BusdSvg />,
+    icon: '',
   }
 ]
 

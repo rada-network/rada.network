@@ -56,7 +56,7 @@ const ProjectTimeline = ({step}) => {
           {/* Upcoming Step */}
           <a href="#" className="step-compact-body" aria-current="step">
             <div className="step-compact-body--icon">
-              <span className="step-compact-body--icon--text">03</span>
+              <span className="step-compact-body--icon--text">3</span>
             </div>
             <div className="step-compact-body--content">
               <span className="step-compact-body--title">Status</span>
@@ -70,7 +70,7 @@ const ProjectTimeline = ({step}) => {
           {/* Upcoming Step */}
           <a href="#" className="step-compact-body" aria-current="step">
             <div className="step-compact-body--icon">
-              <span className="step-compact-body--icon--text">04</span>
+              <span className="step-compact-body--icon--text">4</span>
             </div>
             <div className="step-compact-body--content">
               <span className="step-compact-body--title">Claim</span>

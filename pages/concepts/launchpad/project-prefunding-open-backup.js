@@ -5,10 +5,10 @@ import TokenInfo from "../../../components/token/TokenInfo";
 import { ProjectsList } from "../../../components/card-layouts/concepts/launchpad/ProjectsList";
 import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
 import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
-import ReactDOM from 'react-dom';
+
 // Cards Concepts
 import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
-import MainActions from "../../../components/cards/concepts/launchpad/MainActions-prefunding-open-dropdown";
+import MainActions from "../../../components/cards/concepts/launchpad/MainActions-prefunding-open";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";
