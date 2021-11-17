@@ -80,7 +80,7 @@ export default function TokenInfoShare2Earn({
 
     // TODO: Save in config file
     // const share2earnAddress = "0x7b9AEeD27F291625CbaED61Ac178D61709d62dCC"
-    const share2earnAddress = "0x9BE69D986a1D7d0Bd21D05a3cfCc9cD6CDA254c4"
+    const share2earnAddress = "0x998353AfD99A73262337974e2E732118ed557600"
     const share2earnContract = useShare2EarnContract(share2earnAddress)
     const {callWithGasPrice} = useCallWithGasPrice()
     const {callFunction} = useCallFunction()
