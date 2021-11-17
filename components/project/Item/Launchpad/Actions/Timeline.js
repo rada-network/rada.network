@@ -1,8 +1,9 @@
+import { useTranslation } from "next-i18next";
 import { CheckSvg } from "../../../../svg/SvgIcons";
 
 const Timeline = ({ step }) => {
     const cstep = step || 1
-
+    const {t} = useTranslation("launchpad")
     const Step = ({step, title, desc}) => {
         // console.log('tl:', cstep, props.step)
         const cls = ['step-compact']
@@ -31,11 +32,13 @@ const Timeline = ({ step }) => {
             <nav aria-label="Progress">
                 <ol role="list" className="steps-compact ">
 
-                    <Step step="1" title="Awaiting Launchpad" desc="Apply for whitelist" />
+                    <Step step="1" title={t("Whitelist")} desc={t("Apply for whitelist")} />
 
-                    <Step step="2" title="Subcribe Launchpad" desc="Subcribe Launchpad" />
+                    <Step step="2" title={t("Prefunding")} desc={t("Deposit your fund")} />
 
-                    <Step step="3" title="Claim" desc="Claim your token" />
+                    <Step step="3" title={t("Status")} desc={t("Status of your application")} />
+
+                    <Step step="4" title={t("Claim")} desc={t("Claim your token")} />
 
                 </ol>
             </nav>

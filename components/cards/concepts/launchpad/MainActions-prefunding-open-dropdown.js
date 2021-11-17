@@ -50,8 +50,7 @@ const MainActions = ({}) => {
                         <i class="fas fa-info-circle text-yellow-500"></i>
                       </span>
                       <span>
-                        If you already have RIR, it's recommended to use RIR instead of 
-                        BUSD to quarantee your application.
+                        
                       </span>
                     </p>
                   </div>

@@ -40,8 +40,8 @@ export async function getStaticProps(context) {
     const projects = await getProjects({ lang: context.locale })
     let props = { projects, locale: context.locale }
     props = Object.assign(props, {
-        ...await serverSideTranslations(context.locale, ['common', 'navbar', 'invest']),
-    })
+        ...await serverSideTranslations(context.locale, ['common', 'navbar', 'invest','launchpad']),
+      })
     return {
         props,
         revalidate: 60

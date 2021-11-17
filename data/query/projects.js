@@ -19,6 +19,7 @@ const projectBySlugGql = gql`
         swap_contract
         raise
         price
+        is_kyc
         token{
             name
             logo
@@ -57,6 +58,7 @@ const projectFeedGql = gql`
         status
         raise
         price
+        is_kyc
         token{
             name
             logo
