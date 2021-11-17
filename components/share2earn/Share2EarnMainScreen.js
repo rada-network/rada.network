@@ -13,8 +13,7 @@ import { createOrUpdateShareLogById } from "../../data/query/createOrUpdateShare
 import mergeImages from 'merge-images';
 import { result } from "lodash";
 
-const Share2EarnMainScreen = observer( ({tokenData}) => {
-  const [user, setUser] = useState({});
+const Share2EarnMainScreen = observer( ({tokenData, user}) => {
   const store = useStore()
   const { detailStore } = usePageStore();
   const [facebook, setFacebook] = useState({url:'', disable: false});
@@ -38,15 +37,6 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
   const handleDownload = () => {
     saveAs(bannerURL, detailStore.selectedBanner+".png");
   }
-
-  // Generate share url
-  useEffect(() => {
-    if (store.user.access_token !== "") {
-      getCurrentUser().then((res) => {
-        setUser(res);
-      });
-    }
-  }, []);
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
   // Save and update shared url
@@ -131,29 +121,35 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
         reader.onloadend = () => {
           const base64data = reader.result;
           resolve(base64data);
-          localStorage.setItem("upload", base64data)
         }
       });
   }
 
   const convertBase64Img = () => {
-    // Convert frame 
-    tokenData.share_campaign[0].avatar_frame.map (url => {
-      getBase64FromUrl(url).then( e => {
-        frames.push(e)
-        setFrames(frames)
-      })
-    })
+    // Convert frame
+    if (tokenData.share_campaign.length) {
+      tokenData.share_campaign[0].avatar_frame.map ((url, index) => {
+        getBase64FromUrl(url).then( e => {
+          mergeImages([ localStorage.getItem("user_avatar") , e]).then(result => {
+            localStorage.setItem(index, result)
+            
+          })
+          frames.push(e)
+          setFrames(frames)
+        })
+      }) 
+    }
+
+    
   }
 
   const handleFileInput = (e) => {
     if (e.target.files[0]) {
-      return new Promise((resolve) => {
+      return new Promise(() => {
         const fileReader = new FileReader()
         fileReader.readAsDataURL(e.target.files[0])
         fileReader.onload = () => {
           resizeImage(fileReader.result).then(result => {
-
             addFrameImage(result)
           })
         }
@@ -193,10 +189,10 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
     tokenData.share_campaign[0].avatar_frame.map((data, index) => {
       var a = document.createElement("a");
       a.href = localStorage.getItem(index);
-      a.download = "Image.png";
+      a.download = "Avatar.png";
       a.click();
     })
-  }
+  };
 
   return (
     <>     
@@ -292,7 +288,6 @@ const Share2EarnMainScreen = observer( ({tokenData}) => {
                     <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
 
                       <div className="grid gap-4 grid-cols-3 p-4">
-                        
                         <div className="flex justify-center">
                           <img className="" src={localStorage.getItem(0) ? localStorage.getItem(0) : ""} alt="" />
                         </div>

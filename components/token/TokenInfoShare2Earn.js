@@ -68,6 +68,9 @@ export default function TokenInfoShare2Earn({
     useEffect(() => {
       if (store.user.access_token !== "") {
         getCurrentUser().then((res) => {
+          getBase64FromUrl(res.image).then(b64 => {
+            localStorage.setItem("user_avatar", b64)
+          })
           setUser(res);
         });
       }
@@ -159,7 +162,20 @@ export default function TokenInfoShare2Earn({
     }
 
     if (joined !='' || isConfirmed) {
-      return <Share2EarnMainScreen tokenData={tokenData}/>;
+      return <Share2EarnMainScreen tokenData={tokenData} user={user}/>;
+    }
+
+    const getBase64FromUrl = async (url) => {
+      const data = await fetch(url);
+        const blob = await data.blob();
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(blob); 
+          reader.onloadend = () => {
+            const base64data = reader.result;
+            resolve(base64data);
+          }
+        });
     }
 
   return (
