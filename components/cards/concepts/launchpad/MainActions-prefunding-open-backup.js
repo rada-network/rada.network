@@ -1,7 +1,6 @@
 import ProjectTimeline from "../../../concepts/steps/projectTimeline";
-import SwapTokens from "../../../concepts/modules/swapTokensDropdown";
+import SwapTokens from "../../../concepts/modules/swapTokens-backup";
 import Winners from "./Winners";
-
 const MainActions = ({}) => {
   return (
     <>
@@ -16,10 +15,10 @@ const MainActions = ({}) => {
               <ProjectTimeline step="2" />
             </div>
 
-            <div className="global-padding-lg !px-6 min-h-full w-full mx-auto">
+            <div className="project-card--container">
               <div className="mb-8 sr-only">
                 <h3 className="text-3xl text-center font-normal">
-                  <span className="text-color-title">Swap tokens</span>
+                  <span className="text-color-title">Chuyển đổi Token</span>
                 </h3>
               </div>
 
@@ -32,14 +31,20 @@ const MainActions = ({}) => {
                   <ul class="mt-4 flex-shrink-0 flex-grow">
                     <li class="list-pair mb-2">
                       <span class="list-key">Your maximum allocation</span>
-                      <span class="ml-auto list-value font-semibold tabular-nums">
-                        500 BUSD (5 RIR)
+                      <span class="ml-auto list-value font-semibold">
+                        1000 USDT (3 RIR)
                       </span>
                     </li>
                     <li class="list-pair mb-2">
                       <span class="list-key">Your minimum allocation </span>
-                      <span class="ml-auto list-value font-semibold tabular-nums">
-                        100 BUSD (1 RIR)
+                      <span class="ml-auto list-value font-semibold">
+                        100 USDT (1 RIR)
+                      </span>
+                    </li>
+                    <li class="list-pair mb-2">
+                      <span class="list-key">Your available allocation</span>
+                      <span class="ml-auto font-semibold">
+                        200 USDT (2 RIR)
                       </span>
                     </li>
                   </ul>
@@ -50,7 +55,7 @@ const MainActions = ({}) => {
                         <i class="fas fa-info-circle text-yellow-500"></i>
                       </span>
                       <span>
-                        
+                        Some notices about rights or terms here.
                       </span>
                     </p>
                   </div>
@@ -58,15 +63,7 @@ const MainActions = ({}) => {
                 </div>
 
                 <div className="box box--gray">
-                  <div className="box-header relative">Prefund your investment
-                    {/* <div className="absolute inset-y-0 right-4 flex items-center h-10 top-2 ">
-                      <label for="currency" className="sr-only">Currency</label>
-                      <select id="currency" name="currency" className="select-custom !border-transparent">
-                        <option>BUSD</option>
-                        <option>RIR</option>
-                      </select>
-                    </div> */}
-                  </div>
+                  <div className="box-header">Swap Token</div>
                   <SwapTokens />
                 </div>
 
@@ -78,10 +75,7 @@ const MainActions = ({}) => {
 
       <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
         <div className="card-header items-center">
-          <ul className="whitelist-nav">
-            <li><a>Whitelist</a></li>
-            <li className="is-active"><a>Winners</a><span>550</span></li>
-          </ul>
+          <h3>Winners (1000)</h3>
           <div className="search-wrapper">
             <div className="form-search rounded-full">
               <span className="icon form-search--icon">

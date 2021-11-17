@@ -16,7 +16,7 @@ const MainActions = ({}) => {
               <ProjectTimeline step="2" />
             </div>
 
-            <div className="global-padding-lg !px-6 min-h-full w-full mx-auto">
+            <div className="project-card--container">
               <div className="mb-8 sr-only">
                 <h3 className="text-3xl text-center font-normal">
                   <span className="text-color-title">Swap tokens</span>

@@ -52,7 +52,12 @@ const SubscribeSwapToken = ({project}) => {
               </h3>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-2">
+            <div className="project-card--container">
+              <div className="mb-8 sr-only">
+                <h3 className="text-3xl text-center font-normal">
+                  <span className="text-color-title">Chuyển đổi Token</span>
+                </h3>
+              </div>
 
               <div className="box box--transparent">
 
