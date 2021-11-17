@@ -33,10 +33,12 @@ const Share2EarnMainScreen = observer( ({tokenData, user}) => {
   } else {
     bannerURL = tokenData.share_campaign[0].facebook_banner;
   }
+  
 
   const handleDownload = () => {
     saveAs(bannerURL, detailStore.selectedBanner+".png");
   }
+
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
   // Save and update shared url
@@ -45,25 +47,30 @@ const Share2EarnMainScreen = observer( ({tokenData, user}) => {
     : null;
   
   useEffect(() => {
-    tokenInfo &&
-      getShareLogById({ campaignId: 1 }).then(function (
+    if (tokenData.share_campaign?.length) {
+      tokenInfo &&
+      getShareLogById({ campaignId: parseInt(tokenData.share_campaign[0].id)}).then(function (
         res 
       ) {
-        let facebookURL = res.data.getShareLog[0].facebook;
-        if (facebookURL) {
-          setFacebook({disable: true, url: facebookURL});
-        }
+        if (res.data.getShareLog?.length) {
+          let facebookURL = res.data.getShareLog[0].facebook;
+          if (res.data.getShareLog.length) {
+            setFacebook({disable: true, url: facebookURL});
+          }
 
-        let twitterURL = res.data.getShareLog[0].twitter;
-        if (twitterURL) {
-          setTwitter({disable: true, url: twitterURL});
-        }
+          let twitterURL = res.data.getShareLog[0].twitter;
+          if (twitterURL) {
+            setTwitter({disable: true, url: twitterURL});
+          }
 
-        let linkedinULR = res.data.getShareLog[0].linkedin;
-        if (linkedinULR) {
-          setLinkedin({disable: true, url: linkedinULR});
+          let linkedinULR = res.data.getShareLog[0].linkedin;
+          if (linkedinULR) {
+            setLinkedin({disable: true, url: linkedinULR});
+          }
         }
       });
+    }
+    
   },[]);
 
  
@@ -95,7 +102,7 @@ const Share2EarnMainScreen = observer( ({tokenData, user}) => {
 
   function submitShareURL(e) {
     tokenInfo &&
-      createOrUpdateShareLogById({ campaignId: 1, walletAddress: "", twitter: twitter.url, facebook: facebook.url, linkedin: linkedin.url }).then(function (
+      createOrUpdateShareLogById({ campaignId: parseInt(tokenData.share_campaign.id), walletAddress: user.walletAddress, twitter: twitter.url, facebook: facebook.url, linkedin: linkedin.url }).then(function (
         res 
       ) {
         if (e.target.id === "facebook") {

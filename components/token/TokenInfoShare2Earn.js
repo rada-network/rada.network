@@ -71,10 +71,43 @@ export default function TokenInfoShare2Earn({
     useEffect(() => {
       if (store.user.access_token !== "") {
         getCurrentUser().then((res) => {
+          getBase64FromUrl(res.image).then(b64 => {
+            resizeImage(b64).then(result => {
+              localStorage.setItem("user_avatar", result)
+            })
+          })
           setUser(res);
         });
       }
     }, [store.user.access_token]);
+
+    function resizeImage(base64Str, maxWidth = 512, maxHeight = 512) {
+      return new Promise((resolve) => {
+        let img = new Image()
+        img.src = base64Str
+        img.onload = () => {
+          let canvas = document.createElement('canvas')
+          canvas.width = maxWidth
+          canvas.height = maxHeight
+          let ctx = canvas.getContext('2d')
+          ctx.drawImage(img, 0, 0, maxWidth, maxHeight)
+          resolve(canvas.toDataURL())
+        }
+      })
+    }
+
+    const getBase64FromUrl = async (url) => {
+      const data = await fetch(url);
+        const blob = await data.blob();
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(blob); 
+          reader.onloadend = () => {
+            const base64data = reader.result;
+            resolve(base64data);
+          }
+        });
+    }
 
     const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
@@ -171,7 +204,7 @@ export default function TokenInfoShare2Earn({
     }
 
     if (joined !='' || isConfirmed) {
-      return <Share2EarnMainScreen tokenData={tokenData}/>;
+      return <Share2EarnMainScreen tokenData={tokenData} user={user}/>;
     }
 
 
