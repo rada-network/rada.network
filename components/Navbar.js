@@ -153,7 +153,7 @@ const NavItem = ({className, href, children,type,page}) => {
       </>
     </a>
   ) : (
-    <Link href={href}>
+    <Link key={type} href={href}>
       <a className={cls.join(' ')} datatype="link">{children}</a>
     </Link>
   )

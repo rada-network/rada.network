@@ -172,7 +172,7 @@ const SubcribeByBUSD = ({project,accountBalance,setIsBusd,fetchAccountBalance}) 
   !numberBusd ||
   new ethers.utils.parseEther(numberBusd).lte(0)
   return (
-    <div className="global-padding">
+    <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "") }>
 
         <div className="mb-4">
           

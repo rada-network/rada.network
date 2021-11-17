@@ -131,7 +131,7 @@ const SubscribeSwapToken = ({project}) => {
       <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
         <div className="card-header items-center">
           <h3>Subscriber ({launchpadInfo?.ordersBuyerCount})</h3>
-          <div className="search-wrapper">
+          {/* <div className="search-wrapper">
             <div className="form-search rounded-full">
               <span className="icon form-search--icon">
                 <i className="fa fa-search"></i>
@@ -143,7 +143,7 @@ const SubscribeSwapToken = ({project}) => {
                 placeholder="Search for winner"
               />
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="card-body no-padding">

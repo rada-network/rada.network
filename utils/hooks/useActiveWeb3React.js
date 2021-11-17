@@ -14,7 +14,6 @@ const useActiveWeb3React = () => {
   const {getRpcUrl} = useChainConfig()
   const simpleRpcProvider = getRpcUrl()
   const [provider, setProvider] = useState(library || simpleRpcProvider)
-  const store = useStore()
   useEffect(() => {
     if (library !== refEth.current) {
       setProvider(library || simpleRpcProvider)
