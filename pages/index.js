@@ -72,10 +72,10 @@ const Layout = observer((props) => {
                   <div className="pane-content--sec--main grid scrollbar">
 
                     <div className="page page-full page-landing--parallel bg-white dark:bg-gray-900 !pt-0">
-                      <div className="w-limiter-lg py-8 lg:py-16 px-4 lg:px-16">
+                      <div className="w-limiter-lg py-8 lg:py-16 px-2 md:px-4 lg:px-8 xl:px-16">
 
                         {/* LOGO */}
-                        <div className="page-title flex items-center">
+                        <div className="">
                           <span className="page-logo"></span>
                           <h1 className="sr-only">
                             <span className="">LaunchVerse</span>
@@ -84,9 +84,9 @@ const Layout = observer((props) => {
                         {/* END: LOGO */}
 
                         {/* HEADER */}
-                        <header className="hero flex flex-col md:flex-row py-8 mt-8">
+                        <header className="hero flex flex-col md:flex-row items-center py-8 mt-8">
                           <div className="">
-                            <h2 className="text-4xl leading-tight text-black dark:text-white font-semibold font-altsans">
+                            <h2 className="text-3xl md:text-3xl lg:text-4xl leading-tight text-black dark:text-white font-semibold font-altsans">
                               Introducing
                               <strong className="block text-yellow-400">RADA Launchverse</strong>
                             </h2>
@@ -96,14 +96,14 @@ const Layout = observer((props) => {
                             </p>
                           </div>
 
-                          <span className="hero-deco md:-mt-24 lg:-mt-24 lg:ml-16"></span>
+                          <span className="hero-deco mt-4 md:-mt-16 lg:-mt-28 xl:-mt-24 xl:ml-16"></span>
                         </header>
                         {/* END: HEADER */}
 
                         {/* SECTION 1 */}
                         <div className="">
                           <div className="">
-                            <h2 className="text-4xl leading-tight text-black dark:text-white font-semibold font-altsans">
+                            <h2 className="text-3xl md:text-3xl lg:text-4xl leading-tight text-black dark:text-white font-semibold font-altsans">
                               <strong className="block text-yellow-400">The first Metaverse Gamefi</strong>
                               is launching on RADA LaunchVerse
                             </h2>
@@ -131,7 +131,7 @@ const Layout = observer((props) => {
                             </div>
 
                             <div className="
-                                flex items-center px-8 py-4
+                                flex flex-col md:flex-row md:items-center px-8 py-8 md:py-4
                                 bg-gradient-to-br from-gray-100 to-gray-100
                                 dark:from-gray-800 dark:to-gray-800
                                 rounded-b-xl
@@ -143,21 +143,23 @@ const Layout = observer((props) => {
                                 rounded-b-xl
                               "
                             > */}
-                              <div className="flex-shrink-0">
+                              <div className="flex-shrink-0 w-24 md:w-auto mb-2 md:mb-0">
                                 <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/theparallel.png"} alt="The Parallel" />
                               </div>
 
-                              <div className="px-8">
-                                <h3>
-                                  <span className="text-3xl leading-tight text-black dark:text-white font-semibold font-altsans">The Parallel</span>
-                                </h3>
-                                <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 max-w-md">
-                                  The Parallel is an Infinite Metaverse where players can limitlessly create everything, enjoy the unexpected experience that only Parallel can make.
-                                </p>
-                              </div>
+                              <div className="flex flex-col lg:flex-row lg:items-center md:pl-8">
+                                <div className="">
+                                  <h3>
+                                    <span className="text-3xl leading-tight text-black dark:text-white font-semibold font-altsans">The Parallel</span>
+                                  </h3>
+                                  <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 max-w-md">
+                                    The Parallel is an Infinite Metaverse where players can limitlessly create everything, enjoy the unexpected experience that only Parallel can make.
+                                  </p>
+                                </div>
 
-                              <div className="flex-shrink-0">
-                                <a href="/projects/parallel" className="btn btn-secondary btn-lg btn-rounded">Discover Now</a>
+                                <div className="flex-shrink-0 mt-4 lg:mt-0 lg:ml-8">
+                                  <a href="/projects/parallel" className="btn btn-secondary btn-lg btn-rounded">Discover Now</a>
+                                </div>
                               </div>
                             </div>
 
@@ -169,7 +171,7 @@ const Layout = observer((props) => {
                         <div className="mt-8">
 
                           <div className="
-                              flex items-center justify-between p-8
+                              flex flex-col md:flex-row items-center justify-between p-8
                               border border-gray-200 dark:border-gray-700
                               rounded-xl
                             "
@@ -198,7 +200,7 @@ const Layout = observer((props) => {
                             {/* <div className="flex-shrink-0 ml-16 mr-16">
                               <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/launchverse-s2e-dark.png"} alt="The Parallel" />
                             </div> */}
-                            <span className="s2e-deco flex-shrink-0 ml-16 mr-16"></span>
+                            <span className="s2e-deco flex-shrink-0 mx-auto md:ml-16 md:mr-16"></span>
                           </div>
 
                         </div>
@@ -208,12 +210,12 @@ const Layout = observer((props) => {
                         <div className="mt-16">
 
                           <div className="">
-                            <h2 className="text-4xl leading-tight text-black dark:text-white font-semibold font-altsans">
-                              The Launchverse <strong className="text-yellow-400">for Everyone</strong>
+                            <h2 className="text-3xl md:text-3xl lg:text-4xl leading-tight text-black dark:text-white font-semibold font-altsans">
+                              The Launchverse <strong className="block md:inline text-yellow-400">for Everyone</strong>
                             </h2>
                           </div>
 
-                          <div className="grid grid-cols-3 gap-8 mt-8">
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-8">
                             <div className="
                                 flex flex-col items-stretch justify-start p-8
                                 border border-gray-200 dark:border-gray-700
@@ -302,15 +304,16 @@ const Layout = observer((props) => {
                         </div>
                         {/* END: SECTION 3 */}
 
-                        <div className="footer mt-24 flex justify-between items-center">
-                          <small className="text-sm leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 max-w-md">
-                            &copy; Copyright Rada Network 2021. All rights reserved.
-                          </small>
+                        <div className="footer mt-16 md:mt-24 pb-32 md:pb-24">
 
-                          <div>
+                          <div className="flex flex-col justify-between items-center">
+                            <small className="text-sm leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 max-w-md">
+                              &copy; Copyright Rada Network 2021. All rights reserved.
+                            </small>
+
                             <a href="#" target="_blank"
                               className="
-                               text-sm leading-relaxed max-w-md py-2 px-4 rounded-lg
+                               text-sm leading-relaxed max-w-md py-2 px-4 mt-4 md:mt-0 rounded-lg
                                bg-gray-100 dark:bg-gray-800 hover:bg-primary-500 dark:hover:bg-primary-900
                                font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70
                                hover:text-opacity-100 hover:text-white dark:hover:text-opacity-100
