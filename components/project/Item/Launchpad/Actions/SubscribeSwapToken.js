@@ -33,7 +33,7 @@ const SubscribeSwapToken = ({project}) => {
   let orderUsd = launchpadInfo?.currentOrder?.amountBUSD ? launchpadInfo?.currentOrder?.amountBUSD : 0
   return (
     <>
-    {orderUsd === 0 ?
+    {orderUsd == 0 ?
       <div className="card-default project-main-actions no-padding overflow-hidden">
       <div className="card-header text-center sr-only">
         <h3>Public Sale</h3>
