@@ -84,17 +84,19 @@ const Layout = observer((props) => {
                         {/* END: LOGO */}
 
                         {/* HEADER */}
-                        <header className="hero flex py-8 mt-8">
+                        <header className="hero flex flex-col md:flex-row py-8 mt-8">
                           <div className="">
                             <h2 className="text-4xl leading-tight text-black dark:text-white font-semibold font-altsans">
                               Introducing
                               <strong className="block text-yellow-400">RADA Launchverse</strong>
                             </h2>
+
                             <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 max-w-md">
                               LaunchVerse is a product of RADA - The DAO-based AngelList for Blockchain. As a leading decentralized community-driven LaunchPad, we fund and launch the most promising Gamefi and Blockchain projects.
                             </p>
                           </div>
-                          <span className="hero-deco -mt-24 ml-16"></span>
+
+                          <span className="hero-deco md:-mt-24 lg:-mt-24 lg:ml-16"></span>
                         </header>
                         {/* END: HEADER */}
 
