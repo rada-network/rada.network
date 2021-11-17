@@ -306,7 +306,7 @@ const Layout = observer((props) => {
 
                         <div className="footer mt-16 md:mt-24 pb-32 md:pb-24">
 
-                          <div className="flex flex-col justify-between items-center">
+                          <div className="flex flex-col md:flex-row justify-between items-center">
                             <small className="text-sm leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 max-w-md">
                               &copy; Copyright Rada Network 2021. All rights reserved.
                             </small>
