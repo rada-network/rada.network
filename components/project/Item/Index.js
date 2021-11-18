@@ -17,6 +17,7 @@ export default function ProjectItem({ project, page, slug }) {
                         <div className="w-limiter-lg">
                             {page == 'index' && <ProjectLaunchpad project={project} />}
                             {page == 'research' && <ProjectDetails project={project} />}
+                            {page == 'share2earn' && "share to earn"}
                         </div>
                     </div>
 

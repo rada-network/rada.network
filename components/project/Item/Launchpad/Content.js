@@ -30,7 +30,7 @@ export default function LaunchpadContent({ project }) {
             console.log("error to fetch launchpad info",error)
         }
         }
-        if (!!account && !!library && !!lauchpadContact && account !== ""){
+        if (!!library && !!lauchpadContact && account !== ""){
             fetchLaunchpadInfo()
         }
     }, [account,lauchpadContact,library])

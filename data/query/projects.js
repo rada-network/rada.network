@@ -39,6 +39,14 @@ const projectBySlugGql = gql`
             title
             description
         }
+        share_campaign{
+            id
+            lang
+            facebook_banner
+            linkedin_banner
+            avatar_frame
+            
+          }
         }
     }
     `

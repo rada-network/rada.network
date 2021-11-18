@@ -43,12 +43,11 @@ export default function ProjectNavbar({ symbol, project, slug }) {
                             </span>
                             <span className="tab-item--text !block">{t("Research",{name : project?.token?.symbol})}</span>
                         </NavItem>
-                        {/* <NavItem uri={`${symbol}/team`}>
+                        <NavItem uri={`${symbol}/share2earn`}>
                             <a  className="tab-item ">
-                            <span className="icon"><i className="fa-duotone fa-users"></i></span>
-                            <span className="tab-item--text">{t("Team")}</span>
+                            <span className="tab-item--text">{t("Share2Earn")}</span>
                             </a>
-                        </NavItem> */}
+                        </NavItem>
                     </div>
                 </div>
                 <WalletProfile type={`simple`} />
