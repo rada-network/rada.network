@@ -16,7 +16,7 @@ export const ProjectsList = ({title, extraClass}) => {
         <div className="">
           <div className="projects--wrapper single">
             {/* add class "single" if there's only 1 live project*/}
-{/* 
+
             <CardProject
               title="Parallel" 
               img="/placeholders/parallel-thumb.jpg"
@@ -33,7 +33,7 @@ export const ProjectsList = ({title, extraClass}) => {
               link="project"
               tokenPrice="0.036 USDT"
               desc="You can build your unique character (Paragon) and have its copyright, then trade your Paragon for tokens or join the battle for amazing rewards."
-            />    */}
+            />   
 
              <CardProject
               title="Widiland" 
@@ -157,7 +157,6 @@ export const ProjectsList = ({title, extraClass}) => {
             />
           </div>
         </div>
-
       </div>
     </div>
   )

@@ -13,7 +13,7 @@ export const Layout =  ({children,meta}) => {
 
   const ref = useRef()
   useEffect(() => {
-    ref.current.setAttribute("style",`background-image: url("https://source.unsplash.com/user/nnth/likes/1600x900")`)
+    //ref.current.setAttribute("style",`background-image: url("https://source.unsplash.com/user/nnth/likes/1600x900")`)
   },[])
 
   const handleChangeBg = (e) => {

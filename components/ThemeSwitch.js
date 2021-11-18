@@ -11,7 +11,7 @@ const ThemeSwitch = () => {
   }, [resolvedTheme])
 
   // not render on SSR
-  if (!theme) return null
+  //if (!theme) return null
 
   return theme == "light" ?
   (

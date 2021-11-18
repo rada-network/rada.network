@@ -168,7 +168,7 @@ Empty State - About Page
 
 
 /* 
-Sections
+Page Sections
 --------------------------------------------- */
 /* 
 Media 
@@ -319,8 +319,107 @@ Content
 .post-content {
 }
 
-
 /* Post Actions */
 .post-actions {
   @apply mt-8;
+}
+
+
+/* 
+Landing - The Parallel
+--------------------------------------------- */
+.page-landing--parallel {
+
+}
+
+/* 
+Logo
+*/
+.page-landing--parallel .page-logo {
+  @apply block relative bg-no-repeat;
+  background-image: url("/images/logos/launchverse-theparallel.svg");
+  background-size: 100% 54px;
+  width: 308px;
+  height: 54px;
+}
+
+.dark .page-landing--parallel .page-logo {
+  background-image: url("/images/logos/launchverse-theparallel-dark.svg");
+}
+
+/* Smaller the logo for small screen */
+@media only screen and (max-width: 767px) {
+  .page-landing--parallel .page-logo {
+    background-size: 100% 48px;
+    width: 272px;
+    height: 48px;
+  }
+}
+
+
+/* 
+Hero
+*/
+.page-landing--parallel .hero-deco {
+  background-image: url("/images/launchverse-hero.svg");
+  @apply flex-shrink-0 relative bg-no-repeat;
+  background-size: cover;
+  width: 400px;
+  height: 400px;
+}
+
+.dark .page-landing--parallel .hero-deco {
+  background-image: url("/images/launchverse-hero-dark.svg");
+}
+
+/* Smaller the logo for small screen */
+@media only screen and (max-width: 768px) {
+  .page-landing--parallel .hero-deco {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+
+/* 
+S2E
+*/
+.page-landing--parallel .s2e-deco {
+  background-image: url("/images/launchverse-s2e.png");
+  @apply flex-shrink-0 relative;
+  background-size: 193px 256px;
+  width: 193px;
+  height: 256px;
+}
+
+.dark .page-landing--parallel .s2e-deco {
+  background-image: url("/images/launchverse-s2e-dark.png");
+}
+
+
+
+/* 
+Footer
+*/
+.page-landing--parallel .footer {
+
+}
+
+.page-landing--parallel .footer-deco {
+  background-image: url("/images/launchverse-footer.png");
+  @apply absolute bottom-10 md:bottom-0 left-0 right-0 bg-no-repeat;
+  background-size: 100% 183px;
+  height: 183px;
+}
+
+/* Smaller the logo for small screen */
+@media only screen and (max-width: 768px) {
+  .page-landing--parallel .footer-deco {
+    background-size: 100% 100px;
+    height: 100px;
+  }
+}
+
+.dark .page-landing--parallel .footer-deco {
+  background-image: url("/images/launchverse-footer-dark.png");
 }

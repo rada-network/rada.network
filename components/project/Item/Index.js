@@ -7,7 +7,7 @@ export default function ProjectItem({ project, page, slug }) {
     const symbol = project.slug
     return (
         <>
-            <div className="pane-content--sec pane-content-active !w-full">
+            <div className="pane-content--sec pane-content-active !w-full" itemScope itemType="https://schema.org/Project">
                 <div className="pane-content--sec--top !block">
                     <ProjectNavbar symbol={symbol} page={page} project={project} slug={slug.join('/')} />
                 </div>
@@ -17,6 +17,7 @@ export default function ProjectItem({ project, page, slug }) {
                         <div className="w-limiter-lg">
                             {page == 'index' && <ProjectLaunchpad project={project} />}
                             {page == 'research' && <ProjectDetails project={project} />}
+                            {page == 'share2earn' && "share to earn"}
                         </div>
                     </div>
 

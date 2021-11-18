@@ -13,7 +13,7 @@ const TokenContent = function({tokenData,token}){
                 Raise
               </span>
               <span className="ml-auto list-value font-semibold">
-                360,000 USDT
+                360,000 BUSD
               </span>
             </li>
             <li className="list-pair mb-2">
@@ -28,7 +28,7 @@ const TokenContent = function({tokenData,token}){
               <span className="list-key">
                 Token Price
               </span>
-              <span className="ml-auto font-semibold">0.036 USDT </span>
+              <span className="ml-auto font-semibold">0.036 BUSD </span>
             </li>
             <li className="list-pair mb-2">
               <span className="list-key">

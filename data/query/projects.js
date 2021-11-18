@@ -17,6 +17,9 @@ const projectBySlugGql = gql`
         type
         status
         swap_contract
+        raise
+        price
+        is_kyc
         token{
             name
             logo
@@ -36,6 +39,14 @@ const projectBySlugGql = gql`
             title
             description
         }
+        share_campaign{
+            id
+            lang
+            facebook_banner
+            linkedin_banner
+            avatar_frame
+            
+          }
         }
     }
     `
@@ -53,6 +64,9 @@ const projectFeedGql = gql`
         thumbnail_embed
         type
         status
+        raise
+        price
+        is_kyc
         token{
             name
             logo

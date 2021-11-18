@@ -196,7 +196,8 @@ const ConnectWalletModal = observer(({}) => {
   </>
 )})
 
-export const WalletProfile = ({}) => {
+export const WalletProfile = ({type}) => {
+  type = type || "full"
   const { account, library,chainId, deactivate,error} = useActiveWeb3React()
   const { t } = useTranslation("invest");
   const store = useStore()
@@ -214,8 +215,10 @@ export const WalletProfile = ({}) => {
   };
 
   return (
+    <>
+    <ConnectWalletModal />
+    {type == "full" ?
     <div className="list-group--item md:!pb-4">
-      <ConnectWalletModal />
       <div className="list-group--item--title w-full md:w-1/4">
         <div className="list-group--item--media">
           <span className="icon">
@@ -284,5 +287,116 @@ export const WalletProfile = ({}) => {
         )}
       </div>
     </div>
+    :
+    <>
+    {_.isEmpty(account) ? (
+      <>
+        <button onClick={handleConnectWallet} className="btn btn-primary my-2 px-2 ml-auto lg:mr-12 text-sm flex">
+        <span class="icon mr-2 opacity-60">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Wallet</title><path fill="currentColor" d="M18.874,18a3.757,3.757,0,0,1-3.669-4.538A3.819,3.819,0,0,1,18.982,10.5h2.393a.5.5,0,0,0,.5-.5c0-.793,0-2.254,0-2.254a2.5,2.5,0,0,0-2.5-2.5c-4.476,0,8.862-.01-14-.01a.75.75,0,0,1,0-1.5h13.25a.25.25,0,0,0,.25-.249V3.25c0-1.379-1.57-2.5-3.5-2.5h-11a3.5,3.5,0,0,0-3.5,3.5v15.5a3.5,3.5,0,0,0,3.5,3.5h15a2.5,2.5,0,0,0,2.5-2.5v-2.5a.25.25,0,0,0-.25-.25Z"/><path fill="currentColor"  d="M21.874,12h-3a2.25,2.25,0,1,0,0,4.5h3a1.506,1.506,0,0,0,1.25-1.5V13.5A1.506,1.506,0,0,0,21.874,12Z"/></svg>
+        </span>
+        {t("connect")}</button>
+      </>
+    ) : (
+      <button
+        className="btn btn-primary my-2 px-2 ml-auto lg:mr-12 text-sm flex"
+        onClick={() => handleDisconnectWallet()}
+      >
+        <span class="icon mr-2 opacity-60">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Wallet</title><path fill="currentColor" d="M18.874,18a3.757,3.757,0,0,1-3.669-4.538A3.819,3.819,0,0,1,18.982,10.5h2.393a.5.5,0,0,0,.5-.5c0-.793,0-2.254,0-2.254a2.5,2.5,0,0,0-2.5-2.5c-4.476,0,8.862-.01-14-.01a.75.75,0,0,1,0-1.5h13.25a.25.25,0,0,0,.25-.249V3.25c0-1.379-1.57-2.5-3.5-2.5h-11a3.5,3.5,0,0,0-3.5,3.5v15.5a3.5,3.5,0,0,0,3.5,3.5h15a2.5,2.5,0,0,0,2.5-2.5v-2.5a.25.25,0,0,0-.25-.25Z"/><path fill="currentColor"  d="M21.874,12h-3a2.25,2.25,0,1,0,0,4.5h3a1.506,1.506,0,0,0,1.25-1.5V13.5A1.506,1.506,0,0,0,21.874,12Z"/></svg>
+        </span>
+        {t("disconnect")}
+      </button>
+    )}
+    </>
+    }
+    </>
   )
+}
+
+export const WalletRequire = ({type}) => {
+  type = type || "full"
+  const { account, library,chainId, deactivate,error} = useActiveWeb3React()
+  const { t } = useTranslation("invest");
+  const store = useStore()
+  const handleConnectWallet = () => {
+    store.wallet.showConnect(true);
+  };
+  const handleDisconnectWallet = async () => {
+    deactivate()
+  };
+
+  const handleConnectSuccess = () => {
+    getCurrentUser().then((res) => {
+      setUser(res);
+    });
+  };
+
+  return (
+    <>
+    <div className="list-group--item md:!pb-4">
+      <div className="list-group--item--title w-full md:w-1/4">
+        <div className="list-group--item--media">
+          <span className="icon">
+            <i className="fa-solid fa-wallet"></i>
+          </span>
+        </div>
+        <label
+          htmlFor="blockchain-wallet"
+          className="text-color-desc"
+        >
+          Wallet
+        </label>
+      </div>
+      <div className="flex-1 md:mt-0">
+        <div className="relative pl-8 md:pl-0 w-full flex items-center">
+          {_.isEmpty(account) ? (
+            ""
+          ) : (
+            <>
+              <div>
+                <strong>{`${account.substr(
+                  0,
+                  6
+                )}...${account.substr(
+                  -4
+                )} `}</strong>
+              </div>
+              <strong></strong>
+              {store.network == "bsc" ?
+              <span className="badge badge-coin relative ml-2">
+                BSC
+              </span>
+              :
+              <span className="badge badge-coin relative ml-2">
+                ETHEREUM
+              </span>
+              }
+            </>
+          )}
+          
+        </div>
+        {/* {!!error && <div className="relative pl-8 md:pl-0 w-full flex items-center">
+          <h4 className="error">{getErrorMessage(error,store.network)}</h4>
+        </div>} */}
+      </div>
+      <div className="text-right -mt-2 md:mt-0">
+        {_.isEmpty(account) ? (
+          <>
+            {/* <NetworkSwitch /> */}
+            <button
+              className="btn btn-default"
+              onClick={handleConnectWallet}
+            >
+              {t("connect")}
+            </button>
+          </>
+        ) : (
+          <span className="flex label label--success w-full">Done</span>
+        )}
+      </div>
+    </div>
+    </>
+  )
+  
 }

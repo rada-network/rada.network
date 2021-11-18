@@ -136,3 +136,38 @@
 .is-open .btn-primary {
   @apply md:w-1/2;
 }
+
+.s2e-illustration {
+  width:200px;
+  height:248px;
+  background-size:150px 248px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-image:url('/icons/s2e-light.svg');
+  @apply mx-auto;
+}
+.dark .s2e-illustration{
+  background-image:url('/icons/s2e-dark.svg');
+}
+
+.whitelist-nav {
+  @apply flex;
+}
+.whitelist-nav > li {
+  @apply mr-2 flex items-center py-2 rounded-full;
+}
+.whitelist-nav a {
+  @apply rounded-full text-gray-500 uppercase text-xs tracking-wide px-4;
+}
+.whitelist-nav .is-active {
+  @apply bg-gray-100 dark:bg-gray-900;
+}
+.whitelist-nav .is-active a {
+  @apply text-gray-700 dark:text-gray-300 
+}
+.whitelist-nav span {
+  @apply bg-green-700 text-green-100 px-2 py-0.5 rounded-full text-xs mr-3 -ml-2;
+}
+.project-card--container{
+  @apply min-h-full w-full mx-auto p-4 md:p-6 ;
+}

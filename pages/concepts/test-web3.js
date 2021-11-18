@@ -15,7 +15,7 @@ import useChainConfig from '../../utils/web3/useChainConfig'
 import useStore from '../../lib/useStore'
 import {useRouter} from 'next/router'
 import { NetworkLocalStorageKey } from '../../utils/config'
-import { useLotteryContract } from '../../utils/hooks/useContracts'
+import { useLaunchpadContract, useLotteryContract } from '../../utils/hooks/useContracts'
 
 function getErrorMessage(error) {
   if (error instanceof NoEthereumProviderError) {
@@ -242,7 +242,12 @@ const App = function() {
   // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
   useInactiveListener(!triedEager || !!activatingConnector)
   
-  const lotteryContract = useLotteryContract("0x997B0F0Eb59e664964550BA7850C5fE62B77E315")
+  const lauchpadContact = useLaunchpadContract("0x9DB74104FA42AbF00748e56ade256057c46b3a8c")
+  React.useEffect(() => {
+    lauchpadContact.rirAddress().then((address) => {
+      console.log(address)
+    })
+  })
   return (
     <>
       <Header />

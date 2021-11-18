@@ -11,7 +11,7 @@ export default function LaunchpadOverview({ project }) {
                             <img src={token.logo} className="h-px-32 w-px-32" alt={token.name} />
                         </span>
                         <h1 className="flex items-center">
-                            <strong className="text-color-title text-xl lg:text-2xl font-semibold">{token.name}</strong>
+                            <strong className="text-color-title text-xl lg:text-2xl font-semibold" itemProp="name">{token.name}</strong>
                             <span className="badge badge-coin badge-coin-lg ml-2 -mb-1">{token.symbol}</span>
                         </h1>
                     </div>
@@ -29,7 +29,7 @@ export default function LaunchpadOverview({ project }) {
                             <span className="w-4 h-4">
                                 <BscSvg />
                             </span>
-                            <span className="ml-1">{project.platform.name}</span>
+                            <span className="ml-1">{project?.platform?.name}</span>
                         </div>
 
                         <div className={`label ${project.type}`}>{project.type}</div>
@@ -44,7 +44,7 @@ export default function LaunchpadOverview({ project }) {
                 <div className="media-player">
                     <div className="w-full h-full">
                         <div className={`aspect-w-16 aspect-h-9`}>
-                            <img className="rounded-lg" src={project.cover_uri} />
+                            <img className="rounded-lg" src={project.cover_uri} itemProp="image" />
                         </div>
                     </div>
                 </div>

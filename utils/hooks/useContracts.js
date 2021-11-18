@@ -14,8 +14,8 @@ export const useLotteryContract = (address) => {
 }
 
 export const useLaunchpadContract = (address) => {
-  const { library } = useActiveWeb3React()
-  return useMemo(() => getLaunchpadContract(address, library.getSigner()), [address, library])
+  const { account, library } = useActiveWeb3React()
+  return useMemo(() => getLaunchpadContract(address,account ? library.getSigner() : library), [address, library])
 }
 export const useShare2EarnContract = (address) => {
   const { library } = useActiveWeb3React()

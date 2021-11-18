@@ -1,155 +1,210 @@
 import { useState } from "react"
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React"
 import { useERC20,useLaunchpadContract } from "@utils/hooks/useContracts"
-import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransaction"
+import useMultiApproveConfirmTransaction from "@utils/hooks/useMultiApproveConfirmTransaction"
 import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
 import { ethers } from 'ethers'
 import {toast} from "react-toastify"
-const SwapTokens = ({project,accountBalance}) => {
-  const [isBusd, setIsBusd] = useState(false)
+import {useLaunchpadInfo} from "@utils/hooks/index"
+import { useTranslation } from "next-i18next"
+import SelectTokenType from "./SelectToken"
+
+const SwapTokens = ({project,accountBalance,fetchAccountBalance}) => {
+
+  const [isBusd, setIsBusd] = useState(accountBalance.rirBalance > 0 ? false : true)
   return (
     <>
       {accountBalance?.rirBalance > 0 && !isBusd   ? 
-      <SubcribeByRIR project={project} setIsBusd={setIsBusd} accountBalance={accountBalance} />
+      <SubcribeByRIR project={project} setIsBusd={setIsBusd} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} />
       :
-      <SubcribeByBUSD project={project} accountBalance={accountBalance} setIsBusd={setIsBusd} />
+      <SubcribeByBUSD project={project} accountBalance={accountBalance} setIsBusd={setIsBusd} fetchAccountBalance={fetchAccountBalance}/>
       }
     </>
   )
 }
 
-const SubcribeByRIR = ({project,accountBalance,setIsBusd}) => {
+const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance}) => {
+  const {t} = useTranslation("launchpad")
   const {account} = useActiveWeb3React()
-  const rirContract = useERC20(project.launchpadInfo.rirAddress)
+
+  const {launchpadInfo} = useLaunchpadInfo({project})
+
+  const rirContract = useERC20(launchpadInfo.rirAddress)
+  const bUSDContract = useERC20(launchpadInfo.bUSDAddress)
   const launchpadContract = useLaunchpadContract(project.swap_contract)
   const {callWithGasPrice} = useCallWithGasPrice()
-  const [numberRIR,setNumberRIR] = useState("")
-  const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
-    useApproveConfirmTransaction({
+  const [numberRIR,setNumberRIR] = useState(1)
+
+  const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm,handleReload } =
+  useMultiApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
-          const response = await rirContract.allowance(account, launchpadContract.address)
-          return response.gt(0)
+          const response1 = await rirContract.allowance(account, launchpadContract.address)
+          const response2 = await bUSDContract.allowance(account, launchpadContract.address)
+          return response1.gt(0) && response2.gt(0)
         } catch (error) {
           return false
         }
       },
-      onApprove: () => {
-        return callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+      onApprove: async () => {
+        const receipt_rir = await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberRIR.toString())])
+        const numberBusd = (parseFloat(numberRIR) * 100).toString()
+        const receipt_busd =  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberBusd)])
+        return [receipt_rir,receipt_busd]
       },
-      onApproveSuccess: async ({ receipt }) => {
-        console.log(receipt)
-        toast.success(`Contract enabled - you can now subcribe invest ${receipt.transactionHash}`)
+      onApproveSuccess: async ({ receipts }) => {
+        let txs = []
+        for (const receipt of receipts) {
+          txs.push(receipt.transactionHash)
+        }
+        toast.success(`Contract enabled - you can now subcribe invest`)
       },
       onConfirm: () => {
-        console.log(ethers.utils.parseEther(numberRIR).toString())
-        console.log(ethers.utils.parseEther(numberRIR).mul(100).toString())
-        return callWithGasPrice(launchpadContract, 'createOrder', [ethers.utils.parseEther(numberRIR),ethers.utils.parseEther(numberRIR).mul(100)])
+        //console.log(ethers.utils.parseEther(numberRIR).toString())
+        const numberBusd = (parseFloat(numberRIR) * 100).toString()
+        return callWithGasPrice(launchpadContract, 'createOrder', [ethers.utils.parseEther(numberBusd),true])
       },
       onSuccess: async ({ receipt }) => {
+        await fetchAccountBalance()
         toast.success(`Subscribed successfully ${receipt.transactionHash}`)
+        handleReload()
+        setNumberRIR(0)
       },
     })
-    console.log(isApproving, isApproved, isConfirmed, isConfirming)
+    const resetApproved = async () => {
+      await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, 0])
+      await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, 0])
+    }
   const disableBuying =
   !isApproved ||
   isConfirmed ||
   !numberRIR ||
-  new ethers.utils.parseEther(numberRIR).lte(0)  
+  new ethers.utils.parseEther(numberRIR.toString()).lte(0)  
   return (
-    <div className="global-padding">
-      <div className="mb-4">
-        <label for="price" className="block text-xs font-medium uppercase mb-2">You pay</label>
-        <div className="mt-1 relative rounded-md shadow-sm">
-          <input type="text" name="numberRIR" id="numberRIR" className="inputbox inputbox-lg inputbox-numbers !pr-20" placeholder="Number RIR" value={numberRIR}
-          onChange={(e) => {setNumberRIR(e.target.value)}}
-          />
-          <div className="absolute inset-y-0 right-0 flex items-center">
-            <label for="currency" className="sr-only">Currency</label>
-            <select id="currency" name="currency" className="focus:ring-primary-500 focus:border-primary-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent rounded-md text-sm">
-              <option>RIR</option>
-            </select>
-          </div>
-        </div>
-      </div>
+    <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "") }>
 
-      {/* <div className="mb-4">
-        <label for="price" className="block text-xs font-medium uppercase mb-2">for</label>
-        <div className="mt-1 relative rounded-md shadow-sm">
-          <input type="text" name="price" id="price" className="inputbox inputbox-lg inputbox-numbers !pr-20" placeholder="0.00" />
-          <div className="absolute inset-y-0 right-0 flex items-center px-4">
-            <label for="currency" className="sr-only">Currency</label>
-            <span id="currency" name="currency" className="pr-4">
-              PRL
-            </span>
+        <div className="mb-4">
+          
+          <div className="mt-1 relative flex">
+            <div className="flex-1">
+              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Currency")}</label>
+              <SelectTokenType setIsBusd={setIsBusd} init={0} accountBalance={accountBalance}/>
+            </div>
+            {/* remove the above block if user doesn't have RIR */}
+            <div className="flex-1">
+              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Amount")}</label>
+              <select id="amount" onChange={e => {setNumberRIR(e.currentTarget.value)}} name="amount" className="select-custom !rounded-l-none">
+                {/* remove '!rounded-l-none' if user doesn't have RIR */}
+                <option className="text-gray-300" selected value={1}>1 RIR</option>
+                <option className="text-gray-300" value={2}>2 RIR</option>
+                <option className="text-gray-300" value={3}>3 RIR</option>
+                <option className="text-gray-300" value={4}>4 RIR</option>
+                <option className="text-gray-300" value={5}>5 RIR</option>
+              </select>
+            </div>
           </div>
+          <div className="dark:text-gray-400 mt-2 text-gray-500 text-right">{t("You have to pay")} <strong>{numberRIR * 100} BUSD</strong></div>
         </div>
-      </div> */}
+        <div className="mt-4">
+          {!isApproved && 
+          <button class="btn btn-default btn-default-lg w-full btn-purple" disabled="" id="swap-button" onClick={handleApprove} width="100%" scale="md">
+          {t("Approve Contract")}
+          </button>
+          }
+          {isApproved && 
+          <button class="btn btn-default btn-default-lg w-full btn-purple" onClick={handleConfirm} disabled="" id="swap-button" width="100%" scale="md">
+          {t("Prefund")}
+          </button>
+          }
+        </div>
 
-      <div className="mt-8">
-        <button className={"btn btn-default btn-default-lg btn-purple mr-2" + (isApproved || isApproving ? " disabled" : "")} disabled="" onClick={e => {handleApprove()}} id="swap-button" width="100%" scale="md">
-          Approve RIR
-        </button>
-        <button className={"btn btn-default btn-default-lg btn-purple" + (disableBuying ? " disabled" : "")} id="swap-button" width="100%" scale="md" onClick={e => {handleConfirm(),setNumberRIR(0)}}>
-          Confirm
-        </button>
       </div>
-      {accountBalance?.busdBalance > 0 && 
-      <div className="mt-2">
-        <button onClick={(e) => {setIsBusd(true)}} class="btn btn-default btn-default-lg w-full" disabled="" id="swap-button" width="100%" scale="md">
-          Switch to BUSD
-        </button>
-      </div>
-      }
-    </div>
   )
 }
 
-const SubcribeByBUSD = ({project,accountBalance,setIsBusd}) => {
+const SubcribeByBUSD = ({project,accountBalance,setIsBusd,fetchAccountBalance}) => {
+  const {t} = useTranslation("launchpad")
   const {account} = useActiveWeb3React()
-  const bUSDContract = useERC20(project.launchpadInfo.bUSDAddress)
+
+  const {launchpadInfo} = useLaunchpadInfo({project})
+
+  const bUSDContract = useERC20(launchpadInfo.bUSDAddress)
   const launchpadContract = useLaunchpadContract(project.swap_contract)
+  const {callWithGasPrice} = useCallWithGasPrice()
+  const [numberBusd,setNumberBusd] = useState(100)
+  const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm,handleReload } =
+  useMultiApproveConfirmTransaction({
+      onRequiresApproval: async () => {
+        try {
+          const response2 = await bUSDContract.allowance(account, launchpadContract.address)
+          return response2.gt(0) 
+        } catch (error) {
+          console.log(error)
+          return false
+        }
+      },
+      onApprove: async () => {
+        const receipt_busd =  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberBusd.toString())])
+        return [receipt_busd]
+      },
+      onApproveSuccess: async ({ receipts }) => {
+        let txs = []
+        for (const receipt of receipts) {
+          txs.push(receipt.transactionHash)
+        }
+        toast.success(`Contract enabled - you can now subcribe invest`)
+      },
+      onConfirm: () => {
+        //console.log(ethers.utils.parseEther(numberRIR).toString())
+        return callWithGasPrice(launchpadContract, 'createOrder', [ethers.utils.parseEther(numberBusd.toString()),false])
+      },
+      onSuccess: async ({ receipt }) => {
+        await fetchAccountBalance()
+        toast.success(`Subscribed successfully`)
+        handleReload()
+        setNumberBusd(0)
+      },
+    })
+  console.log(isApproving, isApproved, isConfirmed, isConfirming)
   return (
-    <div className="global-padding">
-      <div className="mb-4">
-        <label for="price" className="block text-xs font-medium uppercase mb-2">You pay</label>
-        <div className="mt-1 relative rounded-md shadow-sm">
-          <input type="text" inputmode="decimal" pattern="^[0-9]*[.,]?[0-9]*$" name="price" id="price" className="inputbox inputbox-lg inputbox-numbers !pr-20" placeholder="Number BUSD" />
-          <div className="absolute inset-y-0 right-0 flex items-center">
-            <label for="currency" className="sr-only">Currency</label>
-            <select id="currency" name="currency" className="focus:ring-primary-500 focus:border-primary-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent rounded-md text-sm">
-              <option>BUSD</option>
-            </select>
-          </div>
-        </div>
-      </div>
+    <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "") }>
 
-      {/* <div className="mb-4">
-        <label for="price" className="block text-xs font-medium uppercase mb-2">for</label>
-        <div className="mt-1 relative rounded-md shadow-sm">
-          <input type="text" name="price" id="price" className="inputbox inputbox-lg inputbox-numbers !pr-20" placeholder="0.00" />
-          <div className="absolute inset-y-0 right-0 flex items-center px-4">
-            <label for="currency" className="sr-only">Currency</label>
-            <span id="currency" name="currency" className="pr-4">
-              PRL
-            </span>
+        <div className="mb-4">
+          
+          <div className="mt-1 relative flex">
+            <div className="flex-1">
+              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Currency")}</label>
+              <SelectTokenType setIsBusd={setIsBusd} init={1} accountBalance={accountBalance}/>
+            </div>
+            {/* remove the above block if user doesn't have RIR */}
+            <div className="flex-1">
+              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Amount")}</label>
+              <select id="amount" name="amount" onChange={e => {setNumberBusd(e.currentTarget.value)}} className="select-custom !rounded-l-none">
+                {/* remove '!rounded-l-none' if user doesn't have RIR */}
+                <option className="text-gray-300" selected value={100}>100 BUSD</option>
+                <option className="text-gray-300" value={200}>200 BUSD</option>
+                <option className="text-gray-300" value={300}>300 BUSD</option>
+                <option className="text-gray-300" value={400}>400 BUSD</option>
+                <option className="text-gray-300" value={500}>500 BUSD</option>
+              </select>
+            </div>
           </div>
+          <div className="dark:text-gray-400 mt-2 text-gray-500 text-right">{t("You have to pay")} <strong>{numberBusd} BUSD</strong></div>
         </div>
-      </div> */}
+        <div className="mt-4">
+          {!isApproved && 
+          <button class="btn btn-default btn-default-lg w-full btn-purple" disabled="" id="swap-button" onClick={handleApprove} width="100%" scale="md">
+          {t("Approve Contract")}
+          </button>
+          }
+          {isApproved && 
+          <button class="btn btn-default btn-default-lg w-full btn-purple" onClick={handleConfirm} disabled="" id="swap-button" width="100%" scale="md">
+          {t("Prefund")}
+          </button>
+          }
+        </div>
 
-      <div className="mt-8">
-        <button class="btn btn-default btn-default-lg w-full btn-purple" disabled="" id="swap-button" width="100%" scale="md">
-          Approve BUSD
-        </button>
       </div>
-      {accountBalance?.rirBalance > 0 && 
-      <div className="mt-2">
-        <button onClick={(e) => {setIsBusd(false)}} class="btn btn-default btn-default-lg w-full" disabled="" id="swap-button" width="100%" scale="md">
-          Switch to RIR
-        </button>
-      </div>
-      }
-    </div>
   )
 }
 

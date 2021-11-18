@@ -116,3 +116,15 @@ Comment Form
 .inline--field.border-l-none{
   @apply rounded-l-none border-l-0;
 }
+
+.select-custom {
+  @apply dark:text-gray-300 text-gray-800 w-full border border-gray-200 dark:border-gray-700 
+  focus:ring-primary-500 focus:border-primary-500 px-4 py-3 pr-7 
+  bg-white dark:bg-transparent rounded-md text-sm;
+}
+.select-custom option {
+  @apply dark:bg-gray-900 bg-white text-gray-800 dark:text-gray-200 ;
+}
+.select-custom option:focus,.select-custom option:active {
+  @apply:
+}
