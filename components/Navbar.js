@@ -70,10 +70,10 @@ export const Navbar = observer(({}) => {
             <span className="nav-item--text">{t("Video")}</span>
           </NavItem>
 
-          <NavItem href={"/" + dataStore.lang + "/explore/all"} page={`item`} type={"all"}>
+          {/* <NavItem href={"/" + dataStore.lang + "/explore/all"} page={`item`} type={"all"}>
             <span className="icon"><i className="fad fa-rss" /></span>
             <span className="nav-item--text">{t("Explore")}</span>
-          </NavItem>
+          </NavItem> */}
           
           {/* <NavItem  href={"/" + dataStore.lang + "/explore/social"} type={"social"} className="disabled">
             <span className="icon"><i className="fad fa-fire-alt" /></span>
@@ -146,7 +146,7 @@ const NavItem = ({className, href, children,type,page}) => {
     }
     return false
   }
-  return type ? (
+  return page == "item" ? (
     <a href={href} className={cls.join(' ')} datatype={type} onDoubleClick={handleDoubleClick}  onClick={(e) => {handleClickNavBar(e)}}>
       <>
         {children}

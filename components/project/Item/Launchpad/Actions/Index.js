@@ -22,20 +22,20 @@ const LaunchpadActions = ({ project }) => {
   const {launchpadInfo} = useLaunchpadInfo({project})
   
   if (openTime > curentTime) {
-    return <WhitelistCountdown project={wProject} />
+    return <WhitelistCountdown project={project} />
   }
   
   if (openTime < curentTime && curentTime < endTime) {
     return (
       <>
-        {(store.kyc.isKYC || (!store.kyc.isKYC && process.NODE_ENV !== 'production')) && launchpadInfo ?
+        {((store.kyc.isKYC) || (!store.kyc.isKYC && !project.is_kyc)) && launchpadInfo ?
           <SubscribeSwapToken project={project} />
           :
           <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">
             <div className="card-body no-padding">
               <div className="flex flex-col">
                 <div className="">
-                  <Timeline step="2" />
+                  <Timeline step="1" />
                 </div>
 
                 <div className="global-padding-lg !px-4 min-h-full max-w-xl w-full mx-auto">

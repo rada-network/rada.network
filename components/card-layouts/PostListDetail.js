@@ -271,7 +271,7 @@ const VideoDetail = function ({ item, dateTitle, date, setTabCallback }) {
               href={item.websiteUri ? item.websiteUri : item.url}
               className=""
             >
-              <span className="post-title--text">{item.title}</span>
+              <span className="post-title--text" itemProp="name">{item.title}</span>
               <span className="btn btn-post-link" title={t("visit website")}>
                 <span className="icon">
                   <i className="fa-duotone fa-external-link" />
@@ -395,6 +395,7 @@ const NewsDetail = observer(function ({
       className={
         `section post-detail post-detail-news` + (isRada ? " post-rada" : "")
       }
+      itemScope itemType="http://schema.org/Article"
     >
       {/* Post Header */}
       <div className="section-header post-header">
@@ -409,7 +410,7 @@ const NewsDetail = observer(function ({
               href={item.websiteUri ? item.websiteUri : item.url}
               className=""
             >
-              <span className="post-title--text">{title}</span>
+              <span className="post-title--text" itemProp="name">{title}</span>
               {item.websiteUri !== null && (
                 <span className="btn btn-post-link" title={t("visit website")}>
                   <span className="icon">
@@ -429,7 +430,7 @@ const NewsDetail = observer(function ({
               <PostDetailAuthor isRada={isRada} item={item} />
             </div>
             <div className="metadata metadata-date">
-              <span className="metadata-value" title={dateTitle}>
+              <span className="metadata-value" title={dateTitle} itemProp="datePublished" content={item.createdAt}>
                 {date}
               </span>
             </div>
@@ -442,7 +443,7 @@ const NewsDetail = observer(function ({
 
       <div className="section-body post-body">
         {!item.content ? <NewsLoader /> : ""}
-        <div className="post-content">
+        <div className="post-content" itemProp="description">
           {item.isshowcontent ? (
             <div dangerouslySetInnerHTML={{ __html: content }} />
           ) : (
@@ -530,7 +531,7 @@ const SocialTweetDetail = function ({ item, date, dateTitle, setTabCallback }) {
               href={item.websiteUri ? item.websiteUri : item.url}
               className=""
             >
-              <span className="post-title--text">{item.title}</span>
+              <span className="post-title--text" itemProp="name">{item.title}</span>
               <span className="btn btn-post-link" title="Visit Website">
                 <span className="icon">
                   <i className="fa-duotone fa-external-link" />

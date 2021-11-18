@@ -12,27 +12,34 @@ import { WalletProfile } from "../../components/Wallet";
 import useActiveWeb3React from "../../utils/hooks/useActiveWeb3React";
 import useStore from "@lib/useStore"
 import { useLaunchpadContract } from "../../utils/hooks/useContracts";
+import myUtils from "@lib/util";
+import { useRouter } from "next/router";
 
 export default function ProjectPage({ slug, project, locale }) {
   const { dataStore } = usePageStore()
+  const { locales, asPath } = useRouter();
+
   dataStore.page = "project"
   dataStore.lang = locale
   const page = slug.length > 1 ? slug[1] : 'index'
   
-  let meta = {
-    title : project?.content?.title + "",
-    description : project?.content?.description + "",
-    "og:description" : project?.content?.description + "",
-    "og:image" : project?.thumbnail_uri + ""
-  }
+  const meta = myUtils.createSiteMetadata(
+    {
+      page: "ProjectDetail",
+      dataStore: dataStore,
+      data: project,
+    },
+    locales,
+    asPath
+  );
+  
   /* Dragger to resize main col */  
   const containerRef = useRef()
-  let wProject = {...project}
   return (
     <Layout extraClass="page-home" meta={meta}>
 
       <div className={`pane-content`} ref={containerRef} >
-        <ProjectItem project={wProject} slug={slug} page={page} />
+        <ProjectItem project={project} slug={slug} page={page} />
       </div>
     </Layout>
   )
@@ -61,7 +68,7 @@ export async function getStaticProps(context) {
     project: await getProject({ slug: context.params.slug[0], lang: context.locale })
   }
   props = Object.assign(props, {
-    ...await serverSideTranslations(context.locale, ['common', 'navbar', 'invest']),
+    ...await serverSideTranslations(context.locale, ['common', 'navbar', 'invest','launchpad']),
   })
   return {
     props,

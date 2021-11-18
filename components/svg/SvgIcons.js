@@ -37,7 +37,7 @@ const CheckSvg = function ({ }) {
 }
 const BusdSvg = function ({ }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" style="fill:#282d35"/><path d="M16,6l2.53,2.58-6.36,6.35L9.63,12.41Z" style="fill:#f0b90b"/><path d="M19.81,9.83l2.53,2.58L12.15,22.59,9.63,20.07Z" style="fill:#f0b90b"/><path d="M8.32,13.66l2.53,2.58L8.32,18.76,5.8,16.24Z" style="fill:#f0b90b"/><path d="M23.64,13.66l2.53,2.58L16,26.43,13.46,23.9Z" style="fill:#f0b90b"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 336.41 337.42"><defs></defs><title>Asset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M168.2.71l41.5,42.5L105.2,147.71l-41.5-41.5Z"/><path class="cls-1" d="M231.2,63.71l41.5,42.5L105.2,273.71l-41.5-41.5Z"/><path class="cls-1" d="M42.2,126.71l41.5,42.5-41.5,41.5L.7,169.21Z"/><path class="cls-1" d="M294.2,126.71l41.5,42.5L168.2,336.71l-41.5-41.5Z"/></g></g></svg>
   )
 }
 

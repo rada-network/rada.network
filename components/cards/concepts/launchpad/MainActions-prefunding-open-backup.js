@@ -55,7 +55,11 @@ const MainActions = ({}) => {
                         <i class="fas fa-info-circle text-yellow-500"></i>
                       </span>
                       <span>
+<<<<<<< HEAD:components/cards/concepts/launchpad/MainActions-prefunding-open-backup.js
                         Some notices about rights or terms here.
+=======
+                        
+>>>>>>> a88ac250db3ad8bf58b729d5e73085b358375b44:components/cards/concepts/launchpad/MainActions-prefunding-open-dropdown.js
                       </span>
                     </p>
                   </div>

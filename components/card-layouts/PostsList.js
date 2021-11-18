@@ -39,7 +39,7 @@ export const PostsListWrapper = observer(function ({}){
         scrollBox1.current.removeEventListener('scroll', mobileScroll);
       }
     }
-  },[dataStore.currentTab,dataStore.query,dataStore.type,dataStore.forceUpdate,])
+  },[dataStore.currentTab,dataStore.query,dataStore.type,dataStore.forceUpdate])
 
   let lastPos = 0
   const mobileScroll = function(e){

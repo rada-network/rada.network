@@ -11,6 +11,14 @@
       "@data/*": ["./data/*"]
     }
   },
-  //Add any build/compiled folders here to stop vscode searching those
-  "exclude": ["node_modules", ".next"]
+  "exclude": [
+    ".git",
+    ".app-cache",
+    ".npm",
+    ".npm-tmp",
+    ".next",
+    "node_modules",
+    "**/.next/*",
+    "**/node_modules/*",
+  ]
 }
