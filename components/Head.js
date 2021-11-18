@@ -29,17 +29,15 @@ export const Head = observer(({meta}) => {
           }}
         />
       }
-      <title>{meta.title || ""}</title>
-      <meta name="description" content={utils.stripHTML(meta.description) || ""}/>
-      <meta name="keyword" content={meta.keyword || ""}/>
+      <title>RADA - {meta.title || ""}</title>
+      {meta.description && <><meta name="description" content={utils.stripHTML(meta.description)}/><meta property="og:description" content={utils.stripHTML(meta.description)} /></>}
+      {meta.keyword && <meta name="keyword" content={meta.keyword}/>}
+      
       {"og:type" in meta && <meta property="og:type" content={meta["og:type"]} />}
       {!("og:type" in meta) && <meta property="og:type" content={`website`} />}
 
       {"og:title" in meta && <meta property="og:title" content={meta["og:title"]} />}
       {!("og:title" in meta) && <meta property="og:title" content={meta.title || ""} />}
-
-      {"og:description" in meta && <meta property="og:description" content={utils.stripHTML(meta["og:description"])} />}
-      {!("og:description" in meta) && <meta property="og:description" content="" />}
 
       {"og:image" in meta && <meta property="og:image" content={meta["og:image"]} />}
       {!("og:image" in meta) && <meta property="og:image" content={process.env.NEXT_PUBLIC_CDN + "/android-chrome-512x512.png"} />}
@@ -51,7 +49,8 @@ export const Head = observer(({meta}) => {
       {"article:section" in meta && <meta property="article:section" content={meta["article:section"]} />}
       {"article:published_time" in meta && <meta property="article:published_time" content={meta["article:published_time"]} />}
       {"article:author" in meta && <meta property="article:author" content={meta["article:author"]} />}
-      <meta property="og:site_name" content="Rada" />
+
+      <meta property="og:site_name" content="RADA" />
       <meta name="theme-color" content="#E5E7EB" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="mobile-web-app-capable" content="yes" />
