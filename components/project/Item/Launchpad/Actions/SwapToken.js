@@ -47,7 +47,7 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance}) =
         }
       },
       onApprove: async () => {
-        const receipt_rir = await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberRIR)])
+        const receipt_rir = await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberRIR.toString())])
         const numberBusd = (parseFloat(numberRIR) * 100).toString()
         const receipt_busd =  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberBusd)])
         return [receipt_rir,receipt_busd]
@@ -145,7 +145,7 @@ const SubcribeByBUSD = ({project,accountBalance,setIsBusd,fetchAccountBalance}) 
         }
       },
       onApprove: async () => {
-        const receipt_busd =  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberBusd)])
+        const receipt_busd =  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberBusd.toString())])
         return [receipt_busd]
       },
       onApproveSuccess: async ({ receipts }) => {
