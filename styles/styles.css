@@ -12,7 +12,11 @@ Layout
   @apply max-w-screen-2xl 2xl:mx-auto 2xl:rounded-2xl;
   @apply border border-gray-400 border-opacity-20;
   animation: fadein 400ms linear;
-  box-shadow: 0 0 1px 0 rgba(0,0,0,.1);
+  box-shadow: 0 0 16px 0 rgba(0,0,0,.04);
+}
+
+.dark .main-layout {
+  box-shadow: 0 0 16px 0 rgba(0,0,0,.4);
 }
 
 .body-decor,
