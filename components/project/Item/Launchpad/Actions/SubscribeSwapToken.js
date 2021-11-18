@@ -1,26 +1,26 @@
 import Subscriber from "./Subscriber";
 import Timeline from "./Timeline";
 import SwapTokens from "./SwapToken"
-import { useERC20 } from "@utils/hooks/useContracts";
+import { useBUSDContract, useERC20, useRIRContract } from "@utils/hooks/useContracts";
 import { useEffect,useState } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { utils } from "ethers";
-import { WalletProfile } from "@components/Wallet";
-import {useLaunchpadInfo} from "@utils/hooks/index"
 import { useTranslation } from "next-i18next";
-const SubscribeSwapToken = ({project}) => {
-  const {t} = useTranslation("launchpad")
-  const {launchpadInfo,fetchLaunchpadInfo} = useLaunchpadInfo({project})
 
-  const rirContract = useERC20(launchpadInfo.rirAddress)
-  const bUSDContract = useERC20(launchpadInfo.bUSDAddress)
+import { useLaunchpadInfo } from "@utils/hooks/index";
+
+
+const SubscribeSwapToken = ({project}) => {
+
+  const {t} = useTranslation("launchpad")
+  const rirContract = useRIRContract()
+  const bUSDContract = useBUSDContract()
   const {account} = useActiveWeb3React()
+  const {launchpadInfo,loading,fetchLaunchpadInfo} = useLaunchpadInfo({project})
   const [accountBalance, setAccountBalance] = useState({})
-  useEffect(() => {
-    if (!!rirContract && !!account){
-      fetchAccountBalance();
-    }
-  },[rirContract,account])
+  const [loadBalance, setLoadBalance]  = useState(true)
+  const [orderBusd,setOrderBusd] = useState(0)
+ 
   const fetchAccountBalance =  async function(){
     await fetchLaunchpadInfo()
     let rirBalance = await rirContract.balanceOf(account);
@@ -30,10 +30,23 @@ const SubscribeSwapToken = ({project}) => {
       busdBalance : utils.formatEther(busdBalance),
     })
   }
-  let orderUsd = launchpadInfo?.currentOrder?.amountBUSD ? launchpadInfo?.currentOrder?.amountBUSD : 0
+  useEffect(() => {
+    if (!!account){
+      fetchAccountBalance().then(function(){
+        setLoadBalance(false)
+      });
+    }
+  },[account])
+  useEffect(() => {
+    let currentOrder = launchpadInfo?.currentOrder?.amountBUSD ? launchpadInfo?.currentOrder?.amountBUSD : 0
+    setOrderBusd(currentOrder)
+  },[launchpadInfo])
+  if (loading || loadBalance){
+    return null
+  }
   return (
     <>
-    {orderUsd == 0 ?
+    {orderBusd == 0 ?
       <div className="card-default project-main-actions no-padding overflow-hidden">
       <div className="card-header text-center sr-only">
         <h3>Public Sale</h3>
@@ -67,15 +80,21 @@ const SubscribeSwapToken = ({project}) => {
                   <li class="list-pair mb-2">
                     <span class="list-key">{t("Your maximum allocation")}</span>
                     <span class="ml-auto list-value font-semibold">
-                      {launchpadInfo?.individualMaximumAmount} USDT {accountBalance?.rirBalance && <>( {launchpadInfo?.individualMaximumAmount/100} RIR )</>}
+                      {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance && <>( {launchpadInfo?.individualMaximumAmount/100} RIR )</>}
                     </span>
                   </li>
                   <li class="list-pair mb-2">
                     <span class="list-key">{t("Your minimum allocation")}</span>
                     <span class="ml-auto list-value font-semibold">
-                    {launchpadInfo?.individualMinimumAmount} USDT {accountBalance?.rirBalance && <>( {launchpadInfo?.individualMinimumAmount/100} RIR )</>}
+                    {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance && <>( {launchpadInfo?.individualMinimumAmount/100} RIR )</>}
                     </span>
                   </li>
+                  {/* <li class="list-pair mb-2">
+                    <span class="list-key">{t("Your BUSD")}</span>
+                    <span class="ml-auto list-value font-semibold">
+                    {accountBalance?.busdBalance}
+                    </span>
+                  </li> */}
                 </ul>
 
                 <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
@@ -119,7 +138,7 @@ const SubscribeSwapToken = ({project}) => {
                 <div className="s2e-illustration flex-shrink-0"></div>
                 <div className="text-left ml-2">
                   <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">
-                    {t("prefunded note",{amount : utils.formatEther(orderUsd.toString())})}
+                    {t("prefunded note",{amount : utils.formatEther(orderBusd.toString())})}
                   </h3>
                   <p>{t("prefunded note line2")} </p>
                   <p>{t("share to earn note")}</p>

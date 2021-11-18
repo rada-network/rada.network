@@ -1,10 +1,25 @@
+import useChainConfig from "@utils/web3/useChainConfig"
 import {useMemo} from "react"
 import {getBep20Contract, getLotteryContract,getLaunchpadContract} from "../contractHelpers"
 import useActiveWeb3React from "./useActiveWeb3React"
 
 export const useERC20 = (address) => {
-  const { library } = useActiveWeb3React()
-  return useMemo(() => getBep20Contract(address, library.getSigner()), [address, library])
+  const { library,account } = useActiveWeb3React()
+  return useMemo(() => getBep20Contract(address,account ? library.getSigner() : library ), [address, library])
+}
+
+export const useRIRContract = () => {
+  const {getRIRAddress} = useChainConfig()
+  const address = getRIRAddress()
+  const { library,account } = useActiveWeb3React()
+  return useMemo(() => getBep20Contract(address,account ? library.getSigner() : library ), [address, library])
+}
+
+export const useBUSDContract = () => {
+  const {getBusdAddress} = useChainConfig()
+  const address = getBusdAddress()
+  const { library,account } = useActiveWeb3React()
+  return useMemo(() => getBep20Contract(address,account ? library.getSigner() : library ), [address, library])
 }
 
 

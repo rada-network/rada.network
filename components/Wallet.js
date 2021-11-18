@@ -46,10 +46,10 @@ const ConnectWalletModal = observer(({}) => {
   
 
   // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
-   const triedEager = useEagerConnect()
+  //const triedEager = useEagerConnect()
 
   // // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
-   useInactiveListener(!triedEager || !!activatingConnector)
+  //useInactiveListener(!triedEager || !!activatingConnector)
   
   return (
   <>
@@ -198,7 +198,7 @@ const ConnectWalletModal = observer(({}) => {
 
 export const WalletProfile = ({type}) => {
   type = type || "full"
-  const { account, library,chainId, deactivate,error} = useActiveWeb3React()
+  const { account, library,chainId, deactivate,error,connector} = useActiveWeb3React()
   const { t } = useTranslation("invest");
   const store = useStore()
   const handleConnectWallet = () => {

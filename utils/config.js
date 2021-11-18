@@ -29,6 +29,27 @@ export const RPC_CONFIG = {
   },
 }
 
+export const BUSD_CONTRACT  = {
+  97 : "0x6945239350ae805b0823cb292a4da5974d166640",
+  56 : "0x6945239350ae805b0823cb292a4da5974d166640"
+}
+
+export const RIR_BSC_CONTRACT  = {
+  97 : "0x6768BDC5d03A87942cE7cB143fA74e0DadE0371b",
+  56 : "0x6768bdc5d03a87942ce7cb143fa74e0dade0371b",
+}
+
+export const RIR_ETH_CONTRACT  = {
+  1 : "0x6768bdc5d03a87942ce7cb143fa74e0dade0371b",
+  4 : "0x6768bdc5d03a87942ce7cb143fa74e0dade0371b",
+}
+
+export const USDT_CONTRACT  = {
+  4 : "0x6945239350ae805b0823cb292a4da5974d166640"
+}
+
+
+
 export const NetworkLocalStorageKey = "__network"
 
 export const POLLING_INTERVAL = 12000

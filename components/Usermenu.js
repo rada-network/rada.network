@@ -2,7 +2,7 @@ import { Menu, Transition } from '@headlessui/react';
 import { Fragment, useEffect, useRef, useState } from 'react'
 import {useTranslation} from "next-i18next";
 import { signOut} from "next-auth/client"
-import {Link} from "next/link"
+import Link from "next/link"
 import getClient from "../data/client"
 import {useCookies} from "react-cookie";
 
@@ -52,11 +52,13 @@ export default function Usermenu({user}) {
               <Menu.Item as="div" className="dropdown-item">
               {({ active }) => 
                 <>
-                <a 
+                <Link 
                   href={`/${i18n.language}/user/profile`}>
-                  <span className="icon"><i class="fa-duotone fa-user-gear"></i></span>
-                  <span className="dropdown-item--text">Profile</span>
-                </a>
+                    <a>
+                      <span className="icon"><i class="fa-duotone fa-user-gear"></i></span>
+                      <span className="dropdown-item--text">Profile</span>
+                    </a>
+                </Link>
                 </>
               }
               </Menu.Item>

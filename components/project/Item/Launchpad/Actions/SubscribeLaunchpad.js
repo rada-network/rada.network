@@ -8,8 +8,10 @@ import { useTranslation } from "next-i18next";
 const SubscribeLaunchpad = ({ project }) => {
   const store = useStore()
   const {t} = useTranslation("launchpad")
-  const {data} = useSWR('/api/kyc-status?refId=' + store.user.id, fetchJson)
-  if (data) store.kyc.update(data.status)
+  if (project.is_kyc){
+    const {data} = useSWR('/api/kyc-status?refId=' + store.user.id, fetchJson)
+    if (data) store.kyc.update(data.status)
+  }
   return (
     <>
       <div className="mb-8">
