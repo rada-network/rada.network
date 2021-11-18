@@ -3,17 +3,16 @@ import React from "react";
 import { useEffect, useState, useReducer } from "react";
 import { saveAs } from 'file-saver';
 
-import { useStore } from "../../lib/useStore";
+import { useStore } from "@lib/useStore";
 import { usePageStore } from "@lib/usePageStore";
-import { Head } from "../Head";
-import SelectBannerType from "../share2earn/listbox-share2earn";
-import { getCurrentUser } from "../../data/query/user";
-import { getShareLogById } from "../../data/query/getShareLog";
-import { createOrUpdateShareLogById } from "../../data/query/createOrUpdateShareLog";
+import { Head } from "@components/Head"
+import SelectBannerType from "./listbox-share2earn";
+import { getShareLogById } from "../../../../data/query/getShareLog";
+import { createOrUpdateShareLogById } from "../../../../data/query/createOrUpdateShareLog";
 import mergeImages from 'merge-images';
-import { result } from "lodash";
 
-const Share2EarnMainScreen = observer( ({tokenData, user}) => {
+
+const Share2EarnMainScreen = observer( ({project, user}) => {
   const store = useStore()
   const { detailStore } = usePageStore();
   const [facebook, setFacebook] = useState({url:'', disable: false});
@@ -27,11 +26,11 @@ const Share2EarnMainScreen = observer( ({tokenData, user}) => {
   // Banner component 
   let bannerURL;
   if (detailStore.selectedBanner === "LinkedIn") {
-    bannerURL = tokenData.share_campaign[0].linkedin_banner;
+    bannerURL = project.share_campaign[0].linkedin_banner;
   } else if (detailStore.selectedBanner === "Twitter") {
-    bannerURL = tokenData.share_campaign[0].twitter_banner;
+    bannerURL = project.share_campaign[0].twitter_banner;
   } else {
-    bannerURL = tokenData.share_campaign[0].facebook_banner;
+    bannerURL = project.share_campaign[0].facebook_banner;
   }
   
 
@@ -42,14 +41,18 @@ const Share2EarnMainScreen = observer( ({tokenData, user}) => {
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
   // Save and update shared url
-  const tokenInfo = detailStore?.data?.tokens && detailStore?.data?.tokens.length
-    ? detailStore?.data?.tokens[0]
-    : null;
+  // const tokenInfo = detailStore?.data?.tokens && detailStore?.data?.tokens.length
+  //   ? detailStore?.data?.tokens[0]
+  //   : null;
+
+    useEffect(() => {
+      console.log("Start share2earn")
+      console.log(project)
+    }, []);
   
   useEffect(() => {
-    if (tokenData.share_campaign?.length) {
-      tokenInfo &&
-      getShareLogById({ campaignId: parseInt(tokenData.share_campaign[0].id)}).then(function (
+    if (project.share_campaign?.length) {
+      getShareLogById({ campaignId: 1}).then(function (
         res 
       ) {
         if (res.data.getShareLog?.length) {
@@ -70,7 +73,6 @@ const Share2EarnMainScreen = observer( ({tokenData, user}) => {
         }
       });
     }
-    
   },[]);
 
  
@@ -101,10 +103,13 @@ const Share2EarnMainScreen = observer( ({tokenData, user}) => {
   }
 
   function submitShareURL(e) {
-    tokenInfo &&
-      createOrUpdateShareLogById({ campaignId: parseInt(tokenData.share_campaign.id), walletAddress: user.walletAddress, twitter: twitter.url, facebook: facebook.url, linkedin: linkedin.url }).then(function (
+    if (project.share_campaign?.length) {
+      // Todo: Confirm lai viec lay vi
+      createOrUpdateShareLogById({ campaignId: parseInt(1), walletAddress: "user.walletAddress", twitter: twitter.url, facebook: facebook.url, linkedin: linkedin.url }).then(function (
         res 
       ) {
+        console.log("Chay vao response khong")
+        console.log(res)
         if (e.target.id === "facebook") {
           setFacebook({disable: true, url: facebook.url})
         } else if (e.target.id === "twitter") {
@@ -112,7 +117,8 @@ const Share2EarnMainScreen = observer( ({tokenData, user}) => {
         } else if (e.target.id === "linkedin") {
           setLinkedin({disable: true, url: facebook.url})
         }
-    });
+      });
+    }
   }
 
   useEffect(()  => {
@@ -134,8 +140,8 @@ const Share2EarnMainScreen = observer( ({tokenData, user}) => {
 
   const convertBase64Img = () => {
     // Convert frame
-    if (tokenData.share_campaign.length) {
-      tokenData.share_campaign[0].avatar_frame.map ((url, index) => {
+    if (project.share_campaign.length) {
+      project.share_campaign[0].avatar_frame.map ((url, index) => {
         getBase64FromUrl(url).then( e => {
           mergeImages([ localStorage.getItem("user_avatar") , e]).then(result => {
             localStorage.setItem(index, result)
@@ -146,8 +152,6 @@ const Share2EarnMainScreen = observer( ({tokenData, user}) => {
         })
       }) 
     }
-
-    
   }
 
   const handleFileInput = (e) => {
@@ -193,13 +197,15 @@ const Share2EarnMainScreen = observer( ({tokenData, user}) => {
   };
 
   const handleDownloadAvt = () => {
-    tokenData.share_campaign[0].avatar_frame.map((data, index) => {
+    project.share_campaign[0].avatar_frame.map((data, index) => {
       var a = document.createElement("a");
       a.href = localStorage.getItem(index);
       a.download = "Avatar.png";
       a.click();
     })
   };
+
+  
 
   return (
     <>     
@@ -346,7 +352,7 @@ const Share2EarnMainScreen = observer( ({tokenData, user}) => {
                       <div className="p-4">
                         <p className="mb-4">This game is whole new generation metaverse. Never seen anything like this!
                         I can play and earn so well 💰✨✨</p>
-                        <p>👉 &nbsp;Learn more here <a href="#" className="link">{window.location.href + "?ref=" + uid}</a></p>
+                        {/* <p>👉 &nbsp;Learn more here <a href="#" className="link">{window.location.href + "?ref=" + uid}</a></p> */}
                       </div>
 
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">

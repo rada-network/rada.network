@@ -18,7 +18,6 @@ import TokenInfoAirdrop from "../token/TokenInfoAirdrop";
 import TokenInfoInvest from "../token/TokenInfoInvest";
 import TokenInfoTeam from "../token/TokenInfoTeam";
 import TokenInfoGeneral from "../token/TokenInfoGeneral";
-import TokenInfoShare2Earn from "@components/token/TokenInfoShare2Earn";
 
 import Footnote from "../Footnote";
 import PostNotice from "../PostNotice";
@@ -169,10 +168,6 @@ export const PostListDetail = observer(
               />
             )
           );
-          case "share2earn":
-              return (
-                <TokenInfoShare2Earn tokenData={tokenData} />
-              );
       }
     };
 

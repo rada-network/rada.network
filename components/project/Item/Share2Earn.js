@@ -6,8 +6,7 @@ import {useTranslation} from "next-i18next";
 import _ from "lodash"
 import { useCookies } from "react-cookie";
 
-import { Head } from "../../components/Head";
-import Share2EarnMainScreen from "../../components/share2earn/Share2EarnMainScreen";
+import { Head } from "@components/Head"
 
 import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransaction"
 import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
@@ -15,20 +14,21 @@ import {useCallFunction} from "@utils/hooks/useCallFunction"
 
 import { useShare2EarnContract } from "@utils/hooks/useContracts"
 
-import useActiveWeb3React from "../../utils/hooks/useActiveWeb3React"
-import useChainConfig from "../../utils/web3/useChainConfig"
+import useActiveWeb3React from  "@utils/hooks/useActiveWeb3React"
+import useChainConfig from "@utils/web3/useChainConfig"
 
-import { useEagerConnect, useInactiveListener } from "../../utils/hooks/useShare2Earn";
+import { useEagerConnect, useInactiveListener } from "@utils/hooks/useShare2Earn"
+import { useStore } from "@lib/useStore";
+import { getCurrentUser } from "@data/query/user";
 
-import { useStore } from "../../lib/useStore";
-import { getCurrentUser } from "../../data/query/user";
+import { getErrorMessage } from "../../../utils"
+import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
 
-import { getErrorMessage } from "../../utils"
-
-export default function TokenInfoShare2Earn({
-  tokenData,
+export default function ProjectShare2Earn({
+  project, 
 }) {
-  const {injected,walletconnect, getChainId} = useChainConfig()
+  
+    const {injected,walletconnect, getChainId} = useChainConfig()
 
     const {t} = useTranslation()
 
@@ -48,6 +48,10 @@ export default function TokenInfoShare2Earn({
     // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
     useInactiveListener(!triedEager || !!activatingConnector);
 
+    useEffect(() => {
+      console.log("Start share2earn")
+      console.log(project)
+    }, []);
 
     useEffect(() => {
       setTimeout(()=>{
@@ -113,7 +117,7 @@ export default function TokenInfoShare2Earn({
 
     // TODO: Save in config file
     // const share2earnAddress = "0x7b9AEeD27F291625CbaED61Ac178D61709d62dCC"
-    const share2earnAddress = "0x998353AfD99A73262337974e2E732118ed557600"
+    const share2earnAddress = "0xA34f456763C1283CcFBE693B48a9cd52ab517993"
     const share2earnContract = useShare2EarnContract(share2earnAddress)
     const {callWithGasPrice} = useCallWithGasPrice()
     const {callFunction} = useCallFunction()
@@ -122,7 +126,8 @@ export default function TokenInfoShare2Earn({
     const { isConfirmed, isConfirming, handleConfirm } =
     useApproveConfirmTransaction({
       onConfirm: () => {
-        return callWithGasPrice(share2earnContract, 'joinProgram', [tokenData.id, uid, referralCode])
+        console.log("Join program")
+        return callWithGasPrice(share2earnContract, 'joinProgram', [project.id, uid, "referralCode"])
       },
       onSuccess: async ({ receipt }) => {
         toast.success(`Subscribed successfully ${receipt.transactionHash}`)
@@ -152,7 +157,7 @@ export default function TokenInfoShare2Earn({
 
       try {
         if (typeof  window.ethereum !== undefined) {
-          const addressJoined = await callFunction(share2earnContract, 'uidJoined', [tokenData.id, uid])
+          const addressJoined = await callFunction(share2earnContract, 'uidJoined', [project.id, uid])
           if (addressJoined=='0x0000000000000000000000000000000000000000') {
             setJoined('');
           }
@@ -199,12 +204,13 @@ export default function TokenInfoShare2Earn({
       activate(injected);
       setActivatingConnector(injected);
       if (error){
+        console.log(error);
         toast.error(getErrorMessage(error,store.network))
       }
     }
 
     if (joined !='' || isConfirmed) {
-      return <Share2EarnMainScreen tokenData={tokenData} user={user}/>;
+      return <Share2EarnMainScreen project={project} user={user}/>;
     }
 
 

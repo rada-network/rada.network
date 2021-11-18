@@ -1,6 +1,7 @@
 import ProjectNavbar from "./Navbar"
 import ProjectLaunchpad from "./Launchpad"
 import ProjectDetails from "./Details"
+import ProjectShare2Earn from "./Share2Earn"
 import { useEffect } from "react"
 
 export default function ProjectItem({ project, page, slug }) {
@@ -17,7 +18,7 @@ export default function ProjectItem({ project, page, slug }) {
                         <div className="w-limiter-lg">
                             {page == 'index' && <ProjectLaunchpad project={project} />}
                             {page == 'research' && <ProjectDetails project={project} />}
-                            {page == 'share2earn' && "share to earn"}
+                            {page == 'share2earn' && project.share_campaign?.length ? <ProjectShare2Earn project={project}/> : null }
                         </div>
                     </div>
 
