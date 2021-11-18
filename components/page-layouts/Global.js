@@ -36,10 +36,13 @@ export const Layout =  ({children,meta}) => {
     </div>
 
     <div className={`body-decor--text`}>
-      <p className="mb-1">&copy; Photo from Unsplash</p>
-      <div className="flex">
-        <a href="#" onClick={handleChangeBg}><i className="far fa-random"></i> New Photo</a>
-        <a href="#" onClick={handleRemoveBg} className="ml-2"><i className="far fa-minus-circle"></i> Remove</a>
+      <div className="flex flex-col">
+        <a href="#" onClick={handleChangeBg} title="New Background">
+          <i className="far fa-random"></i>
+        </a>
+        <a href="#" onClick={handleRemoveBg} className="mt-2" title="Remove Background">
+          <i className="far fa-minus-circle"></i>
+        </a>
       </div>
     </div>
 

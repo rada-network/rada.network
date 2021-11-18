@@ -53,7 +53,7 @@ Default Button
 */
 .btn-default {
   @apply px-2 py-1 items-center justify-center;
-  @apply text-sm font-medium text-gray-900 dark:text-white border border-transparent;
+  @apply text-sm font-medium text-gray-800 dark:text-white border border-transparent;
   @apply bg-gray-500 bg-opacity-10 dark:bg-gray-300 dark:bg-opacity-10;
 }
 

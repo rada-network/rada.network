@@ -16,8 +16,8 @@ Nav Item
 .nav-item {
   @apply relative flex flex-col lg:flex-row items-center w-full h-full px-1.5 py-0.5 lg:py-2 transition;
   @apply font-medium whitespace-nowrap;
-  @apply opacity-80;
-  @apply hover:opacity-100;
+  @apply text-gray-800 dark:text-gray-200;
+  @apply opacity-70 hover:opacity-100;
 }
 
 .nav-item .icon {
@@ -47,6 +47,7 @@ Nav Item Active
   @apply opacity-100;
 }
 
+.nav-item-active .icon-rada svg,
 .pane-bottom .nav-item-active .icon-rada svg {
   .inline-circle {
     fill: #6D28D9;
@@ -59,9 +60,7 @@ Nav Item Active
   }
 }
 
-.nav-item-active .icon-rada svg,
-.dark .nav-item-active .icon-rada svg,
-.pane-left .nav-item-active .icon-rada svg {
+.dark .nav-item-active .icon-rada svg {
   .inline-rec {
     fill: #8B5CF6;
   }

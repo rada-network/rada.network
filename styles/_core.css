@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  @apply bg-gray-100 dark:bg-gray-900 h-full overflow-hidden;
+  @apply bg-gray-50 dark:bg-deepgray-50 h-full overflow-hidden;
 }
 
 #__next {

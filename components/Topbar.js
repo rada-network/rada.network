@@ -44,7 +44,7 @@ export const Topbar = ({}) => {
               <strong className="logo--text ml-2">
                 <span>RADA</span>
               </strong>
-              <span className="logo--badge">BETA</span>
+              <span className="logo--badge">βETA</span>
             </a>
           </Link>
 
