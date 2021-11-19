@@ -13,70 +13,42 @@ import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
 import {useCallFunction} from "@utils/hooks/useCallFunction"
 
 import { useShare2EarnContract } from "@utils/hooks/useContracts"
-
 import useActiveWeb3React from  "@utils/hooks/useActiveWeb3React"
 import useChainConfig from "@utils/web3/useChainConfig"
-
-// import { useEagerConnect, useInactiveListener } from "@utils/hooks/useShare2Earn"
-import { useStore } from "@lib/useStore";
-import { getCurrentUser } from "@data/query/user";
+import { useStore } from "@lib/useStore"
+import { getCurrentUser } from "@data/query/user"
 
 import { getErrorMessage } from "../../../utils"
 import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
+import { useERC20 } from "@utils/hooks/useContracts";
 
 export default function ProjectShare2Earn({
   project,
 }) {
 
-    // const {injected,walletconnect, getChainId} = useChainConfig()
-
     const {t} = useTranslation()
-
+    const {injected,walletconnect, getChainId} = useChainConfig()
     const context = useActiveWeb3React()
     const { connector, library, account, activate, deactivate, active, error } = context
-
-    // handle logic to recognize the connector currently being activated
     const [activatingConnector, setActivatingConnector] = React.useState();
-    /* React.useEffect(() => {
-      if (activatingConnector && activatingConnector === connector) {
-        setActivatingConnector(undefined);
-      }
-    }, [activatingConnector, connector]);
-
-    // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
-    const triedEager = useEagerConnect();
-    // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
-    useInactiveListener(!triedEager || !!activatingConnector); */
 
     useEffect(() => {
       console.log("Start share2earn")
       console.log(project)
     }, []);
 
-    /* useEffect(() => {
-      setTimeout(()=>{
-        injected.isAuthorized().then(isAuthorized => {
-
-          if (isAuthorized) {
-            activate(injected)
-          }
-        });
-      }, 1000)
-
-    }, [activate]); */
-
     // Handle join program
     const [cookies] = useCookies(["ref"]);
-
     const referralCode = cookies.ref ?? '';
-
     const [user, setUser] = useState({});
     const store = useStore()
+
     useEffect(() => {
       if (store.user.access_token !== "") {
         getCurrentUser().then((res) => {
           getBase64FromUrl(res.image).then(b64 => {
             resizeImage(b64).then(result => {
+              localStorage.removeItem("user_avatar")
               localStorage.setItem("user_avatar", result)
             })
           })
@@ -116,9 +88,8 @@ export default function ProjectShare2Earn({
     const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
     // TODO: Save in config file
-    // const share2earnAddress = "0x7b9AEeD27F291625CbaED61Ac178D61709d62dCC"
-    // const share2earnAddress = "0xA34f456763C1283CcFBE693B48a9cd52ab517993"
     const share2earnAddress = "0x998353AfD99A73262337974e2E732118ed557600"
+    const shareAddress = useERC20(share2earnAddress);
 
     const share2earnContract = useShare2EarnContract(share2earnAddress)
     const {callWithGasPrice} = useCallWithGasPrice()
@@ -128,7 +99,6 @@ export default function ProjectShare2Earn({
     const { isConfirmed, isConfirming, handleConfirm } =
     useApproveConfirmTransaction({
       onConfirm: () => {
-        console.log("Join program")
         return callWithGasPrice(share2earnContract, 'joinProgram', [project.id.toString(), uid, referralCode])
       },
       onSuccess: async ({ receipt }) => {
@@ -172,7 +142,25 @@ export default function ProjectShare2Earn({
       }catch(e) {
         return '';
       }
-    }
+    };
+
+    useEffect(() => {
+      getInfoProgram()
+    },[])
+
+    // const getInfoProgram = async () => {
+    //   console.log(`Get info ${project.id}`);
+    //   try {
+    //     share2earnContract.getReferralInfo().then(result => {
+    //       console.log("Ket qua day")
+    //       console.log(result)
+    //     })
+    //     console.log(share2earnContract)
+    //   }catch(e) {
+    //     console.log("Bi loi roi")
+    //     console.log(e)
+    //   }
+    // }
 
     const getInfoProgram = async () => {
       console.log(`Get info ${project.id}`);
@@ -197,22 +185,24 @@ export default function ProjectShare2Earn({
       }else if (joined) {
         return 'Đã tham gia chương trình';
       }
+      
       return '';
     }
     const allowJoin = getMessage() == '' && joined=='' && account
-    /* const handleConnectWallet =  () => {
-      activate(injected);
-      setActivatingConnector(injected);
-      if (error){
-        console.log(error);
-        toast.error(getErrorMessage(error,store.network))
-      }
-    } */
 
     if (joined !='' || isConfirmed) {
       return <Share2EarnMainScreen project={project} user={user}/>;
     }
 
+    const handleConnectWallet =  () => {
+      activate(injected);
+      // setActivatingConnector(injected);
+      // if (error){
+      //   setConfirm(false)
+      //   console.log("Bi loi roi")
+      //   //toast.error(getErrorMessage(error,store.network))
+      // }
+    }
 
   return (
     <>
@@ -298,16 +288,14 @@ export default function ProjectShare2Earn({
                 </div>
               </fieldset>}
               {_.isEmpty(account) ? (
-                  <div className="mt-4 w-full text-center justify-center py-3 px-4 ">
-                    {t("no connection", { provider: "wallet" })}
-                  </div>
-                ) : (
+                <div className={ "mt-4 btn btn-yellow w-full justify-center py-3 px-4 "} type="submit" onClick={() => handleConnectWallet()}>Connect Wallet to Join Program</div>) : (
               <>
-              {allowJoin ? <div className={ "mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="submit"
-                onClick={() => handleJoinProgram()}
-              >Join Program</div> : <div className={ "mt-5 text-center w-full justify-center py-3 px-4 "}>{getMessage()}</div>
+                {
+                  allowJoin ? <div className={ "mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="submit"
+                  onClick={() => handleJoinProgram()}
+                  >Join Program</div> : <div className={ "mt-5 text-center w-full justify-center py-3 px-4 "}>{getMessage()}</div>
                 }
-            </>
+              </>
             )}
             </form>}
 

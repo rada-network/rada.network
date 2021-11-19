@@ -44,6 +44,7 @@ const projectBySlugGql = gql`
             lang
             facebook_banner
             linkedin_banner
+            twitter_banner
             avatar_frame
             
           }
