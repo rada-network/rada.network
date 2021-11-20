@@ -9,63 +9,18 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "address",
-        "name": "previousAdmin",
-        "type": "address"
+        "internalType": "string",
+        "name": "_uid",
+        "type": "string"
       },
       {
         "indexed": false,
-        "internalType": "address",
-        "name": "newAdmin",
-        "type": "address"
+        "internalType": "string",
+        "name": "_referCode",
+        "type": "string"
       }
     ],
-    "name": "AdminChanged",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "beacon",
-        "type": "address"
-      }
-    ],
-    "name": "BeaconUpgraded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "previousOwner",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "OwnershipTransferred",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "implementation",
-        "type": "address"
-      }
-    ],
-    "name": "Upgraded",
+    "name": "JoinProgram",
     "type": "event"
   },
   {
@@ -76,14 +31,32 @@
         "type": "string"
       },
       {
-        "internalType": "address",
-        "name": "_tokenAddress",
-        "type": "address"
+        "internalType": "uint256",
+        "name": "_startTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_endTime",
+        "type": "uint256"
       }
     ],
     "name": "addProgram",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "addressAdminContract",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -130,63 +103,19 @@
         "internalType": "string",
         "name": "_programCode",
         "type": "string"
-      }
-    ],
-    "name": "approveAllIncentive",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_programCode",
-        "type": "string"
       },
-      {
-        "internalType": "string",
-        "name": "_uid",
-        "type": "string"
-      }
-    ],
-    "name": "denyIncentive",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
       {
         "internalType": "address",
-        "name": "_tokenAddress",
+        "name": "_address",
         "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
       }
     ],
-    "name": "emergencyWithdrawToken",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_programCode",
-        "type": "string"
-      }
-    ],
-    "name": "getIncentiveHolders",
+    "name": "getJoinerRefereesAddress",
     "outputs": [
       {
-        "internalType": "string[]",
+        "internalType": "address[]",
         "name": "",
-        "type": "string[]"
+        "type": "address[]"
       }
     ],
     "stateMutability": "view",
@@ -200,12 +129,12 @@
         "type": "string"
       }
     ],
-    "name": "getIncentiveHoldersCount",
+    "name": "getJoinersAddress",
     "outputs": [
       {
-        "internalType": "uint256",
+        "internalType": "address[]",
         "name": "",
-        "type": "uint256"
+        "type": "address[]"
       }
     ],
     "stateMutability": "view",
@@ -219,108 +148,37 @@
         "type": "string"
       }
     ],
-    "name": "getJoiner",
+    "name": "getProgram",
     "outputs": [
       {
-        "internalType": "string[]",
+        "components": [
+          {
+            "internalType": "string",
+            "name": "code",
+            "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "paused",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256",
+            "name": "startTime",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "endTime",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct ReferralSingleContract.Program",
         "name": "",
-        "type": "string[]"
+        "type": "tuple"
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_programCode",
-        "type": "string"
-      }
-    ],
-    "name": "getTotalJoiner",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "holdReferrer",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "name": "incentiveHold",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "name": "incentiveProgram",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "initialize",
-    "outputs": [],
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -337,7 +195,7 @@
       },
       {
         "internalType": "string",
-        "name": "_referrerCode",
+        "name": "_referCode",
         "type": "string"
       }
     ],
@@ -347,8 +205,19 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "owner",
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "joinersAddress",
     "outputs": [
       {
         "internalType": "address",
@@ -375,29 +244,19 @@
         "type": "string"
       },
       {
-        "internalType": "address",
-        "name": "tokenAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "incentiveL0",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "incentiveL1",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "incentiveL2",
-        "type": "uint256"
-      },
-      {
         "internalType": "bool",
         "name": "paused",
         "type": "bool"
+      },
+      {
+        "internalType": "uint256",
+        "name": "startTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "endTime",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -435,17 +294,22 @@
         "type": "string"
       },
       {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
       }
     ],
-    "name": "refereesProgram",
+    "name": "refereesListAddress",
     "outputs": [
       {
-        "internalType": "string",
+        "internalType": "address",
         "name": "",
-        "type": "string"
+        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -454,24 +318,12 @@
   {
     "inputs": [
       {
-        "internalType": "string",
-        "name": "_programCode",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_uid",
-        "type": "string"
+        "internalType": "address",
+        "name": "_addressAdminContract",
+        "type": "address"
       }
     ],
-    "name": "removeJoinProgram",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "renounceOwnership",
+    "name": "setAddressAdminContract",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -502,66 +354,12 @@
         "type": "string"
       },
       {
-        "internalType": "uint256",
-        "name": "_amount1",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount2",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount3",
-        "type": "uint256"
-      }
-    ],
-    "name": "setIncentiveAmount",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_programCode",
-        "type": "string"
-      },
-      {
         "internalType": "bool",
         "name": "_pause",
         "type": "bool"
       }
     ],
     "name": "setPause",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "token",
-    "outputs": [
-      {
-        "internalType": "contract IERC20Upgradeable",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -593,32 +391,24 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "newImplementation",
-        "type": "address"
-      }
-    ],
-    "name": "upgradeTo",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newImplementation",
-        "type": "address"
+        "internalType": "string",
+        "name": "_programCode",
+        "type": "string"
       },
       {
-        "internalType": "bytes",
-        "name": "data",
-        "type": "bytes"
+        "internalType": "uint256",
+        "name": "_startTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_endTime",
+        "type": "uint256"
       }
     ],
-    "name": "upgradeToAndCall",
+    "name": "updateProgram",
     "outputs": [],
-    "stateMutability": "payable",
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -638,48 +428,6 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      },
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "userReferees",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "version",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "pure",
     "type": "function"
   }
 ]

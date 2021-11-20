@@ -5,6 +5,7 @@ import loteryAbi from '../config/abi/lotery.json'
 import launchpadAbi from '../config/abi/launchpad.json'
 import share2earnAbi from '../config/abi/share2earn.json'
 import launchpadAbiV2 from '../config/abi/launchpadv2.json'
+import referralAdminAbi from '../config/abi/referralAdmin.json'
 
 
 
@@ -34,4 +35,7 @@ export const getShare2EarnContract = (address, signer) => {
 
 export const getLaunchpadContractV2 = (address, signer) => {
   return getContract(launchpadAbiV2, address, signer)
+}
+export const getReferralAdminContract = (address, signer) => {
+  return getContract(referralAdminAbi, address, signer)
 }
