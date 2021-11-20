@@ -12,7 +12,8 @@ import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransact
 import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
 import {useCallFunction} from "@utils/hooks/useCallFunction"
 
-import { useShare2EarnContract } from "@utils/hooks/useContracts"
+import { useShare2EarnContract, useReferralAdminContract } from "@utils/hooks/useContracts"
+
 import useActiveWeb3React from  "@utils/hooks/useActiveWeb3React"
 import useChainConfig from "@utils/web3/useChainConfig"
 import { useStore } from "@lib/useStore"
@@ -88,10 +89,14 @@ export default function ProjectShare2Earn({
     const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
     // TODO: Save in config file
-    const share2earnAddress = "0x998353AfD99A73262337974e2E732118ed557600"
+    // const share2earnAddress = "0x998353AfD99A73262337974e2E732118ed557600" // Bản full admin+referral
+    const share2earnAddress = "0x5F6c365a9075EfC581C5E7249e5465B2DB9ec36f" // Bản referral
+    const referralAdminAddress = "0x492E27f769FC5a566E904092F1a1d86D12d53589" // Bản referral
     const shareAddress = useERC20(share2earnAddress);
 
     const share2earnContract = useShare2EarnContract(share2earnAddress)
+    const referralAdminContract = useReferralAdminContract(referralAdminAddress)
+
     const {callWithGasPrice} = useCallWithGasPrice()
     const {callFunction} = useCallFunction()
 
@@ -110,8 +115,7 @@ export default function ProjectShare2Earn({
           handleConfirm();
     };
     const [joined, setJoined] = useState('')
-    const [incentive1, setIncentive1] = useState(0)
-    const [incentive2, setIncentive2] = useState(0)
+    const [share2EarnInfo,setShare2EarnInfo] = useState(null)
 
     React.useEffect(() => {
       if (account && user) {
@@ -120,9 +124,26 @@ export default function ProjectShare2Earn({
     }, [account,user]);
 
     React.useEffect(() => {
-      if (active)
+
+      const getInfoProgram = async () => {
+        console.log(`Get info ${project.id}`);
+        try {
+            const p = await callFunction(share2earnContract, 'programs', [project.id.toString()])
+            const pAdmin = await callFunction(referralAdminContract, 'programs', [project.id.toString()])
+
+            setShare2EarnInfo({...p,incentiveL0: pAdmin.incentiveL0, incentiveL1: pAdmin.incentiveL1, incentiveL2: pAdmin.incentiveL2});
+            if (account) {
+              checkJoined();
+            }
+        }catch(e) {
+          console.log(e)
+        }
+      }
+
+      if (!!library && !!share2earnContract){
         getInfoProgram()
-    }, [active, library]);
+      }
+    }, [share2earnContract,library, account]);
 
 
     const checkJoined = async () => {
@@ -144,22 +165,7 @@ export default function ProjectShare2Earn({
       }
     };
 
-    useEffect(() => {
-      getInfoProgram()
-    },[])
 
-    const getInfoProgram = async () => {
-      console.log(`Get info ${project.id}`);
-      try {
-          const p = await callFunction(share2earnContract, 'programs', [project.id.toString()])
-          if (p) {
-            setIncentive1(ethers.utils.formatEther(p.incentiveL0));
-            setIncentive2(ethers.utils.formatEther(p.incentiveL1));
-            checkJoined();
-          }
-      }catch(e) {
-      }
-    }
 
     const getMessage = () => {
       if (isConfirming) {
@@ -226,7 +232,7 @@ export default function ProjectShare2Earn({
                 </span>
                 <div className="flex flex-col">
                   <strong className="text-base text-color-title">A Refferal Person join Share2Earn program</strong>
-                  {incentive1>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{project.share_campaign?.length ? project.share_campaign[0].incentive_level1 : ""} RIR</span> for each</span>}
+                  {share2EarnInfo && share2EarnInfo.incentiveL0>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span> for each</span>}
                 </div>
               </li>
               
@@ -237,7 +243,7 @@ export default function ProjectShare2Earn({
                 </span>
                 <div className="flex flex-col">
                   <strong className="text-base text-color-title">Get refferal bonus for each new refferal level 2 member</strong>
-                  {incentive2>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{project.share_campaign?.length ? project.share_campaign[0].incentive_level2 : ""} RIR</span> for each</span>}
+                  {share2EarnInfo && share2EarnInfo.incentiveL1>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{ethers.utils.formatEther(share2EarnInfo.incentiveL1)} RIR</span> for each</span>}
                 </div>
               </li>
             </ul>

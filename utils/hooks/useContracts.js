@@ -37,7 +37,11 @@ export const useLaunchpadContract = (address) => {
 
 export const useShare2EarnContract = (address) => {
   const { account, library } = useActiveWeb3React()
-  return useMemo(() => getShare2EarnContract(address, account ? library.getSigner(): library), [address, library])
+  return useMemo(() => getShare2EarnContract(address, account ? library.getSigner() : library), [address, library])
+}
+export const useReferralAdminContract = (address) => {
+  const { account, library } = useActiveWeb3React()
+  return useMemo(() => getReferralAdminContract(address, account ? library.getSigner() : library), [address, library])
 }
 
 
