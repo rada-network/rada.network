@@ -23,11 +23,12 @@ import { getErrorMessage } from "../../../utils"
 import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
 import { useERC20 } from "@utils/hooks/useContracts";
 
+
 export default function ProjectShare2Earn({
   project,
 }) {
 
-    const {t} = useTranslation()
+    const {t} = useTranslation('share2earn')
     const {injected,walletconnect, getChainId} = useChainConfig()
     const context = useActiveWeb3React()
     const { connector, library, account, activate, deactivate, active, error } = context
@@ -52,11 +53,6 @@ export default function ProjectShare2Earn({
         });
       }
     }, [store.user.access_token]);
-    
-    useEffect(() => {
-      console.log("Project info")
-      console.log(project.share_campaign)
-    },[])
 
     function resizeImage(base64Str, maxWidth = 512, maxHeight = 512) {
       return new Promise((resolve) => {
@@ -200,7 +196,7 @@ export default function ProjectShare2Earn({
           <div className="section-body">
             <h1 className="mb-4">
               <span className="text-xl lg:text-2xl font-semibold text-color-title">
-                Join program now. Earn RIR token ✨
+              {t("welcome title")}
               </span>
             </h1>
 
@@ -219,8 +215,8 @@ export default function ProjectShare2Earn({
                 </h2>
               </div>
             </div>
-
-            <p className="text-sm mb-8 text-gray-500 dark:text-gray-400">To encourage our members to share and help our project’s community grow farther, Rada will reward <span className="text-primary-700 dark:text-primary-400">RIR token</span> for each person visit through your refferal link and make these actions below:</p>
+            <p  />
+            <p className="text-sm mb-8 text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{__html: t("welcome description", {provider: `<span class="text-primary-700 dark:text-primary-400">RIR token</span>`})}} />
 
             <ul className="text-sm space-y-6">
               <li className="flex items-center">
@@ -229,8 +225,14 @@ export default function ProjectShare2Earn({
                   <i className="fa-duotone fa-user-plus"></i>
                 </span>
                 <div className="flex flex-col">
-                  <strong className="text-base text-color-title">A Refferal Person join Share2Earn program</strong>
-                  {share2EarnInfo && share2EarnInfo.incentiveL0>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span> for each</span>}
+                  <strong className="text-base text-color-title">{t("welcome lv1 title")}</strong>
+                  {/* welcome incentive description */}
+                  {share2EarnInfo && share2EarnInfo.incentiveL0>0 && 
+                    <span className="text-gray-500 dark:text-gray-400" 
+                      dangerouslySetInnerHTML={{__html: t("welcome incentive description", {
+                      rir: `<span class="text-primary-700 dark:text-primary-400"> ${ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span>`
+                    })}}/>
+                  }
                 </div>
               </li>
               
@@ -240,7 +242,7 @@ export default function ProjectShare2Earn({
                   <i className="fa-duotone fa-users"></i>
                 </span>
                 <div className="flex flex-col">
-                  <strong className="text-base text-color-title">Get refferal bonus for each new refferal level 2 member</strong>
+                  <strong className="text-base text-color-title">{t("welcome lv2 title")}</strong>
                   {share2EarnInfo && share2EarnInfo.incentiveL1>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{ethers.utils.formatEther(share2EarnInfo.incentiveL1)} RIR</span> for each</span>}
                 </div>
               </li>
@@ -256,18 +258,18 @@ export default function ProjectShare2Earn({
                   </div>
                   <div className="ml-3 text-sm">
                     <label className="">
-                      I confirm that I have to finish all missions to be eligible to receive rewards from Rada Network
+                      {t("welcome confirm")}
                     </label>
                   </div>
                 </div>
               </fieldset>}
               {_.isEmpty(account) ? (
-                <div className={ "mt-4 btn btn-yellow w-full justify-center py-3 px-4 "} type="submit" onClick={() => handleConnectWallet()}>Connect Wallet to Join Program</div>) : (
+                <div className={ "mt-4 btn btn-yellow w-full justify-center py-3 px-4 "} type="submit" onClick={() => handleConnectWallet()}>{t("welcome connect wallet")}</div>) : (
               <>
                 {
                   allowJoin ? <div className={ "mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="submit"
                   onClick={() => handleJoinProgram()}
-                  >Join Program</div> : <div className={ "mt-5 text-center w-full justify-center py-3 px-4 "}>{getMessage()}</div>
+                  >{t("welcome join program")}</div> : <div className={ "mt-5 text-center w-full justify-center py-3 px-4 "}>{getMessage()}</div>
                 }
               </>
             )}

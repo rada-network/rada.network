@@ -2,7 +2,7 @@ import { observer } from "mobx-react";
 import React from "react";
 import { useEffect, useState, useReducer } from "react";
 import { saveAs } from 'file-saver';
-
+import {useTranslation} from "next-i18next";
 import { useStore } from "@lib/useStore";
 import { usePageStore } from "@lib/usePageStore";
 import { Head } from "@components/Head"
@@ -13,6 +13,7 @@ import mergeImages from 'merge-images';
 
 
 const Share2EarnMainScreen = observer(({ project, user }) => {
+  const {t} = useTranslation('share2earn')
   const store = useStore()
   const { detailStore } = usePageStore();
   const [facebook, setFacebook] = useState({ url: '', disable: false });
@@ -256,7 +257,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
               <div>
                 <h1 className="">
                   <span className="text-xl lg:text-lg font-semibold text-color-title">
-                    You have joined successfully
+                    {t("main result title")}
                   </span>
                 </h1>
                 <div className="flex items-baseline">
@@ -271,7 +272,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
 
               <div className="flex mb-8 items-center">
                 <div className="w-12 mr-2 flex-shrink-0">&nbsp;</div>
-                <p className="text-gray-500 dark:text-gray-400 text-sm">Complete these steps below to get reward from Program. After we review your refferal. reward will be sent to your Approved Wallet.</p>
+                <p className="text-gray-500 dark:text-gray-400 text-sm">{t("main step des")}</p>
               </div>
 
 
@@ -292,8 +293,8 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
                   <div className="flex flex-col w-full">
 
                     <div className="flex flex-col">
-                      <strong className="text-base text-color-title">Create banner</strong>
-                      <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
+                      <strong className="text-base text-color-title">{t("main step 1 title")}</strong>
+                      <span className="text-gray-500 dark:text-gray-400">{t("main step 1 des")}</span>
 
                       <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
 
@@ -309,15 +310,15 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
                           <btn className="btn btn-default w-full !py-2"
                             onClick={() => handleDownload()}>
                             <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
-                            <span className="btn--text">Download</span>
+                            <span className="btn--text">{t("main button download")}</span>
                           </btn>
                         </div>
                       </div>
                     </div>
 
                     <div className="flex flex-col mt-4">
-                      <strong className="text-base text-color-title">Create Avatar</strong>
-                      <span className="text-gray-500 dark:text-gray-400">Download &amp; change your avatar on your social chanels</span>
+                      <strong className="text-base text-color-title">{t("create avatar title")}</strong>
+                      <span className="text-gray-500 dark:text-gray-400">{t("create avatar des")}</span>
 
                       <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
 
@@ -345,7 +346,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
                             <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
                               <label className="btn btn-default w-full !py-2" type="submit">
                                 <span className="icon"><i className="fa-duotone fa-upload text-xs" type="submit"></i></span>
-                                <span className="btn--text">Upload your image</span>
+                                <span className="btn--text">{t("main button upload")}</span>
                                 <input type="file" accept="image/*" onChange={handleFileInput} hidden />
                               </label>
                             </div>
@@ -377,8 +378,8 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
                   <div className="flex flex-col">
 
                     <div className="flex flex-col">
-                      <strong className="text-base text-color-title">Share on social media</strong>
-                      <span className="text-gray-500 dark:text-gray-400">Copy this post below and share it on Facebook, Twitter or LinkedIn</span>
+                      <strong className="text-base text-color-title">{t("main step 2 title")}</strong>
+                      <span className="text-gray-500 dark:text-gray-400">{t("main step 2 des")}</span>
 
                       <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
                         <div className="p-4">
@@ -415,8 +416,8 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
                   <div className="flex flex-col w-full">
 
                     <div className="flex flex-col">
-                      <strong className="text-base text-color-title">Verify your refferal</strong>
-                      <span className="text-gray-500 dark:text-gray-400">Insert your share links in the box below to verify your refferal</span>
+                      <strong className="text-base text-color-title">{t("main step 3 title")}</strong>
+                      <span className="text-gray-500 dark:text-gray-400">{t("main step 3 des")}</span>
 
                       <div className="mt-4">
                         <form>
