@@ -32,10 +32,15 @@ const BackgroundWrapper = function({image}){
       </div>
 
       <div className={`body-decor--text`}>
-        <p className="mb-1">&copy; Photo from Unsplash</p>
-        <div className="flex">
-          <a href="#" onClick={handleChangeBg}><i className="far fa-random"></i> New Photo</a>
-          <a href="#" onClick={handleRemoveBg} className="ml-2"><i className="far fa-minus-circle"></i> Remove</a>
+        <div className="flex flex-col">
+          <a href="#" onClick={handleChangeBg}>
+            <i className="far fa-random"></i> 
+            <span className="sr-only">New Photo</span>
+          </a>
+          <a href="#" onClick={handleRemoveBg} className="mt-2">
+            <i className="far fa-minus-circle"></i> 
+            <span className="sr-only">Remove Photo</span>
+          </a>
         </div>
       </div>
     </>

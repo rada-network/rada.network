@@ -27,7 +27,7 @@ Layout
 @screen 2xl {
   .body-decor {
     @apply fixed inset-0 w-full h-full -z-1;
-    @apply filter brightness-50;
+    /* @apply filter brightness-50; */
     /* background-image: url("https://source.unsplash.com/user/nnth/likes/1600x900"); */
     background-size: cover;
     background-repeat: no-repeat;
@@ -49,7 +49,7 @@ Nav Panels
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
   @apply border-r border-gray-200 dark:border-gray-700;
-  @apply bg-gray-100 dark:bg-gray-700 2xl:bg-opacity-70 2xl:dark:bg-opacity-70 2xl:backdrop-blur-md;
+  @apply bg-gray-100 dark:bg-gray-700 2xl:bg-opacity-50 2xl:dark:bg-opacity-50 2xl:backdrop-blur-md;
   @apply w-32 z-50;
   /* width: var(--paneleft-width); */
   /* flex-basis: var(--paneleft-width); */
