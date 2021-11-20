@@ -95,7 +95,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
 
   function submitShareURL(e) {
     if (project.share_campaign?.length) {
-      createOrUpdateShareLogById({ campaignId: parseInt(1), walletAddress: "user.walletAddress", twitter: twitter.url, facebook: facebook.url, linkedin: linkedin.url }).then(function (
+      createOrUpdateShareLogById({ campaignId: parseInt(1), walletAddress: user.walletAddress, twitter: twitter.url, facebook: facebook.url, linkedin: linkedin.url }).then(function (
         res
       ) {
         if (e.target.id === "facebook") {
