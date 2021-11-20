@@ -24,6 +24,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
   const [isUploadImage, setIsUploadImage] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   const [mergeImgs, setMergeImgs] = useState({});
+  const [mergeUploadImgs, setMergeUploadImgs] = useState({});
   const [baseFrames, setBaseFrames] = useState({});
 
 
@@ -207,12 +208,13 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
       let result = await mergeImages([fileUpload, baseFrames[index]])
       tmpMergeImgs = {...tmpMergeImgs,[index] : result}
     }
-    setMergeImgs(tmpMergeImgs)
+    setMergeUploadImgs(tmpMergeImgs)
   };
   const handleDownloadAvt = () => {
     project.share_campaign[0].avatar_frame.map((data, index) => {
       var a = document.createElement("a");
-      a.href = mergeImgs[index];
+      let dataImgs = isUploadImage ? mergeUploadImgs : mergeImgs
+      a.href = dataImgs[index];
       a.download = "Avatar.png";
       a.click();
     })
@@ -232,19 +234,19 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
       </div>
     );
 
-    let key = isUploadImage ? "" : "default"
+    let dataImgs = isUploadImage ? mergeUploadImgs : mergeImgs
     mergedImage = (
       <div className="bg-gray-100 bg-deepgray-50 grid gap-4 grid-cols-3 p-4">
         <div className="flex justify-center">
-          <img className="" src={mergeImgs[0]} alt="" />
+          <img className="" src={dataImgs[0]} alt="" />
         </div>
 
         <div className="flex justify-center">
-          <img className="" src={mergeImgs[1]} alt="" />
+          <img className="" src={dataImgs[1]} alt="" />
         </div>
 
         <div className="flex justify-center">
-          <img className="" src={mergeImgs[2]} alt="" />
+          <img className="" src={dataImgs[2]} alt="" />
         </div>
       </div>
     );
