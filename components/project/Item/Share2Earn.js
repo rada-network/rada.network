@@ -32,11 +32,6 @@ export default function ProjectShare2Earn({
     const { connector, library, account, activate, deactivate, active, error } = context
     const [activatingConnector, setActivatingConnector] = React.useState();
 
-    useEffect(() => {
-      console.log("Start share2earn")
-      console.log(project)
-    }, []);
-
     // Handle join program
     const [cookies] = useCookies(["ref"]);
     const referralCode = cookies.ref ?? '';
@@ -56,6 +51,11 @@ export default function ProjectShare2Earn({
         });
       }
     }, [store.user.access_token]);
+    
+    useEffect(() => {
+      console.log("Project info")
+      console.log(project.share_campaign)
+    },[])
 
     function resizeImage(base64Str, maxWidth = 512, maxHeight = 512) {
       return new Promise((resolve) => {
@@ -148,25 +148,10 @@ export default function ProjectShare2Earn({
       getInfoProgram()
     },[])
 
-    // const getInfoProgram = async () => {
-    //   console.log(`Get info ${project.id}`);
-    //   try {
-    //     share2earnContract.getReferralInfo().then(result => {
-    //       console.log("Ket qua day")
-    //       console.log(result)
-    //     })
-    //     console.log(share2earnContract)
-    //   }catch(e) {
-    //     console.log("Bi loi roi")
-    //     console.log(e)
-    //   }
-    // }
-
     const getInfoProgram = async () => {
       console.log(`Get info ${project.id}`);
       try {
           const p = await callFunction(share2earnContract, 'programs', [project.id.toString()])
-          console.log(p)
           if (p) {
             setIncentive1(ethers.utils.formatEther(p.incentiveL0));
             setIncentive2(ethers.utils.formatEther(p.incentiveL1));
@@ -196,12 +181,6 @@ export default function ProjectShare2Earn({
 
     const handleConnectWallet =  () => {
       activate(injected);
-      // setActivatingConnector(injected);
-      // if (error){
-      //   setConfirm(false)
-      //   console.log("Bi loi roi")
-      //   //toast.error(getErrorMessage(error,store.network))
-      // }
     }
 
   return (
@@ -247,19 +226,10 @@ export default function ProjectShare2Earn({
                 </span>
                 <div className="flex flex-col">
                   <strong className="text-base text-color-title">A Refferal Person join Share2Earn program</strong>
-                  {incentive1>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{incentive1} RIR</span> for each</span>}
+                  {incentive1>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{project.share_campaign?.length ? project.share_campaign[0].incentive_level1 : ""} RIR</span> for each</span>}
                 </div>
               </li>
-              <li className="flex items-center">
-                <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center">
-                  <i className="fa-light fa-hexagon"></i>
-                  <i className="fa-duotone fa-hand-holding-heart"></i>
-                </span>
-                <div className="flex flex-col">
-                  <strong className="text-base text-color-title">A Refferal Person join IDO and buy allocation</strong>
-                  <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400" style={{textDecoration: "line-through"}}>+0 RIR</span> for each</span>
-                </div>
-              </li>
+              
               <li className="flex items-center">
                 <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center">
                   <i className="fa-light fa-hexagon"></i>
@@ -267,7 +237,7 @@ export default function ProjectShare2Earn({
                 </span>
                 <div className="flex flex-col">
                   <strong className="text-base text-color-title">Get refferal bonus for each new refferal level 2 member</strong>
-                  {incentive2>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{incentive2} RIR</span> for each</span>}
+                  {incentive2>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{project.share_campaign?.length ? project.share_campaign[0].incentive_level2 : ""} RIR</span> for each</span>}
                 </div>
               </li>
             </ul>
