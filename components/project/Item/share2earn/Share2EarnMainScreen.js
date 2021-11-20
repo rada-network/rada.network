@@ -22,7 +22,8 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   const [isUploadImage, setIsUploadImage] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
-  const [mergeImgs, setMergeImgs] = useState([]);
+  const [mergeImgs, setMergeImgs] = useState({});
+  const [baseFrames, setBaseFrames] = useState({});
 
 
   // Banner component 
@@ -109,8 +110,12 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
   }
 
   useEffect(() => {
-    convertBase64Img();
+    convertBase64Frames()
   }, []);
+
+  useEffect(() => {
+    convertBase64Img();
+  }, [baseFrames]);
 
   useEffect(() => {
     if (!isUploadImage) {
@@ -131,23 +136,33 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
     });
   }
 
-  const convertBase64Img = () => {
+  const convertBase64Frames = async function(){
     // Convert frame
     if (project.share_campaign.length) {
-      project.share_campaign[0].avatar_frame.map((url, index) => {
-        getBase64FromUrl(url).then(e => {
-          if (!isUploadImage) {
-            mergeImages([localStorage.getItem("user_avatar"), e]).then(result => {
-              const key = "default" + index
-              localStorage.removeItem(key)
-              localStorage.setItem(key, result)
-            })
-          } else {
-            localStorage.removeItem("frame" + index)
-            localStorage.setItem("frame" + index, e)
-          }
-        })
-      })
+      let tmpBaseFrames = {}
+      for (let index = 0; index < project.share_campaign[0].avatar_frame.length; ++index) {
+        let url = project.share_campaign[0].avatar_frame[index]
+        const e = await getBase64FromUrl(url)
+        tmpBaseFrames = {[index] : e,...tmpBaseFrames}
+      }
+      setBaseFrames(tmpBaseFrames)
+    }
+  }
+
+  const convertBase64Img = async () => {
+    // Convert frame
+    if (project.share_campaign.length) {
+      if (!isUploadImage) {
+        let tmpMergeImgs = {}
+        for (let index = 0;index < Object.keys(baseFrames).length;index++){
+          let result = await mergeImages([localStorage.getItem("user_avatar"), baseFrames[index]])
+          tmpMergeImgs = {...tmpMergeImgs,[index] : result}
+        }
+        setMergeImgs(tmpMergeImgs)
+      }
+      else{
+
+      }
     }
   }
 
@@ -186,19 +201,17 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
   }
 
   const addFrameImageToUploadImg = async (fileUpload) => {
-    project.share_campaign[0].avatar_frame.map((_, index) => {
-      mergeImages([fileUpload, localStorage.getItem("frame" + index)]).then(b64 => {
-        localStorage.removeItem(index)
-        localStorage.setItem(index, b64)
-        forceUpdate();
-      })
-    })
+    let tmpMergeImgs = {}
+    for (let index = 0;index < Object.keys(baseFrames).length;index++){
+      let result = await mergeImages([fileUpload, baseFrames[index]])
+      tmpMergeImgs = {...tmpMergeImgs,[index] : result}
+    }
+    setMergeImgs(tmpMergeImgs)
   };
-
   const handleDownloadAvt = () => {
     project.share_campaign[0].avatar_frame.map((data, index) => {
       var a = document.createElement("a");
-      a.href = localStorage.getItem(index);
+      a.href = mergeImgs[index];
       a.download = "Avatar.png";
       a.click();
     })
@@ -222,15 +235,15 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
     mergedImage = (
       <div className="bg-gray-100 bg-deepgray-50 grid gap-4 grid-cols-3 p-4">
         <div className="flex justify-center">
-          <img className="" src={localStorage.getItem(key + 0) ? localStorage.getItem(key + 0) : ""} alt="" />
+          <img className="" src={mergeImgs[0]} alt="" />
         </div>
 
         <div className="flex justify-center">
-          <img className="" src={localStorage.getItem(key + 1) ? localStorage.getItem(key + 1) : ""} alt="" />
+          <img className="" src={mergeImgs[1]} alt="" />
         </div>
 
         <div className="flex justify-center">
-          <img className="" src={localStorage.getItem(key + 2) ? localStorage.getItem(key + 2) : ""} alt="" />
+          <img className="" src={mergeImgs[2]} alt="" />
         </div>
       </div>
     );
