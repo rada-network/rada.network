@@ -47,10 +47,10 @@ const ShareLink = function({uid}){
                 onCopy={handleCopy}
                 text={shareUrl}
               >
-                <btn className="btn btn-default  w-full !py-2">
+                <button className="btn btn-default  w-full !py-2">
                 <span className="icon"><i className="fa-duotone fa-copy text-xs"></i></span>
                 <span className="btn--text">Copy to clipboard</span>
-                </btn>
+                </button>
               </CopyToClipboard>
               
             </div>

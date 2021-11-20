@@ -23,12 +23,12 @@ export default function ProjectNavbar({ symbol, project, slug }) {
                 <div className="page-back flex-shrink-0 ml-0 relative -left-0.5">
                 <div className="btn">
                     <Link href={`/${dataStore.lang}/projects`}> 
-                    <a>
-                        <span className="icon">
-                        <i className="fa-solid fa-chevron-left"></i>
-                        </span>
-                        <span className="btn--text sr-only">{t("back")}</span>
-                    </a>
+                        <a href={`/${dataStore.lang}/projects`}>
+                            <span className="icon">
+                            <i className="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span className="btn--text sr-only">{t("back")}</span>
+                        </a>
                     
                     </Link>
                 </div>
