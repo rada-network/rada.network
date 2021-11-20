@@ -26,6 +26,7 @@ export default function ProjectPage({ slug, project, locale }) {
   const meta = myUtils.createSiteMetadata(
     {
       page: "ProjectDetail",
+      subPage : page,
       dataStore: dataStore,
       data: project,
     },

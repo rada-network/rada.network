@@ -181,18 +181,16 @@ export default function ProjectShare2Earn({
     }
     const allowJoin = getMessage() == '' && joined=='' && account
 
-    if (joined !='' || isConfirmed) {
+    if ((joined !='' || isConfirmed) && !!account) {
       return <Share2EarnMainScreen project={project} user={user}/>;
     }
 
     const handleConnectWallet =  () => {
-      activate(injected);
+      store.wallet.showConnect(true);
     }
 
   return (
     <>
-    <Head />
-
     <div className="pane-content--sec--main grid scrollbar">
 
       <div className="page page-share2earn">
