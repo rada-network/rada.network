@@ -69,7 +69,7 @@ export async function getStaticProps(context) {
     project: await getProject({ slug: context.params.slug[0], lang: context.locale })
   }
   props = Object.assign(props, {
-    ...await serverSideTranslations(context.locale, ['common', 'navbar', 'invest','launchpad']),
+    ...await serverSideTranslations(context.locale, ['common', 'navbar', 'invest','launchpad','share2earn']),
   })
   return {
     props,
