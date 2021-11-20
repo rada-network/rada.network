@@ -1,7 +1,7 @@
 import useChainConfig from "@utils/web3/useChainConfig"
 import {useMemo} from "react"
 
-import {getBep20Contract, getLotteryContract,getLaunchpadContract,getLaunchpadContractV2, getShare2EarnContract} from "../contractHelpers"
+import {getBep20Contract, getLotteryContract,getLaunchpadContract,getLaunchpadContractV2, getShare2EarnContract, getReferralAdminContract} from "../contractHelpers"
 
 import useActiveWeb3React from "./useActiveWeb3React"
 
