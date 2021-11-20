@@ -120,7 +120,7 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,lau
               </select>
             </div>
             }
-            <SwapDescription numberBusd={numberBusd} numberRIR={numberRIR} /> 
+            <SwapDescription numberBusd={numberBusd} numberRIR={numberRIR} maxSelected={maxSelected} /> 
           
           </div>
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
@@ -148,26 +148,44 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,lau
   )
 }
 
-const SwapDescription = ({numberBusd,numberRIR}) => {
+const SwapDescription = ({numberBusd,numberRIR,maxSelected}) => {
+  if (parseInt(numberRIR) * 100 > numberBusd) {
+    numberRIR = 0
+  }
   const [RIR,setRIR] = useState(0)
   const [busd,setBusd] = useState(0)
   useEffect(() => {
     setBusd(numberBusd)
     setRIR(numberRIR)
   },[numberBusd,numberRIR])
+  const p1 = Math.floor(parseInt(RIR)/maxSelected*5);
+  const p2 = Math.floor((parseInt(busd)/100 - p1)/maxSelected*5);
+  const p3 = 5 - (p1 + p2)
+  const sp1 = {
+    width: p1/5 * 100 + "%"
+  };
+  const sp2 = {
+    width: p2/5 * 100 + "%"
+  };
+  const sp3 = {
+    width: p3/5 * 100 + "%"
+  };
   return (
     <div className="flex mt-4 rounded-2xl overflow-hidden text-xs font-semibold">
-      <div className={`w-2/5 flex items-center transition-all`}>
+      {p1 > 0 && 
+      <div className={`w-${p1}/5 flex items-center transition-all`} style={sp1}>
         <div className="w-full flex items-center text-white h-6 pl-2  bg-green-600">
-        {parseInt(RIR) * 100} busd
+        {parseInt(RIR) * 100} BUSD
         </div>
-      </div>
-      <div className="w-2/5 flex flex items-center transition-all">
-        <div className="w-full h-6 flex items-center  text-gray-700 pl-2 bg-yellow-300 ">{busd - parseInt(RIR) * 100 } busd</div>    
-      </div>
-      <div className="w-1/5 flex flex items-center transition-all">
+      </div>}
+      {p2 > 0 && 
+      <div className={`w-${p2}/5 flex items-center transition-lex items-center transition-all`} style={sp2}>
+        <div className="w-full h-6 flex items-center  text-gray-700 pl-2 bg-yellow-300 ">{busd - parseInt(RIR) * 100 } BUSD</div>    
+      </div>}
+      {p3 > 0 && 
+      <div className={`w-${p3}/5 flex flex items-center transition-all`} style={sp3}>
         <div className="w-full h-6 flex items-center bg-gray-300 dark:bg-gray-700"></div>
-      </div>
+      </div>}
     </div>
   )
 }
