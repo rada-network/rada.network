@@ -13,6 +13,8 @@
   },
   "exclude": [
     ".git",
+    ".github",
+    ".idea",
     ".app-cache",
     ".npm",
     ".npm-tmp",

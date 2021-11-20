@@ -10,31 +10,23 @@ export function useGasPrice() {
 }
 
 export const useLaunchpadInfo = ({project}) => {
-  const {account,connector,active} = useWeb3React()
+  const {account,connector,active,library} = useActiveWeb3React()
   const [launchpadInfo,setLaunchpadInfo] = useState(false)
+  const [loading,setLoading] = useState(true)
   const lauchpadContact = useLaunchpadContract(project.swap_contract)
   const fetchLaunchpadInfo = async () => {
     try {
-      console.log(account)
       let tokenAddress = await lauchpadContact.tokenAddress()
-      let bUSDAddress = await lauchpadContact.bUSDAddress()
       let rirAddress = await lauchpadContact.rirAddress()
-      let tokensForSale = await lauchpadContact.tokensForSale()
-      let tokenPrice = await lauchpadContact.tokenPrice()
-      let tokensAllocated = await lauchpadContact.tokensAllocated()
       let individualMinimumAmount = await lauchpadContact.individualMinimumAmountBusd()
       let individualMaximumAmount = await lauchpadContact.individualMaximumAmountBusd()
       let ordersBuyerCount = await lauchpadContact.ordersBuyerCount()
       let buyers = await lauchpadContact.getBuyers()
       let currentOrder = await lauchpadContact.ordersBuyer(account)
       let updateInfo = {
-        tokensForSale : utils.formatEther(tokensForSale),
-        tokenPrice : utils.formatEther(tokenPrice),
-        tokensAllocated : utils.formatEther(tokensAllocated),
         individualMinimumAmount : utils.formatEther(individualMinimumAmount),
         individualMaximumAmount : utils.formatEther(individualMaximumAmount),
         tokenAddress : utils.getAddress(tokenAddress),
-        bUSDAddress : utils.getAddress(bUSDAddress),
         rirAddress : utils.getAddress(rirAddress),
         ordersBuyerCount : parseInt(utils.formatEther(ordersBuyerCount)),
         buyers : buyers,
@@ -42,20 +34,22 @@ export const useLaunchpadInfo = ({project}) => {
       }
       setLaunchpadInfo(updateInfo)
      } catch (error) {
-      setLaunchpadInfo(null)
       console.log(error)
       //console.log("error to fetch launchpad info",error)
+      return null
     }
   }
   useEffect(() => {
-    if (!!account && !!lauchpadContact && active){
-      fetchLaunchpadInfo().then(function(){
-        
+    if (!!account && !!lauchpadContact && active && library){
+      setLoading(true)
+      fetchLaunchpadInfo().then(function(res){
+        setLoading(false)
       })
     }
     else{
-      setLaunchpadInfo(false)
+      setLoading(false)
+      setLaunchpadInfo(null)
     }
-  }, [account,lauchpadContact,active])
-  return {launchpadInfo,fetchLaunchpadInfo}
+  }, [account,lauchpadContact,active,setLoading,library])
+  return {loading,launchpadInfo,fetchLaunchpadInfo}
 }

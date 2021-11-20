@@ -18,10 +18,8 @@ export default function LaunchpadContent({ project }) {
     useEffect(() => {
         const fetchLaunchpadInfo = async () => {
         try {
-            let tokensAllocated = await lauchpadContact.tokensAllocated()
             let availableBusd = await lauchpadContact.availableBusd()
             let updateInfo = {
-                tokensAllocated : utils.formatEther(tokensAllocated),
                 availableBusd : utils.formatEther(availableBusd),
             }
             setLaunchpadInfo(updateInfo)

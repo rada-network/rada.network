@@ -198,7 +198,7 @@ const ConnectWalletModal = observer(({}) => {
 
 export const WalletProfile = ({type}) => {
   type = type || "full"
-  const { account, library,chainId, deactivate,error} = useActiveWeb3React()
+  const { account, library,chainId, deactivate,error,connector} = useActiveWeb3React()
   const { t } = useTranslation("invest");
   const store = useStore()
   const handleConnectWallet = () => {

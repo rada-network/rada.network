@@ -15,7 +15,8 @@ import useChainConfig from '../../utils/web3/useChainConfig'
 import useStore from '../../lib/useStore'
 import {useRouter} from 'next/router'
 import { NetworkLocalStorageKey } from '../../utils/config'
-import { useLaunchpadContract, useLotteryContract } from '../../utils/hooks/useContracts'
+import { useERC20, useLaunchpadContract, useLotteryContract } from '../../utils/hooks/useContracts'
+import { ethers } from 'ethers'
 
 function getErrorMessage(error) {
   if (error instanceof NoEthereumProviderError) {
@@ -243,11 +244,16 @@ const App = function() {
   useInactiveListener(!triedEager || !!activatingConnector)
   
   const lauchpadContact = useLaunchpadContract("0x9DB74104FA42AbF00748e56ade256057c46b3a8c")
+  const busd = useERC20("0x6945239350ae805b0823cb292a4da5974d166640")
   React.useEffect(() => {
-    lauchpadContact.rirAddress().then((address) => {
+    lauchpadContact.bUSDAddress().then((address) => {
       console.log(address)
     })
-  })
+    if (!!account){
+      const tx = busd.approve("0x9DB74104FA42AbF00748e56ade256057c46b3a8c",ethers.utils.parseEther("100"))
+    }
+    
+  },[account, connector])
   return (
     <>
       <Header />

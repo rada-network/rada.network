@@ -9,13 +9,6 @@ import LaunchpadContent from "./Launchpad/Content";
 import LaunchpadActions from "./Launchpad/Actions/Index";
 
 const ProjectLaunchpad = ({project}) => {
-    const {dataStore} = usePageStore()
-    const { t } = useTranslation("invest")
-    useEffect(() => {
-    },[])
-
-    const {token} = project
-    const step = 1
 
     return (
         <>
