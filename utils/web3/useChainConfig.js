@@ -2,7 +2,7 @@ import { InjectedConnector } from '@web3-react/injected-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { StaticJsonRpcProvider } from '@ethersproject/providers'
 import { ethers } from 'ethers'
-import { RPC_CONFIG,POLLING_INTERVAL,BUSD_CONTRACT,USD_CONTRACT, RIR_ETH_CONTRACT,RIR_BSC_CONTRACT } from '../config'
+import { RPC_CONFIG,POLLING_INTERVAL,BUSD_CONTRACT,USDT_CONTRACT, RIR_ETH_CONTRACT,RIR_BSC_CONTRACT } from '../config'
 import useStore from "../../lib/useStore"
 
 
@@ -48,7 +48,7 @@ const useChainConfig = function(){
       return BUSD_CONTRACT[chainId]
     }
     if (store.network === "eth"){
-      return USD_CONTRACT[chainId]
+      return USDT_CONTRACT[chainId]
     }
   }
 

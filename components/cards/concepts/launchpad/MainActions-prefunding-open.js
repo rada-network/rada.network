@@ -1,6 +1,5 @@
 import ProjectTimeline from "../../../concepts/steps/projectTimeline";
 import SwapTokens from "../../../concepts/modules/swapTokens";
-import Toggle from "../../../concepts/toggle"
 import Winners from "./Winners";
 import { useState } from 'react'
 import { Switch } from '@headlessui/react'
