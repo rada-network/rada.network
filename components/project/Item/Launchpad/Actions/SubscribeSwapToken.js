@@ -104,13 +104,13 @@ const SubscribeSwapToken = ({project}) => {
                   <li class="list-pair mb-2">
                     <span class="list-key">{t("Your maximum allocation")}</span>
                     <span class="ml-auto list-value font-semibold">
-                      {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance && <>( {launchpadInfo?.individualMaximumAmount/100} RIR )</>}
+                      {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && <>( {launchpadInfo?.individualMaximumAmount/100} RIR )</>}
                     </span>
                   </li>
                   <li class="list-pair mb-2">
                     <span class="list-key">{t("Your minimum allocation")}</span>
                     <span class="ml-auto list-value font-semibold">
-                    {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance && <>( {launchpadInfo?.individualMinimumAmount/100} RIR )</>}
+                    {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && <>( {launchpadInfo?.individualMinimumAmount/100} RIR )</>}
                     </span>
                   </li>
                   {/* <li class="list-pair mb-2">

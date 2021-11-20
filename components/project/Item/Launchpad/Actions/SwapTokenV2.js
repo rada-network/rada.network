@@ -92,27 +92,27 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,lau
             
             {/* remove the above block if user doesn't have RIR */}
             <div className="">
-              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Amount")}</label>
-              <select id="amount" name="amount" className="select-custom" onChange={e => {setNumberBusd(e.currentTarget.value)}}>
+              <label htmlFor="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Amount")}</label>
+              <select id="amount" name="amount" className="select-custom" defaultValue={numberBusd} onChange={e => {setNumberBusd(e.currentTarget.value)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 {Array(maxSelected).fill(null).map((_, i) => {
                   return (
-                    <option className="text-gray-300" value={(i+1) * 100} selected={(i+1) * 100 == numberBusd ? true : false}>{(i+1) * 100} BUSD</option>
+                    <option key={i} className="text-gray-300" value={(i+1) * 100}>{(i+1) * 100} BUSD</option>
                   )
                 })}
               </select>
             </div>
             {accountBalance.rirBalance > 0 && 
             <div className="mt-4">
-              <label for="rir" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("RIR")}</label>
-              <select id="rir" name="rir" className="select-custom " onChange={e => {setNumberRIR(e.currentTarget.value)}}>
+              <label htmlFor="rir" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("RIR")}</label>
+              <select id="rir" name="rir" className="select-custom " defaultValue={numberRIR} onChange={e => {setNumberRIR(e.currentTarget.value)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
-                <option className="text-gray-300" value={0} selected={true}>{0} RIR</option>
+                <option className="text-gray-300" value={0}>{0} RIR</option>
                 {Array(maxSelected).fill(null).map((_, i) => {
                   return (
                     <>
                     {parseInt(numberBusd)/100 >= i+1 &&
-                    <option className="text-gray-300" value={(i+1)} selected={i === 0 ? true : false}>{(i+1)} RIR</option>
+                    <option key={i} className="text-gray-300" value={(i+1)}>{(i+1)} RIR</option>
                     }
                     </>
                   )

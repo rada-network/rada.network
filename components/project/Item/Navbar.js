@@ -45,9 +45,7 @@ export default function ProjectNavbar({ symbol, project, slug }) {
                         </NavItem>
                         {(project.share_campaign?.length !== 0) && 
                             <NavItem uri={`${symbol}/share2earn`}>
-                                <a  className="tab-item ">
                                 <span className="tab-item--text">{t("Share2Earn")}</span>
-                                </a>
                             </NavItem>
                         }
                     </div>
