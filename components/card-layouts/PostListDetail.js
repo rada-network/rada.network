@@ -30,7 +30,7 @@ export const PostListDetail = observer(
   ({ tokenId, tabName, setTabCallback,tokenData }) => {
     const { detailStore, dataStore, voteStore } = usePageStore();
     let item = detailStore.data;
-    
+
     item.currentLang = dataStore.lang;
 
     const [usdCoinInfo, setUSDCoinInfo] = useState({});
@@ -723,8 +723,8 @@ const PostVisitVoteDetail = function ({ item }) {
 //     <>
 //     {isRada ? (
 //       <span className="icon icon-rada w-3.5 mr-1.5 opacity-70">
-//         {authorImg && authorImg !== "" ? 
-//         <div className="avatar"><img src={authorImg} alt={getSourceFromUri(item)}/></div> 
+//         {authorImg && authorImg !== "" ?
+//         <div className="avatar"><img src={authorImg} alt={getSourceFromUri(item)}/></div>
 //         : <RadaPost />}
 //       </span>
 //     ) : (

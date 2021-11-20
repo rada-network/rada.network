@@ -44,8 +44,10 @@ const projectBySlugGql = gql`
             lang
             facebook_banner
             linkedin_banner
+            twitter_banner
             avatar_frame
-            
+            incentive_level1
+            incentive_level2
           }
         }
     }

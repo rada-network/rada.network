@@ -1,6 +1,8 @@
 import useChainConfig from "@utils/web3/useChainConfig"
 import {useMemo} from "react"
-import {getBep20Contract, getLotteryContract,getLaunchpadContract,getLaunchpadContractV2} from "../contractHelpers"
+
+import {getBep20Contract, getLotteryContract,getLaunchpadContract,getLaunchpadContractV2, getShare2EarnContract} from "../contractHelpers"
+
 import useActiveWeb3React from "./useActiveWeb3React"
 
 export const useERC20 = (address) => {
@@ -33,8 +35,14 @@ export const useLaunchpadContract = (address) => {
   return useMemo(() => getLaunchpadContract(address,account ? library.getSigner() : library), [address, library])
 }
 
+export const useShare2EarnContract = (address) => {
+  const { account, library } = useActiveWeb3React()
+  return useMemo(() => getShare2EarnContract(address, account ? library.getSigner(): library), [address, library])
+}
+
 
 export const useLaunchpadContractV2 = (address) => {
   const { account, library } = useActiveWeb3React()
   return useMemo(() => getLaunchpadContractV2(address,account ? library.getSigner() : library), [address, library])
 }
+

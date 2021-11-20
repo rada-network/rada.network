@@ -62,7 +62,7 @@ function Concept() {
                     <strong className="text-base text-color-title">Create banner</strong>
                     <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
 
-                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
 
                       <SelectBannerType />
 
@@ -85,7 +85,7 @@ function Concept() {
                     <strong className="text-base text-color-title">Create Avatar</strong>
                     <span className="text-gray-500 dark:text-gray-400">Download &amp; change your avatar on your social chanels</span>
 
-                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
 
                       <div className="flex justify-between items-center py-3 px-4 border-b border-gray-200 dark:border-gray-700">
                         <div>
@@ -95,17 +95,17 @@ function Concept() {
                           {/* <span className="text-sm mr-2">Use your image</span>
                           <Toggle /> */}
                           <div className="btn-group btn-group-toggle text-xs">
-                            <a className="btn btn-toggle-active">
+                            <a className="btn btn-toggle">
                               <span className="btn--text">Default</span>
                             </a>
-                            <a className="btn btn-toggle">
+                            <a className="btn btn-toggle-active">
                               <span className="btn--text">Your Image</span>
                             </a>
                           </div>
                         </div>
                       </div>
 
-                      <div className="bg-gray-100 bg-deepgray-50 grid gap-4 grid-cols-3 p-4">
+                      {/* <div className="bg-gray-100 bg-deepgray-50 grid gap-4 grid-cols-3 p-4">
                         <div className="flex justify-center">
                           <img className="" src={process.env.NEXT_PUBLIC_CDN + "/placeholders/share2earn-1.png"} alt="" />
                         </div>
@@ -115,11 +115,11 @@ function Concept() {
                         <div className="flex justify-center">
                           <img className="" src={process.env.NEXT_PUBLIC_CDN + "/placeholders/share2earn-3.png"} alt="" />
                         </div>
-                      </div>
+                      </div> */}
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
                         <btn className="btn btn-default w-full !py-2">
-                          <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
-                          <span className="btn--text">Download</span>
+                          <span className="icon"><i className="fa-duotone fa-upload text-xs"></i></span>
+                          <span className="btn--text">Upload your image</span>
                         </btn>
                       </div>
                     </div>
@@ -192,8 +192,9 @@ function Concept() {
                           <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Facebook's post link</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
-                            <input type="text" name="fb-post-url" id="fb-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Facebook's post link" />
-                            <div className="absolute inset-y-0 right-0 flex items-center">
+                            <input type="text" name="fb-post-url" id="fb-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Facebook's post link" value="https://www.facebook.com/radanetwork.official/"/>
+                            <div className="absolute inset-y-0 right-1 flex items-center">
+                              <btn className="btn btn-primary py-1 px-2 w-16">Submit</btn>
                             </div>
                           </div>
                         </div>
@@ -202,8 +203,9 @@ function Concept() {
                           <label for="twitter-post-url" className="sr-only block text-xs font-medium uppercase">Twitter's post link</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span class="icon"><i class="fa-brands fa-twitter"></i></span></span>
-                            <input type="text" name="twitter-post-url" id="twitter-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Twitter's post link" />
+                            <input type="text" name="twitter-post-url" id="twitter-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="https://www.twitter.com/radanetwork.official/" />
                             <div className="absolute inset-y-0 right-0 flex items-center">
+                              <btn className="btn btn-gray py-1 px-2 w-16 justify-center">Edit</btn>
                             </div>
                           </div>
                         </div>

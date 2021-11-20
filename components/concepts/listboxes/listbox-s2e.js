@@ -49,12 +49,12 @@ export default function SelectBannerType() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute top-0 w-full overflow-hidden bg-white dark:bg-gray-700 border-b border-gray-300 dark:border-gray-700 z-10 rounded-lg shadow-xl">
+            <Listbox.Options className="absolute top-0 w-full overflow-hidden bg-white dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700 z-10 rounded-lg shadow-xl">
               {bannerTypes.map((bannerType, bannerTypeIdx) => (
                 <Listbox.Option
                   key={bannerTypeIdx}
                   className={({ active }) =>
-                    `${active ? 'text-primary-900 bg-primary-100' : 'text-gray-900'}
+                    `${active ? 'text-primary-900 bg-primary-100 dark:bg-primary-900 dark:text-white' : ''}
                           cursor-default select-none relative flex items-center w-full py-3 pl-3 pr-10`
                   }
                   value={bannerType}

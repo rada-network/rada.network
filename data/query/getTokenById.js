@@ -84,6 +84,14 @@ const tokenByIdGql = gql`
         tge_date
         max_rir_per_user
       }
+      share_campaign {
+        avatar_frame
+        id
+        status
+        facebook_banner
+        twitter_banner
+        linkedin_banner
+      }
     }
   }
 `;

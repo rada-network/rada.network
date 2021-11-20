@@ -271,6 +271,34 @@ Group Buttons
 }
 
 
+/* 
+Toggle Buttons 
+*/
+.btn-group-toggle {
+  @apply rounded-full transition;
+  @apply bg-gray-400 bg-opacity-10 dark:bg-gray-200 dark:bg-opacity-10;
+  padding: 3px;
+}
+
+/* .btn-group-filter {
+  @apply text-xs space-x-2 lg:space-x-4;
+} */
+
+.btn-toggle,
+.btn-toggle-active {
+  @apply px-3 py-1 justify-center relative overflow-hidden;
+  @apply rounded-full bg-transparent opacity-50;
+  &:hover {
+    @apply opacity-100;
+  }
+}
+
+.btn-toggle-active {
+  @apply justify-center cursor-pointer pointer-events-none;
+  @apply bg-primary-700 text-white text-opacity-100 dark:text-white dark:bg-primary-500 shadow-sm opacity-100;
+}
+
+
 
 /*
 "Show More" Button

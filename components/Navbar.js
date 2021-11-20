@@ -146,6 +146,7 @@ const NavItem = ({className, href, children,type,page}) => {
     }
     return false
   }
+
   return page == "item" ? (
     <a href={href} className={cls.join(' ')} datatype={type} onDoubleClick={handleDoubleClick}  onClick={(e) => {handleClickNavBar(e)}}>
       <>
