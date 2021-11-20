@@ -6,6 +6,7 @@ import {useTranslation} from "next-i18next";
 import { useStore } from "@lib/useStore";
 import { usePageStore } from "@lib/usePageStore";
 import { Head } from "@components/Head"
+import ShareLink from "./ShareLink"
 import SelectBannerType from "./listbox-share2earn";
 import { getShareLogById } from "../../../../data/query/getShareLog";
 import { createOrUpdateShareLogById } from "../../../../data/query/createOrUpdateShareLog";
@@ -380,40 +381,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
 
                 {/* Step 2 */}
                 <li className="flex items-start">
-
-                  <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
-                    <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
-                      <strong className="text-base">
-                        <span className="sr-only">Step</span>
-                        2
-                      </strong>
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col">
-
-                    <div className="flex flex-col">
-                      <strong className="text-base text-color-title">{t("main step 2 title")}</strong>
-                      <span className="text-gray-500 dark:text-gray-400">{t("main step 2 des")}</span>
-
-                      <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
-                        <div className="p-4">
-                          <p className="mb-4">This game is whole new generation metaverse. Never seen anything like this!
-                            I can play and earn so well 💰✨✨</p>
-                          <p>👉 &nbsp;Learn more here <a href={window.location.origin + window.location.pathname + "?ref=" + uid} className="link">{window.location.origin + window.location.pathname + "?ref=" + uid}</a></p>
-                        </div>
-
-                        <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                          <btn className="btn btn-default  w-full !py-2">
-                            <span className="icon"><i className="fa-duotone fa-copy text-xs"></i></span>
-                            <span className="btn--text">Copy to clipboard</span>
-                          </btn>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-
+                  <ShareLink uid={uid}></ShareLink>
                 </li>
 
                 {/* Step 3 */}
