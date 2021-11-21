@@ -198,6 +198,12 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
         canvas.height = maxHeight
         let ctx = canvas.getContext('2d')
         ctx.drawImage(img, 0, 0, maxWidth, maxHeight)
+        // Draw here
+        ctx.globalCompositeOperation='destination-in';
+        ctx.beginPath();
+        ctx.arc(maxHeight/2, maxHeight/2, maxHeight/2, 0, Math.PI*2);
+        ctx.closePath();
+        ctx.fill();
         resolve(canvas.toDataURL())
       }
     })
