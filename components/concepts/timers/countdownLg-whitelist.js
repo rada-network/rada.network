@@ -50,7 +50,7 @@ const CountDownLg = ({}) => {
             </span>
             <div>
               <p className="mb-1">Joint the launchverse is really simple</p>
-              <a href="/launchverse/parallel/share2earn" class="group text-secondary-400">
+              <a href="/launchverse/parallel/share2earn" class="group text-white">
                 <span class="text-sm">Learn more</span>
                 <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
               </a>

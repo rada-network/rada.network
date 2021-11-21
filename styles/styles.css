@@ -269,8 +269,10 @@ Reader / Page Area
   @apply bg-white dark:bg-gray-900;
 }
 
-.glassmorphism .pane-content--sec {
-  @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur;
+@screen 2xl {
+  .glassmorphism .pane-content--sec {
+    @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur;
+  }
 }
 
 @screen lg {

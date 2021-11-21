@@ -23,7 +23,7 @@ const TokenBrief = function(){
               <span className="w-4 h-4">
                 <BscSvg />
               </span>
-              <span className="ml-1">Binance Smart Chain</span>
+              <span className="ml-1">BSC</span>
             </div>
 
             <div className="label private">Public</div>
