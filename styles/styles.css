@@ -162,7 +162,7 @@ Navbars on Mobile Tablet
 Main Panels
 */
 .pane-center {
-  @apply h-full z-40;
+  @apply w-full h-full z-40;
   /* @apply lg:border-r border-gray-400 border-opacity-20; */
 }
 
@@ -267,6 +267,10 @@ Reader / Page Area
   @apply float-left w-full z-10;
   @apply hidden flex-auto lg:block;
   @apply bg-white dark:bg-gray-900;
+}
+
+.glassmorphism .pane-content--sec {
+  @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur;
 }
 
 @screen lg {
