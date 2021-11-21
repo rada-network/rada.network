@@ -89,12 +89,7 @@ const LaunchVerse = (props) => {
 
                     </div>
 
-                    <div className="
-                                flex flex-col md:flex-row md:items-center px-4 md:px-4 py-4 md:py-4
-                                bg-gradient-to-br from-gray-100 to-gray-100
-                                dark:from-gray-800 dark:to-gray-800
-                                rounded-b-xl
-                              "
+                    <div className=" flex flex-col md:flex-row md:items-center px-8 py-8 md:py-4 bg-gradient-to-br from-gray-100 to-gray-100 dark:from-gray-800 dark:to-gray-800 rounded-b-xl"
                     >
                       {/* <div className="
                                 flex items-center absolute bottom-0 left-0 right-0 px-8 py-4

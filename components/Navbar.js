@@ -39,7 +39,7 @@ export const Navbar = observer(({}) => {
             {/* <span className="w-5 h-5 mx-2 flex items-center">
               <LaunchSvg />
             </span> */}
-            <span className="icon"><i class="fad fa-rocket-launch"></i></span>
+            <span className="icon"><i className="fad fa-rocket-launch"></i></span>
             <span className="nav-item--text">{t("LaunchVerse")}</span>
           </NavItem>
 
