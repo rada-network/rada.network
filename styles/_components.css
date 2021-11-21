@@ -9,42 +9,46 @@ Various UI Components Style
   @apply flex-col md:flex-row;
   @apply bg-gray-100 bg-gradient-to-r dark:bg-primary-900 dark:from-primary-900 dark:to-primary-900 divide-x divide-gray-300 divide-opacity-20 lg:divide-x-0;
 }
+
 .steps-compact {
-  @apply rounded-t-lg flex flex-col md:flex-row w-full border border-gray-300 
-    dark:border-b-transparent dark:border-t-gray-800 dark:border-l-gray-800 
-    dark:border-r-gray-800 border-b-transparent    bg-gray-100 dark:bg-gray-900;
+  @apply rounded-t-lg flex md:flex-row w-full 
+         border-b border-transparent
+       bg-gray-100 dark:bg-gray-900;
 }
+
 .steps-compact > li {
-  @apply flex-1 relative z-10 p-2 md:p-4;
+  @apply flex-1 relative z-10 px-2 py-2 md:p-4;
 }
 
 .step-compact a {
   @apply flex ;
 }
 .step-compact-body {
-  @apply flex items-center;
+  @apply flex flex-col md:flex-row items-center;
 }
 .step-compact-body--icon {
-  @apply dark:bg-gray-500 bg-gray-300 w-6 h-6 md:w-8 md:h-8 font-semibold flex items-center text-center rounded-full mr-2 static;
+  @apply dark:bg-gray-500 bg-gray-300 w-6 h-6 md:w-8 md:h-8 
+           font-semibold flex items-center text-center rounded-full md:mr-2 static;
 }
 .step-compact-body--icon--text {
   @apply m-auto text-xs;
 }
 
 .step-compact-body--content {
+  @apply mt-2 md:mt-0;
 }
 .step-compact-body--title {
-  @apply block flex-shrink-0 mb-1 flex-grow w-full text-sm md:text-sm text-gray-600 dark:text-gray-300 ;
+  @apply block flex-shrink-0 flex-grow w-full text-xs md:text-sm text-gray-600 dark:text-gray-300 ;
 }
 .step-compact-body--text {
-  @apply flex-shrink-0 flex-grow w-full text-gray-500 text-xs md:text-xs hidden md:block;
+  @apply flex-shrink-0 flex-grow w-full text-gray-500 text-xs md:text-xs hidden lg:block;
 }
 
 
 /* Current state */
 .step-compact.is-current {
-  @apply bg-white dark:bg-gray-800 border-b dark:border-b-gray-800;
-  margin-bottom:-1px;
+  @apply bg-white dark:bg-gray-800 rounded-t-lg shadow-lg border-transparent;
+  margin-bottom: -1px;
 }
 .step-compact.is-current .step-compact-body--title{
   @apply font-semibold;

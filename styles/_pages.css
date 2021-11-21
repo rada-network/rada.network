@@ -87,6 +87,12 @@ Page Projects
   }
 }
 
+.page-project-details {
+  &.page-full {
+    @apply px-0 pb-16;
+  }
+}
+
 
 /*
 Empty State - About Page
