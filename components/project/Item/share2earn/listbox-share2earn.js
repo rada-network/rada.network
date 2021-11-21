@@ -14,11 +14,6 @@ const bannerTypes = [
     desc: '1500 x 500 px',
     icon: <i class="fa-brands fa-twitter"></i>,
   },
-  { 
-    name: 'LinkedIn',
-    desc: '1584 x 396 px',
-    icon: <i class="fa-brands fa-linkedin-in"></i>,
-  },
 ]
 
 const SelectBannerType  = observer( () => {
@@ -30,8 +25,6 @@ const SelectBannerType  = observer( () => {
         setSelected(bannerTypes[0]);
      } else if (e.name === "Twitter") {
         setSelected(bannerTypes[1]);
-     } else if (e.name === "LinkedIn") {
-        setSelected(bannerTypes[2]);
      }
   };
 

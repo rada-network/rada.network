@@ -11,17 +11,17 @@ import SelectBannerType from "./listbox-share2earn";
 import { getShareLogById } from "../../../../data/query/getShareLog";
 import { createOrUpdateShareLogById } from "../../../../data/query/createOrUpdateShareLog";
 import mergeImages from 'merge-images';
+import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 
 
 const Share2EarnMainScreen = observer(({ project, user }) => {
   const {t} = useTranslation('share2earn')
+  const { account } = useActiveWeb3React()
   const store = useStore()
   const { detailStore } = usePageStore();
   const [facebook, setFacebook] = useState({ url: '', disable: false });
   const [twitter, setTwitter] = useState({ url: '', disable: false });
-  const [linkedin, setLinkedin] = useState({ url: '', disable: false });
   // Merge image state
-  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   const [isUploadImage, setIsUploadImage] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   const [mergeImgs, setMergeImgs] = useState({});
@@ -38,7 +38,6 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
   } else {
     bannerURL = project.share_campaign[0].facebook_banner;
   }
-
 
   const handleDownload = () => {
     saveAs(bannerURL, detailStore.selectedBanner + ".png");
@@ -60,11 +59,6 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
           let twitterURL = res.data.getShareLog[0].twitter;
           if (twitterURL) {
             setTwitter({ disable: true, url: twitterURL });
-          }
-
-          let linkedinULR = res.data.getShareLog[0].linkedin;
-          if (linkedinULR) {
-            setLinkedin({ disable: true, url: linkedinULR });
           }
         }
       });
@@ -88,25 +82,15 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
     setTwitter({ disable: !twitter.disable, url: twitter.url })
   }
 
-  const linkedinSubmit = async (e) => {
-    if (!linkedin.disable) {
-      submitShareURL(e)
-      
-    }
-    setLinkedin({ disable: !linkedin.disable, url: facebook.url })
-  }
-
   function submitShareURL(e) {
     if (project.share_campaign?.length) {
-      createOrUpdateShareLogById({ campaignId: parseInt(1), walletAddress: user.walletAddress, twitter: twitter.url, facebook: facebook.url, linkedin: linkedin.url }).then(function (
+      createOrUpdateShareLogById({ campaignId: parseInt(1), walletAddress: account, twitter: twitter.url, facebook: facebook.url, linkedin: "" }).then(function (
         res
       ) {
         if (e.target.id === "facebook") {
           setFacebook({ disable: true, url: facebook.url })
         } else if (e.target.id === "twitter") {
           setTwitter({ disable: true, url: twitter.url })
-        } else if (e.target.id === "linkedin") {
-          setLinkedin({ disable: true, url: facebook.url })
         }
       });
     }
@@ -453,29 +437,6 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
                                   <btn className={"btn py-1 px-2 w-16 " + (twitter.disable ? "btn-gray justify-center" : "btn-primary")}
                                     onClick={twitterSubmit}
                                   >{twitter.disable ? "Edit" : "Submit"}</btn>
-                                </div>
-                              }
-                            </div>
-                          </div>
-
-                          {/* LinkedIn */}
-                          <div className="mb-4">
-                            <label for="linkedin-post-url" className="sr-only block text-xs font-medium uppercase">Linkedin's post link</label>
-                            <div className="mt-1 relative rounded-md shadow-sm">
-                              <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--linkedin"><span class="icon"><i class="fa-brands fa-linkedin-in"></i></span></span>
-
-                              <input type="text" name="fb-post-url" id="fb-post-url"
-                                className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
-                                disabled={linkedin.url === "" ? "" : (twitter.disable ? "disabled" : "")}
-                                placeholder={linkedin.url ? (linkedin.disable ? linkedin.url : "") : "Facebook's post link"}
-                                value={!linkedin.disable ? linkedin.url : ""}
-                                onChange={(e) => { setLinkedin({ disable: false, url: e.target.value }) }} />
-
-                              {linkedin.url &&
-                                <div className="absolute inset-y-0 right-1 flex items-center">
-                                  <btn className={"btn py-1 px-2 w-16 " + (linkedin.disable ? "btn-gray justify-center" : "btn-primary")}
-                                    onClick={linkedinSubmit}
-                                  >{linkedin.disable ? "Edit" : "Submit"}</btn>
                                 </div>
                               }
                             </div>
