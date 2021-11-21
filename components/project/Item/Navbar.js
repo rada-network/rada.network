@@ -10,7 +10,7 @@ export default function ProjectNavbar({ symbol, project, slug }) {
         const cls = ['tab-item']
         if (uri == slug) cls.push('tab-item--active')
         return (
-            <Link href={`/${dataStore.lang}/projects/${uri}`}>
+            <Link href={`/${dataStore.lang}/launchverse/${uri}`}>
                 <a class={cls.join(' ')}>
                     { children }
                 </a>
@@ -22,8 +22,8 @@ export default function ProjectNavbar({ symbol, project, slug }) {
             <div className="flex h-full w-limiter-lg relative lg:px-3">
                 <div className="page-back flex-shrink-0 ml-0 relative -left-0.5">
                 <div className="btn">
-                    <Link href={`/${dataStore.lang}/projects`}> 
-                        <a href={`/${dataStore.lang}/projects`}>
+                    <Link href={`/${dataStore.lang}/launchverse`}> 
+                        <a href={`/${dataStore.lang}/launchverse`}>
                             <span className="icon">
                             <i className="fa-solid fa-chevron-left"></i>
                             </span>

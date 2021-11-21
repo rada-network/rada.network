@@ -35,15 +35,15 @@ export const Navbar = observer(({}) => {
         {/* Main Nav */}
         <div className={`navbar-main`} >
        
-          <NavItem  href={`/projects/`} page={`project`} type={`projects`}>
+          <NavItem  href={`/launchverse/`} page={`launchverse`} type={`launchverse`}>
             {/* <span className="w-5 h-5 mx-2 flex items-center">
               <LaunchSvg />
             </span> */}
             <span className="icon"><i class="fad fa-rocket-launch"></i></span>
-            <span className="nav-item--text">{t("Projects")}</span>
+            <span className="nav-item--text">{t("LaunchVerse")}</span>
           </NavItem>
 
-          <NavItem   href={"/" + dataStore.lang + "/explore/rada"} page={`item`} type={"rada"}>
+          <NavItem   href={"/" + dataStore.lang + "/explore/projects"} page={`item`} type={"projects"}>
             <span className="icon icon-rada">
               <svg className="rada-svg" viewBox="4 4 32 32" xmlns="http://www.w3.org/2000/svg">
                 <path className="inline-rec" d="M18 11.1547C19.2376 10.4402 20.7624 10.4402 22 11.1547L26.6603 13.8453C27.8979 14.5598 28.6603 15.8803 28.6603 17.3094V22.6906C28.6603 24.1197 27.8979 25.4402 26.6603 26.1547L22 28.8453C20.7624 29.5598 19.2376 29.5598 18 28.8453L13.3397 26.1547C12.1021 25.4402 11.3397 24.1197 11.3397 22.6906V17.3094C11.3397 15.8803 12.1021 14.5598 13.3397 13.8453L18 11.1547Z" fill="#9CA3AF"/>
@@ -56,7 +56,7 @@ export const Navbar = observer(({}) => {
                 <circle className="inline-circle" cx="31.2583" cy="26.5" r="3" transform="rotate(-60 31.2583 26.5)" fill="#374151"/>
               </svg>
             </span>
-            <span className="nav-item--text">{t("Raders")}</span>
+            <span className="nav-item--text">{t("Projects")}</span>
           </NavItem>
 
 
@@ -120,7 +120,7 @@ const NavItem = ({className, href, children,type,page}) => {
   if (dataStore.page === "item"){
     if ((dataStore.page === page && (dataStore.type === type || (type === "all" && dataStore.type === "")))) cls.push(`nav-item-active`)
   }
-  if (dataStore.page === "project"){
+  if (dataStore.page === "launchverse"){
     if (dataStore.page === page) cls.push(`nav-item-active`)
   }
   const handleClickNavBar = (e) => {
