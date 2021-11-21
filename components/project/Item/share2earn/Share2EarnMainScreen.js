@@ -404,7 +404,8 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
                         </div>
 
                         <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                          <btn className="btn btn-default  w-full !py-2">
+                          <btn className="btn btn-default  w-full !py-2"
+                          onClick={() =>  navigator.clipboard.writeText(window.location.origin + window.location.pathname + "?ref=" + uid)}>
                             <span className="icon"><i className="fa-duotone fa-copy text-xs"></i></span>
                             <span className="btn--text">Copy to clipboard</span>
                           </btn>
