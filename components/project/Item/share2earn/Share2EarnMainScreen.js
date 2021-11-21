@@ -243,7 +243,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
 
     let dataImgs = isUploadImage ? mergeUploadImgs : mergeImgs
     mergedImage = (
-      <div className="bg-gray-100 bg-deepgray-50 grid gap-4 grid-cols-3 p-4">
+      <div className="bg-gray-100 dark:bg-deepgray-50 grid gap-4 grid-cols-3 p-4">
         <div className="flex justify-center">
           <img className="" src={dataImgs[0]} alt="" />
         </div>

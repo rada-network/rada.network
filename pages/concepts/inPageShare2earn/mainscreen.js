@@ -105,7 +105,7 @@ function Concept() {
                         </div>
                       </div>
 
-                      <div className="bg-gray-100 bg-deepgray-50 grid gap-4 grid-cols-3 p-4">
+                      <div className="bg-gray-100 dark:bg-deepgray-50 grid gap-4 grid-cols-3 p-4">
                         <div className="flex justify-center">
                           <img className="" src={process.env.NEXT_PUBLIC_CDN + "/placeholders/share2earn-1.png"} alt="" />
                         </div>

@@ -13,7 +13,7 @@ function Concept() {
 
           <div className="section-body">
             <h1 className="mb-4">
-              <span class="text-xl lg:text-2xl font-semibold text-color-title">
+              <span className="text-xl lg:text-2xl font-semibold text-color-title">
                 Join program now. Earn RIR token ✨
               </span>
             </h1>
@@ -37,9 +37,9 @@ function Concept() {
             <p className="text-sm mb-8 text-gray-500 dark:text-gray-400">To encourage our members to share and help our project’s community grow farther, Rada will reward <span className="text-primary-700 dark:text-primary-400">RIR token</span> for each person visit through your refferal link and make these actions below:</p>
 
             <ul className="text-sm space-y-6">
-              <li className="flex items-center">
-                <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center">
-                  <i class="fa-light fa-hexagon"></i>
+              <li className="flex">
+                <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0">
+                  <i className="fa-light fa-hexagon"></i>
                   <i className="fa-duotone fa-user-plus"></i>
                 </span>
                 <div className="flex flex-col">
@@ -47,19 +47,19 @@ function Concept() {
                   <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+0.5 RIR</span> for each</span>
                 </div>
               </li>
-              <li className="flex items-center">
-                <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center">
-                  <i class="fa-light fa-hexagon"></i>
-                  <i class="fa-duotone fa-hand-holding-heart"></i>
+              <li className="flex">
+                <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0">
+                  <i className="fa-light fa-hexagon"></i>
+                  <i className="fa-duotone fa-hand-holding-heart"></i>
                 </span>
                 <div className="flex flex-col">
                   <strong className="text-base text-color-title">A Refferal Person join IDO and buy allocation</strong>
                   <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+1 RIR</span> for each</span>
                 </div>
               </li>
-              <li className="flex items-center">
-                <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center">
-                  <i class="fa-light fa-hexagon"></i>
+              <li className="flex">
+                <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0">
+                  <i className="fa-light fa-hexagon"></i>
                   <i className="fa-duotone fa-users"></i>
                 </span>
                 <div className="flex flex-col">
@@ -71,14 +71,14 @@ function Concept() {
 
             <form className="mt-4">
 
-              <fieldset class="space-y-4 mb-4 text-gray-500 dark:text-gray-400">
-                <legend class="sr-only">Notifications</legend>
-                <div class="relative flex items-start">
-                  <div class="flex items-center h-5">
-                    <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded" />
+              <fieldset className="space-y-4 mb-4 text-gray-500 dark:text-gray-400">
+                <legend className="sr-only">Notifications</legend>
+                <div className="relative flex items-start">
+                  <div className="flex items-center h-5">
+                    <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded" />
                   </div>
-                  <div class="ml-3 text-sm">
-                    <label for="comments" class="">
+                  <div className="ml-3 text-sm">
+                    <label for="comments" className="">
                       I confirm that I have to finish all missions to be eligible to receive rewards from Rada Network
                     </label>
                   </div>

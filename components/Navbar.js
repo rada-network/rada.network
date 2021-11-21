@@ -56,7 +56,7 @@ export const Navbar = observer(({}) => {
                 <circle className="inline-circle" cx="31.2583" cy="26.5" r="3" transform="rotate(-60 31.2583 26.5)" fill="#374151"/>
               </svg>
             </span>
-            <span className="nav-item--text">{t("Projects")}</span>
+            <span className="nav-item--text">Articles</span>
           </NavItem>
 
 

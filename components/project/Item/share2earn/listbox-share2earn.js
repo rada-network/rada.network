@@ -68,7 +68,7 @@ const SelectBannerType  = observer( () => {
                 <Listbox.Option
                   key={bannerTypeIdx}
                   className={({ active }) =>
-                    `${active ? 'text-primary-900 bg-primary-100' : 'text-gray-900'}
+                    `${active ? 'text-primary-900 bg-primary-100 dark:bg-primary-900 dark:text-white' : ''}
                           cursor-default select-none relative flex items-center w-full py-3 pl-3 pr-10`
                   }
                   value={bannerType}

@@ -21,7 +21,7 @@ export const Layout =  ({children,meta,bgImage}) => {
 
     <BackgroundWrapper image={bgImage} />
 
-    <div className="main-layout--wrapper glassmorphism">
+    <div className="main-layout--wrapper">
       <div className={`main-layout`}>
 
         {/* Mobile / Tablet Navbar */}

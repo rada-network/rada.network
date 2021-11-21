@@ -50,9 +50,9 @@ Nav Panels
   @apply flex flex-shrink-0 flex-col justify-between h-full;
   @apply border-r border-gray-200 dark:border-gray-700;
   @apply bg-gray-100 dark:bg-gray-700 2xl:bg-opacity-50 2xl:dark:bg-opacity-50 2xl:backdrop-blur-md;
-  @apply w-32 z-50;
-  /* width: var(--paneleft-width); */
-  /* flex-basis: var(--paneleft-width); */
+  @apply z-50;
+  width: var(--paneleft-width);
+  flex-basis: var(--paneleft-width);
 }
 
 .pane-left--bottom .btn {
@@ -279,7 +279,7 @@ Reader / Page Area
 
 .pane-content--sec--main {
   @apply w-full h-full;
-  @apply bg-white dark:bg-gray-900;
+  @apply bg-white dark:bg-gray-800;
 }
 
 @screen lg {

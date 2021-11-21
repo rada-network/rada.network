@@ -23,6 +23,7 @@ Nav Item
 .nav-item .icon {
   @apply w-8 h-4;
   @apply relative inline-flex justify-center mt-1.5 mb-2 lg:my-0 lg:mr-1.5 lg:-top-0.5 text-center;
+  /* @apply relative inline-flex justify-center mt-1.5 mb-2 text-center; */
   @apply text-lg lg:text-base leading-none;
   .fa-duotone {
     @apply relative;

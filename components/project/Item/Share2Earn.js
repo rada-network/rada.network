@@ -225,8 +225,8 @@ export default function ProjectShare2Earn({
             <p className="text-sm mb-8 text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{__html: t("welcome description", {provider: `<span class="text-primary-700 dark:text-primary-400">RIR token</span>`})}} />
 
             <ul className="text-sm space-y-6">
-              <li className="flex items-center">
-                <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center">
+              <li className="flex">
+                <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0">
                   <i className="fa-light fa-hexagon"></i>
                   <i className="fa-duotone fa-user-plus"></i>
                 </span>
@@ -242,8 +242,8 @@ export default function ProjectShare2Earn({
                 </div>
               </li>
               
-              <li className="flex items-center">
-                <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center">
+              <li className="flex">
+                <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0">
                   <i className="fa-light fa-hexagon"></i>
                   <i className="fa-duotone fa-users"></i>
                 </span>
