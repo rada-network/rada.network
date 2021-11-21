@@ -82,7 +82,7 @@ module.exports = {
 
       // Extra Font Sizes
       fontSize: {
-        '2xs': ['0.65rem', '1'],
+        '2xs': ['0.625rem', '1'],
         '3xs': ['0.5rem', '1'],
       },
 
