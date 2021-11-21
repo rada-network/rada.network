@@ -17,7 +17,7 @@ export default function ProjectNavbar({ symbol, project, slug }) {
   };
   return (
     <>
-      <div className="flex h-full w-limiter-lg relative lg:px-3">
+      <div className="flex h-full w-limiter-lg relative lg:px-4">
         <div className="page-back flex-shrink-0 ml-0 relative -left-0.5">
           <div className="btn">
             <Link href={`/${dataStore.lang}/launchverse`}>
