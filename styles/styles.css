@@ -65,7 +65,7 @@ Nav Panels
   @apply justify-between items-center px-2 py-2;
 
   .btn .btn--text {
-    @apply text-sm;
+    @apply text-xs;
   }
 
   .btn.btn-login {
