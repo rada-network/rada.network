@@ -37,7 +37,7 @@ export default function ProjectPage({ slug, project, locale }) {
   /* Dragger to resize main col */  
   const containerRef = useRef()
   return (
-    <Layout extraClass="page-home" meta={meta}>
+    <Layout extraClass="glassmorphism" meta={meta}>
 
       <div className={`pane-content`} ref={containerRef} >
         <ProjectItem project={project} slug={slug} page={page} />

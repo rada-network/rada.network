@@ -10,10 +10,7 @@ import Screen from "../utils/Responsive";
 import { useRef,useEffect } from "react";
 import BackgroundWrapper from "./BackgroundWrapper";
 
-export const Layout =  ({children,meta,bgImage}) => {
-
-  
-  
+export const Layout =  ({children,meta,bgImage,extraClass}) => {
   return (
     <>
     <Head meta={meta} />
@@ -21,7 +18,7 @@ export const Layout =  ({children,meta,bgImage}) => {
 
     <BackgroundWrapper image={bgImage} />
 
-    <div className="main-layout--wrapper">
+    <div className={`main-layout--wrapper ${extraClass || ''}`}>
       <div className={`main-layout`}>
 
         {/* Mobile / Tablet Navbar */}
