@@ -4,7 +4,7 @@ const Homepage = (props) => {
 }
 
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   return {
     redirect: {
       destination: "/launchverse/",
