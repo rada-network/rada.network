@@ -51,6 +51,18 @@ const MyApp = function MyApp({ Component, pageProps }){
   const [cookies, setCookie,removeCookie] = useCookies(["access_token"]);
   const { dataStore, detailStore } = usePageStore();
   dataStore.lang = pageProps.lang || (pageProps.locale || 'vi');
+
+  // Get ref send to cookie
+  const ref = router.query?.ref ?? '';
+  if (ref!='') {
+    setCookie("ref", ref, {
+      path: "/",
+      maxAge: 24 * 7 * 3600,
+    });
+  }
+
+
+
   useEffect(() => {
     if (session) {
       const { valid } = getTokenState(session.access_token);
@@ -70,6 +82,9 @@ const MyApp = function MyApp({ Component, pageProps }){
       } else {
         signOut(true).then(() => {
           removeCookie("access_token",{
+            path: "/", expires: -1,
+          });
+          removeCookie("ref",{
             path: "/", expires: -1,
           });
         })

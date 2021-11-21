@@ -53,7 +53,7 @@ Default Button
 */
 .btn-default {
   @apply px-2 py-1 items-center justify-center;
-  @apply text-sm font-medium text-gray-900 dark:text-white border border-transparent;
+  @apply text-sm font-medium text-gray-800 dark:text-white border border-transparent;
   @apply bg-gray-500 bg-opacity-10 dark:bg-gray-300 dark:bg-opacity-10;
 }
 
@@ -85,7 +85,7 @@ Sizes
 
 /* Colors */
 .btn-primary {
-  @apply border-transparent hover:border-transparent bg-primary-700 text-primary-100 hover:bg-primary-900 hover:text-white;
+  @apply border-transparent hover:border-transparent !bg-primary-700 !text-primary-100 hover:!bg-primary-900 hover:!text-white;
 }
 
 .btn-secondary {
@@ -268,6 +268,34 @@ Group Buttons
 .btn-filter-active {
   @apply justify-center cursor-pointer pointer-events-none;
   @apply bg-white text-opacity-100 dark:text-white dark:bg-deepgray-100 shadow-sm opacity-100;
+}
+
+
+/* 
+Toggle Buttons 
+*/
+.btn-group-toggle {
+  @apply rounded-full transition;
+  @apply bg-gray-400 bg-opacity-10 dark:bg-gray-200 dark:bg-opacity-10;
+  padding: 3px;
+}
+
+/* .btn-group-filter {
+  @apply text-xs space-x-2 lg:space-x-4;
+} */
+
+.btn-toggle,
+.btn-toggle-active {
+  @apply px-3 py-1 justify-center relative overflow-hidden;
+  @apply rounded-full bg-transparent opacity-50;
+  &:hover {
+    @apply opacity-100;
+  }
+}
+
+.btn-toggle-active {
+  @apply justify-center cursor-pointer pointer-events-none;
+  @apply bg-primary-700 text-white text-opacity-100 dark:text-white dark:bg-primary-500 shadow-sm opacity-100;
 }
 
 

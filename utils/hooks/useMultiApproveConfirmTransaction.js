@@ -88,6 +88,7 @@ const useMultiApproveConfirmTransaction = ({
     hasConfirmFailed: state.confirmState === 'fail',
     handleApprove: async () => {
       try {
+        console.log('Approve')
         const txs = await onApprove()
         dispatch({ type: 'approve_sending' })
         let receipts  = []

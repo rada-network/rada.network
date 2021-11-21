@@ -18,10 +18,8 @@ export default function LaunchpadContent({ project }) {
     useEffect(() => {
         const fetchLaunchpadInfo = async () => {
         try {
-            let tokensAllocated = await lauchpadContact.tokensAllocated()
             let availableBusd = await lauchpadContact.availableBusd()
             let updateInfo = {
-                tokensAllocated : utils.formatEther(tokensAllocated),
                 availableBusd : utils.formatEther(availableBusd),
             }
             setLaunchpadInfo(updateInfo)
@@ -96,11 +94,11 @@ export default function LaunchpadContent({ project }) {
                     
                     <p className="mt-auto pt-4">
                         <Link href={`/${dataStore.lang}/projects/${project.slug}/research`}>
-                            <a>
+                            <>
                             <a className="link">{t("Read full research")}
                             </a>
                             <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span>
-                            </a>
+                            </>
                         </Link>
                         
                     </p>

@@ -2,7 +2,7 @@ import { InjectedConnector } from '@web3-react/injected-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { StaticJsonRpcProvider } from '@ethersproject/providers'
 import { ethers } from 'ethers'
-import { RPC_CONFIG,POLLING_INTERVAL } from '../config'
+import { RPC_CONFIG,POLLING_INTERVAL,BUSD_CONTRACT,USDT_CONTRACT, RIR_ETH_CONTRACT,RIR_BSC_CONTRACT } from '../config'
 import useStore from "../../lib/useStore"
 
 
@@ -43,6 +43,24 @@ const useChainConfig = function(){
     }
   }
 
+  const getBusdAddress = () => {
+    if (store.network === "bsc"){
+      return BUSD_CONTRACT[chainId]
+    }
+    if (store.network === "eth"){
+      return USDT_CONTRACT[chainId]
+    }
+  }
+
+  const getRIRAddress = () => {
+    if (store.network === "bsc"){
+      return RIR_BSC_CONTRACT[chainId]
+    }
+    if (store.network === "eth"){
+      return RIR_ETH_CONTRACT[chainId]
+    }
+  }
+
   const rpcUrl = getNodeUrl()
   const chainId = getChainId()
 
@@ -51,6 +69,7 @@ const useChainConfig = function(){
   const walletconnect = new WalletConnectConnector({
     rpc: { [chainId]: rpcUrl },
     qrcode: true,
+    chainId: chainId,
     pollingInterval: POLLING_INTERVAL,
   })
 
@@ -82,7 +101,7 @@ const useChainConfig = function(){
 
   }
 
-  return {getChainId,getNodeUrl,injected,walletconnect,signMessage,getRpcUrl}
+  return {getChainId,getNodeUrl,injected,walletconnect,signMessage,getRpcUrl,chainId,getRIRAddress,getBusdAddress}
 }
 
 
