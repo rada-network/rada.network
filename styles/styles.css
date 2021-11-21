@@ -49,7 +49,7 @@ Nav Panels
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
   @apply border-r border-gray-200 dark:border-gray-700;
-  @apply bg-gray-100 dark:bg-gray-700 2xl:bg-opacity-50 2xl:dark:bg-opacity-50 2xl:backdrop-blur-md;
+  @apply bg-gray-100 dark:bg-gray-800 2xl:bg-opacity-50 2xl:dark:bg-opacity-50 2xl:backdrop-blur-md;
   @apply z-50;
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
@@ -65,7 +65,7 @@ Nav Panels
   @apply justify-between items-center px-2 py-2;
 
   .btn .btn--text {
-    @apply text-sm;
+    @apply text-xs;
   }
 
   .btn.btn-login {
@@ -146,7 +146,7 @@ Navbars on Mobile Tablet
   flex-basis: var(--navbar-height);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .page-details .pane-bottom {
     @apply hidden; /* Hide Mobile Navbar for more immersive look */
   }
@@ -192,6 +192,7 @@ Main Panels
   @apply relative float-left w-full;
   @apply flex flex-col w-full h-full;
   @apply md:border-r border-gray-100 dark:border-gray-700 dark:border-opacity-90;
+  @apply bg-white dark:bg-gray-900;
 }
 
 @screen lg {
@@ -203,7 +204,7 @@ Main Panels
 .pane-content--main--top,
 .pane-content--sec--top {
   @apply flex px-4 justify-between items-center flex-shrink-0 relative;
-  @apply bg-white dark:bg-gray-800;
+  /* @apply bg-white dark:bg-gray-800; */
   height: var(--toolbar-height);
 }
 
@@ -211,9 +212,9 @@ Main Panels
   @apply border-b border-gray-400 border-opacity-20;
 }
 
-.glassmorphism .pane-content--sec--top {
+/* .glassmorphism .pane-content--sec--top {
   @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur;
-}
+} */
 
 
 /* Hide content toolbar on Tablet */
@@ -233,7 +234,7 @@ Card List Area
 */
 .pane-content--main--main {
   @apply flex flex-auto flex-col w-full h-0;
-  @apply bg-white dark:bg-gray-800;
+  /* @apply bg-white dark:bg-gray-800; */
 }
 
 @screen lg {
@@ -248,6 +249,7 @@ Reader / Page Area
 .pane-content--sec {
   @apply float-left w-full z-10;
   @apply hidden flex-auto md:flex flex-col;
+  @apply bg-white dark:bg-gray-900;
 }
 
 @screen lg {
@@ -279,14 +281,14 @@ Reader / Page Area
 
 .pane-content--sec--main {
   @apply w-full h-full;
-  @apply bg-white dark:bg-gray-800;
+  /* @apply bg-white dark:bg-gray-800; */
 }
 
-@screen lg {
+/* @screen lg {
   .glassmorphism .pane-content--sec--main {
     @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur;
   }
-}
+} */
 
 /* 
 Layout Uitlites 
@@ -327,7 +329,7 @@ Layout Uitlites
 /* 
 Main Layout when scrolling
 --------------------------------------------- */
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
 
   .pane-center--top {
     transition: margin-top 150ms linear;
@@ -351,13 +353,21 @@ Main Layout when scrolling
     transition-delay: 300ms;
   } */
 
-  .list-away-top,
+  /* .list-away-top,
   .page-details {
     .pane-content--main--top,
     .pane-content--sec--top {
       @apply fixed top-0 inset-x-0 z-50;
-      @apply bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur;
+      @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur;
     }
+  } */
+
+  .list-away-top .pane-content--main--top,
+  .list-away-top .pane-content--sec--top,
+  .page-details .pane-content--main--top,
+  .page-details .pane-content--sec--top {
+    @apply fixed top-0 inset-x-0 z-50;
+    @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur;
   }
 
   /* Reader Lists  */

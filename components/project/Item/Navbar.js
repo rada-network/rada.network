@@ -35,14 +35,14 @@ export default function ProjectNavbar({ symbol, project, slug }) {
             <NavItem uri={symbol}>{t("LaunchVerse")}</NavItem>
             <span className="tab-item--divider"></span>
             <NavItem uri={`${symbol}/research`}>
-              <span className="token-symbol mr-2">
+              <span className="token-symbol flex-shrink-0 lg:mr-2">
                 <img
                   src={project?.token?.logo}
                   className="h-px-20 w-px-20"
                   alt={project?.token?.name}
                 />
               </span>
-              <span className="tab-item--text !block">
+              <span className="tab-item--text">
                 {t("Research", { name: project?.token?.symbol })}
               </span>
             </NavItem>

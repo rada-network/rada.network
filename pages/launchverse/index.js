@@ -50,7 +50,7 @@ const LaunchVerse = (props) => {
                       <strong className="block text-yellow-400">RADA Launchverse</strong>
                     </h2>
 
-                    <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                    <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                       LaunchVerse is a product of RADA - The DAO-based AngelList for Blockchain. As a leading decentralized community-driven LaunchPad, we fund and launch the most promising Gamefi and Blockchain projects.
                     </p>
                   </div>
@@ -90,7 +90,7 @@ const LaunchVerse = (props) => {
                     </div>
 
                     <div className="
-                                flex flex-col md:flex-row md:items-center px-8 py-8 md:py-4
+                                flex flex-col md:flex-row md:items-center px-4 md:px-4 py-4 md:py-4
                                 bg-gradient-to-br from-gray-100 to-gray-100
                                 dark:from-gray-800 dark:to-gray-800
                                 rounded-b-xl
@@ -111,7 +111,7 @@ const LaunchVerse = (props) => {
                           <h3>
                             <span className="text-3xl leading-tight text-black dark:text-white font-semibold font-altsans">The Parallel</span>
                           </h3>
-                          <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                          <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                             The Parallel is an Infinite Metaverse where players can limitlessly create everything, enjoy the unexpected experience that only Parallel can make.
                           </p>
                         </div>
@@ -133,7 +133,7 @@ const LaunchVerse = (props) => {
                 <div className="mt-8">
 
                   <div className="
-                              flex flex-col md:flex-row items-center justify-between p-8
+                              flex flex-col md:flex-row items-center justify-between p-4 md:p-8
                               border border-gray-200 dark:border-gray-700
                               rounded-xl
                             "
@@ -148,7 +148,7 @@ const LaunchVerse = (props) => {
                           by Share2Earn
                         </span>
                       </h3>
-                      <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                         We make a unique tokenomic that encourage community to share projects and earn RIR token. The more you share, the more you earn. Both parties can archive their goals easily.
                       </p>
                       <div className="mt-4">
@@ -179,9 +179,9 @@ const LaunchVerse = (props) => {
                     </h2>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-8">
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-8">
                     <div className="
-                                flex flex-col items-stretch justify-start p-8
+                                flex flex-col items-stretch justify-start p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
                                 rounded-xl h-full
                               "
@@ -189,13 +189,13 @@ const LaunchVerse = (props) => {
                       <div className="flex-shrink-0">
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/shield-hexa-dark.svg"} alt="The Parallel" />
                       </div>
-                      <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                         We review projects and kyc team carefully so you can invest safely
                       </p>
                     </div>
 
                     <div className="
-                                flex flex-col items-stretch justify-start p-8
+                                flex flex-col items-stretch justify-start p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
                                 rounded-xl h-full
                               "
@@ -203,13 +203,13 @@ const LaunchVerse = (props) => {
                       <div className="flex-shrink-0">
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/bolt-hexa-dark.svg"} alt="The Parallel" />
                       </div>
-                      <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                         Tier system can help user that contribute most to project get more reward
                       </p>
                     </div>
 
                     <div className="
-                                flex flex-col items-stretch justify-start p-8
+                                flex flex-col items-stretch justify-start p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
                                 rounded-xl h-full
                               "
@@ -217,13 +217,13 @@ const LaunchVerse = (props) => {
                       <div className="flex-shrink-0">
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/net-hexa-dark.svg"} alt="The Parallel" />
                       </div>
-                      <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                         Launchverse support multi chain: Etherium, BSC and Polygon
                       </p>
                     </div>
 
                     <div className="
-                                flex flex-col items-stretch justify-start p-8
+                                flex flex-col items-stretch justify-start p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
                                 rounded-xl h-full
                               "
@@ -231,13 +231,13 @@ const LaunchVerse = (props) => {
                       <div className="flex-shrink-0">
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/scale-hexa-dark.svg"} alt="The Parallel" />
                       </div>
-                      <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                         A Distribution Portal for projects to vest project sold tokens
                       </p>
                     </div>
 
                     <div className="
-                                flex flex-col items-stretch justify-start p-8
+                                flex flex-col items-stretch justify-start p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
                                 rounded-xl h-full
                               "
@@ -245,13 +245,13 @@ const LaunchVerse = (props) => {
                       <div className="flex-shrink-0">
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/incubate-hexa-dark.svg"} alt="The Parallel" />
                       </div>
-                      <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                         Help to incubate early stage project with our professional experts
                       </p>
                     </div>
 
                     <div className="
-                                flex flex-col items-stretch justify-start p-8
+                                flex flex-col items-stretch justify-start p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
                                 rounded-xl h-full
                               "
@@ -259,7 +259,7 @@ const LaunchVerse = (props) => {
                       <div className="flex-shrink-0">
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/dao-hexa-dark.svg"} alt="The Parallel" />
                       </div>
-                      <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                         Fully function DAO with Governance model and Permissionless listing
                       </p>
                     </div>
