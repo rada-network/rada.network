@@ -81,7 +81,7 @@ const Layout = observer((props) => {
                               <strong className="block text-yellow-400">RADA Launchverse</strong>
                             </h2>
 
-                            <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                            <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                               LaunchVerse is a product of RADA - The DAO-based AngelList for Blockchain. As a leading decentralized community-driven LaunchPad, we fund and launch the most promising Gamefi and Blockchain projects.
                             </p>
                           </div>
@@ -142,7 +142,7 @@ const Layout = observer((props) => {
                                   <h3>
                                     <span className="text-3xl leading-tight text-black dark:text-white font-semibold font-altsans">The Parallel</span>
                                   </h3>
-                                  <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                                  <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                                     The Parallel is an Infinite Metaverse where players can limitlessly create everything, enjoy the unexpected experience that only Parallel can make.
                                   </p>
                                 </div>
@@ -176,7 +176,7 @@ const Layout = observer((props) => {
                                   by Share2Earn
                                 </span>
                               </h3>
-                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                              <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                                 We make a unique tokenomic that encourage community to share projects and earn RIR token. The more you share, the more you earn. Both parties can archive their goals easily.
                               </p>
                               <div className="mt-4">
@@ -215,7 +215,7 @@ const Layout = observer((props) => {
                               <div className="flex-shrink-0">
                                 <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/shield-hexa-dark.svg"} alt="The Parallel" />
                               </div>
-                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                              <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                                 We review projects and kyc team carefully so you can invest safely
                               </p>
                             </div>
@@ -229,7 +229,7 @@ const Layout = observer((props) => {
                               <div className="flex-shrink-0">
                                 <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/bolt-hexa-dark.svg"} alt="The Parallel" />
                               </div>
-                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                              <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                                 Tier system can help user that contribute most to project get more reward
                               </p>
                             </div>
@@ -243,7 +243,7 @@ const Layout = observer((props) => {
                               <div className="flex-shrink-0">
                                 <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/net-hexa-dark.svg"} alt="The Parallel" />
                               </div>
-                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                              <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                                 Launchverse support multi chain: Etherium, BSC and Polygon
                               </p>
                             </div>
@@ -257,7 +257,7 @@ const Layout = observer((props) => {
                               <div className="flex-shrink-0">
                                 <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/scale-hexa-dark.svg"} alt="The Parallel" />
                               </div>
-                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                              <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                                 A Distribution Portal for projects to vest project sold tokens
                               </p>
                             </div>
@@ -271,7 +271,7 @@ const Layout = observer((props) => {
                               <div className="flex-shrink-0">
                                 <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/incubate-hexa-dark.svg"} alt="The Parallel" />
                               </div>
-                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                              <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                                 Help to incubate early stage project with our professional experts
                               </p>
                             </div>
@@ -285,7 +285,7 @@ const Layout = observer((props) => {
                               <div className="flex-shrink-0">
                                 <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/dao-hexa-dark.svg"} alt="The Parallel" />
                               </div>
-                              <p className="text-base leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                              <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
                                 Fully function DAO with Governance model and Permissionless listing
                               </p>
                             </div>
