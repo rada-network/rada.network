@@ -89,7 +89,12 @@ const LaunchVerse = (props) => {
 
                     </div>
 
-                    <div className=" flex flex-col md:flex-row md:items-center px-8 py-8 md:py-4 bg-gradient-to-br from-gray-100 to-gray-100 dark:from-gray-800 dark:to-gray-800 rounded-b-xl"
+                    <div className="
+                                flex flex-col md:flex-row md:items-center px-4 md:px-8 py-4 md:py-4
+                                bg-gradient-to-br from-gray-100 to-gray-100
+                                dark:from-gray-800 dark:to-gray-800
+                                rounded-b-xl
+                              "
                     >
                       {/* <div className="
                                 flex items-center absolute bottom-0 left-0 right-0 px-8 py-4
@@ -113,8 +118,9 @@ const LaunchVerse = (props) => {
 
                         <div className="flex-shrink-0 mt-4 lg:mt-0 lg:ml-8">
                           <Link href="/launchverse/parallel" >
-                            <a href="/launchverse/parallel" title="The parallel universe" className="btn btn-secondary btn-lg btn-rounded">Discover Now</a>
-                            
+                            <a href="/launchverse/parallel" title="The parallel universe" className="btn btn-secondary btn-lg btn-rounded">
+                              <span className="text-sm lg:text-base">Discover Now</span>
+                            </a>
                           </Link>
                         </div>
                       </div>
@@ -149,8 +155,8 @@ const LaunchVerse = (props) => {
                       <div className="mt-4">
                         <Link href="/launchverse/parallel/share2earn">
                         <a href="/launchverse/parallel/share2earn" className="group text-secondary-400">
-                          Joint now
-                          <span className="icon relative left-2 group-hover:left-3 transition-all"><i class="fas fa-angle-right"></i></span>
+                          <span className="text-sm lg:text-base">Joint now</span>
+                          <span className="icon text-sm lg:text-base relative left-2 group-hover:left-3 transition-all"><i class="fas fa-angle-right"></i></span>
                         </a>
                         </Link>
                       </div>

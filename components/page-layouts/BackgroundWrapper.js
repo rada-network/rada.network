@@ -4,7 +4,7 @@ const BackgroundWrapper = function({image}){
   const { theme } = useTheme()
   const ref = useRef()
   const randomeBg = function(){
-    const index = Math.floor(Math.random() * 10) % 5 + 1;
+    const index = Math.floor(Math.random() * 10) % 10 + 1;
     return index;
   }
 

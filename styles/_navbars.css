@@ -7,7 +7,7 @@ Navbar
 
 .navbar-main {
   height: var(--navbar-height);
-  @apply flex justify-evenly lg:flex-col w-full lg:h-auto lg:p-3;
+  @apply flex justify-evenly lg:flex-col w-full lg:h-auto lg:px-3;
 }
 
 /* 
@@ -43,8 +43,8 @@ Nav Item
 Nav Item Active 
 */
 .nav-item-active {
-  @apply lg:bg-gray-200 lg:dark:bg-gray-900 text-primary-700 text-opacity-100 rounded-lg;
-  @apply dark:text-primary-400 dark:text-opacity-100;
+  @apply lg:bg-white lg:bg-opacity-70 text-primary-700 rounded-lg;
+  @apply lg:dark:bg-deepgray-50 lg:dark:bg-opacity-80 dark:text-primary-400 dark:text-opacity-100;
   @apply opacity-100;
 }
 

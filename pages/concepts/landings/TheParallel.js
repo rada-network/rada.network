@@ -148,7 +148,9 @@ const Layout = observer((props) => {
                                 </div>
 
                                 <div className="flex-shrink-0 mt-4 lg:mt-0 lg:ml-8">
-                                  <a href="/projects/parallel" className="btn btn-secondary btn-lg btn-rounded">Discover Now</a>
+                                  <a href="/projects/parallel" className="btn btn-secondary btn-lg btn-rounded">
+                                    <span className="text-sm lg:text-base">Discover Now</span>
+                                  </a>
                                 </div>
                               </div>
                             </div>
@@ -181,8 +183,8 @@ const Layout = observer((props) => {
                               </p>
                               <div className="mt-4">
                                 <a href="" className="group text-secondary-400">
-                                  Joint now
-                                  <span className="icon relative left-2 group-hover:left-3 transition-all"><i class="fas fa-angle-right"></i></span>
+                                  <span className="text-sm lg:text-base">Joint now</span>
+                                  <span className="icon text-sm lg:text-base relative left-2 group-hover:left-3 transition-all"><i class="fas fa-angle-right"></i></span>
                                 </a>
                               </div>
                             </div>

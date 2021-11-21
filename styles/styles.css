@@ -10,7 +10,7 @@ Layout
 .main-layout {
   @apply flex flex-col lg:flex-row h-full w-full items-stretch overflow-hidden;
   @apply max-w-screen-2xl 2xl:mx-auto 2xl:rounded-2xl;
-  @apply border border-gray-400 border-opacity-20;
+  @apply lg:border border-gray-400 border-opacity-20;
   animation: fadein 400ms linear;
   box-shadow: 0 0 16px 0 rgba(0,0,0,.04);
 }
@@ -26,12 +26,17 @@ Layout
 
 @screen 2xl {
   .body-decor {
-    @apply fixed inset-0 w-full h-full -z-1;
+    @apply fixed inset-0 w-full h-full -z-2;
     /* @apply filter brightness-50; */
     /* background-image: url("https://source.unsplash.com/user/nnth/likes/1600x900"); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
+  }
+  .body-decor::after {
+    content: " ";
+    @apply fixed inset-0 w-full h-full -z-1;
+    @apply bg-gray-200 dark:bg-deepgray-50 bg-opacity-50 dark:bg-opacity-50;
   }
   .body-decor--text {
     @apply absolute right-4 bottom-4 px-2 py-2 rounded-full shadow;
@@ -142,7 +147,7 @@ Navbars on Mobile Tablet
 */
 .pane-bottom {
   @apply flex justify-between w-full h-auto order-last;
-  @apply bg-gray-50 dark:bg-gray-800 z-50;
+  @apply bg-white dark:bg-gray-900 z-50;
   flex-basis: var(--navbar-height);
 }
 
