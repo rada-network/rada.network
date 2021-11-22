@@ -13,6 +13,8 @@ import { createOrUpdateShareLogById } from "../../../../data/query/createOrUpdat
 import mergeImages from 'merge-images';
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import RadaSvg from "@components/svg/rada";
+import { CopyToClipboard } from "react-copy-to-clipboard"
+import { toast } from "react-toastify"
 
 
 const Share2EarnMainScreen = observer(({ project, user }) => {
@@ -247,6 +249,10 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
     mergedImage = null
   }
 
+  const handleCopy = () => {
+    toast.success("Copied to clipboard", {})
+  }
+
   return (
     <>
       <div className="pane-content--sec--main grid scrollbar">
@@ -285,9 +291,15 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
                       </span>
                       <div className="px-2 py-1 rounded flex bg-gray-100 dark:bg-gray-800 ml-auto list-value hover:bg-gray-200 hover:dark:bg-gray-900">
                         <div>{`${account.substr(0,5)}...${account.substr(-4)}`}</div>
-                        <button class="btn ml-2">
-                          <i className="fa-duotone fa-copy text-xs"></i>
-                        </button>
+                        <CopyToClipboard
+                          onCopy={handleCopy}
+                          text={account}
+                        >
+                          <button class="btn ml-2">
+                            <i className="fa-duotone fa-copy text-xs"></i>
+                          </button>
+                        </CopyToClipboard>
+                        
                       </div>
                     </li>
                     <li className="list-pair mb-2">
