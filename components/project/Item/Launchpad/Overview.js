@@ -50,6 +50,10 @@ export default function LaunchpadOverview({ project }) {
       <div className="page-media">
         <div className="media-player">
           <div className="w-full h-full">
+            {project.cover_embed ? 
+            <div className={`aspect-w-16 aspect-h-9`} dangerouslySetInnerHTML={{__html : project.cover_embed}}>
+            </div>
+            :
             <div className={`aspect-w-16 aspect-h-9`}>
               <img
                 className="rounded-lg"
@@ -57,6 +61,7 @@ export default function LaunchpadOverview({ project }) {
                 itemProp="image"
               />
             </div>
+            }
           </div>
         </div>
       </div>
