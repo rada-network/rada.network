@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "module": "commonjs",
+    "target": "es6",
+    "baseUrl": "./",
     "paths": {
-      //Assuming your components/utilities live in ./src
-      //Update this path as necessary
       "@lib/*": ["./lib/*"],
       "@utils/*": ["./utils/*"],
       "@config/*": ["./config/*"],
@@ -11,14 +11,5 @@
       "@data/*": ["./data/*"]
     }
   },
-  "exclude": [
-    ".git",
-    ".app-cache",
-    ".npm",
-    ".npm-tmp",
-    ".next",
-    "node_modules",
-    "**/.next/*",
-    "**/node_modules/*",
-  ]
+  "exclude": ["node_modules", "**/node_modules/*",".next"]
 }

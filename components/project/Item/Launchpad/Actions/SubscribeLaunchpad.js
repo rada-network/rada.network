@@ -8,8 +8,10 @@ import { useTranslation } from "next-i18next";
 const SubscribeLaunchpad = ({ project }) => {
   const store = useStore()
   const {t} = useTranslation("launchpad")
-  const {data} = useSWR('/api/kyc-status?refId=' + store.user.id, fetchJson)
-  if (data) store.kyc.update(data.status)
+  if (project.is_kyc){
+    const {data} = useSWR('/api/kyc-status?refId=' + store.user.id, fetchJson)
+    if (data) store.kyc.update(data.status)
+  }
   return (
     <>
       <div className="mb-8">
@@ -47,7 +49,7 @@ const Login = () => {
         <div className="list-group--item--media">
           <span className="icon"><i className="fas fa-user-check"></i></span>
         </div>
-        <label for="blockchain-wallet" className="text-color-desc">User</label>
+        <label htmlFor="blockchain-wallet" className="text-color-desc">User</label>
       </div>
       <div className="flex-1 md:mt-0">
         <div className="relative pl-8 md:pl-0 w-full flex items-center">

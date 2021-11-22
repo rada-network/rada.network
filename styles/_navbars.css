@@ -7,23 +7,24 @@ Navbar
 
 .navbar-main {
   height: var(--navbar-height);
-  @apply flex justify-evenly lg:flex-col w-full lg:h-auto;
+  @apply flex justify-evenly lg:flex-col w-full lg:h-auto lg:px-3;
 }
 
 /* 
 Nav Item
 */
 .nav-item {
-  @apply relative flex flex-col lg:flex-row items-center w-full h-full px-1.5 py-0.5 lg:py-2 transition;
+  @apply relative flex flex-col items-center w-full h-full px-1.5 py-0.5 lg:py-3 transition;
   @apply font-medium whitespace-nowrap;
-  @apply opacity-80;
-  @apply hover:opacity-100;
+  @apply text-gray-800 dark:text-gray-200;
+  @apply opacity-70 hover:opacity-100;
 }
 
 .nav-item .icon {
   @apply w-8 h-4;
-  @apply relative inline-flex justify-center mt-1.5 mb-2 lg:my-0 lg:mr-1.5 lg:-top-0.5 text-center;
-  @apply text-lg lg:text-base leading-none;
+  @apply relative inline-flex justify-center mt-1.5 mb-2 lg:-top-0.5 text-center;
+  /* @apply relative inline-flex justify-center mt-1.5 mb-2 text-center; */
+  @apply text-lg leading-none;
   .fa-duotone {
     @apply relative;
   }
@@ -31,22 +32,23 @@ Nav Item
 
 /* Rada Nav */
 .nav-item .icon-rada svg {
-  transform: scale(1.18);  /* make the svg bigger */
+  transform: scale(1.25);  /* make the svg bigger */
 }
 
 .nav-item--text {
-  @apply text-2xs lg:text-sm;
+  @apply text-2xs lg:text-xs;
 }
 
 /* 
 Nav Item Active 
 */
 .nav-item-active {
-  @apply text-primary-700 text-opacity-100;
-  @apply dark:text-primary-400 dark:text-opacity-100;
+  @apply lg:bg-white lg:bg-opacity-70 text-primary-700 rounded-lg;
+  @apply lg:dark:bg-deepgray-50 lg:dark:bg-opacity-80 dark:text-primary-400 dark:text-opacity-100;
   @apply opacity-100;
 }
 
+.nav-item-active .icon-rada svg,
 .pane-bottom .nav-item-active .icon-rada svg {
   .inline-circle {
     fill: #6D28D9;
@@ -59,9 +61,7 @@ Nav Item Active
   }
 }
 
-.nav-item-active .icon-rada svg,
-.dark .nav-item-active .icon-rada svg,
-.pane-left .nav-item-active .icon-rada svg {
+.dark .nav-item-active .icon-rada svg {
   .inline-rec {
     fill: #8B5CF6;
   }

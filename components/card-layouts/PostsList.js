@@ -30,6 +30,9 @@ export const PostsListWrapper = observer(function ({}){
     
     scrollBox1.current.removeEventListener('scroll', mobileScroll);
     scrollBox1.current.addEventListener('scroll', mobileScroll);
+
+    scrollBox1.current.removeEventListener('scroll', scrollUpDown);
+    scrollBox1.current.addEventListener('scroll', scrollUpDown);
     //mobileScroll()
     handleLoadMoreItem()
     return () => {
@@ -37,6 +40,7 @@ export const PostsListWrapper = observer(function ({}){
       if (scrollBox1?.current) {
         scrollBox1.current.scrollTo(0, 0)    
         scrollBox1.current.removeEventListener('scroll', mobileScroll);
+        scrollBox1.current.removeEventListener('scroll', scrollUpDown);
       }
     }
   },[dataStore.currentTab,dataStore.query,dataStore.type,dataStore.forceUpdate])
@@ -44,16 +48,19 @@ export const PostsListWrapper = observer(function ({}){
   let lastPos = 0
   const mobileScroll = function(e){
     const el = scrollBox1.current
+    const bottom = el.scrollHeight - el.scrollTop < el.clientHeight +100;
+    if (bottom) handleLoadMoreItem()
+  }
+
+  const scrollUpDown = function(e){
+    const el = scrollBox1.current
     
-    if (el.scrollTop > 100 && el.scrollTop >= lastPos) {
+    if (el.scrollTop  > lastPos) {
       document.body.classList.add(awayCls)
-    } else if ((el.scrollTop < el.scrollHeight - el.clientHeight - 100 && el.scrollTop < lastPos) || el.scrollTop < 20) {
+    } else if (el.scrollTop <= lastPos) {
       document.body.classList.remove(awayCls)
     }
     lastPos = el.scrollTop
-
-    const bottom = el.scrollHeight - el.scrollTop < el.clientHeight +100;
-    if (bottom) handleLoadMoreItem()
   }
 
   const handleLoadMoreItem = () =>{

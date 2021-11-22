@@ -1,6 +1,6 @@
 import { useState } from "react"
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React"
-import { useERC20,useLaunchpadContract } from "@utils/hooks/useContracts"
+import { useBUSDContract,useRIRContract, useERC20,useLaunchpadContract } from "@utils/hooks/useContracts"
 import useMultiApproveConfirmTransaction from "@utils/hooks/useMultiApproveConfirmTransaction"
 import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
 import { ethers } from 'ethers'
@@ -10,31 +10,30 @@ import { useTranslation } from "next-i18next"
 import SelectTokenType from "./SelectToken"
 
 const SwapTokens = ({project,accountBalance,fetchAccountBalance}) => {
-
+  const {launchpadInfo,loading} = useLaunchpadInfo({project})
   const [isBusd, setIsBusd] = useState(accountBalance.rirBalance > 0 ? false : true)
+  if (loading) return null
   return (
     <>
       {accountBalance?.rirBalance > 0 && !isBusd   ? 
-      <SubcribeByRIR project={project} setIsBusd={setIsBusd} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} />
+      <SubcribeByRIR project={project} setIsBusd={setIsBusd} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} />
       :
-      <SubcribeByBUSD project={project} accountBalance={accountBalance} setIsBusd={setIsBusd} fetchAccountBalance={fetchAccountBalance}/>
+      <SubcribeByBUSD project={project} accountBalance={accountBalance} setIsBusd={setIsBusd} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo}/>
       }
     </>
   )
 }
 
-const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance}) => {
+const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,launchpadInfo}) => {
   const {t} = useTranslation("launchpad")
   const {account} = useActiveWeb3React()
 
-  const {launchpadInfo} = useLaunchpadInfo({project})
-
-  const rirContract = useERC20(launchpadInfo.rirAddress)
-  const bUSDContract = useERC20(launchpadInfo.bUSDAddress)
+  const rirContract = useRIRContract()
+  const bUSDContract = useBUSDContract()
   const launchpadContract = useLaunchpadContract(project.swap_contract)
   const {callWithGasPrice} = useCallWithGasPrice()
   const [numberRIR,setNumberRIR] = useState(1)
-  
+
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm,handleReload } =
   useMultiApproveConfirmTransaction({
       onRequiresApproval: async () => {
@@ -47,7 +46,7 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance}) =
         }
       },
       onApprove: async () => {
-        const receipt_rir = await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberRIR)])
+        const receipt_rir = await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberRIR.toString())])
         const numberBusd = (parseFloat(numberRIR) * 100).toString()
         const receipt_busd =  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberBusd)])
         return [receipt_rir,receipt_busd]
@@ -79,7 +78,7 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance}) =
   !isApproved ||
   isConfirmed ||
   !numberRIR ||
-  new ethers.utils.parseEther(numberRIR).lte(0)  
+  new ethers.utils.parseEther(numberRIR.toString()).lte(0)  
   return (
     <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "") }>
 
@@ -122,18 +121,15 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance}) =
   )
 }
 
-const SubcribeByBUSD = ({project,accountBalance,setIsBusd,fetchAccountBalance}) => {
+const SubcribeByBUSD = ({project,accountBalance,setIsBusd,fetchAccountBalance,launchpadInfo}) => {
   const {t} = useTranslation("launchpad")
   const {account} = useActiveWeb3React()
 
-  const {launchpadInfo} = useLaunchpadInfo({project})
-
-  const rirContract = useERC20(launchpadInfo.rirAddress)
-  const bUSDContract = useERC20(launchpadInfo.bUSDAddress)
+  const bUSDContract = useBUSDContract()
   const launchpadContract = useLaunchpadContract(project.swap_contract)
   const {callWithGasPrice} = useCallWithGasPrice()
   const [numberBusd,setNumberBusd] = useState(100)
-  
+
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm,handleReload } =
   useMultiApproveConfirmTransaction({
       onRequiresApproval: async () => {
@@ -141,11 +137,12 @@ const SubcribeByBUSD = ({project,accountBalance,setIsBusd,fetchAccountBalance}) 
           const response2 = await bUSDContract.allowance(account, launchpadContract.address)
           return response2.gt(0) 
         } catch (error) {
+          console.log(error)
           return false
         }
       },
       onApprove: async () => {
-        const receipt_busd =  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberBusd)])
+        const receipt_busd =  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberBusd.toString())])
         return [receipt_busd]
       },
       onApproveSuccess: async ({ receipts }) => {
@@ -157,7 +154,7 @@ const SubcribeByBUSD = ({project,accountBalance,setIsBusd,fetchAccountBalance}) 
       },
       onConfirm: () => {
         //console.log(ethers.utils.parseEther(numberRIR).toString())
-        return callWithGasPrice(launchpadContract, 'createOrder', [ethers.utils.parseEther(numberBusd),false])
+        return callWithGasPrice(launchpadContract, 'createOrder', [ethers.utils.parseEther(numberBusd.toString()),false])
       },
       onSuccess: async ({ receipt }) => {
         await fetchAccountBalance()
@@ -166,11 +163,8 @@ const SubcribeByBUSD = ({project,accountBalance,setIsBusd,fetchAccountBalance}) 
         setNumberBusd(0)
       },
     })
-  const disableBuying =
-  !isApproved ||
-  isConfirmed ||
-  !numberBusd ||
-  new ethers.utils.parseEther(numberBusd).lte(0)
+
+  console.log(isApproving, isApproved, isConfirmed, isConfirming)
   return (
     <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "") }>
 
@@ -178,12 +172,12 @@ const SubcribeByBUSD = ({project,accountBalance,setIsBusd,fetchAccountBalance}) 
           
           <div className="mt-1 relative flex">
             <div className="flex-1">
-              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">Currency</label>
+              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Currency")}</label>
               <SelectTokenType setIsBusd={setIsBusd} init={1} accountBalance={accountBalance}/>
             </div>
             {/* remove the above block if user doesn't have RIR */}
             <div className="flex-1">
-              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">Amount</label>
+              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Amount")}</label>
               <select id="amount" name="amount" onChange={e => {setNumberBusd(e.currentTarget.value)}} className="select-custom !rounded-l-none">
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option className="text-gray-300" selected value={100}>100 BUSD</option>

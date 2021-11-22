@@ -70,7 +70,7 @@ const useMultiApproveConfirmTransaction = ({
   const handlePreApprove = useRef(onRequiresApproval)
   // Check if approval is necessary, re-check if account changes
   useEffect(() => {
-    if (account && handlePreApprove.current) {
+    if (!!account && handlePreApprove.current) {
       handlePreApprove.current().then((result) => {
         if (result) {
           dispatch({ type: 'requires_approval' })
@@ -88,6 +88,7 @@ const useMultiApproveConfirmTransaction = ({
     hasConfirmFailed: state.confirmState === 'fail',
     handleApprove: async () => {
       try {
+        console.log('Approve')
         const txs = await onApprove()
         dispatch({ type: 'approve_sending' })
         let receipts  = []

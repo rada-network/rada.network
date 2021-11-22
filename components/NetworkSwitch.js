@@ -8,7 +8,7 @@ const NetworkSwitch = ({
   const options = [
     {
       value : 'bsc',
-      label : 'Binance Smart Chain'
+      label : 'BSC'
     },
     {
       value : 'eth',

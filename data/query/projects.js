@@ -39,6 +39,16 @@ const projectBySlugGql = gql`
             title
             description
         }
+        share_campaign{
+            id
+            lang
+            facebook_banner
+            linkedin_banner
+            twitter_banner
+            avatar_frame
+            incentive_level1
+            incentive_level2
+          }
         }
     }
     `

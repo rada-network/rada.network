@@ -243,7 +243,7 @@ const ResizeerWrapper = function({mainRef,dataStore,containerRef}){
     if (isNaN(mwp)) {
       mwp = 40
     }
-    if (mwp > 50) mwp = 50
+    if (mwp > 40) mwp = 40
     if (mwp < 30) mwp = 30
     dataStore.home.mainwidth=mwp
     const style=`--main-width: ${mwp}%`
@@ -257,7 +257,7 @@ const ResizeerWrapper = function({mainRef,dataStore,containerRef}){
     if (!pw) pw = mainRef.current.parentNode.clientWidth
     // calculate width
     let mwp = Math.round(mainRef.current.clientWidth / pw * 100)
-    if (mwp > 50) mwp = 50
+    if (mwp > 40) mwp = 40
     if (mwp < 30) mwp = 30
     dataStore.home.mainwidth=mwp
     const style=`--main-width: ${mwp}%`
@@ -270,7 +270,7 @@ const ResizeerWrapper = function({mainRef,dataStore,containerRef}){
     // calculate width
     const dw = e.clientX - e.startX
     let mwn = Math.round(mw + dw)
-    if (mwn > 0.5*pw) mwn = Math.round(0.5*pw)
+    if (mwn > 0.4*pw) mwn = Math.round(0.4*pw)
     if (mwn < 0.3*pw) mwn = Math.round(0.3*pw)
     mainRef.current.style.width = mwn + 'px'
     mainRef.current.nextSibling.style.width = (pw-mwn-1) + 'px'

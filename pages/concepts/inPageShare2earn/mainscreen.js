@@ -1,6 +1,7 @@
 import { Head } from "../../../components/Head";
 
-import SelectBannerType from "../../../components/concepts/listboxes/listbox-share2earn";
+import SelectBannerType from "../../../components/concepts/listboxes/listbox-s2e";
+import Toggle from "../../../components/concepts/toggles/toggle-s2e";
 
 function Concept() {
   return (
@@ -21,23 +22,58 @@ function Concept() {
 
             <div>
               <h1 className="">
-                <span class="text-xl lg:text-lg font-semibold text-color-title">
+                <span className="text-xl lg:text-lg font-semibold text-color-title">
                   You have joined successfully 
                 </span>
               </h1>
-              <div className="flex items-baseline">
-                <a href="#" className="link text-sm">View refferal balance</a>
-                <span className="icon ml-1 text-2xs"><i className="fa-duotone fa-external-link"></i></span>
-              </div>
             </div>
 
           </div>
 
           <div className="section-body !pt-0">
 
-            <div className="flex mb-8 items-center">
-              <div className="w-12 mr-2 flex-shrink-0">&nbsp;</div>
-              <p className="text-gray-500 dark:text-gray-400 text-sm">Complete these steps below to get reward from Program. After we review your refferal. reward will be sent to your Approved Wallet.</p>
+            <div className="mb-8 items-center text-base mt-4 bg-gray-50 
+            dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg md:ml-14">
+              <div className="p-4  border-b border-gray-200 dark:border-gray-700">
+                Your Share2Earn status
+              </div>
+              <div className="p-4">
+                <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">   
+                  <li className="list-pair mb-2">
+                    <span className="list-key">
+                      RIR Contract
+                    </span>
+                    <div className="px-2 py-1 rounded flex bg-gray-100 dark:bg-gray-800 ml-auto list-value hover:bg-gray-200 hover:dark:bg-gray-900">
+                      <div>53x6y4...12f5</div>
+                      <button class="btn ml-2">
+                        <i className="fa-duotone fa-copy text-xs"></i>
+                      </button>
+                    </div>
+                  </li>
+                  <li className="list-pair mb-2">
+                    <span className="list-key">
+                      Invites sent
+                    </span>
+                    <div className="ml-auto flex items-center list-value font-semibold">
+                      32
+                    </div>
+                  </li>
+                  <li className="list-pair mb-2">
+                    <span className="list-key">
+                      Successful referrals
+                    </span>
+                    <span className="ml-auto font-semibold">10</span>
+                  </li>
+                  <li className="list-pair mb-2">
+                    <span className="list-key">
+                      Earned
+                    </span>
+                    <span className="ml-auto font-semibold">1 RIR </span>
+                  </li>
+                </ul>
+              </div>
+
+              
             </div>
 
 
@@ -61,20 +97,20 @@ function Concept() {
                     <strong className="text-base text-color-title">Create banner</strong>
                     <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
 
-                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
 
                       <SelectBannerType />
 
-                      <div className="p-4 pt-0">
-                        <div class="aspect-w-16 aspect-h-9">
-                          <img class="rounded-lg" src="/placeholders/parallel-cover.jpg" />
+                      <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
+                        <div className="aspect-w-16 aspect-h-9">
+                          <img className="" src="/placeholders/parallel-cover.jpg" />
                         </div>
                       </div>
 
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn class="btn btn-default w-full !py-2">
-                          <span class="icon"><i class="fa-duotone fa-download text-xs"></i></span>
-                          <span class="btn--text">Download</span>
+                        <btn className="btn btn-default w-full !py-2">
+                          <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
+                          <span className="btn--text">Download</span>
                         </btn>
                       </div>
                     </div>
@@ -86,7 +122,25 @@ function Concept() {
 
                     <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
 
-                      <div className="grid gap-4 grid-cols-3 p-4">
+                      <div className="flex justify-between items-center py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                          <span className="text-sm">Image Source</span>
+                        </div>
+                        <div className="flex flex-srink-0 items-center">
+                          {/* <span className="text-sm mr-2">Use your image</span>
+                          <Toggle /> */}
+                          <div className="btn-group btn-group-toggle text-xs">
+                            <a className="btn btn-toggle-active">
+                              <span className="btn--text">Default</span>
+                            </a>
+                            <a className="btn btn-toggle">
+                              <span className="btn--text">Your Image</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-gray-100 dark:bg-deepgray-50 grid gap-4 grid-cols-3 p-4">
                         <div className="flex justify-center">
                           <img className="" src={process.env.NEXT_PUBLIC_CDN + "/placeholders/share2earn-1.png"} alt="" />
                         </div>
@@ -98,9 +152,9 @@ function Concept() {
                         </div>
                       </div>
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn class="btn btn-default w-full !py-2">
-                          <span class="icon"><i class="fa-duotone fa-download text-xs"></i></span>
-                          <span class="btn--text">Download</span>
+                        <btn className="btn btn-default w-full !py-2">
+                          <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
+                          <span className="btn--text">Download</span>
                         </btn>
                       </div>
                     </div>
@@ -137,10 +191,10 @@ function Concept() {
                       </div>
 
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn class="btn btn-default  w-full !py-2">
-                          <span class="icon"><i class="fa-duotone fa-copy text-xs"></i></span>
-                          <span class="btn--text">Copy to clipboard</span>
-                        </btn>
+                        <a className="btn btn-default  w-full !py-2" href="" target="_blank">
+                          <span className="icon"><i className="fa-duotone fa-copy text-xs"></i></span>
+                          <span className="btn--text">Copy link</span>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -161,15 +215,43 @@ function Concept() {
                   </span>
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col w-full">
 
                   <div className="flex flex-col">
                     <strong className="text-base text-color-title">Verify your refferal</strong>
                     <span className="text-gray-500 dark:text-gray-400">Insert your share links in the box below to verify your refferal</span>
 
-                    <div>
-                      <form className="mt-4">
+                    <div className="mt-4">
+                      <form>
+                        <div className="mb-4">
+                          <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Facebook's post link</label>
+                          <div className="mt-1 relative rounded-md shadow-sm">
+                            <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
+                            <input type="text" name="fb-post-url" id="fb-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Facebook's post link" />
+                            <div className="absolute inset-y-0 right-0 flex items-center">
+                            </div>
+                          </div>
+                        </div>
 
+                        <div className="mb-4">
+                          <label for="twitter-post-url" className="sr-only block text-xs font-medium uppercase">Twitter's post link</label>
+                          <div className="mt-1 relative rounded-md shadow-sm">
+                            <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span class="icon"><i class="fa-brands fa-twitter"></i></span></span>
+                            <input type="text" name="twitter-post-url" id="twitter-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Twitter's post link" />
+                            <div className="absolute inset-y-0 right-0 flex items-center">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mb-4">
+                          <label for="linkedin-post-url" className="sr-only block text-xs font-medium uppercase">Linkedin's post link</label>
+                          <div className="mt-1 relative rounded-md shadow-sm">
+                            <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--linkedin"><span class="icon"><i class="fa-brands fa-linkedin-in"></i></span></span>
+                            <input type="text" name="linkedin-post-url" id="linkedin-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Linkedin's post link" />
+                            <div className="absolute inset-y-0 right-0 flex items-center">
+                            </div>
+                          </div>
+                        </div>
                       </form>
                     </div>
                   </div>

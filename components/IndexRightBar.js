@@ -47,7 +47,7 @@ export const IndexRightBar = observer(({ intro }) => {
   useEffect(() => {
     if (window.location.hash) {
       const hash = window.location.hash.substr(1);
-      if (["overview","","invest","team","airdrop"].indexOf(hash) !== -1) {
+      if (["overview","","invest","team","airdrop","share2earn"].indexOf(hash) !== -1) {
         setTabName(hash)
       }
     } else {
@@ -68,6 +68,10 @@ export const IndexRightBar = observer(({ intro }) => {
   const airdrop = tokenData?.airdrop?.find((ad) => ad.status == "published");
   // find active invest
   const investCampaign = tokenData?.invest_campaign?.find(
+    (ic) => ic.status == "published"
+  );
+
+  const share2earn = tokenData?.share_campaign?.find(
     (ic) => ic.status == "published"
   );
 
@@ -108,7 +112,7 @@ export const IndexRightBar = observer(({ intro }) => {
                   }}
                 >
                   <span className="icon">
-                    <i className="fa-solid fa-arrow-left lg:hidden"></i>
+                    <i className="fa-solid fa-chevron-left lg:hidden"></i>
                     <i className="fa-solid fa-times hidden lg:!block"></i>
                   </span>
                   <span className="btn--text sr-only">{t("back")}</span>
@@ -250,6 +254,25 @@ export const IndexRightBar = observer(({ intro }) => {
                           </span>
                           <span className="tab-item--text">
                             {t("airdrop")}
+                          </span>
+                        </a>
+                      )}
+
+                      {share2earn && (
+                        <a
+                        href="#share2earn"
+                        className={`tab-item ${
+                          tabName === "share2earn" ? "tab-item--active" : ""
+                        }`}
+                        onClick={() => {
+                          setTabName("share2earn");
+                        }}
+                        >
+                          <span className="icon">
+                            <i class="fa-duotone fa-gift"></i>
+                          </span>
+                          <span className="tab-item--text">
+                            {t("share2earn")}
                           </span>
                         </a>
                       )}

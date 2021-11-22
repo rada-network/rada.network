@@ -40,8 +40,8 @@ const TokenContent = function({tokenData,token}){
               </span>
             </li>
           </ul>
-          <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
-            <div className="text-2xs font-semibold  flex px-2 text-white items-center progress-bar--percentage h-5 bg-green-600 rounded-full" style={{width: `72%`}}>72%</div>
+          <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
+            <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-600 rounded-full" style={{width: `72%`}} title="72%">72%</div>
           </div>
         </div>
       </div>
@@ -56,7 +56,8 @@ const TokenContent = function({tokenData,token}){
           A world built on Runes and 3D cubes to enhance your creativity. You can build your unique character (Paragon) and have its copyright, then trade your Paragon for tokens or join the battle for amazing rewards.
           </p>
           <p className="mt-auto pt-4">
-            <a href="#" className="link">Read full research</a> <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span>
+            <a href="#" className="link">Read full research</a> 
+            {/* <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span> */}
           </p>
         </div>
 
