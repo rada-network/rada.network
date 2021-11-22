@@ -1,26 +1,35 @@
 
-import {useTranslation} from "next-i18next"
-import {useState, useEffect} from "react"
-import {createShortenLink} from "@data/query/createShortenLink"
+import { useTranslation } from "next-i18next"
+import { useState, useEffect } from "react"
+import { createShortenLink } from "@data/query/createShortenLink"
 import { CopyToClipboard } from "react-copy-to-clipboard"
-import {toast} from "react-toastify"
-import {useRef} from "react"
-const ShareLink = function({uid}){
-  const {t} = useTranslation("share2earn")
-  const [shareUrl,setShareUrl] = useState("")
-  const [textShare,setTextShare] = useState("")
+import { toast } from "react-toastify"
+import { useRef } from "react"
+const ShareLink = function ({ uid, share_message }) {
+  const { t } = useTranslation("share2earn")
+  const [shareUrl, setShareUrl] = useState("")
+  const [textShare, setTextShare] = useState("")
+  const [message, setMesage] = useState(share_message[0])
   const textRef = useRef()
   useEffect(() => {
     let url = window.location.origin + window.location.pathname + "?ref=" + uid;
-    createShortenLink(url).then(({data}) => {
-      setShareUrl("https://rada.to/"+data.createShortenLink.key)
+    createShortenLink(url).then(({ data }) => {
+      let shortenURL = "https://rada.to/" + data.createShortenLink.key
+      setShareUrl(shortenURL)
+      let combinedMessage = message + " " + "👉  Learn more here" + shortenURL
+      setTextShare(combinedMessage)
     })
-  },[])
+  }, [])
 
   const handleCopy = () => {
     toast.success("Copied to clipboard", {})
   };
-  
+
+  const randomMessage = () => {
+    var item = share_message[Math.floor(Math.random()*share_message.length)]
+    setMesage(item)
+  }
+
   return (
     <>
       <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
@@ -40,22 +49,28 @@ const ShareLink = function({uid}){
 
           <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
             <div className="p-4">
-              <p className="mb-4" ref={textRef}>This game is whole new generation metaverse. Never seen anything like this!
-                I can play and earn so well 💰✨✨</p>
+              <p className="mb-4" ref={textRef}>{message}</p>
               <p>👉 &nbsp;Learn more here <a target="_blank" href={shareUrl} className="link">{shareUrl}</a></p>
             </div>
 
-            <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="grid grid-cols-2 gap-4 py-3 px-4 border-t border-gray-200 dark:border-gray-700">
+              <a className="btn btn-default !py-2"
+                onClick={randomMessage}
+              >
+                <span className="icon"><i className="fa-duotone fa-refresh text-xs"></i></span>
+                <span className="btn--text">Randomize</span>
+              </a>
+
               <CopyToClipboard
                 onCopy={handleCopy}
-                text={shareUrl}
+                text={textShare}
               >
-                <button className="btn btn-default  w-full !py-2">
-                <span className="icon"><i className="fa-duotone fa-copy text-xs"></i></span>
-                <span className="btn--text">Copy to clipboard</span>
+                <button className="btn btn-default !py-2" href="" target="_blank">
+                  <span className="icon"><i className="fa-duotone fa-copy text-xs"></i></span>
+                  <span className="btn--text">Copy link</span>
                 </button>
               </CopyToClipboard>
-              
+
             </div>
           </div>
         </div>
