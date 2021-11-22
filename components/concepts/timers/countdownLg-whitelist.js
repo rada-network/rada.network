@@ -30,9 +30,9 @@ const CountDownLg = ({}) => {
 
         </div>
 
-        <div className="flex flex-col md:flex-row mt-8 max-w-lg justify-evenly mx-auto">
-          <div className="w-full md:w-1/2 p-4 my-2 md:m-2 bg-primary-700 text-white rounded-lg flex items-center cursor-pointer">
-            <span className="icon text-xl opacity-70 w-12 h-12 !flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-full flex-shrink-0 mr-4">
+        <div className="flex flex-col md:flex-row mt-8 max-w-xl justify-evenly mx-auto">
+          <div className="w-full md:w-1/2 p-4 my-2 md:m-2 bg-primary-700 dark:bg-primary-700 text-white rounded-lg flex items-center cursor-pointer">
+            <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-full flex-shrink-0 mr-4 shadow">
               <i class="fa-duotone fa-hand-holding-heart"></i>
             </span>
             <div>
@@ -44,8 +44,8 @@ const CountDownLg = ({}) => {
             </div>
           </div>
 
-          <div className="w-full md:w-1/2 p-4 my-2 md:m-2 bg-gray-700 text-white rounded-lg flex items-center cursor-pointer">
-            <span className="icon text-xl opacity-70 w-12 h-12 !flex items-center justify-center bg-gray-900 rounded-full flex-shrink-0 mr-4">
+          <div className="w-full md:w-1/2 p-4 my-2 md:m-2 bg-gray-100 dark:bg-gray-700 rounded-lg flex cursor-pointer">
+            <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow">
               <i class="fad fa-info"></i>
             </span>
             <div>
