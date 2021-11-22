@@ -37,7 +37,9 @@ export default function LaunchpadContent({ project }) {
   const progressToken = parseInt(launchpadInfo?.availableBusd) || 0;
   const target = raise;
   const progressPercentage = (progressToken / target) * 100;
-
+  const curentTime = (new Date()).getTime() / 1000
+  const openTime = (new Date(project.open_date)).getTime() / 1000
+  const endTime = (new Date(project.end_date)).getTime() / 1000
   return (
     <div
       className="grid grid-cols-1 md:grid-cols-2 gap-4"
@@ -69,17 +71,20 @@ export default function LaunchpadContent({ project }) {
                 {tokenPrice || "n/a"} BUSD{" "}
               </span>
             </li>
+            {!!project.open_date && openTime < curentTime && 
             <li className="list-pair mb-2">
-              <span className="list-key">{t("Progress")}</span>
-              <span className="list-value ml-auto">
-                <span className="font-semibold">
-                  {numberFormatter(progressToken)}
-                </span>
-                <span className="opacity-70">/{numberFormatter(target)}</span>{" "}
-                BUSD
+            <span className="list-key">{t("Progress")}</span>
+            <span className="list-value ml-auto">
+              <span className="font-semibold">
+                {numberFormatter(progressToken)}
               </span>
+              <span className="opacity-70">/{numberFormatter(target)}</span>{" "}
+              BUSD
+            </span>
             </li>
+            }
           </ul>
+          {!!project.open_date && openTime < curentTime && 
           <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
             <div
               className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-5 bg-green-600 rounded-full"
@@ -88,6 +93,7 @@ export default function LaunchpadContent({ project }) {
               {progressPercentage}%
             </div>
           </div>
+          }
         </div>
       </div>
       {/* end of project-brief */}

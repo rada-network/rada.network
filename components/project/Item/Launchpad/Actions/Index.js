@@ -15,6 +15,9 @@ const LaunchpadActions = ({ project }) => {
   const openTime = (new Date(project.open_date)).getTime() / 1000
   const endTime = (new Date(project.end_date)).getTime() / 1000
 
+  if (project.open_date === null) {
+    return <WhitelistCountdown project={project} />
+  }
   
   if (openTime > curentTime) {
     return <WhitelistCountdown project={project} />
