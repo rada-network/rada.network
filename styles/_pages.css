@@ -89,7 +89,7 @@ Page Projects
 
 .page-project-details {
   &.page-full {
-    @apply px-0 pb-4;
+    @apply px-0 pb-4 lg:pb-12;
   }
 }
 
