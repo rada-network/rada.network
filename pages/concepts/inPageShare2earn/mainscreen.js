@@ -1,5 +1,5 @@
 import { Head } from "../../../components/Head";
-
+import RadaSvg from "../../../components/svg/rada";
 import SelectBannerType from "../../../components/concepts/listboxes/listbox-s2e";
 import Toggle from "../../../components/concepts/toggles/toggle-s2e";
 
@@ -68,7 +68,12 @@ function Concept() {
                     <span className="list-key">
                       Earned
                     </span>
-                    <span className="ml-auto font-semibold">1 RIR </span>
+                    <div className="ml-auto flex items-center font-semibold">
+                      <span class="icon w-4 h-4 mr-1">
+                        <RadaSvg />
+                      </span>
+                      1 RIR
+                    </div>
                   </li>
                 </ul>
               </div>
