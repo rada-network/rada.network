@@ -219,5 +219,11 @@ Specific Boxes Styles
 .box-share2earn {
   @apply bg-no-repeat bg-center;
   background-image: url(/images/s2e.png);
-  background-position: 92% 92%;
+  background-position: 100% 92%;
+}
+
+@screen md {
+  .box-share2earn {
+    background-position: 92% 92%;
+  }
 }
