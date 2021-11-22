@@ -30,6 +30,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
   const [mergeImgs, setMergeImgs] = useState({});
   const [mergeUploadImgs, setMergeUploadImgs] = useState({});
   const [baseFrames, setBaseFrames] = useState({});
+  const [userAvatar, setUserAvatar] = useState(null);
 
 
   // Banner component 
@@ -50,7 +51,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
 
   useEffect(() => {
     if (project.share_campaign?.length) {
-      getShareLogById({ campaignId: 1 }).then(function (
+      getShareLogById({ campaignId: project.share_campaign[0].id }).then(function (
         res
       ) {
         if (res.data.getShareLog?.length) {
@@ -98,6 +99,13 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
       });
     }
   }
+  useEffect(() => {
+    getBase64FromUrl(user.image).then(b64 => {
+      resizeImage(b64).then(result => {
+        setUserAvatar(result)
+      })
+    })
+  }, [user]);
 
   useEffect(() => {
     convertBase64Frames()
@@ -105,7 +113,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
 
   useEffect(() => {
     convertBase64Img();
-  }, [baseFrames]);
+  }, [baseFrames,userAvatar]);
 
   useEffect(() => {
     if (!isUploadImage) {
@@ -141,11 +149,11 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
 
   const convertBase64Img = async () => {
     // Convert frame
-    if (project.share_campaign.length) {
+    if (project.share_campaign.length && userAvatar) {
       if (!isUploadImage) {
         let tmpMergeImgs = {}
         for (let index = 0; index < Object.keys(baseFrames).length; index++) {
-          let result = await mergeImages([localStorage.getItem("user_avatar"), baseFrames[index]])
+          let result = await mergeImages([userAvatar, baseFrames[index]])
           tmpMergeImgs = { ...tmpMergeImgs, [index]: result }
         }
         setMergeImgs(tmpMergeImgs)
@@ -185,7 +193,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
         canvas.height = maxHeight
         let ctx = canvas.getContext('2d')
         ctx.drawImage(img, 0, 0, maxWidth, maxHeight)
-        // Draw here
+        //Draw here
         ctx.globalCompositeOperation = 'destination-in';
         ctx.beginPath();
         ctx.arc(maxHeight / 2, maxHeight / 2, maxHeight / 2, 0, Math.PI * 2);

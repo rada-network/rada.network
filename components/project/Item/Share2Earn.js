@@ -30,56 +30,8 @@ export default function ProjectShare2Earn({
   // Handle join program
   const [cookies] = useCookies(["ref"]);
   const referralCode = cookies.ref ?? '';
-  const [user, setUser] = useState({});
   const store = useStore()
-
-  useEffect(() => {
-    if (store.user.access_token !== "") {
-      getCurrentUser().then((res) => {
-        getBase64FromUrl(res.image).then(b64 => {
-          resizeImage(b64).then(result => {
-            localStorage.removeItem("user_avatar")
-            localStorage.setItem("user_avatar", result)
-          })
-        })
-        setUser(res);
-      });
-    }
-  }, [store.user.access_token]);
-
-  function resizeImage(base64Str, maxWidth = 512, maxHeight = 512) {
-    return new Promise((resolve) => {
-      let img = new Image()
-      img.src = base64Str
-      img.onload = () => {
-        let canvas = document.createElement('canvas')
-        canvas.width = maxWidth
-        canvas.height = maxHeight
-        let ctx = canvas.getContext('2d')
-        ctx.drawImage(img, 0, 0, maxWidth, maxHeight)
-        // Draw here
-        ctx.globalCompositeOperation = 'destination-in';
-        ctx.beginPath();
-        ctx.arc(maxHeight / 2, maxHeight / 2, maxHeight / 2, 0, Math.PI * 2);
-        ctx.closePath();
-        ctx.fill();
-        resolve(canvas.toDataURL())
-      }
-    })
-  }
-
-  const getBase64FromUrl = async (url) => {
-    const data = await fetch(url);
-    const blob = await data.blob();
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(blob);
-      reader.onloadend = () => {
-        const base64data = reader.result;
-        resolve(base64data);
-      }
-    });
-  }
+  const user = store.user
 
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
