@@ -9,7 +9,8 @@ const BackgroundWrapper = function({image}){
   }
 
   useEffect(() => {
-    const bgUrl = `/wallpapers/${theme}/${randomeBg()}.jpg`
+    console.log(image)
+    const bgUrl = image ? image :   `/wallpapers/${theme}/${randomeBg()}.jpg`
     ref.current.setAttribute("style",`background-image: url("${bgUrl}")`)
   },[theme])
 
