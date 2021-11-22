@@ -17,13 +17,17 @@ const MainActions = ({}) => {
             <div className="">
               <ProjectTimeline step="1" />
             </div>
+
             <div className="global-padding-lg min-h-full bg-white dark:bg-gray-800 relative z-10">
               <div className="">
-                <h3 class="text-2xl text-center mb-8 font-normal">
-                  <span className="text-color-title">The whitelist will open in</span>
+                <h3 class="text-4xl text-center mt-4 mb-4 font-normal">
+                  <span className="text-gray-700 dark:text-white font-semibold">Coming Soon</span>
                 </h3>
-                <CountDownLg />
-                <div><p class="text-sm text-center mt-4 leading-7"><span class="text-color-desc">Mở lúc: </span> <strong>Wednesday, December 1, 2021</strong></p></div>
+                <div className="max-w-md mx-auto">
+                  <p class="text-sm text-center mt-4 leading-7">
+                    Follow @rada_network, subscribe to our official <a className="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a> and <a className="link" target="_blank" rel="nofollow" href="t.me/radadao">Rada Community</a> to be notified.
+                  </p>
+                </div>
               </div>
 
               <div className="flex flex-col md:flex-row mt-8 max-w-xl justify-evenly mx-auto">
