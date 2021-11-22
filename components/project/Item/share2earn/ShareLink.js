@@ -4,9 +4,12 @@ import {useState, useEffect} from "react"
 import {createShortenLink} from "@data/query/createShortenLink"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import {toast} from "react-toastify"
+import {useRef} from "react"
 const ShareLink = function({uid}){
   const {t} = useTranslation("share2earn")
   const [shareUrl,setShareUrl] = useState("")
+  const [textShare,setTextShare] = useState("")
+  const textRef = useRef()
   useEffect(() => {
     let url = window.location.origin + window.location.pathname + "?ref=" + uid;
     createShortenLink(url).then(({data}) => {
@@ -17,7 +20,7 @@ const ShareLink = function({uid}){
   const handleCopy = () => {
     toast.success("Copied to clipboard", {})
   };
-
+  
   return (
     <>
       <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
@@ -37,9 +40,9 @@ const ShareLink = function({uid}){
 
           <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
             <div className="p-4">
-              <p className="mb-4">This game is whole new generation metaverse. Never seen anything like this!
+              <p className="mb-4" ref={textRef}>This game is whole new generation metaverse. Never seen anything like this!
                 I can play and earn so well 💰✨✨</p>
-              <p>👉 &nbsp;Learn more here <a href={shareUrl} className="link">{shareUrl}</a></p>
+              <p>👉 &nbsp;Learn more here <a target="_blank" href={shareUrl} className="link">{shareUrl}</a></p>
             </div>
 
             <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">

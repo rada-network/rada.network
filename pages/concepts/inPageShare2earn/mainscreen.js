@@ -1,5 +1,5 @@
 import { Head } from "../../../components/Head";
-
+import RadaSvg from "../../../components/svg/rada";
 import SelectBannerType from "../../../components/concepts/listboxes/listbox-s2e";
 import Toggle from "../../../components/concepts/toggles/toggle-s2e";
 
@@ -26,19 +26,59 @@ function Concept() {
                   You have joined successfully 
                 </span>
               </h1>
-              <div className="flex items-baseline">
-                <a href="#" className="link text-sm">View refferal balance</a>
-                <span className="icon ml-1 text-2xs"><i className="fa-duotone fa-external-link"></i></span>
-              </div>
             </div>
 
           </div>
 
           <div className="section-body !pt-0">
 
-            <div className="flex mb-8 items-center">
-              <div className="w-12 mr-2 flex-shrink-0">&nbsp;</div>
-              <p className="text-gray-500 dark:text-gray-400 text-sm">Complete these steps below to get reward from Program. After we review your refferal. reward will be sent to your Approved Wallet.</p>
+            <div className="mb-8 items-center text-base mt-4 bg-gray-50 
+            dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg md:ml-14">
+              <div className="p-4  border-b border-gray-200 dark:border-gray-700">
+                Your Share2Earn status
+              </div>
+              <div className="p-4">
+                <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">   
+                  <li className="list-pair mb-2">
+                    <span className="list-key">
+                      RIR Contract
+                    </span>
+                    <div className="px-2 py-1 rounded flex bg-gray-100 dark:bg-gray-800 ml-auto list-value hover:bg-gray-200 hover:dark:bg-gray-900">
+                      <div>53x6y4...12f5</div>
+                      <button class="btn ml-2">
+                        <i className="fa-duotone fa-copy text-xs"></i>
+                      </button>
+                    </div>
+                  </li>
+                  <li className="list-pair mb-2">
+                    <span className="list-key">
+                      Invites sent
+                    </span>
+                    <div className="ml-auto flex items-center list-value font-semibold">
+                      32
+                    </div>
+                  </li>
+                  <li className="list-pair mb-2">
+                    <span className="list-key">
+                      Successful referrals
+                    </span>
+                    <span className="ml-auto font-semibold">10</span>
+                  </li>
+                  <li className="list-pair mb-2">
+                    <span className="list-key">
+                      Earned
+                    </span>
+                    <div className="ml-auto flex items-center font-semibold">
+                      <span class="icon w-4 h-4 mr-1">
+                        <RadaSvg />
+                      </span>
+                      1 RIR
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              
             </div>
 
 
@@ -156,10 +196,10 @@ function Concept() {
                       </div>
 
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn className="btn btn-default  w-full !py-2">
+                        <a className="btn btn-default  w-full !py-2" href="" target="_blank">
                           <span className="icon"><i className="fa-duotone fa-copy text-xs"></i></span>
-                          <span className="btn--text">Copy to clipboard</span>
-                        </btn>
+                          <span className="btn--text">Copy link</span>
+                        </a>
                       </div>
                     </div>
                   </div>

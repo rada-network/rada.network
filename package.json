@@ -67,7 +67,8 @@
     "slug": "^5.1.0",
     "store": "^2.0.12",
     "swr": "^1.0.1",
-    "tailwindcss": "2.2.4"
+    "tailwindcss": "2.2.4",
+    "util": "^0.12.4"
   },
   "devDependencies": {
     "@tailwindcss/jit": "^0.1.18",

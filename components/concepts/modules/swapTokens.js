@@ -74,7 +74,7 @@ const SwapTokens = ({}) => {
             <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
               <CheckSvg />  
             </span>
-            <div>The rest of your investment will be distributed based on the total subscripption.</div>
+            <div>The rest of your investment will be calculated based on the total pool.</div>
           </li>
           <li className="relative mb-2 pl-6">
             <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
