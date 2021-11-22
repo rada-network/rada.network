@@ -63,10 +63,10 @@ const WhitelistCountdown = ({project}) => {
                       <i class="fa-duotone fa-hand-holding-heart"></i>
                     </span>
                     <div>
-                      <p className="mb-1 opacity-80">{t("Get more RIR with Share2Earn")}</p>
+                      <p className="mb-1 opacity-80">{t("Refer a friend to earn RIR")}</p>
                       <Link href={`/launchverse/${project.slug}/share2earn`}>
                       <a href={`/launchverse/${project.slug}/share2earn`} class="group text-white">
-                        <span class="text-sm">{t("Joint now")}</span>
+                        <span class="text-sm">{t("Join Share2Earn")}</span>
                         <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
                       </a>
                       </Link>
@@ -78,7 +78,7 @@ const WhitelistCountdown = ({project}) => {
                       <i class="fad fa-info"></i>
                     </span>
                     <div>
-                      <p className="mb-1 opacity-80">{t("Joint the launchverse is really simple")}</p>
+                      <p className="mb-1 opacity-80">{t("How to join RADA LaunchVerse")}</p>
                       <Link href={`/launchverse/${project.slug}/share2earn`}>
                       <a href={`/launchverse/${project.slug}/share2earn`} class="group">
                         <span class="text-sm">{t("Learn more")}</span>
