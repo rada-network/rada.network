@@ -52,7 +52,7 @@ export default function ProjectShare2Earn({
         });
       }
     }, [store.user.access_token]);
-    
+
     useEffect(() => {
       console.log("Project info")
       console.log(project.share_campaign)
@@ -90,9 +90,9 @@ export default function ProjectShare2Earn({
 
     // TODO: Save in config file
     // const share2earnAddress = "0x998353AfD99A73262337974e2E732118ed557600" // Bản full admin+referral
-    const share2earnAddress = "0x5F6c365a9075EfC581C5E7249e5465B2DB9ec36f" // Bản referral
+    const share2earnAddress = "0xF84240ECBE68e91e5333243c04c35A380C0d16C9" // Bản referral
     const referralAdminAddress = "0x492E27f769FC5a566E904092F1a1d86D12d53589" // Bản referral
-    const shareAddress = useERC20(share2earnAddress);
+    // const shareAddress = useERC20(share2earnAddress);
 
     const share2earnContract = useShare2EarnContract(share2earnAddress)
     const referralAdminContract = useReferralAdminContract(referralAdminAddress)
@@ -176,7 +176,7 @@ export default function ProjectShare2Earn({
       }else if (joined) {
         return 'Đã tham gia chương trình';
       }
-      
+
       return '';
     }
     const allowJoin = getMessage() == '' && joined=='' && account
@@ -235,7 +235,7 @@ export default function ProjectShare2Earn({
                   {share2EarnInfo && share2EarnInfo.incentiveL0>0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span> for each</span>}
                 </div>
               </li>
-              
+
               <li className="flex items-center">
                 <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center">
                   <i className="fa-light fa-hexagon"></i>
