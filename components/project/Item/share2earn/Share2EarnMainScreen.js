@@ -12,9 +12,8 @@ import { getShareLogById } from "../../../../data/query/getShareLog";
 import { createOrUpdateShareLogById } from "../../../../data/query/createOrUpdateShareLog";
 import mergeImages from 'merge-images';
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
-import RadaSvg from "@components/svg/rada";
-import { CopyToClipboard } from "react-copy-to-clipboard"
 import { toast } from "react-toastify"
+import Share2EarnStatus from "./Share2EarnStatus"
 
 
 const Share2EarnMainScreen = observer(({ project, user }) => {
@@ -256,11 +255,6 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
     downloadAvtButton = null
     mergedImage = null
   }
-
-  const handleCopy = () => {
-    toast.success("Copied to clipboard", {})
-  }
-
   return (
     <>
       <div className="pane-content--sec--main grid scrollbar">
@@ -287,57 +281,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
 
             <div className="section-body !pt-0">
 
-              <div className="mb-8 items-center text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg md:ml-14">
-                <div className="p-4  border-b border-gray-200 dark:border-gray-700">
-                  Your Share2Earn status
-                </div>
-                <div className="p-4">
-                  <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
-                    <li className="list-pair mb-2">
-                      <span className="list-key">
-                        RIR Contract
-                      </span>
-                      <div className="px-2 py-1 rounded flex bg-gray-100 dark:bg-gray-800 ml-auto list-value hover:bg-gray-200 hover:dark:bg-gray-900">
-                        <div>{`${account.substr(0,5)}...${account.substr(-4)}`}</div>
-                        <CopyToClipboard
-                          onCopy={handleCopy}
-                          text={account}
-                        >
-                          <button class="btn ml-2">
-                            <i className="fa-duotone fa-copy text-xs"></i>
-                          </button>
-                        </CopyToClipboard>
-                        
-                      </div>
-                    </li>
-                    <li className="list-pair mb-2">
-                      <span className="list-key">
-                        Invites sent
-                      </span>
-                      <div className="ml-auto flex items-center list-value font-semibold">
-                        32
-                      </div>
-                    </li>
-                    <li className="list-pair mb-2">
-                      <span className="list-key">
-                        Successful referrals
-                      </span>
-                      <span className="ml-auto font-semibold">10</span>
-                    </li>
-                    <li className="list-pair mb-2">
-                      <span className="list-key">
-                        Earned
-                      </span>
-                      <div className="ml-auto flex items-center font-semibold">
-                        <span class="icon w-4 h-4 mr-1">
-                          <RadaSvg />
-                        </span>
-                        1 RIR
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <Share2EarnStatus />
 
 
               <ol className="text-sm space-y-8">

@@ -17,12 +17,14 @@ import { useStore } from "@lib/useStore"
 import { getCurrentUser } from "@data/query/user"
 import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
 import { useERC20 } from "@utils/hooks/useContracts";
-
+import useChainConfig from "@utils/web3/useChainConfig";
 
 export default function ProjectShare2Earn({
   project,
 }) {
-
+  const {getRIRAddress} = useChainConfig()
+  const riraddress = getRIRAddress()
+  console.log("RIR : ",riraddress)
   const { t } = useTranslation('share2earn')
   const context = useActiveWeb3React()
   const { library, account } = context
