@@ -336,9 +336,9 @@ Landing - The Parallel
 Logo
 */
 .page-landing--parallel .page-logo {
+  @apply block relative bg-no-repeat;
   background-image: url("/images/logos/launchverse-theparallel.svg");
-  @apply flex-shrink-0 relative;
-  background-size: 308px 54px;
+  background-size: 100% 54px;
   width: 308px;
   height: 54px;
 }
@@ -347,21 +347,23 @@ Logo
   background-image: url("/images/logos/launchverse-theparallel-dark.svg");
 }
 
-.page-landing--parallel .page-title {
+/* Smaller the logo for small screen */
+@media only screen and (max-width: 767px) {
+  .page-landing--parallel .page-logo {
+    background-size: 100% 48px;
+    width: 272px;
+    height: 48px;
+  }
 }
 
-.page-landing--parallel .page-title h1 {
-  @apply font-altsans font-normal uppercase text-black dark:text-white;
-  letter-spacing: 0.25rem;
-}
 
 /* 
 Hero
 */
 .page-landing--parallel .hero-deco {
   background-image: url("/images/launchverse-hero.svg");
-  @apply flex-shrink-0 relative;
-  background-size: 400px 400px;
+  @apply flex-shrink-0 relative bg-no-repeat;
+  background-size: cover;
   width: 400px;
   height: 400px;
 }
@@ -369,6 +371,15 @@ Hero
 .dark .page-landing--parallel .hero-deco {
   background-image: url("/images/launchverse-hero-dark.svg");
 }
+
+/* Smaller the logo for small screen */
+@media only screen and (max-width: 768px) {
+  .page-landing--parallel .hero-deco {
+    width: 300px;
+    height: 300px;
+  }
+}
+
 
 /* 
 S2E
@@ -391,14 +402,22 @@ S2E
 Footer
 */
 .page-landing--parallel .footer {
-  @apply pb-24;
+
 }
 
 .page-landing--parallel .footer-deco {
   background-image: url("/images/launchverse-footer.png");
-  @apply absolute bottom-0 left-0 right-0 bg-no-repeat;
-  background-size: cover;
+  @apply absolute bottom-10 md:bottom-0 left-0 right-0 bg-no-repeat;
+  background-size: 100% 183px;
   height: 183px;
+}
+
+/* Smaller the logo for small screen */
+@media only screen and (max-width: 768px) {
+  .page-landing--parallel .footer-deco {
+    background-size: 100% 100px;
+    height: 100px;
+  }
 }
 
 .dark .page-landing--parallel .footer-deco {

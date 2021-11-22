@@ -11,7 +11,7 @@ import { useTranslation } from "next-i18next";
 export default function LaunchpadContent({ project }) {
     const { dataStore } = usePageStore()
     const {t} = useTranslation("launchpad")
-    const {account} = useActiveWeb3React()
+    const {account,library} = useActiveWeb3React()
     const [launchpadInfo,setLaunchpadInfo] = useState(null)
     const lauchpadContact = useLaunchpadContract(project.swap_contract)
 
@@ -26,18 +26,18 @@ export default function LaunchpadContent({ project }) {
             }
             setLaunchpadInfo(updateInfo)
         } catch (error) {
-            console.log(account)
+            //console.log(account)
             console.log("error to fetch launchpad info",error)
         }
         }
-        if (!!account && !!lauchpadContact && account !== ""){
+        if (!!account && !!library && !!lauchpadContact && account !== ""){
             fetchLaunchpadInfo()
         }
-    }, [account,lauchpadContact])
+    }, [account,lauchpadContact,library])
     const raise = project.raise
     const tokenPrice = project.price
-    const progressToken = parseInt(launchpadInfo?.tokensAllocated) || parseInt(launchpadInfo?.availableBusd) / tokenPrice || 0
-    const target = raise/tokenPrice
+    const progressToken = parseInt(launchpadInfo?.availableBusd) || 0
+    const target = raise
     const progressPercentage = progressToken/target * 100
     
     return (
@@ -76,7 +76,7 @@ export default function LaunchpadContent({ project }) {
                             </span>
                             <span className="list-value ml-auto">
                                 <span className="font-semibold">{numberFormatter(progressToken)}</span>
-                                <span className="opacity-70">/{numberFormatter(target) }</span> {project?.token.symbol}
+                                <span className="opacity-70">/{numberFormatter(target) }</span> BUSD
                             </span>
                         </li>
                     </ul>

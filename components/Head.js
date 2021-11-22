@@ -89,7 +89,7 @@ export const Head = observer(({meta}) => {
       />
 
       {meta?.alternate?.map((alternate) => (
-        <link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />
+        <link key={alternate.hreflang} rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />
       ))}
 
       <link rel="manifest" href={"/manifest.json"} />

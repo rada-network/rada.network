@@ -14,7 +14,12 @@ let tokenTypes = [
   }
 ]
 
-export default function SelectTokenType({setIsBusd,init}) {
+export default function SelectTokenType({setIsBusd,init,accountBalance}) {
+  let initState = tokenTypes[init]
+  if (accountBalance.rirBalance == 0){
+    delete tokenTypes[0]
+    initState = tokenTypes[0]
+  }
   const [selected, setSelected] = useState(tokenTypes[init])
   const handleChangeCurrency = function(sel){
     setSelected(sel)
