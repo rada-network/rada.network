@@ -21,7 +21,7 @@ const MainActions = ({}) => {
             <div className="global-padding-lg min-h-full bg-white dark:bg-gray-800 relative z-10">
               <div className="">
                 <h3 class="text-4xl text-center mt-4 mb-4 font-normal">
-                  <span className="text-yellow-500 dark:text-yellow-400 font-semibold">Coming Soon</span>
+                  <span className="text-gray-700 dark:text-white font-semibold">Coming Soon</span>
                 </h3>
                 <div className="max-w-md mx-auto">
                   <p class="text-sm text-center mt-4 leading-7">
