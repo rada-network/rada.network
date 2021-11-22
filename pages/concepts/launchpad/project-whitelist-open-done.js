@@ -70,9 +70,9 @@ const Layout = observer((props) => {
                     <div className="pane-content--sec--main grid scrollbar">
                       <div className="page page-full page-project-details !pt-0">
                         <div className="w-limiter-lg">
-                          <div className="section">                          
+                          <div>                          
                             <TokenBrief />
-                            <div className="section-body">
+                            <div className="section-body p-4 md:p-6">
                               <TokenContent />
 
                               {/* Main Action Card */}

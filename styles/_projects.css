@@ -171,3 +171,21 @@
 .project-card--container{
   @apply min-h-full w-full mx-auto p-4 md:p-6 ;
 }
+.wallet-item {
+  @apply px-2 mx-1 text-xs text-center flex-grow-0 w-24;
+}
+.wallet-option {
+  @apply relative mx-auto;
+}
+.wallet-option {
+  @apply border-4 border-transparent;
+}
+.wallet-item.checked .wallet-option{
+  @apply border-4 border-green-600 rounded-full;
+}
+.wallet-item.checked {
+  @apply text-green-500;
+}
+.wallet-step {
+  @apply flex items-center;
+}

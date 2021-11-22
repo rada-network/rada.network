@@ -5,6 +5,7 @@ import TokenInfo from "../../../components/token/TokenInfo";
 import { ProjectsList } from "../../../components/card-layouts/concepts/launchpad/ProjectsList";
 import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
 import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
+import Media from "../../../components/Media";
 
 // Cards Concepts
 import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
@@ -68,9 +69,9 @@ const Layout = observer((props) => {
                   <div className="pane-content--sec--main grid scrollbar">
                     <div className="page page-full page-project-details !pt-0">
                       <div className="w-limiter-lg">
-                        <div className="section">                          
+                        <div className="">                          
                           <TokenBrief />
-                          <div className="section-body">
+                          <div className="section-body p-4 md:p-6">
                             <TokenContent />
 
                             {/* Main Action Card */}
