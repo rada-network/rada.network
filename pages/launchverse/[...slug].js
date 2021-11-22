@@ -33,6 +33,12 @@ export default function ProjectPage({ slug, project, locale }) {
     locales,
     asPath
   );
+  useEffect(() => {
+    document.body.classList.add("page-details")
+    return () => {
+      document.body.classList.remove("page-details")
+    }
+  },[project])
   
   /* Dragger to resize main col */  
   const containerRef = useRef()

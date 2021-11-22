@@ -2,10 +2,8 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      //Assuming your components/utilities live in ./src
-      //Update this path as necessary
       "@lib/*": ["./lib/*"],
       "@utils/*": ["./utils/*"],
       "@config/*": ["./config/*"],
