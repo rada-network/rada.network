@@ -307,7 +307,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
                         <SelectBannerType />
 
                         <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
-                          <div className="aspect-w-16 aspect-h-9">
+                          <div className="">
                             <img class="rounded-lg" src={bannerURL} />
                           </div>
                         </div>
