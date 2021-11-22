@@ -2,7 +2,7 @@ import Link from "next/link";
 import { usePageStore } from "@lib/usePageStore";
 import { useState, useEffect } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
-import { useLaunchpadContract } from "@utils/hooks/useContracts";
+import { useLaunchpadContractV2 } from "@utils/hooks/useContracts";
 import numberFormatter from "@components/utils/numberFormatter";
 
 import { utils } from "ethers";
@@ -13,12 +13,11 @@ export default function LaunchpadContent({ project }) {
   const { t } = useTranslation("launchpad");
   const { account, library } = useActiveWeb3React();
   const [launchpadInfo, setLaunchpadInfo] = useState(null);
-  const lauchpadContact = useLaunchpadContract(project.swap_contract);
-
+  const lauchpadContact = useLaunchpadContractV2(project.swap_contract);
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {
-        let availableBusd = await lauchpadContact.availableBusd();
+        let availableBusd = await lauchpadContact.balanceBusd();
         let updateInfo = {
           availableBusd: utils.formatEther(availableBusd),
         };
