@@ -30,8 +30,6 @@ const WhitelistCountdown = ({project}) => {
                 <ProjectCountdown project={project} />
                 <div>
                 <p className="text-sm text-center mt-8 leading-7">
-                  <span className="text-color-desc">{t("Please wait until the whitelist opens!")}</span><br />
-                  <span className="text-color-desc">{t("You need to apply to join the whitelist.")}</span><br />
                   <span className="text-color-desc">{t("Openat")} </span> <OpenDate time={project.open_date} />
                 </p>
                 </div>

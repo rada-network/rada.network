@@ -14,6 +14,9 @@ export default function LaunchpadContent({ project }) {
     const {account,library} = useActiveWeb3React()
     const [launchpadInfo,setLaunchpadInfo] = useState(null)
     const lauchpadContact = useLaunchpadContract(project.swap_contract)
+    const curentTime = (new Date()).getTime() / 1000
+    const openTime = (new Date(project.open_date)).getTime() / 1000
+    const endTime = (new Date(project.end_date)).getTime() / 1000
 
     useEffect(() => {
         const fetchLaunchpadInfo = async () => {
@@ -68,6 +71,7 @@ export default function LaunchpadContent({ project }) {
                             </span>
                             <span className="ml-auto font-semibold">{tokenPrice || "n/a"} BUSD </span>
                         </li>
+                        {openTime <= curentTime && 
                         <li className="list-pair mb-2">
                             <span className="list-key">
                                 {t("Progress")}
@@ -77,10 +81,11 @@ export default function LaunchpadContent({ project }) {
                                 <span className="opacity-70">/{numberFormatter(target) }</span> BUSD
                             </span>
                         </li>
+                        }
                     </ul>
-                    <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
+                    {openTime <= curentTime && <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
                         <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-5 bg-green-600 rounded-full" style={{ width: `${progressPercentage}%` }}>{progressPercentage}%</div>
-                    </div>
+                    </div>}
                 </div>
             </div>
             {/* end of project-brief */}
