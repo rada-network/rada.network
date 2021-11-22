@@ -94,28 +94,12 @@ const SubscribeSwapToken = ({project}) => {
                 <span className="text-color-title"></span>
               </h3>
             </div>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 61ca0a2adc069aaa2f8c0368209e47c83a315a15
             <div className="project-card--container">
               <div className="mb-8 sr-only">
                 <h3 className="text-3xl text-center font-normal">
                   <span className="text-color-title">Chuyển đổi Token</span>
                 </h3>
               </div>
-<<<<<<< HEAD
-=======
-            <div className="grid gap-8 lg:grid-cols-2">
->>>>>>> a88ac250db3ad8bf58b729d5e73085b358375b44
-=======
->>>>>>> 61ca0a2adc069aaa2f8c0368209e47c83a315a15
-
-=======
-            <div className="grid gap-8 lg:grid-cols-2">
->>>>>>> 5595d1f3cd986399e1a8a6342c8d78220550f6c9
               <div className="box box--transparent">
 
                 <div className="box-header !px-0">{t("Your allocation")}</div>
