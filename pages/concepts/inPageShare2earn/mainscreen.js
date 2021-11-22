@@ -195,12 +195,19 @@ function Concept() {
                         <p>👉 &nbsp;Learn more here <a href="#" className="link">https://rada.network/en/post/widiland-a-dreamy-story-with-real-humane-values/ref=1018</a></p>
                       </div>
 
-                      <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <a className="btn btn-default  w-full !py-2" href="" target="_blank">
+                      <div className="grid grid-cols-2 gap-4 py-3 px-4 border-t border-gray-200 dark:border-gray-700">
+                        <a className="btn btn-default !py-2">
+                          <span className="icon"><i className="fa-duotone fa-refresh text-xs"></i></span>
+                          <span className="btn--text">Randomize</span>
+                        </a>
+                        <a className="btn btn-default !py-2" href="" target="_blank">
                           <span className="icon"><i className="fa-duotone fa-copy text-xs"></i></span>
                           <span className="btn--text">Copy link</span>
                         </a>
+
+                       
                       </div>
+
                     </div>
                   </div>
 

@@ -80,6 +80,7 @@ const LaunchVerse = (props) => {
                               src={"https://www.youtube.com/embed/DEWHvVE7xr4"}
                               title="Welcome to The Parallel - An Infinite Metaverse"
                               frameBorder="0"
+                              rel="0"
                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                               allowFullScreen="allowFullScreen"
                             />
