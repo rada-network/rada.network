@@ -2,6 +2,7 @@ import Timeline from "./Timeline";
 import ProjectCountdown from "./Countdown";
 import OpenDate from "./OpenDate"
 import { useTranslation } from "next-i18next";
+import Link from "next/link"
 
 const WhitelistCountdown = ({project}) => {
   const {t} = useTranslation("launchpad")
@@ -42,11 +43,13 @@ const WhitelistCountdown = ({project}) => {
                       <i class="fa-duotone fa-hand-holding-heart"></i>
                     </span>
                     <div>
-                      <p className="mb-1 opacity-80">Get more RIR with Share2Earn</p>
-                      <a href="/launchverse/parallel/share2earn" class="group text-white">
-                        <span class="text-sm">Joint now</span>
+                      <p className="mb-1 opacity-80">{t("Get more RIR with Share2Earn")}</p>
+                      <Link href={`/launchverse/${project.slug}/share2earn`}>
+                      <a href={`/launchverse/${project.slug}/share2earn`} class="group text-white">
+                        <span class="text-sm">{t("Joint now")}</span>
                         <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
                       </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -55,11 +58,13 @@ const WhitelistCountdown = ({project}) => {
                       <i class="fad fa-info"></i>
                     </span>
                     <div>
-                      <p className="mb-1 opacity-80">Joint the launchverse is really simple</p>
-                      <a href="/launchverse/parallel/share2earn" class="group text-white">
-                        <span class="text-sm">Learn more</span>
+                      <p className="mb-1 opacity-80">{t("Joint the launchverse is really simple")}</p>
+                      <Link href={`/launchverse/${project.slug}/share2earn`}>
+                      <a href={`/launchverse/${project.slug}/share2earn`} class="group text-white">
+                        <span class="text-sm">{t("Learn more")}</span>
                         <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
                       </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

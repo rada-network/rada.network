@@ -1,4 +1,4 @@
-import { BscSvg, UsdtSvg, LaunchSvg } from "../../../svg/SvgIcons";
+import { BscSvg, UsdtSvg, LaunchSvg, BusdSvg } from "../../../svg/SvgIcons";
 export default function LaunchpadOverview({ project }) {
   const { token } = project;
   return (
@@ -29,16 +29,16 @@ export default function LaunchpadOverview({ project }) {
           <div className="flex flex-wrap space-x-4 mb-4">
             <div className="flex items-center text-sm">
               <span className="w-5 h-5">
-                <UsdtSvg />
+                <BusdSvg />
               </span>
-              <span className="ml-2">USDT</span>
+              <span className="ml-2">BUSD</span>
             </div>
 
             <div className="flex items-center text-sm">
               <span className="w-4 h-4">
                 <BscSvg />
               </span>
-              <span className="ml-2">{project?.platform?.name}</span>
+              <span className="ml-2">{project?.platform?.networkName.toUpperCase()}</span>
             </div>
 
             <div className={`label ${project.type}`}>{project.type}</div>
