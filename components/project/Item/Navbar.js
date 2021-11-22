@@ -17,8 +17,8 @@ export default function ProjectNavbar({ symbol, project, slug }) {
   };
   return (
     <>
-      <div className="flex h-full w-limiter-lg relative lg:px-4">
-        <div className="page-back flex-shrink-0 ml-0 relative lg:left-0 xl:left-2">
+      <div className="flex h-full w-limiter-lg relative xl:px-4">
+        <div className="page-back flex-shrink-0 ml-0 relative lg:left-1 xl:left-2">
           <div className="btn">
             <Link href={`/${dataStore.lang}/launchverse`}>
               <a href={`/${dataStore.lang}/launchverse`}>
@@ -30,7 +30,7 @@ export default function ProjectNavbar({ symbol, project, slug }) {
             </Link>
           </div>
         </div>
-        <div className="tabbar page-tabs relative lg:left-4 xl:-left-1">
+        <div className="tabbar page-tabs relative lg:left-8 xl:-left-1">
           <div className="tabbar--main">
             <NavItem uri={symbol}>{t("LaunchVerse")}</NavItem>
             <span className="tab-item--divider"></span>
