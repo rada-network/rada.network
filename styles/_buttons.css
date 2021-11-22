@@ -5,7 +5,7 @@ Buttons
 */
 .btn {
   @apply inline-flex items-center relative transition;
-  @apply rounded-md font-medium focus:outline-none cursor-pointer;
+  @apply rounded-lg font-medium focus:outline-none cursor-pointer;
 
   .icon {
     @apply relative;
@@ -85,7 +85,7 @@ Sizes
 
 /* Colors */
 .btn-primary {
-  @apply border-transparent hover:border-transparent !bg-primary-700 !text-primary-100 hover:!bg-primary-900 hover:!text-white;
+  @apply border-transparent hover:border-transparent bg-primary-700 text-primary-100 hover:bg-primary-600 hover:text-white;
 }
 
 .btn-secondary {
@@ -366,8 +366,8 @@ Button Caret
 /* Page Back + Close Button */
 .page-back .btn,
 .page-close .btn {
-  @apply  w-px-32 h-px-32 justify-center items-center  rounded-full;
-  @apply text-sm opacity-50 hover:opacity-100 hover:bg-gray-400 hover:bg-opacity-20 ;
+  @apply w-px-32 h-px-32 justify-center items-center  rounded-full;
+  @apply text-base opacity-50 hover:opacity-100 hover:bg-gray-400 hover:bg-opacity-20 ;
 }
 
 /* Close Button */

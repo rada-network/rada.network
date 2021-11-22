@@ -38,7 +38,6 @@ export default function ProjectPage({ slug, project, locale }) {
   const containerRef = useRef()
   return (
     <Layout extraClass="glassmorphism" meta={meta}>
-
       <div className={`pane-content`} ref={containerRef} >
         <ProjectItem project={project} slug={slug} page={page} />
       </div>

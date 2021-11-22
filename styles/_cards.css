@@ -78,13 +78,13 @@ Generic Styles
 Generic Card 
 ----------------------------------------------*/
 .card-default {
-  @apply flex-col p-0;
-  @apply bg-white border-0 dark:bg-gray-800 rounded-lg shadow;
+  @apply flex-col p-0 rounded-lg shadow-sm;
+  @apply bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700;
   @apply text-sm;
 }
 
 .card-default .card-header {
-  @apply p-4 lg:px-6 lg:py-4 text-base font-medium border-b border-gray-200 dark:border-gray-700; 
+  @apply py-3 px-4 lg:px-6 lg:py-3 text-base font-medium border-b border-gray-200 dark:border-gray-700; 
 }
 
 .card-default .card-body {

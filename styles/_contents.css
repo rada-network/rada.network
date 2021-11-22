@@ -342,7 +342,7 @@ Icons Styles
 }
 
 .shape--hexagon .fa-hexagon {
-  @apply absolute inset-0 text-gray-300;
+  @apply absolute inset-0 text-gray-200 dark:text-gray-500;
   transform: rotate(30deg);
   font-size: 40px;
 }

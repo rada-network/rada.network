@@ -192,7 +192,7 @@ export default function ProjectShare2Earn({
 
           <div className="section max-w-screen-sm mx-auto">
 
-            <div className="section-body">
+            <div className="section-body !pt-2">
               <h1 className="mb-4">
                 <span className="text-xl lg:text-2xl font-semibold text-color-title">
                   {t("welcome title")}
@@ -205,9 +205,9 @@ export default function ProjectShare2Earn({
                     <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/share2earn.png"} alt="RADA Share2Earn Program" />
                   </div>
                   <h2 className="flex flex-col font-altsans">
-                    <strong className="text-4xl font-semibold flex items-center tracking-wider">
+                    <strong className="text-4xl font-semibold flex items-center tracking-normal md:tracking-wider">
                       <span>Share</span>
-                      <span className="text-3xl flex items-center justify-center bg-white w-9 h-9 rounded-full text-primary-500 mx-2 font-bold">2</span>
+                      <span className="text-3xl flex items-center justify-center bg-white w-9 h-9 rounded-full text-primary-500 mx-1 md:mx-2 font-bold">2</span>
                       <span>Earn</span>
                     </strong>
                     <span className="mt-1 text-lg font-medium tracking-wide">by RADA Network</span>
