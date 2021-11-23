@@ -109,7 +109,7 @@ export default function LaunchpadContent({ project }) {
           <p className="mt-auto pt-4">
             <Link href={`/${dataStore.lang}/projects/${project.slug}/research`}>
               <>
-                <a className="link">{t("Read full research")}</a>
+                <a className="link" href={`/${dataStore.lang}/projects/${project.slug}/research`}>{t("Read full research")}</a>
                 {/* <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span> */}
               </>
             </Link>

@@ -7,6 +7,11 @@ import useStore from "../../lib/useStore"
 
 
 
+export const ConnectorNames = {
+  Injected : "injected",
+  WalletConnect : "walletconnect",
+}
+
 const useChainConfig = function(){
   const store = useStore()
   const getNodeUrl = () => {
@@ -23,6 +28,38 @@ const useChainConfig = function(){
         return RPC_CONFIG.eth.production.url
       }
       return RPC_CONFIG.eth.dev.url
+    }
+  }
+
+  const getChainName = () => {
+    // Use custom node if available (both for development and production)
+    // However on the testnet it wouldn't work, so if on testnet - comment out the REACT_APP_NODE_PRODUCTION from env file
+    if (store.network === "bsc"){
+      if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+        return RPC_CONFIG.bsc.production.name
+      }
+      return RPC_CONFIG.bsc.dev.name
+    }
+    if (store.network === "eth"){
+      if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+        return RPC_CONFIG.eth.production.name
+      }
+      return RPC_CONFIG.eth.dev.name
+    }
+  }
+
+  const getChainScanUrl = function(){
+    if (store.network === "bsc"){
+      if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+        return RPC_CONFIG.bsc.production.scan
+      }
+      return RPC_CONFIG.bsc.dev.scan
+    }
+    if (store.network === "eth"){
+      if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+        return RPC_CONFIG.eth.production.scan
+      }
+      return RPC_CONFIG.eth.dev.scan
     }
   }
 
@@ -73,6 +110,11 @@ const useChainConfig = function(){
     pollingInterval: POLLING_INTERVAL,
   })
 
+  const connectorsByName = {
+    [ConnectorNames.Injected]: injected,
+    [ConnectorNames.WalletConnect]: walletconnect,
+  }
+
   /**
    * BSC Wallet requires a different sign method
    * @see https://docs.binance.org/smart-chain/wallet/wallet_api.html#binancechainbnbsignaddress-string-message-string-promisepublickey-string-signature-string
@@ -101,8 +143,50 @@ const useChainConfig = function(){
 
   }
 
-  return {getChainId,getNodeUrl,injected,walletconnect,signMessage,getRpcUrl,chainId,getRIRAddress,getBusdAddress}
+  /**
+   * Prompt the user to add BSC as a network on Metamask, or switch to BSC if the wallet is on a different network
+   * @returns {boolean} true if the setup succeeded, false otherwise
+   */
+  const setupNetwork = async () => {
+    const provider = window.ethereum
+    let name = "BNB",symbol = "bnb",decimals=18;
+    if (store.network == "eth"){
+      name = "ETH";
+      symbol = "eth";
+    }
+    if (provider) {
+      try {
+        await provider.request({
+          method: 'wallet_addEthereumChain',
+          params: [
+            {
+              chainId: `0x${chainId.toString(16)}`,
+              chainName: getChainName(),
+              nativeCurrency: {
+                name: name,
+                symbol: symbol,
+                decimals: decimals,
+              },
+              rpcUrls: [getNodeUrl()],
+              blockExplorerUrls: [`${getChainScanUrl()}/`],
+            },
+          ],
+        })
+        return true
+      } catch (error) {
+        console.error('Failed to setup the network in Metamask:', error)
+        return false
+      }
+    } else {
+      console.error(`Can't setup the ${store.network} network on metamask because window.ethereum is undefined`)
+      return false
+    }
+  }
+
+  return {getChainId,getNodeUrl,injected,walletconnect,signMessage,getRpcUrl,chainId,getRIRAddress,getBusdAddress,setupNetwork,connectorsByName}
 }
 
+export  const connectorLocalStorageKey = "connectorIdv2";
+export  const walletLocalStorageKey = "wallet";
 
 export default useChainConfig

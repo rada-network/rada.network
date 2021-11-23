@@ -17,17 +17,19 @@ import NetworkSwitch from "./NetworkSwitch"
 import { getErrorMessage } from "../utils"
 import { toast } from "react-toastify";
 import _ from "lodash"
+import useAuth from "../utils/hooks/useAuth"
 
 const btnRef = createRef()
 
 const ConnectWalletModal = observer(({}) => {
   const store = useStore()
-  const {t} = useTranslation()
+  const {t} = useTranslation("common")
   const context = useActiveWeb3React()
   const { connector, library, chainId, account, activate, deactivate, active, error } = context
   const {injected,walletconnect} = useChainConfig()
   // handle logic to recognize the connector currently being activated
   const [activatingConnector, setActivatingConnector] = useState()
+  const {login,logout} = useAuth()
   const closeModal = () => { store.wallet.showConnect(false); }
   const isOpen = store?.wallet.showingConnect
   useEffect(() => {
@@ -52,149 +54,168 @@ const ConnectWalletModal = observer(({}) => {
 
   // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
   //useInactiveListener(!triedEager || !!activatingConnector)
-
+  const listNetworks = [
+    { 
+      name: 'Binance Smart Chain',
+      networkName : "bsc",
+      icon : "bsc"
+    },
+    { 
+      name: 'Ethereum',
+      networkName : "eth",
+      icon : "ethereum"
+    },
+    { 
+      name: 'Polygon',
+      networkName : "matic",
+      icon : "polygon"
+    },
+    { 
+      name: 'Solana',
+      networkName : "sol",
+      icon : "solana"
+    }
+  ]
   return (
   <>
-  <Transition show={isOpen} as={Fragment}>
+  <Transition appear show={isOpen} as={Fragment}>
     <Dialog
-        as="div"
-        id="modal"
-        className={`fixed inset-0 z-10 overflow-y-auto dialog-outside-wrapper`}
-        initialFocus={btnRef}
-        static
-        onClose={closeModal}
-      >
-        <div className={`min-h-screen dialog-outside`}>
+      as="div"
+      className="fixed inset-0 z-50 overflow-y-auto"
+      onClose={closeModal}
+    >
+      <div className="min-h-screen px-4 text-center">
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <Dialog.Overlay className="fixed inset-0 blur-md bg-black opacity-70" />
+        </Transition.Child>
 
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-1600"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <Dialog.Overlay className="dialog-overlay fixed inset-0" onClick={closeModal} />
-          </Transition.Child>
-
-          {/* This element is to trick the browser into centering the modal contents. */}
-          <span
-            className="inline-block h-screen align-middle"
-            aria-hidden="true"
-          >
-            &#8203;
-          </span>
-
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 scale-y-0"
-            enterTo="opacity-100 scale-y-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 scale-y-100"
-            leaveTo="opacity-0 scale-y-0"
-          >
-
-            <div className={`inline-block w-full z-200 relative dialog`}>
-
-              <div className={`dialog-wrapper`}>
-
-                {/* Dialog Header */}
-                <div className={`dialog_header ${styles.dialog_header_wrapper}`}>
-                  <Dialog.Title
-                    as="div"
-                    className={`${styles.dialog_header}`}
-                  >
-                    <button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
-                      <span class="btn--caret-left"></span>
-                      <span className="btn--text font-normal">Back</span>
-                    </button>
-                    <h3 className="text-xl font-semibold">
-                      Connect
-                      <span
-                        className="hasTooltip"
-                        data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
-                        data-event="click"
-                      > wallet <i className="fa-duotone fa-info-circle text-base" />
-                      </span>
-                    </h3>
-                    <div className="mt-4 text-white text-opacity-70 leading-6">
-                      <p className="">
-                        Connect your wallet to receive our exclusive rewards and airdrops
-                      </p>
-                    </div>
-                  </Dialog.Title>
-                  <div className={`${styles.dialog_header__deco}`} />
-                </div>
-
-                {/* Dialog Body */}
-                <div className={`${styles.dialog_body_wrapper}`}>
-
-                  <div className={`${styles.dialog_body}`}>
-
-                    <div className={``}>
-                      <ul>
-                        <li ref={btnRef}>
-                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {activate(injected);setActivatingConnector(injected)}
-                          }>
-                            <span className={`icon ${styles.btn_icon}`}>
-                              <img src={process.env.NEXT_PUBLIC_CDN +"/images/icons/metamask-24.png"} alt="Metamask - Secure wallets with great flexibility" />
-                            </span>
-                            <div className={`${styles.btn_text}`}>
-                              <span className="text-base font-semibold text-color-title">Metamask</span>
-                              {/* <span className="text-color-desc text-sm">Secure wallets with great flexibility</span> */}
-                            </div>
-                            <i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
-                          </a>
-                        </li>
-                        <li>
-                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {activate(walletconnect);setActivatingConnector(setActivatingConnector(walletconnect))}}>
-                            <span className={`icon ${styles.btn_icon}`}>
-                              <img src={process.env.NEXT_PUBLIC_CDN + "/images/icons/walletconnect-24.png"} alt="WalletConnect - Connect with Rainbow, Trust, Argent..." />
-                            </span>
-                            <div className={`${styles.btn_text}`}>
-                              <span className="text-base font-semibold text-color-title">WalletConnect</span>
-                              {/* <span className="text-color-desc text-sm">Connect with <b>Rainbow</b>, <b>Trust</b>, <b>Argent</b>...</span> */}
-                            </div>
-                            <i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
-                          </a>
-                        </li>
-                        {/* <li>
-                          <a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => {}}>
-                            <span className={`icon ${styles.btn_icon}`}>
-                              <img src={process.env.NEXT_PUBLIC_CDN + "/images/icons/walletlink-24.png"} alt="WalletLink - Connect with Coinbase wallet" />
-                            </span>
-                            <div className={`${styles.btn_text}`}>
-                              <span className="text-base font-semibold text-color-title">WalletLink</span>
-                            </div>
-                            <i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
-                          </a>
-                        </li> */}
-                      </ul>
-                    </div>
-
-                    <div className="px-4 md:px-4 mt-6 md:mt-8">
-                      <p className="text-xs text-gray-400">
-                        We have no access to your private key and funds without your confirmation
-                      </p>
-                    </div>
-
+        {/* This element is to trick the browser into centering the modal contents. */}
+        <span
+          className="inline-block h-screen align-middle"
+          aria-hidden="true"
+        >
+          &#8203;
+        </span>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0 scale-95"
+          enterTo="opacity-100 scale-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95"
+        >
+          <div className="inline-block w-full max-w-2xl my-8 overflow-hidden relative
+          text-left align-middle transition-all transform bg-white dark:bg-gray-900 shadow-xl rounded-lg">
+            <Dialog.Title
+              as="h3"
+              className="text-lg border-b dark:border-gray-800 border-gray-200
+                font-medium p-4 md:p-6 leading-6 text-gray-900 dark:text-gray-300"
+            >
+              Connect your wallet
+            </Dialog.Title>
+            <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
+              <div className="wallet-section pb-4 mb-4 border-b border-gray-200 dark:border-gray-800">
+                <div className="wallet-step">
+                  <div className="icon mr-2 !flex w-px-24 h-px-24 items-center justify-center 
+                  rounded-full border-2 border-gray-300 dark:border-gray-600">
+                    <strong className="text-sm">
+                      <span className="sr-only">Step</span>
+                      1
+                    </strong>
                   </div>
-
+                  <h3>Network selected</h3>
                 </div>
-
+                <ul className="flex mt-4 lg:ml-4">
+                  {listNetworks.map(function(item){
+                    if (item.networkName !== store.network){
+                      return null
+                    }
+                    return (
+                      <li className="wallet-item checked">
+                        <button className="wallet-option ">
+                          <img className="wallet-icon-img w-14 h-14" src={`/wallet-icons/${item.icon}.svg`} alt={item.name} />
+                          {store.network === item.networkName &&
+                          <span className="w-4 h-4 text-center bg-green-500 text-white rounded-full absolute rounded-full top-0 right-0 flex items-center">
+                            <i className="fa-duotone mx-auto font-bold fa-check text-2xs"></i>
+                          </span>
+                          }
+                        </button>
+                        
+                        <div>{item.name}</div>
+                      </li>
+                    )
+                  })}
+                </ul> 
               </div>
-
+              {/* end of wallet-section */}
+              <div className="wallet-section">
+                <div className="wallet-step">
+                  <div className="icon mr-2 !flex w-px-24 h-px-24 items-center justify-center 
+                  rounded-full border-2 border-gray-300 dark:border-gray-600">
+                    <strong className="text-sm">
+                      <span className="sr-only">Step</span>
+                      2
+                    </strong>
+                  </div>
+                  <h3>Choose a wallet</h3>
+                </div>
+                <ul className="flex mt-4 lg:ml-4">
+                  <li className="wallet-item">
+                    <button className="wallet-option " onClick={(e) => {login("injected")}}>
+                      <img className="wallet-icon-img w-14 h-14" src="/wallet-icons/metamask.svg" alt="Metamask" />
+                    </button>
+                    
+                    <div>Metamask</div>
+                  </li>
+                  <li className="wallet-item">
+                    <button className="wallet-option" onClick={(e) => {login("walletconnect")}}>
+                      <img className="w-14 h-14" src="/wallet-icons/wallet-connect.svg" alt="WalletConnect" />
+                    </button>
+                    <div>Wallet Connect</div>
+                  </li>
+                  <li className="wallet-item disabled">
+                    <button className="wallet-option">
+                      <img className="w-14 h-14" src="/wallet-icons/ledger.svg" alt="Ledger" />
+                    </button>
+                    <div>Ledger</div>
+                  </li>
+                  <li className="wallet-item disabled">
+                    <button className="wallet-option checked">
+                      <img className="w-14 h-14" src="/wallet-icons/trezor.svg" alt="Trezor" />
+                    </button>
+                    <div>Trezor</div>
+                  </li>
+                </ul> 
+              </div>
+              {/* end of wallet section */}
             </div>
-          </Transition.Child>
 
-        </div>
-
-      </Dialog>
-
-
-    </Transition>
+            <div className="absolute right-4 top-4">
+              <button
+                type="button"
+                className="inline-flex justify-center px-4 bg-transparent 
+                py-2 text-sm font-medium text-gray-500 border border-transparent rounded-md
+                  hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none 
+                  focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                onClick={closeModal}
+              >
+                  <i className="fa-duotone fa-close text-base"></i>
+              </button>
+            </div>
+          </div>
+        </Transition.Child>
+      </div>
+    </Dialog>
+  </Transition>
   </>
 )})
 
@@ -203,19 +224,13 @@ export const WalletProfile = ({type}) => {
   const { account, deactivate} = useActiveWeb3React()
   const { t } = useTranslation("invest");
   const store = useStore()
+  const {logout} = useAuth()
   const handleConnectWallet = () => {
     store.wallet.showConnect(true);
   };
   const handleDisconnectWallet = async () => {
-    deactivate()
+    logout()
   };
-
-  const handleConnectSuccess = () => {
-    getCurrentUser().then((res) => {
-      setUser(res);
-    });
-  };
-
   return (
     <>
     <ConnectWalletModal />
