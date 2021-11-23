@@ -2,7 +2,7 @@ import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
 const TokenBrief = function(){
   return (
     <>
-      <div className="section-header pl-4 pr-4 pt-4 md:pl-6 md:pr-6 md:pt-6">
+      <div className="section-header pl-4 pr-4 pt-4 md:px-4 md:pt-4">
                             
         <div className="flex flex-wrap justify-between items-center w-full">
           <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
@@ -34,8 +34,8 @@ const TokenBrief = function(){
 
 
       {/* Video / Banner of Project */}
-      <div className="page-media md:px-6">
-        <div className="media-player rounded-lg overflow-hidden">
+      <div className="page-media md:px-4">
+        <div className="media-player rounded overflow-hidden">
           <div className="w-full h-full">
             <div className={`aspect-w-16 aspect-h-9`}>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/tvfMdjUm8n4" title="YouTube video player" rel="0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

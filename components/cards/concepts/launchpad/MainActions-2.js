@@ -71,13 +71,13 @@ const MainActions = ({}) => {
                       </div>
                       <h3>Choose a network</h3>
                     </div>
-                    <ul className="flex mt-4 lg:ml-6">
+                    <ul className="flex mt-4 lg:ml-4">
                       <li className="wallet-item checked">
                         <button className="wallet-option ">
                           <img className="wallet-icon-img w-14 h-14" src="/wallet-icons/bsc.svg" alt="Binance Smart Chian" />
                           <span className="w-4 h-4 text-center bg-green-500 text-white rounded-full 
                                            absolute rounded-full top-0 right-0 flex items-center">
-                            <i className="fa-duotone mx-auto fa-check text-2xs"></i>
+                            <i className="fa-duotone mx-auto font-bold fa-check text-2xs"></i>
                           </span>
                         </button>
                         
@@ -95,6 +95,14 @@ const MainActions = ({}) => {
                         </button>
                         <div>Polygon</div>
                       </li>
+
+                      <li className="wallet-item">
+                        <button className="wallet-option checked">
+                          <img className="w-14 h-14" src="/wallet-icons/solana.svg" alt="Solana" />
+                        </button>
+                        <div>Solana</div>
+                      </li>
+
                     
                     </ul> 
                   </div>
@@ -110,13 +118,13 @@ const MainActions = ({}) => {
                       </div>
                       <h3>Choose a wallet</h3>
                     </div>
-                    <ul className="flex mt-4 lg:ml-6">
+                    <ul className="flex mt-4 lg:ml-4">
                       <li className="wallet-item checked">
                         <button className="wallet-option ">
                           <img className="wallet-icon-img w-14 h-14" src="/wallet-icons/metamask.svg" alt="Metamask" />
                           <span className="w-4 h-4 text-center bg-green-500 text-white rounded-full 
                                            absolute rounded-full top-0 right-0 flex items-center">
-                            <i className="fa-duotone mx-auto fa-check text-2xs"></i>
+                            <i className="fa-duotone mx-auto font-bold fa-check text-2xs"></i>
                           </span>
                         </button>
                         

@@ -71,7 +71,7 @@ const Layout = observer((props) => {
                       <div className="w-limiter-lg">
                         <div>                          
                           <TokenBrief />
-                          <div className="section-body p-4 md:p-6">
+                          <div className="section-body p-4 md:p-4">
                             <TokenContent />
 
                             {/* Main Action Card */}
