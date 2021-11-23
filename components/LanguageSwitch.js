@@ -9,11 +9,12 @@ export const LanguageSwitch = observer(({}) => {
   const {dataStore,detailStore} = usePageStore()
   const [cookies, setCookie] = useCookies(['NEXT_LOCALE']);
   const router = useRouter()
-  const handleChangeLanguage = (e) => {
-    const lang = e.currentTarget.getAttribute("lang")
+  const handleChangeLanguage = (lang) => {
+    // const lang = e.currentTarget.getAttribute("lang")
     ///dataStore.lang = lang
     setCookie("NEXT_LOCALE",lang,{path : "/",maxAge: 24*7*3600})
     buttonRef.current?.click()
+    
     if (dataStore.page === "item"){
       if (detailStore.data && detailStore.data.multilang !== null){
         let targetObj = null;
@@ -58,6 +59,12 @@ export const LanguageSwitch = observer(({}) => {
   let { styles, attributes } = usePopper(referenceElement, popperElement)
   const buttonRef = useRef();
 
+  const Lang = ({lang, title}) => (
+    <div className={`popper-item${dataStore.lang==lang ? ' active' : ''}`} onClick={() => {handleChangeLanguage(lang)}} lang={lang}>
+      <span className="popper-item--text">{title}</span>
+    </div>
+  )
+
   return (
     <Popover className="relative">
       
@@ -74,12 +81,14 @@ export const LanguageSwitch = observer(({}) => {
             leaveTo="transform opacity-0 scale-0"
           >
           <div className={`popper`}>
-            <div className="popper-item" onClick={async (e) => {handleChangeLanguage(e)}} lang={'vi'}>
+            <Lang lang="vi" title="Tiếng Việt" />
+            <Lang lang="en" title="English" />
+            {/* <div className="popper-item" onClick={async (e) => {handleChangeLanguage(e)}} lang={'vi'}>
               <span className="popper-item--text">Tiếng Việt</span>
             </div>
             <div className="popper-item" onClick={async (e) => {handleChangeLanguage(e)}} lang={'en'}>
               <span className="popper-item--text">English</span>
-            </div>
+            </div> */}
           </div>
           </Transition>
         )}
