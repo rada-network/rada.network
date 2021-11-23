@@ -18,11 +18,11 @@ import { useRouter } from "next/router";
 export default function ProjectPage({ slug, project, locale }) {
   const { dataStore } = usePageStore()
   const { locales, asPath } = useRouter();
-
+  const store = useStore()
   dataStore.page = "launchverse"
   dataStore.lang = locale
   const page = slug.length > 1 ? slug[1] : 'index'
-  
+
   const meta = myUtils.createSiteMetadata(
     {
       page: "ProjectDetail",
@@ -33,6 +33,7 @@ export default function ProjectPage({ slug, project, locale }) {
     locales,
     asPath
   );
+  store.updateNetwork(project?.platform.networkName)
   useEffect(() => {
     document.body.classList.add("page-details")
     return () => {

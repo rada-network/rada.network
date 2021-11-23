@@ -118,8 +118,8 @@ const LaunchVerse = (props) => {
                         </div>
 
                         <div className="flex-shrink-0 mt-4 lg:mt-0 lg:ml-8">
-                          <Link href="/launchverse/parallel" >
-                            <a href="/launchverse/parallel" title="The parallel universe" className="btn btn-secondary btn-lg btn-rounded">
+                          <Link href={`/${props.lang}/launchverse/parallel`} >
+                            <a href={`/${props.lang}/launchverse/parallel`} title="The parallel universe" className="btn btn-secondary btn-lg btn-rounded">
                               <span className="text-sm lg:text-base">Discover Now</span>
                             </a>
                           </Link>
@@ -154,8 +154,8 @@ const LaunchVerse = (props) => {
                         We make a unique tokenomic that encourage community to share projects and earn RIR token. The more you share, the more you earn. Both parties can archive their goals easily.
                       </p>
                       <div className="mt-4">
-                        <Link href="/launchverse/parallel/share2earn">
-                        <a href="/launchverse/parallel/share2earn" className="group text-secondary-400">
+                        <Link href={`/${props.lang}/launchverse/parallel/share2earn`}>
+                        <a href={`/${props.lang}/launchverse/parallel/share2earn`} className="group text-secondary-400">
                           <span className="text-sm lg:text-base">Joint now</span>
                           <span className="icon text-sm lg:text-base relative left-2 group-hover:left-3 transition-all"><i class="fas fa-angle-right"></i></span>
                         </a>

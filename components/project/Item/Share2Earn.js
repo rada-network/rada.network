@@ -17,12 +17,14 @@ import { useStore } from "@lib/useStore"
 import { getCurrentUser } from "@data/query/user"
 import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
 import { useERC20 } from "@utils/hooks/useContracts";
-
+import useChainConfig from "@utils/web3/useChainConfig";
 
 export default function ProjectShare2Earn({
   project,
 }) {
-
+  const {getRIRAddress} = useChainConfig()
+  const riraddress = getRIRAddress()
+  console.log("RIR : ",riraddress)
   const { t } = useTranslation('share2earn')
   const context = useActiveWeb3React()
   const { library, account } = context
@@ -30,63 +32,16 @@ export default function ProjectShare2Earn({
   // Handle join program
   const [cookies] = useCookies(["ref"]);
   const referralCode = cookies.ref ?? '';
-  const [user, setUser] = useState({});
   const store = useStore()
-
-  useEffect(() => {
-    if (store.user.access_token !== "") {
-      getCurrentUser().then((res) => {
-        getBase64FromUrl(res.image).then(b64 => {
-          resizeImage(b64).then(result => {
-            localStorage.removeItem("user_avatar")
-            localStorage.setItem("user_avatar", result)
-          })
-        })
-        setUser(res);
-      });
-    }
-  }, [store.user.access_token]);
-
-  function resizeImage(base64Str, maxWidth = 512, maxHeight = 512) {
-    return new Promise((resolve) => {
-      let img = new Image()
-      img.src = base64Str
-      img.onload = () => {
-        let canvas = document.createElement('canvas')
-        canvas.width = maxWidth
-        canvas.height = maxHeight
-        let ctx = canvas.getContext('2d')
-        ctx.drawImage(img, 0, 0, maxWidth, maxHeight)
-        // Draw here
-        ctx.globalCompositeOperation = 'destination-in';
-        ctx.beginPath();
-        ctx.arc(maxHeight / 2, maxHeight / 2, maxHeight / 2, 0, Math.PI * 2);
-        ctx.closePath();
-        ctx.fill();
-        resolve(canvas.toDataURL())
-      }
-    })
-  }
-
-  const getBase64FromUrl = async (url) => {
-    const data = await fetch(url);
-    const blob = await data.blob();
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(blob);
-      reader.onloadend = () => {
-        const base64data = reader.result;
-        resolve(base64data);
-      }
-    });
-  }
+  const user = store.user
 
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
   // TODO: Save in config file
   // const share2earnAddress = "0x998353AfD99A73262337974e2E732118ed557600" // Bản full admin+referral
-  const share2earnAddress = "0x5F6c365a9075EfC581C5E7249e5465B2DB9ec36f" // Bản referral
-  const referralAdminAddress = "0x492E27f769FC5a566E904092F1a1d86D12d53589" // Bản referral
+  const share2earnAddress = "0xb4E4877E23bFd704319Bf92D7705E84514cd9D9f" // Bản referral
+  const referralAdminAddress = "0x4A4361654D34551f231Ba562dDA2d8Db44e56b0c" // Bản referral
+
   const shareAddress = useERC20(share2earnAddress);
 
   const share2earnContract = useShare2EarnContract(share2earnAddress)
@@ -276,15 +231,9 @@ export default function ProjectShare2Earn({
                       }
                     </>
                   )}
-
-                
-
-
               </form>
               }
-
-              
-              { (user.id === undefined) ? (
+              { (user.id === "") ? (
                 <form className="mt-4">
                   <btn className="mt-4 btn btn-yellow w-full justify-center py-3 px-4" type="submit"
                   onClick={openLoginPopUp}

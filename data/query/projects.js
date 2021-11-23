@@ -48,6 +48,7 @@ const projectBySlugGql = gql`
             avatar_frame
             incentive_level1
             incentive_level2
+            share_message
           }
         }
     }

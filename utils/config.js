@@ -6,11 +6,11 @@ export const RPC_CONFIG = {
     },
     dev : {
       chainId : 97,
-      url : 'https://data-seed-prebsc-1-s1.binance.org:8545/'
+      url : 'https://data-seed-prebsc-2-s3.binance.org:8545/'
     },
     staging : {
       chainId : 97,
-      url : 'https://data-seed-prebsc-1-s1.binance.org:8545/'
+      url : 'https://data-seed-prebsc-2-s3.binance.org:8545/'
     }
   },
   eth : {
