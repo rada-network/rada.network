@@ -5,16 +5,12 @@ import { toast } from "react-toastify";
 import { useTranslation } from "next-i18next";
 import _ from "lodash"
 import { useCookies } from "react-cookie";
-
-import { Head } from "@components/Head"
-
 import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransaction"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useShare2EarnContract, useReferralAdminContract } from "@utils/hooks/useContracts"
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React"
 import { useStore } from "@lib/useStore"
-import { getCurrentUser } from "@data/query/user"
 import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
 import { useERC20 } from "@utils/hooks/useContracts";
 import useChainConfig from "@utils/web3/useChainConfig";
@@ -24,7 +20,6 @@ export default function ProjectShare2Earn({
 }) {
   const {getRIRAddress} = useChainConfig()
   const riraddress = getRIRAddress()
-  console.log("RIR : ",riraddress)
   const { t } = useTranslation('share2earn')
   const context = useActiveWeb3React()
   const { library, account } = context
@@ -79,7 +74,6 @@ export default function ProjectShare2Earn({
       try {
         const p = await callFunction(share2earnContract, 'programs', [project.id.toString()])
         const pAdmin = await callFunction(referralAdminContract, 'programs', [project.id.toString()])
-
         setShare2EarnInfo({ ...p, incentiveL0: pAdmin.incentiveL0, incentiveL1: pAdmin.incentiveL1, incentiveL2: pAdmin.incentiveL2 });
         if (account) {
           checkJoined();
@@ -93,6 +87,7 @@ export default function ProjectShare2Earn({
       getInfoProgram()
     }
   }, [share2earnContract, library, account]);
+
 
 
   const checkJoined = async () => {
@@ -132,7 +127,7 @@ export default function ProjectShare2Earn({
   const allowJoin = getMessage() == '' && joined == '' && account
 
   if ((joined != '' || isConfirmed) && !!account) {
-    return <Share2EarnMainScreen project={project} user={user} />;
+    return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress}/>;
   }
 
   const handleConnectWallet = () => {
