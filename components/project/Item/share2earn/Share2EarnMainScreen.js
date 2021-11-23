@@ -5,22 +5,28 @@ import { saveAs } from 'file-saver';
 import { useTranslation } from "next-i18next";
 import { useStore } from "@lib/useStore";
 import { usePageStore } from "@lib/usePageStore";
-import { Head } from "@components/Head"
 import ShareLink from "./ShareLink"
 import SelectBannerType from "./listbox-share2earn";
 import { getShareLogById } from "../../../../data/query/getShareLog";
 import { createOrUpdateShareLogById } from "../../../../data/query/createOrUpdateShareLog";
 import mergeImages from 'merge-images';
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
-import { toast } from "react-toastify"
 import Share2EarnStatus from "./Share2EarnStatus"
+import { useCallFunction } from "@utils/hooks/useCallFunction"
+import { useShare2EarnContract } from "@utils/hooks/useContracts"
+import { ethers } from 'ethers'
 
 
-const Share2EarnMainScreen = observer(({ project, user }) => {
-  const { t } = useTranslation('share2earn')
-  const { account } = useActiveWeb3React()
+
+const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, referralAdminAddress}) => {
   const store = useStore()
   const { detailStore } = usePageStore();
+  const context = useActiveWeb3React()
+  const { library, account } = context
+  const { t } = useTranslation('share2earn')  
+  const { callFunction } = useCallFunction()
+  
+  
   const [facebook, setFacebook] = useState({ url: '', disable: false });
   const [twitter, setTwitter] = useState({ url: '', disable: false });
   // Merge image state
@@ -30,6 +36,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
   const [mergeUploadImgs, setMergeUploadImgs] = useState({});
   const [baseFrames, setBaseFrames] = useState({});
   const [userAvatar, setUserAvatar] = useState(null);
+  const [referralInfo, setReferralInfo] = useState({level1: '', level2: ''})
 
 
   // Banner component 
@@ -68,6 +75,17 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
     }
   }, []);
 
+  const share2earnContract = useShare2EarnContract(share2earnAddress)
+  useEffect(() => {
+    const getInfo = async () => {
+      const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account])
+      const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account])
+      setReferralInfo({level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString())})
+    }
+    if (!!library && !!share2earnContract) {
+      getInfo()
+    }
+  }, [])
 
   // Create or update url
   const facebookSubmit = async (e) => {
@@ -281,7 +299,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
 
             <div className="section-body !pt-0">
 
-              <Share2EarnStatus />
+              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2}/>
 
 
               <ol className="text-sm space-y-8">
