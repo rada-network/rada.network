@@ -494,7 +494,7 @@ Sections Layout
 }
 
 .section-body {
-  @apply pt-8;
+  @apply pt-4;
 }
 
 .section-footer {
