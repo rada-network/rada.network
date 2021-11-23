@@ -388,17 +388,22 @@
       },
       {
         "internalType": "uint256",
-        "name": "incentiveL0",
+        "name": "incentiveLevel1",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "incentiveL1",
+        "name": "incentiveLevel2",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "incentiveL2",
+        "name": "incentiveLevel3",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "maxPerReferral",
         "type": "uint256"
       },
       {
@@ -524,6 +529,11 @@
       {
         "internalType": "uint256",
         "name": "_amount3",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_maxPerReferral",
         "type": "uint256"
       },
       {
