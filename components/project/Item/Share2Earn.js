@@ -230,15 +230,9 @@ export default function ProjectShare2Earn({
                       }
                     </>
                   )}
-
-                
-
-
               </form>
               }
-
-              
-              { (user.id === undefined) ? (
+              { (user.id === "") ? (
                 <form className="mt-4">
                   <btn className="mt-4 btn btn-yellow w-full justify-center py-3 px-4" type="submit"
                   onClick={openLoginPopUp}

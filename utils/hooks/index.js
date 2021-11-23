@@ -16,7 +16,6 @@ export const useLaunchpadInfo = ({project}) => {
   const lauchpadContact = useLaunchpadContractV2(project.swap_contract)
   const fetchLaunchpadInfo = async () => {
     try {
-      let tokenAddress = await lauchpadContact.tokenAddress()
       let individualMinimumAmount = await lauchpadContact.individualMinimumAmountBusd()
       let individualMaximumAmount = await lauchpadContact.individualMaximumAmountBusd()
       let ordersBuyerCount = await lauchpadContact.buyersCount()
@@ -25,7 +24,6 @@ export const useLaunchpadInfo = ({project}) => {
       let updateInfo = {
         individualMinimumAmount : utils.formatEther(individualMinimumAmount),
         individualMaximumAmount : utils.formatEther(individualMaximumAmount),
-        tokenAddress : utils.getAddress(tokenAddress),
         ordersBuyerCount : parseInt(utils.formatEther(ordersBuyerCount)),
         buyers : buyers,
         currentOrder : currentOrder,
