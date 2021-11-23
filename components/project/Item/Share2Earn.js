@@ -39,8 +39,9 @@ export default function ProjectShare2Earn({
 
   // TODO: Save in config file
   // const share2earnAddress = "0x998353AfD99A73262337974e2E732118ed557600" // Bản full admin+referral
-  const share2earnAddress = "0x5F6c365a9075EfC581C5E7249e5465B2DB9ec36f" // Bản referral
-  const referralAdminAddress = "0x492E27f769FC5a566E904092F1a1d86D12d53589" // Bản referral
+  const share2earnAddress = "0xb4E4877E23bFd704319Bf92D7705E84514cd9D9f" // Bản referral
+  const referralAdminAddress = "0x6C6573556cCad0304a750Cb7B17a51e14B51FBC2" // Bản referral
+
   const shareAddress = useERC20(share2earnAddress);
 
   const share2earnContract = useShare2EarnContract(share2earnAddress)
