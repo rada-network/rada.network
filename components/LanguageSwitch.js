@@ -13,7 +13,8 @@ export const LanguageSwitch = observer(({}) => {
     // const lang = e.currentTarget.getAttribute("lang")
     ///dataStore.lang = lang
     setCookie("NEXT_LOCALE",lang,{path : "/",maxAge: 24*7*3600})
-    buttonRef.current?.click()
+    // buttonRef.current?.click()
+    closeChooser()
     
     if (dataStore.page === "item"){
       if (detailStore.data && detailStore.data.multilang !== null){
@@ -47,6 +48,11 @@ export const LanguageSwitch = observer(({}) => {
     
     //router.reload()
   }
+
+  const closeChooser = () => {
+    buttonRef.current?.click()
+  }
+
   let langDisplay = ''
   if (dataStore.lang === 'vi' ){
     langDisplay = 'vi'
@@ -59,11 +65,16 @@ export const LanguageSwitch = observer(({}) => {
   let { styles, attributes } = usePopper(referenceElement, popperElement)
   const buttonRef = useRef();
 
-  const Lang = ({lang, title}) => (
-    <div className={`popper-item${dataStore.lang==lang ? ' active' : ''}`} onClick={() => {handleChangeLanguage(lang)}} lang={lang}>
+  const Lang = ({lang, title}) => {
+    return (dataStore.lang==lang) ?
+    <div className="popper-item active" lang={lang} onClick={closeChooser}>
       <span className="popper-item--text">{title}</span>
     </div>
-  )
+    :
+    <div className="popper-item" onClick={() => {handleChangeLanguage(lang)}} lang={lang}>
+      <span className="popper-item--text">{title}</span>
+    </div>
+  }
 
   return (
     <Popover className="relative">
