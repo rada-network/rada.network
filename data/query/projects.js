@@ -4,6 +4,8 @@ import getClient from "../client";
 const projectBySlugGql = gql`
     query ProjectBySlug($slug: String!, $lang: String!) {
         projectBySlug(slug : $slug,lang : $lang) {
+        share2earn_contract
+        referral_admin_contract
         id
         slug
         thumbnail_uri

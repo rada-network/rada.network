@@ -4,6 +4,7 @@ import { ethers } from 'ethers'
 import { toast } from "react-toastify";
 import { useTranslation } from "next-i18next";
 import _ from "lodash"
+import { Head } from "@components/Head"
 import { useCookies } from "react-cookie";
 import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransaction"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
@@ -33,9 +34,8 @@ export default function ProjectShare2Earn({
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
   // TODO: Save in config file
-  // const share2earnAddress = "0x998353AfD99A73262337974e2E732118ed557600" // Bản full admin+referral
-  const share2earnAddress = "0xb4E4877E23bFd704319Bf92D7705E84514cd9D9f" // Bản referral
-  const referralAdminAddress = "0x4A4361654D34551f231Ba562dDA2d8Db44e56b0c" // Bản referral
+  const share2earnAddress = project.share2earn_contract
+  const referralAdminAddress = project.referral_admin_contract
 
   const shareAddress = useERC20(share2earnAddress);
 
@@ -69,7 +69,6 @@ export default function ProjectShare2Earn({
   }, [account, user]);
 
   React.useEffect(() => {
-
     const getInfoProgram = async () => {
       try {
         const p = await callFunction(share2earnContract, 'programs', [project.id.toString()])
@@ -136,13 +135,14 @@ export default function ProjectShare2Earn({
 
   return (
     <>
+      <Head />
       <div className="pane-content--sec--main grid scrollbar">
 
         <div className="page page-share2earn">
 
           <div className="section max-w-screen-sm mx-auto">
 
-            <div className="section-body !pt-2">
+            <div className="section-body">
               <h1 className="mb-4">
                 <span className="text-xl lg:text-2xl font-semibold text-color-title">
                   {t("welcome title")}
