@@ -20,12 +20,15 @@ function Concept() {
               <span className="icon text-4xl"><i className="fa-solid fa-check-circle text-green-500"></i></span>
             </div>
 
-            <div>
+            <div className="w-full">
               <h1 className="">
                 <span className="text-xl lg:text-lg font-semibold text-color-title">
-                  You have joined successfully 
+                  Welcome to The Parallel #Share2Earn event.
                 </span>
               </h1>
+              <div className="px-4 py-2 border border-gray-800 w-full mt-4 rounded-lg">
+                Please complete all following steps to earn RIR.
+              </div>
             </div>
 
           </div>
@@ -33,16 +36,22 @@ function Concept() {
           <div className="section-body !pt-0">
 
             <div className="mb-8 items-center text-base mt-4 bg-gray-50 
-            dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg md:ml-14">
+            dark:bg-gray-900 dark:bg-border-800 border border-gray-200 dark:border-gray-700 rounded-lg md:ml-14">
               <div className="p-4  border-b border-gray-200 dark:border-gray-700">
                 Your Share2Earn status
               </div>
               <div className="p-4">
                 <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">   
                   <li className="list-pair mb-2">
-                    <span className="list-key">
+                    <div className="list-key">
                       RIR Contract
-                    </span>
+                      <span
+                        className="hasTooltip"
+                        data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
+                        data-event="click"
+                      > <i className="fa-duotone fa-info-circle text-base" />
+                      </span> 
+                    </div>
                     <div className="px-2 py-1 rounded flex bg-gray-100 dark:bg-gray-800 ml-auto list-value hover:bg-gray-200 hover:dark:bg-gray-900">
                       <div>53x6y4...12f5</div>
                       <button class="btn ml-2">
@@ -51,23 +60,41 @@ function Concept() {
                     </div>
                   </li>
                   <li className="list-pair mb-2">
-                    <span className="list-key">
-                      Invites sent
-                    </span>
+                    <div className="list-key">
+                      Tier 1
+                      <span
+                        className="hasTooltip"
+                        data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
+                        data-event="click"
+                      > <i className="fa-duotone fa-info-circle text-base" />
+                      </span> 
+                    </div>
                     <div className="ml-auto flex items-center list-value font-semibold">
-                      32
+                     3
                     </div>
                   </li>
                   <li className="list-pair mb-2">
-                    <span className="list-key">
-                      Successful referrals
-                    </span>
-                    <span className="ml-auto font-semibold">10</span>
+                    <div className="list-key">
+                     Tier 2
+                     <span
+                        className="hasTooltip"
+                        data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
+                        data-event="click"
+                      > <i className="fa-duotone fa-info-circle text-base" />
+                      </span> 
+                    </div>
+                    <span className="ml-auto font-semibold">5</span>
                   </li>
                   <li className="list-pair mb-2">
-                    <span className="list-key">
+                    <div className="list-key">
                       Earned
-                    </span>
+                      <span
+                        className="hasTooltip"
+                        data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
+                        data-event="click"
+                      > <i className="fa-duotone fa-info-circle text-base" />
+                      </span> 
+                    </div>
                     <div className="ml-auto flex items-center font-semibold">
                       <span class="icon w-4 h-4 mr-1">
                         <RadaSvg />
@@ -75,11 +102,28 @@ function Concept() {
                       1 RIR
                     </div>
                   </li>
+                  <li className="list-pair mb-2">
+                    <div className="list-key">
+                      Your ranking
+                      <span
+                        className="hasTooltip"
+                        data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
+                        data-event="click"
+                      > <i className="fa-duotone fa-info-circle text-base" />
+                      </span> 
+                    </div>
+                    <div className="ml-auto flex items-center font-semibold"> 
+                      <div>45<span className="font-normal opacity-70">/850</span></div>
+                      <button className="!text-xs btn btn-default ml-2">
+                        Leaderboard
+                      </button>
+                    </div>
+                  </li>
                 </ul>
               </div>
 
               
-            </div>
+          </div>
 
 
             <ol className="text-sm space-y-8">
@@ -97,31 +141,7 @@ function Concept() {
                 </div>
 
                 <div className="flex flex-col w-full">
-
                   <div className="flex flex-col">
-                    <strong className="text-base text-color-title">Create banner</strong>
-                    <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
-
-                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-
-                      <SelectBannerType />
-
-                      <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
-                        <div className="">
-                          <img className="" src="/placeholders/parallel-cover.jpg" />
-                        </div>
-                      </div>
-
-                      <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn className="btn btn-default w-full !py-2">
-                          <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
-                          <span className="btn--text">Download</span>
-                        </btn>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col mt-4">
                     <strong className="text-base text-color-title">Create Avatar</strong>
                     <span className="text-gray-500 dark:text-gray-400">Download &amp; change your avatar on your social chanels</span>
 
@@ -161,10 +181,47 @@ function Concept() {
                           <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
                           <span className="btn--text">Download</span>
                         </btn>
+                       
                       </div>
+                      
                     </div>
 
                   </div>
+
+                  <div className="flex flex-col mt-4">
+                    <strong className="text-base text-color-title">Create banner</strong>
+                    <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
+
+                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+
+                      <SelectBannerType />
+
+                      <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
+                        <div className="">
+                          <img className="" src="/placeholders/parallel-cover.jpg" />
+                        </div>
+                      </div>
+
+                      <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
+                        <btn className="btn btn-default w-full !py-2">
+                          <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
+                          <span className="btn--text">Download</span>
+                        </btn>
+
+                        <div className="link-wrapper flex mt-2 text-xs">
+                          <a className="ml-auto px-4" href="" >
+                            <i className="fa-duotone fa-eye text-xs mr-1"></i>
+                            View Samples
+                          </a>
+                          <a className="mr-auto px-4" href="https://drive.google.com/drive/folders/1ax-AW2LXtZ9UkBjGNEAlPYzlDGsd24v8?usp=sharing">
+                            <i className="fa-duotone fa-images text-xs mr-2"></i>
+                          More Images</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  
 
                 </div>
 
@@ -264,19 +321,29 @@ function Concept() {
                             </div>
                           </div>
                         </div>
+
+                        
                       </form>
+                    </div>
+                    <div className="mb-4">
+                      <p>
+                        To avoid exploitation, we will manually approve RIR earning by checking your links submission, please make sure all links are <strong>public</strong>.</p>
+                      <p className="pt-4">Any further question? Ask in our <a className="text-purple-400" href="t.me/radadao">Telegram</a></p>
                     </div>
                   </div>
 
                 </div>
-
+                  
               </li>
 
             </ol>
+            <div className="lg:pl-14">
+              <btn className="w-full mt-4 btn btn-yellow justify-center py-3 px-4" type="submit">Save</btn>                   
+              </div>
+        </div>
 
           </div>
-
-        </div>
+         
 
       </div>
    
