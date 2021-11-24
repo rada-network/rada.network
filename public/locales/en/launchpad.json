@@ -1,7 +1,7 @@
 {
   "LaunchVerse": "LaunchVerse",
   "Research": "{{name}}'s Research",
-  "Launchverse Overview": "Launchverse Overview",
+  "Launchverse Overview": "Raising Overview",
   "Raise": "Raise",
   "Token Price": "Token Price",
   "Progress": "Progress",
@@ -41,6 +41,6 @@
   "Join Share2Earn": "Join Share2Earn",
   "Learn more": "Learn more",
   "Coming Soon": "Coming Soon",
-  "coming soon note" : "Follow {{twitter}}, subscribe to our official {{radanetwork}} and {{radadao}} to be notified."
-  
+  "coming soon note" : "Follow {{twitter}}, subscribe to our official {{radanetwork}} and {{radadao}} to be notified.",
+  "Investment round": "Funding round"
 }

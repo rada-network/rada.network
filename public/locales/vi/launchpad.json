@@ -1,11 +1,11 @@
 {
   "LaunchVerse": "LaunchVerse",
   "Research": "Thông tin {{name}}",
-  "Launchverse Overview": "Tổng quan Launchverse",
+  "Launchverse Overview": "Chi tiết gọi vốn",
   "Raise": "Tổng số huy động",
   "Token Price": "Giá Token",
   "Progress": "Tiến độ",
-  "Info": "Thông tin {{name}} ",
+  "Info": "Về {{name}} ",
   "Read full research": "Bài phân tích ",
   "Whitelist": "Whitelist",
   "Apply for whitelist": "Đăng ký Whitelist",
@@ -41,5 +41,6 @@
   "Join Share2Earn": "Tham gia Share2Earn",
   "Learn more": "Tìm hiểu thêm",
   "Coming Soon": "Sắp Xuất Hiện",
-  "coming soon note" : "Theo dõi {{twitter}}, đăng kí kênh chính thức {{radanetwork}} và {{radadao}} để nhận thông báo sớm nhất."
+  "coming soon note" : "Theo dõi {{twitter}}, đăng kí kênh chính thức {{radanetwork}} và {{radadao}} để nhận thông báo sớm nhất.",
+  "Investment round": "Vòng huy động"
 }

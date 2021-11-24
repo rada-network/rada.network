@@ -63,7 +63,7 @@
 .projects--wrapper .card--body {
   @apply flex flex-col;
 }
-.card--header .token-logo {;
+.card--header .token-logo {
   width: 40px;
   height: 40px;
   @apply block absolute top-0 left-1/2 p-0.5 overflow-hidden  rounded-full border-2 border-white shadow-lg;

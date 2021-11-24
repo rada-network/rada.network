@@ -3,6 +3,7 @@ import ProjectCountdown from "./Countdown";
 import OpenDate from "./OpenDate"
 import { useTranslation } from "next-i18next";
 import Link from "next/link"
+import {toast} from "react-toastify"
 
 const WhitelistCountdown = ({project}) => {
   const {t} = useTranslation("launchpad")
@@ -81,12 +82,16 @@ const WhitelistCountdown = ({project}) => {
                     </span>
                     <div>
                       <p className="mb-1 opacity-80">{t("How to join RADA LaunchVerse")}</p>
-                      <Link href={`/launchverse/${project.slug}/share2earn`}>
+                      {/* <Link href={`/launchverse/${project.slug}/share2earn`}>
                       <a href={`/launchverse/${project.slug}/share2earn`} class="group">
                         <span class="text-sm">{t("Learn more")}</span>
                         <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
                       </a>
-                      </Link>
+                      </Link> */}
+                      <a href={`#`} onClick={e => {toast.info(t("Coming Soon"),{position:"top-center"})}} class="group">
+                        <span class="text-sm">{t("Learn more")}</span>
+                        <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
+                      </a>
                     </div>
                   </div>
                 </div>

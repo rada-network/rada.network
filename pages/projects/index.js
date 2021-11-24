@@ -26,7 +26,7 @@ export default function ProjectsIndex({ projects, locale }) {
         locales,
         asPath
     );
-
+    return null
     return (
         <Layout extraClass="page-home" meta={meta}>
             <div className={`pane-content`} ref={containerRef} >
