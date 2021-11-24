@@ -28,7 +28,7 @@ export const ProjectsList = ({ projects }) => {
     }, [])
     return (
         <div className="pane-content--sec pane-content-active !w-full">
-            <div className="pane-content--sec--top !block">
+            <div className="pane-content--sec--top">
                 <div className="flex h-full relative lg:px-3">
 
                     <div className="tabbar page-tabs">
