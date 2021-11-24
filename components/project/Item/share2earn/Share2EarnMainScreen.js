@@ -14,21 +14,21 @@ import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import Share2EarnStatus from "./Share2EarnStatus"
 import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useShare2EarnContract } from "@utils/hooks/useContracts"
-import { ethers } from 'ethers'
 
 
 
-const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, referralAdminAddress}) => {
+const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, referralAdminAddress }) => {
   const store = useStore()
   const { detailStore } = usePageStore();
   const context = useActiveWeb3React()
   const { library, account } = context
-  const { t } = useTranslation('share2earn')  
+  const { t } = useTranslation('share2earn')
   const { callFunction } = useCallFunction()
-  
-  
-  const [facebook, setFacebook] = useState({ url: '', disable: false });
-  const [twitter, setTwitter] = useState({ url: '', disable: false });
+
+
+  const [facebook, setFacebook] = useState({ disable: false, url: "" });
+  const [twitter, setTwitter] = useState({ disable: false, url: "" });
+  const [telegram, setTelegram] = useState({ disable: false, url: "" });
   // Merge image state
   const [isUploadImage, setIsUploadImage] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
@@ -36,7 +36,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const [mergeUploadImgs, setMergeUploadImgs] = useState({});
   const [baseFrames, setBaseFrames] = useState({});
   const [userAvatar, setUserAvatar] = useState(null);
-  const [referralInfo, setReferralInfo] = useState({level1: '', level2: ''})
+  const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '' })
 
 
   // Banner component 
@@ -62,13 +62,18 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
       ) {
         if (res.data.getShareLog?.length) {
           let facebookURL = res.data.getShareLog[0].facebook;
-          if (res.data.getShareLog.length) {
-            setFacebook({ disable: true, url: facebookURL });
+          if (facebookURL) {
+            setFacebook({ url: facebookURL, disable: true });
           }
 
           let twitterURL = res.data.getShareLog[0].twitter;
           if (twitterURL) {
-            setTwitter({ disable: true, url: twitterURL });
+            setTwitter({ url: twitterURL, disable: true });
+          }
+
+          let telegramURL = res.data.getShareLog[0].telegram;
+          if (telegramURL) {
+            setTelegram({ url: telegramURL, disable: true });
           }
         }
       });
@@ -80,7 +85,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
     const getInfo = async () => {
       const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account])
       const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account])
-      setReferralInfo({level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString())})
+      setReferralInfo({ level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString()) })
     }
     if (!!library && !!share2earnContract) {
       getInfo()
@@ -88,30 +93,26 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   }, [])
 
   // Create or update url
-  const facebookSubmit = async (e) => {
-    if (!facebook.disable) {
-      submitShareURL(e)
-    }
-    setFacebook({ disable: !facebook.disable, url: facebook.url })
-  }
 
-  const twitterSubmit = async (e) => {
-    if (!twitter.disable) {
-      submitShareURL(e)
-
-    }
-    setTwitter({ disable: !twitter.disable, url: twitter.url })
-  }
-
-  function submitShareURL(e) {
+  function submitShareURL() {
     if (project.share_campaign?.length) {
-      createOrUpdateShareLogById({ campaignId: parseInt(1), walletAddress: account, twitter: twitter.url, facebook: facebook.url, linkedin: "" }).then(function (
+      createOrUpdateShareLogById({ campaignId: parseInt(project.share_campaign[0].id), walletAddress: account, twitter: twitter.url, facebook: facebook.url, telegram: telegram.url, linkedin: "" }).then(function (
         res
       ) {
-        if (e.target.id === "facebook") {
-          setFacebook({ disable: true, url: facebook.url })
-        } else if (e.target.id === "twitter") {
-          setTwitter({ disable: true, url: twitter.url })
+        toast.success("Save successfuly", {})
+        let facebookURL = res.data.createOrUpdateShareLog.facebook
+        if (facebookURL) {
+          setFacebook({ url: facebookURL, disable: true })
+        }
+
+        let telegramURL = res.data.createOrUpdateShareLog.telegram
+        if (telegramURL) {
+          setTelegram({ url: telegramURL, disable: true })
+        }
+
+        let twitterURL = res.data.createOrUpdateShareLog.twitter
+        if (twitterURL) {
+          setTwitter({ url: twitterURL, disable: true })
         }
       });
     }
@@ -130,7 +131,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
   useEffect(() => {
     convertBase64Img();
-  }, [baseFrames,userAvatar]);
+  }, [baseFrames, userAvatar]);
 
   useEffect(() => {
     if (!isUploadImage) {
@@ -182,6 +183,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   }
 
   const handleFileInput = (e) => {
+    console.log("Upload image button clicked")
     if (e.target.files[0]) {
       return new Promise(() => {
         const fileReader = new FileReader()
@@ -275,6 +277,8 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   }
   return (
     <>
+      {/* <Head /> */}
+
       <div className="pane-content--sec--main grid scrollbar">
 
         <div className="page page-share2earn fadein">
@@ -283,31 +287,32 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
             <div className="flex mb-4 items-center">
 
-              <div className="flex w-12 mr-2 mt-1 flex-shrink-0 items-center justify-center">
+              <div className="flex w-12 md:mr-2 mt-1 flex-shrink-0 md:items-center md:justify-center">
                 <span className="icon text-4xl"><i className="fa-solid fa-check-circle text-green-500"></i></span>
               </div>
 
-              <div>
+              <div className="w-full">
                 <h1 className="">
                   <span className="text-xl lg:text-lg font-semibold text-color-title">
-                    {t("main result title")}
+                    Welcome to The Parallel #Share2Earn event.
                   </span>
                 </h1>
+                <div className="px-4 py-2 border border-gray-800 w-full mt-4 rounded-lg">
+                  Please complete all following steps to earn RIR.
+                </div>
               </div>
 
             </div>
 
             <div className="section-body !pt-0">
-
-              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2}/>
-
+              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2} />
 
               <ol className="text-sm space-y-8">
 
                 {/* Step 1 */}
-                <li className="flex items-start">
+                <li className="flex flex-col md:flex-row items-start">
 
-                  <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
+                  <div className="flex w-12 mb-2 md:mb-0 mr-2 mt-1.5 flex-shrink-0 md:items-center md:justify-center">
                     <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
                       <strong className="text-base">
                         <span className="sr-only">Step</span>
@@ -387,14 +392,14 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                 </li>
 
                 {/* Step 2 */}
-                <li className="flex items-start">
-                  <ShareLink uid={uid} share_message={project.share_campaign[0].share_message}/>
+                <li className="flex flex-col md:flex-row items-start">
+                  <ShareLink uid={uid} share_message={project.share_campaign[0].share_message} />
                 </li>
 
                 {/* Step 3 */}
-                <li className="flex items-start">
+                <li className="flex flex-col md:flex-row items-start">
 
-                  <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
+                  <div className="flex w-12 mb-2 md:mb-0 mr-2 mt-1.5 flex-shrink-0 md:items-center md:justify-center">
                     <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
                       <strong className="text-base">
                         <span className="sr-only">Step</span>
@@ -411,28 +416,19 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
                       <div className="mt-4">
                         <form>
-
-                          {/* Facebook */}
+                          {/* Telegram */}
                           <div className="mb-4">
-                            <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Facebook's post link</label>
+                            <label for="telegram-post-url" className="sr-only block text-xs font-medium uppercase">Telegram's post link</label>
                             <div className="mt-1 relative rounded-md shadow-sm">
-                              <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
-
-                              <input type="text" name="fb-post-url" id="fb-post-url"
-                                className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
-                                disabled={facebook.url === "" ? "" : (facebook.disable ? "disabled" : "")}
-                                placeholder={facebook.url ? (facebook.disable ? facebook.url : "") : "Facebook's post link"}
-                                value={!facebook.disable ? facebook.url : ""}
-                                onChange={(e) => { setFacebook({ disable: false, url: e.target.value }) }} />
-
-                              {facebook.url &&
-                                <div className="absolute inset-y-0 right-1 flex items-center">
-                                  <btn className={"btn py-1 px-2 w-16 " + (facebook.disable ? "btn-gray justify-center" : "btn-primary")}
-                                    onClick={facebookSubmit}
-                                  >{facebook.disable ? "Edit" : "Submit"}</btn>
-                                </div>
-                              }
-
+                              <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--telegram"><span class="icon"><i class="fa-brands fa-telegram"></i></span></span>
+                              <input type="text" name="telegram-post-url" id="telegram-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
+                                placeholder="Telegram's post link"
+                                disabled={telegram.url === "" ? "" : (telegram.disable ? "disabled" : "")}
+                                value={telegram.url}
+                                onChange={(e) => { setTelegram({ url: e.target.value }) }}
+                              />
+                              <div className="absolute inset-y-0 right-0 flex items-center">
+                              </div>
                             </div>
                           </div>
 
@@ -441,25 +437,39 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                             <label for="twitter-post-url" className="sr-only block text-xs font-medium uppercase">Twitter's post link</label>
                             <div className="mt-1 relative rounded-md shadow-sm">
                               <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span class="icon"><i class="fa-brands fa-twitter"></i></span></span>
-                              <input type="text" name="fb-post-url" id="fb-post-url"
-                                className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
+                              <input type="text" name="twitter-post-url" id="twitter-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
+                                placeholder="Twitter's post link"
                                 disabled={twitter.url === "" ? "" : (twitter.disable ? "disabled" : "")}
-                                placeholder={twitter.url ? (twitter.disable ? twitter.url : "") : "Facebook's post link"}
-                                value={!twitter.disable ? twitter.url : ""}
-                                onChange={(e) => { setTwitter({ disable: false, url: e.target.value }) }} />
-
-
-                              {twitter.url &&
-                                <div className="absolute inset-y-0 right-1 flex items-center">
-                                  <btn className={"btn py-1 px-2 w-16 " + (twitter.disable ? "btn-gray justify-center" : "btn-primary")}
-                                    onClick={twitterSubmit}
-                                  >{twitter.disable ? "Edit" : "Submit"}</btn>
-                                </div>
-                              }
+                                value={twitter.url}
+                                onChange={(e) => { setTwitter({ url: e.target.value }) }}
+                              />
+                              <div className="absolute inset-y-0 right-0 flex items-center">
+                              </div>
                             </div>
                           </div>
 
+                          {/* Facebook */}
+                          <div className="mb-4">
+                            <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Facebook's post link</label>
+                            <div className="mt-1 relative rounded-md shadow-sm">
+                              <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
+                              <input type="text" name="fb-post-url" id="fb-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
+                                placeholder="Facebook's post link"
+                                disabled={facebook.url === "" ? "" : (facebook.disable ? "disabled" : "")}
+                                value={facebook.url}
+                                onChange={(e) => { setFacebook({ disable: false, url: e.target.value }) }}
+                              />
+                              <div className="absolute inset-y-0 right-0 flex items-center">
+                              </div>
+                            </div>
+                          </div>
                         </form>
+
+                      </div>
+                      <div className="mb-4">
+                        <p>
+                          To avoid exploitation, we will manually approve RIR earning by checking your links submission, please make sure all links are <strong>public</strong>.</p>
+                        <p className="pt-4">Any further question? Ask in our <a className="text-purple-400" href="t.me/radadao">Telegram</a></p>
                       </div>
                     </div>
 
@@ -469,6 +479,11 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
               </ol>
 
+              <div className="lg:pl-14">
+                <btn className={"w-full mt-4 btn btn-yellow justify-center py-3 px-4" + (facebook.disable && twitter.disable && telegram.disable) ? " disabled " : ""} type="submit"
+                  onClick={submitShareURL}
+                >Save</btn>
+              </div>
             </div>
 
           </div>

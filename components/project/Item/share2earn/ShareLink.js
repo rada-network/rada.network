@@ -26,13 +26,13 @@ const ShareLink = function ({ uid, share_message }) {
   };
 
   const randomMessage = () => {
-    var item = share_message[Math.floor(Math.random()*share_message.length)]
+    var item = share_message[Math.floor(Math.random() * share_message.length)]
     setMesage(item)
   }
 
   return (
     <>
-      <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
+      <div className="flex w-12 mb-2 md:mb-0 mr-2 mt-1.5 flex-shrink-0 md:items-center md:justify-center">
         <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
           <strong className="text-base">
             <span className="sr-only">Step</span>
@@ -60,7 +60,6 @@ const ShareLink = function ({ uid, share_message }) {
                 <span className="icon"><i className="fa-duotone fa-refresh text-xs"></i></span>
                 <span className="btn--text">Randomize</span>
               </a>
-
               <CopyToClipboard
                 onCopy={handleCopy}
                 text={textShare}
