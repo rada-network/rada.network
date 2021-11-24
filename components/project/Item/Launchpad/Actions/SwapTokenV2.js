@@ -8,18 +8,19 @@ import {toast} from "react-toastify"
 import {useLaunchpadInfo} from "@utils/hooks/index"
 import { useTranslation } from "next-i18next"
 import { CheckSvg } from "@components/svg/SvgIcons"
+import { set } from "lodash"
 
-const SwapTokensV2 = ({project,accountBalance,fetchAccountBalance}) => {
+const SwapTokensV2 = ({project,accountBalance,fetchAccountBalance,setStep}) => {
   const {launchpadInfo,loading} = useLaunchpadInfo({project})
   if (loading) return null
   return (
     <>
-      <SubcribeByRIR project={project} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} />
+      <SubcribeByRIR project={project} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
     </>
   )
 }
 
-const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,launchpadInfo}) => {
+const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
   const {t} = useTranslation("launchpad")
   const {account} = useActiveWeb3React()
 
@@ -27,49 +28,62 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,lau
   const bUSDContract = useBUSDContract()
   const launchpadContract = useLaunchpadContractV2(project.swap_contract)
   const {callWithGasPrice} = useCallWithGasPrice()
-  const [numberRIR,setNumberRIR] = useState(accountBalance.rirBalance > 0 ? 1 : 0)
-  const [numberBusd,setNumberBusd] = useState(100)
-
+  const [numberRIR,setNumberRIR] = useState(0)
+  const [numberBusd,setNumberBusd] = useState(0)
+  const [currentOrderBusd,setCurrentOrderBusd] = useState(0)
+  const [currentOrderRIR,setCurrentOrderRIR] = useState(0)
+  const maxRIR = parseInt(launchpadInfo.individualMaximumAmount) / 100;
+  const maxBusd = parseInt(launchpadInfo.individualMaximumAmount);
+  useEffect(() => {
+    setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)))
+    setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)))
+  },[launchpadInfo])
+  
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm,handleReload } =
   useMultiApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
           const response2 = await bUSDContract.allowance(account, launchpadContract.address)
-          if (parseInt(numberRIR) == 0){
-            return response2.gt(0)
-          }
           const response1 = await rirContract.allowance(account, launchpadContract.address)
-          return response1.gt(0) && response2.gt(0)
+          return {busd : parseInt(ethers.utils.formatEther(response2)),rir : parseInt(ethers.utils.formatEther(response1))}
         } catch (error) {
-          return false
+          return {busd : 0, rir : 0}
         }
       },
-      onApprove: async () => {
-        
-        const receipt_busd =  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberBusd.toString())])
-        if (parseInt(numberRIR) == 0){
-          return [receipt_busd]
+      onApprove: async (requireApprove) => {
+        const busdApprove = parseInt(maxBusd) - parseInt(requireApprove.busd)
+        let receipt_busd,receipt_rir
+        let data = []
+        if (busdApprove > 0){
+          receipt_busd =  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxBusd.toString())])
+          data.push(receipt_busd)
         }
-        const receipt_rir = await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(numberRIR.toString())])
-        return [receipt_rir,receipt_busd]
+        const rirApprove = parseInt(maxRIR) - parseInt(requireApprove.rir)
+        if (rirApprove > 0){
+          receipt_rir = await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxRIR.toString())])
+          data.push(receipt_rir)
+        }
+        return data;
       },
       onApproveSuccess: async ({ receipts }) => {
         let txs = []
         for (const receipt of receipts) {
           txs.push(receipt.transactionHash)
         }
-        toast.success(`Contract enabled - you can now subcribe invest`)
+        toast.success(`Contract enabled - you can now prefund investment`)
       },
       onConfirm: () => {
-        const isRIR = parseInt(numberRIR) > 0 ? true : false
-        console.log(numberBusd,numberRIR,isRIR)
-        return callWithGasPrice(launchpadContract, 'createOrder', [ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString()),isRIR])
+        return callWithGasPrice(launchpadContract, 'createSubscription', [ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString()),account])
       },
       onSuccess: async ({ receipt }) => {
         await fetchAccountBalance()
         toast.success(`Subscribed successfully ${receipt.transactionHash}`)
+        
         handleReload()
+        setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)) + parseInt(numberBusd))
+        setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)) + parseInt(numberRIR))
         setNumberRIR(0)
+        setNumberBusd(0)
       },
     })
     const resetApproved = async () => {
@@ -77,11 +91,6 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,lau
       await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, 0])
     }
     const maxSelected = parseInt(launchpadInfo.individualMaximumAmount)/100
-  const disableBuying =
-  !isApproved ||
-  isConfirmed ||
-  !numberRIR ||
-  new ethers.utils.parseEther(numberRIR.toString()).lte(0)  
   return (
     <>
       <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "") }>
@@ -95,9 +104,14 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,lau
               <label htmlFor="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Amount")}</label>
               <select id="amount" name="amount" className="select-custom" defaultValue={numberBusd} onChange={e => {setNumberBusd(e.currentTarget.value)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
+                <option key={-1} className="text-gray-300" value={0}>0 BUSD</option>
                 {Array(maxSelected).fill(null).map((_, i) => {
                   return (
+                    <>
+                    {(maxBusd - currentOrderBusd) >= (i+1)*100 &&
                     <option key={i} className="text-gray-300" value={(i+1) * 100}>{(i+1) * 100} BUSD</option>
+                    }
+                    </>
                   )
                 })}
               </select>
@@ -111,7 +125,7 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,lau
                 {Array(maxSelected).fill(null).map((_, i) => {
                   return (
                     <>
-                    {parseInt(numberBusd)/100 >= i+1 &&
+                    {((parseInt(numberBusd) + currentOrderBusd)/100 - currentOrderRIR >= (i + 1)) &&
                     <option key={i} className="text-gray-300" value={(i+1)}>{(i+1)} RIR</option>
                     }
                     </>
@@ -120,7 +134,7 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,lau
               </select>
             </div>
             }
-            <SwapDescription numberBusd={numberBusd} numberRIR={numberRIR} maxSelected={maxSelected} /> 
+            <SwapDescription numberBusd={numberBusd} numberRIR={numberRIR} maxSelected={maxSelected} currentOrderRIR={currentOrderRIR} currentOrderBusd={currentOrderBusd} /> 
           
           </div>
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
@@ -138,9 +152,14 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,lau
           {t("Prefund")}
           </button>
           }
+          {currentOrderBusd > 0 &&
+          <button class="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(3)}} disabled="" id="cancel" width="100%" scale="md">
+          {t("Cancel")}
+          </button>
+          }
         </div>
 
-        <SwapNote numberBusd={numberBusd} numberRIR={numberRIR} />
+        <SwapNote numberBusd={numberBusd} numberRIR={numberRIR} maxSelected={maxSelected} currentOrderRIR={currentOrderRIR} currentOrderBusd={currentOrderBusd} />
 
       </div>
 
@@ -148,18 +167,16 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,lau
   )
 }
 
-const SwapDescription = ({numberBusd,numberRIR,maxSelected}) => {
-  if (parseInt(numberRIR) * 100 > numberBusd) {
-    numberRIR = 0
-  }
+const SwapDescription = ({numberBusd,numberRIR,maxSelected,currentOrderBusd,currentOrderRIR}) => {
+
   const [RIR,setRIR] = useState(0)
   const [busd,setBusd] = useState(0)
   useEffect(() => {
     setBusd(numberBusd)
     setRIR(numberRIR)
   },[numberBusd,numberRIR])
-  const p1 = Math.floor(parseInt(RIR)/maxSelected*5);
-  const p2 = Math.floor((parseInt(busd)/100 - p1)/maxSelected*5);
+  const p1 = Math.floor((parseInt(RIR) + currentOrderRIR)/maxSelected*5);
+  const p2 = Math.floor(((parseInt(busd) + currentOrderBusd)/100 - p1)/maxSelected*5);
   const p3 = 5 - (p1 + p2)
   const sp1 = {
     width: p1/5 * 100 + "%"
@@ -175,12 +192,12 @@ const SwapDescription = ({numberBusd,numberRIR,maxSelected}) => {
       {p1 > 0 && 
       <div className={`w-${p1}/5 flex items-center transition-all`} style={sp1}>
         <div className="w-full flex items-center text-white h-6 pl-2  bg-green-600">
-        {parseInt(RIR) * 100} BUSD
+        {(parseInt(RIR) + currentOrderRIR) * 100} BUSD
         </div>
       </div>}
       {p2 > 0 && 
       <div className={`w-${p2}/5 flex items-center transition-lex items-center transition-all`} style={sp2}>
-        <div className="w-full h-6 flex items-center  text-gray-700 pl-2 bg-yellow-300 ">{busd - parseInt(RIR) * 100 } BUSD</div>    
+        <div className="w-full h-6 flex items-center  text-gray-700 pl-2 bg-yellow-300 ">{parseInt(busd) + currentOrderBusd - (parseInt(RIR) + currentOrderRIR) * 100 } BUSD</div>    
       </div>}
       {p3 > 0 && 
       <div className={`w-${p3}/5 flex flex items-center transition-all`} style={sp3}>
@@ -190,7 +207,7 @@ const SwapDescription = ({numberBusd,numberRIR,maxSelected}) => {
   )
 }
 
-const SwapNote = function({numberBusd,numberRIR}){
+const SwapNote = function({numberBusd,numberRIR,maxSelected,currentOrderBusd,currentOrderRIR}){
   const [RIR,setRIR] = useState(0)
   const [busd,setBusd] = useState(0)
   useEffect(() => {
@@ -203,7 +220,7 @@ const SwapNote = function({numberBusd,numberRIR}){
         <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
           <CheckSvg />  
         </span>
-        <div className="">{RIR * 100} BUSD ({RIR} RIR) is guaranteed.</div>
+        <div className="">{(parseInt(RIR) + currentOrderRIR) * 100} BUSD ({parseInt(RIR) + currentOrderRIR} RIR) is guaranteed.</div>
       </li>
       <li className="relative mb-2 pl-6">
         <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
@@ -215,7 +232,7 @@ const SwapNote = function({numberBusd,numberRIR}){
         <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
           <CheckSvg />  
         </span>
-        <div>Your total prefund: {busd} BUSD</div>
+        <div>Your total prefund: {parseInt(busd) + currentOrderBusd} BUSD</div>
       </li>
     </ul>
   )

@@ -18,13 +18,12 @@ export const useLaunchpadInfo = ({project}) => {
     try {
       let individualMinimumAmount = await lauchpadContact.individualMinimumAmountBusd()
       let individualMaximumAmount = await lauchpadContact.individualMaximumAmountBusd()
-      let ordersBuyerCount = await lauchpadContact.buyersCount()
       let buyers = await lauchpadContact.getSubscribers()
       let currentOrder = await lauchpadContact.getOrderSubscriber(account)
       let updateInfo = {
         individualMinimumAmount : utils.formatEther(individualMinimumAmount),
         individualMaximumAmount : utils.formatEther(individualMaximumAmount),
-        ordersBuyerCount : parseInt(utils.formatEther(ordersBuyerCount)),
+        ordersBuyerCount : buyers.length,
         buyers : buyers,
         currentOrder : currentOrder,
       }

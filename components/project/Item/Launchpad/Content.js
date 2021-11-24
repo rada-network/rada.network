@@ -35,7 +35,7 @@ export default function LaunchpadContent({ project }) {
   const tokenPrice = project.price;
   const progressToken = parseInt(launchpadInfo?.availableBusd) || 0;
   const target = raise;
-  const progressPercentage = (progressToken / target) * 100;
+  const progressPercentage = ((progressToken / target) * 100).toFixed(1);
   const curentTime = (new Date()).getTime() / 1000
   const openTime = (new Date(project.open_date)).getTime() / 1000
   const endTime = (new Date(project.end_date)).getTime() / 1000

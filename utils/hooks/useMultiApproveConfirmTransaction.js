@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from 'react'
+import { useEffect, useReducer, useRef,useState } from 'react'
 import { noop } from 'lodash'
 import { useWeb3React } from '@web3-react/core'
 import { ethers } from 'ethers'
@@ -67,12 +67,14 @@ const useMultiApproveConfirmTransaction = ({
 }) => {
   const { account } = useActiveWeb3React()
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [requireApprove, setRequireApprove] = useState({busd : 0,rir : 0})
   const handlePreApprove = useRef(onRequiresApproval)
   // Check if approval is necessary, re-check if account changes
   useEffect(() => {
     if (!!account && handlePreApprove.current) {
       handlePreApprove.current().then((result) => {
-        if (result) {
+        setRequireApprove(result);
+        if (result.rir > 0 && result.busd > 0) {
           dispatch({ type: 'requires_approval' })
         }
       })
@@ -88,8 +90,7 @@ const useMultiApproveConfirmTransaction = ({
     hasConfirmFailed: state.confirmState === 'fail',
     handleApprove: async () => {
       try {
-        console.log('Approve')
-        const txs = await onApprove()
+        const txs = await onApprove(requireApprove)
         dispatch({ type: 'approve_sending' })
         let receipts  = []
         for (const tx of txs) {
@@ -122,6 +123,7 @@ const useMultiApproveConfirmTransaction = ({
           onSuccess({ state, receipt })
         }
       } catch (error) {
+        console.log(error)
         dispatch({ type: 'confirm_error' })
         toast.error('Please try again. Confirm the transaction and make sure you are paying enough gas!')
       }

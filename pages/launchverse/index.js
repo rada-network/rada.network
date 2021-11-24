@@ -277,7 +277,7 @@ const LaunchVerse = (props) => {
                       &copy; Copyright Rada Network 2021. All rights reserved.
                     </small>
 
-                    <a href="#" target="_blank"
+                    <a href="https://form.jotform.com/213272840844456" rel="nofollow" target="_blank"
                       className="
                                text-sm leading-relaxed max-w-md py-2 px-4 mt-4 md:mt-0 rounded-lg
                                bg-gray-100 dark:bg-gray-800 hover:bg-primary-500 dark:hover:bg-primary-900

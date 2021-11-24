@@ -143,11 +143,11 @@
   background-size:150px 248px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-image:url('/icons/s2e-light.svg');
+  background-image:url("/images/launchverse-s2e.png");
   @apply mx-auto;
 }
 .dark .s2e-illustration{
-  background-image:url('/icons/s2e-dark.svg');
+  background-image:url('/images/launchverse-s2e-dark.png');
 }
 
 .whitelist-nav {
