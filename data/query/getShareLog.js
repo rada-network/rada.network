@@ -8,6 +8,7 @@ const shareLogByGql = gql`
             twitter
             linkedin
             facebook
+            telegram
         }
     } 
 `;

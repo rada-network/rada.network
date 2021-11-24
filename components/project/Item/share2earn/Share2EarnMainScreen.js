@@ -29,6 +29,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   
   const [facebook, setFacebook] = useState({ url: '', disable: false });
   const [twitter, setTwitter] = useState({ url: '', disable: false });
+  const [telegram, setTelegram] = useState({ url: '', disable: false });
   // Merge image state
   const [isUploadImage, setIsUploadImage] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
@@ -88,11 +89,13 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   }, [])
 
   // Create or update url
-  const facebookSubmit = async (e) => {
-    if (!facebook.disable) {
+  
+  const telegramSubmit = async (e) => {
+    if (!twitter.disable) {
       submitShareURL(e)
+
     }
-    setFacebook({ disable: !facebook.disable, url: facebook.url })
+    setTelegram({ disable: !telegram.disable, url: telegram.url })
   }
 
   const twitterSubmit = async (e) => {
@@ -103,15 +106,27 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
     setTwitter({ disable: !twitter.disable, url: twitter.url })
   }
 
+  const facebookSubmit = async (e) => {
+    if (!facebook.disable) {
+      submitShareURL(e)
+    }
+    setFacebook({ disable: !facebook.disable, url: facebook.url })
+  }
+
+  
+
+
   function submitShareURL(e) {
     if (project.share_campaign?.length) {
-      createOrUpdateShareLogById({ campaignId: parseInt(1), walletAddress: account, twitter: twitter.url, facebook: facebook.url, linkedin: "" }).then(function (
+      createOrUpdateShareLogById({ campaignId: parseInt(1), walletAddress: account, twitter: twitter.url, facebook: facebook.url, telegram: telegram.url,  linkedin: "" }).then(function (
         res
       ) {
         if (e.target.id === "facebook") {
           setFacebook({ disable: true, url: facebook.url })
         } else if (e.target.id === "twitter") {
           setTwitter({ disable: true, url: twitter.url })
+        } else if (e.target.id === "telegram") {
+          setTelegram({ disable: true, url: telegram.url })
         }
       });
     }
@@ -412,27 +427,25 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                       <div className="mt-4">
                         <form>
 
-                          {/* Facebook */}
                           <div className="mb-4">
-                            <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Facebook's post link</label>
+                            <label for="telegram-post-url" className="sr-only block text-xs font-medium uppercase">Telegram's post link</label>
                             <div className="mt-1 relative rounded-md shadow-sm">
-                              <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
-
+                              <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--telegram"><span class="icon"><i class="fa-brands fa-telegram"></i></span></span>
                               <input type="text" name="fb-post-url" id="fb-post-url"
                                 className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
-                                disabled={facebook.url === "" ? "" : (facebook.disable ? "disabled" : "")}
-                                placeholder={facebook.url ? (facebook.disable ? facebook.url : "") : "Facebook's post link"}
-                                value={!facebook.disable ? facebook.url : ""}
-                                onChange={(e) => { setFacebook({ disable: false, url: e.target.value }) }} />
+                                disabled={telegram.url === "" ? "" : (telegram.disable ? "disabled" : "")}
+                                placeholder={telegram.url ? (telegram.disable ? telegram.url : "") : "Telegram's post link"}
+                                value={!telegram.disable ? telegram.url : ""}
+                                onChange={(e) => { setTelegram({ disable: false, url: e.target.value }) }} />
 
-                              {facebook.url &&
+
+                              {telegram.url &&
                                 <div className="absolute inset-y-0 right-1 flex items-center">
-                                  <btn className={"btn py-1 px-2 w-16 " + (facebook.disable ? "btn-gray justify-center" : "btn-primary")}
-                                    onClick={facebookSubmit}
-                                  >{facebook.disable ? "Edit" : "Submit"}</btn>
+                                  <btn className={"btn py-1 px-2 w-16 " + (telegram.disable ? "btn-gray justify-center" : "btn-primary")}
+                                    onClick={telegramSubmit}
+                                  >{telegram.disable ? "Edit" : "Submit"}</btn>
                                 </div>
                               }
-
                             </div>
                           </div>
 
@@ -456,6 +469,30 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                                   >{twitter.disable ? "Edit" : "Submit"}</btn>
                                 </div>
                               }
+                            </div>
+                          </div>
+
+                          {/* Facebook */}
+                          <div className="mb-4">
+                            <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Facebook's post link</label>
+                            <div className="mt-1 relative rounded-md shadow-sm">
+                              <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
+
+                              <input type="text" name="fb-post-url" id="fb-post-url"
+                                className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
+                                disabled={facebook.url === "" ? "" : (facebook.disable ? "disabled" : "")}
+                                placeholder={facebook.url ? (facebook.disable ? facebook.url : "") : "Facebook's post link"}
+                                value={!facebook.disable ? facebook.url : ""}
+                                onChange={(e) => { setFacebook({ disable: false, url: e.target.value }) }} />
+
+                              {facebook.url &&
+                                <div className="absolute inset-y-0 right-1 flex items-center">
+                                  <btn className={"btn py-1 px-2 w-16 " + (facebook.disable ? "btn-gray justify-center" : "btn-primary")}
+                                    onClick={facebookSubmit}
+                                  >{facebook.disable ? "Edit" : "Submit"}</btn>
+                                </div>
+                              }
+
                             </div>
                           </div>
 
