@@ -16,7 +16,7 @@ function Concept() {
 
           <div className="flex mb-4 items-center">
 
-            <div className="flex w-12 mr-2 mt-1 flex-shrink-0 items-center justify-center">
+            <div className="flex w-12 md:mr-2 mt-1 flex-shrink-0 md:items-center md:justify-center">
               <span className="icon text-4xl"><i className="fa-solid fa-check-circle text-green-500"></i></span>
             </div>
 
