@@ -16,7 +16,7 @@ function Concept() {
 
           <div className="flex mb-4 items-center">
 
-            <div className="flex w-12 mr-2 mt-1 flex-shrink-0 items-center justify-center">
+            <div className="flex w-12 md:mr-2 mt-1 flex-shrink-0 md:items-center md:justify-center">
               <span className="icon text-4xl"><i className="fa-solid fa-check-circle text-green-500"></i></span>
             </div>
 
@@ -85,9 +85,9 @@ function Concept() {
             <ol className="text-sm space-y-8">
 
               {/* Step 1 */}
-              <li className="flex items-start">
+              <li className="flex flex-col md:flex-row items-start">
 
-                <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
+                <div className="flex w-12 mb-2 md:mb-0 mr-2 mt-1.5 flex-shrink-0 md:items-center md:justify-center">
                   <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
                     <strong className="text-base">
                       <span className="sr-only">Step</span>
@@ -171,9 +171,9 @@ function Concept() {
               </li>
 
               {/* Step 2 */}
-              <li className="flex items-start">
+              <li className="flex flex-col md:flex-row items-start">
 
-                <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
+                <div className="flex w-12 mb-2 md:mb-0 mr-2 mt-1.5 flex-shrink-0 md:items-center md:justify-center">
                   <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
                     <strong className="text-base">
                       <span className="sr-only">Step</span>
@@ -216,9 +216,9 @@ function Concept() {
               </li>
 
               {/* Step 3 */}
-              <li className="flex items-start">
+              <li className="flex flex-col md:flex-row items-start">
 
-                <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
+                <div className="flex w-12 mb-2 md:mb-0 mr-2 mt-1.5 flex-shrink-0 md:items-center md:justify-center">
                   <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
                     <strong className="text-base">
                       <span className="sr-only">Step</span>
