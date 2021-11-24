@@ -15,7 +15,7 @@ import Share2EarnStatus from "./Share2EarnStatus"
 import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useShare2EarnContract } from "@utils/hooks/useContracts"
 import { ethers } from 'ethers'
-
+import { Head } from "@components/Head";
 
 
 const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, referralAdminAddress}) => {
@@ -289,84 +289,89 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
     mergedImage = null
   }
   return (
-    <>
-      <div className="pane-content--sec--main grid scrollbar">
+    <>     
+    <Head />
 
-        <div className="page page-share2earn fadein">
+    <div className="pane-content--sec--main grid scrollbar">
 
-          <div className="section max-w-screen-sm mx-auto">
+      <div className="page page-share2earn fadein">
 
-            <div className="flex mb-4 items-center">
+        <div className="section max-w-screen-sm mx-auto">
 
-              <div className="flex w-12 mr-2 mt-1 flex-shrink-0 items-center justify-center">
-                <span className="icon text-4xl"><i className="fa-solid fa-check-circle text-green-500"></i></span>
-              </div>
+          <div className="flex mb-4 items-center">
 
-              <div>
-                <h1 className="">
-                  <span className="text-xl lg:text-lg font-semibold text-color-title">
-                    {t("main result title")}
-                  </span>
-                </h1>
-              </div>
-
+            <div className="flex w-12 md:mr-2 mt-1 flex-shrink-0 md:items-center md:justify-center">
+              <span className="icon text-4xl"><i className="fa-solid fa-check-circle text-green-500"></i></span>
             </div>
 
-            <div className="section-body !pt-0">
+            <div>
+              <h1 className="">
+                <span className="text-xl lg:text-lg font-semibold text-color-title">
+                  {t("main result title")} 
+                </span>
+              </h1>
+            </div>
 
-              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2}/>
+          </div>
 
+          <div className="section-body !pt-0">
 
-              <ol className="text-sm space-y-8">
+            <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2}/>
 
-                {/* Step 1 */}
-                <li className="flex items-start">
+            <ol className="text-sm space-y-8">
 
-                  <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
-                    <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
-                      <strong className="text-base">
-                        <span className="sr-only">Step</span>
-                        1
-                      </strong>
-                    </span>
-                  </div>
+              {/* Step 1 */}
+              <li className="flex flex-col md:flex-row items-start">
 
-                  <div className="flex flex-col w-full">
-                    <div className="flex flex-col">
-                      <strong className="text-base text-color-title">Create banner</strong>
-                      <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
+                <div className="flex w-12 mb-2 md:mb-0 mr-2 mt-1.5 flex-shrink-0 md:items-center md:justify-center">
+                  <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
+                    <strong className="text-base">
+                      <span className="sr-only">Step</span>
+                      1
+                    </strong>
+                  </span>
+                </div>
 
-                      <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                        <SelectBannerType />
-                        <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
-                          <div className="">
-                            <img class="" src={bannerURL} />
-                          </div>
-                        </div>
+                <div className="flex flex-col w-full">
 
-                        <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                          <btn className="btn btn-default w-full !py-2"
-                            onClick={() => handleDownload()}>
-                            <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
-                            <span className="btn--text">{t("main button download")}</span>
-                          </btn>
+                  <div className="flex flex-col">
+                    <strong className="text-base text-color-title">Create banner</strong>
+                    <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
+
+                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+
+                      <SelectBannerType />
+
+                      <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
+                        <div className="">
+                        <img class="" src={bannerURL} />
                         </div>
                       </div>
+
+                      <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
+                        <btn className="btn btn-default w-full !py-2"
+                          onClick={() => handleDownload()}
+                        >
+                          <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
+                          <span className="btn--text">{t("main button download")}</span>
+                        </btn>
+                      </div>
                     </div>
+                  </div>
 
-                    <div className="flex flex-col mt-4">
-                      <strong className="text-base text-color-title">{t("create avatar title")}</strong>
-                      <span className="text-gray-500 dark:text-gray-400">{t("create avatar des")}</span>
+                  <div className="flex flex-col mt-4">
+                    <strong className="text-base text-color-title">{t("create avatar title")}</strong>
+                    <span className="text-gray-500 dark:text-gray-400">{t("create avatar des")}</span>
 
-                      <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
 
-                        <div className="flex justify-between items-center py-3 px-4 border-b border-gray-200 dark:border-gray-700">
-                          <div>
-                            <span className="text-sm">Image Source</span>
-                          </div>
-                          <div className="flex flex-srink-0 items-center">
-
-                            <div className="btn-group btn-group-toggle text-xs">
+                      <div className="flex justify-between items-center py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                          <span className="text-sm">Image Source</span>
+                        </div>
+                        <div className="flex flex-srink-0 items-center">
+                          
+                          <div className="btn-group btn-group-toggle text-xs">
                               <a className={"btn " + (isUploadImage ? "btn-toggle" : "btn-toggle-active")} onClick={() => setIsUploadImage(!isUploadImage)}>
                                 <span className="btn--text">Default</span>
                               </a>
@@ -374,10 +379,11 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                                 <span className="btn--text">Your Image</span>
                               </a>
                             </div>
-                          </div>
                         </div>
+                      </div>
 
-                        <form>
+
+                      <form>
                           {mergedImage}
 
                           {isUploadImage && !isUploaded &&
@@ -392,42 +398,43 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
                           {downloadAvtButton}
                         </form>
-
-                      </div>
-
                     </div>
 
                   </div>
 
-                </li>
+                </div>
 
-                {/* Step 2 */}
-                <li className="flex items-start">
-                  <ShareLink uid={uid} share_message={project.share_campaign[0].share_message}/>
-                </li>
+              </li>
 
-                {/* Step 3 */}
-                <li className="flex items-start">
+              {/* Step 2 */}
+              <li className="flex flex-col md:flex-row items-start">
+                
+                <ShareLink uid={uid} share_message={project.share_campaign[0].share_message}/>
 
-                  <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
-                    <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
-                      <strong className="text-base">
-                        <span className="sr-only">Step</span>
-                        3
-                      </strong>
-                    </span>
-                  </div>
+              </li>
 
-                  <div className="flex flex-col w-full">
+              {/* Step 3 */}
+              <li className="flex flex-col md:flex-row items-start">
 
-                    <div className="flex flex-col">
-                      <strong className="text-base text-color-title">{t("main step 3 title")}</strong>
-                      <span className="text-gray-500 dark:text-gray-400">{t("main step 3 des")}</span>
+                <div className="flex w-12 mb-2 md:mb-0 mr-2 mt-1.5 flex-shrink-0 md:items-center md:justify-center">
+                  <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
+                    <strong className="text-base">
+                      <span className="sr-only">Step</span>
+                      3
+                    </strong>
+                  </span>
+                </div>
 
-                      <div className="mt-4">
-                        <form>
+                <div className="flex flex-col w-full">
 
-                          <div className="mb-4">
+                  <div className="flex flex-col">
+                    <strong className="text-base text-color-title">{t("main step 3 title")}</strong>
+                    <span className="text-gray-500 dark:text-gray-400">{t("main step 3 des")}</span>
+
+                    <div className="mt-4">
+                      <form>
+                        {/* Telegram */}
+                        <div className="mb-4">
                             <label for="telegram-post-url" className="sr-only block text-xs font-medium uppercase">Telegram's post link</label>
                             <div className="mt-1 relative rounded-md shadow-sm">
                               <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--telegram"><span class="icon"><i class="fa-brands fa-telegram"></i></span></span>
@@ -495,24 +502,23 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
                             </div>
                           </div>
-
-                        </form>
-                      </div>
+                      </form>
                     </div>
-
                   </div>
 
-                </li>
+                </div>
 
-              </ol>
+              </li>
 
-            </div>
+            </ol>
 
           </div>
 
         </div>
 
       </div>
+   
+    </div>
 
     </>
   )
