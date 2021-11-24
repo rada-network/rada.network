@@ -117,7 +117,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
     }
   }
   useEffect(() => {
-    getBase64FromUrl(user.image).then(b64 => {
+    getBase64FromUrl("/icons/RADA Symbol.png").then(b64 => {
       resizeImage(b64).then(result => {
         setUserAvatar(result)
       })
