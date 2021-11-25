@@ -35,6 +35,9 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
       try {
         const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
         const holdRIR = await callFunction(adminContract, 'incentiveHold', [projectID.toString(), walletAddress.toString()])
+        // const joinersAddress = await callFunction((adminContract, 'getJoinersAddress', [projectID.toString()]))
+        // console.log("Chay day chua")
+        // console.log(joinersAddress)
         setStatusInfo({paid: parseFloat(earnedRIR).toString(), hold: ''})
       } catch (e) {
         console.log(e)
@@ -207,7 +210,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
               </div>
             </li>
 
-            <li className="list-pair !items-center mb-2">
+            {/*<li className="list-pair !items-center mb-2">
               <div className="list-key">
                 {t("main status ranking")}
                 <span
@@ -218,13 +221,13 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
                 </span>
               </div>
               <div className="ml-auto flex items-center">
-                {/* Todo show leaderboard */}
+                
                 <div>45<span className="font-normal opacity-70">/850</span></div>
                 <button  onClick={openModal} className="!text-xs btn btn-default ml-2">
                   {t("main status leaderboard")}
-                </button>
+                </button> 
               </div>
-            </li>
+            </li>  */}
 
           </ul>
         </div>
