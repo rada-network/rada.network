@@ -27,5 +27,6 @@
   "checking links des": "To avoid exploitation, we will manually approve RIR earning by checking your links submission, please make sure all links are public.",
   "further question": "Any further question? Ask in our Telegram",
   "learn more": "Learn more about #Share2Earn",
-  "joined message": "Participated in the program"
+  "joined message": "Participated in the program",
+  "tooltip": "When your referred user successfully invited someone to join this #Share2Earn event through their links, you get {{rir}} RIR"
 }

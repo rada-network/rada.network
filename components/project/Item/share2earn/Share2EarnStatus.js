@@ -8,13 +8,11 @@ import { useTranslation } from "next-i18next";
 import { ethers } from "ethers"
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-<<<<<<< HEAD
 import ReactTooltip from 'react-tooltip'
 const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress, incentivePaid }) => {
-=======
+import ReactTooltip from 'react-tooltip';
 
 const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress, incentivePaid, share2earnAdress }) => {
->>>>>>> a2e8ab9c9c0396be8d144f72e2ef8143fe89adb1
   const { t } = useTranslation('share2earn')
   const { callFunction } = useCallFunction()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
@@ -143,13 +141,14 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
           {t("share2earn status")}
         </div>
         <div className="p-4">
+          <ReactTooltip type="info" multiline={true} globalEventOff="click" clickable={true} html={true} offset={{right: 100}} />
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
             <li className="list-pair !items-center mb-2">
               <div className="list-key">
                 RIR Contract
                 <span
                   className="hasTooltip"
-                  data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
+                  data-tip={t("tooltip")}
                   data-event="click"
                 ><i className="fa-duotone fa-info-circle text-base" />
                 </span>
@@ -173,7 +172,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
                 Tier 1
                 <span
                   className="hasTooltip"
-                  data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
+                  data-tip={t("tooltip")}
                   data-event="click"
                 > <i className="fa-duotone fa-info-circle text-base" />
                 </span>
@@ -188,7 +187,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
                 Tier 2
                 <span
                   className="hasTooltip"
-                  data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
+                  data-tip={t("tooltip")}
                   data-event="click"
                 > <i className="fa-duotone fa-info-circle text-base" />
                 </span>
@@ -201,7 +200,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
                 {t("main status earned")}
                 <span
                   className="hasTooltip"
-                  data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
+                  data-tip={t("tooltip")}
                   data-event="click"
                 > <i className="fa-duotone fa-info-circle text-base" />
                 </span>
