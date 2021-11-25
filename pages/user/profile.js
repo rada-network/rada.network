@@ -45,12 +45,12 @@ export default function UserProfile(props) {
       getCurrentUser().then((res) => {
         setUser(res);
       });
-      getInvestProfile().then(function (res) {
-        setTopupInfo(res.data.investProfile);
-      });
-      getInvestLog().then((res) => {
-        setInvestLog(res.data.investLog);
-      });
+      // getInvestProfile().then(function (res) {
+      //   setTopupInfo(res.data.investProfile);
+      // });
+      // getInvestLog().then((res) => {
+      //   setInvestLog(res.data.investLog);
+      // });
     }
     // If session exists, display content
     
@@ -123,7 +123,7 @@ export default function UserProfile(props) {
                   
                 </div>
               </div>
-              <div className="w-full mt-2">
+              {/* <div className="w-full mt-2">
                 <div className="flex flex-wrap items-end justify-between mb-2">
                   <div className="w-auto">
                     <div className="field-label--text">
@@ -151,7 +151,6 @@ export default function UserProfile(props) {
                   </div>
                 </div>
               </div>
-               {/* End: balance */}
 
               <div className="w-full mt-2">
                 <div className="flex flex-wrap items-end justify-between mb-2">
@@ -169,7 +168,6 @@ export default function UserProfile(props) {
                   
                 </div>
               </div>
-              {/* End: max allocation */}
               <div className="w-full mt-2">
                 <div className="flex flex-wrap items-end justify-between mb-2">
                   <div className="w-auto">
@@ -182,12 +180,11 @@ export default function UserProfile(props) {
                   </div>
                   
                 </div>
-              </div>
+              </div> */}
 
 
 
               </div>
-              {/* end of meta  */}
 
             </div>
 
@@ -205,7 +202,7 @@ export default function UserProfile(props) {
               <div className="grid">
                 <div className="list-group">
                   {/* Wallet connected --> Show DisConnect Buttons */}
-                  <WalletProfile />
+                  {/* <WalletProfile /> */}
                 
                   {/* Google disconnected --> Show Connect Buttons */}
                   <div className="list-group--item">
@@ -337,7 +334,7 @@ export default function UserProfile(props) {
             </div>
           </div>
           {/* END: Connection */}
-          {investLog.length > 0 &&
+          {/* {investLog.length > 0 &&
           <div className="card card-pagecontent">
             <div className="card-header flex">
               <span className="card-title">Your recent investments</span>
@@ -352,7 +349,6 @@ export default function UserProfile(props) {
             <div className="card-body">
               <div className="grid">
                 <div className="list-group">
-                  {/* Wallet connected --> Show DisConnect Buttons */}
                   {investLog.length > 0 &&
                     investLog.map((item) => (
                       <a
@@ -379,8 +375,8 @@ export default function UserProfile(props) {
               </div>
             </div>
           </div>
-          }
-          <UserDistribution props={props} />
+          } */}
+          {/* <UserDistribution props={props} /> */}
         </div>
       </StaticLayout>
     </>
