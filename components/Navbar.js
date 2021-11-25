@@ -43,17 +43,17 @@ export const Navbar = observer(({}) => {
             <span className="nav-item--text">{t("LaunchVerse")}</span>
           </NavItem>
 
-          <NavItem href={"/" + dataStore.lang + "/explore/news"} page={`item`} type={"news"}>
+          <NavItem href={"/" + dataStore.lang + "/explore/research"} page={`item`} type={"research"}>
             <span className="icon"><i className="fad fa-telescope" /></span>
             <span className="nav-item--text">{t("Research")}</span>
           </NavItem>
 
-          <NavItem href={"/" + dataStore.lang + "/explore/video"} page={`item`} type={"video"}>
+          <NavItem href={"/" + dataStore.lang + "/explore/articles"} page={`item`} type={"articles"}>
             <span className="icon"><i className="fad fa-newspaper" /></span>
             <span className="nav-item--text">{t("Articles")}</span>
           </NavItem>
 
-          <NavItem   href={"/" + dataStore.lang + "/explore/projects"} page={`item`} type={"projects"}>
+          <NavItem   href={"/" + dataStore.lang + "/explore/about-rada"} page={`item`} type={"about-rada"}>
             <span className="icon icon-rada">
               <svg className="rada-svg" viewBox="4 4 32 32" xmlns="http://www.w3.org/2000/svg">
                 <path className="inline-rec" d="M18 11.1547C19.2376 10.4402 20.7624 10.4402 22 11.1547L26.6603 13.8453C27.8979 14.5598 28.6603 15.8803 28.6603 17.3094V22.6906C28.6603 24.1197 27.8979 25.4402 26.6603 26.1547L22 28.8453C20.7624 29.5598 19.2376 29.5598 18 28.8453L13.3397 26.1547C12.1021 25.4402 11.3397 24.1197 11.3397 22.6906V17.3094C11.3397 15.8803 12.1021 14.5598 13.3397 13.8453L18 11.1547Z" fill="#9CA3AF"/>

@@ -159,7 +159,7 @@ const CardPostNormal = observer(({title,slug, mediaUri, type, source, commentCou
       <div className={`card-body`}>
         <div className={`card-body-header`}>
           <div className={`card-title`}>
-            {isRada && dataStore.type !== "rada"  && dataStore.type !== "projects" ? 
+            {isRada && dataStore.type !== "research"  && dataStore.type !== "articles" &&  dataStore.type !== "about-rada" ? 
             <span className="badge badge-rada">RADA</span> 
             : ""}
             <a className="text-color-title" key={item.id} href={createPostUri(title,slug,item,dataStore.lang)} onClick={(e)=>handleClickPost(e)}>{title}</a>
