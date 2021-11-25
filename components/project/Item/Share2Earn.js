@@ -250,7 +250,7 @@ export default function ProjectShare2Earn({
                   ><i class="fa-duotone fa-hand-holding-heart"></i>Login to Join</btn>
                 </form>
               ) : null }
-               <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"> Learn more about #Share2Earn </a>
+               <a href="" target="_blank" className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"> Learn more about #Share2Earn </a>
             </div>
 
           </div>
