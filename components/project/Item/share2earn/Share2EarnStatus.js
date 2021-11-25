@@ -2,29 +2,30 @@ import useChainConfig from "@utils/web3/useChainConfig"
 import CopyToClipboard from "react-copy-to-clipboard"
 import RadaSvg from "@components/svg/rada"
 import { toast } from "react-toastify"
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
 import { useCallFunction } from "@utils/hooks/useCallFunction"
-import { useEffect, useState } from "react";
-import { useTranslation } from "next-i18next";
-
-const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress, incentivePaid }) => {
+import { Dialog, Transition } from '@headlessui/react'
+import { Fragment, useState } from 'react'
+import { useEffect } from "react"
+const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress }) => {
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const riraddress = getRIRAddress()
   const { callFunction } = useCallFunction()
-  const { t } = useTranslation('share2earn')
-  
-  let [isOpen, setIsOpen] = useState(false)
-  function closeModal() {
-    setIsOpen(false)
-  }
-  function openModal() {
-    setIsOpen(true)
-  }
+
   const handleCopy = () => {
     toast.success("Copied to clipboard", {})
   };
-  // const [incentivePaid, setIncentivePaid] = useState(0)
+
+
+  let [isOpen, setIsOpen] = useState(true)
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
   useEffect(() => {
     // get thong tin
     // get arrays address
