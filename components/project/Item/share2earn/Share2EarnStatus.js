@@ -143,6 +143,24 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
             <li className="list-pair !items-center mb-2">
               <div className="list-key">
+                Share2Earn Contract
+              </div>
+              <div className="px-2 py-1 rounded flex bg-gray-100 dark:bg-gray-800 ml-auto list-value hover:bg-gray-200 hover:dark:bg-gray-900">
+                <div>
+                  <a target="_blank" href={bscURL}>{`${share2earnAdress.substr(0, 5)}...${share2earnAdress.substr(-4)}`}</a></div>
+                  <CopyToClipboard
+                    onCopy={handleCopy}
+                    text={share2earnAdress}
+                  >
+                    <button class="btn ml-2">
+                      <i className="fa-duotone fa-copy text-xs"></i>
+                    </button>
+                  </CopyToClipboard>
+                </div>
+            </li>
+
+            <li className="list-pair !items-center mb-2">
+              <div className="list-key">
                 RIR Contract
                 <span
                   className="hasTooltip"
@@ -153,15 +171,15 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
               </div>
               <div className="px-2 py-1 rounded flex bg-gray-100 dark:bg-gray-800 ml-auto list-value hover:bg-gray-200 hover:dark:bg-gray-900">
                 <div>
-                  <a href={bscURL}>{`${riraddress.substr(0, 5)}...${riraddress.substr(-4)}`}</a></div>
-                <CopyToClipboard
-                  onCopy={handleCopy}
-                  text={riraddress}
-                >
-                  <button class="btn ml-2">
-                    <i className="fa-duotone fa-copy text-xs"></i>
-                  </button>
-                </CopyToClipboard>
+                  <a target="_blank" href={getBscScanURL(riraddress)}>{`${riraddress.substr(0, 5)}...${riraddress.substr(-4)}`}</a></div>
+                  <CopyToClipboard
+                    onCopy={handleCopy}
+                    text={riraddress}
+                  >
+                    <button class="btn ml-2">
+                      <i className="fa-duotone fa-copy text-xs"></i>
+                    </button>
+                  </CopyToClipboard>
               </div>
             </li>
 
