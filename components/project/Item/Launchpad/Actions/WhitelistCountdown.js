@@ -43,7 +43,7 @@ const WhitelistCountdown = ({project}) => {
                 :
                 <div className="">
                   <h3 class="text-4xl text-center mt-4 mb-4 font-normal">
-                    <span style={{textTransform : "uppercase"}} className="text-gray-700 dark:text-white font-semibold">{t("Coming Soon")}</span>
+                    <span className="text-gray-700 dark:text-white font-semibold">{t("Coming Soon")}</span>
                   </h3>
                   <div className="max-w-md mx-auto">
                     <p class="text-sm text-center mt-4 leading-7" dangerouslySetInnerHTML={{__html : t("coming soon note",
