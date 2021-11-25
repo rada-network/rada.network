@@ -24,7 +24,12 @@ export default function ProjectItem({ project, page, slug }) {
         </div>
 
         <div className="pane-content--sec--main grid scrollbar">
-          <div className={`page page-full page-project-details !pt-0` + (page == "research" ? " page-research-detail" : "")} ref={ref}>
+          <div 
+            className={`page page-full page-project-details !pt-0` 
+            + (page == "research" ? " page-research-details" : "") 
+            + (page == "share2earn" ? " page-project-share2earn" : "")} 
+            ref={ref}
+          >
             <div className="w-limiter-lg">
               {page == "index" && <ProjectLaunchpad project={project} />}
               {page == "research" && <ProjectDetails project={project} />}
