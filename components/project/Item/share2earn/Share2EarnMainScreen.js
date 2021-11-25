@@ -390,16 +390,10 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                             <span className="btn--text">{t("main button download")}</span>
                           </btn>
                         </div>
-                        <div className="grid grid-cols-2 gap-4 p-4 !pt-0">
-                          <a href="" target="_blank" className="inline-flex text-sm bg-gray-200 bg-opacity-20 dark:bg-gray-800 text-center rounded-lg p-2 items-center">
-                            <i className="fa-duotone fa-stars text-xs ml-auto mr-2" /> 
-                            <span className="mr-auto">Examples</span>
-                          </a>
-                          <a href="" target="_blank" className="inline-flex text-sm bg-gray-200  bg-opacity-20  dark:bg-gray-800 text-center rounded-lg p-2  items-center" >
-                            <i className="fa-duotone fa-images text-xs ml-auto mr-2" />
-                            <span className="mr-auto">More Images</span>
-                          </a>
-                        </div>
+                        <a href="" target="_blank" className="m-4 !mt-2 flex text-sm border border-gray-200 dark:border-gray-700 text-center rounded-lg p-2  items-center" >
+                          <i className="fa-duotone fa-external-link text-xs ml-auto mr-2" />
+                          <span className="mr-auto">More Images</span>
+                        </a>
                       </div>
                     </div>
 
