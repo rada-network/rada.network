@@ -5,24 +5,31 @@ import { saveAs } from 'file-saver';
 import { useTranslation } from "next-i18next";
 import { useStore } from "@lib/useStore";
 import { usePageStore } from "@lib/usePageStore";
-import { Head } from "@components/Head"
 import ShareLink from "./ShareLink"
 import SelectBannerType from "./listbox-share2earn";
 import { getShareLogById } from "../../../../data/query/getShareLog";
 import { createOrUpdateShareLogById } from "../../../../data/query/createOrUpdateShareLog";
 import mergeImages from 'merge-images';
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
-import { toast } from "react-toastify"
 import Share2EarnStatus from "./Share2EarnStatus"
+import { useCallFunction } from "@utils/hooks/useCallFunction"
+import { useShare2EarnContract } from "@utils/hooks/useContracts"
+import { ethers } from 'ethers'
+import { Head } from "@components/Head";
 
 
-const Share2EarnMainScreen = observer(({ project, user }) => {
-  const { t } = useTranslation('share2earn')
-  const { account } = useActiveWeb3React()
+const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, referralAdminAddress}) => {
   const store = useStore()
   const { detailStore } = usePageStore();
+  const context = useActiveWeb3React()
+  const { library, account } = context
+  const { t } = useTranslation('share2earn')  
+  const { callFunction } = useCallFunction()
+  
+  
   const [facebook, setFacebook] = useState({ url: '', disable: false });
   const [twitter, setTwitter] = useState({ url: '', disable: false });
+  const [telegram, setTelegram] = useState({ url: '', disable: false });
   // Merge image state
   const [isUploadImage, setIsUploadImage] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
@@ -30,6 +37,7 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
   const [mergeUploadImgs, setMergeUploadImgs] = useState({});
   const [baseFrames, setBaseFrames] = useState({});
   const [userAvatar, setUserAvatar] = useState(null);
+  const [referralInfo, setReferralInfo] = useState({level1: '', level2: ''})
 
 
   // Banner component 
@@ -68,13 +76,26 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
     }
   }, []);
 
+  const share2earnContract = useShare2EarnContract(share2earnAddress)
+  useEffect(() => {
+    const getInfo = async () => {
+      const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account])
+      const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account])
+      setReferralInfo({level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString())})
+    }
+    if (!!library && !!share2earnContract) {
+      getInfo()
+    }
+  }, [])
 
   // Create or update url
-  const facebookSubmit = async (e) => {
-    if (!facebook.disable) {
+  
+  const telegramSubmit = async (e) => {
+    if (!twitter.disable) {
       submitShareURL(e)
+
     }
-    setFacebook({ disable: !facebook.disable, url: facebook.url })
+    setTelegram({ disable: !telegram.disable, url: telegram.url })
   }
 
   const twitterSubmit = async (e) => {
@@ -85,15 +106,27 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
     setTwitter({ disable: !twitter.disable, url: twitter.url })
   }
 
+  const facebookSubmit = async (e) => {
+    if (!facebook.disable) {
+      submitShareURL(e)
+    }
+    setFacebook({ disable: !facebook.disable, url: facebook.url })
+  }
+
+  
+
+
   function submitShareURL(e) {
     if (project.share_campaign?.length) {
-      createOrUpdateShareLogById({ campaignId: parseInt(1), walletAddress: account, twitter: twitter.url, facebook: facebook.url, linkedin: "" }).then(function (
+      createOrUpdateShareLogById({ campaignId: parseInt(1), walletAddress: account, twitter: twitter.url, facebook: facebook.url, telegram: telegram.url,  linkedin: "" }).then(function (
         res
       ) {
         if (e.target.id === "facebook") {
           setFacebook({ disable: true, url: facebook.url })
         } else if (e.target.id === "twitter") {
           setTwitter({ disable: true, url: twitter.url })
+        } else if (e.target.id === "telegram") {
+          setTelegram({ disable: true, url: telegram.url })
         }
       });
     }
@@ -256,84 +289,89 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
     mergedImage = null
   }
   return (
-    <>
-      <div className="pane-content--sec--main grid scrollbar">
+    <>     
+    <Head />
 
-        <div className="page page-share2earn fadein">
+    <div className="pane-content--sec--main grid scrollbar">
 
-          <div className="section max-w-screen-sm mx-auto">
+      <div className="page page-share2earn fadein">
 
-            <div className="flex mb-4 items-center">
+        <div className="section max-w-screen-sm mx-auto">
 
-              <div className="flex w-12 mr-2 mt-1 flex-shrink-0 items-center justify-center">
-                <span className="icon text-4xl"><i className="fa-solid fa-check-circle text-green-500"></i></span>
-              </div>
+          <div className="flex mb-4 items-center">
 
-              <div>
-                <h1 className="">
-                  <span className="text-xl lg:text-lg font-semibold text-color-title">
-                    {t("main result title")}
-                  </span>
-                </h1>
-              </div>
-
+            <div className="flex w-12 md:mr-2 mt-1 flex-shrink-0 md:items-center md:justify-center">
+              <span className="icon text-4xl"><i className="fa-solid fa-check-circle text-green-500"></i></span>
             </div>
 
-            <div className="section-body !pt-0">
+            <div>
+              <h1 className="">
+                <span className="text-xl lg:text-lg font-semibold text-color-title">
+                  {t("main result title")} 
+                </span>
+              </h1>
+            </div>
 
-              <Share2EarnStatus />
+          </div>
 
+          <div className="section-body !pt-0">
 
-              <ol className="text-sm space-y-8">
+            <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2}/>
 
-                {/* Step 1 */}
-                <li className="flex items-start">
+            <ol className="text-sm space-y-8">
 
-                  <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
-                    <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
-                      <strong className="text-base">
-                        <span className="sr-only">Step</span>
-                        1
-                      </strong>
-                    </span>
-                  </div>
+              {/* Step 1 */}
+              <li className="flex flex-col md:flex-row items-start">
 
-                  <div className="flex flex-col w-full">
-                    <div className="flex flex-col">
-                      <strong className="text-base text-color-title">Create banner</strong>
-                      <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
+                <div className="flex w-12 mb-2 md:mb-0 mr-2 mt-1.5 flex-shrink-0 md:items-center md:justify-center">
+                  <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
+                    <strong className="text-base">
+                      <span className="sr-only">Step</span>
+                      1
+                    </strong>
+                  </span>
+                </div>
 
-                      <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                        <SelectBannerType />
-                        <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
-                          <div className="">
-                            <img class="" src={bannerURL} />
-                          </div>
-                        </div>
+                <div className="flex flex-col w-full">
 
-                        <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                          <btn className="btn btn-default w-full !py-2"
-                            onClick={() => handleDownload()}>
-                            <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
-                            <span className="btn--text">{t("main button download")}</span>
-                          </btn>
+                  <div className="flex flex-col">
+                    <strong className="text-base text-color-title">Create banner</strong>
+                    <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
+
+                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+
+                      <SelectBannerType />
+
+                      <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
+                        <div className="">
+                        <img class="" src={bannerURL} />
                         </div>
                       </div>
+
+                      <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
+                        <btn className="btn btn-default w-full !py-2"
+                          onClick={() => handleDownload()}
+                        >
+                          <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
+                          <span className="btn--text">{t("main button download")}</span>
+                        </btn>
+                      </div>
                     </div>
+                  </div>
 
-                    <div className="flex flex-col mt-4">
-                      <strong className="text-base text-color-title">{t("create avatar title")}</strong>
-                      <span className="text-gray-500 dark:text-gray-400">{t("create avatar des")}</span>
+                  <div className="flex flex-col mt-4">
+                    <strong className="text-base text-color-title">{t("create avatar title")}</strong>
+                    <span className="text-gray-500 dark:text-gray-400">{t("create avatar des")}</span>
 
-                      <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                    <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
 
-                        <div className="flex justify-between items-center py-3 px-4 border-b border-gray-200 dark:border-gray-700">
-                          <div>
-                            <span className="text-sm">Image Source</span>
-                          </div>
-                          <div className="flex flex-srink-0 items-center">
-
-                            <div className="btn-group btn-group-toggle text-xs">
+                      <div className="flex justify-between items-center py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                          <span className="text-sm">Image Source</span>
+                        </div>
+                        <div className="flex flex-srink-0 items-center">
+                          
+                          <div className="btn-group btn-group-toggle text-xs">
                               <a className={"btn " + (isUploadImage ? "btn-toggle" : "btn-toggle-active")} onClick={() => setIsUploadImage(!isUploadImage)}>
                                 <span className="btn--text">Default</span>
                               </a>
@@ -341,10 +379,11 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
                                 <span className="btn--text">Your Image</span>
                               </a>
                             </div>
-                          </div>
                         </div>
+                      </div>
 
-                        <form>
+
+                      <form>
                           {mergedImage}
 
                           {isUploadImage && !isUploaded &&
@@ -359,62 +398,61 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
 
                           {downloadAvtButton}
                         </form>
-
-                      </div>
-
                     </div>
 
                   </div>
 
-                </li>
+                </div>
 
-                {/* Step 2 */}
-                <li className="flex items-start">
-                  <ShareLink uid={uid} share_message={project.share_campaign[0].share_message}/>
-                </li>
+              </li>
 
-                {/* Step 3 */}
-                <li className="flex items-start">
+              {/* Step 2 */}
+              <li className="flex flex-col md:flex-row items-start">
+                
+                <ShareLink uid={uid} share_message={project.share_campaign[0].share_message}/>
 
-                  <div className="flex w-12 mr-2 mt-1.5 flex-shrink-0 items-center justify-center">
-                    <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
-                      <strong className="text-base">
-                        <span className="sr-only">Step</span>
-                        3
-                      </strong>
-                    </span>
-                  </div>
+              </li>
 
-                  <div className="flex flex-col w-full">
+              {/* Step 3 */}
+              <li className="flex flex-col md:flex-row items-start">
 
-                    <div className="flex flex-col">
-                      <strong className="text-base text-color-title">{t("main step 3 title")}</strong>
-                      <span className="text-gray-500 dark:text-gray-400">{t("main step 3 des")}</span>
+                <div className="flex w-12 mb-2 md:mb-0 mr-2 mt-1.5 flex-shrink-0 md:items-center md:justify-center">
+                  <span className="icon !flex w-px-32 h-px-32 items-center justify-center rounded-full border-2 border-gray-300">
+                    <strong className="text-base">
+                      <span className="sr-only">Step</span>
+                      3
+                    </strong>
+                  </span>
+                </div>
 
-                      <div className="mt-4">
-                        <form>
+                <div className="flex flex-col w-full">
 
-                          {/* Facebook */}
-                          <div className="mb-4">
-                            <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Facebook's post link</label>
+                  <div className="flex flex-col">
+                    <strong className="text-base text-color-title">{t("main step 3 title")}</strong>
+                    <span className="text-gray-500 dark:text-gray-400">{t("main step 3 des")}</span>
+
+                    <div className="mt-4">
+                      <form>
+                        {/* Telegram */}
+                        <div className="mb-4">
+                            <label for="telegram-post-url" className="sr-only block text-xs font-medium uppercase">Telegram's post link</label>
                             <div className="mt-1 relative rounded-md shadow-sm">
-                              <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
-
+                              <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--telegram"><span class="icon"><i class="fa-brands fa-telegram"></i></span></span>
                               <input type="text" name="fb-post-url" id="fb-post-url"
                                 className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
-                                disabled={facebook.url === "" ? "" : (facebook.disable ? "disabled" : "")}
-                                placeholder={facebook.url ? (facebook.disable ? facebook.url : "") : "Facebook's post link"}
-                                value={!facebook.disable ? facebook.url : ""}
-                                onChange={(e) => { setFacebook({ disable: false, url: e.target.value }) }} />
+                                disabled={telegram.url === "" ? "" : (telegram.disable ? "disabled" : "")}
+                                placeholder={telegram.url ? (telegram.disable ? telegram.url : "") : "Telegram's post link"}
+                                value={!telegram.disable ? telegram.url : ""}
+                                onChange={(e) => { setTelegram({ disable: false, url: e.target.value }) }} />
 
-                              {facebook.url &&
+
+                              {telegram.url &&
                                 <div className="absolute inset-y-0 right-1 flex items-center">
-                                  <btn className={"btn py-1 px-2 w-16 " + (facebook.disable ? "btn-gray justify-center" : "btn-primary")}
-                                    onClick={facebookSubmit}
-                                  >{facebook.disable ? "Edit" : "Submit"}</btn>
+                                  <btn className={"btn py-1 px-2 w-16 " + (telegram.disable ? "btn-gray justify-center" : "btn-primary")}
+                                    onClick={telegramSubmit}
+                                  >{telegram.disable ? "Edit" : "Submit"}</btn>
                                 </div>
                               }
-
                             </div>
                           </div>
 
@@ -441,23 +479,46 @@ const Share2EarnMainScreen = observer(({ project, user }) => {
                             </div>
                           </div>
 
-                        </form>
-                      </div>
-                    </div>
+                          {/* Facebook */}
+                          <div className="mb-4">
+                            <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Facebook's post link</label>
+                            <div className="mt-1 relative rounded-md shadow-sm">
+                              <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
 
+                              <input type="text" name="fb-post-url" id="fb-post-url"
+                                className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
+                                disabled={facebook.url === "" ? "" : (facebook.disable ? "disabled" : "")}
+                                placeholder={facebook.url ? (facebook.disable ? facebook.url : "") : "Facebook's post link"}
+                                value={!facebook.disable ? facebook.url : ""}
+                                onChange={(e) => { setFacebook({ disable: false, url: e.target.value }) }} />
+
+                              {facebook.url &&
+                                <div className="absolute inset-y-0 right-1 flex items-center">
+                                  <btn className={"btn py-1 px-2 w-16 " + (facebook.disable ? "btn-gray justify-center" : "btn-primary")}
+                                    onClick={facebookSubmit}
+                                  >{facebook.disable ? "Edit" : "Submit"}</btn>
+                                </div>
+                              }
+
+                            </div>
+                          </div>
+                      </form>
+                    </div>
                   </div>
 
-                </li>
+                </div>
 
-              </ol>
+              </li>
 
-            </div>
+            </ol>
 
           </div>
 
         </div>
 
       </div>
+   
+    </div>
 
     </>
   )

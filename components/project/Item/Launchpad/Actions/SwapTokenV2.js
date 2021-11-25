@@ -107,7 +107,7 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,lau
               <label htmlFor="rir" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("RIR")}</label>
               <select id="rir" name="rir" className="select-custom " defaultValue={numberRIR} onChange={e => {setNumberRIR(e.currentTarget.value)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
-                <option className="text-gray-300" value={0}>{0} RIR</option>
+                <option key="-1" className="text-gray-300" value={0}>{0} RIR</option>
                 {Array(maxSelected).fill(null).map((_, i) => {
                   return (
                     <>

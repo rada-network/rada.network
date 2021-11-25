@@ -2,7 +2,7 @@ import useChainConfig from "@utils/web3/useChainConfig"
 import CopyToClipboard from "react-copy-to-clipboard"
 import RadaSvg from "@components/svg/rada"
 import {toast} from "react-toastify"
-const Share2EarnStatus = ({}) => {
+const Share2EarnStatus = ({level1, level2}) => {
   const {getRIRAddress} = useChainConfig()
   const riraddress = getRIRAddress()
 
@@ -36,17 +36,17 @@ const Share2EarnStatus = ({}) => {
           </li>
           <li className="list-pair mb-2">
             <span className="list-key">
-              Invites sent
+              Referral Level 1
             </span>
             <div className="ml-auto flex items-center list-value font-semibold">
-              0
+              {level1}
             </div>
           </li>
           <li className="list-pair mb-2">
             <span className="list-key">
-              Successful referrals
+              Referral Level 2
             </span>
-            <span className="ml-auto font-semibold">0</span>
+            <span className="ml-auto font-semibold">{level2}</span>
           </li>
           <li className="list-pair mb-2">
             <span className="list-key">
@@ -56,7 +56,7 @@ const Share2EarnStatus = ({}) => {
               <span class="icon w-4 h-4 mr-1">
                 <RadaSvg />
               </span>
-              0 RIR
+              {level1*0.1 + level2*0.01} RIR
             </div>
           </li>
         </ul>

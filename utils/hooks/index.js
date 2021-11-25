@@ -28,7 +28,6 @@ export const useLaunchpadInfo = ({project}) => {
         buyers : buyers,
         currentOrder : currentOrder,
       }
-      console.log(updateInfo)
       setLaunchpadInfo(updateInfo)
      } catch (error) {
       console.log(error)

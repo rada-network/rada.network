@@ -1,30 +1,42 @@
 export const RPC_CONFIG = {
   bsc : {
     production : {
+      name : "Binance Smart Chain Mainnet",
       chainId : 56,
-      url : 'https://bsc-dataseed.binance.org/'
+      url : 'https://bsc-dataseed.binance.org/',
+      scan : "https://bscscan.com/"
     },
     dev : {
+      name : "Binance Smart Chain Testnet",
       chainId : 97,
-      url : 'https://data-seed-prebsc-2-s3.binance.org:8545/'
+      url : 'https://data-seed-prebsc-2-s3.binance.org:8545/',
+      scan : "https://testnet.bscscan.com/"
     },
     staging : {
+      name : "Binance Smart Chain Testnet",
       chainId : 97,
-      url : 'https://data-seed-prebsc-2-s3.binance.org:8545/'
+      url : 'https://data-seed-prebsc-2-s3.binance.org:8545/',
+      scan : "https://testnet.scscan.com/"
     }
   },
   eth : {
     production : {
+      name : "Ethereum Mainnet",
       chainId : 1,
-      url : 'https://mainnet.infura.io/v3/ac6e5dfdbd5e4d4d85447d7599b5a3e5'
+      url : 'https://mainnet.infura.io/v3/ac6e5dfdbd5e4d4d85447d7599b5a3e5',
+      scan : "https://etherscan.io"
     },
     dev : {
+      name : "Ethereum Ribery Testnet",
       chainId : 4,
-      url : 'https://rinkeby.infura.io/v3/ac6e5dfdbd5e4d4d85447d7599b5a3e5'
+      url : 'https://rinkeby.infura.io/v3/ac6e5dfdbd5e4d4d85447d7599b5a3e5',
+      scan : 'https://rinkeby.etherscan.io/',
     },
     staging : {
+      name : "Ethereum Ribery Testnet",
       chainId : 4,
-      url : 'https://rinkeby.infura.io/v3/ac6e5dfdbd5e4d4d85447d7599b5a3e5'
+      url : 'https://rinkeby.infura.io/v3/ac6e5dfdbd5e4d4d85447d7599b5a3e5',
+      scan : 'https://rinkeby.etherscan.io/',
     }
   },
 }

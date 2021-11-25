@@ -14,7 +14,6 @@ import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useShare2EarnContract, useReferralAdminContract } from "@utils/hooks/useContracts"
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React"
 import { useStore } from "@lib/useStore"
-import { getCurrentUser } from "@data/query/user"
 import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
 import { useERC20 } from "@utils/hooks/useContracts";
 import useChainConfig from "@utils/web3/useChainConfig";
@@ -24,7 +23,6 @@ export default function ProjectShare2Earn({
 }) {
   const {getRIRAddress} = useChainConfig()
   const riraddress = getRIRAddress()
-  console.log("RIR : ",riraddress)
   const { t } = useTranslation('share2earn')
   const context = useActiveWeb3React()
   const { library, account } = context
@@ -38,9 +36,8 @@ export default function ProjectShare2Earn({
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
   // TODO: Save in config file
-  // const share2earnAddress = "0x998353AfD99A73262337974e2E732118ed557600" // Bản full admin+referral
-  const share2earnAddress = "0xb4E4877E23bFd704319Bf92D7705E84514cd9D9f" // Bản referral
-  const referralAdminAddress = "0x4A4361654D34551f231Ba562dDA2d8Db44e56b0c" // Bản referral
+  const share2earnAddress = project.share2earn_contract
+  const referralAdminAddress = project.referral_admin_contract
 
   const shareAddress = useERC20(share2earnAddress);
 
@@ -74,12 +71,10 @@ export default function ProjectShare2Earn({
   }, [account, user]);
 
   React.useEffect(() => {
-
     const getInfoProgram = async () => {
       try {
         const p = await callFunction(share2earnContract, 'programs', [project.id.toString()])
         const pAdmin = await callFunction(referralAdminContract, 'programs', [project.id.toString()])
-
         setShare2EarnInfo({ ...p, incentiveL0: pAdmin.incentiveL0, incentiveL1: pAdmin.incentiveL1, incentiveL2: pAdmin.incentiveL2 });
         if (account) {
           checkJoined();
@@ -93,6 +88,7 @@ export default function ProjectShare2Earn({
       getInfoProgram()
     }
   }, [share2earnContract, library, account]);
+
 
 
   const checkJoined = async () => {
@@ -132,7 +128,7 @@ export default function ProjectShare2Earn({
   const allowJoin = getMessage() == '' && joined == '' && account
 
   if ((joined != '' || isConfirmed) && !!account) {
-    return <Share2EarnMainScreen project={project} user={user} />;
+    return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress}/>;
   }
 
   const handleConnectWallet = () => {
@@ -141,13 +137,14 @@ export default function ProjectShare2Earn({
 
   return (
     <>
+      <Head />
       <div className="pane-content--sec--main grid scrollbar">
 
         <div className="page page-share2earn">
 
           <div className="section max-w-screen-sm mx-auto">
 
-            <div className="section-body !pt-2">
+            <div className="section-body">
               <h1 className="mb-4">
                 <span className="text-xl lg:text-2xl font-semibold text-color-title">
                 ✨ Join The Parallel #Share2Earn Event ✨
