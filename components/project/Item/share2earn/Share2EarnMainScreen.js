@@ -14,6 +14,7 @@ import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import Share2EarnStatus from "./Share2EarnStatus"
 import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useShare2EarnContract } from "@utils/hooks/useContracts"
+import { toast } from "react-toastify"
 
 
 
@@ -63,17 +64,17 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
         if (res.data.getShareLog?.length) {
           let facebookURL = res.data.getShareLog[0].facebook;
           if (facebookURL) {
-            setFacebook({ url: facebookURL, disable: true });
+            setFacebook({ url: facebookURL, disable: facebookURL !== "" });
           }
 
           let twitterURL = res.data.getShareLog[0].twitter;
           if (twitterURL) {
-            setTwitter({ url: twitterURL, disable: true });
+            setTwitter({ url: twitterURL, disable: twitterURL !== "" });
           }
 
           let telegramURL = res.data.getShareLog[0].telegram;
           if (telegramURL) {
-            setTelegram({ url: telegramURL, disable: true });
+            setTelegram({ url: telegramURL, disable: telegramURL !== "" });
           }
         }
       });
@@ -117,6 +118,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
       });
     }
   }
+  
   useEffect(() => {
     getBase64FromUrl("/icons/RADA Symbol.png").then(b64 => {
       resizeImage(b64).then(result => {
@@ -484,7 +486,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
               </ol>
 
               <div className="lg:pl-14">
-                <button className={"w-full mt-4 btn btn-yellow justify-center py-3 px-4" + (facebook.disable && twitter.disable && telegram.disable) ? " disabled " : ""} type="submit"
+                <button className={(facebook.url === "" && twitter.url === "" && telegram.url === "") ? " disabled w-full mt-4 btn btn-yellow justify-center py-3 px-4" : "w-full mt-4 btn btn-yellow justify-center py-3 px-4"} type="submit"
                   onClick={submitShareURL}
                 >Save</button>
               </div>
