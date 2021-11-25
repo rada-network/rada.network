@@ -36,6 +36,16 @@ const projectBySlugGql = gql`
             slug
             thumbnailUri
             content
+            createdAt
+            author {
+                name
+                id
+                image
+                description
+                facebook
+                twitter
+                linkedin
+            }
         }
         content{
             title

@@ -6,11 +6,12 @@ import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { useEffect } from "react"
+import { useTranslation } from "react-i18next"
 const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress }) => {
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const riraddress = getRIRAddress()
   const { callFunction } = useCallFunction()
-
+  const {t} = useTranslation()
   const handleCopy = () => {
     toast.success("Copied to clipboard", {})
   };

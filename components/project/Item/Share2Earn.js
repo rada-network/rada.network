@@ -248,7 +248,7 @@ export default function ProjectShare2Earn({
                   ><i class="fa-duotone fa-hand-holding-heart"></i>{t("welcome btn login")}</btn>
                 </form>
               ) : null }
-               <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg" href="_blank"> {t("learn more")} </a>
+               <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg" onClick={e => {toast.info(t("Coming Soon"),{position : "top-center"})}} target="_blank"> {t("learn more")} </a>
             </div>
 
           </div>
