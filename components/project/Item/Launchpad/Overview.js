@@ -47,7 +47,7 @@ export default function LaunchpadOverview({ project }) {
       </div>
 
       {/* Video / Banner of Project */}
-      <div className="page-media">
+      <div className="page-media -mx-4 md:mx-auto md:rounded-lg !w-auto">
         <div className="media-player">
           <div className="w-full h-full">
             {project.cover_embed ? 

@@ -8,8 +8,6 @@ import { useTranslation } from "next-i18next";
 import { ethers } from "ethers"
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-import ReactTooltip from 'react-tooltip'
-const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress, incentivePaid }) => {
 import ReactTooltip from 'react-tooltip';
 
 const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress, incentivePaid, share2earnAdress }) => {
@@ -37,9 +35,9 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
 
     const getInfo = async () => {
       try {
-        // const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
+        const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
         // const holdRIR = await callFunction(adminContract, 'incentiveHold', [projectID.toString(), walletAddress.toString()])
-        setStatusInfo({paid: parseFloat(incentivePaid).toString(), hold: ''})
+        setStatusInfo({paid: parseFloat(earnedRIR).toString(), hold: ''})
       } catch (e) {
         console.log(e)
       }
