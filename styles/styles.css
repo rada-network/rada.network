@@ -32,6 +32,7 @@ Layout
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
+    animation: fadein 800ms linear;
   }
   .body-decor::after {
     content: " ";
