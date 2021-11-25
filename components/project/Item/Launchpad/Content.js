@@ -56,21 +56,31 @@ export default function LaunchpadContent({ project }) {
                 <div className={`label ${project.type}`}>{project.type.toUpperCase()}</div>
               </span>
             </li>
-            {raise && 
+            
             <li className="list-pair mb-2">
-            <span className="list-key">{t("Raise")}</span>
-            <span className="ml-auto list-value font-semibold">
-              {numberFormatter(raise)} BUSD
-            </span>
-            </li>
-            }
-            {tokenPrice && <li className="list-pair mb-2">
-              <span className="list-key">{t("Token Price")}</span>
-              <span className="ml-auto font-semibold">
-                {tokenPrice || "n/a"} BUSD{" "}
+              <span className="list-key">{t("Raise")}</span>
+              {raise ? 
+              <span className="ml-auto list-value font-semibold">
+                {numberFormatter(raise)} BUSD
               </span>
+              :
+              <span className="ml-auto list-value font-semibold">
+                TBA
+              </span>
+              }
             </li>
-            }
+            <li className="list-pair mb-2">
+              <span className="list-key">{t("Token Price")}</span>
+              {tokenPrice ? 
+              <span className="ml-auto font-semibold">
+              {tokenPrice} BUSD
+              </span>
+              :
+              <span className="ml-auto font-semibold">
+              TBA
+              </span>
+              }
+            </li>
             {!!project.open_date && openTime < curentTime && 
             <li className="list-pair mb-2">
             <span className="list-key">{t("Progress")}</span>
@@ -108,11 +118,11 @@ export default function LaunchpadContent({ project }) {
           ></div>
 
           <p className="mt-auto pt-4">
-            <Link href={`/${dataStore.lang}/projects/${project.slug}/research`}>
-              <>
-                <a className="link" href={`/${dataStore.lang}/projects/${project.slug}/research`}>{t("Read full research")}</a>
+            <Link href={`/${dataStore.lang}/launchverse/${project.slug}/research`}>
+              <span>
+                <a className="link" href={`/${dataStore.lang}/launchverse/${project.slug}/research`}>{t("Read full research")}</a>
                 {/* <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span> */}
-              </>
+              </span>
             </Link>
           </p>
         </div>
