@@ -89,7 +89,8 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
       const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account])
       const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account])
       const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account.toString()])
-
+      console.log("Incentive info")
+      console.log(incentivePaid) 
       setReferralInfo({ level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString()), incentivePaid: parseInt(incentivePaid.toString()) })
     }
     if (!!library && !!share2earnContract) {

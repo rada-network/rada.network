@@ -7,12 +7,15 @@ import { Fragment } from 'react'
 import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
+import { ethers } from "ethers"
 
 const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress, incentivePaid }) => {
+  const { t } = useTranslation('share2earn')
+  const { callFunction } = useCallFunction()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const riraddress = getRIRAddress()
-  const { callFunction } = useCallFunction()
-  const { t } = useTranslation('share2earn')
+  const [statusInfo, setStatusInfo] = useState({paid: '0', hold: '0'})
+  
   
   let [isOpen, setIsOpen] = useState(false)
   function closeModal() {
@@ -24,16 +27,13 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
   const handleCopy = () => {
     toast.success("Copied to clipboard", {})
   };
-  // const [incentivePaid, setIncentivePaid] = useState(0)
-  useEffect(() => {
-    // get thong tin
-    // get arrays address
-    // console.log(adminContract)
+
+  useEffect(() => {  
     const getInfo = async () => {
       try {
         const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
-        console.log(earnedRIR)
-        setIncentivePaid(earnedRIR)
+        const holdRIR = await callFunction(adminContract, 'incentiveHold', [projectID.toString(), walletAddress.toString()])
+        setStatusInfo({paid: parseFloat(earnedRIR).toString(), hold: ''})
       } catch (e) {
         console.log(e)
       }
@@ -201,7 +201,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
                 <span class="icon w-4 h-4 mr-1">
                   <RadaSvg />
                 </span>
-                {level1*0.1 + level2*0.01} RIR
+                {statusInfo.paid} RIR
               </div>
             </li>
 
@@ -216,6 +216,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
                 </span>
               </div>
               <div className="ml-auto flex items-center">
+                {/* Todo show leaderboard */}
                 <div>45<span className="font-normal opacity-70">/850</span></div>
                 <button  onClick={openModal} className="!text-xs btn btn-default ml-2">
                   {t("main status leaderboard")}
