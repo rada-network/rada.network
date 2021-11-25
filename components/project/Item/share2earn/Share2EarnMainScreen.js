@@ -13,9 +13,8 @@ import mergeImages from 'merge-images';
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import Share2EarnStatus from "./Share2EarnStatus"
 import { useCallFunction } from "@utils/hooks/useCallFunction"
-import { useShare2EarnContract } from "@utils/hooks/useContracts"
+import { useShare2EarnContract, useReferralAdminContract } from "@utils/hooks/useContracts"
 import { toast } from "react-toastify"
-
 
 
 const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, referralAdminAddress }) => {
@@ -37,7 +36,9 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const [mergeUploadImgs, setMergeUploadImgs] = useState({});
   const [baseFrames, setBaseFrames] = useState({});
   const [userAvatar, setUserAvatar] = useState(null);
-  const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '' })
+  const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '', incentivePaid:'' })
+
+
 
 
   // Banner component 
@@ -82,13 +83,14 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   }, []);
 
   const share2earnContract = useShare2EarnContract(share2earnAddress)
-  const referralAdminContract = useShare2EarnContract(referralAdminAddress)
+  const referralAdminContract = useReferralAdminContract(referralAdminAddress)
   useEffect(() => {
-    console.log(referralAdminAddress)
     const getInfo = async () => {
       const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account])
       const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account])
-      setReferralInfo({ level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString()) })
+      const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account.toString()])
+
+      setReferralInfo({ level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString()), incentivePaid: parseInt(incentivePaid.toString()) })
     }
     if (!!library && !!share2earnContract) {
       getInfo()
@@ -282,6 +284,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   return (
     <>
       {/* <Head /> */}
+      
 
       <div className="pane-content--sec--main grid scrollbar">
 
@@ -289,9 +292,9 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
           <div className="section max-w-screen-sm mx-auto">
 
-            <div className="flex mb-4">
+            <div className="flex mb-4 flex-col md:flex-row">
 
-              <div className="flex w-12 md:mr-2 mt-1 flex-shrink-0 md:justify-center">
+              <div className="flex mb-2 w-12 md:mr-2 mt-1 flex-shrink-0 md:justify-center">
                 <span className="icon text-3xl"><i className="fa-solid fa-check-circle text-green-500"></i></span>
               </div>
 
@@ -302,14 +305,14 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                   </span>
                 </h1>
                 <p className="text-sm opacity-75">
-                  Please complete all following steps to earn RIR.
+                  {t("main step des")}
                 </p>
               </div>
 
             </div>
 
             <div className="section-body !pt-0">
-              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2} adminContract={referralAdminContract} projectID={project.id.toString()} walletAddress={account}/>
+              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2} incentivePaid={referralInfo.incentivePaid} adminContract={referralAdminContract} projectID={project.id.toString()} walletAddress={account}/>
 
               <ol className="text-sm space-y-8">
 
@@ -327,8 +330,8 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
                   <div className="flex flex-col w-full">
                     <div className="flex flex-col">
-                      <strong className="text-base text-color-title">Create banner</strong>
-                      <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
+                      <strong className="text-base text-color-title">{t("main step 1 banner title")}</strong>
+                      <span className="text-gray-500 dark:text-gray-400">{t("main step 1 banner des")}</span>
 
                       <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                         <SelectBannerType />
@@ -394,6 +397,40 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                       </div>
 
                     </div>
+
+                    <div className="flex flex-col mt-4">
+                      <strong className="text-base text-color-title">Create banner</strong>
+                      <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
+
+                      <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                        <SelectBannerType />
+                        <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
+                          <div className="">
+                            <img class="" src={bannerURL} />
+                          </div>
+                        </div>
+
+                        <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
+                          <btn className="btn btn-default w-full !py-2"
+                            onClick={() => handleDownload()}>
+                            <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
+                            <span className="btn--text">{t("main button download")}</span>
+                          </btn>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4 p-4 !pt-0">
+                          <a href="" target="_blank" className="inline-flex text-sm bg-gray-200 bg-opacity-20 dark:bg-gray-800 text-center rounded-lg p-2 items-center">
+                            <i className="fa-duotone fa-stars text-xs ml-auto mr-2" /> 
+                            <span className="mr-auto">Examples</span>
+                          </a>
+                          <a href="" target="_blank" className="inline-flex text-sm bg-gray-200  bg-opacity-20  dark:bg-gray-800 text-center rounded-lg p-2  items-center" >
+                            <i className="fa-duotone fa-images text-xs ml-auto mr-2" />
+                            <span className="mr-auto">More Images</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    
 
                   </div>
 
