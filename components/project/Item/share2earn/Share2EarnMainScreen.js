@@ -16,7 +16,6 @@ import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useShare2EarnContract } from "@utils/hooks/useContracts"
 
 
-
 const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, referralAdminAddress }) => {
   const store = useStore()
   const { detailStore } = usePageStore();
@@ -37,6 +36,8 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const [baseFrames, setBaseFrames] = useState({});
   const [userAvatar, setUserAvatar] = useState(null);
   const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '' })
+
+
 
 
   // Banner component 
@@ -278,6 +279,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   return (
     <>
       {/* <Head /> */}
+      
 
       <div className="pane-content--sec--main grid scrollbar">
 
@@ -323,32 +325,6 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
                   <div className="flex flex-col w-full">
                     <div className="flex flex-col">
-                      <strong className="text-base text-color-title">Create banner</strong>
-                      <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
-
-                      <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                        <SelectBannerType />
-                        <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
-                          <div className="">
-                            <img class="" src={bannerURL} />
-                          </div>
-                        </div>
-
-                        <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                          <btn className="btn btn-default w-full !py-2"
-                            onClick={() => handleDownload()}>
-                            <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
-                            <span className="btn--text">{t("main button download")}</span>
-                          </btn>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4 p-4">
-                          <a href="" className="text-sm bg-gray-200 dark:bg-gray-800 round-lg text-center">Example</a>
-                          <a href="" className="text-sm bg-gray-200 dark:bg-gray-800 round-lg text-center">More Images</a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col mt-4">
                       <strong className="text-base text-color-title">{t("create avatar title")}</strong>
                       <span className="text-gray-500 dark:text-gray-400">{t("create avatar des")}</span>
 
@@ -390,6 +366,40 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                       </div>
 
                     </div>
+
+                    <div className="flex flex-col mt-4">
+                      <strong className="text-base text-color-title">Create banner</strong>
+                      <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
+
+                      <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                        <SelectBannerType />
+                        <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
+                          <div className="">
+                            <img class="" src={bannerURL} />
+                          </div>
+                        </div>
+
+                        <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
+                          <btn className="btn btn-default w-full !py-2"
+                            onClick={() => handleDownload()}>
+                            <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
+                            <span className="btn--text">{t("main button download")}</span>
+                          </btn>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4 p-4 !pt-0">
+                          <a href="" target="_blank" className="inline-flex text-sm bg-gray-200 bg-opacity-20 dark:bg-gray-800 text-center rounded-lg p-2 items-center">
+                            <i className="fa-duotone fa-stars text-xs ml-auto mr-2" /> 
+                            <span className="mr-auto">Examples</span>
+                          </a>
+                          <a href="" target="_blank" className="inline-flex text-sm bg-gray-200  bg-opacity-20  dark:bg-gray-800 text-center rounded-lg p-2  items-center" >
+                            <i className="fa-duotone fa-images text-xs ml-auto mr-2" />
+                            <span className="mr-auto">More Images</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    
 
                   </div>
 
