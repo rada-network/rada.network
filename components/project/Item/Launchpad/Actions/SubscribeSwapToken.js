@@ -178,7 +178,7 @@ const SubscribeSwapToken = ({project}) => {
                   <Link href={`/launchverse/${project.slug}/share2earn`}>
                   <a href={`/launchverse/${project.slug}/share2earn`} class="group"className="btn btn-primary mt-4 mb-4 px-4 py-2">{t("Share to earn")}</a>
                   </Link>
-                  {(parseInt(orderBusd) < maxBusd || parseInf(orderRIR) < maxRIR) &&
+                  {(parseInt(orderBusd) < maxBusd || parseInt(orderRIR) < maxRIR) &&
                   <>
                   <p>{t("adjust note")}</p>
                   <a class="group" href="#" onClick={e => {setStep(2)}} className="btn btn-primary mt-4 px-4 py-2">{t("Adjust prefund")}</a>
