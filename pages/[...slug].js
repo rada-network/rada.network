@@ -17,12 +17,6 @@ import { getTokenById } from "../data/query/getTokenById";
 import { useRouter } from "next/router";
 
 const getDataExplore = async ({query,type,lang}) => {
-  if (['news','projects','video','rada','social','all',''].indexOf(type) === -1){
-    return false
-  }
-  if (type == ""){
-    type = "projects"
-  }
   const itemFeed = await getItems({
     take : HOME_ITEM_TAKE,
     skip : 0,
@@ -38,26 +32,6 @@ const getDataExplore = async ({query,type,lang}) => {
     query : query,
     type : type,
     lang : lang,
-    itemFeed : itemFeed.data.itemFeed,
-    intro
-  }
-}
-
-const getDataHome = async ({query,lang}) => {
-  const itemFeed = await getItems({
-    take : HOME_ITEM_TAKE,
-    skip : 0,
-    orderBy : {createdAt : "desc"},
-    query : query,
-    lang : lang,
-    type : "projects"
-  })
-  query = query || ""
-  const intro = await getPage({slug: 'intro', lang})
-  return {
-    query : query,
-    lang : lang,
-    type : "projects",
     itemFeed : itemFeed.data.itemFeed,
     intro
   }
@@ -136,26 +110,30 @@ export default observer(function(props) {
     let item = {}
     if (props.item.news !== null){
       if (props.item.news.category !== null) {
-        detailStore.type = "rada"
+        dataStore.type = props.item.news.category.slug
       }
       else{
-        detailStore.type = "news"
+        dataStore.type = "news";
       }
+      detailStore.type = "news"
       item = Object.assign({},props.item.news);
     }
     else if (props.item.video !== null){
       detailStore.type = "video"
+      dataStore.type = detailStore.type.slice(0);
       item = Object.assign({},props.item.video);
     }
     else if (props.item.tweet !== null){
       detailStore.type = "tweet"
+      dataStore.type = detailStore.type.slice(0);
       item = Object.assign({},props.item.tweet);
     }
     else if (props.item.idea !== null){
       detailStore.type = "idea"
+      dataStore.type = detailStore.type.slice(0);
       item = Object.assign({},props.item.idea);
     }
-    dataStore.type = detailStore.type.slice(0);
+    
     item.item = {
       id : props.item.id,
       totalVote : props.item.totalVote,
@@ -312,6 +290,27 @@ export async function getStaticProps(context) {
   let props
   if (type === "explore"){
     let exType = context.params.slug[1] === undefined ? "" : context.params.slug[1]
+    //redirect old /explore/projects to /explore/research
+    if (exType == "projects"){
+      return {
+        // returns a redirect to an internal page `/another-page`
+        redirect: {
+          destination: `/${context.locale}/explore/research`,
+          permanent: false
+        }
+      }
+    }
+
+    if (exType == "rada"){
+      return {
+        // returns a redirect to an internal page `/another-page`
+        redirect: {
+          destination: `/${context.locale}/explore/articles`,
+          permanent: false
+        }
+      }
+    }
+
     props = await getDataExplore({type : exType,lang : context.locale});
 
     if (!props){
