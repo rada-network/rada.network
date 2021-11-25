@@ -89,8 +89,6 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
       const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account])
       const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account])
       const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account.toString()])
-      console.log("Incentive info")
-      console.log(incentivePaid) 
       setReferralInfo({ level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString()), incentivePaid: parseInt(incentivePaid.toString()) })
     }
     if (!!library && !!share2earnContract) {
@@ -400,35 +398,6 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                       </div>
 
                     </div>
-
-                    <div className="flex flex-col mt-4">
-                      <strong className="text-base text-color-title">{t("main step 1 banner title")}</strong>
-                      <span className="text-gray-500 dark:text-gray-400">{t("")}</span>
-
-                      <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                        <SelectBannerType />
-                        <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
-                          <div className="">
-                            <img class="" src={bannerURL} />
-                          </div>
-                        </div>
-
-                        <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                          <btn className="btn btn-default w-full !py-2"
-                            onClick={() => handleDownload()}>
-                            <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
-                            <span className="btn--text">{t("main button download")}</span>
-                          </btn>
-                        </div>
-                        <a href="" target="_blank" className="m-4 !mt-2 flex text-sm border border-gray-200 dark:border-gray-700 text-center rounded-lg p-2  items-center" >
-                          <i className="fa-duotone fa-external-link text-xs ml-auto mr-2" />
-                          <span className="mr-auto">More Images</span>
-                        </a>
-                      </div>
-                    </div>
-
-                    
-
                   </div>
 
                 </li>
