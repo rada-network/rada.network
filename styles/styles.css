@@ -32,6 +32,7 @@ Layout
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
+    animation: fadein 800ms linear;
   }
   .body-decor::after {
     content: " ";
@@ -267,6 +268,10 @@ Reader / Page Area
   @apply float-left w-full z-10;
   @apply hidden flex-auto lg:block;
   @apply bg-white dark:bg-gray-900;
+}
+
+.glassmorphism .pane-content--sec {
+  @apply bg-gray-50 dark:bg-gray-800;
 }
 
 @screen 2xl {

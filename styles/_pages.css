@@ -180,6 +180,7 @@ Page Sections
 Media 
 */
 .media-player {
+  @apply lg:rounded-lg overflow-hidden;
 }
 
 

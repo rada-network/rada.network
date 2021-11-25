@@ -109,7 +109,7 @@ export default function UserProfile(props) {
                 </h1>
               </div>
 
-              <div className="md:px-4 md:py-2 px-2 mt-4 rounded-lg border border-gray-100 dark:border-gray-800">
+              <div className="md:px-4 md:py-2 px-2 mt-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-800">
               <div className="w-full mt-2">
                 <div className="flex flex-wrap items-end justify-between mb-2">
                   <div className="w-auto">
