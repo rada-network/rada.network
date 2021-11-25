@@ -2,13 +2,29 @@ import useChainConfig from "@utils/web3/useChainConfig"
 import CopyToClipboard from "react-copy-to-clipboard"
 import RadaSvg from "@components/svg/rada"
 import { toast } from "react-toastify"
-const Share2EarnStatus = ({ level1, level2 }) => {
+import { useCallFunction } from "@utils/hooks/useCallFunction"
+import { useEffect, useState } from "react";
+
+const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress }) => {
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const riraddress = getRIRAddress()
+  const { callFunction } = useCallFunction()
 
   const handleCopy = () => {
     toast.success("Copied to clipboard", {})
-  }
+  };
+
+  useEffect(() => {
+    // get thong tin 
+    // get arrays address
+    console.log(adminContract)
+    const getInfo = async () => {
+      const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
+      console.log(earnedRIR)
+    }
+
+    getInfo()
+  }, []);
 
   return (
 
