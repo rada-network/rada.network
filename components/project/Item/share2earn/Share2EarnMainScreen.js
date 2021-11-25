@@ -513,7 +513,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                       </div>
                       <div className="mb-4">
                         <p>
-                          To avoid exploitation, we will manually approve RIR earning by checking your links submission, please make sure all links are <strong>public</strong>.</p>
+                          {t("checking links des")}</p>
                         <p className="pt-4">Any further question? Ask in our <a className="text-purple-400" href="t.me/radadao">Telegram</a></p>
                       </div>
                     </div>
