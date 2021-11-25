@@ -352,7 +352,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                           target="_blank" 
                           className="m-4 !mt-2 flex text-sm border border-gray-200 dark:border-gray-700 text-center rounded-lg p-2  items-center" >
                           <i className="fa-duotone fa-external-link text-xs ml-auto mr-2" />
-                          <span className="mr-auto">More Images</span>
+                          <span className="mr-auto">{t("more image")}</span>
                         </a>
                       </div>
                     </div>
