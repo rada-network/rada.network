@@ -94,7 +94,7 @@ const ConnectWalletModal = observer(({}) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Dialog.Overlay className="fixed inset-0 blur-md bg-black opacity-70" />
+          <Dialog.Overlay className="dialog-overlay fixed inset-0" />
         </Transition.Child>
 
         {/* This element is to trick the browser into centering the modal contents. */}
@@ -107,23 +107,23 @@ const ConnectWalletModal = observer(({}) => {
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
+          enterFrom="opacity-0 scale-y-0"
+          enterTo="opacity-100 scale-y-100"
           leave="ease-in duration-200"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
+          leaveFrom="opacity-100 scale-y-100 h-full"
+          leaveTo="opacity-0 scale-y-0 h-0"
         >
-          <div className="inline-block w-full max-w-xl my-8 overflow-hidden relative
-          text-left align-middle transition-all transform bg-white dark:bg-gray-900 shadow-xl rounded-lg">
+          <div className="inline-block w-full max-w-lg my-8 overflow-hidden relative
+          text-left align-middle transition-all transform bg-white dark:bg-gray-800 shadow-xl rounded-lg">
             <Dialog.Title
               as="h3"
-              className="text-lg border-b dark:border-gray-800 border-gray-200
+              className="text-lg border-b dark:border-gray-700 border-gray-200
                 font-medium p-4 md:p-6 leading-6 text-gray-900 dark:text-gray-300"
             >
               Connect your wallet
             </Dialog.Title>
             <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
-              <div className="wallet-section pb-4 mb-4 border-b border-gray-200 dark:border-gray-800">
+              <div className="wallet-section pb-4 mb-4 border-b border-gray-200 dark:border-gray-700">
                 <div className="wallet-step">
                   <div className="icon mr-2 !flex w-px-24 h-px-24 items-center justify-center 
                   rounded-full border-2 border-gray-300 dark:border-gray-600">
