@@ -5,6 +5,9 @@ import { createShortenLink } from "@data/query/createShortenLink"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { toast } from "react-toastify"
 import { useRef } from "react"
+import PerfectScrollbar from 'perfect-scrollbar'
+import "perfect-scrollbar/css/perfect-scrollbar.css"
+
 const ShareLink = function ({ uid, share_message }) {
   const { t } = useTranslation("share2earn")
   const [shareUrl, setShareUrl] = useState("")
@@ -41,16 +44,16 @@ const ShareLink = function ({ uid, share_message }) {
         </span>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full">
 
-        <div className="flex flex-col">
+        <div className="flex flex-col  w-full">
           <strong className="text-base text-color-title">{t("main step 2 title")}</strong>
           <span className="text-gray-500 dark:text-gray-400">{t("main step 2 des")}</span>
 
-          <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
-            <div className="p-4">
-              <p className="mb-4" ref={textRef}>{message}</p>
-              <p>👉 &nbsp;Learn more here <a target="_blank" href={shareUrl} className="link">{shareUrl}</a></p>
+          <div className="text-base mt-4 flex-shrink-0 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+            <div className="p-4 h-28 scrollbar">
+              <p className="mb-4 block" ref={textRef}>{message}</p>
+              <p className="block">👉 &nbsp;Learn more here <a target="_blank" href={shareUrl} className="link">{shareUrl}</a></p>
             </div>
 
             <div className="grid grid-cols-2 gap-4 py-3 px-4 border-t border-gray-200 dark:border-gray-700">
@@ -66,7 +69,7 @@ const ShareLink = function ({ uid, share_message }) {
               >
                 <button className="btn btn-default !py-2" href="" target="_blank">
                   <span className="icon"><i className="fa-duotone fa-copy text-xs"></i></span>
-                  <span className="btn--text">Copy link</span>
+                  <span className="btn--text">Copy post</span>
                 </button>
               </CopyToClipboard>
 

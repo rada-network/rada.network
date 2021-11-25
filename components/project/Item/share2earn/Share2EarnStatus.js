@@ -8,7 +8,7 @@ import { useTranslation } from "next-i18next";
 import { ethers } from "ethers"
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-
+import ReactTooltip from 'react-tooltip'
 const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress, incentivePaid }) => {
   const { t } = useTranslation('share2earn')
   const { callFunction } = useCallFunction()
