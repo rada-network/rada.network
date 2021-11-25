@@ -13,7 +13,7 @@ import mergeImages from 'merge-images';
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import Share2EarnStatus from "./Share2EarnStatus"
 import { useCallFunction } from "@utils/hooks/useCallFunction"
-import { useShare2EarnContract } from "@utils/hooks/useContracts"
+import { useShare2EarnContract, useReferralAdminContract } from "@utils/hooks/useContracts"
 import { toast } from "react-toastify"
 
 
@@ -37,10 +37,10 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const [mergeUploadImgs, setMergeUploadImgs] = useState({});
   const [baseFrames, setBaseFrames] = useState({});
   const [userAvatar, setUserAvatar] = useState(null);
-  const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '' })
+  const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '', incentivePaid:'' })
 
 
-  // Banner component 
+  // Banner component
   let bannerURL;
   if (detailStore.selectedBanner === "LinkedIn") {
     bannerURL = project.share_campaign[0].linkedin_banner;
@@ -82,13 +82,14 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   }, []);
 
   const share2earnContract = useShare2EarnContract(share2earnAddress)
-  const referralAdminContract = useShare2EarnContract(referralAdminAddress)
+  const referralAdminContract = useReferralAdminContract(referralAdminAddress)
   useEffect(() => {
-    console.log(referralAdminAddress)
     const getInfo = async () => {
       const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account])
       const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account])
-      setReferralInfo({ level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString()) })
+      const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account.toString()])
+
+      setReferralInfo({ level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString()), incentivePaid: parseInt(incentivePaid.toString()) })
     }
     if (!!library && !!share2earnContract) {
       getInfo()
@@ -309,7 +310,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
             </div>
 
             <div className="section-body !pt-0">
-              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2} adminContract={referralAdminContract} projectID={project.id.toString()} walletAddress={account}/>
+              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2} incentivePaid={referralInfo.incentivePaid} adminContract={referralAdminContract} projectID={project.id.toString()} walletAddress={account}/>
 
               <ol className="text-sm space-y-8">
 

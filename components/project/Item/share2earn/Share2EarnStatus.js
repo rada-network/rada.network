@@ -5,7 +5,7 @@ import { toast } from "react-toastify"
 import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useEffect, useState } from "react";
 
-const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress }) => {
+const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress, incentivePaid }) => {
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const riraddress = getRIRAddress()
   const { callFunction } = useCallFunction()
@@ -14,21 +14,29 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
     toast.success("Copied to clipboard", {})
   };
 
+  // const [incentivePaid, setIncentivePaid] = useState(0)
+
+
   useEffect(() => {
-    // get thong tin 
+    // get thong tin
     // get arrays address
-    console.log(adminContract)
-    const getInfo = async () => {
-      const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
-      console.log(earnedRIR)
+    // console.log(adminContract)
+    /* const getInfo = async () => {
+      try {
+        const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
+        console.log(earnedRIR)
+        setIncentivePaid(earnedRIR)
+      } catch (e) {
+        console.log(e)
+      }
     }
 
-    getInfo()
+    getInfo() */
   }, []);
 
   return (
 
-    <div className="mb-8 items-center text-base mt-4 bg-gray-50 
+    <div className="mb-8 items-center text-base mt-4 bg-gray-50
             dark:bg-gray-900 dark:bg-border-800 border border-gray-200 dark:border-gray-700 rounded-lg md:ml-14">
       <div className="p-4  border-b border-gray-200 dark:border-gray-700">
         Your Share2Earn status
@@ -102,7 +110,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
               <span class="icon w-4 h-4 mr-1">
                 <RadaSvg />
               </span>
-              {level1*0.1 + level2*0.01} RIR
+              {incentivePaid} RIR
             </div>
           </li>
 
