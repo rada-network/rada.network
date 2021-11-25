@@ -115,12 +115,12 @@ export default function ProjectShare2Earn({
 
   const getMessage = () => {
     if (isConfirming) {
-      return 'Vui lòng xác nhận Transaction và chờ  khoảng 15-30 giây';
+      return t("transcation confirm message");
     }
     else if (isConfirmed) {
-      return 'Đã tham gia chương trình';
+      return t("joined message");
     } else if (joined) {
-      return 'Đã tham gia chương trình';
+      return t("joined message");
     }
 
     return '';
@@ -148,7 +148,6 @@ export default function ProjectShare2Earn({
               <h1 className="mb-4">
                 <span className="text-xl lg:text-2xl font-semibold text-color-title">
                 ✨ Join The Parallel #Share2Earn Event ✨
-                  {/* {t("welcome title")} */}
                 </span>
               </h1>
 
@@ -170,9 +169,8 @@ export default function ProjectShare2Earn({
               <p />
               {/* <p className="text-sm mb-8 text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: t("welcome description", { provider: `<span class="text-primary-700 dark:text-primary-400">RIR token</span>` }) }} /> */}
               <p className="text-sm mb-4 text-gray-500 dark:text-gray-400">
-              Earning RIR has never been easier. Join the campaign now and start sharing.</p>
+              {t("welcome des")}</p>
               
-             
               <ul className="text-sm space-y-6">
                 <li className="flex p-4 rounded-lg border border-gray-300 dark:border-gray-700">
                   <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0 ">
@@ -183,16 +181,16 @@ export default function ProjectShare2Earn({
                     <div>
                     {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 &&<strong className="text-base text-color-title  flex items-center">Tier 1 <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+{ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span> </strong> }
                     </div>
-                    {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 && <p className="opacity-80 mt-2">When a user participates directly through your referral link, you get {ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</p> }
-                    {/* welcome incentive description */}
-                    {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 &&
+                    {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 && <p className="opacity-80 mt-2"> {t("welcome tier1 des", {rir: ethers.utils.formatEther(share2EarnInfo.incentiveL0)})} </p> }
+
+                    {/* {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 &&
                       <span className="text-gray-500 dark:text-gray-400"
                         dangerouslySetInnerHTML={{
                           __html: t("welcome incentive description", {
                             rir: `<span class="text-primary-700 dark:text-primary-400"> ${ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span>`
                           })
                         }} />
-                    }
+                    } */}
                   </div>
                 </li>
 
@@ -209,7 +207,7 @@ export default function ProjectShare2Earn({
                       {/* {t("welcome lv2 title")} */}
                       </strong>
                     </div>
-                    {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <p className="opacity-80 mt-2">When a referred user successfully invites someone to join through their links, you get {ethers.utils.formatEther(share2EarnInfo.incentiveL1)} RIR</p> }
+                    {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <p className="opacity-80 mt-2">{t("welcome tier1 des", {rir: ethers.utils.formatEther(share2EarnInfo.incentiveL1)})}</p> }
                   </div>
                 </li>
               </ul>
@@ -231,7 +229,7 @@ export default function ProjectShare2Earn({
                 </fieldset>}
 
                 {_.isEmpty(account) ? (
-                  <div className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 "} type="submit" onClick={() => handleConnectWallet()}>{t("welcome connect wallet")}</div>) :
+                  <div className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 "} type="submit" onClick={() => handleConnectWallet()}>{t("welcome btn connect wallet")}</div>) :
                   (
                     <>
                       {
@@ -247,10 +245,10 @@ export default function ProjectShare2Earn({
                 <form className="mt-4">
                   <btn className="mt-4 btn btn-yellow w-full justify-center py-3 px-4" type="submit"
                   onClick={openLoginPopUp}
-                  ><i class="fa-duotone fa-hand-holding-heart"></i>Login to Join</btn>
+                  ><i class="fa-duotone fa-hand-holding-heart"></i>{t("welcome btn login")}</btn>
                 </form>
               ) : null }
-               <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"> Learn more about #Share2Earn </a>
+               <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg" href="_blank"> {t("learn more")} </a>
             </div>
 
           </div>
