@@ -3,7 +3,7 @@ import CopyToClipboard from "react-copy-to-clipboard"
 import RadaSvg from "@components/svg/rada"
 import { toast } from "react-toastify"
 const Share2EarnStatus = ({ level1, level2 }) => {
-  const { getRIRAddress } = useChainConfig()
+  const { getRIRAddress, getBscScanURL } = useChainConfig()
   const riraddress = getRIRAddress()
 
   const handleCopy = () => {
@@ -25,12 +25,14 @@ const Share2EarnStatus = ({ level1, level2 }) => {
               <span
                 className="hasTooltip"
                 data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
-                data-event="click"
+                data-event="hover"
               ><i className="fa-duotone fa-info-circle text-base" />
               </span>
             </div>
             <div className="px-2 py-1 rounded flex bg-gray-100 dark:bg-gray-800 ml-auto list-value hover:bg-gray-200 hover:dark:bg-gray-900">
-              <div>{`${riraddress.substr(0, 5)}...${riraddress.substr(-4)}`}</div>
+              <div>
+                <a href={getBscScanURL()}>{`${riraddress.substr(0, 5)}...${riraddress.substr(-4)}`}</a>
+                </div>
               <CopyToClipboard
                 onCopy={handleCopy}
                 text={riraddress}
@@ -48,7 +50,7 @@ const Share2EarnStatus = ({ level1, level2 }) => {
               <span
                 className="hasTooltip"
                 data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
-                data-event="click"
+                data-event="hover"
               > <i className="fa-duotone fa-info-circle text-base" />
               </span>
             </div>
@@ -63,7 +65,7 @@ const Share2EarnStatus = ({ level1, level2 }) => {
               <span
                 className="hasTooltip"
                 data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
-                data-event="click"
+                data-event="hover"
               > <i className="fa-duotone fa-info-circle text-base" />
               </span>
             </div>
