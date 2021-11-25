@@ -6,12 +6,14 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useEffect, useState } from "react";
-
+import { useTranslation } from "next-i18next";
 
 const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress, incentivePaid }) => {
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const riraddress = getRIRAddress()
   const { callFunction } = useCallFunction()
+  const { t } = useTranslation('share2earn')
+  
   let [isOpen, setIsOpen] = useState(false)
   function closeModal() {
     setIsOpen(false)
@@ -27,7 +29,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
     // get thong tin
     // get arrays address
     // console.log(adminContract)
-    /* const getInfo = async () => {
+    const getInfo = async () => {
       try {
         const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
         console.log(earnedRIR)
@@ -37,7 +39,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
       }
     }
 
-    getInfo() */
+    getInfo()
   }, []);
 
   return (
@@ -103,156 +105,6 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
                         Wallet
                       </span>
                     </li>
-                    <li className="list-pair !items-center border-b py-1 md:py-2 border-gray-200 dark:border-gray-800">
-                      <span className="list-key !w-16 !items-center flex-grow-0 flex-shrink-0 !opacity-100">
-                        <strong className="w-8 h-8  flex items-center !text-white rounded-full
-                        bg-gray-100 dark:bg-gray-700 justify-center text-xs mb-0.5">01</strong>
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        20
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        999
-                      </span>
-                      <span className="ml-auto list-value">
-                        0x56...66f
-                      </span>
-                    </li>
-                    <li className="list-pair !items-center border-b py-1 md:py-2 border-gray-200 dark:border-gray-800">
-                      <span className="list-key !w-16 !items-center flex-grow-0 flex-shrink-0 !opacity-100">
-                        <strong className="w-8 h-8  flex items-center !text-white rounded-full
-                        bg-gray-100 dark:bg-gray-700 justify-center text-xs mb-0.5">02</strong>
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        20
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        40
-                      </span>
-                      <span className="ml-auto list-value">
-                        0x56...66f
-                      </span>
-                    </li>
-                    <li className="list-pair !items-center border-b py-1 md:py-2 border-gray-200 dark:border-gray-800">
-                      <span className="list-key !w-16 !items-center flex-grow-0 flex-shrink-0 !opacity-100">
-                        <strong className="w-8 h-8  flex items-center !text-white rounded-full
-                        bg-gray-100 dark:bg-gray-700 justify-center text-xs mb-0.5">03</strong>
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        20
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        40
-                      </span>
-                      <span className="ml-auto list-value">
-                        0x56...66f
-                      </span>
-                    </li>
-                    <li className="list-pair !items-center border-b py-1 md:py-2 border-gray-200 dark:border-gray-800">
-                      <span className="list-key !w-16 !items-center flex-grow-0 flex-shrink-0 !opacity-100">
-                        <strong className="w-8 h-8  flex items-center !text-white rounded-full
-                        bg-gray-100 dark:bg-gray-700 justify-center text-xs mb-0.5">04</strong>
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        20
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        40
-                      </span>
-                      <span className="ml-auto list-value">
-                        0x56...66f
-                      </span>
-                    </li>
-                    <li className="list-pair !items-center border-b py-1 md:py-2 border-gray-200 dark:border-gray-800">
-                      <span className="list-key !w-16 !items-center flex-grow-0 flex-shrink-0 !opacity-100">
-                        <strong className="w-8 h-8  flex items-center !text-white rounded-full
-                        bg-gray-100 dark:bg-gray-700 justify-center text-xs mb-0.5">05</strong>
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        20
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        40
-                      </span>
-                      <span className="ml-auto list-value">
-                        0x56...66f
-                      </span>
-                    </li>
-                    <li className="list-pair !items-center border-b py-1 md:py-2 border-gray-200 dark:border-gray-800">
-                      <span className="list-key !w-16 !items-center flex-grow-0 flex-shrink-0 !opacity-100">
-                        <strong className="w-8 h-8  flex items-center !text-white rounded-full
-                        bg-gray-100 dark:bg-gray-700 justify-center text-xs mb-0.5">06</strong>
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        20
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        999
-                      </span>
-                      <span className="ml-auto list-value">
-                        0x56...66f
-                      </span>
-                    </li>
-                    <li className="list-pair !items-center border-b py-1 md:py-2 border-gray-200 dark:border-gray-800">
-                      <span className="list-key !w-16 !items-center flex-grow-0 flex-shrink-0 !opacity-100">
-                        <strong className="w-8 h-8  flex items-center !text-white rounded-full
-                        bg-gray-100 dark:bg-gray-700 justify-center text-xs mb-0.5">07</strong>
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        20
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        40
-                      </span>
-                      <span className="ml-auto list-value">
-                        0x56...66f
-                      </span>
-                    </li>
-                    <li className="list-pair !items-center border-b py-1 md:py-2 border-gray-200 dark:border-gray-800">
-                      <span className="list-key !w-16 !items-center flex-grow-0 flex-shrink-0 !opacity-100">
-                        <strong className="w-8 h-8  flex items-center !text-white rounded-full
-                        bg-gray-100 dark:bg-gray-700 justify-center text-xs mb-0.5">08</strong>
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        20
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        40
-                      </span>
-                      <span className="ml-auto list-value">
-                        0x56...66f
-                      </span>
-                    </li>
-                    <li className="list-pair !items-center border-b py-1 md:py-2 border-gray-200 dark:border-gray-800">
-                      <span className="list-key !w-16 !items-center flex-grow-0 flex-shrink-0 !opacity-100">
-                        <strong className="w-8 h-8  flex items-center !text-white rounded-full
-                        bg-gray-100 dark:bg-gray-700 justify-center text-xs mb-0.5">09</strong>
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        20
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        40
-                      </span>
-                      <span className="ml-auto list-value">
-                        0x56...66f
-                      </span>
-                    </li>
-                    <li className="list-pair !items-center border-b py-1 md:py-2 border-gray-200 dark:border-gray-800">
-                      <span className="list-key !w-16 !items-center flex-grow-0 flex-shrink-0 !opacity-100">
-                        <strong className="w-8 h-8  flex items-center !text-white rounded-full
-                        bg-gray-100 dark:bg-gray-700 justify-center text-xs mb-0.5">10</strong>
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        20
-                      </span>
-                      <span className="text-right px-1 w-12 md:px-2 md:w-20 list-value">
-                        40
-                      </span>
-                      <span className="ml-auto list-value">
-                        0x56...66f
-                      </span>
-                    </li>
                   </ul>
                 
                 </div>
@@ -280,7 +132,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
       <div className="mb-8 items-center text-base mt-4 bg-gray-50 
               dark:bg-gray-900 dark:bg-border-800 border border-gray-200 dark:border-gray-700 rounded-lg md:ml-14">
         <div className="p-4  border-b border-gray-200 dark:border-gray-700">
-          Your Share2Earn status
+          {t("share2earn status")}
         </div>
         <div className="p-4">
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
@@ -337,7 +189,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
 
             <li className="list-pair !items-center mb-2">
               <div className="list-key">
-                Earned
+                {t("main status earned")}
                 <span
                   className="hasTooltip"
                   data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
@@ -355,7 +207,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
 
             <li className="list-pair !items-center mb-2">
               <div className="list-key">
-                Your ranking
+                {t("main status ranking")}
                 <span
                   className="hasTooltip"
                   data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
@@ -366,7 +218,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
               <div className="ml-auto flex items-center">
                 <div>45<span className="font-normal opacity-70">/850</span></div>
                 <button  onClick={openModal} className="!text-xs btn btn-default ml-2">
-                  Leaderboard
+                  {t("main status leaderboard")}
                 </button>
               </div>
             </li>
