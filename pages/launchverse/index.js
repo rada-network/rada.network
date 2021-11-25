@@ -22,6 +22,7 @@ const LaunchVerse = (props) => {
     locales,
     asPath
   );
+  dataStore.meta = meta;
   return (
     <Layout meta={meta}>
 
