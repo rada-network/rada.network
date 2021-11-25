@@ -22,6 +22,7 @@ const LaunchVerse = (props) => {
     locales,
     asPath
   );
+  dataStore.meta = meta;
   return (
     <Layout meta={meta}>
 
@@ -220,7 +221,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/net-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                        Launchverse support multi chain: Etherium, BSC and Polygon
+                        LaunchVerse support multi chains: Ethereum, BSC and Polygon
                       </p>
                     </div>
 
