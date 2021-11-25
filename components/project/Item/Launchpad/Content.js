@@ -35,7 +35,7 @@ export default function LaunchpadContent({ project }) {
   const tokenPrice = project.price;
   const progressToken = parseInt(launchpadInfo?.availableBusd) || 0;
   const target = raise;
-  const progressPercentage = (progressToken / target) * 100;
+  const progressPercentage = ((progressToken / target) * 100).toFixed(1);
   const curentTime = (new Date()).getTime() / 1000
   const openTime = (new Date(project.open_date)).getTime() / 1000
   const endTime = (new Date(project.end_date)).getTime() / 1000
@@ -50,26 +50,27 @@ export default function LaunchpadContent({ project }) {
         </div>
         <div className="card-body flex flex-col">
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
-            <li className="list-pair mb-2">
-              <span className="list-key">{t("Raise")}</span>
+          <li className="list-pair mb-2">
+              <span className="list-key">{t("Investment round")}</span>
               <span className="ml-auto list-value font-semibold">
-                {numberFormatter(raise)} BUSD
+                <div className={`label ${project.type}`}>{project.type.toUpperCase()}</div>
               </span>
             </li>
-            {/* <li className="list-pair mb-2">
-                            <span className="list-key">
-                                Participants
-                            </span>
-                            <span className="ml-auto list-value font-semibold">
-                            {project?.launchpadInfo?.participants || "n/a"} 
-                            </span>
-                        </li> */}
+            {raise && 
             <li className="list-pair mb-2">
+            <span className="list-key">{t("Raise")}</span>
+            <span className="ml-auto list-value font-semibold">
+              {numberFormatter(raise)} BUSD
+            </span>
+            </li>
+            }
+            {tokenPrice && <li className="list-pair mb-2">
               <span className="list-key">{t("Token Price")}</span>
               <span className="ml-auto font-semibold">
                 {tokenPrice || "n/a"} BUSD{" "}
               </span>
             </li>
+            }
             {!!project.open_date && openTime < curentTime && 
             <li className="list-pair mb-2">
             <span className="list-key">{t("Progress")}</span>

@@ -1,11 +1,11 @@
 {
   "LaunchVerse": "LaunchVerse",
   "Research": "{{name}}'s Research",
-  "Launchverse Overview": "Launchverse Overview",
+  "Launchverse Overview": "Raising Overview",
   "Raise": "Raise",
   "Token Price": "Token Price",
   "Progress": "Progress",
-  "Info": "{{name}}'s Info",
+  "Info": "About {{name}}",
   "Read full research": "Full research",
   "Whitelist": "Whitelist",
   "Apply for whitelist": "Apply for whitelist",
@@ -25,7 +25,7 @@
   "You have to pay": "You have to pay",
   "Approve Contract": "Approve Contract",
   "Prefund": "Prefund",
-  "prefunded note": " Prefund successfull: {{amount}} BUSD",
+  "prefunded note": " Prefund successfull: {{amount}} BUSD & {{rir}} RIR",
   "prefunded note line2": "Your application is being proceeded by our system.",
   "share to earn note": "To maximize your chance of whitelist allocations, join RADA Share2Earn campaign.",
   "Prefund your investment": "Prefund your investment",
@@ -41,6 +41,6 @@
   "Join Share2Earn": "Join Share2Earn",
   "Learn more": "Learn more",
   "Coming Soon": "Coming Soon",
-  "coming soon note" : "Follow {{twitter}}, subscribe to our official {{radanetwork}} and {{radadao}} to be notified."
-  
+  "coming soon note" : "Follow {{twitter}}, subscribe to our official {{radanetwork}} and {{radadao}} to be notified.",
+  "Investment round": "Funding round"
 }

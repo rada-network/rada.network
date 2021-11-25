@@ -170,27 +170,26 @@ export default function ProjectShare2Earn({
               <p />
               {/* <p className="text-sm mb-8 text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: t("welcome description", { provider: `<span class="text-primary-700 dark:text-primary-400">RIR token</span>` }) }} /> */}
               <p className="text-sm mb-4 text-gray-500 dark:text-gray-400">
-              Earning RIR has never been easier.</p>
-              <p className="text-sm mb-4 text-gray-500 dark:text-gray-400">
-              Join the campaign now and start sharing.</p>
-              <a className="btn btn-default mb-4 bg-gray-700"> Learn more about #Share2Earn </a>
+              Earning RIR has never been easier. Join the campaign now and start sharing.</p>
+              
+             
               <ul className="text-sm space-y-6">
-                <li className="flex">
-                  <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0">
+                <li className="flex p-4 rounded-lg border border-gray-300 dark:border-gray-700">
+                  <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0 ">
                     <i className="fa-light fa-hexagon"></i>
                     <i className="fa-duotone fa-user-plus"></i>
                   </span>
                   <div className="flex flex-col">
                     <div>
-                      <strong className="text-base text-color-title">Tier 1 </strong>
-                      <span
+                      <strong className="text-base text-color-title  flex items-center">Tier 1 <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+0.1 RIR</span> </strong>
+                      {/* <span
                         className="hasTooltip"
                         data-tip="When a user participates this #Share2Earn event directly through your referral link, you get 0.1 RIR"
                         data-event="click"
                       > <i className="fa-duotone fa-info-circle text-base" />
-                      </span> 
+                      </span>  */}
                     </div>
-                    <p className="opacity-0.5">You get <span className="text-purple-500 text-bold">+0.1</span> RIR for each referral</p>
+                    <p className="opacity-80 mt-2">When a user participates directly through your referral link, you get 0.1 RIR</p>
                     {/* welcome incentive description */}
                     {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 &&
                       <span className="text-gray-500 dark:text-gray-400"
@@ -203,25 +202,27 @@ export default function ProjectShare2Earn({
                   </div>
                 </li>
 
-                <li className="flex">
+                <li className="flex p-4 rounded-lg border border-gray-300 dark:border-gray-700">
                   <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0">
                     <i className="fa-light fa-hexagon"></i>
                     <i className="fa-duotone fa-users"></i>
                   </span>
                   <div className="flex flex-col">
-                    <div><strong className="text-base text-color-title">
-                      Tier 2
+                    <div>
+                      <strong className="text-base flex items-center text-color-title">
+                      Tier 2 
+                      <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+0.01 RIR</span>
                       {/* {t("welcome lv2 title")} */}
                       </strong>
-                      <span
+                      {/* <span
                         className="hasTooltip"
-                        data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
+                        data-tip=""
                         data-event="click"
                       > <i className="fa-duotone fa-info-circle text-base" />
-                      </span> 
+                      </span>  */}
                     </div>
                     {/* {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{ethers.utils.formatEther(share2EarnInfo.incentiveL1)} RIR</span> for each</span>} */}
-                    <p className="opacity-0.5">You get <span class="text-purple-500 text-bold">+0.01</span> RIR for each referral</p>
+                    <p className="opacity-80 mt-2">When a referred user successfully invites someone to join through their links, you get 0.01 RIR</p>
                   </div>
                 </li>
               </ul>
@@ -259,10 +260,10 @@ export default function ProjectShare2Earn({
                 <form className="mt-4">
                   <btn className="mt-4 btn btn-yellow w-full justify-center py-3 px-4" type="submit"
                   onClick={openLoginPopUp}
-                  >Login to Join</btn>
+                  ><i class="fa-duotone fa-hand-holding-heart"></i>Login to Join</btn>
                 </form>
               ) : null }
-
+               <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"> Learn more about #Share2Earn </a>
             </div>
 
           </div>

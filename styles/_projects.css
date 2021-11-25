@@ -63,7 +63,7 @@
 .projects--wrapper .card--body {
   @apply flex flex-col;
 }
-.card--header .token-logo {;
+.card--header .token-logo {
   width: 40px;
   height: 40px;
   @apply block absolute top-0 left-1/2 p-0.5 overflow-hidden  rounded-full border-2 border-white shadow-lg;
@@ -143,11 +143,11 @@
   background-size:150px 248px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-image:url('/icons/s2e-light.svg');
+  background-image:url("/images/launchverse-s2e.png");
   @apply mx-auto;
 }
 .dark .s2e-illustration{
-  background-image:url('/icons/s2e-dark.svg');
+  background-image:url('/images/launchverse-s2e-dark.png');
 }
 
 .whitelist-nav {
