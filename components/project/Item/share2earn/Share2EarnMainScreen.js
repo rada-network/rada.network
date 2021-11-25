@@ -302,7 +302,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                   </span>
                 </h1>
                 <p className="text-sm opacity-75">
-                  Please complete all following steps to earn RIR.
+                  {t("main step des")}
                 </p>
               </div>
 
@@ -327,8 +327,8 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
                   <div className="flex flex-col w-full">
                     <div className="flex flex-col">
-                      <strong className="text-base text-color-title">Create banner</strong>
-                      <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
+                      <strong className="text-base text-color-title">{t("main step 1 banner title")}</strong>
+                      <span className="text-gray-500 dark:text-gray-400">{t("main step 1 banner des")}</span>
 
                       <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                         <SelectBannerType />

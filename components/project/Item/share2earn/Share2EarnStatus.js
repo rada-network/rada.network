@@ -4,12 +4,13 @@ import RadaSvg from "@components/svg/rada"
 import { toast } from "react-toastify"
 import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 
 const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress }) => {
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const riraddress = getRIRAddress()
   const { callFunction } = useCallFunction()
-
+  const { t } = useTranslation('share2earn')
   const handleCopy = () => {
     toast.success("Copied to clipboard", {})
   };
@@ -31,7 +32,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
     <div className="mb-8 items-center text-base mt-4 bg-gray-50 
             dark:bg-gray-900 dark:bg-border-800 border border-gray-200 dark:border-gray-700 rounded-lg md:ml-14">
       <div className="p-4  border-b border-gray-200 dark:border-gray-700">
-        Your Share2Earn status
+        {t("share2earn status")}
       </div>
       <div className="p-4">
         <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
@@ -90,7 +91,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
 
           <li className="list-pair mb-2">
             <div className="list-key">
-              Earned
+              {t("main status earned")}
               <span
                 className="hasTooltip"
                 data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
@@ -108,7 +109,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
 
           <li className="list-pair mb-2">
             <div className="list-key">
-              Your ranking
+              {t("main status ranking")}
               <span
                 className="hasTooltip"
                 data-tip="When your referred user successfully invited someone to join this #Share2Earn event through their links, you get 0.01 RIR"
@@ -119,7 +120,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
             <div className="ml-auto flex items-center font-semibold">
               <div>45<span className="font-normal opacity-70">/850</span></div>
               <button className="!text-xs btn btn-default ml-2">
-                Leaderboard
+                {t("main status leaderboard")}
               </button>
             </div>
           </li>
