@@ -89,7 +89,8 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
       const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account])
       const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account])
       const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account.toString()])
-
+      console.log("Incentive info")
+      console.log(incentivePaid) 
       setReferralInfo({ level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString()), incentivePaid: parseInt(incentivePaid.toString()) })
     }
     if (!!library && !!share2earnContract) {
@@ -348,16 +349,18 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                             <span className="btn--text">{t("main button download")}</span>
                           </btn>
                         </div>
-                        <div className="grid grid-cols-2 gap-4 p-4">
-                          <a href="" className="text-sm bg-gray-200 dark:bg-gray-800 round-lg text-center">Example</a>
-                          <a href="" className="text-sm bg-gray-200 dark:bg-gray-800 round-lg text-center">More Images</a>
-                        </div>
+                        <a href="https://drive.google.com/drive/folders/1ax-AW2LXtZ9UkBjGNEAlPYzlDGsd24v8?usp=sharing" 
+                          target="_blank" 
+                          className="m-4 !mt-2 flex text-sm border border-gray-200 dark:border-gray-700 text-center rounded-lg p-2  items-center" >
+                          <i className="fa-duotone fa-external-link text-xs ml-auto mr-2" />
+                          <span className="mr-auto">More Images</span>
+                        </a>
                       </div>
                     </div>
 
                     <div className="flex flex-col mt-4">
-                      <strong className="text-base text-color-title">{t("create avatar title")}</strong>
-                      <span className="text-gray-500 dark:text-gray-400">{t("create avatar des")}</span>
+                      <strong className="text-base text-color-title">{t("main step 1 avatar title")}</strong>
+                      <span className="text-gray-500 dark:text-gray-400">{t("main step 1 avatar des")}</span>
 
                       <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
 
@@ -399,8 +402,8 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                     </div>
 
                     <div className="flex flex-col mt-4">
-                      <strong className="text-base text-color-title">Create banner</strong>
-                      <span className="text-gray-500 dark:text-gray-400">Download &amp; use this banner on your social chanels</span>
+                      <strong className="text-base text-color-title">{t("main step 1 banner title")}</strong>
+                      <span className="text-gray-500 dark:text-gray-400">{t("")}</span>
 
                       <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                         <SelectBannerType />

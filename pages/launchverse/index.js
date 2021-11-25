@@ -157,7 +157,7 @@ const LaunchVerse = (props) => {
                       <div className="mt-4">
                         <Link href={`/${props.lang}/launchverse/parallel/share2earn`}>
                         <a href={`/${props.lang}/launchverse/parallel/share2earn`} className="group text-secondary-400">
-                          <span className="text-sm lg:text-base">Joint now</span>
+                          <span className="text-sm lg:text-base">Join now</span>
                           <span className="icon text-sm lg:text-base relative left-2 group-hover:left-3 transition-all"><i class="fas fa-angle-right"></i></span>
                         </a>
                         </Link>
