@@ -396,7 +396,6 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                         </form>
 
                       </div>
-
                     </div>
                   </div>
 
