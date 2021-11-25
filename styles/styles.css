@@ -32,6 +32,7 @@ Layout
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
+    animation: fadein 800ms linear;
   }
   .body-decor::after {
     content: " ";
@@ -208,6 +209,7 @@ Main Panels
 
 @screen lg {
   .pane-content--main {
+    @apply flex flex-col;
     width: var(--main-width);
   }
 }
@@ -269,6 +271,10 @@ Reader / Page Area
   @apply bg-white dark:bg-gray-900;
 }
 
+.glassmorphism .pane-content--sec {
+  @apply bg-gray-50 dark:bg-gray-900;
+}
+
 @screen 2xl {
   .glassmorphism .pane-content--sec {
     @apply bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur;
@@ -277,6 +283,7 @@ Reader / Page Area
 
 @screen lg {
   .pane-content--sec {
+    @apply flex flex-col;
     width:  calc(100% - var(--main-width));
     height: calc(100vh - var(--topbar-height) - var(--topbar-height));
   }

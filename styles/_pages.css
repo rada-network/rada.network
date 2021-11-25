@@ -93,6 +93,27 @@ Page Projects
   }
 }
 
+.page-research-details {
+  &.page-full {
+    @apply bg-white dark:bg-gray-900;
+    .post-content {
+      @apply px-0;
+    }
+  }
+  .section {
+    @apply max-w-screen-md mx-auto;
+  }
+  .section-header {
+    @apply lg:mt-4 mb-4;
+  }
+}
+
+.page-project-share2earn {
+  &.page-full {
+    @apply bg-white dark:bg-gray-900;
+  }
+}
+
 
 /*
 Empty State - About Page
@@ -180,6 +201,7 @@ Page Sections
 Media 
 */
 .media-player {
+  @apply lg:rounded-lg overflow-hidden;
 }
 
 

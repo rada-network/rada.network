@@ -80,9 +80,8 @@ const useChainConfig = function(){
     }
   }
 
-  const getBscScanURL = () => {
+  const getBscScanURL = (address) => {
     let url = getChainScanUrl()
-    let address = getRIRAddress()
     return url + "address/" + address
   }
 
