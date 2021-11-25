@@ -209,6 +209,7 @@ Main Panels
 
 @screen lg {
   .pane-content--main {
+    @apply flex flex-col;
     width: var(--main-width);
   }
 }
@@ -282,6 +283,7 @@ Reader / Page Area
 
 @screen lg {
   .pane-content--sec {
+    @apply flex flex-col;
     width:  calc(100% - var(--main-width));
     height: calc(100vh - var(--topbar-height) - var(--topbar-height));
   }

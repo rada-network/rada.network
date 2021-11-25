@@ -58,7 +58,7 @@ const WhitelistCountdown = ({project}) => {
                 </div>
                 }
 
-                <div className="flex flex-col md:flex-row mt-8 max-w-xl justify-evenly mx-auto">
+                <div className="flex flex-col md:flex-row mt-8 max-w-2xl justify-evenly mx-auto">
                   <Link href={`/launchverse/${project.slug}/share2earn`}>
                     <div className="w-full md:w-1/2 p-4 my-2 md:m-2 bg-primary-700 dark:bg-primary-700 text-white rounded-lg flex items-center cursor-pointer">
                       <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-full flex-shrink-0 mr-4 shadow">
