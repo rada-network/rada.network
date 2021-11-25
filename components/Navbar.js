@@ -35,7 +35,7 @@ export const Navbar = observer(({}) => {
         {/* Main Nav */}
         <div className={`navbar-main`} >
        
-          <NavItem  href={`/launchverse/`} page={`launchverse`} type={`launchverse`}>
+          <NavItem  href={"/" + dataStore.lang +`/launchverse/`} page={`launchverse`} type={`launchverse`}>
             {/* <span className="w-5 h-5 mx-2 flex items-center">
               <LaunchSvg />
             </span> */}
