@@ -15,7 +15,7 @@
   "main step 1 banner title": "Tạo ảnh bìa",
   "main step 1 banner des": "Lưu & thay ảnh bìa trên các tài khoản mạng xã hội.",
   "main step 1 avatar title": "Tạo ảnh đại diện",
-  "main step 1 avatar des": "Tải xuống và thay đổi ảnh địa diện ch",
+  "main step 1 avatar des": "Tải xuống và thay đổi ảnh địa diện các tài khoản mạng xã hội",
   "main step 2 title": "Chia sẻ trên mạng xã hội",
   "main step 2 des": "Sao chép bài đăng dưới đây và đăng lên mạng xã hội của bạn.",
   "main step 3 title": "Xác nhận bài giới thiệu của bạn",
@@ -27,5 +27,6 @@
   "checking links des": "Để tránh các trường hợp lạm dụng, chúng tôi sẽ xác nhận các khoản thưởng RIR thủ công bằng cách kiểm tra các đường link chia sẻ, vui lòng để các bài đăng ở chế độ công khai.",
   "further question": "Bất cứ thắc mắc nào sẽ được giải đáp trong group Telegram",
   "learn more": "Tìm hiểu thêm #Share2Earn",
-  "joined message": "Đã tham gia chương trình"
+  "joined message": "Đã tham gia chương trình",
+  "tooltip": "Khi người dùng được giới thiệu của bạn mời thành công ai đó tham gia sự kiện # Share2Earn này thông qua liên kết của họ, bạn sẽ nhận được {{rir}} RIR"
 }
