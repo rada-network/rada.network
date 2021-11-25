@@ -311,7 +311,8 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
             </div>
 
             <div className="section-body !pt-0">
-              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2} incentivePaid={referralInfo.incentivePaid} adminContract={referralAdminContract} projectID={project.id.toString()} walletAddress={account}/>
+              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2} incentivePaid={referralInfo.incentivePaid} adminContract={referralAdminContract} 
+              projectID={project.id.toString()} walletAddress={account} share2earnAdress={share2earnAddress}/>
 
               <ol className="text-sm space-y-8">
 

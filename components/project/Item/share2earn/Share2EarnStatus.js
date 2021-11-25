@@ -9,10 +9,11 @@ import { ethers } from "ethers"
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
-const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress, incentivePaid }) => {
+const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress, incentivePaid, share2earnAdress }) => {
   const { t } = useTranslation('share2earn')
   const { callFunction } = useCallFunction()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
+  const bscURL = getBscScanURL(share2earnAdress)
   const riraddress = getRIRAddress()
   const [statusInfo, setStatusInfo] = useState({paid: '', hold: ''})
   let [isOpen, setIsOpen] = useState(false)
@@ -33,12 +34,9 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
 
     const getInfo = async () => {
       try {
-        const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
-        const holdRIR = await callFunction(adminContract, 'incentiveHold', [projectID.toString(), walletAddress.toString()])
-        // const joinersAddress = await callFunction((adminContract, 'getJoinersAddress', [projectID.toString()]))
-        // console.log("Chay day chua")
-        // console.log(joinersAddress)
-        setStatusInfo({paid: parseFloat(earnedRIR).toString(), hold: ''})
+        // const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
+        // const holdRIR = await callFunction(adminContract, 'incentiveHold', [projectID.toString(), walletAddress.toString()])
+        setStatusInfo({paid: parseFloat(incentivePaid).toString(), hold: ''})
       } catch (e) {
         console.log(e)
       }
@@ -152,7 +150,8 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
                 </span>
               </div>
               <div className="px-2 py-1 rounded flex bg-gray-100 dark:bg-gray-800 ml-auto list-value hover:bg-gray-200 hover:dark:bg-gray-900">
-                <div>{`${riraddress.substr(0, 5)}...${riraddress.substr(-4)}`}</div>
+                <div>
+                  <a href={bscURL}>{`${riraddress.substr(0, 5)}...${riraddress.substr(-4)}`}</a></div>
                 <CopyToClipboard
                   onCopy={handleCopy}
                   text={riraddress}
