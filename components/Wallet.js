@@ -113,7 +113,7 @@ const ConnectWalletModal = observer(({}) => {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <div className="inline-block w-full max-w-2xl my-8 overflow-hidden relative
+          <div className="inline-block w-full max-w-xl my-8 overflow-hidden relative
           text-left align-middle transition-all transform bg-white dark:bg-gray-900 shadow-xl rounded-lg">
             <Dialog.Title
               as="h3"
@@ -150,7 +150,7 @@ const ConnectWalletModal = observer(({}) => {
                           }
                         </button>
                         
-                        <div>{item.name}</div>
+                        <div className="mt-2">{item.name}</div>
                       </li>
                     )
                   })}
@@ -202,10 +202,10 @@ const ConnectWalletModal = observer(({}) => {
             <div className="absolute right-4 top-4">
               <button
                 type="button"
-                className="inline-flex justify-center px-4 bg-transparent 
-                py-2 text-sm font-medium text-gray-500 border border-transparent rounded-md
-                  hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none 
-                  focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                className="w-10 h-10 inline-flex items-center justify-center bg-transparent transition
+                text-base font-medium text-gray-700 dark:text-gray-200 border border-transparent rounded-full
+              hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none 
+                focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                 onClick={closeModal}
               >
                   <i className="fa-duotone fa-close text-base"></i>
