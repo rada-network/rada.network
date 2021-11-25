@@ -75,7 +75,7 @@ export default function ProjectShare2Earn({
       try {
         const p = await callFunction(share2earnContract, 'programs', [project.id.toString()])
         const pAdmin = await callFunction(referralAdminContract, 'programs', [project.id.toString()])
-        setShare2EarnInfo({ ...p, incentiveL0: pAdmin.incentiveL0, incentiveL1: pAdmin.incentiveL1, incentiveL2: pAdmin.incentiveL2 });
+        setShare2EarnInfo({ ...p, incentiveL0: pAdmin.incentiveLevel1, incentiveL1: pAdmin.incentiveLevel2, incentiveL2: pAdmin.incentiveLevel3 });
         if (account) {
           checkJoined();
         }
@@ -181,15 +181,9 @@ export default function ProjectShare2Earn({
                   </span>
                   <div className="flex flex-col">
                     <div>
-                      <strong className="text-base text-color-title  flex items-center">Tier 1 <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+0.1 RIR</span> </strong>
-                      {/* <span
-                        className="hasTooltip"
-                        data-tip="When a user participates this #Share2Earn event directly through your referral link, you get 0.1 RIR"
-                        data-event="click"
-                      > <i className="fa-duotone fa-info-circle text-base" />
-                      </span>  */}
+                    {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 &&<strong className="text-base text-color-title  flex items-center">Tier 1 <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+{ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span> </strong> }
                     </div>
-                    <p className="opacity-80 mt-2">When a user participates directly through your referral link, you get 0.1 RIR</p>
+                    {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 && <p className="opacity-80 mt-2">When a user participates directly through your referral link, you get {ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</p> }
                     {/* welcome incentive description */}
                     {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 &&
                       <span className="text-gray-500 dark:text-gray-400"
@@ -211,18 +205,11 @@ export default function ProjectShare2Earn({
                     <div>
                       <strong className="text-base flex items-center text-color-title">
                       Tier 2 
-                      <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+0.01 RIR</span>
+                      {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+{ethers.utils.formatEther(share2EarnInfo.incentiveL1)} RIR</span> }
                       {/* {t("welcome lv2 title")} */}
                       </strong>
-                      {/* <span
-                        className="hasTooltip"
-                        data-tip=""
-                        data-event="click"
-                      > <i className="fa-duotone fa-info-circle text-base" />
-                      </span>  */}
                     </div>
-                    {/* {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <span className="text-gray-500 dark:text-gray-400">You get <span className="text-primary-700 dark:text-primary-400">+{ethers.utils.formatEther(share2EarnInfo.incentiveL1)} RIR</span> for each</span>} */}
-                    <p className="opacity-80 mt-2">When a referred user successfully invites someone to join through their links, you get 0.01 RIR</p>
+                    {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <p className="opacity-80 mt-2">When a referred user successfully invites someone to join through their links, you get {ethers.utils.formatEther(share2EarnInfo.incentiveL1)} RIR</p> }
                   </div>
                 </li>
               </ul>

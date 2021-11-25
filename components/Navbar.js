@@ -43,6 +43,16 @@ export const Navbar = observer(({}) => {
             <span className="nav-item--text">{t("LaunchVerse")}</span>
           </NavItem>
 
+          <NavItem href={"/" + dataStore.lang + "/explore/news"} page={`item`} type={"news"}>
+            <span className="icon"><i className="fad fa-telescope" /></span>
+            <span className="nav-item--text">{t("Research")}</span>
+          </NavItem>
+
+          <NavItem href={"/" + dataStore.lang + "/explore/video"} page={`item`} type={"video"}>
+            <span className="icon"><i className="fad fa-newspaper" /></span>
+            <span className="nav-item--text">{t("Articles")}</span>
+          </NavItem>
+
           <NavItem   href={"/" + dataStore.lang + "/explore/projects"} page={`item`} type={"projects"}>
             <span className="icon icon-rada">
               <svg className="rada-svg" viewBox="4 4 32 32" xmlns="http://www.w3.org/2000/svg">
@@ -56,18 +66,7 @@ export const Navbar = observer(({}) => {
                 <circle className="inline-circle" cx="31.2583" cy="26.5" r="3" transform="rotate(-60 31.2583 26.5)" fill="#374151"/>
               </svg>
             </span>
-            <span className="nav-item--text">Articles</span>
-          </NavItem>
-
-
-          <NavItem href={"/" + dataStore.lang + "/explore/news"} page={`item`} type={"news"}>
-            <span className="icon"><i className="fad fa-newspaper" /></span>
-            <span className="nav-item--text">{t("News")}</span>
-          </NavItem>
-
-          <NavItem href={"/" + dataStore.lang + "/explore/video"} page={`item`}  type={"video"}>
-            <span className="icon"><i className="fad fa-icons" /></span>
-            <span className="nav-item--text">{t("Video")}</span>
+            <span className="nav-item--text">{t("About RADA")}</span>
           </NavItem>
 
           {/* <NavItem href={"/" + dataStore.lang + "/explore/all"} page={`item`} type={"all"}>

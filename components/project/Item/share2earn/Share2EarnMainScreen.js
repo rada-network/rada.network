@@ -83,7 +83,9 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   }, []);
 
   const share2earnContract = useShare2EarnContract(share2earnAddress)
+  const referralAdminContract = useShare2EarnContract(referralAdminAddress)
   useEffect(() => {
+    console.log(referralAdminAddress)
     const getInfo = async () => {
       const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account])
       const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account])
@@ -119,7 +121,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
       });
     }
   }
-  
+
   useEffect(() => {
     getBase64FromUrl("/icons/RADA Symbol.png").then(b64 => {
       resizeImage(b64).then(result => {
@@ -309,7 +311,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
             </div>
 
             <div className="section-body !pt-0">
-              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2} />
+              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2} adminContract={referralAdminContract} projectID={project.id.toString()} walletAddress={account}/>
 
               <ol className="text-sm space-y-8">
 
