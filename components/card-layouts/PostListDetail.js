@@ -303,6 +303,9 @@ const VideoDetail = function ({ item, dateTitle, date, setTabCallback }) {
         </div>
       </div>
 
+      <div className="section-nav post-body">
+      </div>
+
       <PostNotice setTabCallback={setTabCallback} type={`video`} />
 
       <div className="section-body post-body">

@@ -69,12 +69,12 @@ const LaunchVerse = (props) => {
                     </h2>
                   </div>
 
-                  <div className="mt-8 relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700">
+                  <div className="mt-8 relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
 
                     <div className="flex-shrink-0">
                       {/* <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/media/the_parallel_screenshot.png"} alt="The Parallel" /> */}
 
-                      <div className="media-player">
+                      <div className="media-player rounded-xl">
                         <div className="w-full h-full">
                           <div className={`aspect-w-16 aspect-h-9`}>
                             <iframe
