@@ -45,12 +45,12 @@ export default function UserProfile(props) {
       getCurrentUser().then((res) => {
         setUser(res);
       });
-      // getInvestProfile().then(function (res) {
-      //   setTopupInfo(res.data.investProfile);
-      // });
-      // getInvestLog().then((res) => {
-      //   setInvestLog(res.data.investLog);
-      // });
+      getInvestProfile().then(function (res) {
+        setTopupInfo(res.data.investProfile);
+      });
+      getInvestLog().then((res) => {
+        setInvestLog(res.data.investLog);
+      });
     }
     // If session exists, display content
     
@@ -123,7 +123,7 @@ export default function UserProfile(props) {
                   
                 </div>
               </div>
-              {/* <div className="w-full mt-2">
+              <div className="w-full mt-2">
                 <div className="flex flex-wrap items-end justify-between mb-2">
                   <div className="w-auto">
                     <div className="field-label--text">
@@ -180,7 +180,7 @@ export default function UserProfile(props) {
                   </div>
                   
                 </div>
-              </div> */}
+              </div>
 
 
 
