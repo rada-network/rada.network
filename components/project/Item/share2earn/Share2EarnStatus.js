@@ -6,7 +6,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 const Share2EarnStatus = ({ level1, level2 }) => {
   //construct the modal
-  let [isOpen, setIsOpen] = useState(true)
+  let [isOpen, setIsOpen] = useState(false)
   function closeModal() {
     setIsOpen(false)
   }
