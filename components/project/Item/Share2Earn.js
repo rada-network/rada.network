@@ -128,7 +128,7 @@ export default function ProjectShare2Earn({
   const allowJoin = getMessage() == '' && joined == '' && account
 
   if ((joined != '' || isConfirmed) && !!account) {
-    return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress}/>;
+    return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
   }
 
   const handleConnectWallet = () => {
@@ -207,7 +207,7 @@ export default function ProjectShare2Earn({
                       {/* {t("welcome lv2 title")} */}
                       </strong>
                     </div>
-                    {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <p className="opacity-80 mt-2">{t("welcome tier1 des", {rir: ethers.utils.formatEther(share2EarnInfo.incentiveL1)})}</p> }
+                    {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <p className="opacity-80 mt-2">{t("welcome tier2 des", {rir: ethers.utils.formatEther(share2EarnInfo.incentiveL1)})}</p> }
                   </div>
                 </li>
               </ul>
