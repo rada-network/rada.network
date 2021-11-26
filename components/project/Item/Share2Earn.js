@@ -227,7 +227,7 @@ export default function ProjectShare2Earn({
                     <div className="ml-3 text-sm">
                       <label className="" for="terms">
                         {t("welcome confirm")}.
-                        <a href="#" target="_blank" className="link ml-2">Learn more</a>
+                        <a href="#" target="_blank" className="link ml-2">{t("Learn more")}</a>.
                       </label>
                     </div>
                   </div>
