@@ -151,7 +151,7 @@ export default function ProjectShare2Earn({
             <div className="section-body">
               <h1 className="mb-4">
                 <span className="text-xl lg:text-2xl font-semibold text-color-title">
-                ✨ Join The Parallel #Share2Earn Event ✨
+                Join The Parallel #Share2Earn Event ✨
                 </span>
               </h1>
 
