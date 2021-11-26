@@ -242,9 +242,9 @@ export default function ProjectShare2Earn({
                   (
                     <>
                       {
-                        allowJoin ? <btn className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="submit"
+                        allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="submit"
                           onClick={() => handleJoinProgram()}
-                        >{t("welcome btn connect wallet")}</btn> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "}>{getMessage()}</div>
+                        >{t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "}>{getMessage()}</div>
                       }
                     </>
                   )}
