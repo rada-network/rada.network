@@ -46,7 +46,6 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
     getInfo()
   }, []);
   function getOffset(el) {
-    const rect = el.getBoundingClientRect();
     console.log()
     return {
       left: el.offsetLeft,
@@ -56,7 +55,8 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
   const overridePosition = function({left,top}, currentEvent, currentTarget, node, place, desiredPlace, effect, offset) {
     const scrollTop = document.querySelector(".pane-content--sec--main").scrollTop
     const pageOffset = getOffset(document.querySelector(".page-share2earn"))
-    return {left : getOffset(currentTarget).left + pageOffset.left,top : getOffset(currentTarget).top + pageOffset.top - scrollTop + 48}
+    const rect = document.querySelector(".page-share2earn").getBoundingClientRect()
+    return {left : getOffset(currentTarget.parentElement).left + pageOffset.left + rect.x,top : getOffset(currentTarget).top + pageOffset.top - scrollTop + 48}
   }
 
   useEffect(() => {
