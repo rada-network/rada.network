@@ -56,8 +56,6 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
     const scrollTop = document.querySelector(".pane-content--sec--main").scrollTop
     const pageOffset = getOffset(document.querySelector(".page-share2earn"))
     const rect = document.querySelector(".page-share2earn").getBoundingClientRect()
-    console.log(getOffset(currentTarget.parentElement))
-    console.log(rect)
     return {left : getOffset(currentTarget.parentElement).left + rect.x - document.querySelector(".pane-content--sec--main").getBoundingClientRect().x,top : getOffset(currentTarget).top + pageOffset.top - scrollTop + 48}
   }
 

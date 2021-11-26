@@ -9,16 +9,14 @@ import PerfectScrollbar from 'perfect-scrollbar'
 import "perfect-scrollbar/css/perfect-scrollbar.css"
 import { useRouter } from "next/router"
 
-const ShareLink = function ({ uid, share_message }) {
+const ShareLink = function ({ uid, share_message, project }) {
   const { t } = useTranslation("share2earn")
   const [shareUrl, setShareUrl] = useState("")
   const [textShare, setTextShare] = useState("")
   const [message, setMesage] = useState(share_message[0])
   const textRef = useRef()
-  const router = useRouter()
   useEffect(() => {
-    console.log(router.asPath)
-    let url = window.location.origin + router.asPath + "?ref=" + uid;
+    let url = window.location.origin + `/launchverse/${project.slug}/share2earn` + "?ref=" + uid;
     createShortenLink(url).then(({ data }) => {
       let shortenURL = "https://rada.to/" + data.createShortenLink.key
       setShareUrl(shortenURL)

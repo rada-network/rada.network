@@ -408,7 +408,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
                 {/* Step 2 */}
                 <li className="flex flex-col md:flex-row items-start">
-                  <ShareLink uid={uid} share_message={project.share_campaign[0].share_message} />
+                  <ShareLink uid={uid} share_message={project.share_campaign[0].share_message} project={project} />
                 </li>
 
                 {/* Step 3 */}
