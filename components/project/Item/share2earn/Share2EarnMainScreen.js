@@ -285,7 +285,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
       {/* <Head /> */}
       
 
-      <div className="pane-content--sec--main grid scrollbar">
+      <div className="pane-content--sec--main grid">
 
         <div className="page page-share2earn fadein">
 
