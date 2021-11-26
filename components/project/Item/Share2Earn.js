@@ -158,7 +158,7 @@ export default function ProjectShare2Earn({
               <p className="text-sm mb-6 text-gray-500 dark:text-gray-400">
               {t("welcome des")}</p>
 
-              <div className="box box--primary box-share2earn mb-4">
+              <div className="box box--primary box-share2earn relative mb-4">
                 <div className="box-body">
                   <div className="mb-2 md:mb-4">
                     <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/share2earn.png"} alt="RADA Share2Earn Program" />
@@ -166,11 +166,14 @@ export default function ProjectShare2Earn({
                   <h2 className="flex flex-col font-altsans">
                     <strong className="text-3xl md:text-4xl font-semibold flex items-center tracking-normal md:tracking-wider">
                       <span>Share</span>
-                      <span className="text-3xl flex items-center justify-center bg-white w-9 h-9 rounded-full text-primary-500 mx-1 md:mx-2 font-bold">2</span>
+                      <span className="text-2xl md:text-3xl flex items-center justify-center bg-white w-9 h-9 rounded-full text-primary-500 mx-1 md:mx-2 font-bold">2</span>
                       <span>Earn</span>
                     </strong>
                     <span className="mt-1 text-base md:text-lg font-medium tracking-wide">by RADA Network</span>
                   </h2>
+                  <div className="w-36 h-36 md:w-44 md:h-44 absolute right-2 -bottom-1 md:right-12 lg:right-6">
+                    <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/theparallel.png"} alt="The Parallel" />
+                  </div>
                 </div>
               </div>
               
