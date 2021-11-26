@@ -63,6 +63,7 @@ Nav Panels
 */
 .pane-left {
   @apply flex flex-shrink-0 flex-col justify-between h-full;
+  @apply rounded-l-xl;
   @apply border-r border-gray-200 dark:border-gray-700;
   @apply bg-gray-100 dark:bg-gray-800 2xl:bg-opacity-50 2xl:dark:bg-opacity-50 2xl:backdrop-blur-md;
   @apply z-50;
@@ -172,7 +173,7 @@ Navbars on Mobile Tablet
 Main Panels
 */
 .pane-center {
-  @apply w-full h-full z-40;
+  @apply w-full h-full z-40 rounded-r-xl overflow-hidden;
   /* @apply lg:border-r border-gray-400 border-opacity-20; */
 }
 
