@@ -62,6 +62,7 @@ export default function ProjectShare2Earn({
     handleConfirm();
   };
   const [joined, setJoined] = useState('')
+  const [loading, setLoading] = useState(true)
   const [share2EarnInfo, setShare2EarnInfo] = useState(null)
 
   React.useEffect(() => {
@@ -85,10 +86,13 @@ export default function ProjectShare2Earn({
     }
 
     if (!!library && !!share2earnContract) {
-      getInfoProgram()
+      setLoading(true)
+      getInfoProgram().then(function(){
+        setLoading(false);
+      })
     }
   }, [share2earnContract, library, account]);
-
+  
 
 
   const checkJoined = async () => {
@@ -126,8 +130,8 @@ export default function ProjectShare2Earn({
     return '';
   }
   const allowJoin = getMessage() == '' && joined == '' && account
-
-  if ((joined != '' || isConfirmed) && !!account) {
+  if (loading) return null;
+  if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo) {
     return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
   }
 
