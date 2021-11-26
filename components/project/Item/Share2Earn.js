@@ -160,16 +160,16 @@ export default function ProjectShare2Earn({
 
               <div className="box box--primary box-share2earn mb-4">
                 <div className="box-body">
-                  <div className="mb-4">
+                  <div className="mb-2 md:mb-4">
                     <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/share2earn.png"} alt="RADA Share2Earn Program" />
                   </div>
                   <h2 className="flex flex-col font-altsans">
-                    <strong className="text-4xl font-semibold flex items-center tracking-normal md:tracking-wider">
+                    <strong className="text-3xl md:text-4xl font-semibold flex items-center tracking-normal md:tracking-wider">
                       <span>Share</span>
                       <span className="text-3xl flex items-center justify-center bg-white w-9 h-9 rounded-full text-primary-500 mx-1 md:mx-2 font-bold">2</span>
                       <span>Earn</span>
                     </strong>
-                    <span className="mt-1 text-lg font-medium tracking-wide">by RADA Network</span>
+                    <span className="mt-1 text-base md:text-lg font-medium tracking-wide">by RADA Network</span>
                   </h2>
                 </div>
               </div>

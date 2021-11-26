@@ -190,7 +190,7 @@ Step Text
 Box Colors
 */
 .box--primary {
-  @apply bg-primary-500 border-transparent dark:bg-primary-400 dark:border-transparent text-white;
+  @apply bg-primary-700 border-transparent dark:bg-primary-500 dark:border-transparent text-white;
 }
 
 .box--success {
@@ -218,12 +218,14 @@ Specific Boxes Styles
 */
 .box-share2earn {
   @apply bg-no-repeat bg-center;
-  background-image: url(/images/s2e.png);
-  background-position: 100% 92%;
+  background-image: url(/images/logos/theparallel.png);
+  background-size: 140px 140px;
+  background-position: 94% 90%;
 }
 
 @screen md {
   .box-share2earn {
+    background-size: 168px 168px;
     background-position: 92% 92%;
   }
 }
