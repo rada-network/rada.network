@@ -219,14 +219,15 @@ export default function ProjectShare2Earn({
               {user?.id && <form className="mt-4">
 
                 {allowJoin && <fieldset className="space-y-4 mb-4 text-gray-500 dark:text-gray-400">
-                  <legend className="sr-only">Notifications</legend>
+                  <legend className="sr-only">Term of Uses</legend>
                   <div className="relative flex items-start">
                     <div className="flex items-center h-5">
-                      <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded" onChange={e => setConfirm(e.target.checked)} />
+                      <input id="terms" aria-describedby="terms-description" name="terms" type="checkbox" className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded" onChange={e => setConfirm(e.target.checked)} />
                     </div>
                     <div className="ml-3 text-sm">
-                      <label className="">
-                        {t("welcome confirm")}
+                      <label className="" for="terms">
+                        {t("welcome confirm")}.
+                        <a href="#" target="_blank" className="link ml-2">Learn more</a>
                       </label>
                     </div>
                   </div>
