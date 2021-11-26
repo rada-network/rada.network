@@ -128,7 +128,7 @@ export default function ProjectShare2Earn({
   const allowJoin = getMessage() == '' && joined == '' && account
 
   if ((joined != '' || isConfirmed) && !!account) {
-    return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress}/>;
+    return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
   }
 
   const handleConnectWallet = () => {

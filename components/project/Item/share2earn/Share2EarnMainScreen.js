@@ -17,7 +17,8 @@ import { useShare2EarnContract, useReferralAdminContract } from "@utils/hooks/us
 import { toast } from "react-toastify"
 
 
-const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, referralAdminAddress }) => {
+
+const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, referralAdminAddress, share2earnInfo }) => {
   const store = useStore()
   const { detailStore } = usePageStore();
   const context = useActiveWeb3React()
@@ -188,7 +189,6 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   }
 
   const handleFileInput = (e) => {
-    console.log("Upload image button clicked")
     if (e.target.files[0]) {
       return new Promise(() => {
         const fileReader = new FileReader()
@@ -311,8 +311,12 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
             </div>
 
             <div className="section-body !pt-0">
-              <Share2EarnStatus level1={referralInfo.level1} level2={referralInfo.level2} incentivePaid={referralInfo.incentivePaid} adminContract={referralAdminContract} 
-              projectID={project.id.toString()} walletAddress={account} share2earnAdress={share2earnAddress}/>
+              <Share2EarnStatus referralInfo={referralInfo} 
+                incentivePaid={referralInfo.incentivePaid} 
+                adminContract={referralAdminContract} 
+                projectID={project.id.toString()} 
+                walletAddress={account} share2earnAdress={share2earnAddress}
+                share2earnInfo={share2earnInfo}/>
 
               <ol className="text-sm space-y-8">
 

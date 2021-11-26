@@ -10,13 +10,15 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import ReactTooltip from 'react-tooltip';
 
-const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddress, incentivePaid, share2earnAdress }) => {
+const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddress, incentivePaid, share2earnAdress, share2earnInfo }) => {
   const { t } = useTranslation('share2earn')
   const { callFunction } = useCallFunction()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const bscURL = getBscScanURL(share2earnAdress)
   const riraddress = getRIRAddress()
-  const [statusInfo, setStatusInfo] = useState({paid: '', hold: ''})
+  const [earnedRIR, setEarnedRIR] = useState(0.0)
+  const [total, setTotal] = useState(0.0)
+
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -32,12 +34,10 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
   };
 
   useEffect(() => {  
-
     const getInfo = async () => {
       try {
         const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
-        // const holdRIR = await callFunction(adminContract, 'incentiveHold', [projectID.toString(), walletAddress.toString()])
-        setStatusInfo({paid: parseFloat(earnedRIR).toString(), hold: ''})
+        setEarnedRIR(parseFloat(earnedRIR))
       } catch (e) {
         console.log(e)
       }
@@ -45,6 +45,18 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
 
     getInfo()
   }, []);
+
+  useEffect(() => {
+    const rirLevel1 = ethers.utils.formatEther(share2earnInfo.incentiveL0).toString()
+    const rirLevel2 = ethers.utils.formatEther(share2earnInfo.incentiveL1).toString()
+    let level1 = referralInfo.level1
+    let level2 = referralInfo.level2
+
+    let total = parseFloat(level1) * parseFloat(rirLevel1) + parseFloat(level2) * parseFloat(rirLevel2)
+    setTotal(total)
+  }, [referralInfo]);
+
+
 
   return (
     <>
@@ -194,7 +206,7 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
                 </span>
               </div>
               <div className="ml-auto flex items-center list-value">
-                {level1}
+                {referralInfo.level1}
               </div>
             </li>
 
@@ -208,15 +220,16 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
                 > <i className="fa-duotone fa-info-circle text-base" />
                 </span>
               </div>
-              <span className="ml-auto">{level2}</span>
+              <span className="ml-auto">{referralInfo.level2}</span>
             </li>
 
+            {/* Under ReviewRIR */}
             <li className="list-pair !items-center mb-2">
               <div className="list-key">
-                {t("main status earned")}
+                {t("under review")}
                 <span
                   className="hasTooltip"
-                  data-tip={t("tooltip")}
+                  data-tip={t("under review tooltip")}
                   data-event="click"
                 > <i className="fa-duotone fa-info-circle text-base" />
                 </span>
@@ -225,7 +238,45 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
                 <span class="icon w-4 h-4 mr-1">
                   <RadaSvg />
                 </span>
-                {statusInfo.paid} RIR
+                {(total - earnedRIR).toString()} RIR
+              </div>
+            </li>
+
+            {/* Approved RIR */}
+            <li className="list-pair !items-center mb-2">
+              <div className="list-key">
+                {t("approve earning")}
+                <span
+                  className="hasTooltip"
+                  data-tip={t("approve earning tooltip")}
+                  data-event="click"
+                > <i className="fa-duotone fa-info-circle text-base" />
+                </span>
+              </div>
+              <div className="ml-auto flex items-center">
+                <span class="icon w-4 h-4 mr-1">
+                  <RadaSvg />
+                </span>
+                {earnedRIR} RIR
+              </div>
+            </li>
+
+            {/* Max RIR per user */}
+            <li className="list-pair !items-center mb-2">
+              <div className="list-key">
+                {t("max rir")}
+                <span
+                  className="hasTooltip"
+                  data-tip={t("max rir tooltip")}
+                  data-event="click"
+                > <i className="fa-duotone fa-info-circle text-base" />
+                </span>
+              </div>
+              <div className="ml-auto flex items-center">
+                <span class="icon w-4 h-4 mr-1">
+                  <RadaSvg />
+                </span>
+                2 RIR
               </div>
             </li>
 

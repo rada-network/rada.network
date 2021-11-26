@@ -29,5 +29,11 @@
   "learn more": "Tìm hiểu thêm #Share2Earn",
   "joined message": "Đã tham gia chương trình",
   "tooltip": "Khi người dùng được giới thiệu của bạn mời thành công ai đó tham gia sự kiện # Share2Earn này thông qua liên kết của họ, bạn sẽ nhận được {{rir}} RIR",
-  "more image": "Thêm hình ảnh"
+  "more image": "Thêm hình ảnh",
+  "under review": "Chờ xét duyệt",
+  "approve earning": "Đã  duyệt",
+  "max rir": "Số RIR tối đa",
+  "under review tooltip": "Số thưởng đang chờ xét duyệt bởi Admin ",
+  "approve earning tooltip": "Số thưởng bạn có thể sử dụng",
+  "max rir tooltip": "Số RIR tối đa bạn có thể kiếm ở chiến dịch này"
 }
