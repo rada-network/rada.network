@@ -45,7 +45,18 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
 
     getInfo()
   }, []);
-
+  function getOffset(el) {
+    const rect = el.getBoundingClientRect();
+    console.log()
+    return {
+      left: rect.left + window.scrollX,
+      top: rect.top + window.scrollY
+    };
+  }
+  const overridePosition = function({left,top}, currentEvent, currentTarget, node, place, desiredPlace, effect, offset) {
+    const pageOffset = getOffset(document.querySelector(".page-project-share2earn"))
+    return {left : getOffset(currentTarget).left - pageOffset.left,top : getOffset(currentTarget).top - pageOffset.top}
+  }
   return (
     <>
     <Transition appear show={isOpen} as={Fragment}>
@@ -139,7 +150,9 @@ const Share2EarnStatus = ({ level1, level2, adminContract, projectID, walletAddr
           {t("share2earn status")}
         </div>
         <div className="p-4">
-          <ReactTooltip type="info" multiline={true} globalEventOff="click" clickable={true} html={true} offset={{right: 100}} />
+          <div>
+          <ReactTooltip type="info" multiline={true} globalEventOff="click" clickable={true} html={true} place={`top`} overridePosition={overridePosition} />
+          </div>
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
             <li className="list-pair !items-center mb-2">
               <div className="list-key">
