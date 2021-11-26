@@ -252,9 +252,9 @@ export default function ProjectShare2Earn({
               }
               { (user.id === "") ? (
                 <form className="mt-4">
-                  <btn className="mt-4 btn btn-yellow w-full justify-center py-3 px-4" type="submit"
+                  <button className="mt-4 btn btn-yellow w-full justify-center py-3 px-4" type="submit"
                   onClick={openLoginPopUp}
-                  >{t("welcome btn login")}</btn>
+                  >{t("welcome btn login")}</button>
                 </form>
               ) : null }
                <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg" onClick={e => {toast.info(t("Coming Soon"),{position : "top-center"})}} target="_blank"> {t("learn more")} </a>

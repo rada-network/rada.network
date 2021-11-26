@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import utils from "@lib/util";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from "next/link"
+import {useEffect, useState} from "react"
 
 const LaunchVerse = (props) => {
 
@@ -22,7 +23,9 @@ const LaunchVerse = (props) => {
     locales,
     asPath
   );
-  dataStore.meta = meta;
+  useEffect(() => {
+    dataStore.meta = meta;
+  },[])
   return (
     <Layout meta={meta}>
 

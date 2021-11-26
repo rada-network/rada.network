@@ -33,9 +33,10 @@ export default function ProjectPage({ slug, project, locale }) {
     locales,
     asPath
   );
-  dataStore.meta = meta
+  
   store.updateNetwork(project?.platform.networkName)
   useEffect(() => {
+    dataStore.meta = meta
     document.body.classList.add("page-details")
     return () => {
       document.body.classList.remove("page-details")

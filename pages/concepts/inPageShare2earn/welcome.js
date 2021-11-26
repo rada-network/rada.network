@@ -85,7 +85,7 @@ function Concept() {
                 </div>
               </fieldset>
 
-              <btn className="mt-4 btn btn-yellow w-full justify-center py-3 px-4" type="submit">Joint Program</btn>
+              <button className="mt-4 btn btn-yellow w-full justify-center py-3 px-4" type="submit">Joint Program</button>
 
             </form>
 

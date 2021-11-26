@@ -84,13 +84,16 @@ const tokenByIdGql = gql`
         tge_date
         max_rir_per_user
       }
-      share_campaign {
-        avatar_frame
+      share_campaign{
         id
-        status
+        lang
         facebook_banner
-        twitter_banner
         linkedin_banner
+        twitter_banner
+        avatar_frame
+        incentive_level1
+        incentive_level2
+        share_message
       }
     }
   }
