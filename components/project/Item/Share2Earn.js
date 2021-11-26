@@ -149,11 +149,14 @@ export default function ProjectShare2Earn({
           <div className="section max-w-screen-sm mx-auto">
 
             <div className="section-body">
-              <h1 className="mb-4">
+              <h1 className="mb-2">
                 <span className="text-xl lg:text-2xl font-semibold text-color-title">
                 Join The Parallel #Share2Earn Event ✨
                 </span>
               </h1>
+
+              <p className="text-sm mb-6 text-gray-500 dark:text-gray-400">
+              {t("welcome des")}</p>
 
               <div className="box box--primary box-share2earn mb-4">
                 <div className="box-body">
@@ -170,12 +173,10 @@ export default function ProjectShare2Earn({
                   </h2>
                 </div>
               </div>
-              <p />
-              {/* <p className="text-sm mb-8 text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: t("welcome description", { provider: `<span class="text-primary-700 dark:text-primary-400">RIR token</span>` }) }} /> */}
-              <p className="text-sm mb-4 text-gray-500 dark:text-gray-400">
-              {t("welcome des")}</p>
               
-              <ul className="text-sm space-y-6">
+              {/* <p className="text-sm mb-8 text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: t("welcome description", { provider: `<span class="text-primary-700 dark:text-primary-400">RIR token</span>` }) }} /> */}
+              
+              <ul className="text-sm space-y-4">
                 <li className="flex p-4 rounded-lg border border-gray-300 dark:border-gray-700">
                   <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0 ">
                     <i className="fa-light fa-hexagon"></i>
