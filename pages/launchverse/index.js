@@ -40,8 +40,9 @@ const LaunchVerse = (props) => {
                 {/* LOGO */}
                 <div className="">
                   <span className="page-logo"></span>
+                  <img className="sr-only" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/launchverse-dark.svg"} alt="RADA LaunchVerse" />
                   <h1 className="sr-only">
-                    <span className="">LaunchVerse</span>
+                    <span className="">RADA LaunchVerse</span>
                   </h1>
                 </div>
                 {/* END: LOGO */}
