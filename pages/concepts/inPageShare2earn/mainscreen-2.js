@@ -73,10 +73,10 @@ function Concept() {
                       </div>
 
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn className="btn btn-default w-full !py-2">
+                        <button className="btn btn-default w-full !py-2">
                           <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
                           <span className="btn--text">Download</span>
-                        </btn>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -117,10 +117,10 @@ function Concept() {
                         </div>
                       </div> */}
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn className="btn btn-default w-full !py-2">
+                        <button className="btn btn-default w-full !py-2">
                           <span className="icon"><i className="fa-duotone fa-upload text-xs"></i></span>
                           <span className="btn--text">Upload your image</span>
-                        </btn>
+                        </button>
                       </div>
                     </div>
 
@@ -156,10 +156,10 @@ function Concept() {
                       </div>
 
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn className="btn btn-default  w-full !py-2">
+                        <button className="btn btn-default  w-full !py-2">
                           <span className="icon"><i className="fa-duotone fa-copy text-xs"></i></span>
                           <span className="btn--text">Copy to clipboard</span>
-                        </btn>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -194,7 +194,7 @@ function Concept() {
                             <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
                             <input type="text" name="fb-post-url" id="fb-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Facebook's post link" value="https://www.facebook.com/radanetwork.official/"/>
                             <div className="absolute inset-y-0 right-1 flex items-center">
-                              <btn className="btn btn-primary py-1 px-2 w-16">Submit</btn>
+                              <button className="btn btn-primary py-1 px-2 w-16">Submit</button>
                             </div>
                           </div>
                         </div>
@@ -205,7 +205,7 @@ function Concept() {
                             <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span class="icon"><i class="fa-brands fa-twitter"></i></span></span>
                             <input type="text" name="twitter-post-url" id="twitter-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="https://www.twitter.com/radanetwork.official/" />
                             <div className="absolute inset-y-0 right-0 flex items-center">
-                              <btn className="btn btn-gray py-1 px-2 w-16 justify-center">Edit</btn>
+                              <button className="btn btn-gray py-1 px-2 w-16 justify-center">Edit</button>
                             </div>
                           </div>
                         </div>
