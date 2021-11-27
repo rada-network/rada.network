@@ -177,10 +177,10 @@ function Concept() {
                         </div>
                       </div>
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn className="btn btn-default w-full !py-2">
+                        <button className="btn btn-default w-full !py-2">
                           <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
                           <span className="btn--text">Download</span>
-                        </btn>
+                        </button>
                        
                       </div>
                       
@@ -203,10 +203,10 @@ function Concept() {
                       </div>
 
                       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                        <btn className="btn btn-default w-full !py-2">
+                        <button className="btn btn-default w-full !py-2">
                           <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
                           <span className="btn--text">Download</span>
-                        </btn>
+                        </button>
 
                         <div className="link-wrapper flex mt-2 text-xs">
                           <a className="ml-auto px-4" href="" >
@@ -338,7 +338,7 @@ function Concept() {
 
             </ol>
             <div className="lg:pl-14">
-              <btn className="w-full mt-4 btn btn-yellow justify-center py-3 px-4" type="submit">Save</btn>                   
+              <button className="w-full mt-4 btn btn-yellow justify-center py-3 px-4" type="submit">Save</button>                   
               </div>
         </div>
 
