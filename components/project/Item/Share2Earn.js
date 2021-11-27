@@ -17,6 +17,7 @@ import { useStore } from "@lib/useStore"
 import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
 import { useERC20 } from "@utils/hooks/useContracts";
 import useChainConfig from "@utils/web3/useChainConfig";
+import { toast } from "react-toastify";
 
 export default function ProjectShare2Earn({
   project,
@@ -133,7 +134,7 @@ export default function ProjectShare2Earn({
   const allowJoin = getMessage() == '' && joined == '' && account && (joined == account)
   if (loading) return null;
   if (joined != account) {
-    console.log("Ban da tham gia bang dia chi vi khac")
+    toast.info(t("wrong connect address"),{address : joined})
   } else {
     if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account ) {
       return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
