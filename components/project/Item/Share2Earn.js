@@ -132,7 +132,7 @@ export default function ProjectShare2Earn({
   ;
   const allowJoin = getMessage() == '' && joined == '' && account && (joined == account)
   if (loading) return null;
-  if (joined != account) {
+  if (joined != account && joined != '') {
     toast.info(t("wrong connect address"),{address : joined})
   } else {
     if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account ) {
