@@ -17,7 +17,6 @@ import { useStore } from "@lib/useStore"
 import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
 import { useERC20 } from "@utils/hooks/useContracts";
 import useChainConfig from "@utils/web3/useChainConfig";
-import { toast } from "react-toastify";
 
 export default function ProjectShare2Earn({
   project,
