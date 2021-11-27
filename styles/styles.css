@@ -275,7 +275,7 @@ Card List Area
 Reader / Page Area
 */
 .pane-content--sec {
-  @apply float-left w-full z-10;
+  @apply float-left w-full z-10 rounded-t-xl lg:rounded-none overflow-hidden;
   @apply hidden flex-auto lg:block;
   @apply bg-white dark:bg-gray-900;
 }
