@@ -1,5 +1,5 @@
-import ProjectTimeline from "../../../../pages/concepts/_components/steps/projectTimeline";
-import CountDownLg from "../../../../pages/concepts/_components/timers/countdownLg-swap";
+import ProjectTimeline from "../../steps/projectTimeline";
+import CountDownLg from "../../timers/countdownLg-whitelist";
 
 const MainActions = ({}) => {
   return (
@@ -15,26 +15,24 @@ const MainActions = ({}) => {
           <div className="flex flex-col">
 
             <div className="">
-              <ProjectTimeline step="2" />
+              <ProjectTimeline step="1" />
             </div>
 
             <div className="global-padding-lg !px-4 min-h-full max-w-xl w-full mx-auto">
 
-              <div className="mb-8 box box--success global-padding-sm">
-                <p className="text-center font-normal">
-                  Xin chúc mừng! Bạn đã là người chiến thắng trong vòng whitelist.<br />
-                  Hãy chờ tới ngày chuyển đổi token nhé!
-                </p>
-              </div>
-
               <div className="mb-8">
                 <h3 className="text-3xl text-center font-normal">
-                  <span className="text-color-title">Chuyển đổi Tokens</span>
+                  <span className="text-color-title">You failed to joint Whitelist</span>
                 </h3>
               </div>
 
-              <div className="">
-                <CountDownLg />
+              <div className="mt-8 box box--fail global-padding-sm text-center">
+                <span className="inline-block icon text-4xl">
+                  <i className="fad fa-times-circle"></i>
+                </span>
+                <p className="font-normal mt-4">
+                  Ngã ở đâu, gấp đôi ở đó! Chúc bạn may mắn lần sau!
+                </p>
               </div>
 
             </div>
@@ -48,7 +46,7 @@ const MainActions = ({}) => {
       <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
 
         <div className="card-header items-center">
-          <h3>Người được chọn (1000)</h3>
+          <h3>Winners (1000)</h3>
           <div className="search-wrapper">
             <div className="form-search rounded-full">
               <span className="icon form-search--icon">

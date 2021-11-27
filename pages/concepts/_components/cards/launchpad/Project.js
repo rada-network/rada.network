@@ -1,7 +1,7 @@
 import React from "react";
-import utils from "../../../../lib/util";
+import utils from "../../../../../lib/util";
 import ContentLoader from "react-content-loader";
-import RadaSvg from "../../../svg/rada";
+import RadaSvg from "../../../../../components/svg/rada";
 import Link from "next/link"
 export const NewsLoader = (props) => (
   <div className={`card card-post`}>

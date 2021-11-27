@@ -1,6 +1,7 @@
-import ProjectTimeline from "../../../../pages/concepts/_components/steps/projectTimeline";
-import SwapTokens from "../../../../pages/concepts/_components/modules/swapTokens-backup";
+import ProjectTimeline from "../../steps/projectTimeline";
+import SwapTokens from "../../modules/swapTokensSlider";
 import Winners from "./Winners";
+
 const MainActions = ({}) => {
   return (
     <>
@@ -18,7 +19,7 @@ const MainActions = ({}) => {
             <div className="project-card--container">
               <div className="mb-8 sr-only">
                 <h3 className="text-3xl text-center font-normal">
-                  <span className="text-color-title">Chuyển đổi Token</span>
+                  <span className="text-color-title">Swap tokens</span>
                 </h3>
               </div>
 
@@ -39,12 +40,6 @@ const MainActions = ({}) => {
                       <span class="list-key">Your minimum allocation </span>
                       <span class="ml-auto list-value font-semibold">
                         100 USDT (1 RIR)
-                      </span>
-                    </li>
-                    <li class="list-pair mb-2">
-                      <span class="list-key">Your available allocation</span>
-                      <span class="ml-auto font-semibold">
-                        200 USDT (2 RIR)
                       </span>
                     </li>
                   </ul>
@@ -75,7 +70,10 @@ const MainActions = ({}) => {
 
       <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
         <div className="card-header items-center">
-          <h3>Winners (1000)</h3>
+          <ul>
+            <li><a>Whitelisted</a></li>
+            <li><a>Winners</a></li>
+          </ul>
           <div className="search-wrapper">
             <div className="form-search rounded-full">
               <span className="icon form-search--icon">

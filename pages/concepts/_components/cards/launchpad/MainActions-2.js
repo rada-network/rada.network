@@ -1,6 +1,6 @@
-import ProjectTimeline from "../../../../pages/concepts/_components/steps/projectTimeline";
-import CountDownLg from "../../../../pages/concepts/_components/timers/countdownLg-whitelist";
-import Media from "../../../../components/Media";
+import ProjectTimeline from "../../steps/projectTimeline";
+import CountDownLg from "../../timers/countdownLg-whitelist";
+import Media from "../../../../../components/Media";
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 

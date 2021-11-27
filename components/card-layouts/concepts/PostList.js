@@ -6,7 +6,7 @@ import Link from "next/link"
 import {observer} from "mobx-react";
 import {TabButton} from "../../button/tabButton";
 import WidgetTitle from "../../text/widgetTitle";
-import {CardPost} from "../../cards/concepts/Post";
+import {CardPost} from "../../../pages/concepts/_components/cards/Post";
 import ContentLoader from "react-content-loader";
 
 import PerfectScrollbar from 'perfect-scrollbar';
