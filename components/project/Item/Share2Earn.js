@@ -23,7 +23,7 @@ export default function ProjectShare2Earn({
 }) {
   const {getRIRAddress} = useChainConfig()
   const riraddress = getRIRAddress()
-  const { t,i18n } = useTranslation('share2earn')
+  const { t } = useTranslation('share2earn')
   const context = useActiveWeb3React()
   const { library, account } = context
 
@@ -129,6 +129,12 @@ export default function ProjectShare2Earn({
 
     return '';
   }
+<<<<<<< HEAD
+  const allowJoin = getMessage() == '' && joined == '' && account
+  if (loading) return null;
+  if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo) {
+    return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
+=======
   const allowJoin = getMessage() == '' && joined == '' && account && (joined == account)
   if (loading) return null;
   if (joined != account) {
@@ -138,8 +144,8 @@ export default function ProjectShare2Earn({
     if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account ) {
       return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
     }
+>>>>>>> a311f7b6104660bc12135456b6b9d55eabe3039a
   }
-  
 
   const handleConnectWallet = () => {
     store.wallet.showConnect(true);
@@ -225,7 +231,17 @@ export default function ProjectShare2Earn({
                   </div>
                 </li>
               </ul>
-
+              <div className="mt-4 rounded-lg border border-yellow-200 bg-yellow-400 bg-opacity-5 text-sm overflow-hidden">
+                <div className="px-4 py-2 bg-yellow-400 bg-opacity-10 dark:bg-opacity-100 dark:bg-gray-800 flex items-center">
+                  <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+                  <span className="font-semibold">Notice</span>  
+                </div>
+                <ul className="p-4">
+                  <li className="mb-2">	&bull; We strongly recommend to join Share2Earn using laptop or PC for smoother experience.</li>
+                  <li  className="mb-2">	&bull; Share2Earn doesn&rsquo;t work on Android.</li>
+                  <li>&bull; Share2Earn doesn&rsquo;t work on built-in Wallet&rsquo;s browser.</li>
+                </ul>
+              </div>       
               {user?.id && <form className="mt-4">
 
                 {allowJoin && <fieldset className="space-y-4 mb-4 text-gray-500 dark:text-gray-400">
@@ -258,16 +274,12 @@ export default function ProjectShare2Earn({
               }
               { (user.id === "") ? (
                 <form className="mt-4">
-                  <button className="mt-4 btn btn-yellow w-full justify-center py-3 px-4" type="submit"
+                  <button className="mt-4 btn btn-yel>low w-full justify-center py-3 px-4" type="submit"
                   onClick={openLoginPopUp}
                   >{t("welcome btn login")}</button>
                 </form>
               ) : null }
-               {i18n.language == "vi" ?
-               <a href={`https://rada.network/vi/post/gioi-thieu-mot-nguoi-ban-va-nhan-rir-tokens-chuong-trinh-share2earn-cua-rada`} className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"  target="_blank"> {t("learn more")} </a>
-               :
-               <a href={`https://rada.network/en/post/refer-a-friend-and-earn-rir-tokens-introducing-radas-share2earn-referral-program`} className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"  target="_blank"> {t("learn more")} </a>
-               }
+               <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg" onClick={e => {toast.info(t("Coming Soon"),{position : "top-center"})}} target="_blank"> {t("learn more")} </a>
             </div>
 
           </div>
