@@ -271,7 +271,7 @@ Post Content Typo
 }
 
 .post-footer--rada {
-  @apply w-auto pt-8 lg:p-8 mt-8 bg-transparent lg:bg-gray-50 lg:dark:bg-gray-700 lg:rounded-lg;
+  @apply w-auto pt-8 lg:p-8 mt-8 bg-transparent lg:bg-gray-100 lg:dark:bg-gray-800 lg:rounded-lg;
   @apply border-t border-gray-400 border-opacity-10 lg:border-0;
   div {
     @apply mb-2;
