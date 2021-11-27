@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
-import { BusdSvg } from "../../../components/svg/SvgIcons";
-import RadaSvg from "../../../components/svg/rada";
+import { BusdSvg } from "../../../../components/svg/SvgIcons";
+import RadaSvg from "../../../../components/svg/rada";
 
 const tokenTypes = [
   { 

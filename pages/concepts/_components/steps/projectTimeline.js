@@ -1,4 +1,4 @@
-import {CheckSvg } from "../../../components/svg/SvgIcons";
+import {CheckSvg } from "../../../../components/svg/SvgIcons";
 const ProjectTimeline = ({step}) => {
   return (
     <>

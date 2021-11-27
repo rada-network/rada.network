@@ -236,7 +236,7 @@ Post Details
 }
 
 .post-header {
-  @apply flex flex-col;
+  @apply flex flex-col mb-4;
 }
 
 .post-body {}

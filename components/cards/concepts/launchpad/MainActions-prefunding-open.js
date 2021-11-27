@@ -1,5 +1,5 @@
-import ProjectTimeline from "../../../concepts/steps/projectTimeline";
-import SwapTokens from "../../../concepts/modules/swapTokens";
+import ProjectTimeline from "../../../../pages/concepts/_components/steps/projectTimeline";
+import SwapTokens from "../../../../pages/concepts/_components/modules/swapTokens";
 import Winners from "./Winners";
 import { useState } from 'react'
 import { Switch } from '@headlessui/react'
