@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useCallback } from 'react';
 import { ethers } from 'ethers'
 import { toast } from "react-toastify";
 import { useTranslation } from "next-i18next";
@@ -124,16 +124,16 @@ export default function ProjectShare2Earn({
     else if (isConfirmed) {
       return t("joined message");
     } else if (joined) {
-      return t("joined message");
+      return t("wrong connect address",{address : joined})
     }
 
     return '';
   }
-  ;
   const allowJoin = getMessage() == '' && joined == '' && account && (joined == account)
   if (loading) return null;
-  if (joined != account && joined != '') {
-    toast.info(t("wrong connect address"),{address : joined})
+  if (joined != account) {
+    console.log(joined)
+    //wrongAddress()
   } else {
     if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account ) {
       return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
