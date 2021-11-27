@@ -23,7 +23,7 @@ export default function ProjectShare2Earn({
 }) {
   const {getRIRAddress} = useChainConfig()
   const riraddress = getRIRAddress()
-  const { t } = useTranslation('share2earn')
+  const { t,i18n } = useTranslation('share2earn')
   const context = useActiveWeb3React()
   const { library, account } = context
 
@@ -129,11 +129,17 @@ export default function ProjectShare2Earn({
 
     return '';
   }
-  const allowJoin = getMessage() == '' && joined == '' && account
+  ;
+  const allowJoin = getMessage() == '' && joined == '' && account && (joined == account)
   if (loading) return null;
-  if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo) {
-    return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
+  if (joined != account) {
+    console.log("Ban da tham gia bang dia chi vi khac")
+  } else {
+    if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account ) {
+      return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
+    }
   }
+  
 
   const handleConnectWallet = () => {
     store.wallet.showConnect(true);
@@ -242,9 +248,9 @@ export default function ProjectShare2Earn({
                   (
                     <>
                       {
-                        allowJoin ? <btn className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="submit"
+                        allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="submit"
                           onClick={() => handleJoinProgram()}
-                        >{t("welcome btn connect wallet")}</btn> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "}>{getMessage()}</div>
+                        >{t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "}>{getMessage()}</div>
                       }
                     </>
                   )}
@@ -257,7 +263,11 @@ export default function ProjectShare2Earn({
                   >{t("welcome btn login")}</button>
                 </form>
               ) : null }
-               <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg" onClick={e => {toast.info(t("Coming Soon"),{position : "top-center"})}} target="_blank"> {t("learn more")} </a>
+               {i18n.language == "vi" ?
+               <a href={`https://rada.network/vi/post/gioi-thieu-mot-nguoi-ban-va-nhan-rir-tokens-chuong-trinh-share2earn-cua-rada`} className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"  target="_blank"> {t("learn more")} </a>
+               :
+               <a href={`https://rada.network/en/post/refer-a-friend-and-earn-rir-tokens-introducing-radas-share2earn-referral-program`} className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"  target="_blank"> {t("learn more")} </a>
+               }
             </div>
 
           </div>

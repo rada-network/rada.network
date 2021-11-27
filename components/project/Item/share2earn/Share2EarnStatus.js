@@ -37,7 +37,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
     const getInfo = async () => {
       try {
         const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
-        setEarnedRIR(parseFloat(earnedRIR))
+        setEarnedRIR(parseFloat(ethers.utils.formatEther(earnedRIR)))
       } catch (e) {
         console.log(e)
       }
@@ -253,7 +253,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
                 <span class="icon w-4 h-4 mr-1">
                   <RadaSvg />
                 </span>
-                {(total - earnedRIR).toString()} RIR
+                {(total - earnedRIR).toFixed(3)} RIR
               </div>
             </li>
 
@@ -272,7 +272,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
                 <span class="icon w-4 h-4 mr-1">
                   <RadaSvg />
                 </span>
-                {earnedRIR} RIR
+                {earnedRIR.toFixed(3)} RIR
               </div>
             </li>
 

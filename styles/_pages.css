@@ -365,14 +365,14 @@ Logo
 */
 .page-landing--parallel .page-logo {
   @apply block relative bg-no-repeat;
-  background-image: url("/images/logos/launchverse-theparallel.svg");
+  background-image: url("/images/logos/launchverse.svg");
   background-size: 100% 54px;
   width: 308px;
   height: 54px;
 }
 
 .dark .page-landing--parallel .page-logo {
-  background-image: url("/images/logos/launchverse-theparallel-dark.svg");
+  background-image: url("/images/logos/launchverse-dark.svg");
 }
 
 /* Smaller the logo for small screen */

@@ -40,8 +40,9 @@ const LaunchVerse = (props) => {
                 {/* LOGO */}
                 <div className="">
                   <span className="page-logo"></span>
+                  <img className="sr-only" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/launchverse-dark.svg"} alt="RADA LaunchVerse" />
                   <h1 className="sr-only">
-                    <span className="">LaunchVerse</span>
+                    <span className="">RADA LaunchVerse</span>
                   </h1>
                 </div>
                 {/* END: LOGO */}
@@ -196,7 +197,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/shield-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                        We review projects and kyc team carefully so you can invest safely
+                      We revolutionize blockchain fundraising with our DAO-based AngelList model Launchpad.
                       </p>
                     </div>
 
@@ -210,7 +211,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/bolt-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                        Tier system can help user that contribute most to project get more reward
+                      LaunchVerse effectively provide value for both startup projects and the investor community
                       </p>
                     </div>
 
@@ -224,7 +225,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/net-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                        LaunchVerse support multi chains: Ethereum, BSC and Polygon
+                      United by the Metaverse, projects across all blockchains are welcome at LaunchVerse.
                       </p>
                     </div>
 
@@ -238,7 +239,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/scale-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                        A Distribution Portal for projects to vest project sold tokens
+                      We provide fair and transparent token launches for projects and create carefully structured allocation models.
                       </p>
                     </div>
 
@@ -252,7 +253,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/incubate-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                        Help to incubate early stage project with our professional experts
+                      We help incubate early stage projects across the Metaverse and Gamfi spaces.
                       </p>
                     </div>
 
@@ -266,7 +267,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/dao-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                        Fully function DAO with Governance model and Permissionless listing
+                      We help connect the projects and the community through our innovative Share2Earn and Contribute2Earn models.
                       </p>
                     </div>
                   </div>

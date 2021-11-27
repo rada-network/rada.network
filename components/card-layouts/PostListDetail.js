@@ -400,9 +400,9 @@ const NewsDetail = observer(function ({
       {/* Post Header */}
       <div className="section-header post-header">
         <div className="post-title">
-          {isRada ?
+          {/* {isRada ?
           <div className="badges-tags"><span className="badge badge-rada mr-2">RADA</span></div>
-          : ""}
+          : ""} */}
           <h1>
             <a
               target="_blank"
