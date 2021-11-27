@@ -172,7 +172,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
               <div className="list-key">
                 Share2Earn Contract
               </div>
-              <div className="w-32 px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-900">
+              <div className="w-32 px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-700">
                 <div>
                   <a target="_blank" href={bscURL}>{`${share2earnAdress.substr(0, 5)}...${share2earnAdress.substr(-4)}`}</a></div>
                   <CopyToClipboard
@@ -196,7 +196,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
                 ><i className="fa-duotone fa-info-circle text-base" />
                 </span>
               </div>
-              <div className="w-32 px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-900">
+              <div className="w-32 px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-700">
                 <div>
                   <a target="_blank" href={getBscScanURL(riraddress)}>{`${riraddress.substr(0, 5)}...${riraddress.substr(-4)}`}</a></div>
                   <CopyToClipboard

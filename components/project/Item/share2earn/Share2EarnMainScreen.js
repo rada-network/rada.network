@@ -362,7 +362,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
                   <div className="text-base mt-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
 
-                    <div className="flex justify-between items-center py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                    <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
                       <div>
                         <span className="text-sm">Image Source</span>
                       </div>
@@ -383,7 +383,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                       {mergedImage}
 
                       {isUploadImage && !isUploaded &&
-                        <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
+                        <div className="p-4 border-t border-gray-200 dark:border-gray-700">
                           <label className="btn btn-default w-full !py-2" type="submit">
                             <span className="icon"><i className="fa-duotone fa-upload text-xs" type="submit"></i></span>
                             <span className="btn--text">{t("main button upload")}</span>
