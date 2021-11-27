@@ -129,11 +129,17 @@ export default function ProjectShare2Earn({
 
     return '';
   }
-  const allowJoin = getMessage() == '' && joined == '' && account
+  ;
+  const allowJoin = getMessage() == '' && joined == '' && account && (joined == account)
   if (loading) return null;
-  if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo) {
-    return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
+  if (joined != account) {
+    console.log("Ban da tham gia bang dia chi vi khac")
+  } else {
+    if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account ) {
+      return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
+    }
   }
+  
 
   const handleConnectWallet = () => {
     store.wallet.showConnect(true);
