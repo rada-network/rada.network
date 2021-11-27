@@ -23,7 +23,7 @@ export default function ProjectShare2Earn({
 }) {
   const {getRIRAddress} = useChainConfig()
   const riraddress = getRIRAddress()
-  const { t } = useTranslation('share2earn')
+  const { t,i18n } = useTranslation('share2earn')
   const context = useActiveWeb3React()
   const { library, account } = context
 
@@ -257,7 +257,11 @@ export default function ProjectShare2Earn({
                   >{t("welcome btn login")}</button>
                 </form>
               ) : null }
-               <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg" onClick={e => {toast.info(t("Coming Soon"),{position : "top-center"})}} target="_blank"> {t("learn more")} </a>
+               {i18n.language == "vi" ?
+               <a href={`https://rada.network/vi/post/gioi-thieu-mot-nguoi-ban-va-nhan-rir-tokens-chuong-trinh-share2earn-cua-rada`} className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"  target="_blank"> {t("learn more")} </a>
+               :
+               <a href={`https://rada.network/en/post/refer-a-friend-and-earn-rir-tokens-introducing-radas-share2earn-referral-program`} className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"  target="_blank"> {t("learn more")} </a>
+               }
             </div>
 
           </div>
