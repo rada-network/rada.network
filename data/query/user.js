@@ -2,8 +2,8 @@ import {gql} from '@apollo/client';
 import getClient from "../client";
 
 const mutation =  gql`
-  mutation createOrUpdateUser($profile: JSONObject!, $account: JSONObject!,$oauthProfile : JSONObject!){
-    createOrUpdateUser(profile: $profile, account: $account, oauthProfile : $oauthProfile){
+  mutation createOrUpdateUser($profile: JSONObject!, $account: JSONObject!,$oauthProfile : JSONObject!,$key : String!){
+    createOrUpdateUser(profile: $profile, account: $account, oauthProfile : $oauthProfile,key: $key){
       id
       access_token
       name
@@ -39,14 +39,16 @@ const getUserGql =  gql`
 
 
 export async function getTokenFromYourAPIServer(profile, account, oauthProfile) {
+  const key = process.env.LOGIN_KEY || ""
     const client = getClient();
     let data = await client.mutate({
-        mutation : mutation,
-        variables : {
-            profile : profile,
-            account : account,
-            oauthProfile : oauthProfile
-        }
+      mutation : mutation,
+      variables : {
+        key : key,
+        profile : profile,
+        account : account,
+        oauthProfile : oauthProfile
+      }
     })
     return data.data.createOrUpdateUser
 }
@@ -54,7 +56,7 @@ export async function getTokenFromYourAPIServer(profile, account, oauthProfile) 
 export async function getCurrentUser() {
   const client = getClient();
   let data = await client.query({
-      query : getUserGql
+    query : getUserGql
   })
   return data.data.me
 }

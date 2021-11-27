@@ -33,9 +33,16 @@ const ConnectWalletModal = observer(({}) => {
   const {login,logout} = useAuth()
   const closeModal = () => { store.wallet.showConnect(false); }
   const isOpen = store?.wallet.showingConnect
+  const [showMetamask,setShowMetamask] = useState(true)
   useEffect(() => {
     store.wallet.showConnect(false)
   }, [connector])
+
+  useEffect(() => {
+    if (!window.ethereum){
+      setShowMetamask(false)
+    }
+  }, [])
 
   useEffect(() => {
     if (!!error){
@@ -133,7 +140,7 @@ const ConnectWalletModal = observer(({}) => {
                       1
                     </strong>
                   </div>
-                  <h3>Network selected {isMobile} {getUA}</h3>
+                  <h3>Network selected</h3>
                 </div>
                 <ul className="flex mt-4 lg:ml-4">
                   {listNetworks.map(function(item){
@@ -170,13 +177,15 @@ const ConnectWalletModal = observer(({}) => {
                   <h3>Choose a wallet</h3>
                 </div>
                 <ul className="flex mt-4 lg:ml-4">
+                  {showMetamask &&
                   <li key={`metamask`} className="wallet-item">
-                    <button className="wallet-option " onClick={(e) => {login("injected")}}>
-                      <img className="wallet-icon-img w-14 h-14" src="/wallet-icons/metamask.svg" alt="Metamask" />
-                    </button>
-                    
-                    <div>Metamask</div>
+                  <button className="wallet-option " onClick={(e) => {login("injected")}}>
+                    <img className="wallet-icon-img w-14 h-14" src="/wallet-icons/metamask.svg" alt="Metamask" />
+                  </button>
+                  
+                  <div>Metamask</div>
                   </li>
+                  }
                   <li key={`walletconnect`}className="wallet-item">
                     <button className="wallet-option" onClick={(e) => {login("walletconnect")}}>
                       <img className="w-14 h-14" src="/wallet-icons/wallet-connect.svg" alt="WalletConnect" />

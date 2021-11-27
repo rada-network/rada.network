@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useCallback } from 'react';
 import { ethers } from 'ethers'
 import { toast } from "react-toastify";
 import { useTranslation } from "next-i18next";
@@ -124,15 +124,27 @@ export default function ProjectShare2Earn({
     else if (isConfirmed) {
       return t("joined message");
     } else if (joined) {
-      return t("joined message");
+      return t("wrong connect address",{address : joined})
     }
 
     return '';
   }
+<<<<<<< HEAD
   const allowJoin = getMessage() == '' && joined == '' && account
   if (loading) return null;
   if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo) {
     return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
+=======
+  const allowJoin = getMessage() == '' && joined == '' && account && (joined == account)
+  if (loading) return null;
+  if (joined != account) {
+    console.log(joined)
+    //wrongAddress()
+  } else {
+    if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account ) {
+      return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
+    }
+>>>>>>> a311f7b6104660bc12135456b6b9d55eabe3039a
   }
 
   const handleConnectWallet = () => {
@@ -254,7 +266,7 @@ export default function ProjectShare2Earn({
                       {
                         allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="submit"
                           onClick={() => handleJoinProgram()}
-                        >{t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "}>{getMessage()}</div>
+                        >{t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{wordBreak:"break-word"}}>{getMessage()}</div>
                       }
                     </>
                   )}
