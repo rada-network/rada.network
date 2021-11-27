@@ -54,8 +54,8 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
   }
   const overridePosition = function({left,top}, currentEvent, currentTarget, node, place, desiredPlace, effect, offset) {
     const scrollTop = document.querySelector(".pane-content--sec--main").scrollTop
-    const pageOffset = getOffset(document.querySelector(".page-share2earn"))
-    const rect = document.querySelector(".page-share2earn").getBoundingClientRect()
+    const pageOffset = getOffset(document.querySelector(".page-project-share2earn"))
+    const rect = document.querySelector(".page-project-share2earn").getBoundingClientRect()
     return {left : getOffset(currentTarget.parentElement).left + rect.x - document.querySelector(".pane-content--sec--main").getBoundingClientRect().x,top : getOffset(currentTarget).top + pageOffset.top - scrollTop + 48}
   }
 
@@ -172,7 +172,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
               <div className="list-key">
                 Share2Earn Contract
               </div>
-              <div className="px-2 py-1 rounded flex bg-gray-100 dark:bg-gray-800 ml-auto list-value hover:bg-gray-200 hover:dark:bg-gray-900">
+              <div className="w-32 px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-900">
                 <div>
                   <a target="_blank" href={bscURL}>{`${share2earnAdress.substr(0, 5)}...${share2earnAdress.substr(-4)}`}</a></div>
                   <CopyToClipboard
@@ -180,7 +180,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
                     text={share2earnAdress}
                   >
                     <button class="btn ml-2">
-                      <i className="fa-duotone fa-copy text-xs"></i>
+                      <i className="fa-duotone fa-copy text-2xs"></i>
                     </button>
                   </CopyToClipboard>
                 </div>
@@ -196,7 +196,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
                 ><i className="fa-duotone fa-info-circle text-base" />
                 </span>
               </div>
-              <div className="px-2 py-1 rounded flex bg-gray-100 dark:bg-gray-800 ml-auto list-value hover:bg-gray-200 hover:dark:bg-gray-900">
+              <div className="w-32 px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-900">
                 <div>
                   <a target="_blank" href={getBscScanURL(riraddress)}>{`${riraddress.substr(0, 5)}...${riraddress.substr(-4)}`}</a></div>
                   <CopyToClipboard
@@ -204,7 +204,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
                     text={riraddress}
                   >
                     <button class="btn ml-2">
-                      <i className="fa-duotone fa-copy text-xs"></i>
+                      <i className="fa-duotone fa-copy text-2xs"></i>
                     </button>
                   </CopyToClipboard>
               </div>

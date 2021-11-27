@@ -295,7 +295,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
           <div className="w-full">
             <h1 className="">
               <span className="text-xl lg:text-lg font-semibold text-color-title">
-                Welcome to The Parallel #Share2Earn event.
+                Welcome to The Parallel #Share2Earn event
               </span>
             </h1>
             <p className="text-sm opacity-75">
@@ -349,7 +349,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                     </div>
                     <a href="https://drive.google.com/drive/folders/1ax-AW2LXtZ9UkBjGNEAlPYzlDGsd24v8?usp=sharing" 
                       target="_blank" 
-                      className="m-4 !mt-2 flex text-sm border border-gray-200 dark:border-gray-700 text-center rounded-lg p-2  items-center" >
+                      className="m-4 !mt-0 flex text-sm border border-gray-200 dark:border-gray-700 text-center rounded-lg p-2  items-center" >
                       <i className="fa-duotone fa-external-link text-xs ml-auto mr-2" />
                       <span className="mr-auto">{t("more image")}</span>
                     </a>
