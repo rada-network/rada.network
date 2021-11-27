@@ -18,6 +18,7 @@ import { getErrorMessage } from "../utils"
 import { toast } from "react-toastify";
 import _ from "lodash"
 import useAuth from "../utils/hooks/useAuth"
+import { isMobile,getUA } from "react-device-detect";
 
 const btnRef = createRef()
 
@@ -132,7 +133,7 @@ const ConnectWalletModal = observer(({}) => {
                       1
                     </strong>
                   </div>
-                  <h3>Network selected</h3>
+                  <h3>Network selected {isMobile} {getUA}</h3>
                 </div>
                 <ul className="flex mt-4 lg:ml-4">
                   {listNetworks.map(function(item){
@@ -140,7 +141,7 @@ const ConnectWalletModal = observer(({}) => {
                       return null
                     }
                     return (
-                      <li className="wallet-item checked">
+                      <li key={item.networkName} className="wallet-item checked">
                         <button className="wallet-option ">
                           <img className="wallet-icon-img w-14 h-14" src={`/wallet-icons/${item.icon}.svg`} alt={item.name} />
                           {store.network === item.networkName &&
@@ -169,26 +170,26 @@ const ConnectWalletModal = observer(({}) => {
                   <h3>Choose a wallet</h3>
                 </div>
                 <ul className="flex mt-4 lg:ml-4">
-                  <li className="wallet-item">
+                  <li key={`metamask`} className="wallet-item">
                     <button className="wallet-option " onClick={(e) => {login("injected")}}>
                       <img className="wallet-icon-img w-14 h-14" src="/wallet-icons/metamask.svg" alt="Metamask" />
                     </button>
                     
                     <div>Metamask</div>
                   </li>
-                  <li className="wallet-item">
+                  <li key={`walletconnect`}className="wallet-item">
                     <button className="wallet-option" onClick={(e) => {login("walletconnect")}}>
                       <img className="w-14 h-14" src="/wallet-icons/wallet-connect.svg" alt="WalletConnect" />
                     </button>
                     <div>Wallet Connect</div>
                   </li>
-                  <li className="wallet-item disabled">
+                  <li key={`Ledger`} className="wallet-item disabled">
                     <button className="wallet-option">
                       <img className="w-14 h-14" src="/wallet-icons/ledger.svg" alt="Ledger" />
                     </button>
                     <div>Ledger</div>
                   </li>
-                  <li className="wallet-item disabled">
+                  <li key={`Trezor`}  className="wallet-item disabled">
                     <button className="wallet-option checked">
                       <img className="w-14 h-14" src="/wallet-icons/trezor.svg" alt="Trezor" />
                     </button>
@@ -320,7 +321,7 @@ export const WalletProfile = ({type}) => {
     {_.isEmpty(account) ? (
       <>
         <button onClick={handleConnectWallet} className="btn btn-primary my-2 px-2 ml-auto lg:mr-3 xl:mr-12 text-sm flex">
-        <span class="icon mr-2 opacity-60">
+        <span className="icon mr-2 opacity-60">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Wallet</title><path fill="currentColor" d="M18.874,18a3.757,3.757,0,0,1-3.669-4.538A3.819,3.819,0,0,1,18.982,10.5h2.393a.5.5,0,0,0,.5-.5c0-.793,0-2.254,0-2.254a2.5,2.5,0,0,0-2.5-2.5c-4.476,0,8.862-.01-14-.01a.75.75,0,0,1,0-1.5h13.25a.25.25,0,0,0,.25-.249V3.25c0-1.379-1.57-2.5-3.5-2.5h-11a3.5,3.5,0,0,0-3.5,3.5v15.5a3.5,3.5,0,0,0,3.5,3.5h15a2.5,2.5,0,0,0,2.5-2.5v-2.5a.25.25,0,0,0-.25-.25Z"/><path fill="currentColor"  d="M21.874,12h-3a2.25,2.25,0,1,0,0,4.5h3a1.506,1.506,0,0,0,1.25-1.5V13.5A1.506,1.506,0,0,0,21.874,12Z"/></svg>
         </span>
         {t("connect")}</button>
@@ -366,7 +367,7 @@ export const WalletProfile = ({type}) => {
                 className="text-right opacity-70 hover:opacity-100 p-1 rounded-lg z-10"
                 onClick={() => handleDisconnectWallet()}
               >
-                <span className="icon"><i class="fas fa-sign-out"></i></span>
+                <span className="icon"><i className="fas fa-sign-out"></i></span>
                 <span className="sr-only">{t("disconnect")}</span>
               </button>
             </>

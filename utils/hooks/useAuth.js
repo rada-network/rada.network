@@ -29,7 +29,7 @@ const useAuth = () => {
           } else {
             window.localStorage.removeItem(connectorLocalStorageKey)
             if (error instanceof NoEthereumProviderError) {
-              toast.error(t('Provider Error. No provider was found'))
+              toast.error(t(`No browser extension detected, install MetaMask on desktop or visit from a dApp browser on mobile.`))
             } else if (
               error instanceof UserRejectedRequestErrorInjected ||
               error instanceof UserRejectedRequestErrorWalletConnect
