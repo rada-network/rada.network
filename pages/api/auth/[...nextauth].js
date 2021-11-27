@@ -5,7 +5,8 @@ import {getTokenFromYourAPIServer} from "./../../../data/query/user"
 const callbacks = {}
 
 callbacks.signIn = async function signIn(profile, account, oauthProfile) {
-    let userFromApi = await getTokenFromYourAPIServer(profile,account,oauthProfile)
+    let userFromApi = await getTokenFromYourAPIServer
+    (profile,account,oauthProfile)
     if (userFromApi !== null) {
         console.log(userFromApi)
         profile.access_token = userFromApi.access_token
