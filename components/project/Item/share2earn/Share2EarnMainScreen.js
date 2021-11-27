@@ -492,7 +492,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
               </ol>
 
               <div className="lg:pl-14">
-                <button className={(facebook.url === "" && twitter.url === "" && telegram.url === "") ? " disabled w-full mt-4 btn btn-yellow justify-center py-3 px-4" : "w-full mt-4 btn btn-yellow justify-center py-3 px-4"} type="submit"
+                <button className="w-full mt-4 btn btn-yellow justify-center py-3 px-4" type="submit"
                   onClick={submitShareURL}
                 >Save</button>
               </div>
