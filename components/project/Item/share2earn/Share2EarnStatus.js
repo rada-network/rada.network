@@ -224,9 +224,9 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
               <div className="list-key">
                 Share Link
               </div>
-              <div className="w-32 px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-700">
+              <div className="w-32 px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-700  break-all">
                 <div>
-                  <a target="_blank">{`${shareLink.substr(0, 8)}...${shareLink.substr(-4)}`}</a>
+                  <a target="_blank">{shareLink}</a>
                 </div>
                 <CopyToClipboard
                   onCopy={handleCopy}
