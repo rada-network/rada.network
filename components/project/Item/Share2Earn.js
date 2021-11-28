@@ -232,12 +232,12 @@ export default function ProjectShare2Earn({
           <div className="mt-4 rounded-lg border border-yellow-200 bg-yellow-400 bg-opacity-5 text-sm overflow-hidden">
             <div className="px-4 py-2 bg-yellow-400 bg-opacity-10 dark:bg-opacity-100 dark:bg-gray-800 flex items-center">
               <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
-              <span className="font-semibold">Notice</span>  
+              <span className="font-semibold">{t("notice")}</span>  
             </div>
             <ul className="p-4">
-              <li className="mb-2">	&bull; We strongly recommend to join Share2Earn using laptop or PC for smoother experience.</li>
-              <li  className="mb-2">	&bull; Share2Earn doesn&rsquo;t work on Android.</li>
-              <li>&bull; Share2Earn doesn&rsquo;t work on built-in Wallet&rsquo;s browser.</li>
+              <li className="mb-2">{t("notice line 1")}</li>
+              <li  className="mb-2">{t("notice line 2")}</li>
+              <li>{t("notice line 3")}</li>
             </ul>
           </div>       
           {user?.id && <form className="mt-4">
