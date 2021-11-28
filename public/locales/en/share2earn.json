@@ -36,5 +36,6 @@
   "under review tooltip": "Pending earning waiting to be approved by Admin",
   "approve earning tooltip": "Current valid earning you can use",
   "max rir tooltip": "Maximum RIR you can earn in this campaign",
-  "wrong connect address" : "You have joined the program using this wallet address {{address}}, please connect to the correct address"
+  "wrong connect address" : "You have joined the program using this wallet address {{address}}, please connect to the correct address",
+  "learn more url": "https://rada.network/en/post/refer-a-friend-and-earn-rir-tokens-introducing-radas-share2earn-referral-program"
 }
