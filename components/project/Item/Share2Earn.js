@@ -181,7 +181,7 @@ export default function ProjectShare2Earn({
                 </strong>
                 <span className="mt-1 text-base md:text-lg font-medium tracking-wide">by RADA Network</span>
               </h2>
-              <div className="w-36 h-36 md:w-44 md:h-44 absolute right-2 -bottom-1 md:right-12 lg:right-6">
+              <div className=" w-28 h-28 md:w-44 md:h-44 absolute right-2 bottom-1 md:-bottom-1 md:right-12 lg:right-6">
                 <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/theparallel.png"} alt="The Parallel" />
               </div>
             </div>
@@ -272,7 +272,7 @@ export default function ProjectShare2Earn({
           }
           { (user.id === "") ? (
             <form className="mt-4">
-              <button className="mt-4 btn btn-yel>low w-full justify-center py-3 px-4" type="button"
+              <button className="mt-4 btn btn-yellow w-full justify-center py-3 px-4" type="button"
               onClick={openLoginPopUp}
               >{t("welcome btn login")}</button>
             </form>
