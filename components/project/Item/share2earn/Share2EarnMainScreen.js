@@ -252,11 +252,11 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   if (!isUploadImage || (isUploadImage && isUploaded)) {
     downloadAvtButton = (
       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-        <btn className="btn btn-default w-full !py-2"
+        <button className="btn btn-default w-full !py-2"
           onClick={handleDownloadAvt}>
           <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
           <span className="btn--text">Download</span>
-        </btn>
+        </button> 
       </div>
     );
 
@@ -346,17 +346,24 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                         </div>
 
                         <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
-                          <btn className="btn btn-default w-full !py-2"
+                          <button className="btn btn-default w-full !py-2"
                             onClick={() => handleDownload()}>
                             <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
                             <span className="btn--text">{t("main button download")}</span>
-                          </btn>
+                          </button>
                         </div>
                         <a href="https://drive.google.com/drive/folders/1ax-AW2LXtZ9UkBjGNEAlPYzlDGsd24v8?usp=sharing" 
                           target="_blank" 
                           className="m-4 !mt-2 flex text-sm border border-gray-200 dark:border-gray-700 text-center rounded-lg p-2  items-center" >
                           <i className="fa-duotone fa-external-link text-xs ml-auto mr-2" />
-                          <span className="mr-auto">{t("more image")}</span>
+                          <span className="mr-auto">{t("More images")}</span>
+                        </a>
+
+                        <a href="https://drive.google.com/drive/folders/1MJHaOwbFQagGWnEB2B6fs0MkwRmH3BSZ" 
+                          target="_blank" 
+                          className="m-4 !mt-2 flex text-sm border border-gray-200 dark:border-gray-700 text-center rounded-lg p-2  items-center" >
+                          <i className="fa-duotone fa-external-link text-xs ml-auto mr-2" />
+                          <span className="mr-auto">{t("Qualified samples")}</span>
                         </a>
                       </div>
                     </div>
@@ -476,7 +483,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                             </div>
                           </div>
                         </form>
-
+!
                       </div>
                       <div className="mb-4">
                         <p>

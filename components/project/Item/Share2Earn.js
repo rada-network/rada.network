@@ -129,12 +129,6 @@ export default function ProjectShare2Earn({
 
     return '';
   }
-<<<<<<< HEAD
-  const allowJoin = getMessage() == '' && joined == '' && account
-  if (loading) return null;
-  if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo) {
-    return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
-=======
   const allowJoin = getMessage() == '' && joined == '' && account && (joined == account)
   if (loading) return null;
   if (joined != account) {
@@ -144,7 +138,6 @@ export default function ProjectShare2Earn({
     if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account ) {
       return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
     }
->>>>>>> a311f7b6104660bc12135456b6b9d55eabe3039a
   }
 
   const handleConnectWallet = () => {
