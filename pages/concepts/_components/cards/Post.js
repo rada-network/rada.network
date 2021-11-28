@@ -85,3 +85,5 @@ export const CardPost = ({title, mediaUri, type, source, commentCount, voteCount
     </Link>
   )
 }
+
+export default  CardPost
