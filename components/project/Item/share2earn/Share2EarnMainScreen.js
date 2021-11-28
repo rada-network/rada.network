@@ -400,10 +400,10 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                   </div>
                 </div>
                 <a href="https://drive.google.com/drive/folders/1MJHaOwbFQagGWnEB2B6fs0MkwRmH3BSZ" 
-                target="_blank" 
-                className="mt-4 flex text-sm border border-gray-200 dark:border-gray-700 text-center rounded-lg p-2  items-center" >
+                  target="_blank" 
+                  className="mt-4 flex text-sm border border-gray-200 dark:border-gray-700 text-center rounded-lg p-2  items-center" >
                   <i className="fa-duotone fa-external-link text-xs ml-auto mr-2" />
-                  <span className="mr-auto">{t("Qualified examples")}</span>
+                  <span className="mr-auto">{t("qualified examples")}</span>
                 </a> 
               </div>
                     
