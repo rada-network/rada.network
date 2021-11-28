@@ -138,7 +138,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
                 
                 </div>
 
-                <div className="absolute right-4 top-4">
+                <div className="absolute right-4 top-2 md:top-4">
                   <button
                     type="button"
                     className="inline-flex justify-center px-4 bg-transparent 

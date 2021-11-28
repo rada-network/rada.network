@@ -209,7 +209,7 @@ const ConnectWalletModal = observer(({}) => {
               {/* end of wallet section */}
             </div>
 
-            <div className="absolute right-4 top-4">
+            <div className="absolute right-4 top-2 md:top-4">
               <button
                 type="button"
                 className="w-10 h-10 inline-flex items-center justify-center bg-transparent transition
