@@ -436,7 +436,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                     <form>
                       {/* Telegram */}
                       <div className="mb-4">
-                        <label for="telegram-post-url" className="sr-only block text-xs font-medium uppercase">Telegram's post link</label>
+                        <label for="telegram-post-url" className="sr-only block text-xs font-medium uppercase">Telegram's username</label>
                         <div className="mt-1 relative rounded-md shadow-sm">
                           <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--telegram"><span class="icon"><i class="fa-brands fa-telegram"></i></span></span>
                           <input type="text" name="telegram-post-url" id="telegram-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
