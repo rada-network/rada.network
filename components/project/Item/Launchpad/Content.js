@@ -17,9 +17,9 @@ export default function LaunchpadContent({ project }) {
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {
-        let availableBusd = await lauchpadContact.balanceBusd();
+        let totalSubBUSD = await lauchpadContact.totalSubBUSD();
         let updateInfo = {
-          availableBusd: utils.formatEther(availableBusd),
+          totalSubBUSD: utils.formatEther(totalSubBUSD),
         };
         setLaunchpadInfo(updateInfo);
       } catch (error) {
@@ -33,7 +33,7 @@ export default function LaunchpadContent({ project }) {
   }, [account, lauchpadContact, library]);
   const raise = project.raise;
   const tokenPrice = project.price;
-  const progressToken = parseInt(launchpadInfo?.availableBusd) || 0;
+  const progressToken = parseInt(launchpadInfo?.totalSubBUSD) || 0;
   const target = raise;
   const progressPercentage = ((progressToken / target) * 100).toFixed(1);
   const curentTime = (new Date()).getTime() / 1000
