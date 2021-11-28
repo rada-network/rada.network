@@ -135,7 +135,7 @@ export default function ProjectShare2Earn({
 
     return '';
   }
-  const allowJoin = getMessage() == '' && joined == '' && account && (joined == account)
+  const allowJoin = getMessage() == '' && joined == '' && account && (joined != account)
   if (loading) return null;
   if (joined != account) {
     console.log(joined)
