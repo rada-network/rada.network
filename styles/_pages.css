@@ -87,32 +87,28 @@ Page Projects
   }
 }
 
-.page-project-details {
-  &.page-full {
-    @apply px-0 pb-4 lg:pb-12;
-  }
-}
 
-.page-research-details {
+.page-research-details,
+.page-project-share2earn {
   &.page-full {
-    @apply bg-white dark:bg-gray-900;
+    @apply px-0 pb-4 lg:pb-12 bg-white dark:bg-gray-900;
     .post-content {
       @apply px-0;
     }
-  }
-  .section {
-    @apply max-w-screen-md mx-auto;
   }
   .section-header {
     @apply lg:mt-4 mb-4;
   }
 }
 
-.page-project-share2earn {
-  &.page-full {
-    @apply bg-white dark:bg-gray-900;
-  }
+.page-research-details .section {
+  @apply max-w-screen-md mx-auto;
 }
+
+.page-project-share2earn .section {
+  @apply max-w-screen-sm mx-auto;
+}
+
 
 
 /*
@@ -236,7 +232,7 @@ Post Details
 }
 
 .post-header {
-  @apply flex flex-col;
+  @apply flex flex-col mb-4;
 }
 
 .post-body {}

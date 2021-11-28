@@ -1,4 +1,4 @@
-import RadaSvg from "../../../svg/rada";
+import RadaSvg from "../../../../../components/svg/rada";
 
 const TokenMeta = function ({ }) {
   return (

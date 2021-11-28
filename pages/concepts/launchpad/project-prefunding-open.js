@@ -2,13 +2,13 @@ import { Head } from "../../../components/Head";
 import { Topbar } from "../../../components/Topbar";
 import { Navbar } from "../../../components/Navbar";
 import TokenInfo from "../../../components/token/TokenInfo";
-import MainActions from "../../../components/cards/concepts/launchpad/MainActions-prefunding-open";
+import MainActions from "../_components/cards/launchpad/MainActions-prefunding-open";
 import { ProjectsList } from "../../../components/card-layouts/concepts/launchpad/ProjectsList";
 import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
 import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
 import ReactDOM from 'react-dom';
 // Cards Concepts
-import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
+import TokenMeta from "../_components/cards/launchpad/TokenMeta";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";

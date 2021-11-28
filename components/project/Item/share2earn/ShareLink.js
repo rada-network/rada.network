@@ -52,7 +52,7 @@ const ShareLink = function ({ uid, share_message, project }) {
           <span className="text-gray-500 dark:text-gray-400">{t("main step 2 des")}</span>
 
           <div className="text-base mt-4 flex-shrink-0 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
-            <div className="p-4 h-28 scrollbar">
+            <div className="p-4 h-32 scrollbar">
               <p className="mb-4 block" ref={textRef}>{message}</p>
               <p className="block">👉 &nbsp;Learn more here <a target="_blank" href={shareUrl} className="link">{shareUrl}</a></p>
             </div>

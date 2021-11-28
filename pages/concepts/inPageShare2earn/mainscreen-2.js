@@ -1,7 +1,7 @@
 import { Head } from "../../../components/Head";
 
-import SelectBannerType from "../../../components/concepts/listboxes/listbox-s2e";
-import Toggle from "../../../components/concepts/toggles/toggle-s2e";
+import SelectBannerType from "../_components/listboxes/listbox-s2e";
+import Toggle from "../_components/toggles/toggle-s2e";
 
 function Concept() {
   return (

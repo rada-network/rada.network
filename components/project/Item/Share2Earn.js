@@ -58,7 +58,9 @@ export default function ProjectShare2Earn({
       },
     })
 
-  const handleJoinProgram = async () => {
+  const handleJoinProgram = async (e) => {
+    e.preventDefault()
+    e.stopPropagation()
     handleConfirm();
   };
   const [joined, setJoined] = useState('')
@@ -114,7 +116,11 @@ export default function ProjectShare2Earn({
     }
   };
 
-  const openLoginPopUp = () => store.user.showConnect(true)
+  const openLoginPopUp = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    store.user.showConnect(true)
+  }
 
 
   const getMessage = () => {
@@ -129,7 +135,7 @@ export default function ProjectShare2Earn({
 
     return '';
   }
-  const allowJoin = getMessage() == '' && joined == '' && account && (joined == account)
+  const allowJoin = getMessage() == '' && joined == '' && account && (joined != account)
   if (loading) return null;
   if (joined != account) {
     console.log(joined)
@@ -147,136 +153,133 @@ export default function ProjectShare2Earn({
   return (
     <>
       <Head />
-      <div className="pane-content--sec--main grid scrollbar">
 
-        <div className="page page-share2earn">
+      <div className="section mx-auto">
 
-          <div className="section max-w-screen-sm mx-auto">
+        <div className="section-header !flex-col">
+          <h1 className="mb-2">
+            <span className="text-xl lg:text-2xl font-semibold text-color-title">
+            Join The Parallel #Share2Earn Event ✨
+            </span>
+          </h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+          {t("welcome des")}</p>
+        </div>
 
-            <div className="section-body">
-              <h1 className="mb-2">
-                <span className="text-xl lg:text-2xl font-semibold text-color-title">
-                Join The Parallel #Share2Earn Event ✨
-                </span>
-              </h1>
+        <div className="section-body">
 
-              <p className="text-sm mb-6 text-gray-500 dark:text-gray-400">
-              {t("welcome des")}</p>
+          <div className="box box--primary box-share2earn relative mb-4">
+            <div className="box-body">
+              <div className="mb-2 md:mb-4">
+                <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/share2earn.png"} alt="RADA Share2Earn Program" />
+              </div>
+              <h2 className="flex flex-col font-altsans">
+                <strong className="text-3xl md:text-4xl font-semibold flex items-center tracking-normal md:tracking-wider">
+                  <span>Share</span>
+                  <span className="text-2xl md:text-3xl flex items-center justify-center bg-white w-9 h-9 rounded-full text-primary-500 mx-1 md:mx-2 font-bold">2</span>
+                  <span>Earn</span>
+                </strong>
+                <span className="mt-1 text-base md:text-lg font-medium tracking-wide">by RADA Network</span>
+              </h2>
+              <div className="w-36 h-36 md:w-44 md:h-44 absolute right-2 -bottom-1 md:right-12 lg:right-6">
+                <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/theparallel.png"} alt="The Parallel" />
+              </div>
+            </div>
+          </div>
+          
+          {/* <p className="text-sm mb-8 text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: t("welcome description", { provider: `<span class="text-primary-700 dark:text-primary-400">RIR token</span>` }) }} /> */}
+          
+          <ul className="text-sm space-y-4">
+            <li className="flex p-4 rounded-lg border border-gray-300 dark:border-gray-700">
+              <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0 ">
+                <i className="fa-light fa-hexagon"></i>
+                <i className="fa-duotone fa-user-plus"></i>
+              </span>
+              <div className="flex flex-col">
+                <div>
+                {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 &&<strong className="text-base text-color-title  flex items-center">Tier 1 <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+{ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span> </strong> }
+                </div>
+                {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 && <p className="opacity-80 mt-2"> {t("welcome tier1 des", {rir: ethers.utils.formatEther(share2EarnInfo.incentiveL0)})} </p> }
 
-              <div className="box box--primary box-share2earn relative mb-4">
-                <div className="box-body">
-                  <div className="mb-2 md:mb-4">
-                    <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/share2earn.png"} alt="RADA Share2Earn Program" />
-                  </div>
-                  <h2 className="flex flex-col font-altsans">
-                    <strong className="text-3xl md:text-4xl font-semibold flex items-center tracking-normal md:tracking-wider">
-                      <span>Share</span>
-                      <span className="text-2xl md:text-3xl flex items-center justify-center bg-white w-9 h-9 rounded-full text-primary-500 mx-1 md:mx-2 font-bold">2</span>
-                      <span>Earn</span>
-                    </strong>
-                    <span className="mt-1 text-base md:text-lg font-medium tracking-wide">by RADA Network</span>
-                  </h2>
-                  <div className="w-36 h-36 md:w-44 md:h-44 absolute right-2 -bottom-1 md:right-12 lg:right-6">
-                    <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/theparallel.png"} alt="The Parallel" />
-                  </div>
+                {/* {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 &&
+                  <span className="text-gray-500 dark:text-gray-400"
+                    dangerouslySetInnerHTML={{
+                      __html: t("welcome incentive description", {
+                        rir: `<span class="text-primary-700 dark:text-primary-400"> ${ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span>`
+                      })
+                    }} />
+                } */}
+              </div>
+            </li>
+
+            <li className="flex p-4 rounded-lg border border-gray-300 dark:border-gray-700">
+              <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0">
+                <i className="fa-light fa-hexagon"></i>
+                <i className="fa-duotone fa-users"></i>
+              </span>
+              <div className="flex flex-col">
+                <div>
+                  <strong className="text-base flex items-center text-color-title">
+                  Tier 2 
+                  {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+{ethers.utils.formatEther(share2EarnInfo.incentiveL1)} RIR</span> }
+                  {/* {t("welcome lv2 title")} */}
+                  </strong>
+                </div>
+                {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <p className="opacity-80 mt-2">{t("welcome tier2 des", {rir: ethers.utils.formatEther(share2EarnInfo.incentiveL1)})}</p> }
+              </div>
+            </li>
+          </ul>
+          <div className="mt-4 rounded-lg border border-yellow-200 bg-yellow-400 bg-opacity-5 text-sm overflow-hidden">
+            <div className="px-4 py-2 bg-yellow-400 bg-opacity-10 dark:bg-opacity-100 dark:bg-gray-800 flex items-center">
+              <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+              <span className="font-semibold">{t("notice")}</span>  
+            </div>
+            <ul className="p-4">
+              <li className="mb-2">{t("notice line 1")}</li>
+              <li  className="mb-2">{t("notice line 2")}</li>
+              <li>{t("notice line 3")}</li>
+            </ul>
+          </div>       
+          {user?.id && <form className="mt-4">
+
+            {allowJoin && <fieldset className="space-y-4 mb-4 text-gray-500 dark:text-gray-400">
+              <legend className="sr-only">Term of Uses</legend>
+              <div className="relative flex items-start">
+                <div className="flex items-center h-5">
+                  <input id="terms" aria-describedby="terms-description" name="terms" type="checkbox" className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded" onChange={e => setConfirm(e.target.checked)} />
+                </div>
+                <div className="ml-3 text-sm">
+                  <label className="" for="terms">
+                    {t("welcome confirm")}.
+                    {/* <a href="#" target="_blank" className="link ml-2">{t("Learn more")}</a>. */}
+                  </label>
                 </div>
               </div>
-              
-              {/* <p className="text-sm mb-8 text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: t("welcome description", { provider: `<span class="text-primary-700 dark:text-primary-400">RIR token</span>` }) }} /> */}
-              
-              <ul className="text-sm space-y-4">
-                <li className="flex p-4 rounded-lg border border-gray-300 dark:border-gray-700">
-                  <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0 ">
-                    <i className="fa-light fa-hexagon"></i>
-                    <i className="fa-duotone fa-user-plus"></i>
-                  </span>
-                  <div className="flex flex-col">
-                    <div>
-                    {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 &&<strong className="text-base text-color-title  flex items-center">Tier 1 <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+{ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span> </strong> }
-                    </div>
-                    {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 && <p className="opacity-80 mt-2"> {t("welcome tier1 des", {rir: ethers.utils.formatEther(share2EarnInfo.incentiveL0)})} </p> }
+            </fieldset>}
 
-                    {/* {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 &&
-                      <span className="text-gray-500 dark:text-gray-400"
-                        dangerouslySetInnerHTML={{
-                          __html: t("welcome incentive description", {
-                            rir: `<span class="text-primary-700 dark:text-primary-400"> ${ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span>`
-                          })
-                        }} />
-                    } */}
-                  </div>
-                </li>
-
-                <li className="flex p-4 rounded-lg border border-gray-300 dark:border-gray-700">
-                  <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0">
-                    <i className="fa-light fa-hexagon"></i>
-                    <i className="fa-duotone fa-users"></i>
-                  </span>
-                  <div className="flex flex-col">
-                    <div>
-                      <strong className="text-base flex items-center text-color-title">
-                      Tier 2 
-                      {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+{ethers.utils.formatEther(share2EarnInfo.incentiveL1)} RIR</span> }
-                      {/* {t("welcome lv2 title")} */}
-                      </strong>
-                    </div>
-                    {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <p className="opacity-80 mt-2">{t("welcome tier2 des", {rir: ethers.utils.formatEther(share2EarnInfo.incentiveL1)})}</p> }
-                  </div>
-                </li>
-              </ul>
-              <div className="mt-4 rounded-lg border border-yellow-200 bg-yellow-400 bg-opacity-5 text-sm overflow-hidden">
-                <div className="px-4 py-2 bg-yellow-400 bg-opacity-10 dark:bg-opacity-100 dark:bg-gray-800 flex items-center">
-                  <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
-                  <span className="font-semibold">Notice</span>  
-                </div>
-                <ul className="p-4">
-                  <li className="mb-2">	&bull; We strongly recommend to join Share2Earn using laptop or PC for smoother experience.</li>
-                  <li  className="mb-2">	&bull; Share2Earn doesn&rsquo;t work on Android.</li>
-                  <li>&bull; Share2Earn doesn&rsquo;t work on built-in Wallet&rsquo;s browser.</li>
-                </ul>
-              </div>       
-              {user?.id && <form className="mt-4">
-
-                {allowJoin && <fieldset className="space-y-4 mb-4 text-gray-500 dark:text-gray-400">
-                  <legend className="sr-only">Term of Uses</legend>
-                  <div className="relative flex items-start">
-                    <div className="flex items-center h-5">
-                      <input id="terms" aria-describedby="terms-description" name="terms" type="checkbox" className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded" onChange={e => setConfirm(e.target.checked)} />
-                    </div>
-                    <div className="ml-3 text-sm">
-                      <label className="" for="terms">
-                        {t("welcome confirm")}.
-                        {/* <a href="#" target="_blank" className="link ml-2">{t("Learn more")}</a>. */}
-                      </label>
-                    </div>
-                  </div>
-                </fieldset>}
-
-                {_.isEmpty(account) ? (
-                  <div className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 "} type="submit" onClick={() => handleConnectWallet()}>{t("welcome btn connect wallet")}</div>) :
-                  (
-                    <>
-                      {
-                        allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="submit"
-                          onClick={() => handleJoinProgram()}
-                        >{t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{wordBreak:"break-word"}}>{getMessage()}</div>
-                      }
-                    </>
-                  )}
-              </form>
-              }
-              { (user.id === "") ? (
-                <form className="mt-4">
-                  <button className="mt-4 btn btn-yel>low w-full justify-center py-3 px-4" type="submit"
-                  onClick={openLoginPopUp}
-                  >{t("welcome btn login")}</button>
-                </form>
-              ) : null }
-               <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg" onClick={e => {toast.info(t("Coming Soon"),{position : "top-center"})}} target="_blank"> {t("learn more")} </a>
-            </div>
-
-          </div>
-
+            {_.isEmpty(account) ? (
+              <div className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 "} type="button" onClick={() => handleConnectWallet()}>{t("welcome btn connect wallet")}</div>) :
+              (
+                <>
+                  {
+                    allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="button"
+                      onClick={(e) => {handleJoinProgram(e)}}
+                    >{t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{wordBreak:"break-word"}}>{getMessage()}</div>
+                  }
+                </>
+              )}
+          </form>
+          }
+          { (user.id === "") ? (
+            <form className="mt-4">
+              <button className="mt-4 btn btn-yel>low w-full justify-center py-3 px-4" type="button"
+              onClick={openLoginPopUp}
+              >{t("welcome btn login")}</button>
+            </form>
+          ) : null }
+            <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg" 
+            // onClick={e => {toast.info(t("Coming Soon"),{position : "top-center"})}} 
+            target="_blank" href={t("learn more url")}> {t("learn more")} </a>
         </div>
 
       </div>

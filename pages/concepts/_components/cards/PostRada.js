@@ -90,3 +90,5 @@ export const ConceptCardPost = ({title, mediaUri, type, source, commentCount, vo
     </Link>
   )
 }
+
+export default ConceptCardPost

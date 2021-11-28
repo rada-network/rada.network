@@ -1,5 +1,5 @@
 import { BscSvg, UsdtSvg, LaunchSvg } from "../../svg/SvgIcons"
-import MainActions from "../../cards/concepts/launchpad/MainActions"
+import MainActions from "../../../pages/concepts/_components/cards/launchpad/MainActions"
 import { useEffect } from "react"
 import { useTranslation } from 'next-i18next';
 import Link from "next/link";

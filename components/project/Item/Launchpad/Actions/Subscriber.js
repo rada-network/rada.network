@@ -9,7 +9,7 @@ const Subscriber = function({project,buyers}){
           </li>
           {buyers && buyers.map(function(item,key){
             return (
-              <li>
+              <li key={item}>
                 <span className="winner--no">{key+1}</span>
                 <span className="winner--address">{item}</span>
               </li>

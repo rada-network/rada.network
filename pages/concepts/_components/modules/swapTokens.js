@@ -1,4 +1,4 @@
-import { CheckSvg } from "../../svg/SvgIcons";
+import { CheckSvg } from "../../../../components/svg/SvgIcons";
 const SwapTokens = ({}) => {
   return (
     <>

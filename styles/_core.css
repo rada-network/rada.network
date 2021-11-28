@@ -33,8 +33,8 @@ a {
   /* This is for visual option */
   @apply text-primary-700 hover:text-primary-700 transition;
   @apply border-b border-primary-700 border-opacity-20 hover:border-opacity-100;
-  @apply dark:text-white dark:hover:text-white;
-  @apply dark:border-white dark:border-opacity-50 dark:hover:border-opacity-100;
+  @apply dark:text-primary-400 dark:hover:text-primary-400;
+  @apply dark:border-primary-400 dark:border-opacity-50 dark:hover:border-opacity-100;
 }
 
 .link-text {

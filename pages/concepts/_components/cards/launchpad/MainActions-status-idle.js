@@ -1,5 +1,5 @@
-import ProjectTimeline from "../../../concepts/steps/projectTimeline";
-import SwapTokens from "../../../concepts/modules/swapTokens-backup";
+import ProjectTimeline from "../../steps/projectTimeline";
+import SwapTokens from "../../modules/swapTokens-backup";
 import Winners from "./Winners";
 const MainActions = ({}) => {
   return (

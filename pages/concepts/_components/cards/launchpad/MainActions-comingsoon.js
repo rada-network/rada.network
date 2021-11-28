@@ -1,5 +1,5 @@
-import ProjectTimeline from "../../../concepts/steps/projectTimeline";
-import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
+import ProjectTimeline from "../../steps/projectTimeline";
+import CountDownLg from "../../timers/countdownLg-whitelist";
 
 const MainActions = ({}) => {
   return (

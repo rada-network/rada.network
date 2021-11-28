@@ -36,5 +36,10 @@
   "under review tooltip": "Số thưởng đang chờ xét duyệt bởi Admin ",
   "approve earning tooltip": "Số thưởng bạn có thể sử dụng",
   "max rir tooltip": "Số RIR tối đa bạn có thể kiếm ở chiến dịch này",
-  "wrong connect address" : "Bạn đã tham gia chương trình bằng địa chỉ ví này {{address}}, vui lòng kết nối với địa chỉ chính xác"
+  "wrong connect address" : "Bạn đã tham gia chương trình bằng địa chỉ ví này {{address}}, vui lòng kết nối với địa chỉ chính xác",
+  "learn more url": "https://rada.network/vi/post/gioi-thieu-mot-nguoi-ban-va-nhan-rir-tokens-chuong-trinh-share2earn-cua-rada",
+  "notice line 1": "• Bạn nên tham gia Share2Earn bằng máy tính laptophoặc PC để có trải nghiệm mượt mà hơn.",
+  "notice line 2": "• Share2Earn không hoạt động trên hệ điều hành Android.",
+  "notice line 3": "• Share2Earn không hoạt động trên trình duyệt được tích hợp sẵn của các ví.",
+  "notice": "Chú ý"
 }

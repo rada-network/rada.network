@@ -7,8 +7,8 @@ import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
 import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
 
 // Cards Concepts
-import TokenMeta from "../../../components/cards/concepts/launchpad/TokenMeta";
-import MainActions from "../../../components/cards/concepts/launchpad/MainActions-prefunding-open";
+import TokenMeta from "../_components/cards/launchpad/TokenMeta";
+import MainActions from "../_components/cards/launchpad/MainActions-prefunding-open";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
 import Profile from "../../../components/Profile";
