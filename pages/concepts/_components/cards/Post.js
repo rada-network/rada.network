@@ -3,7 +3,6 @@ import utils from "../../../../lib/util";
 import KeywordIcon from "../../../../components/icons/keywordIcon";
 import ContentLoader from "react-content-loader";
 import Link from "next/link"
-import ShowSources from '../../news-sources/ShowSources'
 import ReadingTime from "../../../../components/news-sources/ReadingTime";
 export const NewsLoader = (props) => (
   <div className={`card card-post`}>
