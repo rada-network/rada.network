@@ -1,4 +1,4 @@
-export default Card = ({post, title, text, mediaUri, link}) => {
+const Card = ({post, title, text, mediaUri, link}) => {
   const content = 
     <div className="card">
       <div className="card-media">
@@ -22,3 +22,5 @@ export default Card = ({post, title, text, mediaUri, link}) => {
     content
   );
 };
+
+export default Card
