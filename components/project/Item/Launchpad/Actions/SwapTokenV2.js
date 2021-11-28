@@ -102,7 +102,7 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
             {/* remove the above block if user doesn't have RIR */}
             <div className="">
               <label htmlFor="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Amount")}</label>
-              <select id="amount" name="amount" className="select-custom" defaultValue={numberBusd} onChange={e => {setNumberBusd(e.currentTarget.value)}}>
+              <select id="amount" name="amount" className="select-custom" value={numberBusd} onChange={e => {setNumberBusd(e.currentTarget.value),setNumberRIR(parseInt(e.currentTarget.value)/100)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option key={-1} className="text-gray-300" value={0}>0 BUSD</option>
                 {Array(maxSelected).fill(null).map((_, i) => {
@@ -119,14 +119,14 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
             {accountBalance.rirBalance > 0 && 
             <div className="mt-4">
               <label htmlFor="rir" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("RIR")}</label>
-              <select id="rir" name="rir" className="select-custom " defaultValue={numberRIR} onChange={e => {setNumberRIR(e.currentTarget.value)}}>
+              <select id="rir" name="rir" className="select-custom " value={numberRIR} onChange={e => {setNumberRIR(e.currentTarget.value)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
-                <option key="-1" className="text-gray-300" value={0}>{0} RIR</option>
+                <option key="0" className="text-gray-300" value={0}>{0} RIR</option>
                 {Array(maxSelected).fill(null).map((_, i) => {
                   return (
                     <>
                     {((parseInt(numberBusd) + currentOrderBusd)/100 - currentOrderRIR >= (i + 1)) &&
-                    <option key={i} className="text-gray-300" value={(i+1)}>{(i+1)} RIR</option>
+                    <option key={i+1} className="text-gray-300" value={(i+1)}>{(i+1)} RIR</option>
                     }
                     </>
                   )
@@ -216,19 +216,19 @@ const SwapNote = function({numberBusd,numberRIR,maxSelected,currentOrderBusd,cur
   },[numberBusd,numberRIR])
   return (
     <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
-      <li className="flex mb-2 relative pl-6">
+      <li key={0} className="flex mb-2 relative pl-6">
         <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
           <CheckSvg />  
         </span>
         <div className="">{(parseInt(RIR) + currentOrderRIR) * 100} BUSD ({parseInt(RIR) + currentOrderRIR} RIR) is guaranteed.</div>
       </li>
-      <li className="relative mb-2 pl-6">
+      <li key={1} className="relative mb-2 pl-6">
         <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
           <CheckSvg />  
         </span>
         <div>The rest of your investment will be distributed based on the total subscripption.</div>
       </li>
-      <li className="relative mb-2 pl-6">
+      <li key={2} className="relative mb-2 pl-6">
         <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
           <CheckSvg />  
         </span>

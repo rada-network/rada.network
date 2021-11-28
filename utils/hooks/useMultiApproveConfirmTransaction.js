@@ -110,7 +110,7 @@ const useMultiApproveConfirmTransaction = ({
       } catch (error) {
         console.log(error)
         dispatch({ type: 'approve_error' })
-        toast.error('Please try again. Confirm the transaction and make sure you are paying enough gas!')
+        toast.error(error?.data?.message)
       }
     },
     handleConfirm: async (params = {}) => {
@@ -125,7 +125,7 @@ const useMultiApproveConfirmTransaction = ({
       } catch (error) {
         console.log(error)
         dispatch({ type: 'confirm_error' })
-        toast.error('Please try again. Confirm the transaction and make sure you are paying enough gas!')
+        toast.error(error?.data?.message)
       }
     },
     handleReload: async (params = {}) => {

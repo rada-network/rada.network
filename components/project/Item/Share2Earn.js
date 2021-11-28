@@ -58,7 +58,9 @@ export default function ProjectShare2Earn({
       },
     })
 
-  const handleJoinProgram = async () => {
+  const handleJoinProgram = async (e) => {
+    e.preventDefault()
+    e.stopPropagation()
     handleConfirm();
   };
   const [joined, setJoined] = useState('')
@@ -114,7 +116,11 @@ export default function ProjectShare2Earn({
     }
   };
 
-  const openLoginPopUp = () => store.user.showConnect(true)
+  const openLoginPopUp = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    store.user.showConnect(true)
+  }
 
 
   const getMessage = () => {
@@ -129,7 +135,7 @@ export default function ProjectShare2Earn({
 
     return '';
   }
-  const allowJoin = getMessage() == '' && joined == '' && account && (joined == account)
+  const allowJoin = getMessage() == '' && joined == '' && account && (joined != account)
   if (loading) return null;
   if (joined != account) {
     console.log(joined)
@@ -252,12 +258,12 @@ export default function ProjectShare2Earn({
             </fieldset>}
 
             {_.isEmpty(account) ? (
-              <div className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 "} type="submit" onClick={() => handleConnectWallet()}>{t("welcome btn connect wallet")}</div>) :
+              <div className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 "} type="button" onClick={() => handleConnectWallet()}>{t("welcome btn connect wallet")}</div>) :
               (
                 <>
                   {
-                    allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="submit"
-                      onClick={() => handleJoinProgram()}
+                    allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="button"
+                      onClick={(e) => {handleJoinProgram(e)}}
                     >{t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{wordBreak:"break-word"}}>{getMessage()}</div>
                   }
                 </>
@@ -266,7 +272,7 @@ export default function ProjectShare2Earn({
           }
           { (user.id === "") ? (
             <form className="mt-4">
-              <button className="mt-4 btn btn-yel>low w-full justify-center py-3 px-4" type="submit"
+              <button className="mt-4 btn btn-yel>low w-full justify-center py-3 px-4" type="button"
               onClick={openLoginPopUp}
               >{t("welcome btn login")}</button>
             </form>

@@ -152,3 +152,5 @@ export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPr
     
   )
 }
+
+export default CardProject

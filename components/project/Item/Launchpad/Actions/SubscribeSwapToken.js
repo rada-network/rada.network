@@ -1,15 +1,17 @@
 import Subscriber from "./Subscriber";
 import Timeline from "./Timeline";
 import SwapTokens from "./SwapTokens"
-import { useBUSDContract, useERC20, useRIRContract } from "@utils/hooks/useContracts";
+import { useBUSDContract, useERC20, useRIRContract,useLaunchpadContractV2 } from "@utils/hooks/useContracts";
 import { useEffect,useState } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
-import { utils } from "ethers";
+import { ethers, utils } from "ethers";
 import { useTranslation } from "next-i18next";
 
 import { useLaunchpadInfo } from "@utils/hooks/index";
 import SwapTokensV2 from "./SwapTokenV2";
 import Link from "next/link"
+import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
+import {toast} from "react-toastify"
 
 
 const SubscribeSwapToken = ({project}) => {
@@ -19,11 +21,15 @@ const SubscribeSwapToken = ({project}) => {
   const bUSDContract = useBUSDContract()
   const {account} = useActiveWeb3React()
   const {launchpadInfo,loading,fetchLaunchpadInfo} = useLaunchpadInfo({project})
+  const {callWithGasPrice} = useCallWithGasPrice()
+  const launchpadContract = useLaunchpadContractV2(project.swap_contract)
   const [accountBalance, setAccountBalance] = useState({})
   const [loadBalance, setLoadBalance]  = useState(true)
   const [orderBusd,setOrderBusd] = useState(0)
   const [orderRIR,setOrderRIR] = useState(0)
+  const [approvedBusd,setApprovedBusd] = useState(0)
   const [step,setStep] = useState(2)
+  const [claimDisbaled,setClaimDisbaled] = useState(false)
  
   const fetchAccountBalance =  async function(){
     await fetchLaunchpadInfo()
@@ -44,14 +50,40 @@ const SubscribeSwapToken = ({project}) => {
   useEffect(() => {
     let currentOrder = launchpadInfo?.currentOrder?.amountBUSD ? launchpadInfo?.currentOrder?.amountBUSD : 0
     let currentOrderRIR = launchpadInfo?.currentOrder?.amountRIR ? launchpadInfo?.currentOrder?.amountRIR : 0
+    let currentApprovedBusd = launchpadInfo?.currentOrder?.approvedBUSD ? launchpadInfo?.currentOrder?.approvedBUSD : 0
     setOrderBusd(utils.formatEther(currentOrder))
     setOrderRIR(utils.formatEther(currentOrderRIR))
+    setApprovedBusd(utils.formatEther(currentApprovedBusd))
   },[launchpadInfo])
   useEffect(() => {
-    if (orderBusd > 0){
-      setStep(3)
+    if (launchpadInfo.currentOrder && launchpadInfo.claimable && (parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 || parseInt(ethers.utils.formatEther(launchpadInfo.claimable[1])) > 0 || parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.claimedToken)) > 0)){
+      setStep(4)
     }
-  },[orderBusd]);
+    else{
+      if ((orderBusd > 0 || launchpadInfo.winnerCount > 0)){
+        setStep(3)
+      }
+    }
+    
+  },[orderBusd,launchpadInfo]);
+
+  const handleClaimToken = async function(e){
+    try {
+      setClaimDisbaled(true)
+      const tx = await callWithGasPrice(launchpadContract,"claim",[])
+      const receipt = await tx.wait()
+      if (receipt.status){
+        toast.success("Commit success")  
+      }
+      setClaimDisbaled(false)
+      fetchAccountBalance()
+    } catch (error) {
+      setClaimDisbaled(false)
+      console.log(error)
+      //toast.error(error.data.message)
+    }
+  }
+
   if (loading || loadBalance){
     return (
       <SubscribeSwapTokenLoading></SubscribeSwapTokenLoading>
@@ -59,10 +91,10 @@ const SubscribeSwapToken = ({project}) => {
   }
   const maxRIR = parseInt(launchpadInfo.individualMaximumAmount) / 100;
   const maxBusd = parseInt(launchpadInfo.individualMaximumAmount);
-  console.log(maxRIR, maxBusd,orderBusd,orderRIR)
+  console.log(launchpadInfo)
   return (
     <>
-    {step == 2 ?
+    {step == 2 &&
     <div className="card-default project-main-actions no-padding overflow-hidden">
       <div className="card-header text-center sr-only">
         <h3>Public Sale</h3>
@@ -147,7 +179,8 @@ const SubscribeSwapToken = ({project}) => {
         </div>
       </div>
     </div>
-    :
+    }
+    {(step == 3 && launchpadInfo.winnerCount == 0) && 
     <div className="card-default project-main-actions no-padding overflow-hidden">
       <div className="card-header text-center sr-only">
         <h3>Public Sale</h3>
@@ -193,7 +226,117 @@ const SubscribeSwapToken = ({project}) => {
     </div>
     }
 
-    {orderBusd > 0 &&
+    {(step == 3 && launchpadInfo.winnerCount > 0 && parseFloat(approvedBusd) > 0) && 
+    <div className="card-default project-main-actions no-padding overflow-hidden">
+
+      <div className="card-body no-padding">
+        <div className="flex flex-col">
+          <div className="">
+            <Timeline step="3" />
+          </div>
+
+          <div className="project-card--container">
+            <div className="max-w-2xl mx-auto text-center">
+            
+            <div className="flex items-center">
+              <div className="s2e-illustration flex-shrink-0"></div>
+              <div className="text-left ml-2">
+              <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">Congratulations! You&rsquo;re selected as a {project.content.title}'s investor
+              </h3>
+              <p>Approved BUSD : {approvedBusd}</p>
+              <p>Prefund BUSD : {orderBusd}</p>
+              <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+              </div>
+            </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+
+    {(step == 3 && launchpadInfo.winnerCount > 0 && parseFloat(approvedBusd) == 0.0) && 
+    <div className="card-default project-main-actions no-padding overflow-hidden">
+
+      <div className="card-body no-padding">
+        <div className="flex flex-col">
+          <div className="">
+            <Timeline step="3" />
+          </div>
+
+          <div className="project-card--container">
+            <div className="max-w-2xl mx-auto text-center">
+            
+            <div className="flex items-center">
+              <div className="mx-auto">
+                <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">Your application was rejected</h3>
+                <p>Unfortunately your application has failed. Good luck next time! Meanwhile, you can <a>claim your refund</a>.</p>
+              </div>
+            </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+    {/* claim token */}
+    {(step == 4) && 
+    <div className="card-default project-main-actions no-padding overflow-hidden">
+
+      <div className="card-body no-padding">
+        <div className="flex flex-col">
+          <div className="">
+            <Timeline step="4" />
+          </div>
+
+          <div className="project-card--container">
+            <div className="max-w-md mx-auto">
+              <ul class="mb-4 mt-auto flex-shrink-0 flex-grow">
+                <li class="list-pair mb-2">
+                  <span class="list-key !opacity-100">You can claim your Token</span>
+                  <div class="ml-auto list-value font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[1])} {project.token.symbol}
+                    <button onClick={e => {handleClaimToken(e)}} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
+                  </div>
+                </li>
+              </ul>
+
+              {/* <div className="box p-4">
+                <div className="flex items-baseline border-b pb-2  border-gray-200 dark:border-gray-800">
+                  <h4 className="text-md items-baseline font-semibold">
+                    Bạn đã rút
+                  </h4>
+                  <span className="ml-auto font-semibold">
+                    2,500 PRL
+                  </span>
+                </div>
+                <ul class="mb-0 mt-auto flex-shrink-0 flex-grow">
+                  <li class="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
+                    <span class="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 text-gray-700 mr-1">on</span>
+                      <date>15 tháng 9, 2021</date></span>
+                    <div class="ml-auto font-semibold list-value">
+                    2,500 PRL
+                    </div>
+                  </li>
+                  <li class="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
+                    <span class="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 dark-gray-700 mr-1">on</span>
+                      <date>01 tháng 9, 2021</date></span>
+                    <div class="ml-auto font-semibold list-value">
+                    2,500 PRL
+                    </div>
+                  </li>
+                </ul>
+              </div> */}
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+
+    {(orderBusd > 0 && launchpadInfo.winnerCount == 0)  &&
     <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
       <div className="card-header items-center">
         <h3>Subscriber ({launchpadInfo?.ordersBuyerCount})</h3>
@@ -204,6 +347,23 @@ const SubscribeSwapToken = ({project}) => {
           <div className="global-padding-lg min-h-full">
             
             <Subscriber project={project} buyers={launchpadInfo.buyers} />  
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+
+    {(orderBusd > 0 && launchpadInfo.winnerCount > 0)  &&
+    <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
+      <div className="card-header items-center">
+        <h3>Winners ({launchpadInfo?.winnerCount})</h3>
+      </div>
+
+      <div className="card-body no-padding">
+        <div className="flex flex-col">
+          <div className="global-padding-lg min-h-full">
+            
+            <Subscriber project={project} buyers={launchpadInfo.winners} />  
           </div>
         </div>
       </div>

@@ -255,7 +255,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
         <btn className="btn btn-default w-full !py-2"
           onClick={handleDownloadAvt}>
           <span className="icon"><i className="fa-duotone fa-download text-xs"></i></span>
-          <span className="btn--text">Download</span>
+          <span className="btn--text">{t("main button download")}</span>
         </btn>
       </div>
     );
