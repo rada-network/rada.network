@@ -9,8 +9,9 @@ import { ethers } from "ethers"
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import ReactTooltip from 'react-tooltip';
+import { createShortenLink } from "@data/query/createShortenLink"
 
-const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddress, incentivePaid, share2earnAdress, share2earnInfo }) => {
+const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddress, incentivePaid, share2earnAdress, share2earnInfo, project, uid }) => {
   const { t } = useTranslation('share2earn')
   const { callFunction } = useCallFunction()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
@@ -18,6 +19,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
   const riraddress = getRIRAddress()
   const [earnedRIR, setEarnedRIR] = useState(0.0)
   const [total, setTotal] = useState(0.0)
+  const [shareLink, setShareLink] = useState('')
 
   let [isOpen, setIsOpen] = useState(false)
 
@@ -28,15 +30,23 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
   function openModal() {
     setIsOpen(true)
   }
-  
+
   const handleCopy = () => {
     toast.success("Copied to clipboard", {})
   };
 
-  useEffect(() => {  
+  useEffect(() => {
+    let url = window.location.origin + `/launchverse/${project.slug}/share2earn` + "?ref=" + uid;
+    createShortenLink(url).then(({ data }) => {
+      let shortenURL = "https://rada.to/" + data.createShortenLink.key
+      setShareLink(shortenURL)
+    })
+  }, [])
+
+  useEffect(() => {
     const getInfo = async () => {
       try {
-        const earnedRIR = await callFunction(adminContract, 'incentivePaid',[projectID.toString(), walletAddress.toString()])
+        const earnedRIR = await callFunction(adminContract, 'incentivePaid', [projectID.toString(), walletAddress.toString()])
         setEarnedRIR(parseFloat(ethers.utils.formatEther(earnedRIR)))
       } catch (e) {
         console.log(e)
@@ -52,11 +62,11 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
       top: el.offsetTop
     };
   }
-  const overridePosition = function({left,top}, currentEvent, currentTarget, node, place, desiredPlace, effect, offset) {
+  const overridePosition = function ({ left, top }, currentEvent, currentTarget, node, place, desiredPlace, effect, offset) {
     const scrollTop = document.querySelector(".pane-content--sec--main").scrollTop
     const pageOffset = getOffset(document.querySelector(".page-project-share2earn"))
     const rect = document.querySelector(".page-project-share2earn").getBoundingClientRect()
-    return {left : getOffset(currentTarget.parentElement).left + rect.x - document.querySelector(".pane-content--sec--main").getBoundingClientRect().x,top : getOffset(currentTarget).top + pageOffset.top - scrollTop + 48}
+    return { left: getOffset(currentTarget.parentElement).left + rect.x - document.querySelector(".pane-content--sec--main").getBoundingClientRect().x, top: getOffset(currentTarget).top + pageOffset.top - scrollTop + 48 }
   }
 
   useEffect(() => {
@@ -73,7 +83,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
 
   return (
     <>
-    <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
           className="fixed inset-0 z-50 overflow-y-auto"
@@ -118,7 +128,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
                   <i className="fa-duotone text-yellow-400 mr-2 fa-trophy text-base" />Leaderboard
                 </Dialog.Title>
                 <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
-                  
+
                   <ul>
                     <li className="list-pair !items-center  pb-2 border-b border-gray-200 dark:border-gray-800 mt-auto mb-0">
                       <div className="list-key !w-16 !items-center flex-grow-0 flex-shrink-0 !opacity-100">
@@ -135,7 +145,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
                       </span>
                     </li>
                   </ul>
-                
+
                 </div>
 
                 <div className="absolute right-4 top-2 md:top-4">
@@ -147,7 +157,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
                      focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                     onClick={closeModal}
                   >
-                      <i className="fa-duotone fa-close text-base"></i>
+                    <i className="fa-duotone fa-close text-base"></i>
                   </button>
                 </div>
               </div>
@@ -165,7 +175,7 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
         </div>
         <div className="p-4">
           <div>
-          <ReactTooltip type="info" multiline={true} globalEventOff="click" clickable={true} html={true} place={`top`} overridePosition={overridePosition} />
+            <ReactTooltip type="info" multiline={true} globalEventOff="click" clickable={true} html={true} place={`top`} overridePosition={overridePosition} />
           </div>
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
             <li className="list-pair !items-center mb-2">
@@ -175,15 +185,15 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
               <div className="w-32 px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-700">
                 <div>
                   <a target="_blank" href={bscURL}>{`${share2earnAdress.substr(0, 5)}...${share2earnAdress.substr(-4)}`}</a></div>
-                  <CopyToClipboard
-                    onCopy={handleCopy}
-                    text={share2earnAdress}
-                  >
-                    <button class="btn ml-2">
-                      <i className="fa-duotone fa-copy text-2xs"></i>
-                    </button>
-                  </CopyToClipboard>
-                </div>
+                <CopyToClipboard
+                  onCopy={handleCopy}
+                  text={share2earnAdress}
+                >
+                  <button class="btn ml-2">
+                    <i className="fa-duotone fa-copy text-2xs"></i>
+                  </button>
+                </CopyToClipboard>
+              </div>
             </li>
 
             <li className="list-pair !items-center mb-2">
@@ -199,14 +209,33 @@ const Share2EarnStatus = ({ referralInfo , adminContract, projectID, walletAddre
               <div className="w-32 px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-700">
                 <div>
                   <a target="_blank" href={getBscScanURL(riraddress)}>{`${riraddress.substr(0, 5)}...${riraddress.substr(-4)}`}</a></div>
-                  <CopyToClipboard
-                    onCopy={handleCopy}
-                    text={riraddress}
-                  >
-                    <button class="btn ml-2">
-                      <i className="fa-duotone fa-copy text-2xs"></i>
-                    </button>
-                  </CopyToClipboard>
+                <CopyToClipboard
+                  onCopy={handleCopy}
+                  text={riraddress}
+                >
+                  <button class="btn ml-2">
+                    <i className="fa-duotone fa-copy text-2xs"></i>
+                  </button>
+                </CopyToClipboard>
+              </div>
+            </li>
+
+            <li className="list-pair !items-center mb-2">
+              <div className="list-key">
+                Share Link
+              </div>
+              <div className="w-32 px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-700">
+                <div>
+                  <a target="_blank">{`${shareLink.substr(0, 8)}...${shareLink.substr(-4)}`}</a>
+                </div>
+                <CopyToClipboard
+                  onCopy={handleCopy}
+                  text={shareLink}
+                >
+                  <button class="btn ml-2">
+                    <i className="fa-duotone fa-copy text-2xs"></i>
+                  </button>
+                </CopyToClipboard>
               </div>
             </li>
 

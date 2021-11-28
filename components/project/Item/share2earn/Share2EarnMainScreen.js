@@ -311,7 +311,9 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
             adminContract={referralAdminContract} 
             projectID={project.id.toString()} 
             walletAddress={account} share2earnAdress={share2earnAddress}
-            share2earnInfo={share2earnInfo}/>
+            share2earnInfo={share2earnInfo}
+            project={project}
+            uid={uid}/>
 
           <ol className="text-sm space-y-8">
 
