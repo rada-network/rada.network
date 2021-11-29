@@ -14,7 +14,6 @@ const LaunchpadActions = ({ project }) => {
   const curentTime = (new Date()).getTime() / 1000
   const openTime = (new Date(project.open_date)).getTime() / 1000
   const endTime = (new Date(project.end_date)).getTime() / 1000
-
   if (project.open_date === null) {
     return <WhitelistCountdown project={project} />
   }
@@ -26,7 +25,7 @@ const LaunchpadActions = ({ project }) => {
   if (openTime < curentTime && curentTime < endTime) {
     return (
       <>
-        {((store.kyc.isKYC) || (!store.kyc.isKYC && !project.is_kyc)) && !!account ?
+        {((store.kyc.isKYC) || (!store.kyc.isKYC && !project.is_kyc)) && store.user.id !== "" && !!account ?
           <SubscribeSwapToken project={project} />
           :
           <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">

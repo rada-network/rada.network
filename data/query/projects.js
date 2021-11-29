@@ -22,6 +22,7 @@ const projectBySlugGql = gql`
 				raise
 				price
 				is_kyc
+				is_allow_rir
 				token{
 						name
 						logo
