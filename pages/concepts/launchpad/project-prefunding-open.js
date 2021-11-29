@@ -69,7 +69,7 @@ const Layout = observer((props) => {
                   <div className="pane-content--sec--main grid scrollbar">
                     <div className="page page-full page-project-details !pt-0">
                       <div className="w-limiter-lg">
-                        <div>                          
+                        <div className="pt-4">                          
                           <TokenBrief />
                           <div className="section-body p-4 md:p-4">
                             <TokenContent />
