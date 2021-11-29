@@ -173,7 +173,7 @@ const MainActions = ({}) => {
       <div className="card-default project-main-actions no-padding overflow-hidden">
 
         <div className="card-header text-center sr-only">
-          <h3>Public Sale</h3>
+          <h2>Public Sale</h2>
         </div>
 
         <div className="card-body no-padding">

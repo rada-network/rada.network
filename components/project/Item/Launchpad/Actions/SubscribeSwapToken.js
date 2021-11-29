@@ -99,7 +99,7 @@ const SubscribeSwapToken = ({ project }) => {
       {step == 2 &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-header text-center sr-only">
-            <h3>Public Sale</h3>
+            <h2>Public Sale</h2>
           </div>
 
           <div className="card-body no-padding">
@@ -185,7 +185,7 @@ const SubscribeSwapToken = ({ project }) => {
       {(step == 3 && launchpadInfo.winnerCount == 0) &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-header text-center sr-only">
-            <h3>Public Sale</h3>
+            <h2>Public Sale</h2>
           </div>
 
           <div className="card-body no-padding">
@@ -428,7 +428,7 @@ const SubscribeSwapToken = ({ project }) => {
   return (
       <div className="card-default project-main-actions no-padding overflow-hidden">
         <div className="card-header text-center sr-only">
-          <h3>Public Sale</h3>
+          <h2>Public Sale</h2>
         </div>
 
         <div className="card-body no-padding">
