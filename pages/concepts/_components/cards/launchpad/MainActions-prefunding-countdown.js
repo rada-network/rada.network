@@ -18,7 +18,7 @@ const MainActions = ({}) => {
               <ProjectTimeline step="2" />
             </div>
 
-            <div className="global-padding-lg !px-4 min-h-full max-w-xl w-full mx-auto">
+            <div className="project-card--container">
 
               <div className="mb-8 box box--success global-padding-sm">
                 <p className="text-center font-normal">

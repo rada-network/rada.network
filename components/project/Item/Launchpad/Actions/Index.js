@@ -35,7 +35,7 @@ const LaunchpadActions = ({ project }) => {
                   <Timeline step="1" />
                 </div>
 
-                <div className="global-padding-lg !px-4 min-h-full max-w-xl w-full mx-auto">
+                <div className="project-card--container">
                     <SubscribeLaunchpad project={project} />
                 </div>
 
