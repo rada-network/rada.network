@@ -4,6 +4,9 @@ import { PostDetailAuthor } from "@components/card-layouts/PostDetailAuthor";
 
 export default function ProjectDetails({ project }) {
     const news = project.news
+    if (!news){
+        return null
+    }
     const dateTitle = utils.titleTime(news?.createdAt);
     const date = utils.timeDifference(new Date(), new Date(news?.createdAt));
     return (

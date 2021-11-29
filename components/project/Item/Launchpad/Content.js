@@ -117,14 +117,14 @@ export default function LaunchpadContent({ project }) {
             dangerouslySetInnerHTML={{ __html: project.content?.description }}
           ></div>
 
-          <p className="mt-auto pt-4">
+          {!!project.news && <p className="mt-auto pt-4">
             <Link href={`/${dataStore.lang}/launchverse/${project.slug}/research`}>
               <span>
                 <a className="link" href={`/${dataStore.lang}/launchverse/${project.slug}/research`}>{t("Read full research")}</a>
                 {/* <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span> */}
               </span>
             </Link>
-          </p>
+          </p>}
         </div>
       </div>
     </div>
