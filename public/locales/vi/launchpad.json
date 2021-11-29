@@ -44,5 +44,17 @@
   "Learn more": "Tìm hiểu thêm",
   "Coming Soon": "Sắp Xuất Hiện",
   "coming soon note" : "Theo dõi {{twitter}}, đăng kí kênh chính thức {{radanetwork}} và {{radadao}} để nhận thông báo sớm nhất.",
-  "Investment round": "Vòng huy động"
+  "Investment round": "Vòng huy động",
+  "execution reverted: Not allow": "Not allow",
+  "execution reverted: Amount BUSD is not valid": "Số lượng BUSD không hợp lệ",
+  "execution reverted: Amount RIR is not valid": "Số lượng RIR không hợp lệ",
+  "execution reverted: Amount is not valid": "Số lượng không hợp lệ",
+  "execution reverted: The Pool has been expired": "Đã đóng đầu tư",
+  "execution reverted: The Pool have not started": "Chưa mở đầu tư",
+  "execution reverted: Amount is overcome maximum": "Số lượng vượt quá hạn mức tối đa",
+  "execution reverted: Amount is overcome minimum": "Số lượng chưa đạt hạn mức tối thiểu",
+  "execution reverted: You dont have enough RIR Token":	"Lượng RIR không đủ",
+  "execution reverted: Eceeds Total RIR Allocation": "Lượng RIR vượt quá hạn mức",
+  "execution reverted: RIR transfer failed": "RIR transfer failed",
+  "execution reverted: Transfer BUSD fail":	"Transfer BUSD fail"  
 }

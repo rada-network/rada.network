@@ -1,3 +1,5 @@
+import Toc from "../_components/content/Toc";
+
 const SampleArticle = ({}) => {
   return (
     <>
@@ -98,6 +100,10 @@ const SampleArticle = ({}) => {
                   </span>
                 </em>
               </p>
+
+              <Toc />
+
+
               <h2>
                 <strong>1. Giới thiệu dự án&nbsp;</strong>
               </h2>

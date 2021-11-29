@@ -11,7 +11,7 @@ export default function ProjectDetails({ project }) {
     const date = utils.timeDifference(new Date(), new Date(news?.createdAt));
     return (
         <div className={
-            `section post-detail post-detail-news`} itemScope itemType="http://schema.org/Article"> 
+            `section`} itemScope itemType="http://schema.org/Article"> 
             <div className="section-header post-header">
                 <div className="post-title">
                 <h1>

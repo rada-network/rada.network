@@ -3,19 +3,14 @@ import Link from "next/link";
 import { Layout } from "../../../components/page-layouts/Global";
 
 import SampleArticle from "./SampleArticle";
-import Toc from "../_components/content/Toc";
+import Toc from "../_components/content/TocSidebar";
 
 export default () => ( 
   
   <>
     <Layout extraClass="page-details">
       <div className={`pane-content`}>
-
-        <div className="pane-content--main flex flex-col items-center justify-center !bg-gray-200 dark:!bg-gray-600 dark:text-white">
-          CARD LIST
-        </div>
-
-        <div className="pane-content--sec pane-content-active">
+        <div className="pane-content--sec pane-content-active !w-full">
 
             <div class="pane-content--sec--top">
               <div class="flex h-full w-limiter-lg relative xl:px-4">
@@ -36,13 +31,18 @@ export default () => (
               </div>
             </div>
 
+
             <div className="pane-content--sec--main grid scrollbar">
-              <div className="page has-toc">
+              <div className="page-full page-project-details !pt-0 page-research-details">
+                <div className="w-limiter-lg">
 
-                <SampleArticle />
+
                 
-                <Toc />
+                  <SampleArticle />
 
+                  <Toc />
+                  
+                </div>
               </div>
             </div>
 

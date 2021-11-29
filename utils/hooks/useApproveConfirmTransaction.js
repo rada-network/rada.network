@@ -62,6 +62,7 @@ const useApproveConfirmTransaction = ({
   const { account } = useActiveWeb3React()
   const [state, dispatch] = useReducer(reducer, initialState)
   const handlePreApprove = useRef(onRequiresApproval)
+  const {t} = useTranslation("launchpad")
   // Check if approval is necessary, re-check if account changes
   useEffect(() => {
     if (account && handlePreApprove.current) {
