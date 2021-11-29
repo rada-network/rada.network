@@ -195,8 +195,7 @@ const SubscribeSwapToken = ({project}) => {
           <div className="global-padding-lg !px-6 min-h-full w-full mx-auto">
             <div className="max-w-2xl mx-auto text-center">
               <div className="flex items-center">
-                <div className="s2e-illustration flex-shrink-0"></div>
-                <div className="text-left ml-2">
+                <div className="">
                   <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">
                     {t("prefunded note",
                       {
@@ -206,6 +205,44 @@ const SubscribeSwapToken = ({project}) => {
                       )
                     }
                   </h3>
+
+                  <div className="flex flex-col md:flex-row mt-8 max-w-2xl justify-evenly mx-auto">
+                  {project?.share_campaign?.length > 0 && 
+                    <Link href={`/${i18n.language}/launchverse/${project.slug}/share2earn`}>
+                      <div className="w-full md:w-1/2 p-4 my-2 md:m-2 bg-primary-700 dark:bg-primary-700 text-white rounded-lg flex items-center cursor-pointer">
+                        <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-full flex-shrink-0 mr-4 shadow">
+                          <i class="fa-duotone fa-hand-holding-heart"></i>
+                        </span>
+                        <div>
+                          <p className="mb-1 opacity-80">{t("Refer a friend to earn RIR")}</p>
+                        
+                          <a href={`/launchverse/${project.slug}/share2earn`} class="group text-white">
+                            <span class="text-sm">{t("Join Share2Earn")}</span>
+                            <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
+                          </a>
+                        
+                        </div>
+                      </div>
+                    </Link>
+                  }
+
+                    <div className="w-full md:w-1/2 p-4 my-2 md:m-2 bg-gray-100 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center">
+                      <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow">
+                        <i class="fad fa-dollar-sign"></i>
+                      </span>
+                      <div>
+                        <p className="mb-1 opacity-80">Adjust your prefunding</p>
+                        
+                        <a href={`#`} onClick={e => {setStep(2)}}  class="group">
+                          <span class="text-sm">Increase your chance</span>
+                          <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
+                        </a>
+                      </div>
+                  </div>
+                </div>
+
+                
+
                   <p>{t("prefunded note line2")} </p>
                   <p>{t("share to earn note")}</p>
                   <Link href={`/launchverse/${project.slug}/share2earn`}>
@@ -214,7 +251,7 @@ const SubscribeSwapToken = ({project}) => {
                   {(parseInt(orderBusd) < maxBusd || parseInt(orderRIR) < maxRIR) &&
                   <>
                   <p>{t("adjust note")}</p>
-                  <a class="group" href="#" onClick={e => {setStep(2)}} className="btn btn-primary mt-4 px-4 py-2">{t("Adjust prefund")}</a>
+                  <a class="group" href="#" className="btn btn-primary mt-4 px-4 py-2">{t("Adjust prefund")}</a>
                   </>
                   }
                 </div>
