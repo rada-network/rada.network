@@ -31,7 +31,7 @@ Various UI Components Style
            font-semibold flex items-center text-center rounded-full md:mr-2 static;
 }
 .step-compact-body--icon--text {
-  @apply m-auto text-xs;
+  @apply m-auto text-xs w-1/2;
 }
 
 .step-compact-body--content {

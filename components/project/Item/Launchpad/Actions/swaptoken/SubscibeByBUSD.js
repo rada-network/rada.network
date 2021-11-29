@@ -10,8 +10,10 @@ import { useTranslation } from "next-i18next"
 import { CheckSvg } from "@components/svg/SvgIcons"
 import { set } from "lodash"
 import { SwapNote,SwapDescription } from "../SwapTokenV2"
+import useStore from "@lib/useStore"
 
 const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
+  const store = useStore()
   const {t} = useTranslation("launchpad")
   const {account} = useActiveWeb3React()
 
@@ -62,12 +64,12 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
       onSuccess: async ({ receipt }) => {
         await fetchAccountBalance()
         toast.success(`Subscribed successfully ${receipt.transactionHash}`)
-        
         handleReload()
         setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)) + parseInt(numberBusd))
         setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)) + parseInt(numberRIR))
         setNumberRIR(0)
         setNumberBusd(0)
+        store.updateLoadPoolContent((new Date()).getTime())
       },
     })
     const resetApproved = async () => {

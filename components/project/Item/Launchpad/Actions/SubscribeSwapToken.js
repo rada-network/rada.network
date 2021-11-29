@@ -160,6 +160,7 @@ const SubscribeSwapToken = ({project}) => {
                   </li>}
                 </ul>
 
+                {project.is_allow_rir && 
                 <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
                   <p>
                     <span className="icon mr-2 text-base">
@@ -170,6 +171,7 @@ const SubscribeSwapToken = ({project}) => {
                     </span>
                   </p>
                 </div>
+                }
 
               </div>
 

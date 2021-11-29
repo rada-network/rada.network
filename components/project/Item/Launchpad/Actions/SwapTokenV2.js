@@ -30,15 +30,18 @@ const SwapTokensV2 = ({project,accountBalance,fetchAccountBalance,setStep}) => {
 
 export const SwapDescription = ({numberBusd,numberRIR,maxSelected,currentOrderBusd,currentOrderRIR}) => {
 
-  const [RIR,setRIR] = useState(0)
-  const [busd,setBusd] = useState(0)
+  const [RIR,setRIR] = useState(numberRIR)
+  const [busd,setBusd] = useState(numberBusd)
   useEffect(() => {
     setBusd(numberBusd)
     setRIR(numberRIR)
   },[numberBusd,numberRIR])
-  const p1 = Math.floor((parseInt(RIR) + currentOrderRIR)/maxSelected*5);
-  const p2 = Math.floor(((parseInt(busd) + currentOrderBusd)/100 - p1)/maxSelected*5);
+  const p1 = ((parseInt(RIR) + currentOrderRIR)/maxSelected*5);
+  const p2 = (((parseInt(busd) + currentOrderBusd)/100 - p1*maxSelected/5)/maxSelected*5);
   const p3 = 5 - (p1 + p2)
+  console.log((parseInt(busd) + currentOrderBusd)/100)
+  console.log(busd,RIR,currentOrderRIR,currentOrderBusd,maxSelected)
+  console.log(p1,p2,p3)
   const sp1 = {
     width: p1/5 * 100 + "%"
   };
