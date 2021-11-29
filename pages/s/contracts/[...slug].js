@@ -49,6 +49,7 @@ const MainContent = function({contractAddress}){
   const [numberToken,setNumberToken] = useState(0)
   const [address,setAddress] = useState("")
   const [tokenAddress,setTokenAddress] = useState("")
+  const [arrayAddress,setArrayAddress] = useState("")
   useEffect(() => {
     if (!!account){
       launchpadContract.owner().then(function(owner){
@@ -160,6 +161,20 @@ const MainContent = function({contractAddress}){
   const handleImportWhitelist = async function(e){
     try {
       const tx = await callWithGasPrice(launchpadContract,"addToWhitelist",[address])
+      const receipt = await tx.wait()
+      if (receipt.status){
+        toast.success("Commit success")  
+      }
+      console.log(receipt)
+      getAllSubinfo()
+    } catch (error) {
+      toast.error(error.data.message)
+    }
+  }
+  const handleImportArrayWhitelist = async function(e){
+    try {
+      let temp = arrayAddress.split(",")
+      const tx = await callWithGasPrice(launchpadContract,"addToWhitelist",[temp])
       const receipt = await tx.wait()
       if (receipt.status){
         toast.success("Commit success")  
@@ -299,6 +314,11 @@ const MainContent = function({contractAddress}){
       <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "")}  >
         <input type="text" name="token" value={address} onChange={e =>setAddress(e.currentTarget.value)}/>
         <button onClick={e => {handleImportWhitelist(e)}} className="btn btn-default mr-2">Import whitelist</button>
+      </div>
+
+      <div className={`global-padding`}  >
+        <textarea value={arrayAddress} onChange={e => {setArrayAddress(e.currentTarget.value)}} rows="20" cols="50"></textarea>
+        <button onClick={e => {handleImportArrayWhitelist(e)}} className="btn btn-default">Import array whitelist</button>
       </div>
       
     </>
