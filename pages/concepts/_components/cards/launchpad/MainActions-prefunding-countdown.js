@@ -28,7 +28,7 @@ const MainActions = ({}) => {
               </div>
 
               <div className="mb-8">
-                <h3 className="text-3xl text-center font-normal">
+                <h3 className="text-2xl md:text-3xl text-center font-normal">
                   <span className="text-color-title">Chuyển đổi Tokens</span>
                 </h3>
               </div>

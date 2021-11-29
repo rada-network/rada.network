@@ -187,7 +187,7 @@ const MainActions = ({}) => {
             <div className="project-card--container">
 
               <div className="mb-8">
-                <h3 className="text-3xl text-center font-normal">
+                <h3 className="text-2xl md:text-3xl text-center font-normal">
                   <span className="text-color-title">Paralel's Whitelist</span>
                 </h3>
                 <p className="text-center mt-2 font-normal">
@@ -208,7 +208,7 @@ const MainActions = ({}) => {
                       <span>Chưa kết nối tài khoản ví</span>
                     </div>
                   </div>
-                  <div className="text-right -mt-2 md:mt-0 w-1/5">
+                  <div className="text-right -mt-2 md:mt-0">
                     <button onClick={openModal} className="btn btn-default w-full">Kết nối</button>
                   </div>
                 </div>
@@ -225,7 +225,7 @@ const MainActions = ({}) => {
                       <span>Chưa hoàn thành KYC</span>
                     </div>
                   </div>
-                  <div className="text-right -mt-2 md:mt-0 w-1/5">
+                  <div className="text-right -mt-2 md:mt-0">
                     <button className="btn btn-default w-full">KYC</button>
                   </div>
                 </div>

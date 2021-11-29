@@ -169,7 +169,7 @@
   @apply bg-green-700 text-green-100 px-2 py-0.5 rounded-full text-xs mr-3 -ml-2;
 }
 .project-card--container{
-  @apply min-h-full w-full mx-auto p-4 md:p-6 z-10;
+  @apply min-h-full w-full mx-auto px-4 py-6 md:p-6 lg:p-10 z-10;
   @apply bg-white dark:bg-gray-800;
 }
 .wallet-item {
