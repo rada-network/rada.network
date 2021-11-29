@@ -56,7 +56,11 @@ const SubscribeSwapToken = ({project}) => {
     setApprovedBusd(utils.formatEther(currentApprovedBusd))
   },[launchpadInfo])
   useEffect(() => {
-    if (launchpadInfo.currentOrder && launchpadInfo.claimable && (parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 || parseInt(ethers.utils.formatEther(launchpadInfo.claimable[1])) > 0 || parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.claimedToken)) > 0)){
+    if (launchpadInfo.currentOrder && launchpadInfo.claimable && launchpadInfo.winnerCount > 0 && 
+      (parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 || 
+      parseInt(ethers.utils.formatEther(launchpadInfo.claimable[1])) > 0 || 
+      parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.claimedToken)) > 0))
+      {
       setStep(4)
     }
     else{
@@ -119,12 +123,12 @@ const SubscribeSwapToken = ({project}) => {
                 <div className="box-header !px-0">{t("Your allocation")}</div>
 
                 <ul class="mt-4 flex-shrink-0 flex-grow">
-                  <li class="list-pair mb-2">
+                  {project.is_allow_rir && <li class="list-pair mb-2">
                     <span class="list-key">{t("Prefunded RIR")}</span>
                     <span class="ml-auto list-value font-semibold">
                       {orderRIR} RIR
                     </span>
-                  </li>
+                  </li>}
                   <li class="list-pair mb-2">
                     <span class="list-key">{t("Prefunded BUSD")}</span>
                     <span class="ml-auto list-value font-semibold">
@@ -134,13 +138,13 @@ const SubscribeSwapToken = ({project}) => {
                   <li class="list-pair mb-2">
                     <span class="list-key">{t("Your maximum allocation")}</span>
                     <span class="ml-auto list-value font-semibold">
-                      {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && <>( {launchpadInfo?.individualMaximumAmount/100} RIR )</>}
+                      {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && project.is_allow_rir && <>( {launchpadInfo?.individualMaximumAmount/100} RIR )</>}
                     </span>
                   </li>
                   <li class="list-pair mb-2">
                     <span class="list-key">{t("Your minimum allocation")}</span>
                     <span class="ml-auto list-value font-semibold">
-                    {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && <>( {launchpadInfo?.individualMinimumAmount/100} RIR )</>}
+                    {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && project.is_allow_rir && <>( {launchpadInfo?.individualMinimumAmount/100} RIR )</>}
                     </span>
                   </li>
                   <li class="list-pair mb-2">
@@ -149,12 +153,12 @@ const SubscribeSwapToken = ({project}) => {
                     {accountBalance?.busdBalance} BUSD
                     </span>
                   </li>
-                  <li class="list-pair mb-2">
+                  {project.is_allow_rir && <li class="list-pair mb-2">
                     <span class="list-key">{t("Your RIR Balance")}</span>
                     <span class="ml-auto list-value font-semibold">
                     {accountBalance?.rirBalance} RIR
                     </span>
-                  </li>
+                  </li>}
                 </ul>
 
                 <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
@@ -198,20 +202,33 @@ const SubscribeSwapToken = ({project}) => {
                 <div className="s2e-illustration flex-shrink-0"></div>
                 <div className="text-left ml-2">
                   <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">
-                    {t("prefunded note",
-                      {
-                        amount : orderBusd,
-                        rir : orderRIR
-                      }
-                      )
+                    {orderRIR > 0 ?
+                    <span>{t("prefunded note",
+                    {
+                      amount : orderBusd,
+                      rir : orderRIR,
+                    }
+                    )
+                    }</span>
+                    :
+                    <span>{t("prefunded note usd",
+                    {
+                      amount : orderBusd,
+                    }
+                    )
+                    }</span>
                     }
                   </h3>
                   <p>{t("prefunded note line2")} </p>
+                  {!!project.share_campaign && 
+                  <>
                   <p>{t("share to earn note")}</p>
                   <Link href={`/launchverse/${project.slug}/share2earn`}>
                   <a href={`/launchverse/${project.slug}/share2earn`} class="group"className="btn btn-primary mt-4 mb-4 px-4 py-2">{t("Share to earn")}</a>
                   </Link>
-                  {(parseInt(orderBusd) < maxBusd || parseInt(orderRIR) < maxRIR) &&
+                  </>
+                  }
+                  {(parseInt(orderBusd) < maxBusd || (parseInt(orderRIR) < maxRIR && project.is_allow_rir)) &&
                   <>
                   <p>{t("adjust note")}</p>
                   <a class="group" href="#" onClick={e => {setStep(2)}} className="btn btn-primary mt-4 px-4 py-2">{t("Adjust prefund")}</a>
@@ -243,9 +260,8 @@ const SubscribeSwapToken = ({project}) => {
               <div className="text-left ml-2">
               <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">Congratulations! You&rsquo;re selected as a {project.content.title}'s investor
               </h3>
-              <p>Approved BUSD : {approvedBusd}</p>
-              <p>Prefund BUSD : {orderBusd}</p>
-              <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+              <p>Approved  BUSD : <strong>{approvedBusd} BUSD</strong></p>
+              <p>Prefunded BUSD : <strong>{orderBusd} BUSD</strong></p>
               </div>
             </div>
             </div>

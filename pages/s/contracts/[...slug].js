@@ -47,6 +47,8 @@ const MainContent = function({contractAddress}){
   const [listWinners,setListWinners] = useState([])
   const [listSub,setListSub] = useState([])
   const [numberToken,setNumberToken] = useState(0)
+  const [address,setAddress] = useState("")
+  const [tokenAddress,setTokenAddress] = useState("")
   useEffect(() => {
     if (!!account){
       launchpadContract.owner().then(function(owner){
@@ -154,6 +156,46 @@ const MainContent = function({contractAddress}){
       toast.error(error.data.message)
     }
   }
+
+  const handleImportWhitelist = async function(e){
+    try {
+      const tx = await callWithGasPrice(launchpadContract,"addToWhitelist",[address])
+      const receipt = await tx.wait()
+      if (receipt.status){
+        toast.success("Commit success")  
+      }
+      console.log(receipt)
+      getAllSubinfo()
+    } catch (error) {
+      toast.error(error.data.message)
+    }
+  }
+  const handleImportTokenAddress = async function(e){
+    try {
+      const tx = await callWithGasPrice(launchpadContract,"setTokenAddress",[tokenAddress])
+      const receipt = await tx.wait()
+      if (receipt.status){
+        toast.success("Commit success")  
+      }
+      console.log(receipt)
+      getAllSubinfo()
+    } catch (error) {
+      toast.error(error.data.message)
+    }
+  }
+  const handleCommitTokenAddress = async function(e){
+    try {
+      const tx = await callWithGasPrice(launchpadContract,"commitTokenAddress",[])
+      const receipt = await tx.wait()
+      if (receipt.status){
+        toast.success("Commit success")  
+      }
+      console.log(receipt)
+      getAllSubinfo()
+    } catch (error) {
+      toast.error(error.data.message)
+    }
+  }
   const tokenContract = useERC20("0xbadb6b73c2fbe647a256cf8f965f89573a054113")
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm,handleReload } =
   useApproveConfirmTransaction({
@@ -188,7 +230,7 @@ const MainContent = function({contractAddress}){
   }
   return (
     <>
-      <div className={`post-content`}  >
+      <div className={`global-padding`}  >
         <p>Subscriber</p>
         <table style={{width : "100%"}} border="2" cellPadding="2">
         <tbody>
@@ -236,12 +278,17 @@ const MainContent = function({contractAddress}){
         </table>
         
       </div>
-      <div className={`post-content`}  >
+      <div className={`global-padding`}  >
         <textarea value={JSON.stringify(listInitOrder)} onChange={e => {setListInitOrder(JSON.parse(e.currentTarget.value))}} rows="20" cols="100"></textarea>
         <button onClick={e => {handleImportOrder(e)}} className="btn btn-default mr-2">Import Winner</button>
         <button onClick={e => {handleCommitWinner(e)}} className="btn btn-default mr-2">Commit Winner</button>
         <button onClick={e => {handleSetEmptyWinner(e)}} className="btn btn-default">Reset Win</button>
-        <button onClick={e => {handleDepositToken(e)}} className="btn btn-default mr-2">Deposit token</button>
+      </div>
+
+      <div className={`global-padding`}  >
+        <input type="text" name="token" value={tokenAddress} onChange={e =>setTokenAddress(e.currentTarget.value)}/>
+        <button onClick={e => {handleImportTokenAddress(e)}} className="btn btn-default mr-2">Import Token address</button>
+        <button onClick={e => {handleCommitTokenAddress(e)}} className="btn btn-default mr-2">Commit Token address</button>
       </div>
 
       <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "")}  >
@@ -249,6 +296,11 @@ const MainContent = function({contractAddress}){
         <button onClick={e => {handleApprove(e)}} className="btn btn-default">Approve Contact</button>
         <button onClick={e => {handleConfirm(e)}} className="btn btn-default mr-2">Deposit token</button>
       </div>
+      <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "")}  >
+        <input type="text" name="token" value={address} onChange={e =>setAddress(e.currentTarget.value)}/>
+        <button onClick={e => {handleImportWhitelist(e)}} className="btn btn-default mr-2">Import whitelist</button>
+      </div>
+      
     </>
   )
 }
