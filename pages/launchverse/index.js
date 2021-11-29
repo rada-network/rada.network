@@ -148,20 +148,19 @@ const LaunchVerse = (props) => {
                     <div className="">
                       <h3>
                         <span className="block text-secondary-400 text-sm mb-2 font-medium">
-                          WHAT MAKE US DIFFERENT
+                        WHY ARE YOU REALLY DIFFERENT?
                         </span>
                         <span className="block text-3xl leading-tight text-black dark:text-white font-semibold font-altsans">
-                          We drive community <br />
-                          by Share2Earn
+                          A Global #Share2Earn Community
                         </span>
                       </h3>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                        We make a unique tokenomic that encourage community to share projects and earn RIR token. The more you share, the more you earn. Both parties can archive their goals easily.
+                      Our innovative #share2earn model encourages community sharing for the purpose of helping our community backed projects to become global, while earning RIR - The more you share, the more you earn - and the projects you help will grow big and thats why we #share.
                       </p>
                       <div className="mt-4">
                         <Link href={`/${props.lang}/launchverse/parallel/share2earn`}>
                         <a href={`/${props.lang}/launchverse/parallel/share2earn`} className="group text-secondary-400">
-                          <span className="text-sm lg:text-base">Join now</span>
+                          <span className="text-sm lg:text-base">Sign up and earn now!</span>
                           <span className="icon text-sm lg:text-base relative left-2 group-hover:left-3 transition-all"><i class="fas fa-angle-right"></i></span>
                         </a>
                         </Link>
@@ -182,7 +181,7 @@ const LaunchVerse = (props) => {
 
                   <div className="">
                     <h2 className="text-3xl md:text-3xl lg:text-4xl leading-tight text-black dark:text-white font-semibold font-altsans">
-                      The Launchverse <strong className="block md:inline text-yellow-400">for Everyone</strong>
+                    The LaunchVerse <strong className="block md:inline text-yellow-400">where everyone is welcome</strong>
                     </h2>
                   </div>
 
@@ -197,7 +196,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/shield-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                      We revolutionize blockchain fundraising with our DAO-based AngelList model Launchpad.
+                      We revolutionize blockchain fundraising with our DAO-based AngelList modelled Launchpad.
                       </p>
                     </div>
 
@@ -211,7 +210,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/bolt-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                      LaunchVerse effectively provide value for both startup projects and the investor community
+                      The LaunchVerse creates high value for both startup projects and the investor community.
                       </p>
                     </div>
 
@@ -225,7 +224,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/net-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                      United by the Metaverse, projects across all blockchains are welcome at LaunchVerse.
+                      Different, diverse but united in the MetaVerse, projects across all blockchains are welcome on the LaunchVerse.
                       </p>
                     </div>
 
@@ -239,7 +238,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/scale-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                      We provide fair and transparent token launches for projects and create carefully structured allocation models.
+                      We provide fair and transparent initial token and nft launches for projects with carefully structured allocation models.
                       </p>
                     </div>
 
@@ -253,7 +252,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/incubate-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                      We help incubate early stage projects across the Metaverse and Gamfi spaces.
+                      We help incubate early stage projects across the #MetaVerse and #GameFi industries.
                       </p>
                     </div>
 
@@ -267,7 +266,7 @@ const LaunchVerse = (props) => {
                         <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/icons/dao-hexa-dark.svg"} alt="The Parallel" />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
-                      We help connect the projects and the community through our innovative Share2Earn and Contribute2Earn models.
+                      We help connect projects to the world through our community and innovative Share2Earn and Contribute2Earn models.
                       </p>
                     </div>
                   </div>
