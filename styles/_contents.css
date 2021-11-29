@@ -687,6 +687,9 @@ Pricing & Market
 /* 
 Article TOC
 ------------------------------- */
+.has-toc {
+}
+
 .article-toc {
   @apply text-sm;
   h5 {
