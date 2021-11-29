@@ -257,10 +257,12 @@ const SubscribeSwapToken = ({project}) => {
             <div className="flex items-center">
               <div className="s2e-illustration flex-shrink-0"></div>
               <div className="text-left ml-2">
-              <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">Congratulations! You&rsquo;re selected as a {project.content.title}'s investor
-              </h3>
-              <p>Approved  BUSD : <strong>{approvedBusd} BUSD</strong></p>
-              <p>Prefunded BUSD : <strong>{orderBusd} BUSD</strong></p>
+                <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">Congratulations! You’re selected as a {project.content.title}'s investor
+                </h3>
+                <p>Approved  BUSD : <strong>{approvedBusd} BUSD</strong></p>
+                <p>Prefunded BUSD : <strong>{orderBusd} BUSD</strong></p>
+                {parseInt(orderBusd) - parseInt(approvedBusd) > 0 && <p>{parseInt(orderBusd) - parseInt(approvedBusd)} BUSd will be refunded when you claim your token for the first time.</p>
+                }
               </div>
             </div>
             </div>
