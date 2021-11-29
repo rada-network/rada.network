@@ -57,8 +57,7 @@ const SubscribeSwapToken = ({project}) => {
   },[launchpadInfo])
   useEffect(() => {
     if (launchpadInfo.currentOrder && launchpadInfo.claimable && launchpadInfo.winnerCount > 0 && 
-      (parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 || 
-      parseInt(ethers.utils.formatEther(launchpadInfo.claimable[1])) > 0 || 
+      (parseInt(ethers.utils.formatEther(launchpadInfo.claimable[1])) > 0 || 
       parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.claimedToken)) > 0))
       {
       setStep(4)
