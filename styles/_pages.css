@@ -101,12 +101,22 @@ Page Projects
   }
 }
 
-.page-research-details .section {
-  @apply max-w-screen-md mx-auto;
-}
-
 .page-project-share2earn .section {
   @apply max-w-screen-sm mx-auto;
+}
+
+
+/* 
+InPage research 
+*/
+.page-research-details {
+  .w-limiter-lg {
+    @apply flex;
+  }
+}
+
+.page-research-details .section {
+  @apply max-w-screen-md mx-auto;
 }
 
 
