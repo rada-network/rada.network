@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Layout } from "../../../components/page-layouts/Global";
 
 import SampleArticle from "./SampleArticle";
+import FAB from "./FloatingButton";
 import Toc from "../_components/content/Toc";
 
 export default () => ( 
@@ -32,16 +33,17 @@ export default () => (
                     <a class="tab-item" href="/vi/launchverse/parallel/share2earn"><span class="icon"><i class="fa-duotone fa-hand-holding-heart"></i></span><span class="tab-item--text">Share2Earn</span></a>
                   </div>
                 </div>
-                <button class="btn btn-primary my-2 px-2 ml-auto lg:mr-3 xl:mr-12 text-sm flex">Kết nối</button>
               </div>
             </div>
 
             <div className="pane-content--sec--main grid scrollbar">
-              <div className="page has-toc">
+              <div className="page">
 
+                {/* Concept */}
                 <SampleArticle />
-                
-                <Toc />
+
+                <FAB />
+                {/* END: Concept */}
 
               </div>
             </div>
