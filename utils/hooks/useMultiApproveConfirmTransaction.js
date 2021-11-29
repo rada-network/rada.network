@@ -4,6 +4,7 @@ import { useWeb3React } from '@web3-react/core'
 import { ethers } from 'ethers'
 import {toast} from "react-toastify"
 import useActiveWeb3React from './useActiveWeb3React'
+import { useTranslation } from "next-i18next";
 
 const initialState = {
   approvalState: 'idle',
@@ -69,6 +70,7 @@ const useMultiApproveConfirmTransaction = ({
   const [state, dispatch] = useReducer(reducer, initialState)
   const [requireApprove, setRequireApprove] = useState({busd : 0,rir : 0})
   const handlePreApprove = useRef(onRequiresApproval)
+  const {t} = useTranslation("launchpad")
   // Check if approval is necessary, re-check if account changes
   useEffect(() => {
     if (!!account && handlePreApprove.current) {
@@ -110,7 +112,7 @@ const useMultiApproveConfirmTransaction = ({
       } catch (error) {
         console.log(error)
         dispatch({ type: 'approve_error' })
-        toast.error(error?.data?.message)
+        toast.error(t(error?.data?.message))
       }
     },
     handleConfirm: async (params = {}) => {
@@ -125,7 +127,7 @@ const useMultiApproveConfirmTransaction = ({
       } catch (error) {
         console.log(error)
         dispatch({ type: 'confirm_error' })
-        toast.error(error?.data?.message)
+        toast.error(t(error?.data?.message))
       }
     },
     handleReload: async (params = {}) => {

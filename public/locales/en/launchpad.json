@@ -44,5 +44,17 @@
   "Learn more": "Learn more",
   "Coming Soon": "Coming Soon",
   "coming soon note" : "Follow {{twitter}}, subscribe to our official {{radanetwork}} and {{radadao}} to be notified.",
-  "Investment round": "Funding round"
+  "Investment round": "Funding round",
+  "execution reverted: Not allow": "Not allow",
+  "execution reverted: Amount BUSD is not valid" :"Amount BUSD is not valid",
+  "execution reverted: Amount RIR is not valid":	"Amount RIR is not valid",
+  "execution reverted: Amount is not valid":	"Amount is not valid",
+  "execution reverted: The Pool has been expired":	"The Pool has been expired",
+  "execution reverted: The Pool have not started":	"The Pool have not started",
+  "execution reverted: Amount is overcome maximum":	"Amount is overcome maximum",
+  "execution reverted: Amount is overcome minimum":	"Amount is overcome minimum",
+  "execution reverted: You dont have enough RIR Token":	"You dont have enough RIR Token",
+  "execution reverted: Eceeds Total RIR Allocation":	"Eceeds Total RIR Allocation",
+  "execution reverted: RIR transfer failed":	"RIR transfer failed",
+  "execution reverted: Transfer BUSD fail":	"Transfer BUSD fail"  
 }
