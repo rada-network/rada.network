@@ -7,7 +7,7 @@ import SubscribeSwapToken from "./SubscribeSwapToken"
 // import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
 import useStore from "@lib/useStore";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
-
+import TutorialWidget from "./TutorialWidget"
 const LaunchpadActions = ({ project }) => {
   const store = useStore()
   const {account} = useActiveWeb3React()
@@ -37,6 +37,7 @@ const LaunchpadActions = ({ project }) => {
 
                 <div className="global-padding-lg !px-4 min-h-full max-w-xl w-full mx-auto">
                     <SubscribeLaunchpad project={project} />
+                    <TutorialWidget></TutorialWidget>
                 </div>
 
               </div>

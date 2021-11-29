@@ -76,7 +76,7 @@ const LaunchpadContent = observer(function({ project }) {
               <span className="list-key">{t("Token Price")}</span>
               {tokenPrice ? 
               <span className="ml-auto font-semibold">
-              {tokenPrice} BUSD
+              1 {project?.token?.symbol} = {tokenPrice} BUSD
               </span>
               :
               <span className="ml-auto font-semibold">

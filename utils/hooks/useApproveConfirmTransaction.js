@@ -4,6 +4,7 @@ import { useWeb3React } from '@web3-react/core'
 import { ethers } from 'ethers'
 import {toast} from "react-toastify"
 import useActiveWeb3React from './useActiveWeb3React'
+import {useTranslation} from "next-i18next"
 
 const initialState = {
   approvalState: 'idle',

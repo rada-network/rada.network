@@ -121,7 +121,7 @@ const SubscribeSwapToken = ({ project }) => {
                     <div className="box-header !px-0">{t("Your allocation")}</div>
 
                     <ul class="mt-4 flex-shrink-0 flex-grow">
-                      {project.is_allow_rir && <li class="list-pair mb-2">
+                      {project.is_allow_rir && parseInt(orderRIR) > 0 && <li class="list-pair mb-2">
                         <span class="list-key">{t("Prefunded RIR")}</span>
                         <span class="ml-auto list-value font-semibold">
                           {orderRIR} RIR
@@ -145,16 +145,10 @@ const SubscribeSwapToken = ({ project }) => {
                           {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && project.is_allow_rir && <>( {launchpadInfo?.individualMinimumAmount / 100} RIR )</>}
                         </span>
                       </li>
-                      <li class="list-pair mb-2">
-                        <span class="list-key">{t("Your BUSD Balance")}</span>
-                        <span class="ml-auto list-value font-semibold">
-                          {accountBalance?.busdBalance} BUSD
-                        </span>
-                      </li>
-                      {project.is_allow_rir && <li class="list-pair mb-2">
+                      {project.is_allow_rir && parseFloat(accountBalance.rirBalance) > 0 && <li class="list-pair mb-2">
                         <span class="list-key">{t("Your RIR Balance")}</span>
                         <span class="ml-auto list-value font-semibold">
-                          {accountBalance?.rirBalance} RIR
+                          {accountBalance.rirBalance} RIR
                         </span>
                       </li>}
                     </ul>
@@ -239,7 +233,7 @@ const SubscribeSwapToken = ({ project }) => {
 
                         {(parseInt(orderBusd) < maxBusd || (parseInt(orderRIR) < maxRIR && project.is_allow_rir)) &&
                           <>
-                            <div className="w-full md:w-1/2 p-4 my-2 md:m-2 bg-gray-100 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center">
+                            <div className="w-full p-4 my-2 md:m-2 bg-gray-100 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center">
                               <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow">
                                 <i class="fad fa-dollar-sign"></i>
                               </span>
