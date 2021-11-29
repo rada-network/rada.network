@@ -226,7 +226,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
               </div>
               <div className="w-auto px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-700">
                 <div>
-                  <a target="_blank">{shareLink}</a>
+                  <a target="_blank" href={shareLink}>{shareLink}</a>
                 </div>
                 <CopyToClipboard
                   onCopy={handleCopy}
