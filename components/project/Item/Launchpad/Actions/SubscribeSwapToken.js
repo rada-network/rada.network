@@ -286,7 +286,7 @@ const SubscribeSwapToken = ({project}) => {
             <div className="flex items-center">
               <div className="mx-auto">
                 <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">Your application was rejected</h3>
-                <p>Unfortunately your application has failed. Good luck next time! Meanwhile, you can <a>claim your refund</a>.</p>
+                <p>Unfortunately your application has failed. Good luck next time!</p>
               </div>
             </div>
             </div>
@@ -310,8 +310,19 @@ const SubscribeSwapToken = ({project}) => {
             <div className="max-w-md mx-auto">
               <ul class="mb-4 mt-auto flex-shrink-0 flex-grow">
                 <li class="list-pair mb-2">
-                  <span class="list-key !opacity-100">You can claim your Token</span>
+                  <span class="list-key !opacity-100">{project.token.symbol} Token available to claim :</span>
                   <div class="ml-auto list-value font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[1])} {project.token.symbol}
+                  </div>
+                </li>
+                {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 &&<li class="list-pair mb-2">
+                  <span class="list-key !opacity-100">Refunded BUSD:</span>
+                  <div class="ml-auto list-value font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD
+                  </div>
+                </li>
+                }
+                <li class="list-pair mb-2">
+                  <span class="list-key !opacity-100"></span>
+                  <div class="ml-auto list-value font-semibold">
                     <button onClick={e => {handleClaimToken(e)}} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                   </div>
                 </li>

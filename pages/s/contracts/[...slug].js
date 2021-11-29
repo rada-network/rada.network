@@ -174,7 +174,7 @@ const MainContent = function({contractAddress}){
   const handleImportArrayWhitelist = async function(e){
     try {
       let temp = arrayAddress.split(",")
-      const tx = await callWithGasPrice(launchpadContract,"addToWhitelist",[temp])
+      const tx = await callWithGasPrice(launchpadContract,"importWhitelist",[temp])
       const receipt = await tx.wait()
       if (receipt.status){
         toast.success("Commit success")  
