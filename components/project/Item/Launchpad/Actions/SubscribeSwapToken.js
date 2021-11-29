@@ -197,7 +197,7 @@ const SubscribeSwapToken = ({ project }) => {
               <div className="global-padding-lg !px-6 min-h-full w-full mx-auto">
                 <div className="max-w-2xl mx-auto text-center">
                   <div className="flex items-center">
-                    <div className="">
+                    <div className="mx-auto">
                       <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">
                         {orderRIR > 0 ?
                           <span>{t("prefunded note",
@@ -262,198 +262,193 @@ const SubscribeSwapToken = ({ project }) => {
                 </div>
               </div>
             </div>
+        </div>
+      }
+
+      {(step == 3 && launchpadInfo.winnerCount > 0 && parseFloat(approvedBusd) > 0) &&
+        <div className="card-default project-main-actions no-padding overflow-hidden">
+
+          <div className="card-body no-padding">
+            <div className="flex flex-col">
+              <div className="">
+                <Timeline step="3" />
+              </div>
+
+              <div className="project-card--container">
+                <div className="max-w-2xl mx-auto text-center">
+
+                  <div className="flex items-center">
+                    <div className="s2e-illustration flex-shrink-0"></div>
+                    <div className="text-left ml-2">
+                      <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">Congratulations! You’re selected as a {project.content.title}'s investor
+                      </h3>
+                      <p>Approved  BUSD : <strong>{approvedBusd} BUSD</strong></p>
+                      <p>Prefunded BUSD : <strong>{orderBusd} BUSD</strong></p>
+                      {parseInt(orderBusd) - parseInt(approvedBusd) > 0 && <p>{parseInt(orderBusd) - parseInt(approvedBusd)} BUSd will be refunded when you claim your token for the first time.</p>
+                      }
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
-    }
+        </div>
+      }
 
-          {(step == 3 && launchpadInfo.winnerCount > 0 && parseFloat(approvedBusd) > 0) &&
-            <div className="card-default project-main-actions no-padding overflow-hidden">
+      {(step == 3 && launchpadInfo.winnerCount > 0 && parseFloat(approvedBusd) == 0.0) &&
+        <div className="card-default project-main-actions no-padding overflow-hidden">
 
-              <div className="card-body no-padding">
-                <div className="flex flex-col">
-                  <div className="">
-                    <Timeline step="3" />
+          <div className="card-body no-padding">
+            <div className="flex flex-col">
+              <div className="">
+                <Timeline step="3" />
+              </div>
+
+              <div className="project-card--container">
+                <div className="max-w-2xl mx-auto text-center">
+
+                  <div className="flex items-center">
+                    <div className="mx-auto">
+                      <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">Your application was rejected</h3>
+                      <p>Unfortunately your application has failed. Good luck next time!</p>
+                    </div>
                   </div>
+                </div>
 
-                  <div className="project-card--container">
-                    <div className="max-w-2xl mx-auto text-center">
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+      {/* claim token */}
+      {(step == 4) &&
+        <div className="card-default project-main-actions no-padding overflow-hidden">
 
-                      <div className="flex items-center">
-                        <div className="s2e-illustration flex-shrink-0"></div>
-                        <div className="text-left ml-2">
-                          <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">Congratulations! You’re selected as a {project.content.title}'s investor
-                          </h3>
-                          <p>Approved  BUSD : <strong>{approvedBusd} BUSD</strong></p>
-                          <p>Prefunded BUSD : <strong>{orderBusd} BUSD</strong></p>
-                          {parseInt(orderBusd) - parseInt(approvedBusd) > 0 && <p>{parseInt(orderBusd) - parseInt(approvedBusd)} BUSd will be refunded when you claim your token for the first time.</p>
-                          }
-                        </div>
+          <div className="card-body no-padding">
+            <div className="flex flex-col">
+              <div className="">
+                <Timeline step="4" />
+              </div>
+
+              <div className="project-card--container">
+                <div className="max-w-md mx-auto">
+                  <ul class="mb-4 mt-auto flex-shrink-0 flex-grow">
+                    <li class="list-pair mb-2">
+                      <span class="list-key !opacity-100">{project.token.symbol} Token available to claim :</span>
+                      <div class="ml-auto list-value font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[1])} {project.token.symbol}
                       </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-
-          {(step == 3 && launchpadInfo.winnerCount > 0 && parseFloat(approvedBusd) == 0.0) &&
-            <div className="card-default project-main-actions no-padding overflow-hidden">
-
-              <div className="card-body no-padding">
-                <div className="flex flex-col">
-                  <div className="">
-                    <Timeline step="3" />
-                  </div>
-
-                  <div className="project-card--container">
-                    <div className="max-w-2xl mx-auto text-center">
-
-                      <div className="flex items-center">
-                        <div className="mx-auto">
-                          <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">Your application was rejected</h3>
-                          <p>Unfortunately your application has failed. Good luck next time!</p>
-                        </div>
+                    </li>
+                    {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 && <li class="list-pair mb-2">
+                      <span class="list-key !opacity-100">Refunded BUSD:</span>
+                      <div class="ml-auto list-value font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD
                       </div>
-                    </div>
+                    </li>
+                    }
+                    <li class="list-pair mb-2">
+                      <span class="list-key !opacity-100"></span>
+                      <div class="ml-auto list-value font-semibold">
+                        <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
+                      </div>
+                    </li>
+                  </ul>
 
-                  </div>
+                  {/* <div className="box p-4">
+            <div className="flex items-baseline border-b pb-2  border-gray-200 dark:border-gray-800">
+              <h4 className="text-md items-baseline font-semibold">
+                Bạn đã rút
+              </h4>
+              <span className="ml-auto font-semibold">
+                2,500 PRL
+              </span>
+            </div>
+            <ul class="mb-0 mt-auto flex-shrink-0 flex-grow">
+              <li class="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
+                <span class="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 text-gray-700 mr-1">on</span>
+                  <date>15 tháng 9, 2021</date></span>
+                <div class="ml-auto font-semibold list-value">
+                2,500 PRL
                 </div>
+              </li>
+              <li class="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
+                <span class="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 dark-gray-700 mr-1">on</span>
+                  <date>01 tháng 9, 2021</date></span>
+                <div class="ml-auto font-semibold list-value">
+                2,500 PRL
+                </div>
+              </li>
+            </ul>
+          </div> */}
+                </div>
+
               </div>
             </div>
-          }
-          {/* claim token */}
-          {(step == 4) &&
-            <div className="card-default project-main-actions no-padding overflow-hidden">
+          </div>
+        </div>
+      }
 
-              <div className="card-body no-padding">
-                <div className="flex flex-col">
-                  <div className="">
-                    <Timeline step="4" />
-                  </div>
+      {(orderBusd > 0 && launchpadInfo.winnerCount == 0) &&
+        <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
+          <div className="card-header items-center">
+            <h3>Subscriber ({launchpadInfo?.ordersBuyerCount})</h3>
+          </div>
 
-                  <div className="project-card--container">
-                    <div className="max-w-md mx-auto">
-                      <ul class="mb-4 mt-auto flex-shrink-0 flex-grow">
-                        <li class="list-pair mb-2">
-                          <span class="list-key !opacity-100">{project.token.symbol} Token available to claim :</span>
-                          <div class="ml-auto list-value font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[1])} {project.token.symbol}
-                          </div>
-                        </li>
-                        {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 && <li class="list-pair mb-2">
-                          <span class="list-key !opacity-100">Refunded BUSD:</span>
-                          <div class="ml-auto list-value font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD
-                          </div>
-                        </li>
-                        }
-                        <li class="list-pair mb-2">
-                          <span class="list-key !opacity-100"></span>
-                          <div class="ml-auto list-value font-semibold">
-                            <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
-                          </div>
-                        </li>
-                      </ul>
+          <div className="card-body no-padding">
+            <div className="flex flex-col">
+              <div className="global-padding-lg min-h-full">
 
-                      {/* <div className="box p-4">
-                <div className="flex items-baseline border-b pb-2  border-gray-200 dark:border-gray-800">
-                  <h4 className="text-md items-baseline font-semibold">
-                    Bạn đã rút
-                  </h4>
-                  <span className="ml-auto font-semibold">
-                    2,500 PRL
-                  </span>
-                </div>
-                <ul class="mb-0 mt-auto flex-shrink-0 flex-grow">
-                  <li class="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
-                    <span class="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 text-gray-700 mr-1">on</span>
-                      <date>15 tháng 9, 2021</date></span>
-                    <div class="ml-auto font-semibold list-value">
-                    2,500 PRL
-                    </div>
-                  </li>
-                  <li class="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
-                    <span class="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 dark-gray-700 mr-1">on</span>
-                      <date>01 tháng 9, 2021</date></span>
-                    <div class="ml-auto font-semibold list-value">
-                    2,500 PRL
-                    </div>
-                  </li>
-                </ul>
-              </div> */}
-                    </div>
-
-                  </div>
-                </div>
+                <Subscriber project={project} buyers={launchpadInfo.buyers} />
               </div>
             </div>
-          }
+          </div>
+        </div>
+      }
 
-          {(orderBusd > 0 && launchpadInfo.winnerCount == 0) &&
-            <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
-              <div className="card-header items-center">
-                <h3>Subscriber ({launchpadInfo?.ordersBuyerCount})</h3>
-              </div>
+      {(orderBusd > 0 && launchpadInfo.winnerCount > 0) &&
+        <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
+          <div className="card-header items-center">
+            <h3>Winners ({launchpadInfo?.winnerCount})</h3>
+          </div>
 
-              <div className="card-body no-padding">
-                <div className="flex flex-col">
-                  <div className="global-padding-lg min-h-full">
+          <div className="card-body no-padding">
+            <div className="flex flex-col">
+              <div className="global-padding-lg min-h-full">
 
-                    <Subscriber project={project} buyers={launchpadInfo.buyers} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-
-          {(orderBusd > 0 && launchpadInfo.winnerCount > 0) &&
-            <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
-              <div className="card-header items-center">
-                <h3>Winners ({launchpadInfo?.winnerCount})</h3>
-              </div>
-
-              <div className="card-body no-padding">
-                <div className="flex flex-col">
-                  <div className="global-padding-lg min-h-full">
-
-                    <Subscriber project={project} buyers={launchpadInfo.winners} />
-                  </div>
-                </div>
+                <Subscriber project={project} buyers={launchpadInfo.winners} />
               </div>
             </div>
-          }
-        </>
+          </div>
+        </div>
+      }
+    </>
   );
 }
 
-      const SubscribeSwapTokenLoading = function(){
+const SubscribeSwapTokenLoading = function(){
   return (
-      <div className="card-default project-main-actions no-padding overflow-hidden">
-        <div className="card-header text-center sr-only">
-          <h2>Public Sale</h2>
-        </div>
+    <div className="card-default project-main-actions no-padding overflow-hidden">
 
-        <div className="card-body no-padding">
-          <div className="flex flex-col">
-            <div className="">
-              <Timeline step="2" />
-            </div>
+      <div className="card-body no-padding">
+        <div className="flex flex-col">
+          <div className="">
+            <Timeline step="2" />
+          </div>
 
-            <div className="project-card--container">
-              <div className="mb-8 sr-only">
-                <h3 className="text-3xl text-center font-normal">
-                  <span class="spinner"></span>
-                </h3>
-              </div>
+          <div className="project-card--container">
+            <div className="max-w-2xl mx-auto text-center">
 
-              <div className="grid gap-8 lg:grid-cols-2">
-                <h3 className="text-3xl text-center font-normal">
-                  <span class="spinner"></span>
-                </h3>
+              <div className="flex items-center">
+                <div className="mx-auto">
+                  <p className="relative mb-4 "><span className="spinner left-0 top-0"></span></p>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
-      )
+    </div>
+  )
 }
 
       export default SubscribeSwapToken

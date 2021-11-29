@@ -7,9 +7,12 @@ import numberFormatter from "@components/utils/numberFormatter";
 
 import { utils } from "ethers";
 import { useTranslation } from "next-i18next";
+import useStore from "@lib/useStore"
+import { observer } from "mobx-react";
 
-export default function LaunchpadContent({ project }) {
+const LaunchpadContent = observer(function({ project }) {
   const { dataStore } = usePageStore();
+  const store = useStore()
   const { t } = useTranslation("launchpad");
   const { account, library } = useActiveWeb3React();
   const [launchpadInfo, setLaunchpadInfo] = useState(null);
@@ -30,7 +33,7 @@ export default function LaunchpadContent({ project }) {
     if (!!library && !!lauchpadContact && account !== "") {
       fetchLaunchpadInfo();
     }
-  }, [account, lauchpadContact, library]);
+  }, [account, lauchpadContact, library,store.loadPoolContent]);
   const raise = project.raise;
   const tokenPrice = project.price;
   const progressToken = parseInt(launchpadInfo?.totalSubBUSD) || 0;
@@ -128,16 +131,17 @@ export default function LaunchpadContent({ project }) {
               </Link>
             </p>}
             <p className="mt-auto ml-4 pt-4">
-              <Link href="">
-                <span className="flex">
-                  <i class="mr-1 text-xs opacity-60 fas fa-external-link-alt"></i>
-                  <a href="" className="link">PRL&rsquo;s Tokenomics</a>
-                </span>
-              </Link>
+              <span className="flex">
+                <i class="mr-1 text-xs opacity-60 fas fa-external-link-alt"></i>
+                <a href="" className="link">{project?.token.symbol}&rsquo;s Tokenomics</a>
+              </span>
             </p>
           </div>
         </div>
       </div>
     </div>
   );
-}
+})
+
+
+export default LaunchpadContent
