@@ -116,7 +116,7 @@ const LaunchpadContent = observer(function({ project }) {
           <h3>{t("Info", { name: project?.token?.name })}</h3>
         </div>
         <div className="card-body">
-          <div
+          <div className="h-full" 
             dangerouslySetInnerHTML={{ __html: project.content?.description }}
           ></div>
 
