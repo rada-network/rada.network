@@ -28,6 +28,11 @@ const projectBySlugGql = gql`
 						name
 						logo
 						symbol
+						link{
+							url
+							name
+							group
+						}
 				}
 				platform{
 						name

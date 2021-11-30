@@ -42,6 +42,9 @@ const LaunchpadContent = observer(function({ project }) {
   const curentTime = (new Date()).getTime() / 1000
   const openTime = (new Date(project.open_date)).getTime() / 1000
   const endTime = (new Date(project.end_date)).getTime() / 1000
+  let tokennomic = project.token.link.find(function(item){
+    return item.group === 'tokenomic'
+  })
   return (
     <div
       className="grid grid-cols-1 md:grid-cols-2 gap-4"
@@ -129,12 +132,12 @@ const LaunchpadContent = observer(function({ project }) {
                 </span>
               </Link>
             </p>}
-            <p className="mt-auto ml-4 pt-4">
+            {!!tokennomic && <p className="mt-auto ml-4 pt-4">
               <span className="flex items-baseline">
-                <a href="" className="link">{project?.token.symbol}&rsquo;s Tokenomics</a>
+                <a href={tokennomic.url} target="_blank" className="link">{project?.token.symbol}&rsquo;s Tokenomics</a>
                 <span className="icon text-2xs ml-1 relative bottom-0.5"><i className="fa-duotone fa-external-link"></i></span>
               </span>
-            </p>
+            </p>}
           </div>
         </div>
       </div>
