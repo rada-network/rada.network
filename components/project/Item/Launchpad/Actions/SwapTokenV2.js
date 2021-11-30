@@ -67,7 +67,7 @@ export const SwapDescription = ({numberBusd,numberRIR,maxSelected,currentOrderBu
           <div className={`h2.5 border-r-2 border-gray-300 dark:border-gray-500 w-${p1}/5 flex items-center transition-all relative`} style={sp1}>
             <div className="w-full flex h-1 bg-green-500">
             </div>
-            <span className="absolute -right-5 -bottom-3.5 text-2xs bg-gray-100 dark:bg-gray-900 px-2">
+            <span className="absolute -right-6 -bottom-3.5 text-2xs bg-gray-100 dark:bg-gray-900 px-2">
               {(parseInt(RIR) + currentOrderRIR) * 100} BUSD
             </span>
           </div>}
@@ -75,7 +75,7 @@ export const SwapDescription = ({numberBusd,numberRIR,maxSelected,currentOrderBu
           <div className={`h2.5 border-r-2 border-gray-300 dark:border-gray-500 w-${p2}/5 flex items-center transition-all relative`} style={sp2}>
             <div className="w-full flex h-1 bg-yellow-400">
             </div>
-            <span className="absolute -right-5 -bottom-3.5 text-2xs bg-gray-100 dark:bg-gray-900 px-2">
+            <span className="absolute -right-6 -bottom-3.5 text-2xs bg-gray-100 dark:bg-gray-900 px-2">
               {parseInt(busd) + currentOrderBusd * 100 } BUSD
             </span>
           </div>}
