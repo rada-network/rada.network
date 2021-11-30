@@ -120,7 +120,7 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
               </label>
               <select id="rir" name="rir" className="select-custom " value={numberRIR} onChange={e => {setNumberRIR(e.currentTarget.value)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
-                <option key="0" className="text-gray-300" value={0}>{t("dont use rir")} RIR</option>
+                <option key="0" className="text-gray-300" value={0}>{t("dont use RIR")}</option>
                 {Array(maxSelected).fill(null).map((_, i) => {
                   return (
                     <>
