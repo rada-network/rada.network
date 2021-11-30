@@ -56,14 +56,14 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
         for (const receipt of receipts) {
           txs.push(receipt.transactionHash)
         }
-        toast.success(`Contract enabled - you can now prefund investment`)
+        toast.success(`Success - Prefund enabled`)
       },
       onConfirm: () => {
         return callWithGasPrice(launchpadContract, 'createSubscription', [ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString()),account])
       },
       onSuccess: async ({ receipt }) => {
         await fetchAccountBalance()
-        toast.success(`Subscribed successfully ${receipt.transactionHash}`)
+        toast.success(`Successfully prefunded`)
         handleReload()
         setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)) + parseInt(numberBusd))
         setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)) + parseInt(numberRIR))
