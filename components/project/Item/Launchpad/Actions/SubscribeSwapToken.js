@@ -115,7 +115,7 @@ const SubscribeSwapToken = ({ project }) => {
                   </h3>
                 </div>
 
-                <div className="grid gap-8 lg:grid-cols-2">
+                <div className="grid gap-4 md:gap-8 lg:grid-cols-2">
                   <div className="box box--transparent">
 
                     <div className="box-header !px-0">{t("Your allocation")}</div>
@@ -166,7 +166,7 @@ const SubscribeSwapToken = ({ project }) => {
 
                   </div>
 
-                  <div className="box box--gray">
+                  <div className="box box--gray -mx-4 -mb-6 md:m-0">
                     <div className="box-header">{t("Prefund your investment")}</div>
                     <SwapTokensV2 project={project} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} />
                   </div>
