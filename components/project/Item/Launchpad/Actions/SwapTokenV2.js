@@ -65,7 +65,7 @@ export const SwapDescription = ({numberBusd,numberRIR,maxSelected,currentOrderBu
         <div className="h-2.5 absolute top-0 w-full flex font-semibold rounded-full">
           {p1 > 0 && 
           <div className={`h2.5 border-r-2 border-gray-300 dark:border-gray-500 w-${p1}/5 flex items-center transition-all relative`} style={sp1}>
-            <div className="w-full flex h-1 bg-green-600">
+            <div className="w-full flex h-1 bg-green-500">
             </div>
             <span className="absolute -right-5 -bottom-3.5 text-2xs bg-gray-100 dark:bg-gray-900 px-2">
               {(parseInt(RIR) + currentOrderRIR) * 100} BUSD
