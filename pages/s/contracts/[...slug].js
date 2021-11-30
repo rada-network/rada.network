@@ -20,12 +20,11 @@ export default function ImportOrder(props) {
         <StaticLayout meta={meta}>
             <div className={`page-section`}  >
               <WalletProfile type={`simple`} />
-              <div className="post-title">
-                <h1 className="inline">{"Import order"}</h1>
-              </div>
+              
               <div className={`post-content`}  >
                 <div dangerouslySetInnerHTML={{__html: "1"}}></div>
               </div>
+              
               <MainContent contractAddress={props.contractAddress} />
             </div>
         </StaticLayout>
@@ -198,6 +197,11 @@ const MainContent = function({contractAddress}){
       toast.error(error.data.message)
     }
   }
+  const resetApproved = async () => {
+    await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, 0])
+    await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, 0])
+    
+  }
   const handleCommitTokenAddress = async function(e){
     try {
       const tx = await callWithGasPrice(launchpadContract,"commitTokenAddress",[])
@@ -238,13 +242,17 @@ const MainContent = function({contractAddress}){
     })
 
   if (!isAdmin){
-    return <h1>Permission denied</h1>
+    return <h1><a onClick={resetApproved} >reset approve</a></h1>
   }
   if (!loading) {
     return null
   }
   return (
     <>
+    <h1><a className="btn btn-primary" href="#" onClick={resetApproved} >reset approve</a></h1>
+    <div className="post-title">
+                <h1 className="inline">{"Import order"}</h1>
+              </div>
       <div className={`global-padding`}  >
         <p>Subscriber</p>
         <table style={{width : "100%"}} border="2" cellPadding="2">
