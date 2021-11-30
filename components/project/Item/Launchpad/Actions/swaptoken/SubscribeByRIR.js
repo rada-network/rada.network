@@ -98,7 +98,7 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
             
             {/* remove the above block if user doesn't have RIR */}
             <div className="">
-              <label htmlFor="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Amount")}</label>
+              <label htmlFor="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">{t("Amount")}</label>
               <select id="amount" name="amount" className="select-custom" value={numberBusd} onChange={e => {handleChangeBUSD(e)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option key={-1} className="text-gray-300" value={0}>0 BUSD</option>
@@ -115,7 +115,9 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
             </div>
             {accountBalance.rirBalance > 0 && 
             <div className="mt-4">
-              <label htmlFor="rir" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("RIR")}</label>
+              <label htmlFor="rir" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">
+                {t("RIR")}
+              </label>
               <select id="rir" name="rir" className="select-custom " value={numberRIR} onChange={e => {setNumberRIR(e.currentTarget.value)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option key="0" className="text-gray-300" value={0}>{t("dont use rir")} RIR</option>

@@ -10,7 +10,7 @@ const SwapTokens = ({}) => {
             
             {/* remove the above block if user doesn't have RIR */}
             <div className="">
-              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">Amount</label>
+              <label for="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">Amount</label>
               <select id="amount" name="amount" className="select-custom ">
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option className="text-gray-300" selected>100 BUSD</option>
@@ -26,7 +26,7 @@ const SwapTokens = ({}) => {
               </select>
             </div>
             <div className="mt-4">
-              <label for="rir" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">RIR</label>
+              <label for="rir" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">RIR</label>
               <select id="rir" name="rir" className="select-custom ">
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option className="text-gray-300">0 RIR</option>
