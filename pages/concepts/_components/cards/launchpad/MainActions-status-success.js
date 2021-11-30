@@ -13,17 +13,49 @@ const MainActions = ({}) => {
             </div>
 
             <div className="project-card--container">
-              <div className="max-w-2xl mx-auto text-center">
+              <div className="max-w-xl mx-auto">
               
-              <div className="flex items-center">
-                <div className="s2e-illustration flex-shrink-0"></div>
-                <div className="text-left ml-2">
-                <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">Congratulations! You&rsquo;re selected as a Parallel's investor</h3>
-                  <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+                <div className="flex">
+                  <div className="w-full">
+                    <h3 className="text-xl mb-4 text-green-400 dark:text-green-600">
+                    ✨ Congratulations! You've successfully prefunded $800
+                    </h3>
+                    <ul className="text-left p-4 border border-gray-200 dark:border-gray-700 rounded-lg mb-4">
+                      <li className="relative pl-6 mb-2"> 
+                        <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center mr-2">
+                          <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
+                        </span>
+                      The winner list will be announced before the IDO event</li>
+                      <li className="relative pl-6  mb-2">
+                        <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center  mr-2">
+                          <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
+                        </span>
+                        You can claim the token after TGE (Token Generated Events) on the <a href="" className="link">claim</a> page 
+                      </li>
+                      <li  className="relative pl-6  mb-2">
+                        <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center mr-2">
+                          <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
+                        </span>
+                       Vesting schedule will follow The Parallel&rsquo;s <a  href="" className="link">tokenomics</a> 
+                      </li>
+                    </ul>
+                    <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center">
+                      <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
+                        <i class="fad fa-info"></i>
+                      </span>
+                      <div>
+                        <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">Adjust your prefunding</p>
+                      
+                        <a href="" class="group">
+                          <span class="text-sm">Add more fund to increase your chance to win</span>
+                          <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              </div>
               
+              </div>
             </div>
           </div>
         </div>
