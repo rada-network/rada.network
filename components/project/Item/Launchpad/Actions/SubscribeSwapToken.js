@@ -12,6 +12,7 @@ import SwapTokensV2 from "./SwapTokenV2";
 import Link from "next/link"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { toast } from "react-toastify"
+import { set } from "store";
 
 
 const SubscribeSwapToken = ({ project }) => {
@@ -25,6 +26,8 @@ const SubscribeSwapToken = ({ project }) => {
   const launchpadContract = useLaunchpadContractV2(project.swap_contract)
   const [accountBalance, setAccountBalance] = useState({})
   const [loadBalance, setLoadBalance] = useState(true)
+  const [loadWhitelist, setLoadWhitelist] = useState(true)
+  const [inWhitelist, setInWhitelist] = useState(!project.is_whitelist)
   const [orderBusd, setOrderBusd] = useState(0)
   const [orderRIR, setOrderRIR] = useState(0)
   const [approvedBusd, setApprovedBusd] = useState(0)
@@ -45,6 +48,19 @@ const SubscribeSwapToken = ({ project }) => {
       fetchAccountBalance().then(function () {
         setLoadBalance(false)
       });
+    }
+  }, [account])
+
+  useEffect(() => {
+    if (!!account && project.is_whitelist) {
+      launchpadContract.inWhitelist(account).then(function(res){
+        setInWhitelist(res)
+        setLoadWhitelist(false)
+      })
+      
+    }
+    else{
+      setLoadWhitelist(false)
     }
   }, [account])
   useEffect(() => {
@@ -86,9 +102,14 @@ const SubscribeSwapToken = ({ project }) => {
     }
   }
 
-  if (loading || loadBalance) {
+  if (loading || loadBalance || loadWhitelist) {
     return (
       <SubscribeSwapTokenLoading></SubscribeSwapTokenLoading>
+    )
+  }
+  if (!inWhitelist) {
+    return (
+      <NotInWhitesist></NotInWhitesist>
     )
   }
   const maxRIR = parseInt(launchpadInfo.individualMaximumAmount) / 100;
@@ -455,6 +476,34 @@ const SubscribeSwapTokenLoading = function(){
               <div className="flex items-center">
                 <div className="mx-auto">
                   <p className="relative mb-4 "><span className="spinner left-0 top-0"></span></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const NotInWhitesist = function(){
+  const {t} = useTranslation("launchpad")
+  return (
+    <div className="card-default project-main-actions no-padding overflow-hidden">
+
+      <div className="card-body no-padding">
+        <div className="flex flex-col">
+          <div className="">
+            <Timeline step="1" />
+          </div>
+
+          <div className="project-card--container">
+            <div className="max-w-2xl mx-auto text-center">
+
+              <div className="flex items-center">
+                <div className="mx-auto">
+                  {t("execution reverted: Not allow")}
                 </div>
               </div>
             </div>

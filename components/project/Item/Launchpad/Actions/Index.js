@@ -21,7 +21,7 @@ const LaunchpadActions = ({ project }) => {
   if (openTime > curentTime) {
     return <WhitelistCountdown project={project} />
   }
-
+  
   if (openTime < curentTime && curentTime < endTime) {
     return (
       <>
