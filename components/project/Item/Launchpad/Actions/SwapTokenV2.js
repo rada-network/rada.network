@@ -58,7 +58,7 @@ export const SwapDescription = ({numberBusd,numberRIR,maxSelected,currentOrderBu
       <div className="h-2.5 relative mt-0 mb-8">
         <div className="h-2.5 mb-4 mt-2 border-r-2 border-l-2 border-gray-300 dark:border-gray-500 relative">
           <span className="absolute -left-1 -bottom-3.5 text-2xs">0</span>
-          <span className="absolute -right-4 -bottom-3.5 text-2xs">400 BUSD</span>
+          <span className="absolute -right-4 -bottom-3.5 text-2xs">{maxSelected*100} BUSD</span>
           <span className="block w-full h-0.5 bg-gray-300 dark:bg-gray-600 absolute top-1"></span>
         </div>
 
