@@ -252,6 +252,22 @@ const SubscribeSwapToken = ({ project }) => {
                           </p>
                         </div>
                       </div>
+<<<<<<< HEAD
+                    </Link>
+                  }
+
+                    <div className="w-full md:w-1/2 p-4 my-2 md:m-2 bg-gray-100 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center">
+                      <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow">
+                        <i class="fad fa-dollar-sign"></i>
+                      </span>
+                      <div>
+                        <p className="mb-1 opacity-80">Adjust your prefunding</p>
+                        
+                        <a href={`#`} onClick={e => {setStep(2)}}  class="group">
+                          <span class="text-sm">Increase your chance to win</span>
+                          <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
+                        </a>
+=======
                       <div className="flex flex-col md:flex-row mt-8 max-w-2xl justify-evenly mx-auto">
                         {project?.share_campaign?.length > 0 &&
                           <Link href={`/${i18n.language}/launchverse/${project.slug}/share2earn`}>
@@ -292,6 +308,7 @@ const SubscribeSwapToken = ({ project }) => {
                         }
                       </div>
 
+>>>>>>> 7cf2f8e293b4b0601bdbaf1c034cf23819c68ae1
                       </div>
                     </div>
                   </div>
@@ -301,6 +318,25 @@ const SubscribeSwapToken = ({ project }) => {
         </div>
       }
 
+<<<<<<< HEAD
+                
+
+                  {/* <p>{t("prefunded note line2")} </p>
+                  {!!project.share_campaign && 
+                  <>
+                  <p>{t("share to earn note")}</p>
+                  <Link href={`/launchverse/${project.slug}/share2earn`}>
+                  <a href={`/launchverse/${project.slug}/share2earn`} class="group"className="btn btn-primary mt-4 mb-4 px-4 py-2">{t("Share to earn")}</a>
+                  </Link>
+                  </>
+                  }
+                  {(parseInt(orderBusd) < maxBusd || (parseInt(orderRIR) < maxRIR && project.is_allow_rir)) &&
+                  <>
+                  <p>{t("adjust note")}</p>
+                  <a class="group" href="#" className="btn btn-primary mt-4 px-4 py-2">{t("Adjust prefund")}</a>
+                  </>
+                  } */}
+=======
       {(step == 3 && launchpadInfo.winnerCount > 0 && parseFloat(approvedBusd) > 0) &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
 
@@ -324,6 +360,7 @@ const SubscribeSwapToken = ({ project }) => {
                       }
                     </div>
                   </div>
+>>>>>>> 7cf2f8e293b4b0601bdbaf1c034cf23819c68ae1
                 </div>
 
               </div>
