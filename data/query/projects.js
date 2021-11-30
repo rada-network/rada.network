@@ -23,10 +23,16 @@ const projectBySlugGql = gql`
 				price
 				is_kyc
 				is_allow_rir
+				is_whitelist
 				token{
 						name
 						logo
 						symbol
+						link{
+							url
+							name
+							group
+						}
 				}
 				platform{
 						name

@@ -53,6 +53,7 @@ Page Layout
   @apply ml-2 xl:ml-12;
 }
 
+
 /* 
 Page Full 
 --------------------------------------------- */
@@ -88,6 +89,16 @@ Page Projects
 }
 
 
+@media (max-width: 767px) {
+  .page-project-details {
+    .section {
+      
+    }
+ 
+  } 
+}
+
+
 .page-research-details,
 .page-project-share2earn {
   &.page-full {
@@ -101,12 +112,22 @@ Page Projects
   }
 }
 
-.page-research-details .section {
-  @apply max-w-screen-md mx-auto;
-}
-
 .page-project-share2earn .section {
   @apply max-w-screen-sm mx-auto;
+}
+
+
+/* 
+InPage research 
+*/
+.page-research-details {
+  .w-limiter-lg {
+    @apply flex;
+  }
+}
+
+.page-research-details .section {
+  @apply max-w-screen-md mx-auto;
 }
 
 

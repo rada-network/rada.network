@@ -14,8 +14,9 @@ const SubscribeLaunchpad = ({ project }) => {
   }
   return (
     <>
-      <div className="mb-8">
-        <h3 className="text-3xl text-center font-normal">
+    <div className="max-w-xl mx-auto">
+      <div className="mb-4 md:mb-8">
+        <h3 className="text-2xl md:text-3xl text-center font-normal">
           <span className="text-color-title">{project?.token.name}'s {t("Whitelist")}</span>
         </h3>
         <p className="text-center mt-2 font-normal">
@@ -28,23 +29,24 @@ const SubscribeLaunchpad = ({ project }) => {
         <Login />
         {project.is_kyc && <KYC />}
       </div>
-
+    </div>
     </>
   );
 }
 
 const Login = () => {
   const store = useStore()
+  const {t} = useTranslation("common")
   const Info = () => {
     if (store.user.id) return <span>#{store.user.id.split('-').pop()}</span>
-    return <span>Login</span>
+    return <span>{t("login to join")}</span>
   }
   const Button = () => {
     if (store.user.id) return <span className="flex label label--success w-full">Done</span>
-    return <button className="btn btn-default w-full" onClick={e => store.user.showConnect(true)}>Login</button>
+    return <button className="btn btn-default w-24" onClick={e => store.user.showConnect(true)}>{t("login")}</button>
   }
   return (
-    <div className="list-group--item md:!pb-4">
+    <div className="list-group--item !px-0 md:!pb-4">
       <div className="list-group--item--title w-full md:w-1/4">
         <div className="list-group--item--media">
           <span className="icon"><i className="fas fa-user-check"></i></span>
@@ -56,7 +58,7 @@ const Login = () => {
           <Info />
         </div>
       </div>
-      <div className="text-right -mt-2 md:mt-0 w-1/5">
+      <div className="text-right -mt-2 md:mt-0">
         <Button />
       </div>
     </div>
@@ -125,7 +127,7 @@ const KYC = () => {
             <Info />
           </div>
         </div>
-        <div className="text-right -mt-2 md:mt-0 w-1/5">
+        <div className="text-right -mt-2 md:mt-0">
           <Button />
         </div>
       </div>

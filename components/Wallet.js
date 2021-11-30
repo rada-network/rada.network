@@ -232,7 +232,7 @@ const ConnectWalletModal = observer(({}) => {
 export const WalletProfile = ({type}) => {
   type = type || "full"
   const { account, deactivate} = useActiveWeb3React()
-  const { t } = useTranslation("invest");
+  const { t } = useTranslation("common");
   const store = useStore()
   const {logout} = useAuth()
   const handleConnectWallet = () => {
@@ -245,7 +245,7 @@ export const WalletProfile = ({type}) => {
     <>
     <ConnectWalletModal />
     {type == "full" ?
-    <div className="list-group--item md:!pb-4">
+    <div className="list-group--item !px-0">
       <div className="list-group--item--title w-full md:w-1/4">
         <div className="list-group--item--media">
           <span className="icon">
@@ -256,7 +256,7 @@ export const WalletProfile = ({type}) => {
           htmlFor="blockchain-wallet"
           className="text-color-desc"
         >
-          Wallet
+          {t("Wallet")}
         </label>
       </div>
       <div className="flex-1 md:mt-0">
@@ -309,7 +309,7 @@ export const WalletProfile = ({type}) => {
           <>
             <NetworkSwitch />
             <button
-              className="btn btn-default"
+              className="btn btn-default w-24"
               onClick={handleConnectWallet}
             >
               {t("connect")}
@@ -317,7 +317,7 @@ export const WalletProfile = ({type}) => {
           </>
         ) : (
           <button
-            className="btn btn-default"
+            className="btn btn-default w-24"
             onClick={() => handleDisconnectWallet()}
           >
             {t("disconnect")}
@@ -393,7 +393,7 @@ export const WalletProfile = ({type}) => {
 export const WalletRequire = ({type}) => {
   type = type || "full"
   const { account, deactivate} = useActiveWeb3React()
-  const { t } = useTranslation("invest");
+  const { t } = useTranslation("common");
   const store = useStore()
   const handleConnectWallet = () => {
     store.wallet.showConnect(true);
@@ -401,7 +401,7 @@ export const WalletRequire = ({type}) => {
 
   return (
     <>
-    <div className="list-group--item md:!pb-4">
+    <div className="list-group--item !px-0">
       <div className="list-group--item--title w-full md:w-1/4">
         <div className="list-group--item--media">
           <span className="icon">
@@ -412,13 +412,13 @@ export const WalletRequire = ({type}) => {
           htmlFor="blockchain-wallet"
           className="text-color-desc"
         >
-          Wallet
+          {t("Wallet")}
         </label>
       </div>
       <div className="flex-1 md:mt-0">
         <div className="relative pl-8 md:pl-0 w-full flex items-center">
           {_.isEmpty(account) ? (
-            ""
+            "Connect wallet to join"
           ) : (
             <>
               <div>
@@ -452,7 +452,7 @@ export const WalletRequire = ({type}) => {
           <>
             {/* <NetworkSwitch /> */}
             <button
-              className="btn btn-default"
+              className="btn btn-default w-24 w-full"
               onClick={handleConnectWallet}
             >
               {t("connect")}

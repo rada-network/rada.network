@@ -117,8 +117,8 @@ export const CardProject = ({ project }) => {
             </li>
           </ul>
           {status=="open" ? 
-          <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
-            <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-5 bg-green-600 rounded-full" style={{width: `${progressPercentage}`}}>{progressPercentage}</div>
+          <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
+            <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" style={{width: `${progressPercentage}`}}>{progressPercentage}</div>
           </div>
           : ""}
           <div className="project--cta ">

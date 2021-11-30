@@ -7,7 +7,7 @@ const MainActions = ({}) => {
       <div className="card-default project-main-actions no-padding overflow-hidden">
 
         <div className="card-header text-center sr-only">
-          <h3>Public Sale</h3>
+          <h2>Public Sale</h2>
         </div>
 
         <div className="card-body no-padding">
@@ -18,7 +18,7 @@ const MainActions = ({}) => {
               <ProjectTimeline step="2" />
             </div>
 
-            <div className="global-padding-lg !px-4 min-h-full max-w-xl w-full mx-auto">
+            <div className="project-card--container">
 
               <div className="mb-8 box box--success global-padding-sm">
                 <p className="text-center font-normal">
@@ -27,8 +27,8 @@ const MainActions = ({}) => {
                 </p>
               </div>
 
-              <div className="mb-8">
-                <h3 className="text-3xl text-center font-normal">
+              <div className="mb-4 md:mb-8">
+                <h3 className="text-2xl md:text-3xl text-center font-normal">
                   <span className="text-color-title">Chuyển đổi Tokens</span>
                 </h3>
               </div>

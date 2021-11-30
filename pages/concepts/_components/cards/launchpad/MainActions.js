@@ -4,7 +4,7 @@ const MainActions = ({}) => {
       <div className="box project-main-actions">
 
         <div className="box-header text-center sr-only">
-          <h3>Public Sale</h3>
+          <h2>Public Sale</h2>
         </div>
 
         <div className="box-body">

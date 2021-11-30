@@ -7,9 +7,12 @@ import numberFormatter from "@components/utils/numberFormatter";
 
 import { utils } from "ethers";
 import { useTranslation } from "next-i18next";
+import useStore from "@lib/useStore"
+import { observer } from "mobx-react";
 
-export default function LaunchpadContent({ project }) {
+const LaunchpadContent = observer(function({ project }) {
   const { dataStore } = usePageStore();
+  const store = useStore()
   const { t } = useTranslation("launchpad");
   const { account, library } = useActiveWeb3React();
   const [launchpadInfo, setLaunchpadInfo] = useState(null);
@@ -30,7 +33,7 @@ export default function LaunchpadContent({ project }) {
     if (!!library && !!lauchpadContact && account !== "") {
       fetchLaunchpadInfo();
     }
-  }, [account, lauchpadContact, library]);
+  }, [account, lauchpadContact, library,store.loadPoolContent]);
   const raise = project.raise;
   const tokenPrice = project.price;
   const progressToken = parseInt(launchpadInfo?.totalSubBUSD) || 0;
@@ -39,6 +42,9 @@ export default function LaunchpadContent({ project }) {
   const curentTime = (new Date()).getTime() / 1000
   const openTime = (new Date(project.open_date)).getTime() / 1000
   const endTime = (new Date(project.end_date)).getTime() / 1000
+  let tokennomic = project.token.link.find(function(item){
+    return item.group === 'tokenomic'
+  })
   return (
     <div
       className="grid grid-cols-1 md:grid-cols-2 gap-4"
@@ -73,7 +79,7 @@ export default function LaunchpadContent({ project }) {
               <span className="list-key">{t("Token Price")}</span>
               {tokenPrice ? 
               <span className="ml-auto font-semibold">
-              {tokenPrice} BUSD
+              1 {project?.token?.symbol} = {tokenPrice} BUSD
               </span>
               :
               <span className="ml-auto font-semibold">
@@ -95,9 +101,9 @@ export default function LaunchpadContent({ project }) {
             }
           </ul>
           {!!project.open_date && openTime < curentTime && 
-          <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-5 rounded-full">
+          <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
             <div
-              className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-5 bg-green-600 rounded-full"
+              className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full"
               style={{ width: `${progressPercentage > 100 ? 100 : progressPercentage}%` }}
             >
               {progressPercentage}%
@@ -113,7 +119,7 @@ export default function LaunchpadContent({ project }) {
           <h3>{t("Info", { name: project?.token?.name })}</h3>
         </div>
         <div className="card-body">
-          <div
+          <div className="h-full" 
             dangerouslySetInnerHTML={{ __html: project.content?.description }}
           ></div>
 
@@ -121,23 +127,23 @@ export default function LaunchpadContent({ project }) {
             {!!project.news && <p className="mt-auto pt-4">
               <Link href={`/${dataStore.lang}/launchverse/${project.slug}/research`}>
                 <span className="flex">
-                  <i class="mr-1 text-xs opacity-60 fas fa-arrow-right"></i>
                   <a className="link" href={`/${dataStore.lang}/launchverse/${project.slug}/research`}>{t("Read full research")}</a>
                   {/* <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span> */}
                 </span>
               </Link>
             </p>}
-            <p className="mt-auto ml-4 pt-4">
-              <Link href="">
-                <span className="flex">
-                  <i class="mr-1 text-xs opacity-60 fas fa-external-link-alt"></i>
-                  <a href="" className="link">PRL&rsquo;s Tokenomics</a>
-                </span>
-              </Link>
-            </p>
+            {!!tokennomic && <p className="mt-auto ml-4 pt-4">
+              <span className="flex items-baseline">
+                <a href={tokennomic.url} target="_blank" className="link">{project?.token.symbol}&rsquo;s Tokenomics</a>
+                <span className="icon text-2xs ml-1 relative bottom-0.5"><i className="fa-duotone fa-external-link"></i></span>
+              </span>
+            </p>}
           </div>
         </div>
       </div>
     </div>
   );
-}
+})
+
+
+export default LaunchpadContent

@@ -9,8 +9,7 @@ const MainActions = ({}) => {
     <>
       <div className="card-default project-main-actions no-padding overflow-hidden">
         <div className="card-header text-center sr-only">
-          <h3>Public Sale</h3>
-         
+          <h2>Public Sale</h2>
         </div>
 
         <div className="card-body no-padding">
@@ -21,7 +20,7 @@ const MainActions = ({}) => {
 
             <div className="project-card--container">
               <div className="mb-8 sr-only">
-                <h3 className="text-3xl text-center font-normal">
+                <h3 className="text-2xl md:text-3xl text-center font-normal">
                   <span className="text-color-title">Swap tokens</span>
                 </h3>
               </div>

@@ -4,6 +4,7 @@ import { useWeb3React } from '@web3-react/core'
 import { ethers } from 'ethers'
 import {toast} from "react-toastify"
 import useActiveWeb3React from './useActiveWeb3React'
+import {useTranslation} from "next-i18next"
 
 const initialState = {
   approvalState: 'idle',
@@ -62,6 +63,7 @@ const useApproveConfirmTransaction = ({
   const { account } = useActiveWeb3React()
   const [state, dispatch] = useReducer(reducer, initialState)
   const handlePreApprove = useRef(onRequiresApproval)
+  const {t} = useTranslation("launchpad")
   // Check if approval is necessary, re-check if account changes
   useEffect(() => {
     if (account && handlePreApprove.current) {

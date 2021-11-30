@@ -25,7 +25,7 @@ export default function ProjectItem({ project, page, slug }) {
 
         <div className="pane-content--sec--main grid scrollbar">
           <div 
-            className={`page page-full page-project-details !pt-0` 
+            className={`page page-full page-project-details !p-0` 
             + (page == "research" ? " page-research-details" : "") 
             + (page == "share2earn" ? " page-project-share2earn" : "")} 
             ref={ref}

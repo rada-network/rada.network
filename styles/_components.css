@@ -31,7 +31,7 @@ Various UI Components Style
            font-semibold flex items-center text-center rounded-full md:mr-2 static;
 }
 .step-compact-body--icon--text {
-  @apply m-auto text-xs;
+  @apply m-auto text-xs w-1/2;
 }
 
 .step-compact-body--content {
@@ -217,4 +217,71 @@ Box Colors
 Specific Boxes Styles 
 */
 .box-share2earn {
+}
+
+
+/* 
+Popper
+------------------------------- */
+.popper {
+  @apply z-50 flex flex-col w-full h-full relative py-2 rounded-md shadow-md;
+  @apply border border-gray-200 dark:border-gray-900 bg-white dark:bg-gray-800;
+  min-width: 100px;
+  top: 32px;
+}
+
+.popper-close-btn {
+  @apply absolute right-1 top-1 opacity-50 hover:opacity-100;
+}
+
+.popper-header,
+.popper-body,
+.popper-footer {
+  @apply px-4;
+}
+
+.popper-header {
+  @apply flex items-center pb-2 pt-2;
+}
+
+.popper-footer {
+  @apply flex items-center pb-2;
+}
+
+.popper-author-info {
+  @apply block top-0;
+  width: 20rem;
+  transition-property: all;
+}
+
+/* 
+Popper used as a menu
+*/
+.popper-item {
+  @apply py-2 px-2 text-center cursor-pointer;
+  @apply text-sm font-medium hover:text-primary-700 dark:hover:text-primary-500;
+}
+
+/* 
+Social Button Lists
+*/
+.about-social {
+  @apply flex items-center space-x-4 mt-4;
+}
+
+.about-social-sm {
+  @apply space-x-2 mt-1;
+}
+
+.about-social a {
+  @apply flex flex-col justify-center items-center w-px-32 h-px-32 rounded-full;
+  @apply bg-gray-400 bg-opacity-10 text-gray-700 dark:text-gray-200;
+  @apply hover:bg-primary-500 hover:text-white;
+}
+
+.about-social-sm a {
+  @apply w-px-24 h-px-24;
+  i {
+    @apply text-xs;
+  }
 }

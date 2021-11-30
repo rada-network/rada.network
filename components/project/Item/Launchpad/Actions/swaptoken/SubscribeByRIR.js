@@ -7,12 +7,13 @@ import { ethers } from 'ethers'
 import {toast} from "react-toastify"
 import {useLaunchpadInfo} from "@utils/hooks/index"
 import { useTranslation } from "next-i18next"
-
+import useStore from "@lib/useStore"
 import { SwapNote,SwapDescription } from "../SwapTokenV2"
+
 const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
   const {t} = useTranslation("launchpad")
   const {account} = useActiveWeb3React()
-
+  const store = useStore()
   const rirContract = useRIRContract()
   const bUSDContract = useBUSDContract()
   const launchpadContract = useLaunchpadContractV2(project.swap_contract)
@@ -21,7 +22,7 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
   const [numberBusd,setNumberBusd] = useState(0)
   const [currentOrderBusd,setCurrentOrderBusd] = useState(0)
   const [currentOrderRIR,setCurrentOrderRIR] = useState(0)
-  const maxRIR = parseInt(launchpadInfo.individualMaximumAmount) / 100;
+  const maxRIR = parseInt(launchpadInfo.individualMaximumAmount) / 100 < accountBalance.rirBalance ? parseInt(launchpadInfo.individualMaximumAmount) : accountBalance.rirBalance;
   const maxBusd = parseInt(launchpadInfo.individualMaximumAmount);
   useEffect(() => {
     setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)))
@@ -34,7 +35,7 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
         try {
           const response2 = await bUSDContract.allowance(account, launchpadContract.address)
           const response1 = await rirContract.allowance(account, launchpadContract.address)
-          return {busd : parseInt(ethers.utils.formatEther(response2)),rir : parseInt(ethers.utils.formatEther(response1))}
+          return {busd : parseInt(ethers.utils.formatEther(response2)),rir : parseInt(numberRIR) > 0 ? parseInt(ethers.utils.formatEther(response1)) : 1}
         } catch (error) {
           return {busd : 0, rir : 0}
         }
@@ -48,7 +49,8 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
           data.push(receipt_busd)
         }
         const rirApprove = parseInt(maxRIR) - parseInt(requireApprove.rir)
-        if (rirApprove > 0){
+        console.log(rirApprove,numberRIR)
+        if (parseInt(numberRIR) > 0 && rirApprove > 0){
           receipt_rir = await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxRIR.toString())])
           data.push(receipt_rir)
         }
@@ -59,20 +61,21 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
         for (const receipt of receipts) {
           txs.push(receipt.transactionHash)
         }
-        toast.success(`Contract enabled - you can now prefund investment`)
+        toast.success(`Success - Prefund enabled`)
       },
       onConfirm: () => {
         return callWithGasPrice(launchpadContract, 'createSubscription', [ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString()),account])
       },
       onSuccess: async ({ receipt }) => {
         await fetchAccountBalance()
-        toast.success(`Subscribed successfully ${receipt.transactionHash}`)
+        toast.success(`Successfully prefunded`)
         
         handleReload()
         setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)) + parseInt(numberBusd))
         setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)) + parseInt(numberRIR))
         setNumberRIR(0)
         setNumberBusd(0)
+        store.updateLoadPoolContent((new Date()).getTime())
       },
     })
     const resetApproved = async () => {
@@ -80,6 +83,11 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
       await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, 0])
     }
     const maxSelected = parseInt(launchpadInfo.individualMaximumAmount)/100
+    const handleChangeBUSD = function(e){
+      setNumberBusd(e.currentTarget.value)
+      let newNumberRIR = parseInt(e.currentTarget.value)/100 < accountBalance.rirBalance ? parseInt(e.currentTarget.value)/100 : 0;
+      setNumberRIR(newNumberRIR)
+    }
   return (
     <>
       <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "") }>
@@ -90,8 +98,8 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
             
             {/* remove the above block if user doesn't have RIR */}
             <div className="">
-              <label htmlFor="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Amount")}</label>
-              <select id="amount" name="amount" className="select-custom" value={numberBusd} onChange={e => {setNumberBusd(e.currentTarget.value),setNumberRIR(parseInt(e.currentTarget.value)/100)}}>
+              <label htmlFor="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">{t("Amount")}</label>
+              <select id="amount" name="amount" className="select-custom" value={numberBusd} onChange={e => {handleChangeBUSD(e)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option key={-1} className="text-gray-300" value={0}>0 BUSD</option>
                 {Array(maxSelected).fill(null).map((_, i) => {
@@ -107,10 +115,12 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
             </div>
             {accountBalance.rirBalance > 0 && 
             <div className="mt-4">
-              <label htmlFor="rir" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("RIR")}</label>
+              <label htmlFor="rir" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">
+                {t("RIR")}
+              </label>
               <select id="rir" name="rir" className="select-custom " value={numberRIR} onChange={e => {setNumberRIR(e.currentTarget.value)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
-                <option key="0" className="text-gray-300" value={0}>{0} RIR</option>
+                <option key="0" className="text-gray-300" value={0}>{t("dont use RIR")}</option>
                 {Array(maxSelected).fill(null).map((_, i) => {
                   return (
                     <>

@@ -10,8 +10,10 @@ import { useTranslation } from "next-i18next"
 import { CheckSvg } from "@components/svg/SvgIcons"
 import { set } from "lodash"
 import { SwapNote,SwapDescription } from "../SwapTokenV2"
+import useStore from "@lib/useStore"
 
 const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
+  const store = useStore()
   const {t} = useTranslation("launchpad")
   const {account} = useActiveWeb3React()
 
@@ -54,20 +56,20 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
         for (const receipt of receipts) {
           txs.push(receipt.transactionHash)
         }
-        toast.success(`Contract enabled - you can now prefund investment`)
+        toast.success(`Success - Prefund enabled`)
       },
       onConfirm: () => {
         return callWithGasPrice(launchpadContract, 'createSubscription', [ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString()),account])
       },
       onSuccess: async ({ receipt }) => {
         await fetchAccountBalance()
-        toast.success(`Subscribed successfully ${receipt.transactionHash}`)
-        
+        toast.success(`Successfully prefunded`)
         handleReload()
         setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)) + parseInt(numberBusd))
         setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)) + parseInt(numberRIR))
         setNumberRIR(0)
         setNumberBusd(0)
+        store.updateLoadPoolContent((new Date()).getTime())
       },
     })
     const resetApproved = async () => {
@@ -85,7 +87,7 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
             
             {/* remove the above block if user doesn't have RIR */}
             <div className="">
-              <label htmlFor="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Amount")}</label>
+              <label htmlFor="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">{t("Amount")}</label>
               <select id="amount" name="amount" className="select-custom" value={numberBusd} onChange={e => {setNumberBusd(e.currentTarget.value)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option key={-1} className="text-gray-300" value={0}>0 BUSD</option>

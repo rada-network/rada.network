@@ -86,12 +86,12 @@ const SubcribeByRIR = ({project,accountBalance,setIsBusd,fetchAccountBalance,lau
           
           <div className="mt-1 relative flex">
             <div className="flex-1">
-              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Currency")}</label>
+              <label for="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">{t("Currency")}</label>
               <SelectTokenType setIsBusd={setIsBusd} init={0} accountBalance={accountBalance}/>
             </div>
             {/* remove the above block if user doesn't have RIR */}
             <div className="flex-1">
-              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Amount")}</label>
+              <label for="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">{t("Amount")}</label>
               <select id="amount" onChange={e => {setNumberRIR(e.currentTarget.value)}} name="amount" className="select-custom !rounded-l-none">
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option className="text-gray-300" selected value={1}>1 RIR</option>
@@ -172,12 +172,12 @@ const SubcribeByBUSD = ({project,accountBalance,setIsBusd,fetchAccountBalance,la
           
           <div className="mt-1 relative flex">
             <div className="flex-1">
-              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Currency")}</label>
+              <label for="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">{t("Currency")}</label>
               <SelectTokenType setIsBusd={setIsBusd} init={1} accountBalance={accountBalance}/>
             </div>
             {/* remove the above block if user doesn't have RIR */}
             <div className="flex-1">
-              <label for="currency" className="uppercase text-sm mb-2 block tracking-wide text-gray-400 font-semibold">{t("Amount")}</label>
+              <label for="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">{t("Amount")}</label>
               <select id="amount" name="amount" onChange={e => {setNumberBusd(e.currentTarget.value)}} className="select-custom !rounded-l-none">
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option className="text-gray-300" selected value={100}>100 BUSD</option>
