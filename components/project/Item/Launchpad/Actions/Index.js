@@ -36,8 +36,8 @@ const LaunchpadActions = ({ project }) => {
                 </div>
 
                 <div className="project-card--container">
-                    <SubscribeLaunchpad project={project} />
-                    <TutorialWidget></TutorialWidget>
+                  <SubscribeLaunchpad project={project} />
+                  <TutorialWidget></TutorialWidget>
                 </div>
 
               </div>

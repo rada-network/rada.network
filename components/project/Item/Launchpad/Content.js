@@ -116,7 +116,7 @@ const LaunchpadContent = observer(function({ project }) {
           <h3>{t("Info", { name: project?.token?.name })}</h3>
         </div>
         <div className="card-body">
-          <div
+          <div className="h-full" 
             dangerouslySetInnerHTML={{ __html: project.content?.description }}
           ></div>
 
@@ -124,16 +124,15 @@ const LaunchpadContent = observer(function({ project }) {
             {!!project.news && <p className="mt-auto pt-4">
               <Link href={`/${dataStore.lang}/launchverse/${project.slug}/research`}>
                 <span className="flex">
-                  <i class="mr-1 text-xs opacity-60 fas fa-arrow-right"></i>
                   <a className="link" href={`/${dataStore.lang}/launchverse/${project.slug}/research`}>{t("Read full research")}</a>
                   {/* <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span> */}
                 </span>
               </Link>
             </p>}
             <p className="mt-auto ml-4 pt-4">
-              <span className="flex">
-                <i class="mr-1 text-xs opacity-60 fas fa-external-link-alt"></i>
+              <span className="flex items-baseline">
                 <a href="" className="link">{project?.token.symbol}&rsquo;s Tokenomics</a>
+                <span className="icon text-2xs ml-1 relative bottom-0.5"><i className="fa-duotone fa-external-link"></i></span>
               </span>
             </p>
           </div>

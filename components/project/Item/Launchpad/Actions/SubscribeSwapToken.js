@@ -110,7 +110,7 @@ const SubscribeSwapToken = ({ project }) => {
 
               <div className="project-card--container">
                 <div className="mb-8 sr-only">
-                  <h3 className="text-3xl text-center font-normal">
+                  <h3 className="text-2xl md:text-3xl text-center font-normal">
                     <span className="text-color-title"></span>
                   </h3>
                 </div>
