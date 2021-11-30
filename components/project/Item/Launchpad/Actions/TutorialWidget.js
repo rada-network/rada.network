@@ -2,7 +2,7 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link"
 import {toast} from "react-toastify"
 const TutorialWidget = function({project}){
-  const {t} = useTranslation("launchpad")
+  const {t,i18n} = useTranslation("launchpad")
   return (
     <div className="flex flex-col md:flex-row mt-8 max-w-2xl justify-evenly mx-auto">
       {project?.share_campaign?.length > 0 && <Link href={`/${i18n.language}/launchverse/${project.slug}/share2earn`}>
