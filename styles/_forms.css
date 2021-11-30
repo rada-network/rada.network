@@ -119,7 +119,7 @@ Comment Form
 
 .select-custom {
   @apply dark:text-gray-300 text-gray-800 w-full border border-gray-200 dark:border-gray-700 
-  focus:ring-primary-500 focus:border-primary-500 px-4 py-3 pr-7 
+  focus:ring-primary-500 focus:border-primary-500 px-4 py-2 pr-7 
   bg-white dark:bg-transparent rounded-md text-sm;
 }
 .select-custom option {
