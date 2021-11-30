@@ -49,22 +49,45 @@ export const SwapDescription = ({numberBusd,numberRIR,maxSelected,currentOrderBu
     width: p3/5 * 100 + "%"
   };
   return (
-    <div className="flex mt-4 rounded-2xl overflow-hidden text-xs font-semibold">
-      {p1 > 0 && 
-      <div className={`w-${p1}/5 flex items-center transition-all`} style={sp1}>
-        <div className="w-full flex items-center text-white h-6 pl-2  bg-green-600">
-        {(parseInt(RIR) + currentOrderRIR) * 100} BUSD
+    <>
+    <div className="mt-4">
+      <label for="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">
+        Status
+      </label>
+
+      <div className="h-2.5 relative mt-0 mb-8">
+        <div className="h-2.5 mb-4 mt-4 border-r-2 border-l-2 border-gray-300 dark:border-gray-500 relative">
+          <span className="absolute -left-1 -bottom-3.5 text-2xs">0</span>
+          <span className="absolute -right-4 -bottom-3.5 text-2xs">400 BUSD</span>
+          <span className="block w-full h-0.5 bg-gray-300 dark:bg-gray-600 absolute top-1"></span>
         </div>
-      </div>}
-      {p2 > 0 && 
-      <div className={`w-${p2}/5 flex items-center transition-lex items-center transition-all`} style={sp2}>
-        <div className="w-full h-6 flex items-center  text-gray-700 pl-2 bg-yellow-300 ">{parseInt(busd) + currentOrderBusd - (parseInt(RIR) + currentOrderRIR) * 100 } BUSD</div>    
-      </div>}
-      {p3 > 0 && 
-      <div className={`w-${p3}/5 flex flex items-center transition-all`} style={sp3}>
-        <div className="w-full h-6 flex items-center bg-gray-300 dark:bg-gray-700"></div>
-      </div>}
+
+        <div className="h-2.5 absolute top-0 w-full flex font-semibold rounded-full">
+          {p1 > 0 && 
+          <div className={`h2.5 border-r-2 border-gray-300 dark:border-gray-500 w-${p1}/5 flex items-center transition-all relative`} style={sp1}>
+            <div className="w-full flex h-1 bg-green-600">
+            </div>
+            <span className="absolute -right-5 -bottom-3.5 text-2xs bg-gray-100 dark:bg-gray-900 px-2">
+              {(parseInt(RIR) + currentOrderRIR) * 100} BUSD
+            </span>
+          </div>}
+          {p2 > 0 && 
+          <div className={`h2.5 border-r-2 border-gray-300 dark:border-gray-500 w-${p2}/5 flex items-center transition-all relative`} style={sp2}>
+            <div className="w-full flex h-1 bg-yellow-400">
+            </div>
+            <span className="absolute -right-5 -bottom-3.5 text-2xs bg-gray-100 dark:bg-gray-900 px-2">
+              {parseInt(busd) + currentOrderBusd * 100 } BUSD
+            </span>
+          </div>}
+          {p3 > 0 && 
+          <div className={`w-${p3}/5 flex items-center transition-all`} style={sp3}>
+            <div className="w-full h-5 flex items-center bg-transparent">
+            </div>
+          </div>}
+        </div>
+      </div>
     </div>
+    </>
   )
 }
 
