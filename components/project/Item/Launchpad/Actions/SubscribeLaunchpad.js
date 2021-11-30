@@ -35,13 +35,14 @@ const SubscribeLaunchpad = ({ project }) => {
 
 const Login = () => {
   const store = useStore()
+  const {t} = useTranslation("common")
   const Info = () => {
     if (store.user.id) return <span>#{store.user.id.split('-').pop()}</span>
-    return <span>Login</span>
+    return <span></span>
   }
   const Button = () => {
     if (store.user.id) return <span className="flex label label--success w-full">Done</span>
-    return <button className="btn btn-default w-full" onClick={e => store.user.showConnect(true)}>Login</button>
+    return <button className="btn btn-default w-full" onClick={e => store.user.showConnect(true)}>{t("login")}</button>
   }
   return (
     <div className="list-group--item md:!pb-4">

@@ -232,7 +232,7 @@ const ConnectWalletModal = observer(({}) => {
 export const WalletProfile = ({type}) => {
   type = type || "full"
   const { account, deactivate} = useActiveWeb3React()
-  const { t } = useTranslation("invest");
+  const { t } = useTranslation("common");
   const store = useStore()
   const {logout} = useAuth()
   const handleConnectWallet = () => {
@@ -256,7 +256,7 @@ export const WalletProfile = ({type}) => {
           htmlFor="blockchain-wallet"
           className="text-color-desc"
         >
-          Wallet
+          {t("Wallet")}
         </label>
       </div>
       <div className="flex-1 md:mt-0">
@@ -393,7 +393,7 @@ export const WalletProfile = ({type}) => {
 export const WalletRequire = ({type}) => {
   type = type || "full"
   const { account, deactivate} = useActiveWeb3React()
-  const { t } = useTranslation("invest");
+  const { t } = useTranslation("common");
   const store = useStore()
   const handleConnectWallet = () => {
     store.wallet.showConnect(true);
@@ -412,7 +412,7 @@ export const WalletRequire = ({type}) => {
           htmlFor="blockchain-wallet"
           className="text-color-desc"
         >
-          Wallet
+          {t("Wallet")}
         </label>
       </div>
       <div className="flex-1 md:mt-0">

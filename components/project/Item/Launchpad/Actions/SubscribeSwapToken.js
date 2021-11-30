@@ -210,7 +210,27 @@ const SubscribeSwapToken = ({ project }) => {
                           }</span>
                         }
                       </h3>
-
+                      <div className="">
+                        <div className="max-w-md mx-auto">
+                          <p class="text-sm text-center mt-4 leading-7" dangerouslySetInnerHTML={{__html : t("status note")}} >
+                          </p>
+                          <p class="text-sm text-center mt-4 leading-7" dangerouslySetInnerHTML={{__html : t("coming soon note",
+                            {
+                              twitter : `<a class="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
+                              radanetwork : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,
+                              radadao : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radadao">Telegram Community</a>`
+                            }
+                          )}} >
+                          </p>
+                          <p class="text-sm text-center mt-4 leading-7" dangerouslySetInnerHTML={{__html : t("status note 2",
+                            {
+                              token : project.token.name,
+                              research : `<a class="link" target="_blank" rel="nofollow" href="/${i18n.language}/launchverse/${project.slug}/research">Research</a>`
+                            }
+                          )}} >
+                          </p>
+                        </div>
+                      </div>
                       <div className="flex flex-col md:flex-row mt-8 max-w-2xl justify-evenly mx-auto">
                         {project?.share_campaign?.length > 0 &&
                           <Link href={`/${i18n.language}/launchverse/${project.slug}/share2earn`}>
@@ -231,17 +251,18 @@ const SubscribeSwapToken = ({ project }) => {
                           </Link>
                         }
 
-                        {(parseInt(orderBusd) < maxBusd || (parseInt(orderRIR) < maxRIR && project.is_allow_rir)) &&
+                        {(parseInt(orderBusd) < maxBusd || ((parseInt(orderRIR) < maxRIR && parseInt(accountBalance.rirBalance) > 0) && project.is_allow_rir)) &&
                           <>
                             <div className="w-full p-4 my-2 md:m-2 bg-gray-100 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center">
                               <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow">
                                 <i class="fad fa-dollar-sign"></i>
                               </span>
                               <div>
-                                <p className="mb-1 opacity-80">Adjust your prefunding</p>
+                                <p className="mb-1 opacity-80">{t("adjust note",{"orderBusd" : orderBusd,"maxBusd" : maxBusd})}</p>
 
                                 <a href={`#`} onClick={e => { setStep(2) }} class="group">
-                                  <span class="text-sm">Increase your chance</span>
+                                  <span class="text-sm">
+                                    {t("Adjust prefund")}</span>
                                   <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
                                 </a>
                               </div>
@@ -384,7 +405,7 @@ const SubscribeSwapToken = ({ project }) => {
       {(orderBusd > 0 && launchpadInfo.winnerCount == 0) &&
         <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
           <div className="card-header items-center">
-            <h3>Subscriber ({launchpadInfo?.ordersBuyerCount})</h3>
+            <h3>{t("Prefunders")} ({launchpadInfo?.ordersBuyerCount})</h3>
           </div>
 
           <div className="card-body no-padding">
@@ -401,7 +422,7 @@ const SubscribeSwapToken = ({ project }) => {
       {(orderBusd > 0 && launchpadInfo.winnerCount > 0) &&
         <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
           <div className="card-header items-center">
-            <h3>Winners ({launchpadInfo?.winnerCount})</h3>
+            <h3>{t("Winners")} ({launchpadInfo?.winnerCount})</h3>
           </div>
 
           <div className="card-body no-padding">
