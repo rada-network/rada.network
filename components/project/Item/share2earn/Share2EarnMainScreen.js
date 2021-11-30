@@ -39,9 +39,6 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const [userAvatar, setUserAvatar] = useState(null);
   const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '', incentivePaid:'' })
 
-
-
-
   // Banner component 
   let bannerURL;
   if (detailStore.selectedBanner === "LinkedIn") {
@@ -440,7 +437,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                         <div className="mt-1 relative rounded-md shadow-sm">
                           <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--telegram"><span class="icon"><i class="fa-brands fa-telegram"></i></span></span>
                           <input type="text" name="telegram-post-url" id="telegram-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
-                            placeholder="Telegram's post link"
+                            placeholder="Telegram's username"
                             value={telegram.url}
                             onChange={(e) => { setTelegram({ url: e.target.value }) }}
                           />

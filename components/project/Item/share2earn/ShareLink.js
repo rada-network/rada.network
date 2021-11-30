@@ -16,6 +16,7 @@ const ShareLink = function ({ uid, share_message, project }) {
   const [message, setMesage] = useState(share_message[0])
   const textRef = useRef()
   useEffect(() => {
+    randomMessage()
     let url = window.location.origin + `/launchverse/${project.slug}/share2earn` + "?ref=" + uid;
     createShortenLink(url).then(({ data }) => {
       let shortenURL = "https://rada.to/" + data.createShortenLink.key
