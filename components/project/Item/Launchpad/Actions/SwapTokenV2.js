@@ -92,6 +92,7 @@ export const SwapDescription = ({numberBusd,numberRIR,maxSelected,currentOrderBu
 }
 
 export const SwapNote = function({numberBusd,numberRIR,maxSelected,currentOrderBusd,currentOrderRIR}){
+  const {t} = useTranslation("launchpad")
   const [RIR,setRIR] = useState(0)
   const [busd,setBusd] = useState(0)
   useEffect(() => {
@@ -100,25 +101,19 @@ export const SwapNote = function({numberBusd,numberRIR,maxSelected,currentOrderB
   },[numberBusd,numberRIR])
   return (
     <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
-      {RIR > 0 && 
-      <li key={0} className="flex mb-2 relative pl-6">
-        <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
-          <CheckSvg />  
-        </span>
-        <div className="">{(parseInt(RIR) + currentOrderRIR) * 100} BUSD ({parseInt(RIR) + currentOrderRIR} RIR) is guaranteed.</div>
-      </li>
-      }
+      {RIR > 0 &&
       <li key={1} className="relative mb-2 pl-6">
         <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
           <CheckSvg />  
         </span>
-        <div>The rest of your investment will be distributed based on the total subscripption.</div>
+        <div>{t("Prefund description")}</div>
       </li>
+      }
       <li key={2} className="relative mb-2 pl-6">
         <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
           <CheckSvg />  
         </span>
-        <div>Your total prefund: {parseInt(busd) + currentOrderBusd} BUSD</div>
+        <div>{t("Prefund description 2")}</div>
       </li>
     </ul>
   )
