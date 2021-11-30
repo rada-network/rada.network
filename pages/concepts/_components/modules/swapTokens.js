@@ -56,10 +56,27 @@ const SwapTokens = ({}) => {
           </div>
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
         </div>
-        <div className="mt-4">
-          <button className="btn relative btn-default btn-default-lg w-full btn-purple" disabled="" id="swap-button" width="100%" scale="md">
-          <span className="spinner" /> 
-            Approve Contract
+        <p className="text-sm">You must enable RIR and BUSD contracts to prefund</p>
+        {/* chưa nhập amount thì ẩn 2 nút enable cái này đi */}
+        <div className="mt-4 flex">
+          <div className="flex-shrink-0 flex-grow  w-1/2 pr-2">
+            <button className="btn relative  w-full btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md">
+            <span className="spinner" /> 
+              Enable RIR
+            </button>     
+          </div>
+          <div  className="flex-shrink-0 flex-grow w-1/2 pl-2">
+            <button className="btn relative disabled   w-full btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md">
+            {/* <span className="spinner" />  */}
+              Enable BUSD
+            </button>         
+          </div>
+        </div>
+
+        <div className="mt-4 flex">
+          <button className="btn relative w-full disabled btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md">
+            {/* <span className="spinner" />  */}
+              Prefund
           </button>
         </div>
 

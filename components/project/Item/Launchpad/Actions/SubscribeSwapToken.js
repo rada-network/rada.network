@@ -246,7 +246,7 @@ const SubscribeSwapToken = ({project}) => {
                         <p className="mb-1 opacity-80">Adjust your prefunding</p>
                         
                         <a href={`#`} onClick={e => {setStep(2)}}  class="group">
-                          <span class="text-sm">Increase your chance</span>
+                          <span class="text-sm">Increase your chance to win</span>
                           <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
                         </a>
                       </div>
@@ -255,7 +255,7 @@ const SubscribeSwapToken = ({project}) => {
 
                 
 
-                  <p>{t("prefunded note line2")} </p>
+                  {/* <p>{t("prefunded note line2")} </p>
                   {!!project.share_campaign && 
                   <>
                   <p>{t("share to earn note")}</p>
@@ -269,7 +269,7 @@ const SubscribeSwapToken = ({project}) => {
                   <p>{t("adjust note")}</p>
                   <a class="group" href="#" className="btn btn-primary mt-4 px-4 py-2">{t("Adjust prefund")}</a>
                   </>
-                  }
+                  } */}
                 </div>
               </div>
             </div>
