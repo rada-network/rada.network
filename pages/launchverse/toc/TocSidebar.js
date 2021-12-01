@@ -1,9 +1,9 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 
-const TocSideBar = () => {
+const TocSideBar = ({mainScroll}) => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
-
+  const refToc = useRef()
   useEffect(() => {
     // Add id to element
     const h2Elements = Array.from(
@@ -19,7 +19,6 @@ const TocSideBar = () => {
 
   }, []);
 
-  
 
   const getNestedHeadings = (headingElements) => {
     const nestedHeadings = [];
@@ -45,23 +44,49 @@ const TocSideBar = () => {
     });
     return nestedHeadings;
   };
-
+  const handleClickToc = function(e,id){
+    e.preventDefault();
+    e.stopPropagation();
+    mainScroll.current.scroll({
+      top : document.getElementById(id).offsetTop,
+      left : 0, behavior: 'smooth'})
+  }
+  const handleScroll = function(e){
+    refToc.current.style.position = "absolute";
+    refToc.current.style.top = mainScroll.current.scrollTop + "px"
+    const right = document.querySelector(".pane-content--sec--main").clientWidth - document.querySelector(".post-body").clientWidth
+    refToc.current.style.right = (right/2 - refToc.current.clientWidth)/2 + "px"
+  }
+  useEffect(() => {
+    refToc.current.style.display = "block"
+    refToc.current.style.position = "absolute";
+    refToc.current.style.top = mainScroll.current.scrollTop + "px"
+    const right = document.querySelector(".pane-content--sec--main").clientWidth - document.querySelector(".post-body").clientWidth
+    refToc.current.style.right = (right/2 - refToc.current.clientWidth)/2 + "px"
+    mainScroll.current.addEventListener('scroll',handleScroll)
+    return () => {
+      mainScroll.current.removeEventListener('scroll',handleScroll)
+    }
+  },[])
+  if (process.env.NODE_ENV === 'production') {
+    return null
+  }
   return (
     <>
-      <div className="article-toc toc-sidebar" role="navigation">
+      <div style={{display: "none"}} ref={refToc} className="article-toc toc-sidebar" role="navigation">
         <h5 className="text-color-title">ON this page</h5>
 
         <ol>
           {nestedHeadings.map(heading => (
             <li key={heading.id} className="">
-              <a href={`#${heading.id}`}>
+              <a href={`#${heading.id}`} onClick={e => {handleClickToc(e,heading.id)}}>
                 {heading.title}
               </a>
               {heading.items.length > 0 && (
                 <ol>
                   {heading.items.map((child) => (
                     <li key={child.id}>
-                      <a href={`#${child.id}`}>{child.title}</a>
+                      <a href={`#${child.id}`} onClick={e => {handleClickToc(e,child.id)}}>{child.title}</a>
                     </li>
                   ))}
                 </ol>

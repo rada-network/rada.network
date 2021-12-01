@@ -24,12 +24,12 @@ export default function ProjectItem({ project, page, slug }) {
           />
         </div>
 
-        <div className="pane-content--sec--main grid scrollbar">
+        <div className="pane-content--sec--main grid scrollbar" ref={ref}>
           <div 
             className={`page page-full page-project-details !p-0` 
             + (page == "research" ? " page-research-details" : "") 
             + (page == "share2earn" ? " page-project-share2earn" : "")} 
-            ref={ref}
+            
           >
             <div className="w-limiter-lg">
               {page == "index" && <ProjectLaunchpad project={project} />}
@@ -37,7 +37,7 @@ export default function ProjectItem({ project, page, slug }) {
               {page == "share2earn" && project.share_campaign?.length ? (
                 <ProjectShare2Earn project={project} />
               ) : null}
-              {page == "research" && <TocSideBar/>}
+              {page == "research" && <TocSideBar mainScroll={ref}/>}
             </div>
           </div>
         </div>
