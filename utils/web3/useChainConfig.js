@@ -4,6 +4,7 @@ import { StaticJsonRpcProvider } from '@ethersproject/providers'
 import { ethers } from 'ethers'
 import { RPC_CONFIG,POLLING_INTERVAL,BUSD_CONTRACT,USDT_CONTRACT, RIR_ETH_CONTRACT,RIR_BSC_CONTRACT } from '../config'
 import useStore from "../../lib/useStore"
+import {sample} from "lodash"
 
 
 
@@ -19,7 +20,7 @@ const useChainConfig = function(){
     // However on the testnet it wouldn't work, so if on testnet - comment out the REACT_APP_NODE_PRODUCTION from env file
     if (store.network === "bsc"){
       if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
-        return RPC_CONFIG.bsc.production.url
+        return sample(RPC_CONFIG.bsc.production.url)
       }
       return RPC_CONFIG.bsc.dev.url
     }
