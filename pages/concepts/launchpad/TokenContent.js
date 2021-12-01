@@ -6,6 +6,18 @@ const TokenContent = function({tokenData,token}){
         <div className="card-header">
           <h3>LaunchVerse Overview</h3>
         </div>
+        <div className="message warning flex mx-2 mt-2 md:mx-4 md:mt-4 relative items-center">
+          <span className="message-icon">
+            <i class="mr-2 fas fa-exclamation-circle"></i>
+          </span>
+          <div className="message-content pr-2">
+            This pool is already closed.
+          </div>
+          <button className="flex items-center ml-auto w-4 h-4 ">
+            <i class="mr-2 fas fa-times"></i>
+          </button>
+        </div>   
+
         <div className="card-body flex flex-col">
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">   
             <li className="list-pair mb-2">

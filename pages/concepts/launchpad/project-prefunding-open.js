@@ -72,7 +72,7 @@ const Layout = observer((props) => {
                         <div className="pt-4"> 
                           <div className="message warning flex mx-2 md:mx-4 relative items-center">
                             <span className="message-icon">
-                            <i class="mr-2 fas fa-exclamation-circle"></i>
+                              <i class="mr-2 fas fa-exclamation-circle"></i>
                             </span>
                             <div className="message-content pr-2">
                               Binance Smart Chain Network is under heavy load. It may take upto 5 minutes to complete 
