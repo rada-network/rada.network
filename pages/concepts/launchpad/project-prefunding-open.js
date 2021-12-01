@@ -69,7 +69,19 @@ const Layout = observer((props) => {
                   <div className="pane-content--sec--main grid scrollbar">
                     <div className="page page-full page-project-details !pt-0">
                       <div className="w-limiter-lg">
-                        <div className="pt-4">                          
+                        <div className="pt-4"> 
+                          <div className="message warning flex mx-2 md:mx-4 relative items-center">
+                            <span className="message-icon">
+                            <i class="mr-2 fas fa-exclamation-circle"></i>
+                            </span>
+                            <div className="message-content pr-2">
+                              Binance Smart Chain Network is under heavy load. It may take upto 5 minutes to complete 
+                              a transaction.
+                            </div>
+                            <button className="flex items-center ml-auto w-4 h-4 ">
+                              <i class="mr-2 fas fa-times"></i>
+                            </button>
+                          </div>                         
                           <TokenBrief />
                           <div className="section-body p-4 md:p-4">
                             <TokenContent />

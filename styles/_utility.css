@@ -225,3 +225,12 @@
 .spinner {
   @apply absolute left-4 animate-spin mr-3 w-5 h-5 border-2 border-t-purple-200 border-l-purple-600 border-b-purple-600 border-r-purple-600 rounded-full;
 }
+.message {
+  @apply text-base p-2 md:p-4  rounded-lg;
+}
+.message.warning {
+  @apply bg-yellow-300 text-gray-600;
+}
+.message.error {
+  @apply bg-green-300 text-green-800;
+}
