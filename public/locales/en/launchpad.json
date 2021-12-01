@@ -58,7 +58,7 @@
   "status note" : "The winners list will be announced before the IDO time.<br/ >You will be able to claim your token at TGE (Token Generation Event) at the CLAIM tab.",  
   "status note 2" : "Depend on the {{token}} Tokenomics, token vesting schedule could be varied. Please read the {{research}} for more information.",  
   "Investment round": "Funding round",
-  "execution reverted: Not allow": "Not allow",
+  "execution reverted: Not allow": "Your wallet is not allowed to be Whitelisted.",
   "execution reverted: Amount BUSD is not valid" :"Amount BUSD is not valid",
   "execution reverted: Amount RIR is not valid":	"Amount RIR is not valid",
   "execution reverted: Amount is not valid":	"Amount is not valid",
@@ -69,5 +69,18 @@
   "execution reverted: You dont have enough RIR Token":	"You dont have enough RIR Token",
   "execution reverted: Eceeds Total RIR Allocation":	"Eceeds Total RIR Allocation",
   "execution reverted: RIR transfer failed":	"RIR transfer failed",
-  "execution reverted: Transfer BUSD fail":	"Transfer BUSD fail"  
+  "execution reverted: Transfer BUSD fail":	"Transfer BUSD fail",
+  "pool closed" : "This Pool is closed. See you in the other Pools.",
+  "pool closed des" : "You don't join to prefund this pool",
+  "pool close note" : "Connect your wallet to check the status if you are whitelisted.",
+  "bsc warning" : "Binance Smart Chain Network is under heavy load. It may take upto 5 minutes to complete a transaction.",
+  "status failed" : "Your prefuned was turned down.",
+  "status dont join" : "You are not yet a member of this pool.",
+  "status failed note" : "Regrettably, your application has been rejected. Best of luck the next time!",
+  "status failed note refund" : "In the meantime, you can request a refund.",
+  "status success" : "Congratulations! You have been chosen as a {{name}} investor.",
+  "refund note"  : "When you claim your token for the first time,{{busd}} BUSD will be repaid.",
+  "token claim note"  : "{{name }} tokens are ready to be claimed",
+  "busd claim note"  : "BUSD refunded number"
+
 }

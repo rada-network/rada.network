@@ -1,9 +1,26 @@
+import { useTranslation } from "react-i18next";
 import { BscSvg, UsdtSvg, LaunchSvg, BusdSvg } from "../../../svg/SvgIcons";
+import {useState, useEffect} from "react"
 export default function LaunchpadOverview({ project }) {
   const { token } = project;
+  const {t} = useTranslation("launchpad")
+  const [isWarning,setIsWarning] = useState(true);
   return (
     <>
-      <div className="section-header mb-4">
+      {isWarning && 
+      <div className="message warning flex mx-2 md:mx-4 relative items-center">
+        <span className="message-icon">
+          <i class="mr-2 fas fa-exclamation-circle"></i>
+        </span>
+        <div className="message-content pr-2">
+          {t("bsc warning")}
+        </div>
+        <button onClick={e => {setIsWarning(false)}}  className="flex items-center ml-auto w-4 h-4 ">
+          <i class="mr-2 fas fa-times"></i>
+        </button>
+      </div>
+      }
+      <div className="section-header pl-4 pr-4 pt-4 md:px-4 md:pt-4">
         <div className="flex flex-wrap justify-between items-center w-full">
           <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
             <span className="icon flex-shrink-0 mr-2">
@@ -47,7 +64,7 @@ export default function LaunchpadOverview({ project }) {
       </div>
 
       {/* Video / Banner of Project */}
-      <div className="page-media rounded-lg">
+      <div className="page-media md:px-4">
         <div className="media-player">
           <div className="w-full h-full">
             {project.cover_embed ? 

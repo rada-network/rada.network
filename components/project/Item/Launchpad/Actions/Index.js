@@ -2,7 +2,7 @@ import {useState, useEffect} from "react"
 import Timeline from "./Timeline";
 import ProjectCountdown from "./Countdown";
 import WhitelistCountdown from "./WhitelistCountdown";
-import SubscribeLaunchpad from "./SubscribeLaunchpad";
+import SubscribeLaunchpad,{SubscribeLaunchpadClosed} from "./SubscribeLaunchpad";
 import SubscribeSwapToken from "./SubscribeSwapToken"
 // import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
 import useStore from "@lib/useStore";
@@ -11,22 +11,22 @@ import TutorialWidget from "./TutorialWidget"
 const LaunchpadActions = ({ project }) => {
   const store = useStore()
   const {account} = useActiveWeb3React()
-  const curentTime = (new Date()).getTime() / 1000
+  const currentTime = (new Date()).getTime() / 1000
   const openTime = (new Date(project.open_date)).getTime() / 1000
   const endTime = (new Date(project.end_date)).getTime() / 1000
   if (project.open_date === null) {
     return <WhitelistCountdown project={project} />
   }
   
-  if (openTime > curentTime) {
+  if (openTime > currentTime) {
     return <WhitelistCountdown project={project} />
   }
   
-  if (openTime < curentTime && curentTime < endTime) {
+  if (openTime < currentTime && currentTime < endTime) {
     return (
       <>
         {((store.kyc.isKYC) || (!store.kyc.isKYC && !project.is_kyc)) && store.user.id !== "" && !!account ?
-          <SubscribeSwapToken project={project} />
+          <SubscribeSwapToken project={project} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
           <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">
             <div className="card-body no-padding">
@@ -49,9 +49,34 @@ const LaunchpadActions = ({ project }) => {
         
       </>
     )
-    return <SubscribeLaunchpad project={project} />
   }
-  return null;
+  if (currentTime > endTime){
+    return (
+      <>
+        {((store.kyc.isKYC) || (!store.kyc.isKYC && !project.is_kyc)) && !!account ?
+          <SubscribeSwapToken project={project} currentTime={currentTime} endTime={endTime} openTime={openTime} />
+          :
+          <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">
+            <div className="card-body no-padding">
+              <div className="flex flex-col">
+                <div className="">
+                  <Timeline step="3" />
+                </div>
+
+                <div className="project-card--container">
+                  <SubscribeLaunchpadClosed project={project} />
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        }
+        
+      </>
+    )
+  }
 }
 
 

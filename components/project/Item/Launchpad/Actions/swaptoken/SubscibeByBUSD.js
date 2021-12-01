@@ -121,7 +121,7 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
           </button>
           }
           {currentOrderBusd > 0 &&
-          <button class="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(3)}} disabled="" id="cancel" width="100%" scale="md">
+          <button class="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
           {t("Cancel")}
           </button>
           }

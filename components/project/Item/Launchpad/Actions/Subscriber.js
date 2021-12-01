@@ -11,7 +11,14 @@ const Subscriber = function({project,buyers}){
             return (
               <li key={item}>
                 <span className="winner--no">{key+1}</span>
-                <span className="winner--address">{item}</span>
+                <span className="winner--address">
+                {`${item.substr(
+                    0,
+                    6
+                  )}...${item.substr(
+                    -4
+                  )} `}
+                </span>
               </li>
             )
           })}

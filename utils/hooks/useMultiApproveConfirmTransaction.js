@@ -112,7 +112,7 @@ const useMultiApproveConfirmTransaction = ({
       } catch (error) {
         console.log(error)
         dispatch({ type: 'approve_error' })
-        toast.error(t(error?.data?.message))
+        toast.error(t(error?.data?.message || error?.message))
       }
     },
     handleConfirm: async (params = {}) => {
@@ -127,7 +127,7 @@ const useMultiApproveConfirmTransaction = ({
       } catch (error) {
         console.log(error)
         dispatch({ type: 'confirm_error' })
-        toast.error(t(error?.data?.message))
+        toast.error(t(error?.data?.message || error?.message))
       }
     },
     handleReload: async (params = {}) => {

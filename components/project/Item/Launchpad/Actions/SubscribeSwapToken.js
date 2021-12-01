@@ -15,8 +15,7 @@ import { toast } from "react-toastify"
 import { set } from "store";
 
 
-const SubscribeSwapToken = ({ project }) => {
-
+const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
   const { t, i18n } = useTranslation("launchpad")
   const rirContract = useRIRContract()
   const bUSDContract = useBUSDContract()
@@ -72,14 +71,44 @@ const SubscribeSwapToken = ({ project }) => {
     setApprovedBusd(utils.formatEther(currentApprovedBusd))
   }, [launchpadInfo])
   useEffect(() => {
-    if (launchpadInfo.currentOrder && launchpadInfo.claimable && launchpadInfo.winnerCount > 0 &&
-      (parseInt(ethers.utils.formatEther(launchpadInfo.claimable[1])) > 0 ||
-        parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.claimedToken)) > 0)) {
-      setStep(4)
+    //pool dont set winner
+    if (launchpadInfo.winnerCount == 0){
+      if (parseInt(orderBusd) > 0){
+        // prefund success wait to approve whitelist
+        setStep(31)
+      }
+      else{
+        //pool has closeed, cant prefund
+        if (currentTime > endTime){
+          setStep (32)
+        }
+        else{
+          //pool can prefund
+          setStep(2)
+        }
+      }
     }
-    else {
-      if ((orderBusd > 0 || launchpadInfo.winnerCount > 0)) {
-        setStep(3)
+    //pool set winner
+    else{
+      //user win
+      if (parseInt(approvedBusd) > 0){
+        if (launchpadInfo.claimable && launchpadInfo.currentOrder && (parseInt(ethers.utils.formatEther(launchpadInfo.claimable[1])) > 0 || parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.claimedToken)) > 0 )){
+          setStep(4)
+        }
+        else{
+          setStep(33)
+        }
+      }
+      //user not win
+      else{
+        //user sub
+        if (parseInt(orderBusd) > 0){
+          setStep(34)
+        }
+        //user not sub
+        else{
+          setStep(35)
+        }
       }
     }
 
@@ -91,20 +120,20 @@ const SubscribeSwapToken = ({ project }) => {
       const tx = await callWithGasPrice(launchpadContract, "claim", [])
       const receipt = await tx.wait()
       if (receipt.status) {
-        toast.success("Commit success")
+        toast.success(t("Claim success!"))
       }
       setClaimDisbaled(false)
       fetchAccountBalance()
     } catch (error) {
       setClaimDisbaled(false)
       console.log(error)
-      //toast.error(error.data.message)
+      toast.error(t(error?.data?.message || error?.message))
     }
   }
 
   if (loading || loadBalance || loadWhitelist) {
     return (
-      <SubscribeSwapTokenLoading></SubscribeSwapTokenLoading>
+      <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
     )
   }
   if (!inWhitelist) {
@@ -114,7 +143,7 @@ const SubscribeSwapToken = ({ project }) => {
   }
   const maxRIR = parseInt(launchpadInfo.individualMaximumAmount) / 100;
   const maxBusd = parseInt(launchpadInfo.individualMaximumAmount);
-  console.log(launchpadInfo)
+
   return (
     <>
       {step == 2 &&
@@ -197,7 +226,40 @@ const SubscribeSwapToken = ({ project }) => {
           </div>
         </div>
       }
-      {(step == 3 && launchpadInfo.winnerCount == 0) &&
+      {step == 32 &&
+        <div className="card-default project-main-actions no-padding overflow-hidden">
+          <div className="card-header text-center sr-only">
+            <h2>Public Sale</h2>
+          </div>
+
+          <div className="card-body no-padding">
+            <div className="flex flex-col">
+              <div className="">
+                <Timeline step="3" />
+              </div>
+              <div className="project-card--container">
+              <div className="max-w-xl mx-auto">
+                <div className="mb-4 md:mb-8">
+                  <h3 className="text-2xl md:text-3xl text-center font-normal">
+                    <span className="text-color-title">
+                      {t("pool closed")}
+                    </span>
+                  </h3>
+                  <p class="text-center font-normal" dangerouslySetInnerHTML={{__html : t("coming soon note",
+                  {
+                    twitter : `<a class="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
+                    radanetwork : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,
+                    radadao : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radadao">Telegram Community</a>`
+                  }
+                  )}} />
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+      {(step == 31) &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-header text-center sr-only">
             <h2>Public Sale</h2>
@@ -210,11 +272,11 @@ const SubscribeSwapToken = ({ project }) => {
               </div>
 
               <div className="project-card--container">
-                <div className="max-w-2xl mx-auto text-center">
-                  <div className="flex items-center">
-                    <div className="mx-auto">
-                      <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">
-                        {orderRIR > 0 ?
+                <div className="max-w-xl mx-auto">
+                  <div className="flex">
+                    <div className="w-full">
+                      <h3 className="text-xl mb-4 text-green-400 dark:text-green-600">
+                      ✨{orderRIR > 0 ?
                           <span>{t("prefunded note",
                             {
                               amount: orderBusd,
@@ -231,77 +293,65 @@ const SubscribeSwapToken = ({ project }) => {
                           }</span>
                         }
                       </h3>
-                      <div className="">
-                        <div className="max-w-md mx-auto">
-                          <p class="text-sm text-center mt-4 leading-7" dangerouslySetInnerHTML={{__html : t("status note")}} >
+                      <ul className="text-left p-4 border border-gray-200 dark:border-gray-700 rounded-lg mb-4">
+                        <li  className="relative pl-6  mb-2">
+                          <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center mr-2">
+                            <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
+                          </span>
+                          <p class="" dangerouslySetInnerHTML={{__html : t("status note")}} >
                           </p>
-                          <p class="text-sm text-center mt-4 leading-7" dangerouslySetInnerHTML={{__html : t("coming soon note",
+                        </li>
+                        <li className="relative pl-6 mb-2"> 
+                          <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center mr-2">
+                            <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
+                          </span>
+                            <p class="" dangerouslySetInnerHTML={{__html : t("coming soon note",
                             {
                               twitter : `<a class="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
                               radanetwork : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,
                               radadao : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radadao">Telegram Community</a>`
                             }
-                          )}} >
-                          </p>
-                          <p class="text-sm text-center mt-4 leading-7" dangerouslySetInnerHTML={{__html : t("status note 2",
-                            {
-                              token : project.token.name,
-                              research : `<a class="link" target="_blank" rel="nofollow" href="/${i18n.language}/launchverse/${project.slug}/research">Research</a>`
-                            }
-                          )}} >
-                          </p>
+                            )}} />
+                        </li>
+                        <li className="relative pl-6  mb-2">
+                          <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center  mr-2">
+                            <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
+                          </span>
+                            <p class="" dangerouslySetInnerHTML={{__html : t("status note 2",
+                              {
+                                token : project.token.name,
+                                research : `<a class="link" target="_blank" rel="nofollow" href="/${i18n.language}/launchverse/${project.slug}/research">Research</a>`
+                              }
+                            )}} />
+                        </li>
+                        
+                      </ul>
+                      {currentTime < endTime && (parseInt(orderBusd) < maxBusd || ((parseInt(orderRIR) < maxRIR && parseInt(accountBalance.rirBalance) > 0) && project.is_allow_rir)) &&
+                      <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center" onClick={e => { setStep(2) }} >
+                        <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
+                          <i class="fa fa-money-bill"></i>
+                        </span>
+                        <div>
+                          <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">{t("Adjust prefund")}</p>
+                        
+                          <a href={`#`}  class="group">
+                            <span class="text-sm">{t("adjust note",{"orderBusd" : orderBusd,"maxBusd" : maxBusd})}</span>
+                            <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
+                          </a>
                         </div>
                       </div>
-                      <div className="flex flex-col md:flex-row mt-8 max-w-2xl justify-evenly mx-auto">
-                        {project?.share_campaign?.length > 0 &&
-                          <Link href={`/${i18n.language}/launchverse/${project.slug}/share2earn`}>
-                            <div className="w-full md:w-1/2 p-4 my-2 md:m-2 bg-primary-700 dark:bg-primary-700 text-white rounded-lg flex items-center cursor-pointer">
-                              <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-full flex-shrink-0 mr-4 shadow">
-                                <i class="fa-duotone fa-hand-holding-heart"></i>
-                              </span>
-                              <div>
-                                <p className="mb-1 opacity-80">{t("Refer a friend to earn RIR")}</p>
-
-                                <a href={`/launchverse/${project.slug}/share2earn`} class="group text-white">
-                                  <span class="text-sm">{t("Join Share2Earn")}</span>
-                                  <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
-                                </a>
-
-                              </div>
-                            </div>
-                          </Link>
-                        }
-
-                        {(parseInt(orderBusd) < maxBusd || ((parseInt(orderRIR) < maxRIR && parseInt(accountBalance.rirBalance) > 0) && project.is_allow_rir)) &&
-                          <>
-                            <div className="w-full p-4 my-2 md:m-2 bg-gray-100 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center">
-                              <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow">
-                                <i class="fad fa-dollar-sign"></i>
-                              </span>
-                              <div>
-                                <p className="mb-1 opacity-80">{t("adjust note",{"orderBusd" : orderBusd,"maxBusd" : maxBusd})}</p>
-
-                                <a href={`#`} onClick={e => { setStep(2) }} class="group">
-                                  <span class="text-sm">
-                                    {t("Adjust prefund")}</span>
-                                  <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
-                                </a>
-                              </div>
-                            </div>
-                          </>
-                        }
-                      </div>
-
-                      </div>
+                      }
                     </div>
                   </div>
+                
                 </div>
               </div>
             </div>
+          </div>
         </div>
       }
 
-      {(step == 3 && launchpadInfo.winnerCount > 0 && parseFloat(approvedBusd) > 0) &&
+      {(step == 33) &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
 
           <div className="card-body no-padding">
@@ -316,11 +366,13 @@ const SubscribeSwapToken = ({ project }) => {
                   <div className="flex items-center">
                     <div className="s2e-illustration flex-shrink-0"></div>
                     <div className="text-left ml-2">
-                      <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">Congratulations! You’re selected as a {project.content.title}'s investor
+                      <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">
+                      ✨ {t("status success",{name : project.content.title})}
                       </h3>
-                      <p>Approved  BUSD : <strong>{approvedBusd} BUSD</strong></p>
-                      <p>Prefunded BUSD : <strong>{orderBusd} BUSD</strong></p>
-                      {parseInt(orderBusd) - parseInt(approvedBusd) > 0 && <p>{parseInt(orderBusd) - parseInt(approvedBusd)} BUSd will be refunded when you claim your token for the first time.</p>
+                      <p>Approved&nbsp; : <strong>{approvedBusd} BUSD</strong></p>
+                      <p>Prefunded : <strong>{orderBusd} BUSD</strong></p>
+                      {parseInt(orderBusd) - parseInt(approvedBusd) > 0 && 
+                      <p> {t("refund note",{busd : parseInt(orderBusd) - parseInt(approvedBusd)})}</p>
                       }
                     </div>
                   </div>
@@ -332,7 +384,41 @@ const SubscribeSwapToken = ({ project }) => {
         </div>
       }
 
-      {(step == 3 && launchpadInfo.winnerCount > 0 && parseFloat(approvedBusd) == 0.0) &&
+      {(step == 34) &&
+        <div className="card-default project-main-actions no-padding overflow-hidden">
+
+        <div className="card-body no-padding">
+          <div className="flex flex-col">
+            <div className="">
+              <Timeline step="3" />
+            </div>
+
+            <div className="project-card--container">
+              <div className="max-w-2xl mx-auto text-center">
+
+                <div className="flex items-center">
+                  <div className="mx-auto">
+                    <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">{t("status failed")}</h3>
+                    <p>{t("status failed note")}</p>
+                    {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 &&
+                    <>
+                    <p>{t("status failed note refund")}</p> 
+                    <div class="ml-auto mt-4 list-value font-semibold">
+                      <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
+                    </div>
+                    </>
+                    }
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+
+      {(step == 35) &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
 
           <div className="card-body no-padding">
@@ -346,8 +432,7 @@ const SubscribeSwapToken = ({ project }) => {
 
                   <div className="flex items-center">
                     <div className="mx-auto">
-                      <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">Your application was rejected</h3>
-                      <p>Unfortunately your application has failed. Good luck next time!</p>
+                      <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">{t("status dont join")}</h3>
                     </div>
                   </div>
                 </div>
@@ -371,50 +456,24 @@ const SubscribeSwapToken = ({ project }) => {
                 <div className="max-w-md mx-auto">
                   <ul class="mb-4 mt-auto flex-shrink-0 flex-grow">
                     <li class="list-pair mb-2">
-                      <span class="list-key !opacity-100">{project.token.symbol} Token available to claim :</span>
-                      <div class="ml-auto list-value font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[1])} {project.token.symbol}
+                      <span class="w-4/5 !opacity-100">{t("token claim note",{name : project.token.symbol})}:</span>
+                      <div class="w-1/5 ml-auto  font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[1])} {project.token.symbol}
                       </div>
                     </li>
-                    {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 && <li class="list-pair mb-2">
-                      <span class="list-key !opacity-100">Refunded BUSD:</span>
-                      <div class="ml-auto list-value font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD
+                    {parseFloat(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 && <li class="list-pair mb-2">
+                      <span class="w-4/5 !opacity-100">{t("busd claim note")}:</span>
+                      <div class="w-1/5 ml-auto font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD
                       </div>
                     </li>
                     }
-                    <li class="list-pair mb-2">
-                      <span class="list-key !opacity-100"></span>
-                      <div class="ml-auto list-value font-semibold">
-                        <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
-                      </div>
-                    </li>
                   </ul>
-
-                  {/* <div className="box p-4">
-            <div className="flex items-baseline border-b pb-2  border-gray-200 dark:border-gray-800">
-              <h4 className="text-md items-baseline font-semibold">
-                Bạn đã rút
-              </h4>
-              <span className="ml-auto font-semibold">
-                2,500 PRL
-              </span>
-            </div>
-            <ul class="mb-0 mt-auto flex-shrink-0 flex-grow">
-              <li class="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
-                <span class="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 text-gray-700 mr-1">on</span>
-                  <date>15 tháng 9, 2021</date></span>
-                <div class="ml-auto font-semibold list-value">
-                2,500 PRL
                 </div>
-              </li>
-              <li class="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
-                <span class="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 dark-gray-700 mr-1">on</span>
-                  <date>01 tháng 9, 2021</date></span>
-                <div class="ml-auto font-semibold list-value">
-                2,500 PRL
-                </div>
-              </li>
-            </ul>
-          </div> */}
+                <div className="flex items-center">
+                  <div className="mx-auto">
+                    <div class="ml-auto mt-4 list-value font-semibold">
+                      <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -460,14 +519,19 @@ const SubscribeSwapToken = ({ project }) => {
   );
 }
 
-const SubscribeSwapTokenLoading = function(){
+const SubscribeSwapTokenLoading = function({currentTime,opendTime,endTime}){
   return (
     <div className="card-default project-main-actions no-padding overflow-hidden">
 
       <div className="card-body no-padding">
         <div className="flex flex-col">
           <div className="">
+            {currentTime > endTime ? 
+            <Timeline step="3" />
+            :
             <Timeline step="2" />
+            }
+            
           </div>
 
           <div className="project-card--container">
@@ -515,4 +579,4 @@ const NotInWhitesist = function(){
   )
 }
 
-      export default SubscribeSwapToken
+export default SubscribeSwapToken

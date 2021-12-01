@@ -12,11 +12,11 @@ const ProjectLaunchpad = ({project}) => {
 
     return (
         <>
-            <div className="section">
+            <div className="pt-4">
 
                 <LaunchpadOverview project={project} />
 
-                <div className="section-body">
+                <div className="section-body p-4 md:p-4">
 
                     <LaunchpadContent project={project} />
 
