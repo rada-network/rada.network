@@ -148,7 +148,10 @@ export default function ProjectShare2Earn({
 
   const handleConnectWallet = () => {
     store.wallet.showConnect(true);
-  }
+  };
+
+
+  
 
   return (
     <>
