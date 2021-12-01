@@ -58,15 +58,15 @@ const TocSideBar = ({mainScroll}) => {
     refToc.current.style.right = (right/2 - refToc.current.clientWidth)/2 + "px"
   }
   useEffect(() => {
-    refToc.current.style.display = "block"
-    refToc.current.style.position = "absolute";
-    refToc.current.style.top = mainScroll.current.scrollTop + "px"
-    const right = document.querySelector(".pane-content--sec--main").clientWidth - document.querySelector(".post-body").clientWidth
-    refToc.current.style.right = (right/2 - refToc.current.clientWidth)/2 + "px"
-    mainScroll.current.addEventListener('scroll',handleScroll)
-    return () => {
-      mainScroll.current.removeEventListener('scroll',handleScroll)
-    }
+    // refToc.current.style.display = "block"
+    // refToc.current.style.position = "absolute";
+    // refToc.current.style.top = mainScroll.current.scrollTop + "px"
+    // const right = document.querySelector(".pane-content--sec--main").clientWidth - document.querySelector(".post-body").clientWidth
+    // refToc.current.style.right = (right/2 - refToc.current.clientWidth)/2 + "px"
+    // mainScroll.current.addEventListener('scroll',handleScroll)
+    // return () => {
+    //   mainScroll.current.removeEventListener('scroll',handleScroll)
+    // }
   },[])
   if (process.env.NODE_ENV === 'production') {
     return null
