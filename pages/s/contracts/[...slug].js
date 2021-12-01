@@ -19,12 +19,7 @@ export default function ImportOrder(props) {
     return (
         <StaticLayout meta={meta}>
             <div className={`page-section`}  >
-              <WalletProfile type={`simple`} />
-              
-              <div className={`post-content`}  >
-                <div dangerouslySetInnerHTML={{__html: "1"}}></div>
-              </div>
-              
+              <WalletProfile type={`simple`} />      
               <MainContent contractAddress={props.contractAddress} />
             </div>
         </StaticLayout>
@@ -41,20 +36,31 @@ const MainContent = function({contractAddress}){
   const {callWithGasPrice} = useCallWithGasPrice()
   const [loading,setLoading] = useState(true)
   const [isAdmin,setIsAdmin] = useState(false)
+  const [isOwner,setIsOwner] = useState(false)
   const [listSubscription,setListSubscription] = useState([])
   const [listInitOrder,setListInitOrder] = useState([])
   const [listWinners,setListWinners] = useState([])
   const [listSub,setListSub] = useState([])
   const [numberToken,setNumberToken] = useState(0)
   const [address,setAddress] = useState("")
-  const [tokenAddress,setTokenAddress] = useState("")
   const [arrayAddress,setArrayAddress] = useState("")
+  const [tokenAddress,setTokenAddress] = useState('')
+  
   useEffect(() => {
     if (!!account){
       launchpadContract.owner().then(function(owner){
-        console.log(owner)
-        console.log(account)
         if (account === owner){
+          setIsOwner(true)
+        }
+        else{
+          setIsOwner(false)
+        }
+      })
+      launchpadContract.tokenAddress().then(function(address){
+        setTokenAddress(address)
+      })
+      launchpadContract.admins(account).then(function(res){
+        if (res){
           setIsAdmin(true)
         }
         else{
@@ -63,6 +69,7 @@ const MainContent = function({contractAddress}){
       })
     }
     else{
+      setIsOwner(false)
       setIsAdmin(false)
     }
   },[account])
@@ -92,7 +99,6 @@ const MainContent = function({contractAddress}){
         refundedBUSD : parseFloat(ethers.utils.formatEther(subinfo.refundedBUSD)),
         claimedToken : parseFloat(ethers.utils.formatEther(subinfo.claimedToken))
       }
-      console.log(subinfo)
       winners.push(winner)
       allOrder.push(initOrder)
       allSubInfo.push(subinfo)
@@ -124,7 +130,6 @@ const MainContent = function({contractAddress}){
       if (receipt.status){
         toast.success("Import success")  
       }
-      console.log(receipt)
       getAllSubinfo()
     } catch (error) {
       toast.error(error.data.message)
@@ -137,7 +142,6 @@ const MainContent = function({contractAddress}){
       if (receipt.status){
         toast.success("Empty success")  
       }
-      console.log(receipt)
       getAllSubinfo()
     } catch (error) {
       toast.error(error.data.message)
@@ -150,7 +154,6 @@ const MainContent = function({contractAddress}){
       if (receipt.status){
         toast.success("Commit success")  
       }
-      console.log(receipt)
       getAllSubinfo()
     } catch (error) {
       toast.error(error.data.message)
@@ -164,7 +167,6 @@ const MainContent = function({contractAddress}){
       if (receipt.status){
         toast.success("Commit success")  
       }
-      console.log(receipt)
       getAllSubinfo()
     } catch (error) {
       toast.error(error.data.message)
@@ -178,7 +180,6 @@ const MainContent = function({contractAddress}){
       if (receipt.status){
         toast.success("Commit success")  
       }
-      console.log(receipt)
       getAllSubinfo()
     } catch (error) {
       toast.error(error.data.message)
@@ -191,7 +192,6 @@ const MainContent = function({contractAddress}){
       if (receipt.status){
         toast.success("Commit success")  
       }
-      console.log(receipt)
       getAllSubinfo()
     } catch (error) {
       toast.error(error.data.message)
@@ -209,17 +209,17 @@ const MainContent = function({contractAddress}){
       if (receipt.status){
         toast.success("Commit success")  
       }
-      console.log(receipt)
       getAllSubinfo()
     } catch (error) {
       toast.error(error.data.message)
     }
   }
-  const tokenContract = useERC20("0xbadb6b73c2fbe647a256cf8f965f89573a054113")
+  
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm,handleReload } =
   useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
+          tokenContract = useERC20(tokenAddress)
           const response2 = await tokenContract.allowance(account, launchpadContract.address)
           return response2.gt(0)
         } catch (error) {
@@ -227,6 +227,7 @@ const MainContent = function({contractAddress}){
         }
       },
       onApprove: async (requireApprove) => {
+        tokenContract = useERC20(tokenAddress)
         return await callWithGasPrice(tokenContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
       },
       onApproveSuccess: async ({ receipts }) => {
@@ -241,23 +242,41 @@ const MainContent = function({contractAddress}){
       },
     })
 
-  if (!isAdmin){
-    return <h1><a onClick={resetApproved} >reset approve</a></h1>
+  if (!isAdmin || !isOwner) {
+    return null
   }
   if (!loading) {
     return null
   }
   return (
     <>
-    <h1><a className="btn btn-primary" href="#" onClick={resetApproved} >reset approve</a></h1>
+    <h1>Admin action</h1>
     <div className="post-title">
-                <h1 className="inline">{"Import order"}</h1>
-              </div>
+    </div>
+      <div className={`global-padding`}  >
+        <input type="text" width={200} name="token" value={tokenAddress} onChange={e =>setTokenAddress(e.currentTarget.value)}/>
+        <button onClick={e => {handleImportTokenAddress(e)}} className="btn btn-default  mr-2">Import Token address</button>
+        <button onClick={e => {handleCommitTokenAddress(e)}} className="btn btn-default mr-2">Commit Token address</button>
+      </div>
+      <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "")}  >
+        <input type="text" name="token" value={numberToken} onChange={e =>setNumberToken(e.currentTarget.value)}/>
+        <button onClick={e => {handleApprove(e)}} className={"btn btn-default mr-2 " + isApproved ? " disabled" : ""}>Approve Contact</button>
+        <button onClick={e => {handleConfirm(e)}} className="btn btn-default mr-2">Deposit token</button>
+      </div>
+      <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "")}  >
+        <input type="text" name="token" value={address} onChange={e =>setAddress(e.currentTarget.value)}/>
+        <button onClick={e => {handleImportWhitelist(e)}} className="btn btn-default mr-2">Import whitelist</button>
+      </div>
+
+      <div className={`global-padding`}  >
+        <textarea value={arrayAddress} onChange={e => {setArrayAddress(e.currentTarget.value)}} rows="20" cols="50"></textarea>
+        <button onClick={e => {handleImportArrayWhitelist(e)}} className="btn btn-default">Import array whitelist</button>
+      </div>
       <div className={`global-padding`}  >
         <p>Subscriber</p>
         <table style={{width : "100%"}} border="2" cellPadding="2">
         <tbody>
-        <tr>
+        <tr key={0}>
           <td>Address</td>
           <td>BUSD</td>
           <td>RIR</td>
@@ -265,7 +284,7 @@ const MainContent = function({contractAddress}){
         </tr>
         {listSubscription.map(function(item){
           return (
-            <tr>
+            <tr key={item.address}>
             <td>{item.address}</td>
             <td>{ethers.utils.formatEther(item.amountBUSD)}</td>
             <td>{ethers.utils.formatEther(item.amountRIR)}</td>
@@ -279,7 +298,7 @@ const MainContent = function({contractAddress}){
         <p>Winner</p>
         <table style={{width : "100%"}} border="2" cellPadding="2">
         <tbody>
-        <tr>
+        <tr key={0}>
           <td>Address</td>
           <td>Approved BUSD</td>
           <td>Refunced BUSD</td>
@@ -288,7 +307,7 @@ const MainContent = function({contractAddress}){
         </tr>
         {listWinners.map(function(item){
           return (
-            <tr>
+            <tr key={item.address}>
             <td>{item.address}</td>
             <td>{item.approvedBUSD}</td>
             <td>{item.refundedBUSD}</td>
@@ -307,28 +326,6 @@ const MainContent = function({contractAddress}){
         <button onClick={e => {handleCommitWinner(e)}} className="btn btn-default mr-2">Commit Winner</button>
         <button onClick={e => {handleSetEmptyWinner(e)}} className="btn btn-default">Reset Win</button>
       </div>
-
-      <div className={`global-padding`}  >
-        <input type="text" name="token" value={tokenAddress} onChange={e =>setTokenAddress(e.currentTarget.value)}/>
-        <button onClick={e => {handleImportTokenAddress(e)}} className="btn btn-default mr-2">Import Token address</button>
-        <button onClick={e => {handleCommitTokenAddress(e)}} className="btn btn-default mr-2">Commit Token address</button>
-      </div>
-
-      <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "")}  >
-        <input type="text" name="token" value={numberToken} onChange={e =>setNumberToken(e.currentTarget.value)}/>
-        <button onClick={e => {handleApprove(e)}} className="btn btn-default">Approve Contact</button>
-        <button onClick={e => {handleConfirm(e)}} className="btn btn-default mr-2">Deposit token</button>
-      </div>
-      <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "")}  >
-        <input type="text" name="token" value={address} onChange={e =>setAddress(e.currentTarget.value)}/>
-        <button onClick={e => {handleImportWhitelist(e)}} className="btn btn-default mr-2">Import whitelist</button>
-      </div>
-
-      <div className={`global-padding`}  >
-        <textarea value={arrayAddress} onChange={e => {setArrayAddress(e.currentTarget.value)}} rows="20" cols="50"></textarea>
-        <button onClick={e => {handleImportArrayWhitelist(e)}} className="btn btn-default">Import array whitelist</button>
-      </div>
-      
     </>
   )
 }
