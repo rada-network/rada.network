@@ -743,3 +743,39 @@ Article TOC
   min-width: 200px;
   width: 15vw;
 }
+@media screen and (min-width: 1024px) {
+  .float-button {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 1024px){
+  .toc-side-bar-div {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .toc-side-bar-div {
+    display: none;
+  } 
+}
+
+@media screen and (max-width: 480px){
+  .toc-side-bar-div {
+    display: none;
+  } 
+}
+
+@media screen and (max-width: 320px){
+  .toc-side-bar-div {
+    display: none;
+  } 
+}
+
+@media screen and (max-width: 240px){
+  .toc-side-bar-div {
+    display: none;
+  } 
+}

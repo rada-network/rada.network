@@ -4,6 +4,8 @@ import ProjectDetails from "./Details";
 import ProjectShare2Earn from "./Share2Earn";
 import { useEffect, useRef } from "react";
 import TocSideBar from "pages/launchverse/toc/TocSidebar";
+import {isMobile, isBrowser} from 'react-device-detect';
+import FloatButton from "pages/launchverse/toc/FloatingButton";
 
 export default function ProjectItem({ project, page, slug }) {
   const symbol = project.slug;
@@ -37,7 +39,12 @@ export default function ProjectItem({ project, page, slug }) {
               {page == "share2earn" && project.share_campaign?.length ? (
                 <ProjectShare2Earn project={project} />
               ) : null}
-              {page == "research" && <TocSideBar mainScroll={ref}/>}
+              <div className="float-button">
+                {page == "research" && <FloatButton mainScroll={ref}/>}
+              </div>
+              <div className="toc-side-bar-div">
+                {page == "research" && (<TocSideBar mainScroll={ref}/>)}
+              </div>
             </div>
           </div>
         </div>

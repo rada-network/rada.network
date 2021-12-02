@@ -1,5 +1,6 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
+import {isMobile, isBrowser} from 'react-device-detect';
 
 const TocSideBar = ({mainScroll}) => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
@@ -14,9 +15,7 @@ const TocSideBar = ({mainScroll}) => {
       document.querySelectorAll("h2")
     );
     const newNestedHeadings = getNestedHeadings(headingElements);
-    console.log(newNestedHeadings)
     setNestedHeadings(newNestedHeadings);
-
   }, []);
 
 
@@ -47,6 +46,7 @@ const TocSideBar = ({mainScroll}) => {
   const handleClickToc = function(e,id){
     e.preventDefault();
     e.stopPropagation();
+    document.getElementById(id).setAttribute("class", "toc--active")
     mainScroll.current.scroll({
       top : document.getElementById(id).offsetTop,
       left : 0, behavior: 'smooth'})
@@ -73,7 +73,7 @@ const TocSideBar = ({mainScroll}) => {
   }
   return (
     <>
-      <div ref={refToc} className="article-toc toc-sidebar" role="navigation">
+      <div ref={refToc} className={(isMobile) ? "article-toc" : "article-toc toc-sidebar"} role="navigation">
         <div className="toc-list">
           <h5 className="text-color-title">ON this page</h5>
 
