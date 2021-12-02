@@ -79,7 +79,9 @@ const TocSideBar = () => {
   //   //   document.querySelector(".parent").setAttribute("class", "toc--active");
   //   // }
   // }, [nestedHeadings])
-
+  if (process.env.NODE_ENV == "production") {
+    return null;
+  }
   return (
     <>
       <div

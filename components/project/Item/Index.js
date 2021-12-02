@@ -40,7 +40,7 @@ export default function ProjectItem({ project, page, slug }) {
                 <ProjectShare2Earn project={project} />
               ) : null}
               <div className="float-btn--container">
-                {page == "research" && <FloatButton mainScroll={ref}/>}
+                {page == "research" && process.env.NODE_ENV != "production" && <FloatButton mainScroll={ref}/>}
               </div>
               <div className="toc-side-bar-div">
                 {page == "research" && (<TocSideBar/>)}  
