@@ -5,15 +5,17 @@ import Toc from "../_components/content/Toc";
 
 export default function FAB() {
   return (
-    <div className="w-full px-4 fixed bottom-4 right-4">
+    <div className="floating-btn--container">
       <Popover className="relative">
         {({ open }) => (
           <>
             <Popover.Button
-              className={`${open ? "" : "text-opacity-90"}
-                bg-primary-700 text-white rounded-full px-4 py-2 float-right shadow-lg`}
+              className={`${open ? "active" : ""}
+              floating-btn`}
             >
-              <span>Table of Content</span>
+              <span className="icon text-base"><i class="far fa-bars"></i></span>
+              <span className="icon text-base"><i class="fas fa-times"></i></span>
+              <span className="sr-only">Table of Content</span>
             </Popover.Button>
             <Transition
               as={Fragment}
@@ -24,9 +26,9 @@ export default function FAB() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="fixed z-10 w-screen max-w-sm px-4 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0 lg:max-w-3xl">
-                <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className="p-4 bg-gray-50">
+              <Popover.Panel className="absolute z-10 transform right-full -mr-10 bottom-10 w-80">
+                <div className="overflow-hidden rounded-lg shadow-lg">
+                  <div className="popper poper-toc p-4 !mt-0 max-h-96 overflow-x-hidden overflow-y-auto">
                     <Toc />
                   </div>
                 </div>

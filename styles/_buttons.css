@@ -299,7 +299,6 @@ Toggle Buttons
 }
 
 
-
 /*
 "Show More" Button
 */
@@ -389,4 +388,16 @@ Button Caret
   @apply text-sm justify-center px-0 w-20 text-gray-500 bg-gray-400 bg-opacity-20 hover:bg-primary-100 hover:text-primary-700 border border-transparent hover:border-primary-500 leading-4;
   @apply dark:hover:bg-deeppurple-300 dark:text-gray-200 dark:hover:text-white;
   max-height: 38px;
+}
+
+
+/* 
+Floating Button
+*/
+.floating-btn--container {
+  @apply fixed bottom-4 right-4;
+}
+
+.floating-btn {
+  @apply bg-primary-700 text-white rounded-full w-10 h-10 shadow-lg;
 }

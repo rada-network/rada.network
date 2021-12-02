@@ -254,6 +254,12 @@ Popper
   transition-property: all;
 }
 
+.poper-toc {
+  @apply block top-0;
+  width: 20rem;
+  transition-property: all;
+}
+
 /* 
 Popper used as a menu
 */
