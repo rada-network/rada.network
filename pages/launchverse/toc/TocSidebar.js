@@ -69,9 +69,6 @@ const TocSideBar = ({ mainScroll }) => {
     //   mainScroll.current.removeEventListener('scroll',handleScroll)
     // }
   }, []);
-  if (process.env.NODE_ENV === "production") {
-    return null;
-  }
   return (
     <>
       <div

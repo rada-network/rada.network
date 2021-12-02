@@ -85,8 +85,8 @@ const useApproveConfirmTransaction = ({
     hasConfirmFailed: state.confirmState === 'fail',
     handleApprove: async () => {
       try {
-        const tx = await onApprove()
         dispatch({ type: 'approve_sending' })
+        const tx = await onApprove()
         const receipt = await tx.wait()
         if (receipt.status) {
           dispatch({ type: 'approve_receipt' })
@@ -94,7 +94,13 @@ const useApproveConfirmTransaction = ({
         }
       } catch (error) {
         dispatch({ type: 'approve_error' })
-        toast.error(t(error?.data?.message || error?.message))
+        if (!!error?.data?.message){
+          toast.error(t(error?.data?.message?.replace("execution reverted: ","")))
+        }
+        else{
+          toast.error(t(error?.message))
+        }
+        
       }
     },
     handleConfirm: async (params = {}) => {
@@ -107,9 +113,13 @@ const useApproveConfirmTransaction = ({
           onSuccess({ state, receipt })
         }
       } catch (error) {
-        console.log(error)
         dispatch({ type: 'confirm_error' })
-        toast.error(t(error?.data?.message || error?.message))
+        if (!!error?.data?.message){
+          toast.error(t(error?.data?.message?.replace("execution reverted: ","")))
+        }
+        else{
+          toast.error(t(error?.message))
+        }
       }
     },
   }

@@ -10,6 +10,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import ReactTooltip from 'react-tooltip';
 import { createShortenLink } from "@data/query/createShortenLink"
+import { SHORT_SHARE2EARN_URL } from "@config/links"
 
 const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddress, incentivePaid, share2earnAdress, share2earnInfo, project, uid }) => {
   const { t } = useTranslation('share2earn')
@@ -38,7 +39,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
   useEffect(() => {
     let url = window.location.origin + `/launchverse/${project.slug}/share2earn` + "?ref=" + uid;
     createShortenLink(url).then(({ data }) => {
-      let shortenURL = "https://rada.to/" + data.createShortenLink.key
+      let shortenURL = SHORT_SHARE2EARN_URL + data.createShortenLink.key
       setShareLink(shortenURL)
     })
   }, [])

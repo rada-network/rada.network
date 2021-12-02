@@ -29,20 +29,18 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
     setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.amountBUSD)))
     setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.amountRIR)))
   },[launchpadInfo])
-  console.log(parseInt(currentOrderBusd),parseInt(launchpadInfo.individualMaximumAmount))
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
   useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
           const response2 = await bUSDContract.allowance(account, launchpadContract.address)
-          console.log(parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.amountBUSD)),parseInt(launchpadInfo.individualMaximumAmount))
           return response2.gt(0) || parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.amountBUSD)) == parseInt(launchpadInfo.individualMaximumAmount)
         } catch (error) {
           return false
         }
       },
       onApprove: async (requireApprove) => {
-        return  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxBusd.toString())])
+        return callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxBusd.toString())])
       },
       onApproveSuccess: async ({ receipt }) => {
         toast.success(`Approve BUSD Success`)
@@ -70,7 +68,7 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
         }
       },
       onApprove: async (requireApprove) => {
-        return  await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther((parseInt(maxBusd)/100).toString())])
+        return callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther((parseInt(maxBusd)/100).toString())])
       },
       onApproveSuccess: async ({ receipt }) => {
         toast.success(`Approve RIR Success`)
@@ -142,19 +140,22 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
           </div>
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
         </div>
-        <div className={`mt-4 grid gap-4` + (parseInt(numberRIR) > 0 ? " grid-cols-2" : "")}> 
+        <div className={`mt-4 grid gap-4` + ( (parseInt(numberRIR) > 0 && (!isApproved && !isApprovedRIR)) ? " grid-cols-2" : "")}> 
           {/* bỏ grid grid-cols-2 nếu user không có RIR hoặc không dùng RIR */}
+          {!isApproved && 
           <div className="flex-shrink-0 flex-grow">
-            <button className={`btn relative  w-full btn-default btn-default-lg btn-purple` + ((isApproved || isApproving) ? " disabled" : "")} width="100%" scale="md" onClick={handleApprove}>
+            <button className={`btn relative  w-full btn-default btn-default-lg btn-purple`} width="100%" scale="md" onClick={handleApprove}>
             {isApproving && <span className="spinner" />}
-              {t("Approve Contract")} BUSD
+            {isApproving ? <>{t("Approving Contract")}</> : <>{t("Approve Contract")} BUSD</>}
             </button>     
           </div>
-          {parseFloat(accountBalance.rirBalance) > 0 && parseInt(numberRIR) > 0 &&
+          }
+          {parseFloat(accountBalance.rirBalance) > 0 && parseInt(numberRIR) > 0 && !isApprovedRIR &&
           <div  className="flex-shrink-0 flex-grow">
-            <button className={`btn relative w-full btn-default btn-default-lg btn-purple` + ((isApprovingRIR || isApprovedRIR) ? " disabled" : "")} scale="md" onClick={handleApproveRIR}>
+            <button className={`btn relative w-full btn-default btn-default-lg btn-purple`} scale="md" onClick={handleApproveRIR}>
             {isApprovingRIR && <span className="spinner" />}
-              {t("Approve Contract")} RIR
+            {isApprovingRIR ? <>{t("Approving Contract")}</> : <>{t("Approve Contract")} RIR</>}
+
             </button>         
           </div>
           }
@@ -167,6 +168,11 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
           {currentOrderBusd > 0 &&
           <button class="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
           {t("Cancel")}
+          </button>
+          }
+          {account === "0x61c55832d24bfea603C12A9bea93cc7Efe92e504" && 
+          <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`} onClick={resetApproved}  >
+            {t("Reset approve")}
           </button>
           }
         </div>
