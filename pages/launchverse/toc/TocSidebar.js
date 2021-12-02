@@ -11,7 +11,7 @@ const TocSideBar = ({mainScroll}) => {
     );
 
     const headingElements = Array.from(
-      document.querySelectorAll("h2, h3")
+      document.querySelectorAll("h2")
     );
     const newNestedHeadings = getNestedHeadings(headingElements);
     console.log(newNestedHeadings)
@@ -73,29 +73,31 @@ const TocSideBar = ({mainScroll}) => {
   }
   return (
     <>
-      <div style={{display: "none"}} ref={refToc} className="article-toc toc-sidebar" role="navigation">
-        <h5 className="text-color-title">ON this page</h5>
+      <div ref={refToc} className="article-toc toc-sidebar" role="navigation">
+        <div className="toc-list">
+          <h5 className="text-color-title">ON this page</h5>
 
-        <ol>
-          {nestedHeadings.map(heading => (
-            <li key={heading.id} className="">
-              <a href={`#${heading.id}`} onClick={e => {handleClickToc(e,heading.id)}}>
-                {heading.title}
-              </a>
-              {heading.items.length > 0 && (
-                <ol>
-                  {heading.items.map((child) => (
-                    <li key={child.id}>
-                      <a href={`#${child.id}`} onClick={e => {handleClickToc(e,child.id)}}>{child.title}</a>
-                    </li>
-                  ))}
-                </ol>
-              )}
+          <ol>
+            {nestedHeadings.map(heading => ( heading.title &&
+              <li key={heading.id} className="">
+                <a href={`#${heading.id}`} onClick={e => {handleClickToc(e,heading.id)}}>
+                  {heading.title}
+                </a>
+                {heading.items.length > 0 && (
+                  <ol>
+                    {heading.items.map((child) => (child.title ??
+                      <li key={child.id}>
+                        <a href={`#${child.id}`} onClick={e => {handleClickToc(e,child.id)}}>{child.title}</a>
+                      </li>
+                    ))}
+                  </ol>
+                )}
 
-            </li>
-          )
-          )}
-        </ol>
+              </li>
+            )
+            )}
+          </ol>
+        </div>
       </div>
     </>
   )
