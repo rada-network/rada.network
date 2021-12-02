@@ -10,6 +10,7 @@ import {useLaunchpadInfo} from "@utils/hooks/index"
 import { useTranslation } from "next-i18next"
 import useStore from "@lib/useStore"
 import { SwapNote,SwapDescription } from "../SwapTokenV2"
+import { BusdSvg } from "@components/svg/SvgIcons"
 
 const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
   const {t} = useTranslation("launchpad")
@@ -144,9 +145,13 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
           {/* bỏ grid grid-cols-2 nếu user không có RIR hoặc không dùng RIR */}
           {!isApproved && 
           <div className="flex-shrink-0 flex-grow">
-            <button className={`btn relative  w-full btn-default btn-default-lg btn-purple`} width="100%" scale="md" onClick={handleApprove}>
+            <button className={`btn relative w-full btn-default btn-default-lg btn-purple`} width="100%" scale="md" onClick={handleApprove}>
             {isApproving && <span className="spinner" />}
-            {isApproving ? <>{t("Approving Contract")}</> : <>{t("Approve Contract")} BUSD</>}
+            {isApproving ? 
+            <>{t("Approving Contract")}</> 
+            : 
+            <>{t("Approve Contract")}BUSD</>
+            }
             </button>     
           </div>
           }

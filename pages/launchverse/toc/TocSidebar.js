@@ -5,6 +5,7 @@ import { isMobile, isBrowser } from "react-device-detect";
 const TocSideBar = () => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
   const refToc = useRef();
+  
   useEffect(() => {
     const headingElements = Array.from(document.querySelectorAll("h2, h3"));
     const newNestedHeadings = getNestedHeadings(headingElements);
@@ -38,24 +39,16 @@ const TocSideBar = () => {
 
   const handleClickToc = (parentId, myId) => {
     let element = document.getElementById(myId);
-    console.log(myId);
-    console.log(parentId)
-    
     var currentActive = document.querySelectorAll(".toc--active")
-    console.log(currentActive.length);
     for (var i = 0; i < currentActive.length; i++) {
       currentActive[i].className = currentActive[i].className.replace(" toc--active", "");
     }
 
     // set active for parent
     if (parentId) {
-      console.log(" co parent")
       const parent = document.getElementById(parentId);
       parent.className += " toc--active";
-    } else {
-      console.log("Khong co parent")
     }
-
     element.className += " toc--active";
   };
 
@@ -81,11 +74,11 @@ const TocSideBar = () => {
     // }
   }, []);
 
-  useEffect(() => {
-    // if (nestedHeadings.length > 0) {
-    //   document.querySelector(".parent").setAttribute("class", "toc--active");
-    // }
-  }, [nestedHeadings])
+  // useEffect(() => {
+  //   // if (nestedHeadings.length > 0) {
+  //   //   document.querySelector(".parent").setAttribute("class", "toc--active");
+  //   // }
+  // }, [nestedHeadings])
 
   return (
     <>
@@ -99,12 +92,12 @@ const TocSideBar = () => {
 
           <ol>
             {nestedHeadings.map(
-              (heading) =>
+              (heading, index) =>
                 heading.title && (
                   <li key={heading.id} className="">
                     <a
+                      className={(index == 0) ? "toc--active parent menu" : "parent menu"}
                       id={"parent" + heading.id}
-                      className="parent menu"
                       href={`#${heading.id}`}
                       onClick={(e) => {
                         handleClickToc(null, "parent" + heading.id)

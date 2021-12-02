@@ -737,45 +737,46 @@ Article TOC
   width: 15vw;
 }
 
-.toc-list{
+.toc-list {
   @apply fixed overflow-y-auto;
   height: 100%;
   min-width: 200px;
   width: 15vw;
 }
+
 @media screen and (min-width: 1024px) {
-  .float-button {
+  .float-btn--container {
     display: none;
   }
 }
 
 
 @media screen and (max-width: 1024px){
-  .toc-side-bar-div {
+  .toc-sidebar--container {
     display: none;
   }
 }
 
 @media screen and (max-width: 768px){
-  .toc-side-bar-div {
+  .toc-sidebar--container {
     display: none;
   } 
 }
 
 @media screen and (max-width: 480px){
-  .toc-side-bar-div {
+  .toc-sidebar--container {
     display: none;
   } 
 }
 
 @media screen and (max-width: 320px){
-  .toc-side-bar-div {
+  .toc-sidebar--container {
     display: none;
   } 
 }
 
 @media screen and (max-width: 240px){
-  .toc-side-bar-div {
+  .toc-sidebar--container {
     display: none;
   } 
 }

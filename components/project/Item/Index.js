@@ -39,7 +39,7 @@ export default function ProjectItem({ project, page, slug }) {
               {page == "share2earn" && project.share_campaign?.length ? (
                 <ProjectShare2Earn project={project} />
               ) : null}
-              <div className="float-button">
+              <div className="float-btn--container">
                 {page == "research" && <FloatButton mainScroll={ref}/>}
               </div>
               <div className="toc-side-bar-div">

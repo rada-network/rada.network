@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import useStore from '../../lib/useStore'
-import useChainConfig from '../web3/useChainConfig'
+import {getRpcUrl,getChainId} from '../web3/useChainConfig'
 // eslint-disable-next-line import/no-unresolved
 
 /**
@@ -10,9 +10,10 @@ import useChainConfig from '../web3/useChainConfig'
  */
 const useActiveWeb3React = () => {
   const { library, ...web3React } = useWeb3React()
+  const store = useStore()
   const refEth = useRef(library)
-  const {getRpcUrl,chainId} = useChainConfig()
-  const simpleRpcProvider = getRpcUrl()
+  const chainId=getChainId(store.network)
+  const simpleRpcProvider = getRpcUrl(store.network)
   const [provider, setProvider] = useState(library || simpleRpcProvider)
   useEffect(() => {
     if (library !== refEth.current) {
