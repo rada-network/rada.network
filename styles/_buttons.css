@@ -399,5 +399,27 @@ Floating Button
 }
 
 .floating-btn {
-  @apply bg-primary-700 text-white rounded-full w-10 h-10 shadow-lg;
+  @apply bg-primary-700 text-white w-8 h-8 shadow-md text-xs rounded-full;
+  .icon {
+  }
+  .btn-text {
+    @apply font-medium;
+  }
+}
+
+.floating-btn {
+  .fa-bars {
+  }
+  .fa-times {
+    @apply hidden;
+  }
+}
+
+.floating-btn.active {
+  .fa-bars {
+    @apply hidden;
+  }
+  .fa-times {
+    @apply block;
+  }
 }
