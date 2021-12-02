@@ -93,7 +93,7 @@ const useApproveConfirmTransaction = ({
         }
       } catch (error) {
         dispatch({ type: 'approve_error' })
-        toast.error('Please try again. Confirm the transaction and make sure you are paying enough gas!')
+        toast.error(t(error?.data?.message || error?.message))
       }
     },
     handleConfirm: async (params = {}) => {
@@ -108,7 +108,7 @@ const useApproveConfirmTransaction = ({
       } catch (error) {
         console.log(error)
         dispatch({ type: 'confirm_error' })
-        toast.error('Please try again. Confirm the transaction and make sure you are paying enough gas!')
+        toast.error(t(error?.data?.message || error?.message))
       }
     },
   }

@@ -56,16 +56,17 @@ const MainContent = function({contractAddress}){
           setIsOwner(false)
         }
       })
-      launchpadContract.tokenAddress().then(function(address){
-        setTokenAddress(address)
-      })
       launchpadContract.admins(account).then(function(res){
+        console.log(res)
         if (res){
           setIsAdmin(true)
         }
         else{
           setIsAdmin(false)
         }
+      })
+      launchpadContract.tokenAddress().then(function(address){
+        setTokenAddress(address)
       })
     }
     else{
@@ -81,6 +82,7 @@ const MainContent = function({contractAddress}){
       })
     }
   },[account])
+  const tokenContract = useERC20(tokenAddress)
   const getAllSubinfo = async function(){
     let allSubInfo = []
     let allOrder = []
@@ -219,15 +221,14 @@ const MainContent = function({contractAddress}){
   useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
-          tokenContract = useERC20(tokenAddress)
           const response2 = await tokenContract.allowance(account, launchpadContract.address)
           return response2.gt(0)
         } catch (error) {
-          return {busd : 0, rir : 0}
+          return false
         }
       },
       onApprove: async (requireApprove) => {
-        tokenContract = useERC20(tokenAddress)
+        
         return await callWithGasPrice(tokenContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
       },
       onApproveSuccess: async ({ receipts }) => {
@@ -242,7 +243,7 @@ const MainContent = function({contractAddress}){
       },
     })
 
-  if (!isAdmin || !isOwner) {
+  if (!isAdmin && !isOwner) {
     return null
   }
   if (!loading) {
@@ -260,7 +261,7 @@ const MainContent = function({contractAddress}){
       </div>
       <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "")}  >
         <input type="text" name="token" value={numberToken} onChange={e =>setNumberToken(e.currentTarget.value)}/>
-        <button onClick={e => {handleApprove(e)}} className={"btn btn-default mr-2 " + isApproved ? " disabled" : ""}>Approve Contact</button>
+        <button onClick={e => {handleApprove(e)}} className={"btn btn-default mr-2 " + (isApproved ? " disabled" : "")}>Approve Contact</button>
         <button onClick={e => {handleConfirm(e)}} className="btn btn-default mr-2">Deposit token</button>
       </div>
       <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "")}  >
