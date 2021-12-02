@@ -79,7 +79,7 @@ const Layout = observer((props) => {
                               a transaction.
                             </div>
                             <button className="flex items-center ml-auto w-4 h-4 ">
-                              <i class="mr-2 fas fa-times"></i>
+                              <i class="text-base fas fa-times"></i>
                             </button>
                           </div>                         
                           <TokenBrief />

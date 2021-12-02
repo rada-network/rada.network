@@ -7,9 +7,9 @@ const TocSideBar = ({ mainScroll }) => {
   const refToc = useRef();
   useEffect(() => {
     // Add id to element
-    const h2Elements = Array.from(document.querySelectorAll("h2"));
+    const h2Elements = Array.from(document.querySelectorAll("h2, h3"));
 
-    const headingElements = Array.from(document.querySelectorAll("h2"));
+    const headingElements = Array.from(document.querySelectorAll("h2, h3"));
     const newNestedHeadings = getNestedHeadings(headingElements);
     setNestedHeadings(newNestedHeadings);
   }, []);
@@ -73,7 +73,7 @@ const TocSideBar = ({ mainScroll }) => {
     <>
       <div
         ref={refToc}
-        className={isMobile ? "article-toc" : "article-toc toc-sidebar"}
+        className="article-toc toc-sidebar"
         role="navigation"
       >
         <div className="toc-list">
@@ -94,21 +94,17 @@ const TocSideBar = ({ mainScroll }) => {
                     </a>
                     {heading.items.length > 0 && (
                       <ol>
-                        {heading.items.map(
-                          (child) =>
-                            child.title ?? (
-                              <li key={child.id}>
-                                <a
-                                  href={`#${child.id}`}
-                                  onClick={(e) => {
-                                    handleClickToc(e, child.id);
-                                  }}
-                                >
-                                  {child.title}
-                                </a>
-                              </li>
-                            )
-                        )}
+                        {heading.items.map((child) => (
+                          <li key={child.id}>
+                            <a href={`#${child.id}`}
+                              onClick={(e) => {
+                                handleClickToc(e, child.id);
+                              }}
+                            >
+                              {child.title}
+                            </a>
+                          </li>
+                        ))}
                       </ol>
                     )}
                   </li>

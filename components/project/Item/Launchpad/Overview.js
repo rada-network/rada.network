@@ -8,7 +8,7 @@ export default function LaunchpadOverview({ project }) {
   return (
     <>
       {isWarning && 
-      <div className="message warning flex mx-2 md:mx-4 relative items-center">
+      <div className="message warning flex relative items-center">
         <span className="message-icon">
           <i class="mr-2 fas fa-exclamation-circle"></i>
         </span>
@@ -16,11 +16,11 @@ export default function LaunchpadOverview({ project }) {
           {t("bsc warning")}
         </div>
         <button onClick={e => {setIsWarning(false)}}  className="flex items-center ml-auto w-4 h-4 ">
-          <i class="mr-2 fas fa-times"></i>
+          <i class="text-base fas fa-times"></i>
         </button>
       </div>
       }
-      <div className="section-header pl-4 pr-4 pt-4 md:px-4 md:pt-4">
+      <div className="section-header pt-4">
         <div className="flex flex-wrap justify-between items-center w-full">
           <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
             <span className="icon flex-shrink-0 mr-2">
@@ -64,8 +64,8 @@ export default function LaunchpadOverview({ project }) {
       </div>
 
       {/* Video / Banner of Project */}
-      <div className="page-media md:px-4">
-        <div className="media-player">
+      <div className="page-media">
+        <div className="media-player rounded-lg">
           <div className="w-full h-full">
             {project.cover_embed ? 
             <div className={`aspect-w-16 aspect-h-9`} dangerouslySetInnerHTML={{__html : project.cover_embed}}>

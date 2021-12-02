@@ -115,7 +115,7 @@ Tabbar
     @apply text-lg lg:text-sm lg:mr-2;
   }
   .token-symbol {
-    @apply filter grayscale;
+    @apply bg-gray-200 rounded-full;
   }
 }
 
