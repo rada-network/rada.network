@@ -10,10 +10,11 @@ export default function FAB() {
         {({ open }) => (
           <>
             <Popover.Button
-              className={`${open ? "" : "text-opacity-100"}
-              active bg-primary-700 text-white rounded-full w-10 h-10 shadow-lg`}
+              className={`${open ? "active" : ""}
+              floating-btn`}
             >
-              <span className="icon"><i class="fal fa-bars"></i></span>
+              <span className="icon text-base"><i class="far fa-bars"></i></span>
+              <span className="icon text-base"><i class="fas fa-times"></i></span>
               <span className="sr-only">Table of Content</span>
             </Popover.Button>
             <Transition
