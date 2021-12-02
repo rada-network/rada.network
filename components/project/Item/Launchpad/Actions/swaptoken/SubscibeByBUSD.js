@@ -27,6 +27,7 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
   const [currentOrderBusd,setCurrentOrderBusd] = useState(0)
   const [currentOrderRIR,setCurrentOrderRIR] = useState(0)
   const maxBusd = parseInt(launchpadInfo.individualMaximumAmount);
+  const minBusd = parseInt(launchpadInfo.individualMinimumAmount);
   useEffect(() => {
     setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)))
     setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)))
@@ -43,7 +44,7 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
         }
       },
       onApprove: async (requireApprove) => {
-        return await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxBusd.toString())])
+        return callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxBusd.toString())])
       },
       onApproveSuccess: async ({ receipts }) => {
         toast.success(`Approve BUSD Success`)
@@ -83,7 +84,7 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
                 {Array(maxSelected).fill(null).map((_, i) => {
                   return (
                     <>
-                    {(maxBusd - currentOrderBusd) >= (i+1)*100 &&
+                    {(maxBusd - currentOrderBusd) >= (i+1)*100 && (minBusd - currentOrderBusd) <= (i+1)*100 &&
                     <option key={i} className="text-gray-300" value={(i+1) * 100}>{(i+1) * 100} BUSD</option>
                     }
                     </>
@@ -98,19 +99,19 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
         </div>
         <div className="mt-4">
           {!isApproved && 
-          <button class="btn btn-default btn-default-lg w-full btn-purple" disabled="" id="swap-button" onClick={handleApprove} width="100%" scale="md">
+          <button className={`btn relative  w-full btn-default btn-default-lg btn-purple`} onClick={handleApprove} width="100%" scale="md">
             {isApproving && <span className="spinner" />}
-          {t("Approve Contract")} BUSD
+            {isApproving ? <>{t("Approving Contract")}</> : <>{t("Approve Contract")} BUSD</>}
           </button>
           }
-          {isApproved && 
-          <button class="btn btn-default btn-default-lg w-full btn-purple" onClick={handleConfirm} disabled="" id="swap-button" width="100%" scale="md">
+        </div>
+        <div className="mt-4">
+          <button className={`btn relative w-full btn-default btn-default-lg btn-purple` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" width="100%" scale="md">
             {isConfirming && <span className="spinner" />}
-          {t("Prefund")}
+            {isConfirming ? <>{t("Prefund")}</> : <>{t("Prefunding")}</>}
           </button>
-          }
           {currentOrderBusd > 0 &&
-          <button class="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
+          <button className="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
           {t("Cancel")}
           </button>
           }
