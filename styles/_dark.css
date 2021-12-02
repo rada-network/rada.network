@@ -10,3 +10,8 @@
   stroke-width: 1;
   stroke: #fff;
 }
+
+.dark .bg-gray-50
+{
+  background-color: rgba(17, 24, 39, var(--tw-bg-opacity));
+}
