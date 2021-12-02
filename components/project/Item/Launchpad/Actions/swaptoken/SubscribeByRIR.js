@@ -23,21 +23,20 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
   const [numberBusd,setNumberBusd] = useState(0)
   const [currentOrderBusd,setCurrentOrderBusd] = useState(0)
   const [currentOrderRIR,setCurrentOrderRIR] = useState(0)
-  const maxRIR = parseInt(launchpadInfo.individualMaximumAmount) / 100 < accountBalance.rirBalance ? parseInt(launchpadInfo.individualMaximumAmount) : accountBalance.rirBalance;
   const maxBusd = parseInt(launchpadInfo.individualMaximumAmount);
   const minBusd = parseInt(launchpadInfo.individualMinimumAmount);
   useEffect(() => {
-    setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)))
-    setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)))
+    setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.amountBUSD)))
+    setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.amountRIR)))
   },[launchpadInfo])
-  
+  console.log(parseInt(currentOrderBusd),parseInt(launchpadInfo.individualMaximumAmount))
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
   useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
           const response2 = await bUSDContract.allowance(account, launchpadContract.address)
-          console.log(parseInt(currentOrderBusd),parseInt(maxBusd))
-          return response2.gt(0) || parseInt(currentOrderBusd) == parseInt(maxBusd)
+          console.log(parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.amountBUSD)),parseInt(launchpadInfo.individualMaximumAmount))
+          return response2.gt(0) || parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.amountBUSD)) == parseInt(launchpadInfo.individualMaximumAmount)
         } catch (error) {
           return false
         }
@@ -54,8 +53,8 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
       onSuccess: async ({ receipt }) => {
         await fetchAccountBalance()
         toast.success(`Successfully prefunded`)
-        setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)) + parseInt(numberBusd))
-        setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)) + parseInt(numberRIR))
+        setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.amountBUSD)) + parseInt(numberBusd))
+        setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.amountRIR)) + parseInt(numberRIR))
         setNumberRIR(0)
         setNumberBusd(0)
         store.updateLoadPoolContent((new Date()).getTime())
@@ -90,7 +89,7 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
     const maxSelected = parseInt(launchpadInfo.individualMaximumAmount)/100
     const handleChangeBUSD = function(e){
       setNumberBusd(e.currentTarget.value)
-      let newNumberRIR = parseInt(e.currentTarget.value)/100 < accountBalance.rirBalance ? parseInt(e.currentTarget.value)/100 : 0;
+      let newNumberRIR = parseInt(e.currentTarget.value)/100 < parseInt(accountBalance.rirBalance) ? parseInt(e.currentTarget.value)/100 : 0;
       setNumberRIR(newNumberRIR)
     }
   return (
@@ -118,7 +117,7 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
                 })}
               </select>
             </div>
-            {accountBalance.rirBalance > 0 && 
+            {parseInt(accountBalance.rirBalance) > 0 && 
             <div className="mt-4">
               <label htmlFor="rir" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">
                 {t("RIR")}
@@ -161,7 +160,7 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
           }
         </div>
         <div className="mt-4">
-          <button className={`btn btn-default btn-default-lg w-full btn-purple` + ((isApprovedRIR && isApproved) ? "" : " disabled")} onClick={handleConfirm}  >
+          <button className={`btn btn-default btn-default-lg w-full btn-purple` + (((isApprovedRIR || (parseFloat(accountBalance.rirBalance) == 0.0 ||  parseInt(numberRIR) == 0)) && isApproved) ? "" : " disabled")} onClick={handleConfirm}  >
             {isConfirming && <span className="spinner" />}
             {t("Prefund")}
           </button>

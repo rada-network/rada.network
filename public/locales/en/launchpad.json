@@ -73,7 +73,7 @@
   "pool closed" : "This Pool is closed. See you in the other Pools.",
   "pool closed des" : "You don't join to prefund this pool",
   "pool close note" : "Connect your wallet to check the status if you are whitelisted.",
-  "bsc warning" : "Binance Smart Chain Network is under heavy load. It may take upto 5 minutes to complete a transaction.",
+  "bsc warning" : "Binance Smart Chain Network is under heavy load. It may take up to 5 minutes to complete a transaction.",
   "status failed" : "Your prefuned was turned down.",
   "status dont join" : "You are not yet a member of this pool.",
   "status failed note" : "Regrettably, your application has been rejected. Best of luck the next time!",

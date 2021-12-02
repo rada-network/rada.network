@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from 'react'
+import { useEffect, useReducer, useRef,useState } from 'react'
 import { noop } from 'lodash'
 import { useWeb3React } from '@web3-react/core'
 import { ethers } from 'ethers'
@@ -54,6 +54,7 @@ const reducer = (state, actions) => {
 }
 
 const useApproveConfirmTransaction = ({
+  initData,
   onApprove,
   onConfirm,
   onRequiresApproval,
