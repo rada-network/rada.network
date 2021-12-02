@@ -5,7 +5,7 @@ import Toc from "../_components/content/Toc";
 
 export default function FAB() {
   return (
-    <div className="fixed bottom-4 right-4">
+    <div className="floating-btn--container">
       <Popover className="relative">
         {({ open }) => (
           <>
@@ -28,7 +28,7 @@ export default function FAB() {
             >
               <Popover.Panel className="absolute z-10 transform right-full -mr-10 bottom-10 w-80">
                 <div className="overflow-hidden rounded-lg shadow-lg">
-                  <div className="p-4 bg-gray-50 dark:bg-gray-800 max-h-96 overflow-x-hidden overflow-y-auto">
+                  <div className="popper poper-toc p-4 !mt-0 max-h-96 overflow-x-hidden overflow-y-auto">
                     <Toc />
                   </div>
                 </div>

@@ -394,6 +394,10 @@ Button Caret
 /* 
 Floating Button
 */
+.floating-btn--container {
+  @apply fixed bottom-4 right-4;
+}
+
 .floating-btn {
   @apply bg-primary-700 text-white rounded-full w-10 h-10 shadow-lg;
 }
