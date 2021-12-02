@@ -399,7 +399,7 @@ Floating Button
 }
 
 .floating-btn {
-  @apply bg-primary-700 text-white w-10 h-10 shadow-xl text-sm rounded-full;
+  @apply bg-primary-700 text-primary-100 hover:bg-primary-600 hover:text-white w-10 h-10 shadow-xl text-sm rounded-full transition;
   .icon {
   }
   .btn-text {
