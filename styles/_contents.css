@@ -698,8 +698,11 @@ Article TOC
 }
 
 .article-toc ol {
-  @apply list-none;
+  @apply list-none transition-all;
   counter-reset: section;
+  ol {
+    @apply hidden;
+  }
 }
 
 .article-toc li  {
@@ -711,7 +714,7 @@ Article TOC
 }
 
 .article-toc li a {
-  @apply flex px-0 py-1;
+  @apply flex px-0 py-1 transition;
   @apply text-gray-800 dark:text-gray-200 opacity-70 hover:opacity-100;
 }
 
@@ -730,9 +733,13 @@ Article TOC
   }
 }
 
+.article-toc li a.toc--active + ol {
+  @apply block;
+}
+
 /* Toc's placed beside Article */
 .toc-sidebar {
-  @apply relative pt-11 pb-2;
+  @apply relative pt-14 pb-2;
   min-width: 200px;
   width: 15vw;
 }
@@ -744,7 +751,7 @@ Article TOC
   width: 15vw;
 }
 
-@media screen and (min-width: 1024px) {
+@screen lg {
   .float-btn--container {
     display: none;
   }

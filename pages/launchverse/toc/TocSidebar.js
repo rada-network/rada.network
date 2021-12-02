@@ -78,7 +78,7 @@ const TocSideBar = ({ mainScroll,closeChooser }) => {
         role="navigation"
       >
         <div className="toc-list">
-          <h5 className="text-color-title">ON this page</h5>
+          <h5 className="text-color-title">On this page</h5>
 
           <ol>
             {nestedHeadings.map(
