@@ -2,6 +2,7 @@ import { useState,useEffect } from "react"
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React"
 import { useBUSDContract,useRIRContract, useERC20,useLaunchpadContractV2 } from "@utils/hooks/useContracts"
 import useMultiApproveConfirmTransaction from "@utils/hooks/useMultiApproveConfirmTransaction"
+import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransaction"
 import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
 import { ethers } from 'ethers'
 import {toast} from "react-toastify"
@@ -31,32 +32,21 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
     setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)))
   },[launchpadInfo])
   
-  const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm,handleReload } =
-  useMultiApproveConfirmTransaction({
+  const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
+  useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
           const response2 = await bUSDContract.allowance(account, launchpadContract.address)
-          return {busd : parseInt(ethers.utils.formatEther(response2)),rir : 1}
+          return response2.gt(0)
         } catch (error) {
-          return {busd : 0, rir : 0}
+          return false
         }
       },
       onApprove: async (requireApprove) => {
-        const busdApprove = parseInt(maxBusd) - parseInt(requireApprove.busd)
-        let receipt_busd
-        let data = []
-        if (busdApprove > 0){
-          receipt_busd =  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxBusd.toString())])
-          data.push(receipt_busd)
-        }
-        return data;
+        return await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxBusd.toString())])
       },
       onApproveSuccess: async ({ receipts }) => {
-        let txs = []
-        for (const receipt of receipts) {
-          txs.push(receipt.transactionHash)
-        }
-        toast.success(`Success - Prefund enabled`)
+        toast.success(`Approve BUSD Success`)
       },
       onConfirm: () => {
         return callWithGasPrice(launchpadContract, 'createSubscription', [ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString()),account])
@@ -64,7 +54,6 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
       onSuccess: async ({ receipt }) => {
         await fetchAccountBalance()
         toast.success(`Successfully prefunded`)
-        handleReload()
         setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)) + parseInt(numberBusd))
         setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)) + parseInt(numberRIR))
         setNumberRIR(0)
@@ -111,7 +100,7 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
           {!isApproved && 
           <button class="btn btn-default btn-default-lg w-full btn-purple" disabled="" id="swap-button" onClick={handleApprove} width="100%" scale="md">
             {isApproving && <span className="spinner" />}
-          {t("Approve Contract")}
+          {t("Approve Contract")} BUSD
           </button>
           }
           {isApproved && 

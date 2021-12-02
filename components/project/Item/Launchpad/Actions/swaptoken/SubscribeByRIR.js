@@ -2,6 +2,7 @@ import { useState,useEffect } from "react"
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React"
 import { useBUSDContract,useRIRContract, useERC20,useLaunchpadContractV2 } from "@utils/hooks/useContracts"
 import useMultiApproveConfirmTransaction from "@utils/hooks/useMultiApproveConfirmTransaction"
+import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransaction"
 import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
 import { ethers } from 'ethers'
 import {toast} from "react-toastify"
@@ -24,44 +25,28 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
   const [currentOrderRIR,setCurrentOrderRIR] = useState(0)
   const maxRIR = parseInt(launchpadInfo.individualMaximumAmount) / 100 < accountBalance.rirBalance ? parseInt(launchpadInfo.individualMaximumAmount) : accountBalance.rirBalance;
   const maxBusd = parseInt(launchpadInfo.individualMaximumAmount);
+  const minBusd = parseInt(launchpadInfo.individualMinimumAmount);
   useEffect(() => {
     setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)))
     setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)))
   },[launchpadInfo])
   
-  const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm,handleReload } =
-  useMultiApproveConfirmTransaction({
+  const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
+  useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
           const response2 = await bUSDContract.allowance(account, launchpadContract.address)
-          const response1 = await rirContract.allowance(account, launchpadContract.address)
-          return {busd : parseInt(ethers.utils.formatEther(response2)),rir : parseInt(numberRIR) > 0 ? parseInt(ethers.utils.formatEther(response1)) : 1}
+          console.log(parseInt(currentOrderBusd),parseInt(maxBusd))
+          return response2.gt(0) || parseInt(currentOrderBusd) == parseInt(maxBusd)
         } catch (error) {
-          return {busd : 0, rir : 0}
+          return false
         }
       },
       onApprove: async (requireApprove) => {
-        const busdApprove = parseInt(maxBusd) - parseInt(requireApprove.busd)
-        let receipt_busd,receipt_rir
-        let data = []
-        if (busdApprove > 0){
-          receipt_busd =  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxBusd.toString())])
-          data.push(receipt_busd)
-        }
-        const rirApprove = parseInt(maxRIR) - parseInt(requireApprove.rir)
-        console.log(rirApprove,numberRIR)
-        if (parseInt(numberRIR) > 0 && rirApprove > 0){
-          receipt_rir = await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxRIR.toString())])
-          data.push(receipt_rir)
-        }
-        return data;
+        return  await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxBusd.toString())])
       },
-      onApproveSuccess: async ({ receipts }) => {
-        let txs = []
-        for (const receipt of receipts) {
-          txs.push(receipt.transactionHash)
-        }
-        toast.success(`Success - Prefund enabled`)
+      onApproveSuccess: async ({ receipt }) => {
+        toast.success(`Approve BUSD Success`)
       },
       onConfirm: () => {
         return callWithGasPrice(launchpadContract, 'createSubscription', [ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString()),account])
@@ -69,13 +54,33 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
       onSuccess: async ({ receipt }) => {
         await fetchAccountBalance()
         toast.success(`Successfully prefunded`)
-        
-        handleReload()
         setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)) + parseInt(numberBusd))
         setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)) + parseInt(numberRIR))
         setNumberRIR(0)
         setNumberBusd(0)
         store.updateLoadPoolContent((new Date()).getTime())
+      },
+    })
+    const { isApproving :isApprovingRIR, isApproved : isApprovedRIR ,handleApprove:handleApproveRIR } =useApproveConfirmTransaction({
+      onRequiresApproval: async () => {
+        try {
+          const response2 = await rirContract.allowance(account, launchpadContract.address)
+          return response2.gt(0)
+        } catch (error) {
+          return false
+        }
+      },
+      onApprove: async (requireApprove) => {
+        return  await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.utils.parseEther((parseInt(maxBusd)/100).toString())])
+      },
+      onApproveSuccess: async ({ receipt }) => {
+        toast.success(`Approve RIR Success`)
+      },
+      onConfirm: () => {
+        
+      },
+      onSuccess: async ({ receipt }) => {
+        
       },
     })
     const resetApproved = async () => {
@@ -90,7 +95,7 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
     }
   return (
     <>
-      <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "") }>
+      <div className={`global-padding` + (isApproving || isApprovingRIR || isConfirming ? " disabled" : "") }>
 
         <div className="mb-4">
           
@@ -105,7 +110,7 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
                 {Array(maxSelected).fill(null).map((_, i) => {
                   return (
                     <>
-                    {(maxBusd - currentOrderBusd) >= (i+1)*100 &&
+                    {(maxBusd - currentOrderBusd) >= (i+1)*100 && (minBusd - currentOrderBusd) <= (i+1)* 100  &&
                     <option key={i} className="text-gray-300" value={(i+1) * 100}>{(i+1) * 100} BUSD</option>
                     }
                     </>
@@ -138,19 +143,28 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
           </div>
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
         </div>
-        <div className="mt-4">
-          {!isApproved && 
-          <button class="btn btn-default btn-default-lg w-full btn-purple" disabled="" id="swap-button" onClick={handleApprove} width="100%" scale="md">
+        <div className={`mt-4 grid gap-4` + (parseInt(numberRIR) > 0 ? " grid-cols-2" : "")}> 
+          {/* bỏ grid grid-cols-2 nếu user không có RIR hoặc không dùng RIR */}
+          <div className="flex-shrink-0 flex-grow">
+            <button className={`btn relative  w-full btn-default btn-default-lg btn-purple` + ((isApproved || isApproving) ? " disabled" : "")} width="100%" scale="md" onClick={handleApprove}>
             {isApproving && <span className="spinner" />}
-          {t("Approve Contract")}
-          </button>
+              {t("Approve Contract")} BUSD
+            </button>     
+          </div>
+          {parseFloat(accountBalance.rirBalance) > 0 && parseInt(numberRIR) > 0 &&
+          <div  className="flex-shrink-0 flex-grow">
+            <button className={`btn relative w-full btn-default btn-default-lg btn-purple` + ((isApprovingRIR || isApprovedRIR) ? " disabled" : "")} scale="md" onClick={handleApproveRIR}>
+            {isApprovingRIR && <span className="spinner" />}
+              {t("Approve Contract")} RIR
+            </button>         
+          </div>
           }
-          {isApproved && 
-          <button class="btn btn-default btn-default-lg w-full btn-purple" onClick={handleConfirm} disabled="" id="swap-button" width="100%" scale="md">
+        </div>
+        <div className="mt-4">
+          <button className={`btn btn-default btn-default-lg w-full btn-purple` + ((isApprovedRIR && isApproved) ? "" : " disabled")} onClick={handleConfirm}  >
             {isConfirming && <span className="spinner" />}
-          {t("Prefund")}
+            {t("Prefund")}
           </button>
-          }
           {currentOrderBusd > 0 &&
           <button class="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
           {t("Cancel")}

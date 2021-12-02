@@ -567,7 +567,7 @@ const NotInWhitesist = function(){
 
               <div className="flex items-center">
                 <div className="mx-auto">
-                  {t("execution reverted: Not allow")}
+                  {t("Not allow")}
                 </div>
               </div>
             </div>
