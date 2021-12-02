@@ -10,8 +10,7 @@ export default function FAB() {
         {({ open }) => (
           <>
             <Popover.Button
-              className={`
-                ${open ? "" : "text-opacity-90"}
+              className={`${open ? "" : "text-opacity-90"}
                 bg-primary-700 text-white rounded-full px-4 py-2 float-right shadow-lg`}
             >
               <span>Table of Content</span>

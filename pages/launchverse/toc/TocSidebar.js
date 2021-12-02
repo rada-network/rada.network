@@ -2,7 +2,7 @@ import React from "react";
 import { useRef, useState, useEffect } from "react";
 import { isMobile, isBrowser } from "react-device-detect";
 
-const TocSideBar = ({ mainScroll }) => {
+const TocSideBar = ({ mainScroll,closeChooser }) => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
   const refToc = useRef();
   useEffect(() => {
@@ -42,6 +42,7 @@ const TocSideBar = ({ mainScroll }) => {
     e.preventDefault();
     e.stopPropagation();
     document.getElementById(id).setAttribute("class", "toc--active");
+    if (typeof closeChooser == "function") closeChooser()
     mainScroll.current.scroll({
       top: document.getElementById(id).offsetTop,
       left: 0,
