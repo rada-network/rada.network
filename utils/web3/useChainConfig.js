@@ -13,6 +13,80 @@ export const ConnectorNames = {
   WalletConnect : "walletconnect",
 }
 
+export const getNodeUrl = (network) => {
+  // Use custom node if available (both for development and production)
+  // However on the testnet it wouldn't work, so if on testnet - comment out the REACT_APP_NODE_PRODUCTION from env file
+  if (network === "bsc"){
+    if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+      return sample(RPC_CONFIG.bsc.production.url)
+    }
+    return RPC_CONFIG.bsc.dev.url
+  }
+  if (network === "eth"){
+    if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+      return RPC_CONFIG.eth.production.url
+    }
+    return RPC_CONFIG.eth.dev.url
+  }
+}
+
+const rpcUrls = {}
+export const getRpcUrl = function(network){
+  if (rpcUrls[getNodeUrl(network)] === undefined){
+    rpcUrls[getNodeUrl(network)] = new StaticJsonRpcProvider(getNodeUrl(network))
+  }
+  else return rpcUrls[getNodeUrl(network)]
+}
+
+export const getChainName = (network) => {
+  // Use custom node if available (both for development and production)
+  // However on the testnet it wouldn't work, so if on testnet - comment out the REACT_APP_NODE_PRODUCTION from env file
+  if (snetwork === "bsc"){
+    if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+      return RPC_CONFIG.bsc.production.name
+    }
+    return RPC_CONFIG.bsc.dev.name
+  }
+  if (network === "eth"){
+    if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+      return RPC_CONFIG.eth.production.name
+    }
+    return RPC_CONFIG.eth.dev.name
+  }
+}
+
+export const getChainScanUrl = function(network){
+  if (network === "bsc"){
+    if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+      return RPC_CONFIG.bsc.production.scan
+    }
+    return RPC_CONFIG.bsc.dev.scan
+  }
+  if (network=== "eth"){
+    if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+      return RPC_CONFIG.eth.production.scan
+    }
+    return RPC_CONFIG.eth.dev.scan
+  }
+}
+
+export const getChainId = (network) => {
+  // Use custom node if available (both for development and production)
+  // However on the testnet it wouldn't work, so if on testnet - comment out the REACT_APP_NODE_PRODUCTION from env file
+  if (network === "bsc"){
+    if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+      return RPC_CONFIG.bsc.production.chainId
+    }
+    return RPC_CONFIG.bsc.dev.chainId
+  }
+  if (network === "eth"){
+    if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+      return RPC_CONFIG.eth.production.chainId
+    }
+    return RPC_CONFIG.eth.dev.chainId
+  }
+}
+
 const useChainConfig = function(){
   const store = useStore()
   const getNodeUrl = () => {
