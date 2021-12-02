@@ -255,7 +255,8 @@ Popper
 }
 
 .poper-toc {
-  @apply block top-0;
+  @apply block top-0 overflow-x-hidden overflow-y-auto;
+  max-height: 80vh;
   width: 20rem;
   transition-property: all;
 }
