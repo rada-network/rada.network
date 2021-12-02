@@ -1,62 +1,63 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
+import { isMobile, isBrowser } from "react-device-detect";
 
-const TocSideBar = ({mainScroll}) => {
+const TocSideBar = ({ mainScroll }) => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
-  const refToc = useRef()
+  const refToc = useRef();
   useEffect(() => {
     // Add id to element
-    const h2Elements = Array.from(
-      document.querySelectorAll("h2")
-    );
+    const h2Elements = Array.from(document.querySelectorAll("h2"));
 
-    const headingElements = Array.from(
-      document.querySelectorAll("h2, h3")
-    );
+    const headingElements = Array.from(document.querySelectorAll("h2"));
     const newNestedHeadings = getNestedHeadings(headingElements);
-    console.log(newNestedHeadings)
     setNestedHeadings(newNestedHeadings);
-
   }, []);
-
 
   const getNestedHeadings = (headingElements) => {
     const nestedHeadings = [];
-    let h2Index = 1
-    let h3Index = 1
+    let h2Index = 1;
+    let h3Index = 1;
     headingElements.forEach((heading, index) => {
       const { innerText: title } = heading;
       if (heading.nodeName === "H2") {
-        let id = h2Index.toString()
-        heading.setAttribute("id", id)
-        nestedHeadings.push({ id, title, items: [] })
+        let id = h2Index.toString();
+        heading.setAttribute("id", id);
+        nestedHeadings.push({ id, title, items: [] });
         h2Index += 1;
         h3Index = 1;
       } else if (heading.nodeName === "H3" && nestedHeadings.length > 0) {
-        let id = h2Index.toString() + "." + h3Index.toString()
-        heading.setAttribute("id", id)
+        let id = h2Index.toString() + "." + h3Index.toString();
+        heading.setAttribute("id", id);
         nestedHeadings[nestedHeadings.length - 1].items.push({
           id,
-          title
+          title,
         });
         h3Index += 1;
       }
     });
     return nestedHeadings;
   };
-  const handleClickToc = function(e,id){
+  const handleClickToc = function (e, id) {
     e.preventDefault();
     e.stopPropagation();
+    document.getElementById(id).setAttribute("class", "toc--active");
     mainScroll.current.scroll({
-      top : document.getElementById(id).offsetTop,
-      left : 0, behavior: 'smooth'})
-  }
-  const handleScroll = function(e){
+      top: document.getElementById(id).offsetTop,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleScroll = function (e) {
     refToc.current.style.position = "absolute";
-    refToc.current.style.top = mainScroll.current.scrollTop + "px"
-    const right = document.querySelector(".pane-content--sec--main").clientWidth - document.querySelector(".post-body").clientWidth
-    refToc.current.style.right = (right/2 - refToc.current.clientWidth)/2 + "px"
-  }
+    refToc.current.style.top = mainScroll.current.scrollTop + "px";
+    const right =
+      document.querySelector(".pane-content--sec--main").clientWidth -
+      document.querySelector(".post-body").clientWidth;
+    refToc.current.style.right =
+      (right / 2 - refToc.current.clientWidth) / 2 + "px";
+  };
   useEffect(() => {
     // refToc.current.style.display = "block"
     // refToc.current.style.position = "absolute";
@@ -67,38 +68,60 @@ const TocSideBar = ({mainScroll}) => {
     // return () => {
     //   mainScroll.current.removeEventListener('scroll',handleScroll)
     // }
-  },[])
-  if (process.env.NODE_ENV === 'production') {
-    return null
+  }, []);
+  if (process.env.NODE_ENV === "production") {
+    return null;
   }
   return (
     <>
-      <div style={{display: "none"}} ref={refToc} className="article-toc toc-sidebar" role="navigation">
-        <h5 className="text-color-title">ON this page</h5>
+      <div
+        ref={refToc}
+        className={isMobile ? "article-toc" : "article-toc toc-sidebar"}
+        role="navigation"
+      >
+        <div className="toc-list">
+          <h5 className="text-color-title">ON this page</h5>
 
-        <ol>
-          {nestedHeadings.map(heading => (
-            <li key={heading.id} className="">
-              <a href={`#${heading.id}`} onClick={e => {handleClickToc(e,heading.id)}}>
-                {heading.title}
-              </a>
-              {heading.items.length > 0 && (
-                <ol>
-                  {heading.items.map((child) => (
-                    <li key={child.id}>
-                      <a href={`#${child.id}`} onClick={e => {handleClickToc(e,child.id)}}>{child.title}</a>
-                    </li>
-                  ))}
-                </ol>
-              )}
-
-            </li>
-          )
-          )}
-        </ol>
+          <ol>
+            {nestedHeadings.map(
+              (heading) =>
+                heading.title && (
+                  <li key={heading.id} className="">
+                    <a
+                      href={`#${heading.id}`}
+                      onClick={(e) => {
+                        handleClickToc(e, heading.id);
+                      }}
+                    >
+                      {heading.title}
+                    </a>
+                    {heading.items.length > 0 && (
+                      <ol>
+                        {heading.items.map(
+                          (child) =>
+                            child.title ?? (
+                              <li key={child.id}>
+                                <a
+                                  href={`#${child.id}`}
+                                  onClick={(e) => {
+                                    handleClickToc(e, child.id);
+                                  }}
+                                >
+                                  {child.title}
+                                </a>
+                              </li>
+                            )
+                        )}
+                      </ol>
+                    )}
+                  </li>
+                )
+            )}
+          </ol>
+        </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default TocSideBar
+export default TocSideBar;

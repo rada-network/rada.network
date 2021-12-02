@@ -5,7 +5,7 @@ Content Elements
 @import '_presets';
 
 /*
-Lists Styles 
+Lists Styles
 -------------------------------- */
 .list-group {
 }
@@ -76,8 +76,8 @@ Lists Group Compact
 
 
 
-/* 
-Metadata 
+/*
+Metadata
 ----------------------------------- */
 .metadata-wrapper {
   @apply flex flex-wrap;
@@ -441,8 +441,8 @@ Info Row
 }
 
 
-/* 
-Avatars 
+/*
+Avatars
 -------------------------------- */
 .avatar,
 .avatar-sm,
@@ -531,8 +531,8 @@ Comment
   @apply text-sm font-semibold whitespace-nowrap;
 }
 
-/* 
-Comment Forms 
+/*
+Comment Forms
 */
 .comment-form {
   @apply flex;
@@ -569,7 +569,7 @@ Avatars
   @apply ring-4 ring-white dark:ring-deepgray-50;
 }
 
-/* 
+/*
 Comment Trail
 */
 .comment-trail {
@@ -604,8 +604,8 @@ Comment Trail
   display: none;
 }
 
-/* 
-Pricing & Market 
+/*
+Pricing & Market
 ------------------------------------ */
 .pricing {
   @apply flex items-end relative;
@@ -654,10 +654,10 @@ Pricing & Market
   }
 }
 
-/* Partner List 
+/* Partner List
 --------------------------------- */
 .list-partners {
-  @apply flex lg:justify-center items-center; 
+  @apply flex lg:justify-center items-center;
 }
 
 .list-partners div {
@@ -684,7 +684,7 @@ Pricing & Market
 }
 
 
-/* 
+/*
 Article TOC
 ------------------------------- */
 .has-toc {
@@ -713,12 +713,6 @@ Article TOC
 .article-toc li a {
   @apply flex px-0 py-1;
   @apply text-gray-800 dark:text-gray-200 opacity-70 hover:opacity-100;
-  counter-increment: section;
-
-  &::before {
-    @apply w-5 flex-shrink-0;
-    content: counters(section, '.') '.';
-  }
 }
 
 .article-toc li li a {
@@ -738,6 +732,50 @@ Article TOC
 
 /* Toc's placed beside Article */
 .toc-sidebar {
-  @apply pt-14;
+  @apply relative pt-11 pb-2;
+  min-width: 200px;
+  width: 15vw;
 }
 
+.toc-list{
+  @apply fixed overflow-y-auto;
+  height: 100%;
+  min-width: 200px;
+  width: 15vw;
+}
+@media screen and (min-width: 1024px) {
+  .float-button {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 1024px){
+  .toc-side-bar-div {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .toc-side-bar-div {
+    display: none;
+  } 
+}
+
+@media screen and (max-width: 480px){
+  .toc-side-bar-div {
+    display: none;
+  } 
+}
+
+@media screen and (max-width: 320px){
+  .toc-side-bar-div {
+    display: none;
+  } 
+}
+
+@media screen and (max-width: 240px){
+  .toc-side-bar-div {
+    display: none;
+  } 
+}
