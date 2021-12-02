@@ -1,8 +1,8 @@
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import TocSideBar from "./TocSidebar";
+import TocSideBar from "pages/launchverse/toc/TocSidebar";
 
-export default function FloatButton() {
+export default function PostTocFloatButton() {
   return (
     <div className="w-full px-4 fixed bottom-4 right-4">
       <Popover className="relative">

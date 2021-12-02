@@ -43,7 +43,7 @@ export default function ProjectItem({ project, page, slug }) {
                 {page == "research" && <FloatButton mainScroll={ref}/>}
               </div>
               <div className="toc-side-bar-div">
-                {page == "research" && (<TocSideBar mainScroll={ref}/>)}  
+                {page == "research" && (<TocSideBar/>)}  
               </div>
               
             </div>

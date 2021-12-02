@@ -2,13 +2,10 @@ import React from "react";
 import { useRef, useState, useEffect } from "react";
 import { isMobile, isBrowser } from "react-device-detect";
 
-const TocSideBar = ({ mainScroll }) => {
+const TocSideBar = () => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
   const refToc = useRef();
   useEffect(() => {
-    // Add id to element
-    const h2Elements = Array.from(document.querySelectorAll("h2, h3"));
-
     const headingElements = Array.from(document.querySelectorAll("h2, h3"));
     const newNestedHeadings = getNestedHeadings(headingElements);
     setNestedHeadings(newNestedHeadings);
@@ -21,13 +18,13 @@ const TocSideBar = ({ mainScroll }) => {
     headingElements.forEach((heading, index) => {
       const { innerText: title } = heading;
       if (heading.nodeName === "H2") {
-        let id = h2Index.toString();
+        let id = "h" + h2Index.toString();
         heading.setAttribute("id", id);
         nestedHeadings.push({ id, title, items: [] });
         h2Index += 1;
         h3Index = 1;
       } else if (heading.nodeName === "H3" && nestedHeadings.length > 0) {
-        let id = h2Index.toString() + "." + h3Index.toString();
+        let id = "h" + h2Index.toString() + "" + h3Index.toString();
         heading.setAttribute("id", id);
         nestedHeadings[nestedHeadings.length - 1].items.push({
           id,
@@ -38,26 +35,40 @@ const TocSideBar = ({ mainScroll }) => {
     });
     return nestedHeadings;
   };
-  const handleClickToc = function (e, id) {
-    e.preventDefault();
-    e.stopPropagation();
-    document.getElementById(id).setAttribute("class", "toc--active");
-    mainScroll.current.scroll({
-      top: document.getElementById(id).offsetTop,
-      left: 0,
-      behavior: "smooth",
-    });
+
+  const handleClickToc = (parentId, myId) => {
+    let element = document.getElementById(myId);
+    console.log(myId);
+    console.log(parentId)
+    
+    var currentActive = document.querySelectorAll(".toc--active")
+    console.log(currentActive.length);
+    for (var i = 0; i < currentActive.length; i++) {
+      currentActive[i].className = currentActive[i].className.replace(" toc--active", "");
+    }
+
+    // set active for parent
+    if (parentId) {
+      console.log(" co parent")
+      const parent = document.getElementById(parentId);
+      parent.className += " toc--active";
+    } else {
+      console.log("Khong co parent")
+    }
+
+    element.className += " toc--active";
   };
 
-  const handleScroll = function (e) {
-    refToc.current.style.position = "absolute";
-    refToc.current.style.top = mainScroll.current.scrollTop + "px";
-    const right =
-      document.querySelector(".pane-content--sec--main").clientWidth -
-      document.querySelector(".post-body").clientWidth;
-    refToc.current.style.right =
-      (right / 2 - refToc.current.clientWidth) / 2 + "px";
-  };
+  // const handleScroll = function (e) {
+  //   refToc.current.style.position = "absolute";
+  //   refToc.current.style.top = mainScroll.current.scrollTop + "px";
+  //   const right =
+  //     document.querySelector(".pane-content--sec--main").clientWidth -
+  //     document.querySelector(".post-body").clientWidth;
+  //   refToc.current.style.right =
+  //     (right / 2 - refToc.current.clientWidth) / 2 + "px";
+  // };
+
   useEffect(() => {
     // refToc.current.style.display = "block"
     // refToc.current.style.position = "absolute";
@@ -69,6 +80,13 @@ const TocSideBar = ({ mainScroll }) => {
     //   mainScroll.current.removeEventListener('scroll',handleScroll)
     // }
   }, []);
+
+  useEffect(() => {
+    // if (nestedHeadings.length > 0) {
+    //   document.querySelector(".parent").setAttribute("class", "toc--active");
+    // }
+  }, [nestedHeadings])
+
   return (
     <>
       <div
@@ -85,9 +103,15 @@ const TocSideBar = ({ mainScroll }) => {
                 heading.title && (
                   <li key={heading.id} className="">
                     <a
+                      id={"parent" + heading.id}
+                      className="parent menu"
                       href={`#${heading.id}`}
                       onClick={(e) => {
-                        handleClickToc(e, heading.id);
+                        handleClickToc(null, "parent" + heading.id)
+                        e.preventDefault();
+                        document.querySelector(`#${heading.id}`).scrollIntoView({
+                          behavior: "smooth"
+                        });
                       }}
                     >
                       {heading.title}
@@ -96,9 +120,16 @@ const TocSideBar = ({ mainScroll }) => {
                       <ol>
                         {heading.items.map((child) => (
                           <li key={child.id}>
-                            <a href={`#${child.id}`}
+                            <a
+                              id={"child" + child.id} 
+                              href={`#${child.id}`}
+                              className="menu"
                               onClick={(e) => {
-                                handleClickToc(e, child.id);
+                                handleClickToc("parent" + heading.id, "child" + child.id);
+                                e.preventDefault();
+                                document.querySelector(`#${child.id}`).scrollIntoView({
+                                  behavior: "smooth"
+                                });
                               }}
                             >
                               {child.title}
