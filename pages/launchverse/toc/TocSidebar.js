@@ -2,7 +2,7 @@ import React from "react";
 import { useRef, useState, useEffect } from "react";
 import { isMobile, isBrowser } from "react-device-detect";
 
-const TocSideBar = () => {
+const TocSideBar = (isSideBar) => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
   const refToc = useRef();
   
@@ -52,36 +52,17 @@ const TocSideBar = () => {
     element.classList += " toc--active";
   };
 
-  // const handleScroll = function (e) {
-  //   refToc.current.style.position = "absolute";
-  //   refToc.current.style.top = mainScroll.current.scrollTop + "px";
-  //   const right =
-  //     document.querySelector(".pane-content--sec--main").clientWidth -
-  //     document.querySelector(".post-body").clientWidth;
-  //   refToc.current.style.right =
-  //     (right / 2 - refToc.current.clientWidth) / 2 + "px";
-  // };
-
-  useEffect(() => {
-    // refToc.current.style.display = "block"
-    // refToc.current.style.position = "absolute";
-    // refToc.current.style.top = mainScroll.current.scrollTop + "px"
-    // const right = document.querySelector(".pane-content--sec--main").clientWidth - document.querySelector(".post-body").clientWidth
-    // refToc.current.style.right = (right/2 - refToc.current.clientWidth)/2 + "px"
-    // mainScroll.current.addEventListener('scroll',handleScroll)
-    // return () => {
-    //   mainScroll.current.removeEventListener('scroll',handleScroll)
-    // }
-  }, []);
-
-  // useEffect(() => {
-  //   // if (nestedHeadings.length > 0) {
-  //   //   document.querySelector(".parent").setAttribute("class", "toc--active");
-  //   // }
-  // }, [nestedHeadings])
   if (process.env.NODE_ENV == "production") {
     return null;
   }
+
+  // useEffect(() => {
+  //   if (isSideBar) {
+  //     document.querySelector(".article-toc").classList += "toc-sidebar"
+  //   }
+    
+  // },[])
+
   return (
     <>
       <div
