@@ -705,11 +705,17 @@ Article TOC
   }
 }
 
-.article-toc li  {
-  @apply mb-2;
+.article-toc li {
+  @apply mb-2 relative;
   @apply text-base font-medium;
   li {
     @apply text-sm mb-0 pb-0 font-normal pl-0 border-0;
+  }
+}
+
+.article-toc li.has-child {
+  .fa-plus {
+    @apply w-4 h-4 text-xs absolute right-0 top-2 rounded-full;
   }
 }
 

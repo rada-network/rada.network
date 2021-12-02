@@ -7,7 +7,7 @@ const Toc = ({}) => {
         <li>
           <a href="#">Project Introduction</a>
         </li>
-        <li>
+        <li className="has-child">
           <a href="#" className="toc--active">Market Review</a>
           <ol>
             <li>
@@ -21,7 +21,7 @@ const Toc = ({}) => {
             </li>
           </ol>
         </li>
-        <li>
+        <li className="has-child">
           <a href="#">Product Review</a>
           <ol>
             <li>
