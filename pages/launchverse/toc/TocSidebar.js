@@ -41,15 +41,15 @@ const TocSideBar = () => {
     let element = document.getElementById(myId);
     var currentActive = document.querySelectorAll(".toc--active")
     for (var i = 0; i < currentActive.length; i++) {
-      currentActive[i].className = currentActive[i].className.replace(" toc--active", "");
+      currentActive[i].className = currentActive[i].classList.remove("toc--active");
     }
 
     // set active for parent
     if (parentId) {
       const parent = document.getElementById(parentId);
-      parent.className += " toc--active";
+      parent.classList += " toc--active";
     }
-    element.className += " toc--active";
+    element.classList += " toc--active";
   };
 
   // const handleScroll = function (e) {
