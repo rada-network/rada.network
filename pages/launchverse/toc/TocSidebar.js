@@ -162,7 +162,9 @@ const TocSideBar = ({ mainScroll }) => {
             {nestedHeadings.map(
               (heading, index) =>
                 heading.title && (
-                  <li key={heading.id} className="">
+                  <li key={heading.id} 
+                    className={heading.items.length > 0 ? "has-child" : ""}
+                  >
                     <a
                       className={
                         index == 0 ? "toc--active parent menu" : "parent menu"
