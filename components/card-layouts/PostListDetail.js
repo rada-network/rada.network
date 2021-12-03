@@ -199,6 +199,7 @@ export const PostListDetail = observer(
                   date={date}
                   dateTitle={dateTitle}
                   setTabCallback={setTabCallback}
+                  scrollRef={scrollRef}
                 />
               ) : (
                 renderTokenByTabName(tabName)
@@ -357,6 +358,7 @@ const NewsDetail = observer(function ({
   dateTitle,
   date,
   setTabCallback,
+  scrollRef,
 }) {
   let title = item.title;
   let content = item.contentDisplay;
@@ -483,7 +485,7 @@ const NewsDetail = observer(function ({
           </div>
         )}
         <button> Button </button>
-        <FloatButton />
+        <FloatButton mainScroll={scrollRef}/>
       </div>
     </div>
   );

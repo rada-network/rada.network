@@ -39,6 +39,7 @@ const Toc = ({ mainScroll }) => {
   };
 
   useEffect(() => {
+    console.log(mainScroll)
     mainScroll.current.addEventListener("scroll", handleScroll);
     return () => {
       mainScroll.current.removeEventListener("scroll", handleScroll);
