@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 const TocSideBar = ({ mainScroll }) => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
-  const [headingData, setHeadingData] = useState([{parent: "", child: ""}]);
+  const [headingData, setHeadingData] = useState([{ parent: "", child: "" }]);
   const [curentActive, setCurentActive] = useState("");
   const refToc = useRef();
 
@@ -14,12 +14,12 @@ const TocSideBar = ({ mainScroll }) => {
     mainScroll.current.addEventListener("scroll", handleScroll);
     return () => {
       mainScroll.current.removeEventListener("scroll", handleScroll);
-    }
+    };
   }, []);
 
   const handleScroll = () => {
     var toc = mainScroll.current.querySelectorAll("h2, h3");
-    var visibleElements = []
+    var visibleElements = [];
     toc.forEach((element) => {
       if (isVisible(element)) {
         visibleElements.push(element);
@@ -29,29 +29,29 @@ const TocSideBar = ({ mainScroll }) => {
       if (visibleElements[0].tagName == "H2") {
         handleClickToc(null, "parent" + visibleElements[0].id);
       } else if (visibleElements[0].tagName == "H3") {
-        // const h3Elements = document.querySelectorAll("h3")
-        // for (var i = 0; i < h3Elements.length; i++) {
-        //   console.log("Remove");
-        //   console.log(h3Elements[i]);
-        //   h3Elements[i].className = h3Elements[i].classList.remove("toc--active");
-        // }
-        console.log(curentActive)
-        if (curentActive != "") {
-          console.log("Remove")
-          const removeElement = document.getElementById(curentActive);
-          removeElement.className = removeElement.classList.remove("toc--active");
+        const h3Elements = document.querySelectorAll("h3");
+        for (var i = 0; i < h3Elements.length; i++) {
+          console.log("remove", h3Elements[i].id);
+          document
+            .getElementById("child" + h3Elements[i].id)
+            .classList.remove("toc--active");
         }
-        const elementChild = document.getElementById("child" + visibleElements[0].id);
+
+        const elementChild = document.getElementById(
+          "child" + visibleElements[0].id
+        );
+
         if (!elementChild.classList.contains("toc--active")) {
-          elementChild.classList += " toc--active";
-          setCurentActive("child" + visibleElements[0].id)
+          console.log("add", elementChild.id);
+
+          elementChild.classList.add("toc--active");
+          setCurentActive("child" + visibleElements[0].id);
         }
       }
-       
     }
 
     if (toc && toc.scrollHeight > toc.clientHeight) {
-      var activeItem = toc.querySelector('.toc--active')
+      var activeItem = toc.querySelector(".toc--active");
       if (activeItem) {
         toc.scrollTop = activeItem.offsetTop;
       }
@@ -59,29 +59,42 @@ const TocSideBar = ({ mainScroll }) => {
   };
 
   function isVisible(elem) {
-    if (!(elem instanceof Element)) throw Error('DomUtil: elem is not an element.');
+    if (!(elem instanceof Element))
+      throw Error("DomUtil: elem is not an element.");
     const style = getComputedStyle(elem);
-    if (style.display === 'none') return false;
-    if (style.visibility !== 'visible') return false;
+    if (style.display === "none") return false;
+    if (style.visibility !== "visible") return false;
     if (style.opacity < 0.1) return false;
-    if (elem.offsetWidth + elem.offsetHeight + elem.getBoundingClientRect().height +
-        elem.getBoundingClientRect().width === 0) {
-        return false;
+    if (
+      elem.offsetWidth +
+        elem.offsetHeight +
+        elem.getBoundingClientRect().height +
+        elem.getBoundingClientRect().width ===
+      0
+    ) {
+      return false;
     }
-    const elemCenter   = {
-        x: elem.getBoundingClientRect().left + elem.offsetWidth / 2,
-        y: elem.getBoundingClientRect().top + elem.offsetHeight / 2
+    const elemCenter = {
+      x: elem.getBoundingClientRect().left + elem.offsetWidth / 2,
+      y: elem.getBoundingClientRect().top + elem.offsetHeight / 2,
     };
     if (elemCenter.x < 0) return false;
-    if (elemCenter.x > (document.documentElement.clientWidth || window.innerWidth)) return false;
+    if (
+      elemCenter.x > (document.documentElement.clientWidth || window.innerWidth)
+    )
+      return false;
     if (elemCenter.y < 0) return false;
-    if (elemCenter.y > (document.documentElement.clientHeight || window.innerHeight)) return false;
+    if (
+      elemCenter.y >
+      (document.documentElement.clientHeight || window.innerHeight)
+    )
+      return false;
     let pointContainer = document.elementFromPoint(elemCenter.x, elemCenter.y);
     do {
-        if (pointContainer === elem) return true;
+      if (pointContainer === elem) return true;
     } while (pointContainer && (pointContainer = pointContainer.parentNode));
     return false;
-}
+  }
 
   useEffect(() => {
     const headingElements = Array.from(document.querySelectorAll("h2, h3"));
@@ -116,9 +129,9 @@ const TocSideBar = ({ mainScroll }) => {
 
   const handleClickToc = (parentId, myId) => {
     let element = document.getElementById(myId);
-    var currentActive = document.querySelectorAll(".toc--active")
+    var currentActive = document.querySelectorAll(".toc--active");
     for (var i = 0; i < currentActive.length; i++) {
-      currentActive[i].className = currentActive[i].classList.remove("toc--active");
+      currentActive[i].classList.remove("toc--active");
     }
 
     // set active for parent
@@ -126,6 +139,7 @@ const TocSideBar = ({ mainScroll }) => {
       const parent = document.getElementById(parentId);
       parent.classList += " toc--active";
     }
+
     element.classList += " toc--active";
   };
 
@@ -135,11 +149,7 @@ const TocSideBar = ({ mainScroll }) => {
 
   return (
     <>
-      <div
-        ref={refToc}
-        className="article-toc toc-sidebar"
-        role="navigation"
-      >
+      <div ref={refToc} className="article-toc toc-sidebar" role="navigation">
         <div className="toc-list">
           <h5 className="text-color-title">On this page</h5>
 
@@ -149,18 +159,22 @@ const TocSideBar = ({ mainScroll }) => {
                 heading.title && (
                   <li key={heading.id} className="">
                     <a
-                      className={(index == 0) ? "toc--active parent menu" : "parent menu"}
+                      className={
+                        index == 0 ? "toc--active parent menu" : "parent menu"
+                      }
                       id={"parent" + heading.id}
                       href={`#${heading.id}`}
                       onClick={(e) => {
-                        handleClickToc(null, "parent" + heading.id)
+                        handleClickToc(null, "parent" + heading.id);
                         e.preventDefault();
-                        document.querySelector(`#${heading.id}`).scrollIntoView({
-                          behavior: "smooth"
-                        });
+                        document
+                          .querySelector(`#${heading.id}`)
+                          .scrollIntoView({
+                            behavior: "smooth",
+                          });
                       }}
                     >
-                      {heading.title}
+                      {heading.title}a
                     </a>
                     {heading.items.length > 0 && (
                       <ol>
@@ -171,14 +185,19 @@ const TocSideBar = ({ mainScroll }) => {
                               href={`#${child.id}`}
                               className="menu"
                               onClick={(e) => {
-                                handleClickToc("parent" + heading.id, "child" + child.id);
+                                handleClickToc(
+                                  "parent" + heading.id,
+                                  "child" + child.id
+                                );
                                 e.preventDefault();
-                                document.querySelector(`#${child.id}`).scrollIntoView({
-                                  behavior: "smooth"
-                                });
+                                document
+                                  .querySelector(`#${child.id}`)
+                                  .scrollIntoView({
+                                    behavior: "smooth",
+                                  });
                               }}
                             >
-                              {child.title}
+                              {child.title}b
                             </a>
                           </li>
                         ))}
