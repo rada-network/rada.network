@@ -5,12 +5,9 @@ import { toast } from "react-toastify";
 
 const TocSideBar = ({ mainScroll }) => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
-  const [headingData, setHeadingData] = useState([{ parent: "", child: "" }]);
-  const [curentActive, setCurentActive] = useState("");
   const refToc = useRef();
 
   useEffect(() => {
-    console.log(mainScroll);
     mainScroll.current.addEventListener("scroll", handleScroll);
     return () => {
       mainScroll.current.removeEventListener("scroll", handleScroll);
@@ -31,7 +28,6 @@ const TocSideBar = ({ mainScroll }) => {
       } else if (visibleElements[0].tagName == "H3") {
         const h3Elements = document.querySelectorAll("h3");
         for (var i = 0; i < h3Elements.length; i++) {
-          console.log("remove", h3Elements[i].id);
           document
             .getElementById("child" + h3Elements[i].id)
             .classList.remove("toc--active");
@@ -42,10 +38,7 @@ const TocSideBar = ({ mainScroll }) => {
         );
 
         if (!elementChild.classList.contains("toc--active")) {
-          console.log("add", elementChild.id);
-
           elementChild.classList.add("toc--active");
-          setCurentActive("child" + visibleElements[0].id);
         }
       }
     }

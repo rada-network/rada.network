@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import TocSideBar from "./TocSidebar";
 import Toc from "./Toc";
 
-export default function FloatButton() {
+export default function FloatButton({mainScroll}) {
   return (
     <div className="floating-btn--container">
       <Popover className="relative rounded-full shadow-lg">
@@ -31,7 +31,7 @@ export default function FloatButton() {
               <Popover.Panel className="absolute z-10 transform right-full -mr-10 bottom-12 w-80">
                 <div className="overflow-hidden rounded-lg shadow-lg">
                   <div className="popper poper-toc p-4 !mt-0">
-                    <Toc/>
+                    <Toc mainScroll={mainScroll}/>
                   </div>
                 </div>
               </Popover.Panel>

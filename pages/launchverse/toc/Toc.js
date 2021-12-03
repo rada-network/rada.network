@@ -2,9 +2,10 @@ import React from "react";
 import { useRef, useState, useEffect } from "react";
 import { isMobile, isBrowser } from "react-device-detect";
 
-const Toc = () => {
+const Toc = ({mainScroll}) => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
   const refToc = useRef();
+
 
   useEffect(() => {
     const headingElements = Array.from(document.querySelectorAll("h2, h3"));
@@ -36,6 +37,88 @@ const Toc = () => {
     });
     return nestedHeadings;
   };
+
+  useEffect(() => {
+    mainScroll.current.addEventListener("scroll", handleScroll);
+    return () => {
+      mainScroll.current.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    var toc = mainScroll.current.querySelectorAll("h2, h3");
+    var visibleElements = [];
+    toc.forEach((element) => {
+      if (isVisible(element)) {
+        visibleElements.push(element);
+      }
+    });
+    if (visibleElements.length > 0) {
+      if (visibleElements[0].tagName == "H2") {
+        handleClickToc(null, "parent" + visibleElements[0].id);
+      } else if (visibleElements[0].tagName == "H3") {
+        const h3Elements = document.querySelectorAll("h3");
+        for (var i = 0; i < h3Elements.length; i++) {
+          document
+            .getElementById("child" + h3Elements[i].id)
+            .classList.remove("toc--active");
+        }
+
+        const elementChild = document.getElementById(
+          "child" + visibleElements[0].id
+        );
+
+        if (!elementChild.classList.contains("toc--active")) {
+          elementChild.classList.add("toc--active");
+        }
+      }
+    }
+
+    if (toc && toc.scrollHeight > toc.clientHeight) {
+      var activeItem = toc.querySelector(".toc--active");
+      if (activeItem) {
+        toc.scrollTop = activeItem.offsetTop;
+      }
+    }
+  };
+
+  function isVisible(elem) {
+    if (!(elem instanceof Element))
+      throw Error("DomUtil: elem is not an element.");
+    const style = getComputedStyle(elem);
+    if (style.display === "none") return false;
+    if (style.visibility !== "visible") return false;
+    if (style.opacity < 0.1) return false;
+    if (
+      elem.offsetWidth +
+        elem.offsetHeight +
+        elem.getBoundingClientRect().height +
+        elem.getBoundingClientRect().width ===
+      0
+    ) {
+      return false;
+    }
+    const elemCenter = {
+      x: elem.getBoundingClientRect().left + elem.offsetWidth / 2,
+      y: elem.getBoundingClientRect().top + elem.offsetHeight / 2,
+    };
+    if (elemCenter.x < 0) return false;
+    if (
+      elemCenter.x > (document.documentElement.clientWidth || window.innerWidth)
+    )
+      return false;
+    if (elemCenter.y < 0) return false;
+    if (
+      elemCenter.y >
+      (document.documentElement.clientHeight || window.innerHeight)
+    )
+      return false;
+    let pointContainer = document.elementFromPoint(elemCenter.x, elemCenter.y);
+    do {
+      if (pointContainer === elem) return true;
+    } while (pointContainer && (pointContainer = pointContainer.parentNode));
+    return false;
+  }
 
   const handleClickToc = (parentId, myId) => {
     let element = document.getElementById(myId);
