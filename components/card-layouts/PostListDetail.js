@@ -375,6 +375,25 @@ const NewsDetail = observer(function ({
       content = item.content_en_display;
     }
   }
+  const { t } = useTranslation();
+  useEffect(() => {
+    windowResize()
+  },[]);
+
+  useEffect(() => {
+    window.addEventListener("resize", windowResize);
+    return () => {
+      window.removeEventListener("resize", windowResize);
+    };
+  }, []);
+
+  const windowResize = () => {
+    const parentNewsWidth = document.querySelector(".main-layout").getBoundingClientRect().width;
+    const floatButton = document.querySelector(".floating-btn--container");
+    const windowSize = document.querySelector(".body-decor").getBoundingClientRect().width;
+    const padding = (parseInt(windowSize) - parseInt(parentNewsWidth))/2;
+    floatButton.style.paddingRight = padding + "px";
+  };
 
   useEffect(() => {
     // make scrollbar
@@ -392,7 +411,9 @@ const NewsDetail = observer(function ({
       twttr.widgets.load();
     }
   }, [item.contentDisplay]);
-  const { t } = useTranslation();
+  
+
+
   return (
     <div
       className={
