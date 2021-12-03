@@ -41,7 +41,7 @@ export default function ProjectItem({ project, page, slug }) {
               ) : null}
               <Screen from="lg">
                 <div className="toc-side-bar-div">
-                  {page == "research" && (<TocSideBar/>)}  
+                  {page == "research" && (<TocSideBar mainScroll={ref}/>)}  
                 </div>
               </Screen>
               <Screen upto="md">
