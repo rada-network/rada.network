@@ -3,9 +3,8 @@ export const RPC_CONFIG = {
     production : {
       name : "Binance Smart Chain Mainnet",
       chainId : 56,
-      url : ['https://bsc-dataseed.binance.org/',
-        "https://bsc-dataseed.binance.org/",
-        "https://bsc-dataseed1.defibit.io/",
+      url : [
+        'https://bsc-dataseed.binance.org/',
         "https://bsc-dataseed1.ninicoin.io/"
       ],
       scan : "https://bscscan.com/"

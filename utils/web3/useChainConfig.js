@@ -31,11 +31,20 @@ export const getNodeUrl = (network) => {
 }
 
 const rpcUrls = {}
-export const getRpcUrl = function(network){
-  if (rpcUrls[getNodeUrl(network)] === undefined){
-    rpcUrls[getNodeUrl(network)] = new StaticJsonRpcProvider(getNodeUrl(network))
+const provider = {}
+export const getProvider = function(network){
+  if (provider[network] === undefined){
+    rpcUrls[network] = getNodeUrl(network)
+    provider[network] = new StaticJsonRpcProvider(rpcUrls[network])
   }
-  else return rpcUrls[getNodeUrl(network)]
+  else return provider[network]
+}
+
+export const getProviderURL = function(network){
+  if (rpcUrls[network] === undefined){
+    rpcUrls[network] = getNodeUrl(network)
+  }
+  else return rpcUrls[network]
 }
 
 export const getChainName = (network) => {
@@ -89,22 +98,7 @@ export const getChainId = (network) => {
 
 const useChainConfig = function(){
   const store = useStore()
-  const getNodeUrl = () => {
-    // Use custom node if available (both for development and production)
-    // However on the testnet it wouldn't work, so if on testnet - comment out the REACT_APP_NODE_PRODUCTION from env file
-    if (store.network === "bsc"){
-      if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
-        return sample(RPC_CONFIG.bsc.production.url)
-      }
-      return RPC_CONFIG.bsc.dev.url
-    }
-    if (store.network === "eth"){
-      if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
-        return RPC_CONFIG.eth.production.url
-      }
-      return RPC_CONFIG.eth.dev.url
-    }
-  }
+  
 
   const getChainName = () => {
     // Use custom node if available (both for development and production)
@@ -138,23 +132,6 @@ const useChainConfig = function(){
     }
   }
 
-  const getChainId = () => {
-    // Use custom node if available (both for development and production)
-    // However on the testnet it wouldn't work, so if on testnet - comment out the REACT_APP_NODE_PRODUCTION from env file
-    if (store.network === "bsc"){
-      if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
-        return RPC_CONFIG.bsc.production.chainId
-      }
-      return RPC_CONFIG.bsc.dev.chainId
-    }
-    if (store.network === "eth"){
-      if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
-        return RPC_CONFIG.eth.production.chainId
-      }
-      return RPC_CONFIG.eth.dev.chainId
-    }
-  }
-
   const getBscScanURL = (address) => {
     let url = getChainScanUrl()
     return url + "address/" + address
@@ -178,13 +155,12 @@ const useChainConfig = function(){
     }
   }
 
-  const rpcUrl = getNodeUrl()
-  const chainId = getChainId()
+  const chainId = getChainId(store.network)
 
   const injected = new InjectedConnector({ supportedChainIds: [chainId] })
 
   const walletconnect = new WalletConnectConnector({
-    rpc: { [chainId]: rpcUrl },
+    rpc: { [chainId]: getProviderURL(store.network) },
     qrcode: true,
     chainId: chainId,
     pollingInterval: POLLING_INTERVAL,
@@ -218,11 +194,6 @@ const useChainConfig = function(){
     return provider.getSigner(account).signMessage(message)
   }
 
-  const getRpcUrl = function(){
-    return new StaticJsonRpcProvider(getNodeUrl())
-
-  }
-
   /**
    * Prompt the user to add BSC as a network on Metamask, or switch to BSC if the wallet is on a different network
    * @returns {boolean} true if the setup succeeded, false otherwise
@@ -247,7 +218,7 @@ const useChainConfig = function(){
                 symbol: symbol,
                 decimals: decimals,
               },
-              rpcUrls: [getNodeUrl()],
+              rpcUrls: [getProviderURL(store.network)],
               blockExplorerUrls: [`${getChainScanUrl()}/`],
             },
           ],
@@ -263,7 +234,7 @@ const useChainConfig = function(){
     }
   }
 
-  return {getChainId,getNodeUrl,injected,walletconnect,signMessage,getRpcUrl,chainId,getRIRAddress,getBusdAddress,setupNetwork,connectorsByName, getBscScanURL}
+  return {injected,walletconnect,signMessage,chainId,getRIRAddress,getBusdAddress,setupNetwork,connectorsByName, getBscScanURL}
 }
 
 export  const connectorLocalStorageKey = "connectorIdv2";

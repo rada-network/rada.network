@@ -127,7 +127,15 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
     } catch (error) {
       setClaimDisbaled(false)
       console.log(error)
-      toast.error(t(error?.data?.message || error?.message))
+      if (!!error?.data?.message){
+        toast.error(t(error?.data?.message?.replace("execution reverted: ","")))
+      }
+      else if (!!error?.message){
+        toast.error(t(error?.message))
+      }
+      else{
+        toast.error(t(error))
+      }
     }
   }
 
