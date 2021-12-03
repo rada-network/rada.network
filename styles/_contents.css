@@ -698,15 +698,16 @@ Article TOC
 }
 
 .article-toc ol {
-  @apply list-none transition-all;
+  @apply list-none transition-all m-0 p-0;
   counter-reset: section;
   ol {
-    @apply hidden;
+    @apply transform origin-top scale-y-0 h-0 opacity-0 transition-transform;
+
   }
 }
 
 .article-toc li {
-  @apply mb-2 relative;
+  @apply p-0 mb-2 relative;
   @apply text-base font-medium;
   li {
     @apply text-sm mb-0 pb-0 font-normal pl-0 border-0;
@@ -726,7 +727,7 @@ Article TOC
 
 .article-toc li li a {
   &::before {
-    @apply pl-5 w-auto mr-2 mt-0.5 flex-shrink-0 text-xs font-bold opacity-50;
+    @apply pl-5 w-auto mr-2 mt-1 flex-shrink-0 text-2xs font-bold opacity-50;
     content: "\f0da";
     font-family: "Font Awesome 6 Pro";
   }
@@ -740,7 +741,7 @@ Article TOC
 }
 
 .article-toc li a.toc--active + ol {
-  @apply block;
+  @apply origin-top scale-100 h-auto opacity-100;
 }
 
 /* Toc's placed beside Article */
