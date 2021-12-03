@@ -2,7 +2,7 @@ import React from "react";
 import { useRef, useState, useEffect } from "react";
 import { isMobile, isBrowser } from "react-device-detect";
 
-const Toc = ({mainScroll}) => {
+const Toc = ({ mainScroll }) => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
   const refToc = useRef();
 
@@ -68,6 +68,16 @@ const Toc = ({mainScroll}) => {
           "child" + visibleElements[0].id
         );
 
+        const parentElement = elementChild.parentElement.parentElement.previousSibling;
+        const curentParentActive = document.querySelector("a.toc--active.parent");
+        if (curentParentActive !== parentElement && curentParentActive) {
+          curentParentActive.classList.remove("toc--active")
+        }
+
+        if (!parentElement.classList.contains("toc--active")) {
+          parentElement.classList.add("toc--active")
+        }
+
         if (!elementChild.classList.contains("toc--active")) {
           elementChild.classList.add("toc--active");
         }
@@ -91,9 +101,9 @@ const Toc = ({mainScroll}) => {
     if (style.opacity < 0.1) return false;
     if (
       elem.offsetWidth +
-        elem.offsetHeight +
-        elem.getBoundingClientRect().height +
-        elem.getBoundingClientRect().width ===
+      elem.offsetHeight +
+      elem.getBoundingClientRect().height +
+      elem.getBoundingClientRect().width ===
       0
     ) {
       return false;

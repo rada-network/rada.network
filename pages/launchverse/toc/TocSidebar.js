@@ -22,10 +22,12 @@ const TocSideBar = ({ mainScroll }) => {
         visibleElements.push(element);
       }
     });
+
     if (visibleElements.length > 0) {
       if (visibleElements[0].tagName == "H2") {
         handleClickToc(null, "parent" + visibleElements[0].id);
       } else if (visibleElements[0].tagName == "H3") {
+        // Deactive all h3
         const h3Elements = document.querySelectorAll("h3");
         for (var i = 0; i < h3Elements.length; i++) {
           document
@@ -36,6 +38,16 @@ const TocSideBar = ({ mainScroll }) => {
         const elementChild = document.getElementById(
           "child" + visibleElements[0].id
         );
+
+        const parentElement = elementChild.parentElement.parentElement.previousSibling;
+        const curentParentActive = document.querySelector("a.toc--active.parent");
+        if (curentParentActive !== parentElement) {
+          curentParentActive.classList.remove("toc--active")
+        }
+
+        if (!parentElement.classList.contains("toc--active")) {
+          parentElement.classList.add("toc--active")
+        }
 
         if (!elementChild.classList.contains("toc--active")) {
           elementChild.classList.add("toc--active");
@@ -167,7 +179,7 @@ const TocSideBar = ({ mainScroll }) => {
                           });
                       }}
                     >
-                      {heading.title}a
+                      {heading.title}
                     </a>
                     {heading.items.length > 0 && (
                       <ol>
@@ -190,7 +202,7 @@ const TocSideBar = ({ mainScroll }) => {
                                   });
                               }}
                             >
-                              {child.title}b
+                              {child.title}
                             </a>
                           </li>
                         ))}
