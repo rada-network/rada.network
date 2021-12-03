@@ -505,7 +505,6 @@ const NewsDetail = observer(function ({
             </a>
           </div>
         )}
-        <button> Button </button>
         <FloatButton mainScroll={scrollRef}/>
       </div>
     </div>

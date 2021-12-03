@@ -39,10 +39,9 @@ const Toc = ({ mainScroll }) => {
   };
 
   useEffect(() => {
-    console.log(mainScroll)
-    mainScroll.current.addEventListener("scroll", handleScroll);
+    mainScroll.current.addEventListener("wheel", handleScroll);
     return () => {
-      mainScroll.current.removeEventListener("scroll", handleScroll);
+      mainScroll.current.removeEventListener("wheel", handleScroll);
     };
   }, []);
 
@@ -71,15 +70,15 @@ const Toc = ({ mainScroll }) => {
 
         const parentElement = elementChild.parentElement.parentElement.previousSibling;
         const curentParentActive = document.querySelector("a.toc--active.parent");
-        if (curentParentActive !== parentElement && curentParentActive) {
+        if (curentParentActive && curentParentActive !== parentElement && curentParentActive) {
           curentParentActive.classList.remove("toc--active")
         }
 
-        if (!parentElement.classList.contains("toc--active")) {
+        if (parentElement && !parentElement.classList.contains("toc--active")) {
           parentElement.classList.add("toc--active")
         }
 
-        if (!elementChild.classList.contains("toc--active")) {
+        if (elementChild && !elementChild.classList.contains("toc--active")) {
           elementChild.classList.add("toc--active");
         }
       }
@@ -163,9 +162,7 @@ const Toc = ({ mainScroll }) => {
           {nestedHeadings.map(
             (heading, index) =>
               heading.title && (
-                <li key={heading.id} 
-                  className={heading.items.length > 0 ? "has-child" : ""}
-                >
+                <li key={heading.id} className={heading.items.length > 0 ? "has-child" : ""}>
                   <a
                     className={(index == 0) ? "toc--active parent menu" : "parent menu"}
                     id={"parent" + heading.id}

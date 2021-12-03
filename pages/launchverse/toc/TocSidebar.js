@@ -8,9 +8,11 @@ const TocSideBar = ({ mainScroll }) => {
   const refToc = useRef();
 
   useEffect(() => {
-    mainScroll.current.addEventListener("scroll", handleScroll);
+    mainScroll.current.addEventListener("wheel", handleScroll);
     return () => {
-      mainScroll.current.removeEventListener("scroll", handleScroll);
+      if (mainScroll) {
+        mainScroll.current.removeEventListener("wheel", handleScroll);
+      }
     };
   }, []);
 
@@ -41,7 +43,7 @@ const TocSideBar = ({ mainScroll }) => {
 
         const parentElement = elementChild.parentElement.parentElement.previousSibling;
         const curentParentActive = document.querySelector("a.toc--active.parent");
-        if (curentParentActive !== parentElement) {
+        if (curentParentActive && curentParentActive !== parentElement) {
           curentParentActive.classList.remove("toc--active")
         }
 
@@ -49,7 +51,7 @@ const TocSideBar = ({ mainScroll }) => {
           parentElement.classList.add("toc--active")
         }
 
-        if (!elementChild.classList.contains("toc--active")) {
+        if (elementChild && !elementChild.classList.contains("toc--active")) {
           elementChild.classList.add("toc--active");
         }
       }
