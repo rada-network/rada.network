@@ -1,11 +1,88 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 import { isMobile, isBrowser } from "react-device-detect";
+import { toast } from "react-toastify";
 
-const TocSideBar = () => {
+const TocSideBar = ({ mainScroll }) => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
+  const [headingData, setHeadingData] = useState([{parent: "", child: ""}]);
+  const [curentActive, setCurentActive] = useState("");
   const refToc = useRef();
-  
+
+  useEffect(() => {
+    console.log(mainScroll);
+    mainScroll.current.addEventListener("scroll", handleScroll);
+    return () => {
+      mainScroll.current.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
+
+  const handleScroll = () => {
+    var toc = mainScroll.current.querySelectorAll("h2, h3");
+    var visibleElements = []
+    toc.forEach((element) => {
+      if (isVisible(element)) {
+        visibleElements.push(element);
+      }
+    });
+    if (visibleElements.length > 0) {
+      if (visibleElements[0].tagName == "H2") {
+        handleClickToc(null, "parent" + visibleElements[0].id);
+      } else if (visibleElements[0].tagName == "H3") {
+        // const h3Elements = document.querySelectorAll("h3")
+        // for (var i = 0; i < h3Elements.length; i++) {
+        //   console.log("Remove");
+        //   console.log(h3Elements[i]);
+        //   h3Elements[i].className = h3Elements[i].classList.remove("toc--active");
+        // }
+        console.log(curentActive)
+        if (curentActive != "") {
+          console.log("Remove")
+          const removeElement = document.getElementById(curentActive);
+          removeElement.className = removeElement.classList.remove("toc--active");
+        }
+        const elementChild = document.getElementById("child" + visibleElements[0].id);
+        if (!elementChild.classList.contains("toc--active")) {
+          elementChild.classList += " toc--active";
+          setCurentActive("child" + visibleElements[0].id)
+        }
+      }
+       
+    }
+
+    if (toc && toc.scrollHeight > toc.clientHeight) {
+      var activeItem = toc.querySelector('.toc--active')
+      if (activeItem) {
+        toc.scrollTop = activeItem.offsetTop;
+      }
+    }
+  };
+
+  function isVisible(elem) {
+    if (!(elem instanceof Element)) throw Error('DomUtil: elem is not an element.');
+    const style = getComputedStyle(elem);
+    if (style.display === 'none') return false;
+    if (style.visibility !== 'visible') return false;
+    if (style.opacity < 0.1) return false;
+    if (elem.offsetWidth + elem.offsetHeight + elem.getBoundingClientRect().height +
+        elem.getBoundingClientRect().width === 0) {
+        return false;
+    }
+    const elemCenter   = {
+        x: elem.getBoundingClientRect().left + elem.offsetWidth / 2,
+        y: elem.getBoundingClientRect().top + elem.offsetHeight / 2
+    };
+    if (elemCenter.x < 0) return false;
+    if (elemCenter.x > (document.documentElement.clientWidth || window.innerWidth)) return false;
+    if (elemCenter.y < 0) return false;
+    if (elemCenter.y > (document.documentElement.clientHeight || window.innerHeight)) return false;
+    let pointContainer = document.elementFromPoint(elemCenter.x, elemCenter.y);
+    do {
+        if (pointContainer === elem) return true;
+    } while (pointContainer && (pointContainer = pointContainer.parentNode));
+    return false;
+}
+
   useEffect(() => {
     const headingElements = Array.from(document.querySelectorAll("h2, h3"));
     const newNestedHeadings = getNestedHeadings(headingElements);
@@ -25,7 +102,7 @@ const TocSideBar = () => {
         h2Index += 1;
         h3Index = 1;
       } else if (heading.nodeName === "H3" && nestedHeadings.length > 0) {
-        let id = "h" + h2Index.toString() + "" + h3Index.toString();
+        let id = "h" + h2Index.toString() + "-" + h3Index.toString();
         heading.setAttribute("id", id);
         nestedHeadings[nestedHeadings.length - 1].items.push({
           id,
@@ -52,36 +129,10 @@ const TocSideBar = () => {
     element.classList += " toc--active";
   };
 
-  // const handleScroll = function (e) {
-  //   refToc.current.style.position = "absolute";
-  //   refToc.current.style.top = mainScroll.current.scrollTop + "px";
-  //   const right =
-  //     document.querySelector(".pane-content--sec--main").clientWidth -
-  //     document.querySelector(".post-body").clientWidth;
-  //   refToc.current.style.right =
-  //     (right / 2 - refToc.current.clientWidth) / 2 + "px";
-  // };
-
-  useEffect(() => {
-    // refToc.current.style.display = "block"
-    // refToc.current.style.position = "absolute";
-    // refToc.current.style.top = mainScroll.current.scrollTop + "px"
-    // const right = document.querySelector(".pane-content--sec--main").clientWidth - document.querySelector(".post-body").clientWidth
-    // refToc.current.style.right = (right/2 - refToc.current.clientWidth)/2 + "px"
-    // mainScroll.current.addEventListener('scroll',handleScroll)
-    // return () => {
-    //   mainScroll.current.removeEventListener('scroll',handleScroll)
-    // }
-  }, []);
-
-  // useEffect(() => {
-  //   // if (nestedHeadings.length > 0) {
-  //   //   document.querySelector(".parent").setAttribute("class", "toc--active");
-  //   // }
-  // }, [nestedHeadings])
   if (process.env.NODE_ENV == "production") {
     return null;
   }
+
   return (
     <>
       <div
@@ -116,7 +167,7 @@ const TocSideBar = () => {
                         {heading.items.map((child) => (
                           <li key={child.id}>
                             <a
-                              id={"child" + child.id} 
+                              id={"child" + child.id}
                               href={`#${child.id}`}
                               className="menu"
                               onClick={(e) => {

@@ -25,7 +25,7 @@ import PostNoticeVideo from "../PostNoticeVideo";
 
 import { usePageStore } from "../../lib/usePageStore";
 import { PostDetailAuthor } from "./PostDetailAuthor";
-import PostTocFloatButton from "./toc/PostTocFloatButton";
+import FloatButton from "pages/launchverse/toc/FloatingButton";
 
 export const PostListDetail = observer(
   ({ tokenId, tabName, setTabCallback,tokenData }) => {
@@ -483,7 +483,7 @@ const NewsDetail = observer(function ({
           </div>
         )}
         <button> Button </button>
-        <PostTocFloatButton />
+        <FloatButton />
       </div>
     </div>
   );
