@@ -39,15 +39,19 @@ const Toc = ({ mainScroll }) => {
   };
 
   useEffect(() => {
-    if (mainScroll != null && mainScroll != undefined) {
-      mainScroll.current.addEventListener("scroll", handleScroll);
+    if (mainScroll.current != null && mainScroll.current != undefined) {
+      mainScroll.current.addEventListener("scroll", scrollActiveToc);
     }
     return () => {
-      if (mainScroll != null && mainScroll != undefined) {
-        mainScroll.current.removeEventListener("scroll", handleScroll);
+      if (mainScroll.current != null && mainScroll.current != undefined) {
+        mainScroll.current.removeEventListener("scroll", scrollActiveToc);
       }
     };
   }, []);
+
+  const scrollActiveToc = () => {
+    setTimeout(handleScroll, 500);
+  }
 
   const handleScroll = () => {
     var toc = mainScroll.current.querySelectorAll("h2, h3");

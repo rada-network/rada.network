@@ -8,11 +8,11 @@ const TocSideBar = ({ mainScroll }) => {
   const refToc = useRef();
 
   useEffect(() => {
-    if (mainScroll != null && mainScroll != undefined) {
+    if (mainScroll.current != null && mainScroll.current != undefined) {
       mainScroll.current.addEventListener("wheel", handleScroll);
     }
     return () => {
-      if (mainScroll != null && mainScroll != undefined) {
+      if (mainScroll.current != null && mainScroll.current != undefined) {
         mainScroll.current.removeEventListener("wheel", handleScroll);
       }
     };
@@ -76,9 +76,9 @@ const TocSideBar = ({ mainScroll }) => {
     if (style.opacity < 0.1) return false;
     if (
       elem.offsetWidth +
-        elem.offsetHeight +
-        elem.getBoundingClientRect().height +
-        elem.getBoundingClientRect().width ===
+      elem.offsetHeight +
+      elem.getBoundingClientRect().height +
+      elem.getBoundingClientRect().width ===
       0
     ) {
       return false;
@@ -153,68 +153,71 @@ const TocSideBar = ({ mainScroll }) => {
   };
   return (
     <>
-      <div ref={refToc} className="article-toc toc-sidebar" role="navigation">
-        <div className="toc-list">
-          <h5 className="text-color-title">On this page</h5>
+      {nestedHeadings.length > 0 ? (
+        <div ref={refToc} className="article-toc toc-sidebar" role="navigation">
+          <div className="toc-list">
+            <h5 className="text-color-title">On this page</h5>
 
-          <ol>
-            {nestedHeadings.map(
-              (heading, index) =>
-                heading.title && (
-                  <li key={heading.id} 
-                    className={heading.items.length > 0 ? "has-child" : ""}
-                  >
-                    <a
-                      className={
-                        index == 0 ? "toc--active parent menu" : "parent menu"
-                      }
-                      id={"parent" + heading.id}
-                      href={`#${heading.id}`}
-                      onClick={(e) => {
-                        handleClickToc(null, "parent" + heading.id);
-                        e.preventDefault();
-                        document
-                          .querySelector(`#${heading.id}`)
-                          .scrollIntoView({
-                            behavior: "smooth",
-                          });
-                      }}
+            <ol>
+              {nestedHeadings.map(
+                (heading, index) =>
+                  heading.title && (
+                    <li key={heading.id}
+                      className={heading.items.length > 0 ? "has-child" : ""}
                     >
-                      {heading.title}
-                    </a>
-                    {heading.items.length > 0 && (
-                      <ol>
-                        {heading.items.map((child) => (
-                          <li key={child.id}>
-                            <a
-                              id={"child" + child.id}
-                              href={`#${child.id}`}
-                              className="menu"
-                              onClick={(e) => {
-                                handleClickToc(
-                                  "parent" + heading.id,
-                                  "child" + child.id
-                                );
-                                e.preventDefault();
-                                document
-                                  .querySelector(`#${child.id}`)
-                                  .scrollIntoView({
-                                    behavior: "smooth",
-                                  });
-                              }}
-                            >
-                              {child.title}
-                            </a>
-                          </li>
-                        ))}
-                      </ol>
-                    )}
-                  </li>
-                )
-            )}
-          </ol>
+                      <a
+                        className={
+                          index == 0 ? "toc--active parent menu" : "parent menu"
+                        }
+                        id={"parent" + heading.id}
+                        href={`#${heading.id}`}
+                        onClick={(e) => {
+                          handleClickToc(null, "parent" + heading.id);
+                          e.preventDefault();
+                          document
+                            .querySelector(`#${heading.id}`)
+                            .scrollIntoView({
+                              behavior: "smooth",
+                            });
+                        }}
+                      >
+                        {heading.title}
+                      </a>
+                      {heading.items.length > 0 && (
+                        <ol>
+                          {heading.items.map((child) => (
+                            <li key={child.id}>
+                              <a
+                                id={"child" + child.id}
+                                href={`#${child.id}`}
+                                className="menu"
+                                onClick={(e) => {
+                                  handleClickToc(
+                                    "parent" + heading.id,
+                                    "child" + child.id
+                                  );
+                                  e.preventDefault();
+                                  document
+                                    .querySelector(`#${child.id}`)
+                                    .scrollIntoView({
+                                      behavior: "smooth",
+                                    });
+                                }}
+                              >
+                                {child.title}
+                              </a>
+                            </li>
+                          ))}
+                        </ol>
+                      )}
+                    </li>
+                  )
+              )}
+            </ol>
+          </div>
         </div>
-      </div>
+      ) : null}
+
     </>
   );
 };
