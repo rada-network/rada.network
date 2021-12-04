@@ -46,7 +46,7 @@ export default function ProjectItem({ project, page, slug }) {
               </Screen>
               <Screen upto="md">
                 <div className="float-btn--container">
-                  {page == "research" && process.env.NODE_ENV != "production" && <FloatButton mainScroll={ref}/>}
+                  {page == "research" && <FloatButton mainScroll={ref}/>}
                 </div>
               </Screen>
               
