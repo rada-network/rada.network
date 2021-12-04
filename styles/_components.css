@@ -33,6 +33,9 @@ Various UI Components Style
 .step-compact-body--icon--text {
   @apply m-auto text-xs w-1/2;
 }
+.button-compact-body--icon--text {
+  @apply mr-1 text-xs w-5;
+}
 
 .step-compact-body--content {
   @apply mt-2 md:mt-0;

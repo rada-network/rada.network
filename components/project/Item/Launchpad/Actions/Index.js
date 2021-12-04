@@ -25,7 +25,7 @@ const LaunchpadActions = ({ project }) => {
   if (openTime < currentTime && currentTime < endTime) {
     return (
       <>
-        {((store.kyc.isKYC) || (!store.kyc.isKYC && !project.is_kyc)) && store.user.id !== "" && !!account ?
+        {((store.kyc.isKYC && store.user.id !== "") || (!store.kyc.isKYC && !project.is_kyc)) && !!account ?
           <SubscribeSwapToken project={project} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
           <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">

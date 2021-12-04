@@ -98,12 +98,19 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
         </div>
         <div className="mt-4">
-          {!isApproved && 
-          <button className={`btn relative  w-full btn-default btn-default-lg btn-purple`} onClick={handleApprove} width="100%" scale="md">
+          <button className={`btn relative  w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} onClick={handleApprove} width="100%" scale="md">
             {isApproving && <span className="spinner" />}
-            {isApproving ? <>{t("Approving Contract")}</> : <>{t("Approve Contract")} BUSD</>}
+            {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
+            {isApproving && 
+            <>{t("Approving Contract")}</> 
+            }
+            {isApproved && 
+            <>{t("Approved Contract")} BUSD</> 
+            }
+            {!isApproving && !isApproved &&
+            <>{t("Approve Contract")} BUSD</>
+            }
           </button>
-          }
         </div>
         <div className="mt-4">
           <button className={`btn relative w-full btn-default btn-default-lg btn-purple` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" width="100%" scale="md">

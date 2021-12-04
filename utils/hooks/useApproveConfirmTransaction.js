@@ -114,8 +114,9 @@ const useApproveConfirmTransaction = ({
         }
       } catch (error) {
         dispatch({ type: 'confirm_error' })
+        console.log(error)
         if (!!error?.data?.message){
-          toast.error(t(error?.data?.message?.replace("execution reverted: ","")))
+          toast.error(t(error?.data?.message?.replace("execution reverted: ","").replace("ERC20: ","")))
         }
         else{
           toast.error(t(error?.message))

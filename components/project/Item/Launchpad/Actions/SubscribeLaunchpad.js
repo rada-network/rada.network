@@ -26,7 +26,7 @@ const SubscribeLaunchpad = ({ project }) => {
 
       <div className="list-group">
         <WalletRequire />
-        <Login />
+        {project.is_kyc && <Login />}
         {project.is_kyc && <KYC />}
       </div>
     </div>
