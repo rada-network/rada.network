@@ -2,15 +2,19 @@ import ProjectNavbar from "./Navbar";
 import ProjectLaunchpad from "./Launchpad";
 import ProjectDetails from "./Details";
 import ProjectShare2Earn from "./Share2Earn";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import TocSideBar from "pages/launchverse/toc/TocSidebar";
 import FloatButton from "pages/launchverse/toc/FloatingButton";
 import Screen from "../../utils/Responsive";
 
 export default function ProjectItem({ project, page, slug }) {
   const symbol = project.slug;
-  const ref = useRef()
+  const [headings, setHeadings] = useState([]);
+  const ref = useRef();
 
+  useEffect(() => {
+    setHeadings(ref.current.querySelectorAll("h2, h3"));
+  },[]);
 
   return (
     <>
@@ -48,7 +52,7 @@ export default function ProjectItem({ project, page, slug }) {
               </Screen>
               <Screen upto="md">
                 <div className="float-btn--container">
-                  {page == "research" && <FloatButton mainScroll={ref}/>}
+                  {page == "research"  && headings.length > 0 && <FloatButton mainScroll={ref}/>}
                 </div>
               </Screen>
               
