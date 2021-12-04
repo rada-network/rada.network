@@ -39,9 +39,13 @@ const Toc = ({ mainScroll }) => {
   };
 
   useEffect(() => {
-    mainScroll.current.addEventListener("wheel", handleScroll);
+    if (mainScroll != null && mainScroll != undefined) {
+      mainScroll.current.addEventListener("scroll", handleScroll);
+    }
     return () => {
-      mainScroll.current.removeEventListener("wheel", handleScroll);
+      if (mainScroll != null && mainScroll != undefined) {
+        mainScroll.current.removeEventListener("scroll", handleScroll);
+      }
     };
   }, []);
 

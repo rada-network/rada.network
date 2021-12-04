@@ -8,9 +8,11 @@ const TocSideBar = ({ mainScroll }) => {
   const refToc = useRef();
 
   useEffect(() => {
-    mainScroll.current.addEventListener("wheel", handleScroll);
+    if (mainScroll != null && mainScroll != undefined) {
+      mainScroll.current.addEventListener("wheel", handleScroll);
+    }
     return () => {
-      if (mainScroll) {
+      if (mainScroll != null && mainScroll != undefined) {
         mainScroll.current.removeEventListener("wheel", handleScroll);
       }
     };
