@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState,useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { ethers } from 'ethers'
 import { toast } from "react-toastify";
 import { useTranslation } from "next-i18next";
@@ -21,7 +21,7 @@ import useChainConfig from "@utils/web3/useChainConfig";
 export default function ProjectShare2Earn({
   project,
 }) {
-  const {getRIRAddress} = useChainConfig()
+  const { getRIRAddress } = useChainConfig()
   const riraddress = getRIRAddress()
   const { t } = useTranslation('share2earn')
   const context = useActiveWeb3React()
@@ -32,8 +32,8 @@ export default function ProjectShare2Earn({
   const referralCode = cookies.ref ?? '';
   const store = useStore()
   const user = store.user
-
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
+  const [campaignEnded, setCampaignEnded] = useState(true);
 
   // TODO: Save in config file
   const share2earnAddress = project.share2earn_contract
@@ -59,9 +59,11 @@ export default function ProjectShare2Earn({
     })
 
   const handleJoinProgram = async (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    handleConfirm();
+    if (!campaignEnded) {
+      e.preventDefault()
+      e.stopPropagation()
+      handleConfirm();
+    }
   };
   const [joined, setJoined] = useState('')
   const [loading, setLoading] = useState(true)
@@ -89,12 +91,12 @@ export default function ProjectShare2Earn({
 
     if (!!library && !!share2earnContract) {
       setLoading(true)
-      getInfoProgram().then(function(){
+      getInfoProgram().then(function () {
         setLoading(false);
       })
     }
   }, [share2earnContract, library, account]);
-  
+
 
 
   const checkJoined = async () => {
@@ -130,7 +132,7 @@ export default function ProjectShare2Earn({
     else if (isConfirmed) {
       return t("joined message");
     } else if (joined) {
-      return t("wrong connect address",{address : joined})
+      return t("wrong connect address", { address: joined })
     }
 
     return '';
@@ -141,8 +143,8 @@ export default function ProjectShare2Earn({
     console.log(joined)
     //wrongAddress()
   } else {
-    if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account ) {
-      return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo}/>;
+    if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account) {
+      return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
     }
   }
 
@@ -151,7 +153,7 @@ export default function ProjectShare2Earn({
   };
 
 
-  
+
 
   return (
     <>
@@ -162,11 +164,11 @@ export default function ProjectShare2Earn({
         <div className="section-header !flex-col">
           <h1 className="mb-2">
             <span className="text-xl lg:text-2xl font-semibold text-color-title">
-            Join The Parallel #Share2Earn Event ✨
+              Join The Parallel #Share2Earn Event ✨
             </span>
           </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400">
-          {t("welcome des")}</p>
+            {t("welcome des")}</p>
         </div>
 
         <div className="section-body">
@@ -189,9 +191,9 @@ export default function ProjectShare2Earn({
               </div>
             </div>
           </div>
-          
+
           {/* <p className="text-sm mb-8 text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: t("welcome description", { provider: `<span class="text-primary-700 dark:text-primary-400">RIR token</span>` }) }} /> */}
-          
+
           <ul className="text-sm space-y-4">
             <li className="flex p-4 rounded-lg border border-gray-300 dark:border-gray-700">
               <span className="icon shape--hexagon mr-4 !flex w-px-40 h-px-40 items-center justify-center flex-shrink-0 ">
@@ -200,9 +202,9 @@ export default function ProjectShare2Earn({
               </span>
               <div className="flex flex-col">
                 <div>
-                {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 &&<strong className="text-base text-color-title  flex items-center">Tier 1 <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+{ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span> </strong> }
+                  {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 && <strong className="text-base text-color-title  flex items-center">Tier 1 <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+{ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span> </strong>}
                 </div>
-                {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 && <p className="opacity-80 mt-2"> {t("welcome tier1 des", {rir: ethers.utils.formatEther(share2EarnInfo.incentiveL0)})} </p> }
+                {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 && <p className="opacity-80 mt-2"> {t("welcome tier1 des", { rir: ethers.utils.formatEther(share2EarnInfo.incentiveL0) })} </p>}
 
                 {/* {share2EarnInfo && share2EarnInfo.incentiveL0 > 0 &&
                   <span className="text-gray-500 dark:text-gray-400"
@@ -223,26 +225,26 @@ export default function ProjectShare2Earn({
               <div className="flex flex-col">
                 <div>
                   <strong className="text-base flex items-center text-color-title">
-                  Tier 2 
-                  {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+{ethers.utils.formatEther(share2EarnInfo.incentiveL1)} RIR</span> }
-                  {/* {t("welcome lv2 title")} */}
+                    Tier 2
+                    {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <span className="ml-2 inline-block py-1 px-2 text-xs rounded-md bg-green-700 text-white">+{ethers.utils.formatEther(share2EarnInfo.incentiveL1)} RIR</span>}
+                    {/* {t("welcome lv2 title")} */}
                   </strong>
                 </div>
-                {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <p className="opacity-80 mt-2">{t("welcome tier2 des", {rir: ethers.utils.formatEther(share2EarnInfo.incentiveL1)})}</p> }
+                {share2EarnInfo && share2EarnInfo.incentiveL1 > 0 && <p className="opacity-80 mt-2">{t("welcome tier2 des", { rir: ethers.utils.formatEther(share2EarnInfo.incentiveL1) })}</p>}
               </div>
             </li>
           </ul>
           <div className="mt-4 rounded-lg border border-yellow-200 bg-yellow-400 bg-opacity-5 text-sm overflow-hidden">
             <div className="px-4 py-2 bg-yellow-400 bg-opacity-10 dark:bg-opacity-100 dark:bg-gray-800 flex items-center">
               <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
-              <span className="font-semibold">{t("notice")}</span>  
+              <span className="font-semibold">{t("notice")}</span>
             </div>
             <ul className="p-4">
               <li className="mb-2">{t("notice line 1")}</li>
-              <li  className="mb-2">{t("notice line 2")}</li>
+              <li className="mb-2">{t("notice line 2")}</li>
               <li>{t("notice line 3")}</li>
             </ul>
-          </div>       
+          </div>
           {user?.id && <form className="mt-4">
 
             {allowJoin && <fieldset className="space-y-4 mb-4 text-gray-500 dark:text-gray-400">
@@ -265,23 +267,22 @@ export default function ProjectShare2Earn({
               (
                 <>
                   {
-                    allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (confirm ? "" : "disabled")} type="button"
-                      onClick={(e) => {handleJoinProgram(e)}}
-                    >{t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{wordBreak:"break-word"}}>{getMessage()}</div>
+                    allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!campaignEnded ? "" : "disabled")} type="button"
+                      onClick={(e) => { handleJoinProgram(e) }}
+                    >{campaignEnded ? "The campaign has ended" : t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{ wordBreak: "break-word" }}>{getMessage()}</div>
                   }
                 </>
               )}
           </form>
           }
-          { (user.id === "") ? (
+          {(user.id === "") ? (
             <form className="mt-4">
               <button className="mt-4 btn btn-yellow w-full justify-center py-3 px-4" type="button"
-              onClick={openLoginPopUp}
+                onClick={openLoginPopUp}
               >{t("welcome btn login")}</button>
             </form>
-          ) : null }
-            <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg" 
-            // onClick={e => {toast.info(t("Coming Soon"),{position : "top-center"})}} 
+          ) : null}
+          <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"
             target="_blank" href={t("learn more url")}> {t("learn more")} </a>
         </div>
 

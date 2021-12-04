@@ -289,27 +289,30 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
             <span className="icon text-3xl"><i className="fa-solid fa-check-circle text-green-500"></i></span>
           </div>
 
-          <div className="w-full">
-            <div className="message success flex relative mb-2 ">
-              <span className="message-icon">
-                <i class="mr-2 fas fa-star"></i>
-              </span>
-              <div className="message-content pr-2">
-                Share2earn for Parallel campaign has successfully ended.
+          {campaignEnded && (
+            <div className="w-full">
+              <div className="message success flex relative mb-2 ">
+                <span className="message-icon">
+                  <i class="mr-2 fas fa-star"></i>
+                </span>
+                <div className="message-content pr-2">
+                  Share2earn for Parallel campaign has successfully ended.
+                </div>
+                <button onClick={e => { setIsWarning(false) }} className="flex items-center ml-auto w-4 h-4 ">
+                  <i class="text-base fas fa-times"></i>
+                </button>
               </div>
-              <button onClick={e => {setIsWarning(false)}}  className="flex items-center ml-auto w-4 h-4 ">
-                <i class="text-base fas fa-times"></i>
-              </button>
-            </div>
-            {/* <h1 className="">
+              {/* <h1 className="">
               <span className="text-xl lg:text-lg font-semibold text-color-title">
                 Welcome to The Parallel #Share2Earn event
               </span>
             </h1> */}
-            {/* <p className="text-sm opacity-75">
+              {/* <p className="text-sm opacity-75">
               {t("main step des")}
             </p> */}
-          </div>
+            </div>
+          )}
+
 
         </div>
 
@@ -504,13 +507,6 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
             </ol>
           )}
 
-          {campaignEnded && (
-            <ol className="text-sm space-y-8">
-              <li className="flex flex-col md:flex-row items-start">
-                <p>{t("campaign_ended_message")}</p>
-              </li>
-            </ol>
-          )}
 
 
           {/* <div className="lg:pl-14">
