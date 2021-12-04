@@ -28,7 +28,7 @@ export default function FAB() {
               leaveFrom="transform origin-top-left opacity-100 scale-100"
               leaveTo="transform origin-bottom-right opacity-0 scale-0"
             >
-              <Popover.Panel className="absolute z-10 transform right-full -mr-10 bottom-12 w-80">
+              <Popover.Panel className="popper-toc--container">
                 <div className="overflow-hidden rounded-lg shadow-lg">
                   <div className="popper poper-toc p-4 !mt-0">
                     <Toc />
