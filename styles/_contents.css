@@ -727,7 +727,7 @@ Article TOC
 
 .article-toc li li a {
   &::before {
-    @apply pl-5 w-auto mr-2 mt-1 flex-shrink-0 text-2xs font-bold opacity-50;
+    @apply ml-4 w-auto pl-0.5 mr-2 mt-1 flex-shrink-0 text-2xs font-bold opacity-50;
     content: "\f0da";
     font-family: "Font Awesome 6 Pro";
   }
