@@ -9,11 +9,7 @@ export default function FloatButton({ mainScroll }) {
 
   useEffect(() => {
     setHeadings(mainScroll.current.querySelectorAll("h2, h3"));
-<<<<<<< HEAD
   }, [])
-=======
-  }, [headers])
->>>>>>> 32fdb1dcde92647d6934dac077cfecd4cfa8c868
 
   return (
     <>
