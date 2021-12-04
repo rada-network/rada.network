@@ -11,7 +11,7 @@ export default function ProjectNavbar({ symbol, project, slug }) {
     if (uri == slug) cls.push("tab-item--active");
     return (
       <Link href={`/${dataStore.lang}/launchverse/${uri}`}>
-        <a class={cls.join(" ")}>{children}</a>
+        <a className={cls.join(" ")}>{children}</a>
       </Link>
     );
   };
@@ -51,7 +51,7 @@ export default function ProjectNavbar({ symbol, project, slug }) {
             {project.share_campaign?.length !== 0 && (
               <NavItem uri={`${symbol}/share2earn`}>
                 <span className="icon">
-                  <i class="fa-duotone fa-hand-holding-heart"></i>
+                  <i className="fa-duotone fa-hand-holding-heart"></i>
                 </span>
                 <span className="tab-item--text">{t("Share2Earn")}</span>
               </NavItem>

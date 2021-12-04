@@ -3,6 +3,7 @@ import ProjectCountdown from "./Countdown";
 import OpenDate from "./OpenDate"
 import { useTranslation } from "next-i18next";
 import TutorialWidget from "./TutorialWidget"
+import SocialPromote from "../SocialPromote";
 const WhitelistCountdown = ({project}) => {
   const {t,i18n} = useTranslation("launchpad")
   return (
@@ -43,16 +44,7 @@ const WhitelistCountdown = ({project}) => {
                   <h3 class="text-4xl text-center mt-4 mb-4 font-normal">
                     <span className="text-gray-700 dark:text-white font-semibold">{t("Coming Soon")}</span>
                   </h3>
-                  <div className="max-w-md mx-auto">
-                    <p class="text-sm text-center mt-4 leading-7" dangerouslySetInnerHTML={{__html : t("coming soon note",
-                      {
-                        twitter : `<a class="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
-                        radanetwork : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,
-                        radadao : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radadao">Telegram Community</a>`
-                      }
-                    )}} >
-                    </p>
-                  </div>
+                  <SocialPromote />
                 </div>
                 }
 

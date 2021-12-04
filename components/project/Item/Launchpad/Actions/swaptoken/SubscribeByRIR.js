@@ -10,7 +10,7 @@ import {useLaunchpadInfo} from "@utils/hooks/index"
 import { useTranslation } from "next-i18next"
 import useStore from "@lib/useStore"
 import { SwapNote,SwapDescription } from "../SwapTokenV2"
-import { BusdSvg } from "@components/svg/SvgIcons"
+import { BusdSvg, CheckSvg } from "@components/svg/SvgIcons"
 
 const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
   const {t} = useTranslation("launchpad")
@@ -141,26 +141,37 @@ const SubcribeByRIR = ({project,accountBalance,setStep,fetchAccountBalance,launc
           </div>
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
         </div>
-        <div className={`mt-4 grid gap-4` + ( (parseInt(numberRIR) > 0 && (!isApproved && !isApprovedRIR)) ? " grid-cols-2" : "")}> 
-          {/* bỏ grid grid-cols-2 nếu user không có RIR hoặc không dùng RIR */}
-          {!isApproved && 
+        <div className={`mt-4 grid gap-4` + ( (parseInt(numberRIR) > 0 ) ? "" : "")}> 
+          {/* bỏ grid grid-cols-2 nếu user không có RIR hoặc không dùng RIR */} 
           <div className="flex-shrink-0 flex-grow">
-            <button className={`btn relative w-full btn-default btn-default-lg btn-purple`} width="100%" scale="md" onClick={handleApprove}>
+            <button className={`btn relative w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} width="100%" scale="md" onClick={handleApprove}>
             {isApproving && <span className="spinner" />}
-            {isApproving ? 
+            {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
+            {isApproving && 
             <>{t("Approving Contract")}</> 
-            : 
-            <>{t("Approve Contract")}BUSD</>
+            }
+            {isApproved && 
+            <>{t("Approved Contract")} BUSD</> 
+            }
+            {!isApproving && !isApproved &&
+            <>{t("Approve Contract")} BUSD</>
             }
             </button>     
           </div>
-          }
-          {parseFloat(accountBalance.rirBalance) > 0 && parseInt(numberRIR) > 0 && !isApprovedRIR &&
+          {parseFloat(accountBalance.rirBalance) > 0 && parseInt(numberRIR) > 0 &&
           <div  className="flex-shrink-0 flex-grow">
-            <button className={`btn relative w-full btn-default btn-default-lg btn-purple`} scale="md" onClick={handleApproveRIR}>
+            <button className={`btn relative w-full btn-default btn-default-lg btn-purple` + (isApprovedRIR ? " disabled" : "") } scale="md" onClick={handleApproveRIR}>
             {isApprovingRIR && <span className="spinner" />}
-            {isApprovingRIR ? <>{t("Approving Contract")}</> : <>{t("Approve Contract")} RIR</>}
-
+            {isApprovedRIR && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
+            {isApprovingRIR && 
+            <>{t("Approving Contract")}</> 
+            }
+            {isApprovedRIR && 
+            <>{t("Approved Contract")} RIR</> 
+            }
+            {!isApprovingRIR && !isApprovedRIR &&
+            <>{t("Approve Contract")} RIR</>
+            }
             </button>         
           </div>
           }

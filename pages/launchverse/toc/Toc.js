@@ -54,6 +54,7 @@ const Toc = ({ mainScroll }) => {
   }
 
   const handleScroll = () => {
+    if (!mainScroll.current) return false;
     var toc = mainScroll.current.querySelectorAll("h2, h3");
     var visibleElements = [];
     toc.forEach((element) => {
@@ -140,6 +141,9 @@ const Toc = ({ mainScroll }) => {
 
   const handleClickToc = (parentId, myId) => {
     let element = document.getElementById(myId);
+    if (!element) {
+      return false;
+    }
     var currentActive = document.querySelectorAll(".toc--active")
     for (var i = 0; i < currentActive.length; i++) {
       currentActive[i].className = currentActive[i].classList.remove("toc--active");

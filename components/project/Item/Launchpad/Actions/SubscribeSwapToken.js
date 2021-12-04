@@ -13,6 +13,9 @@ import Link from "next/link"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { toast } from "react-toastify"
 import { set } from "store";
+import SocialPromote from "../SocialPromote";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import useChainConfig from "utils/web3/useChainConfig"
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
@@ -22,6 +25,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
   const { account } = useActiveWeb3React()
   const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ project })
   const { callWithGasPrice } = useCallWithGasPrice()
+  const { getRIRAddress, getBscScanURL } = useChainConfig()
   const launchpadContract = useLaunchpadContractV2(project.swap_contract)
   const [accountBalance, setAccountBalance] = useState({})
   const [loadBalance, setLoadBalance] = useState(true)
@@ -32,7 +36,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
   const [approvedBusd, setApprovedBusd] = useState(0)
   const [step, setStep] = useState(2)
   const [claimDisbaled, setClaimDisbaled] = useState(false)
-
+  const [tokenAddress,setTokenAddress] = useState(ethers.constants.AddressZero)
   const fetchAccountBalance = async function () {
     await fetchLaunchpadInfo()
     let rirBalance = await rirContract.balanceOf(account);
@@ -47,6 +51,14 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
       fetchAccountBalance().then(function () {
         setLoadBalance(false)
       });
+    }
+  }, [account])
+
+  useEffect(() => {
+    if (!!account) {
+      launchpadContract.tokenAddress().then(function(address) {
+        setTokenAddress(address)
+      })
     }
   }, [account])
 
@@ -139,6 +151,10 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
     }
   }
 
+  const handleCopy = () => {
+    toast.success("Copied to clipboard", {})
+  };
+
   if (loading || loadBalance || loadWhitelist) {
     return (
       <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
@@ -151,7 +167,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
   }
   const maxRIR = parseInt(launchpadInfo.individualMaximumAmount) / 100;
   const maxBusd = parseInt(launchpadInfo.individualMaximumAmount);
-
   return (
     <>
       {step == 2 &&
@@ -211,7 +226,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                       </li>}
                     </ul>
 
-                    <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
+                    {project.is_allow_rir && <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
                       <p>
                         <span className="icon mr-2 text-base">
                           <i class="fas fa-info-circle text-yellow-500"></i>
@@ -221,6 +236,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                         </span>
                       </p>
                     </div>
+                    }
 
                   </div>
 
@@ -246,22 +262,17 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                 <Timeline step="3" />
               </div>
               <div className="project-card--container">
-              <div className="max-w-xl mx-auto">
-                <div className="mb-4 md:mb-8">
-                  <h3 className="text-2xl md:text-3xl text-center font-normal">
-                    <span className="text-color-title">
-                      {t("pool closed")}
-                    </span>
-                  </h3>
-                  <p class="text-center font-normal" dangerouslySetInnerHTML={{__html : t("coming soon note",
-                  {
-                    twitter : `<a class="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
-                    radanetwork : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,
-                    radadao : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radadao">Telegram Community</a>`
-                  }
-                  )}} />
+                <div className="max-w-xl mx-auto">
+                  <div className="mb-4 md:mb-8">
+                    <h3 className="text-2xl md:text-3xl text-center font-normal">
+                      <span className="text-color-title">
+                        {t("pool closed")}
+                      </span>
+                    </h3>
+                    
+                  </div>
+                  <SocialPromote />
                 </div>
-              </div>
               </div>
             </div>
           </div>
@@ -301,39 +312,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                           }</span>
                         }
                       </h3>
-                      <ul className="text-left p-4 border border-gray-200 dark:border-gray-700 rounded-lg mb-4">
-                        <li  className="relative pl-6  mb-2">
-                          <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center mr-2">
-                            <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
-                          </span>
-                          <p class="" dangerouslySetInnerHTML={{__html : t("status note")}} >
-                          </p>
-                        </li>
-                        <li className="relative pl-6 mb-2"> 
-                          <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center mr-2">
-                            <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
-                          </span>
-                            <p class="" dangerouslySetInnerHTML={{__html : t("coming soon note",
-                            {
-                              twitter : `<a class="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
-                              radanetwork : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,
-                              radadao : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radadao">Telegram Community</a>`
-                            }
-                            )}} />
-                        </li>
-                        <li className="relative pl-6  mb-2">
-                          <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center  mr-2">
-                            <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
-                          </span>
-                            <p class="" dangerouslySetInnerHTML={{__html : t("status note 2",
-                              {
-                                token : project.token.name,
-                                research : `<a class="link" target="_blank" rel="nofollow" href="/${i18n.language}/launchverse/${project.slug}/research">Research</a>`
-                              }
-                            )}} />
-                        </li>
-                        
-                      </ul>
+                      <TokenSocialPromote project={project} />
                       {currentTime < endTime && (parseInt(orderBusd) < maxBusd || ((parseInt(orderRIR) < maxRIR && parseInt(accountBalance.rirBalance) > 0) && project.is_allow_rir)) &&
                       <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center" onClick={e => { setStep(2) }} >
                         <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
@@ -369,20 +348,27 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
               </div>
 
               <div className="project-card--container">
-                <div className="max-w-2xl mx-auto text-center">
+                <div className="max-w-xl mx-auto">
 
-                  <div className="flex items-center">
-                    <div className="s2e-illustration flex-shrink-0"></div>
-                    <div className="text-left ml-2">
+                  <div className="flex">
+                    {/* <div className="s2e-illustration flex-shrink-0"></div> */}
+                    <div className="w-full">
                       <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">
                       ✨ {t("status success",{name : project.content.title})}
                       </h3>
-                      <p>Approved&nbsp; : <strong>{approvedBusd} BUSD</strong></p>
-                      <p>Prefunded : <strong>{orderBusd} BUSD</strong></p>
-                      {parseInt(orderBusd) - parseInt(approvedBusd) > 0 && 
-                      <p> {t("refund note",{busd : parseInt(orderBusd) - parseInt(approvedBusd)})}</p>
+                      <p>{t("Prefunded BUSD")} : <strong>{orderBusd} BUSD</strong></p>
+                      <p>{t("Approved BUSD")}&nbsp; : <strong>{approvedBusd} BUSD</strong></p>
+                      {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 &&
+                      <p>{t("Refund BUSD")}&nbsp; : <strong>{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD</strong></p>
+                      }
+                      {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 &&
+                      <p> {t("refund note")}</p>
                       }
                     </div>
+                    
+                  </div>
+                  <div className="flex items-center mt-2">
+                    <TokenSocialPromote project={project} />
                   </div>
                 </div>
 
@@ -407,10 +393,10 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                 <div className="flex items-center">
                   <div className="mx-auto">
                     <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">{t("status failed")}</h3>
-                    <p>{t("status failed note")}</p>
                     {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 &&
                     <>
                     <p>{t("status failed note refund")}</p> 
+                    <p>{t("Refund BUSD")}: <strong>{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD</strong></p> 
                     <div class="ml-auto mt-4 list-value font-semibold">
                       <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                     </div>
@@ -440,8 +426,11 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
 
                   <div className="flex items-center">
                     <div className="mx-auto">
-                      <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">{t("status dont join")}</h3>
+                      <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">{t("Not allow")}</h3>
                     </div>
+                  </div>
+                  <div className="flex items-center">
+                    <SocialPromote ></SocialPromote>
                   </div>
                 </div>
 
@@ -464,13 +453,35 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                 <div className="max-w-md mx-auto">
                   <ul class="mb-4 mt-auto flex-shrink-0 flex-grow">
                     <li class="list-pair mb-2">
-                      <span class="w-4/5 !opacity-100">{t("token claim note",{name : project.token.symbol})}:</span>
-                      <div class="w-1/5 ml-auto  font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[1])} {project.token.symbol}
+                      <span class="w-3/5 !opacity-100">{project.token.symbol} Contract:</span>
+                      <div class="w-2/5 ml-auto ">
+                        <div className="">
+                          <CopyToClipboard
+                            onCopy={handleCopy}
+                            text={tokenAddress}
+                          >
+                            <a href={getBscScanURL(tokenAddress)} target="_blank" className="btn btn-default btn-default-sm">
+                              <span className="icon">
+                                <i class={`cf cf-${project?.platform?.networkName}`}></i>
+                              </span>
+                              <span className="btn--text">{ `${tokenAddress.substr(0, 6)}...${tokenAddress.substr(-6)} `}</span>
+                              <span className="icon">
+                                <i class="fa-regular fa-copy text-2xs"></i>
+                              </span>
+                            </a>
+                          </CopyToClipboard>
+                          
+                        </div>
+                      </div>
+                    </li>
+                    <li class="list-pair mb-2">
+                      <span class="w-3/5 !opacity-100">{t("token claim note",{name : project.token.symbol})}:</span>
+                      <div class="w-2/5 ml-auto  font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[1])} {project.token.symbol}
                       </div>
                     </li>
                     {parseFloat(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 && <li class="list-pair mb-2">
-                      <span class="w-4/5 !opacity-100">{t("busd claim note")}:</span>
-                      <div class="w-1/5 ml-auto font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD
+                      <span class="w-3/5 !opacity-100">{t("busd claim note")}:</span>
+                      <div class="w-2/5 ml-auto font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD
                       </div>
                     </li>
                     }
@@ -479,9 +490,14 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                 <div className="flex items-center">
                   <div className="mx-auto">
                     <div class="ml-auto mt-4 list-value font-semibold">
+                    {(parseFloat(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 || parseFloat(ethers.utils.formatEther(launchpadInfo.claimable[1])) > 0) && 
                       <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
+                    }
                     </div>
                   </div>
+                </div>
+                <div className="flex items-center">                  
+                  <SocialPromote ></SocialPromote>
                 </div>
 
               </div>
@@ -556,6 +572,45 @@ const SubscribeSwapTokenLoading = function({currentTime,opendTime,endTime}){
         </div>
       </div>
     </div>
+  )
+}
+
+const TokenSocialPromote = function({project}){
+  const {t,i18n} = useTranslation("launchpad")
+  return (
+    <ul className="text-left p-4 border border-gray-200 dark:border-gray-700 rounded-lg mb-4">
+      <li  className="relative pl-6  mb-2">
+        <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center mr-2">
+          <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
+        </span>
+        <p class="" dangerouslySetInnerHTML={{__html : t("status note")}} >
+        </p>
+      </li>
+      <li className="relative pl-6 mb-2"> 
+        <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center mr-2">
+          <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
+        </span>
+          <p class="" dangerouslySetInnerHTML={{__html : t("coming soon note",
+          {
+            twitter : `<a class="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
+            radanetwork : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,
+            radadao : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radadao">Telegram Community</a>`
+          }
+          )}} />
+      </li>
+      <li className="relative pl-6  mb-2">
+        <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center  mr-2">
+          <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
+        </span>
+          <p class="" dangerouslySetInnerHTML={{__html : t("status note 2",
+            {
+              token : project.token.name,
+              research : `<a class="link" target="_blank" rel="nofollow" href="/${i18n.language}/launchverse/${project.slug}/research">Research</a>`
+            }
+          )}} />
+      </li>
+      
+    </ul>
   )
 }
 

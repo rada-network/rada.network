@@ -52,7 +52,7 @@ export const SwapDescription = ({numberBusd,numberRIR,maxSelected,currentOrderBu
   return (
     <>
     <div className="mt-4 mb-8">
-      <label for="currency" className="uppercase text-xs block tracking-wide font-medium opacity-70">
+      <label htmlFor="currency" className="uppercase text-xs block tracking-wide font-medium opacity-70">
         Status
       </label>
 
