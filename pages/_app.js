@@ -19,7 +19,7 @@ import { getScreenName } from "../components/utils/Responsive";
 import { Provider, useSession, signOut } from "next-auth/client";
 import { useCookies } from "react-cookie";
 import { PageStoreProvider, usePageStore } from "../lib/usePageStore";
-import  Providers from "../utils/providers";
+import Providers from "../utils/providers";
 
 function parseJwt(token) {
   var base64Payload = token.split(".")[1];
@@ -44,24 +44,22 @@ export function getTokenState(token) {
   }
 }
 
-const MyApp = function MyApp({ Component, pageProps }){
+const MyApp = function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const store = useStore();
   const [session, loading] = useSession();
-  const [cookies, setCookie,removeCookie] = useCookies(["access_token"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
   const { dataStore, detailStore } = usePageStore();
-  dataStore.lang = pageProps.lang || (pageProps.locale || 'vi');
+  dataStore.lang = pageProps.lang || pageProps.locale || "vi";
 
   // Get ref send to cookie
-  const ref = router.query?.ref ?? '';
-  if (ref!='') {
+  const ref = router.query?.ref ?? "";
+  if (ref != "") {
     setCookie("ref", ref, {
       path: "/",
       maxAge: 24 * 7 * 3600,
     });
   }
-
-
 
   useEffect(() => {
     if (session) {
@@ -81,13 +79,15 @@ const MyApp = function MyApp({ Component, pageProps }){
         });
       } else {
         signOut(true).then(() => {
-          removeCookie("access_token",{
-            path: "/", expires: -1,
+          removeCookie("access_token", {
+            path: "/",
+            expires: -1,
           });
-          removeCookie("ref",{
-            path: "/", expires: -1,
+          removeCookie("ref", {
+            path: "/",
+            expires: -1,
           });
-        })
+        });
       }
     }
     return () => {};
@@ -138,8 +138,11 @@ const MyApp = function MyApp({ Component, pageProps }){
       window.removeEventListener("resize", onResize);
     };
   }, []);
-  return <Providers ><Component {...pageProps} /></Providers>
-
+  return (
+    <Providers>
+      <Component {...pageProps} />
+    </Providers>
+  );
 };
 // Wrap everything in <UseWalletProvider />
 const TokenRankingStore = ({
@@ -150,36 +153,35 @@ const TokenRankingStore = ({
 
   return (
     <ThemeProvider attribute="class">
-        <PageStoreProvider>
-          <StoreProvider>
-            <NextNprogress
-              options={{ showSpinner: false }}
-              color="#8B5CF6"
-              startPosition={0.3}
-              stopDelayMs={200}
-              height={3}
-              showOnShallow={true}
-            />
-            <CookiesProvider>
-              <Provider session={pageProps.session}>
-                <MyApp Component={Component} pageProps={pageProps} />
-                ​
-                <ToastContainer
-                  position="top-right"
-                  autoClose={5000}
-                  hideProgressBar={false}
-                  newestOnTop={false}
-                  closeOnClick
-                  rtl={false}
-                  pauseOnFocusLoss
-                  draggable
-                  pauseOnHover
-                  theme="colored"
-                />
-              </Provider>
-            </CookiesProvider>
-          </StoreProvider>
-        </PageStoreProvider>
+      <PageStoreProvider>
+        <StoreProvider>
+          <NextNprogress
+            options={{ showSpinner: false }}
+            color="#8B5CF6"
+            startPosition={0.3}
+            stopDelayMs={200}
+            height={3}
+            showOnShallow={true}
+          />
+          <CookiesProvider>
+            <Provider session={pageProps.session}>
+              <MyApp Component={Component} pageProps={pageProps} />
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+              />
+            </Provider>
+          </CookiesProvider>
+        </StoreProvider>
+      </PageStoreProvider>
     </ThemeProvider>
   );
 };
