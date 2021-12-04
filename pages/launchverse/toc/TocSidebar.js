@@ -149,11 +149,6 @@ const TocSideBar = ({ mainScroll }) => {
 
     element.classList += " toc--active";
   };
-
-  if (process.env.NODE_ENV == "production") {
-    return null;
-  }
-
   return (
     <>
       <div ref={refToc} className="article-toc toc-sidebar" role="navigation">

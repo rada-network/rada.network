@@ -144,11 +144,6 @@ const Toc = ({ mainScroll }) => {
     }
     element.classList += " toc--active";
   };
-
-  if (process.env.NODE_ENV == "production") {
-    return null;
-  }
-
   return (
     <>
       <div
