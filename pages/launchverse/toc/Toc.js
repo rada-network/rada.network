@@ -150,8 +150,12 @@ const Toc = ({ mainScroll }) => {
       const parent = document.getElementById(parentId);
       parent.classList += " toc--active";
     }
-    element.classList += " toc--active";
+    
+    if (element) {
+      element.classList += " toc--active";
+    }
   };
+  
   return (
     <>
       <div
