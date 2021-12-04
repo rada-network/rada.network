@@ -28,7 +28,7 @@ import { PostDetailAuthor } from "./PostDetailAuthor";
 import FloatButton from "pages/launchverse/toc/FloatingButton";
 
 export const PostListDetail = observer(
-  ({ tokenId, tabName, setTabCallback,tokenData }) => {
+  ({ tokenId, tabName, setTabCallback, tokenData }) => {
     const { detailStore, dataStore, voteStore } = usePageStore();
     let item = detailStore.data;
 
@@ -60,7 +60,7 @@ export const PostListDetail = observer(
     );
     useEffect(() => {
       tokenId &&
-          getCoinInfo(tokenData?.symbol);
+        getCoinInfo(tokenData?.symbol);
     }, [tokenId]);
 
     useEffect(() => {
@@ -191,8 +191,8 @@ export const PostListDetail = observer(
           } */}
             {/* News Post Detail Content */}
             {detailStore.type === "news" ||
-            detailStore.type === "rada" ||
-            detailStore.type === "projects" ? (
+              detailStore.type === "rada" ||
+              detailStore.type === "projects" ? (
               tabName === "article" ? (
                 <NewsDetail
                   item={item}
@@ -391,8 +391,8 @@ const NewsDetail = observer(function ({
     const parentNewsWidth = document.querySelector(".main-layout").getBoundingClientRect().width;
     const floatButton = document.querySelector(".floating-btn--container");
     const windowSize = document.querySelector(".body-decor").getBoundingClientRect().width;
-    const padding = (parseInt(windowSize) - parseInt(parentNewsWidth))/2;
-    floatButton.style.paddingRight = padding + "px";
+    const padding = (parseInt(windowSize) - parseInt(parentNewsWidth)) / 2;
+    floatButton.style.paddingRight = padding + "px";  
   };
 
   useEffect(() => {
@@ -411,7 +411,6 @@ const NewsDetail = observer(function ({
       twttr.widgets.load();
     }
   }, [item.contentDisplay]);
-  
 
 
   return (
