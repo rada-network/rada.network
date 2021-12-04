@@ -24,10 +24,11 @@ export default function ProjectItem({ project, page, slug }) {
   };
 
   useEffect(() => {
-    scrollRef.current.removeEventListener("scroll", onScroll);
-    scrollRef.current.addEventListener("scroll", onScroll);
+    ref.current.removeEventListener("scroll", onScroll);
+    ref.current.addEventListener("scroll", onScroll);
     return onUnload;
   }, []);
+
   useEffect(() => {
     setHeadings(ref.current.querySelectorAll("h2, h3"));
   }, []);
