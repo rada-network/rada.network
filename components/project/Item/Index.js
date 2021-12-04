@@ -10,6 +10,8 @@ import Screen from "../../utils/Responsive";
 export default function ProjectItem({ project, page, slug }) {
   const symbol = project.slug;
   const ref = useRef()
+
+
   return (
     <>
       <div

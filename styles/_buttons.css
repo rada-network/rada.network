@@ -399,11 +399,22 @@ Floating Button
 }
 
 .floating-btn {
-  @apply bg-primary-700 text-primary-100 hover:bg-primary-600 hover:text-white w-10 h-10 shadow-xl text-sm rounded-full transition;
+  @apply px-4 w-auto h-10 shadow-xl text-sm rounded-full transition-all;
+  @apply bg-primary-700 text-primary-100 hover:bg-primary-600 hover:text-white;
+  animation: fadein 800ms linear;
+
   .icon {
+    @apply w-4;
   }
-  .btn-text {
-    @apply font-medium;
+  .btn--text {
+    @apply font-medium ml-2;
+  }
+}
+
+.details-top-away .floating-btn {
+  @apply w-10 px-0;
+  .btn--text {
+    @apply sr-only;
   }
 }
 
