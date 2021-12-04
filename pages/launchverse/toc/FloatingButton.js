@@ -17,7 +17,7 @@ export default function FloatButton({mainScroll}) {
                 <i class="fa-solid fa-bars"></i>
                 <i class="fa-solid fa-times"></i>
               </span>
-              <span className="btn--text sr-only">TOC--</span>
+              <span className="btn--text">TOC</span>
             </Popover.Button>
             <Transition
               as={Fragment}
@@ -28,9 +28,9 @@ export default function FloatButton({mainScroll}) {
               leaveFrom="transform origin-top-left opacity-100 scale-100"
               leaveTo="transform origin-bottom-right opacity-0 scale-0"
             >
-              <Popover.Panel className="absolute z-10 transform right-full -mr-10 bottom-12 w-80">
+              <Popover.Panel className="popper-toc--container">
                 <div className="overflow-hidden rounded-lg shadow-lg">
-                  <div className="popper poper-toc p-4 !mt-0">
+                  <div className="popper popper-toc p-4 !mt-0">
                     <Toc mainScroll={mainScroll}/>
                   </div>
                 </div>

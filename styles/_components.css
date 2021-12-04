@@ -254,8 +254,18 @@ Popper
   transition-property: all;
 }
 
-.poper-toc {
-  @apply block top-0 overflow-x-hidden overflow-y-auto;
+/* Popper TOC */
+.popper-toc--container {
+  @apply absolute z-10 transform bottom-12 w-80;
+  right: calc(100% - 5.5rem);
+}
+
+.details-top-away .popper-toc--container {
+  right: calc(100% - 2.5rem);
+}
+
+.popper-toc {
+  @apply block top-0 overflow-x-hidden overflow-y-auto rounded-lg;
   max-height: 80vh;
   width: 20rem;
   transition-property: all;
