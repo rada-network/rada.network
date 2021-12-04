@@ -15,6 +15,7 @@ import { toast } from "react-toastify"
 import { set } from "store";
 import SocialPromote from "../SocialPromote";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import useChainConfig from "utils/web3/useChainConfig"
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
@@ -24,6 +25,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
   const { account } = useActiveWeb3React()
   const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ project })
   const { callWithGasPrice } = useCallWithGasPrice()
+  const { getRIRAddress, getBscScanURL } = useChainConfig()
   const launchpadContract = useLaunchpadContractV2(project.swap_contract)
   const [accountBalance, setAccountBalance] = useState({})
   const [loadBalance, setLoadBalance] = useState(true)
@@ -458,14 +460,14 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                             onCopy={handleCopy}
                             text={tokenAddress}
                           >
-                            <a href="#" className="btn btn-default btn-default-sm">
-                            <span className="icon">
-                              <i class={`cf cf-${project?.platform?.networkName}`}></i>
-                            </span>
-                            <span className="btn--text">{ `${tokenAddress.substr(0, 6)}...${tokenAddress.substr(-6)} `}</span>
-                            <span className="icon">
-                              <i class="fa-regular fa-copy text-2xs"></i>
-                            </span>
+                            <a href={getBscScanURL(tokenAddress)} target="_blank" className="btn btn-default btn-default-sm">
+                              <span className="icon">
+                                <i class={`cf cf-${project?.platform?.networkName}`}></i>
+                              </span>
+                              <span className="btn--text">{ `${tokenAddress.substr(0, 6)}...${tokenAddress.substr(-6)} `}</span>
+                              <span className="icon">
+                                <i class="fa-regular fa-copy text-2xs"></i>
+                              </span>
                             </a>
                           </CopyToClipboard>
                           

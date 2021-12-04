@@ -3,11 +3,12 @@ const Subscriber = function({project,buyers}){
     <>
       <div className="list-wrapper">
         <ul className="winners">
-          <li className="list-header">
+          <li key={0} className="list-header">
             <span className="winner--no">No</span>
             <span className="winner--address">Address</span>
           </li>
           {buyers && buyers.map(function(item,key){
+            if (key > 50) return null
             return (
               <li key={item}>
                 <span className="winner--no">{key+1}</span>
