@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "upload:static": "rsync -avz -P .next/static  dhunt-web:/opt/web/cdnlogo.rada/_next/",
-    "upload:public": "rsync -avz -P public/*  dhunt-web:/opt/web/cdnlogo.rada/",
+    "upload:static": "aws s3 sync .next/ s3://cdn.rada.network/_next/",
+    "upload:public": "aws s3 sync public/ s3://cdn.rada.network/",
     "build": "next build",
     "build:rada": "next build && npm run upload:static && npm run upload:public",
     "build:devdhunt": "NODE_ENV=staging && next build",

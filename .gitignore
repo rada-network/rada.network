@@ -41,3 +41,4 @@ package-lock.json
 yarn.lock
 https_cert
 .env
+.aws

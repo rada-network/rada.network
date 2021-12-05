@@ -10,10 +10,21 @@ RUN yarn install --frozen-lockfile
 # Rebuild the source code only when needed
 FROM node:14-alpine AS builder
 RUN apk add --no-cache git
+RUN apk add --no-cache \
+        python3 \
+        py3-pip \
+    && pip3 install --upgrade pip \
+    && pip3 install \
+        awscli \
+    && rm -rf /var/cache/apk/*
+RUN aws --version
 WORKDIR /app
 COPY . .
+RUN cp -r .aws ~/.aws
+RUN cat ~/.aws/config
+RUN cat ~/.aws/credentials
 COPY --from=deps /app/node_modules ./node_modules
-RUN yarn build
+RUN yarn build:rada
 
 # Production image, copy all the files and run next
 FROM node:14-alpine AS runner
