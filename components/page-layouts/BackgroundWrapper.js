@@ -9,14 +9,14 @@ const BackgroundWrapper = function({image}){
   }
 
   useEffect(() => {
-    const bgUrl = image ? image :   `${process.evn.NEXT_PUBLIC_CDN}/wallpapers/${theme}/${randomeBg()}.jpg`
+    const bgUrl = image ? image :   `${process.env.NEXT_PUBLIC_CDN}/wallpapers/${theme}/${randomeBg()}.jpg`
     ref.current.setAttribute("style",`background-image: url("${bgUrl}")`)
   },[theme])
 
   const handleChangeBg = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    const bgUrl = `${process.evn.NEXT_PUBLIC_CDN}/wallpapers/${theme}/${randomeBg()}.jpg`
+    const bgUrl = `${process.env.NEXT_PUBLIC_CDN}/wallpapers/${theme}/${randomeBg()}.jpg`
     ref.current.setAttribute("style",`background-image: url("${bgUrl}")`)
   }
 
