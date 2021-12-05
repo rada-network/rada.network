@@ -1,18 +1,17 @@
 export default function Siteintro({ intro }) {
   return (
     <div className="page-about">
-
       <div className={`page-about-deco`} />
 
       <div className="page-about-content">
-
         <div className="page-about-content--section content-section--1">
-            <span className="icon"><i class="fa-solid fa-info"></i></span>
-            <div dangerouslySetInnerHTML={{__html: intro?.content}}></div>
+          <span className="icon">
+            <i class="fa-solid fa-info"></i>
+          </span>
+          <div dangerouslySetInnerHTML={{ __html: intro?.content }}></div>
         </div>
 
         <div className="page-about-content--section content-section--2">
-
           {/* <ul className="about-links">
             {/* <li><a href="#">Copyright</a></li>
             <li><a href="#">Privacy</a></li>
@@ -56,11 +55,8 @@ export default function Siteintro({ intro }) {
               <i className="fab fa-medium-m" />
             </a>
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 }

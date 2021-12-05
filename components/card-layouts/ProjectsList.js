@@ -1,12 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useState, createRef } from 'react';
+import React, { useEffect } from "react";
 
-//ReactIcons
-import { IoChevronDownSharp, IoChevronForwardSharp, IoChevronBackSharp } from "react-icons/io5";
-import Link from "next/link"
-import { observer } from "mobx-react";
 import { CardProject } from "../cards/Project";
-import ContentLoader from "react-content-loader";
-
 
 export const ProjectsList = ({ projects }) => {
   // sort project by open date
@@ -14,24 +8,25 @@ export const ProjectsList = ({ projects }) => {
   const list = {
     active: [],
     closed: [],
-    upcoming: []
-  }
-  projects.forEach(p => {
-    if (list[p.status]) list[p.status].push(p)
-  })
+    upcoming: [],
+  };
+  projects.forEach((p) => {
+    if (list[p.status]) list[p.status].push(p);
+  });
 
   // sort desc by open_date
   for (var name in list) {
-    list[name].sort((a, b) => a.open_date >= b.open_date ? -1 : 1)
+    list[name].sort((a, b) => (a.open_date >= b.open_date ? -1 : 1));
   }
-  useEffect(() => {
-  }, [])
+  useEffect(() => {}, []);
   return (
     <div className="page  max-w-6xl page-projects-list scrollbar">
       <div className="">
         <div className="">
           <div className="projects--wrapper single">
-            {list.active.map(project => <CardProject key={project.id} project={project} />)}
+            {list.active.map((project) => (
+              <CardProject key={project.id} project={project} />
+            ))}
           </div>
         </div>
 
@@ -41,7 +36,9 @@ export const ProjectsList = ({ projects }) => {
           </div>
 
           <div className="projects--wrapper projects-grid ">
-            {list.upcoming.map(project => <CardProject key={project.id} project={project} />)}
+            {list.upcoming.map((project) => (
+              <CardProject key={project.id} project={project} />
+            ))}
           </div>
         </div>
 
@@ -51,12 +48,12 @@ export const ProjectsList = ({ projects }) => {
           </div>
 
           <div className="projects--wrapper projects-grid">
-            {list.closed.map(project => <CardProject key={project.id} project={project} />)}
+            {list.closed.map((project) => (
+              <CardProject key={project.id} project={project} />
+            ))}
           </div>
         </div>
-
-        
       </div>
     </div>
-  )
-}
+  );
+};

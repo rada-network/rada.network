@@ -1,18 +1,15 @@
 import { observer } from "mobx-react";
-import React, { createRef, useEffect, useState } from "react";
-// import PerfectScrollbar from "perfect-scrollbar";
-import Screen from "./utils/Responsive";
+import React, { useEffect, useState } from "react";
+
 import { PostListDetail } from "./card-layouts/PostListDetail";
 import { useTranslation } from "next-i18next";
 import { useStore } from "../lib/useStore";
 import { useRouter } from "next/router";
-import Profile from "./Profile";
-import ContentTools from "./ContentTools";
+
 import _ from "lodash";
 
 import { getTokenById } from "../data/query/getTokenById";
 
-import { Transition } from "@headlessui/react";
 import Siteintro from "./Intro";
 import { usePageStore } from "../lib/usePageStore";
 import utils from "../lib/util";
@@ -47,8 +44,12 @@ export const IndexRightBar = observer(({ intro }) => {
   useEffect(() => {
     if (window.location.hash) {
       const hash = window.location.hash.substr(1);
-      if (["overview","","invest","team","airdrop","share2earn"].indexOf(hash) !== -1) {
-        setTabName(hash)
+      if (
+        ["overview", "", "invest", "team", "airdrop", "share2earn"].indexOf(
+          hash
+        ) !== -1
+      ) {
+        setTabName(hash);
       }
     } else {
       setTabName("article");
@@ -75,9 +76,10 @@ export const IndexRightBar = observer(({ intro }) => {
     (ic) => ic.status == "published"
   );
 
-  const tokenInfo = detailStore?.data?.tokens && detailStore?.data?.tokens.length
-    ? detailStore?.data?.tokens[0]
-    : null;
+  const tokenInfo =
+    detailStore?.data?.tokens && detailStore?.data?.tokens.length
+      ? detailStore?.data?.tokens[0]
+      : null;
   useEffect(() => {
     tokenInfo &&
       getTokenById({ id: tokenInfo?.slug, lang: i18n.language }).then(function (
@@ -177,7 +179,7 @@ export const IndexRightBar = observer(({ intro }) => {
                         </div>
                       ))} */}
 
-                      {detailStore.data.tokens?.map((token,index) =>{
+                      {detailStore.data.tokens?.map((token, index) => {
                         if (index === 0) {
                           return (
                             <a
@@ -190,15 +192,23 @@ export const IndexRightBar = observer(({ intro }) => {
                               }}
                             >
                               <span className="token-symbol mr-2">
-                                {token &&
-                                <img src={token?.logo !== null ? token.logo : `https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`} className="h-px-20 w-px-20" alt={token?.name}/>
-                                }
+                                {token && (
+                                  <img
+                                    src={
+                                      token?.logo !== null
+                                        ? token.logo
+                                        : `https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`
+                                    }
+                                    className="h-px-20 w-px-20"
+                                    alt={token?.name}
+                                  />
+                                )}
                               </span>
                               <span className="tab-item--text !block">
                                 {token.symbol}
                               </span>
                             </a>
-                            )
+                          );
                         }
                       })}
 
@@ -215,9 +225,7 @@ export const IndexRightBar = observer(({ intro }) => {
                         <span className="icon">
                           <i class="fa-duotone fa-users"></i>
                         </span>
-                        <span className="tab-item--text">
-                          {t("team")}
-                        </span>
+                        <span className="tab-item--text">{t("team")}</span>
                       </a>
 
                       {investCampaign && (
@@ -233,9 +241,7 @@ export const IndexRightBar = observer(({ intro }) => {
                           <span className="icon">
                             <i class="fa-duotone fa-sack-dollar"></i>
                           </span>
-                          <span className="tab-item--text">
-                            {t("invest")}
-                          </span>
+                          <span className="tab-item--text">{t("invest")}</span>
                         </a>
                       )}
 
@@ -252,21 +258,19 @@ export const IndexRightBar = observer(({ intro }) => {
                           <span className="icon">
                             <i class="fa-duotone fa-gift"></i>
                           </span>
-                          <span className="tab-item--text">
-                            {t("airdrop")}
-                          </span>
+                          <span className="tab-item--text">{t("airdrop")}</span>
                         </a>
                       )}
 
                       {share2earn && (
                         <a
-                        href="#share2earn"
-                        className={`tab-item ${
-                          tabName === "share2earn" ? "tab-item--active" : ""
-                        }`}
-                        onClick={() => {
-                          setTabName("share2earn");
-                        }}
+                          href="#share2earn"
+                          className={`tab-item ${
+                            tabName === "share2earn" ? "tab-item--active" : ""
+                          }`}
+                          onClick={() => {
+                            setTabName("share2earn");
+                          }}
                         >
                           <span className="icon">
                             <i class="fa-duotone fa-gift"></i>
@@ -276,7 +280,6 @@ export const IndexRightBar = observer(({ intro }) => {
                           </span>
                         </a>
                       )}
-
                     </>
                   ) : (
                     ""

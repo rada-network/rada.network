@@ -1,165 +1,170 @@
-import React from 'react'
-import { createRef, Fragment, useEffect, useRef,useState,useCallback } from "react"
-import { observer } from "mobx-react"
-import { useStore } from '../lib/useStore'
+import React from "react";
+import { createRef, Fragment, useEffect, useState } from "react";
+import { observer } from "mobx-react";
+import { useStore } from "../lib/useStore";
 
-import {IoChevronBackSharp} from "react-icons/io5";
-
-import { Dialog, Transition } from "@headlessui/react"
-import styles from '../styles/modules/Dialog.wallet.module.css'
+import { Dialog, Transition } from "@headlessui/react";
+import styles from "../styles/modules/Dialog.wallet.module.css";
 import Avatar from "boring-avatars";
 
-import ReactTooltip from 'react-tooltip'
-import {useTranslation} from "next-i18next";
-import { getProviders, getSession, signIn } from "next-auth/client"
-import { useSession} from "next-auth/client"
-import Usermenu from "./Usermenu"
+import ReactTooltip from "react-tooltip";
+import { useTranslation } from "next-i18next";
+import { getProviders, getSession, signIn } from "next-auth/client";
 
+import Usermenu from "./Usermenu";
 
-export default function Profile(){
-	const [session,setSession] = useState()
-	useEffect(() => { 
-		let cancel = false
-		getSession().then((sess) => {
-			if(cancel) return 
-			setSession(sess);
-		})
-		return () => { 
-			cancel = true;
-		}
-	},[])
+export default function Profile() {
+  const [session, setSession] = useState();
+  useEffect(() => {
+    let cancel = false;
+    getSession().then((sess) => {
+      if (cancel) return;
+      setSession(sess);
+    });
+    return () => {
+      cancel = true;
+    };
+  }, []);
   // When rendering client side don't display anything until loading is complete
 
   // If no session exists, display access denied message
-  if (!session) { return <NotConnectedButton/> }
+  if (!session) {
+    return <NotConnectedButton />;
+  }
   // If session exists, display content
-	
+
   return (
-	<>
-	  <ConnectedButton user={session.user} />
-	</>
-  )
+    <>
+      <ConnectedButton user={session.user} />
+    </>
+  );
 }
 
-const ConnectedButton = ({user}) => {
-	if (user.id === "") return null
-	return (
-	  <Usermenu user={user} />
-	)
-}
+const ConnectedButton = ({ user }) => {
+  if (user.id === "") return null;
+  return <Usermenu user={user} />;
+};
 
 const NotConnectedButton = observer(({}) => {
-	const store = useStore()
-	const {t} = useTranslation()
-	const [providers,setProviders] = useState([])
-	useEffect(() => {
-		let cancel = false;
-	  getProviders().then(res => {
-			if (cancel) return;
-			setProviders(res)
-		})
-	  return () =>{
-			cancel = true
-		}
-	},[])
-	const btnRef = createRef()
-	const isOpen = store?.user.showingConnect
-	const openModal = () => store.user.showConnect(true)
-	const closeModal = () => { store.user.showConnect(false);  ReactTooltip.hide() }
-	return (
-	<>
-	<div onClick={ openModal } className="btn btn-default btn-login" aria-expanded="false" aria-haspopup="true">
-    <span className="icon">
-			<i className="fa-solid fa-user-circle"></i>
-		</span>
-    <span className="btn--text">{t("sign in")}</span>
-  </div>
+  const store = useStore();
+  const { t } = useTranslation();
+  const [providers, setProviders] = useState([]);
+  useEffect(() => {
+    let cancel = false;
+    getProviders().then((res) => {
+      if (cancel) return;
+      setProviders(res);
+    });
+    return () => {
+      cancel = true;
+    };
+  }, []);
+  const btnRef = createRef();
+  const isOpen = store?.user.showingConnect;
+  const openModal = () => store.user.showConnect(true);
+  const closeModal = () => {
+    store.user.showConnect(false);
+    ReactTooltip.hide();
+  };
+  return (
+    <>
+      <div
+        onClick={openModal}
+        className="btn btn-default btn-login"
+        aria-expanded="false"
+        aria-haspopup="true"
+      >
+        <span className="icon">
+          <i className="fa-solid fa-user-circle"></i>
+        </span>
+        <span className="btn--text">{t("sign in")}</span>
+      </div>
 
-	<Transition 
-		show={isOpen} 
-		as={Fragment}
-	>
-	  <Dialog
-		  as="div"
-		  id="modal"
-		  className={`dialog-outside-wrapper fixed inset-0 z-10 overflow-y-auto`}
-		  initialFocus={btnRef}
-		  static
-		  onClose={closeModal}
-		>
-		  <div className={`min-h-screen dialog-outside`}>
+      <Transition show={isOpen} as={Fragment}>
+        <Dialog
+          as="div"
+          id="modal"
+          className={`dialog-outside-wrapper fixed inset-0 z-10 overflow-y-auto`}
+          initialFocus={btnRef}
+          static
+          onClose={closeModal}
+        >
+          <div className={`min-h-screen dialog-outside`}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-1600"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <Dialog.Overlay className="dialog-overlay fixed inset-0" />
+            </Transition.Child>
 
-			<Transition.Child
-			  as={Fragment}
-			  enter="ease-out duration-300"
-			  enterFrom="opacity-0"
-			  enterTo="opacity-100"
-			  leave="ease-in duration-1600"
-			  leaveFrom="opacity-100"
-			  leaveTo="opacity-0"
-			>
-			  <Dialog.Overlay className="dialog-overlay fixed inset-0" />
-			</Transition.Child>
+            {/* This element is to trick the browser into centering the modal contents. */}
+            <span
+              className="inline-block h-screen align-middle"
+              aria-hidden="true"
+            >
+              &#8203;
+            </span>
 
-			{/* This element is to trick the browser into centering the modal contents. */}
-			<span
-			  className="inline-block h-screen align-middle"
-			  aria-hidden="true"
-			>
-			  &#8203;
-			</span>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-y-0"
+              enterTo="opacity-100 scale-y-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-y-100 h-full"
+              leaveTo="opacity-0 scale-y-0 h-0"
+            >
+              <div className={`inline-block w-full z-200 relative dialog`}>
+                <div className={`dialog-wrapper`}>
+                  {/* Dialog Header */}
+                  <div
+                    className={`dialog_header ${styles.dialog_header_wrapper}`}
+                  >
+                    <Dialog.Title
+                      as="div"
+                      className={`${styles.dialog_header}`}
+                    >
+                      <button
+                        type="button"
+                        className={`btn ${styles.btn_back}`}
+                        onClick={closeModal}
+                      >
+                        <span class="btn--caret-left"></span>
+                        <span className="btn--text font-normal">Back</span>
+                      </button>
 
-			<Transition.Child
-			  as={Fragment}
-			  enter="ease-out duration-300"
-			  enterFrom="opacity-0 scale-y-0"
-			  enterTo="opacity-100 scale-y-100"
-			  leave="ease-in duration-200"
-			  leaveFrom="opacity-100 scale-y-100 h-full"
-			  leaveTo="opacity-0 scale-y-0 h-0"
-			>
-
-			  <div className={`inline-block w-full z-200 relative dialog`}>
-
-				<div className={`dialog-wrapper`}>
-
-				  {/* Dialog Header */}
-				  <div className={`dialog_header ${styles.dialog_header_wrapper}`}>
-					<Dialog.Title
-					  as="div"
-					  className={`${styles.dialog_header}`}
-					>
-
-						<button type="button" className={`btn ${styles.btn_back}`} onClick={closeModal}>
-							<span class="btn--caret-left"></span>
-							<span className="btn--text font-normal">Back</span>
-						</button>
-
-						<h3 className="text-xl font-semibold">
-							Sign in
-							{/* <span
+                      <h3 className="text-xl font-semibold">
+                        Sign in
+                        {/* <span
 								className="hasTooltip"
 								data-tip="A blockchain wallet is an application or hardware device that allows users to transact, store, and exchange value on a blockchain, as well as monitor and manage their crypto assets."
 								data-event="click"
 							>  <i className="fa-duotone fa-info-circle text-base" />
 							</span>  */}
-						</h3>
+                      </h3>
 
-					  <div className="mt-4 text-white text-opacity-70 leading-6">
-						<p className="">
-						  Signing in to <b className="text-white text-opacity-100">vote</b> and <b className="text-white text-opacity-100">discuss</b> your interest topics
-						</p>
-					  </div>
-					</Dialog.Title>
-					<div className={`${styles.dialog_header__deco}`} />
-				  </div>
+                      <div className="mt-4 text-white text-opacity-70 leading-6">
+                        <p className="">
+                          Signing in to{" "}
+                          <b className="text-white text-opacity-100">vote</b>{" "}
+                          and{" "}
+                          <b className="text-white text-opacity-100">discuss</b>{" "}
+                          your interest topics
+                        </p>
+                      </div>
+                    </Dialog.Title>
+                    <div className={`${styles.dialog_header__deco}`} />
+                  </div>
 
-				  {/* Dialog Body */}
-				  <div className={`${styles.dialog_body_wrapper}`}>
-
-					<div className={`${styles.dialog_body}`}>
-
-					  {/* <div className={``}>
+                  {/* Dialog Body */}
+                  <div className={`${styles.dialog_body_wrapper}`}>
+                    <div className={`${styles.dialog_body}`}>
+                      {/* <div className={``}>
 						<ul>
 						  <li ref={btnRef}>
 							<a className={`btn btn-default disabled ${styles.btn}`} onClick={() => wallet.connect()}>
@@ -200,60 +205,68 @@ const NotConnectedButton = observer(({}) => {
 						</ul>
 					  </div> */}
 
-					  {/* <div className={`divider`}>
+                      {/* <div className={`divider`}>
 						<span>Or Connect with</span>
 					  </div> */}
 
-					  <div className={`${styles.social_login}`} ref={btnRef}>
-					  {Object.values(providers).map((provider) => (
-							<div key={provider.name}>
-								<a className={`btn btn-default btn-neutral ${styles.btn}`} onClick={() => signIn(provider.id)}>
-								<span className={`icon ${styles.btn_icon}`}>
-									<img src={process.env.NEXT_PUBLIC_CDN + "/images/icons/"+provider.id+".svg"} alt={provider.name} />
-								</span>
-								<div className={`${styles.btn_text}`}>
-									<span className="text-base font-semibold text-color-title">
-										{provider.name}
-									</span>
-								</div>
-								<i className={`fas fa-long-arrow-right ${styles.btn_arrow}`}/>
-								</a>
-							</div>
-					  ))}
-					  </div>
+                      <div className={`${styles.social_login}`} ref={btnRef}>
+                        {Object.values(providers).map((provider) => (
+                          <div key={provider.name}>
+                            <a
+                              className={`btn btn-default btn-neutral ${styles.btn}`}
+                              onClick={() => signIn(provider.id)}
+                            >
+                              <span className={`icon ${styles.btn_icon}`}>
+                                <img
+                                  src={
+                                    process.env.NEXT_PUBLIC_CDN +
+                                    "/images/icons/" +
+                                    provider.id +
+                                    ".svg"
+                                  }
+                                  alt={provider.name}
+                                />
+                              </span>
+                              <div className={`${styles.btn_text}`}>
+                                <span className="text-base font-semibold text-color-title">
+                                  {provider.name}
+                                </span>
+                              </div>
+                              <i
+                                className={`fas fa-long-arrow-right ${styles.btn_arrow}`}
+                              />
+                            </a>
+                          </div>
+                        ))}
+                      </div>
 
-					  {/* <div className="px-8 md:px-0 mt-6 md:mt-8">
+                      {/* <div className="px-8 md:px-0 mt-6 md:mt-8">
 							<p className="text-xs text-gray-400">
 								We have no access to your private key and funds without your confirmation
 							</p>
 					  </div> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Transition.Child>
+          </div>
+        </Dialog>
+      </Transition>
+    </>
+  );
+});
 
-					</div>
-
-				  </div>
-
-				</div>
-
-			  </div>
-			</Transition.Child>
-
-		  </div>
-
-		</Dialog>
-	  </Transition>
-	</>
-  )})
-
-const WalletAvatar = ({user}) => {
-	const text = user.name
-	return (
-	  <div className="">
-			<Avatar
-				size={16}
-				name={text}
-				variant="beam"
-				colors={["#8B5CF6", "#34D399", "#FEF3C7", "#FBBF24", "#EF4444"]}
-			/>
-	  </div>
-	)
-  }
+const WalletAvatar = ({ user }) => {
+  const text = user.name;
+  return (
+    <div className="">
+      <Avatar
+        size={16}
+        name={text}
+        variant="beam"
+        colors={["#8B5CF6", "#34D399", "#FEF3C7", "#FBBF24", "#EF4444"]}
+      />
+    </div>
+  );
+};

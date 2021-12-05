@@ -1,87 +1,96 @@
-import {observer} from "mobx-react";
-import {useCookies} from "react-cookie";
-import {useRouter} from "next/router";
-import {Transition,Popover} from "@headlessui/react"
-import { usePopper } from 'react-popper'
-import {useRef, useState} from "react";
-import { usePageStore} from "../lib/usePageStore"
+import { observer } from "mobx-react";
+import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
+import { Transition, Popover } from "@headlessui/react";
+import { usePopper } from "react-popper";
+import { useRef, useState } from "react";
+import { usePageStore } from "../lib/usePageStore";
 export const LanguageSwitch = observer(({}) => {
-  const {dataStore,detailStore} = usePageStore()
-  const [cookies, setCookie] = useCookies(['NEXT_LOCALE']);
-  const router = useRouter()
+  const { dataStore, detailStore } = usePageStore();
+  const [cookies, setCookie] = useCookies(["NEXT_LOCALE"]);
+  const router = useRouter();
   const handleChangeLanguage = (lang) => {
     // const lang = e.currentTarget.getAttribute("lang")
     ///dataStore.lang = lang
-    setCookie("NEXT_LOCALE",lang,{path : "/",maxAge: 24*7*3600})
+    setCookie("NEXT_LOCALE", lang, { path: "/", maxAge: 24 * 7 * 3600 });
     // buttonRef.current?.click()
-    closeChooser()
-    
-    if (dataStore.page === "item"){
-      if (detailStore.data && detailStore.data.multilang !== null){
+    closeChooser();
+
+    if (dataStore.page === "item") {
+      if (detailStore.data && detailStore.data.multilang !== null) {
         let targetObj = null;
-        targetObj = detailStore.data.multilang?.news[lang]
-        if (!targetObj){
-          targetObj = detailStore.data.multilang?.video[lang]
+        targetObj = detailStore.data.multilang?.news[lang];
+        if (!targetObj) {
+          targetObj = detailStore.data.multilang?.video[lang];
         }
-        if (targetObj){
-          detailStore.data = {}
-          router.push("/post/"+targetObj.slug,"/post/"+targetObj.slug,{locale:lang})
+        if (targetObj) {
+          detailStore.data = {};
+          router.push("/post/" + targetObj.slug, "/post/" + targetObj.slug, {
+            locale: lang,
+          });
+        } else {
+          detailStore.data = {};
+          router.push("/explore/" + dataStore.type, undefined, {
+            locale: lang,
+          });
         }
-        else{
-          detailStore.data = {}
-          router.push("/explore/"+dataStore.type,undefined,{locale:lang})
+      } else {
+        if (detailStore.data) {
+          detailStore.data = {};
+          router.push("/explore/" + dataStore.type, undefined, {
+            locale: lang,
+          });
+        } else {
+          router.push(router.asPath, undefined, { locale: lang });
         }
       }
-      else{
-        if (detailStore.data){
-          detailStore.data = {}
-          router.push("/explore/"+dataStore.type,undefined,{locale:lang})
-        }
-        else{
-          router.push(router.asPath,undefined,{locale:lang})
-        }
-      }
+    } else {
+      router.push(router.asPath, undefined, { locale: lang });
     }
-    else{
-      router.push(router.asPath,undefined,{locale:lang})
-    }
-    
+
     //router.reload()
-  }
+  };
 
   const closeChooser = () => {
-    buttonRef.current?.click()
-  }
+    buttonRef.current?.click();
+  };
 
-  let langDisplay = ''
-  if (dataStore.lang === 'vi' ){
-    langDisplay = 'vi'
+  let langDisplay = "";
+  if (dataStore.lang === "vi") {
+    langDisplay = "vi";
+  } else {
+    langDisplay = "en";
   }
-  else{
-    langDisplay = 'en'
-  }
-  let [referenceElement, setReferenceElement] = useState()
-  let [popperElement, setPopperElement] = useState()
-  let { styles, attributes } = usePopper(referenceElement, popperElement)
+  let [referenceElement, setReferenceElement] = useState();
+  let [popperElement, setPopperElement] = useState();
+  let { styles, attributes } = usePopper(referenceElement, popperElement);
   const buttonRef = useRef();
 
-  const Lang = ({lang, title}) => {
-    return (dataStore.lang==lang) ?
-    <div className="popper-item active" lang={lang} onClick={closeChooser}>
-      <span className="popper-item--text">{title}</span>
-    </div>
-    :
-    <div className="popper-item" onClick={() => {handleChangeLanguage(lang)}} lang={lang}>
-      <span className="popper-item--text">{title}</span>
-    </div>
-  }
+  const Lang = ({ lang, title }) => {
+    return dataStore.lang == lang ? (
+      <div className="popper-item active" lang={lang} onClick={closeChooser}>
+        <span className="popper-item--text">{title}</span>
+      </div>
+    ) : (
+      <div
+        className="popper-item"
+        onClick={() => {
+          handleChangeLanguage(lang);
+        }}
+        lang={lang}
+      >
+        <span className="popper-item--text">{title}</span>
+      </div>
+    );
+  };
 
   return (
     <Popover className="relative">
-      
-      <Popover.Panel ref={setPopperElement}
-                     style={styles.popper}
-                     {...attributes.popper}>
+      <Popover.Panel
+        ref={setPopperElement}
+        style={styles.popper}
+        {...attributes.popper}
+      >
         {({ close }) => (
           <Transition
             enter="transition ease-out duration-100"
@@ -91,28 +100,32 @@ export const LanguageSwitch = observer(({}) => {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-0"
           >
-          <div className={`popper`}>
-            <Lang lang="vi" title="Tiếng Việt" />
-            <Lang lang="en" title="English" />
-            {/* <div className="popper-item" onClick={async (e) => {handleChangeLanguage(e)}} lang={'vi'}>
+            <div className={`popper`}>
+              <Lang lang="vi" title="Tiếng Việt" />
+              <Lang lang="en" title="English" />
+              {/* <div className="popper-item" onClick={async (e) => {handleChangeLanguage(e)}} lang={'vi'}>
               <span className="popper-item--text">Tiếng Việt</span>
             </div>
             <div className="popper-item" onClick={async (e) => {handleChangeLanguage(e)}} lang={'en'}>
               <span className="popper-item--text">English</span>
             </div> */}
-          </div>
+            </div>
           </Transition>
         )}
       </Popover.Panel>
 
-      <Popover.Button ref={buttonRef} className="btn btn-default btn-switch-lang" title="Change Language">
+      <Popover.Button
+        ref={buttonRef}
+        className="btn btn-default btn-switch-lang"
+        title="Change Language"
+      >
         <div>
-          <span className="icon"><i className="fal fa-globe"/></span>
+          <span className="icon">
+            <i className="fal fa-globe" />
+          </span>
           <span className="btn--text">{langDisplay.toUpperCase()}</span>
         </div>
       </Popover.Button>
-
     </Popover>
-
-  )
-})
+  );
+});

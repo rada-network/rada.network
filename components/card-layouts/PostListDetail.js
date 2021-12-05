@@ -1,19 +1,14 @@
-import { RiExternalLinkLine } from "react-icons/ri";
-import Link from "next/link";
 import { CommentList } from "../comments/commentList";
-import React, { createRef, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import PerfectScrollbar from "perfect-scrollbar";
 
-import { getTokenById } from "../../data/query/getTokenById";
-
 import { observer } from "mobx-react";
-import { getSourceFromUri, getSourceVideoFromUri } from "./PostsList";
+import { getSourceVideoFromUri } from "./PostsList";
 import utils from "../../lib/util";
 import { Vote } from "../vote/Vote";
 import { useTranslation } from "next-i18next";
 import { getItemById } from "../../data/query/getItem";
 import ContentLoader from "react-content-loader";
-import TokenInfo from "../token/TokenInfo";
 import TokenInfoAirdrop from "../token/TokenInfoAirdrop";
 import TokenInfoInvest from "../token/TokenInfoInvest";
 import TokenInfoTeam from "../token/TokenInfoTeam";
@@ -21,7 +16,6 @@ import TokenInfoGeneral from "../token/TokenInfoGeneral";
 
 import Footnote from "../Footnote";
 import PostNotice from "../PostNotice";
-import PostNoticeVideo from "../PostNoticeVideo";
 
 import { usePageStore } from "../../lib/usePageStore";
 import { PostDetailAuthor } from "./PostDetailAuthor";
@@ -59,8 +53,7 @@ export const PostListDetail = observer(
       (ic) => ic.status == "published"
     );
     useEffect(() => {
-      tokenId &&
-        getCoinInfo(tokenData?.symbol);
+      tokenId && getCoinInfo(tokenData?.symbol);
     }, [tokenId]);
 
     useEffect(() => {
@@ -191,8 +184,8 @@ export const PostListDetail = observer(
           } */}
             {/* News Post Detail Content */}
             {detailStore.type === "news" ||
-              detailStore.type === "rada" ||
-              detailStore.type === "projects" ? (
+            detailStore.type === "rada" ||
+            detailStore.type === "projects" ? (
               tabName === "article" ? (
                 <NewsDetail
                   item={item}
@@ -273,14 +266,14 @@ const VideoDetail = function ({ item, dateTitle, date, setTabCallback }) {
               href={item.websiteUri ? item.websiteUri : item.url}
               className=""
             >
-              <span className="post-title--text" itemProp="name">{item.title}</span>
+              <span className="post-title--text" itemProp="name">
+                {item.title}
+              </span>
               <span className="btn btn-post-link" title={t("visit website")}>
                 <span className="icon">
                   <i className="fa-duotone fa-external-link" />
                 </span>
-                <span className="btn--text sr-only">
-                  {t("visit website")}
-                </span>
+                <span className="btn--text sr-only">{t("visit website")}</span>
               </span>
             </a>
           </h1>
@@ -377,8 +370,8 @@ const NewsDetail = observer(function ({
   }
   const { t } = useTranslation();
   useEffect(() => {
-    windowResize()
-  },[]);
+    windowResize();
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", windowResize);
@@ -388,11 +381,15 @@ const NewsDetail = observer(function ({
   }, []);
 
   const windowResize = () => {
-    const parentNewsWidth = document.querySelector(".main-layout").getBoundingClientRect().width;
+    const parentNewsWidth = document
+      .querySelector(".main-layout")
+      .getBoundingClientRect().width;
     const floatButton = document.querySelector(".floating-btn--container");
-    const windowSize = document.querySelector(".body-decor").getBoundingClientRect().width;
+    const windowSize = document
+      .querySelector(".body-decor")
+      .getBoundingClientRect().width;
     const padding = (parseInt(windowSize) - parseInt(parentNewsWidth)) / 2;
-    floatButton.style.paddingRight = padding + "px";  
+    floatButton.style.paddingRight = padding + "px";
   };
 
   useEffect(() => {
@@ -412,13 +409,13 @@ const NewsDetail = observer(function ({
     }
   }, [item.contentDisplay]);
 
-
   return (
     <div
       className={
         `section post-detail post-detail-news` + (isRada ? " post-rada" : "")
       }
-      itemScope itemType="http://schema.org/Article"
+      itemScope
+      itemType="http://schema.org/Article"
     >
       {/* Post Header */}
       <div className="section-header post-header">
@@ -433,7 +430,9 @@ const NewsDetail = observer(function ({
               href={item.websiteUri ? item.websiteUri : item.url}
               className=""
             >
-              <span className="post-title--text" itemProp="name">{title}</span>
+              <span className="post-title--text" itemProp="name">
+                {title}
+              </span>
               {item.websiteUri !== null && (
                 <span className="btn btn-post-link" title={t("visit website")}>
                   <span className="icon">
@@ -453,7 +452,12 @@ const NewsDetail = observer(function ({
               <PostDetailAuthor isRada={isRada} item={item} />
             </div>
             <div className="metadata metadata-date">
-              <span className="metadata-value" title={dateTitle} itemProp="datePublished" content={item.createdAt}>
+              <span
+                className="metadata-value"
+                title={dateTitle}
+                itemProp="datePublished"
+                content={item.createdAt}
+              >
                 {date}
               </span>
             </div>
@@ -504,7 +508,7 @@ const NewsDetail = observer(function ({
             </a>
           </div>
         )}
-        <FloatButton mainScroll={scrollRef}/>
+        <FloatButton mainScroll={scrollRef} />
       </div>
     </div>
   );
@@ -555,7 +559,9 @@ const SocialTweetDetail = function ({ item, date, dateTitle, setTabCallback }) {
               href={item.websiteUri ? item.websiteUri : item.url}
               className=""
             >
-              <span className="post-title--text" itemProp="name">{item.title}</span>
+              <span className="post-title--text" itemProp="name">
+                {item.title}
+              </span>
               <span className="btn btn-post-link" title="Visit Website">
                 <span className="icon">
                   <i className="fa-duotone fa-external-link" />

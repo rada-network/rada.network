@@ -2,13 +2,10 @@ import "../styles/tw.css";
 import "../styles/globals.css";
 import "../styles/styles.css";
 
-import NextNprogress from "nextjs-progressbar";
 import { CookiesProvider } from "react-cookie";
 // import { Provider } from 'mobx-react'
 import { StoreProvider, useStore } from "../lib/useStore";
 import { ThemeProvider } from "next-themes";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import { configure } from "mobx";
 import { useEffect } from "react";
@@ -20,6 +17,10 @@ import { Provider, useSession, signOut } from "next-auth/client";
 import { useCookies } from "react-cookie";
 import { PageStoreProvider, usePageStore } from "../lib/usePageStore";
 import Providers from "../utils/providers";
+import dynamic from "next/dynamic";
+
+const Nprogress = dynamic(() => import("@components/Nprogress"));
+const Toast = dynamic(() => import("@components/Toast"));
 
 function parseJwt(token) {
   var base64Payload = token.split(".")[1];
@@ -155,29 +156,11 @@ const TokenRankingStore = ({
     <ThemeProvider attribute="class">
       <PageStoreProvider>
         <StoreProvider>
-          <NextNprogress
-            options={{ showSpinner: false }}
-            color="#8B5CF6"
-            startPosition={0.3}
-            stopDelayMs={200}
-            height={3}
-            showOnShallow={true}
-          />
+          <Nprogress />
           <CookiesProvider>
             <Provider session={pageProps.session}>
               <MyApp Component={Component} pageProps={pageProps} />
-              <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-              />
+              <Toast />
             </Provider>
           </CookiesProvider>
         </StoreProvider>
