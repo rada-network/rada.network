@@ -2,7 +2,7 @@ import React from "react";
 import { useRef, useState, useEffect } from "react";
 import { isMobile, isBrowser } from "react-device-detect";
 
-const Toc = ({ mainScroll }) => {
+const Toc = ({ mainScroll, handleCloseFloatButton }) => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
   const refToc = useRef();
 
@@ -40,6 +40,7 @@ const Toc = ({ mainScroll }) => {
 
   useEffect(() => {
     if (mainScroll.current != null && mainScroll.current != undefined) {
+      scrollActiveToc();
       mainScroll.current.addEventListener("scroll", scrollActiveToc);
     }
     return () => {
@@ -64,7 +65,7 @@ const Toc = ({ mainScroll }) => {
     });
     if (visibleElements.length > 0) {
       if (visibleElements[0].tagName == "H2") {
-        handleClickToc(null, "parent" + visibleElements[0].id);
+        handleClickToc(null, "parent" + visibleElements[0].id,false);
       } else if (visibleElements[0].tagName == "H3") {
         const h3Elements = document.querySelectorAll("h3");
         for (var i = 0; i < h3Elements.length; i++) {
@@ -139,11 +140,12 @@ const Toc = ({ mainScroll }) => {
     return false;
   }
 
-  const handleClickToc = (parentId, myId) => {
+  const handleClickToc = (parentId, myId,isShow) => {
     let element = document.getElementById(myId);
     if (!element) {
       return false;
     }
+    if (handleCloseFloatButton && isShow) handleCloseFloatButton.call()
     var currentActive = document.querySelectorAll(".toc--active")
     for (var i = 0; i < currentActive.length; i++) {
       currentActive[i].className = currentActive[i].classList.remove("toc--active");
@@ -179,7 +181,7 @@ const Toc = ({ mainScroll }) => {
                     id={"parent" + heading.id}
                     href={`#${heading.id}`}
                     onClick={(e) => {
-                      handleClickToc(null, "parent" + heading.id)
+                      handleClickToc(null, "parent" + heading.id,true)
                       e.preventDefault();
                       document.querySelector(`#${heading.id}`).scrollIntoView({
                         behavior: "smooth"
@@ -197,7 +199,7 @@ const Toc = ({ mainScroll }) => {
                             href={`#${child.id}`}
                             className="menu"
                             onClick={(e) => {
-                              handleClickToc("parent" + heading.id, "child" + child.id);
+                              handleClickToc("parent" + heading.id, "child" + child.id,true);
                               e.preventDefault();
                               document.querySelector(`#${child.id}`).scrollIntoView({
                                 behavior: "smooth"
