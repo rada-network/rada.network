@@ -366,7 +366,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
                 </span>
                 {referralInfo.claimableApproved} RIR
                 <div>
-                  {!referralInfo.isDeny && !claimDisbaled && referralInfo.claimableApproved > referralInfo.allowClaimValue && (
+                  {!referralInfo.isDeny && !claimDisbaled && referralInfo.claimableApproved >= referralInfo.allowClaimValue && (
                     <button className="btn btn-primary px-2 py-1 ml-4"
                       onClick={handleClaimRIRToken}
                     >Claim</button>
