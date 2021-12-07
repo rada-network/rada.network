@@ -37,7 +37,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const [mergeUploadImgs, setMergeUploadImgs] = useState({});
   const [baseFrames, setBaseFrames] = useState({});
   const [userAvatar, setUserAvatar] = useState(null);
-  const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '', incentivePaid: '' })
+  const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '', incentivePaid: '', isDeny: false })
   const [campaignEnded, setCampaignEnded] = useState(true);
   // Banner component 
   let bannerURL;
@@ -86,7 +86,11 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
     const getInfo = async () => {
       const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account])
       const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account])
-      const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account.toString()])
+      const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account])
+      const denyUser = await callFunction(referralAdminContract, 'denyUser', [project.id.toString(), account])
+
+      console.log("Deny user")
+      console.log(denyUser)
       setReferralInfo({ level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString()), incentivePaid: parseInt(incentivePaid.toString()) })
     }
     if (!!library && !!share2earnContract) {
@@ -326,6 +330,25 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
             share2earnInfo={share2earnInfo}
             project={project}
             uid={uid} />
+
+          {!share2earnInfo.isDeny && (
+            <div className="mt-4 rounded-lg border border-yellow-200 bg-yellow-400 bg-opacity-5 text-sm overflow-hidden">
+              <div className="px-4 py-2 bg-yellow-400 bg-opacity-10 dark:bg-opacity-100 dark:bg-gray-800 flex items-center">
+                <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+                <span className="font-semibold">Thông báo.</span>
+              </div>
+              <ul className="p-4">
+                <li className="mb-2">Xin chúc mừng bạn đã bị ban.</li>
+              </ul>
+            </div>
+          )}
+
+          {campaignEnded && (
+            <div>
+
+            </div>
+          )}
+
           {(!campaignEnded) && (
             <ol className="text-sm space-y-8">
 
