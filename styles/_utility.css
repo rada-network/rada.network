@@ -237,3 +237,6 @@
 .message.warning .message-icon {
   @apply text-yellow-600;
 }
+.message.error {
+  @apply bg-red-600 text-white;
+}

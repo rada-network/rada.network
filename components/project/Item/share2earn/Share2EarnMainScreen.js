@@ -342,13 +342,27 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                   <i class="text-base fas fa-times"></i>
                 </button>
               </div>
+
+              <div className="message error flex relative mb-2 ">
+                <span className="message-icon">
+                  <i class="mr-2 fas fa-exclamation-triangle"></i>
+                </span>
+                <div className="message-content pr-2">
+                  Your account was banned from the system due to suspicious activities.
+                </div>
+                <button onClick={e => { setIsWarning(false) }} className="flex items-center ml-auto w-4 h-4 ">
+                  <i class="text-base fas fa-times"></i>
+                </button>
+              </div>
+
+
               {/* <h1 className="">
               <span className="text-xl lg:text-lg font-semibold text-color-title">
                 Welcome to The Parallel #Share2Earn event
               </span>
             </h1> */}
               {/* <p className="text-sm opacity-75">
-              {t("main step des")}
+              {t("main step des")}P
             </p> */}
             </div>
           )}

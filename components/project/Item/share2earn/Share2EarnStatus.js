@@ -325,6 +325,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
               </div>
             </li>
 
+
             {/* Số RIR có thể claim */}
             <li className="list-pair !items-center mb-2">
               <div className="list-key">
@@ -340,9 +341,26 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
                   <RadaSvg />
                 </span>
                 {referralInfo.claimableApproved} RIR
+                <div>
+                  <button className="btn btn-primary px-2 py-1 ml-4">Claim</button>
+                </div>
+
+              </div>
+          
+            </li>
+            <li>
+              <div className="message warning flex relative mb-2 ">
+                <span className="message-icon">
+                  <i class="mr-2 fas fa-bullhorn"></i>
+                </span>
+                <div className="message-content pr-2">
+                  You need an additional 0.8 RIR to claim. Your RIR will be accummulated .... 
+                </div>
+                <button onClick={e => { setIsWarning(false) }} className="flex items-center ml-auto w-4 h-4 ">
+                  <i class="text-base fas fa-times"></i>
+                </button>
               </div>
             </li>
-
             {/*<li className="list-pair !items-center mb-2">
               <div className="list-key">
                 {t("main status ranking")}
