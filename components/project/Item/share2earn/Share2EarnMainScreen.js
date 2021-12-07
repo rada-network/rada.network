@@ -46,7 +46,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '', incentivePaid: '', isDeny: false, allowClaimValue: 0.0, claimableApproved: 0.0 })
   const [campaignEnded, setCampaignEnded] = useState(true);
   const [claimDisbaled, setClaimDisbaled] = useState(false);
-  
+
   // Banner component 
   let bannerURL;
   if (detailStore.selectedBanner === "LinkedIn") {
@@ -99,12 +99,14 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
       const allowClaimValue = await callFunction(referralAdminContract, 'allowClaimValue', [project.id.toString()]);
       const claimableApproved = await callFunction(referralAdminContract, 'claimableApproved', [riraddress, account]);
 
-      setReferralInfo({ level1: parseInt(level1Incentive.toString()), 
-        level2: parseInt(level2Incentive.toString()), 
-        incentivePaid: parseInt(incentivePaid.toString()), 
-        isDeny: denyUser, 
+      setReferralInfo({
+        level1: parseInt(level1Incentive.toString()),
+        level2: parseInt(level2Incentive.toString()),
+        incentivePaid: parseInt(incentivePaid.toString()),
+        isDeny: denyUser,
         allowClaimValue: parseFloat(ethers.utils.formatEther(allowClaimValue)),
-        claimableApproved: parseFloat(ethers.utils.formatEther(claimableApproved))})
+        claimableApproved: parseFloat(ethers.utils.formatEther(claimableApproved))
+      })
     }
     if (!!library && !!share2earnContract) {
       getInfo()
@@ -343,17 +345,19 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                 </button>
               </div>
 
-              <div className="message error flex relative mb-2 ">
-                <span className="message-icon">
-                  <i class="mr-2 fas fa-exclamation-triangle"></i>
-                </span>
-                <div className="message-content pr-2">
-                  Your account was banned from the system due to suspicious activities.
+              { referralInfo.isDeny && (
+                <div className="message error flex relative mb-2 ">
+                  <span className="message-icon">
+                    <i class="mr-2 fas fa-exclamation-triangle"></i>
+                  </span>
+                  <div className="message-content pr-2">
+                    {t("ban_message")}
+                  </div>
+                  <button onClick={e => { setIsWarning(false) }} className="flex items-center ml-auto w-4 h-4 ">
+                    <i class="text-base fas fa-times"></i>
+                  </button>
                 </div>
-                <button onClick={e => { setIsWarning(false) }} className="flex items-center ml-auto w-4 h-4 ">
-                  <i class="text-base fas fa-times"></i>
-                </button>
-              </div>
+              )}
 
 
               {/* <h1 className="">
@@ -575,16 +579,16 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
             </ol>
           )}
-          {campaignEnded && !referralInfo.isDeny && !claimDisbaled && referralInfo.claimableApproved > referralInfo.allowClaimValue && (
+          {/* {campaignEnded && !referralInfo.isDeny && !claimDisbaled && referralInfo.claimableApproved > referralInfo.allowClaimValue && (
             <div className="mb-8 items-center text-base mt-4 md:ml-14">
               <div className="p-4">
                 <button className="w-full btn btn-yellow justify-center py-3" type="submit"
                   onClick={handleClaimRIRToken}
                 >Claim RIR</button>
-              </div>  
+              </div>
             </div>
-            
-          )}
+
+          )} */}
 
           {/* <div className="lg:pl-14">
             <button className="w-full mt-4 btn btn-yellow justify-center py-3 px-4" type="submit"

@@ -11,16 +11,19 @@ import { Fragment } from 'react'
 import ReactTooltip from 'react-tooltip';
 import { createShortenLink } from "@data/query/createShortenLink"
 import { SHORT_SHARE2EARN_URL } from "@config/links"
+import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 
 const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddress, incentivePaid, share2earnAdress, share2earnInfo, project, uid }) => {
   const { t } = useTranslation('share2earn')
   const { callFunction } = useCallFunction()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
+  const { callWithGasPrice } = useCallWithGasPrice();
   const bscURL = getBscScanURL(share2earnAdress)
   const riraddress = getRIRAddress()
   const [earnedRIR, setEarnedRIR] = useState(0.0)
   const [total, setTotal] = useState(0.0)
   const [shareLink, setShareLink] = useState('')
+  const [claimDisbaled, setClaimDisbaled] = useState(false);
 
   let [isOpen, setIsOpen] = useState(false)
 
@@ -80,7 +83,28 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
     setTotal(total)
   }, [referralInfo]);
 
-
+  const handleClaimRIRToken = async function (e) {
+    try {
+      setClaimDisbaled(true)
+      const tx = await callWithGasPrice(adminContract, "claim", [projectID.toString()])
+      const receipt = await tx.wait()
+      if (receipt.status) {
+        toast.success(t("Claim success!"))
+      }
+    } catch (error) {
+      setClaimDisbaled(false)
+      console.log(error)
+      if (!!error?.data?.message) {
+        toast.error(t(error?.data?.message?.replace("execution reverted: ", "")))
+      }
+      else if (!!error?.message) {
+        toast.error(t(error?.message))
+      }
+      else {
+        toast.error(t(error))
+      }
+    }
+  };
 
   return (
     <>
@@ -342,25 +366,43 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
                 </span>
                 {referralInfo.claimableApproved} RIR
                 <div>
-                  <button className="btn btn-primary px-2 py-1 ml-4">Claim</button>
+                  {!referralInfo.isDeny && !claimDisbaled && referralInfo.claimableApproved > referralInfo.allowClaimValue && (
+                    <button className="btn btn-primary px-2 py-1 ml-4"
+                      onClick={handleClaimRIRToken}
+                    >Claim</button>
+                  )}
                 </div>
 
               </div>
-          
+
             </li>
+
+            {/* Feedback URL */}
+            <li className="list-pair !items-center mb-2">
+              <div className="list-key">
+                Feedback URL
+              </div>
+              <div className="w-auto px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-700">
+                <div>
+                  <a target="_blank" href={t("feedback")}>{t("feedback")}</a>
+                </div>
+              </div>
+            </li>
+
             <li>
               <div className="message warning flex relative mb-2 ">
                 <span className="message-icon">
                   <i class="mr-2 fas fa-bullhorn"></i>
                 </span>
                 <div className="message-content pr-2">
-                  You need an additional 0.8 RIR to claim. Your RIR will be accummulated .... 
+                  {t("rir_not_enough")}
                 </div>
-                <button onClick={e => { setIsWarning(false) }} className="flex items-center ml-auto w-4 h-4 ">
+                <button className="flex items-center ml-auto w-4 h-4 ">
                   <i class="text-base fas fa-times"></i>
                 </button>
               </div>
             </li>
+
             {/*<li className="list-pair !items-center mb-2">
               <div className="list-key">
                 {t("main status ranking")}

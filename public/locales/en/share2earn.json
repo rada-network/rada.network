@@ -43,5 +43,8 @@
   "notice line 3": "• Share2Earn doesn’t work on built-in Wallet’s browser.",
   "notice": "Notice",
   "qualified examples": "Qualified examples",
-  "campaign_ended_message": "Share2Earn program has ended. Follow Rada's channel to receive the next announcements about the program"
+  "campaign_ended_message": "Share2Earn program has ended. Follow Rada's channel to receive the next announcements about the program",
+  "ban_message": "Your RIRs are not approved due to suspicious activities.",
+  "rir_not_enough": "Your RIRs can only be claimed when it's integer (1 RIR, 2 RIR..), the reward amount will stay remain in your account.",
+  "feedback": "https://bom.so/TBkjmq"
 }
