@@ -561,14 +561,15 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
             </ol>
           )}
-
-          {campaignEnded && !referralInfo.isDeny && !claimDisbaled && (
-            // Todo: Hiển thị box show thông tin số RIR có thể claim và button claim
-            <div>
-              <button className="w-full btn btn-yellow justify-center py-3" type="submit"
-                onClick={handleClaimRIRToken}
-              >Claim RIR</button>
+          {campaignEnded && !referralInfo.isDeny && !claimDisbaled && referralInfo.claimableApproved > referralInfo.allowClaimValue && (
+            <div className="mb-8 items-center text-base mt-4 md:ml-14">
+              <div className="p-4">
+                <button className="w-full btn btn-yellow justify-center py-3" type="submit"
+                  onClick={handleClaimRIRToken}
+                >Claim RIR</button>
+              </div>  
             </div>
+            
           )}
 
           {/* <div className="lg:pl-14">
