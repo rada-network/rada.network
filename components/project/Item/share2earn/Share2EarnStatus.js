@@ -325,6 +325,24 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
               </div>
             </li>
 
+            {/* Số RIR có thể claim */}
+            <li className="list-pair !items-center mb-2">
+              <div className="list-key">
+                Claimable RIR
+                <span
+                  className="hasTooltip"
+                  data-event="click"
+                > <i className="fa-duotone fa-info-circle text-base" />
+                </span>
+              </div>
+              <div className="ml-auto flex items-center">
+                <span class="icon w-4 h-4 mr-1">
+                  <RadaSvg />
+                </span>
+                {referralInfo.allowClaimValue} RIR
+              </div>
+            </li>
+
             {/*<li className="list-pair !items-center mb-2">
               <div className="list-key">
                 {t("main status ranking")}

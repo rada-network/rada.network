@@ -15,16 +15,19 @@ import Share2EarnStatus from "./Share2EarnStatus"
 import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useShare2EarnContract, useReferralAdminContract } from "@utils/hooks/useContracts"
 import { toast } from "react-toastify"
+import { ethers } from "ethers"
+import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 
 
 
 const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, referralAdminAddress, share2earnInfo }) => {
-  const store = useStore()
+  const store = useStore();
   const { detailStore } = usePageStore();
-  const context = useActiveWeb3React()
-  const { library, account } = context
-  const { t } = useTranslation('share2earn')
-  const { callFunction } = useCallFunction()
+  const context = useActiveWeb3React();
+  const { library, account } = context;
+  const { t } = useTranslation('share2earn');
+  const { callFunction } = useCallFunction();
+  const { callWithGasPrice } = useCallWithGasPrice();
 
 
   const [facebook, setFacebook] = useState({ disable: false, url: "" });
@@ -37,8 +40,10 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const [mergeUploadImgs, setMergeUploadImgs] = useState({});
   const [baseFrames, setBaseFrames] = useState({});
   const [userAvatar, setUserAvatar] = useState(null);
-  const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '', incentivePaid: '' })
+  const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '', incentivePaid: '', isDeny: false, allowClaimValue: 0.0 })
   const [campaignEnded, setCampaignEnded] = useState(true);
+  const [claimDisbaled, setClaimDisbaled] = useState(false);
+  
   // Banner component 
   let bannerURL;
   if (detailStore.selectedBanner === "LinkedIn") {
@@ -86,13 +91,39 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
     const getInfo = async () => {
       const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account])
       const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account])
-      const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account.toString()])
-      setReferralInfo({ level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString()), incentivePaid: parseInt(incentivePaid.toString()) })
+      const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account])
+      const denyUser = await callFunction(referralAdminContract, 'denyUser', [project.id.toString(), account])
+      const allowClaimValue = await callFunction(referralAdminContract, 'allowClaimValue', [project.id.toString()])
+
+      setReferralInfo({ level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString()), incentivePaid: parseInt(incentivePaid.toString()), isDeny: denyUser, allowClaimValue: parseFloat(ethers.utils.formatEther(allowClaimValue)) })
     }
     if (!!library && !!share2earnContract) {
       getInfo()
     }
-  }, [])
+  }, []);
+
+  const handleClaimRIRToken = async function (e) {
+    try {
+      setClaimDisbaled(true)
+      const tx = await callWithGasPrice(referralAdminContract, "claim", [project.id.toString()])
+      const receipt = await tx.wait()
+      if (receipt.status) {
+        toast.success(t("Claim success!"))
+      }
+    } catch (error) {
+      setClaimDisbaled(false)
+      console.log(error)
+      if (!!error?.data?.message) {
+        toast.error(t(error?.data?.message?.replace("execution reverted: ", "")))
+      }
+      else if (!!error?.message) {
+        toast.error(t(error?.message))
+      }
+      else {
+        toast.error(t(error))
+      }
+    }
+  };
 
   // Create or update url
 
@@ -326,6 +357,21 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
             share2earnInfo={share2earnInfo}
             project={project}
             uid={uid} />
+
+          {/* {!share2earnInfo.isDeny && (
+            <div className="mt-4 rounded-lg border border-yellow-200 bg-yellow-400 bg-opacity-5 text-sm overflow-hidden">
+              <div className="px-4 py-2 bg-yellow-400 bg-opacity-10 dark:bg-opacity-100 dark:bg-gray-800 flex items-center">
+                <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+                <span className="font-semibold">Thông báo.</span>
+              </div>
+              <ul className="p-4">
+                <li className="mb-2">Xin chúc mừng bạn đã bị ban.</li>
+              </ul>
+            </div>
+          )} */}
+
+
+
           {(!campaignEnded) && (
             <ol className="text-sm space-y-8">
 
@@ -507,7 +553,14 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
             </ol>
           )}
 
-
+          {campaignEnded && referralInfo.isDeny && !claimDisbaled && (
+            // Todo: Hiển thị box show thông tin số RIR có thể claim và button claim
+            <div>
+              <button className="w-full btn btn-yellow justify-center py-3" type="submit"
+                onClick={handleClaimRIRToken}
+              >Claim RIR</button>
+            </div>
+          )}
 
           {/* <div className="lg:pl-14">
             <button className="w-full mt-4 btn btn-yellow justify-center py-3 px-4" type="submit"
