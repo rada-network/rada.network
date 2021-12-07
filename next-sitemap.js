@@ -1,0 +1,30 @@
+module.exports = {
+  siteUrl: 'https://rada.network',
+  generateRobotsTxt: true,
+  exclude: [
+    '/sitemap/*',
+    '*/sitemap/*',
+    '/launchverse',
+    '*/launchverse',
+    '/concepts',
+    '*/concepts',
+    '/concepts/*',
+    '*/concepts/*',
+    '/concepts/*/*',
+    '*/concepts/*/*',
+    "/projects",
+    "*/projects",
+    "/projects/*",
+    "*/projects/*",
+    "*/s/*",
+    "/s/*",
+    "/user/*",
+    "*/user/*",
+  ],
+  robotsTxtOptions: {
+    additionalSitemaps: [
+      'https://rada.network/en/sitemap/main.xml',
+      'https://rada.network/vi/sitemap/main.xml',
+    ],
+  },
+}

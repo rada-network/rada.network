@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://rada.network
+
+# Sitemaps
+Sitemap: https://rada.network/en/sitemap/main.xml
+Sitemap: https://rada.network/vi/sitemap/main.xml

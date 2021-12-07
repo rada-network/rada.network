@@ -3,8 +3,8 @@ import ProjectLaunchpad from "./Launchpad";
 import ProjectDetails from "./Details";
 import ProjectShare2Earn from "./Share2Earn";
 import { useEffect, useRef, useState } from "react";
-import TocSideBar from "pages/launchverse/toc/TocSidebar";
-import FloatButton from "pages/launchverse/toc/FloatingButton";
+import TocSideBar from "@components/toc/TocSidebar";
+import FloatButton from "@components/toc/FloatingButton";
 import Screen from "../../utils/Responsive";
 
 export default function ProjectItem({ project, page, slug }) {

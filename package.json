@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "postbuild": "next-sitemap",
     "upload:static": "aws s3 sync .next/ s3://cdn.rada.network/_next/",
     "upload:public": "aws s3 sync public/ s3://cdn.rada.network/",
     "build": "next build",
@@ -75,6 +76,7 @@
     "autoprefixer": "^10.2.5",
     "chokidar": "^3.5.1",
     "next-pwa": "^5.3.1",
+    "next-sitemap": "^1.6.203",
     "postcss": "^8.2.9",
     "postcss-extend": "^1.0.5",
     "postcss-nested": "^5.0.5",

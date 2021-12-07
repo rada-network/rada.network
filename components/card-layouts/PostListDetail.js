@@ -19,7 +19,7 @@ import PostNotice from "../PostNotice";
 
 import { usePageStore } from "../../lib/usePageStore";
 import { PostDetailAuthor } from "./PostDetailAuthor";
-import FloatButton from "pages/launchverse/toc/FloatingButton";
+import FloatButton from "@components/toc/FloatingButton";
 
 export const PostListDetail = observer(
   ({ tokenId, tabName, setTabCallback, tokenData }) => {
