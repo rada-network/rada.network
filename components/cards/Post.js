@@ -223,7 +223,7 @@ const CardPostNormal = observer(({title,slug, mediaUri, type, source, commentCou
 })
 
 const PostTokenHolder = function({tokens}){
-  if (tokens.length == 0) return null;
+  if (tokens == null || tokens.length == 0) return null;
   return (
     <>
     {tokens.map((item,index) => {

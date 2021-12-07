@@ -283,7 +283,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
                 <span class="icon w-4 h-4 mr-1">
                   <RadaSvg />
                 </span>
-                {(total - earnedRIR).toFixed(3)} RIR
+                {((total - earnedRIR) > 0 ? (total - earnedRIR) : 0).toFixed(3)} RIR
               </div>
             </li>
 
