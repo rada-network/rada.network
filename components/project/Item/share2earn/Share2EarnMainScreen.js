@@ -17,6 +17,7 @@ import { useShare2EarnContract, useReferralAdminContract } from "@utils/hooks/us
 import { toast } from "react-toastify"
 import { ethers } from "ethers"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
+import useChainConfig from "@utils/web3/useChainConfig"
 
 
 
@@ -28,6 +29,8 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const { t } = useTranslation('share2earn');
   const { callFunction } = useCallFunction();
   const { callWithGasPrice } = useCallWithGasPrice();
+  const { getRIRAddress, getBscScanURL } = useChainConfig()
+  const riraddress = getRIRAddress()
 
 
   const [facebook, setFacebook] = useState({ disable: false, url: "" });
@@ -40,7 +43,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const [mergeUploadImgs, setMergeUploadImgs] = useState({});
   const [baseFrames, setBaseFrames] = useState({});
   const [userAvatar, setUserAvatar] = useState(null);
-  const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '', incentivePaid: '', isDeny: false, allowClaimValue: 0.0 })
+  const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '', incentivePaid: '', isDeny: false, allowClaimValue: 0.0, claimableApproved: 0.0 })
   const [campaignEnded, setCampaignEnded] = useState(true);
   const [claimDisbaled, setClaimDisbaled] = useState(false);
   
@@ -89,13 +92,19 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const referralAdminContract = useReferralAdminContract(referralAdminAddress)
   useEffect(() => {
     const getInfo = async () => {
-      const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account])
-      const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account])
-      const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account])
-      const denyUser = await callFunction(referralAdminContract, 'denyUser', [project.id.toString(), account])
-      const allowClaimValue = await callFunction(referralAdminContract, 'allowClaimValue', [project.id.toString()])
+      const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account]);
+      const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account]);
+      const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account]);
+      const denyUser = await callFunction(referralAdminContract, 'denyUser', [project.id.toString(), account]);
+      const allowClaimValue = await callFunction(referralAdminContract, 'allowClaimValue', [project.id.toString()]);
+      const claimableApproved = await callFunction(referralAdminContract, 'claimableApproved', [riraddress, account]);
 
-      setReferralInfo({ level1: parseInt(level1Incentive.toString()), level2: parseInt(level2Incentive.toString()), incentivePaid: parseInt(incentivePaid.toString()), isDeny: denyUser, allowClaimValue: parseFloat(ethers.utils.formatEther(allowClaimValue)) })
+      setReferralInfo({ level1: parseInt(level1Incentive.toString()), 
+        level2: parseInt(level2Incentive.toString()), 
+        incentivePaid: parseInt(incentivePaid.toString()), 
+        isDeny: denyUser, 
+        allowClaimValue: parseFloat(ethers.utils.formatEther(allowClaimValue)),
+        claimableApproved: parseFloat(ethers.utils.formatEther(claimableApproved))})
     }
     if (!!library && !!share2earnContract) {
       getInfo()
@@ -553,7 +562,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
             </ol>
           )}
 
-          {campaignEnded && referralInfo.isDeny && !claimDisbaled && (
+          {campaignEnded && !referralInfo.isDeny && !claimDisbaled && (
             // Todo: Hiển thị box show thông tin số RIR có thể claim và button claim
             <div>
               <button className="w-full btn btn-yellow justify-center py-3" type="submit"

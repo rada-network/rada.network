@@ -339,7 +339,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
                 <span class="icon w-4 h-4 mr-1">
                   <RadaSvg />
                 </span>
-                {referralInfo.allowClaimValue} RIR
+                {referralInfo.claimableApproved} RIR
               </div>
             </li>
 
