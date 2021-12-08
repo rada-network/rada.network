@@ -139,7 +139,7 @@ const KYC = () => {
 
   return (
     <>
-      <div className="list-group--item md:!pb-4">
+      <div className="list-group--item !px-0 md:!pb-4">
         <div className="list-group--item--title w-full md:w-1/4">
           <div className="list-group--item--media">
             <span className="icon"><i className="fas fa-user-check"></i></span>
