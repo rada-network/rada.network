@@ -3,7 +3,6 @@ import "../styles/globals.css";
 import "../styles/styles.css";
 
 import { CookiesProvider } from "react-cookie";
-// import { Provider } from 'mobx-react'
 import { StoreProvider, useStore } from "../lib/useStore";
 import { ThemeProvider } from "next-themes";
 

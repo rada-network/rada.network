@@ -2,6 +2,7 @@ import Link from "next/dist/client/link";
 import { usePageStore } from "../../../lib/usePageStore";
 import { WalletProfile } from "@components/Wallet";
 import { useTranslation } from "next-i18next";
+import Image from "@components/Image";
 
 export default function ProjectNavbar({ symbol, project, slug }) {
   const { dataStore } = usePageStore();
@@ -33,21 +34,25 @@ export default function ProjectNavbar({ symbol, project, slug }) {
         <div className="tabbar page-tabs relative lg:left-8 xl:-left-1">
           <div className="tabbar--main">
             <NavItem uri={symbol}>{t("LaunchVerse")}</NavItem>
-            {(!!project.news || project.share_campaign?.length !== 0) && <span className="tab-item--divider"></span>
-            }
-            {!!project.news && <NavItem uri={`${symbol}/research`}>
-              <span className="token-symbol flex-shrink-0 lg:mr-2">
-                <img
-                  src={project?.token?.logo}
-                  className="h-px-20 w-px-20"
-                  alt={project?.token?.name}
-                />
-              </span>
-              <span className="tab-item--text">
-                {t("Research", { name: project?.token?.symbol })}
-              </span>
-            </NavItem>
-            }
+            {(!!project.news || project.share_campaign?.length !== 0) && (
+              <span className="tab-item--divider"></span>
+            )}
+            {!!project.news && (
+              <NavItem uri={`${symbol}/research`}>
+                <span className="token-symbol flex-shrink-0 lg:mr-2">
+                  <Image
+                    src={project?.token?.logo}
+                    className="h-px-20 w-px-20"
+                    alt={project?.token?.name}
+                    width={20}
+                    height={20}
+                  />
+                </span>
+                <span className="tab-item--text">
+                  {t("Research", { name: project?.token?.symbol })}
+                </span>
+              </NavItem>
+            )}
             {project.share_campaign?.length !== 0 && (
               <NavItem uri={`${symbol}/share2earn`}>
                 <span className="icon">

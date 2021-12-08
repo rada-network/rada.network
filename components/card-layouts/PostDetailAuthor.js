@@ -4,6 +4,7 @@ import { usePopper } from "react-popper";
 import { useRef, useState } from "react";
 import { getSourceFromUri } from "./PostsList";
 import RadaPost from "./../svg/RadaPost";
+import Image from "@components/Image";
 export const PostDetailAuthor = observer(({ item, isRada }) => {
   let [referenceElement, setReferenceElement] = useState();
   let [popperElement, setPopperElement] = useState();
@@ -106,7 +107,12 @@ export const PostDetailAuthor = observer(({ item, isRada }) => {
                 {authorImg && authorImg !== "" ? (
                   <span className="mr-1.5 relative -bottom-0.5">
                     <span className="avatar-sm">
-                      <img src={authorImg} alt={getSourceFromUri(item)} />
+                      <Image
+                        src={authorImg}
+                        alt={getSourceFromUri(item)}
+                        width={32}
+                        height={32}
+                      />
                     </span>
                   </span>
                 ) : (
