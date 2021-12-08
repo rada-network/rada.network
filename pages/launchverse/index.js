@@ -5,6 +5,7 @@ import utils from "@lib/util";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useEffect } from "react";
+import Image from "@components/Image";
 
 const LaunchVerse = (props) => {
   const { dataStore } = usePageStore();
@@ -34,15 +35,17 @@ const LaunchVerse = (props) => {
               <div className="w-limiter-lg py-8 lg:py-16 px-2 md:px-4 lg:px-8 xl:px-16">
                 {/* LOGO */}
                 <div className="">
-                  <span className="page-logo"></span>
-                  <img
-                    className="sr-only"
+                  <Image
                     src={
                       process.env.NEXT_PUBLIC_CDN +
                       "/images/logos/launchverse-dark.svg"
                     }
                     alt="RADA LaunchVerse"
+                    width={307}
+                    height={54}
+                    priority
                   />
+
                   <h1 className="sr-only">
                     <span className="">RADA LaunchVerse</span>
                   </h1>
@@ -117,13 +120,14 @@ const LaunchVerse = (props) => {
                               "
                             > */}
                       <div className="flex-shrink-0 w-24 md:w-auto mb-2 md:mb-0">
-                        <img
-                          className=""
+                        <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
                             "/images/logos/theparallel.png"
                           }
                           alt="The Parallel"
+                          width={192}
+                          height={192}
                         />
                       </div>
 
@@ -216,7 +220,7 @@ const LaunchVerse = (props) => {
                 <div className="mt-16">
                   <div className="">
                     <h2 className="text-3xl md:text-3xl lg:text-4xl leading-tight text-black dark:text-white font-semibold font-altsans">
-                      The LaunchVerse{" "}
+                      The LaunchVerse
                       <strong className="block md:inline text-yellow-400">
                         where everyone is welcome
                       </strong>
@@ -232,13 +236,14 @@ const LaunchVerse = (props) => {
                               "
                     >
                       <div className="flex-shrink-0">
-                        <img
-                          className=""
+                        <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
                             "/images/icons/shield-hexa-dark.svg"
                           }
-                          alt="The Parallel"
+                          alt="Revolution"
+                          width={60}
+                          height={60}
                         />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
@@ -255,13 +260,14 @@ const LaunchVerse = (props) => {
                               "
                     >
                       <div className="flex-shrink-0">
-                        <img
-                          className=""
+                        <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
                             "/images/icons/bolt-hexa-dark.svg"
                           }
-                          alt="The Parallel"
+                          alt="LaunchVerse"
+                          width={60}
+                          height={60}
                         />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
@@ -278,13 +284,14 @@ const LaunchVerse = (props) => {
                               "
                     >
                       <div className="flex-shrink-0">
-                        <img
-                          className=""
+                        <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
                             "/images/icons/net-hexa-dark.svg"
                           }
-                          alt="The Parallel"
+                          alt="MetaVerse"
+                          width={60}
+                          height={60}
                         />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
@@ -301,13 +308,14 @@ const LaunchVerse = (props) => {
                               "
                     >
                       <div className="flex-shrink-0">
-                        <img
-                          className=""
+                        <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
                             "/images/icons/scale-hexa-dark.svg"
                           }
-                          alt="The Parallel"
+                          alt="Fair and transparent "
+                          width={60}
+                          height={60}
                         />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
@@ -325,13 +333,14 @@ const LaunchVerse = (props) => {
                               "
                     >
                       <div className="flex-shrink-0">
-                        <img
-                          className=""
+                        <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
                             "/images/icons/incubate-hexa-dark.svg"
                           }
-                          alt="The Parallel"
+                          alt="#MetaVerse and #GameFi industries"
+                          width={60}
+                          height={60}
                         />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
@@ -348,13 +357,14 @@ const LaunchVerse = (props) => {
                               "
                     >
                       <div className="flex-shrink-0">
-                        <img
-                          className=""
+                        <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
                             "/images/icons/dao-hexa-dark.svg"
                           }
-                          alt="The Parallel"
+                          alt="Share2Earn and Contribute2Earn"
+                          width={60}
+                          height={60}
                         />
                       </div>
                       <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">

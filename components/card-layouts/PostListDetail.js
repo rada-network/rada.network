@@ -21,6 +21,7 @@ import { usePageStore } from "../../lib/usePageStore";
 import { PostDetailAuthor } from "./PostDetailAuthor";
 import FloatButton from "@components/toc/FloatingButton";
 import {ProjectShare2EarnWrapper} from "@components/project/Item/Share2Earn";
+import ContentDescription from "@components/ContentDescription";
 
 export const PostListDetail = observer(
   ({ tokenId, tabName, setTabCallback, tokenData }) => {
@@ -308,6 +309,7 @@ const VideoDetail = function ({ item, dateTitle, date, setTabCallback }) {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen="allowFullScreen"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -468,14 +470,15 @@ const NewsDetail = observer(function ({
         {!item.content ? <NewsLoader /> : ""}
         <div className="post-content" itemProp="description">
           {item.isshowcontent ? (
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+            <ContentDescription content={content} />
           ) : (
             // (item.description.length > 100 ?
             //   <div dangerouslySetInnerHTML={{__html: item.description}}/>
             //   :
             //   ""
             // )
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+
+            <ContentDescription content={content} />
           )}
           {item?.is_footnote && <Footnote />}
         </div>

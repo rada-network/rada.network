@@ -8,7 +8,8 @@
       "@utils/*": ["./utils/*"],
       "@config/*": ["./config/*"],
       "@components/*": ["./components/*"],
-      "@data/*": ["./data/*"]
+      "@data/*": ["./data/*"],
+      "@public/*": ["./public/*"]
     }
   },
   "exclude": ["node_modules", "**/node_modules/*",".next","https_cert","public"]

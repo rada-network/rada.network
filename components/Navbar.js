@@ -7,6 +7,7 @@ import utils from "../lib/util";
 
 import Screen from "./utils/Responsive";
 import { usePageStore } from "../lib/usePageStore";
+import Image from "./Image";
 
 export const Navbar = observer(({}) => {
   const { dataStore, detailStore } = usePageStore();
@@ -19,11 +20,14 @@ export const Navbar = observer(({}) => {
             {/* Logo */}
             <Link href={`/`}>
               <a className="flex flex-col w-full justify-center items-center">
-                <img
+                <Image
                   className="logo--img"
                   src={process.env.NEXT_PUBLIC_CDN + "/images/rada-animate.svg"}
-                  alt="RADA NETWORK"
+                  alt="RADA Network"
+                  width={33}
+                  height={32}
                 />
+
                 <strong className="logo--text mt-1">
                   <span>RADA</span>
                 </strong>
