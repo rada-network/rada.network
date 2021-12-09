@@ -202,23 +202,6 @@ export const IndexRightBar = observer(({ intro }) => {
                         <span className="tab-item--text">{t("team")}</span>
                       </a>
 
-                      {investCampaign && (
-                        <a
-                          href="#invest"
-                          className={`tab-item ${
-                            tabName === "invest" ? "tab-item--active" : ""
-                          }`}
-                          onClick={() => {
-                            setTabName("invest");
-                          }}
-                        >
-                          <span className="icon">
-                            <i className="fa-duotone fa-sack-dollar"></i>
-                          </span>
-                          <span className="tab-item--text">{t("invest")}</span>
-                        </a>
-                      )}
-
                       {airdrop && (
                         <a
                           href="#airdrop"

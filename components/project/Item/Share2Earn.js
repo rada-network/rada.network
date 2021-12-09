@@ -286,7 +286,7 @@ export default function ProjectShare2Earn({
 }
 
 
-export const ProjectShare2EarnWrapper = function({shareCampaign,shareSlug,shareType}){
+export const ProjectShare2EarnWrapper = ({shareCampaign,shareSlug,shareType}) => {
   return  (
     <>
     <div className="flex h-10 w-limiter-lg relative xl:px-4">

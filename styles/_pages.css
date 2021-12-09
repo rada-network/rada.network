@@ -451,7 +451,7 @@ Footer
 }
 
 .page-landing--parallel .footer-deco {
-  background-image: url("/images/launchverse-footer.png");
+  background-image: url("/images/launchverse-footer-min.png");
   @apply absolute bottom-10 md:bottom-0 left-0 right-0 bg-no-repeat;
   background-size: 100% 183px;
   height: 183px;
@@ -466,5 +466,5 @@ Footer
 }
 
 .dark .page-landing--parallel .footer-deco {
-  background-image: url("/images/launchverse-footer-dark.png");
+  background-image: url("/images/launchverse-footer-dark-min.png");
 }

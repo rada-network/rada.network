@@ -181,7 +181,7 @@ a:visited .card-post,
 }
 
 .card-post .card-media-img {
-  @apply rounded overflow-hidden w-px-40 h-px-40;
+  @apply rounded overflow-hidden w-px-40 h-px-40 relative;
 }
 
 .card-post .card-media .card-img {
