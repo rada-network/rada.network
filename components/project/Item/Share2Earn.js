@@ -19,7 +19,7 @@ import { useERC20 } from "@utils/hooks/useContracts";
 import useChainConfig from "@utils/web3/useChainConfig";
 
 export default function ProjectShare2Earn({
-  project,
+  shareCampaign,shareType,shareSlug,
 }) {
   const { getRIRAddress } = useChainConfig()
   const riraddress = getRIRAddress()
@@ -34,10 +34,9 @@ export default function ProjectShare2Earn({
   const user = store.user
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
   const [campaignEnded, setCampaignEnded] = useState(true);
-
   // TODO: Save in config file
-  const share2earnAddress = project.share2earn_contract
-  const referralAdminAddress = project.referral_admin_contract
+  const share2earnAddress = shareCampaign.share2earn_contract
+  const referralAdminAddress = shareCampaign.referral_admin_contract
 
   const shareAddress = useERC20(share2earnAddress);
 
@@ -51,7 +50,7 @@ export default function ProjectShare2Earn({
   const { isConfirmed, isConfirming, handleConfirm } =
     useApproveConfirmTransaction({
       onConfirm: () => {
-        return callWithGasPrice(share2earnContract, 'joinProgram', [project.id.toString(), uid, referralCode])
+        return callWithGasPrice(share2earnContract, 'joinProgram', [shareCampaign.program_id.toString(), uid, referralCode])
       },
       onSuccess: async ({ receipt }) => {
         toast.success(`Subscribed successfully ${receipt.transactionHash}`)
@@ -78,8 +77,8 @@ export default function ProjectShare2Earn({
   React.useEffect(() => {
     const getInfoProgram = async () => {
       try {
-        const p = await callFunction(share2earnContract, 'programs', [project.id.toString()])
-        const pAdmin = await callFunction(referralAdminContract, 'programs', [project.id.toString()])
+        const p = await callFunction(share2earnContract, 'programs', [shareCampaign.program_id.toString()])
+        const pAdmin = await callFunction(referralAdminContract, 'programs', [shareCampaign.program_id.toString()])
         setShare2EarnInfo({ ...p, incentiveL0: pAdmin.incentiveLevel1, incentiveL1: pAdmin.incentiveLevel2, incentiveL2: pAdmin.incentiveLevel3 });
         if (account) {
           checkJoined();
@@ -103,7 +102,7 @@ export default function ProjectShare2Earn({
 
     try {
       if (typeof window.ethereum !== undefined) {
-        const addressJoined = await callFunction(share2earnContract, 'uidJoined', [project.id.toString(), uid])
+        const addressJoined = await callFunction(share2earnContract, 'uidJoined', [shareCampaign.program_id.toString(), uid])
         if (addressJoined == '0x0000000000000000000000000000000000000000') {
           setJoined('');
         }
@@ -144,7 +143,7 @@ export default function ProjectShare2Earn({
     //wrongAddress()
   } else {
     if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account) {
-      return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
+      return <Share2EarnMainScreen shareCampaign={shareCampaign} user={user} share2earnAddress={share2earnAddress} shareSlug={shareSlug} shareType={shareType} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
     }
   }
 

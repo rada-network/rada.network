@@ -13,7 +13,7 @@ import { createShortenLink } from "@data/query/createShortenLink"
 import { SHORT_SHARE2EARN_URL } from "@config/links"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 
-const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddress, incentivePaid, share2earnAdress, share2earnInfo, project, uid }) => {
+const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentivePaid, share2earnAdress, share2earnInfo, shareCampaign,shareType,shareSlug, uid }) => {
   const { t } = useTranslation('share2earn')
   const { callFunction } = useCallFunction()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
@@ -39,8 +39,16 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
     toast.success("Copied to clipboard", {})
   };
 
+  const getShareUrl = () => {
+    if (shareType === "project"){
+      return window.location.origin + `/launchverse/${shareSlug}/share2earn` + "?ref=" + uid
+    }
+    else{
+      return window.location.origin + `/${i18n.language}/post/${shareSlug}/` + "?ref=" + uid + "#share2earn"
+    }
+  }
   useEffect(() => {
-    let url = window.location.origin + `/launchverse/${project.slug}/share2earn` + "?ref=" + uid;
+    let url = getShareUrl()
     createShortenLink(url).then(({ data }) => {
       let shortenURL = SHORT_SHARE2EARN_URL + data.createShortenLink.key
       setShareLink(shortenURL)
@@ -50,7 +58,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
   useEffect(() => {
     const getInfo = async () => {
       try {
-        const earnedRIR = await callFunction(adminContract, 'incentivePaid', [projectID.toString(), walletAddress.toString()])
+        const earnedRIR = await callFunction(adminContract, 'incentivePaid', [shareCampaign.program_id.toString(), walletAddress.toString()])
         setEarnedRIR(parseFloat(ethers.utils.formatEther(earnedRIR)))
       } catch (e) {
         console.log(e)
@@ -86,7 +94,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
   const handleClaimRIRToken = async function (e) {
     try {
       setClaimDisbaled(true)
-      const tx = await callWithGasPrice(adminContract, "claim", [projectID.toString()])
+      const tx = await callWithGasPrice(adminContract, "claim", [shareCampaign.program_id.toString()])
       const receipt = await tx.wait()
       if (receipt.status) {
         toast.success(t("Claim success!"))
@@ -366,7 +374,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, projectID, walletAddres
                 </span>
                 {referralInfo.claimableApproved} RIR
                 <div>
-                  {!referralInfo.isDeny && !claimDisbaled && referralInfo.claimableApproved >= referralInfo.allowClaimValue && (
+                  {!referralInfo.isDeny && !claimDisbaled && referralInfo.claimableApproved > 0 && referralInfo.claimableApproved >= referralInfo.allowClaimValue && (
                     <button className="btn btn-primary px-2 py-1 ml-4"
                       onClick={handleClaimRIRToken}
                     >Claim</button>

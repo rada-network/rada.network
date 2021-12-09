@@ -60,7 +60,7 @@ export default function ProjectItem({ project, page, slug }) {
               {page == "index" && <ProjectLaunchpad project={project} />}
               {page == "research" && <ProjectDetails project={project} />}
               {page == "share2earn" && project.share_campaign?.length ? (
-                <ProjectShare2Earn project={project} />
+                <ProjectShare2Earn shareCampaign={project.share_campaign[0]} shareType={`project`} shareSlug={project.slug} />
               ) : null}
               <Screen from="lg">
                 <div className="toc-side-bar-div">

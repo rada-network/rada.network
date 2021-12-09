@@ -21,7 +21,7 @@ import useChainConfig from "@utils/web3/useChainConfig"
 
 
 
-const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, referralAdminAddress, share2earnInfo }) => {
+const Share2EarnMainScreen = observer(({ shareCampaign,shareType,shareSlug, user, share2earnAddress, referralAdminAddress, share2earnInfo }) => {
   const store = useStore();
   const { detailStore } = usePageStore();
   const context = useActiveWeb3React();
@@ -50,11 +50,11 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   // Banner component 
   let bannerURL;
   if (detailStore.selectedBanner === "LinkedIn") {
-    bannerURL = project.share_campaign[0].linkedin_banner;
+    bannerURL = shareCampaign.linkedin_banner;
   } else if (detailStore.selectedBanner === "Twitter") {
-    bannerURL = project.share_campaign[0].twitter_banner;
+    bannerURL = shareCampaign.twitter_banner;
   } else {
-    bannerURL = project.share_campaign[0].facebook_banner;
+    bannerURL = shareCampaign.facebook_banner;
   }
 
   const handleDownload = () => {
@@ -64,8 +64,8 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
   useEffect(() => {
-    if (project.share_campaign?.length) {
-      getShareLogById({ campaignId: project.share_campaign[0].id }).then(function (
+    if (shareCampaign) {
+      getShareLogById({ campaignId: shareCampaign.id }).then(function (
         res
       ) {
         if (res.data.getShareLog?.length) {
@@ -92,11 +92,11 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const referralAdminContract = useReferralAdminContract(referralAdminAddress)
   useEffect(() => {
     const getInfo = async () => {
-      const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account]);
-      const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account]);
-      const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account]);
-      const denyUser = await callFunction(referralAdminContract, 'denyUser', [project.id.toString(), account]);
-      const allowClaimValue = await callFunction(referralAdminContract, 'allowClaimValue', [project.id.toString()]);
+      const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [shareCampaign.program_id.toString(), account]);
+      const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [shareCampaign.program_id.toString(), account]);
+      const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [shareCampaign.program_id.toString(), account]);
+      const denyUser = await callFunction(referralAdminContract, 'denyUser', [shareCampaign.program_id.toString(), account]);
+      const allowClaimValue = await callFunction(referralAdminContract, 'allowClaimValue', [shareCampaign.program_id.toString()]);
       const claimableApproved = await callFunction(referralAdminContract, 'claimableApproved', [riraddress, account]);
 
       setReferralInfo({
@@ -112,30 +112,6 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
       getInfo()
     }
   }, []);
-
-  const handleClaimRIRToken = async function (e) {
-    try {
-      setClaimDisbaled(true)
-      const tx = await callWithGasPrice(referralAdminContract, "claim", [project.id.toString()])
-      const receipt = await tx.wait()
-      if (receipt.status) {
-        toast.success(t("Claim success!"))
-      }
-    } catch (error) {
-      setClaimDisbaled(false)
-      console.log(error)
-      if (!!error?.data?.message) {
-        toast.error(t(error?.data?.message?.replace("execution reverted: ", "")))
-      }
-      else if (!!error?.message) {
-        toast.error(t(error?.message))
-      }
-      else {
-        toast.error(t(error))
-      }
-    }
-  };
-
   // Create or update url
 
   function submitShareURL() {
@@ -199,10 +175,10 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
   const convertBase64Frames = async function () {
     // Convert frame
-    if (project.share_campaign.length) {
+    if (shareCampaign) {
       let tmpBaseFrames = {}
-      for (let index = 0; index < project.share_campaign[0].avatar_frame.length; ++index) {
-        let url = project.share_campaign[0].avatar_frame[index]
+      for (let index = 0; index < shareCampaign.avatar_frame.length; ++index) {
+        let url = shareCampaign.avatar_frame[index]
         const e = await getBase64FromUrl(url)
         tmpBaseFrames = { [index]: e, ...tmpBaseFrames }
       }
@@ -212,7 +188,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
   const convertBase64Img = async () => {
     // Convert frame
-    if (project.share_campaign.length && userAvatar) {
+    if (shareCampaign && userAvatar) {
       if (!isUploadImage) {
         let tmpMergeImgs = {}
         for (let index = 0; index < Object.keys(baseFrames).length; index++) {
@@ -276,7 +252,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
     setMergeUploadImgs(tmpMergeImgs)
   };
   const handleDownloadAvt = () => {
-    project.share_campaign[0].avatar_frame.map((data, index) => {
+    shareCampaign.avatar_frame.map((data, index) => {
       var a = document.createElement("a");
       let dataImgs = isUploadImage ? mergeUploadImgs : mergeImgs
       a.href = dataImgs[index];
@@ -379,10 +355,11 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
           <Share2EarnStatus referralInfo={referralInfo}
             incentivePaid={referralInfo.incentivePaid}
             adminContract={referralAdminContract}
-            projectID={project.id.toString()}
             walletAddress={account} share2earnAdress={share2earnAddress}
             share2earnInfo={share2earnInfo}
-            project={project}
+            shareCampaign={shareCampaign}
+            shareType={shareType}
+            shareSlug={shareSlug}
             uid={uid} />
 
           {/* {!share2earnInfo.isDeny && (
@@ -496,7 +473,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
               {/* Step 2 */}
               <li className="flex flex-col md:flex-row items-start">
-                <ShareLink uid={uid} share_message={project.share_campaign[0].share_message} project={project} />
+                <ShareLink uid={uid} share_message={shareCampaign.share_message} shareCamp={project} />
               </li>
 
               {/* Step 3 */}
