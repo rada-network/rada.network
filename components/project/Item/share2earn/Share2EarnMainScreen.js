@@ -16,19 +16,17 @@ import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useShare2EarnContract, useReferralAdminContract } from "@utils/hooks/useContracts"
 import { toast } from "react-toastify"
 import { ethers } from "ethers"
-import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import useChainConfig from "@utils/web3/useChainConfig"
 
 
 
-const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, user, share2earnAddress, referralAdminAddress, share2earnInfo }) => {
+const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, user, share2earnAddress, referralAdminAddress, share2earnInfo, }) => {
   const store = useStore();
   const { detailStore } = usePageStore();
   const context = useActiveWeb3React();
   const { library, account } = context;
   const { t } = useTranslation('share2earn');
   const { callFunction } = useCallFunction();
-  const { callWithGasPrice } = useCallWithGasPrice();
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const riraddress = getRIRAddress()
 
@@ -137,7 +135,30 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
   }
 
   useEffect(() => {
-    getBase64FromUrl("/icons/RADA Symbol.png").then(b64 => {
+    let hightQualityURL = "";
+    if (user) {
+      const imgURL = user.image;
+      if (imgURL.includes("google")) {
+        const urls = imgURL.split('=');
+        if (urls.length > 0) {
+          hightQualityURL = urls[0] + "=s500-c";
+        }
+      } else if (imgURL.includes("fbsbx")) {
+        const urls = imgURL.split('&');
+        if (urls.length > 0) {
+          const prefixWithID = urls[0];
+          const idArr = prefixWithID.split('=');
+          if (idArr.length > 1) {
+            const id = idArr[1];
+            hightQualityURL = "https://graph.facebook.com/" + id + "/picture?width=500&height=500";
+          }
+        }
+      } else if (imgURL.includes("twimg")) {
+        hightQualityURL = imgURL;
+      }
+    };
+
+    getBase64FromUrl(hightQualityURL).then(b64 => {
       resizeImage(b64).then(result => {
         setUserAvatar(result)
       })

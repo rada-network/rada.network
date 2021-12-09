@@ -5,9 +5,6 @@ import { toast } from "react-toastify";
 import { useTranslation } from "next-i18next";
 import _ from "lodash"
 import { useCookies } from "react-cookie";
-
-import { Head } from "@components/Head";
-import ReactTooltip from "react-tooltip";
 import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransaction"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { useCallFunction } from "@utils/hooks/useCallFunction"
@@ -17,8 +14,6 @@ import { useStore } from "@lib/useStore"
 import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
 import { useERC20 } from "@utils/hooks/useContracts";
 import useChainConfig from "@utils/web3/useChainConfig";
-import { observer } from "mobx-react";
-import { WalletProfile } from "@components/Wallet";
 
 export default function ProjectShare2Earn({
   shareCampaign,shareType,shareSlug
@@ -38,16 +33,14 @@ export default function ProjectShare2Earn({
   // TODO: Save in config file
   const share2earnAddress = shareCampaign.share2earn_contract
   const referralAdminAddress = shareCampaign.referral_admin_contract
-
   const shareAddress = useERC20(share2earnAddress);
-
   const share2earnContract = useShare2EarnContract(share2earnAddress)
   const referralAdminContract = useReferralAdminContract(referralAdminAddress)
-
   const { callWithGasPrice } = useCallWithGasPrice()
   const { callFunction } = useCallFunction()
-
   const [confirm, setConfirm] = useState(false)
+  const [avtURL, setAvtURL] = useState("")
+
   const { isConfirmed, isConfirming, handleConfirm } =
     useApproveConfirmTransaction({
       onConfirm: () => {
@@ -75,13 +68,40 @@ export default function ProjectShare2Earn({
     }
   }, [account, user]);
 
+  // Get high quality img
+  useEffect(() => {
+    let hightQualityURL = "";
+    if (user) {
+      const imgURL = user.image;
+      if (imgURL.includes("google")) {
+        const urls = imgURL.split('=');
+        if (urls.length > 0) {
+          hightQualityURL = urls[0] + "=s500-c";
+        }
+      } else if (imgURL.includes("fbsbx")) {
+        // todo: 
+        const urls = imgURL.split('&');
+        if (urls.length > 0) {
+          const prefixWithID = urls[0];
+          const idArr = prefixWithID.split('=');
+          if (idArr.length > 1) {
+            const id = idArr[1];
+            //https://graph.facebook.com/193707252865393/picture?width=100&height=100
+            hightQualityURL = "https://graph.facebook.com/" + id + "/picture?width=500&height=500";
+            console.log(hightQualityURL);
+          }
+        }
+      } else if (imgURL.includes("twimg")) {
+        hightQualityURL = imgURL;
+      }
+    };
+  },[user]);
+
   React.useEffect(() => {
     const getInfoProgram = async () => {
       try {
         const p = await callFunction(share2earnContract, 'programs', [shareCampaign.program_id])
         const pAdmin = await callFunction(referralAdminContract, 'programs', [shareCampaign.program_id])
-        console.log("Thong tin chuong trinh day")
-        console.log(p)
         setShare2EarnInfo({ ...p, incentiveL0: pAdmin.incentiveLevel1, incentiveL1: pAdmin.incentiveLevel2, incentiveL2: pAdmin.incentiveLevel3 });
         if (account) {
           checkJoined();
