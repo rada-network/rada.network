@@ -358,6 +358,7 @@ export const WalletProfile = ({ type }) => {
         <>
           {_.isEmpty(account) ? (
             <>
+              {type === "simple" &&
               <button
                 onClick={handleConnectWallet}
                 className="btn btn-primary my-2 px-2 ml-auto lg:mr-3 xl:mr-12 text-sm flex"
@@ -377,6 +378,7 @@ export const WalletProfile = ({ type }) => {
                 </span>
                 {t("connect")}
               </button>
+              }
             </>
           ) : (
             <div className="border border-primary-500 my-2 pl-2 pr-1 ml-auto lg:mr-3 xl:mr-12 text-sm flex items-center rounded-lg">

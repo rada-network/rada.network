@@ -13,6 +13,7 @@ import { getTokenById } from "../data/query/getTokenById";
 import Siteintro from "./Intro";
 import { usePageStore } from "../lib/usePageStore";
 import utils from "../lib/util";
+import {WalletProfile} from "@components/Wallet"
 
 export const IndexRightBar = observer(({ intro }) => {
   const { dataStore, detailStore, voteStore } = usePageStore();
@@ -32,7 +33,6 @@ export const IndexRightBar = observer(({ intro }) => {
   const router = useRouter();
   const store = useStore();
   const { t, i18n } = useTranslation();
-
   useEffect(() => {
     if (!_.isEmpty(detailStore.data)) {
       document.body.classList.add("page-details");
@@ -45,7 +45,7 @@ export const IndexRightBar = observer(({ intro }) => {
     if (window.location.hash) {
       const hash = window.location.hash.substr(1);
       if (
-        ["overview", "", "invest", "team", "airdrop", "share2earn"].indexOf(
+        ["overview", "", "team", "airdrop", "share2earn"].indexOf(
           hash
         ) !== -1
       ) {
@@ -68,13 +68,8 @@ export const IndexRightBar = observer(({ intro }) => {
   // find active airdrop
   const airdrop = tokenData?.airdrop?.find((ad) => ad.status == "published");
   // find active invest
-  const investCampaign = tokenData?.invest_campaign?.find(
-    (ic) => ic.status == "published"
-  );
 
-  const share2earn = tokenData?.share_campaign?.find(
-    (ic) => ic.status == "published"
-  );
+  const share2earn = detailStore?.data?.share_campaign;
 
   const tokenInfo =
     detailStore?.data?.tokens && detailStore?.data?.tokens.length
@@ -155,30 +150,6 @@ export const IndexRightBar = observer(({ intro }) => {
                   detailStore.data.tokens.length ? (
                     <>
                       <span className="tab-item--divider" />
-
-                      {/* {detailStore.data.tokens?.map((token) => (
-                        <a
-                          href={`#${token.symbol.toLowerCase()}`}
-                          className={`tab-item ${
-                            tabName === token.symbol ? "tab-item--active" : ""
-                          }`}
-                        >
-                          {token.symbol}
-                        </a>
-                      ))} */}
-
-                      {/* {detailStore.data.tokens?.map((token) => (
-                        <div
-                          className={`tab-item ${
-                            tabName === token.symbol ? "tab-item--active" : ""
-                          }`}
-                        >
-                          <span className="badge badge-coin badge-coin-lg">
-                            {token.symbol}
-                          </span>
-                        </div>
-                      ))} */}
-
                       {detailStore.data.tokens?.map((token, index) => {
                         if (index === 0) {
                           return (
@@ -227,24 +198,6 @@ export const IndexRightBar = observer(({ intro }) => {
                         </span>
                         <span className="tab-item--text">{t("team")}</span>
                       </a>
-
-                      {investCampaign && (
-                        <a
-                          href="#invest"
-                          className={`tab-item ${
-                            tabName === "invest" ? "tab-item--active" : ""
-                          }`}
-                          onClick={() => {
-                            setTabName("invest");
-                          }}
-                        >
-                          <span className="icon">
-                            <i class="fa-duotone fa-sack-dollar"></i>
-                          </span>
-                          <span className="tab-item--text">{t("invest")}</span>
-                        </a>
-                      )}
-
                       {airdrop && (
                         <a
                           href="#airdrop"
@@ -262,7 +215,7 @@ export const IndexRightBar = observer(({ intro }) => {
                         </a>
                       )}
 
-                      {share2earn && (
+                      {share2earn && tabName === "share2earn" && (
                         <a
                           href="#share2earn"
                           className={`tab-item ${
@@ -272,9 +225,7 @@ export const IndexRightBar = observer(({ intro }) => {
                             setTabName("share2earn");
                           }}
                         >
-                          <span className="icon">
-                            <i class="fa-duotone fa-gift"></i>
-                          </span>
+                          <span className="icon"><i className="fa-duotone fa-hand-holding-heart"></i></span>
                           <span className="tab-item--text">
                             {t("share2earn")}
                           </span>

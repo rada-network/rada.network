@@ -17,9 +17,11 @@ import { useStore } from "@lib/useStore"
 import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
 import { useERC20 } from "@utils/hooks/useContracts";
 import useChainConfig from "@utils/web3/useChainConfig";
+import { observer } from "mobx-react";
+import { WalletProfile } from "@components/Wallet";
 
 export default function ProjectShare2Earn({
-  shareCampaign,shareType,shareSlug,
+  shareCampaign,shareType,shareSlug
 }) {
   const { getRIRAddress } = useChainConfig()
   const riraddress = getRIRAddress()
@@ -77,8 +79,9 @@ export default function ProjectShare2Earn({
   React.useEffect(() => {
     const getInfoProgram = async () => {
       try {
-        const p = await callFunction(share2earnContract, 'programs', [shareCampaign.program_id.toString()])
-        const pAdmin = await callFunction(referralAdminContract, 'programs', [shareCampaign.program_id.toString()])
+        const p = await callFunction(share2earnContract, 'programs', [shareCampaign.program_id])
+        
+        const pAdmin = await callFunction(referralAdminContract, 'programs', [shareCampaign.program_id])
         setShare2EarnInfo({ ...p, incentiveL0: pAdmin.incentiveLevel1, incentiveL1: pAdmin.incentiveLevel2, incentiveL2: pAdmin.incentiveLevel3 });
         if (account) {
           checkJoined();
@@ -88,16 +91,13 @@ export default function ProjectShare2Earn({
       }
     }
 
-    if (!!library && !!share2earnContract) {
+    if (!!library && !!share2earnContract && !!shareCampaign.program_id) {
       setLoading(true)
       getInfoProgram().then(function () {
         setLoading(false);
       })
     }
   }, [share2earnContract, library, account]);
-
-
-
   const checkJoined = async () => {
 
     try {
@@ -139,7 +139,6 @@ export default function ProjectShare2Earn({
   const allowJoin = getMessage() == '' && joined == '' && account && (joined != account)
   if (loading) return null;
   if (joined != account) {
-    console.log(joined)
     //wrongAddress()
   } else {
     if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account) {
@@ -151,19 +150,14 @@ export default function ProjectShare2Earn({
     store.wallet.showConnect(true);
   };
 
-
-
-
   return (
     <>
-      <Head />
-
       <div className="section mx-auto">
-
+        
         <div className="section-header !flex-col">
           <h1 className="mb-2">
             <span className="text-xl lg:text-2xl font-semibold text-color-title">
-              Join The Parallel #Share2Earn Event ✨
+              {shareCampaign.title}✨
             </span>
           </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -186,7 +180,7 @@ export default function ProjectShare2Earn({
                 <span className="mt-1 text-base md:text-lg font-medium tracking-wide">by RADA Network</span>
               </h2>
               <div className=" w-28 h-28 md:w-44 md:h-44 absolute right-2 bottom-1 md:-bottom-1 md:right-12 lg:right-6">
-                <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/theparallel.png"} alt="The Parallel" />
+                <img className="" src={shareCampaign.logo} alt="The Parallel" />
               </div>
             </div>
           </div>
@@ -287,6 +281,19 @@ export default function ProjectShare2Earn({
 
       </div>
 
+    </>
+  )
+}
+
+
+export const ProjectShare2EarnWrapper = function({shareCampaign,shareSlug,shareType}){
+  return  (
+    <>
+    <div className="flex h-10 w-limiter-lg relative xl:px-4">
+      <WalletProfile type="hidden" />
+    </div>
+    
+    <ProjectShare2Earn shareCampaign={shareCampaign} shareType={shareType} shareSlug={shareSlug} />
     </>
   )
 }

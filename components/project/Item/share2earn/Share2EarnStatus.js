@@ -14,7 +14,7 @@ import { SHORT_SHARE2EARN_URL } from "@config/links"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 
 const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentivePaid, share2earnAdress, share2earnInfo, shareCampaign,shareType,shareSlug, uid }) => {
-  const { t } = useTranslation('share2earn')
+  const { t,i18n } = useTranslation('share2earn')
   const { callFunction } = useCallFunction()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const { callWithGasPrice } = useCallWithGasPrice();

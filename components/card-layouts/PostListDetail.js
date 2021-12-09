@@ -20,6 +20,7 @@ import PostNotice from "../PostNotice";
 import { usePageStore } from "../../lib/usePageStore";
 import { PostDetailAuthor } from "./PostDetailAuthor";
 import FloatButton from "@components/toc/FloatingButton";
+import {ProjectShare2EarnWrapper} from "@components/project/Item/Share2Earn";
 
 export const PostListDetail = observer(
   ({ tokenId, tabName, setTabCallback, tokenData }) => {
@@ -49,9 +50,9 @@ export const PostListDetail = observer(
     // find active airdrop
     const airdrop = tokenData?.airdrop?.find((ad) => ad.status == "published");
     // find active invest
-    const investCampaign = tokenData?.invest_campaign?.find(
-      (ic) => ic.status == "published"
-    );
+
+    const share2earn = Object.assign({},item.share_campaign);
+
     useEffect(() => {
       tokenId && getCoinInfo(tokenData?.symbol);
     }, [tokenId]);
@@ -150,17 +151,12 @@ export const PostListDetail = observer(
         case "team":
           return <TokenInfoTeam tokenData={tokenData} tokenInfo={tokenInfo} />;
 
-        case "invest":
+        case "share2earn":
           return (
-            investCampaign && (
-              <TokenInfoInvest
-                tokenData={tokenData}
-                tokenInfo={tokenInfo}
-                usdCoinInfo={usdCoinInfo}
-                btcCoinInfo={btcCoinInfo}
-                investCampaign={investCampaign}
-              />
-            )
+            <>
+            {share2earn && 
+              <ProjectShare2EarnWrapper shareCampaign={share2earn} shareType={`news`} shareSlug={item.slug} />}
+            </>
           );
       }
     };

@@ -100,7 +100,7 @@ const MyApp = function MyApp({ Component, pageProps }) {
       );
       if (shallow) {
         if (!store.shallowInternal) {
-          detailStore.data = {};
+          //detailStore.data = {};
           router.push(url, url);
         } else {
           //router.push(url,url)
