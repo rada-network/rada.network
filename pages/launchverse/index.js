@@ -1,4 +1,4 @@
-import { Layout } from "@components/page-layouts/Global";
+import Layout from "@components/page-layouts/Global";
 import { usePageStore } from "@lib/usePageStore";
 import { useRouter } from "next/router";
 import utils from "@lib/util";

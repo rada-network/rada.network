@@ -102,7 +102,7 @@ const TokenInfo = ({ tokenId }) => {
               onClick={() => setSubTabName("airdrop")}
             >
               <span className="icon mr-1">
-                <i class="fa-duotone fa-gift"></i>
+                <i className="fa-duotone fa-gift"></i>
               </span>
               {t("Airdrop")}
             </a>

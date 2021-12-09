@@ -14,6 +14,7 @@ import Siteintro from "./Intro";
 import { usePageStore } from "../lib/usePageStore";
 import utils from "../lib/util";
 import {WalletProfile} from "@components/Wallet"
+import Image from "./Image";
 
 export const IndexRightBar = observer(({ intro }) => {
   const { dataStore, detailStore, voteStore } = usePageStore();
@@ -162,16 +163,18 @@ export const IndexRightBar = observer(({ intro }) => {
                                 setTabName("overview");
                               }}
                             >
-                              <span className="token-symbol mr-2">
+                              <span className="token-symbol mr-2 h-px-20 w-px-20">
                                 {token && (
-                                  <img
+                                  <Image
                                     src={
                                       token?.logo !== null
                                         ? token.logo
                                         : `https://cdn.rada.network/static/img/coins/128x128/${token?.slug}.png`
                                     }
-                                    className="h-px-20 w-px-20"
                                     alt={token?.name}
+                                    width={20}
+                                    height={20}
+                                    objectFit="content"
                                   />
                                 )}
                               </span>
@@ -194,10 +197,28 @@ export const IndexRightBar = observer(({ intro }) => {
                       >
                         {/* {t("team & backers")} */}
                         <span className="icon">
-                          <i class="fa-duotone fa-users"></i>
+                          <i className="fa-duotone fa-users"></i>
                         </span>
                         <span className="tab-item--text">{t("team")}</span>
                       </a>
+
+                      {investCampaign && (
+                        <a
+                          href="#invest"
+                          className={`tab-item ${
+                            tabName === "invest" ? "tab-item--active" : ""
+                          }`}
+                          onClick={() => {
+                            setTabName("invest");
+                          }}
+                        >
+                          <span className="icon">
+                            <i className="fa-duotone fa-sack-dollar"></i>
+                          </span>
+                          <span className="tab-item--text">{t("invest")}</span>
+                        </a>
+                      )}
+
                       {airdrop && (
                         <a
                           href="#airdrop"
@@ -209,7 +230,7 @@ export const IndexRightBar = observer(({ intro }) => {
                           }}
                         >
                           <span className="icon">
-                            <i class="fa-duotone fa-gift"></i>
+                            <i className="fa-duotone fa-gift"></i>
                           </span>
                           <span className="tab-item--text">{t("airdrop")}</span>
                         </a>
@@ -225,7 +246,9 @@ export const IndexRightBar = observer(({ intro }) => {
                             setTabName("share2earn");
                           }}
                         >
-                          <span className="icon"><i className="fa-duotone fa-hand-holding-heart"></i></span>
+                          <span className="icon">
+                            <i className="fa-duotone fa-gift"></i>
+                          </span>
                           <span className="tab-item--text">
                             {t("share2earn")}
                           </span>

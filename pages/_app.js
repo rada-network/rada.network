@@ -92,6 +92,7 @@ const MyApp = function MyApp({ Component, pageProps }) {
     }
     return () => {};
   }, [session, store]);
+
   useEffect(() => {
     const handleRouteChange = (url, { shallow }) => {
       console.log(
@@ -138,12 +139,14 @@ const MyApp = function MyApp({ Component, pageProps }) {
       window.removeEventListener("resize", onResize);
     };
   }, []);
+
   return (
     <Providers>
       <Component {...pageProps} />
     </Providers>
   );
 };
+
 // Wrap everything in <UseWalletProvider />
 const TokenRankingStore = ({
   Component,

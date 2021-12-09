@@ -6,7 +6,7 @@ export default function Siteintro({ intro }) {
       <div className="page-about-content">
         <div className="page-about-content--section content-section--1">
           <span className="icon">
-            <i class="fa-solid fa-info"></i>
+            <i className="fa-solid fa-info"></i>
           </span>
           <div dangerouslySetInnerHTML={{ __html: intro?.content }}></div>
         </div>

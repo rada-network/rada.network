@@ -1,5 +1,6 @@
 import utils from "@lib/util";
 import { PostDetailAuthor } from "@components/card-layouts/PostDetailAuthor";
+import ContentDescription from "@components/ContentDescription";
 
 export default function ProjectDetails({ project }) {
   const news = project.news;
@@ -39,7 +40,7 @@ export default function ProjectDetails({ project }) {
       </div>
       <div className="section-body post-body">
         <div className="post-content" itemProp="description">
-          <div dangerouslySetInnerHTML={{ __html: news?.content }}></div>
+          <ContentDescription content={news?.content} />
           {news?.is_footnote && <Footnote />}
         </div>
         {/* {item.thumbnailUri !== "" ?

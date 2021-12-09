@@ -1,21 +1,20 @@
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import TocSideBar from "./TocSidebar";
 import Toc from "./Toc";
-import { useEffect, useState,useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function FloatButton({ mainScroll }) {
   const [headers, setHeadings] = useState([]);
 
   useEffect(() => {
     setHeadings(mainScroll.current.querySelectorAll("h2, h3"));
-  }, [])
+  }, []);
 
   const buttonRef = useRef();
-  
+
   const handleCloseFloatButton = () => {
-    buttonRef?.current.click()
-  }
+    buttonRef?.current.click();
+  };
 
   return (
     <>
@@ -23,13 +22,14 @@ export default function FloatButton({ mainScroll }) {
         <Popover className="relative rounded-full shadow-lg">
           {({ open }) => (
             <>
-              <Popover.Button ref={buttonRef}
+              <Popover.Button
+                ref={buttonRef}
                 className={`${open ? "active" : ""}
               floating-btn z-20`}
               >
                 <span className="icon">
-                  <i class="fa-solid fa-bars"></i>
-                  <i class="fa-solid fa-times"></i>
+                  <i className="fa-solid fa-bars"></i>
+                  <i className="fa-solid fa-times"></i>
                 </span>
                 <span className="btn--text">TOC</span>
               </Popover.Button>
@@ -45,7 +45,10 @@ export default function FloatButton({ mainScroll }) {
                 <Popover.Panel className="popper-toc--container">
                   <div className="overflow-hidden rounded-lg shadow-lg">
                     <div className="popper popper-toc p-4 !mt-0">
-                      <Toc mainScroll={mainScroll} handleCloseFloatButton={handleCloseFloatButton} />
+                      <Toc
+                        mainScroll={mainScroll}
+                        handleCloseFloatButton={handleCloseFloatButton}
+                      />
                     </div>
                   </div>
                 </Popover.Panel>
