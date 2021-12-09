@@ -13,7 +13,7 @@ import Screen from "../../../components/utils/Responsive";
 import { observer } from "mobx-react";
 import { usePageStore } from "../../../lib/usePageStore";
 
-import BackgroundWrapper from "../../../components/card-layouts/concepts/launchpad/BackgroundWrapper";
+import BackgroundWrapper from "../_components/cards-layout/launchpad/BackgroundWrapper";
 let step = 1;
 const Layout = observer((props) => {
 

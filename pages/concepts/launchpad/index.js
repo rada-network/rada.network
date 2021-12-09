@@ -1,7 +1,7 @@
 import { Head } from "../../../components/Head";
 import { Topbar } from "../../../components/Topbar";
 import { Navbar } from "../../../components/Navbar";
-import { ProjectsList } from "../../../components/card-layouts/concepts/launchpad/ProjectsList";
+import { ProjectsList } from "../_components/cards-layout/launchpad/ProjectsList";
 import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"

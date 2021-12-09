@@ -1,7 +1,7 @@
 import { Head } from "../../../components/Head";
 import { Topbar } from "../../../components/Topbar";
 import { Navbar } from "../../../components/Navbar";
-import { ProjectsList } from "../../../components/card-layouts/concepts/launchpad/ProjectsList";
+import { ProjectsList } from "../_components/cards-layout/launchpad/ProjectsList";
 import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
 
 import ThemeSwitch from "../../../components/ThemeSwitch"
@@ -14,7 +14,7 @@ import { observer } from "mobx-react";
 import { usePageStore } from "../../../lib/usePageStore";
 
 import { useRef,useEffect } from "react";
-import BackgroundWrapper from "../../../components/card-layouts/concepts/launchpad/BackgroundWrapper";
+import BackgroundWrapper from "../_components/cards-layout/launchpad/BackgroundWrapper";
 const Layout = observer((props) => {
 
   const {dataStore,detailStore,voteStore} = usePageStore()

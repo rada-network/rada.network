@@ -4,7 +4,7 @@ import React, {useCallback, useEffect, useMemo, useState, createRef} from 'react
 import {IoChevronDownSharp, IoChevronForwardSharp, IoChevronBackSharp} from "react-icons/io5";
 import Link from "next/link"
 import {observer} from "mobx-react";
-import {CardProject} from "../../../../pages/concepts/_components/cards/launchpad/Project";
+import {CardProject} from "../../cards/launchpad/Project";
 import ContentLoader from "react-content-loader";
 
 
