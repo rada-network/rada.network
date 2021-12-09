@@ -1,5 +1,5 @@
 import utils from "../lib/util";
-import { Layout } from "../components/page-layouts/Global";
+
 import { PostsListWrapper } from "../components/card-layouts/PostsList";
 import { observer } from "mobx-react";
 import { HOME_ITEM_TAKE } from "../config/paging";
@@ -16,6 +16,8 @@ import { usePageStore } from "../lib/usePageStore";
 import { getTokenById } from "../data/query/getTokenById";
 import { useRouter } from "next/router";
 import useStore from "@lib/useStore"
+import dynamic from "next/dynamic";
+const Layout = dynamic(import("@components/page-layouts/Global"));
 
 const getDataExplore = async ({ query, type, lang }) => {
   const itemFeed = await getItems({
