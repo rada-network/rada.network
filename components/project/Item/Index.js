@@ -1,11 +1,14 @@
-import ProjectNavbar from "./Navbar";
-import ProjectLaunchpad from "./Launchpad";
-import ProjectDetails from "./Details";
-import ProjectShare2Earn from "./Share2Earn";
 import { useEffect, useRef, useState } from "react";
+
+import Screen from "../../utils/Responsive";
 import TocSideBar from "@components/toc/TocSidebar";
 import FloatButton from "@components/toc/FloatingButton";
-import Screen from "../../utils/Responsive";
+import dynamic from "next/dynamic";
+
+const ProjectNavbar = dynamic(import("./Navbar"));
+const ProjectLaunchpad = dynamic(import("./Launchpad"));
+const ProjectDetails = dynamic(import("./Details"));
+const ProjectShare2Earn = dynamic(import("./Share2Earn"));
 
 export default function ProjectItem({ project, page, slug }) {
   const symbol = project.slug;
@@ -51,10 +54,11 @@ export default function ProjectItem({ project, page, slug }) {
 
         <div className="pane-content--sec--main grid scrollbar" ref={ref}>
           <div
-            className={`page page-full page-project-details !p-0`
-              + (page == "research" ? " page-research-details" : "")
-              + (page == "share2earn" ? " page-project-share2earn" : "")}
-
+            className={
+              `page page-full page-project-details !p-0` +
+              (page == "research" ? " page-research-details" : "") +
+              (page == "share2earn" ? " page-project-share2earn" : "")
+            }
           >
             <div className="w-limiter-lg">
               {page == "index" && <ProjectLaunchpad project={project} />}
@@ -64,15 +68,16 @@ export default function ProjectItem({ project, page, slug }) {
               ) : null}
               <Screen from="lg">
                 <div className="toc-side-bar-div">
-                  {page == "research" && (<TocSideBar mainScroll={ref} />)}
+                  {page == "research" && <TocSideBar mainScroll={ref} />}
                 </div>
               </Screen>
               <Screen upto="md">
                 <div className="float-btn--container">
-                  {page == "research" && headings.length > 0 && <FloatButton mainScroll={ref} />}
+                  {page == "research" && headings.length > 0 && (
+                    <FloatButton mainScroll={ref} />
+                  )}
                 </div>
               </Screen>
-
             </div>
           </div>
         </div>

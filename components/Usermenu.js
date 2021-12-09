@@ -57,7 +57,7 @@ export default function Usermenu({ user }) {
                   <Link href={`/${i18n.language}/user/profile`}>
                     <a>
                       <span className="icon">
-                        <i class="fa-duotone fa-user-gear"></i>
+                        <i className="fa-duotone fa-user-gear"></i>
                       </span>
                       <span className="dropdown-item--text">Profile</span>
                     </a>
@@ -70,7 +70,7 @@ export default function Usermenu({ user }) {
                 <>
                   {/* <a
                   href="/p/how-to-invest-with-rada">
-                  <span className="icon"><i class="fa-duotone fa-coins"></i></span>
+                  <span className="icon"><i className="fa-duotone fa-coins"></i></span>
                   <span className="dropdown-item--text">How to invest?</span>
                 </a> */}
                 </>
@@ -83,7 +83,7 @@ export default function Usermenu({ user }) {
               {({ active }) => (
                 <a onClick={() => Logout()}>
                   <span className="icon">
-                    <i class="fa-duotone fa-arrow-right-from-bracket"></i>
+                    <i className="fa-duotone fa-arrow-right-from-bracket"></i>
                   </span>
                   <span className="dropdown-item--text">Logout</span>
                 </a>

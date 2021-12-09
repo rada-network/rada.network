@@ -3,14 +3,13 @@ import React from "react";
 export default function Intro({ dataStore }) {
   return (
     <div className="page-about">
-
       <div className={`page-about-deco`} />
 
       <div className="page-about-content">
-
         <div className="page-about-content--section content-section--1">
-
-          <span className="icon"><i class="fa-solid fa-info"></i></span>
+          <span className="icon">
+            <i className="fa-solid fa-info"></i>
+          </span>
 
           <div>
             <h3>RADA là gì?</h3>
@@ -19,23 +18,23 @@ export default function Intro({ dataStore }) {
               Crypto.
             </p>
           </div>
-
         </div>
 
         <div className="page-about-content--section content-section--2">
-
-          <span className="icon"><i class="fa-regular fa-rocket"></i></span>
+          <span className="icon">
+            <i className="fa-regular fa-rocket"></i>
+          </span>
 
           <div>
             <h3>RADA sẽ hoạt động như thế nào?</h3>
             <p>
-              <u>Bước 1</u>: Hệ thống sẽ “quét” toàn bộ các tin tức về Blockchain/Crypto
-              các trang tin lớn trên thế giới và Việt Nam.
+              <u>Bước 1</u>: Hệ thống sẽ “quét” toàn bộ các tin tức về
+              Blockchain/Crypto các trang tin lớn trên thế giới và Việt Nam.
             </p>
             <p>
-              <u>Bước 2</u>:Công nghệ Big data và AI đề xuất các tin tức, thông tin quan
-              trọng nhất để đảm bảo bạn không bỏ lỡ cơ hội quan trọng nào trong
-              thị trường Crypto.
+              <u>Bước 2</u>:Công nghệ Big data và AI đề xuất các tin tức, thông
+              tin quan trọng nhất để đảm bảo bạn không bỏ lỡ cơ hội quan trọng
+              nào trong thị trường Crypto.
             </p>
             <p>
               Rada.co hỗ trợ đa ngôn ngữ, các users đến từ quốc gia nào sẽ được
@@ -76,17 +75,22 @@ export default function Intro({ dataStore }) {
           năng mới và nhận những cập nhật mới nhất về dự án.
         </p> */}
 
-          <div className="page-about-content--section">
-
+        <div className="page-about-content--section">
           <ul className="about-links">
-            <li><a href="#">Copyright</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms of Use</a></li>
+            <li>
+              <a href="#">Copyright</a>
+            </li>
+            <li>
+              <a href="#">Privacy</a>
+            </li>
+            <li>
+              <a href="#">Terms of Use</a>
+            </li>
           </ul>
 
           <div className="about-social">
-          <a
-              className="btn-facebook" 
+            <a
+              className="btn-facebook"
               target="_blank"
               href="https://www.facebook.com/RADA-Media-100147568952754"
             >
@@ -94,7 +98,7 @@ export default function Intro({ dataStore }) {
             </a>
 
             <a
-              className="btn-discord" 
+              className="btn-discord"
               target="_blank"
               href="https://discord.gg/ENm9SpQs"
               rel="noreferrer"
@@ -103,28 +107,25 @@ export default function Intro({ dataStore }) {
             </a>
 
             <a
-              className="btn-twitter" 
-              target="_blank" 
+              className="btn-twitter"
+              target="_blank"
               href="https://twitter.com/radamedia"
               rel="noreferrer"
             >
               <i className="fab fa-twitter" />
             </a>
 
-            <a 
-              className="btn-medium" 
-              target="_blank" 
+            <a
+              className="btn-medium"
+              target="_blank"
               href="https://medium.com/@radamedia"
               rel="noreferrer"
             >
               <i className="fab fa-medium-m" />
             </a>
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 }

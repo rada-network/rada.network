@@ -1,26 +1,27 @@
-import { CommentList } from "../comments/commentList";
 import React, { useEffect, useRef, useState } from "react";
 // import PerfectScrollbar from "perfect-scrollbar";
-
+import dynamic from "next/dynamic";
 import { observer } from "mobx-react";
 import { getSourceVideoFromUri } from "./PostsList";
 import utils from "../../lib/util";
-import { Vote } from "../vote/Vote";
+
 import { useTranslation } from "next-i18next";
 import { getItemById } from "../../data/query/getItem";
 import ContentLoader from "react-content-loader";
-import TokenInfoAirdrop from "../token/TokenInfoAirdrop";
-import TokenInfoInvest from "../token/TokenInfoInvest";
-import TokenInfoTeam from "../token/TokenInfoTeam";
-import TokenInfoGeneral from "../token/TokenInfoGeneral";
-
-import Footnote from "../Footnote";
-import PostNotice from "../PostNotice";
 
 import { usePageStore } from "../../lib/usePageStore";
 import { PostDetailAuthor } from "./PostDetailAuthor";
-import FloatButton from "@components/toc/FloatingButton";
-import ContentDescription from "@components/ContentDescription";
+
+const ContentDescription = dynamic(import("@components/ContentDescription"));
+const FloatButton = dynamic(import("@components/toc/FloatingButton"));
+const Vote = dynamic(import("../vote/Vote"));
+const CommentList = dynamic(import("../comments/commentList"));
+const PostNotice = dynamic(import("../PostNotice"));
+const Footnote = dynamic(import("../Footnote"));
+const TokenInfoGeneral = dynamic(import("../token/TokenInfoGeneral"));
+const TokenInfoTeam = dynamic(import("../token/TokenInfoTeam"));
+const TokenInfoInvest = dynamic(import("../token/TokenInfoInvest"));
+const TokenInfoAirdrop = dynamic(import("../token/TokenInfoAirdrop"));
 
 export const PostListDetail = observer(
   ({ tokenId, tabName, setTabCallback, tokenData }) => {
@@ -108,7 +109,7 @@ export const PostListDetail = observer(
       resizeTimeout = setTimeout(() => {
         if (detailStore.type === "news") {
           detailStore.data.contentDisplay +=
-            "<span class='newstag123' style='display:none;'>" +
+            "<span className='newstag123' style='display:none;'>" +
             Math.random() +
             "</span>";
         }
@@ -383,15 +384,17 @@ const NewsDetail = observer(function ({
   }, []);
 
   const windowResize = () => {
-    const parentNewsWidth = document
-      .querySelector(".main-layout")
-      .getBoundingClientRect().width;
-    const floatButton = document.querySelector(".floating-btn--container");
-    const windowSize = document
-      .querySelector(".body-decor")
-      .getBoundingClientRect().width;
-    const padding = (parseInt(windowSize) - parseInt(parentNewsWidth)) / 2;
-    floatButton.style.paddingRight = padding + "px";
+    try {
+      const parentNewsWidth = document
+        .querySelector(".main-layout")
+        .getBoundingClientRect().width;
+      const floatButton = document.querySelector(".floating-btn--container");
+      const windowSize = document
+        .querySelector(".body-decor")
+        .getBoundingClientRect().width;
+      const padding = (parseInt(windowSize) - parseInt(parentNewsWidth)) / 2;
+      floatButton.style.paddingRight = padding + "px";
+    } catch (error) {}
   };
 
   useEffect(() => {

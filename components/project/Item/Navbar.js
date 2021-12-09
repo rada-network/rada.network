@@ -1,8 +1,11 @@
 import Link from "next/dist/client/link";
 import { usePageStore } from "../../../lib/usePageStore";
-import { WalletProfile } from "@components/Wallet";
+
 import { useTranslation } from "next-i18next";
 import Image from "@components/Image";
+import dynamic from "next/dynamic";
+
+const WalletProfile = dynamic(import("@components/Wallet"));
 
 export default function ProjectNavbar({ symbol, project, slug }) {
   const { dataStore } = usePageStore();
@@ -39,7 +42,7 @@ export default function ProjectNavbar({ symbol, project, slug }) {
             )}
             {!!project.news && (
               <NavItem uri={`${symbol}/research`}>
-                <span className="token-symbol flex-shrink-0 lg:mr-2">
+                <span className="token-symbol flex-shrink-0 lg:mr-2 h-px-20 w-px-20">
                   <Image
                     src={project?.token?.logo}
                     className="h-px-20 w-px-20"

@@ -11,7 +11,7 @@ export default function LaunchpadOverview({ project }) {
       {isWarning && (
         <div className="message warning flex relative items-center">
           <span className="message-icon">
-            <i class="mr-2 fas fa-exclamation-circle"></i>
+            <i className="mr-2 fas fa-exclamation-circle"></i>
           </span>
           <div className="message-content pr-2">{t("bsc warning")}</div>
           <button
@@ -20,7 +20,7 @@ export default function LaunchpadOverview({ project }) {
             }}
             className="flex items-center ml-auto w-4 h-4 "
           >
-            <i class="text-base fas fa-times"></i>
+            <i className="text-base fas fa-times"></i>
           </button>
         </div>
       )}

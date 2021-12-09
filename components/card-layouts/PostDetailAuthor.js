@@ -40,13 +40,13 @@ export const PostDetailAuthor = observer(({ item, isRada }) => {
                       }}
                       className="btn popper-close-btn"
                     >
-                      <span class="icon">
-                        <i class="fa-solid fa-times"></i>
+                      <span className="icon">
+                        <i className="fa-solid fa-times"></i>
                       </span>
                     </button>
                   </div>
                   <div className="popper-header">
-                    <span class="avatar mr-2">
+                    <span className="avatar mr-2">
                       <img src={authorImg} alt={getSourceFromUri(item)} />
                     </span>
                     <div className="flex flex-col">
@@ -65,7 +65,7 @@ export const PostDetailAuthor = observer(({ item, isRada }) => {
                           rel="nofollow"
                           target="_blank"
                         >
-                          <i class="fa-brands fa-facebook-f"></i>
+                          <i className="fa-brands fa-facebook-f"></i>
                         </a>
                       )}
                       {item.author.linkedin && (
@@ -75,7 +75,7 @@ export const PostDetailAuthor = observer(({ item, isRada }) => {
                           rel="nofollow"
                           target="_blank"
                         >
-                          <i class="fa-brands fa-linkedin-in"></i>
+                          <i className="fa-brands fa-linkedin-in"></i>
                         </a>
                       )}
                       {item.author.twitter && (
@@ -85,7 +85,7 @@ export const PostDetailAuthor = observer(({ item, isRada }) => {
                           rel="nofollow"
                           target="_blank"
                         >
-                          <i class="fa-brands fa-twitter"></i>
+                          <i className="fa-brands fa-twitter"></i>
                         </a>
                       )}
                     </div>

@@ -15,16 +15,16 @@ const PostNoticeMedia = observer(({}) => {
   let keywordText = detailStore.data.tokens.map((item) => {
     return `<a href="#" data-key="${
       item.slug
-    }" rel="nofollow" target="_blank" class="link"><strong>${item.name.toUpperCase()}</strong></a>`;
+    }" rel="nofollow" target="_blank" className="link"><strong>${item.name.toUpperCase()}</strong></a>`;
   });
   let startString = ` ${t("post notice video start")}
   <a href="${
     source.url
-  }" rel="nofollow noreferrer" target="_blank" class="link ml-2">
+  }" rel="nofollow noreferrer" target="_blank" className="link ml-2">
     <strong>${source.name}</strong>
-    <span class="icon ml-1"><i class="fa-duotone fa-external-link text-2xs relative -top-0.5"></i></span>
+    <span className="icon ml-1"><i className="fa-duotone fa-external-link text-2xs relative -top-0.5"></i></span>
   </a>`;
-  let about = `<span class="mx-2">${t("about video keyword")}</span> `;
+  let about = `<span className="mx-2">${t("about video keyword")}</span> `;
   keywordText = keywordText.join(", ");
   let text =
     detailStore.data.tokens.length > 0
