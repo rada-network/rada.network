@@ -13,8 +13,8 @@ import { createShortenLink } from "@data/query/createShortenLink"
 import { SHORT_SHARE2EARN_URL } from "@config/links"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 
-const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentivePaid, share2earnAdress, share2earnInfo, shareCampaign,shareType,shareSlug, uid }) => {
-  const { t,i18n } = useTranslation('share2earn')
+const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentivePaid, share2earnAdress, share2earnInfo, shareCampaign, shareType, shareSlug, uid }) => {
+  const { t, i18n } = useTranslation('share2earn')
   const { callFunction } = useCallFunction()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const { callWithGasPrice } = useCallWithGasPrice();
@@ -40,10 +40,10 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
   };
 
   const getShareUrl = () => {
-    if (shareType === "project"){
+    if (shareType === "project") {
       return window.location.origin + `/launchverse/${shareSlug}/share2earn` + "?ref=" + uid
     }
-    else{
+    else {
       return window.location.origin + `/${i18n.language}/post/${shareSlug}/` + "?ref=" + uid + "#share2earn"
     }
   }
@@ -75,21 +75,21 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
     };
   }
   const overridePosition = function ({ left, top }, currentEvent, currentTarget, node, place, desiredPlace, effect, offset) {
-    if (shareType === 'project'){
+    if (shareType === 'project') {
       const scrollTop = document.querySelector(".pane-content--sec--main").scrollTop
       const pageOffset = getOffset(document.querySelector(".page-project-share2earn"))
       const rect = document.querySelector(".page-project-share2earn").getBoundingClientRect()
       return { left: getOffset(currentTarget.parentElement).left + rect.x - document.querySelector(".pane-content--sec--main").getBoundingClientRect().x, top: getOffset(currentTarget).top + pageOffset.top - scrollTop + 48 }
     }
-    else{
+    else {
       const scrollTop = document.querySelector(".pane-content--sec--main").scrollTop
       const pageOffset = getOffset(document.querySelector(".page"))
       const rect = document.querySelector(".page").getBoundingClientRect()
-      const rect2= document.querySelector(".pane-content--main").getBoundingClientRect()
-      return { 
-        left: getOffset(currentTarget.parentElement).left + rect.x - document.querySelector(".pane-content--sec--main").getBoundingClientRect().x + (rect2.x == 0  ? 0 : rect2.width), 
-        top: getOffset(currentTarget).top + pageOffset.top - scrollTop + 48 
-    }
+      const rect2 = document.querySelector(".pane-content--main").getBoundingClientRect()
+      return {
+        left: getOffset(currentTarget.parentElement).left + rect.x - document.querySelector(".pane-content--sec--main").getBoundingClientRect().x + (rect2.x == 0 ? 0 : rect2.width),
+        top: getOffset(currentTarget).top + pageOffset.top - scrollTop + 48
+      }
     }
   }
 
@@ -371,57 +371,61 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
 
 
             {/* Số RIR có thể claim */}
-            <li className="list-pair !items-center mb-2">
-              <div className="list-key">
-                Claimable RIR
-                <span
-                  className="hasTooltip"
-                  data-event="click"
-                > <i className="fa-duotone fa-info-circle text-base" />
-                </span>
-              </div>
-              <div className="ml-auto flex items-center">
-                <span class="icon w-4 h-4 mr-1">
-                  <RadaSvg />
-                </span>
-                {referralInfo.claimableApproved} RIR
-                <div>
-                  {!referralInfo.isDeny && !claimDisbaled && referralInfo.claimableApproved > 0 && referralInfo.claimableApproved >= referralInfo.allowClaimValue && (
-                    <button className="btn btn-primary px-2 py-1 ml-4"
-                      onClick={handleClaimRIRToken}
-                    >Claim</button>
-                  )}
-                </div>
+            {share2earnInfo.paused && (
+              <>
+                <li className="list-pair !items-center mb-2">
+                  <div className="list-key">
+                    Claimable RIR
+                    <span
+                      className="hasTooltip"
+                      data-event="click"
+                    > <i className="fa-duotone fa-info-circle text-base" />
+                    </span>
+                  </div>
+                  <div className="ml-auto flex items-center">
+                    <span class="icon w-4 h-4 mr-1">
+                      <RadaSvg />
+                    </span>
+                    {referralInfo.claimableApproved} RIR
+                    <div>
+                      {!referralInfo.isDeny && !claimDisbaled && referralInfo.claimableApproved > 0 && referralInfo.claimableApproved >= referralInfo.allowClaimValue && (
+                        <button className="btn btn-primary px-2 py-1 ml-4"
+                          onClick={handleClaimRIRToken}
+                        >Claim</button>
+                      )}
+                    </div>
 
-              </div>
+                  </div>
 
-            </li>
+                </li>
+                
+                {/* Feedback URL */}
+                <li className="list-pair !items-center mb-2">
+                  <div className="list-key">
+                    Feedback URL
+                  </div>
+                  <div className="w-auto px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-700">
+                    <div>
+                      <a target="_blank" href={t("feedback")}>{t("feedback")}</a>
+                    </div>
+                  </div>
+                </li>
 
-            {/* Feedback URL */}
-            <li className="list-pair !items-center mb-2">
-              <div className="list-key">
-                Feedback URL
-              </div>
-              <div className="w-auto px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-700">
-                <div>
-                  <a target="_blank" href={t("feedback")}>{t("feedback")}</a>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div className="message warning flex relative mb-2 ">
-                <span className="message-icon">
-                  <i class="mr-2 fas fa-bullhorn"></i>
-                </span>
-                <div className="message-content pr-2">
-                  {t("rir_not_enough")}
-                </div>
-                <button className="flex items-center ml-auto w-4 h-4 ">
-                  <i class="text-base fas fa-times"></i>
-                </button>
-              </div>
-            </li>
+                <li>
+                  <div className="message warning flex relative mb-2 ">
+                    <span className="message-icon">
+                      <i class="mr-2 fas fa-bullhorn"></i>
+                    </span>
+                    <div className="message-content pr-2">
+                      {t("rir_not_enough")}
+                    </div>
+                    <button className="flex items-center ml-auto w-4 h-4 ">
+                      <i class="text-base fas fa-times"></i>
+                    </button>
+                  </div>
+                </li>
+              </>
+            )}
 
             {/*<li className="list-pair !items-center mb-2">
               <div className="list-key">
