@@ -185,7 +185,6 @@ const CardPostNormal = observer(
                 onClick={(e) => handleClickPost(e)}
               >
                 <Image
-                  height={48}
                   layout="fill"
                   className={`card-img`}
                   srcSet={srcSet}
