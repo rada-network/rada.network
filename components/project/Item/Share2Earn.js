@@ -35,7 +35,6 @@ export default function ProjectShare2Earn({
   const store = useStore()
   const user = store.user
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
-  const [campaignEnded, setCampaignEnded] = useState(true);
   // TODO: Save in config file
   const share2earnAddress = shareCampaign.share2earn_contract
   const referralAdminAddress = shareCampaign.referral_admin_contract
@@ -60,7 +59,7 @@ export default function ProjectShare2Earn({
     })
 
   const handleJoinProgram = async (e) => {
-    if (!campaignEnded) {
+    if (!share2EarnInfo.paused) {
       e.preventDefault()
       e.stopPropagation()
       handleConfirm();
@@ -80,8 +79,9 @@ export default function ProjectShare2Earn({
     const getInfoProgram = async () => {
       try {
         const p = await callFunction(share2earnContract, 'programs', [shareCampaign.program_id])
-        
         const pAdmin = await callFunction(referralAdminContract, 'programs', [shareCampaign.program_id])
+        console.log("Thong tin chuong trinh day")
+        console.log(p)
         setShare2EarnInfo({ ...p, incentiveL0: pAdmin.incentiveLevel1, incentiveL1: pAdmin.incentiveLevel2, incentiveL2: pAdmin.incentiveLevel3 });
         if (account) {
           checkJoined();
@@ -260,9 +260,9 @@ export default function ProjectShare2Earn({
               (
                 <>
                   {
-                    allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!campaignEnded ? "" : "disabled")} type="button"
+                    allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!share2EarnInfo.paused ? "" : "disabled")} type="button"
                       onClick={(e) => { handleJoinProgram(e) }}
-                    >{campaignEnded ? "The campaign has ended" : t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{ wordBreak: "break-word" }}>{getMessage()}</div>
+                    >{share2EarnInfo.paused ? "The campaign has ended" : t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{ wordBreak: "break-word" }}>{getMessage()}</div>
                   }
                 </>
               )}

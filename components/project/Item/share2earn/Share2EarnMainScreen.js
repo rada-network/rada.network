@@ -21,7 +21,7 @@ import useChainConfig from "@utils/web3/useChainConfig"
 
 
 
-const Share2EarnMainScreen = observer(({ shareCampaign,shareType,shareSlug, user, share2earnAddress, referralAdminAddress, share2earnInfo }) => {
+const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, user, share2earnAddress, referralAdminAddress, share2earnInfo }) => {
   const store = useStore();
   const { detailStore } = usePageStore();
   const context = useActiveWeb3React();
@@ -44,8 +44,6 @@ const Share2EarnMainScreen = observer(({ shareCampaign,shareType,shareSlug, user
   const [baseFrames, setBaseFrames] = useState({});
   const [userAvatar, setUserAvatar] = useState(null);
   const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '', incentivePaid: '', isDeny: false, allowClaimValue: 0.0, claimableApproved: 0.0 })
-  const [campaignEnded, setCampaignEnded] = useState(true);
-  const [claimDisbaled, setClaimDisbaled] = useState(false);
 
   // Banner component 
   let bannerURL;
@@ -307,12 +305,13 @@ const Share2EarnMainScreen = observer(({ shareCampaign,shareType,shareSlug, user
             <span className="icon text-3xl"><i className="fa-solid fa-check-circle text-green-500"></i></span>
           </div>
 
-          {campaignEnded && (
+          {share2earnInfo.paused && (
             <div className="w-full">
               <div className="message success flex relative mb-2 ">
                 <span className="message-icon">
                   <i class="mr-2 fas fa-star"></i>
                 </span>
+
                 <div className="message-content pr-2">
                   Share2earn for Parallel campaign has successfully ended.
                 </div>
@@ -321,7 +320,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign,shareType,shareSlug, user
                 </button>
               </div>
 
-              { referralInfo.isDeny && (
+              {referralInfo.isDeny && (
                 <div className="message error flex relative mb-2 ">
                   <span className="message-icon">
                     <i class="mr-2 fas fa-exclamation-triangle"></i>
@@ -334,20 +333,21 @@ const Share2EarnMainScreen = observer(({ shareCampaign,shareType,shareSlug, user
                   </button>
                 </div>
               )}
-
-
-              {/* <h1 className="">
-              <span className="text-xl lg:text-lg font-semibold text-color-title">
-                Welcome to The Parallel #Share2Earn event
-              </span>
-            </h1> */}
-              {/* <p className="text-sm opacity-75">
-              {t("main step des")}P
-            </p> */}
             </div>
           )}
 
-
+          {!share2earnInfo.paused && (
+            <div className="w-full">
+              <h1 className="">
+                <span className="text-xl lg:text-lg font-semibold text-color-title">
+                  Welcome to The Parallel #Share2Earn event
+                </span>
+              </h1>
+              <p className="text-sm opacity-75">
+                {t("main step des")}
+              </p>
+            </div>
+          )}
         </div>
 
 
@@ -362,21 +362,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign,shareType,shareSlug, user
             shareSlug={shareSlug}
             uid={uid} />
 
-          {/* {!share2earnInfo.isDeny && (
-            <div className="mt-4 rounded-lg border border-yellow-200 bg-yellow-400 bg-opacity-5 text-sm overflow-hidden">
-              <div className="px-4 py-2 bg-yellow-400 bg-opacity-10 dark:bg-opacity-100 dark:bg-gray-800 flex items-center">
-                <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
-                <span className="font-semibold">Thông báo.</span>
-              </div>
-              <ul className="p-4">
-                <li className="mb-2">Xin chúc mừng bạn đã bị ban.</li>
-              </ul>
-            </div>
-          )} */}
-
-
-
-          {(!campaignEnded) && (
+          {(!share2earnInfo.paused) && (
             <ol className="text-sm space-y-8">
 
               {/* Step 1 */}
@@ -473,7 +459,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign,shareType,shareSlug, user
 
               {/* Step 2 */}
               <li className="flex flex-col md:flex-row items-start">
-                <ShareLink uid={uid} share_message={shareCampaign.share_message} shareCamp={project} />
+                <ShareLink uid={uid} share_message={shareCampaign.share_message} />
               </li>
 
               {/* Step 3 */}
@@ -556,22 +542,14 @@ const Share2EarnMainScreen = observer(({ shareCampaign,shareType,shareSlug, user
 
             </ol>
           )}
-          {/* {campaignEnded && !referralInfo.isDeny && !claimDisbaled && referralInfo.claimableApproved > referralInfo.allowClaimValue && (
-            <div className="mb-8 items-center text-base mt-4 md:ml-14">
-              <div className="p-4">
-                <button className="w-full btn btn-yellow justify-center py-3" type="submit"
-                  onClick={handleClaimRIRToken}
-                >Claim RIR</button>
-              </div>
+          {!share2earnInfo.paused && (
+            <div className="lg:pl-14">
+              <button className="w-full mt-4 btn btn-yellow justify-center py-3 px-4" type="submit"
+                onClick={submitShareURL}
+              >Save</button>
             </div>
-
-          )} */}
-
-          {/* <div className="lg:pl-14">
-            <button className="w-full mt-4 btn btn-yellow justify-center py-3 px-4" type="submit"
-              onClick={submitShareURL}
-            >Save</button>
-          </div> */}
+          )}
+          
         </div>
 
       </div>
