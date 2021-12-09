@@ -11,7 +11,7 @@ import ContentLoader from "react-content-loader";
 
 import { usePageStore } from "../../lib/usePageStore";
 import { PostDetailAuthor } from "./PostDetailAuthor";
-import {ProjectShare2EarnWrapper} from "@components/project/Item/Share2Earn";
+import ProjectShare2EarnWrapper from "@components/project/Item/ProjectShare2EarnWrapper";
 
 const ContentDescription = dynamic(import("@components/ContentDescription"));
 const FloatButton = dynamic(import("@components/toc/FloatingButton"));

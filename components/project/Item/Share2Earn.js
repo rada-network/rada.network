@@ -286,14 +286,3 @@ export default function ProjectShare2Earn({
 }
 
 
-export const ProjectShare2EarnWrapper = ({shareCampaign,shareSlug,shareType}) => {
-  return  (
-    <>
-    <div className="flex h-10 w-limiter-lg relative xl:px-4">
-      <WalletProfile type="hidden" />
-    </div>
-    
-    <ProjectShare2Earn shareCampaign={shareCampaign} shareType={shareType} shareSlug={shareSlug} />
-    </>
-  )
-}
