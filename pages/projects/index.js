@@ -1,4 +1,3 @@
-import { Layout } from "../../components/page-layouts/Global";
 import React, { useRef } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
@@ -8,6 +7,9 @@ import { getProjects } from "@data/query/projects";
 import { usePageStore } from "@lib/usePageStore";
 import utils from "@lib/util";
 import { useRouter } from "next/router";
+
+import dynamic from "next/dynamic";
+const Layout = dynamic(import("@components/page-layouts/Global"));
 
 export default function ProjectsIndex({ projects, locale }) {
   const { dataStore } = usePageStore();
