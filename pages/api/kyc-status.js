@@ -6,7 +6,7 @@ export default async (req, res) => {
   let status = ''
   const refId = req.query.refId || ''
   if (refId) {
-    const clientId = process.env.BLOCKPASS_CLIENTID
+    const clientId = process.env.NEXT_PUBLIC_BLOCKPASS_CLIENTID
     const data = await fetchJson(`https://kyc.blockpass.org/kyc/1.0/connect/${clientId}/refId/${refId}`, {
       headers: {
         Authorization: process.env.BLOCKPASS_API,

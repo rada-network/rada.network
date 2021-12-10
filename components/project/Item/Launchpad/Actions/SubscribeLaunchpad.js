@@ -115,7 +115,7 @@ const KYC = () => {
 
   const Button = () => {
     const [loadlib, setLoadlib] = useState(false);
-    const clientId = process.env.BLOCKPASS_CLIENTID || "rada_launchverse_b9128"; // why empty from env
+    const clientId = process.env.NEXT_PUBLIC_BLOCKPASS_CLIENTID || "rada_launchverse_b9128"; // why empty from env
 
     useEffect(() => {
       if (store.kyc.status) return;
