@@ -409,7 +409,7 @@ const NewsDetail = observer(function ({
       twttr.widgets.load();
     }
   }, [item.contentDisplay]);
-
+  const url = item.websiteUri ? item.websiteUri : item.url
   return (
     <div
       className={
@@ -425,6 +425,7 @@ const NewsDetail = observer(function ({
           <div className="badges-tags"><span className="badge badge-rada mr-2">RADA</span></div>
           : ""} */}
           <h1>
+            {url ?
             <a
               target="_blank"
               rel="nofollow noreferrer"
@@ -445,6 +446,12 @@ const NewsDetail = observer(function ({
                 </span>
               )}
             </a>
+            :
+            <span className="post-title--text" itemProp="name">
+              {title}
+            </span>
+            }
+            
           </h1>
         </div>
         <div className="metadata-wrapper">
