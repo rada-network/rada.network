@@ -365,7 +365,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
                 <span class="icon w-4 h-4 mr-1">
                   <RadaSvg />
                 </span>
-                2 RIR
+                1 RIR
               </div>
             </li>
 
