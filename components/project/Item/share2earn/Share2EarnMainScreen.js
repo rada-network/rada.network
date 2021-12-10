@@ -108,11 +108,11 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
       getInfo()
     }
   }, []);
-  // Create or update url
 
+  // Create or update url
   function submitShareURL() {
-    if (project.share_campaign?.length) {
-      createOrUpdateShareLogById({ campaignId: parseInt(project.share_campaign[0].id), walletAddress: account, twitter: twitter.url, facebook: facebook.url, telegram: telegram.url, linkedin: "" }).then(function (
+    if (shareCampaign) {
+      createOrUpdateShareLogById({ campaignId: parseInt(shareCampaign.id), walletAddress: account, twitter: twitter.url, facebook: facebook.url, telegram: telegram.url, linkedin: "" }).then(function (
         res
       ) {
         toast.success("Save successfuly", {})
@@ -480,7 +480,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
 
               {/* Step 2 */}
               <li className="flex flex-col md:flex-row items-start">
-                <ShareLink uid={uid} share_message={shareCampaign.share_message} />
+                <ShareLink uid={uid} share_message={shareCampaign.share_message}  shareSlug={shareSlug}/>
               </li>
 
               {/* Step 3 */}
@@ -503,8 +503,8 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
 
                     <div className="mt-4">
                       <form>
-                        {/* Telegram */}
-                        <div className="mb-4">
+                        {/* Telegram -- Disable for LV campaign */}
+                        {/* <div className="mb-4">
                           <label for="telegram-post-url" className="sr-only block text-xs font-medium uppercase">Telegram's username</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--telegram"><span class="icon"><i class="fa-brands fa-telegram"></i></span></span>
@@ -516,11 +516,11 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
                             <div className="absolute inset-y-0 right-0 flex items-center">
                             </div>
                           </div>
-                        </div>
+                        </div> */}
 
                         {/* Twitter */}
                         <div className="mb-4">
-                          <label for="twitter-post-url" className="sr-only block text-xs font-medium uppercase">Twitter's post link</label>
+                          <label for="twitter-post-url" className="sr-only block text-xs font-medium uppercase">Your Twitter Username</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span class="icon"><i class="fa-brands fa-twitter"></i></span></span>
                             <input type="text" name="twitter-post-url" id="twitter-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
@@ -535,7 +535,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
 
                         {/* Facebook */}
                         <div className="mb-4">
-                          <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Facebook's post link</label>
+                          <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Your Facebook Profile Link</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
                             <input type="text" name="fb-post-url" id="fb-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
