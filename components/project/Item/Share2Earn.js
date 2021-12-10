@@ -125,7 +125,7 @@ export default function ProjectShare2Earn({
 
   if (loading) return null;
 
-  if (joined != '' && joined == account  && !!account && !!share2EarnInfo && store.user.id !== "" && store.kyc.status) {
+  if ((joined == account || isConfirmed)  && !!account && !!share2EarnInfo && store.user.id !== "" && store.kyc.status) {
     return <Share2EarnMainScreen shareCampaign={shareCampaign} user={user} share2earnAddress={share2earnAddress} shareSlug={shareSlug} shareType={shareType} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
   }
   return (
@@ -238,7 +238,7 @@ export default function ProjectShare2Earn({
             
             {
               allowJoin && 
-              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !isConfirmed ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
+              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !confirm ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
                 {share2EarnInfo.paused ? "The campaign has ended" : t("join program")}
               </button>               
             }
