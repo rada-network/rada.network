@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import fetchJson from "@lib/fetchJson";
 import useSWR from "swr";
 import { useTranslation } from "next-i18next";
+import { getCurrentUser } from "@data/query/user";
 
 import dynamic from "next/dynamic";
 
@@ -11,12 +12,23 @@ const WalletRequire = dynamic(import("@components/WalletRequire"));
 const SubscribeLaunchpad = ({ project }) => {
   const store = useStore();
   const { t } = useTranslation("launchpad");
-  if (project.is_kyc) {
-    const { data } = useSWR(
-      "/api/kyc-status?refId=" + store.user.id,
-      fetchJson
-    );
-    if (data) store.kyc.update(data.status);
+  const [loading,setLoading] = useState(true)
+  useEffect(() =>{
+    if (store.user.id !== ""){
+      getCurrentUser().then((res) => {
+        if (res.is_kyc){
+          store.kyc.update("Completed");
+        }
+        setLoading(false);
+      })
+    }
+  },[store.user.id])
+  const { data } = useSWR(
+    "/api/kyc-status?refId=" + store.user.id,
+    fetchJson
+  );
+  if (data && !store.kyc.status && !loading) {
+    store.kyc.update(data.status);
   }
   return (
     <>
@@ -33,9 +45,9 @@ const SubscribeLaunchpad = ({ project }) => {
         </div>
 
         <div className="list-group">
-          <WalletRequire />
           {project.is_kyc && <Login />}
           {project.is_kyc && <KYC />}
+          <WalletRequire />
         </div>
       </div>
     </>
@@ -71,7 +83,7 @@ const Login = () => {
   };
   const Button = () => {
     if (store.user.id)
-      return <span className="flex label label--success w-full">Done</span>;
+      return <span className="flex label label--success w-24">Done</span>;
     return (
       <button
         className="btn btn-default w-24"
@@ -149,9 +161,9 @@ const KYC = () => {
     }, [loadlib]);
 
     if (store.kyc.status)
-      return <span className="flex label label--success w-full">Done</span>;
+      return <span className="flex label label--success w-24">Done</span>;
     return (
-      <button className="btn btn-default w-full" id="blockpass-kyc-connect">
+      <button className="btn btn-default w-24" id="blockpass-kyc-connect">
         KYC
       </button>
     );
