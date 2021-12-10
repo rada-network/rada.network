@@ -15,7 +15,7 @@ Title
 }
 
 .project-title--token-logo {
-  @apply flex items-center w-8 h-8 rounded-full bg-white mr-2;
+  @apply flex items-center w-8 h-8 rounded-full bg-white p-1 mr-2;
 }
 
 /* 
@@ -56,6 +56,10 @@ Card Thumb + Type + Countdown
 }
 
 .project-type .label.public {
+  @apply text-green-500;
+}
+
+.project-type .label.community {
   @apply text-green-500;
 }
 
@@ -172,11 +176,20 @@ Card Content
   @apply text-center mb-4 mt-8 relative;
   h3 {
     @apply relative inline-block text-sm tracking-widest font-altsans uppercase z-10 rounded-full px-4 py-1;
-    @apply bg-yellow-400 text-gray-700 border-4 border-gray-50 dark:border-gray-800;
+    @apply bg-yellow-400 text-gray-700 border-4 border-gray-50;
   }
   &::before {
     @apply block absolute bottom-4 h-px-1 w-full bg-gray-300 z-0;
     content: " ";
+  }
+}
+
+.dark .projects-section--subheader {
+  h3 {
+    @apply border-gray-800;
+  }
+  &::before {
+    @apply bg-gray-700;
   }
 }
 

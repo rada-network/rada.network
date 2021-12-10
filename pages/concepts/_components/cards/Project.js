@@ -15,7 +15,6 @@ export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPr
           </div>
           <div className={`countdown-mini--wrapper ${status == "closed" ? "hidden" : ""}`}>
             <h5>Project Status</h5>
-            {status=="open" ? 
             <div className="countdown--mini">
               <div className="countdown--mini--body countdown--mini--body--day">
                 <time>12</time> <span title="day">d</span>
@@ -32,7 +31,7 @@ export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPr
                 <time>24</time>
                 <span title="second">s</span>
               </div>
-            </div> : ""}
+            </div>
           </div>
         </div>
 
