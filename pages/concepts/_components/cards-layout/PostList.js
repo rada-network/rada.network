@@ -2,20 +2,12 @@ import React, {useCallback, useEffect, useMemo, useState, createRef} from 'react
 
 //ReactIcons
 import {IoChevronDownSharp, IoChevronForwardSharp, IoChevronBackSharp} from "react-icons/io5";
-import Link from "next/link"
-import {observer} from "mobx-react";
-import {TabButton} from "../../button/tabButton";
-import WidgetTitle from "../../text/widgetTitle";
-import {CardPost} from "../../../pages/concepts/_components/cards/Post";
-import ContentLoader from "react-content-loader";
-
-import PerfectScrollbar from 'perfect-scrollbar';
-import "perfect-scrollbar/css/perfect-scrollbar.css";
+import {CardPost} from "../../../../pages/concepts/_components/cards/Post";
 
 const scrollBox = createRef();
 let ps;
 
-export const PostsList = ({title, extraClass}) => {
+export default function PostsList({title, extraClass}){
 
   return (
     <div className={`section ${extraClass || ''}`}>

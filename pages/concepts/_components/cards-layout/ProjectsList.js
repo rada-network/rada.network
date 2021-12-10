@@ -1,7 +1,7 @@
 import {CardProject} from "../cards/Project";
 
 
-export const ProjectsList = ({title, extraClass}) => {
+export default function ProjectsList({title, extraClass}){
 
   return (
     <>

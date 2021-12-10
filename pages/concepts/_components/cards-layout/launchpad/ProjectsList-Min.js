@@ -4,11 +4,11 @@ import React, {useCallback, useEffect, useMemo, useState, createRef} from 'react
 import {IoChevronDownSharp, IoChevronForwardSharp, IoChevronBackSharp} from "react-icons/io5";
 import Link from "next/link"
 import {observer} from "mobx-react";
-import {CardProject} from "../../cards/launchpad/Project";
+import CardProject from "../../cards/launchpad/Project";
 import ContentLoader from "react-content-loader";
 
 
-export const ProjectsList = ({title, extraClass}) => {
+const ProjectsList = ({title, extraClass}) => {
 
   return (
     <div className="page page-full page-projects-list scrollbar">
@@ -161,3 +161,5 @@ export const ProjectsList = ({title, extraClass}) => {
     </div>
   )
 }
+
+export default ProjectsList
