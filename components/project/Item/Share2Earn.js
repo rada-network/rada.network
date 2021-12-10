@@ -14,6 +14,7 @@ import { useStore } from "@lib/useStore"
 import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
 import { useERC20 } from "@utils/hooks/useContracts";
 import useChainConfig from "@utils/web3/useChainConfig";
+import Share2EarnRequire from "./Share2EarnRequire";
 
 export default function ProjectShare2Earn({
   shareCampaign,shareType,shareSlug
@@ -109,13 +110,6 @@ export default function ProjectShare2Earn({
     }
   };
 
-  const openLoginPopUp = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    store.user.showConnect(true)
-  }
-
-
   const getMessage = () => {
     if (isConfirming) {
       return t("transcation confirm message");
@@ -128,17 +122,13 @@ export default function ProjectShare2Earn({
 
     return '';
   }
-  const allowJoin = getMessage() == '' && joined == '' && account && (joined != account)
+  const allowJoin = getMessage() == '' && joined == ''
+
   if (loading) return null;
 
-  if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo) {
+  if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && store.user.id !== "" && store.kyc.status) {
     return <Share2EarnMainScreen shareCampaign={shareCampaign} user={user} share2earnAddress={share2earnAddress} shareSlug={shareSlug} shareType={shareType} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
   }
-
-  const handleConnectWallet = () => {
-    store.wallet.showConnect(true);
-  };
-
   return (
     <>
       <div className="section mx-auto">
@@ -223,13 +213,14 @@ export default function ProjectShare2Earn({
             </div>
             <ul className="p-4">
               <li className="mb-2">{t("notice line 1")}</li>
-              <li className="mb-2">{t("notice line 2")}</li>
+              {/* <li className="mb-2">{t("notice line 2")}</li> */}
               <li>{t("notice line 3")}</li>
             </ul>
           </div>
+          <Share2EarnRequire shareCampaign={shareCampaign} />
           <form className="mt-4">
 
-            {allowJoin && 
+            {allowJoin && store.kyc.status && store.user.id !== "" && 
             <fieldset className="space-y-4 mb-4 text-gray-500 dark:text-gray-400">
               <legend className="sr-only">Term of Uses</legend>
               <div className="relative flex items-start">
@@ -247,14 +238,20 @@ export default function ProjectShare2Earn({
 
             
             {
-              allowJoin ? 
-              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 "} type="button" onClick={(e) => { handleJoinProgram(e) }}>
-                {share2EarnInfo.paused ? "The campaign has ended" : t("welcome btn connect wallet")}
-              </button> 
-              : 
+              allowJoin && 
+              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !isConfirmed ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
+                {share2EarnInfo.paused ? "The campaign has ended" : t("join program")}
+              </button>               
+            }
+            {!allowJoin && !account && 
+              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !isConfirmed ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
+                {t("view incentive")}
+              </button>
+            }
+            {!allowJoin && !!account && 
               <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{ wordBreak: "break-word" }}>
                 {getMessage()}
-              </div>
+              </div>              
             }
                
           </form>
