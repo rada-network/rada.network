@@ -61,21 +61,18 @@
   @apply p-3 lg:p-5 dark:bg-gray-800 sm:p-3 flex flex-col;
 }
 
-.step--content {
-  /* @apply pl-10; */
-}
-
-.step--indicator {
-  @apply mr-3 py-1.5 flex-shrink-0 w-7 h-7;
-  @apply bg-gray-200 text-center dark:bg-gray-700 rounded-full uppercase font-semibold text-xs text-gray-400;
-}
 
 .card--body {
   @apply text-gray-800 rounded-t-lg bg-white dark:text-gray-400 dark:bg-gray-800 overflow-hidden flex-shrink-0 flex-grow;
 }
 
 .card--footer {
-  @apply bg-white border-t border-t-gray-200 dark:text-gray-400 dark:bg-gray-800 dark:border-t-gray-900;
+  @apply bg-white border-t border-t-gray-200 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-500  dark:border-opacity-10;
+}
+
+.step--indicator {
+  @apply mr-3 py-1.5 flex-shrink-0 w-7 h-7;
+  @apply bg-gray-200 text-center dark:bg-gray-700 rounded-full uppercase font-semibold text-xs text-gray-400;
 }
 
 .sep {
