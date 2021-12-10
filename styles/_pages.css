@@ -371,16 +371,12 @@ Content
 
 
 /* 
-Landing - The Parallel
+LaunchVerse
 --------------------------------------------- */
-.page-landing--parallel {
-
-}
-
 /* 
 Logo
 */
-.page-landing--parallel .page-logo {
+.logo-launchverse {
   @apply block relative bg-no-repeat;
   background-image: url("/images/logos/launchverse.svg");
   background-size: 100% 54px;
@@ -388,23 +384,23 @@ Logo
   height: 54px;
 }
 
-.dark .page-landing--parallel .page-logo {
+.dark .logo-launchverse {
   background-image: url("/images/logos/launchverse-dark.svg");
 }
 
 /* Smaller the logo for small screen */
 @media only screen and (max-width: 767px) {
-  .page-landing--parallel .page-logo {
+  .logo-launchverse {
     background-size: 100% 48px;
     width: 272px;
     height: 48px;
   }
 }
 
-
 /* 
 Hero
 */
+.page-launchverse .hero-deco,
 .page-landing--parallel .hero-deco {
   background-image: url("/images/launchverse-hero.svg");
   @apply flex-shrink-0 relative bg-no-repeat;
@@ -413,18 +409,27 @@ Hero
   height: 400px;
 }
 
+.dark .page-launchverse .hero-deco,
 .dark .page-landing--parallel .hero-deco {
   background-image: url("/images/launchverse-hero-dark.svg");
 }
 
 /* Smaller the logo for small screen */
 @media only screen and (max-width: 768px) {
+  .page-launchverse .hero-deco,
   .page-landing--parallel .hero-deco {
     width: 300px;
     height: 300px;
   }
 }
 
+
+/* 
+Landing - The Parallel
+--------------------------------------------- */
+.page-landing--parallel {
+
+}
 
 /* 
 S2E
@@ -440,8 +445,6 @@ S2E
 .dark .page-landing--parallel .s2e-deco {
   background-image: url("/images/launchverse-s2e-dark.png");
 }
-
-
 
 /* 
 Footer

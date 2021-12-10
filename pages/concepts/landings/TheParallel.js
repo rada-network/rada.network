@@ -66,7 +66,7 @@ const Layout = observer((props) => {
 
                         {/* LOGO */}
                         <div className="">
-                          <span className="page-logo"></span>
+                          <span className="logo-launchverse"></span>
                           <h1 className="sr-only">
                             <span className="">LaunchVerse</span>
                           </h1>

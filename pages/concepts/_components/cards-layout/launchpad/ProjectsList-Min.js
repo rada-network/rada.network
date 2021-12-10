@@ -14,7 +14,7 @@ export const ProjectsList = ({title, extraClass}) => {
     <div className="page page-full page-projects-list scrollbar">
       <div className="">
         <div className="">
-          <div className="projects--wrapper single">
+          <div className="projects-list single">
             {/* add class "single" if there's only 1 live project*/}
 
             <CardProject
@@ -59,7 +59,7 @@ export const ProjectsList = ({title, extraClass}) => {
             <h2 className="p-2 font-semibold">Upcoming</h2>
           </div>
 
-          <div className="projects--wrapper projects-grid">
+          <div className="projects-list projects-grid">
             <CardProject
               title="Moniwar" 
               img="https://media.rada.network/assets/026f4bd5-9741-4b9c-a075-0acfe7c86cb7?format=webp&width=1080"
@@ -110,7 +110,7 @@ export const ProjectsList = ({title, extraClass}) => {
             <h2 className="p-2 font-semibold">Closed</h2>
           </div>
 
-          <div className="projects--wrapper projects-grid">
+          <div className="projects-list projects-grid">
             <CardProject
               title="Heroverse" 
               img="https://media.rada.network/assets/5a380cca-fbd9-4cf5-9667-d1a85949bc9f?format=webp&width=1080"

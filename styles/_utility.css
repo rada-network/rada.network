@@ -142,26 +142,28 @@
 /* Todo: Organizing Later
 --------------------------------*/
 /* Countdown */
+.countdown-mini--wrapper {
+  @apply text-xs flex justify-between items-center px-4 w-full;
+  @apply bg-gray-700 bg-opacity-80 backdrop-blur text-white;
+}
+
 .countdown--mini {
-  @apply flex border dark:border-gray-700 border-gray-300 rounded-lg sm:w-full;
-}
-.countdown--mini > * {
-}
-.countdown--mini > *:last-child{
-  @apply mr-auto;
-}
-.countdown--mini > *:first-child{
-  @apply ml-auto;
+  @apply flex;
+  h5 {
+    @apply p-1;
+  }
 }
 
 .countdown--mini--body {
-  @apply  p-2 flex flex-col text-center w-14;
+  @apply p-1 flex text-center;
 }
-.countdown--mini time{
-  @apply font-mono text-lg;
+
+.countdown--mini time {
+  @apply font-mono;
 }
+
 .countdown--mini--body span {
-  @apply text-xs opacity-60;
+  @apply opacity-60;
 }
 
 .list-header {

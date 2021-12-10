@@ -1,68 +1,200 @@
+/* Project Card 
+--------------------------------------- */
+.card-project {
+  @apply cursor-pointer shadow-sm hover:shadow-lg transition-all rounded-lg;
+  @apply bg-white dark:bg-gray-800 border border-transparent;
+  @apply hover:border-gray-100 dark:hover:border-gray-700 hover:-translate-y-1;
+}
 
-.projects--wrapper{
-  @apply md:p-3 grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-3 md:gap-y-6 md:p-4;
+/* 
+Title
+*/
+.project-title  {
+  @apply text-base font-medium;
+  @apply flex flex-col relative mb-2;
 }
-.projects--wrapper .card-project {
-  @apply border rounded-lg  border-gray-200 dark:bg-gray-800 dark:border-gray-900;
+
+.project-title--token-logo {
+  @apply flex items-center w-8 h-8 rounded-full bg-white;
 }
+
+/* 
+Card Thumb + Type + Countdown
+*/
+.project-thumb {
+  @apply relative rounded-lg overflow-hidden;
+}
+
 .project-thumb--img {
-  @apply object-cover absolute top-0 rounded-lg lg:rounded-none;  
+  @apply object-cover rounded-lg;  
 }
 
 .project-thumb--wrapper {
-  @apply relative object-cover;
+  @apply relative;
+}
 
-  padding-top: 56.25%;  
+/* Types */
+.project-type {
+  @apply absolute top-4 left-4;
 }
-.is-open .project-thumb {
-  @apply w-full md:w-1/2 md:pr-2 overflow-hidden rounded-lg;
+
+.project-type .label {
+  @apply text-xs px-4 py-2 shadow;
+  @apply bg-white bg-opacity-90 rounded-md;
+  + .label {
+    @apply ml-2;
+  }
 }
+
+.project-type .label.featured {
+  /* @apply bg-gradient-to-br from-primary-500 to-primary-700 text-white; */
+  @apply bg-primary-700 text-white;
+}
+
+.project-type .label.private {
+  @apply bg-purple-500 text-white;
+}
+
+.project-type .label.public {
+  @apply text-green-500;
+}
+
+/* Countdown */
+.card-project .countdown-mini--wrapper {
+  @apply absolute bottom-0 rounded-b-lg;
+}
+
+/* 
+Card Content
+*/
+.project-content {
+  @apply flex flex-col;
+}
+
 .project-content--meta {
-  @apply md:mt-2;
+  @apply p-4 flex flex-col items-stretch h-full;
 }
 
-.projects--wrapper.single {
-  @apply md:grid-cols-1;
+.project-desc {
+  @apply text-sm line-clamp-3 mb-4 h-10;
 }
-.card-project .list-pair {
+ 
+.project-fields {
+  @apply text-sm;
+}
+
+.project-fields .list-pair {
   @apply mb-1;
 }
-.projects--wrapper.single .card--body {
+
+.project--cta {
+  @apply mt-auto;
+}
+
+
+/* Project Card - Large
+--------------------------------------- */
+.card-project-lg {
   @apply flex;
 }
 
-.projects--wrapper .project-content--meta {
-  @apply flex flex-col;
+/* 
+Title
+*/
+.card-project-lg .project-title  {
+  @apply text-lg md:text-2xl;
 }
 
-.project-content--meta{
-  @apply p-4;
+/* 
+Card Thumb 
+*/
+.card-project-lg .project-thumb {
+  @apply w-full md:w-1/2;
 }
-.projects-grid .project-content--meta{
-  @apply relative -mt-11;
+
+/* 
+Card Content
+*/
+.card-project-lg .project-content {
+  @apply flex-row;
 }
-.is-open .project-content {
+
+.card-project-lg .project-content--meta {
+  @apply flex-shrink-0 flex-grow md:w-1/2;
+}
+
+.card-project-lg .card--body {
+  @apply flex;
+}
+
+
+.card-project-lg .project-title  {
+  @apply md:flex-row md:items-center;
+}
+
+.card-project-lg .project-title--token-name {
+  @apply md:ml-2;
+}
+
+.card-project-lg .project-content {
   @apply md:flex w-full;
 }
 
-.projects--wrapper.single  .project-content--meta {
-  @apply flex-shrink-0 flex-grow md:w-1/2;
+
+
+/* Projects List
+--------------------------------------- */
+.projects-list {
+  @apply grid grid-cols-1 gap-x-6 gap-y-2 md:grid-cols-3 md:gap-y-6;
 }
-.project-desc{
-  @apply text-sm my-1;
+
+.projects-list.single {
+  @apply md:grid-cols-1;
 }
-.projects--wrapper .card--wrapper {
-  @apply mt-2 transition-shadow transition-transform  overflow-visible ;
+
+
+/* Projects Section
+--------------------------------------- */
+.projects-section {
+  @apply mt-8 md:mt-16;
 }
+
+.projects-section--header {
+  @apply text-center mb-4;
+  h2 {
+    @apply text-3xl font-altsans font-semibold;
+  }
+}
+
+.projects-section--subheader {
+  @apply text-center mb-4 mt-8 relative;
+  h3 {
+    @apply relative inline-block text-sm tracking-widest font-altsans uppercase z-10 rounded-full px-4 py-1;
+    @apply bg-yellow-400 text-gray-700 border-4 border-gray-50 dark:border-gray-800;
+  }
+  &::before {
+    @apply block absolute bottom-4 h-px-1 w-full bg-gray-300 z-0;
+    content: " ";
+  }
+}
+
+
+.projects-list .card--wrapper {
+  @apply mt-2 overflow-visible ;
+}
+
 .card--wrapper .card--header {
   @apply text-center relative pb-2 pt-4;
 }
-.projects--wrapper .card--footer{
+
+.projects-list .card--footer {
   @apply rounded-b-lg;
 }
-.projects--wrapper .card--body {
+
+.projects-list .card--body {
   @apply flex flex-col;
 }
+
 .card--header .token-logo {
   width: 40px;
   height: 40px;
@@ -71,72 +203,72 @@
   margin-top:-26px;
   background:#fff;
 }
-.projects--wrapper .card--header h3,.projects--wrapper .card--header a {
+
+.projects-list .card--header h3,.projects-list .card--header a {
   @apply flex mx-auto;
 }
-.projects--wrapper .card--wrapper:hover {
+
+.projects-list .card--wrapper:hover {
   @apply shadow-md border-purple-500;
 }
 
-.label.private {
-  @apply bg-purple-500 text-white;
-}
-.label.public {
-  @apply bg-green-500 text-white;
+
+.whitelist-nav {
+  @apply flex;
 }
 
-.btn-primary.is-closed {
-  @apply bg-gray-300 text-gray-400 dark:bg-gray-700 dark:text-gray-500 w-full;
-}
-.btn-primary.is-open {
-  @apply md:ml-4 flex-shrink-0 flex-grow mt-4 flex items-center;
-}
-.btn-primary.is-open  {
-  @apply !mt-0;
-}
-.btn-primary.is-open span {
-  @apply mx-auto uppercase;
-}
-.card-project.is-open {
-  @apply p-0;
-}
-.project-title  {
-  @apply md:text-2xl text-base pb-2 md:py-2;
-  @apply flex flex-col relative;
+.whitelist-nav > li {
+  @apply mr-2 flex items-center py-2 rounded-full;
 }
 
-.project-type {
-  @apply absolute right-0 bottom-3;
+.whitelist-nav a {
+  @apply rounded-full text-gray-500 uppercase text-xs tracking-wide px-4;
 }
-.projects--wrapper.single .project-title  {
-  @apply md:flex-row md:items-center;
+
+.whitelist-nav .is-active {
+  @apply bg-gray-100 dark:bg-gray-900;
 }
-.projects--wrapper.single .project-title--token-name {
-  @apply md:ml-2;
+
+.whitelist-nav .is-active a {
+  @apply text-gray-700 dark:text-gray-300 
 }
-.projects-grid .project-title--token-name {
-  @apply mt-2 text-base font-semibold;
+
+.whitelist-nav span {
+  @apply bg-green-700 text-green-100 px-2 py-0.5 rounded-full text-xs mr-3 -ml-2;
 }
-.project-title--token-logo {
+
+
+.project-card--container {
+  @apply min-h-full w-full mx-auto px-4 py-6 md:p-6 lg:p-10 z-10;
+  @apply bg-white dark:bg-gray-800;
+}
+
+.wallet-item {
+  @apply px-2 mx-1 text-xs text-center flex-grow-0 w-24;
+}
+
+.wallet-option {
+  @apply relative mx-auto;
+}
+
+.wallet-option {
+  @apply border-4 border-transparent;
+}
+
+.wallet-item.checked .wallet-option{
+  @apply border-4 border-green-600 rounded-full;
+}
+
+.wallet-item.checked {
+  @apply text-green-500;
+}
+
+.wallet-step {
   @apply flex items-center;
 }
-.project-desc {
-  @apply opacity-90;
-}
 
-/* .list-pair:first-child{
-  @apply md:mt-2;
-} */
-.is-open .project--cta {
-  @apply md:mt-4 md:mb-0  md:flex;
-}
-.is-open .countdown--wrapper {
-  @apply text-center my-4 md:w-1/2 md:my-0;
-}
-.is-open .btn-primary {
-  @apply md:w-1/2;
-}
-
+/* MISC 
+----------------------------------------------*/
 .s2e-illustration {
   width:200px;
   height:248px;
@@ -148,45 +280,4 @@
 }
 .dark .s2e-illustration{
   background-image:url('/images/launchverse-s2e-dark.png');
-}
-
-.whitelist-nav {
-  @apply flex;
-}
-.whitelist-nav > li {
-  @apply mr-2 flex items-center py-2 rounded-full;
-}
-.whitelist-nav a {
-  @apply rounded-full text-gray-500 uppercase text-xs tracking-wide px-4;
-}
-.whitelist-nav .is-active {
-  @apply bg-gray-100 dark:bg-gray-900;
-}
-.whitelist-nav .is-active a {
-  @apply text-gray-700 dark:text-gray-300 
-}
-.whitelist-nav span {
-  @apply bg-green-700 text-green-100 px-2 py-0.5 rounded-full text-xs mr-3 -ml-2;
-}
-.project-card--container {
-  @apply min-h-full w-full mx-auto px-4 py-6 md:p-6 lg:p-10 z-10;
-  @apply bg-white dark:bg-gray-800;
-}
-.wallet-item {
-  @apply px-2 mx-1 text-xs text-center flex-grow-0 w-24;
-}
-.wallet-option {
-  @apply relative mx-auto;
-}
-.wallet-option {
-  @apply border-4 border-transparent;
-}
-.wallet-item.checked .wallet-option{
-  @apply border-4 border-green-600 rounded-full;
-}
-.wallet-item.checked {
-  @apply text-green-500;
-}
-.wallet-step {
-  @apply flex items-center;
 }

@@ -343,6 +343,10 @@ Layout Uitlites
   @apply w-full max-w-screen-lg mx-auto;
 }
 
+.w-limiter-xl {
+  @apply w-full max-w-screen-xl mx-auto;
+}
+
 /* Paddings */
 .global-padding {
   @apply p-4 lg:p-6;
@@ -431,9 +435,8 @@ Main Layout when scrolling
 
 }
 
-
 /* 
-Top & Tool Bars
+Top & Toolbars
 --------------------------------------------- */
 .topbar {
   @apply flex lg:hidden justify-between items-center px-4 w-full;

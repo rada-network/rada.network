@@ -2,7 +2,7 @@ import { Head } from "../../../components/Head";
 import { Topbar } from "../../../components/Topbar";
 import { Navbar } from "../../../components/Navbar";
 import TokenInfo from "../../../components/token/TokenInfo";
-import { ProjectsList } from "../_components/cards-layout/launchpad/ProjectsList";
+import { ProjectsList } from "../_components/cards-layout/ProjectsList";
 import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
 import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
 import Media from "../../../components/Media";
