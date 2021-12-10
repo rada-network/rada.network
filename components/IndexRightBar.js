@@ -230,7 +230,7 @@ export const IndexRightBar = observer(({ intro }) => {
                           }}
                         >
                           <span className="icon">
-                            <i className="fa-duotone fa-gift"></i>
+                            <i className="fa-duotone fa-hand-holding-heart"></i>
                           </span>
                           <span className="tab-item--text">
                             {t("share2earn")}
@@ -239,7 +239,29 @@ export const IndexRightBar = observer(({ intro }) => {
                       )}
                     </>
                   ) : (
-                    ""
+                    <>
+                    {share2earn && tabName === "share2earn" && (
+                      <>
+                      <span className="tab-item--divider" />
+                      <a
+                        href="#share2earn"
+                        className={`tab-item ${
+                          tabName === "share2earn" ? "tab-item--active" : ""
+                        }`}
+                        onClick={() => {
+                          setTabName("share2earn");
+                        }}
+                      >
+                        <span className="icon">
+                          <i className="fa-duotone fa-hand-holding-heart"></i>
+                        </span>
+                        <span className="tab-item--text">
+                          {t("share2earn")}
+                        </span>
+                      </a>
+                      </>
+                    )}
+                    </>
                   )}
                 </div>
               </div>
