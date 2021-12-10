@@ -15,7 +15,10 @@ const Share2EarnRequire = ({ shareCampaign }) => {
     "/api/kyc-status?refId=" + store.user.id,
     fetchJson
   );
-  if (data) store.kyc.update(data.status);
+  if (data) {
+    console.log(data.status)
+    store.kyc.update(data.status);
+  }
   return (
     <>
       <div className="p-4 mt-4 rounded-lg border border-gray-300 dark:border-gray-700 mx-auto">

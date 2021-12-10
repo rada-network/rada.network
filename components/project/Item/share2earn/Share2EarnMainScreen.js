@@ -362,7 +362,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
             <div className="w-full">
               <h1 className="">
                 <span className="text-xl lg:text-lg font-semibold text-color-title">
-                  Welcome to The Parallel #Share2Earn event
+                  Welcome to {shareCampaign.title}
                 </span>
               </h1>
               <p className="text-sm opacity-75">
@@ -527,7 +527,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span class="icon"><i class="fa-brands fa-twitter"></i></span></span>
                             <input type="text" name="twitter-post-url" id="twitter-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
-                              placeholder="Twitter's post link"
+                              placeholder="Twitter's profile"
                               value={twitter.url}
                               onChange={(e) => { setTwitter({ url: e.target.value }) }}
                             />
@@ -542,7 +542,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
                             <input type="text" name="fb-post-url" id="fb-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
-                              placeholder="Facebook's post link"
+                              placeholder="Facebook's profile"
                               value={facebook.url}
                               onChange={(e) => { setFacebook({ disable: false, url: e.target.value }) }}
                             />

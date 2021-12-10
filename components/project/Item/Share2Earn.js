@@ -64,7 +64,6 @@ export default function ProjectShare2Earn({
   const [share2EarnInfo, setShare2EarnInfo] = useState(null)
 
   React.useEffect(() => {
-    console.log(shareCampaign)
     if (account && user) {
       checkJoined()
     }
@@ -126,7 +125,7 @@ export default function ProjectShare2Earn({
 
   if (loading) return null;
 
-  if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && store.user.id !== "" && store.kyc.status) {
+  if (joined != '' && joined == account  && !!account && !!share2EarnInfo && store.user.id !== "" && store.kyc.status) {
     return <Share2EarnMainScreen shareCampaign={shareCampaign} user={user} share2earnAddress={share2earnAddress} shareSlug={shareSlug} shareType={shareType} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
   }
   return (
@@ -136,7 +135,7 @@ export default function ProjectShare2Earn({
         <div className="section-header !flex-col">
           <h1 className="mb-2">
             <span className="text-xl lg:text-2xl font-semibold text-color-title">
-              {shareCampaign.title}✨
+              Join {shareCampaign.title}✨
             </span>
           </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -255,8 +254,16 @@ export default function ProjectShare2Earn({
             }
                
           </form>
-          <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"
-            target="_blank" href={t("learn more url")}> {t("learn more")} </a>
+          <div className="flex mt-5 text-center w-full justify-center">
+            <a className="flex btn btn-default !p-3 bg-gray-700 !text-base w-1/2 block rounded-lg mr-1"
+              target="_blank" href={t("learn more url")}>
+              {t("learn more")} 
+            </a>
+            <a className="flext btn btn-default !p-3 bg-gray-700 !text-base w-1/2 block rounded-lg "target="_blank" href={shareCampaign.participation_guide}> 
+              {t("Participation Guide")} 
+            </a>
+          </div>
+          
         </div>
 
       </div>
