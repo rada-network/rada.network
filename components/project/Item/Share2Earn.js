@@ -63,6 +63,7 @@ export default function ProjectShare2Earn({
   const [share2EarnInfo, setShare2EarnInfo] = useState(null)
 
   React.useEffect(() => {
+    console.log(shareCampaign)
     if (account && user) {
       checkJoined()
     }
@@ -226,9 +227,10 @@ export default function ProjectShare2Earn({
               <li>{t("notice line 3")}</li>
             </ul>
           </div>
-          {user?.id && <form className="mt-4">
+          <form className="mt-4">
 
-            {allowJoin && <fieldset className="space-y-4 mb-4 text-gray-500 dark:text-gray-400">
+            {allowJoin && 
+            <fieldset className="space-y-4 mb-4 text-gray-500 dark:text-gray-400">
               <legend className="sr-only">Term of Uses</legend>
               <div className="relative flex items-start">
                 <div className="flex items-center h-5">
@@ -243,60 +245,20 @@ export default function ProjectShare2Earn({
               </div>
             </fieldset>}
 
-            {_.isEmpty(account) ? (
-              <div className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 "} type="button" onClick={() => handleConnectWallet()}>{t("welcome btn connect wallet")}</div>) :
-              (
-                <>
-                  {
-                    allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!share2EarnInfo.paused || !isConfirmed ? "" : "disabled")} type="button"
-                      onClick={(e) => { handleJoinProgram(e) }}
-                    >{share2EarnInfo.paused ? "The campaign has ended" : t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{ wordBreak: "break-word" }}>{getMessage()}</div>
-                  }
-                </>
-              )}
-          </form>
-          }
-          {(user.id === "") ? (
-            <form className="mt-4">
-             
-            </form>
-          ) : null}
-          <form className="mt-4">
-            <button className="disabled w-full btn btn-yellow w-full justify-center py-3 px-4" type="button"
-              >Join the program
-            </button>
-          </form>
-          {/* <form className="mt-4 md:grid md:grid-cols-3 md:gap-4 relative">
             
-            <div className="relative z-10 flex md:block ">
-              <button className="md:mx-auto mx-0 mt-4 btn disabled btn-yellow w-full justify-center py-3 px-4" type="button"
-                onClick={openLoginPopUp}
-              >Login</button>
-              <span className="md:mx-auto mr-2 text-whie flex md:mt-2 items-center place-content-center text-xs bg-green-600 w-6 h-6 rounded-full order-first flex-shrink-0 mt-7"><i class="fas fa-check"></i></span>  
-            </div>
-
-            <div className="relative z-10 flex md:block">
-              <button className="md:mx-auto mx-0 mt-4 btn btn-yellow w-full justify-center py-3 px-4" type="button"
-              >Connect wallet
-              </button>
-              <span className="md:mx-auto mr-2 text-whie flex md:mt-2 items-center place-content-center text-xs bg-green-600 w-6 h-6 rounded-full order-first flex-shrink-0 mt-7">2</span>
-            </div>
-
-
-            <div className="relative z-10 flex md:block">
-              <button className="md:mx-auto mx-0 mt-4 disabled btn btn-yellow w-full justify-center py-3 px-4" type="button"
-              >KYC
-              </button>
-              <span className="md:mx-auto mr-2 text-whie flex md:mt-2 items-center place-content-center text-xs bg-green-600 w-6 h-6 rounded-full order-first flex-shrink-0 mt-7">3</span>
-            </div>
-
-
-            <div className="md:h-1 md:w-full md:left-0 md:top-auto md:bottom-2 h-32 w-1  absolute top-10 left-2.5  z-1">
-              <div className="flex bg-green-500 md:w-auto w-1 h-full md:mx-20"></div>
-            </div> 
-          </form> */}
-
-          <a className="btn btn-default mt-8 md:ml-0 !p-3 bg-gray-700 w-full !text-base block rounded-lg"
+            {
+              allowJoin ? 
+              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 "} type="button" onClick={(e) => { handleJoinProgram(e) }}>
+                {share2EarnInfo.paused ? "The campaign has ended" : t("welcome btn connect wallet")}
+              </button> 
+              : 
+              <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{ wordBreak: "break-word" }}>
+                {getMessage()}
+              </div>
+            }
+               
+          </form>
+          <a className="btn btn-default mt-4 !p-3 bg-gray-700 !text-base w-full block rounded-lg"
             target="_blank" href={t("learn more url")}> {t("learn more")} </a>
         </div>
 

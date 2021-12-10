@@ -17,6 +17,7 @@ import { useShare2EarnContract, useReferralAdminContract } from "@utils/hooks/us
 import { toast } from "react-toastify"
 import { ethers } from "ethers"
 import useChainConfig from "@utils/web3/useChainConfig"
+import { data } from "autoprefixer";
 
 
 
@@ -295,20 +296,20 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
     );
 
     let dataImgs = isUploadImage ? mergeUploadImgs : mergeImgs
-    mergedImage = (
-      <div className="bg-gray-100 dark:bg-deepgray-50 grid gap-4 grid-cols-3 p-4">
-        <div className="flex justify-center">
-          <img className="" src={dataImgs[0]} alt="" />
-        </div>
 
+    // todo: fix after
+    mergedImage = (
+      <>
         <div className="flex justify-center">
           <img className="" src={dataImgs[1]} alt="" />
         </div>
-
+        <div className="flex justify-center">
+          <img className="" src={dataImgs[0]} alt="" />
+        </div>
         <div className="flex justify-center">
           <img className="" src={dataImgs[2]} alt="" />
         </div>
-      </div>
+      </>
     );
   } else {
     downloadAvtButton = null
@@ -451,7 +452,9 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
                       </div>
 
                       <form>
-                        {mergedImage}
+                        <div className="bg-gray-100 dark:bg-deepgray-50 grid gap-4 grid-cols-3 p-4">
+                          {mergedImage}
+                        </div>
 
                         {isUploadImage && !isUploaded &&
                           <div className="p-4 border-t border-gray-200 dark:border-gray-700">
@@ -480,7 +483,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
 
               {/* Step 2 */}
               <li className="flex flex-col md:flex-row items-start">
-                <ShareLink uid={uid} share_message={shareCampaign.share_message}  shareSlug={shareSlug}/>
+                <ShareLink uid={uid} share_message={shareCampaign.share_message} shareSlug={shareSlug} />
               </li>
 
               {/* Step 3 */}
@@ -570,7 +573,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
               >Save</button>
             </div>
           )}
-          
+
         </div>
 
       </div>
