@@ -89,7 +89,7 @@ Sizes
 }
 
 .btn-secondary {
-  @apply hover:border-secondary-400 bg-secondary-400 text-gray-800 hover:bg-secondary-300 hover:text-gray-800;
+  @apply hover:border-secondary-400 bg-secondary-400 dark:bg-secondary-400 text-gray-800 dark:text-gray-800 hover:bg-secondary-300 dark:hover:bg-secondary-300 hover:text-gray-800 dark:hover:text-gray-800;
 }
 
 .btn-neutral {

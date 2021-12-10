@@ -1,6 +1,5 @@
 import {CardProject} from "../cards/Project";
 
-
 export default function ProjectsListUpcoming({title, extraClass}){
 
   return (
