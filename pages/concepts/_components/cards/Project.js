@@ -40,9 +40,10 @@ export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPr
             <div className="project-title--token-logo">
               <img src={tokenLogo} className="rounded-full" />
             </div>
-            <div className="project-title--token-name ">
+            <div className="project-title--token-name">
               {title}
             </div>
+            <span class="badge badge-coin ml-2">{token}</span>
           </div>
 
           <div className="project-desc">

@@ -28,11 +28,11 @@ export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPr
                 <span>hrs</span>
               </div>
               <div className="countdown--mini--body countdown--mini--body--minute">
-                <time> 48 </time>
+                <time>48</time>
                 <span>min</span>
               </div>
               <div className="countdown--mini--body countdown--mini--second">
-                <time> 24 </time>
+                <time>24</time>
                 <span>sec</span>
               </div>
             </div>
@@ -47,6 +47,7 @@ export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPr
             <div className="project-title--token-name ">
               {title}
             </div>
+            <span class="badge badge-coin badge-coin-lg ml-2">{token}</span>
           </div>
 
           <div className="project-desc">

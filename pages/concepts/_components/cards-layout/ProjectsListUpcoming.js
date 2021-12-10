@@ -25,7 +25,7 @@ export const ProjectsListUpcoming = ({title, extraClass}) => {
           progressToken="100,000"
           target="100,000"
           progressPercentage="100%"
-          type="public"
+          type="vip"
           token="MOWA"
           countdown="2 hours"
           status="upcoming"
@@ -40,24 +40,11 @@ export const ProjectsListUpcoming = ({title, extraClass}) => {
           progressToken="100,000"
           target="100,000"
           progressPercentage="100%"
-          type="public"
+          type="vip"
           token="THG"
           status="upcoming"
           tokenPrice="0.035 USDT"
           desc="Form a team and battle with others while you earn token rewards based on your skills"
-        />
-        <CardProject
-          title="Pegaxy"
-          img="https://media.rada.network/assets/23115282-3877-4f7a-a794-04d709e30b35?format=webp&width=1080"
-          tokenLogo="./../../token-logos/pegaxy.png"
-          raise="45,000 USDT"
-          progressToken="100,000"
-          target="100,000"
-          progressPercentage="100%"
-          type="public"
-          token="PGX"
-          status="upcoming"
-          desc="Racing game with futuristic mythological styling"
         />
       </div>
 
