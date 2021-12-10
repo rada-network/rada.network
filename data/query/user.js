@@ -22,18 +22,18 @@ const getUserGql =  gql`
       is_kyc
       email
       account {
-      id
-      provider
-      oauth_profile
-      sort
-      date_created
-      userid
-      type
-      provider
-      provider_account_id
-      token_type
-      scope
-    }
+        id
+        provider
+        oauth_profile
+        sort
+        date_created
+        userid
+        type
+        provider
+        provider_account_id
+        token_type
+        scope
+      }
     }
 
   }

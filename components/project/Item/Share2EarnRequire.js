@@ -5,18 +5,29 @@ import useSWR from "swr";
 import { useTranslation } from "next-i18next";
 
 import dynamic from "next/dynamic";
+import { getCurrentUser } from "@data/query/user";
 
 const WalletRequire = dynamic(import("@components/WalletRequire"));
 
 const Share2EarnRequire = ({ shareCampaign }) => {
   const store = useStore();
   const { t } = useTranslation("launchpad");
+  const [loading,setLoading] = useState(true)
+  useEffect(() =>{
+    if (store.user.id !== ""){
+      getCurrentUser().then((res) => {
+        if (res.is_kyc){
+          store.kyc.update("Completed");
+        }
+        setLoading(false);
+      })
+    }
+  },[store.user.id])
   const { data } = useSWR(
     "/api/kyc-status?refId=" + store.user.id,
     fetchJson
   );
-  if (data) {
-    console.log(data.status)
+  if (data && !store.kyc.status && !loading) {
     store.kyc.update(data.status);
   }
   return (
@@ -93,7 +104,7 @@ const KYC = () => {
   const Button = () => {
     const [loadlib, setLoadlib] = useState(false);
     const clientId = process.env.NEXT_PUBLIC_BLOCKPASS_CLIENTID || "rada_launchverse_b9128"; // why empty from env
-
+    console.log(clientId)
     useEffect(() => {
       if (store.kyc.status) return;
 
@@ -105,7 +116,7 @@ const KYC = () => {
             setLoadlib(true);
           }
         };
-        setInterval(checkLoad, 1000);
+        intervalId = setInterval(checkLoad, 1000);
         return;
       }
 
@@ -114,6 +125,7 @@ const KYC = () => {
       const blockpass = new window.BlockpassKYCConnect(
         clientId, // service client_id from the admin console
         {
+          env : "prod",
           refId: userId, // assign the local user_id of the connected user
         }
       );
