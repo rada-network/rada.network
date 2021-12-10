@@ -24,7 +24,6 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
   const [total, setTotal] = useState(0.0)
   const [shareLink, setShareLink] = useState('')
   const [claimDisbaled, setClaimDisbaled] = useState(false);
-  console.log(share2earnInfo)
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
