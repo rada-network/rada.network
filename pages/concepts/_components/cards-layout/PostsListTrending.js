@@ -2,14 +2,9 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react';
 
 //ReactIcons
 import {IoChevronDownSharp, IoChevronForwardSharp, IoChevronBackSharp} from "react-icons/io5";
-import Link from "next/link"
-import {observer} from "mobx-react";
-import {TabButton} from "../../button/tabButton";
-import WidgetTitle from "../../text/widgetTitle";
-import {CardPost} from "../../cards/Post";
-import ContentLoader from "react-content-loader";
+import CardPost from "../cards/Post";
 
-export const PostsListTrending = ({title, extraClass}) => {
+export default function PostsListTrending({title, extraClass}){
 
   return (
     <div className={`section ${extraClass || ''}`}>

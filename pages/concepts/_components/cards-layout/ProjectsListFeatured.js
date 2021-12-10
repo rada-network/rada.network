@@ -1,6 +1,6 @@
 import {CardProject} from "../cards/ProjectLarge";
 
-export const ProjectsListFeatured = ({title, extraClass}) => {
+export default function ProjectsListFeatured({title, extraClass}){
   return (
 
     <div className="projects-section">

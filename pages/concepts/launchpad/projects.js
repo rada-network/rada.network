@@ -1,6 +1,6 @@
-import { ProjectsList } from "../_components/cards-layout/ProjectsList";
-import { ProjectsListFeatured } from "../_components/cards-layout/ProjectsListFeatured";
-import { ProjectsListUpcoming } from "../_components/cards-layout/ProjectsListUpcoming";
+import  ProjectsList  from "../_components/cards-layout/ProjectsList";
+import  ProjectsListFeatured  from "../_components/cards-layout/ProjectsListFeatured";
+import  ProjectsListUpcoming  from "../_components/cards-layout/ProjectsListUpcoming";
 
 import dynamic from "next/dynamic";
 const Layout = dynamic(import("@components/page-layouts/Global"));

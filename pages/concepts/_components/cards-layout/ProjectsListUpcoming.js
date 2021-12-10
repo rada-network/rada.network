@@ -1,7 +1,7 @@
 import {CardProject} from "../cards/Project";
 
 
-export const ProjectsListUpcoming = ({title, extraClass}) => {
+export default function ProjectsListUpcoming({title, extraClass}){
 
   return (
     <>
