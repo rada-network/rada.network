@@ -158,19 +158,22 @@ export default function ProjectShare2Earn({
           <div className="box box--primary box-share2earn relative mb-4">
             <div className="box-body">
               <div className="mb-2 md:mb-4">
-                <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/share2earn.png"} alt="RADA Share2Earn Program" />
+                <img className="h-10" src="/placeholders/lv-logo.png" alt="Share2earn" />
               </div>
               <h2 className="flex flex-col font-altsans">
                 <strong className="text-3xl md:text-4xl font-semibold flex items-center tracking-normal md:tracking-wider">
-                  <span>Share</span>
-                  <span className="text-2xl md:text-3xl flex items-center justify-center bg-white w-9 h-9 rounded-full text-primary-500 mx-1 md:mx-2 font-bold">2</span>
-                  <span>Earn</span>
+                  <span>Share2Earn</span>
+                  {/* <span className="text-2xl md:text-3xl flex items-center justify-center bg-white w-9 h-9 rounded-full text-primary-500 mx-1 md:mx-2 font-bold">2</span> */}
+                 
                 </strong>
                 <span className="mt-1 text-base md:text-lg font-medium tracking-wide">by RADA Network</span>
               </h2>
-              <div className=" w-28 h-28 md:w-44 md:h-44 absolute right-2 bottom-1 md:-bottom-1 md:right-12 lg:right-6">
+              <div className=" w-28 h-28 md:w-44 md:h-44 absolute right-2 bottom-0 md:right-12 lg:right-6">
+                <img className="" src="/placeholders/s2e-rocket.png" alt="Share2earn" />
+              </div> 
+              {/* <div className=" w-28 h-28 md:w-44 md:h-44 absolute right-2 bottom-1 md:-bottom-1 md:right-12 lg:right-6">
                 <img className="" src={shareCampaign.logo} alt="The Parallel" />
-              </div>
+              </div> */}
             </div>
           </div>
 

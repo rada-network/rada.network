@@ -193,7 +193,7 @@ Step Text
 Box Colors
 */
 .box--primary {
-  @apply bg-primary-700 border-transparent dark:bg-primary-500 dark:border-transparent text-white;
+  @apply bg-black border-transparent dark:bg-black dark:border-transparent text-white;
 }
 
 .box--success {
