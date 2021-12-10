@@ -127,7 +127,7 @@ function Concept() {
                           </div>
                         </div>
 
-                        <div className="list-group--item !pb-0 md:!pb-4">
+                        <div className="list-group--item  md:!pb-4">
                           <div className="list-group--item--title w-1/3">
                             <div className="list-group--item--media dark:!bg-gray-700">
                                <RadaSvg />
@@ -136,7 +136,7 @@ function Concept() {
                               Balance
                             </label>
                           </div>
-                          <div className="flex-1 -mt-4 md:mt-0">
+                          <div className="flex-1 md:mt-0">
                             <div className="relative pl-8 md:pl-0 w-full flex items-center">
                              4 RIR
                             </div>
@@ -145,7 +145,7 @@ function Concept() {
                       </div>
                       <div className="p-4 border-t flex items-centers dark:border-gray-500 dark:border-opacity-10">
                         Want to earn free RIR
-                        <a href="" className="ml-auto flex items-center text-yellow-600">
+                        <a href="" className="ml-auto flex items-center text-yellow-500">
                           Learn more
                           <i class="fas fa-angle-right ml-2"></i>
                         </a>
@@ -164,41 +164,124 @@ function Concept() {
                     <div className="card--header pb-1">
                       Launchverse
                     </div>
-                    <div className="card--body">
-                      
-                      <div className="list-group !items-start">
-                        <div className="list-group--item !pb-0 md:!pb-4">
+                    <div className="card--body">           
+                      <div className="invisible h-0 md:h-auto md:visible md:flex px-4 md:py-4 py-0 md:px-6 border-b border-gray-200 dark:border-gray-500 dark:border-opacity-10 text-xs uppercase font-semibold text-opacity-50 tracking-wider">                
+                        <div className="flex md:w-1/2 md:mr-2 mb-2 md:mb-0">
+                          <div className="mr-4">                           
+                            <label className="font-semibold">
+                              Project
+                            </label>
+                          </div>
                           
-                          <div className=" w-full !-mt-4 md:w-1/4">
-                            
-                            <label className="">
+                          <div className="ml-auto">Type
+                     
+                          </div>
+                        </div>
+
+                        <div className="flex md:w-1/2 md:ml-2">
+                          <div className="">
+                            Date
+                          </div>
+                          <div className="ml-auto">
+                            Status
+                          </div> 
+                        </div> 
+                      </div>
+                      <a href="link to claim tab" className="block md:flex px-4 py-4 md:px-6 border-b border-gray-200 dark:border-gray-500 dark:border-opacity-10 hover:bg-gray-200 dark:hover:bg-gray-700">                
+                        <div className="flex md:w-1/2 md:mr-2 mb-2 md:mb-0">
+                          <div className="mr-4 flex items-center">  
+                            <img src="/placeholders/parallel-token.png" className="w-8 h-8 mr-2 rounded-full" />                         
+                            <label className="font-semibold">
                               The Parallel
                             </label>
                           </div>
                           
-                          <div className="list-group--item--title -mt-4 w-full md:w-1/4">
-                            <label className="">
+                          <div className="ml-auto">
+                            <label className="label label--neutral">
                               Public
                             </label>
                           </div>
-
-                          <div className=" w-full md:w-1/4">
-                            <label className="text-sm">
-                              <div>October 28th 2021</div>
-                              <span> 1:00 PM UTC </span>
-                            </label>
-                          </div>
-                          <div className="flex -mt-4 w-full md:w-1/4">
-                            <label className="ml-auto label label--success">
-                              Success
-                            </label>
-                          </div>
-
                         </div>
 
-                       
-                      </div>
-                     
+                        <div className="flex md:w-1/2 md:ml-2">
+                          <div className="">
+                            <label className="text-sm">
+                              <div>October 28th 2021</div>
+                              <span className="opacity-60 text-xs block md:mt-0"> 1:00 PM UTC </span>
+                            </label>
+                          </div>
+                          <div className="ml-auto">
+                            <label className="lg:ml-auto label label--success">
+                              Success
+                            </label>
+                          </div> 
+                        </div> 
+                      </a>
+
+                      <a href="link to claim tab" className="block md:flex px-4 py-4 md:px-6 border-b border-gray-200 dark:border-gray-500 dark:border-opacity-10 hover:bg-gray-200 dark:hover:bg-gray-700">                
+                        <div className="flex md:w-1/2 md:mr-2 mb-2 md:mb-0">
+                          <div className="mr-4  flex items-center">
+                            <img src="/token-logos/thetan.png" className="w-8 h-8 mr-2 rounded-full" />                           
+                            <label className="font-semibold">
+                              The Thetan Arena
+                            </label>
+                          </div>
+                          
+                          <div className="ml-auto">
+                            <label className="label label--neutral">
+                              Private
+                            </label>
+                          </div>
+                        </div>
+
+                        <div className="flex md:w-1/2 md:ml-2">
+                          <div className="">
+                            <label className="text-sm">
+                              <div>October 28th 2021</div>
+                              <span className="opacity-60 text-xs block md:mt-0"> 1:00 PM UTC </span>
+                            </label>
+                          </div>
+                          <div className="ml-auto">
+                            <label className="lg:ml-auto label label--success">
+                              Success
+                            </label>
+                          </div> 
+                        </div> 
+                      </a>
+
+                      <a href="link to claim tab" className="block md:flex px-4 py-4 md:px-6 hover:bg-gray-200 dark:hover:bg-gray-700">                
+                        <div className="flex md:w-1/2 mb-2 md:mr-2 md:mb-0">
+                          <div className="mr-4 flex items-center">         
+                            <img src="/token-logos/elemon.png" className="w-8 h-8 mr-2 rounded-full" />                    
+                            <label className="font-semibold">
+                              Elemon
+                            </label>
+                          </div>
+                          
+                          <div className="ml-auto">
+                            <label className="label label--neutral">
+                              Public
+                            </label>
+                          </div>
+                        </div>
+
+                        <div className="flex md:w-1/2 md:ml-2">
+                          <div className="">
+                            <label className="text-sm">
+                              <div>October 28th 2021</div>
+                              <span className="opacity-60 text-xs block md:mt-0"> 1:00 PM UTC </span>
+                            </label>
+                          </div>
+                          <div className="ml-auto">
+                            <label className="lg:ml-auto label label--warning">
+                              Failed
+                            </label>
+                          </div> 
+                        </div> 
+                      </a>     
+
+
+
                     </div>
                   </div>
                 </div>
