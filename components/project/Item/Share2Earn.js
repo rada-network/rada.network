@@ -63,6 +63,7 @@ export default function ProjectShare2Earn({
   const [share2EarnInfo, setShare2EarnInfo] = useState(null)
 
   React.useEffect(() => {
+    console.log(shareCampaign)
     if (account && user) {
       checkJoined()
     }
