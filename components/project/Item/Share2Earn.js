@@ -74,7 +74,7 @@ export default function ProjectShare2Earn({
       try {
         const p = await callFunction(share2earnContract, 'programs', [shareCampaign.program_id])
         const pAdmin = await callFunction(referralAdminContract, 'programs', [shareCampaign.program_id])
-        setShare2EarnInfo({ ...p, incentiveL0: pAdmin.incentiveLevel1, incentiveL1: pAdmin.incentiveLevel2, incentiveL2: pAdmin.incentiveLevel3 });
+        setShare2EarnInfo({ ...p, incentiveL0: pAdmin.incentiveLevel1, incentiveL1: pAdmin.incentiveLevel2, incentiveL2: pAdmin.incentiveLevel3,maxPerReferral : pAdmin.maxPerReferral });
         if (account) {
           checkJoined();
         }

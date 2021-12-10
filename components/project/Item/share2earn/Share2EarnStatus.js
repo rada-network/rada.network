@@ -24,7 +24,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
   const [total, setTotal] = useState(0.0)
   const [shareLink, setShareLink] = useState('')
   const [claimDisbaled, setClaimDisbaled] = useState(false);
-
+  console.log(share2earnInfo)
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -365,7 +365,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
                 <span class="icon w-4 h-4 mr-1">
                   <RadaSvg />
                 </span>
-                1 RIR
+                {ethers.utils.formatEther(share2earnInfo.maxPerReferral)} RIR
               </div>
             </li>
 
