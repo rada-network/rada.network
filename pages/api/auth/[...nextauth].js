@@ -13,6 +13,7 @@ callbacks.signIn = async function signIn(profile, account, oauthProfile) {
         profile.id = userFromApi.id
         profile.name = userFromApi.name
         profile.image = userFromApi.image
+        profile.is_kyc = userFromApi.is_kyc
         return true;
     }
     return false
@@ -31,6 +32,7 @@ callbacks.session = async function session(session, token) {
     session.user.name = token.name
     session.user.image = token.image
     session.user.id = token.id
+    session.user.is_kyc = token.is_kyc
     return session
 }
 

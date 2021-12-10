@@ -380,7 +380,8 @@ export async function getStaticProps(context) {
       "common",
       "navbar",
       "invest",
-      "share2earn"
+      "share2earn",
+      "launchpad"
     ])),
   });
   return {

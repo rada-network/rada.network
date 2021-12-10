@@ -8,6 +8,7 @@ const mutation =  gql`
       access_token
       name
       image
+      is_kyc
     }
   }
 `
@@ -18,6 +19,7 @@ const getUserGql =  gql`
       id
       name
       image
+      is_kyc
       email
       account {
       id
@@ -37,6 +39,13 @@ const getUserGql =  gql`
   }
 `
 
+const submitKycStatusGql =  gql`
+  mutation submitKycStatus($id : String!,$key : String!){
+    submitKycStatus (id : $id,key : $key) {
+      id
+    }
+  }
+`
 
 export async function getTokenFromYourAPIServer(profile, account, oauthProfile) {
   const key = process.env.LOGIN_KEY || ""
@@ -59,4 +68,16 @@ export async function getCurrentUser() {
     query : getUserGql
   })
   return data.data.me
+}
+
+export async function submitKycStatus({id}) {
+  const client = getClient();
+  const key = process.env.LOGIN_KEY || ""
+  let data = await client.mutate({
+    mutation : submitKycStatusGql,
+    variables: {
+      key,id
+    }
+  })
+  return data.data.submitKycStatus
 }

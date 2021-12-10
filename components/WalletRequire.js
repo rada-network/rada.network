@@ -65,7 +65,7 @@ export const WalletRequire = ({ type }) => {
               </button>
             </>
           ) : (
-            <span className="flex label label--success w-full">Done</span>
+            <span className="flex label label--success w-24">Done</span>
           )}
         </div>
       </div>

@@ -8,59 +8,36 @@ import dynamic from "next/dynamic";
 
 const WalletRequire = dynamic(import("@components/WalletRequire"));
 
-const SubscribeLaunchpad = ({ project }) => {
+const Share2EarnRequire = ({ shareCampaign }) => {
   const store = useStore();
   const { t } = useTranslation("launchpad");
-  if (project.is_kyc) {
-    const { data } = useSWR(
-      "/api/kyc-status?refId=" + store.user.id,
-      fetchJson
-    );
-    if (data) store.kyc.update(data.status);
+  const { data } = useSWR(
+    "/api/kyc-status?refId=" + store.user.id,
+    fetchJson
+  );
+  if (data) {
+    console.log(data.status)
+    store.kyc.update(data.status);
   }
   return (
     <>
-      <div className="max-w-xl mx-auto">
+      <div className="p-4 mt-4 rounded-lg border border-gray-300 dark:border-gray-700 mx-auto">
         <div className="mb-4 md:mb-8">
-          <h3 className="text-2xl md:text-3xl text-center font-normal">
-            <span className="text-color-title">
-              {project?.token.name}'s {t("Whitelist")}
-            </span>
-          </h3>
           <p className="text-center mt-2 font-normal">
-            {t("Complete all the requirements below to joint the pool.")}
+            {t("Complete all the requirements below to joint the event.")}
           </p>
         </div>
 
         <div className="list-group">
-          <WalletRequire />
-          {project.is_kyc && <Login />}
-          {project.is_kyc && <KYC />}
-        </div>
-      </div>
-    </>
-  );
-};
-
-export const SubscribeLaunchpadClosed = ({ project }) => {
-  const { t } = useTranslation("launchpad");
-  return (
-    <>
-      <div className="max-w-xl mx-auto">
-        <div className="mb-4 md:mb-8">
-          <h3 className="text-2xl md:text-3xl text-center font-normal">
-            <span className="text-color-title">{t("pool closed")}</span>
-          </h3>
-          <p className="text-center mt-2 font-normal">{t("pool close note")}</p>
-        </div>
-
-        <div className="list-group">
+          <Login />
+          <KYC />
           <WalletRequire />
         </div>
       </div>
     </>
   );
 };
+
 
 const Login = () => {
   const store = useStore();
@@ -71,7 +48,7 @@ const Login = () => {
   };
   const Button = () => {
     if (store.user.id)
-      return <span className="flex label label--success w-full">Done</span>;
+      return <span className="flex label label--success w-24">Done</span>;
     return (
       <button
         className="btn btn-default w-24"
@@ -149,9 +126,9 @@ const KYC = () => {
     }, [loadlib]);
 
     if (store.kyc.status)
-      return <span className="flex label label--success w-full">Done</span>;
+      return <span className="flex label label--success w-24">Done</span>;
     return (
-      <button className="btn btn-default w-full" id="blockpass-kyc-connect">
+      <button className="btn btn-default w-24" id="blockpass-kyc-connect">
         KYC
       </button>
     );
@@ -183,4 +160,4 @@ const KYC = () => {
   );
 };
 
-export default SubscribeLaunchpad;
+export default Share2EarnRequire;

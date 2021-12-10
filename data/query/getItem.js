@@ -79,6 +79,7 @@ const itemFeedGql = gql`
           lang
           title
           logo
+          participation_guide
           facebook_banner
           linkedin_banner
           twitter_banner
@@ -198,6 +199,7 @@ const itemByIdGql = gql`
           lang
           title
           logo
+          participation_guide
           facebook_banner
           linkedin_banner
           twitter_banner
