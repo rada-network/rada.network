@@ -68,35 +68,6 @@ export default function ProjectShare2Earn({
     }
   }, [account, user]);
 
-  // Get high quality img
-  useEffect(() => {
-    let hightQualityURL = "";
-    if (user) {
-      const imgURL = user.image;
-      if (imgURL.includes("google")) {
-        const urls = imgURL.split('=');
-        if (urls.length > 0) {
-          hightQualityURL = urls[0] + "=s500-c";
-        }
-      } else if (imgURL.includes("fbsbx")) {
-        // todo: 
-        const urls = imgURL.split('&');
-        if (urls.length > 0) {
-          const prefixWithID = urls[0];
-          const idArr = prefixWithID.split('=');
-          if (idArr.length > 1) {
-            const id = idArr[1];
-            //https://graph.facebook.com/193707252865393/picture?width=100&height=100
-            hightQualityURL = "https://graph.facebook.com/" + id + "/picture?width=500&height=500";
-            console.log(hightQualityURL);
-          }
-        }
-      } else if (imgURL.includes("twimg")) {
-        hightQualityURL = imgURL;
-      }
-    };
-  },[user]);
-
   React.useEffect(() => {
     const getInfoProgram = async () => {
       try {
@@ -158,12 +129,9 @@ export default function ProjectShare2Earn({
   }
   const allowJoin = getMessage() == '' && joined == '' && account && (joined != account)
   if (loading) return null;
-  if (joined != account) {
-    //wrongAddress()
-  } else {
-    if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account) {
-      return <Share2EarnMainScreen shareCampaign={shareCampaign} user={user} share2earnAddress={share2earnAddress} shareSlug={shareSlug} shareType={shareType} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
-    }
+
+  if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo) {
+    return <Share2EarnMainScreen shareCampaign={shareCampaign} user={user} share2earnAddress={share2earnAddress} shareSlug={shareSlug} shareType={shareType} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
   }
 
   const handleConnectWallet = () => {
@@ -280,7 +248,7 @@ export default function ProjectShare2Earn({
               (
                 <>
                   {
-                    allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!share2EarnInfo.paused ? "" : "disabled")} type="button"
+                    allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!share2EarnInfo.paused || !isConfirmed ? "" : "disabled")} type="button"
                       onClick={(e) => { handleJoinProgram(e) }}
                     >{share2EarnInfo.paused ? "The campaign has ended" : t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{ wordBreak: "break-word" }}>{getMessage()}</div>
                   }
