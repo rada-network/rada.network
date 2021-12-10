@@ -25,7 +25,7 @@ export const ProjectsListFeatured = ({title, extraClass}) => {
           network="BSC"
           link="project"
           tokenPrice="0.036 USDT"
-          desc="You can build your unique character (Paragon) and have its copyright, then trade your Paragon for tokens or join the battle for amazing rewards."
+          desc="The Parallel is Infinite Metaverse where players have limitless ability to create magical places - one of the most promising and highest potential upcoming Metaverse projects globally."
         />  
       </div>
 

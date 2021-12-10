@@ -1,7 +1,7 @@
 import {CardProject} from "../cards/Project";
 
 
-export const ProjectsList = ({title, extraClass}) => {
+export const ProjectsListUpcoming = ({title, extraClass}) => {
 
   return (
     <>
@@ -13,7 +13,7 @@ export const ProjectsList = ({title, extraClass}) => {
       </div>
 
       <div className="projects-section--subheader">
-        <h3 className="">Pool IDO</h3>
+        <h3 className="">Pool VIP</h3>
       </div>
 
       <div className="projects-list">
@@ -28,7 +28,7 @@ export const ProjectsList = ({title, extraClass}) => {
           type="public"
           token="MOWA"
           countdown="2 hours"
-          status="open"
+          status="upcoming"
           tokenPrice="0.035 USDT"
           desc="Reviving a legendary dragon hunting game with built-in blockchain technology."
         />
@@ -42,7 +42,7 @@ export const ProjectsList = ({title, extraClass}) => {
           progressPercentage="100%"
           type="public"
           token="THG"
-          status="open"
+          status="upcoming"
           tokenPrice="0.035 USDT"
           desc="Form a team and battle with others while you earn token rewards based on your skills"
         />
@@ -56,13 +56,13 @@ export const ProjectsList = ({title, extraClass}) => {
           progressPercentage="100%"
           type="public"
           token="PGX"
-          status="open"
+          status="upcoming"
           desc="Racing game with futuristic mythological styling"
         />
       </div>
 
       <div className="projects-section--subheader">
-        <h3 className="">Pool Community</h3>
+        <h3 className="">Pool IDO</h3>
       </div>
 
       <div className="projects-list">
@@ -77,7 +77,7 @@ export const ProjectsList = ({title, extraClass}) => {
           type="community"
           token="HER"
           countdown="2 hours"
-          status="open"
+          status="upcoming"
           tokenPrice="0.035 USDT"
           desc="Pioneering #gamefi by integrating the mobile game category called Match-3 Games into blockchain and #gamefi"
         />
@@ -92,7 +92,7 @@ export const ProjectsList = ({title, extraClass}) => {
           progressPercentage="100%"
           type="community"
           token="Elmon"
-          status="open"
+          status="upcoming"
           tokenPrice="0.035 USDT"
           desc="Elemon seeks to improve the limitations of the traditional gaming industry with transparency, inclusion, governance, and Play2Earn (P2E)"
         />
@@ -106,7 +106,7 @@ export const ProjectsList = ({title, extraClass}) => {
           progressPercentage="100%"
           type="community"
           token="MAT"
-          status="open"
+          status="upcoming"
           tokenPrice="0.035 USDT"
           desc="Reminiscent of the long lost Three Kingdoms period, MyMasterWar enables Players to build their own empire in the MMW MetaVerse"
         />
