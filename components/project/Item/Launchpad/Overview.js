@@ -1,33 +1,39 @@
 import { useTranslation } from "react-i18next";
 import { BscSvg, UsdtSvg, LaunchSvg, BusdSvg } from "../../../svg/SvgIcons";
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react";
+import Image from "@components/Image";
 export default function LaunchpadOverview({ project }) {
   const { token } = project;
-  const {t} = useTranslation("launchpad")
-  const [isWarning,setIsWarning] = useState(true);
+  const { t } = useTranslation("launchpad");
+  const [isWarning, setIsWarning] = useState(true);
   return (
     <>
-      {isWarning && 
-      <div className="message warning flex relative items-center">
-        <span className="message-icon">
-          <i class="mr-2 fas fa-exclamation-circle"></i>
-        </span>
-        <div className="message-content pr-2">
-          {t("bsc warning")}
+      {isWarning && (
+        <div className="message warning flex relative items-center">
+          <span className="message-icon">
+            <i className="mr-2 fas fa-exclamation-circle"></i>
+          </span>
+          <div className="message-content pr-2">{t("bsc warning")}</div>
+          <button
+            onClick={(e) => {
+              setIsWarning(false);
+            }}
+            className="flex items-center ml-auto w-4 h-4 "
+          >
+            <i className="text-base fas fa-times"></i>
+          </button>
         </div>
-        <button onClick={e => {setIsWarning(false)}}  className="flex items-center ml-auto w-4 h-4 ">
-          <i class="text-base fas fa-times"></i>
-        </button>
-      </div>
-      }
+      )}
       <div className="section-header pt-4">
         <div className="flex flex-wrap justify-between items-center w-full">
           <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
             <span className="icon flex-shrink-0 mr-2">
-              <img
+              <Image
                 src={token.logo}
                 className="h-px-32 w-px-32"
                 alt={token.name}
+                width={32}
+                height={32}
               />
             </span>
             <h1 className="flex items-center">
@@ -55,7 +61,9 @@ export default function LaunchpadOverview({ project }) {
               <span className="w-4 h-4">
                 <BscSvg />
               </span>
-              <span className="ml-2">{project?.platform?.networkName.toUpperCase()}</span>
+              <span className="ml-2">
+                {project?.platform?.networkName.toUpperCase()}
+              </span>
             </div>
 
             <div className={`label ${project.type}`}>{project.type}</div>
@@ -67,18 +75,21 @@ export default function LaunchpadOverview({ project }) {
       <div className="page-media">
         <div className="media-player rounded-lg">
           <div className="w-full h-full">
-            {project.cover_embed ? 
-            <div className={`aspect-w-16 aspect-h-9`} dangerouslySetInnerHTML={{__html : project.cover_embed}}>
-            </div>
-            :
-            <div className={`aspect-w-16 aspect-h-9`}>
-              <img
-                className="rounded-lg"
-                src={project.cover_uri}
-                itemProp="image"
-              />
-            </div>
-            }
+            {project.cover_embed ? (
+              <div
+                className={`aspect-w-16 aspect-h-9`}
+                dangerouslySetInnerHTML={{ __html: project.cover_embed }}
+              ></div>
+            ) : (
+              <div className={`aspect-w-16 aspect-h-9`}>
+                <Image
+                  layout="fill"
+                  className="rounded-lg"
+                  src={project.cover_uri}
+                  itemProp="image"
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

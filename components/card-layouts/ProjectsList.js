@@ -23,7 +23,7 @@ export const ProjectsList = ({ projects }) => {
     <div className="page  max-w-6xl page-projects-list scrollbar">
       <div className="">
         <div className="">
-          <div className="projects--wrapper single">
+          <div className="projects-list single">
             {list.active.map((project) => (
               <CardProject key={project.id} project={project} />
             ))}
@@ -35,7 +35,7 @@ export const ProjectsList = ({ projects }) => {
             <h2 className="p-2 font-semibold">Upcoming Projects</h2>
           </div>
 
-          <div className="projects--wrapper projects-grid ">
+          <div className="projects-list projects-grid ">
             {list.upcoming.map((project) => (
               <CardProject key={project.id} project={project} />
             ))}
@@ -47,7 +47,7 @@ export const ProjectsList = ({ projects }) => {
             <h2 className="p-2 font-semibold">Closed Projects</h2>
           </div>
 
-          <div className="projects--wrapper projects-grid">
+          <div className="projects-list projects-grid">
             {list.closed.map((project) => (
               <CardProject key={project.id} project={project} />
             ))}

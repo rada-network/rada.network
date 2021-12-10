@@ -16,19 +16,17 @@ import { useCallFunction } from "@utils/hooks/useCallFunction"
 import { useShare2EarnContract, useReferralAdminContract } from "@utils/hooks/useContracts"
 import { toast } from "react-toastify"
 import { ethers } from "ethers"
-import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import useChainConfig from "@utils/web3/useChainConfig"
 
 
 
-const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, referralAdminAddress, share2earnInfo }) => {
+const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, user, share2earnAddress, referralAdminAddress, share2earnInfo, }) => {
   const store = useStore();
   const { detailStore } = usePageStore();
   const context = useActiveWeb3React();
   const { library, account } = context;
   const { t } = useTranslation('share2earn');
   const { callFunction } = useCallFunction();
-  const { callWithGasPrice } = useCallWithGasPrice();
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const riraddress = getRIRAddress()
 
@@ -44,17 +42,15 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const [baseFrames, setBaseFrames] = useState({});
   const [userAvatar, setUserAvatar] = useState(null);
   const [referralInfo, setReferralInfo] = useState({ level1: '', level2: '', incentivePaid: '', isDeny: false, allowClaimValue: 0.0, claimableApproved: 0.0 })
-  const [campaignEnded, setCampaignEnded] = useState(true);
-  const [claimDisbaled, setClaimDisbaled] = useState(false);
-  
+
   // Banner component 
   let bannerURL;
   if (detailStore.selectedBanner === "LinkedIn") {
-    bannerURL = project.share_campaign[0].linkedin_banner;
+    bannerURL = shareCampaign.linkedin_banner;
   } else if (detailStore.selectedBanner === "Twitter") {
-    bannerURL = project.share_campaign[0].twitter_banner;
+    bannerURL = shareCampaign.twitter_banner;
   } else {
-    bannerURL = project.share_campaign[0].facebook_banner;
+    bannerURL = shareCampaign.facebook_banner;
   }
 
   const handleDownload = () => {
@@ -64,8 +60,8 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
 
   useEffect(() => {
-    if (project.share_campaign?.length) {
-      getShareLogById({ campaignId: project.share_campaign[0].id }).then(function (
+    if (shareCampaign) {
+      getShareLogById({ campaignId: shareCampaign.id }).then(function (
         res
       ) {
         if (res.data.getShareLog?.length) {
@@ -92,53 +88,31 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   const referralAdminContract = useReferralAdminContract(referralAdminAddress)
   useEffect(() => {
     const getInfo = async () => {
-      const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [project.id.toString(), account]);
-      const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [project.id.toString(), account]);
-      const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [project.id.toString(), account]);
-      const denyUser = await callFunction(referralAdminContract, 'denyUser', [project.id.toString(), account]);
-      const allowClaimValue = await callFunction(referralAdminContract, 'allowClaimValue', [project.id.toString()]);
+      const level1Incentive = await callFunction(share2earnContract, 'getTotalRefereesL1', [shareCampaign.program_id.toString(), account]);
+      const level2Incentive = await callFunction(share2earnContract, 'getTotalRefereesL2', [shareCampaign.program_id.toString(), account]);
+      const incentivePaid = await callFunction(referralAdminContract, 'incentivePaid', [shareCampaign.program_id.toString(), account]);
+      const denyUser = await callFunction(referralAdminContract, 'denyUser', [shareCampaign.program_id.toString(), account]);
+      const allowClaimValue = await callFunction(referralAdminContract, 'allowClaimValue', [shareCampaign.program_id.toString()]);
       const claimableApproved = await callFunction(referralAdminContract, 'claimableApproved', [riraddress, account]);
 
-      setReferralInfo({ level1: parseInt(level1Incentive.toString()), 
-        level2: parseInt(level2Incentive.toString()), 
-        incentivePaid: parseInt(incentivePaid.toString()), 
-        isDeny: denyUser, 
+      setReferralInfo({
+        level1: parseInt(level1Incentive.toString()),
+        level2: parseInt(level2Incentive.toString()),
+        incentivePaid: parseInt(incentivePaid.toString()),
+        isDeny: denyUser,
         allowClaimValue: parseFloat(ethers.utils.formatEther(allowClaimValue)),
-        claimableApproved: parseFloat(ethers.utils.formatEther(claimableApproved))})
+        claimableApproved: parseFloat(ethers.utils.formatEther(claimableApproved))
+      })
     }
     if (!!library && !!share2earnContract) {
       getInfo()
     }
   }, []);
 
-  const handleClaimRIRToken = async function (e) {
-    try {
-      setClaimDisbaled(true)
-      const tx = await callWithGasPrice(referralAdminContract, "claim", [project.id.toString()])
-      const receipt = await tx.wait()
-      if (receipt.status) {
-        toast.success(t("Claim success!"))
-      }
-    } catch (error) {
-      setClaimDisbaled(false)
-      console.log(error)
-      if (!!error?.data?.message) {
-        toast.error(t(error?.data?.message?.replace("execution reverted: ", "")))
-      }
-      else if (!!error?.message) {
-        toast.error(t(error?.message))
-      }
-      else {
-        toast.error(t(error))
-      }
-    }
-  };
-
   // Create or update url
-
   function submitShareURL() {
-    if (project.share_campaign?.length) {
-      createOrUpdateShareLogById({ campaignId: parseInt(project.share_campaign[0].id), walletAddress: account, twitter: twitter.url, facebook: facebook.url, telegram: telegram.url, linkedin: "" }).then(function (
+    if (shareCampaign) {
+      createOrUpdateShareLogById({ campaignId: parseInt(shareCampaign.id), walletAddress: account, twitter: twitter.url, facebook: facebook.url, telegram: telegram.url, linkedin: "" }).then(function (
         res
       ) {
         toast.success("Save successfuly", {})
@@ -161,7 +135,30 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
   }
 
   useEffect(() => {
-    getBase64FromUrl("/icons/RADA Symbol.png").then(b64 => {
+    let hightQualityURL = "";
+    if (user) {
+      const imgURL = user.image;
+      if (imgURL.includes("google")) {
+        const urls = imgURL.split('=');
+        if (urls.length > 0) {
+          hightQualityURL = urls[0] + "=s500-c";
+        }
+      } else if (imgURL.includes("fbsbx")) {
+        const urls = imgURL.split('&');
+        if (urls.length > 0) {
+          const prefixWithID = urls[0];
+          const idArr = prefixWithID.split('=');
+          if (idArr.length > 1) {
+            const id = idArr[1];
+            hightQualityURL = "https://graph.facebook.com/" + id + "/picture?width=500&height=500";
+          }
+        }
+      } else if (imgURL.includes("twimg")) {
+        hightQualityURL = imgURL;
+      }
+    };
+
+    getBase64FromUrl(hightQualityURL).then(b64 => {
       resizeImage(b64).then(result => {
         setUserAvatar(result)
       })
@@ -197,10 +194,10 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
   const convertBase64Frames = async function () {
     // Convert frame
-    if (project.share_campaign.length) {
+    if (shareCampaign) {
       let tmpBaseFrames = {}
-      for (let index = 0; index < project.share_campaign[0].avatar_frame.length; ++index) {
-        let url = project.share_campaign[0].avatar_frame[index]
+      for (let index = 0; index < shareCampaign.avatar_frame.length; ++index) {
+        let url = shareCampaign.avatar_frame[index]
         const e = await getBase64FromUrl(url)
         tmpBaseFrames = { [index]: e, ...tmpBaseFrames }
       }
@@ -210,7 +207,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
   const convertBase64Img = async () => {
     // Convert frame
-    if (project.share_campaign.length && userAvatar) {
+    if (shareCampaign && userAvatar) {
       if (!isUploadImage) {
         let tmpMergeImgs = {}
         for (let index = 0; index < Object.keys(baseFrames).length; index++) {
@@ -274,7 +271,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
     setMergeUploadImgs(tmpMergeImgs)
   };
   const handleDownloadAvt = () => {
-    project.share_campaign[0].avatar_frame.map((data, index) => {
+    shareCampaign.avatar_frame.map((data, index) => {
       var a = document.createElement("a");
       let dataImgs = isUploadImage ? mergeUploadImgs : mergeImgs
       a.href = dataImgs[index];
@@ -329,12 +326,13 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
             <span className="icon text-3xl"><i className="fa-solid fa-check-circle text-green-500"></i></span>
           </div>
 
-          {campaignEnded && (
+          {share2earnInfo.paused && (
             <div className="w-full">
               <div className="message success flex relative mb-2 ">
                 <span className="message-icon">
                   <i class="mr-2 fas fa-star"></i>
                 </span>
+
                 <div className="message-content pr-2">
                   Share2earn for Parallel campaign has successfully ended.
                 </div>
@@ -343,31 +341,34 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                 </button>
               </div>
 
-              <div className="message error flex relative mb-2 ">
-                <span className="message-icon">
-                  <i class="mr-2 fas fa-exclamation-triangle"></i>
-                </span>
-                <div className="message-content pr-2">
-                  Your account was banned from the system due to suspicious activities.
+              {referralInfo.isDeny && (
+                <div className="message error flex relative mb-2 ">
+                  <span className="message-icon">
+                    <i class="mr-2 fas fa-exclamation-triangle"></i>
+                  </span>
+                  <div className="message-content pr-2">
+                    {t("ban_message")}
+                  </div>
+                  <button onClick={e => { setIsWarning(false) }} className="flex items-center ml-auto w-4 h-4 ">
+                    <i class="text-base fas fa-times"></i>
+                  </button>
                 </div>
-                <button onClick={e => { setIsWarning(false) }} className="flex items-center ml-auto w-4 h-4 ">
-                  <i class="text-base fas fa-times"></i>
-                </button>
-              </div>
-
-
-              {/* <h1 className="">
-              <span className="text-xl lg:text-lg font-semibold text-color-title">
-                Welcome to The Parallel #Share2Earn event
-              </span>
-            </h1> */}
-              {/* <p className="text-sm opacity-75">
-              {t("main step des")}P
-            </p> */}
+              )}
             </div>
           )}
 
-
+          {!share2earnInfo.paused && (
+            <div className="w-full">
+              <h1 className="">
+                <span className="text-xl lg:text-lg font-semibold text-color-title">
+                  Welcome to The Parallel #Share2Earn event
+                </span>
+              </h1>
+              <p className="text-sm opacity-75">
+                {t("main step des")}
+              </p>
+            </div>
+          )}
         </div>
 
 
@@ -375,27 +376,14 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
           <Share2EarnStatus referralInfo={referralInfo}
             incentivePaid={referralInfo.incentivePaid}
             adminContract={referralAdminContract}
-            projectID={project.id.toString()}
             walletAddress={account} share2earnAdress={share2earnAddress}
             share2earnInfo={share2earnInfo}
-            project={project}
+            shareCampaign={shareCampaign}
+            shareType={shareType}
+            shareSlug={shareSlug}
             uid={uid} />
 
-          {/* {!share2earnInfo.isDeny && (
-            <div className="mt-4 rounded-lg border border-yellow-200 bg-yellow-400 bg-opacity-5 text-sm overflow-hidden">
-              <div className="px-4 py-2 bg-yellow-400 bg-opacity-10 dark:bg-opacity-100 dark:bg-gray-800 flex items-center">
-                <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
-                <span className="font-semibold">Thông báo.</span>
-              </div>
-              <ul className="p-4">
-                <li className="mb-2">Xin chúc mừng bạn đã bị ban.</li>
-              </ul>
-            </div>
-          )} */}
-
-
-
-          {(!campaignEnded) && (
+          {(!share2earnInfo.paused) && (
             <ol className="text-sm space-y-8">
 
               {/* Step 1 */}
@@ -492,7 +480,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
               {/* Step 2 */}
               <li className="flex flex-col md:flex-row items-start">
-                <ShareLink uid={uid} share_message={project.share_campaign[0].share_message} project={project} />
+                <ShareLink uid={uid} share_message={shareCampaign.share_message}  shareSlug={shareSlug}/>
               </li>
 
               {/* Step 3 */}
@@ -515,8 +503,8 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
                     <div className="mt-4">
                       <form>
-                        {/* Telegram */}
-                        <div className="mb-4">
+                        {/* Telegram -- Disable for LV campaign */}
+                        {/* <div className="mb-4">
                           <label for="telegram-post-url" className="sr-only block text-xs font-medium uppercase">Telegram's username</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--telegram"><span class="icon"><i class="fa-brands fa-telegram"></i></span></span>
@@ -528,11 +516,11 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
                             <div className="absolute inset-y-0 right-0 flex items-center">
                             </div>
                           </div>
-                        </div>
+                        </div> */}
 
                         {/* Twitter */}
                         <div className="mb-4">
-                          <label for="twitter-post-url" className="sr-only block text-xs font-medium uppercase">Twitter's post link</label>
+                          <label for="twitter-post-url" className="sr-only block text-xs font-medium uppercase">Your Twitter Username</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span class="icon"><i class="fa-brands fa-twitter"></i></span></span>
                             <input type="text" name="twitter-post-url" id="twitter-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
@@ -547,7 +535,7 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
                         {/* Facebook */}
                         <div className="mb-4">
-                          <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Facebook's post link</label>
+                          <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Your Facebook Profile Link</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
                             <input type="text" name="fb-post-url" id="fb-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
@@ -575,22 +563,14 @@ const Share2EarnMainScreen = observer(({ project, user, share2earnAddress, refer
 
             </ol>
           )}
-          {campaignEnded && !referralInfo.isDeny && !claimDisbaled && referralInfo.claimableApproved > referralInfo.allowClaimValue && (
-            <div className="mb-8 items-center text-base mt-4 md:ml-14">
-              <div className="p-4">
-                <button className="w-full btn btn-yellow justify-center py-3" type="submit"
-                  onClick={handleClaimRIRToken}
-                >Claim RIR</button>
-              </div>  
+          {!share2earnInfo.paused && (
+            <div className="lg:pl-14">
+              <button className="w-full mt-4 btn btn-yellow justify-center py-3 px-4" type="submit"
+                onClick={submitShareURL}
+              >Save</button>
             </div>
-            
           )}
-
-          {/* <div className="lg:pl-14">
-            <button className="w-full mt-4 btn btn-yellow justify-center py-3 px-4" type="submit"
-              onClick={submitShareURL}
-            >Save</button>
-          </div> */}
+          
         </div>
 
       </div>

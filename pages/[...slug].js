@@ -1,5 +1,5 @@
 import utils from "../lib/util";
-import { Layout } from "../components/page-layouts/Global";
+
 import { PostsListWrapper } from "../components/card-layouts/PostsList";
 import { observer } from "mobx-react";
 import { HOME_ITEM_TAKE } from "../config/paging";
@@ -15,6 +15,9 @@ import store from "store";
 import { usePageStore } from "../lib/usePageStore";
 import { getTokenById } from "../data/query/getTokenById";
 import { useRouter } from "next/router";
+import useStore from "@lib/useStore"
+import dynamic from "next/dynamic";
+const Layout = dynamic(import("@components/page-layouts/Global"));
 
 const getDataExplore = async ({ query, type, lang }) => {
   const itemFeed = await getItems({
@@ -101,14 +104,15 @@ const getDataPostDetail = async ({ query, id, lang }) => {
 
 export default observer(function (props) {
   const { dataStore, detailStore, voteStore } = usePageStore();
-
   //const { locales, asPath } = useRouter();
-
+  const gstore = useStore()
+  gstore.updateNetwork("bsc");
   if (props.item === undefined) {
     dataStore.query = props.query;
 
     dataStore.tweets = props.itemFeed;
     dataStore.type = props.type;
+    detailStore.data = {}
   } else {
     dataStore.query = props.query;
     dataStore.tweets = props.itemFeed;
@@ -157,7 +161,6 @@ export default observer(function (props) {
 export const Index = ({ props, dataStore, voteStore, detailStore }) => {
   let meta;
   const { locales, asPath } = useRouter();
-
   dataStore.page = "item";
   if (props.item === undefined) {
     meta = utils.createSiteMetadata(
@@ -377,6 +380,7 @@ export async function getStaticProps(context) {
       "common",
       "navbar",
       "invest",
+      "share2earn"
     ])),
   });
   return {

@@ -13,7 +13,7 @@ import Screen from "../../../components/utils/Responsive";
 import { observer } from "mobx-react";
 import { usePageStore } from "../../../lib/usePageStore";
 
-import BackgroundWrapper from "../../../components/card-layouts/concepts/launchpad/BackgroundWrapper";
+import BackgroundWrapper from "../_components/cards-layout/launchpad/BackgroundWrapper";
 let step = 1;
 const Layout = observer((props) => {
 
@@ -66,7 +66,7 @@ const Layout = observer((props) => {
 
                         {/* LOGO */}
                         <div className="">
-                          <span className="page-logo"></span>
+                          <span className="logo-launchverse"></span>
                           <h1 className="sr-only">
                             <span className="">LaunchVerse</span>
                           </h1>

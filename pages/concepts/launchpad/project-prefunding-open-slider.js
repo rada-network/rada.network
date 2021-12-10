@@ -2,7 +2,7 @@ import { Head } from "../../../components/Head";
 import { Topbar } from "../../../components/Topbar";
 import { Navbar } from "../../../components/Navbar";
 import TokenInfo from "../../../components/token/TokenInfo";
-import { ProjectsList } from "../../../components/card-layouts/concepts/launchpad/ProjectsList";
+import { ProjectsList } from "../_components/cards-layout/ProjectsList";
 import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
 import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
 import ReactDOM from 'react-dom';
@@ -22,7 +22,7 @@ import { usePageStore } from "../../../lib/usePageStore";
 import TokenContent from "./TokenContent";
 import TokenBrief from "./TokenBrief";
 import TokenNav from "./TokenNav";
-import BackgroundWrapper from "../../../components/card-layouts/concepts/launchpad/BackgroundWrapper";
+import BackgroundWrapper from "../_components/cards-layout/launchpad/BackgroundWrapper";
 
 const Layout = observer((props) => {
 

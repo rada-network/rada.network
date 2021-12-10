@@ -11,7 +11,8 @@ import ReactTooltip from "react-tooltip";
 import { useTranslation } from "next-i18next";
 import { getProviders, getSession, signIn } from "next-auth/client";
 
-import Usermenu from "./Usermenu";
+import dynamic from "next/dynamic";
+const Usermenu = dynamic(import("./Usermenu"));
 
 export default function Profile() {
   const [session, setSession] = useState();
@@ -134,7 +135,7 @@ const NotConnectedButton = observer(({}) => {
                         className={`btn ${styles.btn_back}`}
                         onClick={closeModal}
                       >
-                        <span class="btn--caret-left"></span>
+                        <span className="btn--caret-left"></span>
                         <span className="btn--text font-normal">Back</span>
                       </button>
 

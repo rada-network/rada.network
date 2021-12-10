@@ -26,7 +26,7 @@ function Concept() {
                     </span>
                   </div> 
                   <h3 className="text-2xl font-semibold mt-4">Andrew Hicker</h3>
-                  Only show this block if the user haven't KYCed. 
+                  {/* Only show this block if the user haven't KYCed.  */}
                   <div className="">
                     <span className="opacity-70">Haven't KYC yet!</span>  
                     <button className="btn btn-default ml-4">KYC</button>

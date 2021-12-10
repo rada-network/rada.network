@@ -1,25 +1,28 @@
-import { CommentList } from "../comments/commentList";
 import React, { useEffect, useRef, useState } from "react";
 // import PerfectScrollbar from "perfect-scrollbar";
-
+import dynamic from "next/dynamic";
 import { observer } from "mobx-react";
 import { getSourceVideoFromUri } from "./PostsList";
 import utils from "../../lib/util";
-import { Vote } from "../vote/Vote";
+
 import { useTranslation } from "next-i18next";
 import { getItemById } from "../../data/query/getItem";
 import ContentLoader from "react-content-loader";
-import TokenInfoAirdrop from "../token/TokenInfoAirdrop";
-import TokenInfoInvest from "../token/TokenInfoInvest";
-import TokenInfoTeam from "../token/TokenInfoTeam";
-import TokenInfoGeneral from "../token/TokenInfoGeneral";
-
-import Footnote from "../Footnote";
-import PostNotice from "../PostNotice";
 
 import { usePageStore } from "../../lib/usePageStore";
 import { PostDetailAuthor } from "./PostDetailAuthor";
-import FloatButton from "@components/toc/FloatingButton";
+import ProjectShare2EarnWrapper from "@components/project/Item/ProjectShare2EarnWrapper";
+
+const ContentDescription = dynamic(import("@components/ContentDescription"));
+const FloatButton = dynamic(import("@components/toc/FloatingButton"));
+const Vote = dynamic(import("../vote/Vote"));
+const CommentList = dynamic(import("../comments/commentList"));
+const PostNotice = dynamic(import("../PostNotice"));
+const Footnote = dynamic(import("../Footnote"));
+const TokenInfoGeneral = dynamic(import("../token/TokenInfoGeneral"));
+const TokenInfoTeam = dynamic(import("../token/TokenInfoTeam"));
+const TokenInfoInvest = dynamic(import("../token/TokenInfoInvest"));
+const TokenInfoAirdrop = dynamic(import("../token/TokenInfoAirdrop"));
 
 export const PostListDetail = observer(
   ({ tokenId, tabName, setTabCallback, tokenData }) => {
@@ -49,9 +52,9 @@ export const PostListDetail = observer(
     // find active airdrop
     const airdrop = tokenData?.airdrop?.find((ad) => ad.status == "published");
     // find active invest
-    const investCampaign = tokenData?.invest_campaign?.find(
-      (ic) => ic.status == "published"
-    );
+
+    const share2earn = Object.assign({},item.share_campaign);
+
     useEffect(() => {
       tokenId && getCoinInfo(tokenData?.symbol);
     }, [tokenId]);
@@ -107,7 +110,7 @@ export const PostListDetail = observer(
       resizeTimeout = setTimeout(() => {
         if (detailStore.type === "news") {
           detailStore.data.contentDisplay +=
-            "<span class='newstag123' style='display:none;'>" +
+            "<span className='newstag123' style='display:none;'>" +
             Math.random() +
             "</span>";
         }
@@ -150,17 +153,12 @@ export const PostListDetail = observer(
         case "team":
           return <TokenInfoTeam tokenData={tokenData} tokenInfo={tokenInfo} />;
 
-        case "invest":
+        case "share2earn":
           return (
-            investCampaign && (
-              <TokenInfoInvest
-                tokenData={tokenData}
-                tokenInfo={tokenInfo}
-                usdCoinInfo={usdCoinInfo}
-                btcCoinInfo={btcCoinInfo}
-                investCampaign={investCampaign}
-              />
-            )
+            <>
+            {share2earn && 
+              <ProjectShare2EarnWrapper shareCampaign={share2earn} shareType={`news`} shareSlug={item.slug} />}
+            </>
           );
       }
     };
@@ -312,6 +310,7 @@ const VideoDetail = function ({ item, dateTitle, date, setTabCallback }) {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen="allowFullScreen"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -381,15 +380,17 @@ const NewsDetail = observer(function ({
   }, []);
 
   const windowResize = () => {
-    const parentNewsWidth = document
-      .querySelector(".main-layout")
-      .getBoundingClientRect().width;
-    const floatButton = document.querySelector(".floating-btn--container");
-    const windowSize = document
-      .querySelector(".body-decor")
-      .getBoundingClientRect().width;
-    const padding = (parseInt(windowSize) - parseInt(parentNewsWidth)) / 2;
-    floatButton.style.paddingRight = padding + "px";
+    try {
+      const parentNewsWidth = document
+        .querySelector(".main-layout")
+        .getBoundingClientRect().width;
+      const floatButton = document.querySelector(".floating-btn--container");
+      const windowSize = document
+        .querySelector(".body-decor")
+        .getBoundingClientRect().width;
+      const padding = (parseInt(windowSize) - parseInt(parentNewsWidth)) / 2;
+      floatButton.style.paddingRight = padding + "px";
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -472,14 +473,15 @@ const NewsDetail = observer(function ({
         {!item.content ? <NewsLoader /> : ""}
         <div className="post-content" itemProp="description">
           {item.isshowcontent ? (
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+            <ContentDescription content={content} />
           ) : (
             // (item.description.length > 100 ?
             //   <div dangerouslySetInnerHTML={{__html: item.description}}/>
             //   :
             //   ""
             // )
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+
+            <ContentDescription content={content} />
           )}
           {item?.is_footnote && <Footnote />}
         </div>

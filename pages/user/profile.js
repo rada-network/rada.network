@@ -29,7 +29,7 @@ export default function UserProfile(props) {
   const [topupInfo, setTopupInfo] = useState({});
   const [investLog, setInvestLog] = useState([]);
   const { t } = useTranslation("invest");
-  const store = useStore()
+  const store = useStore();
   const { dataStore, detailStore } = usePageStore();
   useEffect(() => {
     getSession()
@@ -53,9 +53,7 @@ export default function UserProfile(props) {
       // });
     }
     // If session exists, display content
-    
-  }, [session,store.user.access_token]);
-  
+  }, [session, store.user.access_token]);
 
   if (loading) return null;
   // If no session exists, display access denied message
@@ -88,13 +86,11 @@ export default function UserProfile(props) {
       ) + " Profile",
   };
 
-
   return (
     <>
       <StaticLayout meta={meta}>
         <div className="page-section mt-1 mb-2 lg:mt-2">
           <div className="text-center">
-
             <div className="">
               <span className="avatar avatar-xl md:avatar-3xl shadow">
                 <img src={user.image} alt={user.name} />
@@ -110,20 +106,17 @@ export default function UserProfile(props) {
               </div>
 
               <div className="md:px-4 md:py-2 px-2 mt-4 rounded-lg border border-gray-100 dark:border-gray-800">
-              <div className="w-full mt-2">
-                <div className="flex flex-wrap items-end justify-between mb-2">
-                  <div className="w-auto">
-                    <div className="field-label--text">
-                      ID
+                <div className="w-full mt-2">
+                  <div className="flex flex-wrap items-end justify-between mb-2">
+                    <div className="w-auto">
+                      <div className="field-label--text">ID</div>
+                    </div>
+                    <div className="flex items-center">
+                      #{user?.id?.split("-")[user?.id?.split("-").length - 1]}
                     </div>
                   </div>
-                  <div className="flex items-center">
-                  #{user?.id?.split("-")[user?.id?.split("-").length - 1]}
-                  </div>
-                  
                 </div>
-              </div>
-              {/* <div className="w-full mt-2">
+                {/* <div className="w-full mt-2">
                 <div className="flex flex-wrap items-end justify-between mb-2">
                   <div className="w-auto">
                     <div className="field-label--text">
@@ -161,11 +154,11 @@ export default function UserProfile(props) {
                   </div>
                   <div className="flex items-center flex-shrink-0 tabular-nums">
                     <span className="w-4 h-4 mr-1"><RadaSvg /></span> {topupInfo.max_rir} RIR
-                    <a href="./topUp" className="ml-2 text-xs uppercase rounded px-1.5 py-0.5 border border-gray-100 
+                    <a href="./topUp" className="ml-2 text-xs uppercase rounded px-1.5 py-0.5 border border-gray-100
                     dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">Top Up</a>
 
                   </div>
-                  
+
                 </div>
               </div>
               <div className="w-full mt-2">
@@ -176,18 +169,13 @@ export default function UserProfile(props) {
                     </div>
                   </div>
                   <div className="flex items-center  flex-shrink-0 tabular-nums">
-                    <span className="w-4 h-4 mr-1"><RadaSvg /></span> {topupInfo.max_rir - topupInfo.approved_rir - topupInfo.pending_rir} RIR 
+                    <span className="w-4 h-4 mr-1"><RadaSvg /></span> {topupInfo.max_rir - topupInfo.approved_rir - topupInfo.pending_rir} RIR
                   </div>
-                  
+
                 </div>
               </div> */}
-
-
-
               </div>
-
             </div>
-
           </div>
         </div>
 
@@ -203,7 +191,7 @@ export default function UserProfile(props) {
                 <div className="list-group">
                   {/* Wallet connected --> Show DisConnect Buttons */}
                   {/* <WalletProfile /> */}
-                
+
                   {/* Google disconnected --> Show Connect Buttons */}
                   <div className="list-group--item">
                     <div className="list-group--item--title w-full md:w-1/4">
@@ -409,7 +397,11 @@ export async function getStaticProps(context) {
   const info = await getPage({ slug: "profile-info", lang: context.locale });
   return {
     props: {
-      ...(await serverSideTranslations(context.locale, ["common", "navbar","invest"])),
+      ...(await serverSideTranslations(context.locale, [
+        "common",
+        "navbar",
+        "invest",
+      ])),
       lang: context.locale,
       info,
     },

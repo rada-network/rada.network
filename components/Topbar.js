@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import Profile from "./Profile";
-
 import ThemeSwitch from "./ThemeSwitch";
 import { LanguageSwitch } from "./LanguageSwitch";
 
 import { usePageStore } from "../lib/usePageStore";
+import dynamic from "next/dynamic";
+const Profile = dynamic(import("./Profile"));
 
 export const Topbar = ({}) => {
   const { dataStore } = usePageStore();

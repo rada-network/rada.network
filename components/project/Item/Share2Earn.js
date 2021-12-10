@@ -5,9 +5,6 @@ import { toast } from "react-toastify";
 import { useTranslation } from "next-i18next";
 import _ from "lodash"
 import { useCookies } from "react-cookie";
-
-import { Head } from "@components/Head";
-import ReactTooltip from "react-tooltip";
 import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransaction"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { useCallFunction } from "@utils/hooks/useCallFunction"
@@ -19,7 +16,7 @@ import { useERC20 } from "@utils/hooks/useContracts";
 import useChainConfig from "@utils/web3/useChainConfig";
 
 export default function ProjectShare2Earn({
-  project,
+  shareCampaign,shareType,shareSlug
 }) {
   const { getRIRAddress } = useChainConfig()
   const riraddress = getRIRAddress()
@@ -33,25 +30,21 @@ export default function ProjectShare2Earn({
   const store = useStore()
   const user = store.user
   const uid = user?.id?.split("-")[user?.id?.split("-").length - 1]
-  const [campaignEnded, setCampaignEnded] = useState(true);
-
   // TODO: Save in config file
-  const share2earnAddress = project.share2earn_contract
-  const referralAdminAddress = project.referral_admin_contract
-
+  const share2earnAddress = shareCampaign.share2earn_contract
+  const referralAdminAddress = shareCampaign.referral_admin_contract
   const shareAddress = useERC20(share2earnAddress);
-
   const share2earnContract = useShare2EarnContract(share2earnAddress)
   const referralAdminContract = useReferralAdminContract(referralAdminAddress)
-
   const { callWithGasPrice } = useCallWithGasPrice()
   const { callFunction } = useCallFunction()
-
   const [confirm, setConfirm] = useState(false)
+  const [avtURL, setAvtURL] = useState("")
+
   const { isConfirmed, isConfirming, handleConfirm } =
     useApproveConfirmTransaction({
       onConfirm: () => {
-        return callWithGasPrice(share2earnContract, 'joinProgram', [project.id.toString(), uid, referralCode])
+        return callWithGasPrice(share2earnContract, 'joinProgram', [shareCampaign.program_id.toString(), uid, referralCode])
       },
       onSuccess: async ({ receipt }) => {
         toast.success(`Subscribed successfully ${receipt.transactionHash}`)
@@ -59,7 +52,7 @@ export default function ProjectShare2Earn({
     })
 
   const handleJoinProgram = async (e) => {
-    if (!campaignEnded) {
+    if (!share2EarnInfo.paused) {
       e.preventDefault()
       e.stopPropagation()
       handleConfirm();
@@ -78,8 +71,8 @@ export default function ProjectShare2Earn({
   React.useEffect(() => {
     const getInfoProgram = async () => {
       try {
-        const p = await callFunction(share2earnContract, 'programs', [project.id.toString()])
-        const pAdmin = await callFunction(referralAdminContract, 'programs', [project.id.toString()])
+        const p = await callFunction(share2earnContract, 'programs', [shareCampaign.program_id])
+        const pAdmin = await callFunction(referralAdminContract, 'programs', [shareCampaign.program_id])
         setShare2EarnInfo({ ...p, incentiveL0: pAdmin.incentiveLevel1, incentiveL1: pAdmin.incentiveLevel2, incentiveL2: pAdmin.incentiveLevel3 });
         if (account) {
           checkJoined();
@@ -89,21 +82,18 @@ export default function ProjectShare2Earn({
       }
     }
 
-    if (!!library && !!share2earnContract) {
+    if (!!library && !!share2earnContract && !!shareCampaign.program_id) {
       setLoading(true)
       getInfoProgram().then(function () {
         setLoading(false);
       })
     }
   }, [share2earnContract, library, account]);
-
-
-
   const checkJoined = async () => {
 
     try {
       if (typeof window.ethereum !== undefined) {
-        const addressJoined = await callFunction(share2earnContract, 'uidJoined', [project.id.toString(), uid])
+        const addressJoined = await callFunction(share2earnContract, 'uidJoined', [shareCampaign.program_id.toString(), uid])
         if (addressJoined == '0x0000000000000000000000000000000000000000') {
           setJoined('');
         }
@@ -139,32 +129,23 @@ export default function ProjectShare2Earn({
   }
   const allowJoin = getMessage() == '' && joined == '' && account && (joined != account)
   if (loading) return null;
-  if (joined != account) {
-    console.log(joined)
-    //wrongAddress()
-  } else {
-    if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo && joined == account) {
-      return <Share2EarnMainScreen project={project} user={user} share2earnAddress={share2earnAddress} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
-    }
+
+  if ((joined != '' || isConfirmed) && !!account && !!share2EarnInfo) {
+    return <Share2EarnMainScreen shareCampaign={shareCampaign} user={user} share2earnAddress={share2earnAddress} shareSlug={shareSlug} shareType={shareType} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
   }
 
   const handleConnectWallet = () => {
     store.wallet.showConnect(true);
   };
 
-
-
-
   return (
     <>
-      <Head />
-
       <div className="section mx-auto">
-
+        
         <div className="section-header !flex-col">
           <h1 className="mb-2">
             <span className="text-xl lg:text-2xl font-semibold text-color-title">
-              Join The Parallel #Share2Earn Event ✨
+              {shareCampaign.title}✨
             </span>
           </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -187,7 +168,7 @@ export default function ProjectShare2Earn({
                 <span className="mt-1 text-base md:text-lg font-medium tracking-wide">by RADA Network</span>
               </h2>
               <div className=" w-28 h-28 md:w-44 md:h-44 absolute right-2 bottom-1 md:-bottom-1 md:right-12 lg:right-6">
-                <img className="" src={process.env.NEXT_PUBLIC_CDN + "/images/logos/theparallel.png"} alt="The Parallel" />
+                <img className="" src={shareCampaign.logo} alt="The Parallel" />
               </div>
             </div>
           </div>
@@ -267,9 +248,9 @@ export default function ProjectShare2Earn({
               (
                 <>
                   {
-                    allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!campaignEnded ? "" : "disabled")} type="button"
+                    allowJoin ? <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!share2EarnInfo.paused || !isConfirmed ? "" : "disabled")} type="button"
                       onClick={(e) => { handleJoinProgram(e) }}
-                    >{campaignEnded ? "The campaign has ended" : t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{ wordBreak: "break-word" }}>{getMessage()}</div>
+                    >{share2EarnInfo.paused ? "The campaign has ended" : t("welcome btn connect wallet")}</button> : <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{ wordBreak: "break-word" }}>{getMessage()}</div>
                   }
                 </>
               )}
@@ -318,3 +299,5 @@ export default function ProjectShare2Earn({
     </>
   )
 }
+
+

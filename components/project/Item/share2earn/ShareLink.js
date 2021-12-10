@@ -10,15 +10,23 @@ import "perfect-scrollbar/css/perfect-scrollbar.css"
 import { useRouter } from "next/router"
 import { SHORT_SHARE2EARN_URL } from "@config/links"
 
-const ShareLink = function ({ uid, share_message, project }) {
-  const { t } = useTranslation("share2earn")
+const ShareLink = function ({ uid, share_message, shareSlug, shareType }) {
+  const { t ,i18n} = useTranslation("share2earn")
   const [shareUrl, setShareUrl] = useState("")
   const [textShare, setTextShare] = useState("")
   const [message, setMesage] = useState(share_message[0])
   const textRef = useRef()
+  const getShareUrl = () => {
+    if (shareType === "project"){
+      return window.location.origin + `/launchverse/${shareSlug}/share2earn` + "?ref=" + uid
+    }
+    else{
+      return window.location.origin + `/${i18n.language}/post/${shareSlug}/` + "?ref=" + uid + "#share2earn"
+    }
+  }
   useEffect(() => {
     randomMessage()
-    let url = window.location.origin + `/launchverse/${project.slug}/share2earn` + "?ref=" + uid;
+    let url = getShareUrl()
     createShortenLink(url).then(({ data }) => {
       let shortenURL = SHORT_SHARE2EARN_URL + data.createShortenLink.key
       setShareUrl(shortenURL)

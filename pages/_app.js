@@ -3,7 +3,6 @@ import "../styles/globals.css";
 import "../styles/styles.css";
 
 import { CookiesProvider } from "react-cookie";
-// import { Provider } from 'mobx-react'
 import { StoreProvider, useStore } from "../lib/useStore";
 import { ThemeProvider } from "next-themes";
 
@@ -93,6 +92,7 @@ const MyApp = function MyApp({ Component, pageProps }) {
     }
     return () => {};
   }, [session, store]);
+
   useEffect(() => {
     const handleRouteChange = (url, { shallow }) => {
       console.log(
@@ -100,7 +100,7 @@ const MyApp = function MyApp({ Component, pageProps }) {
       );
       if (shallow) {
         if (!store.shallowInternal) {
-          detailStore.data = {};
+          //detailStore.data = {};
           router.push(url, url);
         } else {
           //router.push(url,url)
@@ -139,12 +139,14 @@ const MyApp = function MyApp({ Component, pageProps }) {
       window.removeEventListener("resize", onResize);
     };
   }, []);
+
   return (
     <Providers>
       <Component {...pageProps} />
     </Providers>
   );
 };
+
 // Wrap everything in <UseWalletProvider />
 const TokenRankingStore = ({
   Component,
