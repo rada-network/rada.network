@@ -1,4 +1,5 @@
 import React from "react";
+import { backgroundImage } from "tailwindcss/defaultTheme";
 
 export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
   
@@ -59,12 +60,14 @@ export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPr
               {raise}
               </span>
             </li>
+            {status=="open" ? 
             <li className="list-pair">
               <span className="list-key">
                 Token price
               </span>
               <span className="list-value ml-auto"> {tokenPrice}</span>
             </li>
+            : ""}
             <li className="list-pair">
               <span className="list-key">
                 Progress
