@@ -1,4 +1,3 @@
-import Layout from "@components/page-layouts/Global";
 import { usePageStore } from "@lib/usePageStore";
 import { useRouter } from "next/router";
 import utils from "@lib/util";
@@ -6,6 +5,9 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import { useEffect } from "react";
 import Image from "@components/Image";
+
+import dynamic from "next/dynamic";
+const Layout = dynamic(() => import("@components/page-layouts/Global"));
 
 const LaunchVerse = (props) => {
   const { dataStore } = usePageStore();

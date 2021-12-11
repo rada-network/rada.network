@@ -1,13 +1,15 @@
 import { Head } from "../Head";
 import { Topbar } from "../Topbar";
-import { Navbar } from "../Navbar";
 
-import ThemeSwitch from "../ThemeSwitch";
-import Profile from "../Profile";
-import { LanguageSwitch } from "../LanguageSwitch";
+import dynamic from "next/dynamic";
+
 import Screen from "../utils/Responsive";
 
-import BackgroundWrapper from "./BackgroundWrapper";
+const Navbar = dynamic(import("../Navbar"));
+const Profile = dynamic(import("../Profile"));
+const ThemeSwitch = dynamic(import("../ThemeSwitch"));
+const LanguageSwitch = dynamic(import("../LanguageSwitch"));
+const BackgroundWrapper = dynamic(import("./BackgroundWrapper"));
 
 const Layout = ({ children, meta, bgImage, extraClass }) => {
   return (

@@ -1,7 +1,6 @@
 import { observer } from "mobx-react";
 import React, { useEffect, useState } from "react";
 
-import { PostListDetail } from "./card-layouts/PostListDetail";
 import { useTranslation } from "next-i18next";
 import { useStore } from "../lib/useStore";
 import { useRouter } from "next/router";
@@ -10,11 +9,18 @@ import _ from "lodash";
 
 import { getTokenById } from "../data/query/getTokenById";
 
-import Siteintro from "./Intro";
 import { usePageStore } from "../lib/usePageStore";
 import utils from "../lib/util";
-import {WalletProfile} from "@components/Wallet"
 import Image from "./Image";
+import dynamic from "next/dynamic";
+
+const Siteintro = dynamic(import("./Intro"));
+
+const PostListDetail = dynamic(() =>
+  import("./card-layouts/PostListDetail").then(
+    (module) => module.PostListDetail
+  )
+);
 
 export const IndexRightBar = observer(({ intro }) => {
   const { dataStore, detailStore, voteStore } = usePageStore();
@@ -46,9 +52,7 @@ export const IndexRightBar = observer(({ intro }) => {
     if (window.location.hash) {
       const hash = window.location.hash.substr(1);
       if (
-        ["overview", "", "team", "airdrop", "share2earn"].indexOf(
-          hash
-        ) !== -1
+        ["overview", "", "team", "airdrop", "share2earn"].indexOf(hash) !== -1
       ) {
         setTabName(hash);
       }
@@ -240,27 +244,27 @@ export const IndexRightBar = observer(({ intro }) => {
                     </>
                   ) : (
                     <>
-                    {share2earn && tabName === "share2earn" && (
-                      <>
-                      <span className="tab-item--divider" />
-                      <a
-                        href="#share2earn"
-                        className={`tab-item ${
-                          tabName === "share2earn" ? "tab-item--active" : ""
-                        }`}
-                        onClick={() => {
-                          setTabName("share2earn");
-                        }}
-                      >
-                        <span className="icon">
-                          <i className="fa-duotone fa-hand-holding-heart"></i>
-                        </span>
-                        <span className="tab-item--text">
-                          {t("share2earn")}
-                        </span>
-                      </a>
-                      </>
-                    )}
+                      {share2earn && tabName === "share2earn" && (
+                        <>
+                          <span className="tab-item--divider" />
+                          <a
+                            href="#share2earn"
+                            className={`tab-item ${
+                              tabName === "share2earn" ? "tab-item--active" : ""
+                            }`}
+                            onClick={() => {
+                              setTabName("share2earn");
+                            }}
+                          >
+                            <span className="icon">
+                              <i className="fa-duotone fa-hand-holding-heart"></i>
+                            </span>
+                            <span className="tab-item--text">
+                              {t("share2earn")}
+                            </span>
+                          </a>
+                        </>
+                      )}
                     </>
                   )}
                 </div>
