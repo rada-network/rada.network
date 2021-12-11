@@ -11,7 +11,7 @@ const CommentForm = dynamic(() =>
 );
 
 const CommentThreads = dynamic(() =>
-  import("./CommentThreads").then((module) => module.CommentThreads)
+  import("./commentThreads").then((module) => module.CommentThreads)
 );
 
 const CommentList = ({ detailStore, dataStore }) => {
