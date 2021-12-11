@@ -9,7 +9,7 @@ import Screen from "./utils/Responsive";
 import { usePageStore } from "../lib/usePageStore";
 import Image from "./Image";
 
-export const Navbar = observer(({}) => {
+const Navbar = observer(({}) => {
   const { dataStore, detailStore } = usePageStore();
   const { t } = useTranslation("navbar");
   return (
@@ -258,3 +258,5 @@ const NavItem = ({ className, href, children, type, page }) => {
     </Link>
   );
 };
+
+export default Navbar;

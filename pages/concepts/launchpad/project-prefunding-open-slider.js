@@ -1,21 +1,21 @@
 import { Head } from "../../../components/Head";
 import { Topbar } from "../../../components/Topbar";
-import { Navbar } from "../../../components/Navbar";
+import Navbar from "../../../components/Navbar";
 import TokenInfo from "../../../components/token/TokenInfo";
 import { ProjectsList } from "../_components/cards-layout/ProjectsList";
-import {PostsListWrapper} from "../../../components/card-layouts/PostsList";
+import { PostsListWrapper } from "../../../components/card-layouts/PostsList";
 import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 // Cards Concepts
 import TokenMeta from "../_components/cards/launchpad/TokenMeta";
 import MainActions from "../_components/cards/launchpad/MainActions-prefunding-open-slider";
 
-import ThemeSwitch from "../../../components/ThemeSwitch"
+import ThemeSwitch from "../../../components/ThemeSwitch";
 import Profile from "../../../components/Profile";
 
-import { useState, useEffect, createRef } from 'react'
+import { useState, useEffect, createRef } from "react";
 
-import {LanguageSwitch} from "../../../components/LanguageSwitch";
+import LanguageSwitch from "../../../components/LanguageSwitch";
 import Screen from "../../../components/utils/Responsive";
 import { observer } from "mobx-react";
 import { usePageStore } from "../../../lib/usePageStore";
@@ -25,11 +25,10 @@ import TokenNav from "./TokenNav";
 import BackgroundWrapper from "../_components/cards-layout/launchpad/BackgroundWrapper";
 
 const Layout = observer((props) => {
-
-  const {dataStore,detailStore,voteStore} = usePageStore()
-  dataStore.type = "projects"
-  dataStore.lang = props.lang
-  const meta = {}
+  const { dataStore, detailStore, voteStore } = usePageStore();
+  dataStore.type = "projects";
+  dataStore.lang = props.lang;
+  const meta = {};
   return (
     <>
       <Head meta={meta} />
@@ -37,7 +36,6 @@ const Layout = observer((props) => {
       <BackgroundWrapper />
 
       <div className={`main-layout--wrapper glassmorphism`}>
-
         <div className={`main-layout`}>
           {/* Mobile / Tablet Navbar */}
           <Screen upto="md">
@@ -62,14 +60,13 @@ const Layout = observer((props) => {
 
           <div className={`pane-center`}>
             <div className="pane-center--main">
-
               <div className="pane-content">
                 <div className="pane-content--sec pane-content-active !w-full">
                   <TokenNav />
                   <div className="pane-content--sec--main grid scrollbar">
                     <div className="page page-full page-project-details !pt-0">
                       <div className="w-limiter-lg">
-                        <div>                          
+                        <div>
                           <TokenBrief />
                           <div className="section-body p-4 md:p-4">
                             <TokenContent />
@@ -79,32 +76,28 @@ const Layout = observer((props) => {
                               <MainActions />
                             </div>
                             {/* END: Main Action Card */}
-
-                          </div>          
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
-
       </div>
     </>
   );
-})
-
+});
 
 export async function getStaticProps(context) {
-  console.log(context)
-  return { 
+  console.log(context);
+  return {
     props: {
-      lang : context.locale
-    }
-  }
+      lang: context.locale,
+    },
+  };
 }
 
 export default Layout;

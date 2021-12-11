@@ -5,14 +5,15 @@ import { useStore } from "../lib/useStore";
 
 import { Dialog, Transition } from "@headlessui/react";
 import styles from "../styles/modules/Dialog.wallet.module.css";
-import Avatar from "boring-avatars";
 
 import ReactTooltip from "react-tooltip";
 import { useTranslation } from "next-i18next";
 import { getProviders, getSession, signIn } from "next-auth/client";
 
 import dynamic from "next/dynamic";
+
 const Usermenu = dynamic(import("./Usermenu"));
+const Avatar = dynamic(import("boring-avatars"));
 
 export default function Profile() {
   const [session, setSession] = useState();

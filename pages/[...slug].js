@@ -1,23 +1,36 @@
 import utils from "../lib/util";
 
-import { PostsListWrapper } from "../components/card-layouts/PostsList";
 import { observer } from "mobx-react";
 import { HOME_ITEM_TAKE } from "../config/paging";
 import { getItemById, getItems } from "../data/query/getItem";
 import { getPage } from "../data/query/page";
 import React, { useEffect, useRef } from "react";
-import { IndexRightBar } from "../components/IndexRightBar";
+
 import _ from "lodash";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import { Resizer } from "../components/utils/Resizer";
 import store from "store";
 import { usePageStore } from "../lib/usePageStore";
 import { getTokenById } from "../data/query/getTokenById";
 import { useRouter } from "next/router";
-import useStore from "@lib/useStore"
+import useStore from "@lib/useStore";
 import dynamic from "next/dynamic";
+
 const Layout = dynamic(import("@components/page-layouts/Global"));
+
+const IndexRightBar = dynamic(() =>
+  import("@components/IndexRightBar").then((mod) => mod.IndexRightBar)
+);
+
+const PostsListWrapper = dynamic(() =>
+  import("@components/card-layouts/PostsList").then(
+    (mod) => mod.PostsListWrapper
+  )
+);
+
+const Resizer = dynamic(() =>
+  import("@components/utils/Resizer").then((mod) => mod.Resizer)
+);
 
 const getDataExplore = async ({ query, type, lang }) => {
   const itemFeed = await getItems({
@@ -105,14 +118,14 @@ const getDataPostDetail = async ({ query, id, lang }) => {
 export default observer(function (props) {
   const { dataStore, detailStore, voteStore } = usePageStore();
   //const { locales, asPath } = useRouter();
-  const gstore = useStore()
+  const gstore = useStore();
   gstore.updateNetwork("bsc");
   if (props.item === undefined) {
     dataStore.query = props.query;
 
     dataStore.tweets = props.itemFeed;
     dataStore.type = props.type;
-    detailStore.data = {}
+    detailStore.data = {};
   } else {
     dataStore.query = props.query;
     dataStore.tweets = props.itemFeed;
@@ -381,7 +394,7 @@ export async function getStaticProps(context) {
       "navbar",
       "invest",
       "share2earn",
-      "launchpad"
+      "launchpad",
     ])),
   });
   return {

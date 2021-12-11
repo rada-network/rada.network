@@ -5,7 +5,8 @@ import { Transition, Popover } from "@headlessui/react";
 import { usePopper } from "react-popper";
 import { useRef, useState } from "react";
 import { usePageStore } from "../lib/usePageStore";
-export const LanguageSwitch = observer(({}) => {
+
+const LanguageSwitch = observer(({}) => {
   const { dataStore, detailStore } = usePageStore();
   const [cookies, setCookie] = useCookies(["NEXT_LOCALE"]);
   const router = useRouter();
@@ -129,3 +130,5 @@ export const LanguageSwitch = observer(({}) => {
     </Popover>
   );
 });
+
+export default LanguageSwitch;

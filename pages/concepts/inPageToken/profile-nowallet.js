@@ -1,23 +1,27 @@
 import { Head } from "../../../components/Head";
 import { Topbar } from "../../../components/Topbar";
-import { Navbar } from "../../../components/Navbar";
+import Navbar from "../../../components/Navbar";
 
-import ThemeSwitch from "../../../components/ThemeSwitch"
+import ThemeSwitch from "../../../components/ThemeSwitch";
 
-import { useState, useEffect, createRef } from 'react'
+import { useState, useEffect, createRef } from "react";
 
-import {LanguageSwitch} from "../../../components/LanguageSwitch";
+import LanguageSwitch from "../../../components/LanguageSwitch";
 import Screen from "../../../components/utils/Responsive";
 import { observer } from "mobx-react";
-import {DetailStore, HomeStore, ObservableTweetStore, VoteStore} from "../../../lib/store";
+import {
+  DetailStore,
+  HomeStore,
+  ObservableTweetStore,
+  VoteStore,
+} from "../../../lib/store";
 
 const Layout = observer((props) => {
-
-  const homeStore = new HomeStore({isHome : false});
-  const dataStore = new ObservableTweetStore({homeStore})
+  const homeStore = new HomeStore({ isHome: false });
+  const dataStore = new ObservableTweetStore({ homeStore });
   const detailStore = new DetailStore();
-  dataStore.lang = props.lang
-  const meta = {}
+  dataStore.lang = props.lang;
+  const meta = {};
   return (
     <>
       <Head meta={meta} />
@@ -61,11 +65,8 @@ const Layout = observer((props) => {
           </Screen>
 
           <div className="pane-center--main w-full">
-
             <div className="page page-full">
-
               <div className="w-limiter">
-
                 {/* <div className="page-title">
                   Your Profile
                 </div> */}
@@ -73,35 +74,40 @@ const Layout = observer((props) => {
                 <div className="page-section text-center">
                   <div className="">
                     <span className="avatar avatar-2xl shadow">
-                      <img src="/images/examples/avatar.png" alt="User Name Here"/>
+                      <img
+                        src="/images/examples/avatar.png"
+                        alt="User Name Here"
+                      />
                     </span>
                   </div>
                   <div className="mt-4">
-                    <h1 className="text-2xl">Xin chào <strong>Hieu Nguyen</strong></h1>
+                    <h1 className="text-2xl">
+                      Xin chào <strong>Hieu Nguyen</strong>
+                    </h1>
                   </div>
                 </div>
 
                 <div className="page-section">
-
                   <div className="card card-pagecontent">
-
                     <div className="card-header">
-                      <span className="card-title">
-                        Connections
-                      </span>
+                      <span className="card-title">Connections</span>
                     </div>
 
                     <div className="card-body">
                       <div className="grid">
                         <div className="list-group">
-
                           {/* Wallet not connected --> Show Connect Buttons */}
                           <div className="list-group--item">
                             <div className="list-group--item--title w-1/3">
                               <div className="list-group--item--media">
-                                <span className="icon"><i class="fa-duotone fa-wallet"></i></span>
+                                <span className="icon">
+                                  <i class="fa-duotone fa-wallet"></i>
+                                </span>
                               </div>
-                              <label htmlFor="blockchain-wallet" className="text-color-desc">
+                              <label
+                                htmlFor="blockchain-wallet"
+                                className="text-color-desc"
+                              >
                                 Wallet
                               </label>
                             </div>
@@ -119,9 +125,14 @@ const Layout = observer((props) => {
                           <div className="list-group--item">
                             <div className="list-group--item--title w-1/3">
                               <div className="list-group--item--media">
-                                <span className="icon"><i class="fa-brands fa-google"></i></span>
+                                <span className="icon">
+                                  <i class="fa-brands fa-google"></i>
+                                </span>
                               </div>
-                              <label htmlFor="blockchain-wallet" className="text-color-desc">
+                              <label
+                                htmlFor="blockchain-wallet"
+                                className="text-color-desc"
+                              >
                                 Google
                               </label>
                             </div>
@@ -139,9 +150,14 @@ const Layout = observer((props) => {
                           <div className="list-group--item">
                             <div className="list-group--item--title w-1/3">
                               <div className="list-group--item--media">
-                                <span className="icon"><i class="fa-brands fa-facebook-f"></i></span>
+                                <span className="icon">
+                                  <i class="fa-brands fa-facebook-f"></i>
+                                </span>
                               </div>
-                              <label htmlFor="blockchain-wallet" className="text-color-desc">
+                              <label
+                                htmlFor="blockchain-wallet"
+                                className="text-color-desc"
+                              >
                                 Facebook
                               </label>
                             </div>
@@ -159,9 +175,14 @@ const Layout = observer((props) => {
                           <div className="list-group--item">
                             <div className="list-group--item--title w-1/3">
                               <div className="list-group--item--media">
-                                <span className="icon"><i class="fa-brands fa-twitter"></i></span>
+                                <span className="icon">
+                                  <i class="fa-brands fa-twitter"></i>
+                                </span>
                               </div>
-                              <label htmlFor="blockchain-wallet" className="text-color-desc">
+                              <label
+                                htmlFor="blockchain-wallet"
+                                className="text-color-desc"
+                              >
                                 Twitter
                               </label>
                             </div>
@@ -174,34 +195,27 @@ const Layout = observer((props) => {
                               <btn className="btn btn-default">Disconnect</btn>
                             </div>
                           </div>
-
                         </div>
                       </div>
                     </div>
-
                   </div>
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
         </div>
       </div>
     </>
   );
-})
-
+});
 
 export async function getStaticProps(context) {
-  console.log(context)
-  return { 
+  console.log(context);
+  return {
     props: {
-      lang : context.locale
-    }
-  }
+      lang: context.locale,
+    },
+  };
 }
 
 export default Layout;

@@ -2,10 +2,7 @@ import "../styles/tw.css";
 import "../styles/globals.css";
 import "../styles/styles.css";
 
-import { CookiesProvider } from "react-cookie";
 import { StoreProvider, useStore } from "../lib/useStore";
-import { ThemeProvider } from "next-themes";
-
 import { configure } from "mobx";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
@@ -15,11 +12,20 @@ import { getScreenName } from "../components/utils/Responsive";
 import { Provider, useSession, signOut } from "next-auth/client";
 import { useCookies } from "react-cookie";
 import { PageStoreProvider, usePageStore } from "../lib/usePageStore";
-import Providers from "../utils/providers";
+
 import dynamic from "next/dynamic";
 
 const Nprogress = dynamic(() => import("@components/Nprogress"));
 const Toast = dynamic(() => import("@components/Toast"));
+const Providers = dynamic(() => import("../utils/providers"));
+
+const CookiesProvider = dynamic(() =>
+  import("react-cookie").then((mod) => mod.CookiesProvider)
+);
+
+const ThemeProvider = dynamic(() =>
+  import("next-themes").then((mod) => mod.ThemeProvider)
+);
 
 function parseJwt(token) {
   var base64Payload = token.split(".")[1];

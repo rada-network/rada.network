@@ -1,11 +1,18 @@
-import { CommentForm } from "./commentForm";
-import { CommentThreads } from "./commentThreads";
 import getClient from "../../data/client";
 import itemComments from "../../data/query/itemComments";
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import { ThreadsStore, UserStore } from "../../lib/store";
 import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
+
+const CommentForm = dynamic(() =>
+  import("./commentForm").then((module) => module.CommentForm)
+);
+
+const CommentThreads = dynamic(() =>
+  import("./CommentThreads").then((module) => module.CommentThreads)
+);
 
 const CommentList = ({ detailStore, dataStore }) => {
   const [comments, setComments] = useState([]);
