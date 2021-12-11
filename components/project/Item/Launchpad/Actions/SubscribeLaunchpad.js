@@ -6,6 +6,7 @@ import { useTranslation } from "next-i18next";
 import { getCurrentUser } from "@data/query/user";
 
 import dynamic from "next/dynamic";
+import { BLOCK_PASS_KYC_COMPLETE } from "@config/constants";
 
 const WalletRequire = dynamic(import("@components/WalletRequire"));
 
@@ -14,20 +15,20 @@ const SubscribeLaunchpad = ({ project }) => {
   const { t } = useTranslation("launchpad");
   const [loading,setLoading] = useState(true)
   useEffect(() =>{
-    if (store.user.id !== ""){
+    if (store.user.id !== "" && store.user.access_token !== ""){
       getCurrentUser().then((res) => {
         if (res.is_kyc){
-          store.kyc.update("Completed");
+          store.kyc.update(res.kyc_status);
         }
         setLoading(false);
       })
     }
-  },[store.user.id])
+  },[store.user.id,store.user.access_token])
   const { data } = useSWR(
     "/api/kyc-status?refId=" + store.user.id,
     fetchJson
   );
-  if (data && !store.kyc.status && !loading) {
+  if (data && store.kyc.status !== BLOCK_PASS_KYC_COMPLETE && !loading) {
     store.kyc.update(data.status);
   }
   return (

@@ -20,6 +20,7 @@ const getUserGql =  gql`
       name
       image
       is_kyc
+      kyc_status
       email
       account {
         id
@@ -40,8 +41,8 @@ const getUserGql =  gql`
 `
 
 const submitKycStatusGql =  gql`
-  mutation submitKycStatus($id : String!,$key : String!){
-    submitKycStatus (id : $id,key : $key) {
+  mutation submitKycStatus($id : String!,$key : String!,$kyc_status : String!){
+    submitKycStatus (id : $id,key : $key,kyc_status : $kyc_status) {
       id
     }
   }
@@ -70,13 +71,13 @@ export async function getCurrentUser() {
   return data.data.me
 }
 
-export async function submitKycStatus({id}) {
+export async function submitKycStatus({id,kyc_status}) {
   const client = getClient();
   const key = process.env.LOGIN_KEY || ""
   let data = await client.mutate({
     mutation : submitKycStatusGql,
     variables: {
-      key,id
+      key,id,kyc_status
     }
   })
   return data.data.submitKycStatus
