@@ -1,21 +1,15 @@
 import React from "react";
 import { backgroundImage } from "tailwindcss/defaultTheme";
 
-export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
+export const CardProject = ({title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
   
   return (
     <a href={link} className={`card-project is-${status}`}>
-      <div className="project-content">
+      <div className="project-content relative">
 
-        <div className="project-thumb">
-          <div className="project-thumb--wrapper">
-            <img className="project-thumb--img" src={img} alt="{title}" />
-          </div>
-          <div className="project-type">
-            <span className={`label ml-auto ${type}`}>{type}</span>
-          </div>
-          <div className={`countdown-mini--wrapper ${status == "closed" ? "hidden" : ""}`}>
-            <h5>Project Status</h5>
+        <div className="block">
+          <div className={`countdown-mini--wrapper top-0 !bottom-auto`}>
+            <div>{statusName}</div>
             <div className="countdown--mini">
               <div className="countdown--mini--body countdown--mini--body--day">
                 <time>12</time> <span title="day">d</span>
@@ -37,37 +31,30 @@ export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPr
         </div>
 
         <div class="project-content--meta">
-          <div className="project-title">
-            <div className="project-title--token-logo">
-              <img src={tokenLogo} className="rounded-full" />
+          <div className="project-title flex justify-between items-center">
+            <div className="text-xl">
+              <h5>{title}</h5>
             </div>
-            <div className="project-title--token-name">
-              {title}
+            <div className="project-status -mt-1">
+              <span className={`label label-${status}`}>{status}</span>
             </div>
-            <span class="badge badge-coin ml-2">{token}</span>
-          </div>
-
-          <div className="project-desc">
-            {desc}
           </div>
 
           <ul className="project-fields">
             <li className="list-pair mt-auto mb-0">
               <span className="list-key">
-                Raise
+                Total Raise
               </span>
               <span className="ml-auto list-value font-semibold">
-              {raise}
+                {raise}
               </span>
             </li>
-            {status=="open" ? 
             <li className="list-pair">
               <span className="list-key">
                 Token price
               </span>
               <span className="list-value ml-auto"> {tokenPrice}</span>
             </li>
-            : ""}
             <li className="list-pair">
               <span className="list-key">
                 Progress
@@ -78,16 +65,17 @@ export const CardProject = ({title, link, img, status, raise, tokenLogo, tokenPr
               </span>
             </li>
           </ul>
-          {status=="open" ? 
+
           <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
             <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" title={progressPercentage} style={{width: `${progressPercentage}`}}>{progressPercentage}</div>
           </div>
-          : ""}
-          <div className="project--cta ">
-            {status!="upcoming"?<a href="project" className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}><span>
-              {status == "closed" ? "Closed" : "Invest now"}
+
+          <div className="project--cta">
+            <a href="project" className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
+              <span>
+               View Details
               </span>
-            </a> : ""}
+            </a>
           </div>
           {/* End of project-cta */}
         </div>

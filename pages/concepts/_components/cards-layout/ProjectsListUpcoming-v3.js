@@ -14,7 +14,7 @@ export default function ProjectsList({title, extraClass}){
     <div className="projects-section">
 
       <div className="projects-section--subheader">
-        <h3 className="">Current Projects</h3>
+        <h3 className="">Upcoming Projects</h3>
       </div>
 
       <div className="w-full">

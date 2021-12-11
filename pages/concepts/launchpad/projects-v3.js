@@ -1,6 +1,6 @@
 import  ProjectsList  from "../_components/cards-layout/ProjectsList-v3";
 import  ProjectsListFeatured  from "../_components/cards-layout/ProjectsListFeatured";
-import  ProjectsListUpcoming  from "../_components/cards-layout/ProjectsListUpcoming-v2";
+import  ProjectsListUpcoming  from "../_components/cards-layout/ProjectsListUpcoming-v3";
 import  ProjectsListClosed  from "../_components/cards-layout/ProjectsListClosed";
 
 import dynamic from "next/dynamic";
@@ -35,13 +35,6 @@ export default () => (
                   Simplify and popularize crowdfunding in Blockchain, at the same time make initial Token sales equally accessible for the masses — newbies and veterans alike.
                 </p>
 
-                <div className="flex space-x-4 justify-center mt-8">
-                  <a href="" target="_blank" className="btn btn-default btn-secondary btn-default-lg btn-rounded text-base">
-                    <span className="btn-text">Learn More</span>
-                    <span className="btn--caret-right"></span>
-                  </a>
-                  <a href="" target="_blank" className="btn btn-default btn-default-lg btn-rounded text-base">Press Released</a>
-                </div>
               </div>
             </header>
             {/* END: HEADER */}
