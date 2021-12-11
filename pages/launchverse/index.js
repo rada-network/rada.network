@@ -7,10 +7,13 @@ import { useEffect } from "react";
 import Image from "@components/Image";
 
 import dynamic from "next/dynamic";
+import { useTheme } from "next-themes";
 const Layout = dynamic(() => import("@components/page-layouts/Global"));
 
 const LaunchVerse = (props) => {
   const { dataStore } = usePageStore();
+  const { theme } = useTheme();
+
   dataStore.lang = props.lang;
   const { locales, asPath } = useRouter();
   dataStore.page = "launchverse";
@@ -28,6 +31,9 @@ const LaunchVerse = (props) => {
   useEffect(() => {
     dataStore.meta = meta;
   }, []);
+
+  console.log("theme", theme);
+
   return (
     <Layout meta={meta}>
       <div className="pane-content">
@@ -40,7 +46,9 @@ const LaunchVerse = (props) => {
                   <Image
                     src={
                       process.env.NEXT_PUBLIC_CDN +
-                      "/images/logos/launchverse-dark.svg"
+                      (theme === "light"
+                        ? "/images/logos/launchverse.svg"
+                        : "/images/logos/launchverse-dark.svg")
                     }
                     alt="RADA LaunchVerse"
                     width={307}
