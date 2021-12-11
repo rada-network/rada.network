@@ -550,7 +550,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
                     <div className="mb-4">
                       <p>
                         {t("checking links des")}</p>
-                      <p className="pt-4">Any further question? Ask in our <a className="text-purple-400" target="_blank" href="https://t.me/radadao">Telegram</a></p>
+                      <p className="pt-4">Any further question? Ask in our <a className="text-purple-400" target="_blank" href="https://discord.gg/PByuXcECaF">Discord</a></p>
                     </div>
                   </div>
 
