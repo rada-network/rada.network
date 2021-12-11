@@ -36,7 +36,7 @@ const TutorialWidget = function({project}){
             <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
           </a>
           </Link> */}
-          <a href={`#`} onClick={e => {toast.info(t("Coming Soon"),{position:"top-center"})}} class="group">
+          <a href={t("Learn more url")} target="_blank" class="group">
             <span class="text-sm">{t("Learn more")}</span>
             <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
           </a>
