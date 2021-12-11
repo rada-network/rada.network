@@ -4,7 +4,7 @@ import "../styles/styles.css";
 
 import { StoreProvider, useStore } from "../lib/useStore";
 import { configure } from "mobx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import * as ga from "../lib/ga";
 import { appWithTranslation } from "next-i18next";
@@ -12,7 +12,7 @@ import { getScreenName } from "../components/utils/Responsive";
 import { Provider, useSession, signOut } from "next-auth/client";
 import { useCookies } from "react-cookie";
 import { PageStoreProvider, usePageStore } from "../lib/usePageStore";
-
+import { ThemeProvider } from "next-themes";
 import dynamic from "next/dynamic";
 
 const Nprogress = dynamic(() => import("@components/Nprogress"));
@@ -21,10 +21,6 @@ const Providers = dynamic(() => import("../utils/providers"));
 
 const CookiesProvider = dynamic(() =>
   import("react-cookie").then((mod) => mod.CookiesProvider)
-);
-
-const ThemeProvider = dynamic(() =>
-  import("next-themes").then((mod) => mod.ThemeProvider)
 );
 
 function parseJwt(token) {
@@ -159,6 +155,12 @@ const TokenRankingStore = ({
   pageProps: { session, ...pageProps },
 }) => {
   // const store = useStore(pageProps.initialState)
+
+  // Fix  Avoid Hydration Mismatch #https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
 
   return (
     <ThemeProvider attribute="class">
