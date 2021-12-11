@@ -22,7 +22,7 @@ export const CardProject = ({title, link, img, status, raise, participian, token
           </div>
 
           <ul className="project-fields">
-            <li className="list-pair mt-auto mb-0">
+            <li className="list-pair">
               <span className="list-key">
                 Total Raise
               </span>
@@ -30,7 +30,7 @@ export const CardProject = ({title, link, img, status, raise, participian, token
               {raise}
               </span>
             </li>
-            <li className="list-pair mt-auto mb-0">
+            <li className="list-pair">
               <span className="list-key">
                 Participians
               </span>

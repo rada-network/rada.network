@@ -39,8 +39,8 @@ Card Thumb + Type + Countdown
 }
 
 .project-type .label {
-  @apply text-xs px-4 py-2 shadow;
-  @apply bg-white bg-opacity-90 rounded-md;
+  @apply text-xs px-4 py-2 shadow rounded-full;
+  @apply bg-white bg-opacity-90;
   + .label {
     @apply ml-2;
   }
@@ -168,7 +168,7 @@ Card Content
 }
 
 .card-project-sm .project-title {
-  @apply w-2/6;
+  @apply w-2/6 mb-0 flex-shrink-0;
 }
 
 .card-project-sm .project-title--token-name {
@@ -188,11 +188,11 @@ Card Content
 }
  
 .card-project-sm .project-fields {
-  @apply flex flex-shrink-0 w-4/6 space-x-6 justify-evenly;
+  @apply flex flex-shrink-0 w-3/6 space-x-6 justify-evenly;
 }
 
 .card-project-sm .list-pair {
-  @apply flex-col ;
+  @apply flex-col mb-0;
 }
 
 .card-project-sm .list-key {
@@ -216,6 +216,23 @@ Card Content
 .projects-table {
   @apply grid grid-cols-1 gap-y-2;
 }
+
+
+/* Pools Container
+--------------------------------------- */
+.pools-container {
+  @apply cursor-pointer shadow-sm hover:shadow-lg transition-all rounded-lg;
+  @apply bg-white dark:bg-gray-800 border border-transparent;
+  @apply hover:border-gray-100 dark:hover:border-gray-700 hover:-translate-y-1;
+  + .pools-container {
+    @apply mt-4;
+  }
+}
+
+.pools-container--toggle {
+  @apply flex p-4;
+}
+
 
 
 /* Projects Section

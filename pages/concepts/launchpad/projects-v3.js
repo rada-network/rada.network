@@ -1,6 +1,6 @@
-import  ProjectsList  from "../_components/cards-layout/ProjectsList";
+import  ProjectsList  from "../_components/cards-layout/ProjectsList-v3";
 import  ProjectsListFeatured  from "../_components/cards-layout/ProjectsListFeatured";
-import  ProjectsListUpcoming  from "../_components/cards-layout/ProjectsListUpcoming";
+import  ProjectsListUpcoming  from "../_components/cards-layout/ProjectsListUpcoming-v2";
 import  ProjectsListClosed  from "../_components/cards-layout/ProjectsListClosed";
 
 import dynamic from "next/dynamic";
@@ -48,8 +48,6 @@ export default () => (
 
             {/* PROJECTS LIST */}
             <div className="mt-16">
-
-              <ProjectsListFeatured />
 
               <ProjectsList />
 
