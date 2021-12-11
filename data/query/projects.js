@@ -61,6 +61,7 @@ const projectBySlugGql = gql`
       lang
       title
       logo
+      banner_library
       participation_guide
       facebook_banner
       linkedin_banner
