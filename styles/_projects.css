@@ -26,7 +26,7 @@ Card Thumb + Type + Countdown
 }
 
 .project-thumb--img {
-  @apply object-cover rounded-lg;  
+  @apply object-cover rounded-lg lg:h-52 lg:w-full;  
 }
 
 .project-thumb--wrapper {
@@ -84,11 +84,11 @@ Card Content
 }
  
 .project-fields {
-  @apply text-sm;
+  @apply text-xs;
 }
 
 .project-fields .list-pair {
-  @apply mb-1;
+  @apply mb-1 text-xs;
 }
 
 .project--cta {
