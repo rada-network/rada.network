@@ -32,8 +32,6 @@ const LaunchVerse = (props) => {
     dataStore.meta = meta;
   }, []);
 
-  console.log("theme", theme);
-
   return (
     <Layout meta={meta}>
       <div className="pane-content">
