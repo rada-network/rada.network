@@ -223,7 +223,7 @@ export const IndexRightBar = observer(({ intro }) => {
                         </a>
                       )}
 
-                      {share2earn && tabName === "share2earn" && (
+                      {share2earn && (
                         <a
                           href="#share2earn"
                           className={`tab-item ${
@@ -244,7 +244,7 @@ export const IndexRightBar = observer(({ intro }) => {
                     </>
                   ) : (
                     <>
-                      {share2earn && tabName === "share2earn" && (
+                      {share2earn && (
                         <>
                           <span className="tab-item--divider" />
                           <a
