@@ -4,10 +4,9 @@ import Screen from "../../utils/Responsive";
 import TocSideBar from "@components/toc/TocSidebar";
 import FloatButton from "@components/toc/FloatingButton";
 import dynamic from "next/dynamic";
-
+import ProjectDetails from "./Details"
 const ProjectNavbar = dynamic(import("./Navbar"));
 const ProjectLaunchpad = dynamic(import("./Launchpad"));
-const ProjectDetails = dynamic(import("./Details"));
 const ProjectShare2Earn = dynamic(import("./Share2Earn"));
 
 export default function ProjectItem({ project, page, slug }) {

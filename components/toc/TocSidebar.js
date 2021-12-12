@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 const TocSideBar = ({ mainScroll }) => {
   const [nestedHeadings, setNestedHeadings] = useState([]);
   const refToc = useRef();
-
   useEffect(() => {
     if (mainScroll.current != null && mainScroll.current != undefined) {
       mainScroll.current.addEventListener("wheel", handleScroll);
@@ -109,6 +108,7 @@ const TocSideBar = ({ mainScroll }) => {
     const headingElements = Array.from(document.querySelectorAll("h2, h3"));
     const newNestedHeadings = getNestedHeadings(headingElements);
     setNestedHeadings(newNestedHeadings);
+    console.log(headingElements)
   }, []);
 
   const getNestedHeadings = (headingElements) => {
