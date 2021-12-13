@@ -1,6 +1,7 @@
+import { Fragment } from 'react';
 import { Disclosure, Transition } from '@headlessui/react';
 
-import {CardProject} from "../cards/Project-v3";
+import {CardProject} from "@components/project/List/CardProject";
 
 export default function ProjectsList({title, extraClass}){
 
@@ -10,7 +11,7 @@ export default function ProjectsList({title, extraClass}){
     <div className="projects-section">
 
       <div className="projects-section--subheader">
-        <h3 className="">Upcoming Projects</h3>
+        <h3 className="">{title}</h3>
       </div>
 
       <div className="w-full">

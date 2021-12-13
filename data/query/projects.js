@@ -80,37 +80,33 @@ const projectBySlugGql = gql`
 const projectFeedGql = gql`
   query ProjectFeed($lang: String!) {
     projectFeed(lang: $lang) {
-    id
     slug
     thumbnail_uri
     cover_uri
-    background_uri
-    open_date
-    cover_embed
-    thumbnail_embed
-    thumbnail_embed
-    type
+    background_uri    
     status
-    raise
-    price
-    is_kyc
+    website
+    facebook
+    twitter
+    telegram
+    discord
+    medium
     token{
       name
       logo
       symbol
     }
-    platform{
-      name
-      networkName
-    }
-    news{
-      title
-      slug
-      thumbnailUri
-    }
     content{
       title
       description
+    }
+    project_pool{
+      open_date
+      type
+      end_date
+      raise
+      price
+      slug
     }
   }
 }
