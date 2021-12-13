@@ -107,6 +107,7 @@ const projectFeedGql = gql`
       raise
       price
       slug
+      title
     }
   }
 }

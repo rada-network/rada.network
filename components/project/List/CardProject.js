@@ -1,9 +1,10 @@
 import React from "react";
-
-export const CardProject = ({title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
-  
+import { useTranslation } from "react-i18next";
+import Link from "next/link"
+export const CardProject = ({project,pool,title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
+  const {t,i18n} = useTranslation("launchpad")
   return (
-    <a href={link} className={`card-project is-${status}`}>
+    <div className={`card-project is-${pool.type}`}>
       <div className="project-content relative">
 
         <div className="block">
@@ -32,10 +33,10 @@ export const CardProject = ({title, link, img, status, statusName, raise, tokenL
         <div class="project-content--meta">
           <div className="project-title flex justify-between items-center">
             <div className="text-xl">
-              <h5>{title}</h5>
+              <h5>{pool.title}</h5>
             </div>
             <div className="project-status -mt-1">
-              <span className={`label label-${status}`}>{status}</span>
+              <span className={`label label-${pool.type}`}>{pool.type}</span>
             </div>
           </div>
 
@@ -70,11 +71,13 @@ export const CardProject = ({title, link, img, status, statusName, raise, tokenL
           </div>
 
           <div className="project--cta">
-            <a href="project" className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
+            <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} > 
+            <a href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
               <span>
                View Details
               </span>
             </a>
+            </Link>
           </div>
           {/* End of project-cta */}
         </div>
@@ -83,7 +86,7 @@ export const CardProject = ({title, link, img, status, statusName, raise, tokenL
       {/* End of card--body */}
      
       {/* End of card--wrapper */}
-    </a> 
+    </div> 
   )
 }
 
