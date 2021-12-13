@@ -160,11 +160,13 @@ const TokenRankingStore = ({
 }) => {
   // const store = useStore(pageProps.initialState)
 
-  // Fix  Avoid Hydration Mismatch #https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  if (process.env.NODE_ENV !== "production") {
+    // Fix  Avoid Hydration Mismatch #https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
+    if (!mounted) return null;
+  }
 
   return (
     <ThemeProvider attribute="class">
