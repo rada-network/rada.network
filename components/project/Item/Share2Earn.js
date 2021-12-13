@@ -15,6 +15,9 @@ import Share2EarnMainScreen from "../Item/share2earn/Share2EarnMainScreen"
 import { useERC20 } from "@utils/hooks/useContracts";
 import useChainConfig from "@utils/web3/useChainConfig";
 import Share2EarnRequire from "./Share2EarnRequire";
+import useSWR from "swr";
+import fetchJson from "@lib/fetchJson";
+import { data } from "autoprefixer";
 
 export default function ProjectShare2Earn({
   shareCampaign,shareType,shareSlug
@@ -41,6 +44,7 @@ export default function ProjectShare2Earn({
   const { callFunction } = useCallFunction()
   const [confirm, setConfirm] = useState(false)
   const [avtURL, setAvtURL] = useState("")
+  const [transacitonCount, setTransactionCount] = useState(0);
 
   const { isConfirmed, isConfirming, handleConfirm } =
     useApproveConfirmTransaction({
@@ -68,6 +72,18 @@ export default function ProjectShare2Earn({
       checkJoined()
     }
   }, [account, user]);
+
+  if (account) {
+    const { data } = useSWR(
+      "/api/transaction-count?wallet=" + account,
+      fetchJson
+    );
+    if (data) {
+      if (data.length > 2) {
+        setTransactionCount(data[2])   
+      }
+    }
+  };
 
   React.useEffect(() => {
     const getInfoProgram = async () => {
@@ -241,7 +257,7 @@ export default function ProjectShare2Earn({
             
             {
               allowJoin && 
-              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !confirm ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
+              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !confirm || transacitonCount < 5 ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
                 {share2EarnInfo.paused ? "The campaign has ended" : t("join program")}
               </button>               
             }
