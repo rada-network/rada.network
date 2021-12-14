@@ -9,6 +9,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
   const [poolStatus, setPoolStatus] = useState("coming");
 
   useEffect(() => {
+    console.log(project)
     if (Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
       setPoolStatus("open")
     } 
@@ -19,15 +20,18 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
   }, [])
 
   return (
-    <div className={`card-project is-${pool.type}`}>
+    <div className={`card-project is-${project.status}`}>
       <div className="project-content relative">
 
-        <div className="block">
-          <div className={`countdown-mini--wrapper top-0 !bottom-auto`}>
-            <div>{poolStatus == "open" ? "Prefunding" : "Sale start in"}</div>
-            <MiniCountdown project={pool} isEndDate={true}/>
+        {!(project.status == "upcoming") && (
+          <div className="block">
+            <div className={`countdown-mini--wrapper top-0 !bottom-auto`}>
+              <div>{poolStatus == "open" ? "Prefunding" : "Sale start in"}</div>
+              <MiniCountdown project={pool} isEndDate={true}/>
+            </div>
           </div>
-        </div>
+        )}
+        
 
         <div class="project-content--meta">
           <div className="project-title flex justify-between items-center">
@@ -35,7 +39,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
               <h5>{pool.title}</h5>
             </div>
             <div className="project-status -mt-1">
-              <span className={`label label-${isComing ? "coming" : poolStatus}`}>{ isComing ? "Coming" : (poolStatus == "open" ? "Open" : "Coming")}</span>
+              <span className={`label label-${isComing ? "coming" : poolStatus}`}>{ isComing ? "Upcoming" : (poolStatus == "open" ? "Open" : "Coming")}</span>
             </div>
           </div>
 
@@ -45,14 +49,14 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
                 {t("Raise")}
               </span>
               <span className="ml-auto list-value font-semibold">
-                {raise.toLocaleString()} BUSD 
+                {raise == 0 ? "TBA" : raise.toLocaleString() + " BUSD"}  
               </span>
             </li>
             <li className="list-pair">
               <span className="list-key">
                 {t("Token Price")}
               </span>
-              <span className="list-value ml-auto"> {tokenPrice} BUSD</span>
+              <span className="list-value ml-auto"> {tokenPrice == 0 ? "TBA" : tokenPrice + " BUSD"}</span>
             </li>
             <li className="list-pair">
               <span className="list-key">
@@ -60,7 +64,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
               </span>
               <span className="list-value ml-auto">
                 <span className="font-semibold">0</span>
-                <span className="opacity-70">/{raise.toLocaleString()} BUSD</span>
+                <span className="opacity-70">/{raise == 0 ? "TBA" : raise.toLocaleString() + " BUSD"}</span>
               </span>
             </li>
           </ul>

@@ -14,7 +14,7 @@ const Layout = dynamic(import("@components/page-layouts/Global"));
 export default function ProjectsIndex ({ projects, locale }){
   const { dataStore } = usePageStore();
   const { locales, asPath } = useRouter();
-  const { t } = useTranslation('project');
+  const {t,i18n} = useTranslation("launchpad");
 
   dataStore.page = "project";
   dataStore.lang = locale;
@@ -66,7 +66,7 @@ export default function ProjectsIndex ({ projects, locale }){
                   </h1>
 
                   <p className="text-base md:text-lg leading-relaxed text-black dark:text-white text-opacity-50 dark:text-opacity-50 mt-4 max-w-screen-md mx-auto">
-                    {t("project title")}
+                    {t("Home title")}
                   </p>
 
                 </div>
