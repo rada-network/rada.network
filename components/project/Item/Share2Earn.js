@@ -256,7 +256,7 @@ export default function ProjectShare2Earn({
 
             {!!account && transactionCount < MIN_TOTTAL_TX && 
             <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{ wordBreak: "break-word" }}>
-              {t("Your wallet total transaction must be greater than or equal to " + MIN_TOTTAL_TX)}
+              {t("The total amount of transactions in your wallet must be higher than or equal to " + MIN_TOTTAL_TX)}
             </div> 
             }
             {
