@@ -19,6 +19,8 @@ import useSWR from "swr";
 import fetchJson from "@lib/fetchJson";
 import { data } from "autoprefixer";
 
+const MIN_TOTTAL_TX = 5
+
 export default function ProjectShare2Earn({
   shareCampaign,shareType,shareSlug
 }) {
@@ -44,7 +46,7 @@ export default function ProjectShare2Earn({
   const { callFunction } = useCallFunction()
   const [confirm, setConfirm] = useState(false)
   const [avtURL, setAvtURL] = useState("")
-  const [transacitonCount, setTransactionCount] = useState(0);
+  const [transactionCount, setTransactionCount] = useState(0);
 
   const { isConfirmed, isConfirming, handleConfirm } =
     useApproveConfirmTransaction({
@@ -72,19 +74,17 @@ export default function ProjectShare2Earn({
       checkJoined()
     }
   }, [account, user]);
-
-  if (account) {
-    const { data } = useSWR(
-      "/api/transaction-count?wallet=" + account,
-      fetchJson
-    );
-    if (data) {
-      if (data.length > 2) {
-        setTransactionCount(data[2])   
-      }
+  useEffect(() => {
+    if (!!account){
+      fetch("/api/transaction-count?wallet=" + account).then(function(res){
+        if (res) {
+          if (res.length > 2) {
+            setTransactionCount(res[2])   
+          }
+        }
+      })
     }
-  };
-
+  },[account])
   React.useEffect(() => {
     const getInfoProgram = async () => {
       try {
@@ -134,10 +134,13 @@ export default function ProjectShare2Earn({
     } else if (joined) {
       return t("wrong connect address", { address: joined })
     }
+    else if (transactionCount < MIN_TOTTAL_TX){
+      return t(`Total transaction must be greater or equal to ${MIN_TOTTAL_TX}`);
+    }
 
     return '';
   }
-  const allowJoin = getMessage() == '' && joined == ''
+  const allowJoin = getMessage() == '' && joined == '' && transactionCount >= MIN_TOTTAL_TX
 
   if (loading) return null;
 
@@ -257,7 +260,7 @@ export default function ProjectShare2Earn({
             
             {
               allowJoin && 
-              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !confirm || transacitonCount < 5 ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
+              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !confirm || transactionCount < 5 ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
                 {share2EarnInfo.paused ? "The campaign has ended" : t("join program")}
               </button>               
             }
