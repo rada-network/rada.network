@@ -4,7 +4,7 @@ import Link from "next/link"
 import MiniCountdown from "./Countdown";
 import { useState, useEffect } from "react";
 
-export const CardProject = ({project,pool,title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
+export const CardProject = ({project,pool,title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc, isComing}) => {
   const {t,i18n} = useTranslation("launchpad");
   const [poolStatus, setPoolStatus] = useState("coming");
 
@@ -35,7 +35,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
               <h5>{pool.title}</h5>
             </div>
             <div className="project-status -mt-1">
-              <span className={`label label-${poolStatus}`}>{poolStatus == "open" ? "Open" : "Coming"}</span>
+              <span className={`label label-${isComing ? "coming" : poolStatus}`}>{ isComing ? "Coming" : (poolStatus == "open" ? "Open" : "Coming")}</span>
             </div>
           </div>
 
@@ -60,7 +60,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
               </span>
               <span className="list-value ml-auto">
                 <span className="font-semibold">0</span>
-                <span className="opacity-70">/{raise.toLocaleString()} BUSD</span> {token}
+                <span className="opacity-70">/{raise.toLocaleString()} BUSD</span>
               </span>
             </li>
           </ul>

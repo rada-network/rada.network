@@ -4,9 +4,8 @@ import { Disclosure, Transition } from '@headlessui/react';
 import { CardProject } from "@components/project/List/CardProject";
 import { poll } from '@ethersproject/web';
 
-export default function ProjectsList({ title, extraClass, projects }) {
+export default function ProjectsList({ title, extraClass, projects, isComing}) {
   console.log(projects);
-  console.log("Chay vao trong nay")
   return (
     <>
       <div className="projects-section">
@@ -112,6 +111,7 @@ export default function ProjectsList({ title, extraClass, projects }) {
                           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             {project.project_pool.map((pool) => (
                               <CardProject
+                                isComing={isComing}
                                 project={project}
                                 pool={pool}
                                 title={pool.title}
@@ -125,7 +125,7 @@ export default function ProjectsList({ title, extraClass, projects }) {
                                 progressPercentage="2%"
                                 token="PRL"
                                 countdown="2 hours"
-                                status="coming"
+                                status={project}
                                 statusName="Sale start in"
                                 
                                 desc="Reviving a legendary dragon hunting game with built-in blockchain technology."

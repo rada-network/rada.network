@@ -33,11 +33,13 @@ export default function ProjectsIndex ({ projects, locale }){
     return item.status === "active"
   })
   const upcomingProjects = projects.filter(function(item){
-    return item.status === "upcomming"
+    return item.status === "upcoming"
   })
+
   const closedProjects = projects.filter(function(item){
     return item.status === "closed"
   })
+  // console.log(projects)
   return (
   <>
     <Layout extraClass="page-launchverse glassmorphism" meta={meta}>
@@ -74,9 +76,9 @@ export default function ProjectsIndex ({ projects, locale }){
               {/* PROJECTS LIST */}
               <div className="mt-16">
 
-                <ProjectsList title={`Current Project`} projects={activeProjects} />
+                <ProjectsList title={`Current Project`} projects={activeProjects} isComing={false}/>
 
-                <ProjectsList title={`Upcoming project`} projects={upcomingProjects} />
+                <ProjectsList title={`Upcoming project`} projects={upcomingProjects} isComing={true}/>
 
                 <ProjectsListClosed projects={closedProjects} />
 
