@@ -3,3 +3,6 @@ npm-debug.log
 .next
 out
 .vscode
+.github
+.idea
+https_cert
