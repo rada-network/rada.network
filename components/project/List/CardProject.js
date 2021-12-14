@@ -1,32 +1,31 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Link from "next/link"
+import MiniCountdown from "./Countdown";
+import { useState, useEffect } from "react";
+
 export const CardProject = ({project,pool,title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
-  const {t,i18n} = useTranslation("launchpad")
+  const {t,i18n} = useTranslation("launchpad");
+  const [poolStatus, setPoolStatus] = useState("coming");
+
+  useEffect(() => {
+    if (Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
+      setPoolStatus("open")
+    } 
+
+    if (Date.parse(new Date()) < Date.parse(pool.open_date)) {
+      setPoolStatus("coming")
+    }
+  }, [])
+
   return (
     <div className={`card-project is-${pool.type}`}>
       <div className="project-content relative">
 
         <div className="block">
           <div className={`countdown-mini--wrapper top-0 !bottom-auto`}>
-            <div>{statusName}</div>
-            <div className="countdown--mini">
-              <div className="countdown--mini--body countdown--mini--body--day">
-                <time>12</time> <span title="day">d</span>
-              </div>
-              <div className="countdown--mini--body countdown--mini--body--hour">
-                <time>15</time>
-                <span title="hour">h</span>
-              </div>
-              <div className="countdown--mini--body countdown--mini--body--minute">
-                <time>48</time>
-                <span title="minute">m</span>
-              </div>
-              <div className="countdown--mini--body countdown--mini--second">
-                <time>24</time>
-                <span title="second">s</span>
-              </div>
-            </div>
+            <div>{poolStatus == "open" ? "Prefunding" : "Sale start in"}</div>
+            <MiniCountdown project={pool} isEndDate={true}/>
           </div>
         </div>
 
@@ -36,32 +35,32 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
               <h5>{pool.title}</h5>
             </div>
             <div className="project-status -mt-1">
-              <span className={`label label-${pool.type}`}>{pool.type}</span>
+              <span className={`label label-${poolStatus}`}>{poolStatus == "open" ? "Open" : "Coming"}</span>
             </div>
           </div>
 
           <ul className="project-fields">
             <li className="list-pair mt-auto mb-0">
               <span className="list-key">
-                Total Raise
+                {t("Raise")}
               </span>
               <span className="ml-auto list-value font-semibold">
-                {raise}
+                {raise.toLocaleString()} BUSD 
               </span>
             </li>
             <li className="list-pair">
               <span className="list-key">
-                Token price
+                {t("Token Price")}
               </span>
-              <span className="list-value ml-auto"> {tokenPrice}</span>
+              <span className="list-value ml-auto"> {tokenPrice} BUSD</span>
             </li>
             <li className="list-pair">
               <span className="list-key">
-                Progress
+                {t("Progress")}
               </span>
               <span className="list-value ml-auto">
-                <span className="font-semibold">{progressToken}</span>
-                <span className="opacity-70">/{target}</span> {token}
+                <span className="font-semibold">0</span>
+                <span className="opacity-70">/{raise.toLocaleString()} BUSD</span> {token}
               </span>
             </li>
           </ul>

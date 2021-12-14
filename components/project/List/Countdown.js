@@ -1,6 +1,6 @@
 import Countdown from "react-countdown";
 
-const MiniCountdown = ({ project }) => {
+const MiniCountdown = ({ project, isEndDate }) => {
 
     const renderer = ({ formatted: {days, hours, minutes, seconds}, completed }) => {
         if (completed) {
@@ -32,7 +32,7 @@ const MiniCountdown = ({ project }) => {
         }
     };
 
-    return <Countdown renderer={renderer} date={project.open_date} />
+    return <Countdown renderer={renderer} date={isEndDate ? project.end_date : project.open_date} />
 }
 
 export default MiniCountdown

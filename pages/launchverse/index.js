@@ -7,11 +7,14 @@ import { useRouter } from "next/router";
 import  ProjectsList  from "@components/project/List/ProjectsList";
 import  ProjectsListClosed  from "@components/project/List/ProjectsListClosed";
 import dynamic from "next/dynamic";
+import { useTranslation } from "next-i18next";
+
 const Layout = dynamic(import("@components/page-layouts/Global"));
 
 export default function ProjectsIndex ({ projects, locale }){
   const { dataStore } = usePageStore();
   const { locales, asPath } = useRouter();
+  const { t } = useTranslation('project');
 
   dataStore.page = "project";
   dataStore.lang = locale;
@@ -61,7 +64,7 @@ export default function ProjectsIndex ({ projects, locale }){
                   </h1>
 
                   <p className="text-base md:text-lg leading-relaxed text-black dark:text-white text-opacity-50 dark:text-opacity-50 mt-4 max-w-screen-md mx-auto">
-                    Simplify and popularize crowdfunding in Blockchain, at the same time make initial Token sales equally accessible for the masses — newbies and veterans alike.
+                    {t("project title")}
                   </p>
 
                 </div>
