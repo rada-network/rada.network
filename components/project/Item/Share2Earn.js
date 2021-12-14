@@ -76,7 +76,7 @@ export default function ProjectShare2Earn({
   }, [account, user]);
   useEffect(() => {
     if (!!account){
-      fetch("/api/transaction-count?wallet=" + account).then(function(res){
+      fetchJson("/api/transaction-count?wallet=" + account).then(function(res){
         if (res) {
           if (res.length > 2) {
             setTransactionCount(res[2])   
@@ -134,13 +134,10 @@ export default function ProjectShare2Earn({
     } else if (joined) {
       return t("wrong connect address", { address: joined })
     }
-    else if (transactionCount < MIN_TOTTAL_TX){
-      return t(`Total transaction must be greater or equal to ${MIN_TOTTAL_TX}`);
-    }
 
     return '';
   }
-  const allowJoin = getMessage() == '' && joined == '' && transactionCount >= MIN_TOTTAL_TX
+  const allowJoin = getMessage() == '' && joined == ''
 
   if (loading) return null;
 
@@ -257,10 +254,14 @@ export default function ProjectShare2Earn({
               </div>
             </fieldset>}
 
-            
+            {!!account && transactionCount < MIN_TOTTAL_TX && 
+            <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{ wordBreak: "break-word" }}>
+              {t("Your wallet total transaction must be greater than or equal to " + MIN_TOTTAL_TX)}
+            </div> 
+            }
             {
               allowJoin && 
-              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !confirm || transactionCount < 5 ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
+              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !confirm || transactionCount < MIN_TOTTAL_TX ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
                 {share2EarnInfo.paused ? "The campaign has ended" : t("join program")}
               </button>               
             }
