@@ -79,7 +79,7 @@ export default function ProjectShare2Earn({
       fetchJson("/api/transaction-count?wallet=" + account).then(function(res){
         if (res) {
           if (res.length > 2) {
-            setTransactionCount(res[2])   
+            setTransactionCount(res[10])   
           }
         }
       })
@@ -255,7 +255,8 @@ export default function ProjectShare2Earn({
             </fieldset>}
 
             {!!account && transactionCount < MIN_TOTTAL_TX && 
-            <div className={"mt-5 text-center w-full justify-center py-3 px-4 "} style={{ wordBreak: "break-word" }}>
+            <div className={"mt-5 text-center w-full justify-center py-3 px-4 text-sm text-red-500"} style={{ wordBreak: "break-word" }}>
+              <span className="icon rounded-full text-red-600 text-lg mr-2"><i class="fas fa-ban"></i></span>
               {t("The total amount of transactions in your wallet must be higher than or equal to " + MIN_TOTTAL_TX)}
             </div> 
             }
