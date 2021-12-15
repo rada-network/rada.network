@@ -141,9 +141,13 @@ export default function ProjectShare2Earn({
 
   if (loading) return null;
 
-  if ((joined == account || isConfirmed)  && !!account && !!share2EarnInfo && store.user.id !== "" && store.kyc.status) {
+  // if ((joined == account || isConfirmed)  && !!account && !!share2EarnInfo && store.user.id !== "" && store.kyc.status) {
+  //   return <Share2EarnMainScreen shareCampaign={shareCampaign} user={user} share2earnAddress={share2earnAddress} shareSlug={shareSlug} shareType={shareType} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
+  // }
+  if (true) {
     return <Share2EarnMainScreen shareCampaign={shareCampaign} user={user} share2earnAddress={share2earnAddress} shareSlug={shareSlug} shareType={shareType} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
   }
+  
   return (
     <>
       <div className="section mx-auto">
