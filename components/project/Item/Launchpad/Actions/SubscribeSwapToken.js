@@ -1,6 +1,5 @@
 import Subscriber from "./Subscriber";
 import Timeline from "./Timeline";
-import SwapTokens from "./SwapTokens"
 import { useBUSDContract, useERC20, useRIRContract, useLaunchpadContractV2 } from "@utils/hooks/useContracts";
 import { useEffect, useState } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
@@ -18,12 +17,12 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import useChainConfig from "utils/web3/useChainConfig"
 
 
-const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
+const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const { t, i18n } = useTranslation("launchpad")
   const rirContract = useRIRContract()
   const bUSDContract = useBUSDContract()
   const { account } = useActiveWeb3React()
-  const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ project })
+  const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ pool })
   const { callWithGasPrice } = useCallWithGasPrice()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const launchpadContract = useLaunchpadContractV2(project.swap_contract)
@@ -55,12 +54,10 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
   }, [account])
 
   useEffect(() => {
-    if (!!account) {
-      launchpadContract.tokenAddress().then(function(address) {
-        setTokenAddress(address)
-      })
+    if (!!account && !!launchpadInfo) {
+      setTokenAddress(launchpadInfo.tokenAddress)
     }
-  }, [account])
+  }, [launchpadInfo,account])
 
   useEffect(() => {
     if (!!account && project.is_whitelist) {
@@ -160,6 +157,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
       <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
     )
   }
+  return null
   if (!inWhitelist) {
     return (
       <NotInWhitesist></NotInWhitesist>
@@ -242,7 +240,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
 
                   <div className="box box--gray -mx-4 -mb-6 md:m-0">
                     <div className="box-header">{t("Prefund your investment")}</div>
-                    <SwapTokensV2 project={project} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} />
+                    <SwapTokensV2 project={project} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} pool={pool} />
                   </div>
                 </div>
               </div>

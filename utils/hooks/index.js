@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react"
-import {utils} from "ethers"
+import {ethers, utils} from "ethers"
 import { useLaunchpadContractV2 } from "./useContracts"
 import useActiveWeb3React from "./useActiveWeb3React"
 import { useWeb3React } from '@web3-react/core'
@@ -9,29 +9,49 @@ export function useGasPrice() {
   return process.env.NEXT_PUBLIC_CHAIN == 'production' ? userGas : GAS_PRICE_GWEI.testnet
 }
 
-export const useLaunchpadInfo = ({project}) => {
+export const useLaunchpadInfo = ({pool}) => {
   const {account,connector,active,library} = useActiveWeb3React()
   const [launchpadInfo,setLaunchpadInfo] = useState(false)
   const [loading,setLoading] = useState(true)
-  const lauchpadContact = useLaunchpadContractV2(project.swap_contract)
+  const lauchpadContact = useLaunchpadContractV2(pool.contract)
   const fetchLaunchpadInfo = async () => {
     try {
-      let individualMinimumAmount = await lauchpadContact.individualMinimumAmountBusd()
-      let individualMaximumAmount = await lauchpadContact.individualMaximumAmountBusd()
-      let buyers = await lauchpadContact.getSubscribers()
-      let currentOrder = await lauchpadContact.getOrderSubscriber(account)
-      let winners = await lauchpadContact.getWinners()
-      let claimable = await lauchpadContact.getClaimable(account)
-      let updateInfo = {
-        individualMinimumAmount : utils.formatEther(individualMinimumAmount),
-        individualMaximumAmount : utils.formatEther(individualMaximumAmount),
-        ordersBuyerCount : buyers.length,
-        buyers : buyers,
-        currentOrder : currentOrder,
-        winnerCount : winners.length,
-        winners,
-        claimable
+      let info = await lauchpadContact.getPool(pool.id)
+      let claimable = await lauchpadContact.getClaimable(pool.id)
+      let refundable = await lauchpadContact.getRefundable(pool.id)
+      let investor = await lauchpadContact.getInvestor(pool.id,account)
+      investor = {
+        allocationBusd : parseFloat(ethers.utils.formatEther(investor.allocationBusd)),
+        allocationRir : parseFloat(ethers.utils.formatEther(investor.allocationRir)),
+        amountBusd : parseFloat(ethers.utils.formatEther(investor.amountBusd)),
+        amountRir : parseFloat(ethers.utils.formatEther(investor.amountRir)),
+        claimedToken : parseFloat(ethers.utils.formatEther(investor.claimedToken)),
+        paid : investor.paid,
+        refunded : investor.refunded,
+        approved : investor.approved,
       }
+      let updateInfo = {
+        tokenAddress : info.tokenAddress,
+        allocationBusd : parseFloat(ethers.utils.formatEther(info.allocationBusd)),
+        allocationRir : parseFloat(ethers.utils.formatEther(info.allocationRir)),
+        price : parseFloat(ethers.utils.formatEther(info.price)),
+        startDate : parseFloat(ethers.utils.formatEther(info.startDate)),
+        endDate : parseFloat(ethers.utils.formatEther(info.endDate)),
+        price : parseFloat(ethers.utils.formatEther(info.price)),
+        individualMinimumAmount : parseFloat(ethers.utils.formatEther(info.maxAllocationBusd)),
+        individualMaximumAmount : parseFloat(ethers.utils.formatEther(info.minAllocationBusd)),
+        ordersBuyerCount : 0,
+        buyers : [],
+        winnerCount : 0,
+        winners : [],
+        claimable : parseFloat(ethers.utils.formatEther(claimable)),
+        refundable : [
+          parseFloat(ethers.utils.formatEther(refundable[0])),
+          parseFloat(ethers.utils.formatEther(refundable[1])),
+        ],
+        investor
+      }
+      console.log(updateInfo)
       setLaunchpadInfo(updateInfo)
      } catch (error) {
       console.log(error)

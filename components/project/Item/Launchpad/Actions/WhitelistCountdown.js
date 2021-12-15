@@ -4,7 +4,7 @@ import OpenDate from "./OpenDate"
 import { useTranslation } from "next-i18next";
 import TutorialWidget from "./TutorialWidget"
 import SocialPromote from "../SocialPromote";
-const WhitelistCountdown = ({project}) => {
+const WhitelistCountdown = ({project,pool}) => {
   const {t,i18n} = useTranslation("launchpad")
   return (
     <>
@@ -25,17 +25,17 @@ const WhitelistCountdown = ({project}) => {
             <div className="global-padding-lg min-h-full bg-white dark:bg-gray-800 relative z-10">
 
               <div className="">
-                {project.open_date ?
+                {pool.open_date ?
                 <div>
                   <h3 class="text-2xl text-center mb-4 font-normal">
                     <span className="text-color-title">{t("The whitelist will open in")}</span>
                   </h3>
-                  <ProjectCountdown project={project} />
+                  <ProjectCountdown project={project} pool={pool} />
                   <div>
                     <p className="text-sm text-center mt-4 leading-7">
                       {/* <span className="text-color-desc">{t("Please wait until the whitelist opens!")}</span><br />
                       <span className="text-color-desc">{t("You need to apply to join the whitelist.")}</span><br /> */}
-                      <span className="text-color-desc">{t("Openat")} </span> <OpenDate time={project.open_date} />
+                      <span className="text-color-desc">{t("Openat")} </span> <OpenDate time={pool.open_date} />
                     </p>
                   </div>
                 </div>

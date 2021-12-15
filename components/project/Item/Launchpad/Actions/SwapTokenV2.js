@@ -13,8 +13,8 @@ import SubcribeByRIR from "./swaptoken/SubscribeByRIR"
 import SubcribeByBUSD from "./swaptoken/SubscibeByBUSD"
 
 
-const SwapTokensV2 = ({project,accountBalance,fetchAccountBalance,setStep}) => {
-  const {launchpadInfo,loading} = useLaunchpadInfo({project})
+const SwapTokensV2 = ({project,accountBalance,fetchAccountBalance,setStep,pool}) => {
+  const {launchpadInfo,loading} = useLaunchpadInfo({pool})
   if (loading) return null
   return (
     <>

@@ -6,7 +6,6 @@ import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransact
 import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
 import { ethers } from 'ethers'
 import {toast} from "react-toastify"
-import {useLaunchpadInfo} from "@utils/hooks/index"
 import { useTranslation } from "next-i18next"
 import { CheckSvg } from "@components/svg/SvgIcons"
 import { set } from "lodash"

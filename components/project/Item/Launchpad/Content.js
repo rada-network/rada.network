@@ -5,26 +5,29 @@ import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { useLaunchpadContractV2 } from "@utils/hooks/useContracts";
 import numberFormatter from "@components/utils/numberFormatter";
 
-import { utils } from "ethers";
+import { ethers, utils } from "ethers";
 import { useTranslation } from "next-i18next";
 import useStore from "@lib/useStore"
 import { observer } from "mobx-react";
 
-const LaunchpadContent = observer(function({ project }) {
+const LaunchpadContent = observer(function({ project,pool }) {
   const { dataStore } = usePageStore();
   const store = useStore()
   const { t } = useTranslation("launchpad");
   const { account, library } = useActiveWeb3React();
-  const [launchpadInfo, setLaunchpadInfo] = useState(null);
-  const lauchpadContact = useLaunchpadContractV2(project.swap_contract);
+  const [poolStat, setPoolStat] = useState(null);
+  const lauchpadContact = useLaunchpadContractV2(pool.contract);
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {
-        let totalSubBUSD = await lauchpadContact.totalSubBUSD();
-        let updateInfo = {
-          totalSubBUSD: utils.formatEther(totalSubBUSD),
-        };
-        setLaunchpadInfo(updateInfo);
+        let stat = await lauchpadContact.poolsStat(pool.id);
+        setPoolStat({
+          amountBusd : ethers.utils.formatEther(stat.amountBusd),
+          amountRir : ethers.utils.formatEther(stat.amountRir),
+          approvedBusd : ethers.utils.formatEther(stat.approvedBusd),
+          approvedRir : ethers.utils.formatEther(stat.approvedRir),
+          depositedToken : ethers.utils.formatEther(stat.depositedToken),
+        })
       } catch (error) {
         //console.log(account)
         console.log("error to fetch launchpad info", error);
@@ -34,14 +37,14 @@ const LaunchpadContent = observer(function({ project }) {
       fetchLaunchpadInfo();
     }
   }, [account, lauchpadContact, library,store.loadPoolContent]);
-  const raise = project.raise;
-  const tokenPrice = project.price;
-  const progressToken = parseInt(launchpadInfo?.totalSubBUSD) || 0;
+  const raise = pool.raise;
+  const tokenPrice = pool.price;
+  const progressToken = parseInt(poolStat?.amountBusd) || 0;
   const target = raise;
   const progressPercentage = ((progressToken / target) * 100).toFixed(1);
   const curentTime = (new Date()).getTime() / 1000
-  const openTime = (new Date(project.open_date)).getTime() / 1000
-  const endTime = (new Date(project.end_date)).getTime() / 1000
+  const openTime = (new Date(pool.open_date)).getTime() / 1000
+  const endTime = (new Date(pool.end_date)).getTime() / 1000
   let tokennomic = project.token.link.find(function(item){
     return item.group === 'tokenomic'
   })

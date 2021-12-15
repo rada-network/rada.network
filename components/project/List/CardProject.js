@@ -74,8 +74,8 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
           </div>
 
           <div className="project--cta">
-            <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} > 
-            <a href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
+            <Link href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`} > 
+            <a href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
               <span>
                View Details
               </span>
