@@ -173,19 +173,19 @@ Card Content
 /* Project Card - small
 --------------------------------------- */
 .card-project-sm {
-  @apply flex;
+  @apply flex relative;
 }
 
 .card-project-sm .project-content {
-  @apply flex flex-row w-full space-x-4;
+  @apply flex flex-col w-full space-x-4 items-center;
 }
 
 .card-project-sm .project-content--meta {
-  @apply flex flex-row w-full justify-between;
+  @apply flex flex-col lg:flex-row w-full lg:pr-24;
 }
 
 .card-project-sm .project-title {
-  @apply w-2/6 mb-0 flex-shrink-0;
+  @apply flex-row pr-24 lg:pr-0 lg:w-2/6 mb-0 flex-shrink-0;
 }
 
 .card-project-sm .project-title--token-name {
@@ -205,11 +205,13 @@ Card Content
 }
  
 .card-project-sm .project-fields {
-  @apply flex flex-shrink-0 w-3/6 space-x-6 justify-evenly;
+  @apply flex flex-wrap md:flex-nowrap flex-shrink-0 lg:w-4/6 space-x-0 lg:space-x-6 lg:justify-evenly items-baseline content-start;
+  @apply ml-0 mt-2 md:ml-12 lg:ml-0 lg:mt-0;
 }
 
 .card-project-sm .list-pair {
-  @apply flex-col mb-0 text-xs;
+  width: 48%;
+  @apply flex-col mb-0 text-xs md:w-full;
 }
 
 .card-project-sm .list-key {
@@ -218,6 +220,10 @@ Card Content
 
 .card-project-sm .progress-bar {
   @apply w-1/6;
+}
+
+.card-project-sm .project-status {
+  @apply absolute right-6 top-6 lg:top-auto;
 }
 
 /* Projects List

@@ -62,11 +62,11 @@ export default function ProjectsIndex ({ projects, locale }){
               <header className="hero flex flex-col md:flex-row mt-8">
                 <div className="text-center max-w-screen-lg mx-auto">
                   <h1 className="text-2xl md:text-3xl lg:text-4xl leading-tight text-black dark:text-white font-semibold font-altsans">
-                  DAO-based Launchpad for GameFi and MetaVerse
+                    DAO-based Launchpad for GameFi and MetaVerse
                   </h1>
 
                   <p className="text-base md:text-lg leading-relaxed text-black dark:text-white text-opacity-50 dark:text-opacity-50 mt-4 max-w-screen-md mx-auto">
-                    {t("Home title")}
+                    {t("Hero Desc")}
                   </p>
 
                 </div>
@@ -88,6 +88,22 @@ export default function ProjectsIndex ({ projects, locale }){
 
               </div>
               {/* END: PROJECTS LIST */}
+
+              {/* FOOTER */}
+              <div className="hero flex flex-col md:flex-row justify-center items-center mt-16 max-w-screen-md mx-auto">
+                <div className="text-center md:text-left">
+                  <p className="text-2xl md:text-3xl xl:text-4xl font-altsans mb-4">Want to launch your project on RADA?</p>
+                  <a href="https://form.jotform.com/213272840844456" rel="nofollow" target="_blank" className="btn btn-lg btn-default btn-primary">
+                    Apply for Launch
+                  </a>
+                </div>
+                <span class="hero-deco mx-auto mt-4"></span>
+              </div>
+
+              <div class="mt-4 lg:mt-16 flex flex-col md:flex-row justify-center items-center">
+                <small class="text-sm leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 max-w-md">© Copyright Rada Network 2021. All rights reserved.</small>
+              </div>
+              {/* END: FOOTER */}
 
             </div>
           </div>

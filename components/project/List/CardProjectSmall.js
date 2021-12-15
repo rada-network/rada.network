@@ -20,11 +20,9 @@ export const CardProject = ({project, pool, title, link, img, status, raise, par
             <div className="project-title--token-logo">
               <img src={tokenLogo} className="rounded-full" />
             </div>
-            <div>
-              <div className="flex items-baseline">
-                <div className="project-title--token-name">
-                  {title}
-                </div>
+            <div className="flex items-baseline">
+              <div className="project-title--token-name">
+                {title}
               </div>
             </div>
           </div>
@@ -34,7 +32,7 @@ export const CardProject = ({project, pool, title, link, img, status, raise, par
               <span className="list-key">
                 {t("Raise")}
               </span>
-              <span className="ml-auto list-value font-semibold">
+              <span className="list-value font-semibold">
                 {pool.raise.toLocaleString() + " BUSD"}
               </span>
             </li>
@@ -65,12 +63,12 @@ export const CardProject = ({project, pool, title, link, img, status, raise, par
             </li>
           </ul>
 
-          <div className="project-status">
-            <span className={`label label-${status}`}>
-              {status}
-            </span>
-          </div>
+        </div>
 
+        <div className="project-status">
+          <span className={`label label-${status}`}>
+            {status}
+          </span>
         </div>
       </div>
         {/* End of project--content */}
