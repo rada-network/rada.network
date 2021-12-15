@@ -12,14 +12,14 @@ import { set } from "lodash"
 import { SwapNote,SwapDescription } from "../SwapTokenV2"
 import useStore from "@lib/useStore"
 
-const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
+const SubcribeByBUSD = ({pool,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
   const store = useStore()
   const {t} = useTranslation("launchpad")
   const {account} = useActiveWeb3React()
 
   const rirContract = useRIRContract()
   const bUSDContract = useBUSDContract()
-  const launchpadContract = useLaunchpadContractV2(project.swap_contract)
+  const launchpadContract = useLaunchpadContractV2(pool)
   const {callWithGasPrice} = useCallWithGasPrice()
   const [numberRIR,setNumberRIR] = useState(0)
   const [numberBusd,setNumberBusd] = useState(0)
@@ -28,44 +28,51 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
   const maxBusd = parseInt(launchpadInfo.individualMaximumAmount);
   const minBusd = parseInt(launchpadInfo.individualMinimumAmount);
   useEffect(() => {
-    setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)))
-    setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)))
+    setCurrentOrderBusd(launchpadInfo.investor.paid ? parseInt(launchpadInfo.investor.amountBusd) : 0)
+    setCurrentOrderRIR(launchpadInfo.investor.paid ? parseInt(launchpadInfo.investor.amountRir) : 0)
   },[launchpadInfo])
   
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
   useApproveConfirmTransaction({
-      onRequiresApproval: async () => {
-        try {
-          const response2 = await bUSDContract.allowance(account, launchpadContract.address)
-          return response2.gt(0)
-        } catch (error) {
-          return false
-        }
-      },
-      onApprove: async (requireApprove) => {
-        return callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.utils.parseEther(maxBusd.toString())])
-      },
-      onApproveSuccess: async ({ receipts }) => {
-        toast.success(`Approve BUSD Success`)
-      },
-      onConfirm: () => {
-        return callWithGasPrice(launchpadContract, 'createSubscription', [ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString()),account])
-      },
-      onSuccess: async ({ receipt }) => {
-        await fetchAccountBalance()
-        toast.success(`Successfully prefunded`)
-        setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountBUSD)) + parseInt(numberBusd))
-        setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.currentOrder?.amountRIR)) + parseInt(numberRIR))
-        setNumberRIR(0)
-        setNumberBusd(0)
-        store.updateLoadPoolContent((new Date()).getTime())
-      },
-    })
-    const resetApproved = async () => {
-      await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, 0])
-      await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, 0])
-    }
-    const maxSelected = parseInt(launchpadInfo.individualMaximumAmount)/100
+    onRequiresApproval: async () => {
+      try {
+        const response2 = await bUSDContract.allowance(account, launchpadContract.address)
+        console.log(ethers.utils.formatEther(response2))
+        return response2.gt(0)
+      } catch (error) {
+        return false
+      }
+    },
+    onApprove: async (requireApprove) => {
+      return callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+    },
+    onApproveSuccess: async ({ receipts }) => {
+      toast.success(`Approve BUSD Success`)
+    },
+    onConfirm: () => {
+      if (pool.is_whitelist){
+        return callWithGasPrice(launchpadContract, 'makePayment', [pool.id])
+      }
+      else{
+        return callWithGasPrice(launchpadContract, 'makePayment', [pool.id,ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString())])
+      }
+      
+    },
+    onSuccess: async ({ receipt }) => {
+      await fetchAccountBalance()
+      toast.success(`Successfully prefunded`)
+      setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.investor?.amountBusd)) + parseInt(numberBusd))
+      setCurrentOrderRIR(parseInt(ethers.utils.formatEther(launchpadInfo?.investor?.amountRir)) + parseInt(numberRIR))
+      setNumberRIR(0)
+      setNumberBusd(0)
+      store.updateLoadPoolContent((new Date()).getTime())
+    },
+  })
+  const resetApproved = async () => {
+    await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, 0])
+    await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, 0])
+  }
+  const maxSelected = parseInt(launchpadInfo.individualMaximumAmount)/100
   return (
     <>
       <div className={`global-padding` + (isApproving || isConfirming ? " disabled" : "") }>
@@ -122,6 +129,11 @@ const SubcribeByBUSD = ({project,accountBalance,setStep,fetchAccountBalance,laun
           </button>
           }
         </div>
+        {account === "0xC0129E7E233d6D9D4f2717Ba3e1837A4FE6C03af" && 
+          <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`} onClick={resetApproved}  >
+            {t("Reset approve")}
+          </button>
+          }
 
         <SwapNote numberBusd={numberBusd} numberRIR={numberRIR} maxSelected={maxSelected} currentOrderRIR={currentOrderRIR} currentOrderBusd={currentOrderBusd} />
 

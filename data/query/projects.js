@@ -82,6 +82,9 @@ const projectBySlugGql = gql`
         price
         slug
         title
+        is_kyc
+        is_allow_rir
+        is_whitelist
       }
     }
   }

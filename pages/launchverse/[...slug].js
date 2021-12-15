@@ -72,7 +72,6 @@ export default function ProjectPage({ slug, project, locale }) {
 
   /* Dragger to resize main col */
   const containerRef = useRef();
-  console.log(poolContact)
   if (poolContact === null) return null
   return (
     <Layout

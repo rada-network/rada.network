@@ -10,7 +10,7 @@ import { BLOCK_PASS_KYC_COMPLETE } from "@config/constants";
 
 const WalletRequire = dynamic(import("@components/WalletRequire"));
 
-const SubscribeLaunchpad = ({ project }) => {
+const SubscribeLaunchpad = ({ project,pool }) => {
   const store = useStore();
   const { t } = useTranslation("launchpad");
   const [loading,setLoading] = useState(true)
@@ -35,19 +35,19 @@ const SubscribeLaunchpad = ({ project }) => {
     <>
       <div className="max-w-xl mx-auto">
         <div className="mb-4 md:mb-8">
-          <h3 className="text-2xl md:text-3xl text-center font-normal">
+          {/* <h3 className="text-2xl md:text-3xl text-center font-normal">
             <span className="text-color-title">
               {project?.token.name}'s {t("Whitelist")}
             </span>
-          </h3>
+          </h3> */}
           <p className="text-center mt-2 font-normal">
             {t("Complete all the requirements below to joint the pool.")}
           </p>
         </div>
 
         <div className="list-group">
-          {project.is_kyc && <Login />}
-          {project.is_kyc && <KYC />}
+          {pool.is_kyc && <Login />}
+          {pool.is_kyc && <KYC />}
           <WalletRequire />
         </div>
       </div>

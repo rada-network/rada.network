@@ -25,14 +25,15 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ pool })
   const { callWithGasPrice } = useCallWithGasPrice()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
-  const launchpadContract = useLaunchpadContractV2(project.swap_contract)
+  const launchpadContract = useLaunchpadContractV2(pool)
   const [accountBalance, setAccountBalance] = useState({})
   const [loadBalance, setLoadBalance] = useState(true)
   const [loadWhitelist, setLoadWhitelist] = useState(true)
-  const [inWhitelist, setInWhitelist] = useState(!project.is_whitelist)
+  const [inWhitelist, setInWhitelist] = useState(!pool.is_whitelist)
   const [orderBusd, setOrderBusd] = useState(0)
   const [orderRIR, setOrderRIR] = useState(0)
   const [approvedBusd, setApprovedBusd] = useState(0)
+  const [approveRIR, setApprovedRIR] = useState(0)
   const [step, setStep] = useState(2)
   const [claimDisbaled, setClaimDisbaled] = useState(false)
   const [tokenAddress,setTokenAddress] = useState(ethers.constants.AddressZero)
@@ -60,25 +61,29 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   }, [launchpadInfo,account])
 
   useEffect(() => {
-    if (!!account && project.is_whitelist) {
-      launchpadContract.inWhitelist(account).then(function(res){
-        setInWhitelist(res)
+    if (!!account && pool.is_whitelist && !!launchpadInfo) {
+      if (launchpadInfo.investor.allocationBusd > 0){
+        
+        setInWhitelist(true)
         setLoadWhitelist(false)
-      })
-      
+      }
     }
     else{
       setLoadWhitelist(false)
     }
-  }, [account])
+  }, [account,launchpadInfo])
   useEffect(() => {
-    let currentOrder = launchpadInfo?.currentOrder?.amountBUSD ? launchpadInfo?.currentOrder?.amountBUSD : 0
-    let currentOrderRIR = launchpadInfo?.currentOrder?.amountRIR ? launchpadInfo?.currentOrder?.amountRIR : 0
-    let currentApprovedBusd = launchpadInfo?.currentOrder?.approvedBUSD ? launchpadInfo?.currentOrder?.approvedBUSD : 0
-    setOrderBusd(utils.formatEther(currentOrder))
-    setOrderRIR(utils.formatEther(currentOrderRIR))
-    setApprovedBusd(utils.formatEther(currentApprovedBusd))
-  }, [launchpadInfo])
+    if (!loading){
+      let currentOrderBusd = launchpadInfo.investor.amountBusd && launchpadInfo.investor.paid ? launchpadInfo.investor.amountBusd : 0
+      let currentOrderRIR = launchpadInfo.investor.amountRir && launchpadInfo.investor.paid ? launchpadInfo.investor.amountRir : 0
+      let currentApprovedBusd = launchpadInfo.investor.aprprove ? launchpadInfo.investor.allocationBusd : 0
+      let currentApproveRIR = launchpadInfo.investor.approved ? launchpadInfo.investor.allocationRir : 0
+      setOrderBusd(currentOrderBusd)
+      setOrderRIR(currentOrderRIR)
+      setApprovedBusd(currentApprovedBusd)
+      setApprovedRIR(currentApproveRIR)
+    }
+  }, [launchpadInfo,loading])
   useEffect(() => {
     //pool dont set winner
     if (launchpadInfo.winnerCount == 0){
@@ -157,7 +162,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
     )
   }
-  return null
   if (!inWhitelist) {
     return (
       <NotInWhitesist></NotInWhitesist>
@@ -192,7 +196,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <div className="box-header !px-0">{t("Your allocation")}</div>
 
                     <ul class="mt-4 flex-shrink-0 flex-grow">
-                      {project.is_allow_rir && parseInt(orderRIR) > 0 && <li class="list-pair mb-2">
+                      {pool.is_allow_rir && parseInt(orderRIR) > 0 && <li class="list-pair mb-2">
                         <span class="list-key">{t("Prefunded RIR")}</span>
                         <span class="ml-auto list-value font-semibold">
                           {orderRIR} RIR
@@ -207,16 +211,16 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       <li class="list-pair mb-2">
                         <span class="list-key">{t("Your maximum allocation")}</span>
                         <span class="ml-auto list-value font-semibold">
-                          {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && project.is_allow_rir && <>( {launchpadInfo?.individualMaximumAmount / 100} RIR )</>}
+                          {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>( {launchpadInfo?.individualMaximumAmount / 100} RIR )</>}
                         </span>
                       </li>
                       <li class="list-pair mb-2">
                         <span class="list-key">{t("Your minimum allocation")}</span>
                         <span class="ml-auto list-value font-semibold">
-                          {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && project.is_allow_rir && <>( {launchpadInfo?.individualMinimumAmount / 100} RIR )</>}
+                          {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>( {launchpadInfo?.individualMinimumAmount / 100} RIR )</>}
                         </span>
                       </li>
-                      {project.is_allow_rir && parseFloat(accountBalance.rirBalance) > 0 && <li class="list-pair mb-2">
+                      {pool.is_allow_rir && parseFloat(accountBalance.rirBalance) > 0 && <li class="list-pair mb-2">
                         <span class="list-key">{t("Your RIR Balance")}</span>
                         <span class="ml-auto list-value font-semibold">
                           {accountBalance.rirBalance} RIR
@@ -224,7 +228,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       </li>}
                     </ul>
 
-                    {project.is_allow_rir && <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
+                    {pool.is_allow_rir && <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
                       <p>
                         <span className="icon mr-2 text-base">
                           <i class="fas fa-info-circle text-yellow-500"></i>
@@ -240,7 +244,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
                   <div className="box box--gray -mx-4 -mb-6 md:m-0">
                     <div className="box-header">{t("Prefund your investment")}</div>
-                    <SwapTokensV2 project={project} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} pool={pool} />
+                    <SwapTokensV2 accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} pool={pool} />
                   </div>
                 </div>
               </div>
@@ -311,7 +315,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         }
                       </h3>
                       <TokenSocialPromote project={project} />
-                      {currentTime < endTime && (parseInt(orderBusd) < maxBusd || ((parseInt(orderRIR) < maxRIR && parseInt(accountBalance.rirBalance) > 0) && project.is_allow_rir)) &&
+                      {currentTime < endTime && (parseInt(orderBusd) < maxBusd || ((parseInt(orderRIR) < maxRIR && parseInt(accountBalance.rirBalance) > 0) && pool.is_allow_rir)) &&
                       <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center" onClick={e => { setStep(2) }} >
                         <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
                           <i class="fa fa-money-bill"></i>

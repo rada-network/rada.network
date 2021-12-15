@@ -13,13 +13,14 @@ export const useLaunchpadInfo = ({pool}) => {
   const {account,connector,active,library} = useActiveWeb3React()
   const [launchpadInfo,setLaunchpadInfo] = useState(false)
   const [loading,setLoading] = useState(true)
-  const lauchpadContact = useLaunchpadContractV2(pool.contract)
+  const lauchpadContact = useLaunchpadContractV2(pool)
   const fetchLaunchpadInfo = async () => {
     try {
       let info = await lauchpadContact.getPool(pool.id)
       let claimable = await lauchpadContact.getClaimable(pool.id)
       let refundable = await lauchpadContact.getRefundable(pool.id)
       let investor = await lauchpadContact.getInvestor(pool.id,account)
+      console.log(investor)
       investor = {
         allocationBusd : parseFloat(ethers.utils.formatEther(investor.allocationBusd)),
         allocationRir : parseFloat(ethers.utils.formatEther(investor.allocationRir)),
@@ -30,6 +31,7 @@ export const useLaunchpadInfo = ({pool}) => {
         refunded : investor.refunded,
         approved : investor.approved,
       }
+      
       let updateInfo = {
         tokenAddress : info.tokenAddress,
         allocationBusd : parseFloat(ethers.utils.formatEther(info.allocationBusd)),
@@ -38,8 +40,8 @@ export const useLaunchpadInfo = ({pool}) => {
         startDate : parseFloat(ethers.utils.formatEther(info.startDate)),
         endDate : parseFloat(ethers.utils.formatEther(info.endDate)),
         price : parseFloat(ethers.utils.formatEther(info.price)),
-        individualMinimumAmount : parseFloat(ethers.utils.formatEther(info.maxAllocationBusd)),
-        individualMaximumAmount : parseFloat(ethers.utils.formatEther(info.minAllocationBusd)),
+        individualMinimumAmount : pool.is_whitelist ? investor.allocationBusd : parseFloat(ethers.utils.formatEther(info.minAllocationBusd)),
+        individualMaximumAmount : pool.is_whitelist ? investor.allocationBusd : parseFloat(ethers.utils.formatEther(info.maxAllocationBusd)),
         ordersBuyerCount : 0,
         buyers : [],
         winnerCount : 0,

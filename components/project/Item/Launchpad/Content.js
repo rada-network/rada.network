@@ -16,7 +16,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
   const { t } = useTranslation("launchpad");
   const { account, library } = useActiveWeb3React();
   const [poolStat, setPoolStat] = useState(null);
-  const lauchpadContact = useLaunchpadContractV2(pool.contract);
+  const lauchpadContact = useLaunchpadContractV2(pool);
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {
@@ -59,10 +59,16 @@ const LaunchpadContent = observer(function({ project,pool }) {
         </div>
         <div className="card-body flex flex-col">
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
-          <li className="list-pair mb-2">
+            <li className="list-pair mb-2">
+              <span className="list-key">{t("Pool")}</span>
+              <span className="ml-auto list-value font-semibold">
+                <div className={`label`}>{project.content.title} {pool.title}</div>
+              </span>
+            </li>
+            <li className="list-pair mb-2">
               <span className="list-key">{t("Investment round")}</span>
               <span className="ml-auto list-value font-semibold">
-                <div className={`label ${project.type}`}>{project.type.toUpperCase()}</div>
+                <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div>
               </span>
             </li>
             
@@ -90,7 +96,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
               </span>
               }
             </li>
-            {!!project.open_date && openTime < curentTime && 
+            {!!pool.open_date && openTime < curentTime && 
             <li className="list-pair mb-2">
             <span className="list-key">{t("Progress")}</span>
             <span className="list-value ml-auto">
@@ -103,7 +109,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
             </li>
             }
           </ul>
-          {!!project.open_date && openTime < curentTime && 
+          {!!pool.open_date && openTime < curentTime && 
           <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
             <div
               className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full"

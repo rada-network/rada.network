@@ -53,7 +53,7 @@ const LaunchpadActions = ({ project,pool }) => {
   if (currentTime > endTime){
     return (
       <>
-        {((store.kyc.isKYC) || (!store.kyc.isKYC && !project.is_kyc)) && !!account ?
+        {!!account ?
           <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
           <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">
