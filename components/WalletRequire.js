@@ -38,7 +38,6 @@ export const WalletRequire = ({ type }) => {
                     -4
                   )} `}</strong>
                 </div>
-                <strong></strong>
                 {store.network == "bsc" ? (
                   <span className="badge badge-coin relative ml-2">BSC</span>
                 ) : (
@@ -46,6 +45,7 @@ export const WalletRequire = ({ type }) => {
                     ETHEREUM
                   </span>
                 )}
+                <button class="ml-2 opacity-70 hover:opacity-100 p-1 rounded-lg z-10"><span class="icon"><i class="fas fa-sign-out"></i></span><span class="sr-only">Disconnect</span></button>
               </>
             )}
           </div>

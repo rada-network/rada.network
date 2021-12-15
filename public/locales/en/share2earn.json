@@ -48,5 +48,6 @@
   "campaign_ended_message": "Share2Earn program has ended. Follow Rada's channel to receive the next announcements about the program",
   "ban_message": "Your RIRs are not approved due to suspicious activities.",
   "rir_not_enough": "Your RIRs can only be claimed when it's integer (1 RIR, 2 RIR..), the reward amount will stay remain in your account.",
-  "feedback": "https://bom.so/TBkjmq"
+  "feedback": "https://bom.so/TBkjmq",
+  "download tip": "You can also use the touch and hold gesture to quickly download the image"
 }
