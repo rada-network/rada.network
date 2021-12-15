@@ -92,6 +92,7 @@ const projectBySlugGql = gql`
 const projectFeedGql = gql`
   query ProjectFeed($lang: String!) {
     projectFeed(lang: $lang) {
+    is_default_open
     slug
     thumbnail_uri
     cover_uri

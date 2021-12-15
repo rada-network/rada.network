@@ -9,7 +9,6 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
   const [poolStatus, setPoolStatus] = useState("coming");
 
   useEffect(() => {
-    console.log(project)
     if (Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
       setPoolStatus("open")
     } 
@@ -20,13 +19,14 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
   }, [])
 
   return (
+    <a href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`}>
     <div className={`card-project is-${project.status}`}>
       <div className="project-content relative">
 
         {!(project.status == "upcoming") && (
           <div className="block">
             <div className={`countdown-mini--wrapper top-0 !bottom-auto`}>
-              <div>{poolStatus == "open" ? "Prefunding" : "Sale start in"}</div>
+              <div>{poolStatus == "open" ? t("Prefunding") : t("Sale start in")}</div>
               <MiniCountdown project={pool} isEndDate={true}/>
             </div>
           </div>
@@ -90,6 +90,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
      
       {/* End of card--wrapper */}
     </div> 
+    </a>
   )
 }
 

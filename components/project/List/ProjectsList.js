@@ -1,11 +1,8 @@
 import { Fragment } from 'react';
 import { Disclosure, Transition } from '@headlessui/react';
-
 import { CardProject } from "@components/project/List/CardProject";
-import { poll } from '@ethersproject/web';
 
 export default function ProjectsList({ title, extraClass, projects, isComing}) {
-  console.log(projects);
   return (
     <>
       <div className="projects-section">
@@ -18,7 +15,7 @@ export default function ProjectsList({ title, extraClass, projects, isComing}) {
           {projects.map(project => {
             return (
               <>
-                <Disclosure as="div" className="pools-container"
+                <Disclosure as="div" defaultOpen={project.is_default_open} className="pools-container"
                   style={{ backgroundImage: `url(${project.cover_uri})`, }}
                 >
                   {({ open }) => (
