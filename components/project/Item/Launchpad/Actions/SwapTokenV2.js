@@ -1,14 +1,7 @@
 import { useState,useEffect } from "react"
-import useActiveWeb3React from "@utils/hooks/useActiveWeb3React"
-import { useBUSDContract,useRIRContract, useERC20,useLaunchpadContractV2 } from "@utils/hooks/useContracts"
-import useMultiApproveConfirmTransaction from "@utils/hooks/useMultiApproveConfirmTransaction"
-import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
-import { ethers } from 'ethers'
-import {toast} from "react-toastify"
 import {useLaunchpadInfo} from "@utils/hooks/index"
 import { useTranslation } from "next-i18next"
 import { CheckSvg } from "@components/svg/SvgIcons"
-import { set } from "lodash"
 import SubcribeByRIR from "./swaptoken/SubscribeByRIR"
 import SubcribeByBUSD from "./swaptoken/SubscibeByBUSD"
 

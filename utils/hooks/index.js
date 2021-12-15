@@ -14,13 +14,21 @@ export const useLaunchpadInfo = ({pool}) => {
   const [launchpadInfo,setLaunchpadInfo] = useState(false)
   const [loading,setLoading] = useState(true)
   const lauchpadContact = useLaunchpadContractV2(pool)
+  
   const fetchLaunchpadInfo = async () => {
     try {
       let info = await lauchpadContact.getPool(pool.id)
       let claimable = await lauchpadContact.getClaimable(pool.id)
       let refundable = await lauchpadContact.getRefundable(pool.id)
       let investor = await lauchpadContact.getInvestor(pool.id,account)
-      console.log(investor)
+      let stat = await lauchpadContact.poolsStat(pool.id)
+      stat = {
+        depositedToken : parseFloat(ethers.utils.formatEther(stat.depositedToken)),
+        amountBusd : parseFloat(ethers.utils.formatEther(stat.amountBusd)),
+        amountRir : parseFloat(ethers.utils.formatEther(stat.amountRir)),
+        approvedBusd : parseFloat(ethers.utils.formatEther(stat.approvedBusd)),
+        approvedRir : parseFloat(ethers.utils.formatEther(stat.approvedRir))
+      }
       investor = {
         allocationBusd : parseFloat(ethers.utils.formatEther(investor.allocationBusd)),
         allocationRir : parseFloat(ethers.utils.formatEther(investor.allocationRir)),
@@ -51,9 +59,9 @@ export const useLaunchpadInfo = ({pool}) => {
           parseFloat(ethers.utils.formatEther(refundable[0])),
           parseFloat(ethers.utils.formatEther(refundable[1])),
         ],
+        stat,
         investor
       }
-      console.log(updateInfo)
       setLaunchpadInfo(updateInfo)
      } catch (error) {
       console.log(error)

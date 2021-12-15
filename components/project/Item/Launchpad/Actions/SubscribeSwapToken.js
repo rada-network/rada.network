@@ -76,7 +76,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     if (!loading){
       let currentOrderBusd = launchpadInfo.investor.amountBusd && launchpadInfo.investor.paid ? launchpadInfo.investor.amountBusd : 0
       let currentOrderRIR = launchpadInfo.investor.amountRir && launchpadInfo.investor.paid ? launchpadInfo.investor.amountRir : 0
-      let currentApprovedBusd = launchpadInfo.investor.aprprove ? launchpadInfo.investor.allocationBusd : 0
+      let currentApprovedBusd = launchpadInfo.investor.approved ? launchpadInfo.investor.allocationBusd : 0
       let currentApproveRIR = launchpadInfo.investor.approved ? launchpadInfo.investor.allocationRir : 0
       setOrderBusd(currentOrderBusd)
       setOrderRIR(currentOrderRIR)
@@ -84,9 +84,11 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       setApprovedRIR(currentApproveRIR)
     }
   }, [launchpadInfo,loading])
+
   useEffect(() => {
+    if (loading) return false
     //pool dont set winner
-    if (launchpadInfo.winnerCount == 0){
+    if (launchpadInfo.stat.approvedBusd == 0){
       if (parseInt(orderBusd) > 0){
         // prefund success wait to approve whitelist
         setStep(31)
@@ -106,7 +108,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     else{
       //user win
       if (parseInt(approvedBusd) > 0){
-        if (launchpadInfo.claimable && launchpadInfo.currentOrder && (parseInt(ethers.utils.formatEther(launchpadInfo.claimable[1])) > 0 || parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.claimedToken)) > 0 )){
+        if (launchpadInfo.claimable + launchpadInfo.investor.claimedToken > 0 ){
           setStep(4)
         }
         else{
@@ -126,12 +128,12 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       }
     }
 
-  }, [orderBusd, launchpadInfo]);
+  }, [orderBusd, launchpadInfo,loading]);
 
   const handleClaimToken = async function (e) {
     try {
       setClaimDisbaled(true)
-      const tx = await callWithGasPrice(launchpadContract, "claim", [])
+      const tx = await callWithGasPrice(launchpadContract, "claim", [pool.id])
       const receipt = await tx.wait()
       if (receipt.status) {
         toast.success(t("Claim success!"))
@@ -360,10 +362,13 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       </h3>
                       <p>{t("Prefunded BUSD")} : <strong>{orderBusd} BUSD</strong></p>
                       <p>{t("Approved BUSD")}&nbsp; : <strong>{approvedBusd} BUSD</strong></p>
-                      {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 &&
-                      <p>{t("Refund BUSD")}&nbsp; : <strong>{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD</strong></p>
+                      {launchpadInfo.refundable[0] > 0 &&
+                      <p>{t("Refund BUSD")}&nbsp; : <strong>{launchpadInfo.refundable[0]} BUSD</strong></p>
                       }
-                      {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 &&
+                      {launchpadInfo.refundable[1] > 0 &&
+                      <p>{t("Refund BUSD")}&nbsp; : <strong>{launchpadInfo.refundable[1]} RIR</strong></p>
+                      }
+                      {launchpadInfo.claimable[0] > 0 &&
                       <p> {t("refund note")}</p>
                       }
                     </div>
@@ -395,10 +400,10 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 <div className="flex items-center">
                   <div className="mx-auto">
                     <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">{t("status failed")}</h3>
-                    {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 &&
+                    {launchpadInfo.refundable[0] > 0 &&
                     <>
                     <p>{t("status failed note refund")}</p> 
-                    <p>{t("Refund BUSD")}: <strong>{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD</strong></p> 
+                    <p>{t("Refund BUSD")}: <strong>{ethers.utils.formatEther(launchpadInfo.refundable[0])} BUSD</strong></p> 
                     <div class="ml-auto mt-4 list-value font-semibold">
                       <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                     </div>
@@ -478,12 +483,20 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     </li>
                     <li class="list-pair mb-2">
                       <span class="w-3/5 !opacity-100">{t("token claim note",{name : project.token.symbol})}:</span>
-                      <div class="w-2/5 ml-auto  font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[1])} {project.token.symbol}
+                      <div class="w-2/5 ml-auto  font-semibold">{launchpadInfo.claimable} {project.token.symbol}
                       </div>
                     </li>
-                    {parseFloat(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 && <li class="list-pair mb-2">
+                    {launchpadInfo.refundable[0] > 0 && 
+                    <li class="list-pair mb-2">
                       <span class="w-3/5 !opacity-100">{t("busd claim note")}:</span>
-                      <div class="w-2/5 ml-auto font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD
+                      <div class="w-2/5 ml-auto font-semibold">{launchpadInfo.claimable[0]} BUSD
+                      </div>
+                    </li>
+                    }
+                    {launchpadInfo.refundable[1] > 0 && 
+                    <li class="list-pair mb-2">
+                      <span class="w-3/5 !opacity-100">{t("busd claim note")}:</span>
+                      <div class="w-2/5 ml-auto font-semibold">{launchpadInfo.claimable[1]} RIR
                       </div>
                     </li>
                     }
@@ -492,7 +505,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 <div className="flex items-center">
                   <div className="mx-auto">
                     <div class="ml-auto mt-4 list-value font-semibold">
-                    {(parseFloat(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 || parseFloat(ethers.utils.formatEther(launchpadInfo.claimable[1])) > 0) && 
+                    {(launchpadInfo.claimable > 0 || launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) && 
                       <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                     }
                     </div>
@@ -508,7 +521,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
         </div>
       }
 
-      {(orderBusd > 0 && launchpadInfo.winnerCount == 0) &&
+      {/* {(orderBusd > 0 && launchpadInfo.winnerCount == 0) &&
         <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
           <div className="card-header items-center">
             <h3>{t("Prefunders")} ({launchpadInfo?.ordersBuyerCount})</h3>
@@ -523,9 +536,9 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
             </div>
           </div>
         </div>
-      }
+      } */}
 
-      {(orderBusd > 0 && launchpadInfo.winnerCount > 0) &&
+      {/* {(orderBusd > 0 && launchpadInfo.winnerCount > 0) &&
         <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
           <div className="card-header items-center">
             <h3>{t("Winners")} ({launchpadInfo?.winnerCount})</h3>
@@ -540,7 +553,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
             </div>
           </div>
         </div>
-      }
+      } */}
     </>
   );
 }
