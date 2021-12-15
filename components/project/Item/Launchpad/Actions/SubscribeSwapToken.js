@@ -403,7 +403,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     {launchpadInfo.refundable[0] > 0 &&
                     <>
                     <p>{t("status failed note refund")}</p> 
-                    <p>{t("Refund BUSD")}: <strong>{ethers.utils.formatEther(launchpadInfo.refundable[0])} BUSD</strong></p> 
+                    <p>{t("Refund BUSD")}: <strong>{launchpadInfo.refundable[0]} BUSD</strong></p> 
                     <div class="ml-auto mt-4 list-value font-semibold">
                       <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                     </div>

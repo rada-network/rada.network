@@ -14,8 +14,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
   const { dataStore } = usePageStore();
   const store = useStore()
   const { t } = useTranslation("launchpad");
-  const { account, library } = useActiveWeb3React();
-  const [poolStat, setPoolStat] = useState(null);
+  const { account, library } = useActiveWeb3React();  const [poolStat, setPoolStat] = useState(null);
   const lauchpadContact = useLaunchpadContractV2(pool);
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
@@ -33,7 +32,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
         console.log("error to fetch launchpad info", error);
       }
     };
-    if (!!library && !!lauchpadContact && account !== "") {
+    if (!!lauchpadContact) {
       fetchLaunchpadInfo();
     }
   }, [account, lauchpadContact, library,store.loadPoolContent]);
