@@ -1,9 +1,9 @@
 /* Project Card 
 --------------------------------------- */
 .card-project {
-  @apply cursor-pointer shadow-sm hover:shadow-lg transition-all rounded-lg;
-  @apply bg-white dark:bg-gray-800 border border-transparent;
-  @apply hover:border-gray-100 dark:hover:border-gray-700 hover:-translate-y-1;
+  @apply cursor-pointer shadow-sm hover:shadow-lg transition-all rounded-lg relative top-0;
+  @apply bg-white dark:bg-gray-800 border-0;
+  @apply hover:-top-1;
 }
 
 /* 
@@ -273,6 +273,10 @@ Card Content
   @apply mt-10;
 }
 
+.pools-container .is-upcoming .project-title {
+  @apply mt-0;
+}
+
 .pools-container--toggle h4 {
   @apply font-semibold text-xl md:text-2xl;
   text-shadow: 0 1px 1px rgba(0,0,0,1);
@@ -306,7 +310,7 @@ Card Content
 /* Countdown  */
 .pools-container .countdown-mini--wrapper {
   @apply top-0 bottom-auto rounded-b-none rounded-t-lg text-sm;
-  @apply py-2 bg-transparent border-b border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-200 font-normal;
+  @apply py-2 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-200 font-normal;
 }
 
 .pools-container .countdown--mini--body time {
