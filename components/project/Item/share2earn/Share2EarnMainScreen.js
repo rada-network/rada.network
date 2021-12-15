@@ -286,6 +286,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
   let mergedImage
   if (!isUploadImage || (isUploadImage && isUploaded)) {
     downloadAvtButton = (
+      <>
       <div className="py-3 px-4 border-t border-gray-200 dark:border-gray-700">
         <button className="btn btn-default w-full !py-2"
           onClick={handleDownloadAvt}>
@@ -293,6 +294,13 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
           <span className="btn--text">{t("main button download")}</span>
         </button>
       </div>
+      <div className="text-sm pt-0 pb-4 px-4 text-gray-500 dark:text-gray-400">
+        <p className="mt-2">
+          <span className="icon mr-2 text-yellow-500"><i className="fas fa-lightbulb"></i></span>
+          You also can right click (touch and hold on touch device) on the image to download
+        </p>
+      </div>
+    </>
     );
 
     let dataImgs = isUploadImage ? mergeUploadImgs : mergeImgs
@@ -419,12 +427,22 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
                           <span className="btn--text">{t("main button download")}</span>
                         </button>
                       </div>
-                      <a href={shareCampaign.banner_library}
-                        target="_blank"
-                        className="m-4 !mt-0 flex text-sm border border-gray-200 dark:border-gray-700 text-center rounded-lg p-2  items-center" >
-                        <i className="fa-duotone fa-external-link text-xs ml-auto mr-2" />
-                        <span className="mr-auto">{t("more image")}</span>
-                      </a>
+
+                      <div className="text-sm pt-2 pb-4 px-4 text-gray-500 dark:text-gray-400">
+                        <p>
+                          <span className="icon mr-2 text-yellow-500"><i className="fas fa-lightbulb"></i></span>
+                          Find 
+                          <a href={shareCampaign.banner_library} target="_blank" className="link ml-1">
+                            <span className="mr-auto">more images here</span>
+                            <span className="icon ml-2"><i className="fa-duotone fa-external-link text-xs" /></span>
+                          </a>
+                        </p>
+                        <p className="mt-2">
+                          <span className="icon mr-2 text-yellow-500"><i className="fas fa-lightbulb"></i></span>
+                          You also can right click (touch and hold on touch device) on the image to download
+                        </p>
+                      </div>
+
                     </div>
                   </div>
 
@@ -439,7 +457,6 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
                           <span className="text-sm">Image Source</span>
                         </div>
                         <div className="flex flex-srink-0 items-center">
-
                           <div className="btn-group btn-group-toggle text-xs">
                             <a className={"btn " + (isUploadImage ? "btn-toggle" : "btn-toggle-active")} onClick={() => setIsUploadImage(!isUploadImage)}>
                               <span className="btn--text">Default</span>
