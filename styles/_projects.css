@@ -279,11 +279,12 @@ Card Content
 
 .pools-container--toggle h4 {
   @apply font-semibold text-xl md:text-2xl;
+  @apply md:w-64 lg:w-72 xl:w-80;
   text-shadow: 0 1px 1px rgba(0,0,0,1);
 }
 
 .pools-container--toggle .badge-coin {
-  @apply font-normal text-sm md:py-1 px-2 opacity-100 relative md:-top-0.5 ml-3 rounded-md shadow-none;
+  @apply font-normal text-sm md:py-1 px-2 opacity-100 relative md:-top-0.5 ml-3 md:ml-0 rounded-md shadow-none;
   @apply border-white text-white;
   text-shadow: none;
 }

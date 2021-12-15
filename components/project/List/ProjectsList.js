@@ -26,8 +26,8 @@ export default function ProjectsList({ title, extraClass, projects, isComing}) {
                           <img src={project.thumbnail_uri} alt="The Parallels" />
                         </div>
 
-                        <div className="flex flex-col md:flex-row w-3/6 md:pr-0 md:w-4/6 lg:w-3/6 flex-shrink-0 ">
-                          <div className="flex md:justify-between items-center md:w-4/6 lg:w-4/6">
+                        <div className="flex flex-col md:flex-row md:pr-0 flex-shrink-0">
+                          <div className="flex md:justify-between items-center">
                             <h4 className="line-clamp-1">
                               {project.content.title}
                             </h4>
