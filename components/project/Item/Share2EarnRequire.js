@@ -34,13 +34,13 @@ const Share2EarnRequire = ({ shareCampaign }) => {
   return (
     <>
       <div className="p-4 mt-4 rounded-lg border border-gray-300 dark:border-gray-700 mx-auto">
-        <div className="mb-4 md:mb-8">
+        <div className="mb-4">
           <p className="text-center mt-2 font-normal">
-            {t("Complete all the requirements below to joint the event.")}
+            {t("Complete all the requirements below to joint the event")}
           </p>
         </div>
 
-        <div className="list-group">
+        <div className="list-group text-sm">
           <Login />
           <KYC />
           <WalletRequire />

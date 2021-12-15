@@ -261,12 +261,12 @@ export default function ProjectShare2Earn({
             }
             {
               allowJoin && 
-              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !confirm || transactionCount < MIN_TOTTAL_TX ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
+              <button className={"mt-4 btn btn-primary w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !confirm || transactionCount < MIN_TOTTAL_TX ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
                 {share2EarnInfo.paused ? "The campaign has ended" : t("join program")}
               </button>               
             }
             {!allowJoin && !account && 
-              <button className={"mt-4 btn btn-yellow w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !isConfirmed ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
+              <button className={"mt-4 btn btn-primary w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !isConfirmed ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
                 {t("view incentive")}
               </button>
             }
@@ -277,12 +277,12 @@ export default function ProjectShare2Earn({
             }
                
           </form>
-          <div className="flex mt-5 text-center w-full justify-center">
-            <a className="flex btn btn-default !p-3 bg-gray-700 !text-base w-1/2 block rounded-lg mr-1"
+          <div className="flex mt-5 text-center w-full justify-center space-x-4">
+            <a className="btn btn-default !p-3 bg-gray-700 w-1/2"
               target="_blank" href={t("learn more url")}>
               {t("learn more")} 
             </a>
-            <a className="flext btn btn-default !p-3 bg-gray-700 !text-base w-1/2 block rounded-lg "target="_blank" href={shareCampaign.participation_guide}> 
+            <a className="btn btn-default !p-3 bg-gray-700 w-1/2"target="_blank" href={shareCampaign.participation_guide}> 
               {t("Participation Guide")} 
             </a>
           </div>

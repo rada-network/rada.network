@@ -5,7 +5,7 @@ const ProjectShare2Earn = dynamic(import("./Share2Earn"));
 export default function ProjectShare2EarnWrapper({shareCampaign,shareSlug,shareType}){
   return  (
     <>
-    <div className="flex h-10 w-limiter-lg relative xl:px-4">
+    <div className="flex w-limiter-lg relative xl:px-4">
       <WalletProfile type="hidden" />
     </div>
     
