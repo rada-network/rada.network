@@ -1,7 +1,16 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 
-export const CardProject = ({title, link, img, status, raise, participian, tokenLogo, tokenPrice, countdown, token, progressToken, target, endedin, type, network}) => {
-  
+export const CardProject = ({project, pool, title, link, img, status, raise, participian, tokenLogo, tokenPrice, countdown, token, progressToken, target, endedin, type, network}) => {
+  const {t,i18n} = useTranslation("launchpad");
+  const [endDate, setEndDate] = useState("")
+  useEffect(() => {
+    const options = {year: 'numeric', month: 'short', day: 'numeric' }
+    const endPool = Date.parse(pool.end_date)
+    setEndDate(new Date(endPool).toLocaleDateString("en-US", options))
+  }, [])
+
   return (
     <a href={link} className={`card-project card-project-sm`}>
       <div className="project-content">
@@ -23,15 +32,15 @@ export const CardProject = ({title, link, img, status, raise, participian, token
           <ul className="project-fields">
             <li className="list-pair">
               <span className="list-key">
-                Total Raise
+                {t("Raise")}
               </span>
               <span className="ml-auto list-value font-semibold">
-              {raise}
+                {pool.raise.toLocaleString() + " BUSD"}
               </span>
             </li>
             <li className="list-pair">
               <span className="list-key">
-                Participians
+                {t("Participians")}
               </span>
               <span className="list-value">
                 <span className="font-semibold">{participian}</span>
@@ -39,7 +48,7 @@ export const CardProject = ({title, link, img, status, raise, participian, token
             </li>
             <li className="list-pair">
               <span className="list-key">
-                Progress
+                {t("Progress")}
               </span>
               <span className="list-value">
                 <span className="font-semibold">{progressToken}</span>
@@ -48,10 +57,10 @@ export const CardProject = ({title, link, img, status, raise, participian, token
             </li>
             <li className="list-pair">
               <span className="list-key">
-                Ended in
+                {t("Ended in")}
               </span>
               <span className="list-value">
-                <span className="font-semibold">{endedin}</span>
+                <span className="font-semibold">{endDate}</span>
               </span>
             </li>
           </ul>
@@ -65,9 +74,6 @@ export const CardProject = ({title, link, img, status, raise, participian, token
         </div>
       </div>
         {/* End of project--content */}
-      {/* End of card--body */}
-     
-      {/* End of card--wrapper */}
     </a>
     
   )
