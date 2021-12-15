@@ -62,7 +62,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
             <li className="list-pair mb-2">
               <span className="list-key">{t("Pool")}</span>
               <span className="ml-auto list-value font-semibold">
-                <div className={`label`}>{project.content.title} {pool.title}</div>
+                <div className={``}>{project.content.title} - {pool.title}</div>
               </span>
             </li>
             <li className="list-pair mb-2">
