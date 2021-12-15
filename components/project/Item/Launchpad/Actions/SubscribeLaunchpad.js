@@ -33,8 +33,8 @@ const SubscribeLaunchpad = ({ project,pool }) => {
   }
   return (
     <>
-      <div className="max-w-xl mx-auto">
-        <div className="mb-4 md:mb-8">
+      <div className="max-w-2xl mx-auto bg-gray-100 dark:bg-gray-700 p-4 lg:px-8 rounded-lg mt-8">
+        <div className="mb-4">
           {/* <h3 className="text-2xl md:text-3xl text-center font-normal">
             <span className="text-color-title">
               {project?.token.name}'s {t("Whitelist")}
