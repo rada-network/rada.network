@@ -11,7 +11,7 @@ Title
 */
 .project-title  {
   @apply text-base font-medium;
-  @apply flex flex-col md:flex-row items-center relative mb-2;
+  @apply flex items-center relative mb-2;
 }
 
 .project-title--token-logo {
@@ -65,7 +65,7 @@ Card Thumb + Type + Countdown
 
 /* Logo */
 .project-logo {
-  @apply w-20 h-20 mr-4;
+  @apply w-20 h-20 mr-4 flex-shrink-0;
   @apply flex justify-center items-center; 
 }
 
@@ -206,7 +206,7 @@ Card Content
  
 .card-project-sm .project-fields {
   @apply flex flex-wrap md:flex-nowrap flex-shrink-0 lg:w-4/6 space-x-0 lg:space-x-6 lg:justify-evenly items-baseline content-start;
-  @apply ml-0 mt-2 md:ml-12 lg:ml-0 lg:mt-0;
+  @apply ml-12 mt-2 md:ml-12 lg:ml-0 lg:mt-0;
 }
 
 .card-project-sm .list-pair {
@@ -223,7 +223,7 @@ Card Content
 }
 
 .card-project-sm .project-status {
-  @apply absolute right-6 top-6 lg:top-auto;
+  @apply absolute right-6 top-6 lg:top-6;
 }
 
 /* Projects List
@@ -245,7 +245,6 @@ Card Content
 --------------------------------------- */
 .pools-container {
   @apply cursor-pointer shadow-sm hover:shadow-lg transition-all rounded-lg overflow-hidden;
-  @apply bg-white dark:bg-gray-800;
   @apply hover:border-gray-100 dark:hover:border-gray-700;
   @apply bg-no-repeat bg-cover;
   + .pools-container {
@@ -254,13 +253,13 @@ Card Content
 }
 
 .pools-container--toggle {
-  @apply flex items-center px-6 py-2 space-x-4 relative;
-  @apply text-white bg-gray-900 dark:bg-gray-900 bg-opacity-70;
+  @apply flex items-center px-6 py-2 space-x-4 relative rounded-t-lg;
+  @apply text-white bg-gray-900 dark:bg-gray-900 bg-opacity-70 dark:bg-opacity-70;
 }
 
 .pools-container--toggle-arrow {
   @apply absolute right-8 top-auto flex justify-center items-center transition-all;
-  @apply w-10 h-10 rounded-full bg-white bg-opacity-20;
+  @apply w-10 h-10 rounded-full bg-white bg-opacity-20 dark:bg-opacity-20;
   .fas {
     @apply text-lg;
   }
@@ -275,24 +274,26 @@ Card Content
 }
 
 .pools-container--toggle h4 {
-  @apply font-semibold text-2xl;
+  @apply font-semibold text-xl md:text-2xl;
   text-shadow: 0 1px 1px rgba(0,0,0,1);
 }
 
 .pools-container--toggle .badge-coin {
-  @apply font-normal text-sm py-1 opacity-100 relative -top-0.5 ml-3 rounded-md shadow-none;
+  @apply font-normal text-sm md:py-1 px-2 opacity-100 relative md:-top-0.5 ml-3 rounded-md shadow-none;
   @apply border-white text-white;
   text-shadow: none;
 }
 
 .pools-container--panel {
   @apply p-8;
-  @apply bg-gray-900 dark:bg-gray-900 bg-opacity-50;
+  @apply bg-gray-900 dark:bg-gray-900 bg-opacity-50 dark:bg-opacity-50;
 }
 
 /* Links */
 .project-links {
+
 }
+
 .project-links ul {
   @apply flex space-x-2;
 }
@@ -305,7 +306,7 @@ Card Content
 /* Countdown  */
 .pools-container .countdown-mini--wrapper {
   @apply top-0 bottom-auto rounded-b-none rounded-t-lg text-sm;
-  @apply py-2 bg-transparent border-b text-gray-800 font-normal;
+  @apply py-2 bg-transparent border-b border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-200 font-normal;
 }
 
 .pools-container .countdown--mini--body time {
