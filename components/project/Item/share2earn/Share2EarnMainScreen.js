@@ -297,7 +297,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
       <div className="text-sm pt-0 pb-4 px-4 text-gray-500 dark:text-gray-400">
         <p className="mt-2">
           <span className="icon mr-2 text-yellow-500"><i className="fas fa-lightbulb"></i></span>
-          You also can right click (touch and hold on touch device) on the image to download
+            {t("download tip")}
         </p>
       </div>
     </>
