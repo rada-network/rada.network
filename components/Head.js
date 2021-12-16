@@ -142,7 +142,7 @@ export const Head = observer(({ meta }) => {
           <link
             key={alternate.hreflang}
             rel="alternate"
-            hreflang={alternate.hreflang}
+            hrefLang={alternate.hreflang}
             href={alternate.href}
           />
         ))}

@@ -104,6 +104,7 @@ const MyApp = function MyApp({ Component, pageProps }) {
       console.log(
         `${url} is a shallow store ${shallow} ${store.shallowInternal}`
       );
+
       if (shallow) {
         if (!store.shallowInternal) {
           //detailStore.data = {};
