@@ -213,6 +213,7 @@ const NavItem = ({ className, href, children, type, page }) => {
       dataStore.type = e.currentTarget.getAttribute("datatype");
       dataStore.tweets = [];
       detailStore.data = {};
+      dataStore.loadingButton = false;
       store.setShallowConnect(true);
       router.push(
         e.currentTarget.getAttribute("href"),
