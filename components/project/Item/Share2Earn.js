@@ -18,6 +18,7 @@ import Share2EarnRequire from "./Share2EarnRequire";
 import useSWR from "swr";
 import fetchJson from "@lib/fetchJson";
 import { data } from "autoprefixer";
+import { BLOCK_PASS_KYC_COMPLETE, BLOCK_PASS_KYC_REJECT } from "@config/constants";
 
 const MIN_TOTTAL_TX = 5
 
@@ -131,17 +132,22 @@ export default function ProjectShare2Earn({
     }
     else if (isConfirmed) {
       return t("joined message");
+
+    }else if (store.kyc.status === BLOCK_PASS_KYC_REJECT) {
+      return t("Your KYC was rejected", { status: store.kyc.status })
+    }
+    else if (store.kyc.status !== BLOCK_PASS_KYC_COMPLETE) {
+      return t("Please wait for your KYC to be approved.", { status: store.kyc.status })
     } else if (joined) {
       return t("wrong connect address", { address: joined })
     }
-
     return '';
   }
   const allowJoin = getMessage() == '' && joined == ''
 
   if (loading) return null;
 
-  if ((joined == account || isConfirmed)  && !!account && !!share2EarnInfo && store.user.id !== "" && store.kyc.status) {
+  if ((joined == account || isConfirmed)  && !!account && !!share2EarnInfo && store.user.id !== "" && store.kyc.status === BLOCK_PASS_KYC_COMPLETE) {
     return <Share2EarnMainScreen shareCampaign={shareCampaign} user={user} share2earnAddress={share2earnAddress} shareSlug={shareSlug} shareType={shareType} referralAdminAddress={referralAdminAddress} share2earnInfo={share2EarnInfo} />;
   }
 
@@ -239,7 +245,7 @@ export default function ProjectShare2Earn({
           <Share2EarnRequire shareCampaign={shareCampaign} />
           <form className="mt-4">
 
-            {allowJoin && store.kyc.status && store.user.id !== "" && 
+            {allowJoin && store.kyc.status === BLOCK_PASS_KYC_COMPLETE && store.user.id !== "" && 
             <fieldset className="space-y-4 mb-4 text-gray-500 dark:text-gray-400">
               <legend className="sr-only">Term of Uses</legend>
               <div className="relative flex items-start">
@@ -263,12 +269,12 @@ export default function ProjectShare2Earn({
             }
             {
               allowJoin && 
-              <button className={"mt-4 btn btn-primary w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !confirm || transactionCount < MIN_TOTTAL_TX ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
+              <button className={"mt-4 btn btn-primary w-full justify-center py-3 px-4 " + (store.kyc.status !== BLOCK_PASS_KYC_COMPLETE || store.user.id == "" || !account || !confirm || transactionCount < MIN_TOTTAL_TX ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
                 {share2EarnInfo.paused ? "The campaign has ended" : t("join program")}
               </button>               
             }
             {!allowJoin && !account && 
-              <button className={"mt-4 btn btn-primary w-full justify-center py-3 px-4 " + (!store.kyc.status || store.user.id == "" || !account || !isConfirmed ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
+              <button className={"mt-4 btn btn-primary w-full justify-center py-3 px-4 " + (store.kyc.status !== BLOCK_PASS_KYC_COMPLETE || store.user.id == "" || !account || !isConfirmed ? "disabled" : "" )} type="button" onClick={(e) => { handleJoinProgram(e) }}>
                 {t("view incentive")}
               </button>
             }

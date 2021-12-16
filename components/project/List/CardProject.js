@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 export const CardProject = ({project,pool,title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, type, network, desc, isComing}) => {
   const {t,i18n} = useTranslation("launchpad");
-  const [poolStatus, setPoolStatus] = useState("coming");
+  const [poolStatus, setPoolStatus] = useState("");
 
   useEffect(() => {
     if (Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
@@ -16,17 +16,22 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
     if (Date.parse(new Date()) < Date.parse(pool.open_date)) {
       setPoolStatus("coming")
     }
+    if (Date.parse(new Date()) > Date.parse(pool.end_date)){
+      setPoolStatus("closed")
+    }
   }, [])
   const progressPercentage = "0%"
   return (
-    <a href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`}>
+    <Link href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`}>
     <div className={`card-project is-${project.status}`}>
       <div className="project-content relative">
 
         {!(project.status == "upcoming") && (
           <div className="block">
             <div className={`countdown-mini--wrapper top-0 !bottom-auto`}>
-              <div>{poolStatus == "open" ? t("Prefunding") : t("Sale start in")}</div>
+              {poolStatus == "open" && <div>{t("Pool close in")}</div>}
+              {poolStatus == "coming" && <div>{t("Sale start in")}</div>}
+              {poolStatus == "closed" && <div>{t("Pool closed")}</div>}
               <MiniCountdown project={pool} isEndDate={true}/>
             </div>
           </div>
@@ -39,7 +44,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
               <h5>{pool.title}</h5>
             </div>
             <div className="project-status -mt-1">
-              <span className={`label label-${isComing ? "coming" : poolStatus}`}>{ isComing ? "Upcoming" : (poolStatus == "open" ? "Open" : "Coming")}</span>
+              <span className={`label label-${poolStatus}`}>{poolStatus}</span>
             </div>
           </div>
 
@@ -90,7 +95,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
      
       {/* End of card--wrapper */}
     </div> 
-    </a>
+    </Link>
   )
 }
 

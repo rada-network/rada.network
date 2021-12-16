@@ -8,6 +8,7 @@ import SubscribeSwapToken from "./SubscribeSwapToken"
 import useStore from "@lib/useStore";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import TutorialWidget from "./TutorialWidget"
+import { BLOCK_PASS_KYC_COMPLETE } from "@config/constants";
 const LaunchpadActions = ({ project,pool }) => {
   const store = useStore()
   const {account} = useActiveWeb3React()
@@ -25,7 +26,7 @@ const LaunchpadActions = ({ project,pool }) => {
   if (openTime < currentTime && currentTime < endTime) {
     return (
       <>
-        {((store.kyc.isKYC && store.user.id !== "") || (!store.kyc.isKYC && !pool.is_kyc)) && !!account ?
+        {((store.kyc.isKYC && store.kyc.status === BLOCK_PASS_KYC_COMPLETE && store.user.id !== "") || (!store.kyc.isKYC && !pool.is_kyc)) && !!account ?
           <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
           <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">
