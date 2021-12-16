@@ -25,7 +25,7 @@ export default function ProjectsListClosed({ title, extraClass, projects }) {
                 {project.project_pool.length > 0 &&
                   <>
                     {project.project_pool.map((pool) => (
-                      <CardProject
+                      <CardProject key={project.slug + pool.slug}
                         project={project}
                         pool={pool}
                         title={project.title}

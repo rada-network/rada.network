@@ -15,7 +15,7 @@ export default function ProjectsList({ title, extraClass, projects, isComing}) {
           {projects.map(project => {
             return (
               <>
-                <Disclosure as="div" defaultOpen={project.is_default_open} className="pools-container"
+                <Disclosure key={project.slug} as="div" defaultOpen={project.is_default_open} className="pools-container"
                   style={{ backgroundImage: `url(${project.cover_uri})`, }}
                 >
                   {({ open }) => (
@@ -112,7 +112,7 @@ export default function ProjectsList({ title, extraClass, projects, isComing}) {
                         <Disclosure.Panel className="pools-container--panel">
                           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                             {project.project_pool.map((pool) => (
-                              <CardProject
+                              <CardProject key={pool.slug}
                                 isComing={isComing}
                                 project={project}
                                 pool={pool}

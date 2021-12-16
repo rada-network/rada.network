@@ -77,11 +77,11 @@ export default function ProjectsIndex ({ projects, locale }){
               <div className="mt-16">
 
                 { activeProjects.length > 0  && (
-                  <ProjectsList title={`Current Project`} projects={activeProjects} isComing={false}/>
+                  <ProjectsList key={`active`} title={`Current Project`} projects={activeProjects} isComing={false}/>
                 )}
 
                 { upcomingProjects.length > 0 && (
-                  <ProjectsList title={`Upcoming project`} projects={upcomingProjects} isComing={true}/>
+                  <ProjectsList key={`upcoming`} title={`Upcoming project`} projects={upcomingProjects} isComing={true}/>
                 )}
               
                 <ProjectsListClosed projects={closedProjects} />
