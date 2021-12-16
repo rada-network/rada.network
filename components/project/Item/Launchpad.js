@@ -8,21 +8,21 @@ import LaunchpadOverview from "./Launchpad/Overview";
 import LaunchpadContent from "./Launchpad/Content";
 import LaunchpadActions from "./Launchpad/Actions/Index";
 
-const ProjectLaunchpad = ({project}) => {
+const ProjectLaunchpad = ({project,pool}) => {
 
     return (
         <>
             <div className="section">
 
-                <LaunchpadOverview project={project} />
+                <LaunchpadOverview project={project} pool={pool} />
 
                 <div className="section-body">
 
-                    <LaunchpadContent project={project} />
+                    <LaunchpadContent project={project} pool={pool} />
 
                     {/* Main Action Card */}
                     <div className="grid grid-cols-1 mt-4">
-                        <LaunchpadActions project={project} />
+                        <LaunchpadActions project={project} pool={pool} />
                     </div>
                     {/* END: Main Action Card */}
 

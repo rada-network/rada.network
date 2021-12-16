@@ -9,7 +9,7 @@ const ProjectNavbar = dynamic(import("./Navbar"));
 const ProjectLaunchpad = dynamic(import("./Launchpad"));
 const ProjectShare2Earn = dynamic(import("./Share2Earn"));
 
-export default function ProjectItem({ project, page, slug }) {
+export default function ProjectItem({ project, page, slug,pool }) {
   const symbol = project.slug;
   const [headings, setHeadings] = useState([]);
   const ref = useRef();
@@ -48,6 +48,7 @@ export default function ProjectItem({ project, page, slug }) {
             page={page}
             project={project}
             slug={slug.join("/")}
+            pool={pool}
           />
         </div>
 
@@ -60,10 +61,10 @@ export default function ProjectItem({ project, page, slug }) {
             }
           >
             <div className="w-limiter-lg">
-              {page == "index" && <ProjectLaunchpad project={project} />}
-              {page == "research" && <ProjectDetails project={project} />}
+              {page == "index" && <ProjectLaunchpad project={project} pool={pool} />}
+              {page == "research" && <ProjectDetails project={project} pool={pool} />}
               {page == "share2earn" && project.share_campaign?.length ? (
-                <ProjectShare2Earn shareCampaign={project.share_campaign[0]} shareType={`project`} shareSlug={project.slug} />
+                <ProjectShare2Earn shareCampaign={project.share_campaign[0]} shareType={`project`} shareSlug={project.slug} pool={pool} />
               ) : null}
               <Screen from="lg">
                 <div className="toc-side-bar-div">

@@ -8,7 +8,6 @@ callbacks.signIn = async function signIn(profile, account, oauthProfile) {
     let userFromApi = await getTokenFromYourAPIServer
     (profile,account,oauthProfile)
     if (userFromApi !== null) {
-        console.log(userFromApi)
         profile.access_token = userFromApi.access_token
         profile.id = userFromApi.id
         profile.name = userFromApi.name

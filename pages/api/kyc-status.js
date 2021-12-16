@@ -14,7 +14,6 @@ export default async (req, res) => {
       }
     })
     if (data) {
-      console.log({id : refId,status  : data.data.status})
       await submitKycStatus({id : refId,kyc_status  : data.data.status})
       status = data.data.status
     }

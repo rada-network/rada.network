@@ -5,6 +5,7 @@ import loteryAbi from '../config/abi/lotery.json'
 import launchpadAbi from '../config/abi/launchpad.json'
 import share2earnAbi from '../config/abi/share2earn.json'
 import launchpadAbiV2 from '../config/abi/launchpadv2.json'
+import launchpadAbiV2Whitelist from '../config/abi/launchpadv2-whitelist.json'
 import referralAdminAbi from '../config/abi/referralAdmin.json'
 
 
@@ -33,8 +34,14 @@ export const getShare2EarnContract = (address, signer) => {
   return getContract(share2earnAbi, address, signer)
 }
 
-export const getLaunchpadContractV2 = (address, signer) => {
-  return getContract(launchpadAbiV2, address, signer)
+export const getLaunchpadContractV2 = (pool, signer) => {
+  if (!pool.is_whitelist){
+    return getContract(launchpadAbiV2, pool.contract, signer)
+  }
+  else{
+    return getContract(launchpadAbiV2Whitelist, pool.contract, signer)
+  }
+  
 }
 export const getReferralAdminContract = (address, signer) => {
   return getContract(referralAdminAbi, address, signer)

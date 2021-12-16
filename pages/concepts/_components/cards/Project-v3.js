@@ -1,5 +1,4 @@
 import React from "react";
-import { backgroundImage } from "tailwindcss/defaultTheme";
 
 export const CardProject = ({title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
   

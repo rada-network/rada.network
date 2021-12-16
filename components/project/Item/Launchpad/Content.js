@@ -5,43 +5,45 @@ import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { useLaunchpadContractV2 } from "@utils/hooks/useContracts";
 import numberFormatter from "@components/utils/numberFormatter";
 
-import { utils } from "ethers";
+import { ethers, utils } from "ethers";
 import { useTranslation } from "next-i18next";
 import useStore from "@lib/useStore"
 import { observer } from "mobx-react";
 
-const LaunchpadContent = observer(function({ project }) {
+const LaunchpadContent = observer(function({ project,pool }) {
   const { dataStore } = usePageStore();
   const store = useStore()
   const { t } = useTranslation("launchpad");
-  const { account, library } = useActiveWeb3React();
-  const [launchpadInfo, setLaunchpadInfo] = useState(null);
-  const lauchpadContact = useLaunchpadContractV2(project.swap_contract);
+  const { account, library } = useActiveWeb3React();  const [poolStat, setPoolStat] = useState(null);
+  const lauchpadContact = useLaunchpadContractV2(pool);
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {
-        let totalSubBUSD = await lauchpadContact.totalSubBUSD();
-        let updateInfo = {
-          totalSubBUSD: utils.formatEther(totalSubBUSD),
-        };
-        setLaunchpadInfo(updateInfo);
+        let stat = await lauchpadContact.poolsStat(pool.id);
+        setPoolStat({
+          amountBusd : ethers.utils.formatEther(stat.amountBusd),
+          amountRir : ethers.utils.formatEther(stat.amountRir),
+          approvedBusd : ethers.utils.formatEther(stat.approvedBusd),
+          approvedRir : ethers.utils.formatEther(stat.approvedRir),
+          depositedToken : ethers.utils.formatEther(stat.depositedToken),
+        })
       } catch (error) {
         //console.log(account)
         console.log("error to fetch launchpad info", error);
       }
     };
-    if (!!library && !!lauchpadContact && account !== "") {
+    if (!!lauchpadContact) {
       fetchLaunchpadInfo();
     }
   }, [account, lauchpadContact, library,store.loadPoolContent]);
-  const raise = project.raise;
-  const tokenPrice = project.price;
-  const progressToken = parseInt(launchpadInfo?.totalSubBUSD) || 0;
+  const raise = pool.raise;
+  const tokenPrice = pool.price;
+  const progressToken = parseInt(poolStat?.amountBusd) || 0;
   const target = raise;
   const progressPercentage = ((progressToken / target) * 100).toFixed(1);
   const curentTime = (new Date()).getTime() / 1000
-  const openTime = (new Date(project.open_date)).getTime() / 1000
-  const endTime = (new Date(project.end_date)).getTime() / 1000
+  const openTime = (new Date(pool.open_date)).getTime() / 1000
+  const endTime = (new Date(pool.end_date)).getTime() / 1000
   let tokennomic = project.token.link.find(function(item){
     return item.group === 'tokenomic'
   })
@@ -56,10 +58,16 @@ const LaunchpadContent = observer(function({ project }) {
         </div>
         <div className="card-body flex flex-col">
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
-          <li className="list-pair mb-2">
+            <li className="list-pair mb-2">
+              <span className="list-key">{t("Pool")}</span>
+              <span className="ml-auto list-value font-semibold">
+                <div className={``}>{project.content.title} - {pool.title}</div>
+              </span>
+            </li>
+            <li className="list-pair mb-2">
               <span className="list-key">{t("Investment round")}</span>
               <span className="ml-auto list-value font-semibold">
-                <div className={`label ${project.type}`}>{project.type.toUpperCase()}</div>
+                <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div>
               </span>
             </li>
             
@@ -87,7 +95,7 @@ const LaunchpadContent = observer(function({ project }) {
               </span>
               }
             </li>
-            {!!project.open_date && openTime < curentTime && 
+            {!!pool.open_date && openTime < curentTime && 
             <li className="list-pair mb-2">
             <span className="list-key">{t("Progress")}</span>
             <span className="list-value ml-auto">
@@ -100,7 +108,7 @@ const LaunchpadContent = observer(function({ project }) {
             </li>
             }
           </ul>
-          {!!project.open_date && openTime < curentTime && 
+          {!!pool.open_date && openTime < curentTime && 
           <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
             <div
               className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full"

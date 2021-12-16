@@ -1,27 +1,20 @@
 import { useState,useEffect } from "react"
-import useActiveWeb3React from "@utils/hooks/useActiveWeb3React"
-import { useBUSDContract,useRIRContract, useERC20,useLaunchpadContractV2 } from "@utils/hooks/useContracts"
-import useMultiApproveConfirmTransaction from "@utils/hooks/useMultiApproveConfirmTransaction"
-import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
-import { ethers } from 'ethers'
-import {toast} from "react-toastify"
 import {useLaunchpadInfo} from "@utils/hooks/index"
 import { useTranslation } from "next-i18next"
 import { CheckSvg } from "@components/svg/SvgIcons"
-import { set } from "lodash"
 import SubcribeByRIR from "./swaptoken/SubscribeByRIR"
 import SubcribeByBUSD from "./swaptoken/SubscibeByBUSD"
 
 
-const SwapTokensV2 = ({project,accountBalance,fetchAccountBalance,setStep}) => {
-  const {launchpadInfo,loading} = useLaunchpadInfo({project})
+const SwapTokensV2 = ({accountBalance,fetchAccountBalance,setStep,pool}) => {
+  const {launchpadInfo,loading} = useLaunchpadInfo({pool})
   if (loading) return null
   return (
     <>
-      {project.is_allow_rir ?
-      <SubcribeByRIR project={project} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
+      {pool.is_allow_rir ?
+      <SubcribeByRIR pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
       :
-      <SubcribeByBUSD project={project} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
+      <SubcribeByBUSD pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
       }
 
     </>

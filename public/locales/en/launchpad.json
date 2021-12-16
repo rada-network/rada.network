@@ -15,7 +15,7 @@
   "Status of your application": "Status of your application",
   "Claim": "Claim",
   "Claim your token": "Claim your token",
-  "The whitelist will open in": "The whitelist will open in",
+  "The whitelist will open in": "The Prefund will open in",
   "Please wait until the whitelist opens!": "Please wait until the whitelist opens!",
   "You need to apply to join the whitelist.": "You need to apply to join the whitelist.",
   "Openat": "Open at:",
@@ -50,7 +50,7 @@
   "Prefunded BUSD": "Prefunded",
   "Your RIR Balance": "Your RIR Balance",
   "Your maximum allocation": "Max allocation",
-  "Complete all the requirements below to joint the pool.": "Connect your wallet and sign in to join Whitelist.",
+  "Complete all the requirements below to joint the pool.": "Complete all the requirements below to join the pool",
   "Refer a friend to earn RIR": "Refer a friend to earn RIR",
   "How to join RADA LaunchVerse": "How to join LaunchVerse?",
   "Join Share2Earn": "Join Share2Earn",
@@ -87,5 +87,9 @@
   "token claim note"  : "Claimable token",
   "busd claim note"  : "Refund amount",
   "Approved BUSD" : "Approved",
-  "Refund BUSD" : "Refund"
+  "Refund BUSD" : "Refund",
+  "Hero Desc": "Simplify and popularize crowdfunding in Blockchain, at the same time make initial Token sales equally accessible for the masses — newbies and veterans alike.",
+  "Participians": "Participians",
+  "Sale start in": "Sale start in",
+  "Ended in": "Ended in"
 }
