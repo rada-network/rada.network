@@ -4,8 +4,7 @@ import { useEffect } from "react";
 export default function ProjectsListClosed({ title, extraClass, projects }) {
 
   useEffect(() => {
-    console.log("Chay vao trong nay")
-    console.log(projects)
+    
   }, [])
 
   return (

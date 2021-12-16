@@ -4,7 +4,7 @@ import Link from "next/link"
 import MiniCountdown from "./Countdown";
 import { useState, useEffect } from "react";
 
-export const CardProject = ({project,pool,title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc, isComing}) => {
+export const CardProject = ({project,pool,title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, type, network, desc, isComing}) => {
   const {t,i18n} = useTranslation("launchpad");
   const [poolStatus, setPoolStatus] = useState("coming");
 
@@ -17,7 +17,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
       setPoolStatus("coming")
     }
   }, [])
-
+  const progressPercentage = "0%"
   return (
     <a href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`}>
     <div className={`card-project is-${project.status}`}>
