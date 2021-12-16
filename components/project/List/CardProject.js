@@ -32,7 +32,10 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
               {poolStatus == "open" && <div>{t("Pool close in")}</div>}
               {poolStatus == "coming" && <div>{t("Sale start in")}</div>}
               {poolStatus == "closed" && <div>{t("Pool closed")}</div>}
-              <MiniCountdown project={pool} isEndDate={true}/>
+
+              {poolStatus == "coming" && <MiniCountdown project={pool} isEndDate={false} />}
+              {poolStatus == "open" && <MiniCountdown project={pool} isEndDate={true} />}
+              
             </div>
           </div>
         )}
