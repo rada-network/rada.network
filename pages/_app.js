@@ -104,6 +104,7 @@ const MyApp = function MyApp({ Component, pageProps }) {
       console.log(
         `${url} is a shallow store ${shallow} ${store.shallowInternal}`
       );
+
       if (shallow) {
         if (!store.shallowInternal) {
           //detailStore.data = {};
@@ -159,14 +160,6 @@ const TokenRankingStore = ({
   pageProps: { session, ...pageProps },
 }) => {
   // const store = useStore(pageProps.initialState)
-
-  if (process.env.NODE_ENV !== "production") {
-    // Fix  Avoid Hydration Mismatch #https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => setMounted(true), []);
-
-    if (!mounted) return null;
-  }
 
   return (
     <ThemeProvider attribute="class">

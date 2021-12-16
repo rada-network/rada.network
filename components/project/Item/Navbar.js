@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 
 const WalletProfile = dynamic(import("@components/Wallet"));
 
-export default function ProjectNavbar({ symbol, project, slug }) {
+export default function ProjectNavbar({ symbol, project, slug,pool }) {
   const { dataStore } = usePageStore();
   const { t } = useTranslation("launchpad");
   const NavItem = ({ uri, children }) => {
@@ -36,12 +36,12 @@ export default function ProjectNavbar({ symbol, project, slug }) {
         </div>
         <div className="tabbar page-tabs relative lg:left-8 xl:-left-1">
           <div className="tabbar--main">
-            <NavItem uri={symbol}>{t("LaunchVerse")}</NavItem>
+            <NavItem uri={symbol+`#${pool.slug}`}>{t("LaunchVerse")}</NavItem>
             {(!!project.news || project.share_campaign?.length !== 0) && (
               <span className="tab-item--divider"></span>
             )}
             {!!project.news && (
-              <NavItem uri={`${symbol}/research`}>
+              <NavItem uri={`${symbol}/research#${pool.slug}`}>
                 <span className="token-symbol flex-shrink-0 lg:mr-2 h-px-20 w-px-20">
                   <Image
                     src={project?.token?.logo}
@@ -57,7 +57,7 @@ export default function ProjectNavbar({ symbol, project, slug }) {
               </NavItem>
             )}
             {project.share_campaign?.length !== 0 && (
-              <NavItem uri={`${symbol}/share2earn`}>
+              <NavItem uri={`${symbol}/share2earn#${pool.slug}`}>
                 <span className="icon">
                   <i className="fa-duotone fa-hand-holding-heart"></i>
                 </span>

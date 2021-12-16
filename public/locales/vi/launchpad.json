@@ -15,7 +15,7 @@
   "Status of your application": "Tình trạng hồ sơ",
   "Claim": "Nhận token",
   "Claim your token": "Lấy token về ví",
-  "The whitelist will open in": "Mở đăng kí trong",
+  "The whitelist will open in": "Mở đặt cọc trong",
   "Please wait until the whitelist opens!": "Vui lòng đợi cho đến khi Whitelist mở ra!",
   "You need to apply to join the whitelist.": "Bạn cần đăng ký để tham gia Whitelist",
   "Openat": "Mở lúc:",
@@ -50,7 +50,7 @@
   "Prefunded BUSD": "Đã đặt cọc",
   "Your RIR Balance": "Số dư RIR của bạn",
   "Your maximum allocation": "Hạn mức đầu tư tối đa",
-  "Complete all the requirements below to joint the pool.": "Kết nối ví và đăng nhập để tham gia Whitelist.",
+  "Complete all the requirements below to joint the pool.": "Hoàn thành tất cả các yêu cầu bên dưới để tham gia vào pool",
   "Refer a friend to earn RIR": "Giới thiệu bạn bè để nhận RIR",
   "How to join RADA LaunchVerse": "Cách tham gia LaunchVerse?",
   "Join Share2Earn": "Tham gia Share2Earn",
@@ -86,5 +86,9 @@
   "token claim note"  : "Có thể nhận",
   "busd claim note"  : "Hoàn trả",
   "Approved BUSD" : "Cọc thành công",
-  "Refund BUSD" : "Hoàn trả"
+  "Refund BUSD" : "Hoàn trả",
+  "Hero Desc": "Simplify and popularize crowdfunding in Blockchain, at the same time make initial Token sales equally accessible for the masses — newbies and veterans alike.",
+  "Participians": "Số người tham gia",
+  "Sale start in": "Ngày mở bán",
+  "Ended in": "Kết thúc"
 }

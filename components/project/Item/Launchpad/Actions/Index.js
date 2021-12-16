@@ -8,25 +8,26 @@ import SubscribeSwapToken from "./SubscribeSwapToken"
 import useStore from "@lib/useStore";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import TutorialWidget from "./TutorialWidget"
-const LaunchpadActions = ({ project }) => {
+import { BLOCK_PASS_KYC_COMPLETE } from "@config/constants";
+const LaunchpadActions = ({ project,pool }) => {
   const store = useStore()
   const {account} = useActiveWeb3React()
   const currentTime = (new Date()).getTime() / 1000
-  const openTime = (new Date(project.open_date)).getTime() / 1000
-  const endTime = (new Date(project.end_date)).getTime() / 1000
-  if (project.open_date === null) {
-    return <WhitelistCountdown project={project} />
+  const openTime = (new Date(pool.open_date)).getTime() / 1000
+  const endTime = (new Date(pool.end_date)).getTime() / 1000
+  if (pool.open_date === null) {
+    return <WhitelistCountdown project={project} pool={pool} />
   }
   
   if (openTime > currentTime) {
-    return <WhitelistCountdown project={project} />
+    return <WhitelistCountdown project={project} pool={pool} />
   }
   
   if (openTime < currentTime && currentTime < endTime) {
     return (
       <>
-        {((store.kyc.isKYC && store.user.id !== "") || (!store.kyc.isKYC && !project.is_kyc)) && !!account ?
-          <SubscribeSwapToken project={project} currentTime={currentTime} endTime={endTime} openTime={openTime} />
+        {((store.kyc.isKYC && store.kyc.status === BLOCK_PASS_KYC_COMPLETE && store.user.id !== "") || (!store.kyc.isKYC && !pool.is_kyc)) && !!account ?
+          <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
           <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">
             <div className="card-body no-padding">
@@ -36,7 +37,7 @@ const LaunchpadActions = ({ project }) => {
                 </div>
 
                 <div className="project-card--container">
-                  <SubscribeLaunchpad project={project} />
+                  <SubscribeLaunchpad project={project} pool={pool} />
                   <TutorialWidget></TutorialWidget>
                 </div>
 
@@ -53,8 +54,8 @@ const LaunchpadActions = ({ project }) => {
   if (currentTime > endTime){
     return (
       <>
-        {((store.kyc.isKYC) || (!store.kyc.isKYC && !project.is_kyc)) && !!account ?
-          <SubscribeSwapToken project={project} currentTime={currentTime} endTime={endTime} openTime={openTime} />
+        {!!account ?
+          <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
           <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">
             <div className="card-body no-padding">
@@ -64,7 +65,7 @@ const LaunchpadActions = ({ project }) => {
                 </div>
 
                 <div className="project-card--container">
-                  <SubscribeLaunchpadClosed project={project} />
+                  <SubscribeLaunchpadClosed project={project} pool={pool} />
                 </div>
 
               </div>

@@ -2,9 +2,6 @@ import { Fragment } from 'react';
 import { Disclosure, Transition } from '@headlessui/react';
 
 import {CardProject} from "../cards/Project-v3";
-import { backgroundImage } from 'tailwindcss/defaultTheme';
-
-import Bg1 from "../../../../public/placeholders/parallel-cover.jpg";
 
 export default function ProjectsList({title, extraClass}){
 

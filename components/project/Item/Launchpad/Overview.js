@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { BscSvg, UsdtSvg, LaunchSvg, BusdSvg } from "../../../svg/SvgIcons";
 import { useState, useEffect } from "react";
 import Image from "@components/Image";
-export default function LaunchpadOverview({ project }) {
+export default function LaunchpadOverview({ project,pool }) {
   const { token } = project;
   const { t } = useTranslation("launchpad");
   const [isWarning, setIsWarning] = useState(true);

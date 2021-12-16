@@ -6,11 +6,11 @@ import { useTranslation } from "next-i18next";
 import { getCurrentUser } from "@data/query/user";
 
 import dynamic from "next/dynamic";
-import { BLOCK_PASS_KYC_COMPLETE } from "@config/constants";
+import { BLOCK_PASS_KYC_COMPLETE,BLOCK_PASS_KYC_REJECT } from "@config/constants";
 
 const WalletRequire = dynamic(import("@components/WalletRequire"));
 
-const SubscribeLaunchpad = ({ project }) => {
+const SubscribeLaunchpad = ({ project,pool }) => {
   const store = useStore();
   const { t } = useTranslation("launchpad");
   const [loading,setLoading] = useState(true)
@@ -33,21 +33,21 @@ const SubscribeLaunchpad = ({ project }) => {
   }
   return (
     <>
-      <div className="max-w-xl mx-auto">
-        <div className="mb-4 md:mb-8">
-          <h3 className="text-2xl md:text-3xl text-center font-normal">
+      <div className="max-w-2xl mx-auto bg-gray-100 dark:bg-gray-700 p-4 lg:px-8 rounded-lg mt-8">
+        <div className="mb-4">
+          {/* <h3 className="text-2xl md:text-3xl text-center font-normal">
             <span className="text-color-title">
               {project?.token.name}'s {t("Whitelist")}
             </span>
-          </h3>
+          </h3> */}
           <p className="text-center mt-2 font-normal">
             {t("Complete all the requirements below to joint the pool.")}
           </p>
         </div>
 
         <div className="list-group">
-          {project.is_kyc && <Login />}
-          {project.is_kyc && <KYC />}
+          {pool.is_kyc && <Login />}
+          {pool.is_kyc && store.user.id !== "" && <KYC />}
           <WalletRequire />
         </div>
       </div>
@@ -161,8 +161,15 @@ const KYC = () => {
       });
     }, [loadlib]);
 
-    if (store.kyc.status)
+    if (store.kyc.status === BLOCK_PASS_KYC_COMPLETE){
       return <span className="flex label label--success w-24">Done</span>;
+    }
+    if (store.kyc.status === BLOCK_PASS_KYC_REJECT){
+      return <span className="flex label label--neutral w-24">Rejected</span>;
+    }
+    if (store.kyc.status !== ""){
+      return <span className="flex label label--neutral w-24">{`In Progress`}</span>;
+    }
     return (
       <button className="btn btn-default w-24" id="blockpass-kyc-connect">
         KYC

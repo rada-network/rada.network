@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef,useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getProject } from "@data/query/projects";
 import { usePageStore } from "@lib/usePageStore";
@@ -7,6 +7,7 @@ import myUtils from "@lib/util";
 import { useRouter } from "next/router";
 import Layout from "@components/page-layouts/Global";
 import ProjectItem from "@components/project/Item/Index";
+import fetcher from "@lib/fetchJson";
 
 export default function ProjectPage({ slug, project, locale }) {
   const { dataStore } = usePageStore();
@@ -26,6 +27,39 @@ export default function ProjectPage({ slug, project, locale }) {
     locales,
     asPath
   );
+  const [selectedPool,setSelectedPool] = useState(null)
+  const [poolContact,setPoolContract] = useState(null)
+
+  useEffect(() => {
+    let pool = {}
+    if (window.location.hash) {
+      const hash = window.location.hash.substr(1);
+      pool = project.project_pool.find(function(item){
+        return item.slug == hash
+      })
+      if (!pool){
+        pool = project.project_pool[0]
+      }
+    } else {
+      pool = project.project_pool[0]
+    }
+    setSelectedPool(pool)
+  }, [asPath]);
+
+  useEffect(() => {
+    if (selectedPool !== null) {
+      fetcher(`/api/pools/get-pools?slug=${project.slug}`).then(function(res){
+        if (!!res[selectedPool.slug]){
+          setPoolContract({...selectedPool,id : res[selectedPool.slug].pool_id,contract : res[selectedPool.slug].contract })
+        }
+        else{
+          setPoolContract({...selectedPool,id : null,contract : "" })
+        }
+      })
+    }
+    
+    
+  }, [selectedPool]);
 
   store.updateNetwork(project?.platform.networkName);
   useEffect(() => {
@@ -38,6 +72,7 @@ export default function ProjectPage({ slug, project, locale }) {
 
   /* Dragger to resize main col */
   const containerRef = useRef();
+  if (poolContact === null) return null
   return (
     <Layout
       extraClass="glassmorphism"
@@ -45,7 +80,7 @@ export default function ProjectPage({ slug, project, locale }) {
       meta={meta}
     >
       <div className={`pane-content`} ref={containerRef}>
-        <ProjectItem project={project} slug={slug} page={page} />
+        <ProjectItem project={project} pool={poolContact} slug={slug} page={page} />
       </div>
     </Layout>
   );

@@ -1,6 +1,6 @@
 import Countdown from "react-countdown";
 
-const ProjectCountdown = ({ project, setCountdownDone }) => {
+const ProjectCountdown = ({ project, setCountdownDone ,pool}) => {
 
   const renderer = ({ formatted: { days, hours, minutes, seconds }, completed }) => {
     if (completed) {
@@ -45,7 +45,7 @@ const ProjectCountdown = ({ project, setCountdownDone }) => {
   return (
     <>
       <div className="test">
-        <Countdown renderer={renderer} date={new Date(project.open_date)} />
+        <Countdown renderer={renderer} date={new Date(pool.open_date)} />
       </div>
 
     </>

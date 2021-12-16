@@ -1,6 +1,5 @@
 import Subscriber from "./Subscriber";
 import Timeline from "./Timeline";
-import SwapTokens from "./SwapTokens"
 import { useBUSDContract, useERC20, useRIRContract, useLaunchpadContractV2 } from "@utils/hooks/useContracts";
 import { useEffect, useState } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
@@ -18,22 +17,23 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import useChainConfig from "utils/web3/useChainConfig"
 
 
-const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
+const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const { t, i18n } = useTranslation("launchpad")
   const rirContract = useRIRContract()
   const bUSDContract = useBUSDContract()
   const { account } = useActiveWeb3React()
-  const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ project })
+  const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ pool })
   const { callWithGasPrice } = useCallWithGasPrice()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
-  const launchpadContract = useLaunchpadContractV2(project.swap_contract)
+  const launchpadContract = useLaunchpadContractV2(pool)
   const [accountBalance, setAccountBalance] = useState({})
   const [loadBalance, setLoadBalance] = useState(true)
   const [loadWhitelist, setLoadWhitelist] = useState(true)
-  const [inWhitelist, setInWhitelist] = useState(!project.is_whitelist)
+  const [inWhitelist, setInWhitelist] = useState(!pool.is_whitelist)
   const [orderBusd, setOrderBusd] = useState(0)
   const [orderRIR, setOrderRIR] = useState(0)
   const [approvedBusd, setApprovedBusd] = useState(0)
+  const [approveRIR, setApprovedRIR] = useState(0)
   const [step, setStep] = useState(2)
   const [claimDisbaled, setClaimDisbaled] = useState(false)
   const [tokenAddress,setTokenAddress] = useState(ethers.constants.AddressZero)
@@ -55,36 +55,40 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
   }, [account])
 
   useEffect(() => {
-    if (!!account) {
-      launchpadContract.tokenAddress().then(function(address) {
-        setTokenAddress(address)
-      })
+    if (!!account && !!launchpadInfo) {
+      setTokenAddress(launchpadInfo.tokenAddress)
     }
-  }, [account])
+  }, [launchpadInfo,account])
 
   useEffect(() => {
-    if (!!account && project.is_whitelist) {
-      launchpadContract.inWhitelist(account).then(function(res){
-        setInWhitelist(res)
+    if (!!account && pool.is_whitelist && !!launchpadInfo) {
+      if (launchpadInfo.investor.allocationBusd > 0){
+        
+        setInWhitelist(true)
         setLoadWhitelist(false)
-      })
-      
+      }
     }
     else{
       setLoadWhitelist(false)
     }
-  }, [account])
+  }, [account,launchpadInfo])
   useEffect(() => {
-    let currentOrder = launchpadInfo?.currentOrder?.amountBUSD ? launchpadInfo?.currentOrder?.amountBUSD : 0
-    let currentOrderRIR = launchpadInfo?.currentOrder?.amountRIR ? launchpadInfo?.currentOrder?.amountRIR : 0
-    let currentApprovedBusd = launchpadInfo?.currentOrder?.approvedBUSD ? launchpadInfo?.currentOrder?.approvedBUSD : 0
-    setOrderBusd(utils.formatEther(currentOrder))
-    setOrderRIR(utils.formatEther(currentOrderRIR))
-    setApprovedBusd(utils.formatEther(currentApprovedBusd))
-  }, [launchpadInfo])
+    if (!loading){
+      let currentOrderBusd = launchpadInfo.investor.amountBusd && launchpadInfo.investor.paid ? launchpadInfo.investor.amountBusd : 0
+      let currentOrderRIR = launchpadInfo.investor.amountRir && launchpadInfo.investor.paid ? launchpadInfo.investor.amountRir : 0
+      let currentApprovedBusd = launchpadInfo.investor.approved ? launchpadInfo.investor.allocationBusd : 0
+      let currentApproveRIR = launchpadInfo.investor.approved ? launchpadInfo.investor.allocationRir : 0
+      setOrderBusd(currentOrderBusd)
+      setOrderRIR(currentOrderRIR)
+      setApprovedBusd(currentApprovedBusd)
+      setApprovedRIR(currentApproveRIR)
+    }
+  }, [launchpadInfo,loading])
+
   useEffect(() => {
+    if (loading) return false
     //pool dont set winner
-    if (launchpadInfo.winnerCount == 0){
+    if (launchpadInfo.stat.approvedBusd == 0){
       if (parseInt(orderBusd) > 0){
         // prefund success wait to approve whitelist
         setStep(31)
@@ -104,7 +108,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
     else{
       //user win
       if (parseInt(approvedBusd) > 0){
-        if (launchpadInfo.claimable && launchpadInfo.currentOrder && (parseInt(ethers.utils.formatEther(launchpadInfo.claimable[1])) > 0 || parseInt(ethers.utils.formatEther(launchpadInfo.currentOrder.claimedToken)) > 0 )){
+        if (launchpadInfo.claimable + launchpadInfo.investor.claimedToken > 0 ){
           setStep(4)
         }
         else{
@@ -124,12 +128,12 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
       }
     }
 
-  }, [orderBusd, launchpadInfo]);
+  }, [orderBusd, launchpadInfo,loading]);
 
   const handleClaimToken = async function (e) {
     try {
       setClaimDisbaled(true)
-      const tx = await callWithGasPrice(launchpadContract, "claim", [])
+      const tx = await callWithGasPrice(launchpadContract, "claim", [pool.id])
       const receipt = await tx.wait()
       if (receipt.status) {
         toast.success(t("Claim success!"))
@@ -194,7 +198,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                     <div className="box-header !px-0">{t("Your allocation")}</div>
 
                     <ul class="mt-4 flex-shrink-0 flex-grow">
-                      {project.is_allow_rir && parseInt(orderRIR) > 0 && <li class="list-pair mb-2">
+                      {pool.is_allow_rir && parseInt(orderRIR) > 0 && <li class="list-pair mb-2">
                         <span class="list-key">{t("Prefunded RIR")}</span>
                         <span class="ml-auto list-value font-semibold">
                           {orderRIR} RIR
@@ -209,16 +213,16 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                       <li class="list-pair mb-2">
                         <span class="list-key">{t("Your maximum allocation")}</span>
                         <span class="ml-auto list-value font-semibold">
-                          {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && project.is_allow_rir && <>( {launchpadInfo?.individualMaximumAmount / 100} RIR )</>}
+                          {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>( {launchpadInfo?.individualMaximumAmount / 100} RIR )</>}
                         </span>
                       </li>
                       <li class="list-pair mb-2">
                         <span class="list-key">{t("Your minimum allocation")}</span>
                         <span class="ml-auto list-value font-semibold">
-                          {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && project.is_allow_rir && <>( {launchpadInfo?.individualMinimumAmount / 100} RIR )</>}
+                          {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>( {launchpadInfo?.individualMinimumAmount / 100} RIR )</>}
                         </span>
                       </li>
-                      {project.is_allow_rir && parseFloat(accountBalance.rirBalance) > 0 && <li class="list-pair mb-2">
+                      {pool.is_allow_rir && parseFloat(accountBalance.rirBalance) > 0 && <li class="list-pair mb-2">
                         <span class="list-key">{t("Your RIR Balance")}</span>
                         <span class="ml-auto list-value font-semibold">
                           {accountBalance.rirBalance} RIR
@@ -226,7 +230,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                       </li>}
                     </ul>
 
-                    {project.is_allow_rir && <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
+                    {pool.is_allow_rir && <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
                       <p>
                         <span className="icon mr-2 text-base">
                           <i class="fas fa-info-circle text-yellow-500"></i>
@@ -242,7 +246,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
 
                   <div className="box box--gray -mx-4 -mb-6 md:m-0">
                     <div className="box-header">{t("Prefund your investment")}</div>
-                    <SwapTokensV2 project={project} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} />
+                    <SwapTokensV2 accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} pool={pool} />
                   </div>
                 </div>
               </div>
@@ -313,7 +317,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                         }
                       </h3>
                       <TokenSocialPromote project={project} />
-                      {currentTime < endTime && (parseInt(orderBusd) < maxBusd || ((parseInt(orderRIR) < maxRIR && parseInt(accountBalance.rirBalance) > 0) && project.is_allow_rir)) &&
+                      {currentTime < endTime && (parseInt(orderBusd) < maxBusd || ((parseInt(orderRIR) < maxRIR && parseInt(accountBalance.rirBalance) > 0) && pool.is_allow_rir)) &&
                       <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center" onClick={e => { setStep(2) }} >
                         <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
                           <i class="fa fa-money-bill"></i>
@@ -358,10 +362,13 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                       </h3>
                       <p>{t("Prefunded BUSD")} : <strong>{orderBusd} BUSD</strong></p>
                       <p>{t("Approved BUSD")}&nbsp; : <strong>{approvedBusd} BUSD</strong></p>
-                      {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 &&
-                      <p>{t("Refund BUSD")}&nbsp; : <strong>{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD</strong></p>
+                      {launchpadInfo.refundable[0] > 0 &&
+                      <p>{t("Refund BUSD")}&nbsp; : <strong>{launchpadInfo.refundable[0]} BUSD</strong></p>
                       }
-                      {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 &&
+                      {launchpadInfo.refundable[1] > 0 &&
+                      <p>{t("Refund BUSD")}&nbsp; : <strong>{launchpadInfo.refundable[1]} RIR</strong></p>
+                      }
+                      {launchpadInfo.claimable[0] > 0 &&
                       <p> {t("refund note")}</p>
                       }
                     </div>
@@ -393,10 +400,10 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                 <div className="flex items-center">
                   <div className="mx-auto">
                     <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">{t("status failed")}</h3>
-                    {parseInt(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 &&
+                    {launchpadInfo.refundable[0] > 0 &&
                     <>
                     <p>{t("status failed note refund")}</p> 
-                    <p>{t("Refund BUSD")}: <strong>{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD</strong></p> 
+                    <p>{t("Refund BUSD")}: <strong>{launchpadInfo.refundable[0]} BUSD</strong></p> 
                     <div class="ml-auto mt-4 list-value font-semibold">
                       <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                     </div>
@@ -476,12 +483,20 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                     </li>
                     <li class="list-pair mb-2">
                       <span class="w-3/5 !opacity-100">{t("token claim note",{name : project.token.symbol})}:</span>
-                      <div class="w-2/5 ml-auto  font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[1])} {project.token.symbol}
+                      <div class="w-2/5 ml-auto  font-semibold">{launchpadInfo.claimable} {project.token.symbol}
                       </div>
                     </li>
-                    {parseFloat(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 && <li class="list-pair mb-2">
+                    {launchpadInfo.refundable[0] > 0 && 
+                    <li class="list-pair mb-2">
                       <span class="w-3/5 !opacity-100">{t("busd claim note")}:</span>
-                      <div class="w-2/5 ml-auto font-semibold">{ethers.utils.formatEther(launchpadInfo.claimable[0])} BUSD
+                      <div class="w-2/5 ml-auto font-semibold">{launchpadInfo.claimable[0]} BUSD
+                      </div>
+                    </li>
+                    }
+                    {launchpadInfo.refundable[1] > 0 && 
+                    <li class="list-pair mb-2">
+                      <span class="w-3/5 !opacity-100">{t("busd claim note")}:</span>
+                      <div class="w-2/5 ml-auto font-semibold">{launchpadInfo.claimable[1]} RIR
                       </div>
                     </li>
                     }
@@ -490,7 +505,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
                 <div className="flex items-center">
                   <div className="mx-auto">
                     <div class="ml-auto mt-4 list-value font-semibold">
-                    {(parseFloat(ethers.utils.formatEther(launchpadInfo.claimable[0])) > 0 || parseFloat(ethers.utils.formatEther(launchpadInfo.claimable[1])) > 0) && 
+                    {(launchpadInfo.claimable > 0 || launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) && 
                       <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                     }
                     </div>
@@ -506,7 +521,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
         </div>
       }
 
-      {(orderBusd > 0 && launchpadInfo.winnerCount == 0) &&
+      {/* {(orderBusd > 0 && launchpadInfo.winnerCount == 0) &&
         <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
           <div className="card-header items-center">
             <h3>{t("Prefunders")} ({launchpadInfo?.ordersBuyerCount})</h3>
@@ -521,9 +536,9 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
             </div>
           </div>
         </div>
-      }
+      } */}
 
-      {(orderBusd > 0 && launchpadInfo.winnerCount > 0) &&
+      {/* {(orderBusd > 0 && launchpadInfo.winnerCount > 0) &&
         <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
           <div className="card-header items-center">
             <h3>{t("Winners")} ({launchpadInfo?.winnerCount})</h3>
@@ -538,7 +553,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime}) => {
             </div>
           </div>
         </div>
-      }
+      } */}
     </>
   );
 }
