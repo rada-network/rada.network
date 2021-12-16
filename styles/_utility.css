@@ -224,6 +224,10 @@
 .spinner {
   @apply absolute left-4 animate-spin mr-3 w-5 h-5 border-2 border-t-purple-200 border-l-purple-600 border-b-purple-600 border-r-purple-600 rounded-full;
 }
+.spinner-xl {
+  @apply flex animate-spin w-16 h-16 border-8 border-t-purple-200 border-l-purple-600 
+  border-b-purple-600 border-r-purple-600 rounded-full;
+}
 .message {
   @apply text-sm p-2 md:px-4 md:py-2 rounded-lg;
 }
