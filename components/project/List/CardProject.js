@@ -9,7 +9,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
   const [poolStatus, setPoolStatus] = useState("");
 
   useEffect(() => {
-    if (Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
+    if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
       setPoolStatus("open")
     } 
 
@@ -18,6 +18,9 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
     }
     if (Date.parse(new Date()) > Date.parse(pool.end_date)){
       setPoolStatus("closed")
+    }
+    if (pool.open_date == null) {
+      setPoolStatus("soon")
     }
   }, [])
   const progressPercentage = "0%"
@@ -32,7 +35,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
               {poolStatus == "open" && <div>{t("Pool close in")}</div>}
               {poolStatus == "coming" && <div>{t("Sale start in")}</div>}
               {poolStatus == "closed" && <div>{t("Pool closed")}</div>}
-
+              {poolStatus == "soon" && <div>{t("Comming Soon")}</div>}
               {poolStatus == "coming" && <MiniCountdown project={pool} isEndDate={false} />}
               {poolStatus == "open" && <MiniCountdown project={pool} isEndDate={true} />}
               
