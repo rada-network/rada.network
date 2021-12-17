@@ -65,7 +65,7 @@ Card Thumb + Type + Countdown
 
 /* Logo */
 .project-logo {
-  @apply w-20 h-20 mr-4 flex-shrink-0;
+  @apply w-16 h-16 md:w-20 md:h-20 md:mr-4 flex-shrink-0;
   @apply flex justify-center items-center; 
 }
 
@@ -253,13 +253,13 @@ Card Content
 }
 
 .pools-container--toggle {
-  @apply flex items-center px-6 py-2 space-x-4 relative rounded-t-lg;
+  @apply flex items-center px-6 py-3 md:py-2 space-x-4 relative rounded-t-lg;
   @apply text-white bg-gray-900 dark:bg-gray-900 bg-opacity-70 dark:bg-opacity-70;
 }
 
 .pools-container--toggle-arrow {
-  @apply absolute right-8 top-auto flex justify-center items-center transition-all;
-  @apply w-10 h-10 rounded-full bg-white bg-opacity-20 dark:bg-opacity-20;
+  @apply absolute right-4 md:right-8 top-auto flex justify-center items-center transition-all;
+  @apply w-8 h-8 md:w-10 md:h-10 rounded-full bg-white bg-opacity-20 dark:bg-opacity-20;
   .fas {
     @apply text-lg;
   }
@@ -284,7 +284,7 @@ Card Content
 }
 
 .pools-container--toggle .badge-coin {
-  @apply font-normal text-sm md:py-1 px-2 opacity-100 relative md:-top-0.5 ml-3 md:ml-0 rounded-md shadow-none;
+  @apply font-normal text-xs md:text-sm md:py-1 px-2 opacity-100 relative md:-top-0.5 ml-3 md:ml-0 rounded-md shadow-none;
   @apply border-white text-white;
   text-shadow: none;
 }
@@ -296,7 +296,7 @@ Card Content
 
 /* Links */
 .project-links {
-
+  @apply mt-1 md:mt-0;
 }
 
 .project-links ul {
@@ -304,7 +304,7 @@ Card Content
 }
 
 .project-links a {
-  @apply flex justify-center items-center w-10 h-10 rounded-full text-xl transition;
+  @apply flex justify-center items-center w-8 h-8 md:w-10 md:h-10 rounded-full text-xl transition;
   @apply opacity-80 hover:opacity-100 hover:bg-white hover:bg-opacity-20;
 }
 

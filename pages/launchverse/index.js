@@ -42,7 +42,7 @@ export default function ProjectsIndex ({ projects, locale }){
   // console.log(projects)
   return (
   <>
-    <Layout extraClass="page-launchverse glassmorphism" meta={meta}>
+    <Layout extraClass="page-launchverse--home glassmorphism" meta={meta}>
       <div className="pane-content">
         <div className="pane-content--sec pane-content-active !w-full">
 
@@ -60,8 +60,8 @@ export default function ProjectsIndex ({ projects, locale }){
 
               {/* HEADER */}
               <header className="hero flex flex-col md:flex-row mt-8">
-                <div className="text-center max-w-screen-lg mx-auto">
-                  <h1 className="text-2xl md:text-3xl lg:text-4xl leading-tight text-black dark:text-white font-semibold font-altsans">
+                <div className="text-center max-w-screen-lg mx-auto px-4 md:px-0">
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl text-black dark:text-white font-semibold font-altsans">
                     DAO-based Launchpad for GameFi and MetaVerse
                   </h1>
 
@@ -74,7 +74,7 @@ export default function ProjectsIndex ({ projects, locale }){
               {/* END: HEADER */}
 
               {/* PROJECTS LIST */}
-              <div className="mt-16">
+              <div className="mt-8 md:mt-16">
 
                 { activeProjects.length > 0  && (
                   <ProjectsList key={`active`} title={`Current Project`} projects={activeProjects} isComing={false}/>
@@ -91,7 +91,7 @@ export default function ProjectsIndex ({ projects, locale }){
 
               {/* FOOTER */}
               <div className="hero flex flex-col md:flex-row justify-center items-center mt-16 max-w-screen-md mx-auto">
-                <div className="text-center md:text-left">
+                <div className="text-center md:text-left px-4 md:px-0">
                   <p className="text-2xl md:text-3xl xl:text-4xl font-altsans mb-4">Want to launch your project on RADA?</p>
                   <a href="https://form.jotform.com/213272840844456" rel="nofollow" target="_blank" className="btn btn-lg btn-default btn-primary">
                     Apply for Launch

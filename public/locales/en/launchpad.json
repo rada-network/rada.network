@@ -1,7 +1,7 @@
 {
   "LaunchVerse": "LaunchVerse",
   "Research": "{{name}}'s Research",
-  "Launchverse Overview": "Raising Overview",
+  "Pool Overview": "Pool Overview",
   "Raise": "Raising",
   "Token Price": "Price",
   "Progress": "Progress",
@@ -91,6 +91,6 @@
   "Refund BUSD" : "Refund",
   "Hero Desc": "Simplify and popularize crowdfunding in Blockchain, at the same time make initial Token sales equally accessible for the masses — newbies and veterans alike.",
   "Participians": "Participians",
-  "Sale start in": "Sale start in",
+  "Sale start in": "Sale starts in",
   "Ended in": "Ended in"
 }
