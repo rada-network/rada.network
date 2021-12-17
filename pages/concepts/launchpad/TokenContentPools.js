@@ -49,25 +49,25 @@ const TokenContent = function({tokenData,token}){
                 Connect
               </span>
               <ul className="flex ml-auto">
-                <li className="ml-2">
+                <li className="ml-auto">
                   <a class="btn-twitter" title="Twitter" target="_blank" href="#" rel="noreferrer">
                     <i class="fa-brands fa-twitter"></i>
                     <span className="sr-only">Twitter</span>
                   </a>
                 </li>
-                <li className="ml-2">
+                <li className="ml-4">
                   <a class="btn-discord"  title="Discord" target="_blank" href="#" rel="noreferrer">
                     <i class="fa-brands fa-discord"></i>
                     <span className="sr-only">Discord</span>
                   </a>
                 </li>
-                <li className="ml-2">
+                <li className="ml-4">
                   <a class="btn-medium"  title="Medium" target="_blank" href="#">
                     <i class="fa-brands fa-medium"></i>
                     <span className="sr-only">Medium</span>
                   </a>
                 </li>
-                <li className="ml-2">
+                <li className="ml-4">
                   <a class="btn-telegram"  title="Telegram"  target="_blank" href="#" rel="noreferrer">
                     <i class="fa-brands fa-telegram"></i>
                     <span className="sr-only">Telegram</span>
