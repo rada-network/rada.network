@@ -66,7 +66,7 @@ const Login = () => {
              </span>;
     return (
       <button
-        className="btn btn-default w-24"
+        className="btn btn-default w-20 md:w-24"
         onClick={(e) => store.user.showConnect(true)}
       >
         {t("login")}
@@ -148,7 +148,7 @@ const KYC = () => {
     }
     if (store.kyc.status === BLOCK_PASS_KYC_REJECT){
       return (
-        <a href={`https://identity.blockpass.org/`} target="_blank" rel="nofolow" className={`btn btn-default w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
+        <a href={`https://identity.blockpass.org/`} target="_blank" rel="nofolow" className={`btn btn-default w-20 md:w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
           Resubmit
         </a>
       );
@@ -157,7 +157,7 @@ const KYC = () => {
       return <span className="flex label label--neutral w-24">{`In Progress`}</span>;
     }
     return (
-      <button className={`btn btn-default w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
+      <button className={`btn btn-default w-20 md:w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
         KYC
       </button>
     );

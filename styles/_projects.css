@@ -290,7 +290,7 @@ Card Content
 }
 
 .pools-container--panel {
-  @apply p-8;
+  @apply p-4 md:p-8;
   @apply bg-gray-900 dark:bg-gray-900 bg-opacity-50 dark:bg-opacity-50;
 }
 

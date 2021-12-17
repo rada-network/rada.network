@@ -42,7 +42,7 @@ export default function ProjectsIndex ({ projects, locale }){
   // console.log(projects)
   return (
   <>
-    <Layout extraClassName="page-launchverse--home glassmorphism" meta={meta}>
+    <Layout extraClass="page-launchverse--home glassmorphism" meta={meta}>
       <div className="pane-content">
         <div className="pane-content--sec pane-content-active !w-full">
 

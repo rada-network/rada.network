@@ -13,7 +13,7 @@ export default function ProjectsList({ title, extraClass, projects}) {
       return a.sort - b.sort
     })
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8">
         {pools.map((pool) => (
           <CardProject 
             key={pool.slug}
