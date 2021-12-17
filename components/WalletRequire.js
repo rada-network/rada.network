@@ -30,7 +30,7 @@ export const WalletRequire = ({ type }) => {
         <div className="flex-1 md:mt-0">
           <div className="relative pl-8 md:pl-0 w-full flex items-center">
             {_.isEmpty(account) ? (
-              "Connect wallet to join"
+              "Connect your wallet"
             ) : (
               <>
                 <div>
@@ -58,7 +58,7 @@ export const WalletRequire = ({ type }) => {
             <>
               {/* <NetworkSwitch /> */}
               <button
-                className="btn btn-default w-auto md:w-24"
+                className="btn btn-default w-24"
                 onClick={handleConnectWallet}
               >
                 {t("connect")}
