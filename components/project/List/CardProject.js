@@ -44,7 +44,7 @@ export const CardProject = ({project,pool, status}) => {
         )}
         
 
-        <div class="project-content--meta">
+        <div className="project-content--meta">
           <div className="project-title flex justify-between items-center">
             <div className="text-xl">
               <h5>{pool.title}</h5>

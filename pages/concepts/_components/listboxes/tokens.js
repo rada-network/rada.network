@@ -23,14 +23,14 @@ export default function SelectTokenType() {
         <div className="relative">
           
           <Listbox.Button className="flex items-center relative w-full border py-1.5 pl-2 pr-0 border-gray-200 dark:border-gray-700 rounded-l-md !border-r-transparent bg-white dark:bg-transparent">
-            <span class={`flex justify-center items-center w-px-32 h-px-32 rounded-full mr-1 brand--${selected.name}`}>
-              <span class="icon">{selected.icon}</span>
+            <span className=''={`flex justify-center items-center w-px-32 h-px-32 rounded-full mr-1 brand--${selected.name}`}>
+              <span className=''="icon">{selected.icon}</span>
             </span>
             <span className="block truncate text-sm text-left">
               <strong className="block">{selected.name}</strong>
             </span>
             <span className="absolute inset-y-0 right-4 flex items-center pr-2 pointer-events-none">
-              <i class="fa-solid fa-angle-down"></i>
+              <i className=''="fa-solid fa-angle-down"></i>
             </span>
           </Listbox.Button>
 
@@ -55,8 +55,8 @@ export default function SelectTokenType() {
                 >
                   {({ selected, active }) => (
                     <>
-                      <span class={`flex justify-center items-center w-px-32 h-px-32 rounded-full mr-1 brand--${tokenType.name}`}>
-                        <span class="icon pointer-events-none">{tokenType.icon}</span>
+                      <span className=''={`flex justify-center items-center w-px-32 h-px-32 rounded-full mr-1 brand--${tokenType.name}`}>
+                        <span className=''="icon pointer-events-none">{tokenType.icon}</span>
                       </span>
 
                       <span className="block truncate text-sm text-left">
@@ -77,7 +77,7 @@ export default function SelectTokenType() {
                           }
                                 hidden absolute inset-y-0 right-3 items-center`}
                         >
-                          <i class="fa-solid fa-check"></i>
+                          <i className=''="fa-solid fa-check"></i>
                         </span>
                       ) : null}
                     </>

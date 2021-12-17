@@ -62,7 +62,7 @@ const MainActions = ({}) => {
                 >
                   <div className="mx-auto inlie-flex">
                     <span className="text-yellow-500 mr-2">
-                      <i class="fad fa-exclamation-triangle"></i>
+                      <i className="fad fa-exclamation-triangle"></i>
                     </span>
                   Transaction is in progress</div>
                 </Dialog.Title>
@@ -114,16 +114,16 @@ const MainActions = ({}) => {
               <div className="grid gap-8 lg:grid-cols-2">
                 <div className="box box--transparent">
                   <div className="box-header !px-0">Your allocation</div>
-                  <ul class="mt-4 flex-shrink-0 flex-grow">
-                    <li class="list-pair mb-2">
-                      <span class="list-key">Your maximum allocation</span>
-                      <span class="ml-auto list-value font-semibold tabular-nums">
+                  <ul className="mt-4 flex-shrink-0 flex-grow">
+                    <li className="list-pair mb-2">
+                      <span className="list-key">Your maximum allocation</span>
+                      <span className="ml-auto list-value font-semibold tabular-nums">
                         500 BUSD (5 RIR)
                       </span>
                     </li>
-                    <li class="list-pair mb-2">
-                      <span class="list-key">Your minimum allocation </span>
-                      <span class="ml-auto list-value font-semibold tabular-nums">
+                    <li className="list-pair mb-2">
+                      <span className="list-key">Your minimum allocation </span>
+                      <span className="ml-auto list-value font-semibold tabular-nums">
                         100 BUSD (1 RIR)
                       </span>
                     </li>
@@ -131,7 +131,7 @@ const MainActions = ({}) => {
                   <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
                     <p>
                       <span className="icon mr-2 text-base">
-                        <i class="fas fa-info-circle text-yellow-500"></i>
+                        <i className="fas fa-info-circle text-yellow-500"></i>
                       </span>
                       <span>
                         If you already have RIR, it's recommended to use RIR instead of 

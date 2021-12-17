@@ -14,8 +14,8 @@ export default function FAB() {
               floating-btn z-20`}
             >
               <span className="icon">
-                <i class="fa-solid fa-bars"></i>
-                <i class="fa-solid fa-times"></i>
+                <i className="fa-solid fa-bars"></i>
+                <i className="fa-solid fa-times"></i>
               </span>
               <span className="btn--text sr-only">TOC</span>
             </Popover.Button>

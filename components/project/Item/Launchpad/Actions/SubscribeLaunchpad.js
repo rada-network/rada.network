@@ -43,7 +43,7 @@ const SubscribeLaunchpad = ({ project,pool }) => {
               {project?.token.name}'s {t("Whitelist")}
             </span>
           </h3> */}
-          <p className="text-center mt-2 font-normal">
+          <p className="text-center mt-2 font-normal text-base">
             {t("Complete all the requirements below to joint the pool.")}
           </p>
         </div>
@@ -67,7 +67,7 @@ export const SubscribeLaunchpadClosed = ({ project }) => {
           <h3 className="text-2xl md:text-3xl text-center font-normal">
             <span className="text-color-title">{t("pool closed")}</span>
           </h3>
-          <p className="text-center mt-2 font-normal">{t("pool close note")}</p>
+          <p className="text-center mt-2 font-normal text-base">{t("pool close note")}</p>
         </div>
 
         <div className="list-group">
@@ -88,7 +88,7 @@ const Login = () => {
   const Button = () => {
     if (store.user.id)
       return <span className="flex label label--success w-auto md:w-24">
-               <span className="icon mr-1"><i class="fas fa-check"></i></span>
+               <span className="icon mr-1"><i className="fas fa-check"></i></span>
                Done
              </span>;
     return (
@@ -169,7 +169,7 @@ const KYC = () => {
 
     if (store.kyc.status === BLOCK_PASS_KYC_COMPLETE){
       return <span className="flex label label--success w-auto md:w-24">
-               <span className="icon mr-1"><i class="fas fa-check"></i></span>
+               <span className="icon mr-1"><i className="fas fa-check"></i></span>
                Done
              </span>;
     }

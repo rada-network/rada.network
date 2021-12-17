@@ -28,7 +28,7 @@ const WhitelistCountdown = ({project,pool}) => {
               <div className="">
                 {pool.open_date ?
                 <div>
-                  <h3 class="text-2xl text-center mb-4 font-normal">
+                  <h3 className="text-2xl text-center mb-4 font-normal">
                     <span className="text-color-title">{t("The whitelist will open in")}</span>
                   </h3>
                   
@@ -44,7 +44,7 @@ const WhitelistCountdown = ({project,pool}) => {
                 </div>
                 :
                 <div className="">
-                  <h3 class="text-4xl text-center mt-4 mb-4 font-normal">
+                  <h3 className="text-4xl text-center mt-4 mb-4 font-normal">
                     <span className="text-gray-700 dark:text-gray-200 font-medium">{t("Coming Soon")}</span>
                   </h3>
                   <SocialPromote />

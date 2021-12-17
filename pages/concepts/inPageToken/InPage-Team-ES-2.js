@@ -112,7 +112,7 @@ function Concept() {
                         <strong className="">
                           Sky Mavis
                         </strong>
-                        <span class="icon ml-1 relative -top-0.5"><i class="fa-duotone fa-external-link text-2xs"></i></span>
+                        <span className="icon ml-1 relative -top-0.5"><i className="fa-duotone fa-external-link text-2xs"></i></span>
                       </a>
                     </div>
                   </div>
@@ -134,14 +134,14 @@ function Concept() {
 
               <div className="post-content empty-state text-center pt-8 lg:px-8">
                 <span className="icon">
-                  <i class="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
+                  <i className="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
                 </span>
                 <p className="opacity-50 pt-8 pb-2 m-auto">
                   We don't have information about <strong>Axie Infinity (AXS)</strong>'s Team yet.
                 </p>
                 <button className="btn btn-default btn-lg btn-primary">
                   <span className="icon">
-                    <i class="fa-solid fa-heart"></i>
+                    <i className="fa-solid fa-heart"></i>
                   </span>
                   <span className="btn--text">Contribute</span>
                 </button>

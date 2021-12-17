@@ -45,7 +45,7 @@ export const WalletRequire = ({ type }) => {
                     ETHEREUM
                   </span>
                 )}
-                <button class="ml-2 opacity-70 hover:opacity-100 p-1 rounded-lg z-10"><span class="icon"><i class="fas fa-sign-out"></i></span><span class="sr-only">Disconnect</span></button>
+                <button className="ml-2 opacity-70 hover:opacity-100 p-1 rounded-lg z-10"><span className="icon"><i className="fas fa-sign-out"></i></span><span className="sr-only">Disconnect</span></button>
               </>
             )}
           </div>
@@ -66,7 +66,7 @@ export const WalletRequire = ({ type }) => {
             </>
           ) : (
             <span className="flex label label--success w-auto md:w-24">
-              <span className="icon mr-1"><i class="fas fa-check"></i></span>
+              <span className="icon mr-1"><i className="fas fa-check"></i></span>
               Done
             </span>
           )}

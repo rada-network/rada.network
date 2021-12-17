@@ -98,8 +98,8 @@ export default function ProjectsList({ title, extraClass, projects}) {
 
                               {project.website && (
                                 <li>
-                                  <a class="btn-website" target="_blank" href={project.website} rel="noreferrer">
-                                    <i class="fa-solid fa-globe"></i>
+                                  <a className="btn-website" target="_blank" href={project.website} rel="noreferrer">
+                                    <i className="fa-solid fa-globe"></i>
                                     <span className="sr-only">Website</span>
                                   </a>
                                 </li>
@@ -107,8 +107,8 @@ export default function ProjectsList({ title, extraClass, projects}) {
 
                               {project.twitter && (
                                 <li>
-                                  <a class="btn-twitter" target="_blank" href={project.twitter} rel="noreferrer">
-                                    <i class="fa-brands fa-twitter"></i>
+                                  <a className="btn-twitter" target="_blank" href={project.twitter} rel="noreferrer">
+                                    <i className="fa-brands fa-twitter"></i>
                                     <span className="sr-only">Twitter</span>
                                   </a>
                                 </li>
@@ -116,8 +116,8 @@ export default function ProjectsList({ title, extraClass, projects}) {
 
                               {project.telegram && (
                                 <li>
-                                  <a class="btn-medium" target="_blank" href={project.telegram}>
-                                    <i class="fa-brands fa-telegram"></i>
+                                  <a className="btn-medium" target="_blank" href={project.telegram}>
+                                    <i className="fa-brands fa-telegram"></i>
                                     <span className="sr-only">Telegram</span>
                                   </a>
                                 </li>
@@ -125,8 +125,8 @@ export default function ProjectsList({ title, extraClass, projects}) {
 
                               {project.medium && (
                                 <li>
-                                  <a class="btn-medium" target="_blank" href={project.medium}>
-                                    <i class="fa-brands fa-medium"></i>
+                                  <a className="btn-medium" target="_blank" href={project.medium}>
+                                    <i className="fa-brands fa-medium"></i>
                                     <span className="sr-only">Medium</span>
                                   </a>
                                 </li>
@@ -134,8 +134,8 @@ export default function ProjectsList({ title, extraClass, projects}) {
 
                               {project.discord && checkDiscord(project) && (
                                 <li>
-                                  <a class="btn-discord" target="_blank" href={project.discord} rel="noreferrer">
-                                    <i class="fa-brands fa-discord"></i>
+                                  <a className="btn-discord" target="_blank" href={project.discord} rel="noreferrer">
+                                    <i className="fa-brands fa-discord"></i>
                                     <span className="sr-only">Discord</span>
                                   </a>
                                 </li>
@@ -143,8 +143,8 @@ export default function ProjectsList({ title, extraClass, projects}) {
 
                               {project.facebook && checkFacebook(project) && (
                                 <li>
-                                  <a class="btn-twitter" target="_blank" href={project.facebook} rel="noreferrer">
-                                    <i class="fa-brands fa-facebook"></i>
+                                  <a className="btn-twitter" target="_blank" href={project.facebook} rel="noreferrer">
+                                    <i className="fa-brands fa-facebook"></i>
                                     <span className="sr-only">Facebook</span>
                                   </a>
                                 </li>
@@ -158,7 +158,7 @@ export default function ProjectsList({ title, extraClass, projects}) {
                           className={`${open ? 'open' : ''
                             } pools-container--toggle-arrow`}
                         >
-                          <i class="fas fa-angle-down"></i>
+                          <i className="fas fa-angle-down"></i>
                         </span>
                       </Disclosure.Button>
                       <Transition

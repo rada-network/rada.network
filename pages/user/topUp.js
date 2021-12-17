@@ -276,7 +276,7 @@ export default function UserProfile(props) {
                               {topupInfo?.rada_treasury_address}
                             </span>
                             <span className="icon">
-                              <i class="fa-regular fa-copy text-2xs"></i>
+                              <i className="fa-regular fa-copy text-2xs"></i>
                             </span>
                           </a>
                         </CopyToClipboard>

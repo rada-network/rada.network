@@ -189,7 +189,7 @@ export default function ProjectShare2Earn({
             </div>
           </div>
 
-          {/* <p className="text-sm mb-8 text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: t("welcome description", { provider: `<span class="text-primary-700 dark:text-primary-400">RIR token</span>` }) }} /> */}
+          {/* <p className="text-sm mb-8 text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: t("welcome description", { provider: `<span className="text-primary-700 dark:text-primary-400">RIR token</span>` }) }} /> */}
 
           <ul className="text-sm space-y-4">
             <li className="flex p-4 rounded-lg border border-gray-300 dark:border-gray-700">
@@ -207,7 +207,7 @@ export default function ProjectShare2Earn({
                   <span className="text-gray-500 dark:text-gray-400"
                     dangerouslySetInnerHTML={{
                       __html: t("welcome incentive description", {
-                        rir: `<span class="text-primary-700 dark:text-primary-400"> ${ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span>`
+                        rir: `<span className="text-primary-700 dark:text-primary-400"> ${ethers.utils.formatEther(share2EarnInfo.incentiveL0)} RIR</span>`
                       })
                     }} />
                 } */}
@@ -233,7 +233,7 @@ export default function ProjectShare2Earn({
           </ul>
           <div className="mt-4 rounded-lg border border-yellow-200 bg-yellow-400 bg-opacity-5 text-sm overflow-hidden">
             <div className="px-4 py-2 bg-yellow-400 bg-opacity-10 dark:bg-opacity-100 dark:bg-gray-800 flex items-center">
-              <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+              <i className="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
               <span className="font-semibold">{t("notice")}</span>
             </div>
             <ul className="p-4">
@@ -263,7 +263,7 @@ export default function ProjectShare2Earn({
 
             {!!account && transactionCount < MIN_TOTTAL_TX && 
             <div className={"mt-5 text-center w-full justify-center py-3 px-4 text-sm text-red-500"} style={{ wordBreak: "break-word" }}>
-              <span className="icon rounded-full text-red-600 text-lg mr-2"><i class="fas fa-ban"></i></span>
+              <span className="icon rounded-full text-red-600 text-lg mr-2"><i className="fas fa-ban"></i></span>
               {t("The total amount of transactions in your wallet must be higher than or equal to " + MIN_TOTTAL_TX)}
             </div> 
             }

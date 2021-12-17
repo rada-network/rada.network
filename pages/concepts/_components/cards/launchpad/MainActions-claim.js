@@ -14,10 +14,10 @@ const MainActions = ({}) => {
 
             <div className="project-card--container">
               <div className="max-w-md mx-auto">
-                <ul class="mb-4 mt-auto flex-shrink-0 flex-grow">
-                  <li class="list-pair mb-2">
-                    <span class="list-key !opacity-100">Bạn có thể rút về ví</span>
-                    <div class="ml-auto list-value font-semibold">6,000 PRL
+                <ul className="mb-4 mt-auto flex-shrink-0 flex-grow">
+                  <li className="list-pair mb-2">
+                    <span className="list-key !opacity-100">Bạn có thể rút về ví</span>
+                    <div className="ml-auto list-value font-semibold">6,000 PRL
                       <button className="btn-primary py-2 px-4 rounded-md ml-2">Rút token</button>
                     </div>
                   </li>
@@ -32,18 +32,18 @@ const MainActions = ({}) => {
                       2,500 PRL
                     </span>
                   </div>
-                  <ul class="mb-0 mt-auto flex-shrink-0 flex-grow">
-                    <li class="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
-                      <span class="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 text-gray-700 mr-1">on</span>
+                  <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
+                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
+                      <span className="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 text-gray-700 mr-1">on</span>
                         <date>15 tháng 9, 2021</date></span>
-                      <div class="ml-auto font-semibold list-value">
+                      <div className="ml-auto font-semibold list-value">
                       2,500 PRL
                       </div>
                     </li>
-                    <li class="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
-                      <span class="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 dark-gray-700 mr-1">on</span>
+                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
+                      <span className="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 dark-gray-700 mr-1">on</span>
                         <date>01 tháng 9, 2021</date></span>
-                      <div class="ml-auto font-semibold list-value">
+                      <div className="ml-auto font-semibold list-value">
                       2,500 PRL
                       </div>
                     </li>

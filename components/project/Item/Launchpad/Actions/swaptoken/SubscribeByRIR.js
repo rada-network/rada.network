@@ -152,7 +152,7 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
           <div className="flex-shrink-0 flex-grow">
             <button className={`btn relative w-full btn-default btn-default-lg btn-purple !text-sm !px-2` + (isApproved ? " disabled" : "")} width="100%" scale="md" onClick={handleApprove}>
             {isApproving && <span className="spinner" />}
-            {isApproved && <span className="icon mr-1" ><i class="fas fa-check"></i></span>}
+            {isApproved && <span className="icon mr-1" ><i className="fas fa-check"></i></span>}
             {isApproving && 
             <>{t("Approving Contract")}</> 
             }
@@ -168,7 +168,7 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
           <div  className="flex-shrink-0 flex-grow">
             <button className={`btn relative w-full btn-default btn-default-lg btn-purple !text-sm !px-2` + (isApprovedRIR ? " disabled" : "") } scale="md" onClick={handleApproveRIR}>
             {isApprovingRIR && <span className="spinner" />}
-            {isApprovedRIR && <span className="icon mr-1" ><i class="fas fa-check"></i></span>}
+            {isApprovedRIR && <span className="icon mr-1" ><i className="fas fa-check"></i></span>}
             {isApprovingRIR && 
             <>{t("Approving Contract")}</> 
             }
@@ -188,7 +188,7 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
             {t("Prefund")}
           </button>
           {currentOrderBusd > 0 &&
-          <button class="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
+          <button className="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
           {t("Cancel")}
           </button>
           }

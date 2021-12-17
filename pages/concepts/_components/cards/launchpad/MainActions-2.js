@@ -190,7 +190,7 @@ const MainActions = ({}) => {
                 <h3 className="text-2xl md:text-3xl text-center font-normal">
                   <span className="text-color-title">Paralel's Whitelist</span>
                 </h3>
-                <p className="text-center mt-2 font-normal">
+                <p className="text-center mt-2 font-normal text-base">
                   Đăng ký để được xét duyệt tham gia dự án
                 </p>
               </div>

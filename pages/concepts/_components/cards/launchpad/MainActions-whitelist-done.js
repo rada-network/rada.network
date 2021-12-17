@@ -24,7 +24,7 @@ const MainActions = ({}) => {
                 <h3 className="text-2xl md:text-3xl text-center font-normal">
                   <span className="text-color-title">Moniwar's Whitelist</span>
                 </h3>
-                <p className="text-center mt-2 font-normal">
+                <p className="text-center mt-2 font-normal text-base">
                   Complete all the requirements below to joint the pool.
                 </p>
               </div>

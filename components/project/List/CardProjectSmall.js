@@ -17,7 +17,7 @@ export const CardProject = ({project, pool, title, link, img, status, raise, par
       <div className={`card-project card-project-sm`}>
         <div className="project-content">
 
-          <div class="project-content--meta">
+          <div className="project-content--meta">
             <div className="project-title">
               <div className="project-title--token-logo">
                 <img src={tokenLogo} className="rounded-full" />

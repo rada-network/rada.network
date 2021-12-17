@@ -42,7 +42,7 @@ export default function ProjectsIndex ({ projects, locale }){
   // console.log(projects)
   return (
   <>
-    <Layout extraClass="page-launchverse--home glassmorphism" meta={meta}>
+    <Layout extraClassName="page-launchverse--home glassmorphism" meta={meta}>
       <div className="pane-content">
         <div className="pane-content--sec pane-content-active !w-full">
 
@@ -97,11 +97,11 @@ export default function ProjectsIndex ({ projects, locale }){
                     Apply for Launch
                   </a>
                 </div>
-                <span class="hero-deco mx-auto mt-4"></span>
+                <span className="hero-deco mx-auto mt-4"></span>
               </div>
 
-              <div class="mt-4 lg:mt-16 flex flex-col md:flex-row justify-center items-center">
-                <small class="text-sm leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 max-w-md">© Copyright Rada Network 2021. All rights reserved.</small>
+              <div className="mt-4 lg:mt-16 flex flex-col md:flex-row justify-center items-center">
+                <small className="text-sm leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 max-w-md">© Copyright Rada Network 2021. All rights reserved.</small>
               </div>
               {/* END: FOOTER */}
 

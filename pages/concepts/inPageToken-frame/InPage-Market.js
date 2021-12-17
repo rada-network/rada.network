@@ -181,7 +181,7 @@ const Layout = observer((props) => {
                                       target="_blank"
                                     >
                                       <span className="icon">
-                                        <i class="fa-regular fa-globe"></i>
+                                        <i className="fa-regular fa-globe"></i>
                                       </span>
                                       <span className="btn--text">
                                         https://axieinfinity.com/
@@ -204,7 +204,7 @@ const Layout = observer((props) => {
                                       target="_blank"
                                     >
                                       <span className="icon">
-                                        <i class="fa-brands fa-twitter"></i>
+                                        <i className="fa-brands fa-twitter"></i>
                                       </span>
                                       <span className="btn--text">Twitter</span>
                                     </a>
@@ -215,7 +215,7 @@ const Layout = observer((props) => {
                                       target="_blank"
                                     >
                                       <span className="icon">
-                                        <i class="fa-brands fa-telegram"></i>
+                                        <i className="fa-brands fa-telegram"></i>
                                       </span>
                                       <span className="btn--text">
                                         Telegram
@@ -228,7 +228,7 @@ const Layout = observer((props) => {
                                       target="_blank"
                                     >
                                       <span className="icon">
-                                        <i class="fa-brands fa-discord"></i>
+                                        <i className="fa-brands fa-discord"></i>
                                       </span>
                                       <span className="btn--text">Discord</span>
                                     </a>
@@ -239,7 +239,7 @@ const Layout = observer((props) => {
                                       target="_blank"
                                     >
                                       <span className="icon">
-                                        <i class="fa-brands fa-medium"></i>
+                                        <i className="fa-brands fa-medium"></i>
                                       </span>
                                       <span className="btn--text">Medium</span>
                                     </a>
@@ -296,13 +296,13 @@ const Layout = observer((props) => {
                                       className="btn btn-default btn-default-sm"
                                     >
                                       <span className="icon">
-                                        <i class="cf cf-eth"></i>
+                                        <i className="cf cf-eth"></i>
                                       </span>
                                       <span className="btn--text">
                                         0xF5D6696273...8dd940327b28b
                                       </span>
                                       <span className="icon">
-                                        <i class="fa-regular fa-copy text-2xs"></i>
+                                        <i className="fa-regular fa-copy text-2xs"></i>
                                       </span>
                                     </a>
                                   </div>

@@ -233,7 +233,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
                   onCopy={handleCopy}
                   text={share2earnAdress}
                 >
-                  <button class="btn ml-2">
+                  <button className="btn ml-2">
                     <i className="fa-duotone fa-copy text-2xs"></i>
                   </button>
                 </CopyToClipboard>
@@ -257,7 +257,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
                   onCopy={handleCopy}
                   text={riraddress}
                 >
-                  <button class="btn ml-2">
+                  <button className="btn ml-2">
                     <i className="fa-duotone fa-copy text-2xs"></i>
                   </button>
                 </CopyToClipboard>
@@ -276,7 +276,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
                   onCopy={handleCopy}
                   text={shareLink}
                 >
-                  <button class="btn ml-2">
+                  <button className="btn ml-2">
                     <i className="fa-duotone fa-copy text-2xs"></i>
                   </button>
                 </CopyToClipboard>
@@ -323,7 +323,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
                 </span>
               </div>
               <div className="ml-auto flex items-center">
-                <span class="icon w-4 h-4 mr-1">
+                <span className="icon w-4 h-4 mr-1">
                   <RadaSvg />
                 </span>
                 {((total - earnedRIR) > 0 ? (total - earnedRIR) : 0).toFixed(3)} RIR
@@ -342,7 +342,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
                 </span>
               </div>
               <div className="ml-auto flex items-center">
-                <span class="icon w-4 h-4 mr-1">
+                <span className="icon w-4 h-4 mr-1">
                   <RadaSvg />
                 </span>
                 {earnedRIR.toFixed(3)} RIR
@@ -361,7 +361,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
                 </span>
               </div>
               <div className="ml-auto flex items-center">
-                <span class="icon w-4 h-4 mr-1">
+                <span className="icon w-4 h-4 mr-1">
                   <RadaSvg />
                 </span>
                 {ethers.utils.formatEther(share2earnInfo.maxPerReferral)} RIR
@@ -382,7 +382,7 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
                     </span>
                   </div>
                   <div className="ml-auto flex items-center">
-                    <span class="icon w-4 h-4 mr-1">
+                    <span className="icon w-4 h-4 mr-1">
                       <RadaSvg />
                     </span>
                     {referralInfo.claimableApproved} RIR
@@ -413,13 +413,13 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
                 <li>
                   <div className="message warning flex relative mb-2 ">
                     <span className="message-icon">
-                      <i class="mr-2 fas fa-bullhorn"></i>
+                      <i className="mr-2 fas fa-bullhorn"></i>
                     </span>
                     <div className="message-content pr-2">
                       {t("rir_not_enough")}
                     </div>
                     <button className="flex items-center ml-auto w-4 h-4 ">
-                      <i class="text-base fas fa-times"></i>
+                      <i className="text-base fas fa-times"></i>
                     </button>
                   </div>
                 </li>
