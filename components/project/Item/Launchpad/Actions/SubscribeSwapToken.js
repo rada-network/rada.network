@@ -23,6 +23,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const bUSDContract = useBUSDContract()
   const { account } = useActiveWeb3React()
   const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ pool })
+  console.log(pool)
   const { callWithGasPrice } = useCallWithGasPrice()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const launchpadContract = useLaunchpadContractV2(pool)

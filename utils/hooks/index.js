@@ -17,7 +17,7 @@ export const useLaunchpadInfo = ({pool}) => {
   
   const fetchLaunchpadInfo = async () => {
     try {
-      let info = await lauchpadContact.getPool(pool.id)
+      let info = await lauchpadContact.pools(pool.id)
       let claimable = await lauchpadContact.getClaimable(pool.id)
       let refundable = await lauchpadContact.getRefundable(pool.id)
       let investor = await lauchpadContact.getInvestor(pool.id,account)
