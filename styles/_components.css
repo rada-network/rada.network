@@ -287,7 +287,7 @@ Popper used as a menu
 Disclosure
 ------------------------------- */
 .disclosure {
-  @apply border-b border-gray-200 dark:border-gray-700;
+  @apply border-b border-gray-500 border-opacity-10;
 }
 
 .disclosure--toggle {

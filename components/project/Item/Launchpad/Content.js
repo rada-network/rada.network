@@ -67,7 +67,8 @@ const LaunchpadContent = observer(function({ project,pool }) {
             <li className="list-pair mb-2">
               <span className="list-key">{t("Investment round")}</span>
               <span className="ml-auto list-value font-semibold">
-                <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div>
+                {/* <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div> */}
+                <div className={``}>{pool.type.toUpperCase()}</div>
               </span>
             </li>
             
