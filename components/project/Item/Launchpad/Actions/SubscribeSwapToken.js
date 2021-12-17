@@ -77,8 +77,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     if (!loading){
       let currentOrderBusd = launchpadInfo.investor.amountBusd && launchpadInfo.investor.paid ? launchpadInfo.investor.amountBusd : 0
       let currentOrderRIR = launchpadInfo.investor.amountRir && launchpadInfo.investor.paid ? launchpadInfo.investor.amountRir : 0
-      let currentApprovedBusd = launchpadInfo.investor.approved ? launchpadInfo.investor.allocationBusd : 0
-      let currentApproveRIR = launchpadInfo.investor.approved ? launchpadInfo.investor.allocationRir : 0
+      let currentApprovedBusd = launchpadInfo.investor.approved && launchpadInfo.investor.paid ? launchpadInfo.investor.allocationBusd : 0
+      let currentApproveRIR = launchpadInfo.investor.approved && launchpadInfo.investor.paid ? launchpadInfo.investor.allocationRir : 0
       setOrderBusd(currentOrderBusd)
       setOrderRIR(currentOrderRIR)
       setApprovedBusd(currentApprovedBusd)
@@ -89,7 +89,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   useEffect(() => {
     if (loading) return false
     //pool dont set winner
-    if (launchpadInfo.stat.approvedBusd == 0){
+    if (launchpadInfo.stat.approvedBusd == 0 || !launchpadInfo.investor.paid){
       if (parseInt(orderBusd) > 0){
         // prefund success wait to approve whitelist
         setStep(31)
