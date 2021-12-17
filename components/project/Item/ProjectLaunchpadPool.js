@@ -7,7 +7,6 @@ import CardProject from "../List/CardProject";
 const ProjectLaunchpadPool = ({project,pool}) => {
 
   const ProjectPool = function({project}){
-    console.log(project)
     let pools = project.project_pool.slice(0)
     pools.sort(function(a, b){
       return a.sort - b.sort

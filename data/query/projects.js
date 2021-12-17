@@ -83,6 +83,7 @@ const projectBySlugGql = gql`
         slug
         title
         is_kyc
+        sort
         is_allow_rir
         is_whitelist
       }

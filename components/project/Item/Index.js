@@ -27,8 +27,6 @@ export default function ProjectItem({ project, page, slug,pool }) {
   };
 
   useEffect(() => {
-    console.log("Debugg")
-    console.log(pool)
     ref.current.removeEventListener("scroll", onScroll);
     ref.current.addEventListener("scroll", onScroll);
     return onUnload;

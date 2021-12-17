@@ -40,10 +40,6 @@ export default function ProjectPage({ slug, project, locale }) {
       if (!pool){
         pool = project.project_pool[0]
       }
-
-
-
-
     } else {
       // not contain hash
       pool = null  
@@ -52,11 +48,6 @@ export default function ProjectPage({ slug, project, locale }) {
     }
     setSelectedPool(pool)
   }, [asPath]);
-
-  useEffect(() => {
-    console.log(selectedPool)
-    console.log(poolContract)
-  }, [selectedPool])
 
   useEffect(() => {
     if (selectedPool !== null) {
