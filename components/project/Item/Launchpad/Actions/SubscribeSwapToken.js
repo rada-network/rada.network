@@ -15,6 +15,7 @@ import { set } from "store";
 import SocialPromote from "../SocialPromote";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import useChainConfig from "utils/web3/useChainConfig"
+import MiniCountdown from "@components/project/List/Countdown";
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
@@ -37,6 +38,41 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const [step, setStep] = useState(2)
   const [claimDisbaled, setClaimDisbaled] = useState(false)
   const [tokenAddress,setTokenAddress] = useState(ethers.constants.AddressZero)
+
+
+  const [poolStatus, setPoolStatus] = useState("");
+
+  useEffect(() => {
+    if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
+      setPoolStatus("open")
+    } 
+
+    if (Date.parse(new Date()) < Date.parse(pool.open_date)) {
+      setPoolStatus("coming")
+    }
+    if (Date.parse(new Date()) > Date.parse(pool.end_date)){
+      setPoolStatus("closed")
+    }
+    if (pool.open_date == null) {
+      setPoolStatus("tba")
+    }
+  }, [])
+
+  const CountdownInPool = function(){
+    return (
+      <div className="block">
+        <div className={`countdown-mini--wrapper top-0 !bottom-auto`}>
+          {poolStatus == "open" && <div>{t("Pool close in")}</div>}
+          {poolStatus == "coming" && <div>{t("Sale start in")}</div>}
+          {poolStatus == "closed" && <div>{t("Pool closed")}</div>}
+          {poolStatus == "tba" && <div>{t("Comming Soon")}</div>}
+          {poolStatus == "coming" && <MiniCountdown project={pool} isEndDate={false} />}
+          {poolStatus == "open" && <MiniCountdown project={pool} isEndDate={true} />}
+        </div>
+      </div>
+    )
+  }
+
   const fetchAccountBalance = async function () {
     await fetchLaunchpadInfo()
     let rirBalance = await rirContract.balanceOf(account);
@@ -178,13 +214,13 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
           <div className="card-header text-center sr-only">
             <h2>Public Sale</h2>
           </div>
-
+          
           <div className="card-body no-padding">
             <div className="flex flex-col">
               <div className="">
                 <Timeline step="2" />
               </div>
-
+              <CountdownInPool />
               <div className="project-card--container">
                 <div className="mb-8 sr-only">
                   <h3 className="text-2xl md:text-3xl text-center font-normal">
@@ -293,7 +329,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
               <div className="">
                 <Timeline step="3" />
               </div>
-
+              <CountdownInPool />
               <div className="project-card--container">
                 <div className="max-w-xl mx-auto">
                   <div className="flex">
