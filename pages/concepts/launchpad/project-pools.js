@@ -2,13 +2,13 @@ import { Head } from "../../../components/Head";
 import { Topbar } from "../../../components/Topbar";
 import Navbar from "../../../components/Navbar";
 import TokenInfo from "../../../components/token/TokenInfo";
-import { ProjectsList } from "../_components/cards-layout/ProjectsList";
+import MainActions from "../_components/cards/launchpad/MainActions-prefunding-open";
+import  ProjectsList  from "../_components/cards-layout/ProjectsList-pools";
 import { PostsListWrapper } from "../../../components/card-layouts/PostsList";
 import { BscSvg, UsdtSvg, LaunchSvg } from "../../../components/svg/SvgIcons";
-
+import ReactDOM from "react-dom";
 // Cards Concepts
 import TokenMeta from "../_components/cards/launchpad/TokenMeta";
-import MainActions from "../_components/cards/launchpad/MainActions-claim";
 
 import ThemeSwitch from "../../../components/ThemeSwitch";
 import Profile from "../../../components/Profile";
@@ -20,7 +20,7 @@ import Screen from "../../../components/utils/Responsive";
 import { observer } from "mobx-react";
 import { usePageStore } from "../../../lib/usePageStore";
 import TokenContent from "./TokenContentPools";
-import TokenBrief from "./TokenBrief";
+import TokenBrief from "./TokenBriefPools";
 import TokenNav from "./TokenNav";
 import BackgroundWrapper from "../_components/cards-layout/launchpad/BackgroundWrapper";
 
@@ -60,23 +60,32 @@ const Layout = observer((props) => {
 
           <div className={`pane-center`}>
             <div className="pane-center--main">
-              <div className="pane-content--sec pane-content-active !w-full">
-                <TokenNav />
-
-                <div className="pane-content--sec--main grid scrollbar">
-                  <div className="page page-full page-project-details !pt-0">
-                    <div className="w-limiter-lg">
-                      <div>
-                        <TokenBrief />
-
-                        <div className="section-body p-4 md:p-4">
-                          <TokenContent />
-
-                          {/* Main Action Card */}
-                          <div className="grid grid-cols-1 mt-4">
-                            <MainActions />
+              <div className="pane-content">
+                <div className="pane-content--sec pane-content-active !w-full">
+                  <TokenNav />
+                  <div className="pane-content--sec--main grid scrollbar">
+                    <div className="page page-full page-project-details !pt-0">
+                      <div className="w-limiter-lg">
+                        <div className="pt-4">
+                          <div className="message warning flex mx-2 md:mx-4 relative items-center">
+                            <span className="message-icon">
+                              <i class="mr-2 fas fa-exclamation-circle"></i>
+                            </span>
+                            <div className="message-content pr-2">
+                              Binance Smart Chain Network is under heavy load.
+                              It may take upto 5 minutes to complete a
+                              transaction.
+                            </div>
+                            <button className="flex items-center ml-auto w-4 h-4 ">
+                              <i class="text-base fas fa-times"></i>
+                            </button>
                           </div>
-                          {/* END: Main Action Card */}
+                          <TokenBrief />
+                          <div className="section-body p-4 md:p-4">
+                            <TokenContent />
+                            <ProjectsList />
+                            
+                          </div>
                         </div>
                       </div>
                     </div>
