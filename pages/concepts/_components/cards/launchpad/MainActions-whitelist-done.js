@@ -6,10 +6,6 @@ const MainActions = ({}) => {
     <>
       <div className="card-default project-main-actions no-padding overflow-hidden">
 
-        <div className="card-header text-center sr-only">
-          <h2>Public Sale</h2>
-        </div>
-
         <div className="card-body no-padding">
 
           <div className="flex flex-col">

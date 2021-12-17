@@ -122,7 +122,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
       </div>
       {/* end of project-brief */}
 
-      <div className="card card-default project-process">
+      <div className="card card-default card--project-info">
         <div className="card-header">
           <h3>{t("Info", { name: project?.token?.name })}</h3>
         </div>

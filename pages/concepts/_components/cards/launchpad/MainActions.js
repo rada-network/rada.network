@@ -3,10 +3,6 @@ const MainActions = ({}) => {
     <>
       <div className="box project-main-actions">
 
-        <div className="box-header text-center sr-only">
-          <h2>Public Sale</h2>
-        </div>
-
         <div className="box-body">
 
           {/* Steps Progress */}
