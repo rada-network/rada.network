@@ -26,6 +26,8 @@ const ProjectLaunchpad = ({project,pool}) => {
                     </div>
                     {/* END: Main Action Card */}
 
+                    FAQS
+
                 </div>
             </div>
 

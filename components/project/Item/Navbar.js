@@ -39,7 +39,7 @@ export default function ProjectNavbar({ symbol, project, slug,pool }) {
           <div className="tabbar--main">
           <NavItem uri={symbol+`/${pool !== null ? pool?.slug : ""}`}>
             {pool == null && project.token.name}
-            {pool !== null && (<span className="hidden md:block">{project.content.title + " - "+ pool.title}</span>)}
+            {pool !== null && (<span className="hidden md:!block">{project.content.title + " - "+ pool.title}</span>)}
             {pool !== null && (<span className="block md:hidden">Pool</span>)}
           </NavItem>
             {(!!project.news || project.share_campaign?.length !== 0) && (
