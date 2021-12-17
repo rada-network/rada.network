@@ -291,7 +291,7 @@ Disclosure
 }
 
 .disclosure--toggle {
-  @apply flex items-center justify-between py-4 relative cursor-pointer;
+  @apply flex items-center justify-between py-4 relative cursor-pointer pr-10;
   strong {
     @apply text-base;
   }
