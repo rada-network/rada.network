@@ -25,7 +25,7 @@ export const CardProject = ({project,pool, status}) => {
   }, [])
   const progressPercentage = "0%"
   return (
-    <Link href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`}>
+    <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
     <div className={`card-project is-${project.status}`}>
       <div className="project-content relative">
 
@@ -85,8 +85,8 @@ export const CardProject = ({project,pool, status}) => {
           </div>
 
           <div className="project--cta">
-            <Link href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`} > 
-            <a href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
+            <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} > 
+            <a href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
               <span>
                View Details
               </span>
