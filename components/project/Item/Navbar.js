@@ -19,6 +19,7 @@ export default function ProjectNavbar({ symbol, project, slug,pool }) {
       </Link>
     );
   };
+  console.log(project)
   return (
     <>
       <div className="flex h-full w-limiter-lg relative xl:px-4">
@@ -36,7 +37,11 @@ export default function ProjectNavbar({ symbol, project, slug,pool }) {
         </div>
         <div className="tabbar page-tabs relative lg:left-8 xl:-left-1">
           <div className="tabbar--main">
-          <NavItem uri={symbol+`#${pool !== null ? pool?.slug : ""}`}>{pool == null ? project.token.name : pool.title}</NavItem>
+          <NavItem uri={symbol+`#${pool !== null ? pool?.slug : ""}`}>
+            {pool == null && project.token.name}
+            {pool !== null && (<span className="hidden md:block">{project.content.title + " - "+ pool.title}</span>)}
+            {pool !== null && (<span className="block md:hidden">Pool</span>)}
+          </NavItem>
             {(!!project.news || project.share_campaign?.length !== 0) && (
               <span className="tab-item--divider"></span>
             )}
