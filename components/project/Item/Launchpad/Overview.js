@@ -72,6 +72,7 @@ export default function LaunchpadOverview({ project,pool }) {
       </div>
 
       {/* Video / Banner of Project */}
+      {pool == null && 
       <div className="page-media">
         <div className="media-player rounded-lg">
           <div className="w-full h-full">
@@ -93,6 +94,7 @@ export default function LaunchpadOverview({ project,pool }) {
           </div>
         </div>
       </div>
+      }
     </>
   );
 }

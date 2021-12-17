@@ -19,7 +19,6 @@ export default function ProjectNavbar({ symbol, project, slug,pool }) {
       </Link>
     );
   };
-  console.log(project)
   return (
     <>
       <div className="flex h-full w-limiter-lg relative xl:px-4">
