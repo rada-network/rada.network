@@ -3,6 +3,40 @@ import { Disclosure, Transition } from '@headlessui/react';
 import { CardProject } from "@components/project/List/CardProject";
 
 export default function ProjectsList({ title, extraClass, projects, isComing}) {
+
+  const ProjectPool = function({project}){
+    let pools = project.project_pool.slice(0)
+    pools.sort(function(a, b){
+      return a.sort - b.sort
+    })
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {pools.map((pool) => (
+          <CardProject key={pool.slug}
+            isComing={isComing}
+            project={project}
+            pool={pool}
+            title={pool.title}
+            raise={pool.raise}
+            tokenPrice={pool.price}
+            type={pool.type}
+            img="./../../placeholders/parallel-cover.jpg"
+            tokenLogo="./../../token-logos/theparallel.png"
+            progressToken="100,000"
+            target="100,000"
+            progressPercentage="2%"
+            token="PRL"
+            countdown="2 hours"
+            status={project}
+            statusName="Sale start in"
+            
+            desc="Reviving a legendary dragon hunting game with built-in blockchain technology."
+          />
+        ))}
+      </div>
+    )
+  }
+
   return (
     <>
       <div className="projects-section">
@@ -74,7 +108,7 @@ export default function ProjectsList({ title, extraClass, projects, isComing}) {
 
                               {project.medium && (
                                 <li>
-                                  <a class="btn-medium" target="_blank" href="#">
+                                  <a class="btn-medium" target="_blank" href={project.medium}>
                                     <i class="fa-brands fa-medium"></i>
                                     <span className="sr-only">Medium</span>
                                   </a>
@@ -110,30 +144,7 @@ export default function ProjectsList({ title, extraClass, projects, isComing}) {
                         leaveTo="transform origin-top scale-y-0 opacity-0"
                       >
                         <Disclosure.Panel className="pools-container--panel">
-                          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                            {project.project_pool.map((pool) => (
-                              <CardProject key={pool.slug}
-                                isComing={isComing}
-                                project={project}
-                                pool={pool}
-                                title={pool.title}
-                                raise={pool.raise}
-                                tokenPrice={pool.price}
-                                type={pool.type}
-                                img="./../../placeholders/parallel-cover.jpg"
-                                tokenLogo="./../../token-logos/theparallel.png"
-                                progressToken="100,000"
-                                target="100,000"
-                                progressPercentage="2%"
-                                token="PRL"
-                                countdown="2 hours"
-                                status={project}
-                                statusName="Sale start in"
-                                
-                                desc="Reviving a legendary dragon hunting game with built-in blockchain technology."
-                              />
-                            ))}
-                          </div>
+                          <ProjectPool project={project} ></ProjectPool>
                         </Disclosure.Panel>
                       </Transition>
                     </>

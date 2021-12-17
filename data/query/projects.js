@@ -114,6 +114,7 @@ const projectFeedGql = gql`
       description
     }
     project_pool{
+      sort
       open_date
       type
       end_date
