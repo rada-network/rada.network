@@ -490,14 +490,14 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     {launchpadInfo.refundable[0] > 0 && 
                     <li class="list-pair mb-2">
                       <span class="w-3/5 !opacity-100">{t("busd claim note")}:</span>
-                      <div class="w-2/5 ml-auto font-semibold">{launchpadInfo.claimable[0]} BUSD
+                      <div class="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[0]} BUSD
                       </div>
                     </li>
                     }
                     {launchpadInfo.refundable[1] > 0 && 
                     <li class="list-pair mb-2">
-                      <span class="w-3/5 !opacity-100">{t("busd claim note")}:</span>
-                      <div class="w-2/5 ml-auto font-semibold">{launchpadInfo.claimable[1]} RIR
+                      <span class="w-3/5 !opacity-100">{t("RIR claim note")}:</span>
+                      <div class="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[1]} RIR
                       </div>
                     </li>
                     }
