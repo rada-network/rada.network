@@ -150,9 +150,9 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
         <div className={`mt-4 grid gap-4` + ( (parseInt(numberRIR) > 0 ) ? " grid-cols-2" : "")}> 
           {/* bỏ grid grid-cols-2 nếu user không có RIR hoặc không dùng RIR */} 
           <div className="flex-shrink-0 flex-grow">
-            <button className={`btn relative w-full btn-default btn-default-lg btn-purple !text-sm` + (isApproved ? " disabled" : "")} width="100%" scale="md" onClick={handleApprove}>
+            <button className={`btn relative w-full btn-default btn-default-lg btn-purple !text-sm !px-2` + (isApproved ? " disabled" : "")} width="100%" scale="md" onClick={handleApprove}>
             {isApproving && <span className="spinner" />}
-            {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
+            {isApproved && <span className="icon mr-1" ><i class="fas fa-check"></i></span>}
             {isApproving && 
             <>{t("Approving Contract")}</> 
             }
@@ -166,9 +166,9 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
           </div>
           {parseFloat(accountBalance.rirBalance) > 0 && parseInt(numberRIR) > 0 &&
           <div  className="flex-shrink-0 flex-grow">
-            <button className={`btn relative w-full btn-default btn-default-lg btn-purple !text-sm` + (isApprovedRIR ? " disabled" : "") } scale="md" onClick={handleApproveRIR}>
+            <button className={`btn relative w-full btn-default btn-default-lg btn-purple !text-sm !px-2` + (isApprovedRIR ? " disabled" : "") } scale="md" onClick={handleApproveRIR}>
             {isApprovingRIR && <span className="spinner" />}
-            {isApprovedRIR && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
+            {isApprovedRIR && <span className="icon mr-1" ><i class="fas fa-check"></i></span>}
             {isApprovingRIR && 
             <>{t("Approving Contract")}</> 
             }
