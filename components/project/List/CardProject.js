@@ -20,7 +20,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
       setPoolStatus("closed")
     }
     if (pool.open_date == null) {
-      setPoolStatus("soon")
+      setPoolStatus("tba")
     }
   }, [])
   const progressPercentage = "0%"
@@ -35,8 +35,10 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
               {poolStatus == "open" && <div>{t("Pool close in")}</div>}
               {poolStatus == "coming" && <div>{t("Sale start in")}</div>}
               {poolStatus == "closed" && <div>{t("Pool closed")}</div>}
-              {poolStatus == "soon" && <div>{t("Comming Soon")}</div>}
-              <MiniCountdown project={pool} isEndDate={true}/>
+              {poolStatus == "tba" && <div>{t("Comming Soon")}</div>}
+              {poolStatus == "coming" && <MiniCountdown project={pool} isEndDate={false} />}
+              {poolStatus == "open" && <MiniCountdown project={pool} isEndDate={true} />}
+              
             </div>
           </div>
         )}

@@ -2,14 +2,16 @@ import { CardProject } from "@components/project/List/CardProjectSmall";
 import { poll } from "@ethersproject/web";
 import { useEffect } from "react";
 export default function ProjectsListClosed({ title, extraClass, projects }) {
-
+  let pools = [];
+  for (let project of projects) {
+    pools.push(...project.project_pool)
+  }
   useEffect(() => {
     
   }, [])
-
   return (
     <>
-      {projects.length > 0 && (
+      {pools.length > 0 && (
 
         <div className="projects-section">
 
@@ -23,7 +25,7 @@ export default function ProjectsListClosed({ title, extraClass, projects }) {
                 {project.project_pool.length > 0 &&
                   <>
                     {project.project_pool.map((pool) => (
-                      <CardProject
+                      <CardProject key={project.slug + pool.slug}
                         project={project}
                         pool={pool}
                         title={project.title}
