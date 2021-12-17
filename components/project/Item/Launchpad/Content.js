@@ -54,7 +54,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
     >
       <div className="card card-default project-brief">
         <div className="card-header">
-          <h3>{t("Launchverse Overview")}</h3>
+          <h3>{t("Pool Overview")}</h3>
         </div>
         <div className="card-body flex flex-col">
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
