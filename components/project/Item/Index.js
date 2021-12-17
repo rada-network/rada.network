@@ -5,6 +5,7 @@ import TocSideBar from "@components/toc/TocSidebar";
 import FloatButton from "@components/toc/FloatingButton";
 import dynamic from "next/dynamic";
 import ProjectDetails from "./Details"
+import ProjectLaunchpadPool from "./ProjectLaunchpadPool";
 const ProjectNavbar = dynamic(import("./Navbar"));
 const ProjectLaunchpad = dynamic(import("./Launchpad"));
 const ProjectShare2Earn = dynamic(import("./Share2Earn"));
@@ -26,6 +27,8 @@ export default function ProjectItem({ project, page, slug,pool }) {
   };
 
   useEffect(() => {
+    console.log("Debugg")
+    console.log(pool)
     ref.current.removeEventListener("scroll", onScroll);
     ref.current.addEventListener("scroll", onScroll);
     return onUnload;
@@ -61,7 +64,8 @@ export default function ProjectItem({ project, page, slug,pool }) {
             }
           >
             <div className="w-limiter-lg">
-              {page == "index" && <ProjectLaunchpad project={project} pool={pool} />}
+              {page == "index" && pool !== null && <ProjectLaunchpad project={project} pool={pool} />}
+              {page == "index" && pool === null && <ProjectLaunchpadPool project={project} pool={pool} />}
               {page == "research" && <ProjectDetails project={project} pool={pool} />}
               {page == "share2earn" && project.share_campaign?.length ? (
                 <ProjectShare2Earn shareCampaign={project.share_campaign[0]} shareType={`project`} shareSlug={project.slug} pool={pool} />

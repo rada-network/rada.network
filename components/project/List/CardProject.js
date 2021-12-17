@@ -4,7 +4,7 @@ import Link from "next/link"
 import MiniCountdown from "./Countdown";
 import { useState, useEffect } from "react";
 
-export const CardProject = ({project,pool,title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, type, network, desc, isComing}) => {
+export const CardProject = ({project,pool, status}) => {
   const {t,i18n} = useTranslation("launchpad");
   const [poolStatus, setPoolStatus] = useState("");
 
@@ -60,14 +60,14 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
                 {t("Raise")}
               </span>
               <span className="ml-auto list-value font-semibold">
-                {raise == 0 ? "TBA" : raise.toLocaleString() + " BUSD"}  
+                {pool.raise == 0 ? "TBA" : pool.raise.toLocaleString() + " BUSD"}  
               </span>
             </li>
             <li className="list-pair">
               <span className="list-key">
                 {t("Token Price")}
               </span>
-              <span className="list-value ml-auto"> {tokenPrice == 0 ? "TBA" : tokenPrice + " BUSD"}</span>
+              <span className="list-value ml-auto"> {pool.price == 0 ? "TBA" : pool.price + " BUSD"}</span>
             </li>
             <li className="list-pair">
               <span className="list-key">
@@ -75,7 +75,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
               </span>
               <span className="list-value ml-auto">
                 <span className="font-semibold">0</span>
-                <span className="opacity-70">/{raise == 0 ? "TBA" : raise.toLocaleString() + " BUSD"}</span>
+                <span className="opacity-70">/{pool.raise == 0 ? "TBA" : pool.raise.toLocaleString() + " BUSD"}</span>
               </span>
             </li>
           </ul>

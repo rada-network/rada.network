@@ -28,7 +28,7 @@ export default function ProjectPage({ slug, project, locale }) {
     asPath
   );
   const [selectedPool,setSelectedPool] = useState(null)
-  const [poolContact,setPoolContract] = useState(null)
+  const [poolContract,setPoolContract] = useState(null)
 
   useEffect(() => {
     let pool = {}
@@ -40,11 +40,23 @@ export default function ProjectPage({ slug, project, locale }) {
       if (!pool){
         pool = project.project_pool[0]
       }
+
+
+
+
     } else {
-      pool = project.project_pool[0]
+      // not contain hash
+      pool = null  
+      //project.project_pool[0]
+
     }
     setSelectedPool(pool)
   }, [asPath]);
+
+  useEffect(() => {
+    console.log(selectedPool)
+    console.log(poolContract)
+  }, [selectedPool])
 
   useEffect(() => {
     if (selectedPool !== null) {
@@ -58,8 +70,9 @@ export default function ProjectPage({ slug, project, locale }) {
       })
     }
     
-    
   }, [selectedPool]);
+
+
 
   store.updateNetwork(project?.platform.networkName);
   useEffect(() => {
@@ -72,7 +85,7 @@ export default function ProjectPage({ slug, project, locale }) {
 
   /* Dragger to resize main col */
   const containerRef = useRef();
-  if (poolContact === null) return null
+  //if (poolContact === null) return null
   return (
     <Layout
       extraClass="glassmorphism"
@@ -80,7 +93,7 @@ export default function ProjectPage({ slug, project, locale }) {
       meta={meta}
     >
       <div className={`pane-content`} ref={containerRef}>
-        <ProjectItem project={project} pool={poolContact} slug={slug} page={page} />
+        <ProjectItem project={project} pool={poolContract} slug={slug} page={page} />
       </div>
     </Layout>
   );

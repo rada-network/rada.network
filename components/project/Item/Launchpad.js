@@ -17,7 +17,7 @@ const ProjectLaunchpad = ({project,pool}) => {
                 <LaunchpadOverview project={project} pool={pool} />
 
                 <div className="section-body">
-
+                            
                     <LaunchpadContent project={project} pool={pool} />
 
                     {/* Main Action Card */}
