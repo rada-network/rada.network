@@ -58,14 +58,17 @@ export const WalletRequire = ({ type }) => {
             <>
               {/* <NetworkSwitch /> */}
               <button
-                className="btn btn-default w-24 w-full"
+                className="btn btn-default w-auto md:w-24"
                 onClick={handleConnectWallet}
               >
                 {t("connect")}
               </button>
             </>
           ) : (
-            <span className="flex label label--success w-24">Done</span>
+            <span className="flex label label--success w-auto md:w-24">
+              <span className="icon mr-1"><i class="fas fa-check"></i></span>
+              Done
+            </span>
           )}
         </div>
       </div>

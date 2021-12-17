@@ -336,7 +336,7 @@ const WalletProfile = ({ type }) => {
               <>
                 <NetworkSwitch />
                 <button
-                  className="btn btn-default w-24"
+                  className="btn btn-default w-auto md:w-24"
                   onClick={handleConnectWallet}
                 >
                   {t("connect")}
@@ -344,7 +344,7 @@ const WalletProfile = ({ type }) => {
               </>
             ) : (
               <button
-                className="btn btn-default w-24"
+                className="btn btn-default w-auto md:w-24"
                 onClick={() => handleDisconnectWallet()}
               >
                 {t("disconnect")}

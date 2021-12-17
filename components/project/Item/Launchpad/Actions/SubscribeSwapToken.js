@@ -243,13 +243,13 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       <li class="list-pair mb-2">
                         <span class="list-key">{t("Your maximum allocation")}</span>
                         <span class="ml-auto list-value font-semibold">
-                          {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>( {launchpadInfo?.individualMaximumAmount / 100} RIR )</>}
+                          {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>({launchpadInfo?.individualMaximumAmount / 100} RIR)</>}
                         </span>
                       </li>
                       <li class="list-pair mb-2">
                         <span class="list-key">{t("Your minimum allocation")}</span>
                         <span class="ml-auto list-value font-semibold">
-                          {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>( {launchpadInfo?.individualMinimumAmount / 100} RIR )</>}
+                          {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>({launchpadInfo?.individualMinimumAmount / 100} RIR)</>}
                         </span>
                       </li>
                       {pool.is_allow_rir && parseFloat(accountBalance.rirBalance) > 0 && <li class="list-pair mb-2">
