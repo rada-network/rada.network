@@ -164,11 +164,15 @@ const KYC = () => {
     if (store.kyc.status === BLOCK_PASS_KYC_COMPLETE){
       return <span className="flex label label--success w-24">Done</span>;
     }
-    if (store.kyc.status === BLOCK_PASS_KYC_REJECT){
-      return <span className="flex label label--neutral w-24">Rejected</span>;
-    }
     if (store.kyc.status !== ""){
       return <span className="flex label label--neutral w-24">{`In Progress`}</span>;
+    }
+    if (store.kyc.status === BLOCK_PASS_KYC_REJECT){
+      return (
+        <button className={`btn btn-default w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
+          Resubmit
+        </button>
+      );
     }
     return (
       <button className={`btn btn-default w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">

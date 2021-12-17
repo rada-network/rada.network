@@ -23,7 +23,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const bUSDContract = useBUSDContract()
   const { account } = useActiveWeb3React()
   const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ pool })
-  console.log(pool)
   const { callWithGasPrice } = useCallWithGasPrice()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const launchpadContract = useLaunchpadContractV2(pool)
@@ -463,22 +462,24 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <li class="list-pair mb-2">
                       <span class="w-3/5 !opacity-100">{project.token.symbol} Contract:</span>
                       <div class="w-2/5 ml-auto ">
-                        <div className="">
-                          <CopyToClipboard
-                            onCopy={handleCopy}
-                            text={tokenAddress}
-                          >
-                            <a href={getBscScanURL(tokenAddress)} target="_blank" className="btn btn-default btn-default-sm">
-                              <span className="icon">
-                                <i class={`cf cf-${project?.platform?.networkName}`}></i>
-                              </span>
-                              <span className="btn--text">{ `${tokenAddress.substr(0, 6)}...${tokenAddress.substr(-6)} `}</span>
-                              <span className="icon">
-                                <i class="fa-regular fa-copy text-2xs"></i>
-                              </span>
-                            </a>
-                          </CopyToClipboard>
-                          
+                        <div className="w-36">
+                          <div className="px-2 py-1 rounded-lg flex bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700">
+                            <div>
+                              <a target="_blank" href={getBscScanURL(tokenAddress)}>
+                                <span className="icon mr-2">
+                                  <i class={`cf cf-${project?.platform?.networkName}`}></i>
+                                </span>
+                                {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}</a>
+                            </div>
+                            <CopyToClipboard
+                              onCopy={handleCopy}
+                              text={tokenAddress}
+                            >
+                              <button class="btn ml-2">
+                                <i className="fa-duotone fa-copy text-2xs"></i>
+                              </button>
+                            </CopyToClipboard>
+                          </div>
                         </div>
                       </div>
                     </li>
