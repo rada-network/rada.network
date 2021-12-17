@@ -222,12 +222,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
               </div>
               <CountdownInPool />
               <div className="project-card--container">
-                <div className="mb-8 sr-only">
-                  <h3 className="text-2xl md:text-3xl text-center font-normal">
-                    <span className="text-color-title"></span>
-                  </h3>
-                </div>
-
                 <div className="grid gap-4 md:gap-8 lg:grid-cols-2">
                   <div className="box box--transparent">
 
@@ -267,11 +261,19 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     </ul>
 
                     {pool.is_allow_rir && <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
+                      <p className="relative mb-2">
+                        <span className="icon mr-2 text-base">
+                          <i class="fas fa-check-circle text-green-500"></i>
+                        </span>
+                        <span className="opacity-60">
+                          {t("Prefund description 2")}
+                        </span>
+                      </p>
                       <p>
                         <span className="icon mr-2 text-base">
                           <i class="fas fa-info-circle text-yellow-500"></i>
                         </span>
-                        <span>
+                        <span className="opacity-60">
                           {t("Allocation note")}
                         </span>
                       </p>
@@ -292,10 +294,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       }
       {step == 32 &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
-          <div className="card-header text-center sr-only">
-            <h2>Public Sale</h2>
-          </div>
-
           <div className="card-body no-padding">
             <div className="flex flex-col">
               <div className="">
@@ -320,10 +318,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       }
       {(step == 31) &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
-          <div className="card-header text-center sr-only">
-            <h2>Public Sale</h2>
-          </div>
-
           <div className="card-body no-padding">
             <div className="flex flex-col">
               <div className="">
