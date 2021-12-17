@@ -47,7 +47,7 @@ const SubscribeLaunchpad = ({ project,pool }) => {
 
         <div className="list-group">
           {pool.is_kyc && <Login />}
-          {pool.is_kyc && store.user.id !== "" && <KYC />}
+          {pool.is_kyc && <KYC />}
           <WalletRequire />
         </div>
       </div>
@@ -171,7 +171,7 @@ const KYC = () => {
       return <span className="flex label label--neutral w-24">{`In Progress`}</span>;
     }
     return (
-      <button className="btn btn-default w-24" id="blockpass-kyc-connect">
+      <button className={`btn btn-default w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
         KYC
       </button>
     );
@@ -179,7 +179,7 @@ const KYC = () => {
 
   return (
     <>
-      <div className="list-group--item !px-0 md:!pb-4">
+      <div className={`list-group--item !px-0 md:!pb-4 `}>
         <div className="list-group--item--title w-full md:w-1/4">
           <div className="list-group--item--media">
             <span className="icon">
