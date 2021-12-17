@@ -43,7 +43,7 @@ export default function LaunchpadOverview({ project,pool }) {
               >
                 {token.name}
               </strong>
-              <span className="badge badge-coin badge-coin-lg ml-2 -mb-1">
+              <span className="badge badge-coin badge-coin-lg ml-2">
                 {token.symbol}
               </span>
             </h1>

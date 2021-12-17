@@ -123,7 +123,7 @@ const KYC = () => {
 
   const Info = () => {
     if (store.kyc.status) return <span>{store.kyc.status}</span>;
-    return <span>Click to KYC</span>;
+    return <span>Complete KYC to join</span>;
   };
 
   const Button = () => {
