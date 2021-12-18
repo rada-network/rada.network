@@ -1,9 +1,11 @@
 import { BscSvg} from "@components/svg/SvgIcons";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
+import Link from "next/link"
 
 const ProjectContent = function({project}){
-
+  const {t,i18n} = useTranslation("launchpad")
   const handleCopy = () => {
     toast.success("Copied to clipboard", {})
   }
@@ -15,8 +17,6 @@ const ProjectContent = function({project}){
         <div className="card-header">
           <h3>Overview</h3>
         </div>
-
-
         <div className="card-body flex flex-col">
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">   
           
@@ -26,7 +26,7 @@ const ProjectContent = function({project}){
                 {project.token.symbol}'s Contract
               </span>
               <div className="ml-auto flex items-center list-value font-semibold">
-                <a target="_blank" href="" title="0x3554dfdf1478f16">{`${project.token.contract_address.substr(0, 5)}...${project.token.contract_address.substr(-4)}`}</a>
+                <a target="_blank" href="" title={project.token.contract_address}>{`${project.token.contract_address.substr(0, 5)}...${project.token.contract_address.substr(-4)}`}</a>
                 <CopyToClipboard text=""
                   onCopy={handleCopy}
                   text={project.token.contract_address}
@@ -47,7 +47,7 @@ const ProjectContent = function({project}){
                 <span className="w-4 h-4 mr-2">
                   <BscSvg />
                 </span>
-                <span>Binance Smart Chain</span>
+                <span>{project.platform.name}</span>
               </div>
             </li>
 
@@ -115,12 +115,11 @@ const ProjectContent = function({project}){
           <h3>{project.content.title}</h3>
         </div>
         <div className="card-body">
-          <p className="">
-              {project.content.description}
-          </p>
+          <p dangerouslySetInnerHTML={{ __html: project.content?.description }} />
           <p className="mt-auto pt-4">
-            <a href="#" className="link">Read full research</a> 
-            {/* <span className="icon text-2xs ml-0.5"><i className="fa-duotone fa-external-link"></i></span> */}
+            <Link href={`/${i18n.language}/launchverse/${project.slug}/reearch`} >
+              <a href={`/${i18n.language}/launchverse/${project.slug}/reearch`} className="link">{t("Read full research")}</a>
+            </Link> 
           </p>
         </div>
 

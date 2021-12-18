@@ -29,7 +29,7 @@ const ProjectLaunchpadPool = ({ project, pool }) => {
       <div className="section">
         <LaunchpadOverview project={project} pool={pool} />
 
-        <div className="projects-section mt-4">
+        <div className="section-body p-4 md:p-4">
           <ProjectContent project={project} />
           <div className="projects-section--subheader">
             <h3 className="">{project.content.title}'s Pools</h3>
@@ -37,7 +37,7 @@ const ProjectLaunchpadPool = ({ project, pool }) => {
 
           <div className="w-full">
             <div className="pools-container"
-              style={{ backgroundImage: project.background_uri, }}>
+              style={{ backgroundImage: `url(${project.cover_uri})`, }}>
               <>
                 <div className="pools-container--panel !p-6">
                   <ProjectPool project={project} />
