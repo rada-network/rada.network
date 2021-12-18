@@ -86,6 +86,7 @@ const projectBySlugGql = gql`
         sort
         is_allow_rir
         is_whitelist
+        is_hidden
       }
     }
   }
@@ -123,6 +124,7 @@ const projectFeedGql = gql`
       price
       slug
       title
+      is_hidden
     }
   }
 }
