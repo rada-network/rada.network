@@ -26,11 +26,11 @@
 .label--success,
 .label--green,
 .label.public {
-  @apply bg-green-500 text-white;
+  @apply bg-green-500 text-white dark:bg-green-500 dark:text-white;
 }
 
 .label--warning {
-  @apply bg-red-500 text-white;
+  @apply bg-red-500 text-white dark:bg-red-500 dark:text-white;
 }
 
 .label--inactive {
