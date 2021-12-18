@@ -19,16 +19,18 @@ const WhitelistCountdown = ({project,pool}) => {
             <div className="relative z-0">
               <Timeline step="1" />
             </div>
+
             <div className="global-padding-lg min-h-full bg-white dark:bg-gray-800 relative z-10">
 
               <div className="">
                 {pool.open_date ?
-                <div>
+                <div className="max-w-2xl mx-auto">
                   <h3 className="text-2xl text-center mb-4 font-normal">
                     <span className="text-color-title">{t("The whitelist will open in")}</span>
                   </h3>
-                  
+
                   <ProjectCountdown project={project} pool={pool} />
+
                   <div>
                     <p className="text-sm text-center mt-4 leading-7">
                       {/* <span className="text-color-desc">{t("Please wait until the whitelist opens!")}</span><br />

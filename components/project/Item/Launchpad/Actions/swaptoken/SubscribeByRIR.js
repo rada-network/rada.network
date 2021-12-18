@@ -147,7 +147,7 @@ const SubcribeByRIR = ({project,pool,accountBalance,setStep,fetchAccountBalance,
                 </label>
                 <span
                   className="hasTooltip ml-1 mb-2"
-                  data-tip={t("Prefund description")}
+                  data-tip={t("Allocation note")}
                   data-event="click"
                 >
                   {" "}

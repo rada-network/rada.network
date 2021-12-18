@@ -60,15 +60,13 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
   const CountdownInPool = function(){
     return (
-      <div className="block">
-        <div className={`countdown-mini--wrapper top-0 !bottom-auto`}>
-          {poolStatus == "open" && <div>{t("Pool close in")}</div>}
-          {poolStatus == "coming" && <div>{t("Sale start in")}</div>}
-          {poolStatus == "closed" && <div>{t("Pool closed")}</div>}
-          {poolStatus == "tba" && <div>{t("Comming Soon")}</div>}
-          {poolStatus == "coming" && <MiniCountdown project={pool} isEndDate={false} />}
-          {poolStatus == "open" && <MiniCountdown project={pool} isEndDate={true} />}
-        </div>
+      <div className={`flex text-base justify-between items-center"`}>
+        {poolStatus == "open" && <div className="text-base">{t("Pool close in")}</div>}
+        {poolStatus == "coming" && <div className="text-base">{t("Sale start in")}</div>}
+        {poolStatus == "closed" && <div className="text-base">{t("Pool closed")}</div>}
+        {poolStatus == "tba" && <div className="text-base">{t("Comming Soon")}</div>}
+        {poolStatus == "coming" && <MiniCountdown project={pool} isEndDate={false} />}
+        {poolStatus == "open" && <MiniCountdown project={pool} isEndDate={true} />}
       </div>
     )
   }
@@ -212,44 +210,50 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       {step == 2 &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-body no-padding">
+
             <div className="flex flex-col">
               <div className="">
                 <Timeline step="2" />
               </div>
-              <CountdownInPool />
+
               <div className="project-card--container">
                 <div className="grid gap-4 md:gap-8 lg:grid-cols-2">
+
                   <div className="box box--transparent">
 
-                    <div className="box-header !px-0">{t("Your allocation")}</div>
+                    <div className="box-header !px-0">
+                      <CountdownInPool />
+                    </div>
 
-                    <ul className="mt-4 flex-shrink-0 flex-grow">
+                    <div className="box-header !px-0 sr-only">{t("Your allocation")}</div>
+
+                    <ul className="mt-4 mb-2 flex-shrink-0 flex-grow">
                       {pool.is_allow_rir && parseInt(orderRIR) > 0 && <li className="list-pair mb-2">
-                        <span className="list-key">{t("Prefunded RIR")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Prefunded RIR")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {orderRIR} RIR
                         </span>
                       </li>}
                       <li className="list-pair mb-2">
-                        <span className="list-key">{t("Prefunded BUSD")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Prefunded BUSD")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {orderBusd} BUSD
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                        <span className="list-key">{t("Your maximum allocation")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your maximum allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>({launchpadInfo?.individualMaximumAmount / 100} RIR)</>}
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                        <span className="list-key">{t("Your minimum allocation")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your minimum allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>({launchpadInfo?.individualMinimumAmount / 100} RIR)</>}
                         </span>
                       </li>
                       {pool.is_allow_rir && parseFloat(accountBalance.rirBalance) > 0 && <li className="list-pair mb-2">
-                        <span className="list-key">{t("Your RIR Balance")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your RIR Balance")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {accountBalance.rirBalance} RIR
                         </span>
@@ -262,7 +266,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           <i className="fas fa-check-circle"></i>
                         </span>
                         <span className="opacity-60">
-                          {t("Prefund description 2")}
+                          {t("Prefund description")}
                         </span>
                       </p>
                       <p>
@@ -270,7 +274,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           <i className="fas fa-check-circle"></i>
                         </span>
                         <span className="opacity-60">
-                          {t("Allocation note")}
+                          {t("Prefund description 2")}
                         </span>
                       </p>
                     </div>

@@ -29,7 +29,7 @@ const LaunchpadActions = ({ project,pool }) => {
         {((store.kyc.isKYC && store.kyc.status === BLOCK_PASS_KYC_COMPLETE && store.user.id !== "") || !pool.is_kyc) && !!account ?
           <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
-          <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">
+          <div className="card-default project-main-actions no-padding overflow-hidden">
             <div className="card-body no-padding">
               <div className="flex flex-col">
                 <div className="">
@@ -57,7 +57,7 @@ const LaunchpadActions = ({ project,pool }) => {
         {!!account ?
           <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
-          <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">
+          <div className="card-default project-main-actions no-padding overflow-hidden">
             <div className="card-body no-padding">
               <div className="flex flex-col">
                 <div className="">

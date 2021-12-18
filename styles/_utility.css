@@ -143,7 +143,6 @@
 /* Countdown */
 .countdown-mini--wrapper {
   @apply text-xs flex justify-between items-center px-4 w-full;
-  @apply bg-gray-700 bg-opacity-80 backdrop-blur text-white;
 }
 
 .countdown--mini {
@@ -158,7 +157,7 @@
 }
 
 .countdown--mini time {
-  @apply font-mono;
+  @apply slashed-zero tabular-nums;
 }
 
 .countdown--mini--body span {
