@@ -330,7 +330,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <div className="w-full">
                       <h3 className="text-2xl mb-4 text-green-600 text-center">
                         <span className="icon mr-2">
-                          <i class="fa-duotone fa-badge-check"></i>
+                          <i className="fa-duotone fa-badge-check"></i>
                         </span>
                         {orderRIR > 0 ?
                           <span>

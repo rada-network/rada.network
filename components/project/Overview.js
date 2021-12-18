@@ -31,7 +31,7 @@ const ProjectContent = function({project}){
                   onCopy={handleCopy}
                   text={project.token.contract_address}
                 >
-                  <button class="btn btn-default ml-2">
+                  <button className="btn btn-default ml-2">
                     <i className="fa-duotone fa-copy text-2xs"></i>
                   </button>
                 </CopyToClipboard>
@@ -67,8 +67,8 @@ const ProjectContent = function({project}){
               <ul className="flex ml-auto space-x-3">
                 {project.twitter && (
                   <li>
-                    <a class="flex justify-center items-center" title="Twitter" target="_blank" href={project.twitter} rel="noreferrer">
-                      <i class="fa-brands fa-twitter text-base"></i>
+                    <a className="flex justify-center items-center" title="Twitter" target="_blank" href={project.twitter} rel="noreferrer">
+                      <i className="fa-brands fa-twitter text-base"></i>
                       <span className="sr-only">Twitter</span>
                     </a>
                   </li>
@@ -77,8 +77,8 @@ const ProjectContent = function({project}){
 
                 {project.discord && (
                 <li>
-                  <a class="flex justify-center items-center" title="Discord" target="_blank" href={project.discord} rel="noreferrer">
-                    <i class="fa-brands fa-discord text-base"></i>
+                  <a className="flex justify-center items-center" title="Discord" target="_blank" href={project.discord} rel="noreferrer">
+                    <i className="fa-brands fa-discord text-base"></i>
                     <span className="sr-only">Discord</span>
                   </a>
                 </li>
@@ -86,8 +86,8 @@ const ProjectContent = function({project}){
                 
                 {project.medium && (
                   <li>
-                    <a class="flex justify-center items-center" title="Medium" target="_blank" href={project.medium}>
-                      <i class="fa-brands fa-medium text-base"></i>
+                    <a className="flex justify-center items-center" title="Medium" target="_blank" href={project.medium}>
+                      <i className="fa-brands fa-medium text-base"></i>
                       <span className="sr-only">Medium</span>
                     </a>
                   </li>
@@ -95,8 +95,8 @@ const ProjectContent = function({project}){
                 
                 {project.telegram && (
                   <li>
-                    <a class="flex justify-center items-center" title="Telegram"  target="_blank" href={project.telegram} rel="noreferrer">
-                      <i class="fa-brands fa-telegram-plane text-base"></i>
+                    <a className="flex justify-center items-center" title="Telegram"  target="_blank" href={project.telegram} rel="noreferrer">
+                      <i className="fa-brands fa-telegram-plane text-base"></i>
                       <span className="sr-only">Telegram</span>
                     </a>
                   </li>
