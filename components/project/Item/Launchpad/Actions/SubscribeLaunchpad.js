@@ -35,7 +35,7 @@ const SubscribeLaunchpad = ({ project,pool }) => {
     <>
       <div className="
         max-w-2xl mx-auto p-4 lg:px-8 rounded-lg mt-8 
-        bg-gray-100 dark:bg-gray-700
+        
       ">
         <div className="mb-4">
           {/* <h3 className="text-2xl text-center font-normal">

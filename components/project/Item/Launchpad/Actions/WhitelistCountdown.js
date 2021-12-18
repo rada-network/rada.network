@@ -31,14 +31,18 @@ const WhitelistCountdown = ({project,pool}) => {
 
                   <ProjectCountdown project={project} pool={pool} />
 
-                  <div>
-                    <p className="text-sm text-center mt-4 leading-7">
-                      {/* <span className="text-color-desc">{t("Please wait until the whitelist opens!")}</span><br />
-                      <span className="text-color-desc">{t("You need to apply to join the whitelist.")}</span><br /> */}
-                      <span className="text-color-desc">{t("Openat")} </span> <OpenDate time={pool.open_date} />
-                    </p>
+                  <div className="mt-4 text-center">
+                    <div className="inline-block w-auto mx-auto px-4 py-1 
+                        text-sm text-center rounded-full
+                        border border-gray-200 dark:border-gray-600"
+                    >
+                      <span className="mr-2 opacity-70">{t("Openat")}</span> 
+                      <OpenDate time={pool.open_date} />
+                    </div>
                   </div>
+
                   <SubscribeLaunchpad project={project} pool={pool} />
+
                 </div>
                 :
                 <div className="">
