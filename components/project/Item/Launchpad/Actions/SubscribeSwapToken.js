@@ -258,16 +258,16 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
                     {pool.is_allow_rir && <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
                       <p className="relative mb-2">
-                        <span className="icon mr-2 text-base">
-                          <i className="fas fa-check-circle text-green-500"></i>
+                        <span className="icon mr-2 text-base opacity-60">
+                          <i className="fas fa-check-circle"></i>
                         </span>
                         <span className="opacity-60">
                           {t("Prefund description 2")}
                         </span>
                       </p>
                       <p>
-                        <span className="icon mr-2 text-base">
-                          <i className="fas fa-info-circle text-yellow-500"></i>
+                        <span className="icon mr-2 text-base opacity-60">
+                          <i className="fas fa-check-circle"></i>
                         </span>
                         <span className="opacity-60">
                           {t("Allocation note")}

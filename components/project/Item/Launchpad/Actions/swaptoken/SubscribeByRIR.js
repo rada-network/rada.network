@@ -122,7 +122,9 @@ const SubcribeByRIR = ({project,pool,accountBalance,setStep,fetchAccountBalance,
             
             {/* remove the above block if user doesn't have RIR */}
             <div className="">
-              <label htmlFor="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">{t("Amount")}</label>
+              <div className="flex items-center">
+                <label htmlFor="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">{t("Amount")}</label>
+              </div>
               <select id="amount" name="amount" className="select-custom" value={numberBusd} onChange={e => {handleChangeBUSD(e)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option key={-1} className="text-gray-300" value={0}>0 BUSD</option>
@@ -139,12 +141,12 @@ const SubcribeByRIR = ({project,pool,accountBalance,setStep,fetchAccountBalance,
             </div>
             {parseInt(accountBalance.rirBalance) > 0 && 
             <div className="mt-4">
-              <div className="field-label--text">
+              <div className="flex items-center">
                 <label htmlFor="rir" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">
                   {t("RIR")}
                 </label>
                 <span
-                  className="hasTooltip"
+                  className="hasTooltip ml-1 mb-2"
                   data-tip={t("Prefund description")}
                   data-event="click"
                 >

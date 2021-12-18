@@ -28,7 +28,6 @@ const ProjectLaunchpad = ({ project, pool }) => {
         </div>
 
         {/* FAQ */}
-        {process.env.NEXT_PUBLIC_CHAIN == "dev" && 
         <div className="mt-8 card-default faqs launchverse-faqs">
           <div className="global-padding-lg">
             <h3 className="text-2xl text-center mb-4 font-semibold mx-auto">
@@ -41,7 +40,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
                   {({ open }) => (
                     <>
                       <Disclosure.Button as="div" className="disclosure--toggle">
-                        <strong className="">
+                        <strong>
                           {t("How can we participate in IDOs on LaunchVerse?-question")}
                         </strong>
                         <span
@@ -341,7 +340,6 @@ const ProjectLaunchpad = ({ project, pool }) => {
             </div>
           </div>
         </div>
-        }
 
       </div>
 
