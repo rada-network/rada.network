@@ -5,7 +5,24 @@ import Image from "@components/Image";
 export default function LaunchpadOverview({ project,pool }) {
   const { token } = project;
   const { t } = useTranslation("launchpad");
-  const [isWarning, setIsWarning] = useState(true);
+  const [isWarning, setIsWarning] = useState(false);
+  useEffect(() =>{
+    if (window.sessionStorage){
+      let isShow = window.sessionStorage.getItem("networkWarning")
+      if (!!isShow){
+        setIsWarning(false);
+      }
+      else{
+        setIsWarning(true);
+      }
+    }
+  },[])
+  const closeWarning = (e) => {
+    if (window.sessionStorage){
+      window.sessionStorage.setItem("networkWarning",1)
+    }
+    setIsWarning(false);
+  }
   return (
     <>
       {isWarning && (
@@ -15,9 +32,7 @@ export default function LaunchpadOverview({ project,pool }) {
           </span>
           <div className="message-content pr-2">{t("bsc warning")}</div>
           <button
-            onClick={(e) => {
-              setIsWarning(false);
-            }}
+            onClick={closeWarning}
             className="flex items-center ml-auto w-4 h-4 "
           >
             <i className="text-base fas fa-times"></i>
@@ -66,7 +81,7 @@ export default function LaunchpadOverview({ project,pool }) {
               </span>
             </div>
 
-            <div className={`label ${project.type}`}>{project.type}</div>
+            {!!pool && <div className={`label ${pool.type}`}>{pool.type}</div>}
           </div>
         </div>
       </div>

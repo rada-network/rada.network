@@ -93,6 +93,7 @@ export const SwapNote = function({numberBusd,numberRIR,maxSelected,currentOrderB
     setBusd(numberBusd)
     setRIR(numberRIR)
   },[numberBusd,numberRIR])
+  return null
   return (
     <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
       {RIR > 0 &&
@@ -103,12 +104,6 @@ export const SwapNote = function({numberBusd,numberRIR,maxSelected,currentOrderB
         <div>{t("Prefund description")}</div>
       </li>
       }
-      <li key={2} className="relative mb-2 pl-6">
-        <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
-          <CheckSvg />  
-        </span>
-        <div>{t("Prefund description 2")}</div>
-      </li>
     </ul>
   )
 }

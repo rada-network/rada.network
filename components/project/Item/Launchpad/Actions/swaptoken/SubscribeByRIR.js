@@ -10,6 +10,8 @@ import { useTranslation } from "next-i18next"
 import useStore from "@lib/useStore"
 import { SwapNote,SwapDescription } from "../SwapTokenV2"
 import { BusdSvg, CheckSvg } from "@components/svg/SvgIcons"
+import ReactTooltip from "react-tooltip";
+
 
 const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
   const {t} = useTranslation("launchpad")
@@ -99,8 +101,17 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
     }
   return (
     <>
+      
       <div className={`global-padding` + (isApproving || isApprovingRIR || isConfirming ? " disabled" : "") }>
-
+        <div onClick={(e) => e.stopPropagation()}>
+          <ReactTooltip
+            type="info"
+            multiline={true}
+            globalEventOff="click"
+            clickable={true}
+            html={true}
+          />
+        </div>
         <div className="mb-4">
           
           <div className="relative">
@@ -124,9 +135,19 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
             </div>
             {parseInt(accountBalance.rirBalance) > 0 && 
             <div className="mt-4">
-              <label htmlFor="rir" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">
-                {t("RIR")}
-              </label>
+              <div className="field-label--text">
+                <label htmlFor="rir" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">
+                  {t("RIR")}
+                </label>
+                <span
+                  className="hasTooltip"
+                  data-tip={t("Prefund description")}
+                  data-event="click"
+                >
+                  {" "}
+                  <i className="fa-duotone fa-info-circle text-base" />
+                </span>
+              </div>
               <select id="rir" name="rir" className="select-custom " value={numberRIR} onChange={e => {setNumberRIR(e.currentTarget.value)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option key="0" className="text-gray-300" value={0}>{t("dont use RIR")}</option>
