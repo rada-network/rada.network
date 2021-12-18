@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useTranslation } from 'next-i18next';
 import LaunchpadOverview from "./Launchpad/Overview";
 import CardProject from "../List/CardProject";
+import ProjectContent from "../Overview";
 
 const ProjectLaunchpadPool = ({ project, pool }) => {
 
@@ -27,8 +28,9 @@ const ProjectLaunchpadPool = ({ project, pool }) => {
     <>
       <div className="section">
         <LaunchpadOverview project={project} pool={pool} />
-        <div className="projects-section !mt-0">
 
+        <div className="projects-section mt-4">
+          <ProjectContent project={project} />
           <div className="projects-section--subheader">
             <h3 className="">{project.content.title}'s Pools</h3>
           </div>
