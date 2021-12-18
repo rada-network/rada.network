@@ -24,6 +24,7 @@ export const CardProject = ({project,pool, status}) => {
     }
   }, [])
   const progressPercentage = "0%"
+  if (pool.is_hidden) return null
   return (
     <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
     <div className={`card-project is-${project.status}`}>
