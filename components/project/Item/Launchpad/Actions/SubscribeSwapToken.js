@@ -298,7 +298,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
               <div className="project-card--container">
                 <div className="max-w-xl mx-auto">
                   <div className="mb-4 md:mb-8">
-                    <h3 className="text-2xl md:text-3xl text-center font-normal">
+                    <h3 className="text-2xl text-center font-normal">
                       <span className="text-color-title">
                         {t("pool closed")}
                       </span>
