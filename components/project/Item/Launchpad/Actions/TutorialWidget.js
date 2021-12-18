@@ -3,10 +3,12 @@ import Link from "next/link"
 import {toast} from "react-toastify"
 const TutorialWidget = function({project}){
   const {t,i18n} = useTranslation("launchpad")
+  const url = project?.content?.share2earn_url
+  const share2earn_url = !!url ? url : ( project?.share_campaign?.length >  0 ? `/${i18n.language}/launchverse/${project.slug}/share2earn` : "")
   return (
     <div className="flex flex-col md:flex-row mt-4 md:mt-8 max-w-2xl justify-evenly mx-auto md:space-x-4">
-      {project?.share_campaign?.length > 0 && 
-      <Link href={`/${i18n.language}/launchverse/${project.slug}/share2earn`}>
+      {!!share2earn_url && 
+      <Link href={share2earn_url}>
         <div className="w-full md:w-1/2 p-4 my-2 bg-primary-700 dark:bg-primary-700 text-white rounded-lg flex items-center cursor-pointer">
           <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-full flex-shrink-0 mr-4 shadow">
             <i className="fa-duotone fa-hand-holding-heart"></i>
@@ -14,7 +16,7 @@ const TutorialWidget = function({project}){
           <div>
             <p className="mb-1 opacity-80">{t("Refer a friend to earn RIR")}</p>
           
-            <a href={`/launchverse/${project.slug}/share2earn`} className="group text-white">
+            <a href={share2earn_url} className="group text-white">
               <span className="text-sm">{t("Join Share2Earn")}</span>
               <span className="icon text-xs relative left-1 group-hover:left-2 transition-all"><i className="fas fa-angle-right"></i></span>
             </a>

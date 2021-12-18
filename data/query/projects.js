@@ -63,6 +63,7 @@ const projectBySlugGql = gql`
       content{
         title
         description
+        share2earn_url
       }
       share_campaign{
         id
