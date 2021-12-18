@@ -16,7 +16,7 @@ export default function ProjectsIndex ({ projects, locale }){
   const { locales, asPath } = useRouter();
   const {t,i18n} = useTranslation("launchpad");
 
-  dataStore.page = "project";
+  dataStore.page = "launchverse";
   dataStore.lang = locale;
   /* Dragger to resize main col */
   const mainRef = useRef();
