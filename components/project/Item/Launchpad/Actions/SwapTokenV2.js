@@ -6,15 +6,15 @@ import SubcribeByRIR from "./swaptoken/SubscribeByRIR"
 import SubcribeByBUSD from "./swaptoken/SubscibeByBUSD"
 
 
-const SwapTokensV2 = ({accountBalance,fetchAccountBalance,setStep,pool}) => {
+const SwapTokensV2 = ({accountBalance,fetchAccountBalance,setStep,pool,project}) => {
   const {launchpadInfo,loading} = useLaunchpadInfo({pool})
   if (loading) return null
   return (
     <>
       {pool.is_allow_rir ?
-      <SubcribeByRIR pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
+      <SubcribeByRIR project={project} pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
       :
-      <SubcribeByBUSD pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
+      <SubcribeByBUSD project={project} pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
       }
 
     </>

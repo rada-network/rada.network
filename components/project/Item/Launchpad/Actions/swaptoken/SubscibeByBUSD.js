@@ -11,8 +11,9 @@ import { CheckSvg } from "@components/svg/SvgIcons"
 import { set } from "lodash"
 import { SwapNote,SwapDescription } from "../SwapTokenV2"
 import useStore from "@lib/useStore"
+import { submitPrefundLogApi } from "@data/query/projects"
 
-const SubcribeByBUSD = ({pool,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
+const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
   const store = useStore()
   const {t} = useTranslation("launchpad")
   const {account} = useActiveWeb3React()
@@ -66,6 +67,7 @@ const SubcribeByBUSD = ({pool,accountBalance,setStep,fetchAccountBalance,launchp
       setNumberRIR(0)
       setNumberBusd(0)
       store.updateLoadPoolContent((new Date()).getTime())
+      submitPrefundLogApi({project,pool,account})
     },
   })
   const resetApproved = async () => {

@@ -11,9 +11,12 @@ import useStore from "@lib/useStore"
 import { SwapNote,SwapDescription } from "../SwapTokenV2"
 import { BusdSvg, CheckSvg } from "@components/svg/SvgIcons"
 import ReactTooltip from "react-tooltip";
+import fetcher from "@lib/fetchJson";
+import { submitPrefundLogApi } from "@data/query/projects"
 
 
-const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
+
+const SubcribeByRIR = ({project,pool,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
   const {t} = useTranslation("launchpad")
   const {account} = useActiveWeb3React()
   const store = useStore()
@@ -65,6 +68,7 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
         setNumberRIR(0)
         setNumberBusd(0)
         store.updateLoadPoolContent((new Date()).getTime())
+        submitPrefundLogApi({project,pool,account})
       },
     })
     const { isApproving :isApprovingRIR, isApproved : isApprovedRIR ,handleApprove:handleApproveRIR } =useApproveConfirmTransaction({
@@ -213,7 +217,7 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
           {t("Cancel")}
           </button>
           }
-          {account === "0x61c55832d24bfea603C12A9bea93cc7Efe92e504" && 
+          {account === "0xC0129E7E233d6D9D4f2717Ba3e1837A4FE6C03af" && 
           <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`} onClick={resetApproved}  >
             {t("Reset approve")}
           </button>

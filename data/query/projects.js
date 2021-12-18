@@ -1,5 +1,6 @@
 import {gql} from '@apollo/client';
 import getClient from "../client";
+import fetcher from "@lib/fetchJson";
 
 const projectBySlugGql = gql`
   query ProjectBySlug($slug: String!, $lang: String!) {
@@ -129,6 +130,13 @@ const projectFeedGql = gql`
   }
 }
 `
+const submitProjectPrefundLogGql = gql`
+  mutation submitPrefundLog($user_id : String!,$wallet_address : String!,$contract_address : String!,$project_id : Int!,$pool_id: String!,$key: String!){
+    submitPrefundLog(user_id : $user_id,wallet_address : $wallet_address,contract_address : $contract_address,project_id : $project_id,pool_id : $pool_id,key : $key){
+      id
+    }
+  }
+`
 
 export async function getProjects({ lang }) {
   const client = getClient()
@@ -152,4 +160,30 @@ export async function getProject({ slug, lang }) {
     }
   })
   return res.data.projectBySlug || {}
+}
+
+export async function submitPrefundLog({ user_id,contract_address,wallet_address,project_id,pool_id }) {
+  const client = getClient()
+  const key = process.env.LOGIN_KEY
+  const res = await client.mutate({
+    mutation: submitProjectPrefundLogGql,
+    variables: {
+      key,user_id,wallet_address,contract_address,project_id,pool_id
+    }
+  })
+  return res.data.submitPrefundLog
+}
+
+export const submitPrefundLogApi = async ({pool,project,account}) => {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 
+      pool_id : pool.id.toString(),
+      project_id : project.id,
+      wallet_address : account,
+      contract_address : pool.contract
+    })
+  };
+  return await fetcher("/api/logs/prefund",requestOptions)
 }
