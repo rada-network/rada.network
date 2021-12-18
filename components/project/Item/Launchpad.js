@@ -7,10 +7,11 @@ import { usePageStore } from "../../../lib/usePageStore";
 import LaunchpadOverview from "./Launchpad/Overview";
 import LaunchpadContent from "./Launchpad/Content";
 import LaunchpadActions from "./Launchpad/Actions/Index";
-
 import { Disclosure, Transition } from "@headlessui/react";
 
 const ProjectLaunchpad = ({ project, pool }) => {
+  const {t,i18n} = useTranslation("launchpad");
+  
   return (
     <>
       <div className="section">
@@ -41,7 +42,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
                     <>
                       <Disclosure.Button as="div" className="disclosure--toggle">
                         <strong className="">
-                          How should I do prefunding?
+                          {t("How can we participate in IDOs on LaunchVerse?-question")}
                         </strong>
                         <span
                           className={`${open ? "open" : ""} disclosure--toggle-arrow`}
@@ -59,7 +60,9 @@ const ProjectLaunchpad = ({ project, pool }) => {
                       >
                         <Disclosure.Panel className="disclosure--panel">
                           <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p>
+                              {t("How can we participate in IDOs on LaunchVerse?-answer")}
+                            </p>
                           </div>
                         </Disclosure.Panel>
                       </Transition>
@@ -72,7 +75,8 @@ const ProjectLaunchpad = ({ project, pool }) => {
                     <>
                       <Disclosure.Button as="div" className="disclosure--toggle">
                         <strong>
-                          What's RIR?</strong>
+                          {t("Are IDOs on LaunchVerse conducted on a FCFS basis, Overflow structure or is it lucky-based?-question")}
+                        </strong>
                         <span
                           className={`${open ? "open" : ""} disclosure--toggle-arrow`}
                         >
@@ -89,7 +93,9 @@ const ProjectLaunchpad = ({ project, pool }) => {
                       >
                         <Disclosure.Panel className="disclosure--panel">
                           <div>
-                            <p>RIR stands for RADA Investment Right. We share our investment opportunities with all investors (Community Members) through RIR. RIR is a smart contract running on BSC Network (Binance Smart Chain Network).</p>
+                            <p>
+                              {t("Are IDOs on LaunchVerse conducted on a FCFS basis, Overflow structure or is it lucky-based?-answer")}
+                            </p>
                           </div>
                         </Disclosure.Panel>
                       </Transition>
@@ -104,7 +110,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
                     <>
                       <Disclosure.Button as="div" className="disclosure--toggle">
                         <strong>
-                          If I'm not selected, can I get my money back?
+                          {t("What is RIR and how can I use it on LaunchVerse?-question")}
                         </strong>
                         <span
                           className={`${open ? "open" : ""} disclosure--toggle-arrow`}
@@ -122,8 +128,10 @@ const ProjectLaunchpad = ({ project, pool }) => {
                       >
                         <Disclosure.Panel className="disclosure--panel">
                           <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p>
+                            {t("What is RIR and how can I use it on LaunchVerse?-answer")}
+                              {/* To understand what RIR means, refer to <a target="_blank" href=" https://rada.network/en/post/everything-you-need-to-know-about-rir-rada-investment-right">this article.</a> For any IDO on LaunchVerse, using RIR will get you a 99% guaranteed allocation (minimum: $100 BUSD). */}
+                            </p>
                           </div>
                         </Disclosure.Panel>
                       </Transition>
@@ -136,7 +144,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
                     <>
                       <Disclosure.Button as="div" className="disclosure--toggle">
                         <strong>
-                          Is using RIR guarantee me 100% chance to win?
+                          {t("How many percentage for each pool is dedicated to RIR and how many for BUSD?-question")}
                         </strong>
                         <span
                           className={`${open ? "open" : ""} disclosure--toggle-arrow`}
@@ -154,8 +162,175 @@ const ProjectLaunchpad = ({ project, pool }) => {
                       >
                         <Disclosure.Panel className="disclosure--panel">
                           <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p>
+                            {t("How many percentage for each pool is dedicated to RIR and how many for BUSD?-answer")}
+                            </p>
+                          </div>
+                        </Disclosure.Panel>
+                      </Transition>
+                    </>
+                  )}
+                </Disclosure>
+
+                <Disclosure as="div" className="disclosure">
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button as="div" className="disclosure--toggle">
+                        <strong>
+                          {t("Where can I find information on new IDOs on LaunchVerse?-question")}
+                        </strong>
+                        <span
+                          className={`${open ? "open" : ""} disclosure--toggle-arrow`}
+                        >
+                          <i className="fas fa-angle-down"></i>
+                        </span>
+                      </Disclosure.Button>
+                      <Transition
+                        enter="transition duration-100 ease-out"
+                        enterFrom="transform origin-top scale-y-100 opacity-0"
+                        enterTo="transform origin-top scale-y-100 opacity-100"
+                        leave="transition duration-75 ease-out"
+                        leaveFrom="transform origin-top scale-y-100 opacity-100"
+                        leaveTo="transform origin-top scale-y-0 opacity-0"
+                      >
+                        <Disclosure.Panel className="disclosure--panel">
+                          <div>
+                            <p>
+                              {t("Where can I find information on new IDOs on LaunchVerse?-answer")}
+                            </p>
+                          </div>
+                        </Disclosure.Panel>
+                      </Transition>
+                    </>
+                  )}
+                </Disclosure>
+
+                <Disclosure as="div" className="disclosure">
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button as="div" className="disclosure--toggle">
+                        <strong>
+                          {t("I don't have any RIR. Can I still participate in IDOs on LaunchVerse?-question")}
+                        </strong>
+                        <span
+                          className={`${open ? "open" : ""} disclosure--toggle-arrow`}
+                        >
+                          <i className="fas fa-angle-down"></i>
+                        </span>
+                      </Disclosure.Button>
+                      <Transition
+                        enter="transition duration-100 ease-out"
+                        enterFrom="transform origin-top scale-y-100 opacity-0"
+                        enterTo="transform origin-top scale-y-100 opacity-100"
+                        leave="transition duration-75 ease-out"
+                        leaveFrom="transform origin-top scale-y-100 opacity-100"
+                        leaveTo="transform origin-top scale-y-0 opacity-0"
+                      >
+                        <Disclosure.Panel className="disclosure--panel">
+                          <div>
+                            <p>
+                              {t("I don't have any RIR. Can I still participate in IDOs on LaunchVerse?-answer")}
+                            </p>
+                          </div>
+                        </Disclosure.Panel>
+                      </Transition>
+                    </>
+                  )}
+                </Disclosure>
+
+                <Disclosure as="div" className="disclosure">
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button as="div" className="disclosure--toggle">
+                        <strong>
+                          {t("What does prefunding mean?-question")}
+                        </strong>
+                        <span
+                          className={`${open ? "open" : ""} disclosure--toggle-arrow`}
+                        >
+                          <i className="fas fa-angle-down"></i>
+                        </span>
+                      </Disclosure.Button>
+                      <Transition
+                        enter="transition duration-100 ease-out"
+                        enterFrom="transform origin-top scale-y-100 opacity-0"
+                        enterTo="transform origin-top scale-y-100 opacity-100"
+                        leave="transition duration-75 ease-out"
+                        leaveFrom="transform origin-top scale-y-100 opacity-100"
+                        leaveTo="transform origin-top scale-y-0 opacity-0"
+                      >
+                        <Disclosure.Panel className="disclosure--panel">
+                          <div>
+                            <p>
+                              {t("What does prefunding mean?-answer")}
+                            </p>
+                          </div>
+                        </Disclosure.Panel>
+                      </Transition>
+                    </>
+                  )}
+                </Disclosure>
+
+                <Disclosure as="div" className="disclosure">
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button as="div" className="disclosure--toggle">
+                        <strong>
+                          {t("If I am in the final Whitelist, how can I claim my tokens?-question")}
+                        </strong>
+                        <span
+                          className={`${open ? "open" : ""} disclosure--toggle-arrow`}
+                        >
+                          <i className="fas fa-angle-down"></i>
+                        </span>
+                      </Disclosure.Button>
+                      <Transition
+                        enter="transition duration-100 ease-out"
+                        enterFrom="transform origin-top scale-y-100 opacity-0"
+                        enterTo="transform origin-top scale-y-100 opacity-100"
+                        leave="transition duration-75 ease-out"
+                        leaveFrom="transform origin-top scale-y-100 opacity-100"
+                        leaveTo="transform origin-top scale-y-0 opacity-0"
+                      >
+                        <Disclosure.Panel className="disclosure--panel">
+                          <div>
+                            <p>
+                            {t("If I am in the final Whitelist, how can I claim my tokens?-answer")}
+                            </p>
+                          </div>
+                        </Disclosure.Panel>
+                      </Transition>
+                    </>
+                  )}
+                </Disclosure>
+
+                <Disclosure as="div" className="disclosure">
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button as="div" className="disclosure--toggle">
+                        <strong>
+                          {t("Does LauchVerse support mobiles?-question")}
+                        </strong>
+                        <span
+                          className={`${open ? "open" : ""} disclosure--toggle-arrow`}
+                        >
+                          <i className="fas fa-angle-down"></i>
+                        </span>
+                      </Disclosure.Button>
+                      <Transition
+                        enter="transition duration-100 ease-out"
+                        enterFrom="transform origin-top scale-y-100 opacity-0"
+                        enterTo="transform origin-top scale-y-100 opacity-100"
+                        leave="transition duration-75 ease-out"
+                        leaveFrom="transform origin-top scale-y-100 opacity-100"
+                        leaveTo="transform origin-top scale-y-0 opacity-0"
+                      >
+                        <Disclosure.Panel className="disclosure--panel">
+                          <div>
+                            <p>
+                              {t("Does LauchVerse support mobiles?-answer")}
+                              {/* You can always participate via mobiles (with Metamask app installed), however it is advised that you use the desktop version for smoother experience. For more details, refer to <a href="https://rada.network/en/post/step-by-step-guide-joining-a-share2earn-event" target="_blank">this guide.</a> */}
+                            </p>
                           </div>
                         </Disclosure.Panel>
                       </Transition>
