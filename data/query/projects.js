@@ -22,7 +22,14 @@ const projectBySlugGql = gql`
       is_kyc
       is_allow_rir
       is_whitelist
+      website
+      facebook
+      twitter
+      telegram
+      discord
+      medium
       token{
+        contract_address
         name
         logo
         symbol

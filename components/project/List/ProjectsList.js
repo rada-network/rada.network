@@ -4,8 +4,6 @@ import { CardProject } from "@components/project/List/CardProject";
 import { useEffect, useState } from 'react';
 
 export default function ProjectsList({ title, extraClass, projects}) {
-  const [isShowFacebook, setFacebook] = useState(false)
-  const [isShowDiscord, setDiscord] = useState(false)
 
   const ProjectPool = function({project}){
     let pools = project.project_pool.slice(0)
