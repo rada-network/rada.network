@@ -421,6 +421,12 @@ Brands Colors
   color: #fff !important;
 }
 
+.brand--medium,
+.brand--Medium {
+  background: rgb(0,0,0) !important;
+  color: #fff !important;
+}
+
 /*
 Info Row
 -------------------------------- */

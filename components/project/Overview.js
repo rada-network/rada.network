@@ -44,9 +44,9 @@ const ProjectContent = function({project}){
                 Network
               </span>
               <div className="ml-auto flex items-center list-value">
-                <span className="w-4 h-4 mr-2">
+                {/* <span className="w-4 h-4 mr-2 -mt-1">
                   <BscSvg />
-                </span>
+                </span> */}
                 <span>{project.platform.name}</span>
               </div>
             </li>
@@ -56,7 +56,6 @@ const ProjectContent = function({project}){
                 Website
               </span>
               <div className="list-value flex justify-end ml-auto items-center">
-                <i class="fa-solid fa-globe mr-2"></i>
                 <a href={project.website} target="_blank" className="link">{project.website}</a>
               </div>
             </li>
@@ -65,11 +64,11 @@ const ProjectContent = function({project}){
               <span className="list-key">
                 Connect
               </span>
-              <ul className="flex ml-auto">
+              <ul className="flex ml-auto space-x-3">
                 {project.twitter && (
-                  <li className="ml-2">
-                    <a class="btn-twitter" title="Twitter" target="_blank" href={project.twitter} rel="noreferrer">
-                      <i class="fa-brands fa-twitter"></i>
+                  <li>
+                    <a class="flex justify-center items-center" title="Twitter" target="_blank" href={project.twitter} rel="noreferrer">
+                      <i class="fa-brands fa-twitter text-base"></i>
                       <span className="sr-only">Twitter</span>
                     </a>
                   </li>
@@ -77,27 +76,27 @@ const ProjectContent = function({project}){
                 )}
 
                 {project.discord && (
-                  <li className="ml-2">
-                  <a class="btn-discord"  title="Discord" target="_blank" href={project.discord} rel="noreferrer">
-                    <i class="fa-brands fa-discord"></i>
+                <li>
+                  <a class="flex justify-center items-center" title="Discord" target="_blank" href={project.discord} rel="noreferrer">
+                    <i class="fa-brands fa-discord text-base"></i>
                     <span className="sr-only">Discord</span>
                   </a>
-                  </li>
+                </li>
                 )}
                 
                 {project.medium && (
-                  <li className="ml-2">
-                    <a class="btn-medium"  title="Medium" target="_blank" href={project.medium}>
-                      <i class="fa-brands fa-medium"></i>
+                  <li>
+                    <a class="flex justify-center items-center" title="Medium" target="_blank" href={project.medium}>
+                      <i class="fa-brands fa-medium text-base"></i>
                       <span className="sr-only">Medium</span>
                     </a>
                   </li>
                 )}
                 
                 {project.telegram && (
-                  <li className="ml-2">
-                    <a class="btn-telegram"  title="Telegram"  target="_blank" href={project.telegram} rel="noreferrer">
-                      <i class="fa-brands fa-telegram"></i>
+                  <li>
+                    <a class="flex justify-center items-center" title="Telegram"  target="_blank" href={project.telegram} rel="noreferrer">
+                      <i class="fa-brands fa-telegram-plane text-base"></i>
                       <span className="sr-only">Telegram</span>
                     </a>
                   </li>

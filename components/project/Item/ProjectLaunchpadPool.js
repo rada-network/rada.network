@@ -13,7 +13,7 @@ const ProjectLaunchpadPool = ({ project, pool }) => {
       return a.sort - b.sort
     })
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {pools.map((pool) => (
           <CardProject
             key={pool.slug}
@@ -29,7 +29,7 @@ const ProjectLaunchpadPool = ({ project, pool }) => {
       <div className="section">
         <LaunchpadOverview project={project} pool={pool} />
 
-        <div className="section-body p-4 md:p-4">
+        <div className="section-body">
           <ProjectContent project={project} />
           <div className="projects-section--subheader">
             <h3 className="">{project.content.title}'s Pools</h3>
