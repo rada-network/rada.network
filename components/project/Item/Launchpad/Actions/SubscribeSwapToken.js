@@ -307,7 +307,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         {t("pool closed")}
                       </span>
                     </h3>
-                    
                   </div>
                   <SocialPromote />
                 </div>
@@ -320,17 +319,22 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
         <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-body no-padding">
             <div className="flex flex-col">
+
               <div className="">
                 <Timeline step="3" />
               </div>
-              <CountdownInPool />
+              
               <div className="project-card--container">
                 <div className="max-w-xl mx-auto">
                   <div className="flex">
                     <div className="w-full">
-                      <h3 className="text-xl mb-4 text-green-400 dark:text-green-600">
-                      ✨{orderRIR > 0 ?
-                          <span>{t("prefunded note",
+                      <h3 className="text-2xl mb-4 text-green-600 text-center">
+                        <span className="icon mr-2">
+                          <i class="fa-duotone fa-badge-check"></i>
+                        </span>
+                        {orderRIR > 0 ?
+                          <span>
+                          {t("prefunded note",
                             {
                               amount: orderBusd,
                               rir: orderRIR,
@@ -338,7 +342,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           )
                           }</span>
                           :
-                          <span>{t("prefunded note usd",
+                          <span>
+                            {t("prefunded note usd",
                             {
                               amount: orderBusd,
                             }
@@ -346,7 +351,9 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           }</span>
                         }
                       </h3>
+
                       <TokenSocialPromote project={project} />
+
                       {currentTime < endTime && (parseInt(orderBusd) < maxBusd || ((parseInt(orderRIR) < maxRIR && parseInt(accountBalance.rirBalance) > 0) && pool.is_allow_rir)) &&
                       <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center" onClick={e => { setStep(2) }} >
                         <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
@@ -627,32 +634,32 @@ const TokenSocialPromote = function({project}){
   return (
     <ul className="text-left p-4 border border-gray-200 dark:border-gray-700 rounded-lg mb-4">
       <li  className="relative pl-6  mb-2">
-        <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center mr-2">
-          <i className="fas text-2xs opacity-60 fa-check mx-auto" /> 
+        <span className="absolute left-0 top-0 mr-2">
+          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" /> 
         </span>
         <p className="" dangerouslySetInnerHTML={{__html : t("status note")}} >
         </p>
       </li>
       <li className="relative pl-6 mb-2"> 
-        <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center mr-2">
-          <i className="fas text-2xs opacity-60 fa-check mx-auto" /> 
+        <span className="absolute left-0 top-0 mr-2">
+          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" /> 
         </span>
           <p className="" dangerouslySetInnerHTML={{__html : t("coming soon note",
           {
-            twitter : `<a className="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
-            radanetwork : `<a className="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,
-            radadao : `<a className="link" target="_blank" rel="nofollow" href="https://t.me/radadao">Telegram Community</a>`
+            twitter : `<a class="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
+            radanetwork : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,
+            radadao : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radadao">Telegram Community</a>`
           }
           )}} />
       </li>
       <li className="relative pl-6  mb-2">
-        <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center  mr-2">
-          <i className="fas text-2xs opacity-60 fa-check mx-auto" /> 
+        <span className="absolute left-0 top-0  mr-2">
+          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" /> 
         </span>
           <p className="" dangerouslySetInnerHTML={{__html : t("status note 2",
             {
               token : project.token.name,
-              research : `<a className="link" target="_blank" rel="nofollow" href="/${i18n.language}/launchverse/${project.slug}/research">Research</a>`
+              research : `<a class="link" target="_blank" rel="nofollow" href="/${i18n.language}/launchverse/${project.slug}/research">Research</a>`
             }
           )}} />
       </li>
