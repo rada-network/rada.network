@@ -32,7 +32,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
         <div className="mt-8 card-default faqs launchverse-faqs">
           <div className="global-padding-lg">
             <h3 className="text-2xl text-center mb-4 font-semibold mx-auto">
-              Frequenly Ask Questions
+              {t("Frequently Asked Questions")}
             </h3>
 
             <div className="grid mx-auto max-w-screen-sm">
