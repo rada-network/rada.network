@@ -115,7 +115,9 @@ const ProjectContent = function({project}){
           <h3>{project.content.title}</h3>
         </div>
         <div className="card-body">
-          <p dangerouslySetInnerHTML={{ __html: project.content?.description }} />
+          <div className="h-full" 
+            dangerouslySetInnerHTML={{ __html: project.content?.description }}
+          ></div>
           <p className="mt-auto pt-4">
             <Link href={`/${i18n.language}/launchverse/${project.slug}/reearch`} >
               <a href={`/${i18n.language}/launchverse/${project.slug}/reearch`} className="link">{t("Read full research")}</a>
