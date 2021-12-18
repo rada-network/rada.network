@@ -160,12 +160,18 @@ export default function ProjectsList({ title, extraClass, projects}) {
                         </span>
                       </Disclosure.Button>
                       <Transition
-                        enter="transition duration-100 ease-out"
-                        enterFrom="transform origin-top scale-y-100 opacity-0"
-                        enterTo="transform origin-top scale-y-100 opacity-100"
-                        leave="transition duration-75 ease-out"
-                        leaveFrom="transform origin-top scale-y-100 opacity-100"
-                        leaveTo="transform origin-top scale-y-0 opacity-0"
+                        // enter="transition duration-200 ease-out"
+                        // enterFrom="transform origin-top scale-y-75 opacity-100"
+                        // enterTo="transform origin-top scale-y-100 opacity-100"
+                        // leave="transition duration-75 ease-out"
+                        // leaveFrom="transform origin-top opacity-100"
+                        // leaveTo="transform origin-top opacity-0"
+                        enter=""
+                        enterFrom=""
+                        enterTo=""
+                        leave=""
+                        leaveFrom=""
+                        leaveTo=""
                       >
                         <Disclosure.Panel className="pools-container--panel">
                           <ProjectPool project={project} ></ProjectPool>

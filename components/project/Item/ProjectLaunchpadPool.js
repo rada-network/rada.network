@@ -13,7 +13,7 @@ const ProjectLaunchpadPool = ({ project, pool }) => {
       return a.sort - b.sort
     })
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
         {pools.map((pool) => (
           <CardProject
             key={pool.slug}
@@ -39,7 +39,7 @@ const ProjectLaunchpadPool = ({ project, pool }) => {
             <div className="pools-container"
               style={{ backgroundImage: `url(${project.cover_uri})`, }}>
               <>
-                <div className="pools-container--panel !p-6">
+                <div className="pools-container--panel">
                   <ProjectPool project={project} />
                 </div>
               </>

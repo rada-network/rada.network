@@ -2,7 +2,7 @@
 --------------------------------------- */
 .card-project {
   @apply cursor-pointer shadow-sm hover:shadow-lg transition-all rounded-lg relative top-0;
-  @apply bg-white dark:bg-gray-800 border-0;
+  @apply bg-white bg-opacity-95 dark:bg-gray-800 dark:bg-opacity-90 border-0 backdrop-filter backdrop-blur;
   @apply hover:-top-1;
 }
 
@@ -206,7 +206,7 @@ Card Content
  
 .card-project-sm .project-fields {
   @apply flex flex-wrap md:flex-nowrap flex-shrink-0 lg:w-4/6 space-x-0 lg:space-x-6 lg:justify-evenly items-baseline content-start;
-  @apply ml-12 mt-2 md:ml-12 lg:ml-0 lg:mt-0;
+  @apply ml-12 md:ml-12 lg:ml-0 lg:mt-0;
 }
 
 .card-project-sm .list-pair {
@@ -244,16 +244,16 @@ Card Content
 /* Pools Container
 --------------------------------------- */
 .pools-container {
-  @apply cursor-pointer shadow-sm hover:shadow-lg transition-all rounded-lg overflow-hidden;
+  @apply shadow-sm hover:shadow-lg transition-all rounded-lg overflow-hidden;
   @apply hover:border-gray-100 dark:hover:border-gray-700;
-  @apply bg-no-repeat bg-cover;
+  @apply bg-no-repeat bg-cover bg-left-top;
   + .pools-container {
     @apply mt-4;
   }
 }
 
 .pools-container--toggle {
-  @apply flex items-center px-6 py-3 md:py-2 space-x-4 relative rounded-t-lg;
+  @apply flex items-center px-6 py-3 md:py-2 space-x-4 relative rounded-t-lg cursor-pointer;
   @apply text-white bg-gray-900 dark:bg-gray-900 bg-opacity-70 dark:bg-opacity-70;
 }
 
@@ -311,7 +311,7 @@ Card Content
 /* Countdown  */
 .pools-container .countdown-mini--wrapper {
   @apply top-0 bottom-auto rounded-b-none rounded-t-lg text-sm;
-  @apply py-2 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-200 font-normal;
+  @apply py-2 border-b border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-200 font-normal;
 }
 
 .pools-container .countdown--mini--body time {
