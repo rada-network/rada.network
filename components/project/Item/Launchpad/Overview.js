@@ -9,7 +9,7 @@ export default function LaunchpadOverview({ project,pool }) {
   useEffect(() =>{
     if (window.sessionStorage){
       let isShow = window.sessionStorage.getItem("networkWarning")
-      if (!!isShow){
+      if (!!isShow || !pool){
         setIsWarning(false);
       }
       else{
