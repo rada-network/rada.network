@@ -23,14 +23,14 @@ export default function SelectTokenType() {
         <div className="relative">
           
           <Listbox.Button className="flex items-center relative w-full border py-1.5 pl-2 pr-0 border-gray-200 dark:border-gray-700 rounded-l-md !border-r-transparent bg-white dark:bg-transparent">
-            <span className=''={`flex justify-center items-center w-px-32 h-px-32 rounded-full mr-1 brand--${selected.name}`}>
-              <span className=''="icon">{selected.icon}</span>
+            <span className={`flex justify-center items-center w-px-32 h-px-32 rounded-full mr-1 brand--${selected.name}`}>
+              <span className="icon">{selected.icon}</span>
             </span>
             <span className="block truncate text-sm text-left">
               <strong className="block">{selected.name}</strong>
             </span>
             <span className="absolute inset-y-0 right-4 flex items-center pr-2 pointer-events-none">
-              <i className=''="fa-solid fa-angle-down"></i>
+              <i className="fa-solid fa-angle-down"></i>
             </span>
           </Listbox.Button>
 
@@ -43,8 +43,9 @@ export default function SelectTokenType() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute top-0 border-gray-200 w-full overflow-hidden bg-white dark:bg-gray-700 border-b border-gray-300 dark:border-gray-700 z-10 rounded-lg shadow-xl">
-              {tokenTypes.map((tokenType, tokenTypeIdx) => (
+            {/* <Listbox.Options className="absolute top-0 border-gray-200 w-full overflow-hidden bg-white dark:bg-gray-700 border-b border-gray-300 dark:border-gray-700 z-10 rounded-lg shadow-xl">
+              {tokenTypes.map((tokenType, tokenTypeIdx) => 
+              (
                 <Listbox.Option
                   key={tokenTypeIdx}
                   className={({ active }) =>
@@ -77,14 +78,14 @@ export default function SelectTokenType() {
                           }
                                 hidden absolute inset-y-0 right-3 items-center`}
                         >
-                          <i className=''="fa-solid fa-check"></i>
+                          <i className="fa-solid fa-check"></i>
                         </span>
                       ) : null}
                     </>
                   )}
                 </Listbox.Option>
               ))}
-            </Listbox.Options>
+            </Listbox.Options> */}
           </Transition>
         </div>
       </Listbox>
