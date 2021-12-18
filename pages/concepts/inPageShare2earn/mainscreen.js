@@ -295,7 +295,7 @@ function Concept() {
                         <div className="mb-4">
                           <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Facebook's post link</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
-                            <span className="absolute top-2 left-3 flex justify-center iNametems-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span className="icon"><i className="fa-brands fa-facebook-f"></i></Namespan></span>
+                            <span className="absolute top-2 left-3 flex justify-center iNametems-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span className="icon"><i className="fa-brands fa-facebook-f"></i></span></span>
                             <input type="text" name="fb-post-url" id="fb-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Facebook's post link" />
                             <div className="absolute inset-y-0 right-0 flex items-center">
                             </div>
@@ -305,7 +305,7 @@ function Concept() {
                         <div className="mb-4">
                           <label for="twitter-post-url" className="sr-only block text-xs font-medium uppercase">Twitter's post link</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
-                            <span className="absolute top-2 left-3 flex justify-center iNametems-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span className="icon"><i className="fa-brands fa-twitter"></i></Namespan></span>
+                            <span className="absolute top-2 left-3 flex justify-center iNametems-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span className="icon"><i className="fa-brands fa-twitter"></i></span></span>
                             <input type="text" name="twitter-post-url" id="twitter-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Twitter's post link" />
                             <div className="absolute inset-y-0 right-0 flex items-center">
                             </div>
@@ -315,7 +315,7 @@ function Concept() {
                         <div className="mb-4">
                           <label for="linkedin-post-url" className="sr-only block text-xs font-medium uppercase">Linkedin's post link</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
-                            <span className="absolute top-2 left-3 flex justify-center iNametems-center w-px-24 h-px-24 rounded-full mr-4 brand--linkedin"><span className="icon"><i className="fa-brands fa-linkedin-in"></i></Namespan></span>
+                            <span className="absolute top-2 left-3 flex justify-center iNametems-center w-px-24 h-px-24 rounded-full mr-4 brand--linkedin"><span className="icon"><i className="fa-brands fa-linkedin-in"></i></span></span>
                             <input type="text" name="linkedin-post-url" id="linkedin-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Linkedin's post link" />
                             <div className="absolute inset-y-0 right-0 flex items-center">
                             </div>
