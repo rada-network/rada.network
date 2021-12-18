@@ -355,7 +355,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       <TokenSocialPromote project={project} />
 
                       {currentTime < endTime && (parseInt(orderBusd) < maxBusd || ((parseInt(orderRIR) < maxRIR && parseInt(accountBalance.rirBalance) > 0) && pool.is_allow_rir)) &&
-                      <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center" onClick={e => { setStep(2) }} >
+                      <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
                         <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
                           <i className="fa fa-money-bill"></i>
                         </span>
@@ -363,7 +363,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">{t("Adjust prefund")}</p>
                         
                           <a href={`#`}  className="group">
-                            <span className="text-sm">{t("adjust note",{"orderBusd" : orderBusd,"maxBusd" : maxBusd})}</span>
+                            <span className="text-sm mr-1">{t("adjust note",{"orderBusd" : orderBusd,"maxBusd" : maxBusd})}</span>
                             <span className="icon text-xs relative left-1 group-hover:left-2 transition-all"><i className="fas fa-angle-right"></i></span>
                           </a>
                         </div>

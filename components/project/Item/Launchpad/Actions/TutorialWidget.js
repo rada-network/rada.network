@@ -9,7 +9,7 @@ const TutorialWidget = function({project}){
     <div className="flex flex-col md:flex-row mt-4 md:mt-8 max-w-2xl justify-evenly mx-auto md:space-x-4">
       {!!share2earn_url && 
       <Link href={share2earn_url}>
-        <div className="w-full md:w-1/2 p-4 my-2 bg-primary-700 dark:bg-primary-700 text-white rounded-lg flex items-center cursor-pointer">
+        <div className="w-full md:w-1/2 p-4 my-2 bg-primary-600 dark:bg-primary-700 text-white rounded-lg flex items-center cursor-pointer group">
           <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-full flex-shrink-0 mr-4 shadow">
             <i className="fa-duotone fa-hand-holding-heart"></i>
           </span>
@@ -26,7 +26,7 @@ const TutorialWidget = function({project}){
       </Link>
       }
 
-      <div className="w-full md:w-1/2 p-4 my-2 bg-gray-100 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center">
+      <div className="w-full md:w-1/2 p-4 my-2 bg-gray-100 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center group">
         <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow">
           <i className="fad fa-info"></i>
         </span>

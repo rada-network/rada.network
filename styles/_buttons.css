@@ -85,7 +85,7 @@ Sizes
 
 /* Colors */
 .btn-primary {
-  @apply border-transparent hover:border-transparent bg-primary-700 text-primary-100 hover:bg-primary-600 hover:text-white;
+  @apply border-transparent hover:border-transparent bg-primary-600 text-primary-100 hover:bg-primary-500 hover:text-white;
   @apply dark:border-transparent dark:hover:border-transparent dark:bg-primary-700 dark:hover:bg-primary-600;
 }
 

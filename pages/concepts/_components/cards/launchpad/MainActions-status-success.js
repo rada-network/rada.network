@@ -39,7 +39,7 @@ const MainActions = ({}) => {
                        Vesting schedule will follow The Parallel&rsquo;s <a  href="" className="link">tokenomics</a> 
                       </li>
                     </ul>
-                    <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center">
+                    <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group">
                       <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
                         <i className="fa fa-money-bill"></i>
                       </span>
