@@ -52,10 +52,10 @@ export default function ProjectPage({ slug, project, locale }) {
   useEffect(() => {
     if (selectedPool !== null) {
       setLoadingPool(true)
-      fetcher(`/api/pools/get-pools?slug=${project.slug}`).then(function(res){
+      fetcher(`/api/pools/get-pools?slug=${project.slug}/${selectedPool.slug}`).then(function(res){
         setLoadingPool(false)
-        if (!!res[selectedPool.slug]){
-          setPoolContract({...selectedPool,id : res[selectedPool.slug].pool_id,contract : res[selectedPool.slug].contract })
+        if (!!res.pool_id){
+          setPoolContract({...selectedPool,id : res.pool_id,contract : res.contract })
         }
         else{
           setPoolContract({...selectedPool,id : null,contract : "" })
