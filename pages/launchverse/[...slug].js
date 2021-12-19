@@ -24,6 +24,12 @@ export default function ProjectPage({ slug, project, locale }) {
   else{
     poolSlug = pageOrPool
   }
+  let pool = null
+  if (poolSlug !== ""){
+    pool = project.project_pool.find(function(item){
+      return item.slug == poolSlug
+    })
+  }
   const meta = myUtils.createSiteMetadata(
     {
       page: "ProjectDetail",
@@ -34,36 +40,7 @@ export default function ProjectPage({ slug, project, locale }) {
     locales,
     asPath
   );
-  const [selectedPool,setSelectedPool] = useState(null)
-  const [poolContract,setPoolContract] = useState(null)
-  const [loadingPool,setLoadingPool] = useState(false)
-
-  useEffect(() => {
-    if (poolSlug !== ""){
-      let pool = project.project_pool.find(function(item){
-        return item.slug == poolSlug
-      })
-      if (pool){
-        setSelectedPool(pool)
-      }
-    }
-  },[poolSlug])
-
-  useEffect(() => {
-    if (selectedPool !== null) {
-      setLoadingPool(true)
-      fetcher(`/api/pools/get-pools?slug=${project.slug}/${selectedPool.slug}`).then(function(res){
-        setLoadingPool(false)
-        if (!!res.contract){
-          setPoolContract({...selectedPool,id : res.pool_id,contract : res.contract })
-        }
-        else{
-          setPoolContract({...selectedPool,id : null,contract : "" })
-        }
-      })
-    }
-    
-  }, [selectedPool]);
+  
 
   store.updateNetwork(project?.platform.networkName);
   useEffect(() => {
@@ -75,7 +52,6 @@ export default function ProjectPage({ slug, project, locale }) {
   }, [project]);
   /* Dragger to resize main col */
   const containerRef = useRef();
-
   return (
     <Layout
       extraClass="glassmorphism"
@@ -83,7 +59,7 @@ export default function ProjectPage({ slug, project, locale }) {
       meta={meta}
     >
       <div className={`pane-content`} ref={containerRef}>
-        {!loadingPool && <ProjectItem project={project} pool={poolContract} slug={slug} page={page} />}
+        <ProjectItem project={project} pool={pool} slug={slug} page={page} />
       </div>
     </Layout>
   );

@@ -1,12 +1,13 @@
+import { useRouter } from "next/router";
 import Countdown from "react-countdown";
 
 const ProjectCountdown = ({ project, setCountdownDone ,pool,isEndDate}) => {
-
+  const router = useRouter()
   const renderer = ({ formatted: { days, hours, minutes, seconds }, completed }) => {
     if (completed) {
       // Render a completed state
       // reload page
-      setCountdownDone(true)
+      router.reload()
       return <span>Opening for whitelist now!</span>;
     } else {
       // Render a countdown

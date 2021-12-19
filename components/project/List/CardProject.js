@@ -15,15 +15,17 @@ export const CardProject = ({project,pool, status}) => {
   const [poolStatus, setPoolStatus] = useState("");
   const [poolContract, setPoolContract] = useState({"pool_id":'',"contract":null});
   const {library,account} = useActiveWeb3React()
+  const [poolStat, setPoolStat] = useState({amountBusd : 0});
+  const lauchpadContact = useLaunchpadContractV2({...pool,contract: poolContract.contract,pool_id : poolContract.pool_id});
   useEffect(() => {
-    if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
+    if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(pool.current_date) && Date.parse(pool.current_date) < Date.parse(pool.end_date)) {
       setPoolStatus("open")
     } 
 
-    if (Date.parse(new Date()) < Date.parse(pool.open_date)) {
+    if (Date.parse(pool.current_date) < Date.parse(pool.open_date)) {
       setPoolStatus("coming")
     }
-    if (Date.parse(new Date()) > Date.parse(pool.end_date)){
+    if (Date.parse(pool.current_date) > Date.parse(pool.end_date)){
       setPoolStatus("closed")
     }
     if (pool.open_date == null) {
@@ -33,17 +35,17 @@ export const CardProject = ({project,pool, status}) => {
   
   useEffect(() => {
     if (pool !== null && !pool.is_hidden) {
+      if (pool.slug == "ido"){
+        console.log("loadpool")
+      }
       fetcher(`/api/pools/get-pools?slug=${project.slug}/${pool.slug}`).then(function(res){
         if (!!res.pool_id){
           setPoolContract(res)
         }
       })
     }
-    
-  }, [pool]);
+  }, []);
 
-  const [poolStat, setPoolStat] = useState({amountBusd : 0});
-  const lauchpadContact = useLaunchpadContractV2({...pool,contract: poolContract.contract,pool_id : poolContract.pool_id});
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {

@@ -1,28 +1,8 @@
 import { Fragment } from 'react';
 import { Disclosure, Transition } from '@headlessui/react';
-import { CardProject } from "@components/project/List/CardProject";
-import { useEffect, useState } from 'react';
+import ProjectPool from './ProjectPool';
 
 export default function ProjectsList({ title, extraClass, projects}) {
-
-  const ProjectPool = function({project}){
-    let pools = project.project_pool.slice(0)
-    pools.sort(function(a, b){
-      return a.sort - b.sort
-    })
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8">
-        {pools.map((pool) => (
-          <CardProject 
-            key={pool.slug}
-            project={project}
-            pool={pool}
-            status={project}
-          />
-        ))}
-      </div>
-    )
-  }
 
   function checkURL (project) {
     let socialURL = new Array();
@@ -95,7 +75,7 @@ export default function ProjectsList({ title, extraClass, projects}) {
                             <ul>
 
                               {project.website && (
-                                <li>
+                                <li key={`website`}>
                                   <a className="btn-website" target="_blank" href={project.website} rel="noreferrer">
                                     <i className="fa-solid fa-globe"></i>
                                     <span className="sr-only">Website</span>
@@ -104,7 +84,7 @@ export default function ProjectsList({ title, extraClass, projects}) {
                               )}
 
                               {project.twitter && (
-                                <li>
+                                <li key={`twitter`}>
                                   <a className="btn-twitter" target="_blank" href={project.twitter} rel="noreferrer">
                                     <i className="fa-brands fa-twitter"></i>
                                     <span className="sr-only">Twitter</span>
@@ -113,7 +93,7 @@ export default function ProjectsList({ title, extraClass, projects}) {
                               )}
 
                               {project.telegram && (
-                                <li>
+                                <li key={`telegram`}>
                                   <a className="btn-medium" target="_blank" href={project.telegram}>
                                     <i className="fa-brands fa-telegram"></i>
                                     <span className="sr-only">Telegram</span>
@@ -122,7 +102,7 @@ export default function ProjectsList({ title, extraClass, projects}) {
                               )}
 
                               {project.medium && (
-                                <li>
+                                <li key={`medium`}>
                                   <a className="btn-medium" target="_blank" href={project.medium}>
                                     <i className="fa-brands fa-medium"></i>
                                     <span className="sr-only">Medium</span>
@@ -131,7 +111,7 @@ export default function ProjectsList({ title, extraClass, projects}) {
                               )}
 
                               {project.discord && checkDiscord(project) && (
-                                <li>
+                                <li key={`discord`}>
                                   <a className="btn-discord" target="_blank" href={project.discord} rel="noreferrer">
                                     <i className="fa-brands fa-discord"></i>
                                     <span className="sr-only">Discord</span>
@@ -140,7 +120,7 @@ export default function ProjectsList({ title, extraClass, projects}) {
                               )}
 
                               {project.facebook && checkFacebook(project) && (
-                                <li>
+                                <li key={`facebook`}>
                                   <a className="btn-twitter" target="_blank" href={project.facebook} rel="noreferrer">
                                     <i className="fa-brands fa-facebook"></i>
                                     <span className="sr-only">Facebook</span>

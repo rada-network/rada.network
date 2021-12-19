@@ -21,7 +21,7 @@ export default function ProjectsListClosed({ title, extraClass, projects }) {
 
           <div className="projects-table">
             {projects.map((project, index) => (
-              <>
+              <div key={index} className="">
                 {project.project_pool.length > 0 &&
                   <>
                     {project.project_pool.map((pool) => (
@@ -45,7 +45,7 @@ export default function ProjectsListClosed({ title, extraClass, projects }) {
                     ))}
                   </>
                 }
-              </>
+              </div>
             ))}
 
           </div>

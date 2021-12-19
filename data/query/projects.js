@@ -85,6 +85,7 @@ const projectBySlugGql = gql`
       }
       project_pool{
         open_date
+        current_date
         type
         end_date
         raise
@@ -127,6 +128,7 @@ const projectFeedGql = gql`
     project_pool{
       sort
       open_date
+      current_date
       type
       end_date
       raise
