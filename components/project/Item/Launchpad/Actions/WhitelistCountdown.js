@@ -29,7 +29,7 @@ const WhitelistCountdown = ({project,pool}) => {
                     <span className="text-color-title">{t("The whitelist will open in")}</span>
                   </h3>
 
-                  <ProjectCountdown project={project} pool={pool} />
+                  <ProjectCountdown project={project} pool={pool} isEndDate={false} />
 
                   <div className="mt-4 text-center">
                     <div className="inline-block w-auto mx-auto px-4 py-1 

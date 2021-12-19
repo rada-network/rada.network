@@ -61,7 +61,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const CountdownInPool = function(){
     return (
       <div className={`flex text-base justify-between items-center"`}>
-        {poolStatus == "open" && <div className="text-base">{t("Pool close in")}</div>}
+        {poolStatus == "open" && <div className="text-base">{t("Pool closes in")}</div>}
         {poolStatus == "coming" && <div className="text-base">{t("Sale start in")}</div>}
         {poolStatus == "closed" && <div className="text-base">{t("Pool closed")}</div>}
         {poolStatus == "tba" && <div className="text-base">{t("Comming Soon")}</div>}
@@ -234,12 +234,14 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           {orderRIR} RIR
                         </span>
                       </li>}
+                      {parseInt(orderBusd) > 0 && 
                       <li className="list-pair mb-2">
                         <span className="list-key !w-1/2 text-xs md:text-sm">{t("Prefunded BUSD")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {orderBusd} BUSD
                         </span>
                       </li>
+                      }
                       <li className="list-pair mb-2">
                         <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your maximum allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
