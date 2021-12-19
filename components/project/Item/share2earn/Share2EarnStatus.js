@@ -229,14 +229,14 @@ const Share2EarnStatus = ({ referralInfo, adminContract, walletAddress, incentiv
               <div className="w-32 px-2 py-1 rounded-lg flex justify-between bg-gray-200 dark:bg-gray-800 ml-auto list-value hover:bg-gray-300 dark:hover:bg-gray-700">
                 <div>
                   <a target="_blank" href={bscURL}>{`${share2earnAdress.substr(0, 5)}...${share2earnAdress.substr(-4)}`}</a></div>
-                <CopyToClipboard
-                  onCopy={handleCopy}
-                  text={share2earnAdress}
-                >
-                  <button class="btn ml-2">
-                    <i className="fa-duotone fa-copy text-2xs"></i>
-                  </button>
-                </CopyToClipboard>
+                  <CopyToClipboard
+                    onCopy={handleCopy}
+                    text={share2earnAdress}
+                  >
+                    <button class="btn ml-2">
+                      <i className="fa-duotone fa-copy text-2xs"></i>
+                    </button>
+                  </CopyToClipboard>
               </div>
             </li>
 

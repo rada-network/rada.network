@@ -60,13 +60,13 @@ const LaunchpadContent = observer(function({ project,pool }) {
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
             <li className="list-pair mb-2">
               <span className="list-key">{t("Pool")}</span>
-              <span className="ml-auto list-value font-semibold">
+              <span className="ml-auto list-value font-semibold text-right">
                 <div className={``}>{project.content.title} - {pool.title}</div>
               </span>
             </li>
             <li className="list-pair mb-2">
               <span className="list-key">{t("Investment round")}</span>
-              <span className="ml-auto list-value font-semibold">
+              <span className="ml-auto list-value font-semibold text-right">
                 <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div>
               </span>
             </li>
@@ -74,7 +74,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
             <li className="list-pair mb-2">
               <span className="list-key">{t("Raise")}</span>
               {raise ? 
-              <span className="ml-auto list-value font-semibold">
+              <span className="ml-auto list-value font-semibold text-right">
                 {numberFormatter(raise)} BUSD
               </span>
               :
