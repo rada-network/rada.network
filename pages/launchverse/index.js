@@ -52,7 +52,18 @@ export default function ProjectsIndex({ projects, locale }) {
               <div className="w-limiter-xl py-8 lg:py-16 px-2 md:px-4 lg:px-8 xl:px-16">
                 {/* LOGO */}
                 <div className="flex justify-center">
-                  <span className="logo-launchverse"></span>
+                  <Image
+                    src={
+                      process.env.NEXT_PUBLIC_CDN +
+                      (theme === "light"
+                        ? "/images/logos/launchverse.svg"
+                        : "/images/logos/launchverse-dark.svg")
+                    }
+                    alt="RADA LaunchVerse"
+                    width={307}
+                    height={54}
+                    priority
+                  />
                   <strong className="sr-only">
                     <span className="">LaunchVerse</span>
                   </strong>
@@ -112,7 +123,20 @@ export default function ProjectsIndex({ projects, locale }) {
                       Apply for Launch
                     </a>
                   </div>
-                  <span className="hero-deco mx-auto mt-4"></span>
+                  <div className="hero-deco mx-auto mt-4">
+                    <Image
+                      src={
+                        process.env.NEXT_PUBLIC_CDN +
+                        (theme === "light"
+                          ? "/images/launchverse-hero.svg"
+                          : "/images/launchverse-hero-dark.svg")
+                      }
+                      alt="RADA LaunchVerse"
+                      width={400}
+                      height={400}
+                      layout="responsive"
+                    />
+                  </div>
                 </div>
 
                 <div className="mt-4 lg:mt-16 flex flex-col md:flex-row justify-center items-center">
