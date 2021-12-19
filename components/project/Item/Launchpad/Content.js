@@ -55,16 +55,10 @@ const LaunchpadContent = observer(function({ project,pool }) {
     >
       <div className="card card-default project-brief">
         <div className="card-header">
-          <h3>{t("Pool Overview")}</h3>
+          <h3>{project.content.title} - {pool.title}</h3>
         </div>
         <div className="card-body flex flex-col">
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
-            <li className="list-pair mb-2">
-              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Pool")}</span>
-              <span className="ml-auto list-value font-semibold">
-                <div className={``}>{project.content.title} - {pool.title}</div>
-              </span>
-            </li>
             <li className="list-pair mb-2">
               <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Investment round")}</span>
               <span className="ml-auto list-value font-semibold">
@@ -76,7 +70,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
             <li className="list-pair mb-2">
               <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Raise")}</span>
               {raise ? 
-              <span className="ml-auto list-value font-semibold">
+              <span className="ml-auto list-value font-semibold text-right">
                 {numberFormatter(raise)} BUSD
               </span>
               :
@@ -110,16 +104,24 @@ const LaunchpadContent = observer(function({ project,pool }) {
             </li>
             }
           </ul>
-          {!!pool.open_date && openTime < curentTime && 
-          <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
-            <div
-              className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full"
-              style={{ width: `${progressPercentage > 100 ? 100 : progressPercentage}%` }}
-            >
-              {progressPercentage}%
+          {!!pool.open_date && openTime < curentTime &&
+          <>
+            <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
+              <div
+                className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full"
+                style={{ width: `${progressPercentage > 100 ? 100 : progressPercentage}%` }}
+              >
+                {progressPercentage}%
+              </div>
             </div>
-          </div>
+            
+          </> 
+          
+
           }
+          <a className="link ml-auto mt-1" href="https://rada.network/en/post/how-to-participate-in-an-ido-on-launchverse">
+            How winner will be chosen
+          </a>
         </div>
       </div>
       {/* end of project-brief */}
