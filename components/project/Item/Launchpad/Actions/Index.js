@@ -41,10 +41,10 @@ const LaunchpadActions = ({ project,pool }) => {
               <ProjectCountdown project={project} pool={pool} isEndDate={true} />
 
               <div className="mt-4 text-center">
-              <div className="inline-block w-auto mx-auto px-2 md:px-4 py-1 
-                        text-xs md:text-sm text-center rounded-full
-                        border border-gray-200 dark:border-gray-600"
-                    >
+              <div className="inline-block w-auto mx-auto px-2 md:px-4 py-1.5 md:py-1  
+                  text-xs md:text-sm text-center rounded-full
+                  border border-gray-200 dark:border-gray-600"
+              >
                   <span className="mr-2 opacity-70">{t("Closeat")}</span> 
                   <OpenDate time={pool.end_date} />
                 </div>
