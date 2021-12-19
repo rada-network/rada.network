@@ -29,7 +29,7 @@ const ProjectCountdown = ({ project, setCountdownDone ,pool,isEndDate}) => {
               <div className="uppercase text-xs leading-none opacity-70 mt-2">minutes</div>
             </div>
 
-            <div className="text-2xl mx-1 opacity-50 font-light">:</div>
+            <div className="text-lg md:text-2xl mx-1 opacity-50 font-light -mt-3 md:-mt-2">:</div>
 
             <div className="w-16 md:w-20 mx-1 p-2 text-gray-700 dark:text-white rounded-lg">
               <div className="slashed-zero tabular-nums leading-none" x-text="seconds">{seconds}</div>
