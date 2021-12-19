@@ -6,7 +6,7 @@ const SwapTokens = ({}) => {
 
         <div className="mb-4">
           
-          <div className="mt-1 relative">
+          <div className="relative">
             
             {/* remove the above block if user doesn't have RIR */}
             <div className="">

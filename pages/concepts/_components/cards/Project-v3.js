@@ -29,7 +29,7 @@ export const CardProject = ({title, link, img, status, statusName, raise, tokenL
           </div>
         </div>
 
-        <div class="project-content--meta">
+        <div className="project-content--meta">
           <div className="project-title flex justify-between items-center">
             <div className="text-xl">
               <h5>{title}</h5>

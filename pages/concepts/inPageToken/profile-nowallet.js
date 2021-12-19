@@ -101,7 +101,7 @@ const Layout = observer((props) => {
                             <div className="list-group--item--title w-1/3">
                               <div className="list-group--item--media">
                                 <span className="icon">
-                                  <i class="fa-duotone fa-wallet"></i>
+                                  <i className="fa-duotone fa-wallet"></i>
                                 </span>
                               </div>
                               <label
@@ -126,7 +126,7 @@ const Layout = observer((props) => {
                             <div className="list-group--item--title w-1/3">
                               <div className="list-group--item--media">
                                 <span className="icon">
-                                  <i class="fa-brands fa-google"></i>
+                                  <i className="fa-brands fa-google"></i>
                                 </span>
                               </div>
                               <label
@@ -151,7 +151,7 @@ const Layout = observer((props) => {
                             <div className="list-group--item--title w-1/3">
                               <div className="list-group--item--media">
                                 <span className="icon">
-                                  <i class="fa-brands fa-facebook-f"></i>
+                                  <i className="fa-brands fa-facebook-f"></i>
                                 </span>
                               </div>
                               <label
@@ -176,7 +176,7 @@ const Layout = observer((props) => {
                             <div className="list-group--item--title w-1/3">
                               <div className="list-group--item--media">
                                 <span className="icon">
-                                  <i class="fa-brands fa-twitter"></i>
+                                  <i className="fa-brands fa-twitter"></i>
                                 </span>
                               </div>
                               <label

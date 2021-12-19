@@ -3,11 +3,17 @@ import { useTranslation } from "react-i18next";
 import Link from "next/link"
 import MiniCountdown from "./Countdown";
 import { useState, useEffect } from "react";
+import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
+import { useLaunchpadContractV2 } from "@utils/hooks/useContracts";
+import { ethers, utils } from "ethers";
+import fetcher from "@lib/fetchJson";
 
-export const CardProject = ({project,pool,title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, type, network, desc, isComing}) => {
+
+export const CardProject = ({project,pool, status}) => {
   const {t,i18n} = useTranslation("launchpad");
   const [poolStatus, setPoolStatus] = useState("");
-
+  const [poolContract, setPoolContract] = useState({"pool_id":'',"contract":null});
+  const {library,account} = useActiveWeb3React()
   useEffect(() => {
     if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
       setPoolStatus("open")
@@ -23,9 +29,48 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
       setPoolStatus("tba")
     }
   }, [])
-  const progressPercentage = "0%"
+  
+  useEffect(() => {
+    if (pool !== null && !pool.is_hidden) {
+      fetcher(`/api/pools/get-pools?slug=${project.slug}/${pool.slug}`).then(function(res){
+        if (!!res.pool_id){
+          setPoolContract(res)
+        }
+      })
+    }
+    
+  }, [pool]);
+
+  const [poolStat, setPoolStat] = useState({amountBusd : 0});
+  const lauchpadContact = useLaunchpadContractV2({...pool,contract: poolContract.contract,pool_id : poolContract.pool_id});
+  useEffect(() => {
+    const fetchLaunchpadInfo = async () => {
+      try {
+        let stat = await lauchpadContact.poolsStat(poolContract.pool_id);
+        setPoolStat({
+          amountBusd : ethers.utils.formatEther(stat.amountBusd),
+        })
+      } catch (error) {
+        //console.log(account)
+        //console.log("error to fetch launchpad info", error);
+      }
+    };
+    if (!!lauchpadContact && !!library) {
+      fetchLaunchpadInfo();
+    }
+  }, [lauchpadContact,account,library]);
+  const raise = pool.raise;
+  const target = !!raise ? raise : 0;
+  let progressPercentage
+  if (target == 0){
+    progressPercentage = 0
+  }
+  else{
+    progressPercentage = ((poolStat.amountBusd / target) * 100).toFixed(1);
+  }
+  if (pool.is_hidden) return null
   return (
-    <Link href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`}>
+    <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
     <div className={`card-project is-${project.status}`}>
       <div className="project-content relative">
 
@@ -44,7 +89,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
         )}
         
 
-        <div class="project-content--meta">
+        <div className="project-content--meta">
           <div className="project-title flex justify-between items-center">
             <div className="text-xl">
               <h5>{pool.title}</h5>
@@ -60,33 +105,33 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
                 {t("Raise")}
               </span>
               <span className="ml-auto list-value font-semibold">
-                {raise == 0 ? "TBA" : raise.toLocaleString() + " BUSD"}  
+                {pool.raise == 0 ? "TBA" : pool.raise.toLocaleString() + " BUSD"}  
               </span>
             </li>
             <li className="list-pair">
               <span className="list-key">
                 {t("Token Price")}
               </span>
-              <span className="list-value ml-auto"> {tokenPrice == 0 ? "TBA" : tokenPrice + " BUSD"}</span>
+              <span className="list-value ml-auto"> {pool.price == 0 ? "TBA" : pool.price + " BUSD"}</span>
             </li>
             <li className="list-pair">
               <span className="list-key">
                 {t("Progress")}
               </span>
               <span className="list-value ml-auto">
-                <span className="font-semibold">0</span>
-                <span className="opacity-70">/{raise == 0 ? "TBA" : raise.toLocaleString() + " BUSD"}</span>
+                <span className="font-semibold">{poolStat.amountBusd}</span>
+                <span className="opacity-70">/{pool.raise == 0 ? "TBA" : pool.raise.toLocaleString() + " BUSD"}</span>
               </span>
             </li>
           </ul>
 
           <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
-            <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" title={progressPercentage} style={{width: `${progressPercentage}`}}>{progressPercentage}</div>
+            <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" title={progressPercentage} style={{width: `${(progressPercentage > 100 ? 100 : progressPercentage)+ "%"}`}}>{progressPercentage + "%"}</div>
           </div>
 
           <div className="project--cta">
-            <Link href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`} > 
-            <a href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
+            <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} > 
+            <a href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
               <span>
                View Details
               </span>

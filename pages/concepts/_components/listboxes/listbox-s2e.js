@@ -5,17 +5,17 @@ const bannerTypes = [
   { 
     name: 'Facebook',
     desc: '820 x 312 px',
-    icon: <i class="fa-brands fa-facebook-f"></i>,
+    icon: <i className="fa-brands fa-facebook-f"></i>,
   },
   { 
     name: 'Twitter',
     desc: '1500 x 500 px',
-    icon: <i class="fa-brands fa-twitter"></i>,
+    icon: <i className="fa-brands fa-twitter"></i>,
   },
   { 
     name: 'LinkedIn',
     desc: '1584 x 396 px',
-    icon: <i class="fa-brands fa-linkedin-in"></i>,
+    icon: <i className="fa-brands fa-linkedin-in"></i>,
   },
 ]
 
@@ -28,15 +28,15 @@ export default function SelectBannerType() {
         <div className="relative">
           
           <Listbox.Button className="flex items-center relative w-full py-3 pl-3 pr-10">
-            <span class={`flex justify-center items-center w-px-32 h-px-32 rounded-full mr-4 brand--${selected.name}`}>
-              <span class="icon">{selected.icon}</span>
+            <span className={`flex justify-center items-center w-px-32 h-px-32 rounded-full mr-4 brand--${selected.name}`}>
+              <span className="icon">{selected.icon}</span>
             </span>
             <span className="block truncate text-sm text-left">
               <strong className="block">{selected.name}</strong>
               <span className="text-gray-500 dark:text-gray-400">{selected.desc}</span>
             </span>
             <span className="absolute inset-y-0 right-4 flex items-center pr-2 pointer-events-none">
-              <i class="fa-solid fa-angle-down"></i>
+              <i className="fa-solid fa-angle-down"></i>
             </span>
           </Listbox.Button>
 
@@ -61,8 +61,8 @@ export default function SelectBannerType() {
                 >
                   {({ selected, active }) => (
                     <>
-                      <span class={`flex justify-center items-center w-px-32 h-px-32 rounded-full mr-4 brand--${bannerType.name}`}>
-                        <span class="icon">{bannerType.icon}</span>
+                      <span className={`flex justify-center items-center w-px-32 h-px-32 rounded-full mr-4 brand--${bannerType.name}`}>
+                        <span className="icon">{bannerType.icon}</span>
                       </span>
 
                       <span className="block truncate text-sm text-left">
@@ -85,7 +85,7 @@ export default function SelectBannerType() {
                           }
                                 hidden absolute inset-y-0 right-3 items-center`}
                         >
-                          <i class="fa-solid fa-check"></i>
+                          <i className="fa-solid fa-check"></i>
                         </span>
                       ) : null}
                     </>

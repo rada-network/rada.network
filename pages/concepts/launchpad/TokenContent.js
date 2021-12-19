@@ -8,13 +8,13 @@ const TokenContent = function({tokenData,token}){
         </div>
         <div className="message warning flex mx-2 mt-2 md:mx-4 md:mt-4 relative items-center">
           <span className="message-icon">
-            <i class="mr-2 fas fa-exclamation-circle"></i>
+            <i className="mr-2 fas fa-exclamation-circle"></i>
           </span>
           <div className="message-content pr-2">
             This pool is already closed.
           </div>
           <button className="flex items-center ml-auto w-4 h-4 ">
-            <i class="text-base fas fa-times"></i>
+            <i className="text-base fas fa-times"></i>
           </button>
         </div>   
 

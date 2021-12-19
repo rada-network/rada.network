@@ -11,13 +11,13 @@ export const CardProject = ({project, pool, title, link, img, status, raise, par
     const endPool = Date.parse(pool.end_date)
     setEndDate(new Date(endPool).toLocaleDateString("en-US", options))
   }, [])
-
+  if (pool.is_hidden) return null
   return (
-    <Link href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`}>
+    <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
       <div className={`card-project card-project-sm`}>
         <div className="project-content">
 
-          <div class="project-content--meta">
+          <div className="project-content--meta">
             <div className="project-title">
               <div className="project-title--token-logo">
                 <img src={tokenLogo} className="rounded-full" />

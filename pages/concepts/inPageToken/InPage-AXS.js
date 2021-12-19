@@ -46,7 +46,7 @@ function Concept() {
                       <div className="pricing">
                         <span className="pricing-value">$51.15</span>
                         <span className="pricing-indicator" type="down">
-                          <i class="fa-solid fa-caret-down mr-1"></i>
+                          <i className="fa-solid fa-caret-down mr-1"></i>
                           9.37%
                         </span>
                       </div>
@@ -55,7 +55,7 @@ function Concept() {
                           0.001241 BTC
                         </span>
                         <span className="pricing-indicator" type="up">
-                          <i class="fa-solid fa-caret-up mr-1"></i>
+                          <i className="fa-solid fa-caret-up mr-1"></i>
                           3.51%
                         </span>
                       </div>
@@ -142,7 +142,7 @@ function Concept() {
                             target="_blank"
                           >
                             <span className="icon">
-                              <i class="fa-regular fa-globe"></i>
+                              <i className="fa-regular fa-globe"></i>
                             </span>
                             <span className="btn--text">
                               https://axieinfinity.com/
@@ -165,7 +165,7 @@ function Concept() {
                             target="_blank"
                           >
                             <span className="icon">
-                              <i class="fa-brands fa-twitter"></i>
+                              <i className="fa-brands fa-twitter"></i>
                             </span>
                             <span className="btn--text">Twitter</span>
                           </a>
@@ -176,7 +176,7 @@ function Concept() {
                             target="_blank"
                           >
                             <span className="icon">
-                              <i class="fa-brands fa-telegram"></i>
+                              <i className="fa-brands fa-telegram"></i>
                             </span>
                             <span className="btn--text">Telegram</span>
                           </a>
@@ -187,7 +187,7 @@ function Concept() {
                             target="_blank"
                           >
                             <span className="icon">
-                              <i class="fa-brands fa-discord"></i>
+                              <i className="fa-brands fa-discord"></i>
                             </span>
                             <span className="btn--text">Discord</span>
                           </a>
@@ -198,7 +198,7 @@ function Concept() {
                             target="_blank"
                           >
                             <span className="icon">
-                              <i class="fa-brands fa-medium"></i>
+                              <i className="fa-brands fa-medium"></i>
                             </span>
                             <span className="btn--text">Medium</span>
                           </a>
@@ -251,13 +251,13 @@ function Concept() {
                             className="btn btn-default btn-default-sm mb-2 mr-2"
                           >
                             <span className="icon">
-                              <i class="cf cf-eth"></i>
+                              <i className="cf cf-eth"></i>
                             </span>
                             <span className="btn--text">
                               0xF5D6696273...8dd940327b28b
                             </span>
                             <span className="icon">
-                              <i class="fa-regular fa-copy text-2xs"></i>
+                              <i className="fa-regular fa-copy text-2xs"></i>
                             </span>
                           </a>
                           <a
@@ -265,13 +265,13 @@ function Concept() {
                             className="btn btn-default btn-default-sm mb-2"
                           >
                             <span className="icon">
-                              <i class="cf cf-bsc"></i>
+                              <i className="cf cf-bsc"></i>
                             </span>
                             <span className="btn--text">
                               0xF5D6696273...8dd940327b28b
                             </span>
                             <span className="icon">
-                              <i class="fa-regular fa-copy text-2xs"></i>
+                              <i className="fa-regular fa-copy text-2xs"></i>
                             </span>
                           </a>
                         </div>

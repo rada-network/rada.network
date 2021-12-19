@@ -5,11 +5,7 @@ const MainActions = ({}) => {
   return (
     <>
       <div className="card-default project-main-actions no-padding overflow-hidden">
-
-        <div className="card-header text-center sr-only">
-          <h2>Public Sale</h2>
-        </div>
-
+        
         <div className="card-body no-padding">
 
           <div className="flex flex-col">
@@ -21,7 +17,7 @@ const MainActions = ({}) => {
             <div className="project-card--container">
 
               <div className="mb-4 md:mb-8">
-                <h3 className="text-2xl md:text-3xl text-center font-normal">
+                <h3 className="text-2xl text-center font-normal">
                   <span className="text-color-title">You failed to joint Whitelist</span>
                 </h3>
               </div>

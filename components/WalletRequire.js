@@ -2,6 +2,7 @@ import { useStore } from "../lib/useStore";
 
 import { useTranslation } from "next-i18next";
 import useActiveWeb3React from "../utils/hooks/useActiveWeb3React";
+import useAuth from "../utils/hooks/useAuth";
 
 import _ from "lodash";
 
@@ -10,10 +11,13 @@ export const WalletRequire = ({ type }) => {
   const { account, deactivate } = useActiveWeb3React();
   const { t } = useTranslation("common");
   const store = useStore();
+  const { logout } = useAuth();
   const handleConnectWallet = () => {
     store.wallet.showConnect(true);
   };
-
+  const handleDisconnectWallet = async () => {
+    logout();
+  };
   return (
     <>
       <div className="list-group--item !px-0">
@@ -30,7 +34,7 @@ export const WalletRequire = ({ type }) => {
         <div className="flex-1 md:mt-0">
           <div className="relative pl-8 md:pl-0 w-full flex items-center">
             {_.isEmpty(account) ? (
-              "Connect wallet to join"
+              "Connect your wallet"
             ) : (
               <>
                 <div>
@@ -45,7 +49,7 @@ export const WalletRequire = ({ type }) => {
                     ETHEREUM
                   </span>
                 )}
-                <button class="ml-2 opacity-70 hover:opacity-100 p-1 rounded-lg z-10"><span class="icon"><i class="fas fa-sign-out"></i></span><span class="sr-only">Disconnect</span></button>
+                <button onClick={handleDisconnectWallet} className="ml-2 opacity-70 hover:opacity-100 p-1 rounded-lg z-10"><span className="icon"><i className="fas fa-sign-out"></i></span><span className="sr-only">Disconnect</span></button>
               </>
             )}
           </div>
@@ -58,14 +62,17 @@ export const WalletRequire = ({ type }) => {
             <>
               {/* <NetworkSwitch /> */}
               <button
-                className="btn btn-default w-24 w-full"
+                className="btn btn-default w-20 md:w-24"
                 onClick={handleConnectWallet}
               >
                 {t("connect")}
               </button>
             </>
           ) : (
-            <span className="flex label label--success w-24">Done</span>
+            <span className="flex label label--success w-auto md:w-24">
+              <span className="icon mr-1"><i className="fas fa-check"></i></span>
+              Done
+            </span>
           )}
         </div>
       </div>

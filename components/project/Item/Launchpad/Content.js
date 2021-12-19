@@ -14,7 +14,8 @@ const LaunchpadContent = observer(function({ project,pool }) {
   const { dataStore } = usePageStore();
   const store = useStore()
   const { t } = useTranslation("launchpad");
-  const { account, library } = useActiveWeb3React();  const [poolStat, setPoolStat] = useState(null);
+  const { account, library } = useActiveWeb3React();  
+  const [poolStat, setPoolStat] = useState(null);
   const lauchpadContact = useLaunchpadContractV2(pool);
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
@@ -54,25 +55,26 @@ const LaunchpadContent = observer(function({ project,pool }) {
     >
       <div className="card card-default project-brief">
         <div className="card-header">
-          <h3>{t("Launchverse Overview")}</h3>
+          <h3>{t("Pool Overview")}</h3>
         </div>
         <div className="card-body flex flex-col">
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
             <li className="list-pair mb-2">
-              <span className="list-key">{t("Pool")}</span>
-              <span className="ml-auto list-value font-semibold text-right">
+              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Pool")}</span>
+              <span className="ml-auto list-value font-semibold">
                 <div className={``}>{project.content.title} - {pool.title}</div>
               </span>
             </li>
             <li className="list-pair mb-2">
-              <span className="list-key">{t("Investment round")}</span>
-              <span className="ml-auto list-value font-semibold text-right">
-                <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div>
+              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Investment round")}</span>
+              <span className="ml-auto list-value font-semibold">
+                {/* <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div> */}
+                <div className={``}>{pool.type.toUpperCase()}</div>
               </span>
             </li>
             
             <li className="list-pair mb-2">
-              <span className="list-key">{t("Raise")}</span>
+              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Raise")}</span>
               {raise ? 
               <span className="ml-auto list-value font-semibold text-right">
                 {numberFormatter(raise)} BUSD
@@ -84,7 +86,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
               }
             </li>
             <li className="list-pair mb-2">
-              <span className="list-key">{t("Token Price")}</span>
+              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Token Price")}</span>
               {tokenPrice ? 
               <span className="ml-auto font-semibold">
               1 {project?.token?.symbol} = {tokenPrice} BUSD
@@ -97,7 +99,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
             </li>
             {!!pool.open_date && openTime < curentTime && 
             <li className="list-pair mb-2">
-            <span className="list-key">{t("Progress")}</span>
+            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Progress")}</span>
             <span className="list-value ml-auto">
               <span className="font-semibold">
                 {numberFormatter(progressToken)}
@@ -108,21 +110,29 @@ const LaunchpadContent = observer(function({ project,pool }) {
             </li>
             }
           </ul>
-          {!!pool.open_date && openTime < curentTime && 
-          <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
-            <div
-              className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full"
-              style={{ width: `${progressPercentage > 100 ? 100 : progressPercentage}%` }}
-            >
-              {progressPercentage}%
+          {!!pool.open_date && openTime < curentTime &&
+          <>
+            <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
+              <div
+                className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full"
+                style={{ width: `${progressPercentage > 100 ? 100 : progressPercentage}%` }}
+              >
+                {progressPercentage}%
+              </div>
             </div>
-          </div>
+            
+          </> 
+          
+
           }
+          <a className="link ml-auto mt-1" href="https://rada.network/en/post/how-to-participate-in-an-ido-on-launchverse">
+            How winner will be chosen
+          </a>
         </div>
       </div>
       {/* end of project-brief */}
 
-      <div className="card card-default project-process">
+      <div className="card card-default card--project-info">
         <div className="card-header">
           <h3>{t("Info", { name: project?.token?.name })}</h3>
         </div>

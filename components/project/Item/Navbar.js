@@ -36,12 +36,16 @@ export default function ProjectNavbar({ symbol, project, slug,pool }) {
         </div>
         <div className="tabbar page-tabs relative lg:left-8 xl:-left-1">
           <div className="tabbar--main">
-            <NavItem uri={symbol+`#${pool.slug}`}>{t("LaunchVerse")}</NavItem>
+          <NavItem uri={symbol+`${pool !== null ? ('/' + pool?.slug) : ""}`}>
+            {pool == null && project?.content?.title}
+            {pool !== null && (<span className="hidden md:!block">{project.content.title + " - "+ pool.title}</span>)}
+            {pool !== null && (<span className="block md:hidden">Pool</span>)}
+          </NavItem>
             {(!!project.news || project.share_campaign?.length !== 0) && (
               <span className="tab-item--divider"></span>
             )}
             {!!project.news && (
-              <NavItem uri={`${symbol}/research#${pool.slug}`}>
+              <NavItem uri={`${symbol}/research`}>
                 <span className="token-symbol flex-shrink-0 lg:mr-2 h-px-20 w-px-20">
                   <Image
                     src={project?.token?.logo}
@@ -57,7 +61,7 @@ export default function ProjectNavbar({ symbol, project, slug,pool }) {
               </NavItem>
             )}
             {project.share_campaign?.length !== 0 && (
-              <NavItem uri={`${symbol}/share2earn#${pool.slug}`}>
+              <NavItem uri={`${symbol}/share2earn`}>
                 <span className="icon">
                   <i className="fa-duotone fa-hand-holding-heart"></i>
                 </span>

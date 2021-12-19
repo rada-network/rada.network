@@ -22,7 +22,7 @@ function Concept() {
                     {/* Display this checkmark if the user already KYCed */}
                     <span className="w-6 h-6 p-1 absolute right-0 top-0 rounded-full flex 
                     items-center bg-green-500">
-                      <i class="text-sm font-bold fas fa-check text-white"></i>
+                      <i className="text-sm font-bold fas fa-check text-white"></i>
                     </span>
                   </div> 
                   <h3 className="text-2xl font-semibold mt-4">Andrew Hicker</h3>
@@ -45,7 +45,7 @@ function Concept() {
                         <div className="list-group--item !pb-0 md:!pb-4">
                           <div className="list-group--item--title w-full md:w-1/3">
                             <div className="list-group--item--media brand--google">
-                              <span className="icon"><i class="fa-brands fa-google"></i></span>
+                              <span className="icon"><i className="fa-brands fa-google"></i></span>
                             </div>
                             <label htmlFor="blockchain-wallet" className="text-color-desc">
                               Google
@@ -61,7 +61,7 @@ function Concept() {
                         <div className="list-group--item !pb-0 md:!pb-4">
                           <div className="list-group--item--title w-full md:w-1/3">
                             <div className="list-group--item--media brand--facebook">
-                              <span className="icon"><i class="fa-brands fa-facebook-f"></i></span>
+                              <span className="icon"><i className="fa-brands fa-facebook-f"></i></span>
                             </div>
                             <label htmlFor="blockchain-wallet" className="text-color-desc">
                               Facebook
@@ -81,7 +81,7 @@ function Concept() {
                         <div className="list-group--item !pb-0 md:!pb-4">
                           <div className="list-group--item--title w-full md:w-1/3">
                             <div className="list-group--item--media brand--twitter">
-                              <span className="icon"><i class="fa-brands fa-twitter"></i></span>
+                              <span className="icon"><i className="fa-brands fa-twitter"></i></span>
                             </div>
                             <label htmlFor="blockchain-wallet" className="text-color-desc">
                               Twitter
@@ -111,7 +111,7 @@ function Concept() {
                           
                           <div className="list-group--item--title w-full md:w-1/3">
                             <div className="list-group--item--media dark:!bg-gray-700">
-                              <span className="icon "><i class="fa-solid fa-wallet"></i></span>
+                              <span className="icon "><i className="fa-solid fa-wallet"></i></span>
                             </div>
                             <label htmlFor="blockchain-wallet" className="text-color-desc">
                               Wallet
@@ -147,7 +147,7 @@ function Concept() {
                         Want to earn free RIR
                         <a href="" className="ml-auto flex items-center text-yellow-500">
                           Learn more
-                          <i class="fas fa-angle-right ml-2"></i>
+                          <i className="fas fa-angle-right ml-2"></i>
                         </a>
                         </div>
                     </div>

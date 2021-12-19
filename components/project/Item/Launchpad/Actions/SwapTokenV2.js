@@ -6,15 +6,15 @@ import SubcribeByRIR from "./swaptoken/SubscribeByRIR"
 import SubcribeByBUSD from "./swaptoken/SubscibeByBUSD"
 
 
-const SwapTokensV2 = ({accountBalance,fetchAccountBalance,setStep,pool}) => {
+const SwapTokensV2 = ({accountBalance,fetchAccountBalance,setStep,pool,project}) => {
   const {launchpadInfo,loading} = useLaunchpadInfo({pool})
   if (loading) return null
   return (
     <>
       {pool.is_allow_rir ?
-      <SubcribeByRIR pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
+      <SubcribeByRIR project={project} pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
       :
-      <SubcribeByBUSD pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
+      <SubcribeByBUSD project={project} pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} launchpadInfo={launchpadInfo} setStep={setStep} />
       }
 
     </>
@@ -52,7 +52,7 @@ export const SwapDescription = ({numberBusd,numberRIR,maxSelected,currentOrderBu
       <div className="h-2.5 relative mt-0 mb-8">
         <div className="h-2.5 mb-4 mt-2 border-r-2 border-l-2 border-gray-300 dark:border-gray-500 relative">
           <span className="absolute -left-1 -bottom-3.5 text-2xs">0</span>
-          <span className="absolute -right-4 -bottom-3.5 text-2xs">{maxSelected*100}</span>
+          <span className="absolute -right-4 -bottom-3.5 text-2xs">{maxSelected*100}BUSD</span>
           <span className="block w-full h-0.5 bg-gray-300 dark:bg-gray-600 absolute top-1"></span>
         </div>
 
@@ -62,7 +62,7 @@ export const SwapDescription = ({numberBusd,numberRIR,maxSelected,currentOrderBu
             <div className="w-full flex h-1 bg-green-500">
             </div>
             <span className="absolute -right-6 -bottom-3.5 text-2xs bg-gray-100 dark:bg-gray-900 px-2">
-              {(parseInt(RIR) + parseInt(currentOrderRIR)) * 100} 
+              {(parseInt(RIR) + parseInt(currentOrderRIR)) * 100}BUSD
             </span>
           </div>}
           {p2 > 0 && 
@@ -70,7 +70,7 @@ export const SwapDescription = ({numberBusd,numberRIR,maxSelected,currentOrderBu
             <div className="w-full flex h-1 bg-yellow-400">
             </div>
             <span className="absolute -right-6 -bottom-3.5 text-2xs bg-gray-100 dark:bg-gray-900 px-2">
-              {parseInt(busd) + currentOrderBusd}
+              {parseInt(busd) + currentOrderBusd}BUSD
             </span>
           </div>}
           {p3 > 0 && 
@@ -93,6 +93,7 @@ export const SwapNote = function({numberBusd,numberRIR,maxSelected,currentOrderB
     setBusd(numberBusd)
     setRIR(numberRIR)
   },[numberBusd,numberRIR])
+  return null
   return (
     <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
       {RIR > 0 &&
@@ -103,12 +104,6 @@ export const SwapNote = function({numberBusd,numberRIR,maxSelected,currentOrderB
         <div>{t("Prefund description")}</div>
       </li>
       }
-      <li key={2} className="relative mb-2 pl-6">
-        <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
-          <CheckSvg />  
-        </span>
-        <div>{t("Prefund description 2")}</div>
-      </li>
     </ul>
   )
 }

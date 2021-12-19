@@ -12,10 +12,6 @@ const WhitelistCountdown = ({project,pool}) => {
     <>
       <div className="card-default project-main-actions no-padding overflow-hidden">
 
-        <div className="card-header text-center sr-only">
-          <h2>Public Sale</h2>
-        </div>
-
         <div className="card-body no-padding">
 
           <div className="flex flex-col">
@@ -23,29 +19,35 @@ const WhitelistCountdown = ({project,pool}) => {
             <div className="relative z-0">
               <Timeline step="1" />
             </div>
+
             <div className="global-padding-lg min-h-full bg-white dark:bg-gray-800 relative z-10">
 
               <div className="">
                 {pool.open_date ?
-                <div>
-                  <h3 class="text-2xl text-center mb-4 font-normal">
+                <div className="max-w-2xl mx-auto">
+                  <h3 className="text-2xl text-center mb-4 font-normal">
                     <span className="text-color-title">{t("The whitelist will open in")}</span>
                   </h3>
-                  
-                  <ProjectCountdown project={project} pool={pool} />
-                  <div>
-                    <p className="text-sm text-center mt-4 leading-7">
-                      {/* <span className="text-color-desc">{t("Please wait until the whitelist opens!")}</span><br />
-                      <span className="text-color-desc">{t("You need to apply to join the whitelist.")}</span><br /> */}
-                      <span className="text-color-desc">{t("Openat")} </span> <OpenDate time={pool.open_date} />
-                    </p>
+
+                  <ProjectCountdown project={project} pool={pool} isEndDate={false} />
+
+                  <div className="mt-4 text-center">
+                  <div className="inline-block w-auto mx-auto px-2 md:px-4 py-1.5 md:py-1  
+                      text-xs md:text-sm text-center rounded-full
+                      border border-gray-200 dark:border-gray-600"
+                  >
+                      <span className="mr-2 opacity-70">{t("Openat")}</span> 
+                      <OpenDate time={pool.open_date} />
+                    </div>
                   </div>
+
                   <SubscribeLaunchpad project={project} pool={pool} />
+
                 </div>
                 :
                 <div className="">
-                  <h3 class="text-4xl text-center mt-4 mb-4 font-normal">
-                    <span className="text-gray-700 dark:text-white font-semibold">{t("Coming Soon")}</span>
+                  <h3 className="text-4xl text-center mt-4 mb-4 font-normal">
+                    <span className="text-gray-700 dark:text-gray-200 font-medium">{t("Coming Soon")}</span>
                   </h3>
                   <SocialPromote />
                 </div>

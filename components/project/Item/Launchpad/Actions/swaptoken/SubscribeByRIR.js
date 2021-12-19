@@ -10,8 +10,13 @@ import { useTranslation } from "next-i18next"
 import useStore from "@lib/useStore"
 import { SwapNote,SwapDescription } from "../SwapTokenV2"
 import { BusdSvg, CheckSvg } from "@components/svg/SvgIcons"
+import ReactTooltip from "react-tooltip";
+import fetcher from "@lib/fetchJson";
+import { submitPrefundLogApi } from "@data/query/projects"
 
-const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
+
+
+const SubcribeByRIR = ({project,pool,accountBalance,setStep,fetchAccountBalance,launchpadInfo}) => {
   const {t} = useTranslation("launchpad")
   const {account} = useActiveWeb3React()
   const store = useStore()
@@ -63,6 +68,7 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
         setNumberRIR(0)
         setNumberBusd(0)
         store.updateLoadPoolContent((new Date()).getTime())
+        submitPrefundLogApi({project,pool,account})
       },
     })
     const { isApproving :isApprovingRIR, isApproved : isApprovedRIR ,handleApprove:handleApproveRIR } =useApproveConfirmTransaction({
@@ -99,15 +105,26 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
     }
   return (
     <>
+      
       <div className={`global-padding` + (isApproving || isApprovingRIR || isConfirming ? " disabled" : "") }>
-
+        <div onClick={(e) => e.stopPropagation()}>
+          <ReactTooltip
+            type="info"
+            multiline={true}
+            globalEventOff="click"
+            clickable={true}
+            html={true}
+          />
+        </div>
         <div className="mb-4">
           
-          <div className="mt-1 relative">
+          <div className="relative">
             
             {/* remove the above block if user doesn't have RIR */}
             <div className="">
-              <label htmlFor="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">{t("Amount")}</label>
+              <div className="flex items-center">
+                <label htmlFor="currency" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">{t("Amount")}</label>
+              </div>
               <select id="amount" name="amount" className="select-custom" value={numberBusd} onChange={e => {handleChangeBUSD(e)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option key={-1} className="text-gray-300" value={0}>0 BUSD</option>
@@ -124,9 +141,19 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
             </div>
             {parseInt(accountBalance.rirBalance) > 0 && 
             <div className="mt-4">
-              <label htmlFor="rir" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">
-                {t("RIR")}
-              </label>
+              <div className="flex items-center">
+                <label htmlFor="rir" className="uppercase text-xs mb-2 block tracking-wide font-medium opacity-70">
+                  {t("RIR")}
+                </label>
+                <span
+                  className="hasTooltip ml-1 mb-2"
+                  data-tip={t("Allocation note")}
+                  data-event="click"
+                >
+                  {" "}
+                  <i className="fa-duotone fa-info-circle text-base" />
+                </span>
+              </div>
               <select id="rir" name="rir" className="select-custom " value={numberRIR} onChange={e => {setNumberRIR(e.currentTarget.value)}}>
                 {/* remove '!rounded-l-none' if user doesn't have RIR */}
                 <option key="0" className="text-gray-300" value={0}>{t("dont use RIR")}</option>
@@ -147,12 +174,12 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
           </div>
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
         </div>
-        <div className={`mt-4 grid gap-4` + ( (parseInt(numberRIR) > 0 ) ? "" : "")}> 
+        <div className={`mt-4 grid gap-4` + ( (parseInt(numberRIR) > 0 ) ? " grid-cols-2" : "")}> 
           {/* bỏ grid grid-cols-2 nếu user không có RIR hoặc không dùng RIR */} 
           <div className="flex-shrink-0 flex-grow">
-            <button className={`btn relative w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} width="100%" scale="md" onClick={handleApprove}>
+            <button className={`btn relative w-full btn-default btn-default-lg btn-purple !text-sm !px-2` + (isApproved ? " disabled" : "")} width="100%" scale="md" onClick={handleApprove}>
             {isApproving && <span className="spinner" />}
-            {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
+            {isApproved && <span className="icon mr-1" ><i className="fas fa-check"></i></span>}
             {isApproving && 
             <>{t("Approving Contract")}</> 
             }
@@ -166,9 +193,9 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
           </div>
           {parseFloat(accountBalance.rirBalance) > 0 && parseInt(numberRIR) > 0 &&
           <div  className="flex-shrink-0 flex-grow">
-            <button className={`btn relative w-full btn-default btn-default-lg btn-purple` + (isApprovedRIR ? " disabled" : "") } scale="md" onClick={handleApproveRIR}>
+            <button className={`btn relative w-full btn-default btn-default-lg btn-purple !text-sm !px-2` + (isApprovedRIR ? " disabled" : "") } scale="md" onClick={handleApproveRIR}>
             {isApprovingRIR && <span className="spinner" />}
-            {isApprovedRIR && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
+            {isApprovedRIR && <span className="icon mr-1" ><i className="fas fa-check"></i></span>}
             {isApprovingRIR && 
             <>{t("Approving Contract")}</> 
             }
@@ -188,11 +215,11 @@ const SubcribeByRIR = ({pool,accountBalance,setStep,fetchAccountBalance,launchpa
             {t("Prefund")}
           </button>
           {currentOrderBusd > 0 &&
-          <button class="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
+          <button className="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
           {t("Cancel")}
           </button>
           }
-          {account === "0x61c55832d24bfea603C12A9bea93cc7Efe92e504" && 
+          {account === "0xC0129E7E233d6D9D4f2717Ba3e1837A4FE6C03af" && 
           <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`} onClick={resetApproved}  >
             {t("Reset approve")}
           </button>

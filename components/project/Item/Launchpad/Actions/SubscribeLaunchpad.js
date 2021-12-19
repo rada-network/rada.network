@@ -33,14 +33,14 @@ const SubscribeLaunchpad = ({ project,pool }) => {
   }
   return (
     <>
-      <div className="max-w-2xl mx-auto bg-gray-100 dark:bg-gray-700 p-4 lg:px-8 rounded-lg mt-8">
+      <div className="max-w-2xl mx-auto rounded-lg mt-8">
         <div className="mb-4">
-          {/* <h3 className="text-2xl md:text-3xl text-center font-normal">
+          {/* <h3 className="text-2xl text-center font-normal">
             <span className="text-color-title">
               {project?.token.name}'s {t("Whitelist")}
             </span>
           </h3> */}
-          <p className="text-center mt-2 font-normal">
+          <p className="text-center mt-2 font-normal text-base">
             {t("Complete all the requirements below to joint the pool.")}
           </p>
         </div>
@@ -61,15 +61,21 @@ export const SubscribeLaunchpadClosed = ({ project }) => {
     <>
       <div className="max-w-xl mx-auto">
         <div className="mb-4 md:mb-8">
-          <h3 className="text-2xl md:text-3xl text-center font-normal">
+          <h3 className="text-2xl text-center font-normal">
             <span className="text-color-title">{t("pool closed")}</span>
           </h3>
-          <p className="text-center mt-2 font-normal">{t("pool close note")}</p>
+
         </div>
 
-        <div className="list-group">
-          <WalletRequire />
+        <div className="max-w-2xl mx-auto p-4 lg:px-8 rounded-lg mt-8  bg-gray-100 dark:bg-gray-700">
+          <div className="mb-4">
+            <p className="text-center mt-2 font-normal text-base">{t("pool close note")}</p>
+          </div>
+          <div className="list-group">
+            <WalletRequire />
+          </div>
         </div>
+
       </div>
     </>
   );
@@ -84,10 +90,13 @@ const Login = () => {
   };
   const Button = () => {
     if (store.user.id)
-      return <span className="flex label label--success w-24">Done</span>;
+      return <span className="flex label label--success w-auto md:w-24">
+               <span className="icon mr-1"><i className="fas fa-check"></i></span>
+               Done
+             </span>;
     return (
       <button
-        className="btn btn-default w-24"
+        className="btn btn-default w-20 md:w-24"
         onClick={(e) => store.user.showConnect(true)}
       >
         {t("login")}
@@ -99,7 +108,7 @@ const Login = () => {
       <div className="list-group--item--title w-full md:w-1/4">
         <div className="list-group--item--media">
           <span className="icon">
-            <i className="fas fa-user-check"></i>
+            <i className="fas fa-user"></i>
           </span>
         </div>
         <label htmlFor="blockchain-wallet" className="text-color-desc">
@@ -123,7 +132,7 @@ const KYC = () => {
 
   const Info = () => {
     if (store.kyc.status) return <span>{store.kyc.status}</span>;
-    return <span>Click to KYC</span>;
+    return <span>Complete your KYC</span>;
   };
 
   const Button = () => {
@@ -162,16 +171,23 @@ const KYC = () => {
     }, [loadlib]);
 
     if (store.kyc.status === BLOCK_PASS_KYC_COMPLETE){
-      return <span className="flex label label--success w-24">Done</span>;
+      return <span className="flex label label--success w-auto md:w-24">
+               <span className="icon mr-1"><i className="fas fa-check"></i></span>
+               Done
+             </span>;
     }
     if (store.kyc.status === BLOCK_PASS_KYC_REJECT){
-      return <span className="flex label label--neutral w-24">Rejected</span>;
+      return (
+        <a href={`https://identity.blockpass.org/`} target="_blank" rel="nofolow" className={`btn btn-default w-20 md:w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
+          Resubmit
+        </a>
+      );
     }
     if (store.kyc.status !== ""){
       return <span className="flex label label--neutral w-24">{`In Progress`}</span>;
     }
     return (
-      <button className={`btn btn-default w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
+      <button className={`btn btn-default w-20 md:w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
         KYC
       </button>
     );

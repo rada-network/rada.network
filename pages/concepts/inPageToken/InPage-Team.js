@@ -112,7 +112,7 @@ function Concept() {
                         <strong className="">
                           Sky Mavis
                         </strong>
-                        <span class="icon ml-1 relative -top-0.5"><i class="fa-duotone fa-external-link text-2xs"></i></span>
+                        <span className="icon ml-1 relative -top-0.5"><i className="fa-duotone fa-external-link text-2xs"></i></span>
                       </a>
                     </div>
                   </div>
@@ -154,13 +154,13 @@ function Concept() {
                   <div className="card-body-footer">
                     <div className="cta-wrapper about-social">
                       <a className="btn" href="" rel="nofollow" target="_blank">
-                        <i class="fa-brands fa-linkedin-in"></i>
+                        <i className="fa-brands fa-linkedin-in"></i>
                       </a>
                       <a className="btn" href="" rel="nofollow" target="_blank">
-                        <i class="fa-brands fa-twitter"></i>
+                        <i className="fa-brands fa-twitter"></i>
                       </a>
                       <a className="btn" href="" rel="nofollow" target="_blank">
-                        <i class="fa-brands fa-facebook-f"></i>
+                        <i className="fa-brands fa-facebook-f"></i>
                       </a>
                     </div>
                   </div>
@@ -186,13 +186,13 @@ function Concept() {
                   <div className="card-body-footer">
                     <div className="cta-wrapper about-social">
                       <a className="btn" href="" rel="nofollow" target="_blank">
-                        <i class="fa-brands fa-linkedin-in"></i>
+                        <i className="fa-brands fa-linkedin-in"></i>
                       </a>
                       <a className="btn" href="" rel="nofollow" target="_blank">
-                        <i class="fa-brands fa-twitter"></i>
+                        <i className="fa-brands fa-twitter"></i>
                       </a>
                       <a className="btn" href="" rel="nofollow" target="_blank">
-                        <i class="fa-brands fa-facebook-f"></i>
+                        <i className="fa-brands fa-facebook-f"></i>
                       </a>
                     </div>
                   </div>
@@ -218,13 +218,13 @@ function Concept() {
                   <div className="card-body-footer">
                     <div className="cta-wrapper about-social">
                       <a className="btn" href="" rel="nofollow" target="_blank">
-                        <i class="fa-brands fa-linkedin-in"></i>
+                        <i className="fa-brands fa-linkedin-in"></i>
                       </a>
                       <a className="btn" href="" rel="nofollow" target="_blank">
-                        <i class="fa-brands fa-twitter"></i>
+                        <i className="fa-brands fa-twitter"></i>
                       </a>
                       <a className="btn" href="" rel="nofollow" target="_blank">
-                        <i class="fa-brands fa-facebook-f"></i>
+                        <i className="fa-brands fa-facebook-f"></i>
                       </a>
                     </div>
                   </div>
@@ -250,13 +250,13 @@ function Concept() {
                   <div className="card-body-footer">
                     <div className="cta-wrapper about-social">
                       <a className="btn" href="" rel="nofollow" target="_blank">
-                        <i class="fa-brands fa-linkedin-in"></i>
+                        <i className="fa-brands fa-linkedin-in"></i>
                       </a>
                       <a className="btn" href="" rel="nofollow" target="_blank">
-                        <i class="fa-brands fa-twitter"></i>
+                        <i className="fa-brands fa-twitter"></i>
                       </a>
                       <a className="btn" href="" rel="nofollow" target="_blank">
-                        <i class="fa-brands fa-facebook-f"></i>
+                        <i className="fa-brands fa-facebook-f"></i>
                       </a>
                     </div>
                   </div>

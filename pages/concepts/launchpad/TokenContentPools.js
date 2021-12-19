@@ -18,7 +18,7 @@ const TokenContent = function({tokenData,token}){
               <div className="ml-auto flex items-center list-value font-semibold">
                 <a target="_blank" href="" title="0x3554dfdf1478f16">0x35....78f16</a>
                 <CopyToClipboard text="">
-                  <button class="btn btn-default ml-2">
+                  <button className="btn btn-default ml-2">
                     <i className="fa-duotone fa-copy text-2xs"></i>
                   </button>
                 </CopyToClipboard>
@@ -40,7 +40,7 @@ const TokenContent = function({tokenData,token}){
                 Website
               </span>
               <div className="list-value flex justify-end ml-auto items-center">
-                <i class="fa-solid fa-globe mr-2"></i>
+                <i className="fa-solid fa-globe mr-2"></i>
                 <a href="http://theparallel.io/" target="_blank" className="link">https://theparallel.io</a>
               </div>
             </li>
@@ -50,26 +50,26 @@ const TokenContent = function({tokenData,token}){
               </span>
               <ul className="flex ml-auto">
                 <li className="ml-auto">
-                  <a class="btn-twitter" title="Twitter" target="_blank" href="#" rel="noreferrer">
-                    <i class="fa-brands fa-twitter"></i>
+                  <a className="btn-twitter" title="Twitter" target="_blank" href="#" rel="noreferrer">
+                    <i className="fa-brands fa-twitter"></i>
                     <span className="sr-only">Twitter</span>
                   </a>
                 </li>
                 <li className="ml-4">
-                  <a class="btn-discord"  title="Discord" target="_blank" href="#" rel="noreferrer">
-                    <i class="fa-brands fa-discord"></i>
+                  <a className="btn-discord"  title="Discord" target="_blank" href="#" rel="noreferrer">
+                    <i className="fa-brands fa-discord"></i>
                     <span className="sr-only">Discord</span>
                   </a>
                 </li>
                 <li className="ml-4">
-                  <a class="btn-medium"  title="Medium" target="_blank" href="#">
-                    <i class="fa-brands fa-medium"></i>
+                  <a className="btn-medium"  title="Medium" target="_blank" href="#">
+                    <i className="fa-brands fa-medium"></i>
                     <span className="sr-only">Medium</span>
                   </a>
                 </li>
                 <li className="ml-4">
-                  <a class="btn-telegram"  title="Telegram"  target="_blank" href="#" rel="noreferrer">
-                    <i class="fa-brands fa-telegram"></i>
+                  <a className="btn-telegram"  title="Telegram"  target="_blank" href="#" rel="noreferrer">
+                    <i className="fa-brands fa-telegram"></i>
                     <span className="sr-only">Telegram</span>
                   </a>
                 </li>
@@ -81,7 +81,7 @@ const TokenContent = function({tokenData,token}){
       </div>
       {/* end of project-brief */}
 
-      <div className="card card-default project-process">
+      <div className="card card-default card--project-info">
         <div className="card-header">
           <h3>Parallel's Info</h3>
         </div>

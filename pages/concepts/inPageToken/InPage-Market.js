@@ -44,14 +44,14 @@ function Concept() {
                   <div className="pricing">
                     <span className="pricing-value">$51.15</span>
                     <span className="pricing-indicator" type="down">
-                      <i class="fa-solid fa-caret-down mr-1"></i>
+                      <i className="fa-solid fa-caret-down mr-1"></i>
                       9.37%
                     </span>
                   </div>
                   <div className="pricing pricing-sm mt-2">
                     <span className="pricing-value opacity-50">0.001241 BTC</span>
                     <span className="pricing-indicator" type="up">
-                      <i class="fa-solid fa-caret-up mr-1"></i>
+                      <i className="fa-solid fa-caret-up mr-1"></i>
                       3.51%
                     </span>
                   </div>
@@ -122,17 +122,17 @@ function Concept() {
                 Axie Infinity Price Chart
               </h2>
               <div className="flex justify-between w-full md:w-auto mb-4">
-                <div class="btn-group btn-group-filter w-auto">
-                  <a class="btn w-full btn-filter-active">USD</a>
-                  <a class="btn w-full btn-filter">BTC</a>
+                <div className="btn-group btn-group-filter w-auto">
+                  <a className="btn w-full btn-filter-active">USD</a>
+                  <a className="btn w-full btn-filter">BTC</a>
                 </div>
-                <div class="btn-group btn-group-filter justify-evenly w-2/3 w-auto ml-2">
-                  <a class="btn w-full btn-filter">1D</a>
-                  <a class="btn w-full btn-filter-active">7D</a>
-                  <a class="btn w-full btn-filter">1M</a>
-                  <a class="btn w-full btn-filter">3M</a>
-                  <a class="btn w-full btn-filter">1Y</a>
-                  <a class="btn w-full btn-filter">ALL</a>
+                <div className="btn-group btn-group-filter justify-evenly w-2/3 w-auto ml-2">
+                  <a className="btn w-full btn-filter">1D</a>
+                  <a className="btn w-full btn-filter-active">7D</a>
+                  <a className="btn w-full btn-filter">1M</a>
+                  <a className="btn w-full btn-filter">3M</a>
+                  <a className="btn w-full btn-filter">1Y</a>
+                  <a className="btn w-full btn-filter">ALL</a>
                 </div>
               </div>
             </div>

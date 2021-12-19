@@ -54,7 +54,7 @@ function Concept() {
                     </div>
                     <div className="px-2 py-1 rounded flex bg-gray-100 dark:bg-gray-800 ml-auto list-value hover:bg-gray-200 hover:dark:bg-gray-900">
                       <div>53x6y4...12f5</div>
-                      <button class="btn ml-2">
+                      <button className="btn ml-2">
                         <i className="fa-duotone fa-copy text-xs"></i>
                       </button>
                     </div>
@@ -96,7 +96,7 @@ function Concept() {
                       </span> 
                     </div>
                     <div className="ml-auto flex items-center font-semibold">
-                      <span class="icon w-4 h-4 mr-1">
+                      <span className="icon w-Name4 h-4 mr-1">
                         <RadaSvg />
                       </span>
                       1 RIR
@@ -295,7 +295,7 @@ function Concept() {
                         <div className="mb-4">
                           <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Facebook's post link</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
-                            <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
+                            <span className="absolute top-2 left-3 flex justify-center iNametems-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span className="icon"><i className="fa-brands fa-facebook-f"></i></span></span>
                             <input type="text" name="fb-post-url" id="fb-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Facebook's post link" />
                             <div className="absolute inset-y-0 right-0 flex items-center">
                             </div>
@@ -305,7 +305,7 @@ function Concept() {
                         <div className="mb-4">
                           <label for="twitter-post-url" className="sr-only block text-xs font-medium uppercase">Twitter's post link</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
-                            <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span class="icon"><i class="fa-brands fa-twitter"></i></span></span>
+                            <span className="absolute top-2 left-3 flex justify-center iNametems-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span className="icon"><i className="fa-brands fa-twitter"></i></span></span>
                             <input type="text" name="twitter-post-url" id="twitter-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Twitter's post link" />
                             <div className="absolute inset-y-0 right-0 flex items-center">
                             </div>
@@ -315,7 +315,7 @@ function Concept() {
                         <div className="mb-4">
                           <label for="linkedin-post-url" className="sr-only block text-xs font-medium uppercase">Linkedin's post link</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
-                            <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--linkedin"><span class="icon"><i class="fa-brands fa-linkedin-in"></i></span></span>
+                            <span className="absolute top-2 left-3 flex justify-center iNametems-center w-px-24 h-px-24 rounded-full mr-4 brand--linkedin"><span className="icon"><i className="fa-brands fa-linkedin-in"></i></span></span>
                             <input type="text" name="linkedin-post-url" id="linkedin-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20" placeholder="Linkedin's post link" />
                             <div className="absolute inset-y-0 right-0 flex items-center">
                             </div>

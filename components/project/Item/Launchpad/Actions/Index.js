@@ -9,7 +9,10 @@ import useStore from "@lib/useStore";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import TutorialWidget from "./TutorialWidget"
 import { BLOCK_PASS_KYC_COMPLETE } from "@config/constants";
+import { useTranslation } from "react-i18next";
+import OpenDate from "./OpenDate"
 const LaunchpadActions = ({ project,pool }) => {
+  const {t,i18n} = useTranslation("launchpad")
   const store = useStore()
   const {account} = useActiveWeb3React()
   const currentTime = (new Date()).getTime() / 1000
@@ -29,22 +32,39 @@ const LaunchpadActions = ({ project,pool }) => {
         {((store.kyc.isKYC && store.kyc.status === BLOCK_PASS_KYC_COMPLETE && store.user.id !== "") || !pool.is_kyc) && !!account ?
           <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
-          <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">
-            <div className="card-body no-padding">
-              <div className="flex flex-col">
-                <div className="">
-                  <Timeline step="1" />
-                </div>
+          <div className="global-padding-lg min-h-full bg-white dark:bg-gray-800 relative z-10 card-default">
+            <div className="max-w-2xl mx-auto">
+              
+              <h3 className="text-2xl text-center mb-4 font-normal">
+                <span className="text-color-title">{t("Pool closes in")}</span>
+              </h3>
 
-                <div className="project-card--container">
-                  <SubscribeLaunchpad project={project} pool={pool} />
-                  <TutorialWidget></TutorialWidget>
-                </div>
+              <ProjectCountdown project={project} pool={pool} isEndDate={true} />
 
+              <div className="mt-4 text-center">
+                <div className="inline-block w-auto mx-auto  py-1.5 md:py-1  
+                    text-xs md:text-sm text-center rounded-lg
+                    border border-gray-200 dark:border-gray-600"
+                >
+                  <div className="py-2 px-2 md:px-4  border-b border-gray-200 dark:border-gray-700">
+                    <span className="icon mr-2"><i class="opacity-60 fa-solid fa-hourglass-start"></i></span>
+                    <span className="mr-2 opacity-70">{t("Open at")}</span> 
+                    <OpenDate time={pool.end_date} />
+                  </div>
+
+                  <div  className="py-2 px-2 md:px-4">
+                    <span className="icon  mr-2"><i class="opacity-60 fa-solid fa-hourglass-end"></i></span>
+                    <span className="mr-2 opacity-70">{t("Close at")}</span> 
+                    <OpenDate time={pool.end_date} />
+                  </div>
+
+
+                </div>
               </div>
 
-            </div>
+              <SubscribeLaunchpad project={project} pool={pool} />
 
+            </div>
           </div>
         }
         
@@ -57,7 +77,7 @@ const LaunchpadActions = ({ project,pool }) => {
         {!!account ?
           <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
-          <div className="card-default project-main-actions no-padding mb-10 overflow-hidden">
+          <div className="card-default project-main-actions no-padding overflow-hidden">
             <div className="card-body no-padding">
               <div className="flex flex-col">
                 <div className="">

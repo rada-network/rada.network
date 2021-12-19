@@ -339,27 +339,27 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
             <div className="w-full">
               <div className="message success flex relative mb-2 ">
                 <span className="message-icon">
-                  <i class="mr-2 fas fa-star"></i>
+                  <i className="mr-2 fas fa-star"></i>
                 </span>
 
                 <div className="message-content pr-2">
                   Share2earn for Parallel campaign has successfully ended.
                 </div>
                 <button onClick={e => { setIsWarning(false) }} className="flex items-center ml-auto w-4 h-4 ">
-                  <i class="text-base fas fa-times"></i>
+                  <i className="text-base fas fa-times"></i>
                 </button>
               </div>
 
               {referralInfo.isDeny && (
                 <div className="message error flex relative mb-2 ">
                   <span className="message-icon">
-                    <i class="mr-2 fas fa-exclamation-triangle"></i>
+                    <i className="mr-2 fas fa-exclamation-triangle"></i>
                   </span>
                   <div className="message-content pr-2">
                     {t("ban_message")}
                   </div>
                   <button onClick={e => { setIsWarning(false) }} className="flex items-center ml-auto w-4 h-4 ">
-                    <i class="text-base fas fa-times"></i>
+                    <i className="text-base fas fa-times"></i>
                   </button>
                 </div>
               )}
@@ -416,7 +416,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
                       <SelectBannerType />
                       <div className="p-0 pt-0 border-t border-gray-200 dark:border-gray-700">
                         <div className="">
-                          <img class="" src={bannerURL} />
+                          <img className="" src={bannerURL} />
                         </div>
                       </div>
 
@@ -521,7 +521,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
                         {/* <div className="mb-4">
                           <label for="telegram-post-url" className="sr-only block text-xs font-medium uppercase">Telegram's username</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
-                            <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--telegram"><span class="icon"><i class="fa-brands fa-telegram"></i></span></span>
+                            <span className="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--telegram"><span className="icon"><i className="fa-brands fa-telegram"></i></span></span>
                             <input type="text" name="telegram-post-url" id="telegram-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
                               placeholder="Telegram's username"
                               value={telegram.url}
@@ -536,7 +536,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
                         <div className="mb-4">
                           <label for="twitter-post-url" className="sr-only block text-xs font-medium uppercase">Your Twitter Username</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
-                            <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span class="icon"><i class="fa-brands fa-twitter"></i></span></span>
+                            <span className="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Twitter"><span className="icon"><i className="fa-brands fa-twitter"></i></span></span>
                             <input type="text" name="twitter-post-url" id="twitter-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
                               placeholder="Twitter's profile"
                               value={twitter.url}
@@ -551,7 +551,7 @@ const Share2EarnMainScreen = observer(({ shareCampaign, shareType, shareSlug, us
                         <div className="mb-4">
                           <label for="fb-post-url" className="sr-only block text-xs font-medium uppercase">Your Facebook Profile Link</label>
                           <div className="mt-1 relative rounded-md shadow-sm">
-                            <span class="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span class="icon"><i class="fa-brands fa-facebook-f"></i></span></span>
+                            <span className="absolute top-2 left-3 flex justify-center items-center w-px-24 h-px-24 rounded-full mr-4 brand--Facebook"><span className="icon"><i className="fa-brands fa-facebook-f"></i></span></span>
                             <input type="text" name="fb-post-url" id="fb-post-url" className="!text-sm inputbox inputbox-lg !pl-12 !pr-20"
                               placeholder="Facebook's profile"
                               value={facebook.url}

@@ -373,6 +373,12 @@ Content
 /* 
 LaunchVerse
 --------------------------------------------- */
+@media (max-width: 639px) {
+  .page-launchverse--home .pane-content--sec {
+    height: calc(100vh - var(--toolbar-height) - var(--navbar-height));
+  }
+}
+
 /* 
 Logo
 */
@@ -400,7 +406,7 @@ Logo
 /* 
 Hero
 */
-.page-launchverse .hero-deco,
+.page-launchverse--home .hero-deco,
 .page-landing--parallel .hero-deco {
   background-image: url("/images/launchverse-hero.svg");
   @apply flex-shrink-0 relative bg-no-repeat;
@@ -409,14 +415,14 @@ Hero
   height: 400px;
 }
 
-.dark .page-launchverse .hero-deco,
+.dark .page-launchverse--home .hero-deco,
 .dark .page-landing--parallel .hero-deco {
   background-image: url("/images/launchverse-hero-dark.svg");
 }
 
 /* Smaller the logo for small screen */
 @media only screen and (max-width: 768px) {
-  .page-launchverse .hero-deco,
+  .page-launchverse--home .hero-deco,
   .page-landing--parallel .hero-deco {
     width: 300px;
     height: 300px;
