@@ -3,8 +3,9 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html class="notranslate" translate="no">
         <Head>
+        <meta name="google" content="notranslate" />
         <script src='https://cdn.blockpass.org/widget/scripts/release/3.0.2/blockpass-kyc-connect.prod.js'></script>
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
