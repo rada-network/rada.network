@@ -35,9 +35,6 @@ export const CardProject = ({project,pool, status}) => {
   
   useEffect(() => {
     if (pool !== null && !pool.is_hidden) {
-      if (pool.slug == "ido"){
-        console.log("loadpool")
-      }
       fetcher(`/api/pools/get-pools?slug=${project.slug}/${pool.slug}`).then(function(res){
         if (!!res.pool_id){
           setPoolContract(res)

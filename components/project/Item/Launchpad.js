@@ -14,15 +14,15 @@ const ProjectLaunchpad = ({ project, pool }) => {
 
   useEffect(() => {
     fetcher(`/api/pools/get-pools?slug=${project.slug}/${pool.slug}`).then(function(res){
-      setLoadingPool(false)
       if (!!res.contract){
         setPoolContract({...pool,id : res.pool_id,contract : res.contract })
       }
       else{
         setPoolContract({...pool,id : null,contract : "" })
       }
+      setLoadingPool(false)
     })    
-  }, []);
+  }, [pool.slug]);
   if (loadingPool) return null
   return (
     <>
