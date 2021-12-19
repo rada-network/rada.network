@@ -223,7 +223,7 @@ Card Content
 }
 
 .card-project-sm .project-status {
-  @apply absolute right-6 top-6 lg:top-6;
+  @apply absolute right-4 top-6 lg:right-6;
 }
 
 /* Projects List
