@@ -229,33 +229,33 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
                     <ul className="mt-4 mb-2 flex-shrink-0 flex-grow">
                       {pool.is_allow_rir && parseInt(orderRIR) > 0 && <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Prefunded RIR")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Prefunded RIR")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {orderRIR} RIR
                         </span>
                       </li>}
                       {parseInt(orderBusd) > 0 && 
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Prefunded BUSD")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Prefunded BUSD")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {orderBusd} BUSD
                         </span>
                       </li>
                       }
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your maximum allocation")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Your maximum allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>({launchpadInfo?.individualMaximumAmount / 100} RIR)</>}
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your minimum allocation")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Your minimum allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>({launchpadInfo?.individualMinimumAmount / 100} RIR)</>}
                         </span>
                       </li>
                       {pool.is_allow_rir && parseFloat(accountBalance.rirBalance) > 0 && <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your RIR Balance")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Your RIR Balance")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {accountBalance.rirBalance} RIR
                         </span>
