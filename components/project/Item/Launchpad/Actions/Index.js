@@ -47,13 +47,11 @@ const LaunchpadActions = ({ project,pool }) => {
                     border border-gray-200 dark:border-gray-600"
                 >
                   <div className="py-2 px-2 md:px-4  border-b border-gray-200 dark:border-gray-700">
-                    <span className="icon mr-2"><i class="opacity-60 fa-solid fa-hourglass-start"></i></span>
                     <span className="mr-2 opacity-70">{t("Open at")}</span> 
                     <OpenDate time={pool.end_date} />
                   </div>
 
                   <div  className="py-2 px-2 md:px-4">
-                    <span className="icon  mr-2"><i class="opacity-60 fa-solid fa-hourglass-end"></i></span>
                     <span className="mr-2 opacity-70">{t("Close at")}</span> 
                     <OpenDate time={pool.end_date} />
                   </div>
