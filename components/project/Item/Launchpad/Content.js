@@ -119,8 +119,8 @@ const LaunchpadContent = observer(function({ project,pool }) {
           
 
           }
-          <a className="link ml-auto mt-1" href="https://rada.network/en/post/how-to-participate-in-an-ido-on-launchverse">
-            How winner will be chosen
+          <a target="_blank" className="link ml-auto mt-1" href="https://rada.network/en/post/how-to-participate-in-an-ido-on-launchverse">
+            {t("How winner will be chosen")}
           </a>
         </div>
       </div>

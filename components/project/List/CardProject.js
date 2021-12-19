@@ -7,6 +7,7 @@ import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { useLaunchpadContractV2 } from "@utils/hooks/useContracts";
 import { ethers, utils } from "ethers";
 import fetcher from "@lib/fetchJson";
+import numberFormatter from "@components/utils/numberFormatter";
 
 
 export const CardProject = ({project,pool, status}) => {
@@ -119,7 +120,7 @@ export const CardProject = ({project,pool, status}) => {
                 {t("Progress")}
               </span>
               <span className="list-value ml-auto">
-                <span className="font-semibold">{poolStat.amountBusd}</span>
+                <span className="font-semibold">{numberFormatter(poolStat.amountBusd)}</span>
                 <span className="opacity-70">/{pool.raise == 0 ? "TBA" : pool.raise.toLocaleString() + " BUSD"}</span>
               </span>
             </li>
