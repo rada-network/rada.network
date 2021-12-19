@@ -54,7 +54,7 @@ export default function ProjectPage({ slug, project, locale }) {
       setLoadingPool(true)
       fetcher(`/api/pools/get-pools?slug=${project.slug}/${selectedPool.slug}`).then(function(res){
         setLoadingPool(false)
-        if (!!res.pool_id){
+        if (!!res.contract){
           setPoolContract({...selectedPool,id : res.pool_id,contract : res.contract })
         }
         else{
@@ -73,7 +73,6 @@ export default function ProjectPage({ slug, project, locale }) {
       document.body.classList.remove("page-details");
     };
   }, [project]);
-
   /* Dragger to resize main col */
   const containerRef = useRef();
 
