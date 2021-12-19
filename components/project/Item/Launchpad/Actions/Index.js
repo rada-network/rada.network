@@ -42,8 +42,8 @@ const LaunchpadActions = ({ project,pool }) => {
               <ProjectCountdown project={project} pool={pool} isEndDate={true} />
 
               <div className="mt-4 text-center">
-                <div className="inline-block w-auto mx-auto  py-1.5 md:py-1  
-                    text-xs md:text-sm text-center rounded-lg
+                <div className="inline-block w-auto mx-auto  
+                    text-xs md:text-sm text-center rounded-full
                     border border-gray-200 dark:border-gray-600"
                 >
                   <div  className="py-2 px-2 md:px-4">
