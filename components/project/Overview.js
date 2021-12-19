@@ -118,8 +118,8 @@ const ProjectContent = function({project}){
             dangerouslySetInnerHTML={{ __html: project.content?.description }}
           ></div>
           <p className="mt-auto pt-4">
-            <Link href={`/${i18n.language}/launchverse/${project.slug}/reearch`} >
-              <a href={`/${i18n.language}/launchverse/${project.slug}/reearch`} className="link">{t("Read full research")}</a>
+            <Link href={`/${i18n.language}/launchverse/${project.slug}/research`} >
+              <a href={`/${i18n.language}/launchverse/${project.slug}/research`} className="link">{t("Read full research")}</a>
             </Link> 
           </p>
         </div>
