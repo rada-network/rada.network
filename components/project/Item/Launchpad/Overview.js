@@ -5,7 +5,24 @@ import Image from "@components/Image";
 export default function LaunchpadOverview({ project,pool }) {
   const { token } = project;
   const { t } = useTranslation("launchpad");
-  const [isWarning, setIsWarning] = useState(true);
+  const [isWarning, setIsWarning] = useState(false);
+  useEffect(() =>{
+    if (window.sessionStorage){
+      let isShow = window.sessionStorage.getItem("networkWarning")
+      if (!!isShow || !pool){
+        setIsWarning(false);
+      }
+      else{
+        setIsWarning(true);
+      }
+    }
+  },[])
+  const closeWarning = (e) => {
+    if (window.sessionStorage){
+      window.sessionStorage.setItem("networkWarning",1)
+    }
+    setIsWarning(false);
+  }
   return (
     <>
       {isWarning && (
@@ -15,9 +32,7 @@ export default function LaunchpadOverview({ project,pool }) {
           </span>
           <div className="message-content pr-2">{t("bsc warning")}</div>
           <button
-            onClick={(e) => {
-              setIsWarning(false);
-            }}
+            onClick={closeWarning}
             className="flex items-center ml-auto w-4 h-4 "
           >
             <i className="text-base fas fa-times"></i>
@@ -43,7 +58,7 @@ export default function LaunchpadOverview({ project,pool }) {
               >
                 {token.name}
               </strong>
-              <span className="badge badge-coin badge-coin-lg ml-2 -mb-1">
+              <span className="badge badge-coin badge-coin-lg ml-2">
                 {token.symbol}
               </span>
             </h1>
@@ -66,12 +81,13 @@ export default function LaunchpadOverview({ project,pool }) {
               </span>
             </div>
 
-            <div className={`label ${project.type}`}>{project.type}</div>
+            {!!pool && <div className={`label ${pool.type}`}>{pool.type}</div>}
           </div>
         </div>
       </div>
 
       {/* Video / Banner of Project */}
+      {pool == null && 
       <div className="page-media">
         <div className="media-player rounded-lg">
           <div className="w-full h-full">
@@ -93,6 +109,7 @@ export default function LaunchpadOverview({ project,pool }) {
           </div>
         </div>
       </div>
+      }
     </>
   );
 }

@@ -15,8 +15,15 @@ export default function ProjectPage({ slug, project, locale }) {
   const store = useStore();
   dataStore.page = "launchverse";
   dataStore.lang = locale;
-  const page = slug.length > 1 ? slug[1] : "index";
-
+  const pageOrPool = slug.length > 1 ? slug[1] : "";
+  let page = 'index'
+  let poolSlug = ""
+  if (pageOrPool == "share2earn" || pageOrPool == "research") {
+    page = pageOrPool;
+  }
+  else{
+    poolSlug = pageOrPool
+  }
   const meta = myUtils.createSiteMetadata(
     {
       page: "ProjectDetail",
@@ -28,27 +35,25 @@ export default function ProjectPage({ slug, project, locale }) {
     asPath
   );
   const [selectedPool,setSelectedPool] = useState(null)
-  const [poolContact,setPoolContract] = useState(null)
+  const [poolContract,setPoolContract] = useState(null)
+  const [loadingPool,setLoadingPool] = useState(false)
 
   useEffect(() => {
-    let pool = {}
-    if (window.location.hash) {
-      const hash = window.location.hash.substr(1);
-      pool = project.project_pool.find(function(item){
-        return item.slug == hash
+    if (poolSlug !== ""){
+      let pool = project.project_pool.find(function(item){
+        return item.slug == poolSlug
       })
-      if (!pool){
-        pool = project.project_pool[0]
+      if (pool){
+        setSelectedPool(pool)
       }
-    } else {
-      pool = project.project_pool[0]
     }
-    setSelectedPool(pool)
-  }, [asPath]);
+  },[poolSlug])
 
   useEffect(() => {
     if (selectedPool !== null) {
+      setLoadingPool(true)
       fetcher(`/api/pools/get-pools?slug=${project.slug}`).then(function(res){
+        setLoadingPool(false)
         if (!!res[selectedPool.slug]){
           setPoolContract({...selectedPool,id : res[selectedPool.slug].pool_id,contract : res[selectedPool.slug].contract })
         }
@@ -57,7 +62,6 @@ export default function ProjectPage({ slug, project, locale }) {
         }
       })
     }
-    
     
   }, [selectedPool]);
 
@@ -72,7 +76,7 @@ export default function ProjectPage({ slug, project, locale }) {
 
   /* Dragger to resize main col */
   const containerRef = useRef();
-  if (poolContact === null) return null
+
   return (
     <Layout
       extraClass="glassmorphism"
@@ -80,7 +84,7 @@ export default function ProjectPage({ slug, project, locale }) {
       meta={meta}
     >
       <div className={`pane-content`} ref={containerRef}>
-        <ProjectItem project={project} pool={poolContact} slug={slug} page={page} />
+        {!loadingPool && <ProjectItem project={project} pool={poolContract} slug={slug} page={page} />}
       </div>
     </Layout>
   );

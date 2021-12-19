@@ -66,7 +66,7 @@ export const CardProject = ({ project }) => {
             <img className="project-thumb--img" src={img} alt="{title}" />
           </div>
         </div>
-        <div class="project-content--meta">
+        <div className="project-content--meta">
           
           <div className="project-title">
             <div className="project-title--token-logo bg-white w-6 h-6 md:w-10 md:h-10 p-0.5 mr-1 rounded-full">

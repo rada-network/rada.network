@@ -37,7 +37,7 @@ export default function TokenInfoAirdrop({ tokenData, tokenInfo, airdrop }) {
 
           <div className="mt-4">
             <a
-              class="e-widget no-button"
+              className="e-widget no-button"
               href={`https://gleam.io/${airdrop?.code}`}
               rel="nofollow"
               target="_blank"

@@ -85,8 +85,8 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                       <strong className="">
                         {tokenData?.team?.headquarter}
                       </strong>
-                      <span class="icon ml-1 relative -top-0.5">
-                        <i class="fa-duotone fa-external-link text-2xs"></i>
+                      <span className="icon ml-1 relative -top-0.5">
+                        <i className="fa-duotone fa-external-link text-2xs"></i>
                       </span>
                     </a>
                   ) : (
@@ -143,7 +143,7 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                               rel="nofollow"
                               target="_blank"
                             >
-                              <i class="fa-brands fa-linkedin-in"></i>
+                              <i className="fa-brands fa-linkedin-in"></i>
                             </a>
                           )}
                           {item.twitter && (
@@ -153,7 +153,7 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                               rel="nofollow"
                               target="_blank"
                             >
-                              <i class="fa-brands fa-twitter"></i>
+                              <i className="fa-brands fa-twitter"></i>
                             </a>
                           )}
                           {item.facebook && (
@@ -163,7 +163,7 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                               rel="nofollow"
                               target="_blank"
                             >
-                              <i class="fa-brands fa-facebook"></i>
+                              <i className="fa-brands fa-facebook"></i>
                             </a>
                           )}
                         </div>
@@ -176,10 +176,10 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                   <div className="mt-8">
                     <div className="post-content empty-state text-center py-8 lg:px-8">
                       <span className="icon">
-                        <i class="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
+                        <i className="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
                       </span>
                       <p
-                        class="opacity-50 pt-8 pb-2 m-auto"
+                        className="opacity-50 pt-8 pb-2 m-auto"
                         dangerouslySetInnerHTML={{
                           __html: t("no token info", {
                             name: `<strong>${tokenData?.name} (${tokenData?.symbol})</strong>`,
@@ -190,7 +190,7 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                       </p>
                       <button className="btn btn-default btn-lg btn-primary">
                         <span className="icon">
-                          <i class="fa-solid fa-heart"></i>
+                          <i className="fa-solid fa-heart"></i>
                         </span>
                         <span className="btn--text">{t("contribute")}</span>
                       </button>
@@ -233,10 +233,10 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                     ) : (
                       <div className="post-content empty-state text-center py-8 lg:px-8">
                         <span className="icon">
-                          <i class="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
+                          <i className="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
                         </span>
                         <p
-                          class="opacity-50 pt-8 pb-2 m-auto"
+                          className="opacity-50 pt-8 pb-2 m-auto"
                           dangerouslySetInnerHTML={{
                             __html: t("no token info", {
                               name: `<strong>${tokenData?.name} (${tokenData?.symbol})</strong>`,
@@ -252,7 +252,7 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                           className="btn btn-default btn-lg btn-primary"
                         >
                           <span className="icon">
-                            <i class="fa-solid fa-heart"></i>
+                            <i className="fa-solid fa-heart"></i>
                           </span>
                           <span className="btn--text">{t("contribute")}</span>
                         </a>
@@ -270,10 +270,10 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
               <div className="mt-8">
                 <div className="post-content empty-state text-center py-8 lg:px-8">
                   <span className="icon">
-                    <i class="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
+                    <i className="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
                   </span>
                   <p
-                    class="opacity-50 pt-8 pb-2 m-auto"
+                    className="opacity-50 pt-8 pb-2 m-auto"
                     dangerouslySetInnerHTML={{
                       __html: t("no token info", {
                         name: `<strong>${tokenData?.name} (${tokenData?.symbol})</strong>`,
@@ -284,7 +284,7 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                   </p>
                   <button className="btn btn-default btn-lg btn-primary">
                     <span className="icon">
-                      <i class="fa-solid fa-heart"></i>
+                      <i className="fa-solid fa-heart"></i>
                     </span>
                     <span className="btn--text">{t("contribute")}</span>
                   </button>

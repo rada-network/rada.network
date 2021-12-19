@@ -452,7 +452,7 @@ export default function UserProfile(props) {
                           0x6cdF11996eEd528d69Cd8B56503fDb19EC0B2977
                         </span>
                         <span className="icon">
-                          <i class="fa-regular fa-copy text-2xs"></i>
+                          <i className="fa-regular fa-copy text-2xs"></i>
                         </span>
                       </a>
                     </div>

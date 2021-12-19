@@ -103,7 +103,7 @@ const Layout = observer((props) => {
                             <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon">
-                                  <i class="fa-solid fa-wallet"></i>
+                                  <i className="fa-solid fa-wallet"></i>
                                 </span>
                               </div>
                               <label
@@ -131,7 +131,7 @@ const Layout = observer((props) => {
                             <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon">
-                                  <i class="fa-brands fa-google"></i>
+                                  <i className="fa-brands fa-google"></i>
                                 </span>
                               </div>
                               <label
@@ -156,7 +156,7 @@ const Layout = observer((props) => {
                             <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon">
-                                  <i class="fa-brands fa-facebook-f"></i>
+                                  <i className="fa-brands fa-facebook-f"></i>
                                 </span>
                               </div>
                               <label
@@ -181,7 +181,7 @@ const Layout = observer((props) => {
                             <div className="list-group--item--title w-full md:w-1/4">
                               <div className="list-group--item--media">
                                 <span className="icon">
-                                  <i class="fa-brands fa-twitter"></i>
+                                  <i className="fa-brands fa-twitter"></i>
                                 </span>
                               </div>
                               <label
@@ -217,7 +217,7 @@ const Layout = observer((props) => {
                     <div className="card-body">
                       <div className="list-group">
                         <div className="list-group--item !justify-start !items-start">
-                          <i class="fa-solid fa-circle-1 mr-2 md:mr-4 text-xl md:text-3xl text-purple-500"></i>
+                          <i className="fa-solid fa-circle-1 mr-2 md:mr-4 text-xl md:text-3xl text-purple-500"></i>
 
                           <div>
                             <h3 className="font-semibold mt-1 mb-2 lg:mt-2">
@@ -233,7 +233,7 @@ const Layout = observer((props) => {
 
                             <ol className="">
                               <li className="mb-1">
-                                <i class="fa-solid fa-check text-green-400 mr-2"></i>{" "}
+                                <i className="fa-solid fa-check text-green-400 mr-2"></i>{" "}
                                 Follow our Twitter{" "}
                                 <a
                                   className="link"
@@ -245,7 +245,7 @@ const Layout = observer((props) => {
                                 </a>
                               </li>
                               <li className="mb-1">
-                                <i class="fa-solid fa-check text-green-400 mr-2"></i>{" "}
+                                <i className="fa-solid fa-check text-green-400 mr-2"></i>{" "}
                                 Subscribe to our{" "}
                                 <a
                                   className="link"
@@ -257,7 +257,7 @@ const Layout = observer((props) => {
                                 </a>
                               </li>
                               <li className="mb-1">
-                                <i class="fa-solid fa-check text-green-400 mr-2"></i>{" "}
+                                <i className="fa-solid fa-check text-green-400 mr-2"></i>{" "}
                                 Join our{" "}
                                 <a
                                   className="link"
@@ -269,7 +269,7 @@ const Layout = observer((props) => {
                                 </a>
                               </li>
                               <li className="mb-1">
-                                <i class="fa-solid fa-check text-green-400 mr-2"></i>{" "}
+                                <i className="fa-solid fa-check text-green-400 mr-2"></i>{" "}
                                 Join our{" "}
                                 <a
                                   className="link"
@@ -285,7 +285,7 @@ const Layout = observer((props) => {
                         </div>
 
                         <div className="list-group--item !justify-start !items-start">
-                          <i class="fa-solid fa-circle-2 mr-2 md:mr-4 text-xl md:text-3xl text-yellow-500"></i>
+                          <i className="fa-solid fa-circle-2 mr-2 md:mr-4 text-xl md:text-3xl text-yellow-500"></i>
 
                           <div>
                             <h3 className="font-semibold mt-1 mb-2 lg:mt-2">
@@ -299,23 +299,23 @@ const Layout = observer((props) => {
 
                             <ul className="grid grid-cols-1 w-full">
                               <li className="mb-1">
-                                <i class="fa-solid fa-check text-green-400 mr-2"></i>{" "}
+                                <i className="fa-solid fa-check text-green-400 mr-2"></i>{" "}
                                 Have at least 1 post on FB group
                               </li>
                               <li className="mb-1">
-                                <i class="fa-solid fa-check text-green-400 mr-2"></i>{" "}
+                                <i className="fa-solid fa-check text-green-400 mr-2"></i>{" "}
                                 Commit at least 1 commit to our Rada Github
                               </li>
                               <li className="mb-1">
-                                <i class="fa-solid fa-check text-green-400 mr-2"></i>{" "}
+                                <i className="fa-solid fa-check text-green-400 mr-2"></i>{" "}
                                 Contribute a design
                               </li>
                               <li className="mb-1">
-                                <i class="fa-solid fa-check text-green-400 mr-2"></i>{" "}
+                                <i className="fa-solid fa-check text-green-400 mr-2"></i>{" "}
                                 Invite at least 100 people to Rada
                               </li>
                               <li className="mb-1">
-                                <i class="fa-solid fa-check text-green-400 mr-2"></i>{" "}
+                                <i className="fa-solid fa-check text-green-400 mr-2"></i>{" "}
                                 Translating at least 1 post to a new language
                               </li>
                             </ul>
@@ -323,7 +323,7 @@ const Layout = observer((props) => {
                         </div>
 
                         <div className="list-group--item !justify-start !items-start">
-                          <i class="fa-solid fa-circle-3 mr-2 md:mr-4 text-xl md:text-3xl text-green-500"></i>
+                          <i className="fa-solid fa-circle-3 mr-2 md:mr-4 text-xl md:text-3xl text-green-500"></i>
 
                           <div>
                             <h3 className="font-semibold mt-1 mb-2 lg:mt-2">

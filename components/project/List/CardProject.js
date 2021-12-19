@@ -4,7 +4,7 @@ import Link from "next/link"
 import MiniCountdown from "./Countdown";
 import { useState, useEffect } from "react";
 
-export const CardProject = ({project,pool,title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, type, network, desc, isComing}) => {
+export const CardProject = ({project,pool, status}) => {
   const {t,i18n} = useTranslation("launchpad");
   const [poolStatus, setPoolStatus] = useState("");
 
@@ -24,8 +24,9 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
     }
   }, [])
   const progressPercentage = "0%"
+  if (pool.is_hidden) return null
   return (
-    <Link href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`}>
+    <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
     <div className={`card-project is-${project.status}`}>
       <div className="project-content relative">
 
@@ -44,7 +45,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
         )}
         
 
-        <div class="project-content--meta">
+        <div className="project-content--meta">
           <div className="project-title flex justify-between items-center">
             <div className="text-xl">
               <h5>{pool.title}</h5>
@@ -60,14 +61,14 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
                 {t("Raise")}
               </span>
               <span className="ml-auto list-value font-semibold">
-                {raise == 0 ? "TBA" : raise.toLocaleString() + " BUSD"}  
+                {pool.raise == 0 ? "TBA" : pool.raise.toLocaleString() + " BUSD"}  
               </span>
             </li>
             <li className="list-pair">
               <span className="list-key">
                 {t("Token Price")}
               </span>
-              <span className="list-value ml-auto"> {tokenPrice == 0 ? "TBA" : tokenPrice + " BUSD"}</span>
+              <span className="list-value ml-auto"> {pool.price == 0 ? "TBA" : pool.price + " BUSD"}</span>
             </li>
             <li className="list-pair">
               <span className="list-key">
@@ -75,7 +76,7 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
               </span>
               <span className="list-value ml-auto">
                 <span className="font-semibold">0</span>
-                <span className="opacity-70">/{raise == 0 ? "TBA" : raise.toLocaleString() + " BUSD"}</span>
+                <span className="opacity-70">/{pool.raise == 0 ? "TBA" : pool.raise.toLocaleString() + " BUSD"}</span>
               </span>
             </li>
           </ul>
@@ -85,8 +86,8 @@ export const CardProject = ({project,pool,title, link, img, status, statusName, 
           </div>
 
           <div className="project--cta">
-            <Link href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`} > 
-            <a href={`/${i18n.language}/launchverse/${project.slug}#${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
+            <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} > 
+            <a href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
               <span>
                View Details
               </span>

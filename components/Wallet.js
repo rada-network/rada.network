@@ -336,7 +336,7 @@ const WalletProfile = ({ type }) => {
               <>
                 <NetworkSwitch />
                 <button
-                  className="btn btn-default w-24"
+                  className="btn btn-default w-20 md:w-24"
                   onClick={handleConnectWallet}
                 >
                   {t("connect")}
@@ -344,7 +344,7 @@ const WalletProfile = ({ type }) => {
               </>
             ) : (
               <button
-                className="btn btn-default w-24"
+                className="btn btn-default w-20 md:w-24"
                 onClick={() => handleDisconnectWallet()}
               >
                 {t("disconnect")}
@@ -379,7 +379,9 @@ const WalletProfile = ({ type }) => {
               }
             </>
           ) : (
-            <div className="border border-primary-500 my-2 pl-2 pr-1 ml-auto lg:mr-3 xl:mr-12 text-sm flex items-center rounded-lg">
+            <div className="btn btn-default btn-primary my-2 pl-2 pr-1 ml-auto lg:mr-3 xl:mr-12 text-sm flex items-center rounded-lg" 
+            onClick={() => handleDisconnectWallet()}
+            >
               {_.isEmpty(account) ? (
                 <span>{t("no connection", { provider: "wallet" })}</span>
               ) : (
@@ -401,16 +403,16 @@ const WalletProfile = ({ type }) => {
                     </div>
                   </Screen>
                   {store.network == "bsc" ? (
-                    <span className="badge badge-coin relative ml-2 mr-2">
+                    <span className="bg-white text-gray-700 text-2xs py-0.5 px-1 mx-1 rounded">
                       BSC
                     </span>
                   ) : (
-                    <span className="badge badge-coin relative ml-2 mr-2">
+                    <span className="bg-white text-gray-700 text-2xs py-0.5 px-1 mx-1 rounded">
                       ETHEREUM
                     </span>
                   )}
                   <button
-                    className="text-right opacity-70 hover:opacity-100 p-1 rounded-lg z-10"
+                    className="text-right p-1 rounded-lg z-10"
                     onClick={() => handleDisconnectWallet()}
                   >
                     <span className="icon">

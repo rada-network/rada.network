@@ -35,7 +35,7 @@ const SwapTokens = ({}) => {
         </div>
 
         <div className="mt-8">
-          <button class="btn btn-default btn-default-lg w-full btn-purple" disabled="" id="swap-button" width="100%" scale="md">
+          <button className="btn btn-default btn-default-lg w-full btn-purple" disabled="" id="swap-button" width="100%" scale="md">
             Approve Contract
           </button>
         </div>

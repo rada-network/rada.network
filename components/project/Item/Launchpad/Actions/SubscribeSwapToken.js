@@ -15,6 +15,7 @@ import { set } from "store";
 import SocialPromote from "../SocialPromote";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import useChainConfig from "utils/web3/useChainConfig"
+import MiniCountdown from "@components/project/List/Countdown";
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
@@ -23,7 +24,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const bUSDContract = useBUSDContract()
   const { account } = useActiveWeb3React()
   const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ pool })
-  console.log(pool)
   const { callWithGasPrice } = useCallWithGasPrice()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const launchpadContract = useLaunchpadContractV2(pool)
@@ -38,6 +38,39 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const [step, setStep] = useState(2)
   const [claimDisbaled, setClaimDisbaled] = useState(false)
   const [tokenAddress,setTokenAddress] = useState(ethers.constants.AddressZero)
+
+
+  const [poolStatus, setPoolStatus] = useState("");
+
+  useEffect(() => {
+    if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
+      setPoolStatus("open")
+    } 
+
+    if (Date.parse(new Date()) < Date.parse(pool.open_date)) {
+      setPoolStatus("coming")
+    }
+    if (Date.parse(new Date()) > Date.parse(pool.end_date)){
+      setPoolStatus("closed")
+    }
+    if (pool.open_date == null) {
+      setPoolStatus("tba")
+    }
+  }, [])
+
+  const CountdownInPool = function(){
+    return (
+      <div className={`flex text-base justify-between items-center"`}>
+        {poolStatus == "open" && <div className="text-base">{t("Pool closes in")}</div>}
+        {poolStatus == "coming" && <div className="text-base">{t("Sale start in")}</div>}
+        {poolStatus == "closed" && <div className="text-base">{t("Pool closed")}</div>}
+        {poolStatus == "tba" && <div className="text-base">{t("Comming Soon")}</div>}
+        {poolStatus == "coming" && <MiniCountdown project={pool} isEndDate={false} />}
+        {poolStatus == "open" && <MiniCountdown project={pool} isEndDate={true} />}
+      </div>
+    )
+  }
+
   const fetchAccountBalance = async function () {
     await fetchLaunchpadInfo()
     let rirBalance = await rirContract.balanceOf(account);
@@ -176,68 +209,74 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     <>
       {step == 2 &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
-          <div className="card-header text-center sr-only">
-            <h2>Public Sale</h2>
-          </div>
-
           <div className="card-body no-padding">
+
             <div className="flex flex-col">
               <div className="">
                 <Timeline step="2" />
               </div>
 
               <div className="project-card--container">
-                <div className="mb-8 sr-only">
-                  <h3 className="text-2xl md:text-3xl text-center font-normal">
-                    <span className="text-color-title"></span>
-                  </h3>
-                </div>
-
                 <div className="grid gap-4 md:gap-8 lg:grid-cols-2">
+
                   <div className="box box--transparent">
 
-                    <div className="box-header !px-0">{t("Your allocation")}</div>
+                    <div className="box-header !px-0">
+                      <CountdownInPool />
+                    </div>
 
-                    <ul class="mt-4 flex-shrink-0 flex-grow">
-                      {pool.is_allow_rir && parseInt(orderRIR) > 0 && <li class="list-pair mb-2">
-                        <span class="list-key">{t("Prefunded RIR")}</span>
-                        <span class="ml-auto list-value font-semibold">
+                    <div className="box-header !px-0 sr-only">{t("Your allocation")}</div>
+
+                    <ul className="mt-4 mb-2 flex-shrink-0 flex-grow">
+                      {pool.is_allow_rir && parseInt(orderRIR) > 0 && <li className="list-pair mb-2">
+                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Prefunded RIR")}</span>
+                        <span className="ml-auto list-value font-semibold">
                           {orderRIR} RIR
                         </span>
                       </li>}
-                      <li class="list-pair mb-2">
-                        <span class="list-key">{t("Prefunded BUSD")}</span>
-                        <span class="ml-auto list-value font-semibold">
+                      {parseInt(orderBusd) > 0 && 
+                      <li className="list-pair mb-2">
+                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Prefunded BUSD")}</span>
+                        <span className="ml-auto list-value font-semibold">
                           {orderBusd} BUSD
                         </span>
                       </li>
-                      <li class="list-pair mb-2">
-                        <span class="list-key">{t("Your maximum allocation")}</span>
-                        <span class="ml-auto list-value font-semibold">
-                          {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>( {launchpadInfo?.individualMaximumAmount / 100} RIR )</>}
+                      }
+                      <li className="list-pair mb-2">
+                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your maximum allocation")}</span>
+                        <span className="ml-auto list-value font-semibold">
+                          {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>({launchpadInfo?.individualMaximumAmount / 100} RIR)</>}
                         </span>
                       </li>
-                      <li class="list-pair mb-2">
-                        <span class="list-key">{t("Your minimum allocation")}</span>
-                        <span class="ml-auto list-value font-semibold">
-                          {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>( {launchpadInfo?.individualMinimumAmount / 100} RIR )</>}
+                      <li className="list-pair mb-2">
+                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your minimum allocation")}</span>
+                        <span className="ml-auto list-value font-semibold">
+                          {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>({launchpadInfo?.individualMinimumAmount / 100} RIR)</>}
                         </span>
                       </li>
-                      {pool.is_allow_rir && parseFloat(accountBalance.rirBalance) > 0 && <li class="list-pair mb-2">
-                        <span class="list-key">{t("Your RIR Balance")}</span>
-                        <span class="ml-auto list-value font-semibold">
+                      {pool.is_allow_rir && parseFloat(accountBalance.rirBalance) > 0 && <li className="list-pair mb-2">
+                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your RIR Balance")}</span>
+                        <span className="ml-auto list-value font-semibold">
                           {accountBalance.rirBalance} RIR
                         </span>
                       </li>}
                     </ul>
 
                     {pool.is_allow_rir && <div className="pt-4 mb-4 border-t border-gray-400 border-opacity-20">
-                      <p>
-                        <span className="icon mr-2 text-base">
-                          <i class="fas fa-info-circle text-yellow-500"></i>
+                      <p className="relative mb-2">
+                        <span className="icon mr-2 text-base opacity-60">
+                          <i className="fas fa-check-circle"></i>
                         </span>
-                        <span>
-                          {t("Allocation note")}
+                        <span className="opacity-60">
+                          {t("Prefund description")}
+                        </span>
+                      </p>
+                      <p>
+                        <span className="icon mr-2 text-base opacity-60">
+                          <i className="fas fa-check-circle"></i>
+                        </span>
+                        <span className="opacity-60">
+                          {t("Prefund description 2")}
                         </span>
                       </p>
                     </div>
@@ -247,7 +286,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
                   <div className="box box--gray -mx-4 -mb-6 md:m-0">
                     <div className="box-header">{t("Prefund your investment")}</div>
-                    <SwapTokensV2 accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} pool={pool} />
+                    <SwapTokensV2 accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} pool={pool} project={project} />
                   </div>
                 </div>
               </div>
@@ -257,10 +296,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       }
       {step == 32 &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
-          <div className="card-header text-center sr-only">
-            <h2>Public Sale</h2>
-          </div>
-
           <div className="card-body no-padding">
             <div className="flex flex-col">
               <div className="">
@@ -269,12 +304,11 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
               <div className="project-card--container">
                 <div className="max-w-xl mx-auto">
                   <div className="mb-4 md:mb-8">
-                    <h3 className="text-2xl md:text-3xl text-center font-normal">
+                    <h3 className="text-2xl text-center font-normal">
                       <span className="text-color-title">
                         {t("pool closed")}
                       </span>
                     </h3>
-                    
                   </div>
                   <SocialPromote />
                 </div>
@@ -285,23 +319,24 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       }
       {(step == 31) &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
-          <div className="card-header text-center sr-only">
-            <h2>Public Sale</h2>
-          </div>
-
           <div className="card-body no-padding">
             <div className="flex flex-col">
+
               <div className="">
                 <Timeline step="3" />
               </div>
-
+              
               <div className="project-card--container">
                 <div className="max-w-xl mx-auto">
                   <div className="flex">
                     <div className="w-full">
-                      <h3 className="text-xl mb-4 text-green-400 dark:text-green-600">
-                      ✨{orderRIR > 0 ?
-                          <span>{t("prefunded note",
+                      <h3 className="text-2xl mb-4 text-green-600 text-center">
+                        <span className="icon mr-2">
+                          <i className="fa-duotone fa-badge-check"></i>
+                        </span>
+                        {orderRIR > 0 ?
+                          <span>
+                          {t("prefunded note",
                             {
                               amount: orderBusd,
                               rir: orderRIR,
@@ -309,7 +344,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           )
                           }</span>
                           :
-                          <span>{t("prefunded note usd",
+                          <span>
+                            {t("prefunded note usd",
                             {
                               amount: orderBusd,
                             }
@@ -317,18 +353,20 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           }</span>
                         }
                       </h3>
+
                       <TokenSocialPromote project={project} />
+
                       {currentTime < endTime && (parseInt(orderBusd) < maxBusd || ((parseInt(orderRIR) < maxRIR && parseInt(accountBalance.rirBalance) > 0) && pool.is_allow_rir)) &&
-                      <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center" onClick={e => { setStep(2) }} >
+                      <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
                         <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
-                          <i class="fa fa-money-bill"></i>
+                          <i className="fa fa-money-bill"></i>
                         </span>
                         <div>
                           <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">{t("Adjust prefund")}</p>
                         
-                          <a href={`#`}  class="group">
-                            <span class="text-sm">{t("adjust note",{"orderBusd" : orderBusd,"maxBusd" : maxBusd})}</span>
-                            <span class="icon text-xs relative left-1 group-hover:left-2 transition-all"><i class="fas fa-angle-right"></i></span>
+                          <a href={`#`}  className="group">
+                            <span className="text-sm mr-1">{t("adjust note",{"orderBusd" : orderBusd,"maxBusd" : maxBusd})}</span>
+                            <span className="icon text-xs relative left-1 group-hover:left-2 transition-all"><i className="fas fa-angle-right"></i></span>
                           </a>
                         </div>
                       </div>
@@ -405,7 +443,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <>
                     <p>{t("status failed note refund")}</p> 
                     <p>{t("Refund BUSD")}: <strong>{launchpadInfo.refundable[0]} BUSD</strong></p> 
-                    <div class="ml-auto mt-4 list-value font-semibold">
+                    <div className="ml-auto mt-4 list-value font-semibold">
                       <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                     </div>
                     </>
@@ -459,45 +497,47 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
               <div className="project-card--container">
                 <div className="max-w-md mx-auto">
-                  <ul class="mb-4 mt-auto flex-shrink-0 flex-grow">
-                    <li class="list-pair mb-2">
-                      <span class="w-3/5 !opacity-100">{project.token.symbol} Contract:</span>
-                      <div class="w-2/5 ml-auto ">
-                        <div className="">
-                          <CopyToClipboard
-                            onCopy={handleCopy}
-                            text={tokenAddress}
-                          >
-                            <a href={getBscScanURL(tokenAddress)} target="_blank" className="btn btn-default btn-default-sm">
-                              <span className="icon">
-                                <i class={`cf cf-${project?.platform?.networkName}`}></i>
-                              </span>
-                              <span className="btn--text">{ `${tokenAddress.substr(0, 6)}...${tokenAddress.substr(-6)} `}</span>
-                              <span className="icon">
-                                <i class="fa-regular fa-copy text-2xs"></i>
-                              </span>
-                            </a>
-                          </CopyToClipboard>
-                          
+                  <ul className="mb-4 mt-auto flex-shrink-0 flex-grow">
+                    <li className="list-pair mb-2">
+                      <span className="w-3/5 !opacity-100">{project.token.symbol} Contract:</span>
+                      <div className="w-2/5 ml-auto ">
+                        <div className="w-36">
+                          <div className="px-2 py-1 rounded-lg flex bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700">
+                            <div>
+                              <a target="_blank" href={getBscScanURL(tokenAddress)}>
+                                <span className="icon mr-2">
+                                  <i className={`cf cf-${project?.platform?.networkName}`}></i>
+                                </span>
+                                {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}</a>
+                            </div>
+                            <CopyToClipboard
+                              onCopy={handleCopy}
+                              text={tokenAddress}
+                            >
+                              <button className="btn ml-2">
+                                <i className="fa-duotone fa-copy text-2xs"></i>
+                              </button>
+                            </CopyToClipboard>
+                          </div>
                         </div>
                       </div>
                     </li>
-                    <li class="list-pair mb-2">
-                      <span class="w-3/5 !opacity-100">{t("token claim note",{name : project.token.symbol})}:</span>
-                      <div class="w-2/5 ml-auto  font-semibold">{launchpadInfo.claimable} {project.token.symbol}
+                    <li className="list-pair mb-2">
+                      <span className="w-3/5 !opacity-100">{t("token claim note",{name : project.token.symbol})}:</span>
+                      <div className="w-2/5 ml-auto  font-semibold">{launchpadInfo.claimable} {project.token.symbol}
                       </div>
                     </li>
                     {launchpadInfo.refundable[0] > 0 && 
-                    <li class="list-pair mb-2">
-                      <span class="w-3/5 !opacity-100">{t("busd claim note")}:</span>
-                      <div class="w-2/5 ml-auto font-semibold">{launchpadInfo.claimable[0]} BUSD
+                    <li className="list-pair mb-2">
+                      <span className="w-3/5 !opacity-100">{t("busd claim note")}:</span>
+                      <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[0]} BUSD
                       </div>
                     </li>
                     }
                     {launchpadInfo.refundable[1] > 0 && 
-                    <li class="list-pair mb-2">
-                      <span class="w-3/5 !opacity-100">{t("busd claim note")}:</span>
-                      <div class="w-2/5 ml-auto font-semibold">{launchpadInfo.claimable[1]} RIR
+                    <li className="list-pair mb-2">
+                      <span className="w-3/5 !opacity-100">{t("RIR claim note")}:</span>
+                      <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[1]} RIR
                       </div>
                     </li>
                     }
@@ -505,7 +545,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 </div>
                 <div className="flex items-center">
                   <div className="mx-auto">
-                    <div class="ml-auto mt-4 list-value font-semibold">
+                    <div className="ml-auto mt-4 list-value font-semibold">
                     {(launchpadInfo.claimable > 0 || launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) && 
                       <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                     }
@@ -596,17 +636,17 @@ const TokenSocialPromote = function({project}){
   return (
     <ul className="text-left p-4 border border-gray-200 dark:border-gray-700 rounded-lg mb-4">
       <li  className="relative pl-6  mb-2">
-        <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center mr-2">
-          <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
+        <span className="absolute left-0 top-0 mr-2">
+          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" /> 
         </span>
-        <p class="" dangerouslySetInnerHTML={{__html : t("status note")}} >
+        <p className="" dangerouslySetInnerHTML={{__html : t("status note")}} >
         </p>
       </li>
       <li className="relative pl-6 mb-2"> 
-        <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center mr-2">
-          <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
+        <span className="absolute left-0 top-0 mr-2">
+          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" /> 
         </span>
-          <p class="" dangerouslySetInnerHTML={{__html : t("coming soon note",
+          <p className="" dangerouslySetInnerHTML={{__html : t("coming soon note",
           {
             twitter : `<a class="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
             radanetwork : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,
@@ -615,10 +655,10 @@ const TokenSocialPromote = function({project}){
           )}} />
       </li>
       <li className="relative pl-6  mb-2">
-        <span className="absolute left-0 top-0.5 w-4 h-4 inline-flex items-center text-gray-600 dark:text-gray-300 bg-gray-300 dark:bg-gray-600 rounded-full justify-items-center  mr-2">
-          <i class="fas text-2xs opacity-60 fa-check mx-auto" /> 
+        <span className="absolute left-0 top-0  mr-2">
+          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" /> 
         </span>
-          <p class="" dangerouslySetInnerHTML={{__html : t("status note 2",
+          <p className="" dangerouslySetInnerHTML={{__html : t("status note 2",
             {
               token : project.token.name,
               research : `<a class="link" target="_blank" rel="nofollow" href="/${i18n.language}/launchverse/${project.slug}/research">Research</a>`

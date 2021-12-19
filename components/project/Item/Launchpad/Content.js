@@ -54,7 +54,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
     >
       <div className="card card-default project-brief">
         <div className="card-header">
-          <h3>{t("Launchverse Overview")}</h3>
+          <h3>{t("Pool Overview")}</h3>
         </div>
         <div className="card-body flex flex-col">
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
@@ -67,7 +67,8 @@ const LaunchpadContent = observer(function({ project,pool }) {
             <li className="list-pair mb-2">
               <span className="list-key">{t("Investment round")}</span>
               <span className="ml-auto list-value font-semibold">
-                <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div>
+                {/* <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div> */}
+                <div className={``}>{pool.type.toUpperCase()}</div>
               </span>
             </li>
             
@@ -122,7 +123,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
       </div>
       {/* end of project-brief */}
 
-      <div className="card card-default project-process">
+      <div className="card card-default card--project-info">
         <div className="card-header">
           <h3>{t("Info", { name: project?.token?.name })}</h3>
         </div>

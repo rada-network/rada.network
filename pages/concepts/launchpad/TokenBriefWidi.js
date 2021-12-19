@@ -11,7 +11,7 @@ const TokenBrief = function(){
             </span>
             <h1 className="flex items-center">
               <strong className="text-color-title text-xl lg:text-2xl font-semibold">Widiland</strong>
-              <span className="badge badge-coin badge-coin-lg ml-2 -mb-1">WIDI</span>
+              <span className="badge badge-coin badge-coin-lg ml-2">WIDI</span>
             </h1>
           </div>
 

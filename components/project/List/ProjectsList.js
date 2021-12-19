@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
 import { Disclosure, Transition } from '@headlessui/react';
 import { CardProject } from "@components/project/List/CardProject";
+import { useEffect, useState } from 'react';
 
-export default function ProjectsList({ title, extraClass, projects, isComing}) {
+export default function ProjectsList({ title, extraClass, projects}) {
 
   const ProjectPool = function({project}){
     let pools = project.project_pool.slice(0)
@@ -10,31 +11,53 @@ export default function ProjectsList({ title, extraClass, projects, isComing}) {
       return a.sort - b.sort
     })
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8">
         {pools.map((pool) => (
-          <CardProject key={pool.slug}
-            isComing={isComing}
+          <CardProject 
+            key={pool.slug}
             project={project}
             pool={pool}
-            title={pool.title}
-            raise={pool.raise}
-            tokenPrice={pool.price}
-            type={pool.type}
-            img="./../../placeholders/parallel-cover.jpg"
-            tokenLogo="./../../token-logos/theparallel.png"
-            progressToken="100,000"
-            target="100,000"
-            progressPercentage="2%"
-            token="PRL"
-            countdown="2 hours"
             status={project}
-            statusName="Sale start in"
-            
-            desc="Reviving a legendary dragon hunting game with built-in blockchain technology."
           />
         ))}
       </div>
     )
+  }
+
+  function checkURL (project) {
+    let socialURL = new Array();
+    if (project.website) {
+      socialURL.push(project.website)
+    }
+
+    if (project.twitter) {
+      socialURL.push(project.twitter)
+    }
+
+    if (project.telegram) {
+      socialURL.push(project.telegram)
+    }
+
+    if (project.medium) {
+      socialURL.push(project.medium)
+    }
+
+    if (project.discord) {
+      socialURL.push(project.discord)
+    }
+
+    if (project.facebook) {
+      socialURL.push(project.facebook)
+    }
+    return socialURL
+  }
+
+  function checkDiscord(project) {
+    return project.website == null || project.twitter == null || project.telegram == null || project.medium == null
+  }
+
+  function checkFacebook(project) {
+    return checkDiscord(project) && checkURL(project).length <= 4
   }
 
   return (
@@ -70,56 +93,57 @@ export default function ProjectsList({ title, extraClass, projects, isComing}) {
 
                           <div className="project-links">
                             <ul>
+
                               {project.website && (
                                 <li>
-                                  <a class="btn-website" target="_blank" href={project.website} rel="noreferrer">
-                                    <i class="fa-solid fa-globe"></i>
+                                  <a className="btn-website" target="_blank" href={project.website} rel="noreferrer">
+                                    <i className="fa-solid fa-globe"></i>
                                     <span className="sr-only">Website</span>
-                                  </a>
-                                </li>
-                              )}
-
-                              {project.facebook && (
-                                <li>
-                                  <a class="btn-twitter" target="_blank" href={project.facebook} rel="noreferrer">
-                                    <i class="fa-brands fa-facebook"></i>
-                                    <span className="sr-only">Facebook</span>
                                   </a>
                                 </li>
                               )}
 
                               {project.twitter && (
                                 <li>
-                                  <a class="btn-twitter" target="_blank" href={project.twitter} rel="noreferrer">
-                                    <i class="fa-brands fa-twitter"></i>
+                                  <a className="btn-twitter" target="_blank" href={project.twitter} rel="noreferrer">
+                                    <i className="fa-brands fa-twitter"></i>
                                     <span className="sr-only">Twitter</span>
-                                  </a>
-                                </li>
-                              )}
-
-                              {project.discord && (
-                                <li>
-                                  <a class="btn-discord" target="_blank" href={project.discord} rel="noreferrer">
-                                    <i class="fa-brands fa-discord"></i>
-                                    <span className="sr-only">Discord</span>
-                                  </a>
-                                </li>
-                              )}
-
-                              {project.medium && (
-                                <li>
-                                  <a class="btn-medium" target="_blank" href={project.medium}>
-                                    <i class="fa-brands fa-medium"></i>
-                                    <span className="sr-only">Medium</span>
                                   </a>
                                 </li>
                               )}
 
                               {project.telegram && (
                                 <li>
-                                  <a class="btn-medium" target="_blank" href={project.telegram}>
-                                    <i class="fa-brands fa-telegram"></i>
+                                  <a className="btn-medium" target="_blank" href={project.telegram}>
+                                    <i className="fa-brands fa-telegram"></i>
                                     <span className="sr-only">Telegram</span>
+                                  </a>
+                                </li>
+                              )}
+
+                              {project.medium && (
+                                <li>
+                                  <a className="btn-medium" target="_blank" href={project.medium}>
+                                    <i className="fa-brands fa-medium"></i>
+                                    <span className="sr-only">Medium</span>
+                                  </a>
+                                </li>
+                              )}
+
+                              {project.discord && checkDiscord(project) && (
+                                <li>
+                                  <a className="btn-discord" target="_blank" href={project.discord} rel="noreferrer">
+                                    <i className="fa-brands fa-discord"></i>
+                                    <span className="sr-only">Discord</span>
+                                  </a>
+                                </li>
+                              )}
+
+                              {project.facebook && checkFacebook(project) && (
+                                <li>
+                                  <a className="btn-twitter" target="_blank" href={project.facebook} rel="noreferrer">
+                                    <i className="fa-brands fa-facebook"></i>
+                                    <span className="sr-only">Facebook</span>
                                   </a>
                                 </li>
                               )}
@@ -132,21 +156,21 @@ export default function ProjectsList({ title, extraClass, projects, isComing}) {
                           className={`${open ? 'open' : ''
                             } pools-container--toggle-arrow`}
                         >
-                          <i class="fas fa-angle-down"></i>
+                          <i className="fas fa-angle-down"></i>
                         </span>
                       </Disclosure.Button>
-                      <Transition
-                        enter="transition duration-100 ease-out"
-                        enterFrom="transform origin-top scale-y-100 opacity-0"
+                      {/* <Transition
+                        enter="transition duration-200 ease-out"
+                        enterFrom="transform origin-top scale-y-75 opacity-100"
                         enterTo="transform origin-top scale-y-100 opacity-100"
                         leave="transition duration-75 ease-out"
-                        leaveFrom="transform origin-top scale-y-100 opacity-100"
-                        leaveTo="transform origin-top scale-y-0 opacity-0"
-                      >
+                        leaveFrom="transform origin-top opacity-100"
+                        leaveTo="transform origin-top opacity-0"
+                      > */}
                         <Disclosure.Panel className="pools-container--panel">
                           <ProjectPool project={project} ></ProjectPool>
                         </Disclosure.Panel>
-                      </Transition>
+                      {/* </Transition> */}
                     </>
                   )}
                 </Disclosure>

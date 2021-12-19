@@ -217,7 +217,7 @@ export default function TokenInfoGeneral({
                               target="_blank"
                             >
                               <span className="icon">
-                                <i class="fa-regular fa-globe"></i>
+                                <i className="fa-regular fa-globe"></i>
                               </span>
                               <span className="btn--text">{item.name}</span>
                             </a>
@@ -246,7 +246,7 @@ export default function TokenInfoGeneral({
                             >
                               <span className="icon">
                                 <i
-                                  class={`fa-brands fa-${item.name.toLowerCase()}`}
+                                  className={`fa-brands fa-${item.name.toLowerCase()}`}
                                 ></i>
                               </span>
                               <span className="btn--text">{item.name}</span>
@@ -294,7 +294,7 @@ export default function TokenInfoGeneral({
                         <a href="#" className="btn btn-default btn-default-sm">
                           <span className="icon">
                             <i
-                              class={`cf cf-${tokenData?.platform?.networkName}`}
+                              className={`cf cf-${tokenData?.platform?.networkName}`}
                             ></i>
                           </span>
                           <span className="btn--text">{`${tokenData?.contract_address.substr(
@@ -304,7 +304,7 @@ export default function TokenInfoGeneral({
                             -6
                           )} `}</span>
                           <span className="icon">
-                            <i class="fa-regular fa-copy text-2xs"></i>
+                            <i className="fa-regular fa-copy text-2xs"></i>
                           </span>
                         </a>
                       </CopyToClipboard>
@@ -373,11 +373,11 @@ export default function TokenInfoGeneral({
           ))}
           {tokenData?.token_description?.length == 0 && (
             <div className="post-content empty-state text-center py-8 lg:px-8">
-              <span class="icon">
-                <i class="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
+              <span className="icon">
+                <i className="fa-duotone fa-telescope text-5xl text-yellow-500"></i>
               </span>
               <p
-                class="opacity-50 pt-8 pb-2 m-auto"
+                className="opacity-50 pt-8 pb-2 m-auto"
                 dangerouslySetInnerHTML={{
                   __html: t("no token description", {
                     name: `<strong>${tokenData?.name} (${tokenData?.symbol})</strong>`,
@@ -392,10 +392,10 @@ export default function TokenInfoGeneral({
                 href={`https://www.jotform.com/form/212882028654459`}
                 className="btn btn-default btn-lg btn-primary"
               >
-                <span class="icon">
-                  <i class="fa-solid fa-heart"></i>
+                <span className="icon">
+                  <i className="fa-solid fa-heart"></i>
                 </span>
-                <span class="btn--text">{t("contribute")}</span>
+                <span className="btn--text">{t("contribute")}</span>
               </a>
             </div>
           )}

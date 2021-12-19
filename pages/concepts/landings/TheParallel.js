@@ -208,7 +208,7 @@ const Layout = observer((props) => {
                                     Joint now
                                   </span>
                                   <span className="icon text-sm lg:text-base relative left-2 group-hover:left-3 transition-all">
-                                    <i class="fas fa-angle-right"></i>
+                                    <i className="fas fa-angle-right"></i>
                                   </span>
                                 </a>
                               </div>

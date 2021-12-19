@@ -33,26 +33,26 @@ export default function ProjectsList({title, extraClass}){
                 <div className="project-links">
                   <ul>
                     <li>
-                      <a class="btn-website" target="_blank" href="#" rel="noreferrer">
-                        <i class="fa-solid fa-globe"></i>
+                      <a className="btn-website" target="_blank" href="#" rel="noreferrer">
+                        <i className="fa-solid fa-globe"></i>
                         <span className="sr-only">Website</span>
                       </a>
                     </li>
                     <li>
-                      <a class="btn-twitter" target="_blank" href="#" rel="noreferrer">
-                        <i class="fa-brands fa-twitter"></i>
+                      <a className="btn-twitter" target="_blank" href="#" rel="noreferrer">
+                        <i className="fa-brands fa-twitter"></i>
                         <span className="sr-only">Twitter</span>
                       </a>
                     </li>
                     <li>
-                      <a class="btn-discord" target="_blank" href="#" rel="noreferrer">
-                        <i class="fa-brands fa-discord"></i>
+                      <a className="btn-discord" target="_blank" href="#" rel="noreferrer">
+                        <i className="fa-brands fa-discord"></i>
                         <span className="sr-only">Discord</span>
                       </a>
                     </li>
                     <li>
-                      <a class="btn-medium" target="_blank" href="#">
-                        <i class="fa-brands fa-medium"></i>
+                      <a className="btn-medium" target="_blank" href="#">
+                        <i className="fa-brands fa-medium"></i>
                         <span className="sr-only">Medium</span>
                       </a>
                     </li>
@@ -63,7 +63,7 @@ export default function ProjectsList({title, extraClass}){
                     open ? 'open' : ''
                   } pools-container--toggle-arrow`}
                 >
-                  <i class="fas fa-angle-down"></i>
+                  <i className="fas fa-angle-down"></i>
                 </span>
               </Disclosure.Button>
               <Transition
@@ -149,26 +149,26 @@ export default function ProjectsList({title, extraClass}){
                 <div className="project-links">
                   <ul>
                     <li>
-                      <a class="btn-website" target="_blank" href="#" rel="noreferrer">
-                        <i class="fa-solid fa-globe"></i>
+                      <a className="btn-website" target="_blank" href="#" rel="noreferrer">
+                        <i className="fa-solid fa-globe"></i>
                         <span className="sr-only">Website</span>
                       </a>
                     </li>
                     <li>
-                      <a class="btn-twitter" target="_blank" href="#" rel="noreferrer">
-                        <i class="fa-brands fa-twitter"></i>
+                      <a className="btn-twitter" target="_blank" href="#" rel="noreferrer">
+                        <i className="fa-brands fa-twitter"></i>
                         <span className="sr-only">Twitter</span>
                       </a>
                     </li>
                     <li>
-                      <a class="btn-discord" target="_blank" href="#" rel="noreferrer">
-                        <i class="fa-brands fa-discord"></i>
+                      <a className="btn-discord" target="_blank" href="#" rel="noreferrer">
+                        <i className="fa-brands fa-discord"></i>
                         <span className="sr-only">Discord</span>
                       </a>
                     </li>
                     <li>
-                      <a class="btn-medium" target="_blank" href="#">
-                        <i class="fa-brands fa-medium"></i>
+                      <a className="btn-medium" target="_blank" href="#">
+                        <i className="fa-brands fa-medium"></i>
                         <span className="sr-only">Medium</span>
                       </a>
                     </li>
@@ -179,7 +179,7 @@ export default function ProjectsList({title, extraClass}){
                     open ? 'open' : ''
                   } pools-container--toggle-arrow`}
                 >
-                  <i class="fas fa-angle-down"></i>
+                  <i className="fas fa-angle-down"></i>
                 </span>
               </Disclosure.Button>
               <Transition
