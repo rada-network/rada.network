@@ -15,7 +15,7 @@ const LaunchpadActions = ({ project,pool }) => {
   const {t,i18n} = useTranslation("launchpad")
   const store = useStore()
   const {account} = useActiveWeb3React()
-  const currentTime = (new Date()).getTime() / 1000
+  const currentTime = (new Date(pool.current_date)).getTime() / 1000
   const openTime = (new Date(pool.open_date)).getTime() / 1000
   const endTime = (new Date(pool.end_date)).getTime() / 1000
   if (pool.open_date === null) {

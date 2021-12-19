@@ -24,7 +24,6 @@ const ProjectLaunchpad = ({ project, pool }) => {
     })    
   }, []);
   if (loadingPool) return null
-  console.log(poolContract)
   return (
     <>
       <div className="section">
