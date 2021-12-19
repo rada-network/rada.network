@@ -48,7 +48,7 @@ const LaunchpadActions = ({ project,pool }) => {
                 >
                   <div className="py-2 px-2 md:px-4">
                     <span className="mr-2 opacity-70">{t("Open at")}</span> 
-                    <OpenDate time={pool.end_date} />
+                    <OpenDate time={pool.open_date} />
                   </div>
                 </div>
               </div>
