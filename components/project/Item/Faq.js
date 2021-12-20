@@ -12,7 +12,8 @@ const ProjectFaq = ({project}) => {
     })
   },[])
   return (
-    <div className="card-default faqs launchverse-faqs mt-8">
+    <>
+    {listFaq.length > 0 && <div className="card-default faqs launchverse-faqs mt-8">
       <div className="global-padding-lg">
         <h3 className="text-2xl text-center mb-4 font-semibold mx-auto">
           {t("Frequently Asked Questions")}
@@ -60,6 +61,8 @@ const ProjectFaq = ({project}) => {
         </div>
       </div>
     </div>
+    }
+    </>
   )
 }
 
