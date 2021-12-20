@@ -50,7 +50,7 @@ export const getProviderURL = function(network){
 export const getChainName = (network) => {
   // Use custom node if available (both for development and production)
   // However on the testnet it wouldn't work, so if on testnet - comment out the REACT_APP_NODE_PRODUCTION from env file
-  if (snetwork === "bsc"){
+  if (network === "bsc"){
     if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
       return RPC_CONFIG.bsc.production.name
     }
