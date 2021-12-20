@@ -4,6 +4,7 @@ import getClient from "../client";
 const faqFeedGql = gql`
 query faqFeed($lang : String!, $page_slug : String!){
   faqFeed(lang :$lang,page_slug: $page_slug){
+    id
     sort
     question
     answer

@@ -9,7 +9,9 @@ import Layout from "@components/page-layouts/Global";
 import ProjectItem from "@components/project/Item/Index";
 import fetcher from "@lib/fetchJson";
 
-export default function ProjectPage({ slug, project, locale }) {
+export default function ProjectPage({ slug, project, locale,query }) {
+  const router = useRouter()
+  const {status} = router.query
   const { dataStore } = usePageStore();
   const { locales, asPath } = useRouter();
   const store = useStore();
@@ -44,6 +46,7 @@ export default function ProjectPage({ slug, project, locale }) {
 
   store.updateNetwork(project?.platform.networkName);
   useEffect(() => {
+    store.updateDevStatus(status)
     dataStore.meta = meta;
     document.body.classList.add("page-details");
     return () => {

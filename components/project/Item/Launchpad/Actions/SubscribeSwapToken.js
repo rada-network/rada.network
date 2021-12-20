@@ -16,6 +16,7 @@ import SocialPromote from "../SocialPromote";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import useChainConfig from "utils/web3/useChainConfig"
 import MiniCountdown from "@components/project/List/Countdown";
+import useStore from "@lib/useStore"
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
@@ -23,7 +24,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const rirContract = useRIRContract()
   const bUSDContract = useBUSDContract()
   const { account } = useActiveWeb3React()
-  const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ pool })
+  const store = useStore()
+  const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ pool,status : store.devStatus })
   const { callWithGasPrice } = useCallWithGasPrice()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const launchpadContract = useLaunchpadContractV2(pool)

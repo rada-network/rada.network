@@ -23,7 +23,8 @@ const ProjectFaq = ({project}) => {
           <div>
             {listFaq.map(function(item){
               return (
-                <Disclosure as="div" className="disclosure">
+                <div key={item.id}>
+                  <Disclosure as="div" className="disclosure">
                   {({ open }) => (
                     <>
                       <Disclosure.Button as="div" className="disclosure--toggle">
@@ -51,7 +52,8 @@ const ProjectFaq = ({project}) => {
                       </Transition>
                     </>
                   )}
-                </Disclosure>
+                  </Disclosure>
+                </div>
               )
             })}
           </div>

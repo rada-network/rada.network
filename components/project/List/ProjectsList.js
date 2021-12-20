@@ -51,8 +51,8 @@ export default function ProjectsList({ title, extraClass, projects}) {
         <div className="w-full">
           {projects.map(project => {
             return (
-              <>
-                <Disclosure key={project.slug} as="div" defaultOpen={project.is_default_open} className="pools-container"
+              <div key={project.slug}>
+                <Disclosure  as="div" defaultOpen={project.is_default_open} className="pools-container"
                   style={{ backgroundImage: `url(${project.cover_uri})`, }}
                 >
                   {({ open }) => (
@@ -154,7 +154,7 @@ export default function ProjectsList({ title, extraClass, projects}) {
                     </>
                   )}
                 </Disclosure>
-              </>
+              </div>
             )
           })}
 
