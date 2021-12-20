@@ -94,11 +94,15 @@ const useApproveConfirmTransaction = ({
         }
       } catch (error) {
         dispatch({ type: 'approve_error' })
+        console.log(error)
         if (!!error?.data?.message){
-          toast.error(t(error?.data?.message?.replace("execution reverted: ","")))
+          toast.error(t(error?.data?.message?.replace("execution reverted: ","").replace("ERC20: ","")))
+        }
+        else if (!!error?.message){
+          toast.error(t(error?.message))
         }
         else{
-          toast.error(t(error?.message))
+          toast.error(t(error.toString().replace("execution reverted: ","").replace("ERC20: ","")))
         }
         
       }
@@ -118,8 +122,11 @@ const useApproveConfirmTransaction = ({
         if (!!error?.data?.message){
           toast.error(t(error?.data?.message?.replace("execution reverted: ","").replace("ERC20: ","")))
         }
-        else{
+        else if (!!error?.message){
           toast.error(t(error?.message))
+        }
+        else{
+          toast.error(t(error.toString().replace("execution reverted: ","").replace("ERC20: ","")))
         }
       }
     },
