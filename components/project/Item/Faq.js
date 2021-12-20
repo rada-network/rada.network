@@ -45,10 +45,7 @@ const ProjectFaq = ({project}) => {
                         leaveTo="transform scale-y-0 opacity-0"
                       >
                         <Disclosure.Panel className="disclosure--panel">
-                          <div>
-                            <p>
-                              {item.answer}
-                            </p>
+                          <div dangerouslySetInnerHTML={{ __html: item.answer }}>
                           </div>
                         </Disclosure.Panel>
                       </Transition>
