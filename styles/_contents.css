@@ -22,7 +22,7 @@ Lists Styles
 .list-group--item {
   @apply flex flex-wrap justify-between items-center;
   @apply p-4;
-  @apply border-b border-gray-200 dark:border-gray-600;
+  @apply border-b border-gray-200 dark:border-gray-700 dark:border-opacity-20;
   &:last-child {
     @apply border-0;
   }
