@@ -17,6 +17,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import useChainConfig from "utils/web3/useChainConfig"
 import MiniCountdown from "@components/project/List/Countdown";
 import useStore from "@lib/useStore"
+import OpenDate from "./OpenDate";
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
@@ -361,13 +362,15 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                             border border-gray-200 dark:border-gray-600"
                         >
                           <div  className="pt-2 px-4">
-                            <span className="mr-2 opacity-70">{t("Close at")}</span> 
-                            <strong>7:27 AM, Sat Dec 25 2021 (GMT+7)</strong>
+                            <span className="mr-2 opacity-70">{t("Closeat")}</span> 
+                            <OpenDate time={pool.end_date} />
                           </div>
+                          {!!pool.whitelist_date && 
                           <div  className="py-2 px-4">
-                            <span className="mr-2 opacity-70">{t("Announcement")}</span> 
-                            <strong>7:27 AM, Sat Dec 28 2021 (GMT+7)</strong>
+                            <span className="mr-2 opacity-70">{t("Announce at")}</span> 
+                            <OpenDate time={pool.whitelist_date} />
                           </div>
+                          }
                         </div>
                       </div>
                       <TokenSocialPromote project={project} />
@@ -422,32 +425,44 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         </h3>
                         <div className="text-center max-w-xs mx-auto">
                           <p className="flex">
-                            <span className="ml-auto mr-4 w-16">{t("Prefunded BUSD")}</span>
-                            <strong className="mr-auto">{orderBusd} BUSD</strong>
+                            <span className="ml-auto mr-4 w-24">{t("Prefunded BUSD")}</span>
+                            <strong className="mr-auto w-24">{orderBusd} BUSD</strong>
                           </p>
                           <p className="flex">
-                            <span className="ml-auto mr-4 w-16">{t("Approved BUSD")}</span>
-                            <strong className="mr-auto">{approvedBusd} BUSD</strong>
+                            <span className="ml-auto mr-4 w-24">{t("Approved BUSD")}</span>
+                            <strong className="mr-auto w-24">{approvedBusd} BUSD</strong>
                           </p>
                           {launchpadInfo.refundable[0] > 0 &&
                           <p className="flex">
-                            <span className="ml-auto mr-4 w-16">{t("Refund BUSD")}</span>
-                            <strong className="mr-auto">{launchpadInfo.refundable[0]} BUSD</strong>
+                            <span className="ml-auto mr-4 w-24">{t("Refund BUSD")}</span>
+                            <strong className="mr-auto w-24">{launchpadInfo.refundable[0]} BUSD</strong>
                           </p>
                           }
                           {launchpadInfo.refundable[1] > 0 &&
                           <p className="flex">
-                            <span className="mr-auto mr-4 w-16">{t("Refund BUSD")}</span>
-                            <strong className="ml-auto">{launchpadInfo.refundable[1]} RIR</strong>
+                            <span className="ml-auto mr-4 w-24">{t("Refund RIR")}</span>
+                            <strong className="mr-auto w-24">{launchpadInfo.refundable[1]} RIR</strong>
                           </p>
                           }
-                          {launchpadInfo.claimable[0] > 0 &&
+                          {(launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0)  &&
                           <p> {t("refund note")}</p>
                           }
                         </div>
+                        
                       </div>
-
-                     
+                      {!!pool.tge_date && 
+                      <div className="mt-4">
+                        <div className="inline-block w-full mx-auto  
+                            rounded-md mb-4
+                            border border-gray-200 dark:border-gray-600"
+                        >
+                          <div  className="py-2 px-4">
+                            <span className="mr-2 opacity-70">{t("TGE")}</span> 
+                            <OpenDate time={pool.tge_date} />
+                          </div>
+                        </div>
+                      </div>
+                      }
                     </div>
 
                   </div>
@@ -539,36 +554,45 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 <div className="max-w-xl mx-auto rounded-md flex-grow border border-gray-200 dark:border-gray-700">
                   <ul className="mt-auto pt-4 pl-4 pr-4">
                     <li className="list-pair mb-2">
-                      <span className="!opacity-100">Your investment</span>
+                      <span className="!opacity-100">{t("Your investment")}</span>
                       <div className="ml-auto text-right">                 
-                          100 busd
+                          {approvedBusd} BUSD
                       </div>
                     </li>
 
-                    <li className="list-pair mb-2">
+                    {/* <li className="list-pair mb-2">
                       <span className="!opacity-100">Tokens Received</span>
                       <div className="ml-auto text-right">                 
                           2500 PRL
                       </div>
-                    </li>
+                    </li> */}
 
                     <li className="list-pair mb-2">
-                      <span className="!opacity-100">Claimed</span>
+                      <span className="!opacity-100">{t("Claimed token")}</span>
                       <div className="ml-auto text-right">                 
-                          2000 PRL
+                          {launchpadInfo.investor.claimedToken} {project.token.symbol}
                       </div>
                     </li>
-
-
-                    
                     <li className="list-pair mb-2">
                       <span className="!opacity-100">{t("token claim note",{name : project.token.symbol})}</span>
                       <div className="md:text-lg text-green-600 dark:text-green-400 ml-auto text-right font-semibold">{launchpadInfo.claimable} {project.token.symbol}
                       </div>
                     </li>
+                    {launchpadInfo.refundable[0] > 0 &&
+                    <li className="list-pair mb-2">
+                      <span className="w-3/5 !opacity-100">{t("busd claim note")}:</span>
+                      <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[0]} BUSD
+                      </div>
+                    </li>
+                    }
+                    {launchpadInfo.refundable[1] > 0 &&
+                    <li className="list-pair mb-2">
+                      <span className="w-3/5 !opacity-100">{t("RIR claim note")}:</span>
+                      <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[1]} RIR
+                      </div>
+                    </li>
+                    }
                   </ul> 
-
-        
                   <div className="items-center pt-2 px-4 pb-4">
                     {(launchpadInfo.claimable > 0 || launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) &&
                       <button onClick={e => { handleClaimToken(e) }} className={`w-full btn-primary py-2 px-4 rounded-md` + (claimDisbaled ? " disabled" : "")}>Claim</button>
@@ -593,25 +617,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                   </div>         
                     
                 </div>
-  
-                <ul>
-                 
-                  {launchpadInfo.refundable[0] > 0 &&
-                  <li className="list-pair mb-2">
-                    <span className="w-3/5 !opacity-100">{t("busd claim note")}:</span>
-                    <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[0]} BUSD
-                    </div>
-                  </li>
-                  }
-                  {launchpadInfo.refundable[1] > 0 &&
-                  <li className="list-pair mb-2">
-                    <span className="w-3/5 !opacity-100">{t("RIR claim note")}:</span>
-                    <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[1]} RIR
-                    </div>
-                  </li>
-                  }
-                </ul>
-                <div className="border rounded-lg border-gray-200 dark:border-gray-700 p-4 mx-auto mt-4 max-w-xl">
+                {/* <div className="border rounded-lg border-gray-200 dark:border-gray-700 p-4 mx-auto mt-4 max-w-xl">
                   <div className="flex font-semibold opacity-70 uppercase text-xs tracking-wider w-full border-b pb-2 border-gray-200 dark:border-gray-700">
                     Claim history
                   </div>
@@ -647,7 +653,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       </div>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
               <div className="max-w-xl mx-auto mb-4 flex items-center">
                   <SocialPromote ></SocialPromote>
