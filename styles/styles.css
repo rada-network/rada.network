@@ -354,7 +354,7 @@ Layout Uitlites
 }
 
 .global-padding-lg {
-  @apply p-6 lg:p-10;
+  @apply p-4 md:p-6 lg:p-10;
 }
 
 .global-padding-sm {

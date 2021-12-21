@@ -1,86 +1,81 @@
-import { Fragment } from 'react';
-import { Disclosure, Transition } from '@headlessui/react';
-import { CardProject } from "@components/project/List/CardProject";
-import { useEffect, useState } from 'react';
+import { Fragment } from "react";
+import { Disclosure, Transition } from "@headlessui/react";
+import ProjectPool from "./ProjectPool";
+import Image from "@components/Image";
 
-export default function ProjectsList({ title, extraClass, projects}) {
-
-  const ProjectPool = function({project}){
-    let pools = project.project_pool.slice(0)
-    pools.sort(function(a, b){
-      return a.sort - b.sort
-    })
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8">
-        {pools.map((pool) => (
-          <CardProject 
-            key={pool.slug}
-            project={project}
-            pool={pool}
-            status={project}
-          />
-        ))}
-      </div>
-    )
-  }
-
-  function checkURL (project) {
+export default function ProjectsList({ title, extraClass, projects }) {
+  function checkURL(project) {
     let socialURL = new Array();
     if (project.website) {
-      socialURL.push(project.website)
+      socialURL.push(project.website);
     }
 
     if (project.twitter) {
-      socialURL.push(project.twitter)
+      socialURL.push(project.twitter);
     }
 
     if (project.telegram) {
-      socialURL.push(project.telegram)
+      socialURL.push(project.telegram);
     }
 
     if (project.medium) {
-      socialURL.push(project.medium)
+      socialURL.push(project.medium);
     }
 
     if (project.discord) {
-      socialURL.push(project.discord)
+      socialURL.push(project.discord);
     }
 
     if (project.facebook) {
-      socialURL.push(project.facebook)
+      socialURL.push(project.facebook);
     }
-    return socialURL
+    return socialURL;
   }
 
   function checkDiscord(project) {
-    return project.website == null || project.twitter == null || project.telegram == null || project.medium == null
+    return (
+      project.website == null ||
+      project.twitter == null ||
+      project.telegram == null ||
+      project.medium == null
+    );
   }
 
   function checkFacebook(project) {
-    return checkDiscord(project) && checkURL(project).length <= 4
+    return checkDiscord(project) && checkURL(project).length <= 4;
   }
 
   return (
     <>
       <div className="projects-section">
-
         <div className="projects-section--subheader">
           <h3 className="">{title}</h3>
         </div>
 
         <div className="w-full">
-          {projects.map(project => {
+          {projects.map((project) => {
             return (
-              <>
-                <Disclosure key={project.slug} as="div" defaultOpen={project.is_default_open} className="pools-container"
-                  style={{ backgroundImage: `url(${project.cover_uri})`, }}
+              <div key={project.slug}>
+                <Disclosure
+                  as="div"
+                  defaultOpen={project.is_default_open}
+                  className="pools-container"
+                  style={{ backgroundImage: `url(${project.cover_uri})` }}
                 >
                   {({ open }) => (
                     <>
-                      <Disclosure.Button as="div" className="pools-container--toggle" title={project.content.title}>
-
+                      <Disclosure.Button
+                        as="div"
+                        className="pools-container--toggle"
+                        title={project.content.title}
+                      >
                         <div className="project-logo">
-                          <img src={project.thumbnail_uri} alt="The Parallels" />
+                          <Image
+                            src={project.thumbnail_uri}
+                            alt={project.content.title}
+                            width={80}
+                            height={80}
+                          />
                         </div>
 
                         <div className="flex flex-col md:flex-row md:pr-0 flex-shrink-0">
@@ -88,15 +83,21 @@ export default function ProjectsList({ title, extraClass, projects}) {
                             <h4 className="line-clamp-1">
                               {project.content.title}
                             </h4>
-                            <span className="badge badge-coin md:mr-4">${project.token.symbol}</span>
+                            <span className="badge badge-coin md:mr-4">
+                              ${project.token.symbol}
+                            </span>
                           </div>
 
                           <div className="project-links">
                             <ul>
-
                               {project.website && (
-                                <li>
-                                  <a className="btn-website" target="_blank" href={project.website} rel="noreferrer">
+                                <li key={`website`}>
+                                  <a
+                                    className="btn-website"
+                                    target="_blank"
+                                    href={project.website}
+                                    rel="noreferrer"
+                                  >
                                     <i className="fa-solid fa-globe"></i>
                                     <span className="sr-only">Website</span>
                                   </a>
@@ -104,8 +105,13 @@ export default function ProjectsList({ title, extraClass, projects}) {
                               )}
 
                               {project.twitter && (
-                                <li>
-                                  <a className="btn-twitter" target="_blank" href={project.twitter} rel="noreferrer">
+                                <li key={`twitter`}>
+                                  <a
+                                    className="btn-twitter"
+                                    target="_blank"
+                                    href={project.twitter}
+                                    rel="noreferrer"
+                                  >
                                     <i className="fa-brands fa-twitter"></i>
                                     <span className="sr-only">Twitter</span>
                                   </a>
@@ -113,8 +119,12 @@ export default function ProjectsList({ title, extraClass, projects}) {
                               )}
 
                               {project.telegram && (
-                                <li>
-                                  <a className="btn-medium" target="_blank" href={project.telegram}>
+                                <li key={`telegram`}>
+                                  <a
+                                    className="btn-medium"
+                                    target="_blank"
+                                    href={project.telegram}
+                                  >
                                     <i className="fa-brands fa-telegram"></i>
                                     <span className="sr-only">Telegram</span>
                                   </a>
@@ -122,8 +132,12 @@ export default function ProjectsList({ title, extraClass, projects}) {
                               )}
 
                               {project.medium && (
-                                <li>
-                                  <a className="btn-medium" target="_blank" href={project.medium}>
+                                <li key={`medium`}>
+                                  <a
+                                    className="btn-medium"
+                                    target="_blank"
+                                    href={project.medium}
+                                  >
                                     <i className="fa-brands fa-medium"></i>
                                     <span className="sr-only">Medium</span>
                                   </a>
@@ -131,8 +145,13 @@ export default function ProjectsList({ title, extraClass, projects}) {
                               )}
 
                               {project.discord && checkDiscord(project) && (
-                                <li>
-                                  <a className="btn-discord" target="_blank" href={project.discord} rel="noreferrer">
+                                <li key={`discord`}>
+                                  <a
+                                    className="btn-discord"
+                                    target="_blank"
+                                    href={project.discord}
+                                    rel="noreferrer"
+                                  >
                                     <i className="fa-brands fa-discord"></i>
                                     <span className="sr-only">Discord</span>
                                   </a>
@@ -140,21 +159,26 @@ export default function ProjectsList({ title, extraClass, projects}) {
                               )}
 
                               {project.facebook && checkFacebook(project) && (
-                                <li>
-                                  <a className="btn-twitter" target="_blank" href={project.facebook} rel="noreferrer">
+                                <li key={`facebook`}>
+                                  <a
+                                    className="btn-twitter"
+                                    target="_blank"
+                                    href={project.facebook}
+                                    rel="noreferrer"
+                                  >
                                     <i className="fa-brands fa-facebook"></i>
                                     <span className="sr-only">Facebook</span>
                                   </a>
                                 </li>
                               )}
-
                             </ul>
                           </div>
                         </div>
 
                         <span
-                          className={`${open ? 'open' : ''
-                            } pools-container--toggle-arrow`}
+                          className={`${
+                            open ? "open" : ""
+                          } pools-container--toggle-arrow`}
                         >
                           <i className="fas fa-angle-down"></i>
                         </span>
@@ -167,21 +191,18 @@ export default function ProjectsList({ title, extraClass, projects}) {
                         leaveFrom="transform origin-top opacity-100"
                         leaveTo="transform origin-top opacity-0"
                       > */}
-                        <Disclosure.Panel className="pools-container--panel">
-                          <ProjectPool project={project} ></ProjectPool>
-                        </Disclosure.Panel>
+                      <Disclosure.Panel className="pools-container--panel">
+                        <ProjectPool project={project}></ProjectPool>
+                      </Disclosure.Panel>
                       {/* </Transition> */}
                     </>
                   )}
                 </Disclosure>
-              </>
-            )
+              </div>
+            );
           })}
-
         </div>
-
-
       </div>
     </>
-  )
+  );
 }

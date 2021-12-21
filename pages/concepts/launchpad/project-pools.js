@@ -19,7 +19,7 @@ import LanguageSwitch from "../../../components/LanguageSwitch";
 import Screen from "../../../components/utils/Responsive";
 import { observer } from "mobx-react";
 import { usePageStore } from "../../../lib/usePageStore";
-import TokenContent from "./TokenContentPools";
+import TokenContent from "./TokenContent";
 import TokenBrief from "./TokenBriefPools";
 import TokenNav from "./TokenNav";
 import BackgroundWrapper from "../_components/cards-layout/launchpad/BackgroundWrapper";

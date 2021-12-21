@@ -16,6 +16,7 @@ import SocialPromote from "../SocialPromote";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import useChainConfig from "utils/web3/useChainConfig"
 import MiniCountdown from "@components/project/List/Countdown";
+import useStore from "@lib/useStore"
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
@@ -23,7 +24,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const rirContract = useRIRContract()
   const bUSDContract = useBUSDContract()
   const { account } = useActiveWeb3React()
-  const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ pool })
+  const store = useStore()
+  const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ pool,status : store.devStatus })
   const { callWithGasPrice } = useCallWithGasPrice()
   const { getRIRAddress, getBscScanURL } = useChainConfig()
   const launchpadContract = useLaunchpadContractV2(pool)
@@ -45,7 +47,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   useEffect(() => {
     if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
       setPoolStatus("open")
-    } 
+    }
 
     if (Date.parse(new Date()) < Date.parse(pool.open_date)) {
       setPoolStatus("coming")
@@ -63,7 +65,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       <div className={`flex text-base justify-between items-center"`}>
         {poolStatus == "open" && <div className="text-base">{t("Pool closes in")}</div>}
         {poolStatus == "coming" && <div className="text-base">{t("Sale start in")}</div>}
-        {poolStatus == "closed" && <div className="text-base">{t("Pool closed")}</div>}
+        {poolStatus == "closed" && <div className="text-base">{t("pool closed")}</div>}
         {poolStatus == "tba" && <div className="text-base">{t("Comming Soon")}</div>}
         {poolStatus == "coming" && <MiniCountdown project={pool} isEndDate={false} />}
         {poolStatus == "open" && <MiniCountdown project={pool} isEndDate={true} />}
@@ -97,7 +99,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   useEffect(() => {
     if (!!account && pool.is_whitelist && !!launchpadInfo) {
       if (launchpadInfo.investor.allocationBusd > 0){
-        
+
         setInWhitelist(true)
         setLoadWhitelist(false)
       }
@@ -229,33 +231,33 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
                     <ul className="mt-4 mb-2 flex-shrink-0 flex-grow">
                       {pool.is_allow_rir && parseInt(orderRIR) > 0 && <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Prefunded RIR")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Prefunded RIR")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {orderRIR} RIR
                         </span>
                       </li>}
-                      {parseInt(orderBusd) > 0 && 
+                      {parseInt(orderBusd) > 0 &&
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Prefunded BUSD")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Prefunded BUSD")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {orderBusd} BUSD
                         </span>
                       </li>
                       }
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your maximum allocation")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Your maximum allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>({launchpadInfo?.individualMaximumAmount / 100} RIR)</>}
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your minimum allocation")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Your minimum allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>({launchpadInfo?.individualMinimumAmount / 100} RIR)</>}
                         </span>
                       </li>
                       {pool.is_allow_rir && parseFloat(accountBalance.rirBalance) > 0 && <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm">{t("Your RIR Balance")}</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Your RIR Balance")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {accountBalance.rirBalance} RIR
                         </span>
@@ -325,7 +327,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
               <div className="">
                 <Timeline step="3" />
               </div>
-              
+
               <div className="project-card--container">
                 <div className="max-w-xl mx-auto">
                   <div className="flex">
@@ -363,7 +365,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         </span>
                         <div>
                           <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">{t("Adjust prefund")}</p>
-                        
+
                           <a href={`#`}  className="group">
                             <span className="text-sm mr-1">{t("adjust note",{"orderBusd" : orderBusd,"maxBusd" : maxBusd})}</span>
                             <span className="icon text-xs relative left-1 group-hover:left-2 transition-all"><i className="fas fa-angle-right"></i></span>
@@ -373,7 +375,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       }
                     </div>
                   </div>
-                
+
                 </div>
               </div>
             </div>
@@ -411,7 +413,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       <p> {t("refund note")}</p>
                       }
                     </div>
-                    
+
                   </div>
                   <div className="flex items-center mt-2">
                     <TokenSocialPromote project={project} />
@@ -441,8 +443,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">{t("status failed")}</h3>
                     {launchpadInfo.refundable[0] > 0 &&
                     <>
-                    <p>{t("status failed note refund")}</p> 
-                    <p>{t("Refund BUSD")}: <strong>{launchpadInfo.refundable[0]} BUSD</strong></p> 
+                    <p>{t("status failed note refund")}</p>
+                    <p>{t("Refund BUSD")}: <strong>{launchpadInfo.refundable[0]} BUSD</strong></p>
                     <div className="ml-auto mt-4 list-value font-semibold">
                       <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                     </div>
@@ -527,14 +529,14 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       <div className="w-2/5 ml-auto  font-semibold">{launchpadInfo.claimable} {project.token.symbol}
                       </div>
                     </li>
-                    {launchpadInfo.refundable[0] > 0 && 
+                    {launchpadInfo.refundable[0] > 0 &&
                     <li className="list-pair mb-2">
                       <span className="w-3/5 !opacity-100">{t("busd claim note")}:</span>
                       <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[0]} BUSD
                       </div>
                     </li>
                     }
-                    {launchpadInfo.refundable[1] > 0 && 
+                    {launchpadInfo.refundable[1] > 0 &&
                     <li className="list-pair mb-2">
                       <span className="w-3/5 !opacity-100">{t("RIR claim note")}:</span>
                       <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[1]} RIR
@@ -546,13 +548,13 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 <div className="flex items-center">
                   <div className="mx-auto">
                     <div className="ml-auto mt-4 list-value font-semibold">
-                    {(launchpadInfo.claimable > 0 || launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) && 
+                    {(launchpadInfo.claimable > 0 || launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) &&
                       <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                     }
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center">                  
+                <div className="flex items-center">
                   <SocialPromote ></SocialPromote>
                 </div>
 
@@ -606,12 +608,12 @@ const SubscribeSwapTokenLoading = function({currentTime,opendTime,endTime}){
       <div className="card-body no-padding">
         <div className="flex flex-col">
           <div className="">
-            {currentTime > endTime ? 
+            {currentTime > endTime ?
             <Timeline step="3" />
             :
             <Timeline step="2" />
             }
-            
+
           </div>
 
           <div className="project-card--container">
@@ -637,14 +639,14 @@ const TokenSocialPromote = function({project}){
     <ul className="text-left p-4 border border-gray-200 dark:border-gray-700 rounded-lg mb-4">
       <li  className="relative pl-6  mb-2">
         <span className="absolute left-0 top-0 mr-2">
-          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" /> 
+          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" />
         </span>
         <p className="" dangerouslySetInnerHTML={{__html : t("status note")}} >
         </p>
       </li>
-      <li className="relative pl-6 mb-2"> 
+      <li className="relative pl-6 mb-2">
         <span className="absolute left-0 top-0 mr-2">
-          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" /> 
+          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" />
         </span>
           <p className="" dangerouslySetInnerHTML={{__html : t("coming soon note",
           {
@@ -656,7 +658,7 @@ const TokenSocialPromote = function({project}){
       </li>
       <li className="relative pl-6  mb-2">
         <span className="absolute left-0 top-0  mr-2">
-          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" /> 
+          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" />
         </span>
           <p className="" dangerouslySetInnerHTML={{__html : t("status note 2",
             {
@@ -665,7 +667,7 @@ const TokenSocialPromote = function({project}){
             }
           )}} />
       </li>
-      
+
     </ul>
   )
 }

@@ -2,6 +2,7 @@ import { useStore } from "../lib/useStore";
 
 import { useTranslation } from "next-i18next";
 import useActiveWeb3React from "../utils/hooks/useActiveWeb3React";
+import useAuth from "../utils/hooks/useAuth";
 
 import _ from "lodash";
 
@@ -10,10 +11,13 @@ export const WalletRequire = ({ type }) => {
   const { account, deactivate } = useActiveWeb3React();
   const { t } = useTranslation("common");
   const store = useStore();
+  const { logout } = useAuth();
   const handleConnectWallet = () => {
     store.wallet.showConnect(true);
   };
-
+  const handleDisconnectWallet = async () => {
+    logout();
+  };
   return (
     <>
       <div className="list-group--item !px-0">
@@ -45,7 +49,7 @@ export const WalletRequire = ({ type }) => {
                     ETHEREUM
                   </span>
                 )}
-                <button className="ml-2 opacity-70 hover:opacity-100 p-1 rounded-lg z-10"><span className="icon"><i className="fas fa-sign-out"></i></span><span className="sr-only">Disconnect</span></button>
+                <button onClick={handleDisconnectWallet} className="ml-2 opacity-70 hover:opacity-100 p-1 rounded-lg z-10"><span className="icon"><i className="fas fa-sign-out"></i></span><span className="sr-only">Disconnect</span></button>
               </>
             )}
           </div>

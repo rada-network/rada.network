@@ -22,7 +22,7 @@ const ProjectContent = function({project}){
           
             {project.token.contract_address && (
               <li className="list-pair mb-2">
-              <span className="list-key">
+              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">
                 {project.token.symbol}'s Contract
               </span>
               <div className="ml-auto flex items-center list-value font-semibold">
@@ -40,7 +40,7 @@ const ProjectContent = function({project}){
             )}
             
             <li className="list-pair mb-2">
-              <span className="list-key">
+              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">
                 Network
               </span>
               <div className="ml-auto flex items-center list-value">
@@ -52,7 +52,7 @@ const ProjectContent = function({project}){
             </li>
 
             <li className="list-pair mb-2">
-              <span className="list-key">
+              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">
                 Website
               </span>
               <div className="list-value flex justify-end ml-auto items-center">
@@ -61,7 +61,7 @@ const ProjectContent = function({project}){
             </li>
 
             <li className="list-pair mb-2">
-              <span className="list-key">
+              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">
                 Connect
               </span>
               <ul className="flex ml-auto space-x-3">
@@ -118,8 +118,8 @@ const ProjectContent = function({project}){
             dangerouslySetInnerHTML={{ __html: project.content?.description }}
           ></div>
           <p className="mt-auto pt-4">
-            <Link href={`/${i18n.language}/launchverse/${project.slug}/reearch`} >
-              <a href={`/${i18n.language}/launchverse/${project.slug}/reearch`} className="link">{t("Read full research")}</a>
+            <Link href={`/${i18n.language}/launchverse/${project.slug}/research`} >
+              <a href={`/${i18n.language}/launchverse/${project.slug}/research`} className="link">{t("Read full research")}</a>
             </Link> 
           </p>
         </div>

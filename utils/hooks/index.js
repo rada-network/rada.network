@@ -9,7 +9,192 @@ export function useGasPrice() {
   return process.env.NEXT_PUBLIC_CHAIN == 'production' ? userGas : GAS_PRICE_GWEI.testnet
 }
 
-export const useLaunchpadInfo = ({pool}) => {
+const DEV_STATUS_FAILED = {
+  tokenAddress : "0x0000000000000000000000000000000000000000",
+  allocationBusd : 5000,
+  allocationRir : 200,
+  price : 0.04,
+  startDate : 0,
+  endDate : 0,
+  individualMinimumAmount : 500,
+  individualMaximumAmount : 500,
+  ordersBuyerCount : 0,
+  buyers : [],
+  winnerCount : 0,
+  winners : [],
+  claimable : 0,
+  refundable : [
+    0,
+    0,
+  ],
+  stat : {
+    depositedToken : 0,
+    amountBusd : 5000,
+    amountRir : 180,
+    approvedBusd : 5000,
+    approvedRir : 180
+  },
+  investor : {
+    allocationBusd : 0,
+    allocationRir : 0,
+    amountBusd : 0,
+    amountRir : 0,
+    claimedToken : 0,
+    paid : false,
+    refunded : false,
+    approved : false,
+  }
+}
+
+const DEV_STATUS_FAILED_REFUND = {
+  tokenAddress : "0x0000000000000000000000000000000000000000",
+  allocationBusd : 5000,
+  allocationRir : 200,
+  price : 0.04,
+  startDate : 0,
+  endDate : 0,
+  individualMinimumAmount : 100,
+  individualMaximumAmount : 500,
+  ordersBuyerCount : 0,
+  buyers : [],
+  winnerCount : 0,
+  winners : [],
+  claimable : 0,
+  refundable : [
+    300,
+    0,
+  ],
+  stat : {
+    depositedToken : 0,
+    amountBusd : 5000,
+    amountRir : 180,
+    approvedBusd : 5000,
+    approvedRir : 180
+  },
+  investor : {
+    allocationBusd : 0,
+    allocationRir : 0,
+    amountBusd : 300,
+    amountRir : 0,
+    claimedToken : 0,
+    paid : true,
+    refunded : false,
+    approved : false,
+  }
+}
+
+const DEV_STATUS_SUCCESS = {
+  tokenAddress : "0x0000000000000000000000000000000000000000",
+  allocationBusd : 5000,
+  allocationRir : 200,
+  price : 0.04,
+  startDate : 0,
+  endDate : 0,
+  individualMinimumAmount : 100,
+  individualMaximumAmount : 500,
+  ordersBuyerCount : 0,
+  buyers : [],
+  winnerCount : 0,
+  winners : [],
+  claimable : 0,
+  refundable : [
+    0,
+    0,
+  ],
+  stat : {
+    depositedToken : 0,
+    amountBusd : 5000,
+    amountRir : 180,
+    approvedBusd : 5000,
+    approvedRir : 180
+  },
+  investor : {
+    allocationBusd : 300,
+    allocationRir : 3,
+    amountBusd : 300,
+    amountRir : 3,
+    claimedToken : 0,
+    paid : true,
+    refunded : false,
+    approved : true,
+  }
+}
+
+const DEV_STATUS_SUCCESS_REFUND = {
+  tokenAddress : "0x0000000000000000000000000000000000000000",
+  allocationBusd : 5000,
+  allocationRir : 200,
+  price : 0.04,
+  startDate : 0,
+  endDate : 0,
+  individualMinimumAmount : 100,
+  individualMaximumAmount : 500,
+  ordersBuyerCount : 0,
+  buyers : [],
+  winnerCount : 0,
+  winners : [],
+  claimable : 0,
+  refundable : [
+    100,
+    1,
+  ],
+  stat : {
+    depositedToken : 0,
+    amountBusd : 5000,
+    amountRir : 180,
+    approvedBusd : 5000,
+    approvedRir : 180
+  },
+  investor : {
+    allocationBusd : 200,
+    allocationRir : 2,
+    amountBusd : 300,
+    amountRir : 3,
+    claimedToken : 0,
+    paid : true,
+    refunded : false,
+    approved : true,
+  }
+}
+
+const DEV_STATUS_CLAIM = {
+  tokenAddress : "0xbaDB6b73c2FBE647a256Cf8F965f89573A054113",
+  allocationBusd : 5000,
+  allocationRir : 200,
+  price : 0.04,
+  startDate : 0,
+  endDate : 0,
+  individualMinimumAmount : 100,
+  individualMaximumAmount : 500,
+  ordersBuyerCount : 0,
+  buyers : [],
+  winnerCount : 0,
+  winners : [],
+  claimable : 500,
+  refundable : [
+    0,
+    0,
+  ],
+  stat : {
+    depositedToken : 60000,
+    amountBusd : 5000,
+    amountRir : 180,
+    approvedBusd : 5000,
+    approvedRir : 180
+  },
+  investor : {
+    allocationBusd : 200,
+    allocationRir : 2,
+    amountBusd : 300,
+    amountRir : 3,
+    claimedToken : 0,
+    paid : true,
+    refunded : true,
+    approved : true,
+  }
+}
+
+export const useLaunchpadInfo = ({pool,status}) => {
   const {account,connector,active,library} = useActiveWeb3React()
   const [launchpadInfo,setLaunchpadInfo] = useState(false)
   const [loading,setLoading] = useState(true)
@@ -17,6 +202,33 @@ export const useLaunchpadInfo = ({pool}) => {
   
   const fetchLaunchpadInfo = async () => {
     try {
+      let updateInfo;
+      if (process.env.NEXT_PUBLIC_CHAIN === "dev" && !!status && status !== ""){
+        switch (status){
+          case "success" :
+            updateInfo = DEV_STATUS_SUCCESS
+            break;
+          case "successRefund" :
+            updateInfo = DEV_STATUS_SUCCESS_REFUND
+            break;
+          case "fail" :
+            updateInfo = DEV_STATUS_FAILED
+            break;
+          case "failRefund" :
+            updateInfo = DEV_STATUS_FAILED_REFUND
+            break;
+          case "claim" :
+            updateInfo = DEV_STATUS_CLAIM
+            break;
+          default :
+            break
+        }
+        if (!!updateInfo){
+          setLaunchpadInfo(updateInfo)
+          return null
+        }
+      }
+      
       let info = await lauchpadContact.pools(pool.id)
       let claimable = await lauchpadContact.getClaimable(pool.id)
       let refundable = await lauchpadContact.getRefundable(pool.id)
@@ -40,14 +252,13 @@ export const useLaunchpadInfo = ({pool}) => {
         approved : investor.approved,
       }
       
-      let updateInfo = {
+      updateInfo = {
         tokenAddress : info.tokenAddress,
         allocationBusd : parseFloat(ethers.utils.formatEther(info.allocationBusd)),
         allocationRir : parseFloat(ethers.utils.formatEther(info.allocationRir)),
         price : parseFloat(ethers.utils.formatEther(info.price)),
         startDate : parseFloat(ethers.utils.formatEther(info.startDate)),
         endDate : parseFloat(ethers.utils.formatEther(info.endDate)),
-        price : parseFloat(ethers.utils.formatEther(info.price)),
         individualMinimumAmount : pool.is_whitelist ? investor.amountBusd : parseFloat(ethers.utils.formatEther(info.minAllocationBusd)),
         individualMaximumAmount : pool.is_whitelist ? investor.amountBusd : parseFloat(ethers.utils.formatEther(info.maxAllocationBusd)),
         ordersBuyerCount : 0,
