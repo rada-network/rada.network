@@ -76,7 +76,7 @@ export default function ProjectsIndex({ projects, locale }) {
                 <header className="hero flex flex-col md:flex-row mt-8">
                   <div className="text-center max-w-screen-lg mx-auto px-4 md:px-0">
                     <h1 className="text-2xl md:text-3xl lg:text-4xl text-black dark:text-white font-semibold font-altsans">
-                      DAO-based Launchpad for GameFi and MetaVerse
+                      {t("DAO-based Launchpad for GameFi and MetaVerse")}
                     </h1>
 
                     <p className="text-base md:text-lg leading-relaxed text-black dark:text-white text-opacity-50 dark:text-opacity-50 mt-4 max-w-screen-md mx-auto">
@@ -114,7 +114,7 @@ export default function ProjectsIndex({ projects, locale }) {
                 <div className="hero flex flex-col md:flex-row justify-center items-center mt-16 max-w-screen-md mx-auto">
                   <div className="text-center md:text-left px-4 md:px-0">
                     <p className="text-2xl md:text-4xl font-altsans mb-4">
-                      Want to launch your project on RADA?
+                      {t("Want to launch your project on RADA?")}
                     </p>
                     <a
                       href="https://form.jotform.com/213272840844456"
@@ -122,7 +122,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       target="_blank"
                       className="btn btn-lg btn-default btn-primary"
                     >
-                      Apply for Launch
+                      {t("Apply for Launch")}
                     </a>
                   </div>
                   <div className="hero-deco mx-auto mt-4">

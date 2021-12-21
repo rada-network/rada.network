@@ -144,7 +144,7 @@ const Navbar = observer(({}) => {
                 />
               </svg>
             </span>
-            <span className="nav-item--text">{t("About RADA")}</span>
+            <span className="nav-item--text">{t("About Rada")}</span>
           </NavItem>
 
           {/* <NavItem href={"/" + dataStore.lang + "/explore/all"} page={`item`} type={"all"}>

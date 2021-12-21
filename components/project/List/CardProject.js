@@ -133,7 +133,7 @@ export const CardProject = ({project,pool, status}) => {
             <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} >
             <a href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
               <span>
-               View Details
+               {t("View Details")}
               </span>
             </a>
             </Link>

@@ -56,12 +56,7 @@ const LanguageSwitch = observer(({}) => {
     buttonRef.current?.click();
   };
 
-  let langDisplay = "";
-  if (dataStore.lang === "vi") {
-    langDisplay = "vi";
-  } else {
-    langDisplay = "en";
-  }
+
   let [referenceElement, setReferenceElement] = useState();
   let [popperElement, setPopperElement] = useState();
   let { styles, attributes } = usePopper(referenceElement, popperElement);
@@ -128,7 +123,7 @@ const LanguageSwitch = observer(({}) => {
           <span className="icon">
             <i className="fal fa-globe" />
           </span>
-          <span className="btn--text">{langDisplay.toUpperCase()}</span>
+          <span className="btn--text">{dataStore.lang.toUpperCase()}</span>
         </div>
       </Popover.Button>
     </Popover>

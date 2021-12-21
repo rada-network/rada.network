@@ -1,7 +1,7 @@
 import React from "react";
 
 export const CardProject = ({title, link, img, status, statusName, raise, tokenLogo, tokenPrice, countdown, token, progressToken, target, progressPercentage, type, network, desc}) => {
-  
+
   return (
     <a href={link} className={`card-project is-${status}`}>
       <div className="project-content relative">
@@ -81,9 +81,9 @@ export const CardProject = ({title, link, img, status, statusName, raise, tokenL
       </div>
         {/* End of project--content */}
       {/* End of card--body */}
-     
+
       {/* End of card--wrapper */}
-    </a> 
+    </a>
   )
 }
 
