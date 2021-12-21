@@ -10,7 +10,7 @@ import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import Image from "@components/Image";
 import { useTheme } from "next-themes";
-import useStore from "@lib/useStore"
+import useStore from "@lib/useStore";
 
 const Layout = dynamic(import("@components/page-layouts/Global"));
 
@@ -143,7 +143,7 @@ export default function ProjectsIndex({ projects, locale }) {
 
                 <div className="mt-4 lg:mt-16 flex flex-col md:flex-row justify-center items-center">
                   <small className="text-sm leading-relaxed font-light text-black dark:text-white text-opacity-70 dark:text-opacity-70 max-w-md">
-                    © Copyright Rada Network 2021. All rights reserved.
+                    © Copyright RADA Network 2021. All rights reserved.
                   </small>
                 </div>
               </div>
