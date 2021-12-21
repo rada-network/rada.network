@@ -1,14 +1,14 @@
 {
   "video": "Video",
-  "News": "News",
-  "Explore": "All",
+  "News": "Noticias",
+  "Explore": "Todo",
   "Signals": "Social",
-  "Games": "Games",
+  "Games": "Juegos",
   "DeFi": "DeFi",
   "Raders": "Raders",
-  "Projects": "Projects",
-  "Research": "Research",
-  "Articles": "Articles",
-  "About Rada": "About Rada",
-  "Soon": "Soon"
+  "Projects": "Proyectos",
+  "Research": "Investigación",
+  "Articles": "Artículos",
+  "About Rada": "acerca de Rada",
+  "Soon": "Próximamente"
 }
