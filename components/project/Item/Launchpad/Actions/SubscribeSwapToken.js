@@ -553,17 +553,17 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     </li>
 
                     <li className="list-pair mb-2">
-                      <span className="!opacity-100">Already Claimed</span>
+                      <span className="!opacity-100">Claimed</span>
                       <div className="ml-auto text-right">                 
-                          500 PRL
+                          2000 PRL
                       </div>
                     </li>
 
 
                     
                     <li className="list-pair mb-2">
-                      <span className="!opacity-100">{t("token claim note",{name : project.token.symbol})}:</span>
-                      <div className="md:text-lg text-green-400 ml-auto text-right font-semibold">{launchpadInfo.claimable} {project.token.symbol}
+                      <span className="!opacity-100">{t("token claim note",{name : project.token.symbol})}</span>
+                      <div className="md:text-lg text-green-600 dark:text-green-400 ml-auto text-right font-semibold">{launchpadInfo.claimable} {project.token.symbol}
                       </div>
                     </li>
                   </ul> 
@@ -612,41 +612,38 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                   }
                 </ul>
                 <div className="border rounded-lg border-gray-200 dark:border-gray-700 p-4 mx-auto mt-4 max-w-xl">
-                  <div className="flex items-baseline border-b pb-2  border-gray-200 dark:border-gray-800">
-                    <h4 className="text-md items-baseline font-semibold">
-                      Claimed
-                    </h4>
-                    <span className="ml-auto font-semibold">
-                      500 PRL
-                    </span>
+                  <div className="flex font-semibold opacity-70 uppercase text-xs tracking-wider w-full border-b pb-2 border-gray-200 dark:border-gray-700">
+                    Claim history
                   </div>
                   <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
-                      <span className="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 text-gray-700 mr-1">on</span>
-                        <date>15 tháng 9, 2021</date></span>
-                      <div className="ml-auto font-semibold list-value">
+                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700"> 
+                      <date>December 30, 2021</date>
+                      <div className="ml-auto text-right font-semibold list-value">
                       500 PRL
                       </div>
                     </li>
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
-                      <span className="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 dark-gray-700 mr-1">on</span>
-                        <date>01 tháng 9, 2021</date></span>
-                      <div className="ml-auto font-semibold list-value">
+                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">             
+                      <date>December 30, 2021</date>
+                      <div className="ml-auto text-right font-semibold list-value">
                       500 PRL
                       </div>
                     </li>
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
-                      <span className="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 dark-gray-700 mr-1">on</span>
-                        <date>01 tháng 9, 2021</date></span>
-                      <div className="ml-auto font-semibold list-value">
+                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">
+                      <date>December 30, 2021</date>
+                      <div className="ml-auto text-right font-semibold list-value">
                       500 PRL
                       </div>
                     </li>
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
-                      <span className="list-key text-semibold !text-gray-800 dark:!text-gray-200"><span className="dark:text-gray-400 dark-gray-700 mr-1">on</span>
-                        <date>01 tháng 9, 2021</date></span>
-                      <div className="ml-auto font-semibold list-value">
+                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">
+                      <date>December 30, 2021</date>
+                      <div className="ml-auto text-right font-semibold list-value">
                       500 PRL
+                      </div>
+                    </li>
+                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">
+                      <span>Total claimed tokens</span>
+                      <div className="ml-auto text-right font-semibold list-value">
+                      2000 PRL
                       </div>
                     </li>
                   </ul>
