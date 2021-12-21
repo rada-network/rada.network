@@ -104,6 +104,10 @@ const LanguageSwitch = observer(({}) => {
             <div className={`popper`}>
               <Lang lang="vi" title="Tiếng Việt" />
               <Lang lang="en" title="English" />
+              <Lang lang="fr" title="Français" />
+              <Lang lang="es" title="Español" />
+              <Lang lang="dk" title="Dansk" />
+
               {/* <div className="popper-item" onClick={async (e) => {handleChangeLanguage(e)}} lang={'vi'}>
               <span className="popper-item--text">Tiếng Việt</span>
             </div>
