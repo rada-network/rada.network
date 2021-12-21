@@ -20,7 +20,7 @@ export const CardProject = ({project,pool, status}) => {
   useEffect(() => {
     if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(pool.current_date) && Date.parse(pool.current_date) < Date.parse(pool.end_date)) {
       setPoolStatus("open")
-    } 
+    }
 
     if (Date.parse(pool.current_date) < Date.parse(pool.open_date)) {
       setPoolStatus("coming")
@@ -32,7 +32,7 @@ export const CardProject = ({project,pool, status}) => {
       setPoolStatus("tba")
     }
   }, [])
-  
+
   useEffect(() => {
     if (pool !== null && !pool.is_hidden) {
       fetcher(`/api/pools/get-pools?slug=${project.slug}/${pool.slug}`).then(function(res){
@@ -77,17 +77,17 @@ export const CardProject = ({project,pool, status}) => {
         {!(project.status == "upcoming") && (
           <div className="block">
             <div className={`countdown-mini--wrapper top-0 !bottom-auto`}>
-              {poolStatus == "open" && <div>{t("Pool close in")}</div>}
+              {poolStatus == "open" && <div>{t("Pool closes in")}</div>}
               {poolStatus == "coming" && <div>{t("Sale start in")}</div>}
-              {poolStatus == "closed" && <div>{t("Pool closed")}</div>}
+              {poolStatus == "closed" && <div>{t("pool closed")}</div>}
               {poolStatus == "tba" && <div>{t("Comming Soon")}</div>}
               {poolStatus == "coming" && <MiniCountdown project={pool} isEndDate={false} />}
               {poolStatus == "open" && <MiniCountdown project={pool} isEndDate={true} />}
-              
+
             </div>
           </div>
         )}
-        
+
 
         <div className="project-content--meta">
           <div className="project-title flex justify-between items-center">
@@ -105,7 +105,7 @@ export const CardProject = ({project,pool, status}) => {
                 {t("Raise")}
               </span>
               <span className="ml-auto list-value font-semibold">
-                {pool.raise == 0 ? "TBA" : pool.raise.toLocaleString() + " BUSD"}  
+                {pool.raise == 0 ? "TBA" : pool.raise.toLocaleString() + " BUSD"}
               </span>
             </li>
             <li className="list-pair">
@@ -130,7 +130,7 @@ export const CardProject = ({project,pool, status}) => {
           </div>
 
           <div className="project--cta">
-            <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} > 
+            <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} >
             <a href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
               <span>
                View Details
@@ -143,9 +143,9 @@ export const CardProject = ({project,pool, status}) => {
       </div>
         {/* End of project--content */}
       {/* End of card--body */}
-     
+
       {/* End of card--wrapper */}
-    </div> 
+    </div>
     </Link>
   )
 }
