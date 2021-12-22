@@ -59,11 +59,18 @@ export default function ProjectsList({ title, extraClass, projects }) {
                 <Disclosure
                   as="div"
                   defaultOpen={project.is_default_open}
-                  className="pools-container"
-                  style={{ backgroundImage: `url(${project.cover_uri})` }}
+                  className="pools-container relative"
+
                 >
                   {({ open }) => (
                     <>
+                      <Image
+                        layout="fill"
+                        src={project.cover_uri}
+                        objectFit="cover"
+                        objectPosition="top center"
+                        className="opacity-50"
+                        />
                       <Disclosure.Button
                         as="div"
                         className="pools-container--toggle"

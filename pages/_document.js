@@ -6,7 +6,7 @@ export default class MyDocument extends Document {
       <Html class="notranslate" translate="no">
         <Head>
         <meta name="google" content="notranslate" />
-        <script src='https://cdn.blockpass.org/widget/scripts/release/3.0.2/blockpass-kyc-connect.prod.js'></script>
+        <script defer src='https://cdn.blockpass.org/widget/scripts/release/3.0.2/blockpass-kyc-connect.prod.js'></script>
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
@@ -54,12 +54,12 @@ export default class MyDocument extends Document {
                 js.id = id;
                 js.src = "https://platform.twitter.com/widgets.js";
                 fjs.parentNode.insertBefore(js, fjs);
-              
+
                 t._e = [];
                 t.ready = function(f) {
                   t._e.push(f);
                 };
-              
+
                 return t;
               }(document, "script", "twitter-wjs"));
               `,

@@ -37,12 +37,14 @@ Layout
 @screen 2xl {
   .body-decor {
     @apply fixed inset-0 w-full h-full -z-2;
+    @apply opacity-0;
     /* @apply filter brightness-50; */
     /* background-image: url("https://source.unsplash.com/user/nnth/likes/1600x900"); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom right;
     animation: fadein 800ms linear;
+
   }
   .body-decor::after {
     content: " ";

@@ -10,14 +10,14 @@ const BackgroundWrapper = function({image}){
 
   useEffect(() => {
     const bgUrl = image ? image :   `${process.env.NEXT_PUBLIC_CDN}/wallpapers/${theme}/${randomeBg()}.jpg`
-    ref.current.setAttribute("style",`background-image: url("${bgUrl}")`)
+    ref.current.setAttribute("style",`background-image: url("${bgUrl}"); opacity: 1`)
   },[theme])
 
   const handleChangeBg = (e) => {
     e.preventDefault()
     e.stopPropagation()
     const bgUrl = `${process.env.NEXT_PUBLIC_CDN}/wallpapers/${theme}/${randomeBg()}.jpg`
-    ref.current.setAttribute("style",`background-image: url("${bgUrl}")`)
+    ref.current.setAttribute("style",`background-image: url("${bgUrl}"); opacity: 1`)
   }
 
   const handleRemoveBg = (e) => {
@@ -34,11 +34,11 @@ const BackgroundWrapper = function({image}){
       <div className={`body-decor--text`}>
         <div className="flex flex-col">
           <a href="#" onClick={handleChangeBg}>
-            <i className="far fa-random"></i> 
+            <i className="far fa-random"></i>
             <span className="sr-only">New Photo</span>
           </a>
           <a href="#" onClick={handleRemoveBg} className="mt-2">
-            <i className="far fa-minus-circle"></i> 
+            <i className="far fa-minus-circle"></i>
             <span className="sr-only">Remove Photo</span>
           </a>
         </div>
