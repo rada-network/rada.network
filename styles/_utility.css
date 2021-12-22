@@ -274,7 +274,7 @@
      @apply  mx-auto;
   }
 }
-.claim-timeline li.checked {
+.claim-timeline li.chcked {
   span { @apply bg-green-600 border-green-600 text-green-200; }
 }
 .claim-timeline .checkbox.current {
