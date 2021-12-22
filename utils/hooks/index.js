@@ -230,7 +230,15 @@ export const useLaunchpadInfo = ({pool,status}) => {
       }
       
       let info = await lauchpadContact.pools(pool.id)
-      let claimable = await lauchpadContact.getClaimable(pool.id)
+      let totalClaimable = await lauchpadContact.getTotalClaimable(pool.id)
+      let claimable = ethers.constants.Zero
+      try {
+        claimable = await lauchpadContact.getClaimable(pool.id)
+      }
+      catch (e) {
+        console.log(e)
+      }
+      
       let refundable = await lauchpadContact.getRefundable(pool.id)
       let investor = await lauchpadContact.getInvestor(pool.id,account)
       let stat = await lauchpadContact.poolsStat(pool.id)
@@ -266,6 +274,7 @@ export const useLaunchpadInfo = ({pool,status}) => {
         winnerCount : 0,
         winners : [],
         claimable : parseFloat(ethers.utils.formatEther(claimable)),
+        totalClaimable : parseFloat(ethers.utils.formatEther(totalClaimable)),
         refundable : [
           parseFloat(ethers.utils.formatEther(refundable[0])),
           parseFloat(ethers.utils.formatEther(refundable[1])),
