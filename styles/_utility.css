@@ -38,7 +38,7 @@
 }
 
 .label--neutral {
-    @apply bg-gray-300 text-gray-700;
+    @apply bg-gray-300 text-gray-700 dark:bg-gray-300;
 }
 
 /** steps **/
@@ -243,4 +243,44 @@
 }
 .message.error {
   @apply bg-red-600 text-white;
+}
+.claim-timeline {
+  @apply w-full justify-between flex flex-col md:flex-row ml-20 md:ml-0 mt-4 pl-2 md:pl-0 md:mb-2
+  border-l-2 md:border-b-2 md:border-l-0 border-gray-300 dark:border-gray-600 md:h-auto;
+}
+.claim-timeline li {
+  @apply text-center mr-auto -left-6 md:left-0 my-4 md:my-0 md:pt-0 md:mx-auto md:pb-6 relative flex flex-row-reverse md:flex-col 
+  justify-start md:justify-center md:-bottom-10;
+  .claim-text {
+    @apply mb-1;
+  }
+  &:first-child{
+    @apply mt-0 md:ml-0;
+    span {
+      @apply md:ml-0;
+    }
+  }
+  &:last-child{
+    @apply mb-0 md:mr-0;
+    span {
+      @apply md:mr-0;
+    }
+  }
+ }
+.claim-timeline span {
+  @apply rounded-full mr-4 md:mx-auto w-8 h-8 border-2 bg-white border-gray-300 
+  dark:bg-gray-800 dark:border-gray-600 flex items-center text-center;
+  > * {
+     @apply  mx-auto;
+  }
+}
+.claim-timeline li.checked {
+  span { @apply bg-green-600 border-green-600 text-green-200; }
+}
+.claim-timeline .checkbox.current {
+  @apply text-green-600 border-green-600;
+}
+.claim-timeline .label {
+  @apply -left-16 top-1 md:left-auto md:top-auto;
+  @apply absolute md:-bottom-1 md:left-1/2 md:-translate-x-1/2;
 }

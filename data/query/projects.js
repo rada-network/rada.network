@@ -88,6 +88,8 @@ const projectBySlugGql = gql`
         current_date
         type
         end_date
+        whitelist_date
+        tge_date
         raise
         price
         slug
@@ -131,6 +133,8 @@ const projectFeedGql = gql`
       current_date
       type
       end_date
+      whitelist_date
+      tge_date
       raise
       price
       slug

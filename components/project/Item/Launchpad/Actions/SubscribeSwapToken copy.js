@@ -17,7 +17,6 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import useChainConfig from "utils/web3/useChainConfig"
 import MiniCountdown from "@components/project/List/Countdown";
 import useStore from "@lib/useStore"
-import OpenDate from "./OpenDate";
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
@@ -362,15 +361,13 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                             border border-gray-200 dark:border-gray-600"
                         >
                           <div  className="pt-2 px-4">
-                            <span className="mr-2 opacity-70">{t("Closeat")}</span> 
-                            <OpenDate time={pool.end_date} />
+                            <span className="mr-2 opacity-70">{t("Close at")}</span> 
+                            <strong>7:27 AM, Sat Dec 25 2021 (GMT+7)</strong>
                           </div>
-                          {!!pool.whitelist_date && 
                           <div  className="py-2 px-4">
-                            <span className="mr-2 opacity-70">{t("Announce at")}</span> 
-                            <OpenDate time={pool.whitelist_date} />
+                            <span className="mr-2 opacity-70">{t("Announcement")}</span> 
+                            <strong>7:27 AM, Sat Dec 28 2021 (GMT+7)</strong>
                           </div>
-                          }
                         </div>
                       </div>
                       <TokenSocialPromote project={project} />
@@ -415,53 +412,19 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                   <div className="flex">
                     {/* <div className="s2e-illustration flex-shrink-0"></div> */}
                     <div className="w-full">
-                      <div className="mb-4 p-4 rounded-lg bg-green-500 bg-opacity-5 border-green-500
-                       text-green-500 border-2 border-green-400">
-                        <h3 className="text-xl md:text-2xl mb-4  text-center text-semibold">
-                          <span className="icon mr-2">
-                            <i className="fa-duotone fa-badge-check"></i>
-                          </span>
-                        {t("status success",{name : project.content.title})}
-                        </h3>
-                        <div className="text-center max-w-xs mx-auto">
-                          <p className="flex">
-                            <span className="ml-auto mr-4 w-24">{t("Prefunded BUSD")}</span>
-                            <strong className="mr-auto w-24">{orderBusd} BUSD</strong>
-                          </p>
-                          <p className="flex">
-                            <span className="ml-auto mr-4 w-24">{t("Approved BUSD")}</span>
-                            <strong className="mr-auto w-24">{approvedBusd} BUSD</strong>
-                          </p>
-                          {launchpadInfo.refundable[0] > 0 &&
-                          <p className="flex">
-                            <span className="ml-auto mr-4 w-24">{t("Refund BUSD")}</span>
-                            <strong className="mr-auto w-24">{launchpadInfo.refundable[0]} BUSD</strong>
-                          </p>
-                          }
-                          {launchpadInfo.refundable[1] > 0 &&
-                          <p className="flex">
-                            <span className="ml-auto mr-4 w-24">{t("Refund RIR")}</span>
-                            <strong className="mr-auto w-24">{launchpadInfo.refundable[1]} RIR</strong>
-                          </p>
-                          }
-                          {(launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0)  &&
-                          <p> {t("refund note")}</p>
-                          }
-                        </div>
-                        
-                      </div>
-                      {!!pool.tge_date && 
-                      <div className="mt-4">
-                        <div className="inline-block w-full mx-auto  
-                            rounded-md mb-4
-                            border border-gray-200 dark:border-gray-600"
-                        >
-                          <div  className="py-2 px-4">
-                            <span className="mr-2 opacity-70">{t("TGE")}</span> 
-                            <OpenDate time={pool.tge_date} />
-                          </div>
-                        </div>
-                      </div>
+                      <h3 className="text-xl mb-4 text-yellow-600 dark:text-yellow-400">
+                      ✨ {t("status success",{name : project.content.title})}
+                      </h3>
+                      <p>{t("Prefunded BUSD")} : <strong>{orderBusd} BUSD</strong></p>
+                      <p>{t("Approved BUSD")}&nbsp; : <strong>{approvedBusd} BUSD</strong></p>
+                      {launchpadInfo.refundable[0] > 0 &&
+                      <p>{t("Refund BUSD")}&nbsp; : <strong>{launchpadInfo.refundable[0]} BUSD</strong></p>
+                      }
+                      {launchpadInfo.refundable[1] > 0 &&
+                      <p>{t("Refund BUSD")}&nbsp; : <strong>{launchpadInfo.refundable[1]} RIR</strong></p>
+                      }
+                      {launchpadInfo.claimable[0] > 0 &&
+                      <p> {t("refund note")}</p>
                       }
                     </div>
 
@@ -487,24 +450,22 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
             </div>
 
             <div className="project-card--container">
-              <div className="border rounded-lg border-gray-200 dark:border-gray-700 p-4 mx-auto mt-4 max-w-xl">       
-                <h3 className="text-xl mb-4 text-yellow-600 dark:text-orange-500">{t("status failed")}</h3>
-                {launchpadInfo.refundable[0] > 0 &&
-                <>
-                <p className="mb-4">{t("status failed note refund")}</p>
-                <ul className="mt-auto">
-                  <li className="list-pair mb-2">
-                    <span className="!opacity-100">{t("Refund BUSD")}</span>
-                    <div className="ml-auto text-right">                 
-                    <strong>{launchpadInfo.refundable[0]} BUSD</strong>
+              <div className="max-w-2xl mx-auto text-center">
+
+                <div className="flex items-center">
+                  <div className="mx-auto">
+                    <h3 className="text-xl mb-4 text-yellow-600 dark:text-red-500">{t("status failed")}</h3>
+                    {launchpadInfo.refundable[0] > 0 &&
+                    <>
+                    <p>{t("status failed note refund")}</p>
+                    <p>{t("Refund BUSD")}: <strong>{launchpadInfo.refundable[0]} BUSD</strong></p>
+                    <div className="ml-auto mt-4 list-value font-semibold">
+                      <button onClick={e => { handleClaimToken(e) }} className={`btn-primary py-2 px-4 rounded-md ml-2` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                     </div>
-                  </li>
-                </ul>
-                <div className="mt-4 list-value font-semibold">
-                  <button onClick={e => { handleClaimToken(e) }} className={`w-full justify-center text-center btn btn-primary py-2 ` + (claimDisbaled ? " disabled" : "")}>Claim</button>
+                    </>
+                    }
+                  </div>
                 </div>
-                </>
-                }
               </div>
 
             </div>
@@ -554,106 +515,103 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 <div className="max-w-xl mx-auto rounded-md flex-grow border border-gray-200 dark:border-gray-700">
                   <ul className="mt-auto pt-4 pl-4 pr-4">
                     <li className="list-pair mb-2">
-                      <span className="!opacity-100">{t("Your investment")}</span>
-                      <div className="ml-auto text-right">                 
-                          {approvedBusd} BUSD
+                      <span className="!opacity-100">{project.token.symbol} Contract:</span>
+                      <div className="ml-auto text-right">
+                        <div className="px-2 py-1 rounded-lg flex bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700">
+                          <div>
+                            <a target="_blank" href={getBscScanURL(tokenAddress)}>
+                              <span className="icon mr-2">
+                                <i className={`cf cf-${project?.platform?.networkName}`}></i>
+                              </span>
+                              {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}</a>
+                          </div>
+                          <CopyToClipboard
+                            onCopy={handleCopy}
+                            text={tokenAddress}
+                          >
+                            <button className="btn ml-2">
+                              <i className="fa-duotone fa-copy text-2xs"></i>
+                            </button>
+                          </CopyToClipboard>
+                        </div>
                       </div>
+                     
                     </li>
-
-                    {/* <li className="list-pair mb-2">
-                      <span className="!opacity-100">Tokens Received</span>
-                      <div className="ml-auto text-right">                 
-                          2500 PRL
-                      </div>
-                    </li> */}
-
                     <li className="list-pair mb-2">
-                      <span className="!opacity-100">{t("Claimed token")}</span>
-                      <div className="ml-auto text-right">                 
-                          {launchpadInfo.investor.claimedToken} {project.token.symbol}
+                      <span className="!opacity-100">{t("token claim note",{name : project.token.symbol})}:</span>
+                      <div className="ml-auto text-right font-semibold">{launchpadInfo.claimable} {project.token.symbol}
                       </div>
                     </li>
-                    <li className="list-pair mb-2">
-                      <span className="!opacity-100">{t("token claim note",{name : project.token.symbol})}</span>
-                      <div className="md:text-lg text-green-600 dark:text-green-400 ml-auto text-right font-semibold">{launchpadInfo.claimable} {project.token.symbol}
-                      </div>
-                    </li>
-                    {launchpadInfo.refundable[0] > 0 &&
-                    <li className="list-pair mb-2">
-                      <span className="w-3/5 !opacity-100">{t("busd claim note")}:</span>
-                      <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[0]} BUSD
-                      </div>
-                    </li>
-                    }
-                    {launchpadInfo.refundable[1] > 0 &&
-                    <li className="list-pair mb-2">
-                      <span className="w-3/5 !opacity-100">{t("RIR claim note")}:</span>
-                      <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[1]} RIR
-                      </div>
-                    </li>
-                    }
                   </ul> 
-                  <div className="items-center pt-2 px-4 pb-4">
+
+        
+                  <div className="flex items-center p-4">
                     {(launchpadInfo.claimable > 0 || launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) &&
                       <button onClick={e => { handleClaimToken(e) }} className={`w-full btn-primary py-2 px-4 rounded-md` + (claimDisbaled ? " disabled" : "")}>Claim</button>
                     }
-                    <div className="flex mt-2 items-center justify-center">
-                      <span className="mr-1 opacity-60">PRL Contract:</span>
-                      <div className="px-2 py-1 rounded-lg flex bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700">
-                        <a target="_blank" href={getBscScanURL(tokenAddress)}>
-                          {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}
-                        </a>
-                        <CopyToClipboard
-                          onCopy={handleCopy}
-                          text={tokenAddress}
-                        >
-                          <button className="btn ml-2">
-                            <i className="fa-duotone fa-copy text-2xs"></i>
-                          </button>
-                        </CopyToClipboard>
-                      </div>
-                      
-                    </div>
                   </div>         
                     
                 </div>
-                {/* <div className="border rounded-lg border-gray-200 dark:border-gray-700 p-4 mx-auto mt-4 max-w-xl">
-                  <div className="flex font-semibold opacity-70 uppercase text-xs tracking-wider w-full border-b pb-2 border-gray-200 dark:border-gray-700">
-                    Claim history
-                  </div>
-                  <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700"> 
-                      <date>December 30, 2021</date>
-                      <div className="ml-auto text-right font-semibold list-value">
-                      500 PRL
-                      </div>
-                    </li>
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">             
-                      <date>December 30, 2021</date>
-                      <div className="ml-auto text-right font-semibold list-value">
-                      500 PRL
-                      </div>
-                    </li>
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">
-                      <date>December 30, 2021</date>
-                      <div className="ml-auto text-right font-semibold list-value">
-                      500 PRL
-                      </div>
-                    </li>
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">
-                      <date>December 30, 2021</date>
-                      <div className="ml-auto text-right font-semibold list-value">
-                      500 PRL
-                      </div>
-                    </li>
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">
-                      <span>Total claimed tokens</span>
-                      <div className="ml-auto text-right font-semibold list-value">
-                      2000 PRL
-                      </div>
-                    </li>
-                  </ul>
-                </div> */}
+                
+                <ul>
+                 
+                  {launchpadInfo.refundable[0] > 0 &&
+                  <li className="list-pair mb-2">
+                    <span className="w-3/5 !opacity-100">{t("busd claim note")}:</span>
+                    <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[0]} BUSD
+                    </div>
+                  </li>
+                  }
+                  {launchpadInfo.refundable[1] > 0 &&
+                  <li className="list-pair mb-2">
+                    <span className="w-3/5 !opacity-100">{t("RIR claim note")}:</span>
+                    <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[1]} RIR
+                    </div>
+                  </li>
+                  }
+                </ul>
+                
+                <ol className="claim-timeline">
+                  <li className="checked">
+                    <div className="claim-text">25%</div>
+                    <span className="checkbox">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <div className="label">Begin</div>
+                  </li>
+                  <li>
+                    <div className="claim-text">40%</div>
+                    <span className="checkbox current">
+                      <i class="fas fa-rocket"></i>
+                    </span>
+                  </li>
+                  <li>
+                    <div className="claim-text">50%</div>
+                    <span className="checkbox"></span>
+                  </li>
+                  <li>
+                    <div className="claim-text">60%</div>
+                    <span className="checkbox"></span>
+                  </li>
+                  <li>
+                    <div className="claim-text">70%</div>
+                    <span className="checkbox"></span>
+                  </li>
+                  <li>
+                    <div className="claim-text">80%</div>
+                    <span className="checkbox"></span>
+                  </li>
+                  <li>
+                    <div className="claim-text">90%</div>
+                    <span className="checkbox"></span>
+                  </li>
+                  <li>
+                    <div className="claim-text">100%</div>
+                    <span className="checkbox"></span>
+                    <div className="label">Ended</div>
+                  </li>
+
+                </ol>
               </div>
               <div className="max-w-xl mx-auto mb-4 flex items-center">
                   <SocialPromote ></SocialPromote>
