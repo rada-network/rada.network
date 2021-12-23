@@ -574,7 +574,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       <li className="list-pair mb-2">
                         <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Total token")}</span>
                         <span className="ml-auto list-value font-semibold">
-                          {launchpadInfo.totalClaimable.toLocaleString()} {project.token.symbol}
+                          {launchpadInfo.totalClaimable.toFixed(2).toLocaleString()} {project.token.symbol}
                         </span>
                       </li>
                      
@@ -608,7 +608,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <div className="box-header flex">
                       <h4>{t("Claimable token")}</h4>
                       {launchpadInfo.claimable > 0 &&
-                      <div className="ml-auto text-right">{launchpadInfo.claimable} {project.token.symbol}</div>
+                      <div className="ml-auto text-right">{launchpadInfo.claimable.toFixed(2).toLocaleString()} {project.token.symbol}</div>
                       }
                     </div> 
                     <div className="p-6">
