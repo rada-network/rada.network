@@ -9,7 +9,7 @@ import Layout from "@components/page-layouts/Global";
 import ProjectItem from "@components/project/Item/Index";
 import fetcher from "@lib/fetchJson";
 
-export default function ProjectPage({ slug, project, locale,query }) {
+export default function ProjectPage({ slug, project, locale }) {
   const router = useRouter()
   const {status} = router.query
   const { dataStore } = usePageStore();
