@@ -464,7 +464,10 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           </div>
                         </li>}
                       </ul>
-                      {(launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) && <button className="w-full mt-4 justify-center text-center btn btn-primary !py-4">{t("Claim")} {launchpadInfo.refundable[0]} BUSD {launchpadInfo.refundable[1] > 0 ? ` & ${launchpadInfo.refundable[1]} RIR` : ""}</button>}
+                      {(launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) && 
+                      <button onClick={e => { handleClaimToken(e) }} className={`w-full mt-4 justify-center text-center btn btn-primary !py-4 ` + (claimDisbaled ? " disabled" : "")}>
+                        {t("Claim")} {launchpadInfo.refundable[0]} BUSD {launchpadInfo.refundable[1] > 0 ? ` & ${launchpadInfo.refundable[1]} RIR` : ""}
+                      </button>}
                     </div>
                   </div>
                  
@@ -565,7 +568,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <li className="list-pair mb-2">
                         <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Total allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
-                          {orderBusd} BUSD
+                          {approvedBusd} BUSD
                         </span>
                       </li>
                       <li className="list-pair mb-2">
