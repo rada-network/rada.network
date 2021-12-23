@@ -197,7 +197,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   };
 
   const getPercentageClaimToken = function(){
-    return ((launchpadInfo.claimable + launchpadInfo.investor.claimedToken) / launchpadInfo.totalClaimable * 100).toFixed(1)
+    return ((launchpadInfo.investor.claimedToken) / launchpadInfo.totalClaimable * 100).toFixed(1)
   }
 
   if (loading || loadBalance || loadWhitelist) {
@@ -424,30 +424,47 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         <span className="icon mr-2">
                           <i className="fa-duotone fa-badge-check"></i>
                         </span>
-                        You've prefunded successfully
+                        {t("status success")}
                       </h3>
                       {/* {t("status success",{name : project.content.title})} */}
 
                       <ul className="w-full">
                         <li className="list-pair py-2 border-b border-t border-gray-200 dark:border-gray-700">
-                          <span className="list-key">Prefunded</span>
-                          <div className="list-value text-right ml-auto md:text-lg"><strong className="font-semiBold">300 BUSD</strong> <span className="opacity-70">and</span> <strong className="font-semiBold">1 RIR</strong></div>
+                          <span className="list-key">{t("Prefunded")}</span>
+                          <div className="list-value text-right ml-auto md:text-lg">
+                            <strong className="font-semiBold">{orderBusd} BUSD</strong> 
+                            {orderRIR > 0 && 
+                            <>
+                              <span className="opacity-70"> {t("and")} </span> 
+                              <strong className="font-semiBold">{orderRIR} RIR</strong>
+                            </>
+                            }
+                          </div>
                         </li>
                         <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">
-                          <span className="list-key">Approved</span>
+                          <span className="list-key">{t("Approved BUSD")}</span>
                           <div className="list-value text-right ml-auto 
-                          text-green-600 font-semibold md:text-lg">100 BUSD</div>
+                          text-green-600 font-semibold md:text-lg">{approvedBusd} BUSD</div>
                         </li>
+                        {orderRIR - launchpadInfo.refundable[1] > 0 && 
                         <li className="list-pair  py-2 border-b border-gray-200 dark:border-gray-700">
-                          <span className="list-key">Burned</span>
-                          <div className="list-value text-right ml-auto md:text-lg font-semibold">1 RIR</div>
-                        </li>
-                        <li className="list-pair  py-2 border-b border-gray-200 dark:border-gray-700">
-                          <span className="list-key">Refund</span>
-                          <div className="list-value text-right ml-auto font-semibold md:text-lg">200 BUSD</div>
-                        </li>
+                          <span className="list-key">{t("Burned RIR")}</span>
+                          <div className="list-value text-right ml-auto md:text-lg font-semibold">{orderRIR - launchpadInfo.refundable[1]} RIR</div>
+                        </li>}
+                        {(launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) && <li className="list-pair  py-2 border-b border-gray-200 dark:border-gray-700">
+                          <span className="list-key">{t("Refund BUSD")}</span>
+                          <div className="list-value text-right ml-auto font-semibold md:text-lg">
+                            <strong className="font-semiBold">{launchpadInfo.refundable[0]} BUSD</strong> 
+                            {launchpadInfo.refundable[1] > 0 && 
+                            <>
+                              <span className="opacity-70"> {t("and")} </span> 
+                              <strong className="font-semiBold">{launchpadInfo.refundable[1]} RIR</strong>
+                            </>
+                            }
+                          </div>
+                        </li>}
                       </ul>
-                      <button className="w-full mt-4 justify-center text-center btn btn-primary !py-4">Claim 200 BUSD</button>
+                      {(launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) && <button className="w-full mt-4 justify-center text-center btn btn-primary !py-4">{t("Claim")} {launchpadInfo.refundable[0]} BUSD {launchpadInfo.refundable[1] > 0 ? ` & ${launchpadInfo.refundable[1]} RIR` : ""}</button>}
                     </div>
                   </div>
                  
@@ -476,16 +493,16 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <span className="icon mr-2">
                       <i class="fas fa-exclamation-triangle"></i>
                     </span>
-                    Your refunding is not approved!
+                    {t("status failed")}
                   </h3>
                   {/* {t("status success",{name : project.content.title})} */}
                   {launchpadInfo.refundable[0] > 0 &&
                   <>
                     <ul className="w-full">
                       <li className="list-pair py-2 border-b border-t border-gray-200 dark:border-gray-700">
-                        <span className="list-key">Prefunded</span>
+                        <span className="list-key">{t("Refund BUSD")}</span>
                         <div className="list-value text-right ml-auto md:text-lg font-semiBold">
-                          300 BUSD
+                          {launchpadInfo.refundable[0]} BUSD
                         </div>
                       </li>
                     </ul>
@@ -542,17 +559,17 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 <div className="grid gap-4 md:gap-8 lg:grid-cols-2">
                   <div className="box box--transparent">
                     <div className="box-header !pl-0">
-                      Investment
+                      {t("investment")}
                     </div> 
                     <ul className="mt-4 mb-2 flex-shrink-0 flex-grow">
                     <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Your investment</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Total allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {orderBusd} BUSD
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Total allocation</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Total token")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {launchpadInfo.totalClaimable.toLocaleString()} {project.token.symbol}
                         </span>
@@ -586,20 +603,20 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
                   <div className="box box--gray -mx-4 -mb-6 md:m-0">
                     <div className="box-header flex">
-                      <h4>Claim</h4>
+                      <h4>{t("Claimable token")}</h4>
                       {launchpadInfo.claimable > 0 &&
                       <div className="ml-auto text-right">{launchpadInfo.claimable} {project.token.symbol}</div>
                       }
                     </div> 
                     <div className="p-6">
                       
-                      <button onClick={e => { handleClaimToken(e) }} className={`w-full btn-primary py-2 px-4 rounded-md` + (claimDisbaled || launchpadInfo.claimable == 0 ? " disabled" : "")}>Claim</button>
+                      <button onClick={e => { handleClaimToken(e) }} className={`w-full btn-primary py-2 px-4 rounded-md` + (claimDisbaled || launchpadInfo.claimable == 0 ? " disabled" : "")}>{t("Claim")}</button>
                     
                       <div className="text-center">
                         <div className="progress-bar mt-6 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
                           <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" style={{width:getPercentageClaimToken() +"%"}}>{getPercentageClaimToken()}%</div>
                         </div>
-                        <div className="text-sm mt-2 opacity-60">You've vested {getPercentageClaimToken()}% of your total allocation</div>
+                        <div className="text-sm mt-2 opacity-60">{t("token claim note",{tokenPercentage : getPercentageClaimToken()})}</div>
                       </div>
                     </div>
                   </div>
