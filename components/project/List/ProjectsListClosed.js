@@ -28,18 +28,13 @@ export default function ProjectsListClosed({ title, extraClass, projects }) {
                       <CardProject key={project.slug + pool.slug}
                         project={project}
                         pool={pool}
-                        title={project.content.title}
+                        title={project.content.title + " " + pool.title}
                         img={project.thumbnail_uri}
                         tokenLogo={project.thumbnail_uri}
                         raise={pool.raise}
                         progressToken={pool.raise}
                         target={pool.raise}
-                        progressPercentage="100%"
-                        type="vip"
-                        token=""
-                        endedin=""
                         status="claimable"
-                        tokenPrice="0.035 USDT"
                         participian="N/A"
                       />
                     ))}

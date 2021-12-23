@@ -17,6 +17,7 @@ export const CardProject = ({project,pool, status}) => {
   const {library,account} = useActiveWeb3React()
   const [poolStat, setPoolStat] = useState({amountBusd : 0});
   const lauchpadContact = useLaunchpadContractV2({...pool,contract: poolContract.contract,pool_id : poolContract.pool_id});
+  const [showInfo, setShowInfo] = useState(true);
   useEffect(() => {
     if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(pool.current_date) && Date.parse(pool.current_date) < Date.parse(pool.end_date)) {
       setPoolStatus("open")
@@ -30,6 +31,9 @@ export const CardProject = ({project,pool, status}) => {
     }
     if (pool.open_date == null) {
       setPoolStatus("tba")
+    }
+    if (pool.type == "private"){
+      setShowInfo(false)
     }
   }, [])
 
@@ -105,29 +109,40 @@ export const CardProject = ({project,pool, status}) => {
                 {t("Raise")}
               </span>
               <span className="ml-auto list-value font-semibold">
-                {pool.raise == 0 ? "TBA" : pool.raise.toLocaleString() + " BUSD"}
+                {pool.raise == 0 || !showInfo ? "TBA" : pool.raise.toLocaleString() + " BUSD"}
               </span>
             </li>
             <li className="list-pair">
               <span className="list-key">
                 {t("Token Price")}
               </span>
-              <span className="list-value ml-auto"> {pool.price == 0 ? "TBA" : pool.price + " BUSD"}</span>
+              {pool.price ? 
+              <span className="ml-auto list-value">
+              1 {project?.token?.symbol} = {pool.price} BUSD
+              </span>
+              :
+              <span className="ml-auto list-value">
+              TBA
+              </span>
+              }
+              {/* <span className="list-value ml-auto"> {pool.price == 0 ? "TBA" : pool.price + " BUSD"}</span> */}
             </li>
             <li className="list-pair">
               <span className="list-key">
                 {t("Progress")}
               </span>
               <span className="list-value ml-auto">
-                <span className="font-semibold">{numberFormatter(poolStat.amountBusd)}</span>
-                <span className="opacity-70">/{pool.raise == 0 ? "TBA" : pool.raise.toLocaleString() + " BUSD"}</span>
+                <span className="font-semibold">{showInfo ? numberFormatter(poolStat.amountBusd) : "TBA"}</span>
+                <span className="opacity-70">/{pool.raise == 0 || !showInfo ? "TBA" : pool.raise.toLocaleString() + " BUSD"}</span>
               </span>
             </li>
           </ul>
 
+          {showInfo && 
           <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
             <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" title={progressPercentage} style={{width: `${(progressPercentage > 100 ? 100 : progressPercentage)+ "%"}`}}>{progressPercentage + "%"}</div>
           </div>
+          }
 
           <div className="project--cta">
             <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} >

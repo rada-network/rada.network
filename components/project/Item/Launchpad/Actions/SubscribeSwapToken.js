@@ -17,6 +17,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import useChainConfig from "utils/web3/useChainConfig"
 import MiniCountdown from "@components/project/List/Countdown";
 import useStore from "@lib/useStore"
+import OpenDate from "./OpenDate";
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
@@ -195,6 +196,10 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     toast.success("Copied to clipboard", {})
   };
 
+  const getPercentageClaimToken = function(){
+    return ((launchpadInfo.claimable + launchpadInfo.investor.claimedToken) / launchpadInfo.totalClaimable * 100).toFixed(1)
+  }
+
   if (loading || loadBalance || loadWhitelist) {
     return (
       <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
@@ -360,14 +365,18 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                             rounded-md mb-4
                             border border-gray-200 dark:border-gray-600"
                         >
+                          {!!pool.end_date && 
                           <div  className="pt-2 px-4">
                             <span className="mr-2 opacity-70">{t("Close at")}</span> 
-                            <strong>7:27 AM, Sat Dec 25 2021 (GMT+7)</strong>
+                            <OpenDate time={pool.end_date} />
                           </div>
+                          }
+                          {!!pool.whitelist_date && 
                           <div  className="py-2 px-4">
                             <span className="mr-2 opacity-70">{t("Announcement")}</span> 
-                            <strong>7:27 AM, Sat Dec 28 2021 (GMT+7)</strong>
+                            <OpenDate time={pool.whitelist_date} />
                           </div>
+                          }
                         </div>
                       </div>
                       <TokenSocialPromote project={project} />
@@ -545,24 +554,24 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <li className="list-pair mb-2">
                         <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Your investment</span>
                         <span className="ml-auto list-value font-semibold">
-                          100 BUSD
+                          {orderBusd} BUSD
                         </span>
                       </li>
                       <li className="list-pair mb-2">
                         <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Total allocation</span>
                         <span className="ml-auto list-value font-semibold">
-                          2000 PRL
+                          {launchpadInfo.totalClaimable.toLocaleString()} {project.token.symbol}
                         </span>
                       </li>
                      
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Unvested</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Claimed token")}</span>
                         <span className="ml-auto list-value font-semibold">
-                          1000 PRL
+                          {launchpadInfo.investor.claimedToken.toLocaleString()} {project.token.symbol}
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                          <span className="list-key !w-1/2 text-xs md:text-sm capitalize">PRL Contract</span>
+                          <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{project.token.symbol} Contract</span>
                           <div className="ml-auto p-2 rounded-lg flex bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700">
                             <a target="_blank" href={getBscScanURL(tokenAddress)}>
                               {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}
@@ -583,27 +592,27 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
                   <div className="box box--gray -mx-4 -mb-6 md:m-0">
                     <div className="box-header flex">
-                      <h4>Claim now</h4>
-                      <div className="ml-auto text-right">500 PRL</div>
+                      <h4>Claim</h4>
+                      {launchpadInfo.claimable > 0 &&
+                      <div className="ml-auto text-right">{launchpadInfo.claimable} {project.token.symbol}</div>
+                      }
                     </div> 
                     <div className="p-6">
                       
-                      {(launchpadInfo.claimable > 0 || launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) &&
-                        <button onClick={e => { handleClaimToken(e) }} className={`w-full btn-primary py-2 px-4 rounded-md` + (claimDisbaled ? " disabled" : "")}>Claim</button>
-                      }
+                      <button onClick={e => { handleClaimToken(e) }} className={`w-full btn-primary py-2 px-4 rounded-md` + (claimDisbaled || launchpadInfo.claimable == 0 ? " disabled" : "")}>Claim</button>
                     
                       <div className="text-center">
                         <div className="progress-bar mt-6 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
-                          <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full w-1/5">20%</div>
+                          <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" style={{width:getPercentageClaimToken() +"%"}}>{getPercentageClaimToken()}%</div>
                         </div>
-                        <div className="text-sm mt-2 opacity-60">You've vested 20% of your total allocation</div>
+                        <div className="text-sm mt-2 opacity-60">You've vested {getPercentageClaimToken()}% of your total allocation</div>
                       </div>
                     </div>
                   </div>
                 </div>
                 
   
-                <ul className="mt-4">
+                {/* <ul className="mt-4">
                  
                   {launchpadInfo.refundable[0] > 0 &&
                   <li className="list-pair mb-2">
@@ -619,8 +628,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     </div>
                   </li>
                   }
-                </ul>
-                <div className="border rounded-lg border-gray-200 dark:border-gray-700 p-4 mx-auto mt-10 md:mt-8 max-w-xl">
+                </ul> */}
+                {/* <div className="border rounded-lg border-gray-200 dark:border-gray-700 p-4 mx-auto mt-10 md:mt-8 max-w-xl">
                   <div className="box-header !pt-0 !pl-0">
                     <h4>Claim history</h4>
                   </div> 
@@ -651,7 +660,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     </li>
                   
                   </ul>
-                </div>
+                </div> */}
               </div>
               <div className="max-w-xl mx-auto mb-4 flex items-center">
                   <SocialPromote ></SocialPromote>
