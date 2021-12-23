@@ -28,7 +28,7 @@ const SubscribeLaunchpad = ({ project,pool }) => {
     "/api/kyc-status?refId=" + store.user.id,
     fetchJson
   );
-  if (data && store.kyc.status !== BLOCK_PASS_KYC_COMPLETE && !loading) {
+  if (data && store.kyc.status !== BLOCK_PASS_KYC_COMPLETE) {
     store.kyc.update(data.status);
   }
   return (
