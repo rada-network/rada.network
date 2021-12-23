@@ -90,7 +90,7 @@
   "Prefunded" : "Prefunded",
   "and" : "and",
   "refund note"  : "You can collect your refund in the Claim section.",
-  "token claim note"  : "You've vested {{tokenPercentage}}% of your total allocation",
+  "token claim note"  : "You've claimed {{tokenPercentage}}% of your total allocation",
   "investment" : "Investment",
   "Total allocation" : "Your allocation",
   "Total token" : "Total token",
