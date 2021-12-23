@@ -410,8 +410,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 <div className="max-w-xl mx-auto">  
                   {/* <div className="s2e-illustration flex-shrink-0"></div> */}
                   <div className="w-full">
-                    <div className="p-4 md:p-8 rounded-lg border border-gray-200 dark:border-gray-700">
-                      <h3 className="text-lg text-center text-green-500 md:text-xl mb-4  text-semibold">
+                    <div className="p-4 md:p-8 rounded-lg border-2 border-green-200 dark:border-green-700">
+                      <h3 className="text-lg text-center text-green-500 md:text-2xl mb-4  text-semibold">
                         <span className="icon mr-2">
                           <i className="fa-duotone fa-badge-check"></i>
                         </span>
