@@ -5,11 +5,12 @@ import { usePageStore } from "@lib/usePageStore";
 import useStore from "@lib/useStore";
 import myUtils from "@lib/util";
 import { useRouter } from "next/router";
-import Layout from "@components/page-layouts/Global";
-import ProjectItem from "@components/project/Item/Index";
 import fetcher from "@lib/fetchJson";
 import useSWR, { SWRConfig } from 'swr'
+import dynamic from "next/dynamic";
 
+const Layout = dynamic(import("@components/page-layouts/Global"));
+const ProjectItem = dynamic(import("@components/project/Item/Index"));
 
 export function ProjectPage({ slug, locale }) {
   const router = useRouter()
@@ -45,7 +46,7 @@ export function ProjectPage({ slug, locale }) {
     locales,
     asPath
   );
-  
+
 
   store.updateNetwork(project?.platform.networkName);
   useEffect(() => {

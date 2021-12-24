@@ -1,19 +1,22 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
+import Script from 'next/script'
+
 export default class MyDocument extends Document {
   render() {
     return (
       <Html class="notranslate" translate="no">
         <Head>
         <meta name="google" content="notranslate" />
-        <script defer src='https://cdn.blockpass.org/widget/scripts/release/3.0.2/blockpass-kyc-connect.prod.js'></script>
+        <Script strategy="lazyOnload" src='https://cdn.blockpass.org/widget/scripts/release/3.0.2/blockpass-kyc-connect.prod.js' />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <script
-            async
+          <Script
+            strategy="afterInteractive"
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
           />
 
-          <script
+          <Script
+            id="gtag"
             dangerouslySetInnerHTML={{
               __html: `
             window.dataLayer = window.dataLayer || [];
@@ -25,7 +28,7 @@ export default class MyDocument extends Document {
           `,
             }}
           />
-          <script dangerouslySetInnerHTML={{
+          <Script id="fbq" dangerouslySetInnerHTML={{
             __html : `
               !function(f,b,e,v,n,t,s)
               {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -43,7 +46,8 @@ export default class MyDocument extends Document {
               src="https://www.facebook.com/tr?id=3099266543734836&ev=PageView&noscript=1"
             />
           </noscript>
-          <script
+          <Script
+            id="twitter"
             dangerouslySetInnerHTML={{
               __html: `
               window.twttr = (function(d, s, id) {

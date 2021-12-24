@@ -6,6 +6,7 @@ import { observer } from "mobx-react";
 import { usePageStore } from "../lib/usePageStore";
 import _ from "lodash";
 import utils from "@lib/util";
+import Script from 'next/script'
 
 export const Head = observer(({ meta }) => {
   const { asPath, pathname } = useRouter();
@@ -16,7 +17,8 @@ export const Head = observer(({ meta }) => {
     <>
       <HTMLHead>
         {detailStore.data?.airdrop && (
-          <script
+          <Script
+            id="gleam"
             dangerouslySetInnerHTML={{
               __html: `
             (function(d, t){

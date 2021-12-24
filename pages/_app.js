@@ -10,22 +10,15 @@ import * as ga from "../lib/ga";
 import { appWithTranslation } from "next-i18next";
 import { getScreenName } from "../components/utils/Responsive";
 import { Provider, useSession, signOut } from "next-auth/client";
-import { useCookies } from "react-cookie";
+import { useCookies, CookiesProvider } from "react-cookie";
 import { PageStoreProvider, usePageStore } from "../lib/usePageStore";
+import { ThemeProvider } from "next-themes";
+import Providers from "../utils/providers";
 
 import dynamic from "next/dynamic";
 
 const Nprogress = dynamic(() => import("@components/Nprogress"));
 const Toast = dynamic(() => import("@components/Toast"));
-const Providers = dynamic(() => import("../utils/providers"));
-
-const CookiesProvider = dynamic(() =>
-  import("react-cookie").then((mod) => mod.CookiesProvider)
-);
-
-const ThemeProvider = dynamic(() =>
-  import("next-themes").then((mod) => mod.ThemeProvider)
-);
 
 function parseJwt(token) {
   var base64Payload = token.split(".")[1];
