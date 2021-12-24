@@ -5,7 +5,6 @@ import { getSession } from "next-auth/client";
 
 import useStore from "../../../../../lib/useStore";
 import dynamic from "next/dynamic";
-import Script from 'next/script'
 
 const WalletProfile = dynamic(import("@components/Wallet"));
 
@@ -16,7 +15,7 @@ export default function ProjectOpening({ project }) {
   return (
     <>
       <HTMLHead>
-        <Script strategy="lazyOnload" src="https://cdn.blockpass.org/widget/scripts/release/3.0.2/blockpass-kyc-connect.prod.js" />
+        <script defer src='https://cdn.blockpass.org/widget/scripts/release/3.0.2/blockpass-kyc-connect.prod.js'></script>
       </HTMLHead>
 
       <div>

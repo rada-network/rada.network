@@ -67,7 +67,7 @@ module.exports = (phase) => {
     serverRuntimeConfig: {
       PROJECT_ROOT: __dirname,
     },
-    optimizeCss: true
+    experimental: { optimizeCss: true }
   };
 
   // next.config.js object
