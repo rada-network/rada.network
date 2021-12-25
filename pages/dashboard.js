@@ -10,6 +10,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getSession } from "next-auth/client";
 import { getCurrentUser } from "@data/query/user";
 import { useState, useEffect } from "react";
+import KYC from "@components/KYC";
+import { BLOCK_PASS_KYC_COMPLETE, BLOCK_PASS_KYC_REJECT } from "@config/constants";
 
 function Dashboard() {
   const store = useStore();
@@ -17,7 +19,10 @@ function Dashboard() {
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation("common");
-
+  const [kycStatus, setKycStatus] = useState("");
+  // approve
+  // wating
+  // rejected
   store.updateNetwork("bsc");
 
   useEffect(() => {
@@ -57,7 +62,19 @@ function Dashboard() {
     return item.provider === "twitter";
   });
 
-  console.log(user)
+  useEffect(() => {
+    if (user.kyc_status == "approved") {
+      setKycStatus("Approved");
+    }
+
+    if (user.kyc_status == "waitting") {
+      setKycStatus("Waiting");
+    }
+
+    if (user.kyc_status == "rejected") {
+      setKycStatus("Rejected");
+    }
+  }, [user]);
 
   return (
     <>
@@ -75,17 +92,25 @@ function Dashboard() {
                     <div className="w-20 h-20 mx-auto relative">
                       <img className="rounded-full" src={user.image} />
                       {/* Display this checkmark if the user already KYCed */}
-                      <span className="w-6 h-6 p-1 absolute right-0 top-0 rounded-full flex 
-                      items-center bg-green-500">
-                        <i className="text-sm font-bold fas fa-check text-white"></i>
-                      </span>
+                      {user.is_kyc && (
+                        <span className="w-6 h-6 p-1 absolute right-0 top-0 rounded-full flex 
+                        items-center bg-green-500">
+                          <i className="text-sm font-bold fas fa-check text-white"></i>
+                        </span>
+                      )}
+                      
                     </div> 
-                    {/* <h3 className="text-2xl font-semibold mt-4">Andrew Hicker</h3> */}
+
                     {/* Only show this block if the user haven't KYCed.  */}
-                    <div className="">
-                      <span className="opacity-70">Haven't KYC yet!</span>  
-                      <button className="btn btn-default ml-4">KYC</button>
-                    </div>
+                    {!user.is_kyc && (
+                      <KYC/>
+                    )}
+
+                    {user.is_kyc  && (
+                      <div className="">
+                        <span className="opacity-70">KYC Status: {kycStatus}</span>
+                      </div>
+                    )}
                   </div>
                   
                   <div className="md:grid grid-cols-2 gap-4">
