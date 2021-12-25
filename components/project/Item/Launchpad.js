@@ -22,7 +22,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
       }
       setLoadingPool(false)
     })    
-  }, [pool.slug]);
+  }, [pool]);
   if (loadingPool) return null
   return (
     <>

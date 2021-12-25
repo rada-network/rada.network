@@ -256,7 +256,7 @@
   }
   &:first-child{
     @apply mt-0 md:ml-0;
-    span {
+  span {
       @apply md:ml-0;
     }
   }

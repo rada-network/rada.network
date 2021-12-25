@@ -8,7 +8,7 @@ const ProjectCountdown = ({ project, setCountdownDone ,pool,isEndDate}) => {
       // Render a completed state
       // reload page
       router.reload()
-      return <span>Opening for whitelist now!</span>;
+      return <span></span>;
     } else {
       // Render a countdown
       return (

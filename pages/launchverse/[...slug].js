@@ -5,15 +5,19 @@ import { usePageStore } from "@lib/usePageStore";
 import useStore from "@lib/useStore";
 import myUtils from "@lib/util";
 import { useRouter } from "next/router";
-import Layout from "@components/page-layouts/Global";
-import ProjectItem from "@components/project/Item/Index";
 import fetcher from "@lib/fetchJson";
+import useSWR, { SWRConfig } from 'swr'
+import dynamic from "next/dynamic";
 
-export default function ProjectPage({ slug, project, locale,query }) {
+const Layout = dynamic(import("@components/page-layouts/Global"));
+const ProjectItem = dynamic(import("@components/project/Item/Index"));
+
+export function ProjectPage({ slug, locale }) {
   const router = useRouter()
   const {status} = router.query
   const { dataStore } = usePageStore();
   const { locales, asPath } = useRouter();
+  const { data : project } = useSWR(`/api/project/getProject?slug=${slug[0]}&lang=${locale}`, fetcher)
   const store = useStore();
   dataStore.page = "launchverse";
   dataStore.lang = locale;
@@ -42,7 +46,7 @@ export default function ProjectPage({ slug, project, locale,query }) {
     locales,
     asPath
   );
-  
+
 
   store.updateNetwork(project?.platform.networkName);
   useEffect(() => {
@@ -68,6 +72,16 @@ export default function ProjectPage({ slug, project, locale,query }) {
   );
 }
 
+export default function Page({ fallback,locale,slug }) {
+  // SWR hooks inside the `SWRConfig` boundary will use those values.
+  return (
+    <SWRConfig value={{ fallback }}>
+      <ProjectPage locale={locale} slug={slug}/>
+    </SWRConfig>
+  )
+}
+
+
 export async function getStaticPaths() {
   return {
     paths: [],
@@ -88,10 +102,12 @@ export async function getStaticProps(context) {
   let props = {
     locale: context.locale,
     slug: context.params.slug,
-    project: await getProject({
-      slug: context.params.slug[0],
-      lang: context.locale,
-    }),
+    fallback: {
+      [`/api/project/getProject?slug=${context.params.slug[0]}&lang=${context.locale}`] : await getProject({
+        slug: context.params.slug[0],
+        lang: context.locale,
+      })
+    }
   };
   props = Object.assign(props, {
     ...(await serverSideTranslations(context.locale, [

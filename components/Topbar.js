@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { usePageStore } from "../lib/usePageStore";
 
 import dynamic from "next/dynamic";
+import Image from "./Image";
 const Profile = dynamic(import("./Profile"));
 const ThemeSwitch = dynamic(import("./ThemeSwitch"));
 const LanguageSwitch = dynamic(import("./LanguageSwitch"));
@@ -34,10 +35,12 @@ export const Topbar = ({}) => {
             {/* Logo */}
             <Link href={`/`}>
               <a className="flex justify-center items-center">
-                <img
+                <Image
                   className="logo--img"
                   src={process.env.NEXT_PUBLIC_CDN + "/images/rada-animate.svg"}
                   alt="RADA NETWORK"
+                  width={24}
+                  height={32}
                 />
                 <strong className="logo--text ml-2">
                   <span>RADA</span>

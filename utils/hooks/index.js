@@ -23,6 +23,7 @@ const DEV_STATUS_FAILED = {
   winnerCount : 0,
   winners : [],
   claimable : 0,
+  totalClaimable : 0,
   refundable : [
     0,
     0,
@@ -60,6 +61,7 @@ const DEV_STATUS_FAILED_REFUND = {
   winnerCount : 0,
   winners : [],
   claimable : 0,
+  totalClaimable : 0,
   refundable : [
     300,
     0,
@@ -97,6 +99,7 @@ const DEV_STATUS_SUCCESS = {
   winnerCount : 0,
   winners : [],
   claimable : 0,
+  totalClaimable : 0,
   refundable : [
     0,
     0,
@@ -134,6 +137,7 @@ const DEV_STATUS_SUCCESS_REFUND = {
   winnerCount : 0,
   winners : [],
   claimable : 0,
+  totalClaimable : 0,
   refundable : [
     100,
     1,
@@ -171,6 +175,7 @@ const DEV_STATUS_CLAIM = {
   winnerCount : 0,
   winners : [],
   claimable : 500,
+  totalClaimable : 5000,
   refundable : [
     0,
     0,

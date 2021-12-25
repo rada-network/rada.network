@@ -29,6 +29,7 @@
     "@web3-react/walletconnect-connector": "^6.2.8",
     "boring-avatars": "^1.5.5",
     "chart.js": "^3.3.2",
+    "critters": "^0.0.15",
     "ethers": "^5.5.1",
     "file-saver": "^2.0.5",
     "form-data": "^4.0.0",

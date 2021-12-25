@@ -17,6 +17,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import useChainConfig from "utils/web3/useChainConfig"
 import MiniCountdown from "@components/project/List/Countdown";
 import useStore from "@lib/useStore"
+import OpenDate from "./OpenDate";
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
@@ -195,6 +196,10 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     toast.success("Copied to clipboard", {})
   };
 
+  const getPercentageClaimToken = function(){
+    return ((launchpadInfo.investor.claimedToken) / launchpadInfo.totalClaimable * 100).toFixed(1)
+  }
+
   if (loading || loadBalance || loadWhitelist) {
     return (
       <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
@@ -360,14 +365,18 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                             rounded-md mb-4
                             border border-gray-200 dark:border-gray-600"
                         >
+                          {!!pool.end_date && 
                           <div  className="pt-2 px-4">
                             <span className="mr-2 opacity-70">{t("Close at")}</span> 
-                            <strong>7:27 AM, Sat Dec 25 2021 (GMT+7)</strong>
+                            <OpenDate time={pool.end_date} />
                           </div>
+                          }
+                          {!!pool.whitelist_date && 
                           <div  className="py-2 px-4">
                             <span className="mr-2 opacity-70">{t("Announcement")}</span> 
-                            <strong>7:27 AM, Sat Dec 28 2021 (GMT+7)</strong>
+                            <OpenDate time={pool.whitelist_date} />
                           </div>
+                          }
                         </div>
                       </div>
                       <TokenSocialPromote project={project} />
@@ -407,54 +416,61 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
               </div>
 
               <div className="project-card--container">
-                <div className="max-w-xl mx-auto">
+                <div className="max-w-xl mx-auto">  
+                  {/* <div className="s2e-illustration flex-shrink-0"></div> */}
+                  <div className="w-full">
+                    <div className="p-4 md:p-8 rounded-lg border-2 border-green-200 dark:border-green-700">
+                      <h3 className="text-lg text-center text-green-500 md:text-2xl mb-4  text-semibold">
+                        <span className="icon mr-2">
+                          <i className="fa-duotone fa-badge-check"></i>
+                        </span>
+                        {t("status success")}
+                      </h3>
+                      {/* {t("status success",{name : project.content.title})} */}
 
-                  <div className="flex">
-                    {/* <div className="s2e-illustration flex-shrink-0"></div> */}
-                    <div className="w-full">
-                      <div className="mb-4 p-4 rounded-lg bg-green-500 bg-opacity-5 border-green-500
-                       text-green-500 border-2 border-green-400">
-                        <h3 className="text-xl md:text-2xl mb-4  text-center text-semibold">
-                          <span className="icon mr-2">
-                            <i className="fa-duotone fa-badge-check"></i>
-                          </span>
-                          Congratulations! You've won the 
-                        {/* {t("status success",{name : project.content.title})} */}
-                        </h3>
-                        <div className="text-center max-w-xs mx-auto">
-                          <p className="flex">
-                            <span className="ml-auto mr-4 w-16">{t("Prefunded BUSD")}</span>
-                            <strong className="mr-auto">{orderBusd} BUSD</strong>
-                          </p>
-                          <p className="flex">
-                            <span className="ml-auto mr-4 w-16">{t("Approved BUSD")}</span>
-                            <strong className="mr-auto">{approvedBusd} BUSD</strong>
-                          </p>
-                          {launchpadInfo.refundable[0] > 0 &&
-                          <p className="flex">
-                            <span className="ml-auto mr-4 w-16">{t("Refund BUSD")}</span>
-                            <strong className="mr-auto">{launchpadInfo.refundable[0]} BUSD</strong>
-                          </p>
-                          }
-                          {launchpadInfo.refundable[1] > 0 &&
-                          <p className="flex">
-                            <span className="mr-auto mr-4 w-16">{t("Refund BUSD")}</span>
-                            <strong className="ml-auto">{launchpadInfo.refundable[1]} RIR</strong>
-                          </p>
-                          }
-                          {launchpadInfo.claimable[0] > 0 &&
-                          <p> {t("refund note")}</p>
-                          }
-                        </div>
-                      </div>
-
-                     
+                      <ul className="w-full">
+                        <li className="list-pair py-2 border-b border-t border-gray-200 dark:border-gray-700">
+                          <span className="list-key">{t("Prefunded")}</span>
+                          <div className="list-value text-right ml-auto md:text-lg">
+                            <strong className="font-semiBold">{orderBusd} BUSD</strong> 
+                            {orderRIR > 0 && 
+                            <>
+                              <span className="opacity-70"> {t("and")} </span> 
+                              <strong className="font-semiBold">{orderRIR} RIR</strong>
+                            </>
+                            }
+                          </div>
+                        </li>
+                        <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">
+                          <span className="list-key">{t("Approved BUSD")}</span>
+                          <div className="list-value text-right ml-auto 
+                          text-green-600 font-semibold md:text-lg">{approvedBusd} BUSD</div>
+                        </li>
+                        {orderRIR - launchpadInfo.refundable[1] > 0 && 
+                        <li className="list-pair  py-2 border-b border-gray-200 dark:border-gray-700">
+                          <span className="list-key">{t("Burned RIR")}</span>
+                          <div className="list-value text-right ml-auto md:text-lg font-semibold">{orderRIR - launchpadInfo.refundable[1]} RIR</div>
+                        </li>}
+                        {(launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) && <li className="list-pair  py-2 border-b border-gray-200 dark:border-gray-700">
+                          <span className="list-key">{t("Refund BUSD")}</span>
+                          <div className="list-value text-right ml-auto font-semibold md:text-lg">
+                            <strong className="font-semiBold">{launchpadInfo.refundable[0]} BUSD</strong> 
+                            {launchpadInfo.refundable[1] > 0 && 
+                            <>
+                              <span className="opacity-70"> {t("and")} </span> 
+                              <strong className="font-semiBold">{launchpadInfo.refundable[1]} RIR</strong>
+                            </>
+                            }
+                          </div>
+                        </li>}
+                      </ul>
+                      {(launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) && 
+                      <button onClick={e => { handleClaimToken(e) }} className={`w-full mt-4 justify-center text-center btn btn-primary !py-4 ` + (claimDisbaled ? " disabled" : "")}>
+                        {t("Claim")} {launchpadInfo.refundable[0]} BUSD {launchpadInfo.refundable[1] > 0 ? ` & ${launchpadInfo.refundable[1]} RIR` : ""}
+                      </button>}
                     </div>
-
                   </div>
-                  <div className="flex items-center mt-2">
-                    <TokenSocialPromote project={project} />
-                  </div>
+                 
                 </div>
 
               </div>
@@ -473,25 +489,32 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
             </div>
 
             <div className="project-card--container">
-              <div className="border rounded-lg border-gray-200 dark:border-gray-700 p-4 mx-auto mt-4 max-w-xl">       
-                <h3 className="text-xl mb-4 text-yellow-600 dark:text-orange-500">{t("status failed")}</h3>
-                {launchpadInfo.refundable[0] > 0 &&
-                <>
-                <p className="mb-4">{t("status failed note refund")}</p>
-                <ul className="mt-auto">
-                  <li className="list-pair mb-2">
-                    <span className="!opacity-100">{t("Refund BUSD")}</span>
-                    <div className="ml-auto text-right">                 
-                    <strong>{launchpadInfo.refundable[0]} BUSD</strong>
-                    </div>
-                  </li>
-                </ul>
-                <div className="mt-4 list-value font-semibold">
-                  <button onClick={e => { handleClaimToken(e) }} className={`w-full justify-center text-center btn btn-primary py-2 ` + (claimDisbaled ? " disabled" : "")}>Claim</button>
+
+              <div className="mx-auto max-w-2xl">
+                <div className="p-4 md:p-8 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <h3 className="text-lg text-center text-yellow-500 md:text-xl mb-4  text-semibold">
+                    <span className="icon mr-2">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    </span>
+                    {t("status failed")}
+                  </h3>
+                  {/* {t("status success",{name : project.content.title})} */}
+                  {launchpadInfo.refundable[0] > 0 &&
+                  <>
+                    <ul className="w-full">
+                      <li className="list-pair py-2 border-b border-t border-gray-200 dark:border-gray-700">
+                        <span className="list-key">{t("Refund BUSD")}</span>
+                        <div className="list-value text-right ml-auto md:text-lg font-semiBold">
+                          {launchpadInfo.refundable[0]} BUSD
+                        </div>
+                      </li>
+                    </ul>
+                    <button onClick={e => { handleClaimToken(e) }} className={`w-full mt-4 justify-center text-center btn btn-primary !py-4 ` + (claimDisbaled ? " disabled" : "")}>Claim</button>
+                  </>
+                  }
                 </div>
-                </>
-                }
               </div>
+              
 
             </div>
           </div>
@@ -539,30 +562,30 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 <div className="grid gap-4 md:gap-8 lg:grid-cols-2">
                   <div className="box box--transparent">
                     <div className="box-header !pl-0">
-                      Investment
+                      {t("investment")}
                     </div> 
                     <ul className="mt-4 mb-2 flex-shrink-0 flex-grow">
                     <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Your investment</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Total allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
-                          100 BUSD
+                          {approvedBusd} BUSD
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Total allocation</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Total token")}</span>
                         <span className="ml-auto list-value font-semibold">
-                          2000 PRL
+                          {launchpadInfo.totalClaimable.toFixed(2).toLocaleString()} {project.token.symbol}
                         </span>
                       </li>
                      
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Unvested</span>
+                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Claimed token")}</span>
                         <span className="ml-auto list-value font-semibold">
-                          1000 PRL
+                          {launchpadInfo.investor.claimedToken.toLocaleString()} {project.token.symbol}
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                          <span className="list-key !w-1/2 text-xs md:text-sm capitalize">PRL Contract</span>
+                          <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{project.token.symbol} Contract</span>
                           <div className="ml-auto p-2 rounded-lg flex bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700">
                             <a target="_blank" href={getBscScanURL(tokenAddress)}>
                               {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}
@@ -583,27 +606,27 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
                   <div className="box box--gray -mx-4 -mb-6 md:m-0">
                     <div className="box-header flex">
-                      <h4>Claim now</h4>
-                      <div className="ml-auto text-right">500 PRL</div>
+                      <h4>{t("Claimable token")}</h4>
+                      {launchpadInfo.claimable > 0 &&
+                      <div className="ml-auto text-right">{launchpadInfo.claimable.toFixed(2).toLocaleString()} {project.token.symbol}</div>
+                      }
                     </div> 
                     <div className="p-6">
                       
-                      {(launchpadInfo.claimable > 0 || launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) &&
-                        <button onClick={e => { handleClaimToken(e) }} className={`w-full btn-primary py-2 px-4 rounded-md` + (claimDisbaled ? " disabled" : "")}>Claim</button>
-                      }
+                      <button onClick={e => { handleClaimToken(e) }} className={`w-full btn-primary py-2 px-4 rounded-md` + (claimDisbaled || launchpadInfo.claimable == 0 ? " disabled" : "")}>{t("Claim")}</button>
                     
                       <div className="text-center">
                         <div className="progress-bar mt-6 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
-                          <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full w-1/5">20%</div>
+                          <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" style={{width:getPercentageClaimToken() +"%"}}>{getPercentageClaimToken()}%</div>
                         </div>
-                        <div className="text-sm mt-2 opacity-60">You've vested 20% of your total allocation</div>
+                        <div className="text-sm mt-2 opacity-60">{t("token claim note",{tokenPercentage : getPercentageClaimToken()})}</div>
                       </div>
                     </div>
                   </div>
                 </div>
                 
   
-                <ul className="mt-4">
+                {/* <ul className="mt-4">
                  
                   {launchpadInfo.refundable[0] > 0 &&
                   <li className="list-pair mb-2">
@@ -619,8 +642,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     </div>
                   </li>
                   }
-                </ul>
-                <div className="border rounded-lg border-gray-200 dark:border-gray-700 p-4 mx-auto mt-10 md:mt-8 max-w-xl">
+                </ul> */}
+                {/* <div className="border rounded-lg border-gray-200 dark:border-gray-700 p-4 mx-auto mt-10 md:mt-8 max-w-xl">
                   <div className="box-header !pt-0 !pl-0">
                     <h4>Claim history</h4>
                   </div> 
@@ -651,7 +674,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     </li>
                   
                   </ul>
-                </div>
+                </div> */}
               </div>
               <div className="max-w-xl mx-auto mb-4 flex items-center">
                   <SocialPromote ></SocialPromote>

@@ -11,7 +11,8 @@ import TutorialWidget from "./TutorialWidget"
 import { BLOCK_PASS_KYC_COMPLETE } from "@config/constants";
 import { useTranslation } from "react-i18next";
 import OpenDate from "./OpenDate"
-const LaunchpadActions = ({ project,pool }) => {
+import { observer } from "mobx-react";
+const LaunchpadActions = observer(({ project,pool }) => {
   const {t,i18n} = useTranslation("launchpad")
   const store = useStore()
   const {account} = useActiveWeb3React()
@@ -89,7 +90,7 @@ const LaunchpadActions = ({ project,pool }) => {
       </>
     )
   }
-}
+})
 
 
 export default LaunchpadActions
