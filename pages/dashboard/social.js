@@ -8,48 +8,9 @@ import { getSession } from "next-auth/client";
 import { getCurrentUser } from "@data/query/user";
 import { useTranslation } from "react-i18next";
 
-function DashboardSocial() {
-  const [session, setSession] = useState();
+function DashboardSocial({user, google, facebook, twitter}) {
   const store = useStore();
-  const [user, setUser] = useState({});
-  const [loading, setLoading] = useState(true);
   const { t } = useTranslation("common");
-
-  useEffect(() => {
-    getSession()
-      .then((sess) => {
-        setSession(sess);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
-
-  useEffect(() => {
-    if (!!session && store.user.access_token !== "") {
-      getCurrentUser().then((res) => {
-        setUser(res);
-      });
-    }
-  }, [session, store.user.access_token]);
-
-  let google = {},
-    wallet = {},
-    facebook = {},
-    twitter = {};
-
-  google = user.account?.find((item) => {
-    return item.provider === "google";
-  });
-  wallet = user.account?.find((item) => {
-    return item.provider === "wallet";
-  });
-  facebook = user.account?.find((item) => {
-    return item.provider === "facebook";
-  });
-  twitter = user.account?.find((item) => {
-    return item.provider === "twitter";
-  });
 
   const handleConnect = () => {
     store.user.showConnect(true);
@@ -116,7 +77,7 @@ function DashboardSocial() {
                     <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(facebook) ? (
                         <span>
-                          {t("no connection", { provider: "Google" })}
+                          {t("no connection", { provider: "Facebook" })}
                         </span>
                       ):(
                         <strong>{facebook.oauth_profile.name}</strong>
