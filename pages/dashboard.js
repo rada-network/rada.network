@@ -1,8 +1,8 @@
 import Head from "next/dist/shared/lib/head";
 import RadaSvg from "@components/svg/rada";
-import JoinedPools from "./dashboard/joinedPools";
-import DashboardSocial from "./dashboard/social";
-import DashboardWallet from "./dashboard/wallet";
+import JoinedPools from "../components/dashboard/joinedPools";
+import DashboardSocial from "../components/dashboard/social";
+import DashboardWallet from "../components/dashboard/wallet";
 import useStore from "@lib/useStore";
 import Layout from "@components/page-layouts/Global";
 import { useTranslation } from "react-i18next";
@@ -12,6 +12,7 @@ import { getCurrentUser } from "@data/query/user";
 import { useState, useEffect } from "react";
 import KYC from "@components/KYC";
 import { BLOCK_PASS_KYC_COMPLETE, BLOCK_PASS_KYC_REJECT } from "@config/constants";
+import { getPoolByWallet } from "@data/query/projects";
 
 function Dashboard() {
   const store = useStore();
