@@ -73,11 +73,7 @@ export const PostListDetail = observer(
           isVote: item.item?.isVote,
         },
       ]);
-      if (typeof twttr.widgets !== "undefined") {
-        twttr.widgets.load();
-      }
-      window.removeEventListener("resize", handleResize);
-      window.addEventListener("resize", handleResize);
+
       scrollRef.current.scrollTop = 0; // For Safari
       if (
         detailStore.type === "news" ||
@@ -101,22 +97,11 @@ export const PostListDetail = observer(
         });
       }
       return () => {
-        window.removeEventListener("resize", handleResize);
+        
       };
     }, [item.item]);
     let resizeTimeout = 0;
-    const handleResize = (event) => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        if (detailStore.type === "news") {
-          detailStore.data.contentDisplay +=
-            "<span className='newstag123' style='display:none;'>" +
-            Math.random() +
-            "</span>";
-        }
-      }, 500);
-    };
-
+    
     const getCoinInfo = async (fsym) => {
       await fetch(`/api/coin-info?fsym=${fsym}&tsym=USD`)
         .then((response) => response.json())
@@ -393,22 +378,6 @@ const NewsDetail = observer(function ({
     } catch (error) {}
   };
 
-  useEffect(() => {
-    // make scrollbar
-    // let iframes = document.querySelectorAll('iframe')
-    // iframes.forEach((iframe) => {
-    //   // iframe.addEventListener('load', function() {
-    //   //   const iframeBody = this.contentWindow.document.body;
-    //   //   const height = Math.max(iframeBody.scrollHeight, iframeBody.offsetHeight);
-    //   //   this.style.height = `${height}px`;
-    //   // })
-    //   iframe.setAttribute("src",iframe.getAttribute("data-src"))
-    // })
-
-    if (typeof twttr.widgets !== "undefined") {
-      twttr.widgets.load();
-    }
-  }, [item.contentDisplay]);
   const url = item.websiteUri ? item.websiteUri : item.url
   return (
     <div
