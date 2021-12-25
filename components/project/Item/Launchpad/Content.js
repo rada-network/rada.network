@@ -16,7 +16,6 @@ const LaunchpadContent = observer(function({ project,pool }) {
   const { t } = useTranslation("launchpad");
   const { account, library } = useActiveWeb3React();  
   const [poolStat, setPoolStat] = useState(null);
-  const [showInfo, setShowInfo] = useState(true);
   const lauchpadContact = useLaunchpadContractV2(pool);
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
@@ -37,9 +36,6 @@ const LaunchpadContent = observer(function({ project,pool }) {
     if (!!lauchpadContact) {
       fetchLaunchpadInfo();
     }
-    if (pool.type == "private"){
-      setShowInfo(false)
-    }
   }, [account, lauchpadContact, library,store.loadPoolContent]);
   const raise = pool.raise;
   const tokenPrice = pool.price;
@@ -58,14 +54,17 @@ const LaunchpadContent = observer(function({ project,pool }) {
       itemProp="description"
     >
       <div className="card card-default project-brief">
-        <div className="card-header">
+        <div className="card-header flex items-start">
           <h3>{project.content.title} - {pool.title}</h3>
+          <a className="btn flex btn-default !text-xs flex-shrink-0" target="_blank" 
+          href="https://rada.network/en/post/how-to-participate-in-an-ido-on-launchverse">
+             <i className="fas fa-question-circle mr-2 opacity-50"></i> How to</a>
         </div>
         <div className="card-body flex flex-col">
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
             <li className="list-pair mb-2">
               <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Investment round")}</span>
-              <span className="ml-auto list-value font-semibold">
+              <span className="ml-auto list-value font-semibold text-right">
                 {/* <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div> */}
                 <div className={``}>{pool.type.toUpperCase()}</div>
               </span>
@@ -73,7 +72,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
             
             <li className="list-pair mb-2">
               <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Raise")}</span>
-              {raise && showInfo ? 
+              {raise ? 
               <span className="ml-auto list-value font-semibold text-right">
                 {numberFormatter(raise)} BUSD
               </span>
@@ -95,7 +94,15 @@ const LaunchpadContent = observer(function({ project,pool }) {
               </span>
               }
             </li>
-            {!!pool.open_date && openTime < curentTime && showInfo && 
+            <li className="list-pair mb-2">
+              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Method</span>
+             
+              <span className="ml-auto font-semibold">
+                Overflow, FCFS
+              </span>
+
+            </li>
+            {!!pool.open_date && openTime < curentTime && 
             <li className="list-pair mb-2">
             <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Progress")}</span>
             <span className="list-value ml-auto">
@@ -108,7 +115,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
             </li>
             }
           </ul>
-          {!!pool.open_date && openTime < curentTime && showInfo && 
+          {!!pool.open_date && openTime < curentTime &&
           <>
             <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
               <div
@@ -123,9 +130,9 @@ const LaunchpadContent = observer(function({ project,pool }) {
           
 
           }
-          <a target="_blank" className="link ml-auto mt-1" href="https://rada.network/en/post/how-to-participate-in-an-ido-on-launchverse">
-            {t("How winner will be chosen")}
-          </a>
+          {/* <a className="link ml-auto mt-1" href="https://rada.network/en/post/how-to-participate-in-an-ido-on-launchverse">
+            How winner will be chosen
+          </a> */}
         </div>
       </div>
       {/* end of project-brief */}
