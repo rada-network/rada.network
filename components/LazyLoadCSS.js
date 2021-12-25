@@ -17,8 +17,7 @@ const LazyLoadCSS = ({ href }) => {
 
   return (
     <NextHead>
-      <link rel="preconnect" href={href} />
-      <link rel="preload" as="style" href={href} />
+      <link rel="prefetch" as="style" href={href} />
       <link href={href} rel="stylesheet" media={!hydrated ? "print" : "all"} />
     </NextHead>
   );
