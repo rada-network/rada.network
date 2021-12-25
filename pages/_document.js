@@ -56,8 +56,7 @@ export default class MyDocument extends Document {
             />
           </noscript>
 
-          <Script
-            strategy="lazyOnload"
+          <script
             dangerouslySetInnerHTML={{
               __html: `
               window.twttr = (function(d, s, id) {
