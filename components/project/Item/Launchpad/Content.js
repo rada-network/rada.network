@@ -94,14 +94,14 @@ const LaunchpadContent = observer(function({ project,pool }) {
               </span>
               }
             </li>
-            <li className="list-pair mb-2">
+            {/* <li className="list-pair mb-2">
               <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Method</span>
              
               <span className="ml-auto font-semibold">
                 Overflow, FCFS
               </span>
 
-            </li>
+            </li> */}
             {!!pool.open_date && openTime < curentTime && 
             <li className="list-pair mb-2">
             <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Progress")}</span>
