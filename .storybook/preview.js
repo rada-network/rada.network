@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { withI18n } from 'storybook-addon-i18n';
 import { addParameters, addDecorator } from '@storybook/react';
+import { MockedProvider } from '@apollo/client/testing';
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import i18n from 'i18next';
 import Backend from 'i18next-http-backend';
@@ -39,6 +40,9 @@ const customViewports = {
 };
 
 export const parameters = {
+  apolloClient: {
+    MockedProvider,
+  },
   viewport: {
     viewports: {
       ...MINIMAL_VIEWPORTS,
