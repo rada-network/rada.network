@@ -5,9 +5,10 @@ import { signOut } from "next-auth/client";
 import Link from "next/link";
 import getClient from "../data/client";
 import { useCookies } from "react-cookie";
+import Image from "./Image";
 
 export default function Usermenu({ user }) {
-  const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
+  const [, , removeCookie] = useCookies(["access_token"]);
   const { t, i18n } = useTranslation();
   // HieuNN: Example of Button when User Login
   const Button = ({ wallet }) => (
@@ -17,7 +18,7 @@ export default function Usermenu({ user }) {
       aria-haspopup="true"
     >
       <span className="avatar leading-10">
-        <img src={user.image} alt={user.name} />
+        <Image src={user.image} alt={user.name} width={40} height={40} />
       </span>
       <span className="btn--text ml-2">{user.name}</span>
     </div>
