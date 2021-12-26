@@ -36,7 +36,7 @@ function Pool({ pool, thumbnail_uri, project_slug }) {
 
 
   useEffect(() => {
-    if (!loading) {
+    if (!loading && !!launchpadInfo) {
       let currentApprovedBusd = launchpadInfo.investor.approved && launchpadInfo.investor.paid ? launchpadInfo.investor.allocationBusd : 0
       setApprovedBusd(currentApprovedBusd)
       if (parseInt(approvedBusd) > 0) {

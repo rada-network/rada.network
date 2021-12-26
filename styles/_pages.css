@@ -1,8 +1,8 @@
-/* 
+/*
 Pages
 */
 
-/* 
+/*
 Page Layout
 --------------------------------------------- */
 .page {
@@ -54,8 +54,8 @@ Page Layout
 }
 
 
-/* 
-Page Full 
+/*
+Page Full
 --------------------------------------------- */
 .page-full {
   @apply flex justify-center px-2 py-4 lg:py-8;
@@ -78,7 +78,7 @@ Page Full
 }
 
 
-/* 
+/*
 Page Projects
 --------------------------------------------- */
 .page-projects-list,
@@ -92,10 +92,10 @@ Page Projects
 @media (max-width: 767px) {
   .page-project-details {
     .section {
-      
+
     }
- 
-  } 
+
+  }
 }
 
 
@@ -117,8 +117,8 @@ Page Projects
 }
 
 
-/* 
-InPage research 
+/*
+InPage research
 */
 .page-research-details {
   .w-limiter-lg {
@@ -211,26 +211,26 @@ Empty State - About Page
 }
 
 
-/* 
+/*
 Page Sections
 --------------------------------------------- */
-/* 
-Media 
+/*
+Media
 */
 .media-player {
   @apply lg:rounded-lg overflow-hidden;
 }
 
 
-/* 
-Comments List 
+/*
+Comments List
 */
 .section-comments {
   @apply border-t border-gray-500 border-opacity-10;
 }
 
-/* 
-Coins 
+/*
+Coins
 */
 .section-coininfo--general,
 .section-coininfo--team {
@@ -246,7 +246,7 @@ Coins
   }
 }
 
-/* 
+/*
 Post Details
 --------------- */
 .post {
@@ -264,8 +264,8 @@ Post Details
 .post-detail-news {
 }
 
-/* 
-Title 
+/*
+Title
 */
 .post-title {
   @apply mb-2;
@@ -304,8 +304,8 @@ Title
   @apply line-clamp-2 overflow-ellipsis;
 }
 
-/* 
-Metadata 
+/*
+Metadata
 */
 .post-header .metadata-wrapper {
   @apply text-sm justify-between items-center;
@@ -324,8 +324,8 @@ Metadata
 }
 
 
-/* 
-CTAs 
+/*
+CTAs
 */
 .post-detail .cta-wrapper {
   @apply flex text-gray-900 dark:text-gray-200;
@@ -370,7 +370,7 @@ Content
 }
 
 
-/* 
+/*
 LaunchVerse
 --------------------------------------------- */
 @media (max-width: 639px) {
@@ -379,7 +379,7 @@ LaunchVerse
   }
 }
 
-/* 
+/*
 Logo
 */
 .logo-launchverse {
@@ -403,22 +403,22 @@ Logo
   }
 }
 
-/* 
+/*
 Hero
 */
 .page-launchverse--home .hero-deco,
 .page-landing--parallel .hero-deco {
-  background-image: url("/images/launchverse-hero.svg");
+  /* background-image: url("/images/launchverse-hero.svg"); */
   @apply flex-shrink-0 relative bg-no-repeat;
   background-size: cover;
   width: 400px;
   height: 400px;
 }
 
-.dark .page-launchverse--home .hero-deco,
+/* .dark .page-launchverse--home .hero-deco,
 .dark .page-landing--parallel .hero-deco {
   background-image: url("/images/launchverse-hero-dark.svg");
-}
+} */
 
 /* Smaller the logo for small screen */
 @media only screen and (max-width: 768px) {
@@ -430,14 +430,14 @@ Hero
 }
 
 
-/* 
+/*
 Landing - The Parallel
 --------------------------------------------- */
 .page-landing--parallel {
 
 }
 
-/* 
+/*
 S2E
 */
 .page-landing--parallel .s2e-deco {
@@ -452,7 +452,7 @@ S2E
   background-image: url("/images/launchverse-s2e-dark.png");
 }
 
-/* 
+/*
 Footer
 */
 .page-landing--parallel .footer {

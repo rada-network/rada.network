@@ -367,7 +367,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         >
                           {!!pool.end_date && 
                           <div  className="pt-2 px-4">
-                            <span className="mr-2 opacity-70">{t("Close at")}</span> 
+                            <span className="mr-2 opacity-70">{t("Closeat")}</span> 
                             <OpenDate time={pool.end_date} />
                           </div>
                           }
