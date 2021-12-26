@@ -1,24 +1,19 @@
 import Head from "next/dist/shared/lib/head";
 import RadaSvg from "@components/svg/rada";
-import Pool from "./pool";
+import PoolWrapper from "./poolWrapper";
 import { getPoolByWallet } from "@data/query/projects";
 import { useEffect, useState } from "react";
 import fetcher from "@lib/fetchJson";
 
 function JoinedPools() {
+  const [projects, setProjects] = useState([]);  
 
   useEffect(() => {
-    getPoolByWallet({lang: "en", wallet_address: "0x82a0c5334F177649C48f1cC04245F57f4540148E"}).then(function(res){
+    getPoolByWallet({ lang: "en", wallet_address: "0x82a0c5334F177649C48f1cC04245F57f4540148E" }).then(function (res) {
       console.log(res);
+      setProjects(res);
     })
   }, [])
-
-  useEffect(() => {
-    fetcher(`/api/pools/get-slug?address=0x82a0c5334F177649C48f1cC04245F57f4540148E&&poolID=0`).then(function(res){
-      console.log("Joined pool");
-      console.log(res);
-    })    
-  }, []);
 
   return (
     <>
@@ -52,12 +47,15 @@ function JoinedPools() {
               </div>
             </div>
             {/* End header */}
-            
-            {/* Start pool */}
 
-            <Pool />
-            <Pool />
-            <Pool />
+            {/* Start pool */}
+            {projects.length > 0 && (
+              <div>
+                {projects.map((project, key) => (
+                  <PoolWrapper project={project}/>
+                ))}
+              </div>
+            )}
             {/* End pool */}
 
           </div>
