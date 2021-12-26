@@ -17,8 +17,8 @@ export default function Usermenu({ user }) {
       aria-expanded="false"
       aria-haspopup="true"
     >
-      <span className="avatar leading-10">
-        <Image src={user.image} alt={user.name} width={40} height={40} />
+      <span className="avatar leading-10 relative">
+        <Image src={user.image} alt={user.name} layout="fill"  />
       </span>
       <span className="btn--text ml-2">{user.name}</span>
     </div>
