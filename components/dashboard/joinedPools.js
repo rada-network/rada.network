@@ -1,7 +1,25 @@
 import Head from "next/dist/shared/lib/head";
 import RadaSvg from "@components/svg/rada";
 import Pool from "./pool";
+import { getPoolByWallet } from "@data/query/projects";
+import { useEffect, useState } from "react";
+import fetcher from "@lib/fetchJson";
+
 function JoinedPools() {
+
+  useEffect(() => {
+    getPoolByWallet({lang: "en", wallet_address: "0x82a0c5334F177649C48f1cC04245F57f4540148E"}).then(function(res){
+      console.log(res);
+    })
+  }, [])
+
+  useEffect(() => {
+    fetcher(`/api/pools/get-slug?address=0x82a0c5334F177649C48f1cC04245F57f4540148E&&poolID=0`).then(function(res){
+      console.log("Joined pool");
+      console.log(res);
+    })    
+  }, []);
+
   return (
     <>
       <div className="mt-4">
@@ -36,6 +54,7 @@ function JoinedPools() {
             {/* End header */}
             
             {/* Start pool */}
+
             <Pool />
             <Pool />
             <Pool />

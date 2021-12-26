@@ -16,10 +16,6 @@ function DashboardSocial({user, google, facebook, twitter}) {
     store.user.showConnect(true);
   };
 
-  useEffect(() => {
-    console.log(user.account);
-  }, [user]);
-
   return (
     <>
       <div className="card--wrapper mb-4 md:mb-0">

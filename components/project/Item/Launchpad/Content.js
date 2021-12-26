@@ -54,8 +54,11 @@ const LaunchpadContent = observer(function({ project,pool }) {
       itemProp="description"
     >
       <div className="card card-default project-brief">
-        <div className="card-header">
+        <div className="card-header flex items-start">
           <h3>{project.content.title} - {pool.title}</h3>
+          <a className="btn flex btn-default !text-xs flex-shrink-0" target="_blank" 
+          href="https://rada.network/en/post/how-to-participate-in-an-ido-on-launchverse">
+             <i className="fas fa-question-circle mr-2 opacity-50"></i> How to</a>
         </div>
         <div className="card-body flex flex-col">
           <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
@@ -91,14 +94,14 @@ const LaunchpadContent = observer(function({ project,pool }) {
               </span>
               }
             </li>
-            <li className="list-pair mb-2">
+            {/* <li className="list-pair mb-2">
               <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Method</span>
              
               <span className="ml-auto font-semibold">
                 Overflow, FCFS
               </span>
 
-            </li>
+            </li> */}
             {!!pool.open_date && openTime < curentTime && 
             <li className="list-pair mb-2">
             <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Progress")}</span>

@@ -287,6 +287,7 @@ export const useLaunchpadInfo = ({pool,status}) => {
         stat,
         investor
       }
+      console.log(updateInfo)
       setLaunchpadInfo(updateInfo)
      } catch (error) {
       console.log(error)
