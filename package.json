@@ -11,7 +11,9 @@
     "build:rada": "next build && npm run upload:static && npm run upload:public",
     "build:devdhunt": "NODE_ENV=staging && next build",
     "start": "next start",
-    "start:staging": "NODE_ENV=staging && next start"
+    "start:staging": "NODE_ENV=staging && next start",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@apollo/client": "^3.3.12",
@@ -73,15 +75,23 @@
     "util": "^0.12.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
+    "@storybook/react": "^6.4.9",
     "@tailwindcss/jit": "^0.1.18",
     "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.3",
     "chokidar": "^3.5.1",
     "next-pwa": "^5.3.1",
     "next-sitemap": "^1.6.203",
     "postcss": "^8.2.9",
     "postcss-extend": "^1.0.5",
     "postcss-nested": "^5.0.5",
-    "postcss-nesting": "^7.0.1"
+    "postcss-nesting": "^7.0.1",
+    "storybook-addon-i18n": "^5.1.13",
+    "storybook-addon-next-router": "^3.1.1"
   },
   "browserslist": {
     "production": [
