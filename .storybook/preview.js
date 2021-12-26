@@ -5,6 +5,7 @@ import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import i18n from 'i18next';
 import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
+import { RouterContext } from "next/dist/shared/lib/router-context";
 
 const customViewports = {
   iPhone5: {
@@ -43,6 +44,9 @@ export const parameters = {
       ...MINIMAL_VIEWPORTS,
       ...customViewports,
     },
+  },
+  nextRouter: {
+    Provider: RouterContext.Provider,
   },
 };
 

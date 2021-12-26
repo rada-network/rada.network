@@ -6,7 +6,8 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "storybook-addon-i18n/register.js"
+    "storybook-addon-i18n/register.js",
+    "storybook-addon-next-router"
   ],
   "framework": "@storybook/react",
   "core": {
