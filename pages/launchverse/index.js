@@ -64,7 +64,6 @@ export default function ProjectsIndex({ projects, locale }) {
                     alt="RADA LaunchVerse"
                     width={307}
                     height={54}
-                    priority
                   />
                   <strong className="sr-only">
                     <span className="">LaunchVerse</span>
@@ -134,8 +133,8 @@ export default function ProjectsIndex({ projects, locale }) {
                           : "/images/launchverse-hero-dark.svg")
                       }
                       alt="RADA LaunchVerse"
-                      width={400}
-                      height={400}
+                      width={300}
+                      height={300}
                       layout="responsive"
                     />
                   </div>
