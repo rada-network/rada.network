@@ -6,12 +6,17 @@ import LaunchpadContent from "./Launchpad/Content";
 import LaunchpadActions from "./Launchpad/Actions/Index";
 import fetcher from "@lib/fetchJson";
 import ProjectFaq from "./Faq";
+import Subscriber from "./Launchpad/Actions/Subscriber";
+
+const style = {
+  cursor : "pointer",
+}
 
 const ProjectLaunchpad = ({ project, pool }) => {
   const {t,i18n} = useTranslation("launchpad");
   const [poolContract,setPoolContract] = useState(pool)
   const [loadingPool,setLoadingPool] = useState(true)
-
+  const [active,setActive] = useState("faq")
   useEffect(() => {
     fetcher(`/api/pools/get-pools?slug=${project.slug}/${pool.slug}`).then(function(res){
       if (!!res.contract){
@@ -22,6 +27,14 @@ const ProjectLaunchpad = ({ project, pool }) => {
       }
       setLoadingPool(false)
     })    
+    const currentTime = (new Date(pool.current_date)).getTime() / 1000
+    const whitelistTime = (new Date(pool.whitelist_date)).getTime() / 1000
+    if (whitelistTime > currentTime){
+      setActive("faq")
+    }
+    else{
+      setActive("winner")
+    }
   }, [pool]);
   if (loadingPool) return null
   return (
@@ -40,7 +53,41 @@ const ProjectLaunchpad = ({ project, pool }) => {
         </div>
 
         {/* FAQ */}
-        <ProjectFaq project={project} /> 
+        <div className="card-default faqs launchverse-faqs mt-8">
+          <div className="card-body no-padding">
+            <div className="flex flex-col">
+              <div className="">
+                <nav aria-label="Progress">
+                  <ol role="list" className="steps-compact ">
+                    <li style={style} className={`step-compact ` + (active == "faq" ?  "is-current" : "")} onClick={(e) => {setActive("faq")}}>
+                      <div className="step-compact-body" aria-current="step">
+                        <div className="step-compact-body--content">
+                          <span className="step-compact-body--title">Frequently Asked Questions
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                    <li style={style} className={`step-compact ` + (active == "winner" ?  "is-current" : "")} onClick={(e) => {setActive("winner")}}>
+                      <div className="step-compact-body" aria-current="step">
+                        <div className="step-compact-body--content">
+                          <span className="step-compact-body--title">Winners
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+              <div class={"project-card--container" + (active == "faq" ? "" : " hidden")}>
+                <ProjectFaq project={project} /> 
+              </div>
+              <div class={"project-card--container"+ (active == "winner" ? "" : " hidden")}>
+                <Subscriber project={project} pool={poolContract} />
+              </div>
+            </div>
+          </div>
+        </div>
+        
 
       </div>
 
