@@ -5,7 +5,6 @@ import { signOut } from "next-auth/client";
 import Link from "next/link";
 import getClient from "../data/client";
 import { useCookies } from "react-cookie";
-import Image from "./Image";
 
 export default function Usermenu({ user }) {
   const [, , removeCookie] = useCookies(["access_token"]);
@@ -18,7 +17,7 @@ export default function Usermenu({ user }) {
       aria-haspopup="true"
     >
       <span className="avatar leading-10 relative">
-        <Image src={user.image} alt={user.name} layout="fill"  />
+        <img src={user.image} alt={user.name} />
       </span>
       <span className="btn--text ml-2">{user.name}</span>
     </div>
