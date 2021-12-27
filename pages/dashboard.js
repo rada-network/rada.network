@@ -13,6 +13,8 @@ import { useState, useEffect } from "react";
 import KYC from "@components/KYC";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 
+// const globalContext = createContext();
+
 function Dashboard() {
   const store = useStore();
   const [session, setSession] = useState();

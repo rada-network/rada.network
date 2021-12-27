@@ -309,3 +309,86 @@ export const useLaunchpadInfo = ({pool,status}) => {
   }, [account,lauchpadContact,active,setLoading,library])
   return {loading,launchpadInfo,fetchLaunchpadInfo}
 }
+
+export const usePoolInfo = ({pool,status}) => {
+  const {account,connector,active,library} = useActiveWeb3React()
+  const [launchpadInfo,setLaunchpadInfo] = useState(false)
+  const [loading,setLoading] = useState(true)
+  const lauchpadContact = useLaunchpadContractV2(pool)
+  
+  const fetchPoolInfo = async () => {
+    try {
+      let updateInfo;
+      if (process.env.NEXT_PUBLIC_CHAIN === "dev" && !!status && status !== ""){
+        switch (status){
+          case "success" :
+            updateInfo = DEV_STATUS_SUCCESS
+            break;
+          case "successRefund" :
+            updateInfo = DEV_STATUS_SUCCESS_REFUND
+            break;
+          case "fail" :
+            updateInfo = DEV_STATUS_FAILED
+            break;
+          case "failRefund" :
+            updateInfo = DEV_STATUS_FAILED_REFUND
+            break;
+          case "claim" :
+            updateInfo = DEV_STATUS_CLAIM
+            break;
+          default :
+            break
+        }
+        if (!!updateInfo){
+          setLaunchpadInfo(updateInfo)
+          return null
+        }
+      }
+      
+      let claimable = ethers.constants.Zero
+      try {
+        claimable = await lauchpadContact.getClaimable(pool.id)
+      }
+      catch (e) {
+        console.log(e)
+      }
+      
+      let investor = await lauchpadContact.getInvestor(pool.id,account)
+
+      investor = {
+        allocationBusd : parseFloat(ethers.utils.formatEther(investor.allocationBusd)),
+        allocationRir : parseFloat(ethers.utils.formatEther(investor.allocationRir)),
+        amountBusd : parseFloat(ethers.utils.formatEther(investor.amountBusd)),
+        amountRir : parseFloat(ethers.utils.formatEther(investor.amountRir)),
+        claimedToken : parseFloat(ethers.utils.formatEther(investor.claimedToken)),
+        paid : investor.paid,
+        refunded : investor.refunded,
+        approved : investor.approved,
+      }
+      
+      updateInfo = {
+        claimable : parseFloat(ethers.utils.formatEther(claimable)),
+        investor
+      }
+
+      setLaunchpadInfo(updateInfo)
+     } catch (error) {
+      console.log(error)
+      //console.log("error to fetch launchpad info",error)
+      return null
+    }
+  }
+  useEffect(() => {
+    if (!!account && !!lauchpadContact && active && library){
+      setLoading(true)
+      fetchPoolInfo().then(function(res){
+        setLoading(false)
+      })
+    }
+    else{
+      setLoading(false)
+      setLaunchpadInfo(null)
+    }
+  }, [account,lauchpadContact,active,setLoading,library])
+  return {loading,launchpadInfo,fetchPoolInfo}
+}

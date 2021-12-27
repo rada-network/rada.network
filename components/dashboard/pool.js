@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLaunchpadInfo } from "@utils/hooks/index";
+import { usePoolInfo } from "@utils/hooks/index";
 import useStore from "@lib/useStore";
 import { useTranslation } from "next-i18next";
 import Link from "next/link"
@@ -8,20 +8,11 @@ import Link from "next/link"
 function Pool({ pool, thumbnail_uri, project_slug,project }) {
   const { t, i18n } = useTranslation("common")
   const store = useStore();
-  const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ pool, status: store.devStatus });
+  const { launchpadInfo, loading, fetchPoolInfo } = usePoolInfo({ pool, status: store.devStatus });
   const [endDate, setEndDate] = useState("");
   const [endTime, setEndTime] = useState("");
   const [poolStatus, setPoolStatus] = useState("");
   const [investStatus, setInvestStatus] = useState("");
-  const [approvedBusd, setApprovedBusd] = useState(0)
-
-  const fetchAccountBalance = async function () {
-    await fetchLaunchpadInfo();
-  }
-
-  useEffect(() => {
-    fetchAccountBalance();
-  }, []);
 
   useEffect(() => {
     const optionsDate = { year: "numeric", month: "long", day: "numeric" };
@@ -35,8 +26,7 @@ function Pool({ pool, thumbnail_uri, project_slug,project }) {
   useEffect(() => {
     if (!loading && !!launchpadInfo) {
       let currentApprovedBusd = launchpadInfo.investor.approved && launchpadInfo.investor.paid ? launchpadInfo.investor.allocationBusd : 0
-      setApprovedBusd(currentApprovedBusd)
-      if (parseInt(approvedBusd) > 0) {
+      if (parseInt(currentApprovedBusd) > 0) {
         setInvestStatus("Success");
       } else {
         if (launchpadInfo.investor.paid && !launchpadInfo.investor.approved){
@@ -50,12 +40,6 @@ function Pool({ pool, thumbnail_uri, project_slug,project }) {
     }
   }, [launchpadInfo, loading])
 
-
-  useEffect(() => {
-    if (!!launchpadInfo) {
-      //console.log(launchpadInfo);
-    }
-  }, [launchpadInfo]);
 
   useEffect(() => {
     if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
@@ -72,8 +56,6 @@ function Pool({ pool, thumbnail_uri, project_slug,project }) {
       setPoolStatus("tba")
     }
   }, []);
-
-
 
   return (
     <>
