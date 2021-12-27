@@ -25,7 +25,7 @@ function PoolWrapper({ project }) {
   return (
     <> 
       {selectedPool ? (
-        <Pool pool={selectedPool} thumbnail_uri={project.project.thumbnail_uri} project_slug={projectSlug}/>
+        <Pool pool={selectedPool} project={project} thumbnail_uri={project.project.thumbnail_uri} project_slug={projectSlug} />
       ) : null}
     </>
   );

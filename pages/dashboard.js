@@ -81,9 +81,16 @@ function Dashboard() {
     }
   }, [user]);
 
+  const meta = {
+    title:
+      (user?.name ? user?.name : "User").replace(/(^|\s)\S/g, (letter) =>
+        letter.toUpperCase()
+      ) + " Invest profile",
+  };
+
   return (
     <>
-    <Layout>
+    <Layout meta={meta}>
         <div className="pane-content--sec--main grid scrollbar">
           {/* NNTH: Remove 'max-w-screen-md mx-auto' on production */}
           <div className="page max-w-screen-lg mx-auto">
@@ -125,9 +132,8 @@ function Dashboard() {
                     <DashboardWallet />
                   </div>
 
-                  {account && (
-                    <JoinedPools/>
-                  )}
+                  
+                  <JoinedPools/>
                   
                 </div>
                 {/* End: Post Content */}

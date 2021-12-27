@@ -1,14 +1,11 @@
-import Head from "next/dist/shared/lib/head";
-import RadaSvg from "@components/svg/rada";
-import fetcher from "@lib/fetchJson";
 import { useEffect, useState } from "react";
 import { useLaunchpadInfo } from "@utils/hooks/index";
 import useStore from "@lib/useStore";
-import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { useTranslation } from "next-i18next";
+import Link from "next/link"
 
 
-function Pool({ pool, thumbnail_uri, project_slug }) {
+function Pool({ pool, thumbnail_uri, project_slug,project }) {
   const { t, i18n } = useTranslation("common")
   const store = useStore();
   const { launchpadInfo, loading, fetchLaunchpadInfo } = useLaunchpadInfo({ pool, status: store.devStatus });
@@ -42,7 +39,13 @@ function Pool({ pool, thumbnail_uri, project_slug }) {
       if (parseInt(approvedBusd) > 0) {
         setInvestStatus("Success");
       } else {
-        setInvestStatus("Failed");
+        if (launchpadInfo.investor.paid && !launchpadInfo.investor.approved){
+          setInvestStatus("Waiting")
+        }
+        else{
+          setInvestStatus("Failed");
+        }
+        
       }
     }
   }, [launchpadInfo, loading])
@@ -50,7 +53,7 @@ function Pool({ pool, thumbnail_uri, project_slug }) {
 
   useEffect(() => {
     if (!!launchpadInfo) {
-      console.log(launchpadInfo);
+      //console.log(launchpadInfo);
     }
   }, [launchpadInfo]);
 
@@ -74,12 +77,13 @@ function Pool({ pool, thumbnail_uri, project_slug }) {
 
   return (
     <>
-      <a href={`/${i18n.language}/launchverse/${project_slug}/${pool.slug}`} className="block md:flex px-4 py-4 md:px-6 border-b border-gray-200 dark:border-gray-500 dark:border-opacity-10 hover:bg-gray-200 dark:hover:bg-gray-700">
+      <Link href={`/${i18n.language}/launchverse/${project_slug}/${pool.slug}`} >
+        <a href={`/${i18n.language}/launchverse/${project_slug}/${pool.slug}`} className="block md:flex px-4 py-4 md:px-6 border-b border-gray-200 dark:border-gray-500 dark:border-opacity-10 hover:bg-gray-200 dark:hover:bg-gray-700">
         <div className="flex md:w-1/2 md:mr-2 mb-2 md:mb-0">
           <div className="mr-4 flex items-center">
             <img src={thumbnail_uri} className="w-8 h-8 mr-2 rounded-full" />
             <label className="font-semibold">
-              {pool.title}
+              {project.project.content.title}- {pool.title}
             </label>
           </div>
 
@@ -121,11 +125,19 @@ function Pool({ pool, thumbnail_uri, project_slug }) {
                   </label>
                 </div>
               )}
+              {launchpadInfo && investStatus == "Waiting" && (
+                <div className="ml-auto">
+                  <label className="lg:ml-auto label label--info">
+                    Waiting
+                  </label>
+                </div>
+              )}
             </>
           )
         }
         </div>
-      </a>
+        </a>
+      </Link>
     </>
   );
 }
