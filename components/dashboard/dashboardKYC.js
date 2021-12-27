@@ -9,7 +9,7 @@ import { getCurrentUser } from "@data/query/user";
 import { BLOCK_PASS_KYC_COMPLETE, BLOCK_PASS_KYC_REJECT } from "@config/constants";
 
 
-const KYC = ({ is_short }) => {
+const KYC = () => {
   const store = useStore();
 
   const Info = () => {
@@ -77,38 +77,26 @@ const KYC = ({ is_short }) => {
 
   return (
     <>
-      { is_short  ? (
-        <div className="relative mt-2 mb-2 w-full flex items-center justify-center">
-          <div className="text-right -mt-2 md:mt-0">
-            <Button />
+      <div className="list-group--item !px-0 md:!pb-4">
+        <div className="list-group--item--title w-full md:w-1/4">
+          <div className="list-group--item--media">
+            <span className="icon">
+              <i className="fas fa-user-check"></i>
+            </span>
+          </div>
+          <label for="blockchain-wallet" className="text-color-desc">
+            KYC
+          </label>
+        </div>
+        <div className="flex-1 md:mt-0">
+          <div className="relative pl-8 md:pl-0 w-full flex items-center">
+            <Info />
           </div>
         </div>
-      ) : (
-
-        <div className="list-group--item !px-0 md:!pb-4">
-          <div className="list-group--item--title w-full md:w-1/4">
-            <div className="list-group--item--media">
-              <span className="icon">
-                <i className="fas fa-user-check"></i>
-              </span>
-            </div>
-            <label for="blockchain-wallet" className="text-color-desc">
-              KYC
-            </label>
-          </div>
-          <div className="flex-1 md:mt-0">
-              <div className="relative pl-8 md:pl-0 w-full flex items-center">
-                <Info />
-              </div>
-          </div>
-          
-          
-          <div className="text-right -mt-2 md:mt-0">
-            <Button />
-          </div>
+        <div className="text-right -mt-2 md:mt-0">
+          <Button />
         </div>
-      )}
-      
+      </div>
     </>
   );
 };

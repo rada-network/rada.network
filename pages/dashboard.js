@@ -20,6 +20,7 @@ function Dashboard() {
   const [session, setSession] = useState();
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
+  const [userAvatar, setAvatar] = useState("");
   const [kycStatus, setKycStatus] = useState("");
   const { account } = useActiveWeb3React()
   const { t, i18n } = useTranslation("common")
@@ -39,17 +40,20 @@ function Dashboard() {
   }, []);
 
   useEffect(() => {
-    console.log(account);
-  })
-
-  useEffect(() => {
     if (!!session && store.user.access_token !== "") {
       getCurrentUser().then((res) => {
         setUser(res);
+        if (res.image) {
+          setAvatar(res.image);
+        } else {
+          setAvatar("/placeholders/cryptopunk.jpg");
+        }
         // todo: Check kyc status
       });
     }
   }, [session, store.user.access_token]);
+
+  
 
   let google = {},
     wallet = {},
@@ -88,7 +92,9 @@ function Dashboard() {
       (user?.name ? user?.name : "User").replace(/(^|\s)\S/g, (letter) =>
         letter.toUpperCase()
       ) + " Invest profile",
-  };
+  }
+
+  if (loading) return null;
 
   return (
     <>
@@ -102,30 +108,38 @@ function Dashboard() {
 
                 {/* Post Content */}
                 <div className="w-full mt-4">
-                  <div className="text-center mx-auto max-w-lg mb-4 md:mb-8">
-                    <div className="w-20 h-20 mx-auto relative">
-                      <img className="rounded-full" src={user.image} />
-                      {/* Display this checkmark if the user already KYCed */}
-                      {user.is_kyc && (
-                        <span className="w-6 h-6 p-1 absolute right-0 top-0 rounded-full flex 
-                        items-center bg-green-500">
-                          <i className="text-sm font-bold fas fa-check text-white"></i>
-                        </span>
+                  
+                    <div className="text-center mx-auto max-w-lg mb-4 md:mb-8">
+
+                      <div className="w-20 h-20 mx-auto relative">
+                        <img className="rounded-full" src={userAvatar} />
+                        {/* Display this checkmark if the user already KYCed */}
+                        {user.is_kyc && (
+                          <span className="w-6 h-6 p-1 absolute right-0 top-0 rounded-full flex 
+                          items-center bg-green-500">
+                            <i className="text-sm font-bold fas fa-check text-white"></i>
+                          </span>
+                        )}
+                      </div> 
+
+                      {/* Only show this block if the user haven't KYCed.  */}
+                      {user.length != 0 && (
+                        <> 
+                          {kycStatus != "Approved" ? (
+                            <KYC is_short = {true}/>
+                          ) : (
+                            <div className="">
+                              <span className="opacity-70">KYC Status: {kycStatus}</span>
+                            </div>
+                          )}
+                        </>
                       )}
-                      
-                    </div> 
 
-                    {/* Only show this block if the user haven't KYCed.  */}
-                    {!user.is_kyc && (
-                      <KYC/>
-                    )}
-
-                    {user.is_kyc  && (
-                      <div className="">
-                        <span className="opacity-70">KYC Status: {kycStatus}</span>
-                      </div>
-                    )}
-                  </div>
+                      {/* {user.is_kyc  && (
+                        
+                      )} */}
+                    </div>
+                  
                   
                   <div className="md:grid grid-cols-2 gap-4">
                     {/* Social */}

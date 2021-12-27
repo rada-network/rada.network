@@ -43,7 +43,7 @@ const Share2EarnRequire = ({ shareCampaign }) => {
 
         <div className="list-group text-sm">
           <Login />
-          {store.user.id !== "" && <KYC />}
+          {store.user.id !== "" && <KYC is_short={false}/>}
           <WalletRequire />
         </div>
       </div>
