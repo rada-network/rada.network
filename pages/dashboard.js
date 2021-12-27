@@ -11,16 +11,16 @@ import { getSession } from "next-auth/client";
 import { getCurrentUser } from "@data/query/user";
 import { useState, useEffect } from "react";
 import KYC from "@components/KYC";
-import { BLOCK_PASS_KYC_COMPLETE, BLOCK_PASS_KYC_REJECT } from "@config/constants";
-import { getPoolByWallet } from "@data/query/projects";
+import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 
 function Dashboard() {
   const store = useStore();
   const [session, setSession] = useState();
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
-  const { t } = useTranslation("common");
   const [kycStatus, setKycStatus] = useState("");
+  const { account } = useActiveWeb3React()
+  const { t, i18n } = useTranslation("common")
   // approve
   // wating
   // rejected
@@ -35,6 +35,10 @@ function Dashboard() {
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    console.log(account);
+  })
 
   useEffect(() => {
     if (!!session && store.user.access_token !== "") {
@@ -121,7 +125,9 @@ function Dashboard() {
                     <DashboardWallet />
                   </div>
 
-                  <JoinedPools/>
+                  {account && (
+                    <JoinedPools/>
+                  )}
                   
                 </div>
                 {/* End: Post Content */}
