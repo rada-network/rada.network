@@ -4,13 +4,16 @@ import PoolWrapper from "./poolWrapper";
 import { getPoolByWallet } from "@data/query/projects";
 import { useEffect, useState } from "react";
 import fetcher from "@lib/fetchJson";
+import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
+import { useTranslation } from "next-i18next";
 
 function JoinedPools() {
-  const [projects, setProjects] = useState([]);  
+  const [projects, setProjects] = useState([]);
+  const { account } = useActiveWeb3React()
+  const { t, i18n } = useTranslation("common")
 
   useEffect(() => {
-    getPoolByWallet({ lang: "en", wallet_address: "0x82a0c5334F177649C48f1cC04245F57f4540148E" }).then(function (res) {
-      console.log(res);
+    getPoolByWallet({ lang: i18n.language, wallet_address: account }).then(function (res) {
       setProjects(res);
     })
   }, [])
