@@ -133,21 +133,6 @@ export const Head = observer(({ meta }) => {
       </HTMLHead>
       <LazyLoadCSS href="https://rsms.me/inter/inter.css" />
 
-      <LazyLoadCSS
-        href={
-          process.env.NEXT_PUBLIC_CDN +
-          "/vendors/font-awesome6-pro/css/all.min.css"
-        }
-      />
-
-      <LazyLoadCSS
-        rel="stylesheet"
-        href={
-          process.env.NEXT_PUBLIC_CDN +
-          "/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
-        }
-      />
-
       <TooltipWrapper />
     </>
   );
