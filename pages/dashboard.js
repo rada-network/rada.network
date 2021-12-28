@@ -20,7 +20,7 @@ function Dashboard() {
   const [session, setSession] = useState();
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
-  const [userAvatar, setAvatar] = useState("");
+  const [userAvatar, setAvatar] = useState('/placeholders/cryptopunk.jpg');
   const [kycStatus, setKycStatus] = useState("");
   const { account } = useActiveWeb3React()
   const { t, i18n } = useTranslation("common")

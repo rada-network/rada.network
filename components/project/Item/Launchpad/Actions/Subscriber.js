@@ -4,6 +4,7 @@ const Subscriber = function({project,pool,winners}){
   const [wins,setWins] = useState([])
   const [page,setPage] = useState(1)
   const [filter,setFilter]=useState("")
+  const totalPage = winners.length / 50 + 1
   useEffect(() => {
     let start = (page - 1) * 50
     if (filter != "") {
@@ -59,14 +60,19 @@ const Subscriber = function({project,pool,winners}){
                   <li><a href="#" onClick={e => {setPage(page-1)}}  className="">{page - 1}</a></li>
                   }
                   <li><a href="#" className="current">{page}</a></li>
-                  {(page+1)*50 < winners.length && 
+                  {(page+1) <= totalPage && 
                   <li><a href="#" onClick={e => {setPage(page+1)}} className="">{page+1}</a></li>
                   }
-                  {(page+2)*50 < winners.length && 
+                  {(page+2) <= totalPage && 
                   <li><a href="#" onClick={e => {setPage(page+2)}} className="">{page + 2}</a></li>
                   }
+                  
+                  {Math.floor((winners.length)/50) + 1 > page + 2 && 
                   <li><a>...</a></li>
-                  <li><a href="#" onClick={e => {setPage(Math.floor(winners.length/50))}} className="">{Math.floor(winners.length/50)}</a></li>
+                  }
+                  {Math.floor((winners.length)/50) + 1 > page + 2 && 
+                  <li><a href="#" onClick={e => {setPage(Math.floor((winners.length)/50) + 1)}} className="">{Math.floor(winners.length/50) + 1}</a></li>
+                  }
                 </ul>
                 }
               </div>

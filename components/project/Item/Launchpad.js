@@ -39,7 +39,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
     })    
   }, [pool]);
   useEffect(() => {
-    if (whitelistTime < currentTime && winners.length > 0){
+    if (pool.whitelist_date !== null && whitelistTime < currentTime && winners.length > 0){
       setActive("winner")
     }
     else{
