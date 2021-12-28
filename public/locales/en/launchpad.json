@@ -66,7 +66,7 @@
   "status note": "The winners list will be announced before the IDO time.<br/ >You will be able to claim your token at TGE (Token Generation Event) at the CLAIM tab.",
   "status note 2": "Depend on the {{token}} Tokenomics, token vesting schedule could be varied. Please read the {{research}} for more information.",
   "Investment round": "Funding round",
-  "Not allow": "Your wallet address is not in the Whitelist.",
+  "Not allow": "Your wallet address is not in the Whitelist",
   "Amount BUSD is not valid" :"Amount BUSD is not valid",
   "Amount RIR is not valid":	"Amount RIR is not valid",
   "Amount is not valid":	"Amount is not valid",

@@ -337,7 +337,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 <div className="max-w-xl mx-auto">
                   <div className="flex">
                     <div className="w-full">
-                      <h3 className="text-xl md:text-2xl border-2 p-4 rounded-lg bg-green-500 bg-opacity-5 border-green-500 mb-4 text-green-500 text-center text-semibold">
+                      <h3 className="text-lg md:text-xl border-2 p-4 rounded-lg bg-green-500 bg-opacity-5 border-green-500 mb-4 text-green-500 text-center text-semibold">
                         <span className="icon mr-2">
                           <i className="fa-duotone fa-badge-check"></i>
                         </span>
@@ -361,18 +361,18 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         }
                       </h3>
                       <div className="mt-4">
-                        <div className="inline-block w-full mx-auto  
-                            rounded-md mb-4
-                            border border-gray-200 dark:border-gray-600"
+                        <div className="inline-block w-full mx-auto text-center 
+                            rounded-lg mb-4
+                            border border-gray-200 dark:border-gray-700"
                         >
                           {!!pool.end_date && 
-                          <div  className="pt-2 px-4">
+                          <div  className="py-1 px-4">
                             <span className="mr-2 opacity-70">{t("Closeat")}</span> 
                             <OpenDate time={pool.end_date} />
                           </div>
                           }
                           {!!pool.whitelist_date && 
-                          <div  className="py-2 px-4">
+                          <div  className="py-1 px-4">
                             <span className="mr-2 opacity-70">{t("Announcement")}</span> 
                             <OpenDate time={pool.whitelist_date} />
                           </div>
@@ -800,19 +800,16 @@ const NotInWhitesist = function(){
       <div className="card-body no-padding">
         <div className="flex flex-col">
           <div className="">
-            <Timeline step="1" />
+            <Timeline step="3" />
           </div>
 
           <div className="project-card--container">
             <div className="max-w-2xl mx-auto text-center">
-
-              <div className="flex items-center">
-                <div className="mx-auto">
-                  {t("Not allow")}
-                </div>
+              <div className="flex items-center justify-center mx-auto text-lg md:text-xl">
+                <span className="mr-2"><i class="fad fa-calendar-times"></i></span>
+                <span className="">{t("Not allow")}</span>
               </div>
             </div>
-
           </div>
         </div>
       </div>

@@ -111,8 +111,8 @@ export default function ProjectsIndex({ projects, locale }) {
 
                 {/* FOOTER */}
                 <div className="hero flex flex-col md:flex-row justify-center items-center mt-16 max-w-screen-md mx-auto">
-                  <div className="text-center md:text-left px-4 md:px-0">
-                    <p className="text-2xl md:text-4xl font-altsans mb-4">
+                  <div className="text-center md:text-left px-8 md:px-0">
+                    <p className="text-2xl md:text-4xl font-altsans mb-4 leading-relaxed font-medium">
                       {t("Want to launch your project on RADA?")}
                     </p>
                     <a
