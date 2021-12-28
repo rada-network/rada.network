@@ -67,18 +67,18 @@ const ProjectLaunchpad = ({ project, pool }) => {
           <div className="card-body no-padding">
             <div className="flex flex-col">
               {whitelistTime < currentTime && pool.whitelist_date !== null && winners.length > 0 &&
-              <div className="">
-                <nav aria-label="Progress">
-                  <ol role="list" className="steps-compact ">
-                    <li style={style} className={`step-compact ` + (active == "faq" ?  "is-current" : "")} onClick={(e) => {setActive("faq")}}>
+              <div className="flex h-12 border-b border-gray-200 dark:border-gray-700">
+                <nav aria-label="tabbar card-tabs">
+                  <ol role="list" className="tabbar--main h-full px-4">
+                    <li style={style} className={`tab-item ` + (active == "faq" ?  "tab-item--active" : "")} onClick={(e) => {setActive("faq")}}>
                       <div className="step-compact-body" aria-current="step">
                         <div className="step-compact-body--content">
-                          <span className="step-compact-body--title">Frequently Asked Questions
+                          <span className="step-compact-body--title">FAQS
                           </span>
                         </div>
                       </div>
                     </li>
-                    <li style={style} className={`step-compact ` + (active == "winner" ?  "is-current" : "")} onClick={(e) => {setActive("winner")}}>
+                    <li style={style} className={`tab-item ` + (active == "winner" ?  "tab-item--active" : "")} onClick={(e) => {setActive("winner")}}>
                       <div className="step-compact-body" aria-current="step">
                         <div className="step-compact-body--content">
                           <span className="step-compact-body--title">Winners

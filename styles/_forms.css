@@ -74,7 +74,7 @@ Search
 }
 
 .form-search--input {
-  @apply bg-gray-100 dark:bg-gray-800 border border-gray-400 border-opacity-20 pr-9 py-2 text-sm transition w-full rounded-full;
+  @apply bg-gray-100 dark:bg-gray-800 border border-gray-400 border-opacity-20 pr-9 py-2 text-sm transition w-full rounded-lg;
   @apply focus:ring-0 focus:border-primary-500;
   padding-left: calc(24px + 1rem);
 }

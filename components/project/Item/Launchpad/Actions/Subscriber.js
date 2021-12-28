@@ -22,8 +22,8 @@ const Subscriber = function({project,pool,winners}){
   },[winners,page,filter])
   return (
     <>
-      <div className="card-header items-center">
-        <h3>Winners ({winners.length})</h3>
+      <div className="flex justify-between items-center pb-4 mx-auto max-w-screen-sm">
+        <h3 className="text-lg font-medium">Winners ({winners.length})</h3>
         <div className="search-wrapper">
           <div className="form-search rounded-full">
             <span className="icon form-search--icon">
@@ -33,9 +33,9 @@ const Subscriber = function({project,pool,winners}){
           </div>
         </div>
       </div>
-      <div className="card-body no-padding">
+      <div className="card-body no-padding mx-auto max-w-screen-sm">
         <div className="flex flex-col">
-          <div className="global-padding-lg min-h-full">
+          <div className="min-h-full">
             <div className="">
               <div className="list-wrapper">
                 <ul className="winners">
