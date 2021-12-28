@@ -8,9 +8,30 @@ import { getSession } from "next-auth/client";
 import { getCurrentUser } from "@data/query/user";
 import { useTranslation } from "react-i18next";
 
-function DashboardSocial({user, google, facebook, twitter}) {
+function DashboardSocial({user}) {
+
   const store = useStore();
   const { t } = useTranslation("common");
+
+  let google = {},
+    wallet = {},
+    facebook = {},
+    twitter = {};
+  if (!!user) {
+    google = user.account?.find((item) => {
+      return item.provider === "google";
+    });
+    wallet = user.account?.find((item) => {
+      return item.provider === "wallet";
+    });
+    facebook = user.account?.find((item) => {
+      return item.provider === "facebook";
+    });
+    twitter = user.account?.find((item) => {
+      return item.provider === "twitter";
+    });
+  }
+  
 
   const handleConnect = () => {
     store.user.showConnect(true);
