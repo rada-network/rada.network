@@ -1,16 +1,9 @@
-import { getProjectPoolWinnerBySlug } from "@data/query/projects"
 import { useEffect, useState } from "react"
 
-const Subscriber = function({project,pool}){
-  const [winners,setWinners] = useState([])
+const Subscriber = function({project,pool,winners}){
   const [wins,setWins] = useState([])
   const [page,setPage] = useState(1)
   const [filter,setFilter]=useState("")
-  useEffect(() => {
-    getProjectPoolWinnerBySlug({slug : project.slug,pool : pool.slug}).then(function(res){
-      setWinners(res)
-    })
-  },[])
   useEffect(() => {
     let start = (page - 1) * 50
     if (filter != "") {
