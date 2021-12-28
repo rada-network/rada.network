@@ -74,9 +74,9 @@ Search
 }
 
 .form-search--input {
-  @apply bg-gray-100 dark:bg-gray-800 border border-gray-400 border-opacity-20 pr-9 py-2 text-sm transition w-full rounded-lg;
-  @apply focus:ring-0 focus:border-primary-500;
-  padding-left: calc(24px + 1rem);
+  @apply bg-gray-100 dark:bg-gray-700 border border-gray-400 border-opacity-20 pr-2 py-2 text-sm transition rounded-lg;
+  @apply focus:ring-0 focus:border-primary-500 focus:bg-white dark:focus:bg-gray-800 focus:shadow;
+  padding-left: calc(16px + 1rem);
 }
 
 .form-search--input::placeholder {
