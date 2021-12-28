@@ -1,10 +1,12 @@
+import "../public/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
+import "../public/vendors/font-awesome6-pro/css/all.min.css"
 import "../styles/tw.css";
 import "../styles/globals.css";
 import "../styles/styles.css";
 
 import { StoreProvider, useStore } from "../lib/useStore";
 import { configure } from "mobx";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import * as ga from "../lib/ga";
 import { appWithTranslation } from "next-i18next";
@@ -13,12 +15,12 @@ import { Provider, useSession, signOut } from "next-auth/client";
 import { useCookies, CookiesProvider } from "react-cookie";
 import { PageStoreProvider, usePageStore } from "../lib/usePageStore";
 import { ThemeProvider } from "next-themes";
-import Providers from "../utils/providers";
 
 import dynamic from "next/dynamic";
 
 const Nprogress = dynamic(() => import("@components/Nprogress"));
 const Toast = dynamic(() => import("@components/Toast"));
+const Providers = dynamic(() => import("../utils/providers"));
 
 function parseJwt(token) {
   var base64Payload = token.split(".")[1];

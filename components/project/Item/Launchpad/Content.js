@@ -16,6 +16,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
   const { t } = useTranslation("launchpad");
   const { account, library } = useActiveWeb3React();  
   const [poolStat, setPoolStat] = useState(null);
+  const [showInfo, setShowInfo] = useState(true);
   const lauchpadContact = useLaunchpadContractV2(pool);
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
@@ -35,6 +36,12 @@ const LaunchpadContent = observer(function({ project,pool }) {
     };
     if (!!lauchpadContact) {
       fetchLaunchpadInfo();
+    }
+    if (pool.type == "private"){
+      setShowInfo(false)
+    }
+    else{
+      setShowInfo(true)
     }
   }, [account, lauchpadContact, library,store.loadPoolContent]);
   const raise = pool.raise;
@@ -72,13 +79,13 @@ const LaunchpadContent = observer(function({ project,pool }) {
             
             <li className="list-pair mb-2">
               <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Raise")}</span>
-              {raise ? 
+              {raise && showInfo ?
               <span className="ml-auto list-value font-semibold text-right">
                 {numberFormatter(raise)} BUSD
               </span>
               :
               <span className="ml-auto list-value font-semibold">
-                TBA
+                {pool.type == "private" ? "PRIVATE" : "TBA"}
               </span>
               }
             </li>
@@ -94,15 +101,15 @@ const LaunchpadContent = observer(function({ project,pool }) {
               </span>
               }
             </li>
-            <li className="list-pair mb-2">
+            {/* <li className="list-pair mb-2">
               <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Method</span>
              
               <span className="ml-auto font-semibold">
                 Overflow, FCFS
               </span>
 
-            </li>
-            {!!pool.open_date && openTime < curentTime && 
+            </li> */}
+            {!!pool.open_date && openTime < curentTime && showInfo &&
             <li className="list-pair mb-2">
             <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Progress")}</span>
             <span className="list-value ml-auto">
@@ -115,7 +122,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
             </li>
             }
           </ul>
-          {!!pool.open_date && openTime < curentTime &&
+          {!!pool.open_date && openTime < curentTime && showInfo &&
           <>
             <div className="progress-bar mt-3 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
               <div

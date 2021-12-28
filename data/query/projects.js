@@ -1,4 +1,4 @@
-import {gql} from '@apollo/client';
+import { gql } from '@apollo/client';
 import getClient from "../client";
 import fetcher from "@lib/fetchJson";
 
@@ -152,6 +152,60 @@ const submitProjectPrefundLogGql = gql`
   }
 `
 
+const poolByWalletAddress = gql`
+  query poolByWalletAddress($lang : String!, $wallet_address : String!){
+    poolByWalletAddress(lang: $lang, wallet_address: $wallet_address) {
+      contract_address
+      pool_id
+      project{
+        thumbnail_uri
+        content{
+          title
+        }
+        project_pool{
+          title
+          slug
+          is_whitelist
+          type
+          open_date
+          end_date
+        }
+      }
+    }
+  }
+`
+
+const projectPoolWinnerBySlugGgl = gql`
+  query projectPoolWinnerBySlug($pool : String!, $slug : String!){
+    projectPoolWinnerBySlug(pool :$pool,slug :$slug){
+      wallet_address
+    }
+  }
+`
+
+export async function getPoolByWallet({ lang, wallet_address }) {
+  const client = getClient()
+  const res = await client.query({
+    query: poolByWalletAddress,
+    variables: {
+      lang: lang || 'en',
+      wallet_address: wallet_address
+    }
+  })
+  return res.data.poolByWalletAddress || []
+}
+
+export async function getProjectPoolWinnerBySlug({ slug, pool }) {
+  const client = getClient()
+  const res = await client.query({
+    query: projectPoolWinnerBySlugGgl,
+    variables: {
+      slug,pool
+    }
+  })
+  return res.data.projectPoolWinnerBySlug || []
+}
+
 export async function getProjects({ lang }) {
   const client = getClient()
   const res = await client.query({
@@ -176,28 +230,28 @@ export async function getProject({ slug, lang }) {
   return res.data.projectBySlug || {}
 }
 
-export async function submitPrefundLog({ user_id,contract_address,wallet_address,project_id,pool_id }) {
+export async function submitPrefundLog({ user_id, contract_address, wallet_address, project_id, pool_id }) {
   const client = getClient()
   const key = process.env.LOGIN_KEY
   const res = await client.mutate({
     mutation: submitProjectPrefundLogGql,
     variables: {
-      key,user_id,wallet_address,contract_address,project_id,pool_id
+      key, user_id, wallet_address, contract_address, project_id, pool_id
     }
   })
   return res.data.submitPrefundLog
 }
 
-export const submitPrefundLogApi = async ({pool,project,account}) => {
+export const submitPrefundLogApi = async ({ pool, project, account }) => {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-      pool_id : pool.id.toString(),
-      project_id : project.id,
-      wallet_address : account,
-      contract_address : pool.contract
+    body: JSON.stringify({
+      pool_id: pool.id.toString(),
+      project_id: project.id,
+      wallet_address: account,
+      contract_address: pool.contract
     })
   };
-  return await fetcher("/api/logs/prefund",requestOptions)
+  return await fetcher("/api/logs/prefund", requestOptions)
 }

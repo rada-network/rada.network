@@ -367,7 +367,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         >
                           {!!pool.end_date && 
                           <div  className="pt-2 px-4">
-                            <span className="mr-2 opacity-70">{t("Close at")}</span> 
+                            <span className="mr-2 opacity-70">{t("Closeat")}</span> 
                             <OpenDate time={pool.end_date} />
                           </div>
                           }
@@ -446,10 +446,10 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           <div className="list-value text-right ml-auto 
                           text-green-600 font-semibold md:text-lg">{approvedBusd} BUSD</div>
                         </li>
-                        {orderRIR - launchpadInfo.refundable[1] > 0 && 
+                        {approveRIR > 0 && 
                         <li className="list-pair  py-2 border-b border-gray-200 dark:border-gray-700">
                           <span className="list-key">{t("Burned RIR")}</span>
-                          <div className="list-value text-right ml-auto md:text-lg font-semibold">{orderRIR - launchpadInfo.refundable[1]} RIR</div>
+                          <div className="list-value text-right ml-auto md:text-lg font-semibold">{approveRIR} RIR</div>
                         </li>}
                         {(launchpadInfo.refundable[0] > 0 || launchpadInfo.refundable[1] > 0) && <li className="list-pair  py-2 border-b border-gray-200 dark:border-gray-700">
                           <span className="list-key">{t("Refund BUSD")}</span>

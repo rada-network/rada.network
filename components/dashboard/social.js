@@ -16,10 +16,6 @@ function DashboardSocial({user, google, facebook, twitter}) {
     store.user.showConnect(true);
   };
 
-  useEffect(() => {
-    console.log(user.account);
-  }, [user]);
-
   return (
     <>
       <div className="card--wrapper mb-4 md:mb-0">
@@ -30,7 +26,7 @@ function DashboardSocial({user, google, facebook, twitter}) {
           <div className="list-group">
             {!user?.id && (
               <div className="list-group--item !pb-0 md:!pb-4">
-                <div className="text-right flex-1 relative -top-4 md:top-0 ">
+                <div className="relative mt-2 mb-2 w-full flex items-center justify-center">
                   <button className="btn btn-default items-center"
                     onClick={handleConnect}
                   >{t("login to join")}

@@ -1,8 +1,8 @@
 import Head from "next/dist/shared/lib/head";
 import RadaSvg from "@components/svg/rada";
-import JoinedPools from "./dashboard/joinedPools";
-import DashboardSocial from "./dashboard/social";
-import DashboardWallet from "./dashboard/wallet";
+import JoinedPools from "../components/dashboard/joinedPools";
+import DashboardSocial from "../components/dashboard/social";
+import DashboardWallet from "../components/dashboard/wallet";
 import useStore from "@lib/useStore";
 import Layout from "@components/page-layouts/Global";
 import { useTranslation } from "react-i18next";
@@ -10,14 +10,23 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getSession } from "next-auth/client";
 import { getCurrentUser } from "@data/query/user";
 import { useState, useEffect } from "react";
+import KYC from "@components/KYC";
+import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
+
+// const globalContext = createContext();
 
 function Dashboard() {
   const store = useStore();
   const [session, setSession] = useState();
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
-  const { t } = useTranslation("common");
-
+  const [userAvatar, setAvatar] = useState('/placeholders/cryptopunk.jpg');
+  const [kycStatus, setKycStatus] = useState("");
+  const { account } = useActiveWeb3React()
+  const { t, i18n } = useTranslation("common")
+  // approve
+  // wating
+  // rejected
   store.updateNetwork("bsc");
 
   useEffect(() => {
@@ -34,10 +43,17 @@ function Dashboard() {
     if (!!session && store.user.access_token !== "") {
       getCurrentUser().then((res) => {
         setUser(res);
+        if (res.image) {
+          setAvatar(res.image);
+        } else {
+          setAvatar("/placeholders/cryptopunk.jpg");
+        }
         // todo: Check kyc status
       });
     }
   }, [session, store.user.access_token]);
+
+  
 
   let google = {},
     wallet = {},
@@ -57,11 +73,32 @@ function Dashboard() {
     return item.provider === "twitter";
   });
 
-  console.log(user)
+  useEffect(() => {
+    if (user.kyc_status == "approved") {
+      setKycStatus("Approved");
+    }
+
+    if (user.kyc_status == "waitting") {
+      setKycStatus("Waiting");
+    }
+
+    if (user.kyc_status == "rejected") {
+      setKycStatus("Rejected");
+    }
+  }, [user]);
+
+  const meta = {
+    title:
+      (user?.name ? user?.name : "User").replace(/(^|\s)\S/g, (letter) =>
+        letter.toUpperCase()
+      ) + " Invest profile",
+  }
+
+  if (loading) return null;
 
   return (
     <>
-    <Layout>
+    <Layout meta={meta}>
         <div className="pane-content--sec--main grid scrollbar">
           {/* NNTH: Remove 'max-w-screen-md mx-auto' on production */}
           <div className="page max-w-screen-lg mx-auto">
@@ -71,22 +108,38 @@ function Dashboard() {
 
                 {/* Post Content */}
                 <div className="w-full mt-4">
-                  <div className="text-center mx-auto max-w-lg mb-4 md:mb-8">
-                    <div className="w-20 h-20 mx-auto relative">
-                      <img className="rounded-full" src={user.image} />
-                      {/* Display this checkmark if the user already KYCed */}
-                      <span className="w-6 h-6 p-1 absolute right-0 top-0 rounded-full flex 
-                      items-center bg-green-500">
-                        <i className="text-sm font-bold fas fa-check text-white"></i>
-                      </span>
-                    </div> 
-                    {/* <h3 className="text-2xl font-semibold mt-4">Andrew Hicker</h3> */}
-                    {/* Only show this block if the user haven't KYCed.  */}
-                    <div className="">
-                      <span className="opacity-70">Haven't KYC yet!</span>  
-                      <button className="btn btn-default ml-4">KYC</button>
+                  
+                    <div className="text-center mx-auto max-w-lg mb-4 md:mb-8">
+
+                      <div className="w-20 h-20 mx-auto relative">
+                        <img className="rounded-full" src={userAvatar} />
+                        {/* Display this checkmark if the user already KYCed */}
+                        {user.is_kyc && (
+                          <span className="w-6 h-6 p-1 absolute right-0 top-0 rounded-full flex 
+                          items-center bg-green-500">
+                            <i className="text-sm font-bold fas fa-check text-white"></i>
+                          </span>
+                        )}
+                      </div> 
+
+                      {/* Only show this block if the user haven't KYCed.  */}
+                      {user.length != 0 && (
+                        <> 
+                          {kycStatus != "Approved" ? (
+                            <KYC is_short = {true}/>
+                          ) : (
+                            <div className="">
+                              <span className="opacity-70">KYC Status: {kycStatus}</span>
+                            </div>
+                          )}
+                        </>
+                      )}
+
+                      {/* {user.is_kyc  && (
+                        
+                      )} */}
                     </div>
-                  </div>
+                  
                   
                   <div className="md:grid grid-cols-2 gap-4">
                     {/* Social */}
@@ -95,6 +148,7 @@ function Dashboard() {
                     <DashboardWallet />
                   </div>
 
+                  
                   <JoinedPools/>
                   
                 </div>
