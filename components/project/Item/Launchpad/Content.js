@@ -40,6 +40,9 @@ const LaunchpadContent = observer(function({ project,pool }) {
     if (pool.type == "private"){
       setShowInfo(false)
     }
+    else{
+      setShowInfo(true)
+    }
   }, [account, lauchpadContact, library,store.loadPoolContent]);
   const raise = pool.raise;
   const tokenPrice = pool.price;
@@ -82,7 +85,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
               </span>
               :
               <span className="ml-auto list-value font-semibold">
-                TBA
+                {pool.type == "private" ? "PRIVATE" : "TBA"}
               </span>
               }
             </li>

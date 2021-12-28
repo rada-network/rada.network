@@ -175,6 +175,14 @@ const poolByWalletAddress = gql`
   }
 `
 
+const projectPoolWinnerBySlugGgl = gql`
+  query projectPoolWinnerBySlug($pool : String!, $slug : String!){
+    projectPoolWinnerBySlug(pool :$pool,slug :$slug){
+      wallet_address
+    }
+  }
+`
+
 export async function getPoolByWallet({ lang, wallet_address }) {
   const client = getClient()
   const res = await client.query({
@@ -185,6 +193,17 @@ export async function getPoolByWallet({ lang, wallet_address }) {
     }
   })
   return res.data.poolByWalletAddress || []
+}
+
+export async function getProjectPoolWinnerBySlug({ slug, pool }) {
+  const client = getClient()
+  const res = await client.query({
+    query: projectPoolWinnerBySlugGgl,
+    variables: {
+      slug,pool
+    }
+  })
+  return res.data.projectPoolWinnerBySlug || []
 }
 
 export async function getProjects({ lang }) {
