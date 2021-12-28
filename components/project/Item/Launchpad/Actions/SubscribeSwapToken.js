@@ -805,7 +805,7 @@ const NotInWhitesist = function(){
 
           <div className="project-card--container">
             <div className="max-w-2xl mx-auto text-center">
-              <div className="flex items-center justify-center mx-auto text-lg md:text-xl text-red-600 dark:text-red-500">
+              <div className="flex items-center justify-center mx-auto text-lg md:text-xl">
                 <span className="mr-2"><i class="fad fa-calendar-times"></i></span>
                 <span className="">{t("Not allow")}</span>
               </div>

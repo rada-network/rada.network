@@ -35,12 +35,12 @@ const WhitelistCountdown = ({project,pool}) => {
                     <div className="inline-block w-auto mx-auto  py-1.5 md:py-1  
                     text-xs md:text-sm text-center rounded-lg
                     border border-gray-200 dark:border-gray-600">
-                      <div className="py-2 px-2 md:px-4  border-b border-gray-200 dark:border-gray-700">
-                        <span className="mr-2 opacity-70">{t("Open at")}</span> 
+                      <div className="py-1 px-2 md:px-4  border-b border-gray-200 dark:border-gray-700">
+                        <span className="mr-2 opacity-70">{t("Open at")}:</span> 
                         <OpenDate time={pool.open_date} />
                       </div>
 
-                      <div  className="py-2 px-2 md:px-4">
+                      <div className="py-1 px-2 md:px-4">
                         <span className="mr-2 opacity-70">{t("Closeat")}</span> 
                         <OpenDate time={pool.end_date} />
                       </div>

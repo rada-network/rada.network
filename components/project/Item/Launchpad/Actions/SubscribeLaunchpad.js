@@ -60,7 +60,7 @@ export const SubscribeLaunchpadClosed = ({ project }) => {
   return (
     <>
       <div className="max-w-xl mx-auto">
-        <div className="mt-4 md:mt-8">
+        <div className="mt-4">
           <h3 className="text-2xl text-center font-normal">
             <span className="text-color-title">{t("pool closed")}</span>
           </h3>

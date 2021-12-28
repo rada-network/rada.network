@@ -47,7 +47,7 @@ const LaunchpadActions = observer(({ project,pool }) => {
                     text-xs md:text-sm text-center rounded-full
                     border border-gray-200 dark:border-gray-600"
                 >
-                  <div  className="py-2 px-2 md:px-4">
+                  <div  className="py-1 px-2 md:px-4">
                     <span className="mr-2 opacity-70">{t("Closeat")}</span> 
                     <OpenDate time={pool.end_date} />
                   </div>
