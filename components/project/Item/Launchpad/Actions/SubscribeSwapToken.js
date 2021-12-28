@@ -361,18 +361,18 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         }
                       </h3>
                       <div className="mt-4">
-                        <div className="inline-block w-full mx-auto  
-                            rounded-md mb-4
-                            border border-gray-200 dark:border-gray-600"
+                        <div className="inline-block w-full mx-auto text-center 
+                            rounded-lg mb-4
+                            border border-gray-200 dark:border-gray-700"
                         >
                           {!!pool.end_date && 
-                          <div  className="pt-2 px-4">
+                          <div  className="py-1 px-4">
                             <span className="mr-2 opacity-70">{t("Closeat")}</span> 
                             <OpenDate time={pool.end_date} />
                           </div>
                           }
                           {!!pool.whitelist_date && 
-                          <div  className="py-2 px-4">
+                          <div  className="py-1 px-4">
                             <span className="mr-2 opacity-70">{t("Announcement")}</span> 
                             <OpenDate time={pool.whitelist_date} />
                           </div>

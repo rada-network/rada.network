@@ -45,7 +45,7 @@ const LaunchpadActions = observer(({ project,pool }) => {
               <div className="mt-4 text-center">
                 <div className="inline-block w-auto mx-auto  
                     text-xs md:text-sm text-center rounded-full
-                    border border-gray-200 dark:border-gray-600"
+                    border border-gray-200 dark:border-gray-700"
                 >
                   <div  className="py-1 px-2 md:px-4">
                     <span className="mr-2 opacity-70">{t("Closeat")}</span> 
