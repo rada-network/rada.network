@@ -71,20 +71,12 @@ const ProjectLaunchpad = ({ project, pool }) => {
                 <nav aria-label="tabbar card-tabs">
                   <ol role="list" className="tabbar--main h-full px-4">
                     <li style={style} className={`tab-item ` + (active == "faq" ?  "tab-item--active" : "")} onClick={(e) => {setActive("faq")}}>
-                      <div className="step-compact-body" aria-current="step">
-                        <div className="step-compact-body--content">
-                          <span className="step-compact-body--title">FAQS
-                          </span>
-                        </div>
-                      </div>
+                      <span className="tab-item--text !block">FAQS
+                      </span>
                     </li>
                     <li style={style} className={`tab-item ` + (active == "winner" ?  "tab-item--active" : "")} onClick={(e) => {setActive("winner")}}>
-                      <div className="step-compact-body" aria-current="step">
-                        <div className="step-compact-body--content">
-                          <span className="step-compact-body--title">Winners
-                          </span>
-                        </div>
-                      </div>
+                      <span className="tab-item--text !block">Winners
+                      </span>
                     </li>
                   </ol>
                 </nav>

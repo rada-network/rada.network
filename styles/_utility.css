@@ -175,10 +175,10 @@
   @apply flex opacity-80 border-b border-gray-100 dark:border-gray-700 overflow-hidden;
 }
 .winner--no {
-  @apply w-10 text-right px-4 py-2;
+  @apply w-10 text-right px-2 py-2;
 }
 .winner--address {
-  @apply flex-shrink-0 flex-grow text-right px-4 py-2 overflow-ellipsis overflow-hidden;
+  @apply flex-shrink-0 flex-grow text-right px-2 py-2 overflow-ellipsis overflow-hidden;
 }
 .pagination {
   @apply ml-auto mr-0 flex mt-4;

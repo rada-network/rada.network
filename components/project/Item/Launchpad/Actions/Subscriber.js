@@ -24,7 +24,7 @@ const Subscriber = function({project,pool,winners}){
     <>
       <div className="flex justify-between items-center pb-4 mx-auto max-w-screen-sm relative">
         <h3 className="text-lg font-medium">Winners ({winners.length})</h3>
-        <div className="search-wrapper absolute right-0">
+        <div className="search-wrapper absolute right-0 w-full md:w-auto text-right">
           <div className="form-search rounded-full">
             <span className="icon form-search--icon">
               <i className="fa fa-search"></i>
