@@ -33,8 +33,6 @@ export default function Screen({ from, upto, wrap = null, children }) {
     };
   }, []);
 
-
-
   let isValid = false;
   if (screen !== null) {
     if (from && SCREENS.indexOf(from) <= screen) {

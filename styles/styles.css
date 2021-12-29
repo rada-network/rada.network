@@ -69,6 +69,7 @@ Nav Panels
   @apply border-r border-gray-200 dark:border-gray-700;
   @apply bg-gray-100 dark:bg-gray-800 2xl:bg-opacity-50 2xl:dark:bg-opacity-50 2xl:backdrop-blur-md;
   @apply z-50;
+  @apply hidden md:block;
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
