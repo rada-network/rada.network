@@ -24,7 +24,8 @@ export default function ProjectNavbar({ symbol, project, slug,pool }) {
   const handleBack = function(e){
     e.preventDefault();
     e.stopPropagation();
-    if (window.history.length > 0){
+    ///console.log(window.history.length)
+    if (window.history.length > 2){
       router.back()
     }
     else{
