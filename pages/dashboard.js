@@ -72,7 +72,7 @@ function Dashboard() {
     title:
       (user?.name ? user?.name : "User").replace(/(^|\s)\S/g, (letter) =>
         letter.toUpperCase()
-      ) + " Invest profile",
+      ) + " LaunchVerse Profile",
   }
 
   if (loading && user == null) return null;
