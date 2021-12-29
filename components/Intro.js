@@ -31,7 +31,7 @@ export default function Siteintro({ intro }) {
             <a
               className="btn-discord"
               target="_blank"
-              href="https://discord.gg/ENm9SpQs"
+              href="https://discord.gg/cWvFCvYCFc"
               rel="noreferrer"
             >
               <i className="fab fa-discord" />
