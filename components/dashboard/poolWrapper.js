@@ -6,7 +6,7 @@ import Pool from "./pool";
 
 function PoolWrapper({ project }) {
   const [selectedPool, setSelectedPool] = useState(null);
-  const [projectSlug, setProjectSlug] = useState(project.slug);
+  const [projectSlug, setProjectSlug] = useState(project.project.slug);
 
   useEffect(() => {
     fetcher(`/api/pools/get-slug?address=${project.contract_address}&&poolID=${project.pool_id}`).then(function (res) {

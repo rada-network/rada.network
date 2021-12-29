@@ -158,6 +158,7 @@ const poolByWalletAddress = gql`
       contract_address
       pool_id
       project{
+        slug
         thumbnail_uri
         content{
           title
