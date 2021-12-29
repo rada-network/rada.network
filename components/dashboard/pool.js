@@ -15,11 +15,13 @@ function Pool({ pool, thumbnail_uri, project_slug,project }) {
   const [investStatus, setInvestStatus] = useState("");
 
   useEffect(() => {
-    const optionsDate = { year: "numeric", month: "long", day: "numeric" };
-    const endPool = Date.parse(pool.end_date);
-    const optionTime = { hour: 'numeric', minute: 'numeric', second: 'numeric' };
-    setEndDate(new Date(endPool).toLocaleDateString("en-US", optionsDate));
-    setEndTime(new Date(endPool).toLocaleTimeString("en-US", optionTime));
+    if (pool !== null){
+      const optionsDate = { year: "numeric", month: "long", day: "numeric" };
+      const endPool = Date.parse(pool.end_date);
+      const optionTime = { hour: 'numeric', minute: 'numeric', second: 'numeric' };
+      setEndDate(new Date(endPool).toLocaleDateString("en-US", optionsDate));
+      setEndTime(new Date(endPool).toLocaleTimeString("en-US", optionTime));
+    }
   }, [pool]);
 
 
@@ -42,6 +44,7 @@ function Pool({ pool, thumbnail_uri, project_slug,project }) {
 
 
   useEffect(() => {
+    if (pool == null) return false;
     if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
       setPoolStatus("open")
     }
@@ -55,23 +58,23 @@ function Pool({ pool, thumbnail_uri, project_slug,project }) {
     if (pool.open_date == null) {
       setPoolStatus("tba")
     }
-  }, []);
+  }, [pool]);
 
   return (
     <>
-      <Link href={`/${i18n.language}/launchverse/${project_slug}/${pool.slug}`} >
-        <a href={`/${i18n.language}/launchverse/${project_slug}/${pool.slug}`} className="block md:flex px-4 py-4 md:px-6 border-b border-gray-200 dark:border-gray-500 dark:border-opacity-10 hover:bg-gray-200 dark:hover:bg-gray-700">
+      <Link href={`/${i18n.language}/launchverse/${project_slug}/${pool?.slug}`} >
+        <a href={`/${i18n.language}/launchverse/${project_slug}/${pool?.slug}`} className="block md:flex px-4 py-4 md:px-6 border-b border-gray-200 dark:border-gray-500 dark:border-opacity-10 hover:bg-gray-200 dark:hover:bg-gray-700">
         <div className="flex md:w-1/2 md:mr-2 mb-2 md:mb-0">
           <div className="mr-4 flex items-center">
             <img src={thumbnail_uri} className="w-8 h-8 mr-2 rounded-full" />
             <label className="font-semibold">
-              {project.project.content.title}- {pool.title}
+              {project.project.content.title}- {pool?.title}
             </label>
           </div>
 
           <div className="ml-auto">
             <label className="label label--neutral">
-              {pool.type}
+              {pool?.type || "Loading"}
             </label>
           </div>
         </div>

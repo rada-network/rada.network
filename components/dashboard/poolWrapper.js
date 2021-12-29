@@ -6,7 +6,7 @@ import Pool from "./pool";
 
 function PoolWrapper({ project }) {
   const [selectedPool, setSelectedPool] = useState(null);
-  const [projectSlug, setProjectSlug] = useState("");
+  const [projectSlug, setProjectSlug] = useState(project.slug);
 
   useEffect(() => {
     fetcher(`/api/pools/get-slug?address=${project.contract_address}&&poolID=${project.pool_id}`).then(function (res) {
@@ -15,7 +15,6 @@ function PoolWrapper({ project }) {
           if (pool.slug == res[1]) {
             const selectPool = {...pool,id : project.pool_id,contract : project.contract_address }
             setSelectedPool(selectPool);
-            setProjectSlug(res[0]);
           }
         });
       }
@@ -24,9 +23,7 @@ function PoolWrapper({ project }) {
 
   return (
     <> 
-      {selectedPool ? (
-        <Pool pool={selectedPool} project={project} thumbnail_uri={project.project.thumbnail_uri} project_slug={projectSlug} />
-      ) : null}
+      <Pool pool={selectedPool} project={project} thumbnail_uri={project.project.thumbnail_uri} project_slug={projectSlug} />
     </>
   );
 }
