@@ -4,12 +4,14 @@ import { usePageStore } from "../../../lib/usePageStore";
 import { useTranslation } from "next-i18next";
 import Image from "@components/Image";
 import dynamic from "next/dynamic";
+import { useRouter } from 'next/router'
 
 const WalletProfile = dynamic(import("@components/Wallet"));
 
 export default function ProjectNavbar({ symbol, project, slug,pool }) {
   const { dataStore } = usePageStore();
   const { t } = useTranslation("launchpad");
+  const router = useRouter();
   const NavItem = ({ uri, children }) => {
     const cls = ["tab-item"];
     if (uri == slug) cls.push("tab-item--active");
@@ -19,19 +21,27 @@ export default function ProjectNavbar({ symbol, project, slug,pool }) {
       </Link>
     );
   };
+  const handleBack = function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    if (window.history.length > 0){
+      router.back()
+    }
+    else{
+      router.push(e.currentTarget.getAttribute("href"));
+    }
+  }
   return (
     <>
       <div className="flex h-full w-limiter-lg relative xl:px-4">
         <div className="page-back flex-shrink-0 ml-0 relative lg:left-1 xl:left-2">
           <div className="btn">
-            <Link href={`/${dataStore.lang}/launchverse`}>
-              <a href={`/${dataStore.lang}/launchverse`}>
-                <span className="icon">
-                  <i className="fa-solid fa-chevron-left"></i>
-                </span>
-                <span className="btn--text sr-only">{t("back")}</span>
-              </a>
-            </Link>
+            <a onClick={handleBack} href={`/${dataStore.lang}/launchverse`}>
+              <span className="icon">
+                <i className="fa-solid fa-chevron-left"></i>
+              </span>
+              <span className="btn--text sr-only">{t("back")}</span>
+            </a>
           </div>
         </div>
         <div className="tabbar page-tabs relative lg:left-8 xl:-left-1">
