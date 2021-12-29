@@ -14,8 +14,8 @@ export const getScreenName = (w) => {
   return SCREENS[i];
 };
 
-export default function Screen({ from, upto, children }) {
-  const [screen, setScreen] = useState();
+export default function Screen({ from, upto, wrap = null, children }) {
+  const [screen, setScreen] = useState(null);
 
   // setup monitor ww
   useEffect(() => {
@@ -27,11 +27,13 @@ export default function Screen({ from, upto, children }) {
       setScreen(i);
     };
     onResize();
-    window.addEventListener("resize", onResize)
+    window.addEventListener("resize", onResize);
     return () => {
-        window.removeEventListener("resize", onResize);
-      }
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
+
+
 
   let isValid = false;
   if (screen !== null) {
@@ -45,5 +47,10 @@ export default function Screen({ from, upto, children }) {
     }
   }
 
-  return isValid ? children : "";
+  if (screen === null)
+  {
+    return wrap ? <div className={wrap}></div> : null;
+  }
+
+  return isValid ? children : null;
 }

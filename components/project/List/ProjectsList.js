@@ -70,6 +70,7 @@ export default function ProjectsList({ title, extraClass, projects }) {
                         objectFit="cover"
                         objectPosition="top center"
                         className="opacity-50"
+                        priority
                         />
                       <Disclosure.Button
                         as="div"

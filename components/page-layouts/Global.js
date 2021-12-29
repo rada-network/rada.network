@@ -37,14 +37,14 @@ const Layout = ({ children, meta, bgImage, extraClass }) => {
       <div className={`main-layout--wrapper ${extraClass || ""}`}>
         <div className={`main-layout`}>
           {/* Mobile / Tablet Navbar */}
-          <Screen upto="md">
+          <Screen upto="md"  wrap="pane-bottom">
             <div className="pane-bottom">
               <Navbar />
             </div>
           </Screen>
 
           {/* Desktop Navbar */}
-          <Screen from="lg">
+          <Screen from="lg" wrap="pane-left">
             <div className="pane-left">
               <Navbar />
               <div className="pane-left--bottom">
