@@ -255,8 +255,8 @@ export const useLaunchpadInfo = ({pool,status}) => {
         approvedRir : parseFloat(ethers.utils.formatEther(stat.approvedRir))
       }
       investor = {
-        allocationBusd : parseFloat(ethers.utils.formatEther(investor.allocationBusd)),
-        allocationRir : parseFloat(ethers.utils.formatEther(investor.allocationRir)),
+        allocationBusd : parseFloat(ethers.utils.formatEther(investor.allocationBusd)).toFixed(2),
+        allocationRir : parseFloat(ethers.utils.formatEther(investor.allocationRir)).toFixed(2),
         amountBusd : parseFloat(ethers.utils.formatEther(investor.amountBusd)),
         amountRir : parseFloat(ethers.utils.formatEther(investor.amountRir)),
         claimedToken : parseFloat(ethers.utils.formatEther(investor.claimedToken)),
