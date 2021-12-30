@@ -310,11 +310,12 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
               </div>
               <div className="project-card--container">
                 <div className="max-w-xl mx-auto">
-                  <div className="mb-4 md:mb-8">
-                    <h3 className="text-2xl text-center font-normal">
-                      <span className="text-color-title">
-                        {t("pool closed")}
+                  <div className="p-4 md:p-8 rounded-lg border border-yellow-300 dark:border-gray-700">
+                    <h3 className="text-lg text-center text-yellow-500 md:text-xl mb-4  text-semibold">
+                      <span className="icon mr-2">
+                        <i class="fas fa-exclamation-triangle"></i>
                       </span>
+                      {t("pool closed")}
                     </h3>
                   </div>
                   <SocialPromote />
