@@ -35,6 +35,7 @@ export const getShare2EarnContract = (address, signer) => {
 }
 
 export const getLaunchpadContractV2 = (pool, signer) => {
+  if (pool === null) { return null}
   if (!pool.is_whitelist){
     return getContract(launchpadAbiV2, pool.contract, signer)
   }

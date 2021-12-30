@@ -15,7 +15,7 @@ const ProjectFaq = ({project}) => {
     <>
     {listFaq.length > 0 &&
       <div className="">
-        <h3 className="text-lg md:text-2xl text-center mb-4 font-semibold mx-auto">
+        <h3 className="text-lg md:text-xl text-center mb-4 font-medium mx-auto">
           {t("Frequently Asked Questions")}
         </h3>
 

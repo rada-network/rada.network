@@ -47,6 +47,6 @@ export const useReferralAdminContract = (address) => {
 
 export const useLaunchpadContractV2 = (pool) => {
   const { account, library } = useActiveWeb3React()
-  return useMemo(() => getLaunchpadContractV2(pool,account ? library.getSigner() : library), [pool.contract, library])
+  return useMemo(() => getLaunchpadContractV2(pool,account ? library.getSigner() : library), [pool?.contract || null, library])
 }
 

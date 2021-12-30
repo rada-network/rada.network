@@ -155,9 +155,11 @@ const submitProjectPrefundLogGql = gql`
 const poolByWalletAddress = gql`
   query poolByWalletAddress($lang : String!, $wallet_address : String!){
     poolByWalletAddress(lang: $lang, wallet_address: $wallet_address) {
+      id
       contract_address
       pool_id
       project{
+        slug
         thumbnail_uri
         content{
           title

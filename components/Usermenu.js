@@ -54,12 +54,12 @@ export default function Usermenu({ user }) {
             <Menu.Item as="div" className="dropdown-item">
               {({ active }) => (
                 <>
-                  <Link href={`/${i18n.language}/user/profile`}>
+                  <Link href={`/${i18n.language}/dashboard`}>
                     <a>
                       <span className="icon">
                         <i className="fa-duotone fa-user-gear"></i>
                       </span>
-                      <span className="dropdown-item--text">Profile</span>
+                      <span className="dropdown-item--text">LaunchVerse Profile</span>
                     </a>
                   </Link>
                 </>

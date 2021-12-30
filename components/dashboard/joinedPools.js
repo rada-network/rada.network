@@ -60,7 +60,7 @@ function JoinedPools() {
             {projects.length > 0 && (
               <div>
                 {projects.map((project, key) => (
-                  <PoolWrapper project={project}/>
+                  <PoolWrapper key={project.id} project={project}/>
                 ))}
               </div>
             )}

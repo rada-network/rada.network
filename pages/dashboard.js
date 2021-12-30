@@ -12,21 +12,19 @@ import { getCurrentUser } from "@data/query/user";
 import { useState, useEffect } from "react";
 import KYC from "@components/KYC";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
+import Avatar from "boring-avatars";
 
 // const globalContext = createContext();
 
 function Dashboard() {
   const store = useStore();
   const [session, setSession] = useState();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [userAvatar, setAvatar] = useState('/placeholders/cryptopunk.jpg');
   const [kycStatus, setKycStatus] = useState("");
-  const { account } = useActiveWeb3React()
   const { t, i18n } = useTranslation("common")
-  // approve
-  // wating
-  // rejected
+
   store.updateNetwork("bsc");
 
   useEffect(() => {
@@ -48,42 +46,25 @@ function Dashboard() {
         } else {
           setAvatar("/placeholders/cryptopunk.jpg");
         }
-        // todo: Check kyc status
       });
+    } else {
+      setAvatar("/placeholders/cryptopunk.jpg");
     }
   }, [session, store.user.access_token]);
 
-  
-
-  let google = {},
-    wallet = {},
-    facebook = {},
-    twitter = {};
-
-  google = user.account?.find((item) => {
-    return item.provider === "google";
-  });
-  wallet = user.account?.find((item) => {
-    return item.provider === "wallet";
-  });
-  facebook = user.account?.find((item) => {
-    return item.provider === "facebook";
-  });
-  twitter = user.account?.find((item) => {
-    return item.provider === "twitter";
-  });
-
   useEffect(() => {
-    if (user.kyc_status == "approved") {
-      setKycStatus("Approved");
-    }
-
-    if (user.kyc_status == "waitting") {
-      setKycStatus("Waiting");
-    }
-
-    if (user.kyc_status == "rejected") {
-      setKycStatus("Rejected");
+    if (!!user) {
+      if (user.kyc_status == "approved") {
+        setKycStatus("Approved");
+      }
+  
+      if (user.kyc_status == "waitting") {
+        setKycStatus("Waiting");
+      }
+  
+      if (user.kyc_status == "rejected") {
+        setKycStatus("Rejected");
+      }
     }
   }, [user]);
 
@@ -91,10 +72,10 @@ function Dashboard() {
     title:
       (user?.name ? user?.name : "User").replace(/(^|\s)\S/g, (letter) =>
         letter.toUpperCase()
-      ) + " Invest profile",
+      ) + " LaunchVerse Profile",
   }
 
-  if (loading) return null;
+  if (loading && user == null) return null;
 
   return (
     <>
@@ -112,9 +93,12 @@ function Dashboard() {
                     <div className="text-center mx-auto max-w-lg mb-4 md:mb-8">
 
                       <div className="w-20 h-20 mx-auto relative">
-                        <img className="rounded-full" src={userAvatar} />
+                        {user && (
+                          <img className="rounded-full" src={userAvatar} />
+                        )}
+                        
                         {/* Display this checkmark if the user already KYCed */}
-                        {user.is_kyc && (
+                        {user && user.is_kyc && (
                           <span className="w-6 h-6 p-1 absolute right-0 top-0 rounded-full flex 
                           items-center bg-green-500">
                             <i className="text-sm font-bold fas fa-check text-white"></i>
@@ -123,7 +107,7 @@ function Dashboard() {
                       </div> 
 
                       {/* Only show this block if the user haven't KYCed.  */}
-                      {user.length != 0 && (
+                      {user && (
                         <> 
                           {kycStatus != "Approved" ? (
                             <KYC is_short = {true}/>
@@ -134,21 +118,12 @@ function Dashboard() {
                           )}
                         </>
                       )}
-
-                      {/* {user.is_kyc  && (
-                        
-                      )} */}
                     </div>
                   
-                  
                   <div className="md:grid grid-cols-2 gap-4">
-                    {/* Social */}
-                    <DashboardSocial google={google} facebook={facebook} twitter={twitter} user={user}/>
-                    {/* Wallet */}
+                    <DashboardSocial user={user}/>
                     <DashboardWallet />
-                  </div>
-
-                  
+                  </div>      
                   <JoinedPools/>
                   
                 </div>

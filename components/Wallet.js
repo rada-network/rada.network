@@ -107,7 +107,7 @@ const WalletProfile = ({ type, hidenSelectbox }) => {
               {type === "simple" &&
                 <button
                   onClick={handleConnectWallet}
-                  className="btn btn-primary my-2 px-2 ml-auto lg:mr-3 xl:mr-12 text-sm flex"
+                  className="btn btn-primary my-2 px-2 md:px-4 ml-auto lg:mr-3 xl:mr-12 text-sm flex"
                 >
                   <span className="icon mr-2 opacity-60">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

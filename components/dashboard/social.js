@@ -8,9 +8,30 @@ import { getSession } from "next-auth/client";
 import { getCurrentUser } from "@data/query/user";
 import { useTranslation } from "react-i18next";
 
-function DashboardSocial({user, google, facebook, twitter}) {
+function DashboardSocial({ user }) {
+
   const store = useStore();
   const { t } = useTranslation("common");
+
+  let google = {},
+    wallet = {},
+    facebook = {},
+    twitter = {};
+  if (!!user) {
+    google = user.account?.find((item) => {
+      return item.provider === "google";
+    });
+    wallet = user.account?.find((item) => {
+      return item.provider === "wallet";
+    });
+    facebook = user.account?.find((item) => {
+      return item.provider === "facebook";
+    });
+    twitter = user.account?.find((item) => {
+      return item.provider === "twitter";
+    });
+  }
+
 
   const handleConnect = () => {
     store.user.showConnect(true);
@@ -50,13 +71,17 @@ function DashboardSocial({user, google, facebook, twitter}) {
                   <div className="flex-1 -mt-4 md:mt-0">
                     <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(google) ? (
-                        <span>
+                        <span className="text-sm">
                           {t("no connection", { provider: "Google" })}
                         </span>
                       ) : (
                         <strong>{google.oauth_profile.name}</strong>
                       )}
                     </div>
+                  </div>
+
+                  <div className="text-right relative -top-4 md:top-0">
+                    <div className="btn" hidden></div>
                   </div>
                 </div>
 
@@ -72,13 +97,17 @@ function DashboardSocial({user, google, facebook, twitter}) {
                   <div className="flex-1 -mt-4 md:mt-0">
                     <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(facebook) ? (
-                        <span>
+                        <span className="text-sm">
                           {t("no connection", { provider: "Facebook" })}
                         </span>
                       ):(
                         <strong>{facebook.oauth_profile.name}</strong>
                       )}
                     </div>
+                  </div>
+
+                  <div className="text-right relative -top-4 md:top-0">
+                    <div className="btn" hidden></div>
                   </div>
                 </div>
 
@@ -94,13 +123,17 @@ function DashboardSocial({user, google, facebook, twitter}) {
                   <div className="flex-1 -mt-4 md:mt-0">
                     <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(twitter) ? (
-                        <span>
+                        <span className="text-sm">
                           {t("no connection", { provider: "Twitter" })}
                         </span>
                       ) : (
                         <strong>@{twitter.oauth_profile.screen_name}</strong>
                       )}
                     </div>
+                  </div>
+
+                  <div className="text-right relative -top-4 md:top-0">
+                    <div className="btn" hidden></div>
                   </div>
                 </div>
               </>
