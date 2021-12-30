@@ -23,9 +23,17 @@ export default function Siteintro({ intro }) {
             <a
               className="btn-facebook"
               target="_blank"
-              href="https://www.facebook.com/RADA-Media-100147568952754"
+              href="https://www.facebook.com/radanetwork.official"
             >
               <i className="fab fa-facebook" />
+            </a>
+
+            <a
+              className="btn-telegram"
+              target="_blank"
+              href="https://t.me/radadao"
+            >
+              <i className="fab fa-telegram" />
             </a>
 
             <a
@@ -40,7 +48,7 @@ export default function Siteintro({ intro }) {
             <a
               className="btn-twitter"
               target="_blank"
-              href="https://twitter.com/radamedia"
+              href="https://twitter.com/rada_network"
               rel="noreferrer"
             >
               <i className="fab fa-twitter" />
@@ -49,7 +57,7 @@ export default function Siteintro({ intro }) {
             <a
               className="btn-medium"
               target="_blank"
-              href="https://medium.com/@radamedia"
+              href="https://medium.com/rada-network"
               rel="noreferrer"
             >
               <i className="fab fa-medium-m" />
