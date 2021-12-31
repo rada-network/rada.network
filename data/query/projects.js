@@ -79,6 +79,8 @@ const projectBySlugGql = gql`
         current_date
         type
         token_sale
+        token_name
+        token_image_uri
         end_date
         whitelist_date
         tge_date
@@ -125,6 +127,8 @@ const projectFeedGql = gql`
       current_date
       type
       token_sale
+      token_name
+      token_image_uri
       end_date
       whitelist_date
       tge_date

@@ -1,6 +1,5 @@
 import { useTranslation } from "next-i18next";
 import Link from "next/link"
-import {toast} from "react-toastify"
 const TutorialWidget = function({project}){
   const {t,i18n} = useTranslation("launchpad")
   const url = project?.content?.share2earn_url

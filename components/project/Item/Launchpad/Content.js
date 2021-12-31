@@ -55,6 +55,12 @@ const LaunchpadContent = observer(function({ project,pool }) {
   let tokennomic = project.token.link.find(function(item){
     return item.group === 'tokenomic'
   })
+  let raise_token = "BUSD"
+  let sale_token = project.token.symbol
+  if (pool.token_sale == "fixed-swap" || pool.token_sale == "auction-swap"){
+    raise_token = pool.token_name
+    sale_token = pool.token_name
+  }
   return (
     <div
       className="grid grid-cols-1 md:grid-cols-2 gap-4"
@@ -81,7 +87,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
               <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Raise")}</span>
               {raise && showInfo ?
               <span className="ml-auto list-value font-semibold text-right">
-                {numberFormatter(raise)} BUSD
+                {numberFormatter(raise)} {raise_token}
               </span>
               :
               <span className="ml-auto list-value font-semibold">
@@ -93,7 +99,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
               <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Token Price")}</span>
               {tokenPrice ? 
               <span className="ml-auto font-semibold">
-              1 {project?.token?.symbol} = {tokenPrice} BUSD
+              1 {sale_token} = {tokenPrice} BUSD
               </span>
               :
               <span className="ml-auto font-semibold">
@@ -117,7 +123,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
                 {numberFormatter(progressToken)}
               </span>
               <span className="opacity-70">/{numberFormatter(target)}</span>{" "}
-              BUSD
+              {raise_token}
             </span>
             </li>
             }

@@ -98,14 +98,13 @@ const useApproveConfirmTransaction = ({
         dispatch({ type: 'approve_error' })
         console.log(error)
         if (!!error?.data?.message){
-          onError(t(error?.data?.message?.replace("execution reverted: ","").replace("ERC20: ","")))
+          store.transaction.updateError(t(error?.data?.message?.replace("execution reverted: ","").replace("ERC20: ","")), true);
         }
         else if (!!error?.message){
-          onError(t(error?.message))
+          store.transaction.updateError(t(error?.message), true);
+        } else {
+          store.transaction.updateError(t(error.toString().replace("execution reverted: ","").replace("ERC20: ","")), true);
         }
-        else{
-          onError(t(error.toString().replace("execution reverted: ","").replace("ERC20: ","")))
-        } 
       }
     },
     handleConfirm: async (params = {}) => {

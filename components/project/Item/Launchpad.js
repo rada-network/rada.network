@@ -3,13 +3,14 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import LaunchpadOverview from "./Launchpad/Overview";
 import LaunchpadContent from "./Launchpad/Content";
-import LaunchpadActions from "./Launchpad/Actions/Index";
 import fetcher from "@lib/fetchJson";
 import ProjectFaq from "./Faq";
 import Subscriber from "./Launchpad/Actions/Subscriber";
 import { getProjectPoolWinnerBySlug } from "@data/query/projects"
+import dynamic from "next/dynamic";
 
-
+const LaunchpadIdo = dynamic(import(`./Launchpad/Actions/Index`));
+const LaunchpadFixedSwap = dynamic(import(`./Launchpad/FixedSwap/Index`));
 const style = {
   cursor : "pointer",
 }
@@ -22,6 +23,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
   const [winners,setWinners] = useState([])
   const currentTime = (new Date(pool.current_date)).getTime() / 1000
   const whitelistTime = (new Date(pool.whitelist_date)).getTime() / 1000
+
   useEffect(() => {
     getProjectPoolWinnerBySlug({slug : project.slug,pool : pool.slug}).then(function(res){
       setWinners(res)
@@ -57,7 +59,13 @@ const ProjectLaunchpad = ({ project, pool }) => {
 
           {/* Main Action Card */}
           <div className="grid grid-cols-1 mt-4">
-            <LaunchpadActions project={project} pool={poolContract} />
+            {pool.token_sale == "ido" && 
+            <LaunchpadIdo project={project} pool={poolContract} />
+            }
+            {pool.token_sale == "fixed-swap" && 
+            <LaunchpadFixedSwap project={project} pool={poolContract} />
+            }
+            
           </div>
           {/* END: Main Action Card */}
         </div>

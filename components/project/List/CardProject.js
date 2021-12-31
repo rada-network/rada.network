@@ -72,6 +72,12 @@ export const CardProject = ({project,pool, status}) => {
   else{
     progressPercentage = ((poolStat.amountBusd / target) * 100).toFixed(1);
   }
+  let raise_token = "BUSD"
+  let sale_token = project.token.symbol
+  if (pool.token_sale == "fixed-swap" || pool.token_sale == "auction-swap"){
+    raise_token = pool.token_name
+    sale_token = pool.token_name
+  }
   if (pool.is_hidden) return null
   return (
     <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
@@ -109,7 +115,7 @@ export const CardProject = ({project,pool, status}) => {
                 {t("Raise")}
               </span>
               <span className="ml-auto list-value font-semibold">
-                {pool.raise == 0 || !showInfo ? "TBA" : pool.raise.toLocaleString() + " BUSD"}
+                {pool.raise == 0 || !showInfo ? "TBA" : pool.raise.toLocaleString() + ` ${raise_token}`}
               </span>
             </li>
             <li className="list-pair">
@@ -118,7 +124,7 @@ export const CardProject = ({project,pool, status}) => {
               </span>
               {pool.price ? 
               <span className="ml-auto list-value">
-              1 {project?.token?.symbol} = {pool.price} BUSD
+              1 {sale_token} = {pool.price} BUSD
               </span>
               :
               <span className="ml-auto list-value">
@@ -133,7 +139,7 @@ export const CardProject = ({project,pool, status}) => {
               </span>
               <span className="list-value ml-auto">
                 <span className="font-semibold">{showInfo ? numberFormatter(poolStat?.amountBusd) : "TBA"}</span>
-                <span className="opacity-70">/{pool.raise == 0 || !showInfo ? "TBA" : pool.raise.toLocaleString() + " BUSD"}</span>
+                <span className="opacity-70">/{pool.raise == 0 || !showInfo ? "TBA" : pool.raise.toLocaleString() + ` ${raise_token}`}</span>
               </span>
             </li>
           </ul>
