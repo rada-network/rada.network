@@ -26,6 +26,7 @@ import { getErrorMessage } from "../../utils";
 import { toast } from "react-toastify";
 import _ from "lodash";
 import useAuth from "../../utils/hooks/useAuth";
+import TransactionModal from "./TransactionModal";
 
 const Layout = ({ children, meta, bgImage, extraClass }) => {
   return (
@@ -34,6 +35,7 @@ const Layout = ({ children, meta, bgImage, extraClass }) => {
 
       <BackgroundWrapper image={bgImage} />
       <ConnectWalletModal />
+      <TransactionModal />
       <div className={`main-layout--wrapper ${extraClass || ""}`}>
         <div className={`main-layout`}>
           {/* Mobile / Tablet Navbar */}

@@ -45,12 +45,15 @@ const SubcribeByRIR = ({project,pool,accountBalance,setStep,fetchAccountBalance,
         }
       },
       onApprove: async (requireApprove) => {
+        store.transaction.showTransaction(true);
         return callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
       },
       onApproveSuccess: async ({ receipt }) => {
-        toast.success(`Approve BUSD Success`)
+        store.transaction.update(receipt.transactionHash);
+        //toast.success(`Approve BUSD Success`)
       },
       onConfirm: () => {
+        store.transaction.showTransaction(true);
         if (pool.is_whitelist){
           return callWithGasPrice(launchpadContract, 'makePayment', [pool.id])
         }
@@ -61,8 +64,8 @@ const SubcribeByRIR = ({project,pool,accountBalance,setStep,fetchAccountBalance,
         
       },
       onSuccess: async ({ receipt }) => {
+        store.transaction.update(receipt.transactionHash);
         await fetchAccountBalance()
-        toast.success(`Successfully prefunded`)
         setCurrentOrderBusd(parseInt(launchpadInfo.investor.amountBusd) + parseInt(numberBusd))
         setCurrentOrderRIR(parseInt(launchpadInfo.investor.amountRIR) + parseInt(numberRIR))
         setNumberRIR(0)
@@ -81,16 +84,17 @@ const SubcribeByRIR = ({project,pool,accountBalance,setStep,fetchAccountBalance,
         }
       },
       onApprove: async (requireApprove) => {
+        store.transaction.showTransaction(true);
         return callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
       },
       onApproveSuccess: async ({ receipt }) => {
-        toast.success(`Approve RIR Success`)
+        store.transaction.update(receipt.transactionHash);
       },
       onConfirm: () => {
         
       },
       onSuccess: async ({ receipt }) => {
-        
+        store.transaction.update(receipt.transactionHash);
       },
     })
     const resetApproved = async () => {
