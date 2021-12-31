@@ -5,40 +5,10 @@ import Image from "@components/Image";
 export default function LaunchpadOverview({ project,pool }) {
   const { token } = project;
   const { t } = useTranslation("launchpad");
-  const [isWarning, setIsWarning] = useState(false);
-  useEffect(() =>{
-    if (window.sessionStorage){
-      let isShow = window.sessionStorage.getItem("networkWarning")
-      if (!!isShow || !pool){
-        setIsWarning(false);
-      }
-      else{
-        setIsWarning(true);
-      }
-    }
-  },[])
-  const closeWarning = (e) => {
-    if (window.sessionStorage){
-      window.sessionStorage.setItem("networkWarning",1)
-    }
-    setIsWarning(false);
-  }
+  
   return (
     <>
-      {isWarning && (
-        <div className="message warning flex relative items-center">
-          <span className="message-icon">
-            <i className="mr-2 fas fa-exclamation-circle"></i>
-          </span>
-          <div className="message-content pr-2">{t("bsc warning")}</div>
-          <button
-            onClick={closeWarning}
-            className="flex items-center ml-auto w-4 h-4 "
-          >
-            <i className="text-base fas fa-times"></i>
-          </button>
-        </div>
-      )}
+
       <div className="section-header pt-4">
         <div className="flex flex-wrap justify-between items-center w-full">
           <div className="flex flex-0 flex-shrink-0 mb-4 items-center">

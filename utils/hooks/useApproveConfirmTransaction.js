@@ -60,11 +60,13 @@ const useApproveConfirmTransaction = ({
   onRequiresApproval,
   onSuccess = noop,
   onApproveSuccess = noop,
+  onError = noop,
 }) => {
   const { account } = useActiveWeb3React()
   const [state, dispatch] = useReducer(reducer, initialState)
   const handlePreApprove = useRef(onRequiresApproval)
   const {t} = useTranslation("launchpad")
+
   // Check if approval is necessary, re-check if account changes
   useEffect(() => {
     if (account && handlePreApprove.current) {
@@ -96,15 +98,14 @@ const useApproveConfirmTransaction = ({
         dispatch({ type: 'approve_error' })
         console.log(error)
         if (!!error?.data?.message){
-          toast.error(t(error?.data?.message?.replace("execution reverted: ","").replace("ERC20: ","")))
+          onError(t(error?.data?.message?.replace("execution reverted: ","").replace("ERC20: ","")))
         }
         else if (!!error?.message){
-          toast.error(t(error?.message))
+          onError(t(error?.message))
         }
         else{
-          toast.error(t(error.toString().replace("execution reverted: ","").replace("ERC20: ","")))
-        }
-        
+          onError(t(error.toString().replace("execution reverted: ","").replace("ERC20: ","")))
+        } 
       }
     },
     handleConfirm: async (params = {}) => {
@@ -118,15 +119,14 @@ const useApproveConfirmTransaction = ({
         }
       } catch (error) {
         dispatch({ type: 'confirm_error' })
-        console.log(error)
+        console.log(error.message)
         if (!!error?.data?.message){
-          toast.error(t(error?.data?.message?.replace("execution reverted: ","").replace("ERC20: ","")))
+          store.transaction.updateError(t(error?.data?.message?.replace("execution reverted: ","").replace("ERC20: ","")), true);
         }
         else if (!!error?.message){
-          toast.error(t(error?.message))
-        }
-        else{
-          toast.error(t(error.toString().replace("execution reverted: ","").replace("ERC20: ","")))
+          store.transaction.updateError(t(error?.message), true);
+        } else {
+          store.transaction.updateError(t(error.toString().replace("execution reverted: ","").replace("ERC20: ","")), true);
         }
       }
     },
