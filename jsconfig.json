@@ -9,7 +9,8 @@
       "@config/*": ["./config/*"],
       "@components/*": ["./components/*"],
       "@data/*": ["./data/*"],
-      "@public/*": ["./public/*"]
+      "@public/*": ["./public/*"],
+      "@styles/*": ["./styles/*"]
     }
   },
   "exclude": ["node_modules", "**/node_modules/*",".next","https_cert","public"]
