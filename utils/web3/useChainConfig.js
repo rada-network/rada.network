@@ -137,6 +137,11 @@ const useChainConfig = function(){
     return url + "address/" + address
   }
 
+  const getBscTransactionURL = (hash) => {
+    let url = getChainScanUrl();
+    return url + "tx/" + hash;
+  }
+
   const getBusdAddress = () => {
     if (store.network === "bsc"){
       return BUSD_CONTRACT[chainId]
@@ -234,7 +239,7 @@ const useChainConfig = function(){
     }
   }
 
-  return {injected,walletconnect,signMessage,chainId,getRIRAddress,getBusdAddress,setupNetwork,connectorsByName, getBscScanURL}
+  return {injected,walletconnect,signMessage,chainId,getRIRAddress,getBusdAddress,setupNetwork,connectorsByName, getBscScanURL, getBscTransactionURL}
 }
 
 export  const connectorLocalStorageKey = "connectorIdv2";

@@ -45,21 +45,24 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
       }
     },
     onApprove: async (requireApprove) => {
+      store.transaction.showTransaction(true);
       return callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
     },
-    onApproveSuccess: async ({ receipts }) => {
+    onApproveSuccess: async ({ receipt }) => {
+      store.transaction.update(receipt.transactionHash);
       toast.success(`Approve BUSD Success`)
     },
     onConfirm: () => {
+      store.transaction.showTransaction(true);
       if (pool.is_whitelist){
         return callWithGasPrice(launchpadContract, 'makePayment', [pool.id])
       }
       else{
         return callWithGasPrice(launchpadContract, 'makePayment', [pool.id,ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString())])
       }
-      
     },
     onSuccess: async ({ receipt }) => {
+      store.transaction.update(receipt.transactionHash);
       await fetchAccountBalance()
       toast.success(`Successfully prefunded`)
       setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.investor?.amountBusd)) + parseInt(numberBusd))
@@ -135,7 +138,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`} onClick={resetApproved}  >
             {t("Reset approve")}
           </button>
-          }
+        }
 
         <SwapNote numberBusd={numberBusd} numberRIR={numberRIR} maxSelected={maxSelected} currentOrderRIR={currentOrderRIR} currentOrderBusd={currentOrderBusd} />
 
