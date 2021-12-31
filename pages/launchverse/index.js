@@ -129,8 +129,8 @@ export default function ProjectsIndex({ projects, locale }) {
                       src={
                         process.env.NEXT_PUBLIC_CDN +
                         (theme === "light"
-                          ? "/images/launchverse-hero.svg"
-                          : "/images/launchverse-hero-dark.svg")
+                          ? "/images/launchverse-hero.png"
+                          : "/images/launchverse-hero-dark.png")
                       }
                       alt="RADA LaunchVerse"
                       width={300}

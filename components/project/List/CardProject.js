@@ -85,8 +85,8 @@ export const CardProject = ({project,pool, status}) => {
               {poolStatus == "coming" && <div>{t("Sale start in")}</div>}
               {poolStatus == "closed" && <div>{t("pool closed")}</div>}
               {poolStatus == "tba" && <div>{t("Comming Soon")}</div>}
-              {poolStatus == "coming" && <MiniCountdown project={pool} isEndDate={false} />}
-              {poolStatus == "open" && <MiniCountdown project={pool} isEndDate={true} />}
+              {poolStatus == "coming" && <MiniCountdown pool={pool} isEndDate={false} />}
+              {poolStatus == "open" && <MiniCountdown pool={pool} isEndDate={true} />}
 
             </div>
           </div>
@@ -132,7 +132,7 @@ export const CardProject = ({project,pool, status}) => {
                 {t("Progress")}
               </span>
               <span className="list-value ml-auto">
-                <span className="font-semibold">{showInfo ? numberFormatter(poolStat.amountBusd) : "TBA"}</span>
+                <span className="font-semibold">{showInfo ? numberFormatter(poolStat?.amountBusd) : "TBA"}</span>
                 <span className="opacity-70">/{pool.raise == 0 || !showInfo ? "TBA" : pool.raise.toLocaleString() + " BUSD"}</span>
               </span>
             </li>

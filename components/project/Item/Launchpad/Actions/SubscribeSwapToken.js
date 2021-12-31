@@ -68,8 +68,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
         {poolStatus == "coming" && <div className="text-base">{t("Sale start in")}</div>}
         {poolStatus == "closed" && <div className="text-base">{t("pool closed")}</div>}
         {poolStatus == "tba" && <div className="text-base">{t("Comming Soon")}</div>}
-        {poolStatus == "coming" && <MiniCountdown project={pool} isEndDate={false} />}
-        {poolStatus == "open" && <MiniCountdown project={pool} isEndDate={true} />}
+        {poolStatus == "coming" && <MiniCountdown pool={pool} isEndDate={false} />}
+        {poolStatus == "open" && <MiniCountdown pool={pool} isEndDate={true} />}
       </div>
     )
   }

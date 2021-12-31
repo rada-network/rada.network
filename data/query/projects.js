@@ -10,19 +10,10 @@ const projectBySlugGql = gql`
       thumbnail_uri
       cover_uri
       background_uri
-      open_date
-      end_date
       cover_embed
-      thumbnail_embed
       thumbnail_embed
       type
       status
-      swap_contract
-      raise
-      price
-      is_kyc
-      is_allow_rir
-      is_whitelist
       website
       facebook
       twitter
@@ -87,6 +78,7 @@ const projectBySlugGql = gql`
         open_date
         current_date
         type
+        token_sale
         end_date
         whitelist_date
         tge_date
@@ -132,6 +124,7 @@ const projectFeedGql = gql`
       open_date
       current_date
       type
+      token_sale
       end_date
       whitelist_date
       tge_date
