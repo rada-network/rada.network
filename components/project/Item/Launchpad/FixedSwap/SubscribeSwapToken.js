@@ -1,11 +1,11 @@
 import Timeline from "./Timeline";
-import { useBUSDContractV2, useERC20, useRIRContract, useLaunchpadContractV2 } from "@utils/hooks/useContracts";
+import { useBUSDContractV2, useERC20, useRIRContract, useFixedSwapContract } from "@utils/hooks/useContracts";
 import { useEffect, useState } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { ethers, utils } from "ethers";
 import { useTranslation } from "next-i18next";
 
-import { useLaunchpadInfo } from "@utils/hooks/index";
+import { useFixedSwapInfo, useLaunchpadInfo } from "@utils/hooks/index";
 import SwapTokensV2 from "./SwapTokenV2";
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { toast } from "react-toastify"
@@ -16,6 +16,7 @@ import MiniCountdown from "@components/project/List/Countdown";
 import useStore from "@lib/useStore"
 import OpenDate from "@components/project/Item/Launchpad/OpenDate"
 import { CheckSvg } from "@components/svg/SvgIcons"
+import { poll } from "@ethersproject/web";
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
@@ -26,14 +27,13 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const store = useStore()
   const { callWithGasPrice } = useCallWithGasPrice()
   const { getBscScanURL } = useChainConfig()
-  const launchpadContract = useLaunchpadContractV2(pool)
+  const launchpadContract = useFixedSwapContract(pool)
+  const {loading,fixedSwapInfo,fetchPoolInfo} = useFixedSwapInfo({pool})
   const [accountBalance, setAccountBalance] = useState({})
   const [loadBalance, setLoadBalance] = useState(true)
   const [step, setStep] = useState(2)
   const [claimDisbaled, setClaimDisbaled] = useState(false)
   const [tokenAddress,setTokenAddress] = useState(ethers.constants.AddressZero)
-
-
   const [poolStatus, setPoolStatus] = useState("");
 
   useEffect(() => {
@@ -65,6 +65,11 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     )
   }
 
+  const reloadAccount = async function(){
+    await fetchPoolInfo()
+    await fetchAccountBalance()
+  }
+
   const fetchAccountBalance = async function () {
     let busdBalance = await bUSDContract.balanceOf(account);
     setAccountBalance({
@@ -81,9 +86,30 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
 
   useEffect(() => {
-    setStep(2)
+    if (loading) return false;
+    if (fixedSwapInfo.info.isEnd){
+      if (fixedSwapInfo.order.total > 0){
+        //place order success
+        setStep(31)
+      }
+      else{
+        //pool close
+        setStep(32)
+      }
+    }
+    else{
+      if (fixedSwapInfo.order.total == 0){
+        setStep(2)
+      }
+      else{
+        //place order success
+        setStep(31)
+      }
+      
+    }
+    
     //pool dont set winner
-  }, []);
+  }, [loading,fixedSwapInfo]);
 
   const handleCopy = () => {
     toast.success("Copied to clipboard", {})
@@ -93,11 +119,11 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     return ((launchpadInfo.investor.claimedToken) / launchpadInfo.totalClaimable * 100).toFixed(1)
   }
 
-  // if (loading) {
-  //   return (
-  //     <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
-  //   )
-  // }
+  if (loading || loadBalance) {
+    return (
+      <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
+    )
+  }
   return (
     <>
       {step == 2 &&
@@ -110,25 +136,28 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
               </div>
 
               <div className="project-card--container">
-                <div className="mb-8 sr-only">
-                  <h3 className="text-2xl text-center font-normal">
-                    <span className="text-color-title">Swap tokens</span>
-                  </h3>
-                </div>
                 <div className="grid gap-8 lg:grid-cols-2">
                   <div className="box box--transparent">
-                    <div className="box-header !px-0">How to buy boxes</div>
+                    <div className="box-header !px-0">
+                      <CountdownInPool />
+                    </div>
                     <ul className="mt-4 flex-shrink-0 flex-grow">
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-3/4">Minimum boxes per order</span>
+                        <span className="list-key !w-3/4">Minimum boxes per address</span>
                         <span className="ml-auto list-value font-semibold tabular-nums">
                           1
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-3/4">Maximum boxes per order </span>
+                        <span className="list-key !w-3/4">Maximum boxes per address </span>
                         <span className="ml-auto list-value font-semibold tabular-nums">
-                          10
+                          {fixedSwapInfo.info.maxBuyPerAddress}
+                        </span>
+                      </li>
+                      <li className="list-pair mb-2">
+                        <span className="list-key !w-3/4">Your number {pool.token_name}</span>
+                        <span className="ml-auto list-value font-semibold tabular-nums">
+                          {fixedSwapInfo.order.total}
                         </span>
                       </li>
                     
@@ -144,9 +173,90 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                   </div>
                   <div className="box box--gray">
                     <div className="box-header relative flex">Bid </div>
-                    <SwapTokensV2 />
+                    <SwapTokensV2 fixedSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
                   </div>
 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+      {(step == 31) &&
+        <div className="card-default project-main-actions no-padding overflow-hidden">
+          <div className="card-body no-padding">
+            <div className="flex flex-col">
+
+              <div className="">
+                <Timeline step="3" />
+              </div>
+
+              <div className="project-card--container">
+                <div className="max-w-xl mx-auto">
+                  <div className="flex">
+                    <div className="w-full">
+                      <h3 className="text-lg md:text-xl border-2 p-4 rounded-lg bg-green-500 bg-opacity-5 border-green-500 mb-4 text-green-500 text-center text-semibold">
+                        <span className="icon mr-2">
+                          <i className="fa-duotone fa-badge-check"></i>
+                        </span>
+                        Place order success : {fixedSwapInfo.order.total} {pool.token_name}
+                      </h3>
+                      <div className="mt-4">
+                        <div className="inline-block w-full mx-auto text-center 
+                            rounded-lg mb-4
+                            border border-gray-200 dark:border-gray-700"
+                        >
+                          {!!pool.end_date && 
+                          <div  className="py-1 px-4">
+                            <span className="mr-2 opacity-70">{t("Closeat")}</span> 
+                            <OpenDate time={pool.end_date} />
+                          </div>
+                          }
+                        </div>
+                      </div>
+
+                      {!fixedSwapInfo.info.isEnd && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
+                      <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
+                        <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
+                          <i className="fa fa-money-bill"></i>
+                        </span>
+                        <div>
+                          <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">{t("Place more")}</p>
+
+                          <a href={`#`}  className="group">
+                            <span className="text-sm mr-1">{t("adjust note",{"orderBusd" : fixedSwapInfo.order.total,"maxBusd" : fixedSwapInfo.info.maxBuyPerAddress})}</span>
+                            <span className="icon text-xs relative left-1 group-hover:left-2 transition-all"><i className="fas fa-angle-right"></i></span>
+                          </a>
+                        </div>
+                      </div>
+                      }
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+      {step == 32 &&
+        <div className="card-default project-main-actions no-padding overflow-hidden">
+          <div className="card-body no-padding">
+            <div className="flex flex-col">
+              <div className="">
+                <Timeline step="3" />
+              </div>
+              <div className="project-card--container">
+                <div className="max-w-xl mx-auto">
+                  <div className="p-4 md:p-8 rounded-lg border border-yellow-300 dark:border-gray-700">
+                    <h3 className="text-lg text-center text-yellow-500 md:text-xl mb-4  text-semibold">
+                      <span className="icon mr-2">
+                        <i class="fas fa-exclamation-triangle"></i>
+                      </span>
+                      {t("pool closed")}
+                    </h3>
+                  </div>
+                  <SocialPromote />
                 </div>
               </div>
             </div>

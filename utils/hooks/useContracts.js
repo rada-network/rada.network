@@ -57,7 +57,7 @@ export const useLaunchpadContractV2 = (pool) => {
   return useMemo(() => getLaunchpadContractV2(pool,account ? library.getSigner() : library), [pool?.contract || null, library])
 }
 
-export const useFixedSwapContrac = (pool) => {
+export const useFixedSwapContract = (pool) => {
   const { account, library } = useActiveWeb3React()
   return useMemo(() => getFixedSwapContract(pool,account ? library.getSigner() : library), [pool?.contract || null, library])
 }

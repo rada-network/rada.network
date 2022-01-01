@@ -5,10 +5,10 @@ import { CheckSvg } from "@components/svg/SvgIcons"
 import SubcribeByBUSD from "./swaptoken/SubscibeByBUSD"
 
 
-const SwapTokensV2 = ({accountBalance,fetchAccountBalance,setStep,pool,project}) => {
+const SwapTokensV2 = ({accountBalance,fetchAccountBalance,fixedSwapInfo,setStep,pool,project}) => {
   return (
     <>
-      <SubcribeByBUSD project={project} pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} />
+      <SubcribeByBUSD fixedSwapInfo={fixedSwapInfo} project={project} pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} />
     </>
   )
 }
