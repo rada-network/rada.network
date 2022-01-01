@@ -23,7 +23,7 @@ const PoolInfo = observer(function({ project,pool }) {
       try {
         let stat = await lauchpadContact.poolStats(pool.id);
         setPoolStat({
-          totalSold : parseInt(ethers.utils.formatEther(stat.totalSold))
+          totalSold : parseInt(ethers.utils.formatUnits(stat.totalSold,0))
         })
       } catch (error) {
         //console.log(account)
