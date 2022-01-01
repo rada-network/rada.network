@@ -88,7 +88,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         
         <div className="mt-4  grid grid-cols-2 gap-4"> 
           <div className="flex-shrink-0 flex-grow">
-            <button className={`btn !text-sm relative  w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} onClick={handleApprove} width="100%" scale="md">
+            <button className={`btn !text-sm relative w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} onClick={handleApprove} width="100%" scale="md">
               {isApproving && <span className="spinner" />}
               {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
               {isApproving && 
