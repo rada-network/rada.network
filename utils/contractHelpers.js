@@ -7,6 +7,7 @@ import share2earnAbi from '../config/abi/share2earn.json'
 import launchpadAbiV2 from '../config/abi/launchpadv2.json'
 import launchpadAbiV2Whitelist from '../config/abi/launchpadv2-whitelist.json'
 import referralAdminAbi from '../config/abi/referralAdmin.json'
+import fixedSwapAbi from '../config/abi/fixedSwap.json'
 
 
 
@@ -42,8 +43,13 @@ export const getLaunchpadContractV2 = (pool, signer) => {
   else{
     return getContract(launchpadAbiV2Whitelist, pool.contract, signer)
   }
-  
 }
+
+export const getFixedSwapContract = (pool, signer) => {
+  if (pool === null) { return null}
+  return getContract(fixedSwapAbi, pool.contract, signer)
+}
+
 export const getReferralAdminContract = (address, signer) => {
   return getContract(referralAdminAbi, address, signer)
 }

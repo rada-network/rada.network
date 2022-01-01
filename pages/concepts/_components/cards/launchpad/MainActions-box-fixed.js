@@ -60,7 +60,7 @@ const MainActions = ({}) => {
                   </ul>
                 </div>
                 <div className="box box--gray">
-                  <div className="box-header relative flex">Bid </div>
+                  <div className="box-header relative flex">Swap </div>
                   <SwapTokens />
                 </div>
 

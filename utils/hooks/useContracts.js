@@ -1,7 +1,7 @@
 import useChainConfig from "@utils/web3/useChainConfig"
 import {useMemo} from "react"
 
-import {getBep20Contract, getLotteryContract,getLaunchpadContract,getLaunchpadContractV2, getShare2EarnContract, getReferralAdminContract} from "../contractHelpers"
+import {getBep20Contract, getLotteryContract,getLaunchpadContract,getLaunchpadContractV2, getShare2EarnContract, getReferralAdminContract, getFixedSwapContract} from "../contractHelpers"
 
 import useActiveWeb3React from "./useActiveWeb3React"
 
@@ -20,6 +20,13 @@ export const useRIRContract = () => {
 export const useBUSDContract = () => {
   const {getBusdAddress} = useChainConfig()
   const address = getBusdAddress()
+  const { library,account } = useActiveWeb3React()
+  return useMemo(() => getBep20Contract(address,account ? library.getSigner() : library ), [address, library])
+}
+
+export const useBUSDContractV2 = () => {
+  const {getBusdAddressV2} = useChainConfig()
+  const address = getBusdAddressV2()
   const { library,account } = useActiveWeb3React()
   return useMemo(() => getBep20Contract(address,account ? library.getSigner() : library ), [address, library])
 }
@@ -48,5 +55,10 @@ export const useReferralAdminContract = (address) => {
 export const useLaunchpadContractV2 = (pool) => {
   const { account, library } = useActiveWeb3React()
   return useMemo(() => getLaunchpadContractV2(pool,account ? library.getSigner() : library), [pool?.contract || null, library])
+}
+
+export const useFixedSwapContrac = (pool) => {
+  const { account, library } = useActiveWeb3React()
+  return useMemo(() => getFixedSwapContract(pool,account ? library.getSigner() : library), [pool?.contract || null, library])
 }
 
