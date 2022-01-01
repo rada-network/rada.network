@@ -9,7 +9,6 @@ const SwapTokensV2 = ({accountBalance,fetchAccountBalance,setStep,pool,project})
   return (
     <>
       <SubcribeByBUSD project={project} pool={pool} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} />
-
     </>
   )
 }

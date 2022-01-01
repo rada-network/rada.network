@@ -54,7 +54,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
       <div className="section">
         <LaunchpadOverview project={project} pool={poolContract} />
 
-        <div className="section-body">
+        <div className="section-body p-4 md:p-4">
           <LaunchpadContent project={project} pool={poolContract} />
 
           {/* Main Action Card */}
@@ -71,7 +71,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
         </div>
 
         {/* FAQ */}
-        <div className="card-default faqs launchverse-faqs mt-8">
+        <div className="section-body p-4 md:p-4">
           <div className="card-body no-padding">
             <div className="flex flex-col">
               {whitelistTime < currentTime && pool.whitelist_date !== null && winners.length > 0 &&
