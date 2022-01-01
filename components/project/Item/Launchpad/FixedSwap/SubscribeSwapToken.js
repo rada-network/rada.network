@@ -32,7 +32,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const [accountBalance, setAccountBalance] = useState({})
   const [loadBalance, setLoadBalance] = useState(true)
   const [step, setStep] = useState(2)
-  const [claimDisbaled, setClaimDisbaled] = useState(false)
   const [tokenAddress,setTokenAddress] = useState(ethers.constants.AddressZero)
   const [poolStatus, setPoolStatus] = useState("");
 
@@ -87,6 +86,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
   useEffect(() => {
     if (loading) return false;
+    setTokenAddress(fixedSwapInfo.info.addressItem)
     if (fixedSwapInfo.info.isEnd){
       if (fixedSwapInfo.order.total > 0){
         //place order success
@@ -107,17 +107,13 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       }
       
     }
-    
+
     //pool dont set winner
   }, [loading,fixedSwapInfo]);
 
   const handleCopy = () => {
     toast.success("Copied to clipboard", {})
   };
-
-  const getPercentageClaimToken = function(){
-    return ((launchpadInfo.investor.claimedToken) / launchpadInfo.totalClaimable * 100).toFixed(1)
-  }
 
   if (loading || loadBalance) {
     return (
