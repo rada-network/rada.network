@@ -1,7 +1,7 @@
 import useChainConfig from "@utils/web3/useChainConfig"
 import {useMemo} from "react"
 
-import {getBep20Contract, getLotteryContract,getLaunchpadContract,getLaunchpadContractV2, getShare2EarnContract, getReferralAdminContract, getFixedSwapContract} from "../contractHelpers"
+import {getBep20Contract, getLotteryContract,getLaunchpadContract,getLaunchpadContractV2, getShare2EarnContract, getReferralAdminContract, getFixedSwapContract, getAuctionSwapContract} from "../contractHelpers"
 
 import useActiveWeb3React from "./useActiveWeb3React"
 
@@ -60,5 +60,10 @@ export const useLaunchpadContractV2 = (pool) => {
 export const useFixedSwapContract = (pool) => {
   const { account, library } = useActiveWeb3React()
   return useMemo(() => getFixedSwapContract(pool,account ? library.getSigner() : library), [pool?.contract || null, library])
+}
+
+export const useAuctionSwapContract = (pool) => {
+  const { account, library } = useActiveWeb3React()
+  return useMemo(() => getAuctionSwapContract(pool,account ? library.getSigner() : library), [pool?.contract || null, library])
 }
 

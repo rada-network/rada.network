@@ -11,6 +11,7 @@ import dynamic from "next/dynamic";
 
 const LaunchpadIdo = dynamic(import(`./Launchpad/Actions/Index`));
 const LaunchpadFixedSwap = dynamic(import(`./Launchpad/FixedSwap/Index`));
+const LaunchpadAuctionSwap = dynamic(import(`./Launchpad/AuctionSwap/Index`));
 const style = {
   cursor : "pointer",
 }
@@ -65,7 +66,9 @@ const ProjectLaunchpad = ({ project, pool }) => {
             {pool.token_sale == "fixed-swap" && 
             <LaunchpadFixedSwap project={project} pool={poolContract} />
             }
-            
+            {pool.token_sale == "auction-swap" && 
+            <LaunchpadAuctionSwap project={project} pool={poolContract} />
+            }
           </div>
           {/* END: Main Action Card */}
         </div>
@@ -90,10 +93,10 @@ const ProjectLaunchpad = ({ project, pool }) => {
                 </nav>
               </div>
               }
-              <div class={"project-card--container" + (active == "faq" ? "" : " hidden")}>
+              <div className={"project-card--container" + (active == "faq" ? "" : " hidden")}>
                 <ProjectFaq project={project} /> 
               </div>
-              <div class={"project-card--container"+ (active == "winner" ? "" : " hidden")}>
+              <div className={"project-card--container"+ (active == "winner" ? "" : " hidden")}>
                 <Subscriber project={project} pool={poolContract} winners={winners}/>
               </div>
             </div>

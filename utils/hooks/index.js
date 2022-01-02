@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react"
 import {ethers, utils} from "ethers"
-import { useFixedSwapContract, useLaunchpadContractV2 } from "./useContracts"
+import { useAuctionSwapContract, useFixedSwapContract, useLaunchpadContractV2 } from "./useContracts"
 import useActiveWeb3React from "./useActiveWeb3React"
 import { useWeb3React } from '@web3-react/core'
 import { GAS_PRICE_GWEI } from "../../config/gas"
@@ -457,4 +457,70 @@ export const useFixedSwapInfo = ({pool,status}) => {
     }
   }, [account,lauchpadContact,active,setLoading,library])
   return {loading,fixedSwapInfo,fetchPoolInfo}
+}
+
+export const useAuctionSwapInfo = ({pool,status}) => {
+  const {account,connector,active,library} = useActiveWeb3React()
+  const [auctionSwapInfo,setAuctionSwapInfo] = useState(null)
+  const [loading,setLoading] = useState(true)
+  const lauchpadContact = useAuctionSwapContract(pool)
+  
+  const fetchPoolInfo = async () => {
+    try {
+      console.log(lauchpadContact)
+      let updateInfo;
+      let stat = await lauchpadContact.poolStats(pool.id);
+      let order = await lauchpadContact.buyerBids(pool.id,account);
+      let itemTotal = await lauchpadContact.buyerBidCount(pool.id,account);
+      order = {
+        item : order,
+        total : parseInt(ethers.utils.formatUnits(itemTotal,0))
+      }
+      stat = {
+        totalBid : stat.totalBid,
+        totalBidItem : parseInt(ethers.utils.formatUnits(stat.totalBidItem,0)),
+        totalSold : parseInt(ethers.utils.formatUnits(stat.totalSold,0))
+      }
+      let info = await lauchpadContact.pools(pool.id);
+      info = {
+        addressItem : info.addressItem,
+        ended : info.ended,
+        isPublic : info.isPublic,
+        isSaleToken : info.isSaleToken,
+        requireWhitelist : info.requireWhitelist,
+        title : info.title,
+        endId : parseInt(ethers.utils.formatUnits(info.endId,0)),
+        startId : parseInt(ethers.utils.formatUnits(info.startId,0)),
+        endTime : parseInt(ethers.utils.formatUnits(info.endTime,0)),
+        startTime : parseInt(ethers.utils.formatUnits(info.startTime,0)),
+        startPrice : parseInt(ethers.utils.formatUnits(info.startPrice)),
+        maxBuyPerAddress : parseInt(ethers.utils.formatUnits(info.maxBuyPerAddress,0)),
+      }
+      updateInfo = {
+        stat,
+        info,
+        order
+      }
+      setAuctionSwapInfo(updateInfo)
+      console.log(updateInfo)
+     } catch (error) {
+      console.log(error)
+      //console.log("error to fetch launchpad info",error)
+      return null
+    }
+  }
+  
+  useEffect(() => {
+    if (!!account && !!lauchpadContact && active && library){
+      setLoading(true)
+      fetchPoolInfo().then(function(res){
+        setLoading(false)
+      })
+    }
+    else{
+      setLoading(false)
+      setFixedSwapInfo(null)
+    }
+  }, [account,lauchpadContact,active,setLoading,library])
+  return {loading,auctionSwapInfo,fetchPoolInfo}
 }

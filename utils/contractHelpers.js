@@ -8,6 +8,7 @@ import launchpadAbiV2 from '../config/abi/launchpadv2.json'
 import launchpadAbiV2Whitelist from '../config/abi/launchpadv2-whitelist.json'
 import referralAdminAbi from '../config/abi/referralAdmin.json'
 import fixedSwapAbi from '../config/abi/fixedSwap.json'
+import auctionSwapAbi from '../config/abi/auctionSwap.json'
 
 
 
@@ -48,6 +49,11 @@ export const getLaunchpadContractV2 = (pool, signer) => {
 export const getFixedSwapContract = (pool, signer) => {
   if (pool === null) { return null}
   return getContract(fixedSwapAbi, pool.contract, signer)
+}
+
+export const getAuctionSwapContract = (pool, signer) => {
+  if (pool === null) { return null}
+  return getContract(auctionSwapAbi, pool.contract, signer)
 }
 
 export const getReferralAdminContract = (address, signer) => {
