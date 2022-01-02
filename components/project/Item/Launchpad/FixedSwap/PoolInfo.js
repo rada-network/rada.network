@@ -63,13 +63,6 @@ const PoolInfo = observer(function({ project,pool }) {
       </div>
       <div className="card-body flex flex-col">
         <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
-          <li className="list-pair mb-2">
-            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Investment round")}</span>
-            <span className="ml-auto list-value font-semibold text-right">
-              {/* <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div> */}
-              <div className={``}>{pool.type.toUpperCase()}</div>
-            </span>
-          </li>
           
           <li className="list-pair mb-2">
             <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Raise")}</span>

@@ -17,6 +17,7 @@ import useStore from "@lib/useStore"
 import OpenDate from "@components/project/Item/Launchpad/OpenDate"
 import { CheckSvg } from "@components/svg/SvgIcons"
 import { poll } from "@ethersproject/web";
+import { registerToken } from "@utils/wallet";
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
@@ -112,7 +113,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   }, [loading,fixedSwapInfo]);
 
   const handleCopy = () => {
-    toast.success("Copied to clipboard", {})
+    toast.success("Copied to clipboard", {});
   };
 
   if (loading || loadBalance) {
@@ -120,6 +121,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
     )
   }
+
   return (
     <>
       {step == 2 &&
@@ -197,6 +199,25 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         </span>
                         Place order success : {fixedSwapInfo.order.total} {pool.token_name}
                       </h3>
+                      
+                      
+                      <div className="w-full px-2 py-1 rounded-lg flex justify-between bg-gray-100 dark:bg-gray-700 ml-auto list-value hover:bg-gray-200 dark:hover:bg-gray-600">
+                        <strong>
+                          Token Contract: 
+                        </strong>
+                        <div>
+                          <span>{`${fixedSwapInfo.info.addressItem.substr(0, 10)}...${fixedSwapInfo.info.addressItem.substr(-10)}`}</span>
+                        </div>
+                        <CopyToClipboard
+                          onCopy={handleCopy}
+                          text={fixedSwapInfo.info.addressItem}
+                        >
+                          <button className="btn ml-2">
+                            <i className="fa-duotone fa-copy text-2xs"></i>
+                          </button>
+                        </CopyToClipboard>
+                      </div>
+
                       <div className="mt-4">
                         <div className="inline-block w-full mx-auto text-center 
                             rounded-lg mb-4
