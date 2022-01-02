@@ -44,7 +44,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
     },
     onConfirm: () => {
       store.transaction.showTransaction(true);
-      return callWithGasPrice(launchpadContract, 'placeOrder', [pool.id,numberBox,ethers.utils.parseEther(numberBusd.toString())])
+      return callWithGasPrice(launchpadContract, 'placeOrder', [pool.id,numberBox])
     },
     onSuccess: async ({ receipt }) => {
       store.transaction.update(receipt.transactionHash);

@@ -364,11 +364,6 @@
         "internalType": "uint32",
         "name": "_quantity",
         "type": "uint32"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_priceEach",
-        "type": "uint256"
       }
     ],
     "name": "placeOrder",
