@@ -104,7 +104,7 @@ const projectFeedGql = gql`
     slug
     thumbnail_uri
     cover_uri
-    background_uri    
+    background_uri
     status
     website
     facebook
@@ -112,6 +112,7 @@ const projectFeedGql = gql`
     telegram
     discord
     medium
+    date_created
     token{
       name
       logo
