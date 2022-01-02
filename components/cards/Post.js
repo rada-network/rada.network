@@ -290,14 +290,14 @@ const CardPostNormal = observer(
           </div>
         </div>
 
-        <div
+        <a
           className="card-link--overlay"
           key={item.id}
           href={createPostUri(title, slug, item, dataStore.lang)}
           onClick={(e) => handleClickPost(e)}
         >
           <div className="card-link--overlay"></div>
-        </div>
+        </a>
       </div>
     );
   }
