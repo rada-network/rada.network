@@ -16,15 +16,66 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
   const rirContract = useRIRContract()
   const bUSDContract = useBUSDContractV2()
   const {callWithGasPrice} = useCallWithGasPrice()
-  const [numberBox,setNumberBox] = useState(1)
-  const [numberBusd,setNumberBusd] = useState(auctionSwapInfo.info.startPrice)
-
-  
+  const [numberBox,setNumberBox] = useState(1);
+  const [priceBusd,setPriceBusd] = useState(auctionSwapInfo.info.startPrice);
+  const [totalBusd,setTotalBusd] = useState(auctionSwapInfo.info.startPrice);
+  const [currentOrder,setCurrentOrder] = useState([]);
+  const [initOrder,setInitOrder] = useState([]);
   const maxSelected = auctionSwapInfo.info.maxBuyPerAddress - auctionSwapInfo.order.total
+
+  useEffect(() => {
+    setCurrentOrder([...auctionSwapInfo.order.detail])
+    setInitOrder([...auctionSwapInfo.order.detail])
+  },[])
+
   const handleChangeNumberBox = function(e){
     setNumberBox(e.currentTarget.value)
-    setNumberBusd(parseInt(e.currentTarget.value)*auctionSwapInfo.info.startPrice )
+    setTotalBusd(parseInt(e.currentTarget.value)*parseInt(priceBusd))
   }
+  const handleChangePriceBusd = function(e){
+    setPriceBusd(e.currentTarget.value)
+    setTotalBusd(parseInt(e.currentTarget.value)*parseInt(numberBox))
+  }
+
+  const handleChangeCurrentOrder = function(e,item,type){
+    console.log(item)
+    if (type === "price"){
+      const newCurrentOrder = currentOrder.map(element => {
+        if (element.index === item) {
+          element.priceEach = parseInt(e.currentTarget.value)
+          return element
+        }
+        return element;
+      });
+      setCurrentOrder(newCurrentOrder)
+    }  
+  }
+
+  const handleIncreaseBid = async function(bidIndex){
+    console.log("handleIncreaseBid")
+    try{
+      store.transaction.showTransaction(true);
+      let bid = currentOrder.filter((i) => {
+        return i.index === bidIndex
+      })[0]
+      console.log( [pool.id,bidIndex,bid.quantity,bid.priceEach])
+      const tx = await callWithGasPrice(launchpadContract, 'increaseBid', [pool.id,bidIndex,bid.quantity,ethers.utils.parseEther(bid.priceEach.toString())])
+      const receipt = await tx.wait()
+      store.transaction.update(receipt.transactionHash);
+    }
+    catch (error) {
+      console.log(error.message)
+      if (!!error?.data?.message){
+        store.transaction.updateError(t(error?.data?.message?.replace("execution reverted: ","").replace("ERC20: ","")), true);
+      }
+      else if (!!error?.message){
+        store.transaction.updateError(t(error?.message), true);
+      } else {
+        store.transaction.updateError(t(error.toString().replace("execution reverted: ","").replace("ERC20: ","")), true);
+      }
+    }
+  }
+
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
   useApproveConfirmTransaction({
     onRequiresApproval: async () => {
@@ -44,7 +95,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
     },
     onConfirm: () => {
       store.transaction.showTransaction(true);
-      return callWithGasPrice(launchpadContract, 'placeOrder', [pool.id,numberBox,ethers.utils.parseEther(numberBusd.toString())])
+      return callWithGasPrice(launchpadContract, 'placeBid', [pool.id,numberBox,ethers.utils.parseEther(priceBusd.toString())])
     },
     onSuccess: async ({ receipt }) => {
       store.transaction.update(receipt.transactionHash);
@@ -60,77 +111,55 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
             <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
           </div>
           <div className="w-2/5 flex-shrink-0 pl-2">
-            <label for="rir" className="mb-2 block tracking-wide font-medium opacity-70">Price</label>
+            <label for="rir" className="mb-2 block tracking-wide font-medium opacity-70">Price (BUSD)</label>
           </div>
           
         </div>
-        <div className="mb-4 flex relative">
-          <div className="w-1/5 pr-2 flex-shrink-0">
-            <select id="box" name="amount" className="select-custom w-full ">
-              {/* remove '!rounded-l-none' if user doesn't have RIR */}
-              <option className="text-gray-300" selected>1</option>
-              <option className="text-gray-300">2</option>
-              <option className="text-gray-300">3</option>
-              <option className="text-gray-300">4</option>
-              <option className="text-gray-300">5</option>
-              <option className="text-gray-300">6</option>
-              <option className="text-gray-300">7</option>
-              <option className="text-gray-300">8</option>
-              <option className="text-gray-300">9</option>
-              <option className="text-gray-300">10</option>
-            </select>
-          </div>
-          <div className="w-2/5 pl-2 flex-shrink-0">
-            <select id="rir" name="rir" className="select-custom  w-full ">
-              {/* remove '!rounded-l-none' if user doesn't have RIR */}
-              <option className="text-gray-300" selected>100 BUSD</option>
-              <option className="text-gray-300">200 BUSD</option>
-              <option className="text-gray-300">300 BUSD</option>
-              <option className="text-gray-300">400 BUSD</option>
-              <option className="text-gray-300">500 BUSD</option>
-              <option className="text-gray-300">600 BUSD</option>
-              <option className="text-gray-300">700 BUSD</option>
-              <option className="text-gray-300">800 BUSD</option>
-              <option className="text-gray-300">900 BUSD</option>
-              <option className="text-gray-300">1000 BUSD</option>
-            </select>          
-          </div>
-          <button className="ml-4 w-2/5 flex-grow btn btn-primary px-2 flex justify-center">
-            <i className="fas fa-check-circle mr-1"></i> Update
-          </button>
-        </div>
+        {currentOrder.map(function(item){
+          return (
+            <div className="mb-4 flex relative">
+              <div className="w-1/5 pr-2 flex-shrink-0">
+                <select className="select-custom w-full ">
+                  {/* remove '!rounded-l-none' if user doesn't have RIR */}
+                  <option className="text-gray-300">{item.quantity}</option>
+                </select>
+              </div>
+              <div className="w-2/5 pl-2 flex-shrink-0">
+                <select id={"old-order"+item.index} className="select-custom  w-full" value={item.priceEach} onChange={e => {handleChangeCurrentOrder(e,item.index,'price')}}>
+                  {item.select.map((_, i) => {
+                    return (
+                      <option key={i} className="text-gray-300" value={_}>{_}</option>
+                    )
+                  })}
+                </select>          
+              </div>
+              <button onClick={e => { handleIncreaseBid(item.index)}} className="ml-4 w-2/5 flex-grow btn btn-primary px-2 flex justify-center">
+                <i className="fas fa-check-circle mr-1"></i> Increase
+              </button>
+            </div>
+          )
+        })}
+        
 
         <div className="mb-4 flex relative">
           <div className="w-1/5 pr-2 flex-shrink-0">
-            <select id="box" name="amount" className="select-custom w-full ">
+            <select id="box" name="amount" defaultValue={numberBox} onChange={handleChangeNumberBox} className="select-custom w-full ">
               {/* remove '!rounded-l-none' if user doesn't have RIR */}
-              <option className="text-gray-300" selected>--</option>
-              <option className="text-gray-300">1</option>
-              <option className="text-gray-300">2</option>
-              <option className="text-gray-300">3</option>
-              <option className="text-gray-300">4</option>
-              <option className="text-gray-300">5</option>
-              <option className="text-gray-300">6</option>
-              <option className="text-gray-300">7</option>
-              <option className="text-gray-300">8</option>
-              <option className="text-gray-300">9</option>
-              <option className="text-gray-300">10</option>
+              {Array(maxSelected).fill(null).map((_, i) => {
+                return (
+                  <option key={i} className="text-gray-300" value={(i+1)}>{i+1}</option>
+                )
+              })}
             </select>
           </div>
           <div className="w-2/5 pl-2 flex-shrink-0">
-            <select id="rir" name="rir" className="select-custom  w-full ">
+            <select id="news-order" className="select-custom  w-full " defaultValue={priceBusd} onChange={e => {handleChangePriceBusd(e)}}>
               {/* remove '!rounded-l-none' if user doesn't have RIR */}
-              <option className="text-gray-300" selected>Select price</option>
-              <option className="text-gray-300" >100 BUSD</option>
-              <option className="text-gray-300">200 BUSD</option>
-              <option className="text-gray-300">300 BUSD</option>
-              <option className="text-gray-300">400 BUSD</option>
-              <option className="text-gray-300">500 BUSD</option>
-              <option className="text-gray-300">600 BUSD</option>
-              <option className="text-gray-300">700 BUSD</option>
-              <option className="text-gray-300">800 BUSD</option>
-              <option className="text-gray-300">900 BUSD</option>
-              <option className="text-gray-300">1000 BUSD</option>
+              {Array(10).fill(null).map((_, i) => {
+                return (
+                  <option key={i} className="text-gray-300" value={auctionSwapInfo.info.startPrice + (i*10)}>{auctionSwapInfo.info.startPrice+i*10}</option>
+                )
+              })}
             </select>          
           </div>
           <button className="ml-4 w-2/5 flex-grow btn btn-primary px-2 disabled flex justify-center">
@@ -143,35 +172,42 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
            Total
           </div>
           <div className="w-1/2 text-lg text-right font-semibold">
-            500 BUSD       
+            {totalBusd} BUSD       
           </div>
         </div>
-
-
-          
-
-          
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
        
         {/* chưa nhập amount thì ẩn 2 nút enable cái này đi */}
         <div className="mt-4  grid grid-cols-2 gap-4"> 
-          {/* bỏ grid grid-cols-2 nếu user không có RIR hoặc không dùng RIR */}
           <div className="flex-shrink-0 flex-grow">
-            <button className="btn relative disabled  w-full btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md">
-            {/* <span className="spinner" />  */}
-              Enable BUSD
-            </button>     
+            <button className={`btn !text-sm relative w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} onClick={handleApprove} width="100%" scale="md">
+              {isApproving && <span className="spinner" />}
+              {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
+              {isApproving && 
+              <>{t("Approving Contract")}</> 
+              }
+              {isApproved && 
+              <>{t("Approved Contract")} BUSD</> 
+              }
+              {!isApproving && !isApproved &&
+              <>{t("Approve Contract")} BUSD</>
+              }
+            </button>
           </div>
-          <div  className="flex-shrink-0 flex-grow">
-            <button className="btn relative w-full btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md">
-            {/* <span className="spinner" />  */}
-              Prefund
-            </button>         
+          <div className="flex-shrink-0 flex-grow">
+            <button className={`btn !text-sm relative w-full btn-default btn-default-lg btn-purple` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" width="100%" scale="md">
+              {isConfirming && <span className="spinner" />}
+              {isConfirming ? <>{t("Place Bid")}</> : <>{t("Place Bid")}</>}
+            </button>
           </div>
         </div>
-
-        
-
+        <div className="mt-4">
+          {auctionSwapInfo.order.total > 0 &&
+          <button className="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
+          {t("Back to Status")}
+          </button>
+          }
+        </div>
       </div>
 
     </>
