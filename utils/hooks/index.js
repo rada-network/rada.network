@@ -491,12 +491,15 @@ export const useAuctionSwapInfo = ({pool,status}) => {
           }
         }
       }
-      
+      let totalItem = detail.reduce(function(sum,value){
+        return sum + parseInt(value.quantity)
+      },0)
       let itemTotal = await lauchpadContact.buyerBidCount(pool.id,account);
       order = {
         detail,
         item : order,
-        total : parseInt(ethers.utils.formatUnits(itemTotal,0))
+        total : parseInt(ethers.utils.formatUnits(itemTotal,0)),
+        totalItem : totalItem
       }
       stat = {
         totalBid : stat.totalBid,

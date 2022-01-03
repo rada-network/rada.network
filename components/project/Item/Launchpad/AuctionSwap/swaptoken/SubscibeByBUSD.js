@@ -204,7 +204,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         <div className="mt-4">
           {auctionSwapInfo.order.total > 0 &&
           <button className="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
-          {t("Back to Status")}
+          {t("Back")}
           </button>
           }
         </div>
