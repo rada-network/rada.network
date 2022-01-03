@@ -7,6 +7,7 @@ import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
 import { CheckSvg } from "@components/svg/SvgIcons"
 import useStore from "@lib/useStore"
+import { range } from "@utils/hooks/index"
 
 const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance,auctionSwapInfo}) => {
   const store = useStore()
@@ -20,14 +21,21 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
   const [priceBusd,setPriceBusd] = useState(auctionSwapInfo.info.startPrice);
   const [totalBusd,setTotalBusd] = useState(auctionSwapInfo.info.startPrice);
   const [currentOrder,setCurrentOrder] = useState([]);
-  const [initOrder,setInitOrder] = useState([]);
-  const maxSelected = auctionSwapInfo.info.maxBuyPerAddress - auctionSwapInfo.order.total
+  const [totalItem,setTotalItem] = useState(0);
+  const maxSelected = auctionSwapInfo.info.maxBuyPerAddress - auctionSwapInfo.order.totalItem
 
   useEffect(() => {
     setCurrentOrder([...auctionSwapInfo.order.detail])
-    setInitOrder([...auctionSwapInfo.order.detail])
   },[])
 
+  useEffect(() => {
+    let _totalItem = currentOrder.reduce(function(sum,value){
+      return sum + parseInt(value.quantity)
+    },0)
+    setTotalItem(_totalItem)
+  },[currentOrder])
+
+  
   const handleChangeNumberBox = function(e){
     setNumberBox(e.currentTarget.value)
     setTotalBusd(parseInt(e.currentTarget.value)*parseInt(priceBusd))
@@ -38,33 +46,38 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
   }
 
   const handleChangeCurrentOrder = function(e,item,type){
-    console.log(item)
     if (type === "price"){
       const newCurrentOrder = currentOrder.map(element => {
         if (element.index === item) {
           element.priceEach = parseInt(e.currentTarget.value)
-          return element
         }
         return element;
       });
       setCurrentOrder(newCurrentOrder)
-    }  
+    }
+    if (type === "quantity"){
+      const newCurrentOrder = currentOrder.map(element => {
+        if (element.index === item) {
+          element.quantity = parseInt(e.currentTarget.value)
+        } 
+        return element;
+      });
+      setCurrentOrder(newCurrentOrder)
+    }
   }
 
   const handleIncreaseBid = async function(bidIndex){
-    console.log("handleIncreaseBid")
     try{
       store.transaction.showTransaction(true);
       let bid = currentOrder.filter((i) => {
         return i.index === bidIndex
       })[0]
-      console.log( [pool.id,bidIndex,bid.quantity,bid.priceEach])
       const tx = await callWithGasPrice(launchpadContract, 'increaseBid', [pool.id,bidIndex,bid.quantity,ethers.utils.parseEther(bid.priceEach.toString(),0)])
       const receipt = await tx.wait()
       store.transaction.update(receipt.transactionHash);
+      fetchAccountBalance()
     }
     catch (error) {
-      console.log(error.message)
       if (!!error?.data?.message){
         store.transaction.updateError(t(error?.data?.message?.replace("execution reverted: ","").replace("ERC20: ","")), true);
       }
@@ -119,9 +132,15 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           return (
             <div className="mb-4 flex relative">
               <div className="w-1/5 pr-2 flex-shrink-0">
-                <select className="select-custom w-full ">
+                <select className="select-custom w-full" value={item.quantity} onChange={e => {handleChangeCurrentOrder(e,item.index,'quantity')}}>
                   {/* remove '!rounded-l-none' if user doesn't have RIR */}
-                  <option className="text-gray-300">{item.quantity}</option>
+                  {Array((auctionSwapInfo.info.maxBuyPerAddress)).fill(null).map(function(_, i){
+                    if (i + 1 < item.baseQuantity) return null
+                    if (i + 1 > (auctionSwapInfo.info.maxBuyPerAddress - (totalItem - item.quantity))) return null
+                    return (
+                      <option key={i} className="text-gray-300" value={(i+1)}>{i+1}</option>
+                    )
+                  })}
                 </select>
               </div>
               <div className="w-2/5 pl-2 flex-shrink-0">
@@ -141,11 +160,12 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         })}
         
 
-        <div className="mb-4 flex relative">
+        {totalItem < auctionSwapInfo.info.maxBuyPerAddress && <div className="mb-4 flex relative">
           <div className="w-1/5 pr-2 flex-shrink-0">
             <select id="box" name="amount" defaultValue={numberBox} onChange={handleChangeNumberBox} className="select-custom w-full ">
               {/* remove '!rounded-l-none' if user doesn't have RIR */}
               {Array(maxSelected).fill(null).map((_, i) => {
+                if (i + 1 > (auctionSwapInfo.info.maxBuyPerAddress - (totalItem))) return null
                 return (
                   <option key={i} className="text-gray-300" value={(i+1)}>{i+1}</option>
                 )
@@ -165,6 +185,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <button className="ml-4 w-2/5 flex-grow btn btn-primary px-2 disabled flex justify-center">
             <i className="fas fa-plus-circle mr-1"></i> Add</button>
         </div>
+        }
         
         
         <div className="mb-4 flex gap-4 items-center py-4 border-b border-t dark:border-opacity-40 border-gray-200 dark:border-gray-700">
@@ -178,7 +199,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
        
         {/* chưa nhập amount thì ẩn 2 nút enable cái này đi */}
-        <div className="mt-4  grid grid-cols-2 gap-4"> 
+        {totalItem < auctionSwapInfo.info.maxBuyPerAddress && <div className="mt-4  grid grid-cols-2 gap-4"> 
           <div className="flex-shrink-0 flex-grow">
             <button className={`btn !text-sm relative w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} onClick={handleApprove} width="100%" scale="md">
               {isApproving && <span className="spinner" />}
@@ -201,6 +222,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
             </button>
           </div>
         </div>
+        }
         <div className="mt-4">
           {auctionSwapInfo.order.total > 0 &&
           <button className="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">

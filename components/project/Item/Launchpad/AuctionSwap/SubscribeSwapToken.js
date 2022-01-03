@@ -88,13 +88,18 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     if (loading) return false;
     setTokenAddress(auctionSwapInfo.info.addressItem)
     if (auctionSwapInfo.info.isEnd){
-      if (auctionSwapInfo.order.total > 0){
-        //place order success
-        setStep(31)
+      if (auctionSwapInfo.order.totalWinItem > 0){
+
       }
       else{
-        //pool close
-        setStep(32)
+        if (auctionSwapInfo.order.total > 0){
+          //place order success
+          setStep(31)
+        }
+        else{
+          //pool close
+          setStep(32)
+        }
       }
     }
     else{
@@ -157,6 +162,12 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         </span>
                       </li>
                       <li className="list-pair mb-2">
+                        <span className="list-key !w-3/4">Highest price </span>
+                        <span className="ml-auto list-value font-semibold tabular-nums">
+                          {auctionSwapInfo.stat.highestPrice} BUSD
+                        </span>
+                      </li>
+                      <li className="list-pair mb-2">
                         <span className="list-key !w-3/4">Your number {pool.token_name}</span>
                         <span className="ml-auto list-value font-semibold tabular-nums">
                           {auctionSwapInfo.order.totalItem}
@@ -201,7 +212,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         <span className="icon mr-2">
                           <i className="fa-duotone fa-badge-check"></i>
                         </span>
-                        Place order success : {auctionSwapInfo.order.totalItem} {pool.token_name}
+                        Place Bid success : {auctionSwapInfo.order.totalItem} {pool.token_name}
                       </h3>
                       <div className="mt-4">
                         <div className="inline-block w-full mx-auto text-center 

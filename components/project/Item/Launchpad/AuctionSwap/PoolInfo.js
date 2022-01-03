@@ -18,12 +18,10 @@ const PoolInfo = observer(function({ project,pool }) {
   const [poolStat, setPoolStat] = useState(null);
   const [showInfo, setShowInfo] = useState(true);
   const lauchpadContact = useAuctionSwapContract(pool);
-  console.log(lauchpadContact)
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {
         let stat = await lauchpadContact.poolStats(pool.id);
-        console.log(stat)
         setPoolStat({
           totalSold : parseInt(ethers.utils.formatUnits(stat.totalBidItem,0))
         })

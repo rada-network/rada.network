@@ -467,9 +467,7 @@ export const useAuctionSwapInfo = ({pool,status}) => {
   
   const fetchPoolInfo = async () => {
     try {
-      console.log(lauchpadContact)
       let updateInfo;
-    
       let stat = await lauchpadContact.poolStats(pool.id);
       let order = await lauchpadContact.buyerBids(pool.id,account);
       let detail = []
@@ -481,8 +479,10 @@ export const useAuctionSwapInfo = ({pool,status}) => {
               index : index,
               claimed : bid.claimed,
               select : range(parseFloat(ethers.utils.formatEther(bid.priceEach)),parseFloat(ethers.utils.formatEther(bid.priceEach)) + 90,10),
+              selectQuatity : range(parseFloat(ethers.utils.formatEther(bid.priceEach)),parseFloat(ethers.utils.formatEther(bid.priceEach)) + 90,10),
               priceEach : parseFloat(ethers.utils.formatEther(bid.priceEach)),
               quantity : parseFloat(ethers.utils.formatUnits(bid.quantity,0)),
+              baseQuantity : parseFloat(ethers.utils.formatUnits(bid.quantity,0)),
               winQuantity : parseFloat(ethers.utils.formatUnits(bid.winQuantity,0))
             })
           }
@@ -494,14 +494,19 @@ export const useAuctionSwapInfo = ({pool,status}) => {
       let totalItem = detail.reduce(function(sum,value){
         return sum + parseInt(value.quantity)
       },0)
+      let totalWinItem = detail.reduce(function(sum,value){
+        return sum + parseInt(value.winQuantity)
+      },0)
       let itemTotal = await lauchpadContact.buyerBidCount(pool.id,account);
       order = {
         detail,
         item : order,
         total : parseInt(ethers.utils.formatUnits(itemTotal,0)),
-        totalItem : totalItem
+        totalItem : totalItem,
+        totalWinItem : totalWinItem,
       }
       stat = {
+        highestPrice : parseInt(ethers.utils.formatEther(stat.highestPrice)),
         totalBid : stat.totalBid,
         totalBidItem : parseInt(ethers.utils.formatUnits(stat.totalBidItem,0)),
         totalSold : parseInt(ethers.utils.formatUnits(stat.totalSold,0))
@@ -568,7 +573,7 @@ export const useAuctionSwapInfo = ({pool,status}) => {
  * @throws {TypeError} (If any of start, end and step is not a finite number.)
  * @throws {Error} (If step is not a positive number.)
  */
- function range(start, end, step = 1) {
+ export function range(start, end, step = 1) {
   
   // Test that the first 3 arguments are finite numbers.
   // Using Array.prototype.every() and Number.isFinite().
