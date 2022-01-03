@@ -17,4 +17,3 @@ Sitemap: https://rada.network/en/sitemap/launchverse.xml
 Sitemap: https://rada.network/vi/sitemap/launchverse.xml
 Sitemap: https://rada.network/en/sitemap/about.xml
 Sitemap: https://rada.network/vi/sitemap/about.xml
-
