@@ -32,6 +32,7 @@ export const Head = observer(({ meta }) => {
           />
         )}
         <title>RADA - {meta.title || ""}</title>
+        {meta.canonical && <meta rel="canonical" href={meta.canonical} />}
         {meta.description && (
           <>
             <meta
