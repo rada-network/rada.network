@@ -59,7 +59,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         return i.index === bidIndex
       })[0]
       console.log( [pool.id,bidIndex,bid.quantity,bid.priceEach])
-      const tx = await callWithGasPrice(launchpadContract, 'increaseBid', [pool.id,bidIndex,bid.quantity,ethers.utils.parseEther(bid.priceEach.toString())])
+      const tx = await callWithGasPrice(launchpadContract, 'increaseBid', [pool.id,bidIndex,bid.quantity,ethers.utils.parseEther(bid.priceEach.toString(),0)])
       const receipt = await tx.wait()
       store.transaction.update(receipt.transactionHash);
     }

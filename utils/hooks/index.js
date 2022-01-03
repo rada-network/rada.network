@@ -476,7 +476,7 @@ export const useAuctionSwapInfo = ({pool,status}) => {
       if (order.length > 0) {
         for (let index of order){
           try{
-            let bid = await lauchpadContact.bids(pool.id,ethers.utils.parseEther(index.toString()));
+            let bid = await lauchpadContact.bids(pool.id,ethers.utils.parseUnits(index.toString(),0));
             detail.push({
               index : index,
               claimed : bid.claimed,

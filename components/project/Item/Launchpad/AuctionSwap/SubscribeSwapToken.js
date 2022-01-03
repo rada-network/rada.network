@@ -151,6 +151,12 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         </span>
                       </li>
                       <li className="list-pair mb-2">
+                        <span className="list-key !w-3/4">Start price </span>
+                        <span className="ml-auto list-value font-semibold tabular-nums">
+                          {auctionSwapInfo.info.startPrice} BUSD
+                        </span>
+                      </li>
+                      <li className="list-pair mb-2">
                         <span className="list-key !w-3/4">Your number {pool.token_name}</span>
                         <span className="ml-auto list-value font-semibold tabular-nums">
                           {auctionSwapInfo.order.total}
