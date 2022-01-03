@@ -236,33 +236,33 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
                     <ul className="mt-4 mb-2 flex-shrink-0 flex-grow">
                       {pool.is_allow_rir && parseInt(orderRIR) > 0 && <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Prefunded RIR")}</span>
+                        <span className="list-key !w-1/2">{t("Prefunded RIR")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {orderRIR} RIR
                         </span>
                       </li>}
                       {parseInt(orderBusd) > 0 &&
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Prefunded BUSD")}</span>
+                        <span className="list-key !w-1/2">{t("Prefunded BUSD")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {orderBusd} BUSD
                         </span>
                       </li>
                       }
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Your maximum allocation")}</span>
+                        <span className="list-key !w-1/2">{t("Your maximum allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {launchpadInfo?.individualMaximumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>({launchpadInfo?.individualMaximumAmount / 100} RIR)</>}
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Your minimum allocation")}</span>
+                        <span className="list-key !w-1/2">{t("Your minimum allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {launchpadInfo?.individualMinimumAmount} BUSD {accountBalance?.rirBalance > 0 && pool.is_allow_rir && <>({launchpadInfo?.individualMinimumAmount / 100} RIR)</>}
                         </span>
                       </li>
                       {pool.is_allow_rir && parseFloat(accountBalance.rirBalance) > 0 && <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Your RIR Balance")}</span>
+                        <span className="list-key !w-1/2">{t("Your RIR Balance")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {accountBalance.rirBalance} RIR
                         </span>
@@ -567,26 +567,26 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     </div> 
                     <ul className="mt-4 mb-2 flex-shrink-0 flex-grow">
                     <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Total allocation")}</span>
+                        <span className="list-key !w-1/2">{t("Total allocation")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {approvedBusd} BUSD
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Total token")}</span>
+                        <span className="list-key !w-1/2">{t("Total token")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {launchpadInfo.totalClaimable.toFixed(2).toLocaleString()} {project.token.symbol}
                         </span>
                       </li>
                      
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Claimed token")}</span>
+                        <span className="list-key !w-1/2">{t("Claimed token")}</span>
                         <span className="ml-auto list-value font-semibold">
                           {launchpadInfo.investor.claimedToken.toLocaleString()} {project.token.symbol}
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                          <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{project.token.symbol} Contract</span>
+                          <span className="list-key !w-1/2">{project.token.symbol} Contract</span>
                           <div className="ml-auto p-2 rounded-lg flex bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700">
                             <a target="_blank" href={getBscScanURL(tokenAddress)}>
                               {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}

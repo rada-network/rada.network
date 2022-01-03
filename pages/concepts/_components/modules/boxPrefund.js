@@ -3,7 +3,7 @@ const SwapTokens = ({}) => {
   return (
     <>
       <div className="global-padding">
-        <div className="mb-4 p2-4 flex border-b dark:border-opacity-40 border-gray-200 dark:border-gray-700">
+        <div className="flex">
           <div className="w-1/5 flex-shrink-0 pr-2">
             <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
           </div>
@@ -90,7 +90,7 @@ const SwapTokens = ({}) => {
           <div className="w-1/2">
            Total
           </div>
-          <div className="w-1/2 text-lg text-right font-semibold">
+          <div className="w-1/2 text-right font-semibold">
             500 BUSD       
           </div>
         </div>
