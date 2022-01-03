@@ -122,7 +122,7 @@ const TransactionModal = observer(({ }) => {
 
                   </div>
                   <div className="p-4 md:p-6">
-                    <button onClick={closeModal} className="btn btn-default btn-default-lg w-full md:w-md">Close</button>
+                    <button onClick={closeModal} className={`btn btn-default btn-default-lg w-full md:w-md ${isProcessing ? "disabled" : ""}`}>Close</button>
                   </div>
                   <div className="absolute right-4 top-2 md:top-4">
                     <button
@@ -131,6 +131,7 @@ const TransactionModal = observer(({ }) => {
                   py-2 text-sm font-medium text-gray-500 border border-transparent rounded-md
                    hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none 
                    focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                        
                       onClick={closeModal}
                     >
                       <i className="fa-duotone fa-close text-base"></i>
