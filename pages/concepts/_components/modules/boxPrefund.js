@@ -12,8 +12,8 @@ const SwapTokens = ({}) => {
           </div>
           
         </div>
-        <div className="mb-4 flex relative">
-          <div className="w-1/5 pr-2 flex-shrink-0">
+        <div className="flex relative mb-4">
+          <div className="w-1/5 pr-2  flex-shrink-0">
             <select id="box" name="amount" className="select-custom w-full ">
               {/* remove '!rounded-l-none' if user doesn't have RIR */}
               <option className="text-gray-300" selected>1</option>
@@ -47,6 +47,7 @@ const SwapTokens = ({}) => {
             <i className="fas fa-check-circle mr-1"></i> Update
           </button>
         </div>
+        
 
         <div className="mb-4 flex relative">
           <div className="w-1/5 pr-2 flex-shrink-0">
@@ -82,7 +83,8 @@ const SwapTokens = ({}) => {
             </select>          
           </div>
           <button className="ml-4 w-2/5 flex-grow btn btn-primary px-2 disabled flex justify-center">
-            <i className="fas fa-plus-circle mr-1"></i> Add</button>
+            <i className="fas fa-plus-circle mr-1"></i> Add
+          </button>
         </div>
         
         

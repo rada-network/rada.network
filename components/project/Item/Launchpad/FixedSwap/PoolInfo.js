@@ -63,15 +63,8 @@ const PoolInfo = observer(function({ project,pool }) {
       </div>
       <div className="card-body flex flex-col">
         <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
-          <li className="list-pair mb-2">
-            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Investment round")}</span>
-            <span className="ml-auto list-value font-semibold text-right">
-              {/* <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div> */}
-              <div className={``}>{pool.type.toUpperCase()}</div>
-            </span>
-          </li>
           
-          <li className="list-pair mb-2">
+          {/* <li className="list-pair mb-2">
             <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Raise")}</span>
             {raise && showInfo ?
             <span className="ml-auto list-value font-semibold text-right">
@@ -82,11 +75,11 @@ const PoolInfo = observer(function({ project,pool }) {
               {pool.type == "private" ? "PRIVATE" : "TBA"}
             </span>
             }
-          </li>
+          </li> */}
           <li className="list-pair mb-2">
             <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Token Price")}</span>
             {tokenPrice ? 
-            <span className="ml-auto font-semibold">
+            <span className="ml-auto font-semibold text-right">
             1 {sale_token} = {tokenPrice} BUSD
             </span>
             :
@@ -106,7 +99,7 @@ const PoolInfo = observer(function({ project,pool }) {
           {!!pool.open_date && openTime < curentTime && showInfo &&
           <li className="list-pair mb-2">
           <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Progress")}</span>
-          <span className="list-value ml-auto">
+          <span className="list-value ml-auto text-right">
             <span className="font-semibold">
               {numberFormatter(progressToken)}
             </span>

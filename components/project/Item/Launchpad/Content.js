@@ -25,10 +25,13 @@ const LaunchpadContent = observer(function({ project,pool }) {
           <h3>{t("Info", { name: project?.token?.name })}</h3>
         </div>
         <div className="card-body">
-          <div className="h-full" 
-            dangerouslySetInnerHTML={{ __html: project.content.description }}
-          ></div>
-
+          <div className="flex h-full ">
+           
+            <div
+              dangerouslySetInnerHTML={{ __html: project.content.description }}
+            ></div>
+          </div>
+          
           <div className="flex">
             {!!project.news && <p className="mt-auto pt-4">
               <Link href={`/${dataStore.lang}/launchverse/${project.slug}/research`}>

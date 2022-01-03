@@ -134,6 +134,9 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
               <div className="project-card--container">
                 <div className="grid gap-8 lg:grid-cols-2">
                   <div className="box box--transparent">
+                    <div className="box-artwork">
+                      <img src="https://i.postimg.cc/jSmhZj5p/Asset-1-8x.png" />
+                    </div>
                     <div className="box-header !px-0">
                       <CountdownInPool />
                     </div>

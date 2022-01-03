@@ -134,6 +134,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
               <div className="project-card--container">
                 <div className="grid gap-8 lg:grid-cols-2">
                   <div className="box box--transparent">
+                   
                     <div className="box-header !px-0">
                       <CountdownInPool />
                     </div>
@@ -158,6 +159,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       </li>
                     
                     </ul>
+                    
                     <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
                       <li className="flex mb-2 relative pl-6">
                         <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
