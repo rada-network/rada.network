@@ -197,7 +197,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <div className="flex-shrink-0 flex-grow">
             <button className={`btn !text-sm relative w-full btn-default btn-default-lg btn-purple` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" width="100%" scale="md">
               {isConfirming && <span className="spinner" />}
-              {isConfirming ? <>{t("Place Bid")}</> : <>{t("Place Bid")}</>}
+              {isConfirming ? <>{t("Place Bid")}</> : <>{t("Add Bid")}</>}
             </button>
           </div>
         </div>
