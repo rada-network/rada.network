@@ -9,7 +9,7 @@ export default function LaunchpadOverview({ project,pool }) {
   return (
     <>
 
-      <div className="section-header pl-4 pr-4 pt-4 md:px-4 md:pt-4">
+      <div className="section-header">
         <div className="flex flex-wrap justify-between items-center w-full">
           <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
             <span className="icon flex-shrink-0 mr-2">
@@ -57,9 +57,7 @@ export default function LaunchpadOverview({ project,pool }) {
       </div>
 
       {/* Video / Banner of Project */}
-      <div className="w-full px-4">
-        <img className="w-full rounded-lg" src='https://i.postimg.cc/nrZcz2MH/Mockup-RADA-NFT.png' />
-      </div>
+     
 
       {pool == null && 
       <div className="page-media">

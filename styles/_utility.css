@@ -13,8 +13,17 @@
   @apply opacity-50 text-sm;
 }
 
-
-
+.spin-10 {
+  animation: spinner 5s 1s infinite;
+}
+@keyframes spinner {
+  0{
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 /*** labels ***/
 .label {
   @apply px-2 py-1.5 items-center justify-center rounded-full;
