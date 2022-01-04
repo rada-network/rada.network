@@ -119,50 +119,68 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
   return (
     <>
       <div className="global-padding">
-        <div className="flex">
-          <div className="w-1/5 flex-shrink-0 pr-2">
+        <div className="flex relative p-2 flex items-center border border-gray-100 dark:border-gray-800 mb-4 rounded-md">
+          <button className="btn btn-default !px-1 mr-2">
+            <span className="w-4 spin-10 h-4 rounded-full border-2 border-gray-300 dark:border-gray-400 border-l-purple-500 dark:border-l-purple-600" />
+          </button>
+          <span>Your current position</span>
+          <div className="ml-auto">
+            <span className="font-semibold">8</span>
+            <span className="opacity-50">/215</span>
+          </div>
+        </div>
+        <div className="mb-4 p2-4 text-xs uppercase tracking-wide flex border-b dark:border-opacity-40 border-gray-200 dark:border-gray-700">
+          <div className="w-1/6 flex-shrink-0 pr-2">
             <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
           </div>
-          <div className="w-2/5 flex-shrink-0 pl-2">
-            <label for="rir" className="mb-2 block tracking-wide font-medium opacity-70">Price (BUSD)</label>
+          <div className="w-1/4 flex-shrink-0 pl-2">
+            <label for="rir" className="mb-2 block tracking-wide font-medium opacity-70">BUSD per box</label>
+          </div>
+          <div className="w-1/4 flex-shrink-0 px-4">
+            <label className="mb-2 block tracking-wide font-medium opacity-70">Total</label>
           </div>
           
         </div>
-        {currentOrder.map(function(item){
-          return (
-            <div className="mb-4 flex relative">
-              <div className="w-1/5 pr-2 flex-shrink-0">
-                <select className="select-custom w-full" value={item.quantity} onChange={e => {handleChangeCurrentOrder(e,item.index,'quantity')}}>
-                  {/* remove '!rounded-l-none' if user doesn't have RIR */}
-                  {Array((auctionSwapInfo.info.maxBuyPerAddress)).fill(null).map(function(_, i){
-                    if (i + 1 < item.baseQuantity) return null
-                    if (i + 1 > (auctionSwapInfo.info.maxBuyPerAddress - (totalItem - item.quantity))) return null
-                    return (
-                      <option key={i} className="text-gray-300" value={(i+1)}>{i+1}</option>
-                    )
-                  })}
-                </select>
-              </div>
-              <div className="w-2/5 pl-2 flex-shrink-0">
-                <select id={"old-order"+item.index} className="select-custom  w-full" value={item.priceEach} onChange={e => {handleChangeCurrentOrder(e,item.index,'price')}}>
-                  {item.select.map((_, i) => {
-                    return (
-                      <option key={i} className="text-gray-300" value={_}>{_}</option>
-                    )
-                  })}
-                </select>          
-              </div>
-              <button onClick={e => { handleIncreaseBid(item.index)}} className="ml-4 w-2/5 flex-grow btn btn-primary px-2 flex justify-center">
-                <i className="fas fa-check-circle mr-1"></i> Increase
-              </button>
-            </div>
-          )
-        })}
-        
+        <div className="mb-4 flex items-center relative">
+          <div className="w-1/6 pr-2 flex-shrink-0">
+            <select id="box" name="amount" className="select-custom w-full ">
+              {/* remove '!rounded-l-none' if user doesn't have RIR */}
+              <option className="text-gray-300" selected>1</option>
+              <option className="text-gray-300">2</option>
+              <option className="text-gray-300">3</option>
+              <option className="text-gray-300">4</option>
+              <option className="text-gray-300">5</option>
+              <option className="text-gray-300">6</option>
+              <option className="text-gray-300">7</option>
+              <option className="text-gray-300">8</option>
+              <option className="text-gray-300">9</option>
+              <option className="text-gray-300">10</option>
+            </select>
+          </div>
+          <div className="w-1/4 pl-2 flex-shrink-0">
+            <select id="rir" name="rir" className="select-custom w-full ">
+              {/* remove '!rounded-l-none' if user doesn't have RIR */}
+              <option className="text-gray-300" selected>100</option>
+              <option className="text-gray-300">200 </option>
+              <option className="text-gray-300">300</option>
+              <option className="text-gray-300">400</option>
+              <option className="text-gray-300">500</option>
+              <option className="text-gray-300">600</option>
+              <option className="text-gray-300">700</option>
+              <option className="text-gray-300">800</option>
+              <option className="text-gray-300">900</option>
+              <option className="text-gray-300">1000</option>
+            </select>          
+          </div>
+          <div className="w-1/4 pl-4 font-semibold">600</div>
+          <button className="ml-2 md:ml-4 flex-shrink-0 flex-grow btn btn-primary py-2 flex justify-center">
+            <i className="fas fa-check-circle mr-1"></i> Increase
+          </button>
+        </div>
 
-        {totalItem < auctionSwapInfo.info.maxBuyPerAddress && <div className="mb-4 flex relative">
-          <div className="w-1/5 pr-2 flex-shrink-0">
-            <select id="box" name="amount" defaultValue={numberBox} onChange={handleChangeNumberBox} className="select-custom w-full ">
+        <div className="flex  items-center relative">
+          <div className="w-1/6 pr-2 flex-shrink-0">
+            <select id="box" name="amount" className="select-custom w-full ">
               {/* remove '!rounded-l-none' if user doesn't have RIR */}
               {Array(maxSelected).fill(null).map((_, i) => {
                 if (i + 1 > (auctionSwapInfo.info.maxBuyPerAddress - (totalItem))) return null
@@ -172,64 +190,47 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
               })}
             </select>
           </div>
-          <div className="w-2/5 pl-2 flex-shrink-0">
-            <select id="news-order" className="select-custom  w-full " defaultValue={priceBusd} onChange={e => {handleChangePriceBusd(e)}}>
+          <div className="w-1/4 pl-2 flex-shrink-0">
+            <select id="rir" name="rir" className="select-custom  w-full ">
               {/* remove '!rounded-l-none' if user doesn't have RIR */}
-              {Array(10).fill(null).map((_, i) => {
-                return (
-                  <option key={i} className="text-gray-300" value={auctionSwapInfo.info.startPrice + (i*10)}>{auctionSwapInfo.info.startPrice+i*10}</option>
-                )
-              })}
+              <option className="text-gray-300" selected>Price</option>
+              <option className="text-gray-300" >100</option>
+              <option className="text-gray-300">200</option>
+              <option className="text-gray-300">300</option>
+              <option className="text-gray-300">400</option>
+              <option className="text-gray-300">500</option>
+              <option className="text-gray-300">600</option>
+              <option className="text-gray-300">700</option>
+              <option className="text-gray-300">800</option>
+              <option className="text-gray-300">900</option>
+              <option className="text-gray-300">1000</option>
             </select>          
           </div>
-          <button className={"ml-4 w-2/5 flex-grow btn btn-primary px-2 flex justify-center" + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm}>
-            <i className="fas fa-plus-circle mr-1"></i> {t("Place Bid")}</button>
-        </div>
-        }
-        
-        
-        <div className="mb-4 flex gap-4 items-center py-4 border-b border-t dark:border-opacity-40 border-gray-200 dark:border-gray-700">
-          <div className="w-1/2">
-           {t("Total Place Bid")}
-          </div>
-          <div className="w-1/2 text-right font-semibold">
-            {totalBusd} BUSD       
-          </div>
+          <div className="w-1/4 pl-2"></div>
+          <button className="ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 disabled flex justify-center">
+            <i className="fas fa-plus-circle mr-1"></i>Add bid</button>
         </div>
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
        
         {/* chưa nhập amount thì ẩn 2 nút enable cái này đi */}
-        {totalItem < auctionSwapInfo.info.maxBuyPerAddress && <div className="mt-4 grid gap-4"> 
+        {/* <div className="mt-4  grid grid-cols-2 gap-4"> 
+         
           <div className="flex-shrink-0 flex-grow">
-            <button className={`btn !text-sm relative w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} onClick={handleApprove} width="100%" scale="md">
-              {isApproving && <span className="spinner" />}
-              {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
-              {isApproving && 
-              <>{t("Approving Contract")}</> 
-              }
-              {isApproved && 
-              <>{t("Approved Contract")} BUSD</> 
-              }
-              {!isApproving && !isApproved &&
-              <>{t("Approve Contract")} BUSD</>
-              }
-            </button>
+            <button className="btn relative disabled  w-full btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md">
+          
+              Enable BUSD
+            </button>     
           </div>
-          {/* <div className="flex-shrink-0 flex-grow">
-            <button className={`btn !text-sm relative w-full btn-default btn-default-lg btn-purple` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" width="100%" scale="md">
-              {isConfirming && <span className="spinner" />}
-              {isConfirming ? <>{t("Place Bid")}</> : <>{t("Add Bid")}</>}
-            </button>
-          </div> */}
-        </div>
-        }
-        <div className="mt-4">
-          {auctionSwapInfo.order.total > 0 &&
-          <button className="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
-          {t("Back")}
-          </button>
-          }
-        </div>
+          <div  className="flex-shrink-0 flex-grow">
+            <button className="btn relative w-full btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md">
+            
+              Prefund
+            </button>         
+          </div>
+        </div> */}
+
+        
+
       </div>
 
     </>

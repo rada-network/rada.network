@@ -9,7 +9,7 @@ export default function LaunchpadOverview({ project,pool }) {
   return (
     <>
 
-      <div className="section-header pl-4 pr-4 pt-4 md:px-4 md:pt-4">
+      <div className="section-header">
         <div className="flex flex-wrap justify-between items-center w-full">
           <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
             <span className="icon flex-shrink-0 mr-2">
@@ -33,7 +33,7 @@ export default function LaunchpadOverview({ project,pool }) {
               </span>
             </h1>
           </div>
-
+         
           <div className="flex flex-wrap space-x-4 mb-4">
             <div className="flex items-center text-sm">
               <span className="w-5 h-5">
@@ -57,6 +57,8 @@ export default function LaunchpadOverview({ project,pool }) {
       </div>
 
       {/* Video / Banner of Project */}
+     
+
       {pool == null && 
       <div className="page-media">
         <div className="media-player rounded-lg">

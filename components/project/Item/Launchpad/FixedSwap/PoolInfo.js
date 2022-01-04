@@ -56,16 +56,19 @@ const PoolInfo = observer(function({ project,pool }) {
   return (
     <div className="card card-default project-brief">
       <div className="card-header flex items-start">
-        <h3>{project.content.title} - {pool.title}</h3>
+        <div>
+          <span className="text-xs uppercase !tracking-widest">{project.content.title} </span>
+          <h3>{pool.title}</h3>
+        </div>
         <a className="btn flex btn-default !text-xs flex-shrink-0" target="_blank" 
         href="https://rada.network/en/post/how-to-participate-in-an-ido-on-launchverse">
             <i className="fas fa-question-circle mr-2 opacity-50"></i> How to</a>
       </div>
-      <div className="card-body flex flex-col">
-        <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
+      <div className="card-body">
+        <ul className="mb-0">
           
-          <li className="list-pair mb-2">
-            <span className="list-key !w-1/2">{t("Raise")}</span>
+          {/* <li className="list-pair mb-2">
+            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Raise")}</span>
             {raise && showInfo ?
             <span className="ml-auto list-value font-semibold text-right">
               {numberFormatter(raise)} {raise_token}
@@ -75,11 +78,11 @@ const PoolInfo = observer(function({ project,pool }) {
               {pool.type == "private" ? "PRIVATE" : "TBA"}
             </span>
             }
-          </li>
+          </li> */}
           <li className="list-pair mb-2">
             <span className="list-key !w-1/2">{t("Token Price")}</span>
             {tokenPrice ? 
-            <span className="ml-auto font-semibold">
+            <span className="ml-auto font-semibold text-right">
             1 {sale_token} = {tokenPrice} BUSD
             </span>
             :
@@ -98,8 +101,8 @@ const PoolInfo = observer(function({ project,pool }) {
           </li> */}
           {!!pool.open_date && openTime < curentTime && showInfo &&
           <li className="list-pair mb-2">
-          <span className="list-key !w-1/2">{t("Progress")}</span>
-          <span className="list-value ml-auto">
+          <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Progress")}</span>
+          <span className="list-value ml-auto text-right">
             <span className="font-semibold">
               {numberFormatter(progressToken)}
             </span>

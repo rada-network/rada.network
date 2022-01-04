@@ -39,7 +39,7 @@ const Timeline = ({ step }) => {
 
           <Step
             step="2"
-            title={t("Prefunding")}
+            title={t("Purchase")}
             desc={t("Deposit your fund")}
           />
 
