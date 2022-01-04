@@ -68,11 +68,12 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
   const handleIncreaseBid = async function(bidIndex){
     try{
-      store.transaction.showTransaction(true);
+      store.transaction.showTransaction(true, t("start transaction message"));
       let bid = currentOrder.filter((i) => {
         return i.index === bidIndex
       })[0]
       const tx = await callWithGasPrice(launchpadContract, 'increaseBid', [pool.id,bidIndex,bid.quantity,ethers.utils.parseEther(bid.priceEach.toString(),0)])
+      store.transaction.startTransaction(true, t("transaction started"));
       const receipt = await tx.wait()
       store.transaction.update(receipt.transactionHash);
       fetchAccountBalance()
@@ -100,15 +101,19 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
       }
     },
     onApprove: async (requireApprove) => {
-      store.transaction.showTransaction(true);
-      return callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+      store.transaction.showTransaction(true, t("start transaction message"));
+      const tx = callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+      store.transaction.startTransaction(true, t("transaction started"));
+      return tx;
     },
     onApproveSuccess: async ({ receipt }) => {
       store.transaction.update(receipt.transactionHash);
     },
     onConfirm: () => {
-      store.transaction.showTransaction(true);
-      return callWithGasPrice(launchpadContract, 'placeBid', [pool.id,numberBox,ethers.utils.parseEther(priceBusd.toString())])
+      store.transaction.showTransaction(true, t("start transaction message"));
+      const tx = callWithGasPrice(launchpadContract, 'placeBid', [pool.id,numberBox,ethers.utils.parseEther(priceBusd.toString())]);
+      store.transaction.startTransaction(true, t("transaction started"));
+      return tx;
     },
     onSuccess: async ({ receipt }) => {
       store.transaction.update(receipt.transactionHash);

@@ -13,10 +13,11 @@ const TransactionModal = observer(({ }) => {
   const { getBscTransactionURL } = useChainConfig();
   const [isOpen, setIsOpen] = useState(false);
 
-  const isProcessing = store?.transaction.isProcessing;
+  const isOpening = store?.transaction.isOpening;
   const transactionHash = store?.transaction.transactionHash;
   const isError = store?.transaction.isError;
-  const errorMessage = store?.transaction.errorMessage;
+  const message = store?.transaction.message;
+  const isStartTransaction = store?.transaction.isStartTransaction;
 
   function closeModal() {
     if (transactionHash !== "" || isError) {
@@ -26,8 +27,19 @@ const TransactionModal = observer(({ }) => {
   }
 
   useEffect(() => {
-    setIsOpen(isProcessing);
-  }, [isProcessing])
+    setIsOpen(isOpening);
+  }, [isOpening])
+
+  useEffect(() => {
+    if (isStartTransaction) {
+      setTimeout(function() {
+        if (transactionHash == "") {
+          store?.transaction.updateMessage(t("bsr warning"));
+        }
+      }, 30000);
+    }
+    
+  }, [isStartTransaction]);
 
   function openModal() {
     setIsOpen(true);
@@ -93,10 +105,9 @@ const TransactionModal = observer(({ }) => {
                           <i class="fa-solid fa-check-circle text-green-500"></i>
                         </span>
                       </div>
-
                     ) : (
                       <>
-                        {transactionHash == "" && !isError && (
+                        {transactionHash == "" && !isError && isStartTransaction && (
                           <span className="spinner-xl mx-auto"></span>
                         )}
                       </>
@@ -115,29 +126,31 @@ const TransactionModal = observer(({ }) => {
 
                       ) : (
                         <p>
-                          {isError ? (!!errorMessage ? errorMessage : t("transaction error message")) : t("bsc warning")}
+                          {message}
                         </p>
                       )}
                     </h2>
 
                   </div>
-                  <div className="p-4 md:p-6">
-                    <button onClick={closeModal} className={`btn btn-default btn-default-lg w-full md:w-md ${isProcessing ? "disabled" : ""}`}>Close</button>
-                  </div>
+
                   <div className="absolute right-4 top-2 md:top-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center px-4 bg-transparent 
-                  py-2 text-sm font-medium text-gray-500 border border-transparent rounded-md
-                   hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none 
-                   focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                        
+                      className={`inline-flex justify-center px-4 bg-transparent py-2 text-sm font-medium 
+                      text-gray-500 border border-transparent rounded-md
+                      hover:bg-gray-200 
+                      dark:hover:bg-gray-700 focus:outline-none 
+                      focus-visible:ring-2 focus-visible:ring-offset-2 
+                      focus-visible:ring-blue-500"   
+                      ${transactionHash == "" && !isError ? "disabled" : ""}`}
+
                       onClick={closeModal}
                     >
                       <i className="fa-duotone fa-close text-base"></i>
                     </button>
                   </div>
                 </div>
+
               </Transition.Child>
             </div>
           </Dialog>
