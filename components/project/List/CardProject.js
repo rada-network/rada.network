@@ -8,15 +8,13 @@ import { useLaunchpadContractV2 } from "@utils/hooks/useContracts";
 import { ethers, utils } from "ethers";
 import fetcher from "@lib/fetchJson";
 import numberFormatter from "@components/utils/numberFormatter";
+import CardProjectProgress from "./CardProjectProgress";
 
 
 export const CardProject = ({project,pool, status}) => {
   const {t,i18n} = useTranslation("launchpad");
   const [poolStatus, setPoolStatus] = useState("");
   const [poolContract, setPoolContract] = useState({"pool_id":'',"contract":null});
-  const {library,account} = useActiveWeb3React()
-  const [poolStat, setPoolStat] = useState({amountBusd : 0});
-  const lauchpadContact = useLaunchpadContractV2({...pool,contract: poolContract.contract,pool_id : poolContract.pool_id});
   const [showInfo, setShowInfo] = useState(true);
   useEffect(() => {
     if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(pool.current_date) && Date.parse(pool.current_date) < Date.parse(pool.end_date)) {
@@ -47,31 +45,7 @@ export const CardProject = ({project,pool, status}) => {
     }
   }, []);
 
-  useEffect(() => {
-    const fetchLaunchpadInfo = async () => {
-      try {
-        let stat = await lauchpadContact.poolsStat(poolContract.pool_id);
-        setPoolStat({
-          amountBusd : ethers.utils.formatEther(stat.amountBusd),
-        })
-      } catch (error) {
-        //console.log(account)
-        //console.log("error to fetch launchpad info", error);
-      }
-    };
-    if (!!lauchpadContact && !!library) {
-      fetchLaunchpadInfo();
-    }
-  }, [lauchpadContact,account,library]);
   const raise = pool.raise;
-  const target = !!raise ? raise : 0;
-  let progressPercentage
-  if (target == 0){
-    progressPercentage = 0
-  }
-  else{
-    progressPercentage = ((poolStat.amountBusd / target) * 100).toFixed(1);
-  }
   let raise_token = "BUSD"
   let sale_token = project.token.symbol
   if (pool.token_sale == "fixed-swap" || pool.token_sale == "auction-swap"){
@@ -133,23 +107,9 @@ export const CardProject = ({project,pool, status}) => {
               }
               {/* <span className="list-value ml-auto"> {pool.price == 0 ? "TBA" : pool.price + " BUSD"}</span> */}
             </li>
-            <li className="list-pair">
-              <span className="list-key">
-                {t("Progress")}
-              </span>
-              <span className="list-value ml-auto">
-                <span className="font-semibold">{showInfo ? numberFormatter(poolStat?.amountBusd) : "TBA"}</span>
-                <span className="opacity-70">/{pool.raise == 0 || !showInfo ? "TBA" : pool.raise.toLocaleString() + ` ${raise_token}`}</span>
-              </span>
-            </li>
           </ul>
-
-          {showInfo && 
-          <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
-            <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" title={progressPercentage} style={{width: `${(progressPercentage > 100 ? 100 : progressPercentage)+ "%"}`}}>{progressPercentage + "%"}</div>
-          </div>
+          {poolContract.contract && <CardProjectProgress project={project} pool={{...pool,contract: poolContract.contract,pool_id : poolContract.pool_id}} />
           }
-
           <div className="project--cta">
             <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} >
             <a href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>

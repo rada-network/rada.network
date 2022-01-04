@@ -205,12 +205,14 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         <div className="inline-block w-full mx-auto text-center 
                             rounded-lg mb-4
                             border border-gray-200 dark:border-gray-700">
-                          <div className="py-1 px-4">
-                            <strong>
+                          <div className="py-2 px-4 flex justify-center">
+                            <strong className="mr-2">
                               {pool.token_name} Contract: 
                             </strong>
-                            <div>
-                              <span>{`${fixedSwapInfo.info.addressItem.substr(0, 4)}...${fixedSwapInfo.info.addressItem.substr(-4)}`}</span>
+                            <div className="mr-2">
+                              <a target="_blank" href={getBscScanURL(tokenAddress)}>
+                                {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}
+                              </a>
                             </div>
                             <CopyToClipboard
                               onCopy={handleCopy}
