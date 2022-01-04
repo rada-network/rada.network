@@ -167,12 +167,12 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           {auctionSwapInfo.stat.highestPrice} BUSD
                         </span>
                       </li>
-                      <li className="list-pair mb-2">
+                      {/* <li className="list-pair mb-2">
                         <span className="list-key !w-3/4">Your number {pool.token_name}</span>
                         <span className="ml-auto list-value font-semibold tabular-nums">
                           {auctionSwapInfo.order.totalItem}
                         </span>
-                      </li>
+                      </li> */}
                     
                     </ul>
                     <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
@@ -223,6 +223,12 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           <div  className="py-1 px-4">
                             <span className="mr-2 opacity-70">{t("Closeat")}</span> 
                             <OpenDate time={pool.end_date} />
+                          </div>
+                          }
+                          {!!pool.whitelist_date && 
+                          <div  className="py-1 px-4">
+                            <span className="mr-2 opacity-70">{t("Announcement")}</span> 
+                            <OpenDate time={pool.whitelist_date} />
                           </div>
                           }
                         </div>

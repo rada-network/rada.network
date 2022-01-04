@@ -201,21 +201,27 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       </h3>
                       
                       
-                      <div className="w-full px-2 py-1 rounded-lg flex justify-between bg-gray-100 dark:bg-gray-700 ml-auto list-value hover:bg-gray-200 dark:hover:bg-gray-600">
-                        <strong>
-                          Token Contract: 
-                        </strong>
-                        <div>
-                          <span>{`${fixedSwapInfo.info.addressItem.substr(0, 10)}...${fixedSwapInfo.info.addressItem.substr(-10)}`}</span>
+                      <div className="mt4">
+                        <div className="inline-block w-full mx-auto text-center 
+                            rounded-lg mb-4
+                            border border-gray-200 dark:border-gray-700">
+                          <div className="py-1 px-4">
+                            <strong>
+                              {pool.token_name} Contract: 
+                            </strong>
+                            <div>
+                              <span>{`${fixedSwapInfo.info.addressItem.substr(0, 4)}...${fixedSwapInfo.info.addressItem.substr(-4)}`}</span>
+                            </div>
+                            <CopyToClipboard
+                              onCopy={handleCopy}
+                              text={fixedSwapInfo.info.addressItem}
+                            >
+                              <button className="btn ml-2">
+                                <i className="fa-duotone fa-copy text-2xs"></i>
+                              </button>
+                            </CopyToClipboard>
+                          </div>
                         </div>
-                        <CopyToClipboard
-                          onCopy={handleCopy}
-                          text={fixedSwapInfo.info.addressItem}
-                        >
-                          <button className="btn ml-2">
-                            <i className="fa-duotone fa-copy text-2xs"></i>
-                          </button>
-                        </CopyToClipboard>
                       </div>
 
                       <div className="mt-4">

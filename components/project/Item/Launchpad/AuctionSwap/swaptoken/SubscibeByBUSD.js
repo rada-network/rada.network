@@ -182,15 +182,15 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
               })}
             </select>          
           </div>
-          <button className="ml-4 w-2/5 flex-grow btn btn-primary px-2 disabled flex justify-center">
-            <i className="fas fa-plus-circle mr-1"></i> Add</button>
+          <button className={"ml-4 w-2/5 flex-grow btn btn-primary px-2 flex justify-center" + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm}>
+            <i className="fas fa-plus-circle mr-1"></i> {t("Place Bid")}</button>
         </div>
         }
         
         
         <div className="mb-4 flex gap-4 items-center py-4 border-b border-t dark:border-opacity-40 border-gray-200 dark:border-gray-700">
           <div className="w-1/2">
-           Total
+           {t("Total Place Bid")}
           </div>
           <div className="w-1/2 text-right font-semibold">
             {totalBusd} BUSD       
@@ -199,7 +199,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
        
         {/* chưa nhập amount thì ẩn 2 nút enable cái này đi */}
-        {totalItem < auctionSwapInfo.info.maxBuyPerAddress && <div className="mt-4  grid grid-cols-2 gap-4"> 
+        {totalItem < auctionSwapInfo.info.maxBuyPerAddress && <div className="mt-4 grid gap-4"> 
           <div className="flex-shrink-0 flex-grow">
             <button className={`btn !text-sm relative w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} onClick={handleApprove} width="100%" scale="md">
               {isApproving && <span className="spinner" />}
@@ -215,12 +215,12 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
               }
             </button>
           </div>
-          <div className="flex-shrink-0 flex-grow">
+          {/* <div className="flex-shrink-0 flex-grow">
             <button className={`btn !text-sm relative w-full btn-default btn-default-lg btn-purple` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" width="100%" scale="md">
               {isConfirming && <span className="spinner" />}
               {isConfirming ? <>{t("Place Bid")}</> : <>{t("Add Bid")}</>}
             </button>
-          </div>
+          </div> */}
         </div>
         }
         <div className="mt-4">
