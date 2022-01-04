@@ -60,7 +60,11 @@ const ProjectLaunchpad = ({ project, pool }) => {
           
           <div class="order-0 mb-4 md:mb-0 col-start-2 col-span-2 row-span-3 flex flex-col
           ">
-            <div className="mb-4"> <img className="w-full col-start-2 col-span-2 row-span-1 rounded-lg object-cover" src='https://i.postimg.cc/KvNk1fVp/nft.jpg' /></div>
+            {pool.token_sale !== "ido" && 
+            <div className="mb-4"> 
+              <img className="w-full col-start-2 col-span-2 row-span-1 rounded-lg object-cover" src='https://i.postimg.cc/KvNk1fVp/nft.jpg' />
+            </div>
+            }
             <div className="bg-white dark:bg-gray-800 relative z-10 card-default flex-shrink-0 flex-grow">
               {/* Main Action Card */}
           
@@ -104,6 +108,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
               </div>
             </div>
           </div>
+          {pool.token_sale !== "ido" && 
           <div class="order-4 mb-4 md:mb-0 col-start-1 row-start-3 ">
             <div className="card card-default card--project-info">
               <div className="card-header">
@@ -128,6 +133,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
               </div>
             </div>
           </div> 
+          }
           {/* Pool info     */}
         </div>
       </div>
@@ -162,8 +168,6 @@ const ProjectLaunchpad = ({ project, pool }) => {
           </div>
         </div>
       </div>
-
-
     </>
   );
 };
