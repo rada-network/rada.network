@@ -15,19 +15,19 @@ const MiniCountdown = ({ pool, isEndDate }) => {
           <div className="countdown--mini">
             <div className="countdown--mini--body !py-0 countdown--mini--body--day">
               <time>{days}</time>
-              <span className="ml-0.5">d</span>
+              <span className="">d</span>
             </div>
             <div className="countdown--mini--body !py-0 countdown--mini--body--hour">
               <time>{hours}</time>
-              <span className="ml-0.5">h</span>
+              <span className="">h</span>
             </div>
             <div className="countdown--mini--body !py-0 countdown--mini--body--minute">
               <time>{minutes}</time>
-              <span className="ml-0.5">m</span>
+              <span className="">m</span>
             </div>
             <div className="countdown--mini--body !py-0 countdown--mini--second">
               <time>{seconds}</time>
-              <span className="ml-0.5">s</span>
+              <span className="">s</span>
             </div>
           </div>
         </>

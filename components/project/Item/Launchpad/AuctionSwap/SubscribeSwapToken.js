@@ -54,8 +54,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const CountdownInPool = function(){
     return (
       <div className={`flex text-base justify-between items-center"`}>
-        {poolStatus == "open" && <div className="text-base">{t("Pool closes in")}</div>}
-        {poolStatus == "coming" && <div className="text-base">{t("Sale start in")}</div>}
+        {poolStatus == "open" && <div className="text-base">{t("Close in")}</div>}
+        {poolStatus == "coming" && <div className="text-base">{t("Start in")}</div>}
         {poolStatus == "closed" && <div className="text-base">{t("pool closed")}</div>}
         {poolStatus == "tba" && <div className="text-base">{t("Comming Soon")}</div>}
         {poolStatus == "coming" && <MiniCountdown pool={pool} isEndDate={false} />}
@@ -128,7 +128,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   return (
     <>
       {step == 2 &&
-        <div className="card-default project-main-actions no-padding overflow-hidden">
+        <div className="project-main-actions no-padding overflow-hidden">
 
           <div className="card-body no-padding">
             <div className="flex flex-col">
@@ -137,42 +137,31 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
               </div>
 
               <div className="project-card--container">
-                <div className="grid gap-8 lg:grid-cols-2">
+                <div className="flex flex-col md:grid md:gap-6 md:grid-cols-3">
                   <div className="box box--transparent">
                     <div className="box-header !px-0">
                       <CountdownInPool />
                     </div>
                     <ul className="mt-4 flex-shrink-0 flex-grow">
+                     
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-3/4">Minimum boxes per address</span>
-                        <span className="ml-auto list-value font-semibold tabular-nums">
-                          1
+                        <span className="list-key !w-3/4">Boxes per address </span>
+                        <span className="ml-auto text-right list-value font-semibold tabular-nums">
+                          1-{auctionSwapInfo.info.maxBuyPerAddress} 
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                        <span className="list-key !w-3/4">Maximum boxes per address </span>
-                        <span className="ml-auto list-value font-semibold tabular-nums">
-                          {auctionSwapInfo.info.maxBuyPerAddress}
-                        </span>
-                      </li>
-                      <li className="list-pair mb-2">
-                        <span className="list-key !w-3/4">Start price </span>
-                        <span className="ml-auto list-value font-semibold tabular-nums">
-                          {auctionSwapInfo.info.startPrice} BUSD
-                        </span>
-                      </li>
-                      <li className="list-pair mb-2">
-                        <span className="list-key !w-3/4">Highest price </span>
+                        <span className="list-key !w-3/4">Your bid</span>
                         <span className="ml-auto list-value font-semibold tabular-nums">
                           {auctionSwapInfo.stat.highestPrice} BUSD
                         </span>
                       </li>
-                      <li className="list-pair mb-2">
+                      {/* <li className="list-pair mb-2">
                         <span className="list-key !w-3/4">Your number {pool.token_name}</span>
                         <span className="ml-auto list-value font-semibold tabular-nums">
                           {auctionSwapInfo.order.totalItem}
                         </span>
-                      </li>
+                      </li> */}
                     
                     </ul>
                     <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
@@ -184,8 +173,10 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       </li>
                     </ul>
                   </div>
-                  <div className="box box--gray">
-                    <div className="box-header relative flex">Bid </div>
+                  <div className="box box--gray col-span-2">
+                    <div className="box-header relative flex">Bid 
+
+                    </div>
                     <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
                   </div>
 
@@ -223,6 +214,12 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           <div  className="py-1 px-4">
                             <span className="mr-2 opacity-70">{t("Closeat")}</span> 
                             <OpenDate time={pool.end_date} />
+                          </div>
+                          }
+                          {!!pool.whitelist_date && 
+                          <div  className="py-1 px-4">
+                            <span className="mr-2 opacity-70">{t("Announcement")}</span> 
+                            <OpenDate time={pool.whitelist_date} />
                           </div>
                           }
                         </div>

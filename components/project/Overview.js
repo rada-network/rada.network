@@ -22,7 +22,7 @@ const ProjectContent = function({project}){
           
             {project.token.contract_address && (
               <li className="list-pair mb-2">
-              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">
+              <span className="list-key !w-1/2">
                 {project.token.symbol}'s Contract
               </span>
               <div className="ml-auto flex items-center list-value font-semibold">
@@ -40,7 +40,7 @@ const ProjectContent = function({project}){
             )}
             
             <li className="list-pair mb-2">
-              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">
+              <span className="list-key !w-1/2">
                 Network
               </span>
               <div className="ml-auto flex items-center list-value">
@@ -52,7 +52,7 @@ const ProjectContent = function({project}){
             </li>
 
             <li className="list-pair mb-2">
-              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">
+              <span className="list-key !w-1/2">
                 Website
               </span>
               <div className="list-value flex justify-end ml-auto items-center">
@@ -61,7 +61,7 @@ const ProjectContent = function({project}){
             </li>
 
             <li className="list-pair mb-2">
-              <span className="list-key !w-1/2 text-xs md:text-sm capitalize">
+              <span className="list-key !w-1/2">
                 Connect
               </span>
               <ul className="flex ml-auto space-x-3">

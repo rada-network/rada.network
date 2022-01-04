@@ -3,7 +3,7 @@ const SwapTokens = ({}) => {
   return (
     <>
       <div className="global-padding">
-        <div className="mb-4 p2-4 flex border-b dark:border-opacity-40 border-gray-200 dark:border-gray-700">
+        <div className="flex">
           <div className="w-1/5 flex-shrink-0 pr-2">
             <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
           </div>
@@ -12,8 +12,8 @@ const SwapTokens = ({}) => {
           </div>
           
         </div>
-        <div className="mb-4 flex relative">
-          <div className="w-1/5 pr-2 flex-shrink-0">
+        <div className="flex relative mb-4">
+          <div className="w-1/5 pr-2  flex-shrink-0">
             <select id="box" name="amount" className="select-custom w-full ">
               {/* remove '!rounded-l-none' if user doesn't have RIR */}
               <option className="text-gray-300" selected>1</option>
@@ -47,6 +47,7 @@ const SwapTokens = ({}) => {
             <i className="fas fa-check-circle mr-1"></i> Update
           </button>
         </div>
+        
 
         <div className="mb-4 flex relative">
           <div className="w-1/5 pr-2 flex-shrink-0">
@@ -82,7 +83,8 @@ const SwapTokens = ({}) => {
             </select>          
           </div>
           <button className="ml-4 w-2/5 flex-grow btn btn-primary px-2 disabled flex justify-center">
-            <i className="fas fa-plus-circle mr-1"></i> Add</button>
+            <i className="fas fa-plus-circle mr-1"></i> Add
+          </button>
         </div>
         
         
@@ -90,7 +92,7 @@ const SwapTokens = ({}) => {
           <div className="w-1/2">
            Total
           </div>
-          <div className="w-1/2 text-lg text-right font-semibold">
+          <div className="w-1/2 text-right font-semibold">
             500 BUSD       
           </div>
         </div>

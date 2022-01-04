@@ -64,7 +64,7 @@ const PoolInfo = observer(function({ project,pool }) {
       <div className="card-body flex flex-col">
         <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
           <li className="list-pair mb-2">
-            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Investment round")}</span>
+            <span className="list-key !w-1/2">{t("Investment round")}</span>
             <span className="ml-auto list-value font-semibold text-right">
               {/* <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div> */}
               <div className={``}>{pool.type.toUpperCase()}</div>
@@ -72,7 +72,7 @@ const PoolInfo = observer(function({ project,pool }) {
           </li>
           
           <li className="list-pair mb-2">
-            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Raise")}</span>
+            <span className="list-key !w-1/2">{t("Raise")}</span>
             {raise && showInfo ?
             <span className="ml-auto list-value font-semibold text-right">
               {numberFormatter(raise)} {raise_token}
@@ -84,7 +84,7 @@ const PoolInfo = observer(function({ project,pool }) {
             }
           </li>
           <li className="list-pair mb-2">
-            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Token Price")}</span>
+            <span className="list-key !w-1/2">{t("Token Price")}</span>
             {tokenPrice ? 
             <span className="ml-auto font-semibold">
             1 {sale_token} = {tokenPrice} BUSD
@@ -96,7 +96,7 @@ const PoolInfo = observer(function({ project,pool }) {
             }
           </li>
           {/* <li className="list-pair mb-2">
-            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Method</span>
+            <span className="list-key !w-1/2">Method</span>
             
             <span className="ml-auto font-semibold">
               Overflow, FCFS
@@ -105,7 +105,7 @@ const PoolInfo = observer(function({ project,pool }) {
           </li> */}
           {!!pool.open_date && openTime < curentTime && showInfo &&
           <li className="list-pair mb-2">
-          <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Progress")}</span>
+          <span className="list-key !w-1/2">{t("Progress")}</span>
           <span className="list-value ml-auto">
             <span className="font-semibold">
               {numberFormatter(progressToken)}

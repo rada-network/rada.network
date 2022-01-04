@@ -34,9 +34,9 @@ const TransactionModal = observer(({ }) => {
     if (isStartTransaction) {
       setTimeout(function() {
         if (transactionHash == "") {
-          store?.transaction.updateMessage(t("bsr warning"));
+          store?.transaction.updateMessage(t("bsc warning"));
         }
-      }, 30000);
+      }, 5000);
     }
     
   }, [isStartTransaction]);
