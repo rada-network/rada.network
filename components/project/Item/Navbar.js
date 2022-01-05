@@ -25,8 +25,8 @@ export default function ProjectNavbar({ symbol, project, slug,pool }) {
     e.preventDefault();
     e.stopPropagation();
     ///console.log(window.history.length)
-    if (window.history.length > 2){
-      router.back()
+    if (router.query.from && router.query.from === "dashboard"){
+      router.push("/dashboard")
     }
     else{
       router.push(e.currentTarget.getAttribute("href"));
