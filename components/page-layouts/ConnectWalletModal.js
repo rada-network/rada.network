@@ -48,6 +48,7 @@ const ConnectWalletModal = observer(({}) => {
 
     useEffect(() => {
       if (!!error) {
+        logout()
         toast.error(getErrorMessage(error, store.network));
       }
     }, [error]);
