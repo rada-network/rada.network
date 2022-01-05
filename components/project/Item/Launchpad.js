@@ -1,9 +1,11 @@
 import { useEffect,useState } from "react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
+import Screen from "../../utils/Responsive";
+
 import LaunchpadOverview from "./Launchpad/Overview";
 import LaunchpadContent from "./Launchpad/Content";
-import TutorialWidget from "./Launchpad/TutorialWidget"
+
 
 import fetcher from "@lib/fetchJson";
 import ProjectFaq from "./Faq";
@@ -11,6 +13,7 @@ import Subscriber from "./Launchpad/Actions/Subscriber";
 import { getProjectPoolWinnerBySlug } from "@data/query/projects";
 import dynamic from "next/dynamic";
 import HowToUse from "./HowToUse";
+import TutorialWidget from "./Launchpad/TutorialWidget"
 
 const LaunchpadIdo = dynamic(import(`./Launchpad/Actions/Index`));
 const LaunchpadFixedSwap = dynamic(import(`./Launchpad/FixedSwap/Index`));
@@ -60,12 +63,12 @@ const ProjectLaunchpad = ({ project, pool }) => {
 
         <LaunchpadOverview project={project} pool={poolContract} />
 
-        <div class="flex">
+        <div class="flex items-start">
           
           {/* Main Col */}
           <div class="flex flex-col lg:order-2 w-full ml-4">
 
-            <div className="bg-white dark:bg-gray-800 relative z-10 card-default flex-shrink-0 flex-grow">
+            <div className="">
               {/* Main Action Card */}
           
               {pool.token_sale == "ido" && 

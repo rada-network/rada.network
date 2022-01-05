@@ -25,7 +25,7 @@ const ProjectContent = function({project}){
               <span className="list-key !w-1/2">
                 {project.token.symbol}'s Contract
               </span>
-              <div className="ml-auto flex items-center list-value font-semibold">
+              <div className="list-value ml-auto flex items-center font-semibold">
                 <a target="_blank" href="" title={project.token.contract_address}>{`${project.token.contract_address.substr(0, 5)}...${project.token.contract_address.substr(-4)}`}</a>
                 <CopyToClipboard text=""
                   onCopy={handleCopy}
