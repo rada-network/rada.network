@@ -3,14 +3,16 @@ import { Disclosure, Transition } from "@headlessui/react";
 import { useState,useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-const ProjectFaq = ({project}) => {
-  const {t,i18n} = useTranslation()
-  const [listFaq,setListFaq] = useState([])
+const ProjectFaq = ({project, pool}) => {
+  const {t,i18n} = useTranslation();
+  const [listFaq,setListFaq] = useState([]);
+  
   useEffect(() => {
     getFaqFeed({page_slug : `launchverse/${project.slug}`,lang : i18n.language}).then(function(feed) {
       setListFaq(feed)
     })
-  },[])
+  },[]);
+  
   return (
     <>
     {listFaq.length > 0 &&

@@ -24,10 +24,13 @@ export function ProjectPage({ slug, locale }) {
   const pageOrPool = slug.length > 1 ? slug[1] : "";
   let page = 'index'
   let poolSlug = ""
+
   if (pageOrPool == "share2earn" || pageOrPool == "research") {
     page = pageOrPool;
-  }
-  else{
+    if (router.query.pool) {
+      poolSlug = router.query.pool;
+    }
+  } else{
     poolSlug = pageOrPool
   }
   let pool = null
