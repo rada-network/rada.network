@@ -119,12 +119,45 @@ const ProjectLaunchpad = ({ project, pool }) => {
           {/* END: Main Col */}
 
           {/* Sidebar */}
-          <div class="flex flex-col lg:order-1 lg:w-2/6">
+          <div class="flex flex-col lg:order-1 lg:w-2/5 space-y-4">
 
             <LaunchpadContent project={project} pool={poolContract} />
 
-            <div className="mb-4"> 
-              <img className="w-full col-start-2 col-span-2 row-span-1 rounded-lg object-cover" src={pool.token_image_uri} />
+            <div className="card card-default card--project-info">
+              <div className="card-header">
+                <h3>NFT Preview</h3>       
+              </div>
+              <div className="card-body">
+                {/* NFT Card */}
+                <div className="rounded-lg bg-primary-50">
+                  <div>
+                    <img className="w-full object-cover rounded-lg" src={pool.token_image_uri} />
+                  </div>
+
+                  <div className="flex justify-between items-center p-2">
+                    <div>
+                      <h5 className="font-medium">
+                        MetaBox
+                      </h5>
+                      <span className="text-xs font-medium text-yellow-500">
+                        LEGENDARY
+                      </span>
+                    </div>
+
+                    <div className="text-right">
+                      <span className="block text-xs opacity-60">
+                        Highest bid
+                      </span>
+                      <span className="text-xs font-medium">
+                        150 BUSD
+                      </span>
+                    </div>
+                  </div>
+
+
+                </div>
+                {/* END: NFT Card */}
+              </div>
             </div>
 
             <div className="card card-default card--project-info">
@@ -150,6 +183,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
           </div>
           {/* {pool.token_sale !== "ido" && <HowToUse project={project} pool={pool}/>} */}
           {/* Pool info     */}
+
           {/* END: Sidebar */}
 
         </div>
