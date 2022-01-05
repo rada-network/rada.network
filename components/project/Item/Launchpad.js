@@ -1,14 +1,14 @@
 import { useEffect,useState } from "react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import { usePageStore } from "@lib/usePageStore";
 import LaunchpadOverview from "./Launchpad/Overview";
 import LaunchpadContent from "./Launchpad/Content";
 import fetcher from "@lib/fetchJson";
 import ProjectFaq from "./Faq";
 import Subscriber from "./Launchpad/Actions/Subscriber";
-import { getProjectPoolWinnerBySlug } from "@data/query/projects"
+import { getProjectPoolWinnerBySlug } from "@data/query/projects";
 import dynamic from "next/dynamic";
+import HowToUse from "./HowToUse";
 
 const LaunchpadIdo = dynamic(import(`./Launchpad/Actions/Index`));
 const LaunchpadFixedSwap = dynamic(import(`./Launchpad/FixedSwap/Index`));
@@ -51,6 +51,8 @@ const ProjectLaunchpad = ({ project, pool }) => {
     }
   },[winners])
   if (loadingPool) return null
+
+  console.log(pool);
   return (
     <>
       
@@ -62,7 +64,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
           ">
             {pool.token_sale !== "ido" && 
             <div className="mb-4"> 
-              <img className="w-full col-start-2 col-span-2 row-span-1 rounded-lg object-cover" src='https://i.postimg.cc/KvNk1fVp/nft.jpg' />
+              <img className="w-full col-start-2 col-span-2 row-span-1 rounded-lg object-cover" src={pool.token_image_uri} />
             </div>
             }
             <div className="bg-white dark:bg-gray-800 relative z-10 card-default flex-shrink-0 flex-grow">
@@ -108,38 +110,13 @@ const ProjectLaunchpad = ({ project, pool }) => {
               </div>
             </div>
           </div>
-          {pool.token_sale !== "ido" && 
-          <div class="order-4 mb-4 md:mb-0 col-start-1 row-start-3 ">
-            <div className="card card-default card--project-info">
-              <div className="card-header">
-                <h3>How to use the box</h3>       
-              </div>
-              <div className="card-body">
-                <div className="pb-4 mb-4 border-b border-gray-200 dark:border-gray-700 border-opacity-40">
-                  <h4 className="font-semibold text-xs uppercase tracking-wider mb-2">Step 1</h4>
-                  <p className="opacity-80">Buy the box </p>
-                </div>
-                  
-                <div className="pb-4 mb-4 border-b border-gray-200 dark:border-gray-700 border-opacity-40">
-                  <h4 className="font-semibold  text-xs uppercase tracking-wider mb-2">Step 2</h4>
-                  <p className="opacity-80">After purchase the box, the token will be sent to your wallet </p>
-                </div>
-
-                <div className="pb-4">
-                  <h4 className="font-semibold  text-xs uppercase tracking-wider mb-2">Step 3</h4>
-                  <p className="opacity-80">After purchase the box, the token will be sent to your wallet </p>
-                </div>
-
-              </div>
-            </div>
-          </div> 
-          }
+          {pool.token_sale !== "ido" && <HowToUse project={project} pool={pool}/>}
           {/* Pool info     */}
         </div>
       </div>
       <div className="section">
         {/* FAQ */}
-        <div className="section-body p-4 md:p-4">
+        <div className="section-body">
           <div className="card-body no-padding">
             <div className="flex flex-col">
               {whitelistTime < currentTime && pool.whitelist_date !== null && winners.length > 0 &&
@@ -159,7 +136,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
               </div>
               }
               <div className={"project-card--container" + (active == "faq" ? "" : " hidden")}>
-                <ProjectFaq project={project} /> 
+                <ProjectFaq project={project} pool={pool}/> 
               </div>
               <div className={"project-card--container"+ (active == "winner" ? "" : " hidden")}>
                 <Subscriber project={project} pool={poolContract} winners={winners}/>

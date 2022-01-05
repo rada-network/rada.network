@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 
 const WalletProfile = dynamic(import("@components/Wallet"));
 
-export default function ProjectNavbar({ symbol, project, slug,pool }) {
+export default function ProjectNavbar({ symbol, project, slug, pool }) {
   const { dataStore } = usePageStore();
   const { t } = useTranslation("launchpad");
   const router = useRouter();
@@ -56,7 +56,7 @@ export default function ProjectNavbar({ symbol, project, slug,pool }) {
               <span className="tab-item--divider"></span>
             )}
             {!!project.news && (
-              <NavItem uri={`${symbol}/research`}>
+              <NavItem uri={pool != null ? `${symbol}/research?pool=${pool.slug}` : `${symbol}/research`}>
                 <span className="token-symbol flex-shrink-0 lg:mr-2 h-px-20 w-px-20">
                   <Image
                     src={project?.token?.logo}

@@ -23,7 +23,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
   const [currentOrder,setCurrentOrder] = useState([]);
   const [totalItem,setTotalItem] = useState(0);
   const maxSelected = auctionSwapInfo.info.maxBuyPerAddress - auctionSwapInfo.order.totalItem
-
+  
   useEffect(() => {
     setCurrentOrder([...auctionSwapInfo.order.detail])
   },[])
@@ -121,6 +121,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
       store.updateLoadPoolContent((new Date()).getTime())
     },
   })
+
   return (
     <>
       <div className="global-padding">

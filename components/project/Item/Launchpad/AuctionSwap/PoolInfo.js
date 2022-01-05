@@ -24,7 +24,8 @@ const PoolInfo = observer(function({ project,pool }) {
         let stat = await lauchpadContact.poolStats(pool.id);
         setPoolStat({
           totalSold : parseInt(ethers.utils.formatUnits(stat.totalBidItem,0))
-        })
+        });
+        console.log(parseInt(ethers.utils.formatUnits(stat.totalBidItem,0)));
       } catch (error) {
         //console.log(account)
         console.log("error to fetch launchpad info", error);
@@ -53,6 +54,7 @@ const PoolInfo = observer(function({ project,pool }) {
     raise_token = pool.token_name
     sale_token = pool.token_name
   }
+
   return (
     <div className="card card-default project-brief">
       <div className="card-header flex items-start">
@@ -63,13 +65,6 @@ const PoolInfo = observer(function({ project,pool }) {
       </div>
       <div className="card-body flex flex-col">
         <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
-          <li className="list-pair mb-2">
-            <span className="list-key !w-1/2">{t("Investment round")}</span>
-            <span className="ml-auto list-value font-semibold text-right">
-              {/* <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div> */}
-              <div className={``}>{pool.type.toUpperCase()}</div>
-            </span>
-          </li>
           
           <li className="list-pair mb-2">
             <span className="list-key !w-1/2">{t("Raise")}</span>

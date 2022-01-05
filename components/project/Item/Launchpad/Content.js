@@ -17,7 +17,7 @@ const LaunchpadContent = observer(function({ project,pool }) {
     <>
       {pool.token_sale == "ido" && <PoolInfoIdo project={project} pool={pool} /> }
       {pool.token_sale == "fixed-swap" && <PoolInfoFixedSwap project={project} pool={pool} /> }
-      {pool.token_sale == "auction-swap" && <PoolInfoFixedSwap project={project} pool={pool} /> }
+      {pool.token_sale == "auction-swap" && <PoolInfoAuctionSwap project={project} pool={pool} /> }
     </>
 
   );
