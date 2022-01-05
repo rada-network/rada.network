@@ -98,7 +98,7 @@ const TransactionModal = observer(({ }) => {
                       {isError ? t("transaction error") : transactionHash !== "" ? t("transaction completed") : t("transaction in progress")}
                     </div>
                   </Dialog.Title>
-                  <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
+                  <div className="p-4 md:p-6 h-48 text-sm text-gray-600 dark:text-gray-300">
                     {transactionHash !== "" && !isError ? (
                       <div className="w-full flex justify-center">
                         <span class="icon text-4xl">

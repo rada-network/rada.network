@@ -52,7 +52,6 @@ const ProjectLaunchpad = ({ project, pool }) => {
   },[winners])
   if (loadingPool) return null
 
-  console.log(pool);
   return (
     <>
       
