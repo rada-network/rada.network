@@ -3,6 +3,8 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import LaunchpadOverview from "./Launchpad/Overview";
 import LaunchpadContent from "./Launchpad/Content";
+import TutorialWidget from "./Launchpad/TutorialWidget"
+
 import fetcher from "@lib/fetchJson";
 import ProjectFaq from "./Faq";
 import Subscriber from "./Launchpad/Actions/Subscriber";
@@ -54,18 +56,14 @@ const ProjectLaunchpad = ({ project, pool }) => {
 
   return (
     <>
-      
       <div className="section">
+
         <LaunchpadOverview project={project} pool={poolContract} />
+
         <div class="flex flex-col md:grid md:grid-cols-3 md:auto-rows-min md:gap-4">
           
-          <div class="order-0 mb-4 md:mb-0 col-start-2 col-span-2 row-span-3 flex flex-col
-          ">
-            {pool.token_sale !== "ido" && 
-            <div className="mb-4"> 
-              <img className="w-full col-start-2 col-span-2 row-span-1 rounded-lg object-cover" src={pool.token_image_uri} />
-            </div>
-            }
+          <div class="order-0 mb-4 md:mb-0 col-start-2 col-span-2 row-span-3 flex flex-col">
+
             <div className="bg-white dark:bg-gray-800 relative z-10 card-default flex-shrink-0 flex-grow">
               {/* Main Action Card */}
           
@@ -81,11 +79,15 @@ const ProjectLaunchpad = ({ project, pool }) => {
     
               {/* END: Main Action Card */}
             </div>
-           
           </div>
+
           <div class="order-0 mb-4 md:mb-0 col-start-1 row-start-1">
             <LaunchpadContent project={project} pool={poolContract} />
+            <div className="mb-4"> 
+              <img className="w-full col-start-2 col-span-2 row-span-1 rounded-lg object-cover" src={pool.token_image_uri} />
+            </div>
           </div>
+
           <div class="order-3 mb-4 md:mb-0 col-start-1 row-start-2 ">
             <div className="card card-default card--project-info">
               <div className="card-header">
@@ -113,6 +115,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
           {/* Pool info     */}
         </div>
       </div>
+
       <div className="section">
         {/* FAQ */}
         <div className="section-body">

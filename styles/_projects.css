@@ -78,7 +78,7 @@ Card Thumb + Type + Countdown
 Card Content
 */
 .project-content {
-  @apply flex flex-col;
+  @apply flex flex-col h-full;
 }
 
 .project-content--meta {
