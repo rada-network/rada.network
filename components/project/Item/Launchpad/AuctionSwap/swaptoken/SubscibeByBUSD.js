@@ -197,7 +197,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <div className="w-1/5 pl-2 flex-shrink-0 text-right">
            45<span className="opacity-60">/260 </span>     
           </div>
-          <button className="ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 flex justify-center">
+          <button className="text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 flex justify-center">
             <i className="fas fa-plus-circle mr-1"></i>Add bid
           </button>
         </div>
@@ -235,7 +235,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           </div>
           <div className="w-1/5 pl-2"></div>
           <div className="w-1/5 pl-2"></div>
-          <button className="ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 disabled flex justify-center">
+          <button className="text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 disabled flex justify-center">
             <i className="fas fa-plus-circle mr-1"></i>Add bid
           </button>
         </div>
