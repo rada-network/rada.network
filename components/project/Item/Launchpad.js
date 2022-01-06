@@ -338,7 +338,6 @@ const ProjectLaunchpad = ({ project, pool }) => {
             {pool.token_sale == "auction-swap" && (
               <NFTRarity />
             )}
-            
 
           </div>
 

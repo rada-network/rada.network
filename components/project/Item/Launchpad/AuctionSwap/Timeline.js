@@ -40,7 +40,7 @@ const Timeline = ({ step, steps }) => {
       {/* Steps Progress */}
       <nav aria-label="Progress">
         <ol role="list" className="timeline">
-          {steps.map(function (item) {
+          {!!steps && steps.map(function (item) {
             return (
               <Step
                 step={item.step}

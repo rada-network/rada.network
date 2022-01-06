@@ -124,7 +124,6 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
   return (
     <>
-<<<<<<< HEAD
       <div className="global-padding">
         <div className="flex relative p-2 items-center border border-gray-100 dark:border-gray-800 mb-4 rounded-md">
           <button className="btn btn-default !px-1 mr-2">
@@ -137,16 +136,6 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           </div>
         </div>
         <div className="mb-4 p2-4 text-xs uppercase tracking-wide flex border-b dark:border-opacity-40 border-gray-200 dark:border-gray-700">
-=======
-      <div className="p-2 md:p-4">
-        {/* <div className="flex flex-col text-center">
-          <button className="btn relative w-full  md:w-1/2 mx-auto btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md">
-            Enable BUSD
-          </button>  
-          <p className="pt-4">You must enable BUSD to bid</p>
-        </div> */}
-        <div className="mb-4 p2-4 text-2xs md:text-xs uppercase tracking-wide flex border-b dark:border-opacity-40 border-gray-200 dark:border-gray-700">
->>>>>>> 3cac055f00b6b0c1cecb86a35328df6ca70ee34d
           <div className="w-1/6 flex-shrink-0 pr-2">
             <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
           </div>
