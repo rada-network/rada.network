@@ -26,7 +26,7 @@ Various UI Components Style
 .timeline-event-body::after {
   content: "";
   @apply block absolute h-1 w-1/2 top-4 z-0;
-  @apply bg-gray-200;
+  @apply bg-gray-300 dark:bg-gray-600;
 }
 
 .timeline-event-body::before {
@@ -44,7 +44,7 @@ Various UI Components Style
 
 .timeline-event--icon {
   @apply inline-flex justify-center items-center w-8 h-8 rounded-full z-10 relative;
-  @apply bg-gray-300 text-white;
+  @apply bg-gray-300 dark:bg-gray-600 text-white;
 }
 
 .timeline-event--title {

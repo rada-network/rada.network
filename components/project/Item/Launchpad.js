@@ -145,7 +145,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
           {/* END: Main Col */}
 
           {/* Sidebar */}
-          <div class="flex flex-col lg:order-1 lg:w-2/5 space-y-4">
+          <div class="flex flex-col lg:order-1 lg:w-2/6 space-y-4 flex-shrink-0">
 
             <LaunchpadContent project={project} pool={poolContract} />
 
@@ -162,7 +162,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
 
                 {/* NFT Cards Slideshow */}
                 {/* NFT Card */}
-                <div className="rounded-lg bg-primary-50">
+                <div className="rounded-lg bg-primary-50 dark:bg-primary-700">
                   <div>
                     <img className="w-full object-cover rounded-lg" src={pool.token_image_uri} />
                   </div>
