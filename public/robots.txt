@@ -9,11 +9,3 @@ Host: https://rada.network
 Sitemap: https://rada.network/sitemap.xml
 Sitemap: https://rada.network/en/sitemap/main.xml
 Sitemap: https://rada.network/vi/sitemap/main.xml
-Sitemap: https://rada.network/en/sitemap/articles.xml
-Sitemap: https://rada.network/vi/sitemap/articles.xml
-Sitemap: https://rada.network/en/sitemap/research.xml
-Sitemap: https://rada.network/vi/sitemap/research.xml
-Sitemap: https://rada.network/en/sitemap/launchverse.xml
-Sitemap: https://rada.network/vi/sitemap/launchverse.xml
-Sitemap: https://rada.network/en/sitemap/about.xml
-Sitemap: https://rada.network/vi/sitemap/about.xml
