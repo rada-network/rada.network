@@ -6,7 +6,6 @@ import Screen from "../../utils/Responsive";
 import LaunchpadOverview from "./Launchpad/Overview";
 import LaunchpadContent from "./Launchpad/Content";
 
-
 import fetcher from "@lib/fetchJson";
 import ProjectFaq from "./Faq";
 import Subscriber from "./Launchpad/Actions/Subscriber";
@@ -67,6 +66,121 @@ const ProjectLaunchpad = ({ project, pool }) => {
           
           {/* Main Col */}
           <div class="flex flex-col lg:order-2 w-full ml-4 space-y-4">
+
+            {/* NFT Info Card */}
+            <div className="card card-default card--project-info">
+              <div className="card-header items-end">
+                <div>
+                  <span class="text-2xs uppercase opacity-60 tracking-wide">PREVIEW </span>
+                  <h3>MetaGear NFT Collection</h3>
+                </div>
+                <a className="btn btn-default">
+                  <span className="btn--text">
+                    View all
+                  </span>
+                  <span className="btn--caret-right"></span>
+                </a>  
+              </div>
+              <div className="card-body">
+
+                {/* NFT Cards Slideshow */}
+                <div className="grid grid-cols-3 gap-4">
+                  {/* NFT Card */}
+                  <div className="rounded-lg bg-primary-50 dark:bg-primary-700">
+                    <div>
+                      <img className="w-full object-cover rounded-lg" src={pool.token_image_uri} />
+                    </div>
+
+                    <div className="flex justify-between items-center p-2">
+                      <div>
+                        <h5 className="font-medium">
+                          MetaBox
+                        </h5>
+                        <span className="text-xs font-medium text-yellow-500">
+                          LEGENDARY
+                        </span>
+                      </div>
+
+                      <div className="text-right">
+                        <span className="block text-xs opacity-60">
+                          Highest bid
+                        </span>
+                        <span className="text-xs font-medium">
+                          150 BUSD
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  {/* END: NFT Card */}
+                  {/* NFT Card */}
+                  <div className="rounded-lg bg-primary-50 dark:bg-primary-700">
+                    <div>
+                      <img className="w-full object-cover rounded-lg" src={pool.token_image_uri} />
+                    </div>
+
+                    <div className="flex justify-between items-center p-2">
+                      <div>
+                        <h5 className="font-medium">
+                          MetaBox
+                        </h5>
+                        <span className="text-xs font-medium text-yellow-500">
+                          LEGENDARY
+                        </span>
+                      </div>
+
+                      <div className="text-right">
+                        <span className="block text-xs opacity-60">
+                          Highest bid
+                        </span>
+                        <span className="text-xs font-medium">
+                          150 BUSD
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  {/* END: NFT Card */}
+                  {/* NFT Card */}
+                  <div className="rounded-lg bg-primary-50 dark:bg-primary-700">
+                    <div>
+                      <img className="w-full object-cover rounded-lg" src={pool.token_image_uri} />
+                    </div>
+
+                    <div className="flex justify-between items-center p-2">
+                      <div>
+                        <h5 className="font-medium">
+                          MetaBox
+                        </h5>
+                        <span className="text-xs font-medium text-yellow-500">
+                          LEGENDARY
+                        </span>
+                      </div>
+
+                      <div className="text-right">
+                        <span className="block text-xs opacity-60">
+                          Highest bid
+                        </span>
+                        <span className="text-xs font-medium">
+                          150 BUSD
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  {/* END: NFT Card */}
+                </div>
+
+                <div className="flex space-x-2 mt-4 justify-center">
+                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
+                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
+                  <span className="h-2 w-4 rounded-lg cursor-pointer bg-primary-500"></span>
+                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
+                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
+                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
+                </div>
+                {/* NFT Cards Slideshow */}
+
+              </div>
+            </div>
+            {/* END: NFT Info Card */}
 
             <div className="">
               {/* Main Action Card */}
@@ -151,59 +265,6 @@ const ProjectLaunchpad = ({ project, pool }) => {
 
             <div className="card card-default card--project-info">
               <div className="card-header">
-                <h3>NFT Preview</h3>
-                <a className="btn btn-default">
-                  <span className="btn--text text-xs">
-                    View all
-                  </span>
-                </a>  
-              </div>
-              <div className="card-body">
-
-                {/* NFT Cards Slideshow */}
-                {/* NFT Card */}
-                <div className="rounded-lg bg-primary-50 dark:bg-primary-700">
-                  <div>
-                    <img className="w-full object-cover rounded-lg" src={pool.token_image_uri} />
-                  </div>
-
-                  <div className="flex justify-between items-center p-2">
-                    <div>
-                      <h5 className="font-medium">
-                        MetaBox
-                      </h5>
-                      <span className="text-xs font-medium text-yellow-500">
-                        LEGENDARY
-                      </span>
-                    </div>
-
-                    <div className="text-right">
-                      <span className="block text-xs opacity-60">
-                        Highest bid
-                      </span>
-                      <span className="text-xs font-medium">
-                        150 BUSD
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                {/* END: NFT Card */}
-
-                <div className="flex space-x-2 mt-4 justify-center">
-                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
-                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
-                  <span className="h-2 w-4 rounded-lg cursor-pointer bg-primary-500"></span>
-                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
-                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
-                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
-                </div>
-                {/* NFT Cards Slideshow */}
-
-              </div>
-            </div>
-
-            <div className="card card-default card--project-info">
-              <div className="card-header">
                 <h3>{t("Info", { name: project.content.title })}</h3>       
               </div>
               <div className="card-body">
@@ -219,6 +280,20 @@ const ProjectLaunchpad = ({ project, pool }) => {
                     </Link>
                   </p>}
                 </div>
+              </div>
+            </div>
+
+            <div className="card card-default card--project-info">
+              <div className="card-header">
+                <h3>RADA NFT Rarity</h3>  
+                <a className="btn btn-default">
+                  <span className="btn--text text-xs">
+                    Learn more
+                  </span>
+                </a>      
+              </div>
+              <div className="card-body">
+                RARITY HERE
               </div>
             </div>
 
