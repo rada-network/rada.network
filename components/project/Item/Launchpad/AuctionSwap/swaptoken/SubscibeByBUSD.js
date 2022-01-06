@@ -124,6 +124,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
   return (
     <>
+<<<<<<< HEAD
       <div className="global-padding">
         <div className="flex relative p-2 items-center border border-gray-100 dark:border-gray-800 mb-4 rounded-md">
           <button className="btn btn-default !px-1 mr-2">
@@ -136,6 +137,16 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           </div>
         </div>
         <div className="mb-4 p2-4 text-xs uppercase tracking-wide flex border-b dark:border-opacity-40 border-gray-200 dark:border-gray-700">
+=======
+      <div className="p-2 md:p-4">
+        {/* <div className="flex flex-col text-center">
+          <button className="btn relative w-full  md:w-1/2 mx-auto btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md">
+            Enable BUSD
+          </button>  
+          <p className="pt-4">You must enable BUSD to bid</p>
+        </div> */}
+        <div className="mb-4 p2-4 text-2xs md:text-xs uppercase tracking-wide flex border-b dark:border-opacity-40 border-gray-200 dark:border-gray-700">
+>>>>>>> 3cac055f00b6b0c1cecb86a35328df6ca70ee34d
           <div className="w-1/6 flex-shrink-0 pr-2">
             <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
           </div>
@@ -149,8 +160,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         </div>
         <div className="mb-4 flex items-center relative">
           <div className="w-1/6 pr-2 flex-shrink-0">
-            <select id="box" name="amount" className="select-custom w-full ">
-              {/* remove '!rounded-l-none' if user doesn't have RIR */}
+            <select id="box" name="amount" className="select-custom w-full ">    
               <option className="text-gray-300" selected>1</option>
               <option className="text-gray-300">2</option>
               <option className="text-gray-300">3</option>
@@ -165,7 +175,6 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           </div>
           <div className="w-1/4 pl-2 flex-shrink-0">
             <select id="rir" name="rir" className="select-custom w-full ">
-              {/* remove '!rounded-l-none' if user doesn't have RIR */}
               <option className="text-gray-300" selected>100</option>
               <option className="text-gray-300">200 </option>
               <option className="text-gray-300">300</option>
@@ -187,18 +196,21 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         <div className="flex  items-center relative">
           <div className="w-1/6 pr-2 flex-shrink-0">
             <select id="box" name="amount" className="select-custom w-full ">
-              {/* remove '!rounded-l-none' if user doesn't have RIR */}
-              {Array(maxSelected).fill(null).map((_, i) => {
-                if (i + 1 > (auctionSwapInfo.info.maxBuyPerAddress - (totalItem))) return null
-                return (
-                  <option key={i} className="text-gray-300" value={(i+1)}>{i+1}</option>
-                )
-              })}
+              <option className="text-gray-300" selected>--</option>
+              <option className="text-gray-300">1</option>
+              <option className="text-gray-300">2</option>
+              <option className="text-gray-300">3</option>
+              <option className="text-gray-300">4</option>
+              <option className="text-gray-300">5</option>
+              <option className="text-gray-300">6</option>
+              <option className="text-gray-300">7</option>
+              <option className="text-gray-300">8</option>
+              <option className="text-gray-300">9</option>
+              <option className="text-gray-300">10</option>
             </select>
           </div>
           <div className="w-1/4 pl-2 flex-shrink-0">
             <select id="rir" name="rir" className="select-custom  w-full ">
-              {/* remove '!rounded-l-none' if user doesn't have RIR */}
               <option className="text-gray-300" selected>Price</option>
               <option className="text-gray-300" >100</option>
               <option className="text-gray-300">200</option>
