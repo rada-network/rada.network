@@ -97,11 +97,11 @@ export const PostListDetail = observer(
         });
       }
       return () => {
-        
+
       };
     }, [item.item]);
     let resizeTimeout = 0;
-    
+
     const getCoinInfo = async (fsym) => {
       await fetch(`/api/coin-info?fsym=${fsym}&tsym=USD`)
         .then((response) => response.json())
@@ -141,7 +141,7 @@ export const PostListDetail = observer(
         case "share2earn":
           return (
             <>
-            {share2earn && 
+            {share2earn &&
               <ProjectShare2EarnWrapper shareCampaign={share2earn} shareType={`news`} shareSlug={item.slug} />}
             </>
           );
@@ -238,7 +238,7 @@ const VideoDetail = function ({ item, dateTitle, date, setTabCallback }) {
   const source = getSourceVideoFromUri(item);
   const { t } = useTranslation();
   return (
-    <div className="section post-detail post-detail-media">
+    <div className="post-detail post-detail-media mt-4">
       {/* Post Header */}
       <div className="section-header post-header">
         <div className="post-title">
@@ -420,7 +420,7 @@ const NewsDetail = observer(function ({
               {title}
             </span>
             }
-            
+
           </h1>
         </div>
         <div className="metadata-wrapper">

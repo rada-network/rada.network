@@ -16,6 +16,7 @@ import { useTranslation } from "next-i18next";
 import { usePageStore } from "../../lib/usePageStore";
 import _ from "lodash";
 import { DISPLAY_SOURCES, LIST_SOURCE } from "../../config/links";
+import Breadcrumbs from "@components/Breadcrumbs";
 
 // Concepts
 
@@ -134,8 +135,10 @@ export const PostsListWrapper = observer(function ({}) {
         </div>
       </div>
 
+      <Breadcrumbs />
+
       <div
-        className={`pane-content--main--main scrollbar`}
+        className={`section pane-content--main--main scrollbar`}
         ref={scrollBox1}
         cls="list-top-away"
       >
@@ -362,7 +365,7 @@ export const PostsListGrid = observer(({ title, extraClass }) => {
   // if in item page, render list later
 
   return (
-    <div className={`grid grid-rows-4 grid-flow-col gap-4 ${extraClass || ""}`}>
+    <div className={`grid grid-rows-4 grid-flow-col gap-6 ${extraClass || ""}`}>
       {dataStore.tweets.map(function (item) {
         let title = null,
           mediaUri = null,

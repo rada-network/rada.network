@@ -18,10 +18,18 @@ import dynamic from "next/dynamic";
 
 const Layout = dynamic(import("@components/page-layouts/Global"));
 
+const IndexRightBar = dynamic(() =>
+  import("@components/IndexRightBar").then((mod) => mod.IndexRightBar)
+);
+
 const PostsListWrapper = dynamic(() =>
   import("@components/card-layouts/PostsList").then(
     (mod) => mod.PostsListWrapper
   )
+);
+
+const Resizer = dynamic(() =>
+  import("@components/utils/Resizer").then((mod) => mod.Resizer)
 );
 
 const getDataExplore = async ({ query, type, lang }) => {
@@ -210,6 +218,8 @@ export const Index = ({ props, dataStore, voteStore, detailStore }) => {
   /* Dragger to resize main col */
   const mainRef = useRef();
   const containerRef = useRef();
+
+  console.log("props.type ", detailStore.data.id);
   return (
     <Layout
       dataStore={dataStore}
@@ -218,17 +228,76 @@ export const Index = ({ props, dataStore, voteStore, detailStore }) => {
       meta={meta}
     >
       <div className={`pane-content`} ref={containerRef}>
-        {/* main content pane */}
-        <div className={`w-limiter-xl py-8 lg:py-16 px-2 md:px-4 lg:px-8 xl:px-16`} ref={mainRef}>
+        {detailStore.data.id ? (
+          <IndexRightBar
+            back={"/" + props.lang + "/explore/" + props.type}
+            dataStore={dataStore}
+            detailStore={detailStore}
+            props={props}
+            voteStore={voteStore}
+            intro={props.intro}
+          />
+        ) : (
           <PostsListWrapper />
-        </div>
-
+        )}
       </div>
     </Layout>
   );
 };
 
+const ResizeerWrapper = function ({ mainRef, dataStore, containerRef }) {
+  let pw;
+  let mw;
+  useEffect(() => {
+    let mwp = store.get("main-width");
+    if (_.isUndefined(mwp)) {
+      mwp = 40;
+    }
+    if (isNaN(mwp)) {
+      mwp = 40;
+    }
+    if (mwp > 40) mwp = 40;
+    if (mwp < 30) mwp = 30;
+    dataStore.home.mainwidth = mwp;
+    const style = `--main-width: ${mwp}%`;
+    containerRef.current.setAttribute("style", style);
+  }, []);
+  const resizeStart = (e) => {
+    pw = mainRef.current.parentNode.clientWidth;
+    mw = mainRef.current.clientWidth;
+  };
+  const resizeDone = (e) => {
+    if (!pw) pw = mainRef.current.parentNode.clientWidth;
+    // calculate width
+    let mwp = Math.round((mainRef.current.clientWidth / pw) * 100);
+    if (mwp > 40) mwp = 40;
+    if (mwp < 30) mwp = 30;
+    dataStore.home.mainwidth = mwp;
+    const style = `--main-width: ${mwp}%`;
+    containerRef.current.setAttribute("style", style);
+    store.set("main-width", mwp);
+    mainRef.current.nextSibling.style.width = "";
+    mainRef.current.style.width = "";
+  };
+  const resizePane = (e) => {
+    // calculate width
+    const dw = e.clientX - e.startX;
+    let mwn = Math.round(mw + dw);
+    if (mwn > 0.4 * pw) mwn = Math.round(0.4 * pw);
+    if (mwn < 0.3 * pw) mwn = Math.round(0.3 * pw);
+    mainRef.current.style.width = mwn + "px";
+    mainRef.current.nextSibling.style.width = pw - mwn - 1 + "px";
+  };
 
+  return (
+    <Resizer
+      className="pane-dragger"
+      onDragMove={resizePane}
+      onDragStop={resizeDone}
+      onDragStart={resizeStart}
+    ></Resizer>
+  );
+};
 
 export async function getStaticPaths() {
   return {

@@ -175,9 +175,9 @@ const CardPostNormal = observer(
       srcSet = mediaUri + ", " + imgSrc;
     }
     return (
-      <div className={` card-post ${state}`}>
+      <div className={` ${state}`}>
         {mediaUri !== null ? (
-          <div className={` card-media-img`}>
+          <div className={` `}>
             <a
               key={item.id}
               href={createPostUri(title, slug, item, dataStore.lang)}
@@ -189,13 +189,13 @@ const CardPostNormal = observer(
                 src={imgSrc}
                 alt={title}
                 width={400}
-                height={150}
+                height={200}
                 objectFit="cover"
               />
             </a>
           </div>
         ) : (
-          <div className="card-media-blank">
+          <div className="">
             <a
               key={item.id}
               href={createPostUri(title, slug, item, dataStore.lang)}
@@ -211,7 +211,7 @@ const CardPostNormal = observer(
           </div>
         )}
 
-        <div className={`card-body`}>
+        <div className={`pt-3`}>
           <div className={`card-body-header`}>
             <div className={`card-title`}>
               {isRada &&
@@ -236,7 +236,7 @@ const CardPostNormal = observer(
             </div>
           </div>
 
-          <div className="metadata-wrapper justify-between">
+          <div className="metadata-wrapper justify-between pt-3">
             <div className="flex flex-shrink-0">
               <div className="metadata metadata-source">
                 {isRada ? (
@@ -290,14 +290,14 @@ const CardPostNormal = observer(
           </div>
         </div>
 
-        {/* <a
+        <a
           className="card-link--overlay"
           key={item.id}
           href={createPostUri(title, slug, item, dataStore.lang)}
           onClick={(e) => handleClickPost(e)}
         >
           <div className="card-link--overlay"></div>
-        </a> */}
+        </a>
       </div>
     );
   }

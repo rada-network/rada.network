@@ -114,12 +114,7 @@ export const IndexRightBar = observer(({ intro }) => {
                   }}
                 >
                   <span className="icon">
-                    <span className="lg:hidden">
-                      <i className="fa-solid fa-chevron-left "></i>
-                    </span>
-                    <span className="hidden lg:!block">
-                      <i className="fa-solid fa-times  "></i>
-                    </span>
+                    <i className="fa-solid fa-chevron-left "></i>
                   </span>
                   <span className="btn--text sr-only">{t("back")}</span>
                 </a>
@@ -293,19 +288,7 @@ export const IndexRightBar = observer(({ intro }) => {
             tokenData={tokenData}
           />
         )}
-        {!detailStore.data.id && (
-          <div className={`pane-content--sec--main scrollbar`}>
-            {detailStore.data.id}
-            <Siteintro intro={intro} />
 
-            {/* <Header props={{
-          itemType : "home",
-        }}/> */}
-
-            {/* Temporary Disable Widgets */}
-            {/* <Sidebar className={`sidebar`} extraClassName="" /> */}
-          </div>
-        )}
       </div>
     </>
   );
