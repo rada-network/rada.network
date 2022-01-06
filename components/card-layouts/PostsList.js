@@ -139,7 +139,7 @@ export const PostsListWrapper = observer(function ({}) {
         ref={scrollBox1}
         cls="list-top-away"
       >
-        {dataStore.type === "projects" ? <PostsListGrid /> : <PostsList />}
+        <PostsListGrid />
 
         {dataStore.tweets.length == 0 &&
         dataStore.isSearch &&
@@ -362,7 +362,7 @@ export const PostsListGrid = observer(({ title, extraClass }) => {
   // if in item page, render list later
 
   return (
-    <div className={`cards-list grid ${extraClass || ""}`}>
+    <div className={`grid grid-rows-4 grid-flow-col gap-4 ${extraClass || ""}`}>
       {dataStore.tweets.map(function (item) {
         let title = null,
           mediaUri = null,

@@ -175,24 +175,24 @@ const CardPostNormal = observer(
       srcSet = mediaUri + ", " + imgSrc;
     }
     return (
-      <div className={`card card-post ${state}`}>
+      <div className={` card-post ${state}`}>
         {mediaUri !== null ? (
-          <div className={`card-media`}>
-            <div className={`card-media-img`}>
-              <a
-                key={item.id}
-                href={createPostUri(title, slug, item, dataStore.lang)}
-                onClick={(e) => handleClickPost(e)}
-              >
-                <Image
-                  layout="fill"
-                  className={`card-img`}
-                  srcSet={srcSet}
-                  src={imgSrc}
-                  alt={title}
-                />
-              </a>
-            </div>
+          <div className={` card-media-img`}>
+            <a
+              key={item.id}
+              href={createPostUri(title, slug, item, dataStore.lang)}
+              onClick={(e) => handleClickPost(e)}
+            >
+              <Image
+                layout="responsive"
+                className={`card-img`}
+                src={imgSrc}
+                alt={title}
+                width={400}
+                height={150}
+                objectFit="cover"
+              />
+            </a>
           </div>
         ) : (
           <div className="card-media-blank">
@@ -290,14 +290,14 @@ const CardPostNormal = observer(
           </div>
         </div>
 
-        <a
+        {/* <a
           className="card-link--overlay"
           key={item.id}
           href={createPostUri(title, slug, item, dataStore.lang)}
           onClick={(e) => handleClickPost(e)}
         >
           <div className="card-link--overlay"></div>
-        </a>
+        </a> */}
       </div>
     );
   }
