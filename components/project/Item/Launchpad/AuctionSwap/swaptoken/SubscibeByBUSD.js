@@ -124,32 +124,46 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
   return (
     <>
-      <div className="p-2 md:p-4">
+      <div className="p-2 md:p-6">
         {/* <div className="flex flex-col text-center">
           <button className="btn relative w-full  md:w-1/2 mx-auto btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md">
             Enable BUSD
           </button>  
           <p className="pt-4">You must enable BUSD to bid</p>
         </div> */}
-        <div className="mb-4 p2-4 text-2xs md:text-xs uppercase tracking-wide flex border-b dark:border-opacity-40 border-gray-200 dark:border-gray-700">
+        <div className="mb-4 text-2xs md:text-xs uppercase tracking-wide 
+        flex border-b dark:border-opacity-40 border-gray-200 dark:border-gray-700">
           <div className="w-1/6 flex-shrink-0 pr-2">
             <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
           </div>
           <div className="w-1/4 flex-shrink-0 pl-2">
             <label for="rir" className="mb-2 block tracking-wide font-medium opacity-70">BUSD per box</label>
           </div>
-          <div className="w-1/4 flex-shrink-0 px-4">
+          <div className="w-1/4 flex-shrink-0 pl-4 text-right">
             <label className="mb-2 block tracking-wide font-medium opacity-70">Total</label>
           </div>
           
         </div>
         <div className="mb-4 flex items-center relative">
           <div className="w-1/6 pr-2 flex-shrink-0">
-            <select id="box" name="amount" className="select-custom w-full ">    
-              <option className="text-gray-300" selected>1</option>
+            4
+          </div>
+          <div className="w-1/4 pl-2 flex-shrink-0">
+           100      
+          </div>
+          <div className="w-1/4 pl-4 font-semibold text-right">400</div>
+          <button className="ml-2 md:ml-4 flex-shrink-0 flex-grow btn btn-primary py-2 flex justify-center">
+            <i className="fas text-xs fa-pencil mr-1"></i> Adjust
+          </button>
+        </div>
+
+        <div className="flex mb-4  items-center relative">
+          <div className="w-1/6 pr-2 flex-shrink-0">
+            <select id="box" name="amount" className="select-custom w-full ">
+              <option className="text-gray-300">1</option>
               <option className="text-gray-300">2</option>
               <option className="text-gray-300">3</option>
-              <option className="text-gray-300">4</option>
+              <option className="text-gray-300" selected>4</option>
               <option className="text-gray-300">5</option>
               <option className="text-gray-300">6</option>
               <option className="text-gray-300">7</option>
@@ -159,9 +173,10 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
             </select>
           </div>
           <div className="w-1/4 pl-2 flex-shrink-0">
-            <select id="rir" name="rir" className="select-custom w-full ">
-              <option className="text-gray-300" selected>100</option>
-              <option className="text-gray-300">200 </option>
+            <select id="rir" name="rir" className="select-custom  w-full ">
+              <option className="text-gray-300" selected>Price</option>
+              <option className="text-gray-300">100</option>
+              <option className="text-gray-300" selected>200</option>
               <option className="text-gray-300">300</option>
               <option className="text-gray-300">400</option>
               <option className="text-gray-300">500</option>
@@ -172,9 +187,9 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
               <option className="text-gray-300">1000</option>
             </select>          
           </div>
-          <div className="w-1/4 pl-4 font-semibold">600</div>
-          <button className="ml-2 md:ml-4 flex-shrink-0 flex-grow btn btn-primary py-2 flex justify-center">
-            <i className="fas fa-check-circle mr-1"></i> Increase
+          <div className="w-1/4 pl-2 font-semibold text-right">800</div>
+          <button className="ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 disabled flex justify-center">
+            <i className="fas fa-plus-circle mr-1"></i>Add bid
           </button>
         </div>
 
@@ -211,7 +226,8 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           </div>
           <div className="w-1/4 pl-2"></div>
           <button className="ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 disabled flex justify-center">
-            <i className="fas fa-plus-circle mr-1"></i>Add bid</button>
+            <i className="fas fa-plus-circle mr-1"></i>Add bid
+          </button>
         </div>
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
        
