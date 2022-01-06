@@ -34,9 +34,9 @@ const LaunchpadActions = observer(({ project,pool }) => {
           <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
           <div div className="flex flex-col">
-            <div className="">
+            {/* <div className="">
               <Timeline step="2" />
-            </div>
+            </div> */}
 
             <div className="project-card--container">
           
@@ -76,9 +76,9 @@ const LaunchpadActions = observer(({ project,pool }) => {
           <div className="card-default project-main-actions no-padding overflow-hidden">
             <div className="card-body no-padding">
               <div className="flex flex-col">
-                <div className="">
+                {/* <div className="">
                   <Timeline step="3" />
-                </div>
+                </div> */}
 
                 <div className="project-card--container">
                   <SubscribeLaunchpadClosed project={project} pool={pool} />

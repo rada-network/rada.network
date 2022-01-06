@@ -125,7 +125,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
   return (
     <>
       <div className="global-padding">
-        <div className="flex relative p-2 flex items-center border border-gray-100 dark:border-gray-800 mb-4 rounded-md">
+        <div className="flex relative p-2 items-center border border-gray-100 dark:border-gray-800 mb-4 rounded-md">
           <button className="btn btn-default !px-1 mr-2">
             <span className="w-4 spin-10 h-4 rounded-full border-2 border-gray-300 dark:border-gray-400 border-l-purple-500 dark:border-l-purple-600" />
           </button>

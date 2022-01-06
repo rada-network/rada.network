@@ -31,6 +31,7 @@ const Timeline = ({ step }) => {
       {/* Steps Progress */}
       <nav aria-label="Progress">
         <ol role="list" className="steps-compact ">
+          
           <Step
             step="1"
             title={t("Whitelist")}

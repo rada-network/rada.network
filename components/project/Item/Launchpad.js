@@ -12,7 +12,8 @@ import Subscriber from "./Launchpad/Actions/Subscriber";
 import { getProjectPoolWinnerBySlug } from "@data/query/projects";
 import dynamic from "next/dynamic";
 import HowToUse from "./HowToUse";
-import TutorialWidget from "./Launchpad/TutorialWidget"
+import NFTRarity from "./NFTRarity";
+import Timeline from "./Launchpad/AuctionSwap/Timeline";
 
 const LaunchpadIdo = dynamic(import(`./Launchpad/Actions/Index`));
 const LaunchpadFixedSwap = dynamic(import(`./Launchpad/FixedSwap/Index`));
@@ -27,8 +28,31 @@ const ProjectLaunchpad = ({ project, pool }) => {
   const [loadingPool,setLoadingPool] = useState(true)
   const [active,setActive] = useState("faq")
   const [winners,setWinners] = useState([])
+  const [currentStep, setCurrentStep] = useState(1)
   const currentTime = (new Date(pool.current_date)).getTime() / 1000
   const whitelistTime = (new Date(pool.whitelist_date)).getTime() / 1000
+  const openTime = (new Date(pool.open_date)).getTime() / 1000
+  const endTime = (new Date(pool.end_date)).getTime() / 1000
+
+  const fixedSwapSteps = [
+    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1"},
+    {title: t("Purchase"), des: t("Deposit your fund"), step: "2"},
+    {title: t("Status"), des: t("Status of your application"), step: "3"}
+  ]
+
+  const auctionSwapSteps = [
+    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1"},
+    {title: t("Auction"), des: t("Place your bid"), step: "2"},
+    {title: t("Status"), des: t("Status of your bid"), step: "3"},
+    {title: t("Claim"), des: t("Claim your token"), step: "4"}
+  ]
+
+  const idoSwapSteps = [
+    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1"},
+    {title: t("Prefunding"), des: t("Deposit your fund"), step: "2"},
+    {title: t("Status"), des: t("Status of your bid"), step: "3"},
+    {title: t("Claim"), des: t("Claim your token"), step: "4"}
+  ]
 
   useEffect(() => {
     getProjectPoolWinnerBySlug({slug : project.slug,pool : pool.slug}).then(function(res){
@@ -54,6 +78,17 @@ const ProjectLaunchpad = ({ project, pool }) => {
       setActive("faq")
     }
   },[winners])
+
+  useEffect(() => {
+    if (openTime < currentTime && currentTime < endTime) {
+      setCurrentStep("2");
+    } else if (currentTime < openTime) {
+      setCurrentStep("1")
+    } else if (currentTime > endTime) {
+      setCurrentStep("3")
+    }
+  }, [])
+
   if (loadingPool) return null
 
   return (
@@ -66,6 +101,24 @@ const ProjectLaunchpad = ({ project, pool }) => {
           
           {/* Main Col */}
           <div class="flex flex-col lg:order-2 w-full ml-4 space-y-4">
+
+            {/* Timeline */}
+            <div className="card card-default">
+              <div className="card-body">
+                <h3 className="sr-only">Pool's Timeline</h3>
+                {pool.token_sale == "ido" && 
+                  <Timeline step={currentStep} steps={idoSwapSteps} />
+                }
+                {pool.token_sale == "fixed-swap" && 
+                  <Timeline step={currentStep} steps={fixedSwapSteps} />
+                }
+                {pool.token_sale == "auction-swap" && 
+                  <Timeline step={currentStep} steps={auctionSwapSteps} />
+                }
+                
+              </div>
+            </div>
+            {/* END: Timeline */}
 
             {/* NFT Info Card */}
             <div className="card card-default card--project-info">
@@ -282,20 +335,10 @@ const ProjectLaunchpad = ({ project, pool }) => {
                 </div>
               </div>
             </div>
-
-            <div className="card card-default card--project-info">
-              <div className="card-header">
-                <h3>RADA NFT Rarity</h3>  
-                <a className="btn btn-default">
-                  <span className="btn--text text-xs">
-                    Learn more
-                  </span>
-                </a>      
-              </div>
-              <div className="card-body">
-                RARITY HERE
-              </div>
-            </div>
+            {pool.token_sale == "auction-swap" && (
+              <NFTRarity />
+            )}
+            
 
           </div>
 
