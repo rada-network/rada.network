@@ -136,11 +136,14 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <div className="w-1/6 flex-shrink-0 pr-2">
             <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
           </div>
-          <div className="w-1/4 flex-shrink-0 pl-2">
+          <div className="w-1/5 flex-shrink-0 pl-2">
             <label for="rir" className="mb-2 block tracking-wide font-medium opacity-70">BUSD per box</label>
           </div>
-          <div className="w-1/4 flex-shrink-0 pl-4 text-right">
-            <label className="mb-2 block tracking-wide font-medium opacity-70">Total</label>
+          <div className="w-1/5 flex-shrink-0 pl-4 text-right">
+            <label className="mb-2 block tracking-wide font-medium opacity-70">Total (BUSD</label>
+          </div>
+          <div className="w-1/5 flex-shrink-0 pl-4 text-right">
+            <label className="mb-2 block tracking-wide font-medium opacity-70">Position</label>
           </div>
           
         </div>
@@ -148,11 +151,14 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <div className="w-1/6 pr-2 flex-shrink-0">
             4
           </div>
-          <div className="w-1/4 pl-2 flex-shrink-0">
+          <div className="w-1/5 pl-2 flex-shrink-0">
            100      
+          </div> 
+          <div className="w-1/5 pl-4  text-right">400</div>
+          <div className="w-1/5 pl-2 flex-shrink-0 text-right">
+           30<span className="opacity-60">/260 </span>     
           </div>
-          <div className="w-1/4 pl-4 font-semibold text-right">400</div>
-          <button className="ml-2 md:ml-4 flex-shrink-0 flex-grow btn btn-primary py-2 flex justify-center">
+          <button className="ml-2 md:ml-4 flex-shrink-0 flex-grow btn btn-default !py-2 !text-md flex justify-center">
             <i className="fas text-xs fa-pencil mr-1"></i> Adjust
           </button>
         </div>
@@ -172,7 +178,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
               <option className="text-gray-300">10</option>
             </select>
           </div>
-          <div className="w-1/4 pl-2 flex-shrink-0">
+          <div className="w-1/5 pl-2 flex-shrink-0">
             <select id="rir" name="rir" className="select-custom  w-full ">
               <option className="text-gray-300" selected>Price</option>
               <option className="text-gray-300">100</option>
@@ -187,8 +193,11 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
               <option className="text-gray-300">1000</option>
             </select>          
           </div>
-          <div className="w-1/4 pl-2 font-semibold text-right">800</div>
-          <button className="ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 disabled flex justify-center">
+          <div className="w-1/5 pl-2 text-right">800</div>
+          <div className="w-1/5 pl-2 flex-shrink-0 text-right">
+           45<span className="opacity-60">/260 </span>     
+          </div>
+          <button className="ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 flex justify-center">
             <i className="fas fa-plus-circle mr-1"></i>Add bid
           </button>
         </div>
@@ -209,10 +218,10 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
               <option className="text-gray-300">10</option>
             </select>
           </div>
-          <div className="w-1/4 pl-2 flex-shrink-0">
+          <div className="w-1/5 pl-2 flex-shrink-0">
             <select id="rir" name="rir" className="select-custom  w-full ">
               <option className="text-gray-300" selected>Price</option>
-              <option className="text-gray-300" >100</option>
+              <option className="text-gray-300">100</option>
               <option className="text-gray-300">200</option>
               <option className="text-gray-300">300</option>
               <option className="text-gray-300">400</option>
@@ -224,7 +233,8 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
               <option className="text-gray-300">1000</option>
             </select>          
           </div>
-          <div className="w-1/4 pl-2"></div>
+          <div className="w-1/5 pl-2"></div>
+          <div className="w-1/5 pl-2"></div>
           <button className="ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 disabled flex justify-center">
             <i className="fas fa-plus-circle mr-1"></i>Add bid
           </button>
