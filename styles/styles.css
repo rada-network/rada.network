@@ -353,7 +353,7 @@ Layout Uitlites
 
 /* Paddings */
 .global-padding {
-  @apply p-4 lg:p-6;
+  @apply p-4;
 }
 
 .global-padding-lg {

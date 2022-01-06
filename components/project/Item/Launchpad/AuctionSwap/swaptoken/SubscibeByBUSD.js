@@ -54,18 +54,14 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
   })
   return (
     <>
-      <div className="global-padding">
-        <div className="flex relative p-2 flex items-center border border-gray-100 dark:border-gray-800 mb-4 rounded-md">
-          <button className="btn btn-default !px-1 mr-2">
-            <span className="w-4 spin-10 h-4 rounded-full border-2 border-gray-300 dark:border-gray-400 border-l-purple-500 dark:border-l-purple-600" />
-          </button>
-          <span>Your current position</span>
-          <div className="ml-auto">
-            <span className="font-semibold">8</span>
-            <span className="opacity-50">/215</span>
-          </div>
-        </div>
-        <div className="mb-4 p2-4 text-xs uppercase tracking-wide flex border-b dark:border-opacity-40 border-gray-200 dark:border-gray-700">
+      <div className="p-2 md:p-4">
+        {/* <div className="flex flex-col text-center">
+          <button className="btn relative w-full  md:w-1/2 mx-auto btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md">
+            Enable BUSD
+          </button>  
+          <p className="pt-4">You must enable BUSD to bid</p>
+        </div> */}
+        <div className="mb-4 p2-4 text-2xs md:text-xs uppercase tracking-wide flex border-b dark:border-opacity-40 border-gray-200 dark:border-gray-700">
           <div className="w-1/6 flex-shrink-0 pr-2">
             <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
           </div>
@@ -79,8 +75,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         </div>
         <div className="mb-4 flex items-center relative">
           <div className="w-1/6 pr-2 flex-shrink-0">
-            <select id="box" name="amount" className="select-custom w-full ">
-              {/* remove '!rounded-l-none' if user doesn't have RIR */}
+            <select id="box" name="amount" className="select-custom w-full ">    
               <option className="text-gray-300" selected>1</option>
               <option className="text-gray-300">2</option>
               <option className="text-gray-300">3</option>
@@ -95,7 +90,6 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           </div>
           <div className="w-1/4 pl-2 flex-shrink-0">
             <select id="rir" name="rir" className="select-custom w-full ">
-              {/* remove '!rounded-l-none' if user doesn't have RIR */}
               <option className="text-gray-300" selected>100</option>
               <option className="text-gray-300">200 </option>
               <option className="text-gray-300">300</option>
@@ -117,7 +111,6 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         <div className="flex  items-center relative">
           <div className="w-1/6 pr-2 flex-shrink-0">
             <select id="box" name="amount" className="select-custom w-full ">
-              {/* remove '!rounded-l-none' if user doesn't have RIR */}
               <option className="text-gray-300" selected>--</option>
               <option className="text-gray-300">1</option>
               <option className="text-gray-300">2</option>
@@ -133,7 +126,6 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           </div>
           <div className="w-1/4 pl-2 flex-shrink-0">
             <select id="rir" name="rir" className="select-custom  w-full ">
-              {/* remove '!rounded-l-none' if user doesn't have RIR */}
               <option className="text-gray-300" selected>Price</option>
               <option className="text-gray-300" >100</option>
               <option className="text-gray-300">200</option>

@@ -60,9 +60,9 @@ const PoolInfo = observer(function({ project,pool }) {
           <span className="text-xs uppercase !tracking-widest">{project.content.title} </span>
           <h3>{pool.title}</h3>
         </div>
-        <a className="btn flex btn-default !text-xs flex-shrink-0" target="_blank" 
+        {/* <a className="btn flex btn-default !text-xs flex-shrink-0" target="_blank" 
         href="https://rada.network/en/post/how-to-participate-in-an-ido-on-launchverse">
-            <i className="fas fa-question-circle mr-2 opacity-50"></i> How to</a>
+            <i className="fas fa-question-circle mr-2 opacity-50"></i> How to</a> */}
       </div>
       <div className="card-body">
         <ul className="mb-0">

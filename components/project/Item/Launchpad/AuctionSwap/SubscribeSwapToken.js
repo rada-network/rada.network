@@ -132,39 +132,54 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
               </div>
 
               <div className="project-card--container">
-                <div className="flex flex-col md:grid md:gap-6 md:grid-cols-3">
-                  <div className="box box--transparent">
-                    <div className="box-header !px-0">
+                <div className="flex flex-col md:grid md:gap-4 md:grid-cols-3">
+                  <div className="p-4 md:p-0 order-2 md:order-1">
+                    {/* <div className="box-header !px-0">
                       <CountdownInPool />
-                    </div>
-                    <ul className="mt-4 flex-shrink-0 flex-grow">
+                    </div> */}
+                    {/* <div className="flex relative rounded-md p-4 flex items-center border border-gray-100 dark:border-gray-700 mb-4">
+                      
+                    </div> */}
+                    <ul className="flex-shrink-0 flex-grow">
                      
-                      <li className="list-pair mb-2">
-                        <span className="list-key !w-3/4">Boxes per address </span>
-                        <span className="ml-auto text-right list-value font-semibold tabular-nums">
-                          1-{auctionSwapInfo.info.maxBuyPerAddress} 
+                      <li className="flex items-center md:block mb-3 pb-3 border-b border-gray-700">
+                        <span className="opacity-70 block mb-1">Limit per wallet </span>
+                        <span className="ml-auto  text-right md:text-left md:ml-0 block list-value text-lg font-semibold tabular-nums">
+                          1-{auctionSwapInfo.info.maxBuyPerAddress} boxes
                         </span>
                       </li>
-                      <li className="list-pair mb-2">
-                        <span className="list-key !w-3/4">Your bid</span>
-                        <span className="ml-auto list-value font-semibold tabular-nums">
+                      <li className="flex items-center md:block mb-3 pb-3 border-b border-gray-700">
+                        <span className="opacity-70 block mb-1">Your bid</span>
+                        <span className="ml-auto  text-right md:text-left md:ml-0 block text-lg font-semibold tabular-nums">
                           {auctionSwapInfo.order.total}
                         </span>
                       </li>
                     
                     </ul>
-                    <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
+                    {/* <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
                       <li className="flex mb-2 relative pl-6">
                         <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
                           <CheckSvg />  
                         </span>
                         <div className="">Some notice</div>
                       </li>
-                    </ul>
+                    </ul> */}
                   </div>
-                  <div className="box box--gray col-span-2">
-                    <div className="box-header relative flex">Bid 
-
+                  <div className="box box--gray order-1 md:order-2 col-span-2 mt-2 md:mt-0">
+                    <div className="box-header relative flex">
+                      <h3>
+                        Bid
+                      </h3>
+                      <div className="ml-auto flex !text-sm items-center">
+                        <button className="btn btn-default !px-1 mr-2">
+                          <span className="w-4 spin-10 h-4 rounded-full border-2 border-gray-300 dark:border-gray-400 border-l-purple-500 dark:border-l-purple-600" />
+                        </button>
+                        <span className="mr-2 !font-normal">Your position:</span>
+                        <div className="ml-auto">
+                          <span className="font-semibold">8</span>
+                          <span className="opacity-50">/215</span>
+                        </div>
+                      </div>
                     </div>
                     <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
                   </div>

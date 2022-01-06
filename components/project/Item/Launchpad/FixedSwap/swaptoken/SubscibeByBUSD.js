@@ -55,9 +55,9 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
   return (
     <>
       <div className="global-padding">
-        <div className="mb-4 flex uppercase text-xs tracking-wider gap-4 pb-2 border-b border-gray-200 dark:border-gray-800">
+        <div className="mb-2 flex uppercase text-2xs md:text-xs tracking-wider gap-4">
           <div className="w-1/3">
-            <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Quantity</label>
+            <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
           </div>
           <div className="w-1/3">Price</div>
           <div className="w-1/3 text-right">
@@ -71,7 +71,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
               <select id="box" name="amount" className="select-custom w-full " value={numberBox} onChange={handleChangeNumberBox}>
                 {Array(maxSelected).fill(null).map((_, i) => {
                   return (
-                    <option key={i} className="text-gray-300" value={(i+1)}>{i+1} Boxes</option>
+                    <option key={i} className="text-gray-300" value={(i+1)}>{i+1}</option>
                   )
                 })}
               </select>
@@ -85,12 +85,9 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
               </div>       
             </div>
           </div>
-    
         </div>
-
-        <div className="border-b border-gray-200 dark:border-gray-700 dark:border-opacity-50"></div>
         
-        <div className="mt-4  grid grid-cols-2 gap-4"> 
+        <div className="grid grid-cols-2 gap-4"> 
           <div className="flex-shrink-0 flex-grow">
             <button className={`btn !text-sm relative w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} onClick={handleApprove} width="100%" scale="md">
               {isApproving && <span className="spinner" />}
@@ -113,13 +110,15 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
             </button>
           </div>
         </div>
+        
+        {fixedSwapInfo.order.total > 0 &&
         <div className="mt-4">
-          {fixedSwapInfo.order.total > 0 &&
           <button className="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
           {t("Cancel")}
           </button>
-          }
         </div>
+        }
+   
 
         
 

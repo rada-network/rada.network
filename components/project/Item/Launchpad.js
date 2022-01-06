@@ -56,13 +56,12 @@ const ProjectLaunchpad = ({ project, pool }) => {
       
       <div className="section">
         <LaunchpadOverview project={project} pool={poolContract} />
-        <div class="flex flex-col md:grid md:grid-cols-3 md:auto-rows-min md:gap-4">
-          
+        <div class="flex flex-col md:grid md:grid-cols-3 md:auto-rows-min md:gap-4">    
           <div class="order-0 mb-4 md:mb-0 col-start-2 col-span-2 row-span-3 flex flex-col
           ">
             <div className="mb-4"> <img className="w-full col-start-2 col-span-2 row-span-1 rounded-lg object-cover" 
           src='https://i.postimg.cc/KvNk1fVp/nft.jpg' /></div>
-            <div className="bg-white dark:bg-gray-800 relative z-10 card-default flex-shrink-0 flex-grow">
+            <div className="bg-white dark:bg-gray-800 relative z-10 flex-shrink-0 flex-grow card-default">
               {/* Main Action Card */}
           
               {pool.token_sale == "ido" && 

@@ -127,44 +127,40 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
           <div className="card-body no-padding">
             <div className="flex flex-col">
-              <div className="">
+              {/* <div className="">
                 <Timeline step="2" />
-              </div>
+              </div> */}
 
               <div className="project-card--container">
                 <div className="flex flex-col md:grid md:gap-6 lg:grid-cols-3">
-                  <div className="box box--transparent order-2 md:order-1">
-                   
-                    <div className="box-header !px-0">
-                      <CountdownInPool />
-                    </div>
-                    <ul className="mt-4 flex-shrink-0 flex-grow">
-                      <li className="list-pair mb-2">
-                        <span className="list-key !w-3/4">Limit per address</span>
-                        <span className="ml-auto text-right list-value font-semibold tabular-nums">
+                  <div className="p-4 md:p-0 order-2 md:order-1">
+                    <ul className="flex-shrink-0 flex-grow">
+                      <li className="flex items-center md:block mb-3 pb-3 border-b border-gray-700">
+                        <span className="opacity-70 block mb-1">Limit per wallet </span>
+                        <span className="ml-auto text-right md:text-left md:ml-0 block list-value text-md font-semibold tabular-nums">
                           1-{fixedSwapInfo.info.maxBuyPerAddress} boxes
                         </span>
                       </li>
-                      <li className="list-pair mb-2">
-                        <span className="list-key !w-3/4">Your order</span>
-                        <span className="ml-auto list-value font-semibold tabular-nums">
+                      <li className="flex items-center md:block mb-3 pb-3 border-b border-gray-700">
+                        <span className="opacity-70 block mb-1">Your order</span>
+                        <span className="ml-auto text-right md:text-left md:ml-0 block list-value text-md font-semibold tabular-nums">
                           {fixedSwapInfo.order.total} boxes
                         </span>
                       </li>
                     
                     </ul>
                     
-                    <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
+                    {/* <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
                       <li className="flex mb-2 relative pl-6">
                         <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
                           <CheckSvg />  
                         </span>
                         <div className="">Some notice</div>
                       </li>
-                    </ul>
+                    </ul> */}
                   </div>
-                  <div className="box box--gray col-span-2 !mt-4 md:!mt-0 order-1 md:order-2">
-                    <div className="box-header relative flex">Bid </div>
+                  <div className="box box--gray col-span-2 order-1 md:order-2">
+                    <div className="box-header relative flex">Purchase </div>
                     <SwapTokensV2 fixedSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
                   </div>
                 </div>

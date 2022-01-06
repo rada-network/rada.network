@@ -33,7 +33,7 @@ const LaunchpadActions = observer(({ project,pool }) => {
         {((store.kyc.isKYC && store.kyc.status === BLOCK_PASS_KYC_COMPLETE && store.user.id !== "") || !pool.is_kyc) && !!account ?
           <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
-          <div className="global-padding-lg bg-white dark:bg-gray-800 relative z-10 card-default">
+          <div className="global-padding-lg bg-white dark:bg-gray-800 relative z-10">
             <div className="max-w-2xl mx-auto">
               
               <h3 className="text-2xl text-center mb-4 font-normal">
