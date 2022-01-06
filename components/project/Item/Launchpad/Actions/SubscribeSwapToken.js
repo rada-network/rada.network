@@ -167,6 +167,16 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
   }, [orderBusd, launchpadInfo,loading]);
 
+  useEffect(() => {
+    if (step == 2) {
+      store.step.update("2");
+    } else if (step == 3 || step == 32 || step == 33 || step == 34 || step == 35) {
+      store.step.update("3");
+    } else if (step == 4 || step == 41) {
+      store.step.update("4");
+    }
+  }, [step])
+
   const handleClaimToken = async function (e) {
     try {
       setClaimDisbaled(true)
@@ -219,9 +229,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
           <div className="card-body no-padding">
 
             <div className="flex flex-col">
-              <div className="">
-                <Timeline step="2" />
-              </div>
 
               <div className="project-card--container">
                 <div className="grid gap-4 md:gap-8 lg:grid-cols-2">
@@ -305,9 +312,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
         <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-body no-padding">
             <div className="flex flex-col">
-              <div className="">
-                <Timeline step="3" />
-              </div>
+
               <div className="project-card--container">
                 <div className="max-w-xl mx-auto">
                   <div className="p-4 md:p-8 rounded-lg border border-yellow-300 dark:border-gray-700">
@@ -329,10 +334,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
         <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-body no-padding">
             <div className="flex flex-col">
-
-              <div className="">
-                <Timeline step="3" />
-              </div>
 
               <div className="project-card--container">
                 <div className="max-w-xl mx-auto">
@@ -412,9 +413,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
           <div className="card-body no-padding">
             <div className="flex flex-col">
-              <div className="">
-                <Timeline step="3" />
-              </div>
 
               <div className="project-card--container">
                 <div className="max-w-xl mx-auto">  
@@ -482,12 +480,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
       {(step == 34) &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
-
         <div className="card-body no-padding">
           <div className="flex flex-col">
-            <div className="">
-              <Timeline step="3" />
-            </div>
 
             <div className="project-card--container">
 
@@ -499,7 +493,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     </span>
                     {t("status failed")}
                   </h3>
-                  {/* {t("status success",{name : project.content.title})} */}
                   {launchpadInfo.refundable[0] > 0 &&
                   <>
                     <ul className="w-full">
@@ -515,7 +508,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                   }
                 </div>
               </div>
-              
 
             </div>
           </div>
@@ -528,9 +520,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
           <div className="card-body no-padding">
             <div className="flex flex-col">
-              <div className="">
-                <Timeline step="3" />
-              </div>
 
               <div className="project-card--container">
                 <div className="max-w-2xl mx-auto text-center">
@@ -541,7 +530,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     </div>
                   </div>
                   <div className="flex items-center">
-                    <SocialPromote ></SocialPromote>
+                    <SocialPromote />
                   </div>
                 </div>
 
@@ -556,9 +545,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
           <div className="card-body no-padding">
             <div className="flex flex-col">
-              <div className="">
-                <Timeline step="4" />
-              </div>
               <div className="project-card--container">
                 <div className="grid gap-4 md:gap-8 lg:grid-cols-2">
                   <div className="box box--transparent">
@@ -625,57 +611,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     </div>
                   </div>
                 </div>
-                
-  
-                {/* <ul className="mt-4">
-                 
-                  {launchpadInfo.refundable[0] > 0 &&
-                  <li className="list-pair mb-2">
-                    <span className="w-3/5 !opacity-100">{t("busd claim note")}:</span>
-                    <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[0]} BUSD
-                    </div>
-                  </li>
-                  }
-                  {launchpadInfo.refundable[1] > 0 &&
-                  <li className="list-pair mb-2">
-                    <span className="w-3/5 !opacity-100">{t("RIR claim note")}:</span>
-                    <div className="w-2/5 ml-auto font-semibold">{launchpadInfo.refundable[1]} RIR
-                    </div>
-                  </li>
-                  }
-                </ul> */}
-                {/* <div className="border rounded-lg border-gray-200 dark:border-gray-700 p-4 mx-auto mt-10 md:mt-8 max-w-xl">
-                  <div className="box-header !pt-0 !pl-0">
-                    <h4>Claim history</h4>
-                  </div> 
-                  <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700"> 
-                      <date>December 30, 2021</date>
-                      <div className="ml-auto text-right font-semibold list-value">
-                      500 PRL
-                      </div>
-                    </li>
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">             
-                      <date>December 30, 2021</date>
-                      <div className="ml-auto text-right font-semibold list-value">
-                      500 PRL
-                      </div>
-                    </li>
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">
-                      <date>December 30, 2021</date>
-                      <div className="ml-auto text-right font-semibold list-value">
-                      500 PRL
-                      </div>
-                    </li>
-                    <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-700">
-                      <date>December 30, 2021</date>
-                      <div className="ml-auto text-right font-semibold list-value">
-                      500 PRL
-                      </div>
-                    </li>
-                  
-                  </ul>
-                </div> */}
               </div>
               <div className="max-w-xl mx-auto mb-4 flex items-center">
                   <SocialPromote ></SocialPromote>
@@ -684,40 +619,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
           </div>
         </div>
       }
-
-      {/* {(orderBusd > 0 && launchpadInfo.winnerCount == 0) &&
-        <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
-          <div className="card-header items-center">
-            <h3>{t("Prefunders")} ({launchpadInfo?.ordersBuyerCount})</h3>
-          </div>
-
-          <div className="card-body no-padding">
-            <div className="flex flex-col">
-              <div className="global-padding-lg min-h-full">
-
-                <Subscriber project={project} buyers={launchpadInfo.buyers} />
-              </div>
-            </div>
-          </div>
-        </div>
-      } */}
-
-      {/* {(orderBusd > 0 && launchpadInfo.winnerCount > 0) &&
-        <div className="card-default project-main-actions no-padding overflow-hidden mt-4">
-          <div className="card-header items-center">
-            <h3>{t("Winners")} ({launchpadInfo?.winnerCount})</h3>
-          </div>
-
-          <div className="card-body no-padding">
-            <div className="flex flex-col">
-              <div className="global-padding-lg min-h-full">
-
-                <Subscriber project={project} buyers={launchpadInfo.winners} />
-              </div>
-            </div>
-          </div>
-        </div>
-      } */}
     </>
   );
 }
@@ -728,15 +629,6 @@ const SubscribeSwapTokenLoading = function({currentTime,opendTime,endTime}){
 
       <div className="card-body no-padding">
         <div className="flex flex-col">
-          <div className="">
-            {currentTime > endTime ?
-            <Timeline step="3" />
-            :
-            <Timeline step="2" />
-            }
-
-          </div>
-
           <div className="project-card--container">
             <div className="max-w-2xl mx-auto text-center">
 
@@ -800,10 +692,6 @@ const NotInWhitesist = function(){
 
       <div className="card-body no-padding">
         <div className="flex flex-col">
-          <div className="">
-            <Timeline step="3" />
-          </div>
-
           <div className="project-card--container">
             <div className="max-w-2xl mx-auto text-center">
               <div className="flex items-center justify-center mx-auto text-lg md:text-xl">

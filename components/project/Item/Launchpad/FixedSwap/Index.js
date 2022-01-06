@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react"
-import Timeline from "./Timeline";
 import ProjectCountdown from "./Countdown";
 import WhitelistCountdown from "./WhitelistCountdown";
 import SubscribeLaunchpad,{SubscribeLaunchpadClosed} from "./SubscribeLaunchpad";
