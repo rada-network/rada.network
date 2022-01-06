@@ -35,15 +35,6 @@ const LaunchpadActions = observer(({ project,pool }) => {
           :
           <div div className="flex flex-col space-y-4">
 
-            {/* Timeline */}
-            <div className="card card-default">
-              <div className="card-body">
-                <h3 className="sr-only">Pool's Timeline</h3>
-                <Timeline step="2" />
-              </div>
-            </div>
-            {/* END: Timeline */}
-
             {/* Main Actions */}
             <div className="card card-default">
           

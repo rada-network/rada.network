@@ -11,15 +11,15 @@ const Timeline = ({ step }) => {
     if (cstep > step) cls.push("is-complete");
     return (
       <li className={cls.join(" ")}>
-        <div className="step-compact-body" aria-current="step">
-          <div className="step-compact-body--icon">
-            <span className="step-compact-body--icon--text">
+        <div className="timeline-event-body" aria-current="step">
+          <div className="timeline-event-body--icon">
+            <span className="timeline-event-body--icon--text">
               {cstep > step ? <CheckSvg /> : step}
             </span>
           </div>
-          <div className="step-compact-body--content">
-            <span className="step-compact-body--title">{title}</span>
-            <span className="step-compact-body--text">{desc}</span>
+          <div className="timeline-event-body--content">
+            <span className="timeline-event-body--title">{title}</span>
+            <span className="timeline-event-body--text">{desc}</span>
           </div>
         </div>
       </li>
