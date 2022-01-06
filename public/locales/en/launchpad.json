@@ -112,5 +112,8 @@
   "DAO-based Launchpad for GameFi and MetaVerse": "DAO-based Launchpad for GameFi and MetaVerse",
   "Want to launch your project on RADA?": "Want to launch your project on RADA?",
   "Apply for Launch": "Apply for Launch",
-  "View Details": "View Details"
+  "View Details": "View Details",
+  "start transaction message": "Confirm your wallet and start transction.",
+  "transaction started": "The transaction is in progress, please wait a moment.",
+  "how to use": "How to use the box"
 }

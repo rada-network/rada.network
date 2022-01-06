@@ -88,13 +88,18 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     if (loading) return false;
     setTokenAddress(auctionSwapInfo.info.addressItem)
     if (auctionSwapInfo.info.isEnd){
-      if (auctionSwapInfo.order.total > 0){
-        //place order success
-        setStep(31)
+      if (auctionSwapInfo.order.totalWinItem > 0){
+
       }
       else{
-        //pool close
-        setStep(32)
+        if (auctionSwapInfo.order.total > 0){
+          //place order success
+          setStep(31)
+        }
+        else{
+          //pool close
+          setStep(32)
+        }
       }
     }
     else{
@@ -154,6 +159,12 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           {auctionSwapInfo.order.total}
                         </span>
                       </li>
+                      {/* <li className="list-pair mb-2">
+                        <span className="list-key !w-3/4">Your number {pool.token_name}</span>
+                        <span className="ml-auto list-value font-semibold tabular-nums">
+                          {auctionSwapInfo.order.totalItem}
+                        </span>
+                      </li> */}
                     
                     </ul>
                     {/* <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
@@ -207,7 +218,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         <span className="icon mr-2">
                           <i className="fa-duotone fa-badge-check"></i>
                         </span>
-                        Place order success : {auctionSwapInfo.order.total} {pool.token_name}
+                        Place Bid success : {auctionSwapInfo.order.totalItem} {pool.token_name}
                       </h3>
                       <div className="mt-4">
                         <div className="inline-block w-full mx-auto text-center 
@@ -220,19 +231,25 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                             <OpenDate time={pool.end_date} />
                           </div>
                           }
+                          {!!pool.whitelist_date && 
+                          <div  className="py-1 px-4">
+                            <span className="mr-2 opacity-70">{t("Announcement")}</span> 
+                            <OpenDate time={pool.whitelist_date} />
+                          </div>
+                          }
                         </div>
                       </div>
 
-                      {!auctionSwapInfo.info.isEnd && (auctionSwapInfo.order.total < auctionSwapInfo.info.maxBuyPerAddress) &&
+                      {!auctionSwapInfo.info.isEnd &&
                       <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
                         <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
                           <i className="fa fa-money-bill"></i>
                         </span>
                         <div>
-                          <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">{t("Place more")}</p>
+                          <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">{t("Adjust bid")}</p>
 
                           <a href={`#`}  className="group">
-                            <span className="text-sm mr-1">{t("adjust note",{"orderBusd" : auctionSwapInfo.order.total,"maxBusd" : auctionSwapInfo.info.maxBuyPerAddress})}</span>
+                            <span className="text-sm mr-1">{t("adjust note",{"orderBusd" : auctionSwapInfo.order.totalItem,"maxBusd" : auctionSwapInfo.info.maxBuyPerAddress})}</span>
                             <span className="icon text-xs relative left-1 group-hover:left-2 transition-all"><i className="fas fa-angle-right"></i></span>
                           </a>
                         </div>

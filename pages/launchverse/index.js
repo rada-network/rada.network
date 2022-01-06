@@ -4,8 +4,6 @@ import { getProjects } from "@data/query/projects";
 import { usePageStore } from "@lib/usePageStore";
 import utils from "@lib/util";
 import { useRouter } from "next/router";
-import ProjectsList from "@components/project/List/ProjectsList";
-import ProjectsListClosed from "@components/project/List/ProjectsListClosed";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import Image from "@components/Image";
@@ -13,6 +11,9 @@ import { useTheme } from "next-themes";
 import useStore from "@lib/useStore";
 
 const Layout = dynamic(import("@components/page-layouts/Global"));
+const Providers = dynamic(() => import("@utils/providers"));
+const ProjectsList = dynamic(() => import("@components/project/List/ProjectsList"));
+const ProjectsListClosed = dynamic(() => import("@components/project/List/ProjectsListClosed"));
 
 export default function ProjectsIndex({ projects, locale }) {
   const { dataStore } = usePageStore();
@@ -46,7 +47,7 @@ export default function ProjectsIndex({ projects, locale }) {
   store.updateNetwork("bsc");
   // console.log(projects)
   return (
-    <>
+    <Providers>
       <Layout extraClass="page-launchverse--home glassmorphism" meta={meta}>
         <div className="pane-content">
           <div className="pane-content--sec pane-content-active !w-full">
@@ -150,7 +151,7 @@ export default function ProjectsIndex({ projects, locale }) {
           </div>
         </div>
       </Layout>
-    </>
+    </Providers>
   );
 }
 

@@ -59,7 +59,7 @@ export default function ProjectsList({ title, extraClass, projects }) {
                 <Disclosure
                   as="div"
                   defaultOpen={project.is_default_open}
-                  className="pools-container relative mt-2"
+                  className="pools-container relative mb-4"
 
                 >
                   {({ open }) => (

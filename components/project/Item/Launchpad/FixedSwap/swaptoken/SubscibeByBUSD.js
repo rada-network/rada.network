@@ -36,15 +36,19 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
       }
     },
     onApprove: async (requireApprove) => {
-      store.transaction.showTransaction(true);
-      return callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+      store.transaction.showTransaction(true, t("start transaction message"));
+      const tx = callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256]);
+      store.transaction.startTransaction(true, t("transaction started"));
+      return tx;
     },
     onApproveSuccess: async ({ receipt }) => {
       store.transaction.update(receipt.transactionHash);
     },
-    onConfirm: () => {
-      store.transaction.showTransaction(true);
-      return callWithGasPrice(launchpadContract, 'placeOrder', [pool.id,numberBox])
+    onConfirm: async () => {
+      store.transaction.showTransaction(true, t("start transaction message"));
+      const tx = await callWithGasPrice(launchpadContract, 'placeOrder', [pool.id,numberBox]);
+      store.transaction.startTransaction(true, t("transaction started"));
+      return tx;
     },
     onSuccess: async ({ receipt }) => {
       store.transaction.update(receipt.transactionHash);
@@ -52,6 +56,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
       store.updateLoadPoolContent((new Date()).getTime())
     },
   })
+
   return (
     <>
       <div className="global-padding">
@@ -114,7 +119,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         {fixedSwapInfo.order.total > 0 &&
         <div className="mt-4">
           <button className="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
-          {t("Cancel")}
+          {t("Back")}
           </button>
         </div>
         }

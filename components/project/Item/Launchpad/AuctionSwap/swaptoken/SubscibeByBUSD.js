@@ -7,6 +7,7 @@ import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
 import { CheckSvg } from "@components/svg/SvgIcons"
 import useStore from "@lib/useStore"
+import { range } from "@utils/hooks/index"
 
 const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance,auctionSwapInfo}) => {
   const store = useStore()
@@ -16,15 +17,79 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
   const rirContract = useRIRContract()
   const bUSDContract = useBUSDContractV2()
   const {callWithGasPrice} = useCallWithGasPrice()
-  const [numberBox,setNumberBox] = useState(1)
-  const [numberBusd,setNumberBusd] = useState(auctionSwapInfo.info.startPrice)
+  const [numberBox,setNumberBox] = useState(1);
+  const [priceBusd,setPriceBusd] = useState(auctionSwapInfo.info.startPrice);
+  const [totalBusd,setTotalBusd] = useState(auctionSwapInfo.info.startPrice);
+  const [currentOrder,setCurrentOrder] = useState([]);
+  const [totalItem,setTotalItem] = useState(0);
+  const maxSelected = auctionSwapInfo.info.maxBuyPerAddress - auctionSwapInfo.order.totalItem
+  
+  useEffect(() => {
+    setCurrentOrder([...auctionSwapInfo.order.detail])
+  },[])
+
+  useEffect(() => {
+    let _totalItem = currentOrder.reduce(function(sum,value){
+      return sum + parseInt(value.quantity)
+    },0)
+    setTotalItem(_totalItem)
+  },[currentOrder])
 
   
-  const maxSelected = auctionSwapInfo.info.maxBuyPerAddress - auctionSwapInfo.order.total
   const handleChangeNumberBox = function(e){
     setNumberBox(e.currentTarget.value)
-    setNumberBusd(parseInt(e.currentTarget.value)*auctionSwapInfo.info.startPrice )
+    setTotalBusd(parseInt(e.currentTarget.value)*parseInt(priceBusd))
   }
+  const handleChangePriceBusd = function(e){
+    setPriceBusd(e.currentTarget.value)
+    setTotalBusd(parseInt(e.currentTarget.value)*parseInt(numberBox))
+  }
+
+  const handleChangeCurrentOrder = function(e,item,type){
+    if (type === "price"){
+      const newCurrentOrder = currentOrder.map(element => {
+        if (element.index === item) {
+          element.priceEach = parseInt(e.currentTarget.value)
+        }
+        return element;
+      });
+      setCurrentOrder(newCurrentOrder)
+    }
+    if (type === "quantity"){
+      const newCurrentOrder = currentOrder.map(element => {
+        if (element.index === item) {
+          element.quantity = parseInt(e.currentTarget.value)
+        } 
+        return element;
+      });
+      setCurrentOrder(newCurrentOrder)
+    }
+  }
+
+  const handleIncreaseBid = async function(bidIndex){
+    try{
+      store.transaction.showTransaction(true, t("start transaction message"));
+      let bid = currentOrder.filter((i) => {
+        return i.index === bidIndex
+      })[0]
+      const tx = await callWithGasPrice(launchpadContract, 'increaseBid', [pool.id,bidIndex,bid.quantity,ethers.utils.parseEther(bid.priceEach.toString(),0)])
+      store.transaction.startTransaction(true, t("transaction started"));
+      const receipt = await tx.wait()
+      store.transaction.update(receipt.transactionHash);
+      fetchAccountBalance()
+    }
+    catch (error) {
+      if (!!error?.data?.message){
+        store.transaction.updateError(t(error?.data?.message?.replace("execution reverted: ","").replace("ERC20: ","")), true);
+      }
+      else if (!!error?.message){
+        store.transaction.updateError(t(error?.message), true);
+      } else {
+        store.transaction.updateError(t(error.toString().replace("execution reverted: ","").replace("ERC20: ","")), true);
+      }
+    }
+  }
+
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
   useApproveConfirmTransaction({
     onRequiresApproval: async () => {
@@ -36,15 +101,19 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
       }
     },
     onApprove: async (requireApprove) => {
-      store.transaction.showTransaction(true);
-      return callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+      store.transaction.showTransaction(true, t("start transaction message"));
+      const tx = callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+      store.transaction.startTransaction(true, t("transaction started"));
+      return tx;
     },
     onApproveSuccess: async ({ receipt }) => {
       store.transaction.update(receipt.transactionHash);
     },
     onConfirm: () => {
-      store.transaction.showTransaction(true);
-      return callWithGasPrice(launchpadContract, 'placeOrder', [pool.id,numberBox,ethers.utils.parseEther(numberBusd.toString())])
+      store.transaction.showTransaction(true, t("start transaction message"));
+      const tx = callWithGasPrice(launchpadContract, 'placeBid', [pool.id,numberBox,ethers.utils.parseEther(priceBusd.toString())]);
+      store.transaction.startTransaction(true, t("transaction started"));
+      return tx;
     },
     onSuccess: async ({ receipt }) => {
       store.transaction.update(receipt.transactionHash);
@@ -52,6 +121,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
       store.updateLoadPoolContent((new Date()).getTime())
     },
   })
+
   return (
     <>
       <div className="p-2 md:p-4">
@@ -143,14 +213,6 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <button className="ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 disabled flex justify-center">
             <i className="fas fa-plus-circle mr-1"></i>Add bid</button>
         </div>
-        
-        
-        
-
-
-          
-
-          
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
        
         {/* chưa nhập amount thì ẩn 2 nút enable cái này đi */}

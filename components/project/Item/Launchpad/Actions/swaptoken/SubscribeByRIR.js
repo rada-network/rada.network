@@ -45,21 +45,25 @@ const SubcribeByRIR = ({project,pool,accountBalance,setStep,fetchAccountBalance,
         }
       },
       onApprove: async (requireApprove) => {
-        store.transaction.showTransaction(true);
-        return callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+        store.transaction.showTransaction(true, t("start transaction message"));
+        const tx = callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256]);
+        store.transaction.startTransaction(true, t("transaction started"));
+        return tx;
       },
       onApproveSuccess: async ({ receipt }) => {
         store.transaction.update(receipt.transactionHash);
-        //toast.success(`Approve BUSD Success`)
       },
       onConfirm: () => {
-        store.transaction.showTransaction(true);
+        store.transaction.showTransaction(true, t("start transaction message"));
         if (pool.is_whitelist){
-          return callWithGasPrice(launchpadContract, 'makePayment', [pool.id])
+          const tx = callWithGasPrice(launchpadContract, 'makePayment', [pool.id]);
+          store.transaction.startTransaction(true, t("transaction started"));
+          return tx;
         }
         else{
-          console.log(numberBusd.toString(),numberRIR.toString())
-          return callWithGasPrice(launchpadContract, 'makePayment', [pool.id,ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString())])
+          const tx = callWithGasPrice(launchpadContract, 'makePayment', [pool.id,ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString())])
+          store.transaction.startTransaction(true, t("transaction started"));
+          return tx;
         }
         
       },
@@ -84,8 +88,10 @@ const SubcribeByRIR = ({project,pool,accountBalance,setStep,fetchAccountBalance,
         }
       },
       onApprove: async (requireApprove) => {
-        store.transaction.showTransaction(true);
-        return callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+        store.transaction.showTransaction(true, t("start transaction message"));
+        const tx = callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+        store.transaction.startTransaction(true, t("transaction started"));
+        return tx;
       },
       onApproveSuccess: async ({ receipt }) => {
         store.transaction.update(receipt.transactionHash);

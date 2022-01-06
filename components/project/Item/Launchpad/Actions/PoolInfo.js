@@ -60,37 +60,40 @@ const PoolInfo = observer(function({ project,pool }) {
   return (
     <div className="card card-default project-brief">
       <div className="card-header flex items-start">
-        <h3>{project.content.title} - {pool.title}</h3>
-        <a className="btn flex btn-default !text-xs flex-shrink-0" target="_blank" 
+        <div>
+          <span className="text-2xs uppercase opacity-60 tracking-wide">{project.content.title} </span>
+          <h3>{pool.title}</h3>
+        </div>
+        {/* <a className="btn flex btn-default !text-xs flex-shrink-0" target="_blank" 
         href="https://rada.network/en/post/how-to-participate-in-an-ido-on-launchverse">
-            <i className="fas fa-question-circle mr-2 opacity-50"></i> How to</a>
+            <i className="fas fa-question-circle mr-2 opacity-50"></i> How to</a> */}
       </div>
       <div className="card-body flex flex-col">
         <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
           <li className="list-pair mb-2">
-            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Investment round")}</span>
-            <span className="ml-auto list-value font-semibold text-right">
+            <span className="list-key">{t("Investment round")}</span>
+            <span className="list-value ml-auto font-semibold text-right">
               {/* <div className={`label ${pool.type}`}>{pool.type.toUpperCase()}</div> */}
               <div className={``}>{pool.type.toUpperCase()}</div>
             </span>
           </li>
           
           <li className="list-pair mb-2">
-            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Raise")}</span>
+            <span className="list-key">{t("Raise")}</span>
             {raise && showInfo ?
-            <span className="ml-auto list-value font-semibold text-right">
+            <span className="list-value ml-auto font-semibold text-right">
               {numberFormatter(raise)} {raise_token}
             </span>
             :
-            <span className="ml-auto list-value font-semibold">
+            <span className="list-value ml-auto font-semibold">
               {pool.type == "private" ? "PRIVATE" : "TBA"}
             </span>
             }
           </li>
           <li className="list-pair mb-2">
-            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Token Price")}</span>
+            <span className="list-key">{t("Token Price")}</span>
             {tokenPrice ? 
-            <span className="ml-auto font-semibold">
+            <span className="list-value ml-auto font-semibold">
             1 {sale_token} = {tokenPrice} BUSD
             </span>
             :
@@ -100,7 +103,7 @@ const PoolInfo = observer(function({ project,pool }) {
             }
           </li>
           {/* <li className="list-pair mb-2">
-            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Method</span>
+            <span className="list-key">Method</span>
             
             <span className="ml-auto font-semibold">
               Overflow, FCFS
@@ -109,7 +112,7 @@ const PoolInfo = observer(function({ project,pool }) {
           </li> */}
           {!!pool.open_date && openTime < curentTime && showInfo &&
           <li className="list-pair mb-2">
-          <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Progress")}</span>
+          <span className="list-key">{t("Progress")}</span>
           <span className="list-value ml-auto">
             <span className="font-semibold">
               {numberFormatter(progressToken)}

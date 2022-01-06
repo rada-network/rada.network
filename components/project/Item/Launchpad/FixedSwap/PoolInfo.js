@@ -57,7 +57,7 @@ const PoolInfo = observer(function({ project,pool }) {
     <div className="card card-default project-brief">
       <div className="card-header flex items-start">
         <div>
-          <span className="text-xs uppercase !tracking-widest">{project.content.title} </span>
+          <span className="text-2xs uppercase opacity-60 tracking-wide">{project.content.title} </span>
           <h3>{pool.title}</h3>
         </div>
         {/* <a className="btn flex btn-default !text-xs flex-shrink-0" target="_blank" 
@@ -80,7 +80,7 @@ const PoolInfo = observer(function({ project,pool }) {
             }
           </li> */}
           <li className="list-pair mb-2">
-            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Token Price")}</span>
+            <span className="list-key">{t("Token Price")}</span>
             {tokenPrice ? 
             <span className="ml-auto font-semibold text-right">
             1 {sale_token} = {tokenPrice} BUSD
@@ -92,7 +92,7 @@ const PoolInfo = observer(function({ project,pool }) {
             }
           </li>
           {/* <li className="list-pair mb-2">
-            <span className="list-key !w-1/2 text-xs md:text-sm capitalize">Method</span>
+            <span className="list-key !w-1/2">Method</span>
             
             <span className="ml-auto font-semibold">
               Overflow, FCFS
@@ -101,7 +101,7 @@ const PoolInfo = observer(function({ project,pool }) {
           </li> */}
           {!!pool.open_date && openTime < curentTime && showInfo &&
           <li className="list-pair mb-2">
-          <span className="list-key !w-1/2 text-xs md:text-sm capitalize">{t("Progress")}</span>
+          <span className="list-key capitalize">{t("Progress")}</span>
           <span className="list-value ml-auto text-right">
             <span className="font-semibold">
               {numberFormatter(progressToken)}

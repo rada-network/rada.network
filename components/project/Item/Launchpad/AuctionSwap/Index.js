@@ -33,28 +33,45 @@ const LaunchpadActions = observer(({ project,pool }) => {
         {((store.kyc.isKYC && store.kyc.status === BLOCK_PASS_KYC_COMPLETE && store.user.id !== "") || !pool.is_kyc) && !!account ?
           <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
-          <div className="global-padding-lg bg-white dark:bg-gray-800 relative z-10">
-            <div className="max-w-2xl mx-auto">
-              
-              <h3 className="text-2xl text-center mb-4 font-normal">
-                <span className="text-color-title">{t("Pool closes in")}</span>
-              </h3>
+          <div div className="flex flex-col space-y-4">
 
-              <ProjectCountdown project={project} pool={pool} isEndDate={true} />
+            {/* Timeline */}
+            <div className="card card-default">
+              <div className="card-body">
+                <h3 className="sr-only">Pool's Timeline</h3>
+                <Timeline step="2" />
+              </div>
+            </div>
+            {/* END: Timeline */}
 
-              <div className="mt-4 text-center">
-                <div className="inline-block w-auto mx-auto  
-                    text-xs md:text-sm text-center rounded-full
-                    border border-gray-200 dark:border-gray-700"
-                >
-                  <div  className="py-1 px-2 md:px-4">
-                    <span className="mr-2 opacity-70">{t("Closeat")}</span> 
-                    <OpenDate time={pool.end_date} />
+            {/* Main Actions */}
+            <div className="card card-default">
+          
+              {/* Timer */}
+              <div className="card-header items-end bg-primary-50 dark:bg-gray-900 rounded-t-lg">
+                <div className="flex flex-col">
+                  <h3 className="mb-2 font-medium">
+                    <span className="text-color-title">{t("Pool closes in")}</span>
+                  </h3>
+                  <ProjectCountdown project={project} pool={pool} isEndDate={true} />
+                </div>
+
+                <div className="text-center">
+                  <div className="">
+                    <div className="">
+                      <span className="mr-2 opacity-60">{t("Closeat")}</span> 
+                      <OpenDate time={pool.end_date} />
+                    </div>
                   </div>
                 </div>
               </div>
+              {/* END: Timer */}
 
-              <SubscribeLaunchpad project={project} pool={pool} />
+              {/* MainAction */}
+              <div className="card-body">
+                <SubscribeLaunchpad project={project} pool={pool} />
+              </div>
+              {/* END: MainAction */}
 
             </div>
           </div>

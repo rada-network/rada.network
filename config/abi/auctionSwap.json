@@ -507,7 +507,17 @@
       },
       {
         "internalType": "uint256",
+        "name": "totalBidAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
         "name": "totalSold",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalSoldAmount",
         "type": "uint256"
       },
       {

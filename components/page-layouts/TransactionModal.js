@@ -13,10 +13,11 @@ const TransactionModal = observer(({ }) => {
   const { getBscTransactionURL } = useChainConfig();
   const [isOpen, setIsOpen] = useState(false);
 
-  const isProcessing = store?.transaction.isProcessing;
+  const isOpening = store?.transaction.isOpening;
   const transactionHash = store?.transaction.transactionHash;
   const isError = store?.transaction.isError;
-  const errorMessage = store?.transaction.errorMessage;
+  const message = store?.transaction.message;
+  const isStartTransaction = store?.transaction.isStartTransaction;
 
   function closeModal() {
     if (transactionHash !== "" || isError) {
@@ -26,8 +27,19 @@ const TransactionModal = observer(({ }) => {
   }
 
   useEffect(() => {
-    setIsOpen(isProcessing);
-  }, [isProcessing])
+    setIsOpen(isOpening);
+  }, [isOpening])
+
+  useEffect(() => {
+    if (isStartTransaction) {
+      setTimeout(function() {
+        if (transactionHash == "") {
+          store?.transaction.updateMessage(t("bsc warning"));
+        }
+      }, 5000);
+    }
+    
+  }, [isStartTransaction]);
 
   function openModal() {
     setIsOpen(true);
@@ -39,10 +51,10 @@ const TransactionModal = observer(({ }) => {
         <Transition appear show={isOpen} as={Fragment}>
           <Dialog
             as="div"
-            className="fixed inset-0 z-50 overflow-y-auto"
+            className="dialog-outside-wrapper fixed inset-0 z-50 overflow-y-auto"
             onClose={closeModal}
           >
-            <div className="min-h-screen px-4 text-center">
+            <div className="dialog-outside min-h-screen">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -52,7 +64,7 @@ const TransactionModal = observer(({ }) => {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Dialog.Overlay className="fixed inset-0 blur-md bg-black opacity-90" />
+                <Dialog.Overlay className="dialog-overlay fixed inset-0" />
               </Transition.Child>
 
               {/* This element is to trick the browser into centering the modal contents. */}
@@ -86,17 +98,16 @@ const TransactionModal = observer(({ }) => {
                       {isError ? t("transaction error") : transactionHash !== "" ? t("transaction completed") : t("transaction in progress")}
                     </div>
                   </Dialog.Title>
-                  <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
+                  <div className="p-4 md:p-6 h-48 text-sm text-gray-600 dark:text-gray-300">
                     {transactionHash !== "" && !isError ? (
                       <div className="w-full flex justify-center">
                         <span class="icon text-4xl">
                           <i class="fa-solid fa-check-circle text-green-500"></i>
                         </span>
                       </div>
-
                     ) : (
                       <>
-                        {transactionHash == "" && !isError && (
+                        {transactionHash == "" && !isError && isStartTransaction && (
                           <span className="spinner-xl mx-auto"></span>
                         )}
                       </>
@@ -115,28 +126,31 @@ const TransactionModal = observer(({ }) => {
 
                       ) : (
                         <p>
-                          {isError ? (!!errorMessage ? errorMessage : t("transaction error message")) : t("bsc warning")}
+                          {message}
                         </p>
                       )}
                     </h2>
 
                   </div>
-                  <div className="p-4 md:p-6">
-                    <button onClick={closeModal} className="btn btn-default btn-default-lg w-full md:w-md">Close</button>
-                  </div>
+
                   <div className="absolute right-4 top-2 md:top-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center px-4 bg-transparent 
-                  py-2 text-sm font-medium text-gray-500 border border-transparent rounded-md
-                   hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none 
-                   focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                      className={`inline-flex justify-center px-4 bg-transparent py-2 text-sm font-medium 
+                      text-gray-500 border border-transparent rounded-md
+                      hover:bg-gray-200 
+                      dark:hover:bg-gray-700 focus:outline-none 
+                      focus-visible:ring-2 focus-visible:ring-offset-2 
+                      focus-visible:ring-blue-500"   
+                      ${transactionHash == "" && !isError ? "disabled" : ""}`}
+
                       onClick={closeModal}
                     >
                       <i className="fa-duotone fa-close text-base"></i>
                     </button>
                   </div>
                 </div>
+
               </Transition.Child>
             </div>
           </Dialog>
