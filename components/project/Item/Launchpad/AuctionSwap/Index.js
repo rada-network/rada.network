@@ -47,6 +47,7 @@ const LaunchpadActions = observer(({ project,pool }) => {
             {/* Main Actions */}
             <div className="card card-default project-card--container">
           
+              {/* Timer */}
               <h3 className="text-2xl text-center mb-4 font-normal">
                 <span className="text-color-title">{t("Pool closes in")}</span>
               </h3>
@@ -64,6 +65,7 @@ const LaunchpadActions = observer(({ project,pool }) => {
                   </div>
                 </div>
               </div>
+              {/* END: Timer */}
 
               <SubscribeLaunchpad project={project} pool={pool} />
 
