@@ -22,6 +22,7 @@ import dynamic from "next/dynamic";
 
 const Nprogress = dynamic(() => import("@components/Nprogress"));
 const Toast = dynamic(() => import("@components/Toast"));
+const Providers = dynamic(() => import("../utils/providers"));
 
 function parseJwt(token) {
   var base64Payload = token.split(".")[1];
@@ -144,7 +145,9 @@ const MyApp = function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <Component {...pageProps} />
+    <Providers>
+      <Component {...pageProps} />
+    </Providers>
   );
 };
 
