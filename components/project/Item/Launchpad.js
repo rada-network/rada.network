@@ -66,7 +66,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
         <div class="flex items-start">
           
           {/* Main Col */}
-          <div class="flex flex-col lg:order-2 w-full ml-4">
+          <div class="flex flex-col lg:order-2 w-full ml-4 space-y-4">
 
             <div className="">
               {/* Main Action Card */}
@@ -86,10 +86,10 @@ const ProjectLaunchpad = ({ project, pool }) => {
 
 
             {/* FAQ */}
-            <div className="section-body">
+            <div className="card card-default">
               <div className="card-body no-padding">
                 <div className="flex flex-col">
-                  {whitelistTime < currentTime && pool.whitelist_date !== null && winners.length > 0 &&
+                  {/* {whitelistTime < currentTime && pool.whitelist_date !== null && winners.length > 0 &&
                   <div className="flex h-12 border-b border-gray-200 dark:border-gray-700">
                     <nav aria-label="tabbar card-tabs">
                       <ol role="list" className="tabbar--main h-full px-4">
@@ -104,12 +104,38 @@ const ProjectLaunchpad = ({ project, pool }) => {
                       </ol>
                     </nav>
                   </div>
-                  }
+                  } */}
+
+                 <div className="flex h-12 border-b border-gray-200 dark:border-gray-700">
+                    <nav aria-label="tabbar card-tabs">
+                      <ol role="list" className="tabbar--main h-full px-4">
+                        <li style={style} className={`tab-item ` + (active == "faq" ?  "tab-item--active" : "")} onClick={(e) => {setActive("faq")}}>
+                          <span className="tab-item--text !block">
+                            FAQS
+                          </span>
+                        </li>
+                        <li style={style} className={`tab-item ` + (active == "howto" ?  "tab-item--active" : "")} onClick={(e) => {setActive("howto")}}>
+                          <span className="tab-item--text !block">
+                            How to
+                          </span>
+                        </li>
+                        <li style={style} className={`tab-item ` + (active == "winner" ?  "tab-item--active" : "")} onClick={(e) => {setActive("winner")}}>
+                          <span className="tab-item--text !block">
+                            Winners
+                          </span>
+                        </li>
+                      </ol>
+                    </nav>
+                  </div>
+
                   <div className={"project-card--container" + (active == "faq" ? "" : " hidden")}>
                     <ProjectFaq project={project} pool={pool}/> 
                   </div>
                   <div className={"project-card--container"+ (active == "winner" ? "" : " hidden")}>
                     <Subscriber project={project} pool={poolContract} winners={winners}/>
+                  </div>
+                  <div className={"project-card--container"+ (active == "howto" ? "" : " hidden")}>
+                    <HowToUse project={project} pool={pool}/>
                   </div>
                 </div>
               </div>
@@ -125,9 +151,16 @@ const ProjectLaunchpad = ({ project, pool }) => {
 
             <div className="card card-default card--project-info">
               <div className="card-header">
-                <h3>NFT Preview</h3>       
+                <h3>NFT Preview</h3>
+                <a className="btn btn-default">
+                  <span className="btn--text text-xs">
+                    View all
+                  </span>
+                </a>  
               </div>
               <div className="card-body">
+
+                {/* NFT Cards Slideshow */}
                 {/* NFT Card */}
                 <div className="rounded-lg bg-primary-50">
                   <div>
@@ -153,16 +186,25 @@ const ProjectLaunchpad = ({ project, pool }) => {
                       </span>
                     </div>
                   </div>
-
-
                 </div>
                 {/* END: NFT Card */}
+
+                <div className="flex space-x-2 mt-4 justify-center">
+                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
+                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
+                  <span className="h-2 w-4 rounded-lg cursor-pointer bg-primary-500"></span>
+                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
+                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
+                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
+                </div>
+                {/* NFT Cards Slideshow */}
+
               </div>
             </div>
 
             <div className="card card-default card--project-info">
               <div className="card-header">
-                <h3>{t("Info", { name: project?.token?.name })}</h3>       
+                <h3>{t("Info", { name: project.content.title })}</h3>       
               </div>
               <div className="card-body">
                 <div
@@ -181,7 +223,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
             </div>
 
           </div>
-          {/* {pool.token_sale !== "ido" && <HowToUse project={project} pool={pool}/>} */}
+
           {/* Pool info     */}
 
           {/* END: Sidebar */}

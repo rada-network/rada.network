@@ -33,12 +33,19 @@ const LaunchpadActions = observer(({ project,pool }) => {
         {((store.kyc.isKYC && store.kyc.status === BLOCK_PASS_KYC_COMPLETE && store.user.id !== "") || !pool.is_kyc) && !!account ?
           <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
-          <div div className="flex flex-col">
-            <div className="">
-              <Timeline step="2" />
-            </div>
+          <div div className="flex flex-col space-y-4">
 
-            <div className="project-card--container">
+            {/* Timeline */}
+            <div className="card card-default">
+              <div className="card-body">
+                <h3 className="sr-only">Pool's Timeline</h3>
+                <Timeline step="2" />
+              </div>
+            </div>
+            {/* END: Timeline */}
+
+            {/* Main Actions */}
+            <div className="card card-default project-card--container">
           
               <h3 className="text-2xl text-center mb-4 font-normal">
                 <span className="text-color-title">{t("Pool closes in")}</span>
