@@ -2,116 +2,6 @@
 Various UI Components Style
 */
 
-/* Timeline
--------------------------------*/
-.timeline {
-  @apply flex justify-evenly;
-}
-
-.timeline-event {
-  @apply w-full text-center;
-  /* &:first-child {
-    @apply text-left;
-  }
-  &:last-child {
-    @apply text-right;
-  } */
-}
-
-.timeline-event-body {
-  @apply relative space-y-2;
-}
-
-.timeline-event-body::before,
-.timeline-event-body::after {
-  content: "";
-  @apply block absolute h-1 w-1/2 top-4 z-0;
-  @apply bg-gray-300 dark:bg-gray-600;
-}
-
-.timeline-event-body::before {
-  @apply left-0;
-}
-.timeline-event-body::after {
-  @apply right-0;
-}
-
-.timeline-event:first-child .timeline-event-body::before,
-.timeline-event:last-child .timeline-event-body::after {
-  @apply hidden;
-}
-
-
-.timeline-event--icon {
-  @apply inline-flex justify-center items-center w-8 h-8 rounded-full z-10 relative;
-  @apply bg-gray-300 dark:bg-gray-600 text-white;
-}
-
-.timeline-event--title {
-  @apply block font-medium opacity-60;
-}
-
-.timeline-event--text {
-  @apply block text-xs opacity-60;
-}
-
-.timeline-event .tooltip {
-  @apply hidden text-left;
-}
-
-.timeline-event:hover .tooltip {
-  @apply block absolute w-52;
-}
-
-.timeline-event--time {
-  @apply flex text-xs;
-  span {
-    @apply opacity-60 w-10 text-right mr-2;
-  }
-}
-
-
-/* 
-Timeline State: CURRENT
-*/
-.is-current .timeline-event--icon {
-  @apply bg-green-500;
-}
-
-.is-current .timeline-event--title {
-  @apply text-green-500 opacity-100;
-}
-
-.is-current .timeline-event--text {
-  @apply opacity-100;
-}
-
-.is-current .timeline-event-body::before {
-  @apply bg-green-500;
-}
-
-/* 
-Timeline State: COMPLETED
-*/
-.is-complete .timeline-event--icon {
-  @apply bg-green-500;
-}
-
-/* .is-complete .timeline-event--title {
-  @apply text-green-500;
-}
-
-.is-complete .timeline-event--text {
-  @apply opacity-100;
-} */
-
-.is-complete .timeline-event-body::before,
-.is-complete .timeline-event-body::after {
-  @apply bg-green-500;
-}
-
-
-
 
 /* Steps
 -------------------------------*/
@@ -426,3 +316,109 @@ Disclosure
   }
 }
 
+/* Timeline
+-------------------------------*/
+.timeline {
+  @apply flex justify-evenly;
+}
+
+.timeline-event {
+  @apply w-full text-center;
+  /* &:first-child {
+    @apply text-left;
+  }
+  &:last-child {
+    @apply text-right;
+  } */
+}
+
+.timeline-event-body {
+  @apply relative space-y-2;
+}
+
+.timeline-event-body::before,
+.timeline-event-body::after {
+  content: "";
+  @apply block absolute h-1 w-1/2 top-4 z-0;
+  @apply bg-gray-300 dark:bg-gray-600;
+}
+
+.timeline-event-body::before {
+  @apply left-0;
+}
+.timeline-event-body::after {
+  @apply right-0;
+}
+
+.timeline-event:first-child .timeline-event-body::before,
+.timeline-event:last-child .timeline-event-body::after {
+  @apply hidden;
+}
+
+
+.timeline-event--icon {
+  @apply inline-flex justify-center items-center w-8 h-8 rounded-full z-10 relative;
+  @apply bg-gray-300 dark:bg-gray-600 text-white;
+}
+
+.timeline-event--title {
+  @apply block font-medium opacity-60;
+}
+
+.timeline-event--text {
+  @apply block text-xs opacity-60;
+}
+
+.timeline-event .tooltip {
+  @apply hidden text-left;
+}
+
+.timeline-event:hover .tooltip {
+  @apply block absolute w-52;
+}
+
+.timeline-event--time {
+  @apply flex text-xs;
+  span {
+    @apply opacity-60 w-10 text-right mr-2;
+  }
+}
+
+
+/* 
+Timeline State: CURRENT
+*/
+.is-current .timeline-event--icon {
+  @apply bg-green-500;
+}
+
+.is-current .timeline-event--title {
+  @apply text-green-500 opacity-100;
+}
+
+.is-current .timeline-event--text {
+  @apply opacity-100;
+}
+
+.is-current .timeline-event-body::before {
+  @apply bg-green-500;
+}
+
+/* 
+Timeline State: COMPLETED
+*/
+.is-complete .timeline-event--icon {
+  @apply bg-green-500;
+}
+
+/* .is-complete .timeline-event--title {
+  @apply text-green-500;
+}
+.is-complete .timeline-event--text {
+  @apply opacity-100;
+} */
+
+.is-complete .timeline-event-body::before,
+.is-complete .timeline-event-body::after {
+  @apply bg-green-500;
+}

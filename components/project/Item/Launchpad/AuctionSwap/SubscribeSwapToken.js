@@ -141,28 +141,14 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
           <div className="card-body no-padding">
             <div className="flex flex-col">
-              <div className="project-card--container">
-                <div className="flex flex-col md:grid md:gap-4 md:grid-cols-3">
-                  <div className="p-4 md:p-0 order-2 md:order-1">
+              <div className="">
+                <Timeline step="2" />
+              </div>
 
-                    <ul className="flex-shrink-0 flex-grow">
-                      <li className="flex items-center md:block mb-3 pb-3 border-b border-gray-700">
-                        <span className="opacity-70 block mb-1">Limit per wallet </span>
-                        <span className="ml-auto  text-right md:text-left md:ml-0 block list-value text-lg font-semibold tabular-nums">
-                          1-{auctionSwapInfo.info.maxBuyPerAddress} boxes
-                        </span>
-                      </li>
-
-                      <li className="flex items-center md:block mb-3 pb-3 border-b border-gray-700">
-                        <span className="opacity-70 block mb-1">Your bid</span>
-                        <span className="ml-auto  text-right md:text-left md:ml-0 block text-lg font-semibold tabular-nums">
-                          {auctionSwapInfo.order.total}
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="box box--gray order-1 md:order-2 col-span-2 mt-2 md:mt-0">
-                    <div className="box-header relative flex">
+              <div className="project-card--container !p-0 mt-4">
+                <div className="flex">
+                  <div className="w-full">
+                    <div className="box-header relative flex !border-opacity-50">
                       <h3>
                         Bid
                       </h3>
