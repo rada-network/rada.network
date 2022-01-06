@@ -30,7 +30,7 @@ const Breadcrumbs = () => {
 //   }
 
   return (
-    <div className="px-16">
+    <div className="px-2 md:px-6 xl:px-16 ">
       <ul
         itemScope
         itemType="https://schema.org/BreadcrumbList"

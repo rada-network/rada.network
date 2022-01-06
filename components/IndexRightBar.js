@@ -15,6 +15,7 @@ import Image from "./Image";
 import dynamic from "next/dynamic";
 
 const Siteintro = dynamic(import("./Intro"));
+const Breadcrumbs = dynamic(import("@components/Breadcrumbs"));
 
 const PostListDetail = dynamic(() =>
   import("./card-layouts/PostListDetail").then(
@@ -281,12 +282,14 @@ export const IndexRightBar = observer(({ intro }) => {
         </div>
 
         {detailStore.data.id && (
+          <>
+          <Breadcrumbs />
           <PostListDetail
             tabName={tabName}
             setTabCallback={setTabName}
             tokenId={tokenData?.id}
             tokenData={tokenData}
-          />
+          /></>
         )}
 
       </div>

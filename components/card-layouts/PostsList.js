@@ -16,9 +16,9 @@ import { useTranslation } from "next-i18next";
 import { usePageStore } from "../../lib/usePageStore";
 import _ from "lodash";
 import { DISPLAY_SOURCES, LIST_SOURCE } from "../../config/links";
-import Breadcrumbs from "@components/Breadcrumbs";
+import dynamic from "next/dynamic";
 
-// Concepts
+const Breadcrumbs = dynamic(import("@components/Breadcrumbs"));
 
 export const PostsListWrapper = observer(function ({}) {
   const { dataStore, voteStore } = usePageStore();
@@ -365,7 +365,7 @@ export const PostsListGrid = observer(({ title, extraClass }) => {
   // if in item page, render list later
 
   return (
-    <div className={`grid grid-rows-4 grid-flow-col gap-6 ${extraClass || ""}`}>
+    <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 ${extraClass || ""}`}>
       {dataStore.tweets.map(function (item) {
         let title = null,
           mediaUri = null,
