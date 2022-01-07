@@ -59,8 +59,25 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
   return (
     <>
-      <div className="global-padding">
-        <div className="mb-2 flex uppercase text-2xs md:text-xs tracking-wider gap-4">
+      <div className="p-2 md:p-6">
+        <div className="max-w-xs mx-auto text-center flex flex-col">
+          <p className="mb-4 text-sm">You need Enable BUSD to purchase boxes</p>
+          <button className={`btn !text-sm relative mx-auto btn-default btn-default-lg btn-purple`} onClick={handleApprove} width="100%" scale="md">
+            {isApproving && <span className="spinner" />}
+            {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
+            {isApproving && 
+            <>{t("Approving Contract")}</> 
+            }
+            {isApproved && 
+            <>{t("Approved Contract")} BUSD</> 
+            }
+            {!isApproving && !isApproved &&
+            <>{t("Approve Contract")} BUSD</>
+            }
+          </button>
+        </div>
+
+        {/* <div className="mb-2 flex uppercase text-2xs md:text-xs tracking-wider gap-4">
           <div className="w-1/3">
             <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
           </div>
@@ -92,29 +109,16 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           </div>
         </div>
         
-        <div className="grid grid-cols-2 gap-4"> 
-          <div className="flex-shrink-0 flex-grow">
-            <button className={`btn !text-sm relative w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} onClick={handleApprove} width="100%" scale="md">
-              {isApproving && <span className="spinner" />}
-              {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
-              {isApproving && 
-              <>{t("Approving Contract")}</> 
-              }
-              {isApproved && 
-              <>{t("Approved Contract")} BUSD</> 
-              }
-              {!isApproving && !isApproved &&
-              <>{t("Approve Contract")} BUSD</>
-              }
-            </button>
-          </div>
-          <div className="flex-shrink-0 flex-grow">
-            <button className={`btn !text-sm relative w-full btn-default btn-default-lg btn-purple` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" width="100%" scale="md">
+        <div> 
+          
+          <div className="flex items-center mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 dark:border-opacity-50">
+            <div className="text-sm opacity-60">You can purchase upto 10 boxes</div>
+            <button className={`btn !text-sm relative max-w-lg btn-default btn-default-lg btn-purple ml-auto` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" width="100%" scale="md">
               {isConfirming && <span className="spinner" />}
               {isConfirming ? <>{t("Place Order")}</> : <>{t("Place Order")}</>}
             </button>
           </div>
-        </div>
+        </div> */}
         
         {fixedSwapInfo.order.total > 0 &&
         <div className="mt-4">

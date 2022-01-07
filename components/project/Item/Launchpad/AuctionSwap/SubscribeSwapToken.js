@@ -136,16 +136,16 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 <Timeline step="2" />
               </div>
 
-              <div className="project-card--container">
-                <div className="flex flex-col md:grid md:gap-4 md:grid-cols-3">
-                  <div className="p-4 md:p-0 order-2 md:order-1">
+              <div className="project-card--container !p-0 mt-4">
+                <div className="flex">
+                  
                     {/* <div className="box-header !px-0">
                       <CountdownInPool />
                     </div> */}
                     {/* <div className="flex relative rounded-md p-4 flex items-center border border-gray-100 dark:border-gray-700 mb-4">
                       
                     </div> */}
-                    <ul className="flex-shrink-0 flex-grow">
+                    {/* <ul className="flex-shrink-0 flex-grow">
                      
                       <li className="flex items-center md:block mb-3 pb-3 border-b border-gray-700">
                         <span className="opacity-70 block mb-1">Limit per wallet </span>
@@ -159,14 +159,9 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           {auctionSwapInfo.order.total}
                         </span>
                       </li>
-                      {/* <li className="list-pair mb-2">
-                        <span className="list-key !w-3/4">Your number {pool.token_name}</span>
-                        <span className="ml-auto list-value font-semibold tabular-nums">
-                          {auctionSwapInfo.order.totalItem}
-                        </span>
-                      </li> */}
+                      
                     
-                    </ul>
+                    </ul> */}
                     {/* <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
                       <li className="flex mb-2 relative pl-6">
                         <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
@@ -175,9 +170,8 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         <div className="">Some notice</div>
                       </li>
                     </ul> */}
-                  </div>
-                  <div className="box box--gray order-1 md:order-2 col-span-2 mt-2 md:mt-0">
-                    <div className="box-header relative flex">
+                  <div className="w-full">
+                    <div className="box-header relative flex !border-opacity-50">
                       <h3>
                         Bid
                       </h3>
