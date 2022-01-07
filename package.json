@@ -64,6 +64,7 @@
     "react-popper": "^2.2.5",
     "react-responsive-carousel": "^3.2.18",
     "react-responsive-masonry": "^2.1.2",
+    "react-slick": "^0.28.1",
     "react-switch": "^6.0.0",
     "react-textarea-autosize": "^8.3.2",
     "react-toastify": "^8.0.3",

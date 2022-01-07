@@ -93,6 +93,16 @@ const projectBySlugGql = gql`
         is_allow_rir
         is_whitelist
         is_hidden
+        project_pool_nft{
+          title
+          description
+          images
+          rarity
+          sort
+          allocation
+          total
+          probability
+        }
       }
     }
   }
