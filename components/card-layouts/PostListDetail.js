@@ -12,6 +12,8 @@ import ContentLoader from "react-content-loader";
 import { usePageStore } from "../../lib/usePageStore";
 import { PostDetailAuthor } from "./PostDetailAuthor";
 import ProjectShare2EarnWrapper from "@components/project/Item/ProjectShare2EarnWrapper";
+import Screen from "@components/utils/Responsive";
+import TocSideBar from "@components/toc/TocSidebar";
 
 const ContentDescription = dynamic(import("@components/ContentDescription"));
 const FloatButton = dynamic(import("@components/toc/FloatingButton"));
@@ -53,7 +55,7 @@ export const PostListDetail = observer(
     const airdrop = tokenData?.airdrop?.find((ad) => ad.status == "published");
     // find active invest
 
-    const share2earn = Object.assign({},item.share_campaign);
+    const share2earn = Object.assign({}, item.share_campaign);
 
     useEffect(() => {
       tokenId && getCoinInfo(tokenData?.symbol);
@@ -96,9 +98,7 @@ export const PostListDetail = observer(
           }
         });
       }
-      return () => {
-
-      };
+      return () => {};
     }, [item.item]);
     let resizeTimeout = 0;
 
@@ -141,8 +141,13 @@ export const PostListDetail = observer(
         case "share2earn":
           return (
             <>
-            {share2earn &&
-              <ProjectShare2EarnWrapper shareCampaign={share2earn} shareType={`news`} shareSlug={item.slug} />}
+              {share2earn && (
+                <ProjectShare2EarnWrapper
+                  shareCampaign={share2earn}
+                  shareType={`news`}
+                  shareSlug={item.slug}
+                />
+              )}
             </>
           );
       }
@@ -220,20 +225,6 @@ export const PostListDetail = observer(
   }
 );
 
-const PostContent = ({ item }) => {
-  const content = item.content;
-
-  return (
-    <div className="post-content">
-      <div
-        className="post-content--text"
-        dangerouslySetInnerHTML={{ __html: item.content }}
-      ></div>
-      {item?.is_footnote && <Footnote />}
-    </div>
-  );
-};
-
 const VideoDetail = function ({ item, dateTitle, date, setTabCallback }) {
   const source = getSourceVideoFromUri(item);
   const { t } = useTranslation();
@@ -249,9 +240,7 @@ const VideoDetail = function ({ item, dateTitle, date, setTabCallback }) {
               href={item.websiteUri ? item.websiteUri : item.url}
               className=""
             >
-              <span className="post-title--text" itemProp="name">
-                {item.title}
-              </span>
+              <span className="post-title--text">{item.title}</span>
               <span className="btn btn-post-link" title={t("visit website")}>
                 <span className="icon">
                   <i className="fa-duotone fa-external-link" />
@@ -378,116 +367,106 @@ const NewsDetail = observer(function ({
     } catch (error) {}
   };
 
-  const url = item.websiteUri ? item.websiteUri : item.url
+  const url = item.websiteUri ? item.websiteUri : item.url;
   return (
-    <div
-      className={
-        `section post-detail post-detail-news` + (isRada ? " post-rada" : "")
-      }
-      itemScope
-      itemType="http://schema.org/Article"
-    >
-      {/* Post Header */}
-      <div className="section-header post-header">
-        <div className="post-title">
-          {/* {isRada ?
+    <div className="w-limiter-lg flex">
+      <div
+        className={
+          `md:w-3/4 section post-detail post-detail-news` +
+          (isRada ? " post-rada" : "")
+        }
+      >
+        {/* Post Header */}
+        <div className="section-header post-header">
+          <div className="post-title">
+            {/* {isRada ?
           <div className="badges-tags"><span className="badge badge-rada mr-2">RADA</span></div>
           : ""} */}
-          <h1>
-            {url ?
-            <a
-              target="_blank"
-              rel="nofollow noreferrer"
-              href={item.websiteUri ? item.websiteUri : item.url}
-              className=""
-            >
-              <span className="post-title--text" itemProp="name">
-                {title}
-              </span>
-              {item.websiteUri !== null && (
-                <span className="btn btn-post-link" title={t("visit website")}>
+            <h1>
+              {url ? (
+                <a
+                  target="_blank"
+                  rel="nofollow noreferrer"
+                  href={item.websiteUri ? item.websiteUri : item.url}
+                  className=""
+                >
+                  <span className="post-title--text">{title}</span>
+                  {item.websiteUri !== null && (
+                    <span
+                      className="btn btn-post-link"
+                      title={t("visit website")}
+                    >
+                      <span className="icon">
+                        <i className="fa-duotone fa-external-link" />
+                      </span>
+                      <span className="btn--text sr-only">
+                        {t("visit website")}
+                      </span>
+                    </span>
+                  )}
+                </a>
+              ) : (
+                <span className="post-title--text">{title}</span>
+              )}
+            </h1>
+          </div>
+          <div className="metadata-wrapper">
+            <div className="flex flex-shrink-0">
+              <div className="metadata metadata-source">
+                <PostDetailAuthor isRada={isRada} item={item} />
+              </div>
+              <div className="metadata metadata-date">
+                <span
+                  className="metadata-value"
+                  title={dateTitle}
+                  content={item.createdAt}
+                >
+                  {date}
+                </span>
+              </div>
+            </div>
+            <PostVisitVoteDetail item={item} />
+          </div>
+        </div>
+
+        <PostNotice setTabCallback={setTabCallback} type={`news`} />
+
+        <div className="section-body post-body">
+          {!content ? <NewsLoader /> : ""}
+          <div className="post-content" itemProp="description">
+            <ContentDescription content={content} />
+            {item?.is_footnote && <Footnote />}
+          </div>
+
+          {item.websiteUri !== null && (
+            <div className="post-actions">
+              <a
+                target="_blank"
+                rel="nofollow noreferrer"
+                href={item.websiteUri ? item.websiteUri : item.url}
+                className=""
+              >
+                <span className="btn btn-default" title={t("visit website")}>
                   <span className="icon">
                     <i className="fa-duotone fa-external-link" />
                   </span>
-                  <span className="btn--text sr-only">
-                    {t("visit website")}
-                  </span>
+                  <span className="btn--text">{t("visit website")}</span>
                 </span>
-              )}
-            </a>
-            :
-            <span className="post-title--text" itemProp="name">
-              {title}
-            </span>
-            }
-
-          </h1>
-        </div>
-        <div className="metadata-wrapper">
-          <div className="flex flex-shrink-0">
-            <div className="metadata metadata-source">
-              <PostDetailAuthor isRada={isRada} item={item} />
+              </a>
             </div>
-            <div className="metadata metadata-date">
-              <span
-                className="metadata-value"
-                title={dateTitle}
-                itemProp="datePublished"
-                content={item.createdAt}
-              >
-                {date}
-              </span>
-            </div>
-          </div>
-          <PostVisitVoteDetail item={item} />
-        </div>
-      </div>
-
-      <PostNotice setTabCallback={setTabCallback} type={`news`} />
-
-      <div className="section-body post-body">
-        {!item.content ? <NewsLoader /> : ""}
-        <div className="post-content" itemProp="description">
-          {item.isshowcontent ? (
-            <ContentDescription content={content} />
-          ) : (
-            // (item.description.length > 100 ?
-            //   <div dangerouslySetInnerHTML={{__html: item.description}}/>
-            //   :
-            //   ""
-            // )
-
-            <ContentDescription content={content} />
           )}
-          {item?.is_footnote && <Footnote />}
         </div>
-        {/* {item.thumbnailUri !== "" ?
-          <div className="post-media">
-            <a title={item.title}>
-              <img  title={item.title} className="post-media--img" src={item.thumbnailUri}/>
-            </a>
-          </div>
-          : ""
-        } */}
-        {item.websiteUri !== null && (
-          <div className="post-actions">
-            <a
-              target="_blank"
-              rel="nofollow noreferrer"
-              href={item.websiteUri ? item.websiteUri : item.url}
-              className=""
-            >
-              <span className="btn btn-default" title={t("visit website")}>
-                <span className="icon">
-                  <i className="fa-duotone fa-external-link" />
-                </span>
-                <span className="btn--text">{t("visit website")}</span>
-              </span>
-            </a>
-          </div>
-        )}
-        <FloatButton mainScroll={scrollRef} />
       </div>
+      <Screen from="lg">
+        <div className="toc-side-bar-div">
+          <TocSideBar mainScroll={scrollRef} content={content} />
+        </div>
+      </Screen>
+      <Screen upto="md">
+        <div className="float-btn--container">
+          <FloatButton mainScroll={scrollRef} />
+        </div>
+      </Screen>
     </div>
   );
 });
@@ -537,9 +516,7 @@ const SocialTweetDetail = function ({ item, date, dateTitle, setTabCallback }) {
               href={item.websiteUri ? item.websiteUri : item.url}
               className=""
             >
-              <span className="post-title--text" itemProp="name">
-                {item.title}
-              </span>
+              <span className="post-title--text">{item.title}</span>
               <span className="btn btn-post-link" title="Visit Website">
                 <span className="icon">
                   <i className="fa-duotone fa-external-link" />
@@ -719,31 +696,3 @@ const PostVisitVoteDetail = function ({ item }) {
     </div>
   );
 };
-
-// const PostDetailAuthor = function({isRada,item}){
-
-//   let authorImg = ""
-//   if (item.author && item.author.image.small){
-//     authorImg = item.author.image.small
-//   }
-
-//   return (
-//     <>
-//     {isRada ? (
-//       <span className="icon icon-rada w-3.5 mr-1.5 opacity-70">
-//         {authorImg && authorImg !== "" ?
-//         <div className="avatar"><img src={authorImg} alt={getSourceFromUri(item)}/></div>
-//         : <RadaPost />}
-//       </span>
-//     ) : (
-//       <span className="icon mr-1.5">
-//         <i className="fa-duotone fa-newspaper"></i>
-//       </span>
-//     )}
-
-//     <span className="metadata-value" title={getSourceFromUri(item)}>
-//       {getSourceFromUri(item)}
-//     </span>
-//     </>
-//   )
-// }

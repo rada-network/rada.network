@@ -17,12 +17,13 @@ import { usePageStore } from "../../lib/usePageStore";
 import _ from "lodash";
 import { DISPLAY_SOURCES, LIST_SOURCE } from "../../config/links";
 import dynamic from "next/dynamic";
+import { NextSeo } from "next-seo";
 
 const Breadcrumbs = dynamic(import("@components/Breadcrumbs"));
 
 export const PostsListWrapper = observer(function ({}) {
   const { dataStore, voteStore } = usePageStore();
-  const { t } = useTranslation("common");
+  const { t } = useTranslation(["common", "navbar"]);
   const scrollBox1 = useRef();
   const store = useStore();
   const awayCls = "list-away-top";
@@ -96,6 +97,10 @@ export const PostsListWrapper = observer(function ({}) {
   voteStore.addVotesV2(dataStore.tweets);
   return (
     <>
+    <NextSeo
+        title={`RADA - ${t(dataStore.type, { ns: 'navbar' })}`}
+
+      />
       <div className={`pane-content--main--top`}>
         <div className="search-wrapper">
           {/* Search */}

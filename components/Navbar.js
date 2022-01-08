@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { observer } from "mobx-react";
 import { useStore } from "../lib/useStore";
 import { useTranslation } from "next-i18next";
-import utils from "../lib/util";
 
 import Screen from "./utils/Responsive";
 import { usePageStore } from "../lib/usePageStore";
@@ -203,56 +202,43 @@ const NavItem = ({ className, href, children, type, page }) => {
   if (dataStore.page === "launchverse") {
     if (dataStore.page === page) cls.push(`nav-item-active`);
   }
-  const handleClickNavBar = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  // const handleClickNavBar = (e) => {
+  //   // e.preventDefault();
+  //   // e.stopPropagation();
 
-    if (
-      dataStore.type != e.currentTarget.getAttribute("datatype") ||
-      dataStore.page != e.currentTarget.getAttribute("page")
-    ) {
-      dataStore.type = e.currentTarget.getAttribute("datatype");
-      dataStore.tweets = [];
-      detailStore.data = {};
-      dataStore.loadingButton = false;
-      store.setShallowConnect(true);
-      router.push(
-        e.currentTarget.getAttribute("href"),
-        e.currentTarget.getAttribute("href"),
-        { shallow: true }
-      );
-      dataStore.meta = utils.createSiteMetadata({
-        page: "Explore",
-        data: { query: dataStore.type },
-      });
-    }
-    return false;
-  };
-  const handleDoubleClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (dataStore.type == e.currentTarget.getAttribute("datatype")) {
-      dataStore.type = e.currentTarget.getAttribute("datatype");
-      dataStore.tweets = [];
-      dataStore.forceUpdate++;
-    }
-    return false;
-  };
+  //   // if (
+  //   //   dataStore.type != e.currentTarget.getAttribute("datatype") ||
+  //   //   dataStore.page != e.currentTarget.getAttribute("page")
+  //   // ) {
+  //   //   dataStore.type = e.currentTarget.getAttribute("datatype");
+  //   //   dataStore.tweets = [];
+  //   //   detailStore.data = {};
+  //   //   dataStore.loadingButton = false;
+  //   //   store.setShallowConnect(true);
+  //   //   router.push(
+  //   //     e.currentTarget.getAttribute("href"),
+  //   //     e.currentTarget.getAttribute("href"),
+  //   //     { shallow: true }
+  //   //   );
+  //   //   dataStore.meta = utils.createSiteMetadata({
+  //   //     page: "Explore",
+  //   //     data: { query: dataStore.type },
+  //   //   });
+  //   // }
+  //   // return false;
+  // };
+  // const handleDoubleClick = (e) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   if (dataStore.type == e.currentTarget.getAttribute("datatype")) {
+  //     dataStore.type = e.currentTarget.getAttribute("datatype");
+  //     dataStore.tweets = [];
+  //     dataStore.forceUpdate++;
+  //   }
+  //   return false;
+  // };
 
-  return page == "item" ? (
-    <a
-      href={href}
-      className={cls.join(" ")}
-      page={page}
-      datatype={type}
-      onDoubleClick={handleDoubleClick}
-      onClick={(e) => {
-        handleClickNavBar(e);
-      }}
-    >
-      <>{children}</>
-    </a>
-  ) : (
+  return (
     <Link key={type} href={href}>
       <a className={cls.join(" ")} datatype="link">
         {children}

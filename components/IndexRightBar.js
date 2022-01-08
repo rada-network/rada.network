@@ -2,7 +2,7 @@ import { observer } from "mobx-react";
 import React, { useEffect, useState } from "react";
 
 import { useTranslation } from "next-i18next";
-import { useStore } from "../lib/useStore";
+
 import { useRouter } from "next/router";
 
 import _ from "lodash";
@@ -10,11 +10,13 @@ import _ from "lodash";
 import { getTokenById } from "../data/query/getTokenById";
 
 import { usePageStore } from "../lib/usePageStore";
-import utils from "../lib/util";
+
 import Image from "./Image";
 import dynamic from "next/dynamic";
+import { NextSeo, ArticleJsonLd } from "next-seo";
+import { createPostUri } from "./card-layouts/PostsList";
+import logo from "../public/images/rada.svg";
 
-const Siteintro = dynamic(import("./Intro"));
 const Breadcrumbs = dynamic(import("@components/Breadcrumbs"));
 
 const PostListDetail = dynamic(() =>
@@ -23,24 +25,16 @@ const PostListDetail = dynamic(() =>
   )
 );
 
-export const IndexRightBar = observer(({ intro }) => {
+export const IndexRightBar = observer(() => {
   const { dataStore, detailStore, voteStore } = usePageStore();
-  // const scrollBox2 = createRef();
-  // let ps2;
 
-  // useEffect(() => {
-  //   // make scrollbar
-  //   ps2 = new PerfectScrollbar(scrollBox2.current, {});
-  //   return () => {
-  //     ps2.destroy()
-  //   }
-  // }, [scrollBox2]);
   const [tabName, setTabName] = useState("article");
   const [tokenData, setTokenData] = useState({});
-  const back = "/" + dataStore.lang + "/apps/explore/" + dataStore.type;
+
   const router = useRouter();
-  const store = useStore();
+
   const { t, i18n } = useTranslation();
+
   useEffect(() => {
     if (!_.isEmpty(detailStore.data)) {
       document.body.classList.add("page-details");
@@ -63,14 +57,9 @@ export const IndexRightBar = observer(({ intro }) => {
   }, [router.asPath]);
 
   const handleBack = (e) => {
-    detailStore.data = {};
-    dataStore.meta = utils.createSiteMetadata({
-      page: "Explore",
-      data: { query: dataStore.type },
-    });
-    store.setShallowConnect(true);
-    router.push(back, back, { shallow: true });
+    router.back();
   };
+
   // find active airdrop
   const airdrop = tokenData?.airdrop?.find((ad) => ad.status == "published");
   // find active invest
@@ -90,9 +79,59 @@ export const IndexRightBar = observer(({ intro }) => {
       });
   }, [tokenInfo]);
 
-  // const Intro = dynamic(() => import(`./locales/${dataStore.lang}/Intro.js`))
+  // SEO
+  let keywords, keyword;
+
+  if (detailStore.data.keywords !== null) {
+    try {
+      keywords = JSON.parse(detailStore.data.keywords);
+      keywords = Object.entries(keywords);
+      keyword = keywords
+        .map(function (item) {
+          return item[0];
+        })
+        .join(",");
+    } catch (e) {
+      keyword = detailStore.data.keywords.replace(/\n/g, ",");
+    }
+  }
+
+  let title = detailStore.data.title;
+  let slug = detailStore.data.slug;
+  if (detailStore.data.lang && detailStore.data.lang === "all") {
+    if (dataStore.lang === "en") {
+      title = detailStore.data.title_en;
+      slug = detailStore.data.slug_en;
+    }
+  }
+
+  console.log("detailStore", detailStore)
+
   return (
     <>
+      <NextSeo
+        title={`RADA - ${title}`}
+        description={detailStore.data.description}
+        openGraph={{
+          images: [
+            {
+              url: detailStore.data.thumbnailUri,
+            },
+          ],
+        }}
+      />
+
+      <ArticleJsonLd
+        url={`${process.env.NEXT_PUBLIC_URL}${createPostUri(title, slug, detailStore.data.item, dataStore.lang)}`}
+        title={title}
+        images={[detailStore.data.thumbnailUri]}
+        datePublished={detailStore.data.createdAt}
+        dateModified={detailStore.data.updatedAt}
+        authorName={detailStore.data.author.name}
+        publisherName="RADA"
+        publisherLogo={logo.src}
+      />
+
       <div
         className={
           `pane-content--sec` +
@@ -102,7 +141,6 @@ export const IndexRightBar = observer(({ intro }) => {
       >
         <div className={`pane-content--sec--top`}>
           <div className="flex h-full w-full relative">
-            {/* Pageback Here */}
             {dataStore !== undefined &&
             !_.isEmpty(detailStore.data) &&
             detailStore.data.id ? (
@@ -123,11 +161,6 @@ export const IndexRightBar = observer(({ intro }) => {
             ) : (
               ""
             )}
-
-            {/*
-            HieuNN:
-            Example of Page Tabs Here
-            */}
             {dataStore !== undefined && !_.isEmpty(detailStore.data) ? (
               <div className="tabbar page-tabs">
                 <div className="tabbar--main">
@@ -273,25 +306,19 @@ export const IndexRightBar = observer(({ intro }) => {
               ""
             )}
           </div>
-
-          {/* <div className="flex items-center space-x-2">
-            <div className="relative">
-              <ContentTools />
-            </div>
-          </div> */}
         </div>
 
         {detailStore.data.id && (
           <>
-          <Breadcrumbs />
-          <PostListDetail
-            tabName={tabName}
-            setTabCallback={setTabName}
-            tokenId={tokenData?.id}
-            tokenData={tokenData}
-          /></>
+            <Breadcrumbs />
+            <PostListDetail
+              tabName={tabName}
+              setTabCallback={setTabName}
+              tokenId={tokenData?.id}
+              tokenData={tokenData}
+            />
+          </>
         )}
-
       </div>
     </>
   );

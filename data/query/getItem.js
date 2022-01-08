@@ -34,7 +34,6 @@ const itemFeedGql = gql`
         slug
         slug_en
         title_en
-        description
         thumbnailUri
         source
         isshowcontent

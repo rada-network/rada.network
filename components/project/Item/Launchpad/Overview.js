@@ -5,7 +5,7 @@ import Image from "@components/Image";
 export default function LaunchpadOverview({ project,pool }) {
   const { token } = project;
   const { t } = useTranslation("launchpad");
-  
+
   return (
     <>
 
@@ -24,7 +24,7 @@ export default function LaunchpadOverview({ project,pool }) {
             <h1 className="flex items-center">
               <strong
                 className="text-color-title text-xl lg:text-2xl font-semibold"
-                itemProp="name"
+
               >
                 {token.name}
               </strong>
@@ -33,7 +33,7 @@ export default function LaunchpadOverview({ project,pool }) {
               </span>
             </h1>
           </div>
-         
+
           <div className="flex flex-wrap space-x-4 mb-4">
             <div className="flex items-center text-sm">
               <span className="w-5 h-5">
@@ -57,9 +57,9 @@ export default function LaunchpadOverview({ project,pool }) {
       </div>
 
       {/* Video / Banner of Project */}
-     
 
-      {pool == null && 
+
+      {pool == null &&
       <div className="page-media">
         <div className="media-player rounded-lg">
           <div className="w-full h-full">
@@ -74,7 +74,7 @@ export default function LaunchpadOverview({ project,pool }) {
                   layout="fill"
                   className="rounded-lg"
                   src={project.cover_uri}
-                  itemProp="image"
+
                 />
               </div>
             )}

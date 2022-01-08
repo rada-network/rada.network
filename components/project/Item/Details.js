@@ -10,11 +10,11 @@ export default function ProjectDetails({ project }) {
   const dateTitle = utils.titleTime(news?.createdAt);
   const date = utils.timeDifference(new Date(), new Date(news?.createdAt));
   return (
-    <div className={`section`} itemScope itemType="http://schema.org/Article">
+    <div className={`section`}>
       <div className="section-header post-header">
         <div className="post-title">
           <h1>
-            <span className="post-title--text" itemProp="name">
+            <span className="post-title--text" >
               {news?.title}
             </span>
           </h1>
@@ -28,7 +28,7 @@ export default function ProjectDetails({ project }) {
               <span
                 className="metadata-value"
                 title={dateTitle}
-                itemProp="datePublished"
+
                 content={news?.createdAt}
               >
                 {date}

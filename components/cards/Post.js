@@ -39,14 +39,16 @@ export const CardPostLoader = (props) => {
             speed={2}
             // backgroundColor="#F3F4F6"
             // foregroundColor="#ecebeb"
-            viewBox="0 0 640 40"
+            viewBox="0 0 400 160"
             preserveAspectRatio="xMidYMid meet"
             // style={{ width: '100%' }}
             {...props}
           >
-            <rect x="0" y="0" rx="4" ry="4" width="40" height="40" />
-            <rect x="56" y="6" rx="4" ry="4" width="528" height="6" />
-            <rect x="56" y="26" rx="4" ry="4" width="128" height="6" />
+          <rect x="0" y="0" rx="0" ry="0" width="200" height="200" />
+          <rect x="213" y="0" rx="0" ry="0" width="70" height="70" />
+          <rect x="214" y="87" rx="0" ry="0" width="70" height="70" />
+          <rect x="300" y="0" rx="0" ry="0" width="70" height="70" />
+          <rect x="300" y="87" rx="0" ry="0" width="70" height="70" />
           </ContentLoader>
         </Screen>
       </div>

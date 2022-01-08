@@ -1,10 +1,13 @@
-
 import "../styles/tw.css";
 import "../styles/globals.css";
 import "../styles/styles.css";
 
-import(/* webpackPrefetch: true */ '../public/vendors/font-awesome6-pro/css/all.min.css');
-import(/* webpackPrefetch: true */ '../public/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css');
+import(
+  /* webpackPrefetch: true */ "../public/vendors/font-awesome6-pro/css/all.min.css"
+);
+import(
+  /* webpackPrefetch: true */ "../public/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
+);
 
 import { StoreProvider, useStore } from "../lib/useStore";
 import { configure } from "mobx";
@@ -17,8 +20,11 @@ import { Provider, useSession, signOut } from "next-auth/client";
 import { useCookies, CookiesProvider } from "react-cookie";
 import { PageStoreProvider, usePageStore } from "../lib/usePageStore";
 import { ThemeProvider } from "next-themes";
-
+import { DefaultSeo, LogoJsonLd } from "next-seo";
+import ogimage from "../public/images/launchverse-hero.png";
+import logo from "../public/images/rada.svg";
 import dynamic from "next/dynamic";
+
 
 const Nprogress = dynamic(() => import("@components/Nprogress"));
 const Toast = dynamic(() => import("@components/Toast"));
@@ -145,9 +151,50 @@ const MyApp = function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <Providers>
-      <Component {...pageProps} />
-    </Providers>
+    <>
+      <DefaultSeo
+        title="RADA - The DAO based AngelList for Blockchain"
+        description="The DAO-based AngelList for Blockchain. As a leading decentralized community-driven LaunchPad, we fund and launch the most promising Gamefi and Blockchain projects"
+        languageAlternates={router.locales.map((locate) => ({
+          hrefLang: locate,
+          href: `${process.env.NEXT_PUBLIC_URL}${
+            locate !== router.defaultLocale ? `/${locate}` : ""
+          }${router.asPath}`,
+        }))}
+        openGraph={{
+          type: "website",
+          url: `${process.env.NEXT_PUBLIC_URL}${
+            router.locale !== router.defaultLocale ? `/${router.locale}` : ""
+          }${router.asPath}`,
+          images: [
+            {
+              url: `${ogimage.src}`,
+            },
+          ],
+        }}
+        twitter={{
+          handle: "@handle",
+          site: "@site",
+          cardType: "summary_large_image",
+        }}
+        canonical={`${process.env.NEXT_PUBLIC_URL}${
+          router.locale !== router.defaultLocale ? `/${router.locale}` : ""
+        }${router.asPath}`}
+        additionalLinkTags={[
+          {
+            rel: "manifest",
+            href: "/manifest.json",
+          },
+        ]}
+      />
+      <LogoJsonLd
+        logo={logo.src}
+        url={process.env.NEXT_PUBLIC_URL}
+      />
+      <Providers>
+        <Component {...pageProps} />
+      </Providers>
+    </>
   );
 };
 

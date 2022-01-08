@@ -229,14 +229,7 @@ export const Index = ({ props, dataStore, voteStore, detailStore }) => {
     >
       <div className={`pane-content`} ref={containerRef}>
         {detailStore.data.id ? (
-          <IndexRightBar
-            back={"/" + props.lang + "/explore/" + props.type}
-            dataStore={dataStore}
-            detailStore={detailStore}
-            props={props}
-            voteStore={voteStore}
-            intro={props.intro}
-          />
+          <IndexRightBar />
         ) : (
           <PostsListWrapper />
         )}
