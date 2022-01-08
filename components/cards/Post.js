@@ -177,7 +177,7 @@ const CardPostNormal = observer(
       srcSet = mediaUri + ", " + imgSrc;
     }
     return (
-      <div className={` ${state}`}>
+      <div className={`relative ${state}`}>
         {mediaUri !== null ? (
           <div className={` `}>
             <a

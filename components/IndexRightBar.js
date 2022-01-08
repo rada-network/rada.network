@@ -127,7 +127,7 @@ export const IndexRightBar = observer(() => {
         images={[detailStore.data.thumbnailUri]}
         datePublished={detailStore.data.createdAt}
         dateModified={detailStore.data.updatedAt}
-        authorName={detailStore.data.author.name}
+        authorName={detailStore.data.author?.name ?? "RADA"}
         publisherName="RADA"
         publisherLogo={logo.src}
       />

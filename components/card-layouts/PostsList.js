@@ -147,7 +147,7 @@ export const PostsListWrapper = observer(function ({}) {
         ref={scrollBox1}
         cls="list-top-away"
       >
-        <PostsListGrid />
+        <PostsList />
 
         {dataStore.tweets.length == 0 &&
         dataStore.isSearch &&
@@ -217,13 +217,10 @@ const PostsListLoader = () => {
 };
 
 export const PostsList = observer(({ title, extraClass }) => {
-  const { dataStore, detailStore, voteStore } = usePageStore();
-  const router = useRouter();
-
-  // if in item page, render list later
+  const { dataStore } = usePageStore();
 
   return (
-    <div className={`cards-list ${extraClass || ""}`}>
+    <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 ${extraClass || ""}`}>
       {dataStore.tweets.map(function (item) {
         let title = null,
           mediaUri = null,
@@ -302,22 +299,7 @@ export const PostsList = observer(({ title, extraClass }) => {
             </a>
           );
         }
-        // if (item.idea !== null){
-        //   item.createdAt = item.idea.createdAt
-        //   title = item.idea.title
-        //   mediaUri = Object.keys(item.idea.imagesUri).length === 0 ? null : item.idea.imagesUri[0]
-        //   return <CardPost key={item.id}
-        //                    title={title}
-        //                    mediaUri={mediaUri}
-        //                    type="fa-duotone fa-code"
-        //                    source={"Project Catalyst"}
-        //                    commentCount={commentCount}
-        //                    voteCount={voteCount} item={item}
-        //                    detailStore={detailStore}
-        //                    voteStore={voteStore}
-        //                    dataStore={dataStore}
-        //   />
-        // }
+
         if (item.video !== null) {
           item.video.item = {
             id: item.id,
@@ -345,74 +327,9 @@ export const PostsList = observer(({ title, extraClass }) => {
             />
           );
         }
-        // if (item.media !== null){
-        //   return <CardPost key={item.id}
-        //                    title="This Group of Investors Drives Bitcoin Bull Markets, According to Analyst Willy Woo – And It’s Not Whales"
-        //                    mediaUri="https://picsum.photos/80/80?random=3"
-        //                    type="fa-duotone fa-spotify"
-        //                    source="DailyHodl"
-        //                    commentCount="0"
-        //                    voteCount="0" item={item}
-        //                    detailStore={detailStore}
-        //                    voteStore={voteStore}
-        //                    dataStore={dataStore}
-        //   />
-        // }
+
       })}
     </div>
   );
 });
 
-export const PostsListGrid = observer(({ title, extraClass }) => {
-  const { dataStore } = usePageStore();
-  const router = useRouter();
-
-  // if in item page, render list later
-
-  return (
-    <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 ${extraClass || ""}`}>
-      {dataStore.tweets.map(function (item) {
-        let title = null,
-          mediaUri = null,
-          source = null,
-          voteCount = item.totalVote,
-          commentCount = item.totalComment,
-          slug = null;
-        if (item.news !== null) {
-          item.news.item = {
-            id: item.id,
-            totalVote: item.totalVote,
-            totalComment: item.totalComment,
-          };
-          item.token = item.news.token;
-          item.tokens = item.news.tokens;
-          item.createdAt = item.news.createdAt;
-          source = getSourceFromUri(item.news);
-          title = item.news.title;
-          slug = item.news.slug;
-          if (item.news.lang === "all") {
-            if (dataStore.lang === "en") {
-              title = item.news.title_en;
-              slug = item.news.slug_en;
-            }
-          }
-          mediaUri =
-            item.news.thumbnailUri !== "" ? item.news.thumbnailUri : null;
-          return (
-            <CardPost
-              key={item.id}
-              title={title}
-              mediaUri={mediaUri}
-              type="fa-duotone fa-newspaper"
-              source={source}
-              slug={slug}
-              commentCount={commentCount}
-              voteCount={voteCount}
-              item={item}
-            />
-          );
-        }
-      })}
-    </div>
-  );
-});
