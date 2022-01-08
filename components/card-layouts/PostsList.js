@@ -158,8 +158,6 @@ export const PostsListWrapper = observer(function ({}) {
         ) : (
           ""
         )}
-
-        {dataStore.loadingButton && <PostsListLoader />}
       </div>
     </>
   );
@@ -206,15 +204,6 @@ export function createPostUri(title, slug, item, lang) {
   );
 }
 
-const PostsListLoader = () => {
-  return (
-    <>
-      {[...Array(10)].map((x, i) => (
-        <CardPostLoader key={i} />
-      ))}
-    </>
-  );
-};
 
 export const PostsList = observer(({ title, extraClass }) => {
   const { dataStore } = usePageStore();
