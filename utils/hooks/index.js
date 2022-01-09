@@ -483,7 +483,8 @@ export const useAuctionSwapInfo = ({pool,status}) => {
               priceEach : parseFloat(ethers.utils.formatEther(bid.priceEach)),
               quantity : parseFloat(ethers.utils.formatUnits(bid.quantity,0)),
               baseQuantity : parseFloat(ethers.utils.formatUnits(bid.quantity,0)),
-              winQuantity : parseFloat(ethers.utils.formatUnits(bid.winQuantity,0))
+              winQuantity : parseFloat(ethers.utils.formatUnits(bid.winQuantity,0)),
+              isEditing: false
             })
           }
           catch(e){
