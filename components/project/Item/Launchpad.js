@@ -15,6 +15,10 @@ import HowToUse from "./HowToUse";
 import TutorialWidget from "./Launchpad/TutorialWidget"
 import NftPreview from "./NftPreview";
 import NftInfo from "./NftInfo";
+import { observer } from "mobx-react";
+import useStore from "@lib/useStore";
+import Timeline from "./Launchpad/AuctionSwap/Timeline";
+
 
 const LaunchpadIdo = dynamic(import(`./Launchpad/Actions/Index`));
 const LaunchpadFixedSwap = dynamic(import(`./Launchpad/FixedSwap/Index`));
