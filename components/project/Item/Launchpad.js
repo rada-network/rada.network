@@ -12,10 +12,9 @@ import Subscriber from "./Launchpad/Actions/Subscriber";
 import { getProjectPoolWinnerBySlug } from "@data/query/projects";
 import dynamic from "next/dynamic";
 import HowToUse from "./HowToUse";
-import NFTRarity from "./NFTRarity";
-import Timeline from "./Launchpad/AuctionSwap/Timeline";
-import { observer } from "mobx-react";
-import useStore from "@lib/useStore";
+import TutorialWidget from "./Launchpad/TutorialWidget"
+import NftPreview from "./NftPreview";
+import NftInfo from "./NftInfo";
 
 const LaunchpadIdo = dynamic(import(`./Launchpad/Actions/Index`));
 const LaunchpadFixedSwap = dynamic(import(`./Launchpad/FixedSwap/Index`));
@@ -109,7 +108,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
         <div class="flex items-start">
           
           {/* Main Col */}
-          <div class="flex flex-col lg:order-2 w-full ml-4 space-y-4">
+          <div class="flex flex-col lg:order-2 w-4/6 ml-4 space-y-4">
 
             {/* Timeline */}
             <div className="card card-default">
@@ -130,118 +129,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
             {/* END: Timeline */}
 
             {/* NFT Info Card */}
-            <div className="card card-default card--project-info">
-              <div className="card-header items-end">
-                <div>
-                  <span class="text-2xs uppercase opacity-60 tracking-wide">PREVIEW </span>
-                  <h3>MetaGear NFT Collection</h3>
-                </div>
-                <a className="btn btn-default">
-                  <span className="btn--text">
-                    View all
-                  </span>
-                  <span className="btn--caret-right"></span>
-                </a>  
-              </div>
-              <div className="card-body">
-
-                {/* NFT Cards Slideshow */}
-                <div className="grid grid-cols-3 gap-4">
-                  {/* NFT Card */}
-                  <div className="rounded-lg bg-primary-50 dark:bg-primary-700">
-                    <div>
-                      <img className="w-full object-cover rounded-lg" src={pool.token_image_uri} />
-                    </div>
-
-                    <div className="flex justify-between items-center p-2">
-                      <div>
-                        <h5 className="font-medium">
-                          MetaBox
-                        </h5>
-                        <span className="text-xs font-medium text-yellow-500">
-                          LEGENDARY
-                        </span>
-                      </div>
-
-                      <div className="text-right">
-                        <span className="block text-xs opacity-60">
-                          Highest bid
-                        </span>
-                        <span className="text-xs font-medium">
-                          150 BUSD
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  {/* END: NFT Card */}
-                  {/* NFT Card */}
-                  <div className="rounded-lg bg-primary-50 dark:bg-primary-700">
-                    <div>
-                      <img className="w-full object-cover rounded-lg" src={pool.token_image_uri} />
-                    </div>
-
-                    <div className="flex justify-between items-center p-2">
-                      <div>
-                        <h5 className="font-medium">
-                          MetaBox
-                        </h5>
-                        <span className="text-xs font-medium text-yellow-500">
-                          LEGENDARY
-                        </span>
-                      </div>
-
-                      <div className="text-right">
-                        <span className="block text-xs opacity-60">
-                          Highest bid
-                        </span>
-                        <span className="text-xs font-medium">
-                          150 BUSD
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  {/* END: NFT Card */}
-                  {/* NFT Card */}
-                  <div className="rounded-lg bg-primary-50 dark:bg-primary-700">
-                    <div>
-                      <img className="w-full object-cover rounded-lg" src={pool.token_image_uri} />
-                    </div>
-
-                    <div className="flex justify-between items-center p-2">
-                      <div>
-                        <h5 className="font-medium">
-                          MetaBox
-                        </h5>
-                        <span className="text-xs font-medium text-yellow-500">
-                          LEGENDARY
-                        </span>
-                      </div>
-
-                      <div className="text-right">
-                        <span className="block text-xs opacity-60">
-                          Highest bid
-                        </span>
-                        <span className="text-xs font-medium">
-                          150 BUSD
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  {/* END: NFT Card */}
-                </div>
-
-                <div className="flex space-x-2 mt-4 justify-center">
-                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
-                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
-                  <span className="h-2 w-4 rounded-lg cursor-pointer bg-primary-500"></span>
-                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
-                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
-                  <span className="h-2 w-2 rounded-lg cursor-pointer bg-gray-300"></span>
-                </div>
-                {/* NFT Cards Slideshow */}
-
-              </div>
-            </div>
+            <NftPreview project={project} pool={poolContract}/>
             {/* END: NFT Info Card */}
 
             <div className="">
@@ -335,9 +223,8 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
                 </div>
               </div>
             </div>
-            {pool.token_sale == "auction-swap" && (
-              <NFTRarity />
-            )}
+
+            <NftInfo project={project} pool={poolContract}/>
 
           </div>
 
