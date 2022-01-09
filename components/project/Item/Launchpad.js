@@ -67,7 +67,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
         <div class="flex items-start">
           
           {/* Main Col */}
-          <div class="flex flex-col lg:order-2 w-full ml-4 space-y-4">
+          <div class="flex flex-col lg:order-2 w-4/6 ml-4 space-y-4">
 
             {/* NFT Info Card */}
             <NftPreview project={project} pool={poolContract}/>
