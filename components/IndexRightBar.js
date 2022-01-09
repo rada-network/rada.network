@@ -105,8 +105,6 @@ export const IndexRightBar = observer(() => {
     }
   }
 
-  console.log("detailStore", detailStore)
-
   return (
     <>
       <NextSeo

@@ -28,10 +28,6 @@ const PostsListWrapper = dynamic(() =>
   )
 );
 
-const Resizer = dynamic(() =>
-  import("@components/utils/Resizer").then((mod) => mod.Resizer)
-);
-
 const getDataExplore = async ({ query, type, lang }) => {
   const itemFeed = await getItems({
     take: HOME_ITEM_TAKE,
@@ -238,60 +234,6 @@ export const Index = ({ props, dataStore, voteStore, detailStore }) => {
   );
 };
 
-const ResizeerWrapper = function ({ mainRef, dataStore, containerRef }) {
-  let pw;
-  let mw;
-  useEffect(() => {
-    let mwp = store.get("main-width");
-    if (_.isUndefined(mwp)) {
-      mwp = 40;
-    }
-    if (isNaN(mwp)) {
-      mwp = 40;
-    }
-    if (mwp > 40) mwp = 40;
-    if (mwp < 30) mwp = 30;
-    dataStore.home.mainwidth = mwp;
-    const style = `--main-width: ${mwp}%`;
-    containerRef.current.setAttribute("style", style);
-  }, []);
-  const resizeStart = (e) => {
-    pw = mainRef.current.parentNode.clientWidth;
-    mw = mainRef.current.clientWidth;
-  };
-  const resizeDone = (e) => {
-    if (!pw) pw = mainRef.current.parentNode.clientWidth;
-    // calculate width
-    let mwp = Math.round((mainRef.current.clientWidth / pw) * 100);
-    if (mwp > 40) mwp = 40;
-    if (mwp < 30) mwp = 30;
-    dataStore.home.mainwidth = mwp;
-    const style = `--main-width: ${mwp}%`;
-    containerRef.current.setAttribute("style", style);
-    store.set("main-width", mwp);
-    mainRef.current.nextSibling.style.width = "";
-    mainRef.current.style.width = "";
-  };
-  const resizePane = (e) => {
-    // calculate width
-    const dw = e.clientX - e.startX;
-    let mwn = Math.round(mw + dw);
-    if (mwn > 0.4 * pw) mwn = Math.round(0.4 * pw);
-    if (mwn < 0.3 * pw) mwn = Math.round(0.3 * pw);
-    mainRef.current.style.width = mwn + "px";
-    mainRef.current.nextSibling.style.width = pw - mwn - 1 + "px";
-  };
-
-  return (
-    <Resizer
-      className="pane-dragger"
-      onDragMove={resizePane}
-      onDragStop={resizeDone}
-      onDragStart={resizeStart}
-    ></Resizer>
-  );
-};
-
 export async function getStaticPaths() {
   return {
     paths: [],
@@ -301,14 +243,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   if (context.params.slug === undefined) {
-    // let props = await getDataHome({lang : context.locale});
-    // props = Object.assign(props,{
-    //   ...await serverSideTranslations(context.locale, ['common', 'navbar','invest']),
-    // })
-    // return {
-    //   props,
-    //   revalidate: 60
-    // }
+
     return {
       // returns a redirect to an internal page `/another-page`
       redirect: {
@@ -317,6 +252,7 @@ export async function getStaticProps(context) {
       },
     };
   }
+
   const type = context.params.slug[0];
   let props;
   if (type === "explore") {

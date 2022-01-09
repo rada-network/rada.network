@@ -9,7 +9,6 @@ import { getItems } from "../../data/query/getItem";
 import { HOME_ITEM_TAKE } from "../../config/paging";
 
 import utils from "../../lib/util";
-import { useRouter } from "next/router";
 import { useStore } from "../../lib/useStore";
 
 import { useTranslation } from "next-i18next";
@@ -20,6 +19,7 @@ import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 
 const Breadcrumbs = dynamic(import("@components/Breadcrumbs"));
+const Pagination = dynamic(import("next-pagination"));
 
 export const PostsListWrapper = observer(function ({}) {
   const { dataStore, voteStore } = usePageStore();
@@ -27,70 +27,13 @@ export const PostsListWrapper = observer(function ({}) {
   const scrollBox1 = useRef();
   const store = useStore();
   const awayCls = "list-away-top";
-  useEffect(() => {
-    scrollBox1.current.removeEventListener("scroll", mobileScroll);
-    scrollBox1.current.addEventListener("scroll", mobileScroll);
 
-    scrollBox1.current.removeEventListener("scroll", scrollUpDown);
-    scrollBox1.current.addEventListener("scroll", scrollUpDown);
-    //mobileScroll()
-    handleLoadMoreItem();
-    return () => {
-      document.body.classList.remove(awayCls);
-      if (scrollBox1?.current) {
-        scrollBox1.current.scrollTo(0, 0);
-        scrollBox1.current.removeEventListener("scroll", mobileScroll);
-        scrollBox1.current.removeEventListener("scroll", scrollUpDown);
-      }
-    };
-  }, [dataStore.currentTab, dataStore.query, dataStore.type, dataStore.forceUpdate]);
-
-  let lastPos = 0;
-  const mobileScroll = function (e) {
-    const el = scrollBox1.current;
-    const bottom = el.scrollHeight - el.scrollTop < el.clientHeight + 100;
-    if (bottom) handleLoadMoreItem();
-  };
-
-  const scrollUpDown = function (e) {
-    const el = scrollBox1.current;
-
-    if (el.scrollTop > lastPos) {
-      document.body.classList.add(awayCls);
-    } else if (el.scrollTop <= lastPos) {
-      document.body.classList.remove(awayCls);
-    }
-    lastPos = el.scrollTop;
-  };
-
-  const handleLoadMoreItem = () => {
-    if (dataStore.loadingButton) return false;
-    dataStore.loadingButton = true;
-    getItems({
-      take: HOME_ITEM_TAKE,
-      skip: dataStore.tweets.length,
-      orderBy:
-        dataStore.currentTab === "latest"
-          ? { createdAt: "desc" }
-          : { totalVote: "desc" },
-      query: dataStore.query,
-      type: dataStore.type,
-      lang: dataStore.lang,
-    }).then(function (res) {
-      dataStore.addTweet(res.data.itemFeed);
-      dataStore.loadingButton = false;
-      voteStore.addVotesV2(res.data.itemFeed);
-      if (res.data.itemFeed.length !== HOME_ITEM_TAKE && scrollBox1.current) {
-        scrollBox1.current.removeEventListener("scroll", mobileScroll);
-      }
-    });
-  };
   const handleChangeFilter = ({ filter }) => {
-    if (dataStore.loadingButton) return false;
-    dataStore.currentTab = filter;
-    dataStore.tweets = [];
-    //dataStore.loadingButton = false;
-    handleLoadMoreItem();
+    // if (dataStore.loadingButton) return false;
+    // dataStore.currentTab = filter;
+    // dataStore.tweets = [];
+    // //dataStore.loadingButton = false;
+    // handleLoadMoreItem();
   };
 
   voteStore.access_token = store.user.access_token;
@@ -99,7 +42,6 @@ export const PostsListWrapper = observer(function ({}) {
     <>
     <NextSeo
         title={`RADA - ${t(dataStore.type, { ns: 'navbar' })}`}
-
       />
       <div className={`pane-content--main--top`}>
         <div className="search-wrapper">
@@ -148,6 +90,8 @@ export const PostsListWrapper = observer(function ({}) {
         cls="list-top-away"
       >
         <PostsList />
+
+        <Pagination total={1000} />
 
         {dataStore.tweets.length == 0 &&
         dataStore.isSearch &&
