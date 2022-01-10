@@ -132,8 +132,8 @@ export const Head = observer(({ meta }) => {
 
         <link rel="manifest" href={"/manifest.json"} />
       </HTMLHead>
-
-      {/* <LazyLoadCSS href="https://rsms.me/inter/inter.css" /> */}
+      
+      <LazyLoadCSS href="https://rsms.me/inter/inter.css" />
 
       <TooltipWrapper />
     </>

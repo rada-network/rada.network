@@ -19,7 +19,7 @@ const NftInfo = function({project,pool}){
           </span>
         </a>      
       </div>
-      <div className="card-body !pt-0">
+      <div className="card-body !py-0">
       {project_pool_nft.map(function(item){
         return (
           <div key={item.id}>
@@ -55,6 +55,9 @@ const NftInfo = function({project,pool}){
           </div>
         )
       })}
+      </div>
+      <div className="card-footer">
+        <button className="btn btn-default">Show more</button>
       </div>
     </div>
   )
