@@ -479,7 +479,6 @@ export const useAuctionSwapInfo = ({pool,status}) => {
               index : index,
               claimed : bid.claimed,
               select : range(parseFloat(ethers.utils.formatEther(bid.priceEach)),parseFloat(ethers.utils.formatEther(bid.priceEach)) + 90,10),
-              selectQuatity : range(parseFloat(ethers.utils.formatEther(bid.priceEach)),parseFloat(ethers.utils.formatEther(bid.priceEach)) + 90,10),
               priceEach : parseFloat(ethers.utils.formatEther(bid.priceEach)),
               quantity : parseFloat(ethers.utils.formatUnits(bid.quantity,0)),
               baseQuantity : parseFloat(ethers.utils.formatUnits(bid.quantity,0)),

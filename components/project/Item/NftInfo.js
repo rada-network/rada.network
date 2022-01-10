@@ -1,7 +1,14 @@
 import { Disclosure, Transition } from "@headlessui/react";
+import { data } from "autoprefixer";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const NftInfo = function({project,pool}){
-
+  const {t} = useTranslation("launchpad")
+  const [showMore,setShowMore] = useState(false)
+  const toggleShow = function(e){
+    setShowMore(!showMore)
+  }
   if (pool.project_pool_nft.length === 0) {
     return null
   }
@@ -12,7 +19,7 @@ const NftInfo = function({project,pool}){
   return (
     <div className="card card-default">
       <div className="card-header">
-        <h3>RADA NFT Rarity</h3>  
+        <h3>{pool.token_name} NFT Rarity</h3>  
         <a className="btn btn-default">
           <span className="btn--text text-xs">
             Learn more
@@ -20,10 +27,15 @@ const NftInfo = function({project,pool}){
         </a>      
       </div>
       <div className="card-body !py-0">
-      {project_pool_nft.map(function(item){
+      {project_pool_nft.map(function(item,index){
+        if (!showMore && index > 4) return null
+        let defaultOpen = false;
+        if (index === 0){
+          defaultOpen = true;
+        }
         return (
           <div key={item.id}>
-            <Disclosure as="div" className="disclosure">
+            <Disclosure as="div" defaultOpen={defaultOpen} className="disclosure">
             {({ open }) => (
               <>
                 <Disclosure.Button as="div" className="disclosure--toggle">
@@ -57,7 +69,7 @@ const NftInfo = function({project,pool}){
       })}
       </div>
       <div className="card-footer">
-        <button className="btn btn-default">Show more</button>
+        <button onClick={toggleShow} className="btn btn-default">{!showMore ? t("Show more rarity") : t("Show less rarity")}</button>
       </div>
     </div>
   )
