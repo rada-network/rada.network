@@ -50,8 +50,8 @@ const Timeline = observer (({ step, steps }) => {
                 step={item.step}
                 title={item.title}
                 desc={item.des}
-                timeOpen="9AM, 21/01/2022 (UTC)"
-                timeClose="9AM, 24/01/2022 (UTC)"
+                timeOpen={item.from}
+                timeClose={item.to}
               />
             )
           })}

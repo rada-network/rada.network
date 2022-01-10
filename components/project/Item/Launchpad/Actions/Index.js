@@ -1,16 +1,15 @@
 import {useState, useEffect} from "react"
-import Timeline from "./Timeline";
 import ProjectCountdown from "./Countdown";
 import WhitelistCountdown from "./WhitelistCountdown";
 import SubscribeLaunchpad,{SubscribeLaunchpadClosed} from "./SubscribeLaunchpad";
 import SubscribeSwapToken from "./SubscribeSwapToken"
-// import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
 import useStore from "@lib/useStore";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { BLOCK_PASS_KYC_COMPLETE } from "@config/constants";
 import { useTranslation } from "react-i18next";
 import OpenDate from "@components/project/Item/Launchpad/OpenDate"
 import { observer } from "mobx-react";
+
 const LaunchpadActions = observer(({ project,pool }) => {
   const {t,i18n} = useTranslation("launchpad")
   const store = useStore()

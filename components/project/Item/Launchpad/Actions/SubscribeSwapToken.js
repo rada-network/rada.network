@@ -1,17 +1,13 @@
 import Subscriber from "./Subscriber";
-import Timeline from "./Timeline";
 import { useBUSDContract, useERC20, useRIRContract, useLaunchpadContractV2 } from "@utils/hooks/useContracts";
 import { useEffect, useState } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { ethers, utils } from "ethers";
 import { useTranslation } from "next-i18next";
-
 import { useLaunchpadInfo } from "@utils/hooks/index";
 import SwapTokensV2 from "./SwapTokenV2";
-import Link from "next/link"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { toast } from "react-toastify"
-import { set } from "store";
 import SocialPromote from "../SocialPromote";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import useChainConfig from "utils/web3/useChainConfig"

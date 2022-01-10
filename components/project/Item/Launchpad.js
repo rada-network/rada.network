@@ -38,6 +38,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
   const whitelistTime = (new Date(pool.whitelist_date)).getTime() / 1000
   const openTime = (new Date(pool.open_date)).getTime() / 1000
   const endTime = (new Date(pool.end_date)).getTime() / 1000
+
   const store = useStore()
   const storeStep = store.step.step
 
@@ -45,24 +46,30 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
     setCurrentStep(storeStep);
   }, [storeStep])
 
+  function formatTime(time) {
+    const options = {year: 'numeric', month: 'short', day: 'numeric'};
+    const date = new Date(time)
+    return date.toLocaleTimeString("en-US", options).toString();
+  }
+
   const fixedSwapSteps = [
-    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1"},
-    {title: t("Purchase"), des: t("Deposit your fund"), step: "2"},
-    {title: t("Status"), des: t("Status of your application"), step: "3"}
+    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1", from: formatTime(openTime), to: formatTime(openTime)},
+    {title: t("Purchase"), des: t("Deposit your fund"), step: "2", from: formatTime(openTime), to: formatTime(endTime)},
+    {title: t("Status"), des: t("Status of your application"), step: "3", from: formatTime(endTime), to: "TBA"}
   ]
 
   const auctionSwapSteps = [
-    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1"},
-    {title: t("Auction"), des: t("Place your bid"), step: "2"},
-    {title: t("Open"), des: t("Open box"), step: "3"},
-    {title: t("Claim"), des: t("Claim your token"), step: "4"}
+    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1", from: formatTime(openTime), to: formatTime(openTime)},
+    {title: t("Auction"), des: t("Place your bid"), step: "2", from: formatTime(openTime), to: formatTime(endTime)},
+    {title: t("Open"), des: t("Open box"), step: "3", from: formatTime(endTime), to: formatTime(whitelistTime)},
+    {title: t("Claim"), des: t("Claim your token"), step: "4", from: formatTime(whitelistTime), to: "TBA"}
   ]
 
   const idoSwapSteps = [
-    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1"},
-    {title: t("Prefunding"), des: t("Deposit your fund"), step: "2"},
-    {title: t("Status"), des: t("Status of your bid"), step: "3"},
-    {title: t("Claim"), des: t("Claim your token"), step: "4"}
+    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1", from: formatTime(openTime), to: formatTime(openTime)},
+    {title: t("Prefunding"), des: t("Deposit your fund"), step: "2", from: formatTime(openTime), to: formatTime(endTime)},
+    {title: t("Status"), des: t("Status of your bid"), step: "3", from: formatTime(endTime), to: formatTime(whitelistTime)},
+    {title: t("Claim"), des: t("Claim your token"), step: "4", from: formatTime(whitelistTime), to: "TBA"}
   ]
 
   useEffect(() => {
