@@ -25,7 +25,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   const { callWithGasPrice } = useCallWithGasPrice()
   const { getBscScanURL } = useChainConfig()
   const launchpadContract = useAuctionSwapContract(pool)
-  const { loading, auctionSwapInfo, fetchPoolInfo } = useAuctionSwapInfo({ pool })
+  const { loading, auctionSwapInfo, fetchPoolInfo } = useAuctionSwapInfo({ pool , status: "nft_ended"})
   const [accountBalance, setAccountBalance] = useState({})
   const [loadBalance, setLoadBalance] = useState(true)
   const [step, setStep] = useState(2)
@@ -46,6 +46,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
     if (pool.open_date == null) {
       setPoolStatus("tba")
     }
+    console.log(pool)
   }, [])
 
   const CountdownInPool = function () {
@@ -85,7 +86,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
     setTokenAddress(auctionSwapInfo.info.addressItem)
     if (auctionSwapInfo.info.isEnd) {
       if (auctionSwapInfo.order.totalWinItem > 0) {
-
+        setStep(2)
       }
       else {
         if (auctionSwapInfo.order.total > 0) {
@@ -145,10 +146,17 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
 
                 <div className="text-center">
                   <div className="">
-                    <div className="">
-                      <span className="mr-2 opacity-60">{t("Closeat")}</span> 
-                      <OpenDate time={pool.end_date} />
-                    </div>
+                    {auctionSwapInfo.info.ended ? (
+                      <div className="">
+                        <span className="mr-2 opacity-60">{t("Announce at")}</span>
+                        <OpenDate time={pool.whitelist_date}/>
+                      </div>
+                    ) : (
+                      <div className="">
+                        <span className="mr-2 opacity-60">{t("Closeat")}</span>
+                        <OpenDate time={pool.end_date} />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -161,7 +169,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                         Bid
                       </h3>
                     </div>
-                    <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+                    <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool}/>
                   </div>
                 </div>
               </div>
