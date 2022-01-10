@@ -1,11 +1,11 @@
 import { observer } from "mobx-react";
 import { usePageStore } from "../lib/usePageStore";
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 import { useTranslation } from "next-i18next";
 const PostNoticeMedia = observer(({}) => {
   const { detailStore } = usePageStore();
   const { t } = useTranslation();
-  if (_.isEmpty(detailStore.data)) {
+  if (isEmpty(detailStore.data)) {
     return null;
   }
   if (detailStore.data.websiteUri === null) return null;
