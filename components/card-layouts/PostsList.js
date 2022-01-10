@@ -19,7 +19,7 @@ import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 
 const Breadcrumbs = dynamic(import("@components/Breadcrumbs"));
-const Pagination = dynamic(import("next-pagination"));
+const Pagination = dynamic(import("@components/Pagination"));
 
 export const PostsListWrapper = observer(function ({}) {
   const { dataStore, voteStore } = usePageStore();
@@ -91,7 +91,7 @@ export const PostsListWrapper = observer(function ({}) {
       >
         <PostsList />
 
-        <Pagination total={1000} />
+        <Pagination total={1000} pageSize={5} />
 
         {dataStore.tweets.length == 0 &&
         dataStore.isSearch &&
