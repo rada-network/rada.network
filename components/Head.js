@@ -4,7 +4,7 @@ import ReactTooltip from "react-tooltip";
 import { useRouter } from "next/router";
 import { observer } from "mobx-react";
 import { usePageStore } from "../lib/usePageStore";
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 import utils from "@lib/util";
 import Script from "next/script";
 import LazyLoadCSS from "./LazyLoadCSS";
@@ -12,7 +12,7 @@ import LazyLoadCSS from "./LazyLoadCSS";
 export const Head = observer(({ meta }) => {
   const { asPath, pathname } = useRouter();
   const { dataStore, detailStore } = usePageStore();
-  meta = _.isEmpty(dataStore.meta) ? meta : dataStore.meta;
+  meta = isEmpty(dataStore.meta) ? meta : dataStore.meta;
   meta = meta || {};
   return (
     <>
