@@ -90,11 +90,11 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
       else {
         if (auctionSwapInfo.order.total > 0) {
           //place order success
-          setStep(31)
+          setStep(2)
         }
         else {
           //pool close
-          setStep(32)
+          setStep(2)
         }
       }
     }
@@ -160,15 +160,12 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                       <h3 className="mb-2 font-medium">
                         Bid
                       </h3>
-
-
                     </div>
-
                     <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
                   </div>
-
                 </div>
               </div>
+
             </div>
           </div>
         </div>

@@ -141,11 +141,6 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
     await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, 0])
   }
 
-
-  const adjustAuction = () => {
-
-  }
-
   return (
     <>
       <div className="p-2 md:p-6">

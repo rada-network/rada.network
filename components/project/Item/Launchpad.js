@@ -54,7 +54,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
   const auctionSwapSteps = [
     {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1"},
     {title: t("Auction"), des: t("Place your bid"), step: "2"},
-    {title: t("Status"), des: t("Status of your bid"), step: "3"},
+    {title: t("Open"), des: t("Open box"), step: "3"},
     {title: t("Claim"), des: t("Claim your token"), step: "4"}
   ]
 
