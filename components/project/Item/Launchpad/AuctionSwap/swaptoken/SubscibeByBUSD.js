@@ -231,7 +231,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                       <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 flex justify-center`}
                         onClick={e => { handleIncreaseBid(item.index)}}
                       >
-                        <i className="fas fa-plus-circle mr-1"></i>Add bid
+                        <i className="fas fa-plus-circle mr-1"></i>Increase bid
                       </button>
 
                     ) : (

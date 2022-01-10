@@ -10,8 +10,9 @@ const BidRanking = ({pool, bid_value}) => {
       setRaise(pool.raise);
       const pool_id = pool.id.toString();
       const contract = pool.contract
-      getBidRankingByBidValue({pool_id: pool_id, contract: contract, bid_value: 160}).then(function (res) {
-
+      console.log(contract)
+      getBidRankingByBidValue({pool_id: pool_id, contract: contract, bid_value: bid_value}).then(function (res) {
+        setRanking(res.data.estimateBidRanking)
       });
     }
     
@@ -22,7 +23,7 @@ const BidRanking = ({pool, bid_value}) => {
       <div className="w-1/5 pl-2 flex-shrink-0 text-right">
         {ranking == 0 ? (
           <>
-            NA/{raise}
+            na / {raise}
           </>
         ) :
         (
