@@ -208,7 +208,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
 
             <LaunchpadContent project={project} pool={poolContract} />
 
-            <div className="card card-default card--project-info">
+            <div className="card card-default">
               <div className="card-header">
                 <h3>{t("Info", { name: project.content.title })}</h3>       
               </div>

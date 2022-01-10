@@ -7,7 +7,7 @@ const NFTRarity = ({ project, pool }) => {
 
 
   return (
-    <div className="card card-default card--project-info">
+    <div className="card card-default">
       <div className="card-header">
         <h3>RADA NFT Rarity</h3>
         <a className="btn btn-default">

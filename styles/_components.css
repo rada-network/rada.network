@@ -299,7 +299,7 @@ Disclosure
 
 .disclosure--toggle-arrow {
   @apply absolute right-0 top-auto flex justify-center items-center transition-all;
-  @apply w-6 h-6 rounded-full bg-gray-400 bg-opacity-20 dark:bg-opacity-20;
+  @apply w-6 h-6 rounded-full;
   .fas {
     @apply text-sm;
   }

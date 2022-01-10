@@ -61,7 +61,7 @@ export const WalletRequire = ({ type }) => {
             <>
               {/* <NetworkSwitch /> */}
               <button
-                className="btn btn-default w-20 md:w-24"
+                className="btn btn-default btn-primary w-20 md:w-24"
                 onClick={handleConnectWallet}
               >
                 {t("connect")}

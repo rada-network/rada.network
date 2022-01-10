@@ -67,7 +67,7 @@ const Login = () => {
              </span>;
     return (
       <button
-        className="btn btn-default w-20 md:w-24"
+        className="btn btn-default btn-primary w-20 md:w-24"
         onClick={(e) => store.user.showConnect(true)}
       >
         {t("login")}

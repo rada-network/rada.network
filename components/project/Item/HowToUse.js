@@ -16,7 +16,7 @@ const HowToUse = ({project, pool}) => {
     <>
       {listFaq.length > 0 && (
         <div class="order-4 mb-4 md:mb-0 col-start-1 row-start-3 ">
-        <div className="card card-default card--project-info">
+        <div className="card card-default">
           <div className="card-header">
             <h3>{t("how to use")}</h3>
           </div>

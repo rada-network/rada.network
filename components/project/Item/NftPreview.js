@@ -75,17 +75,16 @@ const NftPreview = function({project,pool}){
     slider.slickGoTo(page*3)
   }
   return (
-    <div className="card card-default card--project-info">
+    <div className="card card-default">
       <div className="card-header items-end">
         <div>
           <span class="text-2xs uppercase opacity-60 tracking-wide">PREVIEW </span>
           <h3>{project.content.title} NFT Collection</h3>
         </div>
         <a className="btn btn-default">
-          <span className="btn--text">
+          <span className="btn--text text-xs">
             View all
           </span>
-          <span className="btn--caret-right"></span>
         </a>  
       </div>
       <div className="card-body" ref={sliderContainer}>
@@ -157,7 +156,7 @@ const NftPreviewReact = function({project,pool}){
     return null
   }
   return (
-    <div className="card card-default card--project-info">
+    <div className="card card-default">
       <div className="card-header items-end">
         <div>
           <span class="text-2xs uppercase opacity-60 tracking-wide">PREVIEW </span>

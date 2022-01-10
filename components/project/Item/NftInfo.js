@@ -10,7 +10,7 @@ const NftInfo = function({project,pool}){
     return b.sort - a.sort
   })
   return (
-    <div className="card card-default card--project-info">
+    <div className="card card-default">
       <div className="card-header">
         <h3>RADA NFT Rarity</h3>  
         <a className="btn btn-default">
@@ -19,7 +19,7 @@ const NftInfo = function({project,pool}){
           </span>
         </a>      
       </div>
-      <div className="card-body">
+      <div className="card-body !pt-0">
       {project_pool_nft.map(function(item){
         return (
           <div key={item.id}>
@@ -27,7 +27,7 @@ const NftInfo = function({project,pool}){
             {({ open }) => (
               <>
                 <Disclosure.Button as="div" className="disclosure--toggle">
-                  <strong>
+                  <strong className="!text-sm">
                     {item.title}
                   </strong>
                   <span
