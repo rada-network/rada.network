@@ -10,9 +10,9 @@ const BidRanking = ({pool, bid_value}) => {
       setRaise(pool.raise);
       const pool_id = pool.id.toString();
       const contract = pool.contract
-      // getBidRankingByBidValue({pool_id: pool_id, contract: contract, bid_value: 160}).then(function (res) {
+      getBidRankingByBidValue({pool_id: pool_id, contract: contract, bid_value: 160}).then(function (res) {
 
-      // });
+      });
     }
     
   }, [pool])
