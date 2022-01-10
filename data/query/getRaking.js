@@ -16,7 +16,7 @@ export async function getBidRankingByBidValue({pool_id, contract, bid_value}) {
     variables: {
       pool_id: pool_id,
       contract: contract,
-      bid_value: bid_value,
+      bid_value: parseInt(bid_value),
     },
   });
 }
