@@ -1,9 +1,13 @@
 import { useTranslation } from "next-i18next";
 import { CheckSvg } from "../../../../svg/SvgIcons";
+import { observer } from "mobx-react";
+import useStore from "@lib/useStore";
 
-const Timeline = ({ step, steps }) => {
+const Timeline = observer (({ step, steps }) => {
+  const store = useStore();
   const cstep = step || 1;
   const { t } = useTranslation("launchpad");
+
   const Step = ({ step, title, desc, timeOpen, timeClose }) => {
     // console.log('tl:', cstep, props.step)
     const cls = ["timeline-event"];
@@ -40,7 +44,7 @@ const Timeline = ({ step, steps }) => {
       {/* Steps Progress */}
       <nav aria-label="Progress">
         <ol role="list" className="timeline">
-          {steps.map(function (item) {
+          {!!steps && steps.map(function (item) {
             return (
               <Step
                 step={item.step}
@@ -55,6 +59,6 @@ const Timeline = ({ step, steps }) => {
       </nav>
     </>
   );
-};
+});
 
 export default Timeline;

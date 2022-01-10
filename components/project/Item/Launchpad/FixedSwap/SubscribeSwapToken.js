@@ -1,4 +1,4 @@
-import Timeline from "./Timeline";
+import Timeline from "../AuctionSwap/Timeline";
 import { useBUSDContractV2, useERC20, useRIRContract, useFixedSwapContract } from "@utils/hooks/useContracts";
 import { useEffect, useState } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
@@ -112,6 +112,16 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     //pool dont set winner
   }, [loading,fixedSwapInfo]);
 
+  useEffect(() => {
+    if (step == 2) {
+      store.step.update("2");
+    } else if (step == 3 ||step == 31 || step == 32 || step == 33 || step == 34 || step == 35) {
+      store.step.update("3");
+    } else if (step == 4 || step == 41) {
+      store.step.update("4");
+    }
+  }, [step])
+
   const handleCopy = () => {
     toast.success("Copied to clipboard", {});
   };
@@ -129,9 +139,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
           <div className="card-body no-padding">
             <div className="flex flex-col">
-              {/* <div className="">
-                <Timeline step="2" />
-              </div> */}
 
               <div className="project-card--container no-padding ">
                 <div className="">
@@ -174,10 +181,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
         <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-body no-padding">
             <div className="flex flex-col">
-
-              <div className="">
-                <Timeline step="3" />
-              </div>
 
               <div className="project-card--container">
                 <div className="max-w-xl mx-auto">
@@ -258,9 +261,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
         <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-body no-padding">
             <div className="flex flex-col">
-              <div className="">
-                <Timeline step="3" />
-              </div>
               <div className="project-card--container">
                 <div className="max-w-xl mx-auto">
                   <div className="p-4 md:p-8 rounded-lg border border-yellow-300 dark:border-gray-700">
@@ -288,14 +288,6 @@ const SubscribeSwapTokenLoading = function({currentTime,opendTime,endTime}){
 
       <div className="card-body no-padding">
         <div className="flex flex-col">
-          <div className="">
-            {currentTime > endTime ?
-            <Timeline step="3" />
-            :
-            <Timeline step="2" />
-            }
-
-          </div>
 
           <div className="project-card--container">
             <div className="max-w-2xl mx-auto text-center">
@@ -360,9 +352,6 @@ const NotInWhitesist = function(){
 
       <div className="card-body no-padding">
         <div className="flex flex-col">
-          <div className="">
-            <Timeline step="3" />
-          </div>
 
           <div className="project-card--container">
             <div className="max-w-2xl mx-auto text-center">

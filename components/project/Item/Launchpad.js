@@ -15,6 +15,10 @@ import HowToUse from "./HowToUse";
 import TutorialWidget from "./Launchpad/TutorialWidget"
 import NftPreview from "./NftPreview";
 import NftInfo from "./NftInfo";
+import { observer } from "mobx-react";
+import useStore from "@lib/useStore";
+import Timeline from "./Launchpad/AuctionSwap/Timeline";
+
 
 const LaunchpadIdo = dynamic(import(`./Launchpad/Actions/Index`));
 const LaunchpadFixedSwap = dynamic(import(`./Launchpad/FixedSwap/Index`));
@@ -23,7 +27,7 @@ const style = {
   cursor : "pointer",
 }
 
-const ProjectLaunchpad = ({ project, pool }) => {
+const ProjectLaunchpad = observer (({ project, pool }) => {
   const {t,i18n} = useTranslation("launchpad");
   const [poolContract,setPoolContract] = useState(pool)
   const [loadingPool,setLoadingPool] = useState(true)
@@ -34,6 +38,12 @@ const ProjectLaunchpad = ({ project, pool }) => {
   const whitelistTime = (new Date(pool.whitelist_date)).getTime() / 1000
   const openTime = (new Date(pool.open_date)).getTime() / 1000
   const endTime = (new Date(pool.end_date)).getTime() / 1000
+  const store = useStore()
+  const storeStep = store.step.step
+
+  useEffect(() => {
+    setCurrentStep(storeStep);
+  }, [storeStep])
 
   const fixedSwapSteps = [
     {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1"},
@@ -81,6 +91,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
   },[winners])
 
   useEffect(() => {
+
     if (openTime < currentTime && currentTime < endTime) {
       setCurrentStep("2");
     } else if (currentTime < openTime) {
@@ -101,7 +112,7 @@ const ProjectLaunchpad = ({ project, pool }) => {
         <div class="flex items-start">
 
           {/* Main Col */}
-          <div class="flex flex-col lg:order-2 w-full ml-4 space-y-4">
+          <div class="flex flex-col lg:order-2 w-4/6 ml-4 space-y-4">
 
             {/* Timeline */}
             <div className="card card-default">
@@ -146,22 +157,6 @@ const ProjectLaunchpad = ({ project, pool }) => {
             <div className="card card-default">
               <div className="card-body no-padding">
                 <div className="flex flex-col">
-                  {/* {whitelistTime < currentTime && pool.whitelist_date !== null && winners.length > 0 &&
-                  <div className="flex h-12 border-b border-gray-200 dark:border-gray-700">
-                    <nav aria-label="tabbar card-tabs">
-                      <ol role="list" className="tabbar--main h-full px-4">
-                        <li style={style} className={`tab-item ` + (active == "faq" ?  "tab-item--active" : "")} onClick={(e) => {setActive("faq")}}>
-                          <span className="tab-item--text !block">FAQS
-                          </span>
-                        </li>
-                        <li style={style} className={`tab-item ` + (active == "winner" ?  "tab-item--active" : "")} onClick={(e) => {setActive("winner")}}>
-                          <span className="tab-item--text !block">Winners
-                          </span>
-                        </li>
-                      </ol>
-                    </nav>
-                  </div>
-                  } */}
 
                  <div className="flex h-12 border-b border-gray-200 dark:border-gray-700">
                     <nav aria-label="tabbar card-tabs">
@@ -171,11 +166,13 @@ const ProjectLaunchpad = ({ project, pool }) => {
                             FAQS
                           </span>
                         </li>
-                        <li style={style} className={`tab-item ` + (active == "howto" ?  "tab-item--active" : "")} onClick={(e) => {setActive("howto")}}>
-                          <span className="tab-item--text !block">
-                            How to
-                          </span>
-                        </li>
+                        {pool.token_sale !== "ido" && (
+                          <li style={style} className={`tab-item ` + (active == "howto" ?  "tab-item--active" : "")} onClick={(e) => {setActive("howto")}}>
+                            <span className="tab-item--text !block">
+                              How to
+                            </span>
+                          </li>
+                        )}
                         <li style={style} className={`tab-item ` + (active == "winner" ?  "tab-item--active" : "")} onClick={(e) => {setActive("winner")}}>
                           <span className="tab-item--text !block">
                             Winners
@@ -191,9 +188,14 @@ const ProjectLaunchpad = ({ project, pool }) => {
                   <div className={"project-card--container"+ (active == "winner" ? "" : " hidden")}>
                     <Subscriber project={project} pool={poolContract} winners={winners}/>
                   </div>
-                  <div className={"project-card--container"+ (active == "howto" ? "" : " hidden")}>
-                    <HowToUse project={project} pool={pool}/>
-                  </div>
+
+
+                    {pool.token_sale !== "ido" && (
+                      <div className={"project-card--container"+ (active == "howto" ? "" : " hidden")}>
+                        <HowToUse project={project} pool={pool}/>
+                      </div>
+                    )}
+
                 </div>
               </div>
             </div>
@@ -239,6 +241,6 @@ const ProjectLaunchpad = ({ project, pool }) => {
 
     </>
   );
-};
+});
 
 export default ProjectLaunchpad;

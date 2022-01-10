@@ -1,4 +1,4 @@
-import Timeline from "./Timeline";
+import Timeline from "../AuctionSwap/Timeline";
 import ProjectCountdown from "./Countdown";
 import OpenDate from "@components/project/Item/Launchpad/OpenDate"
 import { useTranslation } from "next-i18next";
