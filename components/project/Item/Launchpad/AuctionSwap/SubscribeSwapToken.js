@@ -102,14 +102,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       }
     }
     else{
-      if (auctionSwapInfo.order.total == 0){
-        setStep(2)
-      }
-      else{
-        //place order success
-        setStep(31)
-      }
-      
+      setStep(2)
     }
 
     //pool dont set winner
@@ -152,7 +145,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       <h3>
                         Bid
                       </h3>
-                      <div className="ml-auto flex !text-sm items-center">
+                      {/* <div className="ml-auto flex !text-sm items-center">
                         <button className="btn btn-default !px-1 mr-2">
                           <span className="w-4 spin-10 h-4 rounded-full border-2 border-gray-300 dark:border-gray-400 border-l-purple-500 dark:border-l-purple-600" />
                         </button>
@@ -161,7 +154,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           <span className="font-semibold">8</span>
                           <span className="opacity-50">/215</span>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                     <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
                   </div>

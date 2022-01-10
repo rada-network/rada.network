@@ -25,7 +25,6 @@ const PoolInfo = observer(function({ project,pool }) {
         setPoolStat({
           totalSold : parseInt(ethers.utils.formatUnits(stat.totalBidItem,0))
         });
-        console.log(parseInt(ethers.utils.formatUnits(stat.totalBidItem,0)));
       } catch (error) {
         //console.log(account)
         console.log("error to fetch launchpad info", error);

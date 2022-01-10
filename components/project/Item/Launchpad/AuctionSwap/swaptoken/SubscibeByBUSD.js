@@ -29,7 +29,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
   useEffect(() => {
 
     setCurrentOrder([...auctionSwapInfo.order.detail])
-  }, [])
+  }, [auctionSwapInfo.order.detail])
 
   useEffect(() => {
     let _totalItem = currentOrder.reduce(function (sum, value) {
@@ -167,13 +167,13 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                 <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
               </div>
               <div className="w-1/5 flex-shrink-0 pl-2">
-                <label for="rir" className="mb-2 block tracking-wide font-medium opacity-70">BUSD per box</label>
+                <label for="rir" className="mb-2 block tracking-wide font-medium opacity-70">BUSD per Box</label>
               </div>
               <div className="w-1/5 flex-shrink-0 pl-4 text-right">
-                <label className="mb-2 block tracking-wide font-medium opacity-70">Total (BUSD</label>
+                <label className="mb-2 block tracking-wide font-medium opacity-70">Total (BUSD)</label>
               </div>
               <div className="w-1/5 flex-shrink-0 pl-4 text-right">
-                <label className="mb-2 block tracking-wide font-medium opacity-70">Position</label>
+                <label className="mb-2 block tracking-wide font-medium opacity-70">Rank</label>
               </div>
             </div>
 
@@ -186,10 +186,11 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                         <>
                           <select id="box" name="amount" defaultValue={item.quantity} onChange={e => { handleChangeCurrentOrder(e, item.index, 'quantity') }} className="select-custom w-full ">
                             {/* remove '!rounded-l-none' if user doesn't have RIR */}
-                            {Array(maxSelected).fill(null).map((_, i) => {
-                              if (i + 1 > (auctionSwapInfo.info.maxBuyPerAddress - (totalItem))) return null
+                            {Array((auctionSwapInfo.info.maxBuyPerAddress)).fill(null).map(function(_, i){
+                              if (i + 1 < item.baseQuantity) return null
+                              if (i + 1 > (auctionSwapInfo.info.maxBuyPerAddress - (totalItem - item.quantity))) return null
                               return (
-                                <option key={i} className="text-gray-300" value={(i + 1)}>{i + 1}</option>
+                                <option key={i} className="text-gray-300" value={(i+1)}>{i+1}</option>
                               )
                             })}
                           </select>
