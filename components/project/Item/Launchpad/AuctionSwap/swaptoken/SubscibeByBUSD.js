@@ -72,7 +72,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
     if (type === "editing") {
       const newCurrentOrder = currentOrder.map(element => {
         if (element.index === item) {
-          element.isEditing = true;
+          element.isEditing = !element.isEditing;
         }
         return element;
       });
@@ -207,9 +207,9 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                         <>
                           <select id="news-order" className="select-custom  w-full " defaultValue={item.priceEach} onChange={e => { handleChangeCurrentOrder(e, item.index, 'price') }}>
                             {/* remove '!rounded-l-none' if user doesn't have RIR */}
-                            {Array((auctionSwapInfo.info.maxBuyPerAddress)).fill(null).map((_, i) => {
+                            {item.select.map((_, i) => {
                               return (
-                                <option key={i} className="text-gray-300" value={auctionSwapInfo.info.startPrice + (i * 10)}>{auctionSwapInfo.info.startPrice + i * 10}</option>
+                                <option key={i} className="text-gray-300" value={_}>{_}</option>
                               )
                             })}
                           </select>
@@ -226,14 +226,21 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                     {/* <div className="w-1/5 pl-2 flex-shrink-0 text-right">
                       30<span className="opacity-60">/260 </span>
                     </div> */}
-                    <BidRanking pool={pool} bid_value={item.priceEach}/>
+                    <BidRanking pool={pool} bid_value={item.priceEach} bid_index={item.index}/>
 
                     {item.isEditing ? (
-                      <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 flex justify-center`}
+                      <>
+                      <button className={`text-sm ml-1 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 flex justify-center`}
                         onClick={e => { handleIncreaseBid(item.index)}}
                       >
-                        <i className="fas fa-plus-circle mr-1"></i>Increase bid
+                        <i className="fas fa-plus-circle mr-1"></i>Increase
                       </button>
+                      <button className={`text-sm ml-1 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-default px-2 flex justify-center`}
+                        onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}
+                      >
+                        Cancel
+                      </button>
+                      </>
 
                     ) : (
                       <button className="ml-2 md:ml-4 flex-shrink-0 flex-grow btn btn-default !py-2 !text-md flex justify-center"
@@ -279,7 +286,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                     {totalBusd}
                   </div>
 
-                  <BidRanking pool={pool} bid_value={priceBusd}/>
+                  <BidRanking pool={pool} bid_value={priceBusd} bid_inde={-1}/>
 
                   <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 ${(numberBox == 0 || auctionSwapInfo.info.startPrice == 0) ? "disabled" : ""} flex justify-center`}
                     onClick={handleConfirm}
