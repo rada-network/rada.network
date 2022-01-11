@@ -17,7 +17,7 @@ const SubscribeLaunchpad = ({ project,pool }) => {
   useEffect(() =>{
     if (store.user.id !== "" && store.user.access_token !== ""){
       getCurrentUser().then((res) => {
-        if (res.is_kyc){
+        if (res?.is_kyc){
           store.kyc.update(res.kyc_status);
         }
         setLoading(false);

@@ -1,30 +1,27 @@
 import { useState, useEffect } from "react"
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React"
-import { useAuctionSwapContract, useBUSDContractV2, useRIRContract } from "@utils/hooks/useContracts"
+import { useAuctionSwapContract, useBUSDContractV2, useERC20, useRIRContract } from "@utils/hooks/useContracts"
 import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransaction"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
-import { CheckSvg } from "@components/svg/SvgIcons"
 import useStore from "@lib/useStore"
-import { range } from "@utils/hooks/index"
-import { current } from "tailwindcss/colors"
-import BidRanking from "./BidRanking"
 
-const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBalance, auctionSwapInfo }) => {
+const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, auctionSwapInfo }) => {
   const store = useStore()
   const { t } = useTranslation("launchpad")
   const { account } = useActiveWeb3React()
   const launchpadContract = useAuctionSwapContract(pool)
   const rirContract = useRIRContract()
   const bUSDContract = useBUSDContractV2()
+  const boxContract = useERC20(pool.box_contract)
+  const openBoxContract = useERC20(pool.openbox_contract)
   const { callWithGasPrice } = useCallWithGasPrice()
   const [numberBox, setNumberBox] = useState(0);
   const [priceBusd, setPriceBusd] = useState(auctionSwapInfo.info.startPrice);
   const [totalBusd, setTotalBusd] = useState(auctionSwapInfo.info.startPrice);
   const [currentOrder, setCurrentOrder] = useState([]);
   const [totalItem, setTotalItem] = useState(0);
-  const [globalEditing, setGlobalEditing] = useState(false);
   const maxSelected = auctionSwapInfo.info.maxBuyPerAddress - auctionSwapInfo.order.totalItem
 
   useEffect(() => {
@@ -43,79 +40,16 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
 
   const handleChangeNumberBox = function (e) {
     setNumberBox(e.currentTarget.value)
-    setTotalBusd(parseInt(e.currentTarget.value) * parseInt(priceBusd))
   }
   const handleChangePriceBusd = function (e) {
     setPriceBusd(e.currentTarget.value)
-    setTotalBusd(parseInt(e.currentTarget.value) * parseInt(numberBox))
-  }
-
-  const handleChangeCurrentOrder = function (e, item, type) {
-
-    if (type === "price") {
-      const newCurrentOrder = currentOrder.map(element => {
-        if (element.index === item) {
-          element.priceEach = parseInt(e.currentTarget.value)
-        }
-        return element;
-      });
-      setCurrentOrder(newCurrentOrder)
-    }
-    if (type === "quantity") {
-      const newCurrentOrder = currentOrder.map(element => {
-        if (element.index === item) {
-          element.quantity = parseInt(e.currentTarget.value)
-        }
-        return element;
-      });
-      setCurrentOrder(newCurrentOrder)
-    }
-
-    if (type === "editing") {
-      const newCurrentOrder = currentOrder.map(element => {
-        if (element.index === item) {
-          element.isEditing = !element.isEditing;
-          if (!element.isEditing){
-            element.priceEach = element.basePriceEach
-            element.quantity = element.baseQuantity
-          }
-        }
-        return element;
-      });
-      setGlobalEditing(!globalEditing)
-      setCurrentOrder(newCurrentOrder)
-    }
-  }
-
-  const handleIncreaseBid = async function (bidIndex) {
-    try {
-      store.transaction.showTransaction(true, t("start transaction message"));
-      let bid = currentOrder.filter((i) => {
-        return i.index === bidIndex
-      })[0]
-      const tx = await callWithGasPrice(launchpadContract, 'increaseBid', [pool.id, bidIndex, bid.quantity, ethers.utils.parseEther(bid.priceEach.toString(), 0)])
-      store.transaction.startTransaction(true, t("transaction started"));
-      const receipt = await tx.wait()
-      store.transaction.update(receipt.transactionHash);
-      fetchAccountBalance()
-    }
-    catch (error) {
-      if (!!error?.data?.message) {
-        store.transaction.updateError(t(error?.data?.message?.replace("execution reverted: ", "").replace("ERC20: ", "")), true);
-      }
-      else if (!!error?.message) {
-        store.transaction.updateError(t(error?.message), true);
-      } else {
-        store.transaction.updateError(t(error.toString().replace("execution reverted: ", "").replace("ERC20: ", "")), true);
-      }
-    }
   }
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
-          const response2 = await bUSDContract.allowance(account, launchpadContract.address)
+          const response2 = await boxContract.allowance(account, openBoxContract.address)
           return response2.gt(0)
         } catch (error) {
           return false
@@ -123,7 +57,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
       },
       onApprove: async (requireApprove) => {
         store.transaction.showTransaction(true, t("start transaction message"));
-        const tx = callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+        const tx = callWithGasPrice(boxContract, 'approve', [openBoxContract.address, ethers.constants.MaxUint256])
         store.transaction.startTransaction(true, t("transaction started"));
         return tx;
       },
@@ -160,7 +94,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
             <button className="btn relative w-full  md:w-1/2 mx-auto btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md"
               onClick={handleApprove}
             >
-              Enable BUSD
+              Enable {token.name}
             </button>
             <p className="pt-4">You must enable BUSD to bid</p>
           </div>
@@ -185,11 +119,6 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
               {auctionSwapInfo.info.ended && (
                 <div className="w-1/5 flex-shrink-0 pl-4 text-right">
                   <label className="mb-2 block tracking-wide font-medium opacity-70">Win quantity</label>
-                </div>
-              )}
-              {!auctionSwapInfo.info.ended && (
-                <div className="w-1/5 flex-shrink-0 pl-4 text-right">
-                  <label className="mb-2 block tracking-wide font-medium opacity-70"></label>
                 </div>
               )}
             </div>
@@ -242,44 +171,35 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                     {/* Total BUSD */}
                     <div className="w-1/5 pl-4  text-right">{item.priceEach * item.quantity}</div>
                     {/* Total Ranking */}
-                    <BidRanking pool={pool} bid_value={item.priceEach} bid_index={item.index} />
 
                     {/* Add button */}
                     {!auctionSwapInfo.info.ended && (
                       <>
                         {item.isEditing ? (
                           <>
-                            <div className="w-1/5">
-                              <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 flex justify-center`}
-                                onClick={e => { handleIncreaseBid(item.index) }}>
-                                <i className="fas fa-plus-circle mr-1"></i>Increase Bid
-                              </button>
-                              <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-default px-2 flex justify-center mt-1`}
-                                onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}>
-                                <i className="fas fa-times-circle mr-1"></i>  Cancel
-                              </button>
-                            </div>
-                            
+                            <button className={`text-sm ml-1 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 flex justify-center`}
+                              onClick={e => { handleIncreaseBid(item.index) }}>
+                              <i className="fas fa-plus-circle mr-1"></i>Increase
+                            </button>
+                            <button className={`text-sm ml-1 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-default px-2 flex justify-center`}
+                              onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}>Cancel
+                            </button>
                           </>
 
                         ) : (
-                          <div className="w-1/5">
-                            <button className={`ml-2 md:ml-4 flex-shrink-0 flex-grow btn btn-default !py-2 !text-md flex justify-cente` + (globalEditing ? " disabled" : "")}
-                              onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}
-                            >
-                              <i className="fas text-xs fa-pencil mr-1"></i> Adjust Bid
-                            </button>
-                          </div>
+                          <button className="ml-2 md:ml-4 flex-shrink-0 flex-grow btn btn-default !py-2 !text-md flex justify-center"
+                            onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}
+                          >
+                            <i className="fas text-xs fa-pencil mr-1"></i> Adjust
+                          </button>
                         )}
                       </>
                     )}
 
                     {/* Win quantity */}
-                    {auctionSwapInfo.info.ended && 
                     <div className="w-1/5 pl-4  text-right">
                       {item.winQuantity}
                     </div>
-                    }
                   </div>
 
                 </>
@@ -312,14 +232,11 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                   <div className="w-1/5 pl-4 text-right">
                     {totalBusd}
                   </div>
-                  <BidRanking pool={pool} bid_value={priceBusd} bid_index={-1} />
                   {auctionSwapInfo.info.ended ? null : (
-                    <div className="w-1/5">
-                    <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 ${(globalEditing || numberBox == 0 || auctionSwapInfo.info.startPrice == 0) ? "disabled" : ""} flex justify-center`}
+                    <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 ${(numberBox == 0 || auctionSwapInfo.info.startPrice == 0) ? "disabled" : ""} flex justify-center`}
                       onClick={handleConfirm}>
                       <i className="fas fa-plus-circle mr-1"></i>Add bid
                     </button>
-                    </div>
                   )}
                 </div>
               </>
@@ -341,4 +258,4 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
     </>
   )
 }
-export default SubcribeByBUSD
+export default OpenBox
