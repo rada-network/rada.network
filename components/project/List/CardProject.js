@@ -2,13 +2,15 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Link from "next/link"
 import MiniCountdown from "./Countdown";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { useLaunchpadContractV2 } from "@utils/hooks/useContracts";
 import { ethers, utils } from "ethers";
 import fetcher from "@lib/fetchJson";
 import numberFormatter from "@components/utils/numberFormatter";
 import CardProjectProgress from "./CardProjectProgress";
+import { Dialog, Transition } from "@headlessui/react";
+
 
 
 export const CardProject = ({project,pool, status}) => {
@@ -47,14 +49,24 @@ export const CardProject = ({project,pool, status}) => {
 
   const raise = pool.raise;
   let raise_token = "BUSD"
-  let sale_token = project.token.symbol
+  let sale_token = project?.token?.symbol || "TBA"
   if (pool.token_sale == "fixed-swap" || pool.token_sale == "auction-swap"){
     raise_token = pool.token_name
     sale_token = pool.token_name
   }
+
+  let [isOpen, setIsOpen] = useState(false)
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
   if (pool.is_hidden) return null
   return (
-    <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
+    // <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
     <div className={`card-project is-${project.status}`}>
       <div className="project-content relative">
 
@@ -111,6 +123,7 @@ export const CardProject = ({project,pool, status}) => {
           {poolContract.contract && <CardProjectProgress project={project} pool={{...pool,contract: poolContract.contract,pool_id : poolContract.pool_id}} />
           }
           <div className="project--cta">
+            {pool.title.toLowerCase() !== "tba" &&  
             <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} >
             <a href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
               <span>
@@ -118,16 +131,101 @@ export const CardProject = ({project,pool, status}) => {
               </span>
             </a>
             </Link>
+            }
+
+            {pool.title.toLowerCase() === "tba" &&  
+            <a href="#" onClick={openModal} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
+              <span>
+               {t("Learn More")}
+              </span>
+            </a>
+            }
           </div>
           {/* End of project-cta */}
         </div>
       </div>
         {/* End of project--content */}
       {/* End of card--body */}
+      {pool.title.toLowerCase() === "tba" &&  
+      <Transition appear show={isOpen} as={Fragment}>
+        <Dialog
+          as="div"
+          className="dialog-outside-wrapper fixed inset-0 z-50 overflow-y-auto"
+          onClose={closeModal}
+        >
+          <div className="dialog-outside min-h-screen">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <Dialog.Overlay className="dialog-overlay fixed inset-0" />
+            </Transition.Child>
 
+            {/* This element is to trick the browser into centering the modal contents. */}
+            <span
+              className="inline-block h-screen align-middle"
+              aria-hidden="true"
+            >
+              &#8203;
+            </span>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div className="inline-block w-full max-w-2xl my-8 overflow-hidden relative
+              text-left align-middle transition-all transform bg-white dark:bg-gray-900 shadow-xl rounded-lg">
+                <Dialog.Title
+                  as="h3"
+                  className="text-md md:text-lg flex border-b dark:border-gray-00 border-gray-200
+                   font-medium p-4 md:p-6 leading-6 text-gray-900 dark:bg-gray-900 bg-opacity-50 
+                   dark:border-gray-800 dark:text-gray-300"
+                >
+                  <div className="mx-auto inlie-flex">
+                    <span className="text-yellow-500 mr-2">
+                      <i className="fad fa-check"></i>
+                    </span>
+                  A Secret Flow</div>
+                </Dialog.Title>
+                <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
+                  <h2 className="text-sm md:text-lg text-center mt-4 mx-auto">
+                    <p>secret content</p>
+                  </h2>
+                  
+                </div>
+                <div className="p-4 md:p-6">
+                  <button  onClick={closeModal} className="btn btn-default btn-default-lg w-full md:w-md">Close</button>
+                </div>
+                <div className="absolute right-4 top-2 md:top-4">
+                  <button
+                    type="button"
+                    className="inline-flex justify-center px-4 bg-transparent 
+                    py-2 text-sm font-medium text-gray-500 border border-transparent rounded-md
+                     hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none 
+                     focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    onClick={closeModal}
+                  >
+                      <i className="fa-duotone fa-close text-base"></i>
+                  </button>
+                </div>
+              </div>
+            </Transition.Child>
+          </div>
+        </Dialog>
+      </Transition>
+      }
       {/* End of card--wrapper */}
     </div>
-    </Link>
+    // </Link>
   )
 }
 
