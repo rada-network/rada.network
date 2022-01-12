@@ -23,14 +23,18 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
   const handleChangeNumberBox = function (e) {
     setNumberBox(e.currentTarget.value)
   }
+  const [loading, setLoading] = useState(true);
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
+        setLoading(true);
         try {
           const response2 = await boxContract.allowance(account, openBoxContract.address)
+          setLoading(false);
           return response2.gt(0)
         } catch (error) {
+          setLoading(false);
           return false
         }
       },
@@ -61,9 +65,9 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
     await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, 0])
   }
 
-  const claimNftBox = () => {
+  
 
-  }
+  if (loading) { return null }
 
   return (
     <>

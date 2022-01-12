@@ -25,11 +25,10 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
   const [currentOrder, setCurrentOrder] = useState([]);
   const [totalItem, setTotalItem] = useState(0);
   const [globalEditing, setGlobalEditing] = useState(false);
-  const maxSelected = auctionSwapInfo.info.maxBuyPerAddress - auctionSwapInfo.order.totalItem
+  const maxSelected = auctionSwapInfo.info.maxBuyPerAddress - auctionSwapInfo.order.totalItem;
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("Fake data")
-    console.log(auctionSwapInfo)
     setCurrentOrder([...auctionSwapInfo.order.detail])
   }, [auctionSwapInfo.order.detail])
 
@@ -75,7 +74,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
       const newCurrentOrder = currentOrder.map(element => {
         if (element.index === item) {
           element.isEditing = !element.isEditing;
-          if (!element.isEditing){
+          if (!element.isEditing) {
             element.priceEach = element.basePriceEach
             element.quantity = element.baseQuantity
           }
@@ -114,10 +113,13 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
+        setLoading(true)
         try {
           const response2 = await bUSDContract.allowance(account, launchpadContract.address)
+          setLoading(false)
           return response2.gt(0)
         } catch (error) {
+          setLoading(false)
           return false
         }
       },
@@ -150,6 +152,16 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
 
   const claimNftBox = () => {
 
+  }
+
+  if (loading) {
+    return (
+      <div className="flex space-x-2 mt-5 justify-center">
+        <div className="mx-auto">
+          <p className="relative mb-4 "><span className="spinner left-0 top-0"></span></p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -198,7 +210,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
               return (
                 <>
                   <div className="mb-4 flex items-center relative">
-                    
+
                     {/* Box quantity */}
                     <div className="w-1/6 pr-2 flex-shrink-0">
                       {item.isEditing ? (
@@ -238,7 +250,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                         </>
                       )}
                     </div>
-                      
+
                     {/* Total BUSD */}
                     <div className="w-1/5 pl-4  text-right">{item.priceEach * item.quantity}</div>
                     {/* Total Ranking */}
@@ -259,7 +271,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                                 <i className="fas fa-times-circle mr-1"></i>  Cancel
                               </button>
                             </div>
-                            
+
                           </>
 
                         ) : (
@@ -275,10 +287,10 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                     )}
 
                     {/* Win quantity */}
-                    {auctionSwapInfo.info.ended && 
-                    <div className="w-1/5 pl-4  text-right">
-                      {item.winQuantity}
-                    </div>
+                    {auctionSwapInfo.info.ended &&
+                      <div className="w-1/5 pl-4  text-right">
+                        {item.winQuantity}
+                      </div>
                     }
                   </div>
 
@@ -315,10 +327,10 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                   <BidRanking pool={pool} bid_value={priceBusd} bid_index={-1} />
                   {auctionSwapInfo.info.ended ? null : (
                     <div className="w-1/5">
-                    <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 ${(globalEditing || numberBox == 0 || auctionSwapInfo.info.startPrice == 0) ? "disabled" : ""} flex justify-center`}
-                      onClick={handleConfirm}>
-                      <i className="fas fa-plus-circle mr-1"></i>Add bid
-                    </button>
+                      <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 ${(globalEditing || numberBox == 0 || auctionSwapInfo.info.startPrice == 0) ? "disabled" : ""} flex justify-center`}
+                        onClick={handleConfirm}>
+                        <i className="fas fa-plus-circle mr-1"></i>Add bid
+                      </button>
                     </div>
                   )}
                 </div>
@@ -327,8 +339,8 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
           </>
         )}
         {auctionSwapInfo.info.ended && auctionSwapInfo.stat.totalSold > 0 && (
-          <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`}  
-          onClick={claimNftBox}>
+          <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`}
+            onClick={claimNftBox}>
             {t("Claim")}
           </button>
         )}

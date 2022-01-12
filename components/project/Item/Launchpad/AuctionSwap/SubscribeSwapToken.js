@@ -10,7 +10,6 @@ import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { toast } from "react-toastify"
 import SocialPromote from "../SocialPromote";
 import useChainConfig from "utils/web3/useChainConfig"
-import MiniCountdown from "@components/project/List/Countdown";
 import useStore from "@lib/useStore";
 import OpenDate from "@components/project/Item/Launchpad/OpenDate";
 import ProjectCountdown from "./Countdown";
@@ -80,9 +79,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
     else {
       setStep(2)
     }
-    //setStep(3)
-    //pool dont set winner
-  }, [loading, auctionSwapInfo,accountBalance]);
+  }, [loading, auctionSwapInfo,accountBalance, loadBalance]);
 
   useEffect(() => {
     if (step == 2) {
