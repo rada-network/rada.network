@@ -14,6 +14,7 @@ import MiniCountdown from "@components/project/List/Countdown";
 import useStore from "@lib/useStore";
 import OpenDate from "@components/project/Item/Launchpad/OpenDate";
 import ProjectCountdown from "./Countdown";
+import OpenBox from "./openbox/OpenBox";
 
 
 const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) => {
@@ -25,13 +26,13 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   const { callWithGasPrice } = useCallWithGasPrice()
   const { getBscScanURL } = useChainConfig()
   const launchpadContract = useAuctionSwapContract(pool)
-  const { loading, auctionSwapInfo, fetchPoolInfo } = useAuctionSwapInfo({ pool , status: "nft_ended"})
+  const { loading, auctionSwapInfo, fetchPoolInfo } = useAuctionSwapInfo({ pool,status : store.devStatus})
   const [accountBalance, setAccountBalance] = useState({})
   const [loadBalance, setLoadBalance] = useState(true)
   const [step, setStep] = useState(2)
   const [tokenAddress, setTokenAddress] = useState(ethers.constants.AddressZero)
   const [poolStatus, setPoolStatus] = useState("");
-
+  const boxContract = useERC20(pool.box_contract)
   useEffect(() => {
     if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
       setPoolStatus("open")
@@ -69,8 +70,10 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
 
   const fetchAccountBalance = async function () {
     let busdBalance = await bUSDContract.balanceOf(account);
+    let boxBalance = await boxContract.balanceOf(account);
     setAccountBalance({
-      busdBalance: utils.formatEther(busdBalance),
+      busdBalance: parseInt(utils.formatEther(busdBalance)),
+      boxBalance: parseInt(utils.formatUnits(boxBalance,0)),
     })
   }
   useEffect(() => {
@@ -82,27 +85,34 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   }, [account])
 
   useEffect(() => {
-    if (loading) return false;
+    if (loading || loadBalance) return false;
     setTokenAddress(auctionSwapInfo.info.addressItem)
-    if (auctionSwapInfo.info.isEnd) {
-      if (auctionSwapInfo.order.totalWinItem > 0) {
-        setStep(2)
+    if (auctionSwapInfo.info.ended) {
+      console.log(accountBalance)
+      if (accountBalance.boxBalance > 0){
+        setStep(3)
       }
-      else {
-        if (auctionSwapInfo.order.total > 0) {
-          //place order success
+      else{
+        if (auctionSwapInfo.order.totalWinItem > 0) {
           setStep(2)
         }
         else {
-          //pool close
-          setStep(2)
+          if (auctionSwapInfo.order.total > 0) {
+            //place order success
+            setStep(2)
+          }
+          else {
+            //pool close
+            setStep(2)
+          }
         }
       }
+      
     }
     else {
       setStep(2)
     }
-
+    //setStep(3)
     //pool dont set winner
   }, [loading, auctionSwapInfo]);
 
@@ -178,6 +188,57 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
           </div>
         </div>
       }
+      {step == 3 &&
+        <div className="project-main-actions no-padding overflow-hidden">
+
+          <div className="card-body no-padding card card-default">
+            <div className="flex flex-col">
+              <div className="">
+                <Timeline step="3" />
+              </div>
+              
+              <div className="card-header items-end bg-primary-50 dark:bg-gray-900 rounded-t-lg">
+                <div className="flex flex-col">
+                  <h3 className="mb-2 font-medium">
+                    <span className="text-color-title">{t("Pool closes in")}</span>
+                  </h3>
+                  <ProjectCountdown project={project} pool={pool} isEndDate={true} />
+                </div>
+
+                <div className="text-center">
+                  <div className="">
+                    {auctionSwapInfo.info.ended ? (
+                      <div className="">
+                        <span className="mr-2 opacity-60">{t("Announce at")}</span>
+                        <OpenDate time={pool.whitelist_date}/>
+                      </div>
+                    ) : (
+                      <div className="">
+                        <span className="mr-2 opacity-60">{t("Closeat")}</span>
+                        <OpenDate time={pool.end_date} />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className="project-card--container !p-0 mt-4">
+                <div className="flex">
+                  <div className="w-full">
+                    <div className="box-header relative flex !border-opacity-50">
+                      <h3 className="mb-2 font-medium">
+                        Open {pool.token_name}
+                      </h3>
+                    </div>
+                    <OpenBox auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool}/>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      }
       {(step == 31) &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-body no-padding">
@@ -212,7 +273,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                         </div>
                       </div>
 
-                      {!auctionSwapInfo.info.isEnd &&
+                      {!auctionSwapInfo.info.ended &&
                         <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
                           <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
                             <i className="fa fa-money-bill"></i>

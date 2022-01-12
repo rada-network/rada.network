@@ -80,10 +80,10 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
   useEffect(() => {
     fetcher(`/api/pools/get-pools?slug=${project.slug}/${pool.slug}`).then(function(res){
       if (!!res.contract){
-        setPoolContract({...pool,id : res.pool_id,contract : res.contract })
+        setPoolContract({...pool,id : res.pool_id,contract : res.contract,openbox_contract:res?.openbox_contract,box_contract : res?.box_contract })
       }
       else{
-        setPoolContract({...pool,id : null,contract : "" })
+        setPoolContract({...pool,id : null,contract : "",openbox_contract: "",box_contract : "" })
       }
       setLoadingPool(false)
     })    
