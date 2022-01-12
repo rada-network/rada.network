@@ -6,6 +6,7 @@ import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
 import useStore from "@lib/useStore"
+import NftList from "./NftList"
 
 const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, auctionSwapInfo }) => {
   const store = useStore()
@@ -19,40 +20,10 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
   const openBoxContract = useOpenBoxContract(pool.openbox_contract)
   const { callWithGasPrice } = useCallWithGasPrice()
   const [numberBox, setNumberBox] = useState(0);
-  const [listNft,setListNft] = useState([]);
-  const [totalNft,setTotalNft] = useState(0);
   const handleChangeNumberBox = function (e) {
     setNumberBox(e.currentTarget.value)
   }
 
-  const fetchNftBalance = async function() {
-    const nftBalance = await radaNftContract.balanceOf(account)
-    return parseInt(ethers.utils.formatUnits(nftBalance,0))
-  }
-  const fetchListNft = async function() {
-    let data = []
-    for (let i = 0;i < totalNft;i++) {
-      const tokenId = await radaNftContract.tokenOfOwnerByIndex(account,i)
-      const item = await radaNftContract.items(ethers.utils.formatUnits(tokenId,0))
-      data.push( {
-        id : parseInt(ethers.utils.formatUnits(tokenId,0)),
-        rarity : ethers.utils.formatUnits(item.typeNft,0)
-      } )
-    }
-    return data;
-  }
-
-  useEffect(() => {
-    fetchNftBalance().then((index) =>{
-      setTotalNft(index)
-    })
-  },[accountBalance.boxBalance,account])
-  useEffect(() => {
-    fetchListNft().then((res) =>{
-      console.log(res)
-      setListNft(res)
-    })
-  },[totalNft,account])
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
@@ -140,42 +111,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
           </button>
         } */}
       </div>
-      <div className="project-card--container">
-        <div className="max-w-md mx-auto">
-          <ul className="mb-4 mt-auto flex-shrink-0 flex-grow">
-            <li className="list-pair mb-2">
-              <span className="list-key !opacity-100">List Rada NFT</span>
-            </li>
-          </ul>
-
-          <div className="box p-4">
-            <div className="flex items-baseline border-b pb-2  border-gray-200 dark:border-gray-800">
-              <h4 className="text-md items-baseline font-semibold">
-                Token Id
-              </h4>
-              <span className="ml-auto font-semibold">
-                Rarity
-              </span>
-            </div>
-            <ul className="mb-0 mt-auto flex-shrink-0 flex-grow">
-              {listNft.map(function(item){
-                return (
-                  <li className="list-pair py-2 border-b border-gray-200 dark:border-gray-800">
-                    <span className="list-key text-semibold !text-gray-800 dark:!text-gray-200">
-                      {item.id}
-                    </span>
-                    <div className="ml-auto font-semibold list-value">
-                    {item.rarity}
-                    </div>
-                  </li>
-                )  
-              })}
-              
-            </ul>
-          </div>
-        </div>
-        
-      </div>
+      <NftList auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} project={project} pool={pool} />
     </>
   )
 }
