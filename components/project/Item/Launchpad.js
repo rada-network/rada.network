@@ -53,23 +53,23 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
   }
 
   const fixedSwapSteps = [
-    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1", from: formatTime(openTime), to: formatTime(openTime)},
-    {title: t("Purchase"), des: t("Deposit your fund"), step: "2", from: formatTime(openTime), to: formatTime(endTime)},
-    {title: t("Status"), des: t("Status of your application"), step: "3", from: formatTime(endTime), to: "TBA"}
+    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.open_date))},
+    {title: t("Purchase"), des: t("Deposit your fund"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
+    {title: t("Status"), des: t("Status of your application"), step: "3", from: formatTime(new Date(pool.end_date)), to: "TBA"}
   ]
 
   const auctionSwapSteps = [
-    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1", from: formatTime(openTime), to: formatTime(openTime)},
-    {title: t("Auction"), des: t("Place your bid"), step: "2", from: formatTime(openTime), to: formatTime(endTime)},
-    {title: t("Open"), des: t("Open box"), step: "3", from: formatTime(endTime), to: formatTime(whitelistTime)},
-    {title: t("Claim"), des: t("Claim your token"), step: "4", from: formatTime(whitelistTime), to: "TBA"}
+    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.open_date))},
+    {title: t("Auction"), des: t("Place your bid"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
+    {title: t("Open"), des: t("Open box"), step: "3", from: formatTime(new Date(pool.end_date)), to: formatTime(new Date(pool.whitelist_date))},
+    {title: t("Claim"), des: t("Claim your token"), step: "4", from: formatTime(new Date(pool.whitelist_date)), to: "TBA"}
   ]
 
   const idoSwapSteps = [
-    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1", from: formatTime(openTime), to: formatTime(openTime)},
-    {title: t("Prefunding"), des: t("Deposit your fund"), step: "2", from: formatTime(openTime), to: formatTime(endTime)},
-    {title: t("Status"), des: t("Status of your bid"), step: "3", from: formatTime(endTime), to: formatTime(whitelistTime)},
-    {title: t("Claim"), des: t("Claim your token"), step: "4", from: formatTime(whitelistTime), to: "TBA"}
+    {title: t("Whitelist"), des: t("Apply for whitelist"), step: "1", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.open_date))},
+    {title: t("Prefunding"), des: t("Deposit your fund"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
+    {title: t("Status"), des: t("Status of your bid"), step: "3", from: formatTime(new Date(pool.end_date)), to: formatTime(new Date(pool.whitelist_date))},
+    {title: t("Claim"), des: t("Claim your token"), step: "4", from: formatTime(new Date(pool.whitelist_date)), to: "TBA"}
   ]
 
   useEffect(() => {
