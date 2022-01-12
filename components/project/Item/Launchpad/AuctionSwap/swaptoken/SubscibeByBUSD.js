@@ -50,7 +50,6 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
   }
 
   const handleChangeCurrentOrder = function (e, item, type) {
-
     if (type === "price") {
       const newCurrentOrder = currentOrder.map(element => {
         if (element.index === item) {
@@ -108,6 +107,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
         store.transaction.updateError(t(error.toString().replace("execution reverted: ", "").replace("ERC20: ", "")), true);
       }
     }
+    setGlobalEditing(!globalEditing)
   }
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
@@ -156,9 +156,11 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
 
   if (loading) {
     return (
-      <div className="flex space-x-2 mt-5 justify-center">
+      <div className="flex mt-5 justify-center h-12">
         <div className="mx-auto">
-          <p className="relative mb-4 "><span className="spinner left-0 top-0"></span></p>
+          <p className="relative mb-4 ">
+            <span className="spinner"></span>
+          </p>
         </div>
       </div>
     )
@@ -262,11 +264,11 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                         {item.isEditing ? (
                           <>
                             <div className="w-1/5">
-                              <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 flex justify-center`}
+                              <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 flex justify-center w-full`}
                                 onClick={e => { handleIncreaseBid(item.index) }}>
                                 <i className="fas fa-plus-circle mr-1"></i>Increase Bid
                               </button>
-                              <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-default px-2 flex justify-center mt-1`}
+                              <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-default px-2 flex justify-center mt-1 w-full`}
                                 onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}>
                                 <i className="fas fa-times-circle mr-1"></i>  Cancel
                               </button>
@@ -276,7 +278,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
 
                         ) : (
                           <div className="w-1/5">
-                            <button className={`ml-2 md:ml-4 flex-shrink-0 flex-grow btn btn-default !py-2 !text-md flex justify-cente` + (globalEditing ? " disabled" : "")}
+                            <button className={`ml-2 md:ml-4 flex-shrink-0 flex-grow btn btn-default !py-2 !text-md flex justify-center w-full` + (globalEditing ? " disabled" : "")}
                               onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}
                             >
                               <i className="fas text-xs fa-pencil mr-1"></i> Adjust Bid
@@ -327,7 +329,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                   <BidRanking pool={pool} bid_value={priceBusd} bid_index={-1} />
                   {auctionSwapInfo.info.ended ? null : (
                     <div className="w-1/5">
-                      <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 ${(globalEditing || numberBox == 0 || auctionSwapInfo.info.startPrice == 0) ? "disabled" : ""} flex justify-center`}
+                      <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 w-full ${(globalEditing || numberBox == 0 || auctionSwapInfo.info.startPrice == 0) ? "disabled" : ""} flex justify-center`}
                         onClick={handleConfirm}>
                         <i className="fas fa-plus-circle mr-1"></i>Add bid
                       </button>

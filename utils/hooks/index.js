@@ -204,7 +204,7 @@ const DEV_STATUS_NFT_ENDED = {
     highestPrice: 250,
     totalBid: 18,
     totalBidItem: 28,
-    totalSold: 0
+    totalSold: 1
   },
   info: {
     addressItem: "0x04765e334e19adFDbA244B66C4BB88a324110d57",
