@@ -21,26 +21,26 @@ export default function ProjectsListClosed({ title, extraClass, projects }) {
 
           <div className="projects-table">
             {projects.map((project, index) => (
+              <>
+              {project.project_pool.length > 0 &&
               <div key={index} className="">
-                {project.project_pool.length > 0 &&
-                  <>
-                    {project.project_pool.map((pool) => (
-                      <CardProject key={project.slug + pool.slug}
-                        project={project}
-                        pool={pool}
-                        title={project.content.title + " - " + pool.title}
-                        img={project.thumbnail_uri}
-                        tokenLogo={project.thumbnail_uri}
-                        raise={pool.raise}
-                        progressToken={pool.raise}
-                        target={pool.raise}
-                        status="claimable"
-                        participian="NA"
-                      />
-                    ))}
-                  </>
-                }
+                  {project.project_pool.map((pool) => (
+                    <CardProject key={project.slug + pool.slug}
+                      project={project}
+                      pool={pool}
+                      title={project.content.title + " - " + pool.title}
+                      img={project.thumbnail_uri}
+                      tokenLogo={project.thumbnail_uri}
+                      raise={pool.raise}
+                      progressToken={pool.raise}
+                      target={pool.raise}
+                      status="claimable"
+                      participian="NA"
+                    />
+                  ))}
               </div>
+               }
+              </>
             ))}
 
           </div>

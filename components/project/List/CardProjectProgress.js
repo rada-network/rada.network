@@ -10,7 +10,8 @@ import fetcher from "@lib/fetchJson";
 import numberFormatter from "@components/utils/numberFormatter";
 
 
-export const CardProjectProgress = ({project,pool}) => {
+export const CardProjectProgress = ({project,pool,type}) => {
+  type = type || "long"
   const {t,i18n} = useTranslation("launchpad");
   const {library} = useActiveWeb3React()
   const [poolStat, setPoolStat] = useState({progress : 0});
@@ -83,22 +84,35 @@ export const CardProjectProgress = ({project,pool}) => {
   }
   return (
     <>
-      <ul className="project-fields">
-        <li className="list-pair">
-          <span className="list-key">
-            {t("Progress")}
-          </span>
-          <span className="list-value ml-auto">
-            <span className="font-semibold">{showInfo ? numberFormatter(poolStat?.progress) : "TBA"}</span>
-            <span className="opacity-70">/{pool.raise == 0 || !showInfo ? "TBA" : pool.raise.toLocaleString() + ` ${raise_token}`}</span>
-          </span>
-        </li>
-      </ul>
+      {type == "long" && 
+      <>
+        <ul className="project-fields">
+          <li className="list-pair">
+            <span className="list-key">
+              {t("Progress")}
+            </span>
+            <span className="list-value ml-auto">
+              <span className="font-semibold">{showInfo ? numberFormatter(poolStat?.progress) : "TBA"}</span>
+              <span className="opacity-70">/{pool.raise == 0 || !showInfo ? "TBA" : pool.raise.toLocaleString() + ` ${raise_token}`}</span>
+            </span>
+          </li>
+        </ul>
 
-      {showInfo && 
-      <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
-        <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" title={progressPercentage} style={{width: `${(progressPercentage > 100 ? 100 : progressPercentage)+ "%"}`}}>{progressPercentage + "%"}</div>
-      </div>
+        {showInfo && 
+        <div className="progress-bar mt-2 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
+          <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" title={progressPercentage} style={{width: `${(progressPercentage > 100 ? 100 : progressPercentage)+ "%"}`}}>{progressPercentage + "%"}</div>
+        </div>
+        }
+      </>
+      }
+      {type == "short" && 
+      <>
+        <span className="list-key">{t("Progress")}</span>
+        <span className="list-value">
+          <span className="font-semibold">{showInfo ? poolStat?.progress : "NA"}</span>
+          <span className="opacity-70">/{showInfo ? pool.raise.toLocaleString() : "NA"}</span>
+        </span>
+      </>
       }
     </>
   )
