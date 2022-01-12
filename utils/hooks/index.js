@@ -551,29 +551,36 @@ export const useAuctionSwapInfo = ({ pool, status }) => {
   const fetchPoolInfo = async () => {
     try {
       let updateInfo;
-      let stat = await lauchpadContact.poolStats(pool.id);
-      let order = await lauchpadContact.buyerBids(pool.id, account);
+      let dataPromise = []
+      dataPromise.push(lauchpadContact.poolStats(pool.id))
+      dataPromise.push(lauchpadContact.buyerBids(pool.id, account))
+      dataPromise.push(lauchpadContact.pools(pool.id))
+      dataPromise.push(lauchpadContact.buyerBidCount(pool.id, account))
+      let data = await Promise.all(dataPromise)
+      let stat = data[0];
+      let order = data[1];
+      let info = data[2];
+      let itemTotal = data[3];
       let detail = []
       if (order.length > 0) {
+        let bidsPromise = []
         for (let index of order) {
-          try {
-            let bid = await lauchpadContact.bids(pool.id, ethers.utils.parseUnits(index.toString(), 0));
-            detail.push({
-              index: index,
-              claimed: bid.claimed,
-              select: range(parseFloat(ethers.utils.formatEther(bid.priceEach)), parseFloat(ethers.utils.formatEther(bid.priceEach)) + 90, 10),
-              priceEach: parseFloat(ethers.utils.formatEther(bid.priceEach)),
-              basePriceEach: parseFloat(ethers.utils.formatEther(bid.priceEach)),
-              quantity: parseFloat(ethers.utils.formatUnits(bid.quantity, 0)),
-              baseQuantity: parseFloat(ethers.utils.formatUnits(bid.quantity, 0)),
-              winQuantity: parseFloat(ethers.utils.formatUnits(bid.winQuantity, 0)),
-              isEditing: false
-            })
-          }
-          catch (e) {
-
-          }
+          bidsPromise.push(lauchpadContact.bids(pool.id, ethers.utils.parseUnits(index.toString(), 0)));
         }
+        let bids = await Promise.all(bidsPromise)
+        detail = bids.map((bid,i) => {
+          return {
+            index : order[i],
+            claimed: bid.claimed,
+            select: range(parseFloat(ethers.utils.formatEther(bid.priceEach)), parseFloat(ethers.utils.formatEther(bid.priceEach)) + 90, 10),
+            priceEach: parseFloat(ethers.utils.formatEther(bid.priceEach)),
+            basePriceEach: parseFloat(ethers.utils.formatEther(bid.priceEach)),
+            quantity: parseFloat(ethers.utils.formatUnits(bid.quantity, 0)),
+            baseQuantity: parseFloat(ethers.utils.formatUnits(bid.quantity, 0)),
+            winQuantity: parseFloat(ethers.utils.formatUnits(bid.winQuantity, 0)),
+            isEditing: false
+          }
+        })
       }
       let totalItem = detail.reduce(function (sum, value) {
         return sum + parseInt(value.quantity)
@@ -581,7 +588,6 @@ export const useAuctionSwapInfo = ({ pool, status }) => {
       let totalWinItem = detail.reduce(function (sum, value) {
         return sum + parseInt(value.winQuantity)
       }, 0)
-      let itemTotal = await lauchpadContact.buyerBidCount(pool.id, account);
       order = {
         detail,
         item: order,
@@ -595,7 +601,7 @@ export const useAuctionSwapInfo = ({ pool, status }) => {
         totalBidItem: parseInt(ethers.utils.formatUnits(stat.totalBidItem, 0)),
         totalSold: parseInt(ethers.utils.formatUnits(stat.totalSold, 0))
       }
-      let info = await lauchpadContact.pools(pool.id);
+      
       info = {
         addressItem: info.addressItem,
         ended: info.ended,

@@ -31,37 +31,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   const [loadBalance, setLoadBalance] = useState(true)
   const [step, setStep] = useState(2)
   const [tokenAddress, setTokenAddress] = useState(ethers.constants.AddressZero)
-  const [poolStatus, setPoolStatus] = useState("");
   const boxContract = useERC20(pool.box_contract)
-  useEffect(() => {
-    if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
-      setPoolStatus("open")
-    }
-
-    if (Date.parse(new Date()) < Date.parse(pool.open_date)) {
-      setPoolStatus("coming")
-    }
-    if (Date.parse(new Date()) > Date.parse(pool.end_date)) {
-      setPoolStatus("closed")
-    }
-    if (pool.open_date == null) {
-      setPoolStatus("tba")
-    }
-    console.log(pool)
-  }, [])
-
-  const CountdownInPool = function () {
-    return (
-      <div className={`flex text-base justify-between items-center"`}>
-        {poolStatus == "open" && <div className="text-base">{t("Close in")}</div>}
-        {poolStatus == "coming" && <div className="text-base">{t("Start in")}</div>}
-        {poolStatus == "closed" && <div className="text-base">{t("pool closed")}</div>}
-        {poolStatus == "tba" && <div className="text-base">{t("Comming Soon")}</div>}
-        {poolStatus == "coming" && <MiniCountdown pool={pool} isEndDate={false} />}
-        {poolStatus == "open" && <MiniCountdown pool={pool} isEndDate={true} />}
-      </div>
-    )
-  }
 
   const reloadAccount = async function () {
     await fetchPoolInfo()
@@ -75,12 +45,11 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
       busdBalance: parseInt(utils.formatEther(busdBalance)),
       boxBalance: parseInt(utils.formatUnits(boxBalance,0)),
     })
+    setLoadBalance(false);
   }
   useEffect(() => {
     if (!!account) {
-      fetchAccountBalance().then(function () {
-        setLoadBalance(false)
-      });
+      fetchAccountBalance();
     }
   }, [account])
 
@@ -88,7 +57,6 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
     if (loading || loadBalance) return false;
     setTokenAddress(auctionSwapInfo.info.addressItem)
     if (auctionSwapInfo.info.ended) {
-      console.log(accountBalance)
       if (accountBalance.boxBalance > 0){
         setStep(3)
       }
@@ -114,7 +82,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
     }
     //setStep(3)
     //pool dont set winner
-  }, [loading, auctionSwapInfo]);
+  }, [loading, auctionSwapInfo,accountBalance]);
 
   useEffect(() => {
     if (step == 2) {
@@ -130,7 +98,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
     toast.success("Copied to clipboard", {})
   };
 
-  if (loading || loadBalance) {
+  if (loading || loadBalance && Object.keys(accountBalance).length > 0) {
     return (
       <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
     )

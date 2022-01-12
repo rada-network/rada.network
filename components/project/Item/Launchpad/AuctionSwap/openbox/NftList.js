@@ -5,7 +5,7 @@ import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
 import useStore from "@lib/useStore"
 import NftItem from "./NftItem"
-const ITEM_PER_PAGE = 6
+const ITEM_PER_PAGE = 9
 const NftList = function({ pool, project, accountBalance, setStep, fetchAccountBalance, auctionSwapInfo }){
   const store = useStore()
   const { t } = useTranslation("launchpad")
@@ -16,7 +16,6 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
   const [totalNft,setTotalNft] = useState(0);
   const [curPage,setCurPage] = useState(1);
   const [totalPage,setTotalPage] = useState(0);
-  console.log(radaNftContract)
   const fetchNftBalance = async function() {
     const nftBalance = await radaNftContract.balanceOf(account)
     return parseInt(ethers.utils.formatUnits(nftBalance,0))
@@ -28,17 +27,22 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
     }
     const start = totalNft - 1 - (curPage-1) * ITEM_PER_PAGE
     const end = totalNft - 1 - curPage * ITEM_PER_PAGE > -1 ? totalNft - 1 - curPage * ITEM_PER_PAGE : -1
+    let loadData = []
     for (let i = start;i > end;i--) {
-      const tokenId = await radaNftContract.tokenOfOwnerByIndex(account,i)
-      data.push( {
-        id : parseInt(ethers.utils.formatUnits(tokenId,0)),
-        rarity : "Loading"
-      } )
+      loadData.push(radaNftContract.tokenOfOwnerByIndex(account,i))
     }
+    const all = await Promise.all(loadData)
+    data = all.map(item => {
+      return {
+        id : parseInt(ethers.utils.formatUnits(item,0)),
+        rarity : 'loading'
+      }
+    })
     return data;
   }
 
   useEffect(() => {
+    setTotalNft(0)
     fetchNftBalance().then((index) =>{
       setTotalNft(index)
       setCurPage(1)
