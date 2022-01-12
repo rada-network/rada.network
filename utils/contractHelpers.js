@@ -10,6 +10,7 @@ import referralAdminAbi from '../config/abi/referralAdmin.json'
 import fixedSwapAbi from '../config/abi/fixedSwap.json'
 import auctionSwapAbi from '../config/abi/auctionSwap.json'
 import openBoxAbi from '../config/abi/openbox.json'
+import erc721 from '../config/abi/erc721.json'
 
 
 
@@ -23,6 +24,10 @@ const getContract = (abi, address, signer) => {
 
 export const getBep20Contract = (address, signer) => {
   return getContract(bep20Abi, address, signer)
+}
+
+export const getErc721Contract = (address, signer) => {
+  return getContract(erc721, address, signer)
 }
 
 export const getLotteryContract = (address, signer) => {
