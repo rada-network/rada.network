@@ -180,7 +180,7 @@ Card Content
 }
 
 .card-project-sm .project-content--meta {
-  @apply flex flex-col lg:flex-row w-full lg:pr-24;
+  @apply flex flex-col lg:flex-row w-full;
 }
 
 .card-project-sm .project-title {
@@ -199,8 +199,8 @@ Card Content
   @apply static;
 }
 
-.card-project-sm .project-type .label {
-  @apply px-2 py-1;
+.card-project-sm .label {
+  @apply px-2 py-1 text-2xs;
 }
  
 .card-project-sm .project-fields {
@@ -215,6 +215,10 @@ Card Content
 
 .card-project-sm .list-key {
   @apply w-full;
+}
+
+.card-project-sm .list-value {
+  @apply text-sm;
 }
 
 .card-project-sm .progress-bar {

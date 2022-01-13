@@ -53,8 +53,12 @@ export const CardProject = ({
                   height={32}
                 />
               </div>
-              <div className="flex items-baseline">
+              <div className="flex flex-col items-baseline mb-2 md:mb-0">
                 <div className="project-title--token-name">{title}</div>
+                <div className="project-badge">
+                  {/* <span className={`label label-${status}`}>{status}</span> */}
+                  <span className={`label label-${status} label--primary-light`}>Private Investor Only</span>
+                </div>
               </div>
             </div>
 
@@ -84,10 +88,9 @@ export const CardProject = ({
             </ul>
           </div>
 
-          <div className="project-status">
-            {/* <span className={`label label-${status}`}>{status}</span> */}
-            <span className={`label label-${status} label--primary`}>Investor Only</span>
-          </div>
+          {/* <div className="project-status">
+            <span className={`label label-${status}`}>{status}</span>
+          </div> */}
         </div>
         {/* End of project--content */}
       </div>

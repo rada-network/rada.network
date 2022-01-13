@@ -50,6 +50,11 @@
   @apply bg-primary-500 text-white dark:bg-primary-500 dark:text-white;
 }
 
+.label--primary-light {
+  @apply bg-primary-100 text-gray-700 dark:bg-primary-100 dark:text-gray-700;
+}
+
+
 
 .label--inactive {
   @apply bg-gray-400 text-gray-200;
