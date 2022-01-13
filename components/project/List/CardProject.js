@@ -10,10 +10,43 @@ import fetcher from "@lib/fetchJson";
 import numberFormatter from "@components/utils/numberFormatter";
 import CardProjectProgress from "./CardProjectProgress";
 import { Dialog, Transition } from "@headlessui/react";
+import { useRouter } from "next/router";
 
 
 
 export const CardProject = ({project,pool, status}) => {
+  const {t,i18n} = useTranslation("launchpad");
+  
+  const router = useRouter()
+  let [isOpen, setIsOpen] = useState(false)
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
+  function openLink(e) {
+    router.push(e.currentTarget.getAttribute('href'))
+  }
+
+  if (pool.is_hidden) return null
+  if (pool.title.toLowerCase() === "tba"){
+    return (
+      <div onClick={openModal} className={`card-project is-${project.status}`}>
+        <CardProjectContent project={project} pool={pool} status={status} openModal={openModal} closeModal={closeModal} isOpen={isOpen} />
+      </div>
+    )
+  }
+  return (
+    <div href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} className={`card-project is-${project.status}`} onClick={openLink} >
+      <CardProjectContent project={project} pool={pool} status={status} openModal={openModal} closeModal={closeModal} isOpen={isOpen} />
+    </div>
+  )
+}
+
+const CardProjectContent = ({project,pool, status,isOpen,closeModal,openModal}) => {
   const {t,i18n} = useTranslation("launchpad");
   const [poolStatus, setPoolStatus] = useState("");
   const [poolContract, setPoolContract] = useState({"pool_id":'',"contract":null});
@@ -54,20 +87,8 @@ export const CardProject = ({project,pool, status}) => {
     raise_token = pool.token_name
     sale_token = pool.token_name
   }
-
-  let [isOpen, setIsOpen] = useState(false)
-  function closeModal() {
-    setIsOpen(false)
-  }
-
-  function openModal() {
-    setIsOpen(true)
-  }
-
-  if (pool.is_hidden) return null
   return (
-    // <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
-    <div className={`card-project is-${project.status}`}>
+    <>
       <div className="project-content relative">
 
         {!(project.status == "upcoming") && (
@@ -227,8 +248,7 @@ export const CardProject = ({project,pool, status}) => {
       </Transition>
       }
       {/* End of card--wrapper */}
-    </div>
-    // </Link>
+    </>
   )
 }
 
