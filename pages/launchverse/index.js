@@ -140,7 +140,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       className="
                                 flex flex-col items-stretch justify-center p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
-                                rounded-xl h-full
+                                rounded-xl h-full bg-white dark:bg-gray-800
                               "
                     >
                       <div className="flex-shrink-0 text-center">
@@ -164,7 +164,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       className="
                                 flex flex-col items-stretch justify-center p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
-                                rounded-xl h-full
+                                rounded-xl h-full bg-white dark:bg-gray-800
                               "
                     >
                       <div className="flex-shrink-0 text-center">
@@ -188,7 +188,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       className="
                                 flex flex-col items-stretch justify-center p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
-                                rounded-xl h-full
+                                rounded-xl h-full bg-white dark:bg-gray-800
                               "
                     >
                       <div className="flex-shrink-0 text-center">
@@ -212,7 +212,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       className="
                                 flex flex-col items-stretch justify-center p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
-                                rounded-xl h-full
+                                rounded-xl h-full bg-white dark:bg-gray-800
                               "
                     >
                       <div className="flex-shrink-0 text-center">
@@ -237,7 +237,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       className="
                                 flex flex-col items-stretch justify-center p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
-                                rounded-xl h-full
+                                rounded-xl h-full bg-white dark:bg-gray-800
                               "
                     >
                       <div className="flex-shrink-0 text-center">
@@ -261,7 +261,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       className="
                                 flex flex-col items-stretch justify-center p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
-                                rounded-xl h-full
+                                rounded-xl h-full bg-white dark:bg-gray-800
                               "
                     >
                       <div className="flex-shrink-0 text-center">
