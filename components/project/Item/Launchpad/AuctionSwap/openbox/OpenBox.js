@@ -65,6 +65,9 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
     await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, 0])
   }
 
+  const claimNftBox = async () => {
+    
+  }
   
 
   if (loading) { return null }
