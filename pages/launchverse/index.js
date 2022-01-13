@@ -297,7 +297,8 @@ export default function ProjectsIndex({ projects, locale }) {
                       target="_blank"
                       className="btn btn-lg btn-default btn-primary"
                     >
-                      {t("Apply for Launch")}
+                      <span className="btn--text">{t("Apply for Launch")}</span>
+                      <span class="icon"><i class="fa-duotone fa-square-arrow-up-right"></i></span>
                     </a>
                   </div>
                   <div className="hero-deco mx-auto mt-4">
