@@ -80,10 +80,6 @@ const LaunchpadActions = observer(({ project,pool }) => {
           <div className="card-default project-main-actions no-padding overflow-hidden">
             <div className="card-body no-padding">
               <div className="flex flex-col">
-                <div className="">
-                  <Timeline step="3" />
-                </div>
-
                 <div className="project-card--container">
                   <SubscribeLaunchpadClosed project={project} pool={pool} />
                 </div>

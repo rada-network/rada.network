@@ -15,11 +15,6 @@ const WhitelistCountdown = ({project,pool}) => {
         <div className="card-body no-padding">
 
           <div className="flex flex-col">
-
-            <div className="relative z-0">
-              <Timeline step="1" />
-            </div>
-
             <div className="global-padding-lg min-h-full bg-white dark:bg-gray-800 relative z-10">
 
               <div className="">

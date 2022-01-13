@@ -1,4 +1,3 @@
-import Timeline from "./Timeline";
 import { useBUSDContractV2, useERC20, useRIRContract, useFixedSwapContract, useAuctionSwapContract } from "@utils/hooks/useContracts";
 import { useEffect, useState } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
@@ -107,9 +106,6 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
 
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
-              <div className="">
-                <Timeline step="2" />
-              </div>
               
               <div className="card-header items-end bg-primary-50 dark:bg-gray-900 rounded-t-lg">
                 <div className="flex flex-col">
@@ -158,10 +154,6 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
 
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
-              <div className="">
-                <Timeline step="3" />
-              </div>
-              
               <div className="card-header items-end bg-primary-50 dark:bg-gray-900 rounded-t-lg">
                 <div className="flex flex-col">
                   <h3 className="mb-2 font-medium">
