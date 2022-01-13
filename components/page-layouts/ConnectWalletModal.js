@@ -116,11 +116,11 @@ const ConnectWalletModal = observer(({}) => {
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-y-0"
-                enterTo="opacity-100 scale-y-100"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
                 leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-y-100 h-full"
-                leaveTo="opacity-0 scale-y-0 h-0"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
               >
                 <div
                   className="inline-block w-full max-w-lg my-8 overflow-hidden relative

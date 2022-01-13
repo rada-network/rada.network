@@ -182,40 +182,43 @@ export const CardProject = ({project,pool, status}) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-2xl my-8 overflow-hidden relative
-              text-left align-middle transition-all transform bg-white dark:bg-gray-900 shadow-xl rounded-lg">
-                <Dialog.Title
-                  as="h3"
-                  className="text-md md:text-lg flex border-b dark:border-gray-00 border-gray-200
-                   font-medium p-4 md:p-6 leading-6 text-gray-900 dark:bg-gray-900 bg-opacity-50 
-                   dark:border-gray-800 dark:text-gray-300"
-                >
-                  <div className="mx-auto inlie-flex">
-                    <span className="text-yellow-500 mr-2">
-                      <i className="fad fa-check"></i>
-                    </span>
-                  A Secret Flow</div>
-                </Dialog.Title>
-                <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
-                  <h2 className="text-sm md:text-lg text-center mt-4 mx-auto">
-                    <p>secret content</p>
-                  </h2>
-                  
-                </div>
-                <div className="p-4 md:p-6">
-                  <button  onClick={closeModal} className="btn btn-default btn-default-lg w-full md:w-md">Close</button>
-                </div>
-                <div className="absolute right-4 top-2 md:top-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center px-4 bg-transparent 
-                    py-2 text-sm font-medium text-gray-500 border border-transparent rounded-md
-                     hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none 
-                     focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                    onClick={closeModal}
+              <div className="dialog inline-block !max-w-sm z-200 relative">
+                <div className="dialog-wrapper flex-col">
+                  <Dialog.Title
+                    as="h3"
+                    className="flex border-b dark:border-gray-00 border-gray-200
+                    font-medium p-4 md:py-4 md:px-6
+                    dark:border-gray-800"
                   >
-                      <i className="fa-duotone fa-close text-base"></i>
-                  </button>
+                    <div className="inlie-flex">
+                    Introducing RADA's Secrect Project</div>
+                  </Dialog.Title>
+                  <div className="p-4 md:p-6">
+                    <p className="mx-auto">
+                      RADA's Secrect Project is a new interesting way to joint the token sales.
+                    </p>
+                  </div>
+                  <div className="p-4 md:p-6 text-right space-x-4">
+                    <button onClick={closeModal} className="btn btn-default">
+                      <span className="btn--text">Cancel</span>
+                    </button>
+                    <button className="btn btn-default btn-primary">
+                      <span className="btn--text">Read full detail</span>
+                      <span className="icon"><i class="fa-duotone fa-square-arrow-up-right"></i></span>
+                    </button>
+                  </div>
+                  <div className="absolute right-4 top-2">
+                    <button
+                      type="button"
+                      className="inline-flex justify-center items-center w-10 h-10 bg-transparent 
+                      text-gray-500 border border-transparent rounded-full
+                      hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none 
+                      focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                      onClick={closeModal}
+                    >
+                        <i className="fa-duotone fa-close text-lg"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
             </Transition.Child>

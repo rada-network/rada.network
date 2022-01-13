@@ -2,6 +2,46 @@
 Various UI Components Style
 */
 
+/*
+Dialogs
+-------------------------------*/
+.dialog-outside-wrapper {
+  @apply fixed inset-0 z-50 overflow-y-auto;
+}
+
+.dialog-outside {
+  @apply text-center;
+}
+
+.dialog-overlay {
+  @apply bg-gray-200 dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-lg;
+}
+
+.dialog {
+  @apply max-w-xs md:max-w-xl overflow-hidden text-left align-middle;
+  @apply text-left bg-gray-50 dark:bg-gray-800 shadow-xl rounded-lg;
+}
+
+.dialog-wrapper {
+  @apply block md:flex;
+}
+
+.dialog .divider {
+  @apply relative my-6 text-center;
+}
+
+.dialog .divider::before {
+  @apply absolute block w-full bg-gray-500 bg-opacity-20 -z-1;
+  content: " ";
+  height: 1px;
+  bottom: calc(50% - 0.2rem)
+}
+
+.dialog .divider span {
+  @apply bg-gray-50 dark:bg-gray-900 text-xs uppercase z-0 px-4;
+}
+
+
 
 /* Steps
 -------------------------------*/
