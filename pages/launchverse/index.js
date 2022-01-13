@@ -85,6 +85,14 @@ export default function ProjectsIndex({ projects, locale }) {
                 </header>
                 {/* END: HEADER */}
 
+                {/* BANNER */}
+                <div className="mt-8 md:mt-16">
+                  <div className="projects-section--subheader"><h3 className="">Upcoming Project</h3></div>
+                  RADA's Secrect Project is a new interesting way to joint the token sales.
+                </div>
+                {/* END: BANNER */}
+
+
                 {/* PROJECTS LIST */}
                 <div className="mt-8 md:mt-16">
                   {activeProjects.length > 0 && (
@@ -128,7 +136,7 @@ export default function ProjectsIndex({ projects, locale }) {
                                 rounded-xl h-full
                               "
                     >
-                      <div className="flex-shrink-0">
+                      <div className="flex-shrink-0 text-center">
                         <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
@@ -139,7 +147,7 @@ export default function ProjectsIndex({ projects, locale }) {
                           height={60}
                         />
                       </div>
-                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 text-center">
                         We revolutionize blockchain fundraising with our
                         DAO-based AngelList modelled Launchpad.
                       </p>
@@ -152,7 +160,7 @@ export default function ProjectsIndex({ projects, locale }) {
                                 rounded-xl h-full
                               "
                     >
-                      <div className="flex-shrink-0">
+                      <div className="flex-shrink-0 text-center">
                         <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
@@ -163,7 +171,7 @@ export default function ProjectsIndex({ projects, locale }) {
                           height={60}
                         />
                       </div>
-                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 text-center">
                         The LaunchVerse creates high value for both startup
                         projects and the investor community.
                       </p>
@@ -176,7 +184,7 @@ export default function ProjectsIndex({ projects, locale }) {
                                 rounded-xl h-full
                               "
                     >
-                      <div className="flex-shrink-0">
+                      <div className="flex-shrink-0 text-center">
                         <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
@@ -187,7 +195,7 @@ export default function ProjectsIndex({ projects, locale }) {
                           height={60}
                         />
                       </div>
-                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 text-center">
                         Different, diverse but united in the MetaVerse, projects
                         across all blockchains are welcome on the LaunchVerse.
                       </p>
@@ -200,7 +208,7 @@ export default function ProjectsIndex({ projects, locale }) {
                                 rounded-xl h-full
                               "
                     >
-                      <div className="flex-shrink-0">
+                      <div className="flex-shrink-0 text-center">
                         <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
@@ -211,7 +219,7 @@ export default function ProjectsIndex({ projects, locale }) {
                           height={60}
                         />
                       </div>
-                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 text-center">
                         We provide fair and transparent initial token and nft
                         launches for projects with carefully structured
                         allocation models.
@@ -225,7 +233,7 @@ export default function ProjectsIndex({ projects, locale }) {
                                 rounded-xl h-full
                               "
                     >
-                      <div className="flex-shrink-0">
+                      <div className="flex-shrink-0 text-center">
                         <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
@@ -236,7 +244,7 @@ export default function ProjectsIndex({ projects, locale }) {
                           height={60}
                         />
                       </div>
-                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 text-center">
                         We help incubate early stage projects across the
                         #MetaVerse and #GameFi industries.
                       </p>
@@ -249,7 +257,7 @@ export default function ProjectsIndex({ projects, locale }) {
                                 rounded-xl h-full
                               "
                     >
-                      <div className="flex-shrink-0">
+                      <div className="flex-shrink-0 text-center">
                         <Image
                           src={
                             process.env.NEXT_PUBLIC_CDN +
@@ -260,7 +268,7 @@ export default function ProjectsIndex({ projects, locale }) {
                           height={60}
                         />
                       </div>
-                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4">
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 text-center">
                         We help connect projects to the world through our
                         community and innovative Share2Earn and Contribute2Earn
                         models.
