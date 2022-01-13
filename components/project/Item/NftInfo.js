@@ -57,7 +57,12 @@ const NftInfo = function({project,pool}){
                   leaveTo="transform scale-y-0 opacity-0"
                 >
                   <Disclosure.Panel className="disclosure--panel">
-                    <div dangerouslySetInnerHTML={{ __html: item.description }}>
+                    <div className="grid grid-cols-2 ">
+                      <img className="h-12 w-24 object-cover rounded-lg" 
+                      src="https://gql.dhunt.io/adminstaging/assets/ee76b828-f5f3-4d08-9775-7ddb420e8433?format=webp&width=128">
+                      </img>
+                      <div dangerouslySetInnerHTML={{ __html: "Description of legendary NFT" }}>
+                      </div>  
                     </div>
                   </Disclosure.Panel>
                 </Transition>
