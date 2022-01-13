@@ -123,7 +123,7 @@ export default function ProjectsIndex({ projects, locale }) {
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-8">
                     <div
                       className="
-                                flex flex-col items-stretch justify-start p-4 md:p-8
+                                flex flex-col items-stretch justify-center p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
                                 rounded-xl h-full
                               "
@@ -147,7 +147,7 @@ export default function ProjectsIndex({ projects, locale }) {
 
                     <div
                       className="
-                                flex flex-col items-stretch justify-start p-4 md:p-8
+                                flex flex-col items-stretch justify-center p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
                                 rounded-xl h-full
                               "
@@ -171,7 +171,7 @@ export default function ProjectsIndex({ projects, locale }) {
 
                     <div
                       className="
-                                flex flex-col items-stretch justify-start p-4 md:p-8
+                                flex flex-col items-stretch justify-center p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
                                 rounded-xl h-full
                               "
@@ -195,7 +195,7 @@ export default function ProjectsIndex({ projects, locale }) {
 
                     <div
                       className="
-                                flex flex-col items-stretch justify-start p-4 md:p-8
+                                flex flex-col items-stretch justify-center p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
                                 rounded-xl h-full
                               "
@@ -220,7 +220,7 @@ export default function ProjectsIndex({ projects, locale }) {
 
                     <div
                       className="
-                                flex flex-col items-stretch justify-start p-4 md:p-8
+                                flex flex-col items-stretch justify-center p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
                                 rounded-xl h-full
                               "
@@ -244,7 +244,7 @@ export default function ProjectsIndex({ projects, locale }) {
 
                     <div
                       className="
-                                flex flex-col items-stretch justify-start p-4 md:p-8
+                                flex flex-col items-stretch justify-center p-4 md:p-8
                                 border border-gray-200 dark:border-gray-700
                                 rounded-xl h-full
                               "
