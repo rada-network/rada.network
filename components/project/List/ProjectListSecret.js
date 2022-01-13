@@ -55,7 +55,7 @@ export default function ProjectsListSecret({ title, extraClass, projects }) {
         <div className="w-full">
           {projects.map((project) => {
             return (
-              <div key={project.slug} className="secrect-pool relative px-16 py-12 mb-4 text-white bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg shadow-2xl">
+              <div key={project.slug} className="secrect-pool relative p-6 md:p-12 lg:px-16 lg:py-12 mb-4 text-white bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg shadow-2xl">
                 {/* <Image
                   layout="fill"
                   src={project.cover_uri}
@@ -65,8 +65,8 @@ export default function ProjectsListSecret({ title, extraClass, projects }) {
                   priority
                   /> */}
                 <div className="secrect-pool--deco"></div>
-                <div className="flex">
-                  <div className="mt-2 mr-8">
+                <div className="flex flex-col md:flex-row">
+                  <div className="absolute right-4 bottom-20 opacity-10 transform scale-125 md:relative md:mt-2 md:mr-8">
                     <Image
                       src={project.thumbnail_uri}
                       alt={project.content.title}
@@ -100,24 +100,24 @@ export default function ProjectsListSecret({ title, extraClass, projects }) {
                       </div>
 
                       <div className="text-3xl text-center justify-evenly flex space-x-4">
-                          <div className="w-20 p-2 bg-white text-gray-700 rounded-lg">
+                          <div className="w-16 md:w-20 p-2 bg-white text-gray-700 rounded-lg">
                             <div className="slashed-zero tabular-nums leading-none" x-text="days">6</div>
                             <div className="uppercase text-2xs leading-none opacity-70 mt-2">days</div>
                           </div>
 
-                          <div className="w-20 p-2 bg-white text-gray-700 rounded-lg">
+                          <div className="w-16 md:w-20 p-2 bg-white text-gray-700 rounded-lg">
                             <div className="slashed-zero tabular-nums leading-none" x-text="hours">14</div>
                             <div className="uppercase text-2xs leading-none opacity-70 mt-2">hours</div>
                           </div>
 
-                          <div className="w-20 p-2 bg-white text-gray-700 rounded-lg">
+                          <div className="w-16 md:w-20 p-2 bg-white text-gray-700 rounded-lg">
                             <div className="slashed-zero tabular-nums leading-none" x-text="minutes">20</div>
                             <div className="uppercase text-2xs leading-none opacity-70 mt-2">minutes</div>
                           </div>
 
                           <div className="text-2xl mx-1 opacity-50 font-light mt-2">:</div>
 
-                          <div className="w-20 p-2 bg-white text-gray-700 rounded-lg">
+                          <div className="w-16 md:w-20 p-2 bg-white text-gray-700 rounded-lg">
                             <div className="slashed-zero tabular-nums leading-none" x-text="seconds">45</div>
                             <div className="uppercase text-2xs leading-none opacity-70 mt-2">seconds</div>
                           </div>
