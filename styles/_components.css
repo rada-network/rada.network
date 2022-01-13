@@ -414,7 +414,7 @@ Disclosure
 }
 
 .timeline-event:hover .tooltip {
-  @apply block absolute w-52;
+  @apply block absolute w-56;
 }
 
 .timeline-event--time {

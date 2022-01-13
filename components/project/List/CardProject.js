@@ -209,7 +209,7 @@ const CardProjectContent = ({project,pool, status,isOpen,closeModal,openModal}) 
                     as="h3"
                     className="flex border-b dark:border-gray-00 border-gray-200
                     font-medium p-4 md:py-4 md:px-6
-                    dark:border-gray-800"
+                    dark:border-gray-700"
                   >
                     <div className="inlie-flex">
                     Introducing RADA's Secrect Project</div>

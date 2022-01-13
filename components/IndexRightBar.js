@@ -41,7 +41,7 @@ export const IndexRightBar = observer(({ intro }) => {
   const store = useStore();
   const { t, i18n } = useTranslation();
   useEffect(() => {
-    if (isEmpty(detailStore.data)) {
+    if (!isEmpty(detailStore.data)) {
       document.body.classList.add("page-details");
     } else {
       document.body.classList.remove("page-details");
@@ -132,14 +132,14 @@ export const IndexRightBar = observer(({ intro }) => {
             HieuNN:
             Example of Page Tabs Here
             */}
-            {dataStore !== undefined && isEmpty(detailStore.data) ? (
+            {dataStore !== undefined && !isEmpty(detailStore.data) ? (
               <div className="tabbar page-tabs">
                 <div className="tabbar--main">
                   <a
                     href="#"
                     className={`tab-item ${
                       tabName === "article" &&
-                      isEmpty(detailStore.data) &&
+                      !isEmpty(detailStore.data) &&
                       detailStore.data.tokens &&
                       detailStore.data.tokens.length
                         ? "tab-item--active"
@@ -154,7 +154,7 @@ export const IndexRightBar = observer(({ intro }) => {
                     {detailStore.type === "tweet" && t("Tweet")}
                   </a>
 
-                  {isEmpty(detailStore.data) &&
+                  {!isEmpty(detailStore.data) &&
                   detailStore.data.tokens &&
                   detailStore.data.tokens.length ? (
                     <>

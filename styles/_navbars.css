@@ -120,11 +120,10 @@ Tabbar
 }
 
 .tab-item:after {
-  @apply block absolute bottom-0 left-auto right-auto;
+  @apply block absolute bottom-0 left-auto right-auto h-0 w-10;
   @apply bg-primary-700 dark:bg-primary-500;
   content: " ";
-  height: 0;
-  width: 100%;
+  min-width: 2rem;
   transition: all 200ms ease-in;
 }
 
