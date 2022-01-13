@@ -19,11 +19,11 @@ export default function ProjectsListClosed({ title, extraClass, projects }) {
             <h3 className="">Funded Pools</h3>
           </div>
 
-          <div className="projects-grid">
+          <div className="projects-grid grid md:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
             {projects.map((project, index) => (
               <>
               {project.project_pool.length > 0 &&
-              <div key={index} className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
+              <>
                   {project.project_pool.map((pool) => (
                     <CardProject key={project.slug + pool.slug}
                       project={project}
@@ -38,7 +38,7 @@ export default function ProjectsListClosed({ title, extraClass, projects }) {
                       participian="NA"
                     />
                   ))}
-              </div>
+              </>
                }
               </>
             ))}
