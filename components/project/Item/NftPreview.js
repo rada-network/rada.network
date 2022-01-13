@@ -13,6 +13,9 @@ const NftPreview = function({project,pool}){
     initialSlide: 0,
     slidesToShow: 3,
     slidesToScroll: 3,
+    onInit : function(e){
+      console.log(e)
+    },
     responsive: [
       {
         breakpoint: 1360, // width to change options
@@ -38,8 +41,15 @@ const NftPreview = function({project,pool}){
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        }
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
         }
       }
     ],
@@ -59,7 +69,7 @@ const NftPreview = function({project,pool}){
   const windowResize = () => {
     try {
       setSliderWidth(0)
-      setSliderWidth(sliderContainer.current.offsetWidth)
+      setSliderWidth(sliderContainer.current.offsetWidth - 2 * 16)
     } catch (error) {}
   };
 
