@@ -19,7 +19,7 @@ export default function ProjectsListClosed({ title, extraClass, projects }) {
             <h3 className="">Funded Pools</h3>
           </div>
 
-          <div className="projects-grid grid md:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
+          <div className="projects-grid grid gap-4 mb-8">
             {projects.map((project, index) => (
               <>
               {project.project_pool.length > 0 &&

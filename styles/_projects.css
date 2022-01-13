@@ -181,11 +181,11 @@ Card Content
 }
 
 .card-project-sm .project-content--meta {
-  @apply flex flex-col w-full;
+  @apply flex flex-col lg:flex-row w-full lg:pr-24;
 }
 
 .card-project-sm .project-title {
-  @apply flex-row mb-0 flex-shrink-0;
+  @apply flex-row pr-24 lg:pr-0 lg:w-2/6 mb-0 flex-shrink-0;
 }
 
 .card-project-sm .project-title--token-name {
@@ -193,7 +193,7 @@ Card Content
 }
 
 .card-project-sm .project-title--token-logo {
-  @apply w-10 h-10 relative -bottom-2 mr-4;
+  @apply w-10 h-10;
 }
 
 .card-project-sm .project-type {
@@ -205,13 +205,13 @@ Card Content
 }
  
 .card-project-sm .project-fields {
-  @apply flex flex-wrap flex-shrink-0 space-y-2 items-baseline content-start;
-  @apply ml-14 -mt-2;
+  @apply flex flex-wrap md:flex-nowrap flex-shrink-0 lg:w-4/6 space-x-0 lg:space-x-6 lg:justify-evenly items-baseline content-start;
+  @apply ml-12 md:ml-12 lg:ml-0 lg:mt-0;
 }
 
 .card-project-sm .list-pair {
   width: 48%;
-  @apply flex-col mb-0 text-xs;
+  @apply flex-col mb-0 text-xs md:w-full;
 }
 
 .card-project-sm .list-key {
@@ -223,7 +223,7 @@ Card Content
 }
 
 .card-project-sm .project-status {
-  @apply hidden absolute right-4 top-6 lg:right-6;
+  @apply absolute right-4 top-6 lg:right-6;
 }
 
 /* Projects List
