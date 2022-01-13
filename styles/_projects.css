@@ -176,7 +176,7 @@ Card Content
 }
 
 .card-project-sm .project-content {
-  @apply flex flex-col w-full space-x-4 items-center;
+  @apply flex flex-col w-full space-x-4 items-stretch;
 }
 
 .card-project-sm .project-content--meta {
@@ -184,7 +184,8 @@ Card Content
 }
 
 .card-project-sm .project-title {
-  @apply flex-row lg:pr-0 lg:w-2/6 mb-0 flex-shrink-0;
+  @apply lg:pr-0 lg:w-2/6 mb-0 flex-shrink-0;
+  @apply flex-row-reverse justify-between lg:justify-start lg:flex-row;
 }
 
 .card-project-sm .project-title--token-name {
@@ -205,7 +206,7 @@ Card Content
  
 .card-project-sm .project-fields {
   @apply flex flex-wrap md:flex-nowrap flex-shrink-0 lg:w-4/6 space-x-0 lg:space-x-6 lg:justify-evenly items-baseline content-start;
-  @apply ml-12 md:ml-12 lg:ml-0 lg:mt-0;
+  @apply lg:ml-0 lg:mt-0;
 }
 
 .card-project-sm .list-pair {

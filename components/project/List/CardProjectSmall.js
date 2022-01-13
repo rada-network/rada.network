@@ -53,7 +53,7 @@ export const CardProject = ({
                   height={32}
                 />
               </div>
-              <div className="flex flex-col items-baseline mb-2 md:mb-0">
+              <div className="flex flex-col items-baseline mb-2 lg:mb-0">
                 <div className="project-title--token-name">{title}</div>
                 <div className="project-badge">
                   {/* <span className={`label label-${status}`}>{status}</span> */}
