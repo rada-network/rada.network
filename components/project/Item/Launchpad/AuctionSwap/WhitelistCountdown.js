@@ -11,15 +11,13 @@ const WhitelistCountdown = ({project,pool}) => {
   return (
     <>
       <div className="card-default project-main-actions no-padding overflow-hidden">
-
         <div className="card-body no-padding">
-
           <div className="flex flex-col">
             <div className="global-padding-lg min-h-full bg-white dark:bg-gray-800 relative z-10">
 
               <div className="">
                 {pool.open_date ?
-                <div className="max-w-2xl mx-auto">
+                  <div className="max-w-2xl mx-auto">
                   <h3 className="text-2xl text-center mb-4 font-normal">
                     <span className="text-color-title">{t("The whitelist will open in")}</span>
                   </h3>
