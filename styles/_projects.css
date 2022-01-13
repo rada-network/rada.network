@@ -469,7 +469,7 @@ Card Content
 }
 
 .secrect-pool--deco {
-  @apply hidden md:block;
+  @apply hidden lg:block;
   @apply w-2/5 h-auto absolute right-0 bottom-0 top-0 bg-contain bg-right-bottom bg-no-repeat opacity-60;
   background-image:url("/images/secretpool.png");
 }

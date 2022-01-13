@@ -66,7 +66,9 @@ export default function ProjectsListSecret({ title, extraClass, projects }) {
                   /> */}
                 <div className="secrect-pool--deco"></div>
                 <div className="flex flex-col md:flex-row">
-                  <div className="absolute right-4 bottom-20 opacity-10 transform scale-125 md:relative md:mt-2 md:mr-8">
+                  <div className="absolute right-4 bottom-20 opacity-10 transform scale-125 
+                                  md:static md:transform-none md:opacity-100 md:mt-2 md:mr-8
+                                  ">
                     <Image
                       src={project.thumbnail_uri}
                       alt={project.content.title}
