@@ -223,16 +223,11 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
           <div className="card-body no-padding">
 
             <div className="flex flex-col">
-
+              <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")}/>
               <div className="project-card--container">
                 <div className="grid gap-4 md:gap-8 lg:grid-cols-2">
 
                   <div className="box box--transparent">
-
-                    <div className="box-header !px-0">
-                      <CountdownInPool />
-                    </div>
-
                     <div className="box-header !px-0 sr-only">{t("Your allocation")}</div>
 
                     <ul className="mt-4 mb-2 flex-shrink-0 flex-grow">
