@@ -1,0 +1,27 @@
+const WhiteListTag = [
+  "share2earn",
+  "contribute2earn",
+  "enjoy2earn",
+  "play2earn",
+  "create2earn",
+  "free2play",
+  "fun2play",
+  "gamefi",
+  "metaverse",
+  "metaverses",
+  "metaxperience",
+  "metaxperiences",
+  "NFTgame",
+  "DeFiHorse",
+  "esports",
+  "profit2share",
+  "metaversebuilder",
+  "pay2win",
+  "build2gether",
+  "play2gether",
+  "fight2gether",
+  "earn2gether",
+  "enjoy2gether",
+];
+
+export default WhiteListTag;
