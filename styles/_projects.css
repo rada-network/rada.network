@@ -200,7 +200,7 @@ Card Content
 }
 
 .card-project-sm .label {
-  @apply px-2 py-1 text-2xs;
+  @apply px-2 py-1 text-xs capitalize rounded-sm;
 }
  
 .card-project-sm .project-fields {
