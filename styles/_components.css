@@ -359,11 +359,11 @@ Disclosure
 /* Timeline
 -------------------------------*/
 .timeline {
-  @apply flex justify-evenly;
+  @apply flex flex-col md:flex-row md:justify-evenly;
 }
 
 .timeline-event {
-  @apply w-full text-center;
+  @apply w-full md:text-center;
   /* &:first-child {
     @apply text-left;
   }
@@ -373,21 +373,25 @@ Disclosure
 }
 
 .timeline-event-body {
-  @apply relative space-y-2;
+  @apply flex pb-4 md:pb-0 md:block relative md:space-y-2;
+}
+
+.timeline-event:last-child .timeline-event-body {
+  @apply pb-0;
 }
 
 .timeline-event-body::before,
 .timeline-event-body::after {
   content: "";
-  @apply block absolute h-1 w-1/2 top-4 z-0;
+  @apply block absolute h-full w-1 md:h-1 md:w-1/2 top-4 z-0;
   @apply bg-gray-300 dark:bg-gray-600;
 }
 
 .timeline-event-body::before {
-  @apply left-0;
+  @apply left-3.5 md:left-0;
 }
 .timeline-event-body::after {
-  @apply right-0;
+  @apply left-3.5 md:left-auto md:right-0;
 }
 
 .timeline-event:first-child .timeline-event-body::before,
@@ -395,10 +399,16 @@ Disclosure
   @apply hidden;
 }
 
+.timeline-event:last-child .timeline-event-body::before {
+  @apply hidden md:block;
+}
 
 .timeline-event--icon {
-  @apply inline-flex justify-center items-center w-8 h-8 rounded-full z-10 relative;
+  @apply inline-flex justify-center items-center w-8 h-8 mr-2 md:mr-0 rounded-full z-10 relative;
   @apply bg-gray-300 dark:bg-gray-600 text-white;
+}
+
+.timeline-event--content {
 }
 
 .timeline-event--title {
@@ -406,11 +416,15 @@ Disclosure
 }
 
 .timeline-event--text {
-  @apply block text-xs opacity-60;
+  @apply hidden md:block text-xs opacity-60;
+}
+
+.timeline-event--duration {
+  @apply md:hidden mt-1;
 }
 
 .timeline-event .tooltip {
-  @apply hidden text-left;
+  @apply hidden text-left z-10;
 }
 
 .timeline-event:hover .tooltip {
@@ -420,7 +434,7 @@ Disclosure
 .timeline-event--time {
   @apply flex text-xs;
   span {
-    @apply opacity-60 w-10 text-right mr-2;
+    @apply opacity-60 w-10 md:text-right md:mr-2;
   }
 }
 

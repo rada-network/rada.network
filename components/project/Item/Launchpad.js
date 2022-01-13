@@ -116,10 +116,36 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
 
         <LaunchpadOverview project={project} pool={poolContract} />
 
-        <div class="flex items-start">
+        <div class="flex flex-col lg:flex-row items-start">
+
+          <Screen upto="md">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <LaunchpadContent project={project} pool={poolContract} />
+
+              <div className="card card-default">
+                <div className="card-header">
+                  <h3>{t("Info", { name: project.content.title })}</h3>       
+                </div>
+                <div className="card-body">
+                  <div
+                    dangerouslySetInnerHTML={{ __html: project.content.description }}
+                  />
+                  <div className="flex">
+                    {!!project.news && <p className="mt-auto pt-4">
+                      <Link href="#">
+                        <span className="flex">
+                          <a className="link" href="#">{t("Read full research")}</a>
+                        </span>
+                      </Link>
+                    </p>}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Screen>
           
           {/* Main Col */}
-          <div class="flex flex-col lg:order-2 w-4/6 ml-4 space-y-4">
+          <div class="flex flex-col w-full lg:order-2 lg:w-4/6 lg:ml-4 space-y-4">
 
             {/* Timeline */}
             <div className="card card-default">
@@ -211,8 +237,9 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
           {/* END: Main Col */}
 
           {/* Sidebar */}
-          <div class="flex flex-col lg:order-1 lg:w-2/6 space-y-4 flex-shrink-0">
+          <div class="flex flex-col w-full mt-4 lg:mt-0 lg:order-1 lg:w-2/6 space-y-4 flex-shrink-0">
 
+            <Screen from="lg">
             <LaunchpadContent project={project} pool={poolContract} />
 
             <div className="card card-default">
@@ -234,6 +261,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
                 </div>
               </div>
             </div>
+            </Screen>
 
             <NftInfo project={project} pool={poolContract}/>
 

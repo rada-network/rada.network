@@ -43,11 +43,11 @@ const ProjectCountdown = ({ project, setCountdownDone ,pool,isEndDate}) => {
   };
   return (
     <>
-      {isEndDate && <div className="test">
+      {isEndDate && <div>
         <Countdown renderer={renderer} date={new Date(pool.end_date)} />
       </div>}
 
-      {!isEndDate && <div className="test">
+      {!isEndDate && <div>
         <Countdown renderer={renderer} date={new Date(pool.open_date)} />
       </div>}
 

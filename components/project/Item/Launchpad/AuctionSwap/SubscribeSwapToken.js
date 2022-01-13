@@ -107,7 +107,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
               
-              <div className="card-header items-end bg-primary-50 dark:bg-gray-900 rounded-t-lg">
+              <div className="card-header flex-col items-start md:items-end bg-primary-50 dark:bg-gray-900 rounded-t-lg">
                 <div className="flex flex-col">
                   <h3 className="mb-2 font-medium">
                     <span className="text-color-title">{t("Pool closes in")}</span>
@@ -154,7 +154,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
 
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
-              <div className="card-header items-end bg-primary-50 dark:bg-gray-900 rounded-t-lg">
+              <div className="card-header flex-col items-start md:items-end bg-primary-50 dark:bg-gray-900 rounded-t-lg">
                 <div className="flex flex-col">
                   <h3 className="mb-2 font-medium">
                     <span className="text-color-title">{t("Pool closes in")}</span>

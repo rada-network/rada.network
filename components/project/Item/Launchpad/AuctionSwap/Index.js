@@ -39,7 +39,7 @@ const LaunchpadActions = observer(({ project,pool }) => {
             <div className="card card-default">
           
               {/* Timer */}
-              <div className="card-header items-end bg-primary-50 dark:bg-gray-900 rounded-t-lg">
+              <div className="card-header flex-col items-start md:items-end bg-primary-50 dark:bg-gray-900 rounded-t-lg">
                 <div className="flex flex-col">
                   <h3 className="mb-2 font-medium">
                     <span className="text-color-title">{t("Pool closes in")}</span>
@@ -47,13 +47,9 @@ const LaunchpadActions = observer(({ project,pool }) => {
                   <ProjectCountdown project={project} pool={pool} isEndDate={true} />
                 </div>
 
-                <div className="text-center">
-                  <div className="">
-                    <div className="">
-                      <span className="mr-2 opacity-60">{t("Closeat")}</span> 
-                      <OpenDate time={pool.end_date} />
-                    </div>
-                  </div>
+                <div className="mt-2">
+                  <span className="mr-2 opacity-60">{t("Closeat")}</span> 
+                  <OpenDate time={pool.end_date} />
                 </div>
               </div>
               {/* END: Timer */}
