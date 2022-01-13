@@ -9,6 +9,7 @@ import { BLOCK_PASS_KYC_COMPLETE } from "@config/constants";
 import { useTranslation } from "react-i18next";
 import OpenDate from "@components/project/Item/Launchpad/OpenDate"
 import { observer } from "mobx-react";
+import PoolDetailCountdown from "../PoolDetailCountdown";
 
 const LaunchpadActions = observer(({ project,pool }) => {
   const {t,i18n} = useTranslation("launchpad")
@@ -31,34 +32,16 @@ const LaunchpadActions = observer(({ project,pool }) => {
         {((store.kyc.isKYC && store.kyc.status === BLOCK_PASS_KYC_COMPLETE && store.user.id !== "") || !pool.is_kyc) && !!account ?
           <SubscribeSwapToken project={project} pool={pool} currentTime={currentTime} endTime={endTime} openTime={openTime} />
           :
-          <div div className="flex flex-col">
 
-            <div className="project-card--container">
-          
-              <h3 className="text-2xl text-center mb-4 font-normal">
-                <span className="text-color-title">{t("Pool closes in")}</span>
-              </h3>
-
-              <ProjectCountdown project={project} pool={pool} isEndDate={true} />
-
-              <div className="mt-4 text-center">
-                <div className="inline-block w-auto mx-auto  
-                    text-xs md:text-sm text-center rounded-full
-                    border border-gray-200 dark:border-gray-700"
-                >
-                  <div  className="py-1 px-2 md:px-4">
-                    <span className="mr-2 opacity-70">{t("Closeat")}</span> 
-                    <OpenDate time={pool.end_date} />
-                  </div>
-                </div>
+          <div div className="flex flex-col space-y-4">
+            <div className="card card-default">
+              <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")}/>
+              <div className="card-body">
+                <SubscribeLaunchpad project={project} pool={pool} />
               </div>
-
-              <SubscribeLaunchpad project={project} pool={pool} />
-
             </div>
           </div>
         }
-        
       </>
     )
   }

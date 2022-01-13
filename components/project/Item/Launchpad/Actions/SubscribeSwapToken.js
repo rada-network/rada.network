@@ -14,7 +14,7 @@ import useChainConfig from "utils/web3/useChainConfig"
 import MiniCountdown from "@components/project/List/Countdown";
 import useStore from "@lib/useStore"
 import OpenDate from "@components/project/Item/Launchpad/OpenDate"
-
+import PoolDetailCountdown from "../PoolDetailCountdown";
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const { t, i18n } = useTranslation("launchpad")
@@ -37,8 +37,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const [step, setStep] = useState(2)
   const [claimDisbaled, setClaimDisbaled] = useState(false)
   const [tokenAddress,setTokenAddress] = useState(ethers.constants.AddressZero)
-
-
   const [poolStatus, setPoolStatus] = useState("");
 
   useEffect(() => {

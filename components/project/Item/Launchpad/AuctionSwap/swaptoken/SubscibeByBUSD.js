@@ -5,10 +5,7 @@ import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransact
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
-import { CheckSvg } from "@components/svg/SvgIcons"
 import useStore from "@lib/useStore"
-import { range } from "@utils/hooks/index"
-import { current } from "tailwindcss/colors"
 import BidRanking from "./BidRanking"
 
 const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBalance, auctionSwapInfo }) => {

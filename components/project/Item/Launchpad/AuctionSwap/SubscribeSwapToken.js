@@ -13,6 +13,7 @@ import useStore from "@lib/useStore";
 import OpenDate from "@components/project/Item/Launchpad/OpenDate";
 import ProjectCountdown from "./Countdown";
 import OpenBox from "./openbox/OpenBox";
+import PoolDetailCountdown from "../PoolDetailCountdown";
 
 
 const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) => {
@@ -99,6 +100,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
       <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
     )
   }
+
   return (
     <>
       {step == 2 &&
@@ -107,30 +109,9 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
               
-              <div className="card-header flex-col items-start md:items-end bg-primary-50 dark:bg-gray-900 rounded-t-lg">
-                <div className="flex flex-col">
-                  <h3 className="mb-2 font-medium">
-                    <span className="text-color-title">{t("Pool closes in")}</span>
-                  </h3>
-                  <ProjectCountdown project={project} pool={pool} isEndDate={true} />
-                </div>
 
-                <div className="text-center">
-                  <div className="">
-                    {auctionSwapInfo.info.ended ? (
-                      <div className="">
-                        <span className="mr-2 opacity-60">{t("Announce at")}</span>
-                        <OpenDate time={pool.whitelist_date}/>
-                      </div>
-                    ) : (
-                      <div className="">
-                        <span className="mr-2 opacity-60">{t("Closeat")}</span>
-                        <OpenDate time={pool.end_date} />
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+              {auctionSwapInfo.info.ended ? <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")}/> : 
+              <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")}/>}
 
               <div className="project-card--container !p-0 mt-4">
                 <div className="flex">
@@ -154,30 +135,11 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
 
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
-              <div className="card-header flex-col items-start md:items-end bg-primary-50 dark:bg-gray-900 rounded-t-lg">
-                <div className="flex flex-col">
-                  <h3 className="mb-2 font-medium">
-                    <span className="text-color-title">{t("Pool closes in")}</span>
-                  </h3>
-                  <ProjectCountdown project={project} pool={pool} isEndDate={true} />
-                </div>
 
-                <div className="text-center">
-                  <div className="">
-                    {auctionSwapInfo.info.ended ? (
-                      <div className="">
-                        <span className="mr-2 opacity-60">{t("Announce at")}</span>
-                        <OpenDate time={pool.whitelist_date}/>
-                      </div>
-                    ) : (
-                      <div className="">
-                        <span className="mr-2 opacity-60">{t("Closeat")}</span>
-                        <OpenDate time={pool.end_date} />
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+            {auctionSwapInfo.info.ended ? 
+              <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")}/> : 
+              <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")}/>
+            }
 
               <div className="project-card--container !p-0 mt-4">
                 <div className="flex">
@@ -187,9 +149,6 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                         Open your {pool.token_name}
                       </h3>
                       <div className="ml-auto flex !text-sm items-center">
-                        {/* <button className="btn btn-default !px-1 mr-2">
-                          <span className="w-4 spin-10 h-4 rounded-full border-2 border-gray-300 dark:border-gray-400 border-l-purple-500 dark:border-l-purple-600" />
-                        </button> */}
                         <span className="mr-2 !font-normal">Your {pool.token_name } balance:</span>
                         <div className="ml-auto">
                           <span className="font-semibold">{accountBalance.boxBalance}</span>
@@ -201,64 +160,6 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                 </div>
               </div>
 
-            </div>
-          </div>
-        </div>
-      }
-      {(step == 31) &&
-        <div className="card-default project-main-actions no-padding overflow-hidden">
-          <div className="card-body no-padding">
-            <div className="flex flex-col">
-              <div className="project-card--container">
-                <div className="max-w-xl mx-auto">
-                  <div className="flex">
-                    <div className="w-full">
-                      <h3 className="text-lg md:text-xl border-2 p-4 rounded-lg bg-green-500 bg-opacity-5 border-green-500 mb-4 text-green-500 text-center text-semibold">
-                        <span className="icon mr-2">
-                          <i className="fa-duotone fa-badge-check"></i>
-                        </span>
-                        Place Bid success : {auctionSwapInfo.order.totalItem} {pool.token_name}
-                      </h3>
-                      <div className="mt-4">
-                        <div className="inline-block w-full mx-auto text-center 
-                            rounded-lg mb-4
-                            border border-gray-200 dark:border-gray-700"
-                        >
-                          {!!pool.end_date &&
-                            <div className="py-1 px-4">
-                              <span className="mr-2 opacity-70">{t("Closeat")}</span>
-                              <OpenDate time={pool.end_date} />
-                            </div>
-                          }
-                          {!!pool.whitelist_date &&
-                            <div className="py-1 px-4">
-                              <span className="mr-2 opacity-70">{t("Announcement")}</span>
-                              <OpenDate time={pool.whitelist_date} />
-                            </div>
-                          }
-                        </div>
-                      </div>
-
-                      {!auctionSwapInfo.info.ended &&
-                        <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
-                          <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
-                            <i className="fa fa-money-bill"></i>
-                          </span>
-                          <div>
-                            <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">{t("Adjust bid")}</p>
-
-                            <a href={`#`} className="group">
-                              <span className="text-sm mr-1">{t("adjust note", { "orderBusd": auctionSwapInfo.order.totalItem, "maxBusd": auctionSwapInfo.info.maxBuyPerAddress })}</span>
-                              <span className="icon text-xs relative left-1 group-hover:left-2 transition-all"><i className="fas fa-angle-right"></i></span>
-                            </a>
-                          </div>
-                        </div>
-                      }
-                    </div>
-                  </div>
-
-                </div>
-              </div>
             </div>
           </div>
         </div>
