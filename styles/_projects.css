@@ -104,7 +104,6 @@ Card Content
 /* Status */
 .project-status .label {
   @apply rounded-full px-2 py-1;
-  @apply bg-gray-200 text-gray-700;
 }
 
 .project-status .label-coming {

@@ -85,7 +85,8 @@ export const CardProject = ({
           </div>
 
           <div className="project-status">
-            <span className={`label label-${status}`}>{status}</span>
+            {/* <span className={`label label-${status}`}>{status}</span> */}
+            <span className={`label label-${status} label--primary`}>Investor Only</span>
           </div>
         </div>
         {/* End of project--content */}
