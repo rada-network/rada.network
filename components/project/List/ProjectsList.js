@@ -81,8 +81,8 @@ export default function ProjectsList({ title, extraClass, projects }) {
                           <Image
                             src={project.thumbnail_uri}
                             alt={project.content.title}
-                            width={80}
-                            height={80}
+                            width={64}
+                            height={64}
                           />
                         </div>
 

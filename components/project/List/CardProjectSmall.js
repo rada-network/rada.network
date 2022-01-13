@@ -41,7 +41,7 @@ export const CardProject = ({
   }, []);
   return (
     <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
-      <div className={`card-project card-project-sm mt-2`}>
+      <div className={`card-project card-project-sm`}>
         <div className="project-content">
           <div className="project-content--meta">
             <div className="project-title">

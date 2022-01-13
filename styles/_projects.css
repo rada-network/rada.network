@@ -65,7 +65,7 @@ Card Thumb + Type + Countdown
 
 /* Logo */
 .project-logo {
-  @apply w-16 h-16 md:w-20 md:h-20 md:mr-4 flex-shrink-0;
+  @apply w-16 h-16 flex-shrink-0;
   @apply flex justify-center items-center; 
 }
 
@@ -181,11 +181,11 @@ Card Content
 }
 
 .card-project-sm .project-content--meta {
-  @apply flex flex-col lg:flex-row w-full lg:pr-24;
+  @apply flex flex-col w-full;
 }
 
 .card-project-sm .project-title {
-  @apply flex-row pr-24 lg:pr-0 lg:w-2/6 mb-0 flex-shrink-0;
+  @apply flex-row mb-0 flex-shrink-0;
 }
 
 .card-project-sm .project-title--token-name {
@@ -193,7 +193,7 @@ Card Content
 }
 
 .card-project-sm .project-title--token-logo {
-  @apply w-10 h-10;
+  @apply w-10 h-10 relative -bottom-2 mr-4;
 }
 
 .card-project-sm .project-type {
@@ -205,13 +205,13 @@ Card Content
 }
  
 .card-project-sm .project-fields {
-  @apply flex flex-wrap md:flex-nowrap flex-shrink-0 lg:w-4/6 space-x-0 lg:space-x-6 lg:justify-evenly items-baseline content-start;
-  @apply ml-12 md:ml-12 lg:ml-0 lg:mt-0;
+  @apply flex flex-wrap flex-shrink-0 space-y-2 items-baseline content-start;
+  @apply ml-14 -mt-2;
 }
 
 .card-project-sm .list-pair {
   width: 48%;
-  @apply flex-col mb-0 text-xs md:w-full;
+  @apply flex-col mb-0 text-xs;
 }
 
 .card-project-sm .list-key {
@@ -223,7 +223,7 @@ Card Content
 }
 
 .card-project-sm .project-status {
-  @apply absolute right-4 top-6 lg:right-6;
+  @apply hidden absolute right-4 top-6 lg:right-6;
 }
 
 /* Projects List
