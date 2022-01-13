@@ -23,7 +23,7 @@ const HowToUse = ({project, pool}) => {
           <div className="card-body">
             {listFaq.map(function(item){  
               return (
-              <div className="pb-4 mb-4 border-b border-gray-200 dark:border-gray-700 border-opacity-40">
+              <div key={item.question} className="pb-4 mb-4 border-b border-gray-200 dark:border-gray-700 border-opacity-40">
                 <h4 className="font-semibold text-xs uppercase tracking-wider mb-2">{item.question}</h4>
                 <p className="opacity-80"><div dangerouslySetInnerHTML={{ __html: item.answer }}></div></p>
               </div>

@@ -106,12 +106,12 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
             </div>
           </>
         )}
-        {auctionSwapInfo.info.ended && auctionSwapInfo.stat.totalSold > 0 && (
+        {/* {auctionSwapInfo.info.ended && auctionSwapInfo.stat.totalSold > 0 && (
           <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`}  
           onClick={claimNftBox}>
             {t("Claim")}
           </button>
-        )}
+        )} */}
         {/* {account === "walletaddress" &&
           <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`} onClick={resetApproved}  >
             {t("Reset approve")}

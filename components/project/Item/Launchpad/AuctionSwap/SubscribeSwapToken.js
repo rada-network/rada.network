@@ -95,7 +95,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
     toast.success("Copied to clipboard", {})
   };
 
-  if (loading || loadBalance && Object.keys(accountBalance).length > 0) {
+  if (loading || loadBalance || Object.keys(accountBalance).length == 0) {
     return (
       <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
     )
@@ -192,8 +192,17 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                   <div className="w-full">
                     <div className="box-header relative flex !border-opacity-50">
                       <h3 className="mb-2 font-medium">
-                        Open {pool.token_name}
+                        Open your {pool.token_name}
                       </h3>
+                      <div className="ml-auto flex !text-sm items-center">
+                        {/* <button className="btn btn-default !px-1 mr-2">
+                          <span className="w-4 spin-10 h-4 rounded-full border-2 border-gray-300 dark:border-gray-400 border-l-purple-500 dark:border-l-purple-600" />
+                        </button> */}
+                        <span className="mr-2 !font-normal">Your {pool.token_name } balance:</span>
+                        <div className="ml-auto">
+                          <span className="font-semibold">{accountBalance.boxBalance}</span>
+                        </div>
+                      </div>
                     </div>
                     <OpenBox auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool}/>
                   </div>

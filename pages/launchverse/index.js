@@ -9,6 +9,7 @@ import { useTranslation } from "next-i18next";
 import Image from "@components/Image";
 import { useTheme } from "next-themes";
 import useStore from "@lib/useStore";
+import ProjectsListSecret from "@components/project/List/ProjectListSecret";
 
 const Layout = dynamic(import("@components/page-layouts/Global"));
 const ProjectsList = dynamic(() => import("@components/project/List/ProjectsList"));
@@ -87,8 +88,14 @@ export default function ProjectsIndex({ projects, locale }) {
 
                 {/* BANNER */}
                 <div className="mt-8 md:mt-16">
-                  <div className="projects-section--subheader"><h3 className="">Upcoming Project</h3></div>
-                  RADA's Secrect Project is a new interesting way to joint the token sales.
+                  {upcomingProjects.length > 0 && (
+                    <ProjectsListSecret
+                      key={`active`}
+                      title={`Upcomming Project`}
+                      projects={upcomingProjects}
+                      isComing={false}
+                    />
+                  )}
                 </div>
                 {/* END: BANNER */}
 
@@ -104,14 +111,14 @@ export default function ProjectsIndex({ projects, locale }) {
                     />
                   )}
 
-                  {upcomingProjects.length > 0 && (
+                  {/* {upcomingProjects.length > 0 && (
                     <ProjectsList
                       key={`upcoming`}
                       title={`Upcoming project`}
                       projects={upcomingProjects}
                       isComing={true}
                     />
-                  )}
+                  )} */}
 
                   <ProjectsListClosed projects={closedProjects} />
                 </div>
