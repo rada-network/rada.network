@@ -57,7 +57,8 @@ export const CardProject = ({
                 <div className="project-title--token-name">{title}</div>
                 <div className="project-badge">
                   {/* <span className={`label label-${status}`}>{status}</span> */}
-                  <span className={`label label-${status} label--primary-light`}>Private Investor Only</span>
+                  {pool.type === "private" && <span className={`label label-${pool.type} label--primary-light`}>Private Investor Only</span>}
+                  
                 </div>
               </div>
             </div>
