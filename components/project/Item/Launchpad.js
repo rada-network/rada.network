@@ -206,11 +206,14 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
                             </span>
                           </li>
                         )}
+                        {pool.whitelist_date !== null && whitelistTime < currentTime && winners.length > 0 && 
                         <li style={style} className={`tab-item ` + (active == "winner" ?  "tab-item--active" : "")} onClick={(e) => {setActive("winner")}}>
                           <span className="tab-item--text !block">
                             Winners
                           </span>
                         </li>
+                        }
+                        
                       </ol>
                     </nav>
                   </div>
@@ -218,16 +221,16 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
                   <div className={"project-card--container" + (active == "faq" ? "" : " hidden")}>
                     <ProjectFaq project={project} pool={pool}/> 
                   </div>
+                  {pool.whitelist_date !== null && whitelistTime < currentTime && winners.length > 0 && 
                   <div className={"project-card--container"+ (active == "winner" ? "" : " hidden")}>
                     <Subscriber project={project} pool={poolContract} winners={winners}/>
                   </div>
-
-                  
-                    {pool.token_sale !== "ido" && (
-                      <div className={"project-card--container"+ (active == "howto" ? "" : " hidden")}>
-                        <HowToUse project={project} pool={pool}/>
-                      </div>
-                    )}
+                  }
+                  {pool.token_sale !== "ido" && (
+                    <div className={"project-card--container"+ (active == "howto" ? "" : " hidden")}>
+                      <HowToUse project={project} pool={pool}/>
+                    </div>
+                  )}
                   
                 </div>
               </div>
