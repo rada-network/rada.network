@@ -108,17 +108,29 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
 
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
-              
-
+ 
               {auctionSwapInfo.info.ended ? <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")}/> : 
               <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")}/>}
 
-              <div className="project-card--container !p-0 mt-4">
+              <div className="m-4 bg-green-500 text-white px-8 rounded-md p-4">
+                <div>
+                  You current bid:
+                  <div>
+                    <div>- 10 box&nbsp;&nbsp;&nbsp;150BUSD/Box&nbsp;&nbsp;&nbsp;Ranked 20/100</div>
+                    <div>- 200 box&nbsp;&nbsp;&nbsp;300BUSD/Box&nbsp;&nbsp;&nbsp;Ranked 10/100</div>
+                  </div>
+                </div>
+                <div>
+                  <button className="btn btn-default">Adjust your bid</button>
+                </div>
+              </div>
+
+              <div className="project-card--container">
                 <div className="flex">
                   <div className="w-full">
                     <div className="box-header relative flex !border-opacity-50">
                       <h3 className="mb-2 font-medium">
-                        Bid
+                        Adjust your bid
                       </h3>
                     </div>
                     <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool}/>

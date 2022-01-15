@@ -19,7 +19,8 @@ const NftInfo = function({project,pool}){
   return (
     <div className="card card-default">
       <div className="card-header">
-        <h3>{pool.token_name} NFT Rarity</h3>  
+        {/* <h3>{pool.token_name} NFT Rarity</h3>   */}
+        <h3>RADA's NFT Rarity</h3> 
         <a className="btn btn-default">
           <span className="btn--text text-xs">
             Learn more

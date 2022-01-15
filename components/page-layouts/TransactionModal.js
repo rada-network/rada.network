@@ -113,7 +113,7 @@ const TransactionModal = observer(({ }) => {
                       </>
                     )}
 
-                    <h2 className="text-sm md:text-lg text-center mt-4 mx-auto">
+                    <h2 className="text-center mt-4 mx-auto">
                       {transactionHash !== "" && !isError ? (
                         <div>
                           <strong>

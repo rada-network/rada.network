@@ -263,11 +263,13 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                             <div className="w-1/5">
                               <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 flex justify-center w-full`}
                                 onClick={e => { handleIncreaseBid(item.index) }}>
-                                <i className="fas fa-plus-circle mr-1"></i>Increase Bid
+                                {/* <i className="fas fa-plus-circle mr-1"></i> */}
+                                <span className="btn--text">Increase Bid</span>
                               </button>
                               <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-default px-2 flex justify-center mt-1 w-full`}
                                 onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}>
-                                <i className="fas fa-times-circle mr-1"></i>  Cancel
+                                {/* <i className="fas fa-times-circle mr-1"></i>   */}
+                                <span className="btn--text">Cancel</span>
                               </button>
                             </div>
 
@@ -278,7 +280,8 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                             <button className={`ml-2 md:ml-4 flex-shrink-0 flex-grow btn btn-default !py-2 !text-md flex justify-center w-full` + (globalEditing ? " disabled" : "")}
                               onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}
                             >
-                              <i className="fas text-xs fa-pencil mr-1"></i> Adjust Bid
+                              {/* <i className="fas text-xs fa-pencil mr-1"></i> */}
+                              <span className="btn--text">Adjust Bid</span>
                             </button>
                           </div>
                         )}
