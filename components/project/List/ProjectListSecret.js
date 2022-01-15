@@ -82,11 +82,11 @@ export default function ProjectsListSecret({ title, extraClass, projects }) {
                     </div>
 
                     <div className="">
-                      <p dangerouslySetInnerHTML={{__html:project.content.description}}></p>
-                      <button className="btn btn-primary px-4 py-2 mt-4">
+                      <div dangerouslySetInnerHTML={{__html:project.content.description}}></div>
+                      <a className="btn btn-primary px-4 py-2 mt-4" target="_blank" href={project.website}>
                         <span className="btn--text">Learn more</span>
                         <span className="icon"><i class="fa-duotone fa-square-arrow-up-right"></i></span>
-                      </button>
+                      </a>
                     </div>
 
                     <div className="mt-6">
