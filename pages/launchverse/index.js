@@ -41,6 +41,10 @@ export default function ProjectsIndex({ projects, locale }) {
     return item.status === "upcoming";
   });
 
+  const secretProjects = projects.filter(function (item) {
+    return item.status === "secret";
+  });
+
   const closedProjects = projects.filter(function (item) {
     return item.status === "closed";
   });
@@ -88,11 +92,11 @@ export default function ProjectsIndex({ projects, locale }) {
 
                 {/* BANNER */}
                 <div className="mt-8 md:mt-16">
-                  {upcomingProjects.length > 0 && (
+                  {secretProjects.length > 0 && (
                     <ProjectsListSecret
                       key={`active`}
-                      title={`Upcomming Project`}
-                      projects={upcomingProjects}
+                      title={`Secret Project`}
+                      projects={secretProjects}
                       isComing={false}
                     />
                   )}
@@ -111,14 +115,14 @@ export default function ProjectsIndex({ projects, locale }) {
                     />
                   )}
 
-                  {/* {upcomingProjects.length > 0 && (
+                  {upcomingProjects.length > 0 && (
                     <ProjectsList
                       key={`upcoming`}
                       title={`Upcoming project`}
                       projects={upcomingProjects}
                       isComing={true}
                     />
-                  )} */}
+                  )}
 
                   <ProjectsListClosed projects={closedProjects} />
                 </div>

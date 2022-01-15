@@ -112,6 +112,8 @@ const projectFeedGql = gql`
     projectFeed(lang: $lang) {
     is_default_open
     slug
+    open_date
+    end_date
     thumbnail_uri
     cover_uri
     background_uri
