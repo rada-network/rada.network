@@ -88,7 +88,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   useEffect(() => {
     if (loading) return false;
     setTokenAddress(fixedSwapInfo.info.addressItem)
-    if (fixedSwapInfo.info.ended){
+    if (currentTime > endTime) {
       if (fixedSwapInfo.order.total > 0){
         //place order success
         setStep(31)
