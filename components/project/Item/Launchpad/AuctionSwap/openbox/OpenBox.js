@@ -7,7 +7,7 @@ import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
 import useStore from "@lib/useStore"
 import NftList from "./NftList"
-
+const MAX_BOX_CURRENT_OPEN = 5
 const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, auctionSwapInfo }) => {
   const store = useStore()
   const { t } = useTranslation("launchpad")
@@ -24,6 +24,8 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
     setNumberBox(e.currentTarget.value)
   }
   const [loading, setLoading] = useState(true);
+
+  const maxOpenBox = accountBalance.boxBalance > MAX_BOX_CURRENT_OPEN ? MAX_BOX_CURRENT_OPEN : accountBalance.boxBalance
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
@@ -48,12 +50,14 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
         store.transaction.update(receipt.transactionHash);
       },
       onConfirm: () => {
-        store.transaction.showTransaction(true, t("start transaction message"));
+        store.transaction.showTransaction(true, t("Opening your boxes"));
         const tx = callWithGasPrice(openBoxContract, 'openBox', [pool.id, numberBox]);
-        store.transaction.startTransaction(true, t("transaction started"));
+        store.transaction.startTransaction(true, t("transaction started"));        
         return tx;
       },
       onSuccess: async ({ receipt }) => {
+        console.log(receipt)
+        console.log(ethers.utils.formatUnits(receipt.events[3].args[2],0))
         store.transaction.update(receipt.transactionHash);
         await fetchAccountBalance()
         store.updateLoadPoolContent((new Date()).getTime())
@@ -90,7 +94,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
               <div className="w-3/6 pr-2 flex-shrink-0">
                 <select id="box" name="amount" defaultValue={numberBox} onChange={handleChangeNumberBox} className="select-custom w-full ">
                   <option className="text-gray-300" value="0">---</option>
-                  {Array(accountBalance.boxBalance).fill(null).map((_, i) => {
+                  {Array((maxOpenBox)).fill(null).map((_, i) => {
                     return (
                       <option key={i} className="text-gray-300" value={(i + 1)}>{i + 1}</option>
                     )
