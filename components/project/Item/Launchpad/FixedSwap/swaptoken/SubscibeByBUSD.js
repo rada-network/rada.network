@@ -18,6 +18,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
   const {callWithGasPrice} = useCallWithGasPrice()
   const [numberBox,setNumberBox] = useState(1)
   const [numberBusd,setNumberBusd] = useState(fixedSwapInfo.info.startPrice)
+  const [loading, setLoading] = useState(true);
 
   
   const maxSelected = fixedSwapInfo.info.maxBuyPerAddress - fixedSwapInfo.order.total
@@ -30,9 +31,11 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
     onRequiresApproval: async () => {
       try {
         const response2 = await bUSDContract.allowance(account, launchpadContract.address)
+        setLoading(false)
         console.log(response2)
         return response2.gt(0)
       } catch (error) {
+        setLoading(false)
         return false
       }
     },
@@ -57,6 +60,18 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
       store.updateLoadPoolContent((new Date()).getTime())
     },
   })
+
+  if (loading) {
+    return (
+      <div className="flex mt-5 justify-center h-12">
+        <div className="mx-auto">
+          <p className="relative mb-4 ">
+            <span className="spinner"></span>
+          </p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>
