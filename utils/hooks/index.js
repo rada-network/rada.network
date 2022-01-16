@@ -274,7 +274,8 @@ const DEV_STATUS_NFT_ENDED = {
     ],
     total: 6,
     totalItem: 9,
-    totalWinItem: 2
+    totalWinItem: 2,
+    refundBalance: 500
   }
 }
 
@@ -595,12 +596,24 @@ export const useAuctionSwapInfo = ({ pool, status }) => {
       let totalWinItem = detail.reduce(function (sum, value) {
         return sum + parseInt(value.winQuantity)
       }, 0)
+      
+      let totalBusd = detail.reduce(function (sum, value) {
+        return sum + parseInt(value.quantity * value.priceEach)
+      }, 0)
+
+      let totalWinBusd = detail.reduce(function (sum, value) {
+        return sum + parseInt(value.winQuantity * value.priceEach)
+      }, 0)
+
+      let refundBalanceBUSD = totalBusd - totalWinBusd;
+
       order = {
         detail,
         item: order,
         total: parseInt(ethers.utils.formatUnits(itemTotal, 0)),
         totalItem: totalItem,
         totalWinItem: totalWinItem,
+        refundBalance: refundBalanceBUSD
       }
       stat = {
         highestPrice: parseInt(ethers.utils.formatEther(stat.highestPrice)),

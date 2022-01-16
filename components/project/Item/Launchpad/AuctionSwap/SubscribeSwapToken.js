@@ -14,6 +14,7 @@ import OpenDate from "@components/project/Item/Launchpad/OpenDate";
 import ProjectCountdown from "./Countdown";
 import OpenBox from "./openbox/OpenBox";
 import PoolDetailCountdown from "../PoolDetailCountdown";
+import BidInfo from "./BidInfo";
 
 
 const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) => {
@@ -25,12 +26,13 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   const { callWithGasPrice } = useCallWithGasPrice()
   const { getBscScanURL } = useChainConfig()
   const launchpadContract = useAuctionSwapContract(pool)
-  const { loading, auctionSwapInfo, fetchPoolInfo } = useAuctionSwapInfo({ pool,status : store.devStatus})
+  const { loading, auctionSwapInfo, fetchPoolInfo } = useAuctionSwapInfo({ pool, status: store.devStatus })
   const [accountBalance, setAccountBalance] = useState({})
   const [loadBalance, setLoadBalance] = useState(true)
   const [step, setStep] = useState(2)
   const [tokenAddress, setTokenAddress] = useState(ethers.constants.AddressZero)
   const boxContract = useERC20(pool.box_contract)
+  const [isEnableAdjust, setEnableAdjust] = useState(false)
 
   const reloadAccount = async function () {
     await fetchPoolInfo()
@@ -42,7 +44,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
     let boxBalance = await boxContract.balanceOf(account);
     setAccountBalance({
       busdBalance: parseInt(utils.formatEther(busdBalance)),
-      boxBalance: parseInt(utils.formatUnits(boxBalance,0)),
+      boxBalance: parseInt(utils.formatUnits(boxBalance, 0)),
     })
     setLoadBalance(false);
   }
@@ -54,32 +56,32 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
 
   useEffect(() => {
     if (loading || loadBalance) return false;
+    if (auctionSwapInfo.order.total == 0 ) {
+      setEnableAdjust(true)
+    }
     setTokenAddress(auctionSwapInfo.info.addressItem)
+    console.log(auctionSwapInfo)
     if (auctionSwapInfo.info.ended) {
-      if (accountBalance.boxBalance > 0){
+      if (accountBalance.boxBalance > 0) {
         setStep(3)
-      }
-      else{
+      } else {
         if (auctionSwapInfo.order.totalWinItem > 0) {
-          setStep(2)
-        }
-        else {
+          setStep(21)
+        } else {
           if (auctionSwapInfo.order.total > 0) {
             //place order success
             setStep(2)
-          }
-          else {
+          } else {
             //pool close
             setStep(2)
           }
         }
       }
-      
     }
     else {
       setStep(2)
     }
-  }, [loading, auctionSwapInfo,accountBalance, loadBalance]);
+  }, [loading, auctionSwapInfo, accountBalance, loadBalance]);
 
   useEffect(() => {
     if (step == 2) {
@@ -101,6 +103,10 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
     )
   }
 
+  const enableAdjust = () => {
+    setEnableAdjust(true)
+  }
+
   return (
     <>
       {step == 2 &&
@@ -108,50 +114,91 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
 
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
- 
-              {auctionSwapInfo.info.ended ? <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")}/> : 
-              <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")}/>}
 
-              <div className="m-4 bg-green-500 text-white px-8 rounded-md p-4">
-                <div>
-                  You current bid:
-                  <div>
-                    <div>- 10 box&nbsp;&nbsp;&nbsp;150BUSD/Box&nbsp;&nbsp;&nbsp;Ranked 20/100</div>
-                    <div>- 200 box&nbsp;&nbsp;&nbsp;300BUSD/Box&nbsp;&nbsp;&nbsp;Ranked 10/100</div>
-                  </div>
-                </div>
-                <div>
-                  <button className="btn btn-default">Adjust your bid</button>
-                </div>
-              </div>
-
-              <div className="project-card--container">
-                <div className="flex">
-                  <div className="w-full">
-                    <div className="box-header relative flex !border-opacity-50">
-                      <h3 className="mb-2 font-medium">
-                        Adjust your bid
-                      </h3>
+              {auctionSwapInfo.info.ended ? <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")} /> :
+                <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")} />}
+              {!auctionSwapInfo.info.ended && (
+                <>
+                  {auctionSwapInfo.order.total > 0 &&
+                    <div className="m-4 bg-green-500 text-white px-8 rounded-md p-4">
+                      <div>
+                        You current bid:
+                        <div>
+                          {auctionSwapInfo.order.detail.map((item) => {
+                            return (
+                              <BidInfo pool={pool} bid_index={item.index} bid_value={item.priceEach} quantity={item.quantity}></BidInfo>
+                            )
+                          })}
+                        </div>
+                      </div>
+                      <div>
+                        <button className="btn btn-default"
+                          onClick={enableAdjust}>
+                          Adjust your bid
+                        </button>
+                      </div>
                     </div>
-                    <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool}/>
+                  }
+                  
+
+                  <div className="project-card--container">
+                    <div className="flex">
+                      <div className={isEnableAdjust ? "w-full" : "w-full disabled"}>
+                        <div className="box-header relative flex !border-opacity-50">
+                          <h3 className="mb-2 font-medium">
+                            Adjust your bid
+                          </h3>
+                        </div>
+                        <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </>
+              )}
 
             </div>
           </div>
         </div>
       }
+
+      {/* Show status */}
+      {step == 21 &&
+        <div className="project-main-actions no-padding overflow-hidden">
+          <div className="card-body no-padding card card-default">
+            <div className="flex flex-col">
+
+              <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")} />
+
+              <div className="m-4 bg-green-500 text-white px-8 rounded-md p-4">
+                <div>
+                  Your bid result:
+                  <div>
+                    <div>- You win {auctionSwapInfo.order.totalWinItem} box</div>
+                    <div>- You refund {auctionSwapInfo.order.refundBalance} BUSD</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="m-4 px-1 p-4">
+                <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`}>
+                  {t("Claim")}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
       {step == 3 &&
         <div className="project-main-actions no-padding overflow-hidden">
 
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
 
-            {auctionSwapInfo.info.ended ? 
-              <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")}/> : 
-              <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")}/>
-            }
+              {auctionSwapInfo.info.ended ?
+                <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")} /> :
+                <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")} />
+              }
 
               <div className="project-card--container !p-0 mt-4">
                 <div className="flex">
@@ -161,13 +208,13 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                         Open your {pool.token_name}
                       </h3>
                       <div className="ml-auto flex !text-sm items-center">
-                        <span className="mr-2 !font-normal">Your {pool.token_name } balance:</span>
+                        <span className="mr-2 !font-normal">Your {pool.token_name} balance:</span>
                         <div className="ml-auto">
                           <span className="font-semibold">{accountBalance.boxBalance}</span>
                         </div>
                       </div>
                     </div>
-                    <OpenBox auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool}/>
+                    <OpenBox auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
                   </div>
                 </div>
               </div>
