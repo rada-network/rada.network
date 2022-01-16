@@ -89,12 +89,24 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
     })    
   }, [pool]);
   useEffect(() => {
-    if (pool.whitelist_date !== null && whitelistTime < currentTime && winners.length > 0){
-      setActive("winner")
+    if (pool.token_sale === "ido"){
+      if (pool.whitelist_date !== null && whitelistTime < currentTime && winners.length > 0){
+        setActive("winner")
+      }
+      else{
+        setActive("faq")
+      }
     }
-    else{
-      setActive("faq")
+
+    if (pool.token_sale === "fixed-swap"){
+      if (currentTime > endTime){
+        setActive("howto")
+      }
+      else{
+        setActive("faq")
+      }
     }
+    
   },[winners])
 
   useEffect(() => {

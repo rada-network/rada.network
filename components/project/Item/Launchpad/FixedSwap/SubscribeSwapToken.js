@@ -88,7 +88,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   useEffect(() => {
     if (loading) return false;
     setTokenAddress(fixedSwapInfo.info.addressItem)
-    if (fixedSwapInfo.info.ended){
+    if (currentTime > endTime) {
       if (fixedSwapInfo.order.total > 0){
         //place order success
         setStep(31)
@@ -233,7 +233,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         </div>
                       </div>
 
-                      {!fixedSwapInfo.info.ended && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
+                      {currentTime < endTime && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
                       <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
                         <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
                           <i className="fa fa-money-bill"></i>
