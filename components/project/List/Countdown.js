@@ -42,18 +42,16 @@ const MiniCountdown = ({ pool, isEndDate,style }) => {
             <div className="slashed-zero tabular-nums leading-none" x-text="days">{days}</div>
             <div className="uppercase text-2xs leading-none opacity-70 mt-2">days</div>
           </div>
-          <div className="text-2xl mx-1 opacity-50 font-light mt-2">:</div>
+
           <div className="w-16 md:w-20 p-2 bg-white text-gray-700 rounded-lg">
             <div className="slashed-zero tabular-nums leading-none" x-text="hours">{hours}</div>
             <div className="uppercase text-2xs leading-none opacity-70 mt-2">hours</div>
           </div>
-          <div className="text-2xl mx-1 opacity-50 font-light mt-2">:</div>
+
           <div className="w-16 md:w-20 p-2 bg-white text-gray-700 rounded-lg">
             <div className="slashed-zero tabular-nums leading-none" x-text="minutes">{minutes}</div>
             <div className="uppercase text-2xs leading-none opacity-70 mt-2">minutes</div>
           </div>
-
-          <div className="text-2xl mx-1 opacity-50 font-light mt-2">:</div>
 
           <div className="w-16 md:w-20 p-2 bg-white text-gray-700 rounded-lg">
             <div className="slashed-zero tabular-nums leading-none" x-text="seconds">{seconds}</div>
@@ -62,7 +60,7 @@ const MiniCountdown = ({ pool, isEndDate,style }) => {
         </div>
         </>
       )
-      
+
     }
   };
 
