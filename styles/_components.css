@@ -383,7 +383,7 @@ Disclosure
 .timeline-event-body::after {
   content: "";
   @apply block absolute h-full w-1 md:h-0.5 md:w-1/2 top-4 z-0;
-  @apply bg-gray-300 dark:bg-gray-600;
+  @apply bg-gray-300 dark:bg-gray-500;
 }
 
 .timeline-event-body::before {
