@@ -51,16 +51,21 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
         store.transaction.update(receipt.transactionHash);
       },
       onConfirm: () => {
-        store.box.showOpenBoxModal(true, numberBox)
+        store.box.showOpenBoxModal(true, parseInt(numberBox));
         const tx = callWithGasPrice(openBoxContract, 'openBox', [pool.id, numberBox]);
         // store.transaction.startTransaction(true, t("transaction started"));        
         return tx;
       },
       onSuccess: async ({ receipt }) => {
+        let tokenIds = [];
         console.log(receipt)
-        console.log(ethers.utils.formatUnits(receipt.events[3].args[2],0))
-        // store.transaction.update(receipt.transactionHash);
-        store.box.updateArgs(receipt.events[3].args)
+        for (let i = 1; i <= parseInt(numberBox); i++) {
+          let tokenIDObject = new Object()
+          tokenIDObject["id"] = parseInt(ethers.utils.formatUnits(receipt.events[i * 4 - 1].args[2], 0));
+          tokenIds.push(tokenIDObject);
+        }
+        console.log(tokenIds);
+        store.box.updateArgs(tokenIds);
         await fetchAccountBalance()
         store.updateLoadPoolContent((new Date()).getTime())
       },

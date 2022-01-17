@@ -5,6 +5,7 @@ import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
 import useStore from "@lib/useStore"
 import NftItem from "./NftItem"
+//const ITEM_PER_PAGE = 9
 const ITEM_PER_PAGE = 9
 const NftList = function({ pool, project, accountBalance, setStep, fetchAccountBalance, auctionSwapInfo }){
   const store = useStore()

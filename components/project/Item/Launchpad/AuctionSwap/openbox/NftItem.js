@@ -25,7 +25,7 @@ const NftItem = function({item}){
   const fetchMetaData = function(){
     const env = process.env.NEXT_PUBLIC_CHAIN === "dev" ? "dev" : "prod"
     const url = `https://nft-meta.rada.network/static/meta/${env}/${item.id}`
-    setCurFetchCount(curFetchCount+1)
+    setCurFetchCount(curFetchCount + 1)
     fetcher(url).then(function(res){
       if (isEmpty(res) && curFetchCount < MAX_FETCH){
         timeout = setTimeout(function(){

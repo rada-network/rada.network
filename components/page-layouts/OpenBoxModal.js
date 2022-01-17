@@ -6,6 +6,7 @@ import useStore from "@lib/useStore";
 import { useTranslation } from "react-i18next";
 import { CheckSvg } from "@components/svg/SvgIcons"
 import useChainConfig from "@utils/web3/useChainConfig";
+import NftItem from "@components/project/Item/Launchpad/AuctionSwap/openbox/NftItem";
 
 const OpenBoxModal = observer(({ }) => {
   const store = useStore();
@@ -13,9 +14,10 @@ const OpenBoxModal = observer(({ }) => {
   const { getBscTransactionURL } = useChainConfig();
   const [isOpen, setIsOpen] = useState(false);
   const isOpening = store?.box.isOpening;
-  const numberBox = store?.box.numberBox;
-  const argsBoxs = store?.box.args;
-  console.log(argsBoxs);
+  const tokenids = store?.box.tokenIds;
+  const isBoxOpening = store?.box.isBoxOpening;
+
+  const [nftIds, setNftIds] = useState([]);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -23,7 +25,10 @@ const OpenBoxModal = observer(({ }) => {
 
   useEffect(() => {
     setIsOpen(isOpening);
-  }, [isOpening]);
+    if (tokenids.length > 0) {
+      setNftIds(tokenids);
+    }
+  }, [isOpening,tokenids]);
 
   
 
@@ -85,13 +90,15 @@ const OpenBoxModal = observer(({ }) => {
                   </div>
                 </Dialog.Title>
 
-                <div className="p-4 md:p-6 h-48 text-sm text-gray-600 dark:text-gray-300">
-                  <span className="spinner-xl mx-auto"></span>
+                <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
+                  {!isBoxOpening && 
+                    <span className="spinner-xl mx-auto"></span>
+                  }
 
                   {/*Box list */}
-                  <div className="grid grid-cols-3 gap-4">
-                    {Array(numberBox).map(function(index){
-                      return <NftItem key={item.id}  item={item} />
+                  <div className="grid grid-cols-3 gap-4 p-4">
+                    {tokenids.map(function(nft){
+                      return <NftItem key={nft.tokenID}  item={nft} />
                     })}
                   </div>
                 </div>
