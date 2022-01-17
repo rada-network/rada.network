@@ -41,6 +41,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
         }
       },
       onApprove: async (requireApprove) => {
+        store.box.showOpenBoxModal(true, numberBox)
         store.transaction.showTransaction(true, t("start transaction message"));
         const tx = callWithGasPrice(boxContract, 'approve', [openBoxContract.address, ethers.constants.MaxUint256])
         store.transaction.startTransaction(true, t("transaction started"));
@@ -50,15 +51,16 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
         store.transaction.update(receipt.transactionHash);
       },
       onConfirm: () => {
-        store.transaction.showTransaction(true, t("Opening your boxes"));
+        store.box.showOpenBoxModal(true, numberBox)
         const tx = callWithGasPrice(openBoxContract, 'openBox', [pool.id, numberBox]);
-        store.transaction.startTransaction(true, t("transaction started"));        
+        // store.transaction.startTransaction(true, t("transaction started"));        
         return tx;
       },
       onSuccess: async ({ receipt }) => {
         console.log(receipt)
         console.log(ethers.utils.formatUnits(receipt.events[3].args[2],0))
-        store.transaction.update(receipt.transactionHash);
+        // store.transaction.update(receipt.transactionHash);
+        store.box.updateArgs(receipt.events[3].args)
         await fetchAccountBalance()
         store.updateLoadPoolContent((new Date()).getTime())
       },
