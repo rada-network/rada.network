@@ -568,10 +568,10 @@ Tootips
 
 .tooltip,
 .__react_component_tooltip {
-  @apply max-w-sm shadow-lg rounded-md backdrop-filter backdrop-blur;
+  @apply max-w-sm shadow-lg rounded backdrop-filter backdrop-blur;
   @apply !text-sm;
-  @apply !bg-yellow-100 !bg-opacity-80 !text-gray-700;
-  padding: 4px 8px !important;
+  @apply !bg-gray-900 !bg-opacity-80 !text-gray-200;
+  padding: 0.5rem !important;
   &::after {
     border-color: transparent !important;
   }
