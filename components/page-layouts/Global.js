@@ -11,6 +11,7 @@ const LanguageSwitch = dynamic(import("../LanguageSwitch"));
 const BackgroundWrapper = dynamic(import("./BackgroundWrapper"));
 const TransactionModal = dynamic(import("./TransactionModal"));
 const ConnectWalletModal = dynamic(import("./ConnectWalletModal"));
+const OpenBoxModal = dynamic(import("./OpenBoxModal"));
 
 const Topbar = dynamic(() =>
   import("../Topbar").then(
@@ -25,6 +26,7 @@ const Layout = ({ children, meta, bgImage, extraClass }) => {
       <BackgroundWrapper image={bgImage} />
       <ConnectWalletModal />
       <TransactionModal />
+      <OpenBoxModal />
       <div className={`main-layout--wrapper ${extraClass || ""}`}>
         <div className={`main-layout`}>
           {/* Mobile / Tablet Navbar */}
