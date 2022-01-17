@@ -623,9 +623,13 @@ const SubscribeSwapTokenLoading = function({currentTime,opendTime,endTime}){
 
               <div className="flex items-center">
                 <div className="mx-auto">
-                  <p className="relative mb-4 "><span className="spinner left-0 top-0"></span></p>
+                  <p className="relative mb-4">
+                    <span className="spinner-xl"></span>
+                  </p>
+                  <span className="text-xs mt-8">Please wait</span>
                 </div>
               </div>
+
             </div>
 
           </div>

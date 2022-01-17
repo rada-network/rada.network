@@ -159,6 +159,10 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
           {/* Main Col */}
           <div class="flex flex-col w-full lg:order-2 lg:w-4/6 lg:ml-4 space-y-4">
 
+            {/* NFT Info Card */}
+            <NftPreview project={project} pool={poolContract}/>
+            {/* END: NFT Info Card */}
+
             {/* Timeline */}
             <div className="card card-default">
               <div className="card-body">
@@ -177,10 +181,6 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
             </div>
             {/* END: Timeline */}
 
-            {/* NFT Info Card */}
-            <NftPreview project={project} pool={poolContract}/>
-            {/* END: NFT Info Card */}
-
             <div className="">
               {/* Main Action Card */}
           
@@ -197,6 +197,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
               {/* END: Main Action Card */}
             </div>
 
+            
 
             {/* FAQ */}
             <div className="card card-default">

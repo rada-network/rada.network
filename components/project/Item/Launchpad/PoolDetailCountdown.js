@@ -8,7 +8,10 @@ const PoolDetailCountdown = ({ project, pool, isEndDate, open_date, end_date, ti
   return (
     <div className="card-header flex-col md:flex-row items-start md:items-end !w-auto">
       <div className="flex flex-col">
-        <h3 className="mb-2 font-medium">
+        <h3 className="flex items-center mb-2 font-medium">
+          <span className="icon mr-2">
+            <i class="fa-duotone fa-clock"></i>
+          </span>
           <span className="text-color-title">{title}</span>
         </h3>
         <ProjectCountdown project={project} pool={pool} isEndDate={isEndDate} />

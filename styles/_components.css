@@ -333,7 +333,7 @@ Disclosure
 .disclosure--toggle {
   @apply flex items-center justify-between py-4 relative cursor-pointer pr-10;
   strong {
-    @apply text-base font-medium;
+    @apply font-medium;
   }
 }
 
@@ -352,7 +352,6 @@ Disclosure
 .disclosure--panel {
   @apply pb-4;
   p {
-    @apply opacity-80;
   }
 }
 

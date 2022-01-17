@@ -40,9 +40,14 @@ const NftInfo = function({project,pool}){
             {({ open }) => (
               <>
                 <Disclosure.Button as="div" className="disclosure--toggle">
-                  <strong className="!text-sm">
-                    {item.title}
-                  </strong>
+                  <div className="flex items-center">
+                    <img className="h-8 w-8 object-cover rounded-full" 
+                    src="https://gql.dhunt.io/adminstaging/assets/ee76b828-f5f3-4d08-9775-7ddb420e8433?format=webp&width=128">
+                    </img>
+                    <strong className="!text-sm ml-2">
+                      {item.title}
+                    </strong>
+                  </div>
                   <span
                     className={`${open ? "open" : ""} disclosure--toggle-arrow`}
                   >
@@ -58,10 +63,7 @@ const NftInfo = function({project,pool}){
                   leaveTo="transform scale-y-0 opacity-0"
                 >
                   <Disclosure.Panel className="disclosure--panel">
-                    <div className="grid grid-cols-2 ">
-                      <img className="h-12 w-24 object-cover rounded-lg" 
-                      src="https://gql.dhunt.io/adminstaging/assets/ee76b828-f5f3-4d08-9775-7ddb420e8433?format=webp&width=128">
-                      </img>
+                    <div className="flex">
                       <div dangerouslySetInnerHTML={{ __html: item.description }}>
                       </div>  
                     </div>
