@@ -18,7 +18,7 @@ const WhitelistCountdown = ({project,pool}) => {
               <div className="">
                 {pool.open_date ? (
                   <div className="card card-default">
-                    <PoolDetailCountdown project={project} pool={pool} isEndDate={false} end_date={pool.end_date} open_date={pool.open_date} title={t("The whitelist will open in")}/>
+                    <PoolDetailCountdown project={project} pool={pool} isEndDate={false} end_date={pool.end_date} open_date={pool.open_date} title={t("Purchase starts in")}/>
                     <div className="card-body">
                       <SubscribeLaunchpad project={project} pool={pool} />
                     </div>
