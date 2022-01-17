@@ -153,11 +153,14 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
 
   if (loading) {
     return (
-      <div className="flex mt-5 justify-center h-12">
-        <div className="mx-auto">
-          <p className="relative mb-4 ">
-            <span className="spinner"></span>
-          </p>
+      <div className="flex my-4 justify-center h-12">
+        <div className="flex items-center">
+          <div className="mx-auto">
+            <p className="relative mb-4">
+              <span className="spinner-xl"></span>
+            </p>
+            <span className="text-xs mt-8">Please wait</span>
+          </div>
         </div>
       </div>
     )

@@ -13,26 +13,26 @@ const ProjectCountdown = ({ project, setCountdownDone ,pool,isEndDate}) => {
       // Render a countdown
       return (
         <>
-          <div className="text-base text-center flex w-full items-center justify-center space-x-2">
+          <div className="text-xl text-center flex w-full items-baseline justify-center space-x-2">
 
-            <div className="flex">
+            <div className="flex items-baseline">
               <div className="slashed-zero tabular-nums leading-none" x-text="days">{days}</div>
-              <div className="uppercase leading-none opacity-60">d</div>
+              <div className="text-sm eading-none opacity-60 ml-1">d</div>
             </div>
 
-            <div className="flex">
+            <div className="flex items-baseline">
               <div className="slashed-zero tabular-nums leading-none" x-text="hours">{hours}</div>
-              <div className="uppercase leading-none opacity-60">h</div>
+              <div className="text-sm leading-none opacity-60 ml-1">h</div>
             </div>
 
-            <div className="flex">
+            <div className="flex items-baseline">
               <div className="slashed-zero tabular-nums leading-none" x-text="minutes">{minutes}</div>
-              <div className="uppercase leading-none opacity-60">m</div>
+              <div className="text-sm leading-none opacity-60 ml-1">m</div>
             </div>
 
-            <div className="flex">
+            <div className="flex items-baseline">
               <div className="slashed-zero tabular-nums leading-none" x-text="seconds">{seconds}</div>
-              <div className="uppercase leading-none opacity-60">s</div>
+              <div className="text-sm leading-none opacity-60 ml-1">s</div>
             </div>
 
           </div>
