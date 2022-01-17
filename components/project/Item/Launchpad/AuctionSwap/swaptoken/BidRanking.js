@@ -23,7 +23,7 @@ const BidRanking = ({pool, bid_value,bid_index}) => {
       <div className="w-1/5 pl-2 flex-shrink-0 text-right">
         {ranking == 0 ? (
           <>
-            na / {raise}
+            N.A / {raise}
           </>
         ) :
         (

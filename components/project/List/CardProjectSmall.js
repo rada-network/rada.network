@@ -67,7 +67,7 @@ export const CardProject = ({
               <li className="list-pair">
                 <span className="list-key">{t("Raise")}</span>
                 <span className="list-value font-semibold">
-                  {showInfo ? pool.raise.toLocaleString() + " BUSD"  : "NA"}
+                  {showInfo ? pool.raise.toLocaleString() + " BUSD"  : "N.A"}
                 </span>
               </li>
               <li className="list-pair">

@@ -35,7 +35,7 @@ export default function ProjectsListClosed({ title, extraClass, projects }) {
                       progressToken={pool.raise}
                       target={pool.raise}
                       status="claimable"
-                      participian="NA"
+                      participian="N.A"
                     />
                   ))}
               </>
