@@ -1,4 +1,4 @@
-import {gql} from '@apollo/client';
+import { gql } from '@apollo/client';
 import getClient from "../client";
 import fetcher from "@lib/fetchJson";
 
@@ -10,19 +10,10 @@ const projectBySlugGql = gql`
       thumbnail_uri
       cover_uri
       background_uri
-      open_date
-      end_date
       cover_embed
-      thumbnail_embed
       thumbnail_embed
       type
       status
-      swap_contract
-      raise
-      price
-      is_kyc
-      is_allow_rir
-      is_whitelist
       website
       facebook
       twitter
@@ -87,6 +78,9 @@ const projectBySlugGql = gql`
         open_date
         current_date
         type
+        token_sale
+        token_name
+        token_image_uri
         end_date
         whitelist_date
         tge_date
@@ -99,6 +93,16 @@ const projectBySlugGql = gql`
         is_allow_rir
         is_whitelist
         is_hidden
+        project_pool_nft{
+          title
+          description
+          images
+          rarity
+          sort
+          allocation
+          total
+          probability
+        }
       }
     }
   }
@@ -108,9 +112,11 @@ const projectFeedGql = gql`
     projectFeed(lang: $lang) {
     is_default_open
     slug
+    open_date
+    end_date
     thumbnail_uri
     cover_uri
-    background_uri    
+    background_uri
     status
     website
     facebook
@@ -118,6 +124,7 @@ const projectFeedGql = gql`
     telegram
     discord
     medium
+    date_created
     token{
       name
       logo
@@ -132,6 +139,9 @@ const projectFeedGql = gql`
       open_date
       current_date
       type
+      token_sale
+      token_name
+      token_image_uri
       end_date
       whitelist_date
       tge_date
@@ -151,6 +161,62 @@ const submitProjectPrefundLogGql = gql`
     }
   }
 `
+
+const poolByWalletAddress = gql`
+  query poolByWalletAddress($lang : String!, $wallet_address : String!){
+    poolByWalletAddress(lang: $lang, wallet_address: $wallet_address) {
+      id
+      contract_address
+      pool_id
+      project{
+        slug
+        thumbnail_uri
+        content{
+          title
+        }
+        project_pool{
+          title
+          slug
+          is_whitelist
+          type
+          open_date
+          end_date
+        }
+      }
+    }
+  }
+`
+
+const projectPoolWinnerBySlugGgl = gql`
+  query projectPoolWinnerBySlug($pool : String!, $slug : String!){
+    projectPoolWinnerBySlug(pool :$pool,slug :$slug){
+      wallet_address
+    }
+  }
+`
+
+export async function getPoolByWallet({ lang, wallet_address }) {
+  const client = getClient()
+  const res = await client.query({
+    query: poolByWalletAddress,
+    variables: {
+      lang: lang || 'en',
+      wallet_address: wallet_address
+    }
+  })
+  return res.data.poolByWalletAddress || []
+}
+
+export async function getProjectPoolWinnerBySlug({ slug, pool }) {
+  const client = getClient()
+  const res = await client.query({
+    query: projectPoolWinnerBySlugGgl,
+    variables: {
+      slug,pool
+    }
+  })
+  return res.data.projectPoolWinnerBySlug || []
+}
 
 export async function getProjects({ lang }) {
   const client = getClient()
@@ -176,28 +242,28 @@ export async function getProject({ slug, lang }) {
   return res.data.projectBySlug || {}
 }
 
-export async function submitPrefundLog({ user_id,contract_address,wallet_address,project_id,pool_id }) {
+export async function submitPrefundLog({ user_id, contract_address, wallet_address, project_id, pool_id }) {
   const client = getClient()
   const key = process.env.LOGIN_KEY
   const res = await client.mutate({
     mutation: submitProjectPrefundLogGql,
     variables: {
-      key,user_id,wallet_address,contract_address,project_id,pool_id
+      key, user_id, wallet_address, contract_address, project_id, pool_id
     }
   })
   return res.data.submitPrefundLog
 }
 
-export const submitPrefundLogApi = async ({pool,project,account}) => {
+export const submitPrefundLogApi = async ({ pool, project, account }) => {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-      pool_id : pool.id.toString(),
-      project_id : project.id,
-      wallet_address : account,
-      contract_address : pool.contract
+    body: JSON.stringify({
+      pool_id: pool.id.toString(),
+      project_id: project.id,
+      wallet_address: account,
+      contract_address: pool.contract
     })
   };
-  return await fetcher("/api/logs/prefund",requestOptions)
+  return await fetcher("/api/logs/prefund", requestOptions)
 }

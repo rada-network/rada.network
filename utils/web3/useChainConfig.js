@@ -2,7 +2,7 @@ import { InjectedConnector } from '@web3-react/injected-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { StaticJsonRpcProvider } from '@ethersproject/providers'
 import { ethers } from 'ethers'
-import { RPC_CONFIG,POLLING_INTERVAL,BUSD_CONTRACT,USDT_CONTRACT, RIR_ETH_CONTRACT,RIR_BSC_CONTRACT } from '../config'
+import { RPC_CONFIG,POLLING_INTERVAL,BUSD_CONTRACT,USDT_CONTRACT, RIR_ETH_CONTRACT,RIR_BSC_CONTRACT,BUSD_CONTRACT_2 } from '../config'
 import useStore from "../../lib/useStore"
 import {sample} from "lodash"
 
@@ -137,12 +137,26 @@ const useChainConfig = function(){
     return url + "address/" + address
   }
 
+  const getBscTransactionURL = (hash) => {
+    let url = getChainScanUrl();
+    return url + "tx/" + hash;
+  }
+
   const getBusdAddress = () => {
     if (store.network === "bsc"){
       return BUSD_CONTRACT[chainId]
     }
     if (store.network === "eth"){
       return USDT_CONTRACT[chainId]
+    }
+  }
+
+  const getBusdAddressV2 = () => {
+    if (store.network === "bsc"){
+      return BUSD_CONTRACT_2[chainId]
+    }
+    if (store.network === "eth"){
+      return BUSD_CONTRACT_2[chainId]
     }
   }
 
@@ -234,7 +248,7 @@ const useChainConfig = function(){
     }
   }
 
-  return {injected,walletconnect,signMessage,chainId,getRIRAddress,getBusdAddress,setupNetwork,connectorsByName, getBscScanURL}
+  return {injected,walletconnect,signMessage,chainId,getRIRAddress,getBusdAddress,getBusdAddressV2,setupNetwork,connectorsByName, getBscScanURL, getBscTransactionURL}
 }
 
 export  const connectorLocalStorageKey = "connectorIdv2";

@@ -641,6 +641,7 @@ Tootips
   }
 }
 
+.tooltip,
 .__react_component_tooltip {
   @apply max-w-xs shadow-lg backdrop-filter backdrop-blur;
   padding: 4px 8px !important;

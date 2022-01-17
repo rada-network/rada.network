@@ -59,7 +59,7 @@ export default function ProjectsList({ title, extraClass, projects }) {
                 <Disclosure
                   as="div"
                   defaultOpen={project.is_default_open}
-                  className="pools-container relative"
+                  className="pools-container relative mb-4"
 
                 >
                   {({ open }) => (
@@ -70,6 +70,7 @@ export default function ProjectsList({ title, extraClass, projects }) {
                         objectFit="cover"
                         objectPosition="top center"
                         className="opacity-50"
+                        priority
                         />
                       <Disclosure.Button
                         as="div"
@@ -80,8 +81,8 @@ export default function ProjectsList({ title, extraClass, projects }) {
                           <Image
                             src={project.thumbnail_uri}
                             alt={project.content.title}
-                            width={80}
-                            height={80}
+                            width={64}
+                            height={64}
                           />
                         </div>
 
@@ -90,9 +91,11 @@ export default function ProjectsList({ title, extraClass, projects }) {
                             <h4 className="line-clamp-1">
                               {project.content.title}
                             </h4>
+                            {!!project?.token?.symbol && 
                             <span className="badge badge-coin md:mr-4">
-                              ${project.token.symbol}
+                              ${project?.token?.symbol}
                             </span>
+                            }
                           </div>
 
                           <div className="project-links">

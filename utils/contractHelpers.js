@@ -7,6 +7,10 @@ import share2earnAbi from '../config/abi/share2earn.json'
 import launchpadAbiV2 from '../config/abi/launchpadv2.json'
 import launchpadAbiV2Whitelist from '../config/abi/launchpadv2-whitelist.json'
 import referralAdminAbi from '../config/abi/referralAdmin.json'
+import fixedSwapAbi from '../config/abi/fixedSwap.json'
+import auctionSwapAbi from '../config/abi/auctionSwap.json'
+import openBoxAbi from '../config/abi/openbox.json'
+import erc721 from '../config/abi/erc721.json'
 
 
 
@@ -22,6 +26,10 @@ export const getBep20Contract = (address, signer) => {
   return getContract(bep20Abi, address, signer)
 }
 
+export const getErc721Contract = (address, signer) => {
+  return getContract(erc721, address, signer)
+}
+
 export const getLotteryContract = (address, signer) => {
   return getContract(loteryAbi, address, signer)
 }
@@ -35,14 +43,29 @@ export const getShare2EarnContract = (address, signer) => {
 }
 
 export const getLaunchpadContractV2 = (pool, signer) => {
+  if (pool === null) { return null}
   if (!pool.is_whitelist){
     return getContract(launchpadAbiV2, pool.contract, signer)
   }
   else{
     return getContract(launchpadAbiV2Whitelist, pool.contract, signer)
   }
-  
 }
+
+export const getFixedSwapContract = (pool, signer) => {
+  if (pool === null) { return null}
+  return getContract(fixedSwapAbi, pool.contract, signer)
+}
+
+export const getAuctionSwapContract = (pool, signer) => {
+  if (pool === null) { return null}
+  return getContract(auctionSwapAbi, pool.contract, signer)
+}
+
+export const getOpenBoxContract = (address, signer) => {
+  return getContract(openBoxAbi, address, signer)
+}
+
 export const getReferralAdminContract = (address, signer) => {
   return getContract(referralAdminAbi, address, signer)
 }

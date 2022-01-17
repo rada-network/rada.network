@@ -187,7 +187,7 @@ export function createPostUri(title, slug, item, lang) {
   if (slug !== null) {
     return "/" + lang + "/post/" + slug;
   }
-  console.log(title);
+
   return (
     "/" +
     lang +

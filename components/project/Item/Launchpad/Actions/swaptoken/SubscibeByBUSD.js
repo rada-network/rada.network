@@ -45,21 +45,30 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
       }
     },
     onApprove: async (requireApprove) => {
-      return callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+      store.transaction.showTransaction(true, t("start transaction message"));
+      const tx = callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256]);
+      store.transaction.startTransaction(true, t("transaction started"));
+      return tx;
     },
-    onApproveSuccess: async ({ receipts }) => {
+    onApproveSuccess: async ({ receipt }) => {
+      store.transaction.update(receipt.transactionHash);
       toast.success(`Approve BUSD Success`)
     },
     onConfirm: () => {
+      store.transaction.showTransaction(true, t("start transaction message"));
       if (pool.is_whitelist){
-        return callWithGasPrice(launchpadContract, 'makePayment', [pool.id])
+        const tx = callWithGasPrice(launchpadContract, 'makePayment', [pool.id]);
+        store.transaction.startTransaction(true, t("transaction started"));
+        return tx;
       }
       else{
-        return callWithGasPrice(launchpadContract, 'makePayment', [pool.id,ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString())])
+        const tx = callWithGasPrice(launchpadContract, 'makePayment', [pool.id,ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString())]);
+        store.transaction.startTransaction(true, t("transaction started"));
+        return tx;
       }
-      
     },
     onSuccess: async ({ receipt }) => {
+      store.transaction.update(receipt.transactionHash);
       await fetchAccountBalance()
       toast.success(`Successfully prefunded`)
       setCurrentOrderBusd(parseInt(ethers.utils.formatEther(launchpadInfo?.investor?.amountBusd)) + parseInt(numberBusd))
@@ -135,7 +144,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`} onClick={resetApproved}  >
             {t("Reset approve")}
           </button>
-          }
+        }
 
         <SwapNote numberBusd={numberBusd} numberRIR={numberRIR} maxSelected={maxSelected} currentOrderRIR={currentOrderRIR} currentOrderBusd={currentOrderBusd} />
 

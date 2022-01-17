@@ -13,8 +13,17 @@
   @apply opacity-50 text-sm;
 }
 
-
-
+.spin-10 {
+  animation: spinner 5s 1s infinite;
+}
+@keyframes spinner {
+  0{
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 /*** labels ***/
 .label {
   @apply px-2 py-1.5 items-center justify-center rounded-full;
@@ -32,6 +41,20 @@
 .label--warning {
   @apply bg-red-500 text-white dark:bg-red-500 dark:text-white;
 }
+
+.label--yellow {
+  @apply bg-yellow-500 text-white dark:bg-yellow-500 dark:text-white;
+}
+
+.label--primary {
+  @apply bg-primary-500 text-white dark:bg-primary-500 dark:text-white;
+}
+
+.label--primary-light {
+  @apply bg-primary-100 text-gray-700 dark:bg-primary-100 dark:text-gray-700;
+}
+
+
 
 .label--inactive {
   @apply bg-gray-400 text-gray-200;
@@ -96,11 +119,17 @@
 .secondary-icon-color {
     opacity:.6;
 }
+
 .list-pair {
   @apply flex text-sm items-baseline;
 }
+
 .list-key {
-  @apply w-1/3 mt-1 opacity-60;
+  @apply w-1/3 mt-1 opacity-60 text-xs capitalize;
+}
+
+.list-value {
+  @apply text-right;
 }
 
 
@@ -165,20 +194,20 @@
 }
 
 .list-header {
-  @apply bg-gray-200 dark:bg-gray-700 font-semibold;
+  @apply font-semibold;
 }
 
 .winners {
-  @apply max-w-full mx-auto text-sm rounded-lg overflow-hidden;
+  @apply max-w-full mx-auto text-sm overflow-hidden;
 }
 .winners li {
-  @apply flex opacity-80 border-b border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 overflow-hidden;
+  @apply flex opacity-80 border-b border-gray-100 dark:border-gray-700 overflow-hidden;
 }
 .winner--no {
-  @apply w-10 text-right px-4 py-2;
+  @apply w-10 text-right px-2 py-2;
 }
 .winner--address {
-  @apply flex-shrink-0 flex-grow text-right px-4 py-2 overflow-ellipsis overflow-hidden;
+  @apply flex-shrink-0 flex-grow text-right px-2 py-2 overflow-ellipsis overflow-hidden;
 }
 .pagination {
   @apply ml-auto mr-0 flex mt-4;
@@ -256,7 +285,7 @@
   }
   &:first-child{
     @apply mt-0 md:ml-0;
-    span {
+  span {
       @apply md:ml-0;
     }
   }

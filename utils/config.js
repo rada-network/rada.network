@@ -49,6 +49,12 @@ export const BUSD_CONTRACT  = {
   56 : "0xe9e7cea3dedca5984780bafc599bd69add087d56"
 }
 
+//busd using in token sale fixed swap and auction swap
+export const BUSD_CONTRACT_2  = {
+  97 : "0x862BcFA4305DD0ecF1a82796fFc9c3627E0b592a",
+  56 : "0xe9e7cea3dedca5984780bafc599bd69add087d56"
+}
+
 export const RIR_BSC_CONTRACT  = {
   97 : "0x6768BDC5d03A87942cE7cB143fA74e0DadE0371b",
   56 : "0x30FB969AD2BFCf0f3136362cccC0bCB99a7193bC",

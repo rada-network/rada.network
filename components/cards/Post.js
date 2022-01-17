@@ -9,7 +9,7 @@ import { createPostUri } from "../card-layouts/PostsList";
 
 import Screen from "../utils/Responsive";
 
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 import RadaPost from "../svg/RadaPost";
 import { useRouter } from "next/router";
 import Image from "@components/Image";
@@ -106,7 +106,7 @@ const CardPostNormal = observer(
     const date = utils.timeDifference(new Date(), new Date(item.createdAt));
     const dateTitle = utils.titleTime(item.createdAt);
     let state = "";
-    if (!_.isEmpty(detailStore.data) && detailStore.data.item) {
+    if (!isEmpty(detailStore.data) && detailStore.data.item) {
       state = detailStore.data.item.id === item.id ? "active" : "";
     }
     let vote = voteStore.votes.filter((el) => {
@@ -290,14 +290,14 @@ const CardPostNormal = observer(
           </div>
         </div>
 
-        <div
+        <a
           className="card-link--overlay"
           key={item.id}
           href={createPostUri(title, slug, item, dataStore.lang)}
           onClick={(e) => handleClickPost(e)}
         >
           <div className="card-link--overlay"></div>
-        </div>
+        </a>
       </div>
     );
   }

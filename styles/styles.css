@@ -69,6 +69,7 @@ Nav Panels
   @apply border-r border-gray-200 dark:border-gray-700;
   @apply bg-gray-100 dark:bg-gray-800 2xl:bg-opacity-50 2xl:dark:bg-opacity-50 2xl:backdrop-blur-md;
   @apply z-50;
+  @apply hidden md:flex;
   width: var(--paneleft-width);
   flex-basis: var(--paneleft-width);
 }
@@ -352,7 +353,7 @@ Layout Uitlites
 
 /* Paddings */
 .global-padding {
-  @apply p-4 lg:p-6;
+  @apply p-4;
 }
 
 .global-padding-lg {
@@ -498,7 +499,7 @@ Sidebar
 Sections Layout
 --------------------------------------------- */
 .section {
-  @apply px-4 pt-6 pb-6 md:p-6 xl:px-16 xl:py-8;
+  @apply px-2 pt-6 pb-6 md:p-6 xl:px-16 xl:py-8;
 }
 
 .section-header {
@@ -542,44 +543,6 @@ Sections Layout
 /*
 Components
 --------------------------------------------- */
-/*
-Dialogs
-*/
-.dialog-outside-wrapper {
-  @apply fixed inset-0 z-50 overflow-y-auto;
-}
-
-.dialog-outside {
-  @apply text-center;
-}
-
-.dialog-overlay {
-  @apply bg-gray-200 dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-lg;
-}
-
-.dialog {
-  @apply max-w-xs md:max-w-xl overflow-hidden text-left align-middle;
-  @apply text-left bg-gray-50 dark:bg-gray-800 shadow-xl rounded-lg;
-}
-
-.dialog-wrapper {
-  @apply block md:flex;
-}
-
-.dialog .divider {
-  @apply relative my-6 text-center;
-}
-
-.dialog .divider::before {
-  @apply absolute block w-full bg-gray-500 bg-opacity-20 -z-1;
-  content: " ";
-  height: 1px;
-  bottom: calc(50% - 0.2rem)
-}
-
-.dialog .divider span {
-  @apply bg-gray-50 dark:bg-gray-900 text-xs uppercase z-0 px-4;
-}
 
 
 /*
@@ -603,12 +566,12 @@ Tootips
   }
 }
 
+.tooltip,
 .__react_component_tooltip {
-  @apply max-w-xs shadow-lg backdrop-filter backdrop-blur;
+  @apply max-w-sm shadow-lg rounded-md backdrop-filter backdrop-blur;
+  @apply !text-sm;
+  @apply !bg-yellow-100 !bg-opacity-80 !text-gray-700;
   padding: 4px 8px !important;
-  background: #FEF3C7 !important;
-  color: #111827 !important;
-  font-size: 0.875rem !important;
   &::after {
     border-color: transparent !important;
   }

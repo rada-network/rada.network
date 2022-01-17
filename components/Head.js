@@ -4,19 +4,22 @@ import ReactTooltip from "react-tooltip";
 import { useRouter } from "next/router";
 import { observer } from "mobx-react";
 import { usePageStore } from "../lib/usePageStore";
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 import utils from "@lib/util";
+import Script from "next/script";
+import LazyLoadCSS from "./LazyLoadCSS";
 
 export const Head = observer(({ meta }) => {
   const { asPath, pathname } = useRouter();
   const { dataStore, detailStore } = usePageStore();
-  meta = _.isEmpty(dataStore.meta) ? meta : dataStore.meta;
+  meta = isEmpty(dataStore.meta) ? meta : dataStore.meta;
   meta = meta || {};
   return (
     <>
       <HTMLHead>
         {detailStore.data?.airdrop && (
-          <script
+          <Script
+            id="gleam"
             dangerouslySetInnerHTML={{
               __html: `
             (function(d, t){
@@ -29,6 +32,7 @@ export const Head = observer(({ meta }) => {
           />
         )}
         <title>RADA - {meta.title || ""}</title>
+        {meta.canonical && <meta rel="canonical" href={meta.canonical} />}
         {meta.description && (
           <>
             <meta
@@ -116,27 +120,6 @@ export const Head = observer(({ meta }) => {
         rel="stylesheet"
         key="google-fonts"
       /> */}
-        <link
-          href="https://rsms.me/inter/inter.css"
-          rel="stylesheet"
-          key="inter-font"
-        />
-        <link
-          rel="stylesheet"
-          href={
-            process.env.NEXT_PUBLIC_CDN +
-            "/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
-          }
-          key="cryptoicons"
-        />
-        <link
-          rel="stylesheet"
-          href={
-            process.env.NEXT_PUBLIC_CDN +
-            "/vendors/font-awesome6-pro/css/all.min.css"
-          }
-          key="fontawesome"
-        />
 
         {meta?.alternate?.map((alternate) => (
           <link
@@ -149,6 +132,8 @@ export const Head = observer(({ meta }) => {
 
         <link rel="manifest" href={"/manifest.json"} />
       </HTMLHead>
+      
+      <LazyLoadCSS href="https://rsms.me/inter/inter.css" />
 
       <TooltipWrapper />
     </>

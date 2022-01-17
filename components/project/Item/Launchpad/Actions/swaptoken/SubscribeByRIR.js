@@ -45,24 +45,31 @@ const SubcribeByRIR = ({project,pool,accountBalance,setStep,fetchAccountBalance,
         }
       },
       onApprove: async (requireApprove) => {
-        return callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+        store.transaction.showTransaction(true, t("start transaction message"));
+        const tx = callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256]);
+        store.transaction.startTransaction(true, t("transaction started"));
+        return tx;
       },
       onApproveSuccess: async ({ receipt }) => {
-        toast.success(`Approve BUSD Success`)
+        store.transaction.update(receipt.transactionHash);
       },
       onConfirm: () => {
+        store.transaction.showTransaction(true, t("start transaction message"));
         if (pool.is_whitelist){
-          return callWithGasPrice(launchpadContract, 'makePayment', [pool.id])
+          const tx = callWithGasPrice(launchpadContract, 'makePayment', [pool.id]);
+          store.transaction.startTransaction(true, t("transaction started"));
+          return tx;
         }
         else{
-          console.log(numberBusd.toString(),numberRIR.toString())
-          return callWithGasPrice(launchpadContract, 'makePayment', [pool.id,ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString())])
+          const tx = callWithGasPrice(launchpadContract, 'makePayment', [pool.id,ethers.utils.parseEther(numberBusd.toString()),ethers.utils.parseEther(numberRIR.toString())])
+          store.transaction.startTransaction(true, t("transaction started"));
+          return tx;
         }
         
       },
       onSuccess: async ({ receipt }) => {
+        store.transaction.update(receipt.transactionHash);
         await fetchAccountBalance()
-        toast.success(`Successfully prefunded`)
         setCurrentOrderBusd(parseInt(launchpadInfo.investor.amountBusd) + parseInt(numberBusd))
         setCurrentOrderRIR(parseInt(launchpadInfo.investor.amountRIR) + parseInt(numberRIR))
         setNumberRIR(0)
@@ -81,16 +88,19 @@ const SubcribeByRIR = ({project,pool,accountBalance,setStep,fetchAccountBalance,
         }
       },
       onApprove: async (requireApprove) => {
-        return callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+        store.transaction.showTransaction(true, t("start transaction message"));
+        const tx = callWithGasPrice(rirContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256])
+        store.transaction.startTransaction(true, t("transaction started"));
+        return tx;
       },
       onApproveSuccess: async ({ receipt }) => {
-        toast.success(`Approve RIR Success`)
+        store.transaction.update(receipt.transactionHash);
       },
       onConfirm: () => {
         
       },
       onSuccess: async ({ receipt }) => {
-        
+        store.transaction.update(receipt.transactionHash);
       },
     })
     const resetApproved = async () => {

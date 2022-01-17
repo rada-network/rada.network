@@ -4,15 +4,16 @@ import { getProjects } from "@data/query/projects";
 import { usePageStore } from "@lib/usePageStore";
 import utils from "@lib/util";
 import { useRouter } from "next/router";
-import ProjectsList from "@components/project/List/ProjectsList";
-import ProjectsListClosed from "@components/project/List/ProjectsListClosed";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import Image from "@components/Image";
 import { useTheme } from "next-themes";
 import useStore from "@lib/useStore";
+import ProjectsListSecret from "@components/project/List/ProjectListSecret";
 
 const Layout = dynamic(import("@components/page-layouts/Global"));
+const ProjectsList = dynamic(() => import("@components/project/List/ProjectsList"));
+const ProjectsListClosed = dynamic(() => import("@components/project/List/ProjectsListClosed"));
 
 export default function ProjectsIndex({ projects, locale }) {
   const { dataStore } = usePageStore();
@@ -40,6 +41,10 @@ export default function ProjectsIndex({ projects, locale }) {
     return item.status === "upcoming";
   });
 
+  const secretProjects = projects.filter(function (item) {
+    return item.status === "secret";
+  });
+
   const closedProjects = projects.filter(function (item) {
     return item.status === "closed";
   });
@@ -64,7 +69,6 @@ export default function ProjectsIndex({ projects, locale }) {
                     alt="RADA LaunchVerse"
                     width={307}
                     height={54}
-                    priority
                   />
                   <strong className="sr-only">
                     <span className="">LaunchVerse</span>
@@ -85,6 +89,20 @@ export default function ProjectsIndex({ projects, locale }) {
                   </div>
                 </header>
                 {/* END: HEADER */}
+
+                {/* BANNER */}
+                <div className="mt-8 md:mt-16">
+                  {secretProjects.length > 0 && (
+                    <ProjectsListSecret
+                      key={`active`}
+                      title={`Secret Project`}
+                      projects={secretProjects}
+                      isComing={false}
+                    />
+                  )}
+                </div>
+                {/* END: BANNER */}
+
 
                 {/* PROJECTS LIST */}
                 <div className="mt-8 md:mt-16">
@@ -110,10 +128,171 @@ export default function ProjectsIndex({ projects, locale }) {
                 </div>
                 {/* END: PROJECTS LIST */}
 
+                {/* SECTION 3 */}
+                <div className="mt-16">
+                  <div className="text-center">
+                    <h2 className="text-3xl md:text-3xl lg:text-4xl leading-tight text-black dark:text-white font-medium font-altsans">
+                      The LaunchVerse&nbsp;
+                      <strong className="block text-yellow-400">
+                        where everyone is welcome
+                      </strong>
+                    </h2>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-8">
+                    <div
+                      className="
+                                flex flex-col items-stretch justify-center p-4 md:p-8
+                                shadow-sm
+                                rounded-lg h-full bg-white dark:bg-gray-800
+                              "
+                    >
+                      <div className="flex-shrink-0 text-center">
+                        <Image
+                          src={
+                            process.env.NEXT_PUBLIC_CDN +
+                            "/images/icons/shield-hexa-dark.svg"
+                          }
+                          alt="Revolution"
+                          width={60}
+                          height={60}
+                        />
+                      </div>
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 text-center">
+                        We revolutionize blockchain fundraising with our
+                        DAO-based AngelList modelled Launchpad.
+                      </p>
+                    </div>
+
+                    <div
+                      className="
+                                flex flex-col items-stretch justify-center p-4 md:p-8
+                                shadow-sm
+                                rounded-lg h-full bg-white dark:bg-gray-800
+                              "
+                    >
+                      <div className="flex-shrink-0 text-center">
+                        <Image
+                          src={
+                            process.env.NEXT_PUBLIC_CDN +
+                            "/images/icons/bolt-hexa-dark.svg"
+                          }
+                          alt="LaunchVerse"
+                          width={60}
+                          height={60}
+                        />
+                      </div>
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 text-center">
+                        The LaunchVerse creates high value for both startup
+                        projects and the investor community.
+                      </p>
+                    </div>
+
+                    <div
+                      className="
+                                flex flex-col items-stretch justify-center p-4 md:p-8
+                                shadow-sm
+                                rounded-lg h-full bg-white dark:bg-gray-800
+                              "
+                    >
+                      <div className="flex-shrink-0 text-center">
+                        <Image
+                          src={
+                            process.env.NEXT_PUBLIC_CDN +
+                            "/images/icons/net-hexa-dark.svg"
+                          }
+                          alt="MetaVerse"
+                          width={60}
+                          height={60}
+                        />
+                      </div>
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 text-center">
+                        Different, diverse but united in the MetaVerse, projects
+                        across all blockchains are welcome on the LaunchVerse.
+                      </p>
+                    </div>
+
+                    <div
+                      className="
+                                flex flex-col items-stretch justify-center p-4 md:p-8
+                                shadow-sm
+                                rounded-lg h-full bg-white dark:bg-gray-800
+                              "
+                    >
+                      <div className="flex-shrink-0 text-center">
+                        <Image
+                          src={
+                            process.env.NEXT_PUBLIC_CDN +
+                            "/images/icons/scale-hexa-dark.svg"
+                          }
+                          alt="Fair and transparent "
+                          width={60}
+                          height={60}
+                        />
+                      </div>
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 text-center">
+                        We provide fair and transparent initial token and nft
+                        launches for projects with carefully structured
+                        allocation models.
+                      </p>
+                    </div>
+
+                    <div
+                      className="
+                                flex flex-col items-stretch justify-center p-4 md:p-8
+                                shadow-sm
+                                rounded-lg h-full bg-white dark:bg-gray-800
+                              "
+                    >
+                      <div className="flex-shrink-0 text-center">
+                        <Image
+                          src={
+                            process.env.NEXT_PUBLIC_CDN +
+                            "/images/icons/incubate-hexa-dark.svg"
+                          }
+                          alt="#MetaVerse and #GameFi industries"
+                          width={60}
+                          height={60}
+                        />
+                      </div>
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 text-center">
+                        We help incubate early stage projects across the
+                        #MetaVerse and #GameFi industries.
+                      </p>
+                    </div>
+
+                    <div
+                      className="
+                                flex flex-col items-stretch justify-center p-4 md:p-8
+                                shadow-sm
+                                rounded-lg h-full bg-white dark:bg-gray-800
+                              "
+                    >
+                      <div className="flex-shrink-0 text-center">
+                        <Image
+                          src={
+                            process.env.NEXT_PUBLIC_CDN +
+                            "/images/icons/dao-hexa-dark.svg"
+                          }
+                          alt="Share2Earn and Contribute2Earn"
+                          width={60}
+                          height={60}
+                        />
+                      </div>
+                      <p className="text-sm lg:text-base leading-relaxed text-black dark:text-white text-opacity-70 dark:text-opacity-70 mt-4 text-center">
+                        We help connect projects to the world through our
+                        community and innovative Share2Earn and Contribute2Earn
+                        models.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* END: SECTION 3 */}
+
                 {/* FOOTER */}
                 <div className="hero flex flex-col md:flex-row justify-center items-center mt-16 max-w-screen-md mx-auto">
-                  <div className="text-center md:text-left px-4 md:px-0">
-                    <p className="text-2xl md:text-4xl font-altsans mb-4">
+                  <div className="text-center md:text-left px-8 md:px-0">
+                    <p className="text-2xl md:text-4xl font-altsans mb-4 leading-relaxed md:leading-normal font-medium">
                       {t("Want to launch your project on RADA?")}
                     </p>
                     <a
@@ -122,7 +301,8 @@ export default function ProjectsIndex({ projects, locale }) {
                       target="_blank"
                       className="btn btn-lg btn-default btn-primary"
                     >
-                      {t("Apply for Launch")}
+                      <span className="btn--text">{t("Apply for Launch")}</span>
+                      <span class="icon"><i class="fa-duotone fa-square-arrow-up-right"></i></span>
                     </a>
                   </div>
                   <div className="hero-deco mx-auto mt-4">
@@ -130,12 +310,12 @@ export default function ProjectsIndex({ projects, locale }) {
                       src={
                         process.env.NEXT_PUBLIC_CDN +
                         (theme === "light"
-                          ? "/images/launchverse-hero.svg"
-                          : "/images/launchverse-hero-dark.svg")
+                          ? "/images/launchverse-hero.png"
+                          : "/images/launchverse-hero-dark.png")
                       }
                       alt="RADA LaunchVerse"
-                      width={400}
-                      height={400}
+                      width={300}
+                      height={300}
                       layout="responsive"
                     />
                   </div>

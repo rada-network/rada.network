@@ -1,10 +1,7 @@
 import { useStore } from "../lib/useStore";
-
 import { useTranslation } from "next-i18next";
 import useActiveWeb3React from "../utils/hooks/useActiveWeb3React";
 import useAuth from "../utils/hooks/useAuth";
-
-import _ from "lodash";
 
 export const WalletRequire = ({ type }) => {
   type = type || "full";
@@ -12,9 +9,11 @@ export const WalletRequire = ({ type }) => {
   const { t } = useTranslation("common");
   const store = useStore();
   const { logout } = useAuth();
+
   const handleConnectWallet = () => {
     store.wallet.showConnect(true);
   };
+
   const handleDisconnectWallet = async () => {
     logout();
   };
@@ -62,7 +61,7 @@ export const WalletRequire = ({ type }) => {
             <>
               {/* <NetworkSwitch /> */}
               <button
-                className="btn btn-default w-20 md:w-24"
+                className="btn btn-default btn-primary w-20 md:w-24"
                 onClick={handleConnectWallet}
               >
                 {t("connect")}

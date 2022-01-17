@@ -6,7 +6,8 @@ import { getItemById, getItems } from "../data/query/getItem";
 import { getPage } from "../data/query/page";
 import React, { useEffect, useRef } from "react";
 
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
+import isUndefined from "lodash/isUndefined";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import store from "store";
@@ -55,7 +56,7 @@ const getDataExplore = async ({ query, type, lang }) => {
 
 const getDataPostDetail = async ({ query, id, lang }) => {
   const newsDetail = await getItemById({ id: id });
-  if (_.isEmpty(newsDetail.data.itemById)) {
+  if (isEmpty(newsDetail.data.itemById)) {
     return false;
   }
   let type = "all";
@@ -255,7 +256,7 @@ const ResizeerWrapper = function ({ mainRef, dataStore, containerRef }) {
   let mw;
   useEffect(() => {
     let mwp = store.get("main-width");
-    if (_.isUndefined(mwp)) {
+    if (isUndefined(mwp)) {
       mwp = 40;
     }
     if (isNaN(mwp)) {

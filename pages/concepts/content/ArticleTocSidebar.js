@@ -54,7 +54,7 @@ export default () => (
                   </a>
                 </div>
               </div>
-              <button className="btn btn-primary my-2 px-2 ml-auto lg:mr-3 xl:mr-12 text-sm flex">
+              <button className="btn btn-primary my-2 px-2 md:px-4 ml-auto lg:mr-3 xl:mr-12 text-sm flex">
                 Kết nối
               </button>
             </div>

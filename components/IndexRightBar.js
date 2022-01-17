@@ -5,7 +5,7 @@ import { useTranslation } from "next-i18next";
 import { useStore } from "../lib/useStore";
 import { useRouter } from "next/router";
 
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 
 import { getTokenById } from "../data/query/getTokenById";
 
@@ -41,7 +41,7 @@ export const IndexRightBar = observer(({ intro }) => {
   const store = useStore();
   const { t, i18n } = useTranslation();
   useEffect(() => {
-    if (!_.isEmpty(detailStore.data)) {
+    if (!isEmpty(detailStore.data)) {
       document.body.classList.add("page-details");
     } else {
       document.body.classList.remove("page-details");
@@ -103,7 +103,7 @@ export const IndexRightBar = observer(({ intro }) => {
           <div className="flex h-full w-full relative">
             {/* Pageback Here */}
             {dataStore !== undefined &&
-            !_.isEmpty(detailStore.data) &&
+            !isEmpty(detailStore.data) &&
             detailStore.data.id ? (
               <div className="page-back flex-shrink-0">
                 <a
@@ -114,8 +114,12 @@ export const IndexRightBar = observer(({ intro }) => {
                   }}
                 >
                   <span className="icon">
-                    <i className="fa-solid fa-chevron-left lg:hidden"></i>
-                    <i className="fa-solid fa-times hidden lg:!block"></i>
+                    <span className="lg:hidden">
+                      <i className="fa-solid fa-chevron-left "></i>
+                    </span>
+                    <span className="hidden lg:!block">
+                      <i className="fa-solid fa-times  "></i>
+                    </span>
                   </span>
                   <span className="btn--text sr-only">{t("back")}</span>
                 </a>
@@ -128,14 +132,14 @@ export const IndexRightBar = observer(({ intro }) => {
             HieuNN:
             Example of Page Tabs Here
             */}
-            {dataStore !== undefined && !_.isEmpty(detailStore.data) ? (
+            {dataStore !== undefined && !isEmpty(detailStore.data) ? (
               <div className="tabbar page-tabs">
                 <div className="tabbar--main">
                   <a
                     href="#"
                     className={`tab-item ${
                       tabName === "article" &&
-                      !_.isEmpty(detailStore.data) &&
+                      !isEmpty(detailStore.data) &&
                       detailStore.data.tokens &&
                       detailStore.data.tokens.length
                         ? "tab-item--active"
@@ -150,7 +154,7 @@ export const IndexRightBar = observer(({ intro }) => {
                     {detailStore.type === "tweet" && t("Tweet")}
                   </a>
 
-                  {!_.isEmpty(detailStore.data) &&
+                  {!isEmpty(detailStore.data) &&
                   detailStore.data.tokens &&
                   detailStore.data.tokens.length ? (
                     <>

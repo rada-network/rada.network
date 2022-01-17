@@ -817,6 +817,21 @@ Article TOC
   }
 }
 
+
+/* 
+Legend 
+*/
+.legend {
+  @apply text-center relative;
+  h5 {
+    @apply relative inline-block text-2xs tracking-widest font-altsans uppercase z-10 px-2 py-1;
+  }
+  &::before {
+    @apply block absolute bottom-2 h-px-1 w-full bg-gray-300 z-0;
+    content: " ";
+  }
+}
+
 /*
 MISC
 ------------------------------- */

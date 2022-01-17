@@ -45,5 +45,17 @@
   "airdrop":"Airdrop",
   "Learn more":"Tìm hiểu thêm",
   "Wallet" : "Ví",
-  "share2earn" : "Share2earn"
+  "share2earn" : "Share2earn",
+  "rir banlance": "Số dư",
+  "Want to earn free RIR": "Làm sao để kiếm RIR?",
+  "learn more url": "https://rada.network/vi/post/gioi-thieu-mot-nguoi-ban-va-nhan-rir-tokens-chuong-trinh-share2earn-cua-rada",
+  "Haven't KYC yet": "Chưa hoàn thành!",
+  "KYC completed": "Chưa hoàn thành!",
+  "bsc warning" : "Binance Smart Chain đôi khi quá tải. Có thể mất đến 5 phút để hoàn tất giao dịch.",
+  "start transaction message": "Vui lòng kiểm tra lại ví và phí gas trước khi bắt đầu giao dịch.",
+  "View more details": "Xem thêm chi tiết: ",
+  "transaction completed": "Hoàn thành giao dịch",
+  "transaction in progress": "Đang thực hiện giao dịch",
+  "transaction error": "Giao dịch bị lỗi",
+  "transaction error message": "Vui lòng kiểm tra lại ví và thực hiện giao dịch."
 }

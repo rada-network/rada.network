@@ -5,7 +5,7 @@ Buttons
 */
 .btn {
   @apply inline-flex items-center relative transition;
-  @apply rounded-lg font-medium focus:outline-none cursor-pointer;
+  @apply rounded-md font-medium focus:outline-none cursor-pointer;
   -webkit-appearance: none;
   .icon {
     @apply relative;
@@ -80,7 +80,7 @@ Sizes
 }
 
 .btn-default-lg {
-  @apply text-base py-2 px-8;
+  @apply text-base py-2 px-4;
 }
 
 /* Colors */
