@@ -77,7 +77,7 @@ const NftInfo = function({project,pool}){
       })}
       </div>
       <div className="card-footer">
-        <button onClick={toggleShow} className="btn btn-default">{!showMore ? t("Show more rarity") : t("Show less rarity")}</button>
+        <button onClick={toggleShow} className="btn btn-default !py-2">{!showMore ? t("Show more rarity") : t("Show less rarity")}</button>
       </div>
     </div>
   )

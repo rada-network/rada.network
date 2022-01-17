@@ -25,7 +25,7 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                   <strong className="">
                     {tokenData?.team?.location
                       ? tokenData?.team?.location
-                      : "N/A"}
+                      : "N.A"}
                   </strong>
                 </div>
               </div>
@@ -38,7 +38,7 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                   <strong className="">
                     {tokenData?.team?.founded
                       ? tokenData?.team?.founded
-                      : "N/A"}
+                      : "N.A"}
                   </strong>
                 </div>
               </div>
@@ -51,7 +51,7 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                   <strong className="">
                     {tokenData?.team?.employees
                       ? tokenData?.team?.employees
-                      : "N/A"}
+                      : "N.A"}
                   </strong>
                 </div>
               </div>
@@ -66,7 +66,7 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                   <strong className="">
                     {tokenData?.team?.last_funding
                       ? tokenData?.team?.last_funding
-                      : "N/A"}
+                      : "N.A"}
                   </strong>
                 </div>
               </div>
@@ -90,7 +90,7 @@ export default function TokenInfoTeam({ tokenData, tokenInfo }) {
                       </span>
                     </a>
                   ) : (
-                    "N/A"
+                    "N.A"
                   )}
                 </div>
               </div>

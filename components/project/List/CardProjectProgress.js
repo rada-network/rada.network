@@ -109,8 +109,8 @@ export const CardProjectProgress = ({project,pool,type}) => {
       <>
         <span className="list-key">{t("Progress")}</span>
         <span className="list-value">
-          <span className="font-semibold">{showInfo ? poolStat?.progress : "NA"}</span>
-          <span className="opacity-70">/{showInfo ? pool.raise.toLocaleString() : "NA"}</span>
+          <span className="font-semibold">{showInfo ? poolStat?.progress : "N.A"}</span>
+          <span className="opacity-70">/{showInfo ? pool.raise.toLocaleString() : "N.A"}</span>
         </span>
       </>
       }

@@ -15,7 +15,7 @@ Title
 }
 
 .project-title--token-logo {
-  @apply flex items-center w-8 h-8 rounded-full bg-white p-1 mr-2;
+  @apply flex items-center w-8 h-8 rounded-full bg-gray-200 p-1 mr-2;
 }
 
 /* 
@@ -201,7 +201,7 @@ Card Content
 }
 
 .card-project-sm .label {
-  @apply px-2 py-1 text-xs capitalize rounded;
+  @apply px-2 py-1 text-xs capitalize rounded-full;
 }
  
 .card-project-sm .project-fields {
