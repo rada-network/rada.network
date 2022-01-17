@@ -8,7 +8,6 @@ export default function LaunchpadOverview({ project,pool }) {
   
   return (
     <>
-
       <div className="section-header">
         <div className="flex flex-wrap justify-between items-center w-full">
           <div className="flex flex-0 flex-shrink-0 mb-4 items-center">

@@ -18,6 +18,8 @@ import OpenDate from "@components/project/Item/Launchpad/OpenDate"
 import { CheckSvg } from "@components/svg/SvgIcons"
 import { poll } from "@ethersproject/web";
 import { registerToken } from "@utils/wallet";
+import SubscribeSwapTokenLoading from "@components/project/Item/Launchpad/SubscribeSwapTokenLoading";
+
 
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
@@ -87,6 +89,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
   useEffect(() => {
     if (loading) return false;
+    if (!fixedSwapInfo) return false;
     setTokenAddress(fixedSwapInfo.info.addressItem)
     if (currentTime > endTime) {
       if (fixedSwapInfo.order.total > 0){
@@ -130,6 +133,9 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     return (
       <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
     )
+  }
+  if (!fixedSwapInfo){
+    return "Error loading swap info"
   }
 
   return (
@@ -280,91 +286,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       }
     </>
   );
-}
-
-const SubscribeSwapTokenLoading = function({currentTime,opendTime,endTime}){
-  return (
-    <div className="card-default project-main-actions no-padding overflow-hidden">
-
-      <div className="card-body no-padding">
-        <div className="flex flex-col">
-
-          <div className="project-card--container">
-            <div className="max-w-2xl mx-auto text-center">
-
-              <div className="flex items-center">
-                <div className="mx-auto">
-                  <p className="relative mb-4 "><span className="spinner left-0 top-0"></span></p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-const TokenSocialPromote = function({project}){
-  const {t,i18n} = useTranslation("launchpad")
-  return (
-    <ul className="text-left p-4 border border-gray-200 dark:border-gray-700 rounded-lg mb-4">
-      <li  className="relative pl-6  mb-2">
-        <span className="absolute left-0 top-0 mr-2">
-          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" />
-        </span>
-        <p className="" dangerouslySetInnerHTML={{__html : t("status note")}} >
-        </p>
-      </li>
-      <li className="relative pl-6 mb-2">
-        <span className="absolute left-0 top-0 mr-2">
-          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" />
-        </span>
-          <p className="" dangerouslySetInnerHTML={{__html : t("coming soon note",
-          {
-            twitter : `<a class="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
-            radanetwork : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,
-            radadao : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radadao">Telegram Community</a>`
-          }
-          )}} />
-      </li>
-      <li className="relative pl-6  mb-2">
-        <span className="absolute left-0 top-0  mr-2">
-          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" />
-        </span>
-          <p className="" dangerouslySetInnerHTML={{__html : t("status note 2",
-            {
-              token : project.token.name,
-              research : `<a class="link" target="_blank" rel="nofollow" href="/${i18n.language}/launchverse/${project.slug}/research">Research</a>`
-            }
-          )}} />
-      </li>
-
-    </ul>
-  )
-}
-
-const NotInWhitesist = function(){
-  const {t} = useTranslation("launchpad")
-  return (
-    <div className="card-default project-main-actions no-padding overflow-hidden">
-
-      <div className="card-body no-padding">
-        <div className="flex flex-col">
-
-          <div className="project-card--container">
-            <div className="max-w-2xl mx-auto text-center">
-              <div className="flex items-center justify-center mx-auto text-lg md:text-xl">
-                <span className="mr-2"><i class="fad fa-calendar-times"></i></span>
-                <span className="">{t("Not allow")}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
 }
 
 export default SubscribeSwapToken

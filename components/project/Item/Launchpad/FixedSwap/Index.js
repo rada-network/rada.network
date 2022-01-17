@@ -6,7 +6,6 @@ import SubscribeSwapToken from "./SubscribeSwapToken"
 // import CountDownLg from "../../../concepts/timers/countdownLg-whitelist";
 import useStore from "@lib/useStore";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
-import TutorialWidget from "../TutorialWidget"
 import { BLOCK_PASS_KYC_COMPLETE } from "@config/constants";
 import { useTranslation } from "react-i18next";
 import OpenDate from "@components/project/Item/Launchpad/OpenDate"

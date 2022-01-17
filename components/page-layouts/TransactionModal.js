@@ -29,14 +29,17 @@ const TransactionModal = observer(({ }) => {
   useEffect(() => {
     setIsOpen(isOpening);
   }, [isOpening])
-
+  let timeoutShowBscWarning
   useEffect(() => {
     if (isStartTransaction) {
-      setTimeout(function() {
+      timeoutShowBscWarning = setTimeout(function() {
         if (transactionHash == "") {
           store?.transaction.updateMessage(t("bsc warning"));
         }
       }, 5000);
+    }
+    else{
+      clearTimeout(timeoutShowBscWarning);
     }
     
   }, [isStartTransaction]);

@@ -494,9 +494,17 @@ export const useFixedSwapInfo = ({ pool, status }) => {
   const fetchPoolInfo = async () => {
     try {
       let updateInfo;
-      let stat = await lauchpadContact.poolStats(pool.id);
-      let order = await lauchpadContact.buyerBids(pool.id, account);
-      let itemTotal = await lauchpadContact.buyerItemsTotal(pool.id, account);
+
+      let dataPromise = []
+      dataPromise.push(lauchpadContact.poolStats(pool.id))
+      dataPromise.push(lauchpadContact.buyerBids(pool.id, account))
+      dataPromise.push(lauchpadContact.buyerItemsTotal(pool.id, account))
+      dataPromise.push(lauchpadContact.pools(pool.id))
+      let data = await Promise.all(dataPromise)
+      let stat = data[0];
+      let order = data[1];
+      let itemTotal = data[2];
+      let info = data[3];
       order = {
         item: order,
         total: parseInt(ethers.utils.formatUnits(itemTotal, 0))
@@ -506,7 +514,7 @@ export const useFixedSwapInfo = ({ pool, status }) => {
         totalBidItem: parseInt(ethers.utils.formatUnits(stat.totalBidItem, 0)),
         totalSold: parseInt(ethers.utils.formatUnits(stat.totalSold, 0))
       }
-      let info = await lauchpadContact.pools(pool.id);
+      
       info = {
         addressItem: info.addressItem,
         ended: info.ended,
@@ -514,12 +522,10 @@ export const useFixedSwapInfo = ({ pool, status }) => {
         isSaleToken: info.isSaleToken,
         requireWhitelist: info.requireWhitelist,
         title: info.title,
-        endId: parseInt(ethers.utils.formatUnits(info.endId, 0)),
-        startId: parseInt(ethers.utils.formatUnits(info.startId, 0)),
         endTime: parseInt(ethers.utils.formatUnits(info.endTime, 0)),
         startTime: parseInt(ethers.utils.formatUnits(info.startTime, 0)),
         startPrice: parseInt(ethers.utils.formatUnits(info.startPrice)),
-        maxBuyPerAddress: parseInt(ethers.utils.formatUnits(info.maxBuyPerAddress, 0)),
+        maxBuyPerAddress: parseInt(ethers.utils.formatEther(info.maxBuyPerAddress)),
       }
       updateInfo = {
         stat,

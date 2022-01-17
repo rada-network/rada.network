@@ -2,7 +2,6 @@ import Timeline from "../AuctionSwap/Timeline";
 import ProjectCountdown from "../AuctionSwap/Countdown";
 import OpenDate from "@components/project/Item/Launchpad/OpenDate"
 import { useTranslation } from "next-i18next";
-import TutorialWidget from "../TutorialWidget"
 import SocialPromote from "../SocialPromote";
 import SubscribeLaunchpad from "./SubscribeLaunchpad";
 import PoolDetailCountdown from "../PoolDetailCountdown";
@@ -31,8 +30,6 @@ const WhitelistCountdown = ({project,pool}) => {
                   <SocialPromote />
                 </div>
                 }
-
-                <TutorialWidget project={project}></TutorialWidget>
               </div>
             </div>
         </div>
