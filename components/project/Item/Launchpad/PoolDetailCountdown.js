@@ -21,21 +21,21 @@ const PoolDetailCountdown = ({ project, pool, isEndDate, open_date, end_date, ti
       
         {open_date && (
           <div className="flex mt-2 opacity-60 text-xs">
-            <span className="w-14">{t("Openat")}</span>
+            <span className="w-20">{t("Openat")}</span>
             <OpenDate time={open_date} />
           </div>
         )}
         
         {end_date && (
           <div className="flex mt-2 opacity-60 text-xs">
-            <span className="w-14">{t("Closeat")}</span>
+            <span className="w-20">{t("Closeat")}</span>
             <OpenDate time={end_date} />
           </div>
         )}
 
         {whitelist_date && (
           <div className="flex mt-2 opacity-60 text-xs">
-            <span className="w-14">{t("Announce at")}</span>
+            <span className="w-20">{t("Announce at")}</span>
             <OpenDate time={whitelist_date} />
           </div>
         )}

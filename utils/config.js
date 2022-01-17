@@ -12,7 +12,7 @@ export const RPC_CONFIG = {
     dev : {
       name : "Binance Smart Chain Testnet",
       chainId : 97,
-      url : 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+      url : 'https://data-seed-prebsc-1-s2.binance.org:8545/',
       scan : "https://testnet.bscscan.com/"
     },
     staging : {

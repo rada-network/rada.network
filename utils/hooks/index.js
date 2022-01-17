@@ -505,6 +505,7 @@ export const useFixedSwapInfo = ({ pool, status }) => {
       let order = data[1];
       let itemTotal = data[2];
       let info = data[3];
+      console.log(info)
       order = {
         item: order,
         total: parseInt(ethers.utils.formatUnits(itemTotal, 0))
@@ -525,7 +526,7 @@ export const useFixedSwapInfo = ({ pool, status }) => {
         endTime: parseInt(ethers.utils.formatUnits(info.endTime, 0)),
         startTime: parseInt(ethers.utils.formatUnits(info.startTime, 0)),
         startPrice: parseInt(ethers.utils.formatUnits(info.startPrice)),
-        maxBuyPerAddress: parseInt(ethers.utils.formatEther(info.maxBuyPerAddress)),
+        maxBuyPerAddress: parseInt(ethers.utils.formatUnits(info.maxBuyPerAddress,0)),
       }
       updateInfo = {
         stat,

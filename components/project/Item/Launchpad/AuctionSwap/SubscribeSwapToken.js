@@ -36,13 +36,17 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   const [isEnableAdjust, setEnableAdjust] = useState(false)
 
   const reloadAccount = async function () {
-    await fetchPoolInfo()
-    await fetchAccountBalance()
+    fetchPoolInfo()
+    fetchAccountBalance()
   }
 
   const fetchAccountBalance = async function () {
-    let busdBalance = await bUSDContract.balanceOf(account);
-    let boxBalance = await boxContract.balanceOf(account);
+    let dataPromise = []
+    dataPromise.push(bUSDContract.balanceOf(account))
+    dataPromise.push(boxContract.balanceOf(account))
+    let data = await Promise.all(dataPromise)
+    let busdBalance = data[0];
+    let boxBalance = data[1];
     setAccountBalance({
       busdBalance: parseInt(utils.formatEther(busdBalance)),
       boxBalance: parseInt(utils.formatUnits(boxBalance, 0)),
@@ -105,7 +109,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   }
 
   const enableAdjust = () => {
-    setEnableAdjust(true)
+    setEnableAdjust(!isEnableAdjust)
   }
 
   return (
@@ -135,7 +139,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                       <div>
                         <button className="btn btn-default"
                           onClick={enableAdjust}>
-                          Adjust your bid
+                          {!isEnableAdjust ? t("Adjust your bid") : t("cancel")}
                         </button>
                       </div>
                     </div>
@@ -147,7 +151,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                       <div className={isEnableAdjust ? "w-full" : "w-full disabled"}>
                         <div className="box-header relative flex !border-opacity-50">
                           <h3 className="mb-2 font-medium">
-                            Adjust your bid
+                            {auctionSwapInfo.order.totalItem > 0 ? t("Adjust your bid") : t("Place your bid")}
                           </h3>
                         </div>
                         <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />

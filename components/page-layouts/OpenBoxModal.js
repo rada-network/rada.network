@@ -20,7 +20,7 @@ const OpenBoxModal = observer(({ }) => {
   const [nftIds, setNftIds] = useState([]);
 
   const closeModal = () => {
-    setIsOpen(false);
+    store.box.reset()
   }
 
   useEffect(() => {
@@ -96,7 +96,7 @@ const OpenBoxModal = observer(({ }) => {
                   }
 
                   {/*Box list */}
-                  <div className="grid grid-cols-3 gap-4 p-4">
+                  <div className={`grid gap-4 p-4 ` + "grid-cols-" + (store.box.numberBox < 3 ? store.box.numberBox : 3)}>
                     {tokenids.map(function(nft){
                       return <NftItem key={nft.tokenID}  item={nft} />
                     })}

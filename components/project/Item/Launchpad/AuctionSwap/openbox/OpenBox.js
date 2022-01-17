@@ -59,12 +59,13 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
       onSuccess: async ({ receipt }) => {
         let tokenIds = [];
         console.log(receipt)
-        for (let i = 1; i <= parseInt(numberBox); i++) {
+        for (let i = 0; i < receipt.events.length; i++) {
           let tokenIDObject = new Object()
-          tokenIDObject["id"] = parseInt(ethers.utils.formatUnits(receipt.events[i * 4 - 1].args[2], 0));
-          tokenIds.push(tokenIDObject);
+          if (receipt.events[i].args){
+            tokenIDObject["id"] = parseInt(ethers.utils.formatUnits(receipt.events[i].args[2], 0));
+            tokenIds.push(tokenIDObject);
+          }
         }
-        console.log(tokenIds);
         store.box.updateArgs(tokenIds);
         await fetchAccountBalance()
         store.updateLoadPoolContent((new Date()).getTime())
@@ -109,7 +110,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
                 </select>
               </div>
               <div className="w-3/6 pr-2 flex-shrink-0">
-                <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 ${(numberBox == 0) ? "disabled" : ""} flex justify-center`}
+                <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 ${(numberBox == 0 || isConfirming) ? "disabled" : ""} flex justify-center`}
                   onClick={handleConfirm}>
                   <i className="fas fa-plus-circle mr-1"></i>Open box {pool.token_name}
                 </button>

@@ -1,8 +1,10 @@
 import {useState, useEffect} from "react"
 import fetcher from "@lib/fetchJson";
 import {isEmpty} from "lodash";
+import { useTranslation } from "react-i18next";
 const MAX_FETCH = 60
 const NftItem = function({item}){
+  const {t} = useTranslation("launchpad")
   const [metadata,setMetadata] = useState({})
   const [curFetchCount,setCurFetchCount] = useState(0)
   let timeout
@@ -51,30 +53,72 @@ const NftItem = function({item}){
         {metadata?.image ? 
         <img className="w-full object-cover rounded-lg" src={metadata?.image} />
         :
-        <img className="w-full object-cover rounded-lg" src="https://d14zibwblxxd02.cloudfront.net/Open%20the%20box.jpg" />
+        <img className="w-full object-cover rounded-lg" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
         }
       </div>
 
       <div className="flex justify-between items-center p-2">
         <div>
           <h5 className="font-medium">
-            {item.id}
+            #{item.id}
           </h5>
+          {!!metadata?.rarityName ?
           <span className="text-xs font-medium text-yellow-500">
-            Rarity: {metadata?.rarityName || "Opening"}
+            Rarity: {metadata?.rarityName}
           </span>
+          :
+          <span className="text-xs font-medium text-yellow-500">
+            <OpeningText />
+          </span>
+          }
+          
         </div>
 
-        <div className="text-right">
+        {!!metadata?.name  && <div className="text-right">
           <span className="block text-xs opacity-60">
-            Name
+            {t("name")}
           </span>
           <span className="text-xs font-medium">
-            {metadata?.name || "Opening"}
+            {metadata?.name}
           </span>
         </div>
+        }
       </div>
     </div>
+  )
+}
+
+const OpeningText = function(){
+  const [counter,setCounter] = useState(0);
+  const [text,setText] = useState("Opening ")
+  let interval
+  useEffect(() => {
+    interval = setInterval(() =>{
+      setCounter(prevCount => prevCount + 1)
+    },500)
+
+    return () => {
+      clearInterval(interval)
+    }
+  },[])
+  useEffect(() => {
+    if (counter % 4 === 0){
+      setText("Opening")
+    }
+    if (counter % 4 === 1){
+      setText("Opening .")
+    }
+    if (counter % 4 === 2){
+      setText("Opening . . ")
+    }
+    if (counter % 4 === 3){
+      setText("Opening . . .")
+    }
+  },[counter])
+  return (
+    <>
+      {text}
+    </>
   )
 }
 
