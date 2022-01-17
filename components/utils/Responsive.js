@@ -14,8 +14,8 @@ export const getScreenName = (w) => {
   return SCREENS[i];
 };
 
-export default function Screen({ from, upto, wrap = null, children }) {
-  const [screen, setScreen] = useState(null);
+export default function Screen({ from, upto, children }) {
+  const [screen, setScreen] = useState(3);
 
   // setup monitor ww
   useEffect(() => {
@@ -34,20 +34,14 @@ export default function Screen({ from, upto, wrap = null, children }) {
   }, []);
 
   let isValid = false;
-  if (screen !== null) {
-    if (from && SCREENS.indexOf(from) <= screen) {
-      // from this up
-      isValid = true;
-    }
-    if (upto && SCREENS.indexOf(upto) >= screen) {
-      // from this down
-      isValid = true;
-    }
+  if (from && SCREENS.indexOf(from) <= screen) {
+    // from this up
+    isValid = true;
   }
 
-  if (screen === null)
-  {
-    return wrap ? <div className={wrap}></div> : null;
+  if (upto && SCREENS.indexOf(upto) >= screen) {
+    // from this down
+    isValid = true;
   }
 
   return isValid ? children : null;
