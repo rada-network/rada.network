@@ -382,7 +382,7 @@ Disclosure
 .timeline-event-body::before,
 .timeline-event-body::after {
   content: "";
-  @apply block absolute h-full w-1 md:h-1 md:w-1/2 top-4 z-0;
+  @apply block absolute h-full w-1 md:h-0.5 md:w-1/2 top-4 z-0;
   @apply bg-gray-300 dark:bg-gray-600;
 }
 
@@ -404,7 +404,7 @@ Disclosure
 
 .timeline-event--icon {
   @apply inline-flex justify-center items-center w-8 h-8 mr-2 md:mr-0 rounded-full z-10 relative;
-  @apply bg-gray-300 dark:bg-gray-600 text-white;
+  @apply bg-gray-300 dark:bg-gray-500 text-gray-800 font-medium;
 }
 
 .timeline-event--content {
@@ -442,11 +442,11 @@ Disclosure
 Timeline State: CURRENT
 */
 .is-current .timeline-event--icon {
-  @apply bg-green-500;
+  @apply bg-green-400;
 }
 
 .is-current .timeline-event--title {
-  @apply text-green-500 opacity-100;
+  @apply text-gray-800 dark:text-gray-200 opacity-100;
 }
 
 .is-current .timeline-event--text {
@@ -454,14 +454,14 @@ Timeline State: CURRENT
 }
 
 .is-current .timeline-event-body::before {
-  @apply bg-green-500;
+  @apply bg-green-400;
 }
 
 /* 
 Timeline State: COMPLETED
 */
 .is-complete .timeline-event--icon {
-  @apply bg-green-500;
+  @apply bg-green-400;
 }
 
 /* .is-complete .timeline-event--title {
@@ -473,5 +473,5 @@ Timeline State: COMPLETED
 
 .is-complete .timeline-event-body::before,
 .is-complete .timeline-event-body::after {
-  @apply bg-green-500;
+  @apply bg-green-400;
 }

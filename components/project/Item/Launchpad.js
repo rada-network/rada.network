@@ -253,7 +253,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
           {/* END: Main Col */}
 
           {/* Sidebar */}
-          <div class="flex flex-col w-full mt-4 lg:mt-0 lg:order-1 lg:w-2/6 space-y-4 flex-shrink-0">
+          <div class="flex flex-col w-full mt-4 lg:mt-0 lg:order-1 lg:w-2/6 space-y-4">
 
             <Screen from="lg">
             <LaunchpadContent project={project} pool={poolContract} />
