@@ -52,16 +52,18 @@ const NftItem = function({item, boxID}){
 
   if (boxID) {
     return (
-      <div className="rounded-lg bg-primary-50 dark:bg-primary-700">
+      <div className={`card card-nftthumb`}>
         <div>
-          <img className="w-full object-cover rounded-lg" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
-        </div>
-
-        <div className="flex justify-between items-center p-2">
           <div>
-            <span className="text-xs font-medium text-yellow-500">
-              <OpeningText />
-            </span>
+            <img className="w-full object-cover rounded-lg" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
+          </div>
+
+          <div className="flex justify-between items-center p-2">
+            <div>
+              <span className="text-xs font-medium text-yellow-500">
+                <OpeningText />
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -71,41 +73,43 @@ const NftItem = function({item, boxID}){
   return (
     <>
     {item && (
-      <div className="rounded-lg bg-primary-50 dark:bg-primary-700">
+      <div className={`card card-nftthumb`}>
         <div>
-          {metadata?.image ? 
-          <img className="w-full object-cover rounded-lg" src={metadata?.image} />
-          :
-          <img className="w-full object-cover rounded-lg" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
-          }
-        </div>
-
-        <div className="flex justify-between items-center p-2">
           <div>
-            <h5 className="font-medium">
-              #{item.id}
-            </h5>
-            {!!metadata?.rarityName ?
-            <span className="text-xs font-medium text-yellow-500">
-              Rarity: {metadata?.rarityName}
-            </span>
+            {metadata?.image ? 
+            <img className="w-full object-cover rounded-lg" src={metadata?.image} />
             :
-            <span className="text-xs font-medium text-yellow-500">
-              <OpeningText />
-            </span>
+            <img className="w-full object-cover rounded-lg" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
             }
           </div>
 
-          {!!metadata?.name  && 
-            <div className="text-right">
-              <span className="block text-xs opacity-60">
-                {t("name")}
+          <div className="flex justify-between items-center p-2">
+            <div>
+              <h5 className="font-medium">
+                #{item.id}
+              </h5>
+              {!!metadata?.rarityName ?
+              <span className="text-xs font-medium text-yellow-500">
+                Rarity: {metadata?.rarityName}
               </span>
-              <span className="text-xs font-medium">
-                {metadata?.name}
+              :
+              <span className="text-xs font-medium text-yellow-500">
+                <OpeningText />
               </span>
+              }
             </div>
-          }
+
+            {!!metadata?.name  && 
+              <div className="text-right">
+                <span className="block text-xs opacity-60">
+                  {t("name")}
+                </span>
+                <span className="text-xs font-medium">
+                  {metadata?.name}
+                </span>
+              </div>
+            }
+          </div>
         </div>
       </div>
       )}
