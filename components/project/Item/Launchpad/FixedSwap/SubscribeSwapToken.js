@@ -196,15 +196,15 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         <span className="icon mr-2">
                           <i className="fa-duotone fa-badge-check"></i>
                         </span>
-                        Place order success : {fixedSwapInfo.order.total} {pool.token_name}
+                        {t("Place order success")} : {fixedSwapInfo.order.total} {pool.token_name}
                       </h3>
                       
                       
                       <div className="mt4">
                         <div className="inline-block w-full mx-auto text-center 
-                            rounded-lg mb-4
+                            rounded-lg
                             border border-gray-200 dark:border-gray-700">
-                          <div className="py-2 px-4 flex justify-center">
+                          <div className="py-1 px-4 flex justify-center">
                             <strong className="mr-2">
                               {pool.token_name} Contract: 
                             </strong>
