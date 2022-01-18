@@ -103,7 +103,7 @@ const NftPreview = function({project,pool}){
           <Slider ref={sld => {slider = sld;}} {...settings}>
           {project_pool_nft.map(function(item){
             return (
-              <div className={`card card-nft--thumb card-${item.rarity.toLowerCase()}`} >
+              <div className={`card card-nftthumb card-nftthumb--${item.rarity.toLowerCase()}`} >
                 <div className="">
                   <div>
                     <img className="w-full object-cover rounded-lg" src={item.images.medium} />
