@@ -70,7 +70,7 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
       <div className="card card-default card--project-info">
         <div className="card-header items-end">
           <div>
-            <span class="text-2xs uppercase opacity-60 tracking-wide">PREVIEW </span>
+            <span class="text-2xs uppercase opacity-60 tracking-wide">Preview </span>
             <h3>Your Inventory</h3>
           </div>
         </div>

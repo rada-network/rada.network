@@ -11,12 +11,12 @@ const BoxPreview = function({project,pool}){
     <div className="card card-default">
       <div className="card-header items-end">
         <div>
-          <span class="text-2xs uppercase opacity-60 tracking-wide">PREVIEW </span>
+          <span class="text-2xs uppercase opacity-60 tracking-wide">Info </span>
           <h3>{pool.token_name} Collection</h3>
         </div>
         <a className="btn btn-default">
           <span className="btn--text text-xs">
-            {t("View all")}
+            {t("Learn more")}
           </span>
         </a>  
       </div>
@@ -24,7 +24,6 @@ const BoxPreview = function({project,pool}){
 
         <div className="">
           Intro of {pool.token_name}
-          
         </div>
       </div>
     </div>

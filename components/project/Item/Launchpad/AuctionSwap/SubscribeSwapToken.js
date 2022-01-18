@@ -117,7 +117,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
       {step == 2 &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
 
-          <div className="card-body no-padding card card-default">
+          <div className="card-body no-padding">
             <div className="flex flex-col">
 
               {auctionSwapInfo.info.ended ? <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")} /> :
