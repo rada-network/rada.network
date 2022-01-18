@@ -5,8 +5,9 @@ import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
 import useStore from "@lib/useStore"
 import NftItem from "./NftItem"
+import SubscribeSwapTokenLoading from "../../SubscribeSwapTokenLoading"
 //const ITEM_PER_PAGE = 9
-const ITEM_PER_PAGE = 9
+const ITEM_PER_PAGE = 6
 const NftList = function({ pool, project, accountBalance, setStep, fetchAccountBalance, auctionSwapInfo }){
   const store = useStore()
   const { t } = useTranslation("launchpad")
@@ -67,30 +68,33 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
   }
   return (
     <>
-      <div className="card card-default card--project-info mt-4">
+      {loading && 
+      <div className="mt-4">
+        <SubscribeSwapTokenLoading />
+      </div>
+      }
+      {!loading && <div className="card card-default card--project-info mt-4">
         <div className="card-header items-end">
           <div>
-            <span class="text-2xs uppercase opacity-60 tracking-wide">Preview </span>
-            <h3>Your Inventory</h3>
+            <span class="text-2xs uppercase opacity-60 tracking-wide">{t("Preview")} </span>
+            <h3>{t("Your Inventory")}</h3>
           </div>
         </div>
         <div className="card-body">
 
           {/* NFT Cards Slideshow */}
+          {listNft.length > 0 ? 
           <div className="grid grid-cols-3 gap-4">
             {/* NFT Card */}
             {listNft.map(function(item){
               return <NftItem key={item.id}  item={item} />
             })}
-            
             {/* END: NFT Card */}
             
           </div>
-          {loading && 
-          <div className="flex space-x-2 mt-4 justify-center">
-            <div className="mx-auto">
-              <p className="relative mb-4 "><span className="spinner left-0 top-0"></span></p>
-            </div>
+          :
+          <div className="" >
+            {t("Your inventory is empty")}
           </div>
           }
           <div className="flex space-x-2 mt-4 justify-center">
@@ -120,6 +124,7 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
 
         </div>
       </div>
+      }
     </>
   )
 }
