@@ -421,8 +421,7 @@ Card Content
 
 
 .project-card--container {
-  @apply min-h-full w-full mx-auto lg:p-6 z-10;
-  @apply bg-white dark:bg-gray-800 rounded-lg;
+  @apply min-h-full w-full mx-auto p-4 md:p-6 xl:p-8 z-10;
 }
 
 

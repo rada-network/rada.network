@@ -80,7 +80,7 @@ Sizes
 }
 
 .btn-default-lg {
-  @apply text-base py-2 px-4;
+  @apply text-base py-2 px-6;
 }
 
 /* Colors */

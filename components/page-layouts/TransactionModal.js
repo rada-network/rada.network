@@ -117,9 +117,9 @@ const TransactionModal = observer(({ }) => {
                     <div className="text-center my-4 mx-auto">
                       {transactionHash !== "" && !isError ? (
                         <div>
-                          <strong className="block">
+                          <span className="block mb-1">
                             {t("View more details")}
-                          </strong>
+                          </span>
                           <a className="link" href={getBscTransactionURL(transactionHash)} target="_blank">
                             {`${transactionHash.substr(0, 8)}...${transactionHash.substr(-8)}`}
                           </a>

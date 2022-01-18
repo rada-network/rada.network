@@ -72,8 +72,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
       <div className="p-4 md:p-6 xl:p-8">
         {!isApproved && 
         <div className="max-w-xs mx-auto text-center flex flex-col">
-          <p className="mb-4 text-base">Enable BUSD to purchase boxes</p>
-          <button className={`btn !text-sm relative mx-auto btn-default btn-default-lg btn-purple`} onClick={handleApprove} width="100%" scale="md">
+          <button className={`btn !text-sm relative mx-auto btn-default btn-default-lg btn-primary`} onClick={handleApprove} width="100%" scale="md">
             {isApproving && <span className="spinner" />}
             {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
             {isApproving && 
@@ -86,6 +85,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
             <>{t("Approve Contract")} BUSD</>
             }
           </button>
+          <p className="mt-4 text-xs">Enable BUSD to purchase boxes</p>
         </div>
         }
 
@@ -93,7 +93,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         <>
           <div className="mb-2 flex uppercase text-2xs md:text-xs tracking-wider gap-4">
             <div className="w-1/3 flex items-center">
-              <span className="icon mr-1"><i class="fa-duotone fa-box"></i></span>
+              {/* <span className="icon mr-2"><i class="fa-duotone fa-box"></i></span> */}
               <label for="currency" className="block tracking-wide font-medium opacity-60 text-xs">Boxes</label>
             </div>
             <div className="w-1/3">
@@ -146,9 +146,6 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           }
         </>
         }
-   
-
-        
 
       </div>
     </>

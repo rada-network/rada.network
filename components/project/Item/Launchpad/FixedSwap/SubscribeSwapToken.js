@@ -146,7 +146,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
           <div className="card-body no-padding">
             <div className="flex flex-col">
 
-              <div className="project-card--container no-padding ">
+              <div className="project-card--container no-padding">
                 <div className="">
                   
                     {/* <ul className="flex-shrink-0 flex-grow">
@@ -174,7 +174,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       </li>
                     </ul> */}
                   <div className="w-full">
-                    <div className="box-header relative flex !border-opacity-50">Purchase </div>
+                    <div className="relative flex">Purchase</div>
                     <SwapTokensV2 fixedSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
                   </div>
                 </div>

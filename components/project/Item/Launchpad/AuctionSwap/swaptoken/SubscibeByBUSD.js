@@ -154,14 +154,12 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
 
   if (loading) {
     return (
-      <div className="flex my-4 justify-center h-12">
-        <div className="flex items-center">
-          <div className="mx-auto">
-            <p className="relative mb-4">
-              <span className="spinner-xl"></span>
-            </p>
-            <span className="text-xs mt-8">Please wait</span>
-          </div>
+      <div className="flex my-4 justify-center items-center">
+        <div className="mx-auto">
+          <p className="relative mb-4">
+            <span className="spinner-xl"></span>
+          </p>
+          <span className="text-xs mt-8">Please wait</span>
         </div>
       </div>
     )
@@ -169,42 +167,42 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
 
   return (
     <>
-      <div className="p-2 md:p-6">
+      <div className="">
         {!isApproved ? (
           <div className="flex flex-col text-center">
-            <button className="btn relative w-full  md:w-1/2 mx-auto btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md"
+            <button className="btn !text-sm relative mx-auto btn-default btn-default-lg btn-primary" disabled="" id="swap-button" width="100%" scale="md"
               onClick={handleApprove}
             >
               Enable BUSD
             </button>
-            <p className="pt-4">You must enable BUSD to bid</p>
+            <p className="mt-4 text-xs">Enable BUSD to start bidding</p>
           </div>
         ) : (
           <>
             {/* Table header */}
-            <div className="mb-4 text-2xs md:text-xs uppercase tracking-wide 
-        flex border-b dark:border-opacity-40 border-gray-200 dark:border-gray-700">
-              <div className="w-1/6 flex-shrink-0 pr-2">
-                <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
+            <div className="flex text-2xs md:text-xs uppercase space-x-2">
+              <div className="w-1/6 flex-shrink-0 flex">
+                {/* <span className="icon mr-2"><i class="fa-duotone fa-box"></i></span> */}
+                <label for="currency" className="mb-2 block font-medium opacity-60">Boxes</label>
               </div>
-              <div className="w-1/5 flex-shrink-0 pl-2">
-                <label for="rir" className="mb-2 block tracking-wide font-medium opacity-70">BUSD per Box</label>
+              <div className="w-1/5 flex-shrink-0">
+                <label for="rir" className="mb-2 block font-medium opacity-60">BUSD per Box</label>
               </div>
-              <div className="w-1/5 flex-shrink-0 pl-4 text-right">
-                <label className="mb-2 block tracking-wide font-medium opacity-70">Total (BUSD)</label>
+              <div className="w-1/6 flex-shrink-0 text-right">
+                <label className="mb-2 block font-medium opacity-60">Total (BUSD)</label>
               </div>
-              <div className="w-1/5 flex-shrink-0 pl-4 text-right">
-                <label className="mb-2 block tracking-wide font-medium opacity-70">Rank</label>
+              <div className="w-1/6 flex-shrink-0 text-right">
+                <label className="mb-2 block font-medium opacity-60">Rank</label>
               </div>
 
               {auctionSwapInfo.info.ended && (
-                <div className="w-1/5 flex-shrink-0 pl-4 text-right">
-                  <label className="mb-2 block tracking-wide font-medium opacity-70">Win quantity</label>
+                <div className="w-1/5 flex-shrink-0 text-right">
+                  <label className="mb-2 block font-medium opacity-60">Win quantity</label>
                 </div>
               )}
               {!auctionSwapInfo.info.ended && (
-                <div className="w-1/5 flex-shrink-0 pl-4 text-right">
-                  <label className="mb-2 block tracking-wide font-medium opacity-70"></label>
+                <div className="w-1/5 flex-shrink-0 text-right">
+                  <label className="mb-2 block font-medium opacity-60"></label>
                 </div>
               )}
             </div>
@@ -212,10 +210,10 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
             {currentOrder.map(function (item) {
               return (
                 <>
-                  <div className="mb-4 flex items-center relative">
+                  <div className="mb-4 flex items-center relative space-x-2">
 
                     {/* Box quantity */}
-                    <div className="w-1/6 pr-2 flex-shrink-0">
+                    <div className="w-1/6 flex-shrink-0">
                       {item.isEditing ? (
                         <>
                           <select id="box" name="amount" defaultValue={item.quantity} onChange={e => { handleChangeCurrentOrder(e, item.index, 'quantity') }} className="select-custom w-full ">
@@ -236,7 +234,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                     </div>
 
                     {/* Price quantity */}
-                    <div className="w-1/5 pl-2 flex-shrink-0">
+                    <div className="w-1/5 flex-shrink-0">
                       {item.isEditing ? (
                         <>
                           <select id="news-order" className="select-custom  w-full " defaultValue={item.priceEach} onChange={e => { handleChangeCurrentOrder(e, item.index, 'price') }}>
@@ -255,7 +253,8 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                     </div>
 
                     {/* Total BUSD */}
-                    <div className="w-1/5 pl-4  text-right">{item.priceEach * item.quantity}</div>
+                    <div className="w-1/6 pl-4 text-right">{item.priceEach * item.quantity}</div>
+
                     {/* Total Ranking */}
                     <BidRanking pool={pool} bid_value={item.priceEach} bid_index={item.index} />
 
@@ -294,7 +293,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
 
                     {/* Win quantity */}
                     {auctionSwapInfo.info.ended &&
-                      <div className="w-1/5 pl-4  text-right">
+                      <div className="w-1/5 text-right">
                         {item.winQuantity}
                       </div>
                     }
@@ -306,8 +305,8 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
 
             {totalItem < auctionSwapInfo.info.maxBuyPerAddress && !auctionSwapInfo.info.ended && (
               <>
-                <div className="flex  items-center relative">
-                  <div className="w-1/6 pr-2 flex-shrink-0">
+                <div className="flex items-center relative space-x-2">
+                  <div className="w-1/6 flex-shrink-0">
                     <select id="box" name="amount" defaultValue={numberBox} onChange={handleChangeNumberBox} className="select-custom w-full ">
                       <option className="text-gray-300" value="0">---</option>
                       {Array(maxSelected).fill(null).map((_, i) => {
@@ -318,7 +317,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                       })}
                     </select>
                   </div>
-                  <div className="w-1/5 pl-2 flex-shrink-0">
+                  <div className="w-1/5 flex-shrink-0">
                     <select id="news-order" className="select-custom  w-full " defaultValue={priceBusd} onChange={e => { handleChangePriceBusd(e) }}>
                       {Array(10).fill(null).map((_, i) => {
                         return (
@@ -327,7 +326,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                       })}
                     </select>
                   </div>
-                  <div className="w-1/5 pl-4 text-right">
+                  <div className="w-1/6 text-right">
                     {totalBusd}
                   </div>
                   <BidRanking pool={pool} bid_value={priceBusd} bid_index={-1} />

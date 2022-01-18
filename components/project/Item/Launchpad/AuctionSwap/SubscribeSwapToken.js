@@ -117,11 +117,12 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
       {step == 2 &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
 
-          <div className="card-body no-padding">
+        {auctionSwapInfo.info.ended ? <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")} /> :
+          <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")} />}
+
+          <div className="card-body">
             <div className="flex flex-col">
 
-              {auctionSwapInfo.info.ended ? <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")} /> :
-                <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")} />}
               {!auctionSwapInfo.info.ended && (
                 <>
                   {/* {auctionSwapInfo.order.total > 0 &&
@@ -144,18 +145,15 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                       </div>
                     </div>
                   } */}
-                  
 
-                  <div className="project-card--container">
-                    <div className="flex">
-                      <div className={isEnableAdjust ? "w-full" : "w-full disabled"}>
-                        <div className="box-header relative flex !border-opacity-50">
-                          <h3 className="mb-2 font-medium">
-                            {auctionSwapInfo.order.totalItem > 0 ? t("Adjust your bid") : t("Place your bid")}
-                          </h3>
-                        </div>
-                        <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+                  <div className="project-card--container no-padding">
+                    <div className={isEnableAdjust ? "w-full" : "w-full disabled"}>
+                      <div className="relative flex pb-4 mb-8 border-b">
+                        <h3 className="text-lg font-medium">
+                          {auctionSwapInfo.order.totalItem > 0 ? t("Adjust your bid") : t("Place your bid")}
+                        </h3>
                       </div>
+                      <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
                     </div>
                   </div>
                 </>
@@ -206,21 +204,19 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
               }
 
               <div className="project-card--container !p-0 mt-4">
-                <div className="flex">
-                  <div className="w-full">
-                    <div className="box-header relative flex !border-opacity-50">
-                      <h3 className="mb-2 font-medium">
-                        Open your {pool.token_name}
-                      </h3>
-                      <div className="ml-auto flex !text-sm items-center">
-                        <span className="mr-2 !font-normal">Your {pool.token_name} balance:</span>
-                        <div className="ml-auto">
-                          <span className="font-semibold">{accountBalance.boxBalance}</span>
-                        </div>
+                <div className="w-full">
+                  <div className="relative flex !border-opacity-50">
+                    <h3 className="font-medium">
+                      Open your {pool.token_name}
+                    </h3>
+                    <div className="ml-auto flex !text-sm items-center">
+                      <span className="mr-2 !font-normal">Your {pool.token_name} balance:</span>
+                      <div className="ml-auto">
+                        <span className="font-semibold">{accountBalance.boxBalance}</span>
                       </div>
                     </div>
-                    <OpenBox auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
                   </div>
+                  <OpenBox auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
                 </div>
               </div>
 

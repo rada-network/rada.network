@@ -6,7 +6,7 @@ const PoolDetailCountdown = ({ project, pool, isEndDate, open_date, end_date, ti
   const { t, i18n } = useTranslation("launchpad")
 
   return (
-    <div className="card-header flex-col md:flex-row items-start md:items-end !w-auto">
+    <div className="card-header flex-col md:flex-row items-start md:items-end !w-auto rounded-t-md">
       <div className="flex flex-col">
         <h3 className="flex items-center mb-2 font-medium">
           <span className="icon mr-2">
