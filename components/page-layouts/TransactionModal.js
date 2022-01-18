@@ -115,24 +115,26 @@ const TransactionModal = observer(({ }) => {
                     )}
 
                     <div className="text-center my-4 mx-auto">
+                      {!isStartTransaction && transactionHash == "" && (
+                        <span className="text-5xl block icon mb-4 text-yellow-500">
+                          <i class="fa-duotone fa-circle-info"></i>
+                        </span>
+                      )}
+
                       {transactionHash !== "" && !isError ? (
                         <div>
-                          <span className="block mb-1">
+                          <strong className="block">
                             {t("View more details")}
-                          </span>
+                          </strong>
                           <a className="link" href={getBscTransactionURL(transactionHash)} target="_blank">
                             {`${transactionHash.substr(0, 8)}...${transactionHash.substr(-8)}`}
                           </a>
                         </div>
-
                       ) : (
                         <>
-                        <span className="text-5xl block icon mb-4 text-yellow-500">
-                          <i class="fa-duotone fa-circle-info"></i>
-                        </span>
-                        <p>
-                          {message}
-                        </p>
+                          <p>
+                            {message}
+                          </p>
                         </>
                       )}
                     </div>
@@ -140,7 +142,7 @@ const TransactionModal = observer(({ }) => {
                     <div className="flex items-center justify-center">
                       <button
                         type="button"
-                        className={`btn btn-default-lg btn-primary  
+                        className={`btn btn-lg btn-primary 
                         ${transactionHash == "" && !isError ? "disabled" : ""}`}
 
                         onClick={closeModal}
@@ -154,7 +156,7 @@ const TransactionModal = observer(({ }) => {
                   <div className="absolute right-4 top-3">
                     <button
                       type="button"
-                      className={`btn-close--box
+                      className={`btn-close--boxes
                       ${transactionHash == "" && !isError ? "disabled" : ""}`}
 
                       onClick={closeModal}
