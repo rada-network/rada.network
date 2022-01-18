@@ -180,29 +180,28 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
         ) : (
           <>
             {/* Table header */}
-            <div className="flex text-2xs md:text-xs uppercase space-x-2">
-              <div className="w-1/6 flex-shrink-0 flex">
-                {/* <span className="icon mr-2"><i class="fa-duotone fa-box"></i></span> */}
-                <label for="currency" className="mb-2 block font-medium opacity-60">Boxes</label>
+            <div className="flex mb-4 text-2xs md:text-xs uppercase border-b border-gray-200 dark:border-gray-700">
+              <div className="w-1/6 flex-shrink-0 pr-2">
+                <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
               </div>
-              <div className="w-1/5 flex-shrink-0">
-                <label for="rir" className="mb-2 block font-medium opacity-60">BUSD per Box</label>
+              <div className="w-1/5 flex-shrink-0 pl-2">
+                <label for="rir" className="mb-2 block tracking-wide font-medium opacity-70">BUSD per Box</label>
               </div>
-              <div className="w-1/6 flex-shrink-0 text-right">
-                <label className="mb-2 block font-medium opacity-60">Total (BUSD)</label>
+              <div className="w-1/5 flex-shrink-0 pl-4 text-right">
+                <label className="mb-2 block tracking-wide font-medium opacity-70">Total (BUSD)</label>
               </div>
-              <div className="w-1/6 flex-shrink-0 text-right">
-                <label className="mb-2 block font-medium opacity-60">Rank</label>
+              <div className="w-1/5 flex-shrink-0 pl-4 text-right">
+                <label className="mb-2 block tracking-wide font-medium opacity-70">Rank</label>
               </div>
 
               {auctionSwapInfo.info.ended && (
-                <div className="w-1/5 flex-shrink-0 text-right">
-                  <label className="mb-2 block font-medium opacity-60">Win quantity</label>
+                <div className="w-1/5 flex-shrink-0 pl-4 text-right">
+                  <label className="mb-2 block tracking-wide font-medium opacity-70">Win quantity</label>
                 </div>
               )}
               {!auctionSwapInfo.info.ended && (
-                <div className="w-1/5 flex-shrink-0 text-right">
-                  <label className="mb-2 block font-medium opacity-60"></label>
+                <div className="w-1/5 flex-shrink-0 pl-4 text-right">
+                  <label className="mb-2 block tracking-wide font-medium opacity-70"></label>
                 </div>
               )}
             </div>
@@ -210,10 +209,10 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
             {currentOrder.map(function (item) {
               return (
                 <>
-                  <div className="mb-4 flex items-center relative space-x-2">
+                  <div className="mb-4 flex items-center relative">
 
                     {/* Box quantity */}
-                    <div className="w-1/6 flex-shrink-0">
+                    <div className="w-1/6 pr-2 flex-shrink-0">
                       {item.isEditing ? (
                         <>
                           <select id="box" name="amount" defaultValue={item.quantity} onChange={e => { handleChangeCurrentOrder(e, item.index, 'quantity') }} className="select-custom w-full ">
@@ -234,7 +233,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                     </div>
 
                     {/* Price quantity */}
-                    <div className="w-1/5 flex-shrink-0">
+                    <div className="w-1/5 pl-2 flex-shrink-0">
                       {item.isEditing ? (
                         <>
                           <select id="news-order" className="select-custom  w-full " defaultValue={item.priceEach} onChange={e => { handleChangeCurrentOrder(e, item.index, 'price') }}>
@@ -253,8 +252,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                     </div>
 
                     {/* Total BUSD */}
-                    <div className="w-1/6 pl-4 text-right">{item.priceEach * item.quantity}</div>
-
+                    <div className="w-1/5 pl-4  text-right">{item.priceEach * item.quantity}</div>
                     {/* Total Ranking */}
                     <BidRanking pool={pool} bid_value={item.priceEach} bid_index={item.index} />
 
@@ -264,12 +262,12 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                         {item.isEditing ? (
                           <>
                             <div className="w-1/5">
-                              <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 flex justify-center w-full`}
+                              <button className={`!py-2 ml-2 md:ml-4 btn btn-primary px-2 flex justify-center w-full`}
                                 onClick={e => { handleIncreaseBid(item.index) }}>
                                 {/* <i className="fas fa-plus-circle mr-1"></i> */}
                                 <span className="btn--text">Increase Bid</span>
                               </button>
-                              <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-default px-2 flex justify-center mt-1 w-full`}
+                              <button className={`!py-2 ml-2 md:ml-4 flex-grow flex-shrink-0 btn btn-default px-2 flex justify-center mt-1 w-full`}
                                 onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}>
                                 {/* <i className="fas fa-times-circle mr-1"></i>   */}
                                 <span className="btn--text">Cancel</span>
@@ -280,7 +278,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
 
                         ) : (
                           <div className="w-1/5">
-                            <button className={`ml-2 md:ml-4 flex-shrink-0 flex-grow btn btn-default !py-2 !text-md flex justify-center w-full` + (globalEditing ? " disabled" : "")}
+                            <button className={`!py-2 ml-2 md:ml-4 btn btn-default flex justify-center w-full` + (globalEditing ? " disabled" : "")}
                               onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}
                             >
                               {/* <i className="fas text-xs fa-pencil mr-1"></i> */}
@@ -293,7 +291,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
 
                     {/* Win quantity */}
                     {auctionSwapInfo.info.ended &&
-                      <div className="w-1/5 text-right">
+                      <div className="w-1/5 pl-4  text-right">
                         {item.winQuantity}
                       </div>
                     }
@@ -305,8 +303,8 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
 
             {totalItem < auctionSwapInfo.info.maxBuyPerAddress && !auctionSwapInfo.info.ended && (
               <>
-                <div className="flex items-center relative space-x-2">
-                  <div className="w-1/6 flex-shrink-0">
+                <div className="flex  items-center relative">
+                  <div className="w-1/6 pr-2 flex-shrink-0">
                     <select id="box" name="amount" defaultValue={numberBox} onChange={handleChangeNumberBox} className="select-custom w-full ">
                       <option className="text-gray-300" value="0">---</option>
                       {Array(maxSelected).fill(null).map((_, i) => {
@@ -317,7 +315,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                       })}
                     </select>
                   </div>
-                  <div className="w-1/5 flex-shrink-0">
+                  <div className="w-1/5 pl-2 flex-shrink-0">
                     <select id="news-order" className="select-custom  w-full " defaultValue={priceBusd} onChange={e => { handleChangePriceBusd(e) }}>
                       {Array(10).fill(null).map((_, i) => {
                         return (
@@ -326,15 +324,15 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                       })}
                     </select>
                   </div>
-                  <div className="w-1/6 text-right">
+                  <div className="w-1/5 pl-4 text-right">
                     {totalBusd}
                   </div>
                   <BidRanking pool={pool} bid_value={priceBusd} bid_index={-1} />
                   {auctionSwapInfo.info.ended ? null : (
                     <div className="w-1/5">
-                      <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 w-full ${(globalEditing || numberBox == 0 || auctionSwapInfo.info.startPrice == 0) ? "disabled" : ""} flex justify-center`}
+                      <button className={`text-sm ml-2 md:ml-4 py-2 btn btn-primary px-2 w-full ${(globalEditing || numberBox == 0 || auctionSwapInfo.info.startPrice == 0) ? "disabled" : ""} flex justify-center`}
                         onClick={handleConfirm}>
-                        <i className="fas fa-plus-circle mr-1"></i>Add bid
+                        Add bid
                       </button>
                     </div>
                   )}

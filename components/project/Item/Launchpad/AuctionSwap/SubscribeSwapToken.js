@@ -148,7 +148,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
 
                   <div className="project-card--container no-padding">
                     <div className={isEnableAdjust ? "w-full" : "w-full disabled"}>
-                      <div className="relative flex pb-4 mb-8 border-b">
+                      <div className="relative flex pb-4">
                         <h3 className="text-lg font-medium">
                           {auctionSwapInfo.order.totalItem > 0 ? t("Adjust your bid") : t("Place your bid")}
                         </h3>
