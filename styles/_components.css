@@ -420,6 +420,10 @@ Disclosure
   @apply bg-gray-300 dark:bg-gray-500 text-gray-800 font-medium;
 }
 
+.timeline-event--icon svg {
+  @apply w-4 opacity-60;
+}
+
 .timeline-event--content {
 }
 
