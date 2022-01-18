@@ -33,7 +33,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   const [step, setStep] = useState(2)
   const [tokenAddress, setTokenAddress] = useState(ethers.constants.AddressZero)
   const boxContract = useERC20(pool.box_contract)
-  const [isEnableAdjust, setEnableAdjust] = useState(false)
+  const [isEnableAdjust, setEnableAdjust] = useState(true)
 
   const reloadAccount = async function () {
     fetchPoolInfo()
@@ -124,7 +124,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                 <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")} />}
               {!auctionSwapInfo.info.ended && (
                 <>
-                  {auctionSwapInfo.order.total > 0 &&
+                  {/* {auctionSwapInfo.order.total > 0 &&
                     <div className="m-4 bg-green-500 text-white px-8 rounded-md p-4">
                       <div>
                         You current bid:
@@ -143,7 +143,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                         </button>
                       </div>
                     </div>
-                  }
+                  } */}
                   
 
                   <div className="project-card--container">

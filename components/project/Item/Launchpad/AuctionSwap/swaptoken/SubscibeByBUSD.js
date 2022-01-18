@@ -139,6 +139,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
         store.transaction.update(receipt.transactionHash);
         await fetchAccountBalance()
         store.updateLoadPoolContent((new Date()).getTime())
+        setGlobalEditing(!globalEditing)
       },
     })
 
