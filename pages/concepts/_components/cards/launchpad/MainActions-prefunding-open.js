@@ -68,7 +68,7 @@ const MainActions = ({}) => {
                 </Dialog.Title>
                 <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
                   <span className="spinner-xl mx-auto"></span>
-                  <h2 className="text-sm md:text-lg text-center mt-4 mx-auto">
+                  <h2 className="text-base text-center my-4 mx-auto">
                     <p>BSC network is under heavy load. It may take up to 5 minutes to complete the transaction.Thanks for your patience!</p>
                   </h2>
                   

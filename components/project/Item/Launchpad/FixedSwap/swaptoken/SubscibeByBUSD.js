@@ -93,6 +93,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         <>
           <div className="mb-2 flex uppercase text-2xs md:text-xs tracking-wider gap-4">
             <div className="w-1/3">
+              
               <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
             </div>
             <div className="w-1/3">Price</div>

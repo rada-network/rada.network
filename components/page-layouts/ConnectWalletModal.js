@@ -163,7 +163,7 @@ const ConnectWalletModal = observer(({}) => {
                                   alt={item.name}
                                 />
                                 {store.network === item.networkName && (
-                                  <span className="w-4 h-4 text-center bg-green-500 text-white rounded-full absolute rounded-full top-0 right-0 flex items-center">
+                                  <span className="w-4 h-4 text-center bg-green-500 text-white rounded-full absolute top-0 right-0 flex items-center">
                                     <i className="fa-duotone mx-auto font-bold fa-check text-2xs"></i>
                                   </span>
                                 )}
