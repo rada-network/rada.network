@@ -102,7 +102,7 @@ const TransactionModal = observer(({ }) => {
                   <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
                     {transactionHash !== "" && !isError ? (
                       <div className="w-full flex justify-center">
-                        <span class="icon text-4xl">
+                        <span class="icon text-5xl">
                           <i class="fa-solid fa-check-circle text-green-500"></i>
                         </span>
                       </div>
@@ -127,7 +127,7 @@ const TransactionModal = observer(({ }) => {
 
                       ) : (
                         <>
-                        <span className="text-4xl block icon mb-4 text-yellow-500">
+                        <span className="text-5xl block icon mb-4 text-yellow-500">
                           <i class="fa-duotone fa-circle-info"></i>
                         </span>
                         <p>
