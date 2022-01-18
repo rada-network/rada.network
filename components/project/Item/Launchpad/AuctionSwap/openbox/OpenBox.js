@@ -89,12 +89,12 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
       <div className="p-4 md:p-6 xl:p-8">
         {!isApproved ? (
           <div className="flex flex-col text-center">
-            <button className="btn relative w-full  md:w-1/2 mx-auto btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md"
+            <button className="btn !text-sm relative mx-auto btn-default btn-default-lg btn-primary" disabled="" id="swap-button" width="100%" scale="md"
               onClick={handleApprove}
             >
               Enable {pool.token_name}
             </button>
-            <p className="pt-4">You must enable {pool.token_name} to open</p>
+            <p className="mt-4 text-xs">You must enable {pool.token_name} to open</p>
           </div>
         ) : (
           <>

@@ -35,7 +35,7 @@ const PoolDetailCountdown = ({ project, pool, isEndDate, open_date, end_date, ti
 
         {whitelist_date && (
           <div className="flex mt-1 opacity-60 text-xs justify-between">
-            <span className="w-16">{t("Announce at")}</span>
+            <span className="w-20">{t("Announce at")}</span>
             <OpenDate time={whitelist_date} />
           </div>
         )}

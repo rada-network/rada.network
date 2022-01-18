@@ -130,7 +130,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
             
             <div className="flex items-center mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 dark:border-opacity-50">
               <div className="text-sm opacity-60">You can purchase upto 10 boxes</div>
-              <button className={`btn !text-sm relative max-w-lg btn-default btn-default-lg btn-purple ml-auto` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" width="100%" scale="md">
+              <button className={`btn !text-sm relative max-w-lg btn-default btn-default-lg btn-primary ml-auto` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" width="100%" scale="md">
                 {isConfirming && <span className="spinner" />}
                 {isConfirming ? <>{t("Place Order")}</> : <>{t("Place Order")}</>}
               </button>
