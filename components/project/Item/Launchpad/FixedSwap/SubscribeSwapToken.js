@@ -192,25 +192,50 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 <div className="max-w-xl mx-auto">
                   <div className="flex">
                     <div className="w-full">
-                      <h3 className="text-lg md:text-xl border-2 p-4 rounded-lg bg-green-500 bg-opacity-5 border-green-500 mb-4 text-green-500 text-center text-semibold">
-                        <span className="icon mr-2">
-                          <i className="fa-duotone fa-badge-check"></i>
+
+                      <div className="message message--success">
+                        <h3 className="message-body--text">
+                          <span className="icon mr-2">
+                            <i className="fa-duotone fa-badge-check"></i>
+                          </span>
+                          {t("Place order success")}
+                        </h3>
+                        <strong className="message-body--info">
+                          {fixedSwapInfo.order.total}
+                          <span className="ml-1">{pool.token_name}</span>
+                        </strong>
+                      </div>
+
+                      {currentTime < endTime && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
+                      <div className="mt-4 w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
+                        <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
+                          <i className="fa fa-money-bill"></i>
                         </span>
-                        {t("Place order success")} : {fixedSwapInfo.order.total} {pool.token_name}
-                      </h3>
-                      
-                      
-                      <div className="mt4">
-                        <div className="inline-block w-full mx-auto text-center 
-                            rounded-lg
-                            border border-gray-200 dark:border-gray-700">
-                          <div className="py-1 px-4 flex justify-center">
-                            <strong className="mr-2">
+                        <div>
+                          <p className="text-lg text-yellow-600 dark:text-yellow-400">{t("Place more")}</p>
+
+                          <a href={`#`}  className="group">
+                            <span className="text-sm mr-1">
+                              {t("adjust note",{"orderBusd" : fixedSwapInfo.order.total,"maxBusd" : fixedSwapInfo.info.maxBuyPerAddress})}
+                            </span>
+                            <span className="icon text-xs relative left-1 group-hover:left-2 transition-all">
+                              <i className="fas fa-angle-right"></i>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                      }
+
+                      <div className="mt-4">
+                        <div className="px-4 divide-y dark:divide-gray-600 inline-block w-full mx-auto
+                            rounded-md border border-gray-200 dark:border-gray-700">
+                          <div className="py-4 flex">
+                            <span className="mr-2 opacity-60 w-1/2">
                               {pool.token_name} Contract: 
-                            </strong>
+                            </span>
                             <div className="mr-2">
                               <a target="_blank" href={getBscScanURL(tokenAddress)}>
-                                {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}
+                                {`${tokenAddress.substr(0, 4)}...${tokenAddress.substr(-6)}`}
                               </a>
                             </div>
                             <CopyToClipboard
@@ -222,38 +247,16 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                               </button>
                             </CopyToClipboard>
                           </div>
-                        </div>
-                      </div>
 
-                      <div className="mt-4">
-                        <div className="inline-block w-full mx-auto text-center 
-                            rounded-lg mb-4
-                            border border-gray-200 dark:border-gray-700"
-                        >
                           {!!pool.end_date && 
-                          <div  className="py-1 px-4">
-                            <span className="mr-2 opacity-70">{t("Closeat")}</span> 
+                          <div  className="py-4 flex">
+                            <span className="mr-2 opacity-60 w-1/2">{t("Closeat")}</span> 
                             <OpenDate time={pool.end_date} />
                           </div>
                           }
                         </div>
                       </div>
 
-                      {currentTime < endTime && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
-                      <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
-                        <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
-                          <i className="fa fa-money-bill"></i>
-                        </span>
-                        <div>
-                          <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">{t("Place more")}</p>
-
-                          <a href={`#`}  className="group">
-                            <span className="text-sm mr-1">{t("adjust note",{"orderBusd" : fixedSwapInfo.order.total,"maxBusd" : fixedSwapInfo.info.maxBuyPerAddress})}</span>
-                            <span className="icon text-xs relative left-1 group-hover:left-2 transition-all"><i className="fas fa-angle-right"></i></span>
-                          </a>
-                        </div>
-                      </div>
-                      }
                     </div>
                   </div>
 

@@ -35,7 +35,7 @@ const SubscribeLaunchpad = ({ project,pool }) => {
     <>
       <div className="max-w-lg w-full mx-auto rounded-lg">
         <div className="mb-4">
-          <p className="text-center mt-2 font-normal text-base">
+          <p className="text-center font-normal text-base">
             {t("Complete all the requirements below to joint the pool.")}
           </p>
         </div>
@@ -64,7 +64,7 @@ export const SubscribeLaunchpadClosed = ({ project }) => {
 
         <div className="max-w-2xl mx-auto p-4 lg:px-8 rounded-lg">
           <div className="mb-4">
-            <p className="text-center mt-2 font-normal text-base">{t("pool close note")}</p>
+            <p className="text-center font-normal text-base">{t("pool close note")}</p>
           </div>
           <div className="list-group">
             <WalletRequire />

@@ -137,6 +137,18 @@ const TransactionModal = observer(({ }) => {
                       )}
                     </div>
 
+                    <div className="flex items-center justify-center">
+                      <button
+                        type="button"
+                        className={`btn btn-lg btn-primary 
+                        ${transactionHash == "" && !isError ? "disabled" : ""}`}
+
+                        onClick={closeModal}
+                      >
+                        {t("Close")}
+                      </button>
+                    </div>
+
                   </div>
 
                   <div className="absolute right-4 top-3">

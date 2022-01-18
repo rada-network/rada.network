@@ -819,6 +819,36 @@ Article TOC
 
 
 /* 
+MESSAGES
+------------------------------- */
+.message {
+  @apply p-4 text-center rounded-lg;
+  @apply bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700;
+  .message-body--text {
+    @apply text-base;
+  }
+  .message-body--info {
+    @apply text-2xl font-medium;
+  }
+}
+
+.message--success {
+  @apply border-green-400 dark:border-green-500;
+  @apply bg-green-500 bg-opacity-10 dark:bg-green-500 dark:bg-opacity-20;
+}
+
+.message--success .message-body--text {
+}
+
+.message--success .message-body--info {
+  @apply block text-green-500 mt-2;
+}
+
+
+/*
+MISC
+------------------------------- */
+/* 
 Legend 
 */
 .legend {
@@ -832,9 +862,8 @@ Legend
   }
 }
 
-/*
-MISC
-------------------------------- */
+
+
 /*
 Social Button Lists
 */

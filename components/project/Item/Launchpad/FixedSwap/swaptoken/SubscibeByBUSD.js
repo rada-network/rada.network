@@ -92,13 +92,15 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         {isApproved && 
         <>
           <div className="mb-2 flex uppercase text-2xs md:text-xs tracking-wider gap-4">
-            <div className="w-1/3">
-              
-              <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
+            <div className="w-1/3 flex items-center">
+              <span className="icon mr-1"><i class="fa-duotone fa-box"></i></span>
+              <label for="currency" className="block tracking-wide font-medium opacity-60 text-xs">Boxes</label>
             </div>
-            <div className="w-1/3">Price</div>
+            <div className="w-1/3">
+              <label for="price" className="block tracking-wide font-medium opacity-60 text-xs">Price</label>
+            </div>
             <div className="w-1/3 text-right">
-              <label for="rir" className="mb-2 block tracking-wide font-medium opacity-70">Total</label>
+              <label className="block tracking-wide font-medium opacity-60 text-xs">Total</label>
             </div>
             
           </div>
@@ -113,7 +115,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
                   })}
                 </select>
               </div>
-              <div className="w-1/3 text-base flex">
+              <div id="price" className="w-1/3 text-base flex">
               150 BUSD
               </div>
               <div className="w-1/3 flex-grow flex items-center text-right">
