@@ -86,7 +86,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
 
   return (
     <>
-      <div className="p-2 md:p-6">
+      <div className="p-4 md:p-6 xl:p-8">
         {!isApproved ? (
           <div className="flex flex-col text-center">
             <button className="btn relative w-full  md:w-1/2 mx-auto btn-default btn-default-lg btn-purple" disabled="" id="swap-button" width="100%" scale="md"

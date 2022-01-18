@@ -10,7 +10,7 @@ const WhitelistCountdown = ({project,pool}) => {
   const {t,i18n} = useTranslation("launchpad")
   return (
     <>
-      <div className="project-main-actions no-padding overflow-hidden">
+      <div className="card-default project-main-actions no-padding overflow-hidden">
         <div className="card-body no-padding card card-default">
           <div className="flex flex-col">
               <div className="">

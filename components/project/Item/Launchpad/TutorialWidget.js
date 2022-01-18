@@ -5,12 +5,13 @@ const TutorialWidget = function({project}){
   const url = project?.content?.share2earn_url
   const share2earn_url = !!url ? url : ( project?.share_campaign?.length >  0 ? `/${i18n.language}/launchverse/${project.slug}/share2earn` : "")
   return (
-    <div className="card card-default">
-      <div className="card-header">
-        <h3>{t("More info")}</h3>       
-      </div>
-      <div className="card-body">
-        <div className="max-w-2xl rounded-lg">
+    // <div className="card card-default">
+    //   <div className="card-header">
+    //     <h3>{t("More info")}</h3>       
+    //   </div>
+
+    //   <div className="card-body">
+        <div className="w-full">
           {!!share2earn_url && 
           <Link href={share2earn_url}>
             <div className="w-full p-4 my-2 bg-primary-600 dark:bg-primary-700 text-white rounded-lg flex items-center cursor-pointer group">
@@ -30,7 +31,7 @@ const TutorialWidget = function({project}){
           </Link>
           }
 
-          <div className="w-full p-4 my-2 bg-gray-100 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center group">
+          <div className="w-full p-4 my-2 bg-gray-200 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center group">
             <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow">
               <i className="fad fa-info"></i>
             </span>
@@ -49,8 +50,8 @@ const TutorialWidget = function({project}){
             </div>
           </div>
         </div>
-      </div>
-    </div>
+    //   </div>
+    // </div>
   )
 }
 export default TutorialWidget

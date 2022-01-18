@@ -69,10 +69,10 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
   return (
     <>
-      <div className="p-2 md:p-6">
+      <div className="p-4 md:p-6 xl:p-8">
         {!isApproved && 
         <div className="max-w-xs mx-auto text-center flex flex-col">
-          <p className="mb-4 text-sm">You need Enable BUSD to purchase boxes</p>
+          <p className="mb-4 text-base">Enable BUSD to purchase boxes</p>
           <button className={`btn !text-sm relative mx-auto btn-default btn-default-lg btn-purple`} onClick={handleApprove} width="100%" scale="md">
             {isApproving && <span className="spinner" />}
             {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}

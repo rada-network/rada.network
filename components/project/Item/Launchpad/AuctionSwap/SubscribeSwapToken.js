@@ -115,7 +115,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   return (
     <>
       {step == 2 &&
-        <div className="project-main-actions no-padding overflow-hidden">
+        <div className="card-default project-main-actions no-padding overflow-hidden">
 
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
@@ -168,7 +168,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
 
       {/* Show status */}
       {step == 21 &&
-        <div className="project-main-actions no-padding overflow-hidden">
+        <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
 
@@ -195,7 +195,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
       }
 
       {step == 3 &&
-        <div className="project-main-actions no-padding overflow-hidden">
+        <div className="card-default project-main-actions no-padding overflow-hidden">
 
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">

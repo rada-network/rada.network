@@ -141,7 +141,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   return (
     <>
       {step == 2 &&
-        <div className="project-main-actions no-padding overflow-hidden">
+        <div className="card-default project-main-actions no-padding overflow-hidden">
 
           <div className="card-body no-padding">
             <div className="flex flex-col">

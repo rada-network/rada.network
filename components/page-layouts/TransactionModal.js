@@ -57,7 +57,7 @@ const TransactionModal = observer(({ }) => {
             className="dialog-outside-wrapper fixed inset-0 z-50 overflow-y-auto"
             onClose={closeModal}
           >
-            <div className="dialog-outside min-h-screen">
+            <div className="dialog-outside min-h-screen px-4">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -86,22 +86,20 @@ const TransactionModal = observer(({ }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <div className="inline-block w-full max-w-2xl my-8 overflow-hidden relative
+                <div className="inline-block w-full max-w-xl my-8 overflow-hidden relative
             text-left align-middle transition-all transform bg-white dark:bg-gray-900 shadow-xl rounded-lg">
                   <Dialog.Title
                     as="h3"
-                    className="text-md md:text-lg flex border-b dark:border-gray-00 border-gray-200
-                 font-medium p-4 md:p-6 leading-6 text-gray-900 dark:bg-gray-900 bg-opacity-50 
-                 dark:border-gray-800 dark:text-gray-300"
+                    className="dialog-header"
                   >
                     <div className="mx-auto inlie-flex">
-                      <span className="text-yellow-500 mr-2">
-                        <i className="fad fa-exclamation-triangle"></i>
-                      </span>
+                      {/* <span className="icon text-yellow-500 mr-2">
+                        <i class="fa-solid fa-circle-info"></i>
+                      </span> */}
                       {isError ? t("transaction error") : transactionHash !== "" ? t("transaction completed") : t("transaction in progress")}
                     </div>
                   </Dialog.Title>
-                  <div className="p-4 md:p-6 h-48 text-sm text-gray-600 dark:text-gray-300">
+                  <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
                     {transactionHash !== "" && !isError ? (
                       <div className="w-full flex justify-center">
                         <span class="icon text-4xl">
@@ -136,20 +134,15 @@ const TransactionModal = observer(({ }) => {
 
                   </div>
 
-                  <div className="absolute right-4 top-2 md:top-4">
+                  <div className="absolute right-4 top-3">
                     <button
                       type="button"
-                      className={`inline-flex justify-center px-4 bg-transparent py-2 text-sm font-medium 
-                      text-gray-500 border border-transparent rounded-md
-                      hover:bg-gray-200 
-                      dark:hover:bg-gray-700 focus:outline-none 
-                      focus-visible:ring-2 focus-visible:ring-offset-2 
-                      focus-visible:ring-blue-500"   
+                      className={`btn-close--boxes
                       ${transactionHash == "" && !isError ? "disabled" : ""}`}
 
                       onClick={closeModal}
                     >
-                      <i className="fa-duotone fa-close text-base"></i>
+                      <i className="fa-solid fa-close text-base"></i>
                     </button>
                   </div>
                 </div>
