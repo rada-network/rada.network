@@ -206,18 +206,25 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
             <div className="flex flex-col">
               <div className="project-card--container no-padding">
                 <div className="w-full">
-                  <div className="relative flex">
+                  <div className="relative flex flex-col justify-center">
                     <h3 className="text-lg font-medium">
-                      Open your {pool.token_name}
+                      Open your boxes
                     </h3>
                   </div>
-                  <OpenBox auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
-                  <div className="ml-auto flex !text-sm items-center">
-                      <span className="mr-2 !font-normal">Your {pool.token_name} balance:</span>
-                      <div className="ml-auto">
-                        <span className="font-semibold">{accountBalance.boxBalance}</span>
+
+                  <div className="w-full flex justify-between mt-4">
+                    <OpenBox auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+
+                    <div className="mt-4 flex flex-shrink-0">
+                      <span className="font-normal">Your balance:</span>
+                      <div className="ml-2">
+                        <span className="badge !text-sm !px-2">
+                          <strong className="font-semibold mr-1">{accountBalance.boxBalance}</strong>
+                          {pool.token_name} 
+                        </span>
                       </div>
                     </div>
+                  </div>
                 </div>
               </div>
 

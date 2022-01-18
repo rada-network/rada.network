@@ -84,7 +84,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
 
   return (
     <>
-      <div className="p-4 md:p-6 xl:p-8">
+      <div className="w-full">
         {!isApproved ? (
           <div className="flex flex-col text-center">
             <button className="btn !text-sm relative mx-auto btn-default btn-default-lg btn-primary" disabled="" id="swap-button" width="100%" scale="md"
@@ -96,22 +96,24 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
           </div>
         ) : (
           <>
-            <div className="flex  items-center relative">
-              <div className="w-3/6 pr-2 flex-shrink-0">
-                <select id="box" name="amount" defaultValue={numberBox} onChange={handleChangeNumberBox} className="select-custom w-full ">
-                  <option className="text-gray-300" value="0">---</option>
-                  {Array((maxOpenBox)).fill(null).map((_, i) => {
-                    return (
-                      <option key={i} className="text-gray-300" value={(i + 1)}>{i + 1}</option>
-                    )
-                  })}
-                </select>
-              </div>
-              <div className="w-3/6 pr-2 flex-shrink-0">
-                <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-2 ${(numberBox == 0 || isConfirming) ? "disabled" : ""} flex justify-center`}
-                  onClick={handleConfirm}>
-                  <i className="fas fa-plus-circle mr-1"></i>Open box {pool.token_name}
-                </button>
+            <div className="mx-auto">
+              <div className="flex justify-center items-center relative">
+                <div className="w-2/6 flex-shrink-0">
+                  <select id="box" name="amount" defaultValue={numberBox} onChange={handleChangeNumberBox} className="select-custom w-full ">
+                    <option className="text-gray-300" value="0">---</option>
+                    {Array((maxOpenBox)).fill(null).map((_, i) => {
+                      return (
+                        <option key={i} className="text-gray-300" value={(i + 1)}>{i + 1}</option>
+                      )
+                    })}
+                  </select>
+                </div>
+                <div className="w-4/6">
+                  <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-4 ${(numberBox == 0 || isConfirming) ? "disabled" : ""} flex justify-center`}
+                    onClick={handleConfirm}>
+                    Open box {pool.token_name}
+                  </button>
+                </div>
               </div>
             </div>
           </>
