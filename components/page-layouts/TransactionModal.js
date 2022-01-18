@@ -140,7 +140,7 @@ const TransactionModal = observer(({ }) => {
                     <div className="flex items-center justify-center">
                       <button
                         type="button"
-                        className={`btn btn-lg btn-primary 
+                        className={`btn btn-default-lg btn-primary  
                         ${transactionHash == "" && !isError ? "disabled" : ""}`}
 
                         onClick={closeModal}
@@ -154,7 +154,7 @@ const TransactionModal = observer(({ }) => {
                   <div className="absolute right-4 top-3">
                     <button
                       type="button"
-                      className={`btn-close--boxes
+                      className={`btn-close--box
                       ${transactionHash == "" && !isError ? "disabled" : ""}`}
 
                       onClick={closeModal}

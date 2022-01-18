@@ -52,18 +52,16 @@ const NftItem = function({item, boxID}){
 
   if (boxID) {
     return (
-      <div className={`card card-nftthumb`}>
-        <div>
-          <div>
-            <img className="w-full object-cover rounded-lg" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
+      <div className={`card card-nftthumb w-1/2 xl:w-1/3`}>
+        <div className="relative">
+          <div className="bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg">
+            <img className="w-full object-cover rounded-lg opacity-50" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
           </div>
 
-          <div className="flex justify-between items-center p-2">
-            <div>
-              <span className="text-xs font-medium text-yellow-500">
-                <OpeningText />
-              </span>
-            </div>
+          <div className="absolute top-1/2 right-1/2 -mr-6 -mt-2">
+            <span className="flex text-xs font-medium bg-white bg-opacity-80 text-gray-900 text-center w-12 pl-1.5 rounded-full shadow-xl">
+              <OpeningText />
+            </span>
           </div>
         </div>
       </div>
@@ -73,33 +71,35 @@ const NftItem = function({item, boxID}){
   return (
     <>
     {item && (
-      <div className={`card card-nftthumb`}>
-        <div>
-          <div>
+      <div className={`card card-nftthumb w-1/2 xl:w-1/3`}>
+        <div className="relative">
+          <div className="bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg">
             {metadata?.image ? 
             <img className="w-full object-cover rounded-lg" src={metadata?.image} />
             :
-            <img className="w-full object-cover rounded-lg" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
+            <img className="w-full object-cover rounded-lg opacity-80" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
             }
           </div>
 
-          <div className="flex justify-between items-center p-2">
-            <div>
+          <div className="flex justify-center items-center pt-2">
+            <div className="text-center">
               <h5 className="font-medium">
-                #{item.id}
+               {metadata?.name} #{item.id}
               </h5>
               {!!metadata?.rarityName ?
               <span className="text-xs font-medium text-yellow-500">
-                Rarity: {metadata?.rarityName}
+                {metadata?.rarityName}
               </span>
               :
-              <span className="text-xs font-medium text-yellow-500">
-                <OpeningText />
-              </span>
+              <div className="absolute top-1/2 right-1/2 -mr-6 -mt-2">
+                <span className="flex text-xs font-medium bg-white bg-opacity-80 text-gray-900 text-center w-12 pl-1.5 rounded-full shadow-xl">
+                  <OpeningText />
+                </span>
+              </div>
               }
             </div>
 
-            {!!metadata?.name  && 
+            {/* {!!metadata?.name  && 
               <div className="text-right">
                 <span className="block text-xs opacity-60">
                   {t("name")}
@@ -108,7 +108,7 @@ const NftItem = function({item, boxID}){
                   {metadata?.name}
                 </span>
               </div>
-            }
+            } */}
           </div>
         </div>
       </div>
@@ -133,16 +133,16 @@ const OpeningText = function(){
   },[])
   useEffect(() => {
     if (counter % 4 === 0){
-      setText("Opening")
+      setText(" •")
     }
     if (counter % 4 === 1){
-      setText("Opening .")
+      setText(" • • ")
     }
     if (counter % 4 === 2){
-      setText("Opening . . ")
+      setText(" • • •")
     }
     if (counter % 4 === 3){
-      setText("Opening . . .")
+      setText(" • • • •")
     }
   },[counter])
   return (

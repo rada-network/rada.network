@@ -48,7 +48,7 @@ Dialogs
 }
 
 /* Boxes/Modals Close Button */
-.btn-close--boxes {
+.btn-close--box {
   @apply inline-flex justify-center items-center w-8 h-8 bg-transparent font-medium;
   @apply text-gray-700 border border-transparent rounded-full;
   @apply hover:bg-gray-700 hover:text-white dark:hover:bg-gray-700;

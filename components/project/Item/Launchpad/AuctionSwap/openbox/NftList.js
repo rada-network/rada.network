@@ -84,7 +84,7 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
 
           {/* NFT Cards Slideshow */}
           {listNft.length > 0 ? 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="flex flex-wrap">
             {/* NFT Card */}
             {listNft.map(function(item){
               return <NftItem key={item.id}  item={item} />

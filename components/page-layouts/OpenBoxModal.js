@@ -47,7 +47,7 @@ const OpenBoxModal = observer(({ }) => {
             className="dialog-outside-wrapper fixed inset-0 z-50 overflow-y-auto"
             onClose={closeModal}
           >
-            <div className="dialog-outside min-h-screen">
+            <div className="dialog-outside min-h-screen px-4">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -82,18 +82,32 @@ const OpenBoxModal = observer(({ }) => {
                     as="h3"
                     className="dialog-header"
                   >
-                    <div className="mx-auto inlie-flex">
-                      Box is opening
+                    <div className="mx-auto inline-flex">
+                      Open your boxes
                     </div>
                   </Dialog.Title>
 
                   <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
                     {!isBoxOpening &&
-                      <span className="spinner-xl mx-auto"></span>
+                      <div className="mx-auto text-center">
+                        <p>
+                          Please wait while we order the box for you
+                        </p>
+                      </div>
+                    }
+
+                    {isBoxOpening &&
+                      <div className="mx-auto text-center">
+                        <p className="text-base mx-auto text-green-500">
+                          <span className="icon mr-2"><i class="fa-duotone fa-badge-check"></i></span>
+                          Open 3 box successfully
+                        </p>
+                      </div>
                     }
 
                     {/*Box list */}
-                    <div className={`grid gap-4 p-4 ` + "grid-cols-" + (store.box.numberBox < 3 ? store.box.numberBox : 3)}>
+                    {/* <div className={`grid gap-4 p-4 ` + "grid-cols-" + (store.box.numberBox < 3 ? store.box.numberBox : 3)}> */}
+                    <div className={`flex flex-wrap justify-center py-4`}>
                       {tokenids.map(function (nft) {
                         return <NftItem key={nft.tokenID} item={nft} />
                       })}
@@ -108,12 +122,24 @@ const OpenBoxModal = observer(({ }) => {
                         </>
                       )}
                     </div>
+
+                    <div className="flex items-center justify-center">
+                      <button
+                        type="button"
+                        className={`btn btn-default-lg btn-primary`}
+
+                        onClick={closeModal}
+                      >
+                        {t("Close")}
+                      </button>
+                    </div>
+
                   </div>
 
                   <div className="absolute right-4 top-3">
                     <button
                       type="button"
-                      className={`btn-close--boxes" `} onClick={closeModal}>
+                      className={`btn-close--box" `} onClick={closeModal}>
                       <i className="fa-solid fa-close text-base"></i>
                     </button>
                   </div>
@@ -128,5 +154,38 @@ const OpenBoxModal = observer(({ }) => {
   )
 });
 
+const OpeningText = function(){
+  const [counter,setCounter] = useState(0);
+  const [text,setText] = useState("Opening ")
+  let interval
+  useEffect(() => {
+    interval = setInterval(() =>{
+      setCounter(prevCount => prevCount + 1)
+    },500)
+
+    return () => {
+      clearInterval(interval)
+    }
+  },[])
+  useEffect(() => {
+    if (counter % 4 === 0){
+      setText("")
+    }
+    if (counter % 4 === 1){
+      setText(" .")
+    }
+    if (counter % 4 === 2){
+      setText(" . . ")
+    }
+    if (counter % 4 === 3){
+      setText(" . . .")
+    }
+  },[counter])
+  return (
+    <>
+      {text}
+    </>
+  )
+}
 
 export default OpenBoxModal;
