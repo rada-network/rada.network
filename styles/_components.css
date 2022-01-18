@@ -421,7 +421,7 @@ Disclosure
 }
 
 .timeline-event--icon svg {
-  @apply w-4 opacity-60;
+  @apply w-4 opacity-80;
 }
 
 .timeline-event--content {
