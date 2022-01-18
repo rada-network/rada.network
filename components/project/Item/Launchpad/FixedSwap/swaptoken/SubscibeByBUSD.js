@@ -69,10 +69,10 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
   return (
     <>
-      <div className="p-2 md:p-6">
+      <div className="p-4 md:p-6 xl:p-8">
         {!isApproved && 
         <div className="max-w-xs mx-auto text-center flex flex-col">
-          <p className="mb-4 text-sm">You need Enable BUSD to purchase boxes</p>
+          <p className="mb-4 text-base">Enable BUSD to purchase boxes</p>
           <button className={`btn !text-sm relative mx-auto btn-default btn-default-lg btn-purple`} onClick={handleApprove} width="100%" scale="md">
             {isApproving && <span className="spinner" />}
             {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
@@ -92,12 +92,15 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
         {isApproved && 
         <>
           <div className="mb-2 flex uppercase text-2xs md:text-xs tracking-wider gap-4">
-            <div className="w-1/3">
-              <label for="currency" className="mb-2 block tracking-wide font-medium opacity-70">Boxes</label>
+            <div className="w-1/3 flex items-center">
+              <span className="icon mr-1"><i class="fa-duotone fa-box"></i></span>
+              <label for="currency" className="block tracking-wide font-medium opacity-60 text-xs">Boxes</label>
             </div>
-            <div className="w-1/3">Price</div>
+            <div className="w-1/3">
+              <label for="price" className="block tracking-wide font-medium opacity-60 text-xs">Price</label>
+            </div>
             <div className="w-1/3 text-right">
-              <label for="rir" className="mb-2 block tracking-wide font-medium opacity-70">Total</label>
+              <label className="block tracking-wide font-medium opacity-60 text-xs">Total</label>
             </div>
             
           </div>
@@ -112,7 +115,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
                   })}
                 </select>
               </div>
-              <div className="w-1/3 text-base flex">
+              <div id="price" className="w-1/3 text-base flex">
               150 BUSD
               </div>
               <div className="w-1/3 flex-grow flex items-center text-right">

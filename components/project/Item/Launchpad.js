@@ -213,13 +213,13 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
                             FAQS
                           </span>
                         </li>
-                        {pool.token_sale !== "ido" && (
+                        {/* {pool.token_sale !== "ido" && (
                           <li style={style} className={`tab-item ` + (active == "howto" ?  "tab-item--active" : "")} onClick={(e) => {setActive("howto")}}>
                             <span className="tab-item--text !block">
                               How to
                             </span>
                           </li>
-                        )}
+                        )} */}
                         {pool.whitelist_date !== null && whitelistTime < currentTime && winners.length > 0 && 
                         <li style={style} className={`tab-item ` + (active == "winner" ?  "tab-item--active" : "")} onClick={(e) => {setActive("winner")}}>
                           <span className="tab-item--text !block">

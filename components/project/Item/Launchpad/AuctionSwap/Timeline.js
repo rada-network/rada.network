@@ -18,8 +18,8 @@ const Timeline = observer (({ step, steps }) => {
         <div className="timeline-event-body" aria-current="step">
           <div className="timeline-event--icon">
             <span className="timeline-event--icon--text">
-              {/* {cstep > step ? <CheckSvg /> : step} */}
-              {cstep > step ? step : step}
+              {cstep > step ? <CheckSvg /> : step}
+              {/* {cstep > step ? step : step} */}
             </span>
           </div>
           <div className="timeline-event--content">

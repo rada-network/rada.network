@@ -26,6 +26,12 @@ Dialogs
   @apply block md:flex;
 }
 
+.dialog-header {
+  @apply flex p-4 md:px-6;
+  @apply text-base font-medium leading-6 text-gray-900 dark:text-gray-200;
+  @apply border-b border-gray-200 dark:border-gray-800;
+}
+
 .dialog .divider {
   @apply relative my-6 text-center;
 }
@@ -39,6 +45,13 @@ Dialogs
 
 .dialog .divider span {
   @apply bg-gray-50 dark:bg-gray-900 text-xs uppercase z-0 px-4;
+}
+
+/* Boxes/Modals Close Button */
+.btn-close--boxes {
+  @apply inline-flex justify-center items-center w-8 h-8 bg-transparent font-medium;
+  @apply text-gray-700 border border-transparent rounded-full;
+  @apply hover:bg-gray-700 hover:text-white dark:hover:bg-gray-700;
 }
 
 
@@ -407,6 +420,10 @@ Disclosure
   @apply bg-gray-300 dark:bg-gray-500 text-gray-800 font-medium;
 }
 
+.timeline-event--icon svg {
+  @apply w-4 opacity-60;
+}
+
 .timeline-event--content {
 }
 
@@ -423,11 +440,11 @@ Disclosure
 }
 
 .timeline-event .tooltip {
-  @apply hidden text-left z-10;
+  @apply hidden text-left z-50;
 }
 
 .timeline-event:hover .tooltip {
-  @apply block absolute w-56;
+  @apply md:block absolute w-56;
 }
 
 .timeline-event--time {

@@ -33,7 +33,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   const [step, setStep] = useState(2)
   const [tokenAddress, setTokenAddress] = useState(ethers.constants.AddressZero)
   const boxContract = useERC20(pool.box_contract)
-  const [isEnableAdjust, setEnableAdjust] = useState(false)
+  const [isEnableAdjust, setEnableAdjust] = useState(true)
 
   const reloadAccount = async function () {
     fetchPoolInfo()
@@ -115,16 +115,16 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   return (
     <>
       {step == 2 &&
-        <div className="project-main-actions no-padding overflow-hidden">
+        <div className="card-default project-main-actions no-padding overflow-hidden">
 
-          <div className="card-body no-padding card card-default">
+          <div className="card-body no-padding">
             <div className="flex flex-col">
 
               {auctionSwapInfo.info.ended ? <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")} /> :
                 <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")} />}
               {!auctionSwapInfo.info.ended && (
                 <>
-                  {auctionSwapInfo.order.total > 0 &&
+                  {/* {auctionSwapInfo.order.total > 0 &&
                     <div className="m-4 bg-green-500 text-white px-8 rounded-md p-4">
                       <div>
                         You current bid:
@@ -143,7 +143,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                         </button>
                       </div>
                     </div>
-                  }
+                  } */}
                   
 
                   <div className="project-card--container">
@@ -168,7 +168,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
 
       {/* Show status */}
       {step == 21 &&
-        <div className="project-main-actions no-padding overflow-hidden">
+        <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
 
@@ -195,7 +195,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
       }
 
       {step == 3 &&
-        <div className="project-main-actions no-padding overflow-hidden">
+        <div className="card-default project-main-actions no-padding overflow-hidden">
 
           <div className="card-body no-padding card card-default">
             <div className="flex flex-col">
