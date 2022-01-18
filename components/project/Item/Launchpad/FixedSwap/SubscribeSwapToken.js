@@ -229,28 +229,30 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       <div className="mt-4">
                         <div className="px-4 divide-y dark:divide-gray-600 inline-block w-full mx-auto
                             rounded-md border border-gray-200 dark:border-gray-700">
-                          <div className="py-4 flex">
-                            <span className="mr-2 opacity-60 w-1/2">
+                          <div className="py-4">
+                            <span className="mr-2 opacity-60 w-2/5">
                               {pool.token_name} Contract: 
                             </span>
-                            <div className="mr-2">
-                              <a target="_blank" href={getBscScanURL(tokenAddress)}>
-                                {`${tokenAddress.substr(0, 4)}...${tokenAddress.substr(-6)}`}
-                              </a>
+                            <div className="flex">
+                              <div className="mr-2">
+                                <a target="_blank" href={getBscScanURL(tokenAddress)}>
+                                  {`${tokenAddress.substr(0, 4)}...${tokenAddress.substr(-6)}`}
+                                </a>
+                              </div>
+                              <CopyToClipboard
+                                onCopy={handleCopy}
+                                text={fixedSwapInfo.info.addressItem}
+                              >
+                                <button className="btn ml-2">
+                                  <i className="fa-duotone fa-copy text-2xs"></i>
+                                </button>
+                              </CopyToClipboard>
                             </div>
-                            <CopyToClipboard
-                              onCopy={handleCopy}
-                              text={fixedSwapInfo.info.addressItem}
-                            >
-                              <button className="btn ml-2">
-                                <i className="fa-duotone fa-copy text-2xs"></i>
-                              </button>
-                            </CopyToClipboard>
                           </div>
 
                           {!!pool.end_date && 
-                          <div  className="py-4 flex">
-                            <span className="mr-2 opacity-60 w-1/2">{t("Closeat")}</span> 
+                          <div  className="py-4 md:flex">
+                            <span className="mr-2 opacity-60 w-2/5">{t("Closeat")}</span> 
                             <OpenDate time={pool.end_date} />
                           </div>
                           }

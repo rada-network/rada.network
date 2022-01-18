@@ -8,6 +8,8 @@ import { getCurrentUser } from "@data/query/user";
 import dynamic from "next/dynamic";
 import { BLOCK_PASS_KYC_COMPLETE,BLOCK_PASS_KYC_REJECT } from "@config/constants";
 
+import SocialPromote from "../SocialPromote";
+
 const WalletRequire = dynamic(import("@components/WalletRequire"));
 
 const SubscribeLaunchpad = ({ project,pool }) => {
@@ -33,7 +35,7 @@ const SubscribeLaunchpad = ({ project,pool }) => {
   }
   return (
     <>
-      <div className="max-w-lg w-full mx-auto rounded-lg mt-8">
+      <div className="max-w-lg w-full mx-auto">
         <div className="mb-4">
           {/* <h3 className="text-2xl text-center font-normal">
             <span className="text-color-title">
@@ -45,10 +47,14 @@ const SubscribeLaunchpad = ({ project,pool }) => {
           </p>
         </div>
 
-        <div className="list-group">
+        <div className="list-group rounded-md bg-gray-100 px-4">
           {pool.is_kyc && <Login />}
           {pool.is_kyc && <KYC />}
           <WalletRequire />
+        </div>
+
+        <div className="border-t border-gray-200 dark:border-gray-700 mt-4">
+          <SocialPromote />
         </div>
       </div>
     </>
