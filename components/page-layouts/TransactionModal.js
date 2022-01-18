@@ -36,7 +36,7 @@ const TransactionModal = observer(({ }) => {
         if (transactionHash == "") {
           store?.transaction.updateMessage(t("bsc warning"));
         }
-      }, 5000);
+      }, 30000);
     }
     else{
       clearTimeout(timeoutShowBscWarning);

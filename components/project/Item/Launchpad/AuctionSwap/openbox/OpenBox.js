@@ -6,7 +6,7 @@ import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
 import useStore from "@lib/useStore"
-import NftList from "./NftList"
+
 const MAX_BOX_CURRENT_OPEN = 5
 const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, auctionSwapInfo }) => {
   const store = useStore()
@@ -41,7 +41,6 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
         }
       },
       onApprove: async (requireApprove) => {
-        store.box.showOpenBoxModal(true, numberBox)
         store.transaction.showTransaction(true, t("start transaction message"));
         const tx = callWithGasPrice(boxContract, 'approve', [openBoxContract.address, ethers.constants.MaxUint256])
         store.transaction.startTransaction(true, t("transaction started"));
@@ -73,8 +72,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
     })
 
   const resetApproved = async () => {
-    await callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, 0])
-    await callWithGasPrice(rirContract, 'approve', [launchpadContract.address, 0])
+    await callWithGasPrice(boxContract, 'approve', [openBoxContract.address, 0])
   }
 
   const claimNftBox = async () => {
@@ -124,13 +122,12 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
             {t("Claim")}
           </button>
         )} */}
-        {/* {account === "walletaddress" &&
+        {account === "0xC0129E7E233d6D9D4f2717Ba3e1837A4FE6C03af" &&
           <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`} onClick={resetApproved}  >
             {t("Reset approve")}
           </button>
-        } */}
+        }
       </div>
-      <NftList auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={fetchAccountBalance} setStep={setStep} project={project} pool={pool} />
     </>
   )
 }

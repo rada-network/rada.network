@@ -16,7 +16,6 @@ const SubscribeSwapTokenLoading = function ({ currentTime, opendTime, endTime })
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>

@@ -16,6 +16,7 @@ import OpenBox from "./openbox/OpenBox";
 import PoolDetailCountdown from "../PoolDetailCountdown";
 import BidInfo from "./BidInfo";
 import SubscribeSwapTokenLoading from "@components/project/Item/Launchpad/SubscribeSwapTokenLoading";
+import NftList from "./openbox/NftList"
 
 
 const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) => {
@@ -193,6 +194,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
       }
 
       {step == 3 &&
+        <>
         <div className="card-default project-main-actions no-padding overflow-hidden">
 
           <div className="card-body no-padding card card-default">
@@ -223,6 +225,8 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
             </div>
           </div>
         </div>
+        <NftList auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+        </>
       }
       {step == 32 &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
