@@ -261,24 +261,24 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
                       <>
                         {item.isEditing ? (
                           <>
-                            <div className="w-1/5">
-                              <button className={`!py-2 ml-2 md:ml-4 btn btn-primary px-2 flex justify-center w-full`}
-                                onClick={e => { handleIncreaseBid(item.index) }}>
-                                {/* <i className="fas fa-plus-circle mr-1"></i> */}
-                                <span className="btn--text">Increase Bid</span>
-                              </button>
-                              <button className={`!py-2 ml-2 md:ml-4 flex-grow flex-shrink-0 btn btn-default px-2 flex justify-center mt-1 w-full`}
+                            <div className="ml-2 md:ml-4 w-1/5 flex justify-evenly space-x-2">
+                              <button className={`!py-2 flex-grow flex-shrink-0 btn btn-default`}
                                 onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}>
                                 {/* <i className="fas fa-times-circle mr-1"></i>   */}
                                 <span className="btn--text">Cancel</span>
+                              </button>
+                              <button className={`!py-2 btn btn-primary px-2 w-full justify-center`}
+                                onClick={e => { handleIncreaseBid(item.index) }}>
+                                {/* <i className="fas fa-plus-circle mr-1"></i> */}
+                                <span className="btn--text">Adjust</span>
                               </button>
                             </div>
 
                           </>
 
                         ) : (
-                          <div className="w-1/5">
-                            <button className={`!py-2 ml-2 md:ml-4 btn btn-default flex justify-center w-full` + (globalEditing ? " disabled" : "")}
+                          <div className="ml-2 md:ml-4 w-1/5">
+                            <button className={`!py-2 btn btn-default w-full` + (globalEditing ? " disabled" : "")}
                               onClick={e => { handleChangeCurrentOrder(e, item.index, 'editing') }}
                             >
                               {/* <i className="fas text-xs fa-pencil mr-1"></i> */}
