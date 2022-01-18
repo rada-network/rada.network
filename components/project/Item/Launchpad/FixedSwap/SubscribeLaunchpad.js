@@ -42,7 +42,7 @@ const SubscribeLaunchpad = ({ project,pool }) => {
               {project?.token.name}'s {t("Whitelist")}
             </span>
           </h3> */}
-          <p className="text-center font-normal text-base">
+          <p className="text-center font-normal">
             {t("Complete all the requirements below to joint the pool.")}
           </p>
         </div>
@@ -53,7 +53,7 @@ const SubscribeLaunchpad = ({ project,pool }) => {
           <WalletRequire />
         </div>
 
-        <div className="border-t border-gray-200 dark:border-gray-700 mt-4">
+        <div className="">
           <SocialPromote />
         </div>
       </div>
