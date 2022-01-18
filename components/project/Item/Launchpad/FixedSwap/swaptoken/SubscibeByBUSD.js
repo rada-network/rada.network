@@ -7,6 +7,7 @@ import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
 import { CheckSvg } from "@components/svg/SvgIcons"
 import useStore from "@lib/useStore"
+import SubscribeSwapTokenLoading from "../../SubscribeSwapTokenLoading"
 
 const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance,fixedSwapInfo}) => {
   const store = useStore()
@@ -32,7 +33,6 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
       try {
         const response2 = await bUSDContract.allowance(account, launchpadContract.address)
         setLoading(false)
-        console.log(response2)
         return response2.gt(0)
       } catch (error) {
         setLoading(false)
@@ -63,13 +63,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
   if (loading) {
     return (
-      <div className="flex mt-5 justify-center h-12">
-        <div className="mx-auto">
-          <p className="relative mb-4 ">
-            <span className="spinner"></span>
-          </p>
-        </div>
-      </div>
+      <SubscribeSwapTokenLoading />
     )
   }
 

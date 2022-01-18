@@ -18,6 +18,7 @@ import NftInfo from "./NftInfo";
 import { observer } from "mobx-react";
 import useStore from "@lib/useStore";
 import Timeline from "./Launchpad/AuctionSwap/Timeline";
+import BoxPreview from "./BoxPreview";
 
 
 const LaunchpadIdo = dynamic(import(`./Launchpad/Actions/Index`));
@@ -158,6 +159,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
           
           {/* Main Col */}
           <div class="flex flex-col w-full lg:order-2 lg:w-4/6 lg:ml-4 space-y-4">
+            <BoxPreview project={project} pool={poolContract}/> 
             {/* NFT Info Card */}
             <NftPreview project={project} pool={poolContract}/>
             {/* END: NFT Info Card */}
