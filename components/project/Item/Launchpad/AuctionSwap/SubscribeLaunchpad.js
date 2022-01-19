@@ -4,6 +4,7 @@ import fetchJson from "@lib/fetchJson";
 import useSWR from "swr";
 import { useTranslation } from "next-i18next";
 import { getCurrentUser } from "@data/query/user";
+import SocialPromote from "../SocialPromote";
 
 import dynamic from "next/dynamic";
 import { BLOCK_PASS_KYC_COMPLETE,BLOCK_PASS_KYC_REJECT } from "@config/constants";
