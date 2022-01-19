@@ -50,6 +50,9 @@ const SubscribeLaunchpad = ({ project,pool }) => {
           {pool.is_kyc && <KYC />}
           <WalletRequire />
         </div>
+        <div className="">
+          <SocialPromote />
+        </div>
       </div>
     </>
   );
