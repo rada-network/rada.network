@@ -42,7 +42,7 @@ const SubscribeLaunchpad = ({ project,pool }) => {
               {project?.token.name}'s {t("Whitelist")}
             </span>
           </h3> */}
-          <p className="text-center font-normal">
+          <p className="text-center font-normal text-base">
             {t("Complete all the requirements below to joint the pool.")}
           </p>
         </div>
