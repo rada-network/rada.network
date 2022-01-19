@@ -77,7 +77,7 @@ const NftItem = function({item, boxID}){
             {metadata?.image ? 
             <img className="w-full object-cover rounded-lg" src={metadata?.image} />
             :
-            <img className="w-full object-cover rounded-lg opacity-80" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
+            <img className="w-full object-cover rounded-lg opacity-50" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
             }
           </div>
 
