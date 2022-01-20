@@ -2,12 +2,16 @@ import {useState, useEffect} from "react"
 import fetcher from "@lib/fetchJson";
 import {isEmpty} from "lodash";
 import { useTranslation } from "react-i18next";
+import useStore from "@lib/useStore";
 
 const MAX_FETCH = 60
 const NftItem = function({item, boxID}){
-  const {t} = useTranslation("launchpad")
-  const [metadata,setMetadata] = useState({})
-  const [curFetchCount,setCurFetchCount] = useState(0)
+  const store = useStore();
+  const {t} = useTranslation("launchpad");
+  const [metadata,setMetadata] = useState({});
+  const [curFetchCount,setCurFetchCount] = useState(0);
+  const openSuccessfullyBoxs = store?.box.openSuccessfullyBoxs;
+  const [numberBoxOpened, setNumberBoxOpened] = useState([]);
   let timeout
 
   const rarityDic = {
@@ -36,10 +40,17 @@ const NftItem = function({item, boxID}){
         },1000)
       } else {
         let rarityName = rarityDic[res.rarity.toString()];
-        setMetadata({...res, rarityName: rarityName})
+        setMetadata({...res, rarityName: rarityName});
+        const opened = new Object();
+        opened["id"] = parseInt(item.id);
+        store.box.updateOpenBoxSuccessfully(opened);
       }
     })
   }
+
+  useEffect(() => {
+    setNumberBoxOpened(openSuccessfullyBoxs)
+  }, [openSuccessfullyBoxs])
 
   useEffect(() => {
     if (!!item) {
