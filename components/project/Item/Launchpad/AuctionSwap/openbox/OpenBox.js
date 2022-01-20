@@ -27,6 +27,38 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
 
   const maxOpenBox = accountBalance.boxBalance > MAX_BOX_CURRENT_OPEN ? MAX_BOX_CURRENT_OPEN : accountBalance.boxBalance
 
+
+  const handleOpenBox = async function (bidIndex) {
+    //store.transaction.showTransaction(true);
+    try {
+      store.box.showOpenBoxModal(true, parseInt(numberBox));
+      const tx = await callWithGasPrice(openBoxContract, 'openBox', [pool.id, numberBox]);
+      const receipt = await tx.wait();
+      let tokenIds = [];
+      console.log(receipt)
+      for (let i = 0; i < receipt.events.length; i++) {
+        let tokenIDObject = new Object()
+        if (receipt.events[i].args) {
+          tokenIDObject["id"] = parseInt(ethers.utils.formatUnits(receipt.events[i].args[2], 0));
+          tokenIds.push(tokenIDObject);
+        }
+      }
+      store.box.updateArgs(tokenIds);
+      await fetchAccountBalance()
+      store.updateLoadPoolContent((new Date()).getTime())
+    }
+    catch (error) {
+      if (!!error?.data?.message) {
+        store.box.updateError(t(error?.data?.message?.replace("execution reverted: ", "").replace("ERC20: ", "")), true);
+      }
+      else if (!!error?.message) {
+        store.box.updateError(t(error?.message), true);
+      } else {
+        store.box.updateError(t(error.toString().replace("execution reverted: ", "").replace("ERC20: ", "")), true);
+      }
+    }
+  }
+
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
@@ -50,23 +82,8 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
         store.transaction.update(receipt.transactionHash);
       },
       onConfirm: () => {
-        store.box.showOpenBoxModal(true, parseInt(numberBox));
-        const tx = callWithGasPrice(openBoxContract, 'openBox', [pool.id, numberBox]);
-        return tx;
       },
       onSuccess: async ({ receipt }) => {
-        let tokenIds = [];
-        console.log(receipt)
-        for (let i = 0; i < receipt.events.length; i++) {
-          let tokenIDObject = new Object()
-          if (receipt.events[i].args){
-            tokenIDObject["id"] = parseInt(ethers.utils.formatUnits(receipt.events[i].args[2], 0));
-            tokenIds.push(tokenIDObject);
-          }
-        }
-        store.box.updateArgs(tokenIds);
-        await fetchAccountBalance()
-        store.updateLoadPoolContent((new Date()).getTime())
       },
     })
 
@@ -75,9 +92,9 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
   }
 
   const claimNftBox = async () => {
-    
+
   }
-  
+
 
   if (loading) { return null }
 
@@ -109,7 +126,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
                 </div>
                 <div className="w-4/6">
                   <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-4 ${(numberBox == 0 || isConfirming) ? "disabled" : ""} flex justify-center`}
-                    onClick={handleConfirm}>
+                    onClick={handleOpenBox}>
                     Open box {pool.token_name}
                   </button>
                 </div>

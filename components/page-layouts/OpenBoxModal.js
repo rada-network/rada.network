@@ -19,6 +19,8 @@ const OpenBoxModal = observer(({ }) => {
   const numberBox = store?.box.numberBox;
   const isOpened = store?.box.boxOpened;
   const openSuccessfullyBoxs = store?.box.openSuccessfullyBoxs;
+  const isError = store?.box.isError;
+  const message = store?.box.message;
 
   const [numberOpenBox, setOpenBox] = useState(0);
   const [boxIsOpened, setBoxIsOpened] = useState(false);
@@ -36,12 +38,12 @@ const OpenBoxModal = observer(({ }) => {
       setNftIds(tokenids);
     }
     setBoxIsOpened(isOpened);
-  }, [isOpening, tokenids, numberBox, isOpened]);
+  }, [isOpening, tokenids, numberBox, isOpened, isError, message]);
 
   useEffect(() => {
     if (openSuccessfullyBoxs.length > 0) {
       let numberBoxOpened = 0;
-      for (let i =0; i < tokenids.length; i++) {
+      for (let i = 0; i < tokenids.length; i++) {
         let openedId = parseInt(tokenids[i].id);
         for (let j = 0; j < openSuccessfullyBoxs.length; j++) {
           if (openedId === parseInt(openSuccessfullyBoxs[j].id)) {
@@ -65,7 +67,7 @@ const OpenBoxModal = observer(({ }) => {
           <Dialog
             as="div"
             className="dialog-outside-wrapper fixed inset-0 z-50 overflow-y-auto"
-            onClose={closeModal}
+            onClose={()=> {}}
           >
             <div className="dialog-outside min-h-screen px-4">
               <Transition.Child
@@ -103,49 +105,54 @@ const OpenBoxModal = observer(({ }) => {
                     className="dialog-header"
                   >
                     <div className="mx-auto inline-flex">
-                      Open your boxes
+                      {t("Open your boxes")}
                     </div>
                   </Dialog.Title>
 
                   <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
                     {!isBoxOpening &&
                       <div className="mx-auto text-center">
-                        <p>
-                          Please wait while we order the box for you
-                        </p>
+                        {!isError ? (
+                          <p>{t("Please wait while we order the box for you")}</p>
+                        ) : (
+                          <p className="mb-4" >{message}</p>
+                        )}
                       </div>
                     }
 
-                    {isBoxOpening &&
+                    {isBoxOpening && !isError &&
                       <div className="mx-auto text-center">
                         <p className="text-base mx-auto text-green-500">
                           <span className="icon mr-2"><i class="fa-duotone fa-badge-check"></i></span>
-                          Open {openedBoxs}/{numberBox} box successfully
+                          {t(`Open ${openedBoxs}/${numberBox} box successfully`)}
                         </p>
                       </div>
                     }
 
                     {/*Box list */}
-                    <div className={`flex flex-wrap justify-center py-4`}>
-                      {tokenids.map(function (nft) {
-                        return <NftItem key={nft.tokenID} item={nft} />
-                      })}
+                    {!isError && (
+                      <div className={`flex flex-wrap justify-center py-4`}>
+                        {tokenids.map(function (nft) {
+                          return <NftItem key={nft.tokenID} item={nft} />
+                        })}
 
-                      {tokenids.length == 0 && (
-                        <>
-                          {Array(numberOpenBox + 1).fill(null).map((_, i) => {
-                            return (
-                              <NftItem boxID={i} />
-                            )
-                          })}
-                        </>
-                      )}
-                    </div>
+                        {tokenids.length == 0 && (
+                          <>
+                            {Array(numberOpenBox + 1).fill(null).map((_, i) => {
+                              return (
+                                <NftItem boxID={i} />
+                              )
+                            })}
+                          </>
+                        )}
+                      </div>
+                    )}
+
 
                     <div className="flex items-center justify-center">
                       <button
                         type="button"
-                        className={`btn btn-default-lg btn-primary ${openedBoxs == numberOpenBox ? "" : "disabled"}`}
+                        className={`btn btn-default-lg btn-primary ${((openedBoxs == numberOpenBox) || isError) ? "" : "disabled"}`}
                         onClick={closeModal}>
                         {t("Close")}
                       </button>
@@ -162,33 +169,33 @@ const OpenBoxModal = observer(({ }) => {
   )
 });
 
-const OpeningText = function(){
-  const [counter,setCounter] = useState(0);
-  const [text,setText] = useState("Opening ")
+const OpeningText = function () {
+  const [counter, setCounter] = useState(0);
+  const [text, setText] = useState("Opening ")
   let interval
   useEffect(() => {
-    interval = setInterval(() =>{
+    interval = setInterval(() => {
       setCounter(prevCount => prevCount + 1)
-    },500)
+    }, 500)
 
     return () => {
       clearInterval(interval)
     }
-  },[])
+  }, [])
   useEffect(() => {
-    if (counter % 4 === 0){
+    if (counter % 4 === 0) {
       setText("")
     }
-    if (counter % 4 === 1){
+    if (counter % 4 === 1) {
       setText(" .")
     }
-    if (counter % 4 === 2){
+    if (counter % 4 === 2) {
       setText(" . . ")
     }
-    if (counter % 4 === 3){
+    if (counter % 4 === 3) {
       setText(" . . .")
     }
-  },[counter])
+  }, [counter])
   return (
     <>
       {text}
