@@ -52,7 +52,6 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
       onConfirm: () => {
         store.box.showOpenBoxModal(true, parseInt(numberBox));
         const tx = callWithGasPrice(openBoxContract, 'openBox', [pool.id, numberBox]);
-        // store.transaction.startTransaction(true, t("transaction started"));        
         return tx;
       },
       onSuccess: async ({ receipt }) => {

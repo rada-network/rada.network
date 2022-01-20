@@ -17,10 +17,13 @@ const OpenBoxModal = observer(({ }) => {
   const tokenids = store?.box.tokenIds;
   const isBoxOpening = store?.box.isBoxOpening;
   const numberBox = store?.box.numberBox;
-  console.log("Number box");
-  console.log(numberBox);
+  const isOpened = store?.box.boxOpened;
+  const openSuccessfullyBoxs = store?.box.openSuccessfullyBoxs;
+
   const [numberOpenBox, setOpenBox] = useState(0);
+  const [boxIsOpened, setBoxIsOpened] = useState(false);
   const [nftIds, setNftIds] = useState([]);
+  const [openedBoxs, setNumberBoxOpened] = useState(0);
 
   const closeModal = () => {
     store.box.reset()
@@ -32,7 +35,24 @@ const OpenBoxModal = observer(({ }) => {
     if (tokenids.length > 0) {
       setNftIds(tokenids);
     }
-  }, [isOpening, tokenids, numberBox]);
+    setBoxIsOpened(isOpened);
+  }, [isOpening, tokenids, numberBox, isOpened]);
+
+  useEffect(() => {
+    if (openSuccessfullyBoxs.length > 0) {
+      let numberBoxOpened = 0;
+      for (let i =0; i < tokenids.length; i++) {
+        let openedId = parseInt(tokenids[i].id);
+        for (let j = 0; j < openSuccessfullyBoxs.length; j++) {
+          if (openedId === parseInt(openSuccessfullyBoxs[j].id)) {
+            numberBoxOpened += 1;
+            break;
+          }
+        }
+      }
+      setNumberBoxOpened(numberBoxOpened)
+    }
+  }, [store.box.openedNumberBox])
 
   const openModal = () => {
     setIsOpen(true);
@@ -100,13 +120,12 @@ const OpenBoxModal = observer(({ }) => {
                       <div className="mx-auto text-center">
                         <p className="text-base mx-auto text-green-500">
                           <span className="icon mr-2"><i class="fa-duotone fa-badge-check"></i></span>
-                          Open 3 box successfully
+                          Open {openedBoxs}/{numberBox} box successfully
                         </p>
                       </div>
                     }
 
                     {/*Box list */}
-                    {/* <div className={`grid gap-4 p-4 ` + "grid-cols-" + (store.box.numberBox < 3 ? store.box.numberBox : 3)}> */}
                     <div className={`flex flex-wrap justify-center py-4`}>
                       {tokenids.map(function (nft) {
                         return <NftItem key={nft.tokenID} item={nft} />
@@ -126,25 +145,14 @@ const OpenBoxModal = observer(({ }) => {
                     <div className="flex items-center justify-center">
                       <button
                         type="button"
-                        className={`btn btn-default-lg btn-primary`}
-
-                        onClick={closeModal}
-                      >
+                        className={`btn btn-default-lg btn-primary ${openedBoxs == numberOpenBox ? "" : "disabled"}`}
+                        onClick={closeModal}>
                         {t("Close")}
                       </button>
                     </div>
 
                   </div>
-
-                  <div className="absolute right-4 top-3">
-                    <button
-                      type="button"
-                      className={`btn-close--box" `} onClick={closeModal}>
-                      <i className="fa-solid fa-close text-base"></i>
-                    </button>
-                  </div>
                 </div>
-
               </Transition.Child>
             </div>
           </Dialog>
