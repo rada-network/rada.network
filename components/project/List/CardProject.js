@@ -3,14 +3,11 @@ import { useTranslation } from "react-i18next";
 import Link from "next/link"
 import MiniCountdown from "./Countdown";
 import { useState, useEffect, Fragment } from "react";
-import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
-import { useLaunchpadContractV2 } from "@utils/hooks/useContracts";
-import { ethers, utils } from "ethers";
 import fetcher from "@lib/fetchJson";
-import numberFormatter from "@components/utils/numberFormatter";
 import CardProjectProgress from "./CardProjectProgress";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
+import { getRaiseTokenByNetwork,getRaiseTokenByPlatfrom } from "@utils/hooks/index";
 
 
 
@@ -81,7 +78,8 @@ const CardProjectContent = ({project,pool, status,isOpen,closeModal,openModal}) 
   }, []);
 
   const raise = pool.raise;
-  let raise_token = "BUSD"
+  let raise_token = getRaiseTokenByPlatfrom(project.platform.networkName)
+  let price_token = getRaiseTokenByPlatfrom(project.platform.networkName)
   let sale_token = project?.token?.symbol || "TBA"
   if (pool.token_sale == "fixed-swap" || pool.token_sale == "auction-swap"){
     raise_token = pool.token_name
@@ -131,7 +129,7 @@ const CardProjectContent = ({project,pool, status,isOpen,closeModal,openModal}) 
               </span>
               {pool.price ? 
               <span className="ml-auto list-value">
-              1 {sale_token} = {pool.price} BUSD
+              1 {sale_token} = {pool.price} {price_token}
               </span>
               :
               <span className="ml-auto list-value">

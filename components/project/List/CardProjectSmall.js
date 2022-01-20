@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "@components/Image";
 import fetcher from "@lib/fetchJson";
 import CardProjectProgress from "./CardProjectProgress";
+import { getRaiseTokenByNetwork,getRaiseTokenByPlatfrom } from "@utils/hooks/index";
 
 export const CardProject = ({
   project,
@@ -39,6 +40,14 @@ export const CardProject = ({
       })
     }
   }, []);
+  const raise = pool.raise;
+  let raise_token = getRaiseTokenByPlatfrom(project.platform.networkName)
+  let price_token = getRaiseTokenByPlatfrom(project.platform.networkName)
+  let sale_token = project?.token?.symbol || "TBA"
+  if (pool.token_sale == "fixed-swap" || pool.token_sale == "auction-swap"){
+    raise_token = pool.token_name
+    sale_token = pool.token_name
+  }
   return (
     <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
       <div className={`card-project card-project-sm`}>
@@ -67,7 +76,7 @@ export const CardProject = ({
               <li className="list-pair">
                 <span className="list-key">{t("Raise")}</span>
                 <span className="list-value font-semibold">
-                  {showInfo ? pool.raise.toLocaleString() + " BUSD"  : "N.A"}
+                  {showInfo ? pool.raise.toLocaleString() + " " + raise_token  : "N.A"}
                 </span>
               </li>
               <li className="list-pair">

@@ -137,6 +137,10 @@ const projectFeedGql = gql`
       title
       description
     }
+    platform{
+      name
+      networkName
+    }
     project_pool{
       sort
       open_date

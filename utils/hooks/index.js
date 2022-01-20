@@ -4,6 +4,7 @@ import { useAuctionSwapContract, useFixedSwapContract, useLaunchpadContractV2 } 
 import useActiveWeb3React from "./useActiveWeb3React"
 import { useWeb3React } from '@web3-react/core'
 import { GAS_PRICE_GWEI } from "../../config/gas"
+import useStore from "@lib/useStore"
 export function useGasPrice() {
   const userGas = GAS_PRICE_GWEI.instant
   return process.env.NEXT_PUBLIC_CHAIN == 'production' ? userGas : GAS_PRICE_GWEI.testnet
@@ -680,6 +681,21 @@ export const useAuctionSwapInfo = ({ pool, status }) => {
     }
   }, [account, lauchpadContact, active, setLoading, library])
   return { loading, auctionSwapInfo, fetchPoolInfo }
+}
+
+export const getRaiseTokenByNetwork = function(){
+  const store = useStore()
+  if (store.network == "bsc"){
+    return "BUSD"
+  }
+  return "USDT"
+}
+
+export const getRaiseTokenByPlatfrom = function(network){
+  if (network == "bsc"){
+    return "BUSD"
+  }
+  return "USDT"
 }
 
 
