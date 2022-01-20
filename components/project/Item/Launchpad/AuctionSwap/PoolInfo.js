@@ -81,10 +81,10 @@ const PoolInfo = observer(function({ project,pool }) {
             }
           </li>
           <li className="list-pair mb-2">
-            <span className="list-key">{t("Token Price")}</span>
+            <span className="list-key">{t("Start Price")}</span>
             {tokenPrice ? 
             <span className="list-value ml-auto font-semibold">
-            1 {sale_token} = {tokenPrice} BUSD
+            {tokenPrice} BUSD
             </span>
             :
             <span className="list-value ml-auto font-semibold">

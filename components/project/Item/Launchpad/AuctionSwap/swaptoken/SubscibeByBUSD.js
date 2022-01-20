@@ -77,7 +77,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
         }
         return element;
       });
-      setGlobalEditing(!globalEditing)
+      //setGlobalEditing(!globalEditing)
       setCurrentOrder(newCurrentOrder)
     }
   }
@@ -104,7 +104,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
         store.transaction.updateError(t(error.toString().replace("execution reverted: ", "").replace("ERC20: ", "")), true);
       }
     }
-    setGlobalEditing(!globalEditing)
+    //setGlobalEditing(!globalEditing)
   }
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
@@ -139,7 +139,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
         store.transaction.update(receipt.transactionHash);
         await fetchAccountBalance()
         store.updateLoadPoolContent((new Date()).getTime())
-        setGlobalEditing(!globalEditing)
+        //setGlobalEditing(false)
       },
     })
 

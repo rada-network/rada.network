@@ -42,6 +42,26 @@ export const RPC_CONFIG = {
       scan : 'https://rinkeby.etherscan.io/',
     }
   },
+  polygon : {
+    production : {
+      name : "Polygon Mainnet",
+      chainId : 137,
+      url : 'https://polygon-rpc.com',
+      scan : "https://polygonscan.com/"
+    },
+    dev : {
+      name : "Polygon Mumbai Testnet",
+      chainId : 80001,
+      url : 'https://rpc-mumbai.matic.today',
+      scan : 'https://mumbai.polygonscan.com/',
+    },
+    staging : {
+      name : "Polygon Mumbai Testnet",
+      chainId : 80001,
+      url : 'https://rpc-mumbai.matic.today',
+      scan : 'https://mumbai.polygonscan.com/',
+    }
+  },
 }
 
 export const BUSD_CONTRACT  = {
@@ -66,7 +86,18 @@ export const RIR_ETH_CONTRACT  = {
 }
 
 export const USDT_CONTRACT  = {
-  4 : "0x6945239350ae805b0823cb292a4da5974d166640"
+  1 : "0x6945239350ae805b0823cb292a4da5974d166640",
+  4 : "0x6945239350ae805b0823cb292a4da5974d166640",
+}
+
+export const RIR_POLYGON_CONTRACT  = {
+  137 : "0x6768bdc5d03a87942ce7cb143fa74e0dade0371b",
+  80001 : "0x6768bdc5d03a87942ce7cb143fa74e0dade0371b",
+}
+
+export const USDT_POLYGON_CONTRACT  = {
+  137 : "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+  80001 : "0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
 }
 
 

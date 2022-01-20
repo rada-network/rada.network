@@ -59,31 +59,7 @@ const SubscribeLaunchpad = ({ project,pool }) => {
   );
 };
 
-export const SubscribeLaunchpadClosed = ({ project }) => {
-  const { t } = useTranslation("launchpad");
-  return (
-    <>
-      <div className="max-w-xl mx-auto">
-        <div className="mt-4">
-          <h3 className="text-2xl text-center font-normal">
-            <span className="text-color-title">{t("pool closed")}</span>
-          </h3>
 
-        </div>
-
-        <div className="max-w-2xl mx-auto p-4 lg:px-8 rounded-lg">
-          <div className="mb-4">
-            <p className="text-center font-normal text-base">{t("pool close note")}</p>
-          </div>
-          <div className="list-group">
-            <WalletRequire />
-          </div>
-        </div>
-
-      </div>
-    </>
-  );
-};
 
 const Login = () => {
   const store = useStore();

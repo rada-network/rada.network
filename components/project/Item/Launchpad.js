@@ -59,11 +59,29 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
     {title: t("Status"), des: t("Status of your order"), step: "3", from: formatTime(new Date(pool.end_date)), to: "TBA"}
   ]
 
-  const auctionSwapSteps = [
+  const fixedSwapOpenBoxSteps = [
+    {title: t("Prepare"), des: t("Prepare for purchase"), step: "1", from: formatTime(new Date()), to: formatTime(new Date(pool.open_date))},
+    {title: t("Purchase"), des: t("Purchase your box"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
+    {title: t("Open"), des: t("Open your box"), step: "3", from: formatTime(new Date(pool.open_date)), to: "TBA"},
+  ]
+
+  const auctionSwapOpenBoxSteps = [
     {title: t("Prepare"), des: t("Prepare for purchase"), step: "1", from: formatTime(new Date()), to: formatTime(new Date(pool.open_date))},
     {title: t("Auction"), des: t("Place your bid"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
-    {title: t("Open"), des: t("Open box"), step: "3", from: formatTime(new Date(pool.end_date)), to: formatTime(new Date(pool.whitelist_date))},
-    {title: t("Claim"), des: t("Claim your token"), step: "4", from: formatTime(new Date(pool.whitelist_date)), to: "TBA"}
+    {title: t("Open"), des: t("Open your box"), step: "3", from: formatTime(new Date(pool.end_date)), to: formatTime(new Date(pool.whitelist_date))},
+  ]
+
+  const auctionSwapOpenBoxRewardSteps = [
+    {title: t("Prepare"), des: t("Prepare for purchase"), step: "1", from: formatTime(new Date()), to: formatTime(new Date(pool.open_date))},
+    {title: t("Auction"), des: t("Place your bid"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
+    {title: t("Open"), des: t("Open your box"), step: "3", from: formatTime(new Date(pool.end_date)), to: formatTime(new Date(pool.whitelist_date))},
+    {title: t("Claim"), des: t("Claim your reward"), step: "4", from: formatTime(new Date(pool.whitelist_date)), to: "TBA"}
+  ]
+
+  const auctionSwapNonOpenBox = [
+    {title: t("Prepare"), des: t("Prepare for purchase"), step: "1", from: formatTime(new Date()), to: formatTime(new Date(pool.open_date))},
+    {title: t("Auction"), des: t("Place your bid"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
+    {title: t("Status"), des: t("Status of your bid"), step: "3", from: formatTime(new Date(pool.end_date)), to: "TBA"}
   ]
 
   const idoSwapSteps = [
@@ -101,7 +119,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
 
     if (pool.token_sale === "fixed-swap"){
       if (currentTime > endTime){
-        setActive("howto")
+        setActive("faq")
       }
       else{
         setActive("faq")
@@ -111,7 +129,6 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
   },[winners])
 
   useEffect(() => {
-
     if (openTime < currentTime && currentTime < endTime) {
       setCurrentStep("2");
     } else if (currentTime < openTime) {
@@ -171,11 +188,20 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
                 {pool.token_sale == "ido" && 
                   <Timeline step={currentStep} steps={idoSwapSteps} />
                 }
-                {pool.token_sale == "fixed-swap" && 
+                {pool.token_sale == "fixed-swap" && !pool.is_openbox &&
                   <Timeline step={currentStep} steps={fixedSwapSteps} />
                 }
-                {pool.token_sale == "auction-swap" && 
-                  <Timeline step={currentStep} steps={auctionSwapSteps} />
+                {pool.token_sale == "fixed-swap" && pool.is_openbox &&
+                  <Timeline step={currentStep} steps={fixedSwapOpenBoxSteps} />
+                }
+                {pool.token_sale == "auction-swap" && pool.is_openbox && !pool.is_nft_reward && 
+                  <Timeline step={currentStep} steps={auctionSwapOpenBoxSteps} />
+                }
+                {pool.token_sale == "auction-swap" && pool.is_openbox && pool.is_nft_reward && 
+                  <Timeline step={currentStep} steps={auctionSwapOpenBoxRewardSteps} />
+                }
+                {pool.token_sale == "auction-swap" && !pool.is_openbox && 
+                  <Timeline step={currentStep} steps={auctionSwapNonOpenBox} />
                 }
                 
               </div>

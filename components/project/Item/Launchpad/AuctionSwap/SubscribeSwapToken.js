@@ -61,12 +61,12 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   }, [account])
 
   useEffect(() => {
-    if (loading || loadBalance) return false;
+    if (loading || loadBalance || !auctionSwapInfo) return false;
     if (auctionSwapInfo.order.total == 0 ) {
       setEnableAdjust(true)
     }
     setTokenAddress(auctionSwapInfo.info.addressItem)
-    console.log(auctionSwapInfo)
+    console.log(auctionSwapInfo.info.ended)
     if (auctionSwapInfo.info.ended) {
       if (accountBalance.boxBalance > 0) {
         setStep(3)
@@ -107,6 +107,10 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
     return (
       <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
     )
+  }
+
+  if (!auctionSwapInfo){
+    return "Failed to get contract"
   }
 
   const enableAdjust = () => {

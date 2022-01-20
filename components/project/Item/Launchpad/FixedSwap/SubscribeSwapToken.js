@@ -19,6 +19,8 @@ import { CheckSvg } from "@components/svg/SvgIcons"
 import { poll } from "@ethersproject/web";
 import { registerToken } from "@utils/wallet";
 import SubscribeSwapTokenLoading from "@components/project/Item/Launchpad/SubscribeSwapTokenLoading";
+import PoolDetailCountdown from "../PoolDetailCountdown";
+
 
 
 
@@ -143,42 +145,47 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       {step == 2 &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
 
-          <div className="card-body no-padding">
+        {fixedSwapInfo.info.ended ? <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")} /> :
+          <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")} />}
+
+          <div className="card-body">
             <div className="flex flex-col">
 
-              <div className="project-card--container no-padding">
-                <div className="">
-                  
-                    {/* <ul className="flex-shrink-0 flex-grow">
-                      <li className="flex items-center md:block mb-3 pb-3 border-b border-gray-700">
-                        <span className="opacity-70 block mb-1">Limit per wallet </span>
-                        <span className="ml-auto text-right md:text-left md:ml-0 block list-value text-md font-semibold tabular-nums">
-                          1-{fixedSwapInfo.info.maxBuyPerAddress} boxes
-                        </span>
-                      </li>
-                      <li className="flex items-center md:block mb-3 pb-3 border-b border-gray-700">
-                        <span className="opacity-70 block mb-1">Your order</span>
-                        <span className="ml-auto text-right md:text-left md:ml-0 block list-value text-md font-semibold tabular-nums">
-                          {fixedSwapInfo.order.total} boxes
-                        </span>
-                      </li>
-                    
-                    </ul> */}
-                    
-                    {/* <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
-                      <li className="flex mb-2 relative pl-6">
-                        <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
-                          <CheckSvg />  
-                        </span>
-                        <div className="">Some notice</div>
-                      </li>
-                    </ul> */}
-                  <div className="w-full">
-                    <div className="relative flex">Purchase</div>
-                    <SwapTokensV2 fixedSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+              {!fixedSwapInfo.info.ended && (
+                <>
+                  {/* {auctionSwapInfo.order.total > 0 &&
+                    <div className="m-4 bg-green-500 text-white px-8 rounded-md p-4">
+                      <div>
+                        You current bid:
+                        <div>
+                          {auctionSwapInfo.order.detail.map((item) => {
+                            return (
+                              <BidInfo pool={pool} bid_index={item.index} bid_value={item.priceEach} quantity={item.quantity}></BidInfo>
+                            )
+                          })}
+                        </div>
+                      </div>
+                      <div>
+                        <button className="btn btn-default"
+                          onClick={enableAdjust}>
+                          {!isEnableAdjust ? t("Adjust your bid") : t("cancel")}
+                        </button>
+                      </div>
+                    </div>
+                  } */}
+
+                  <div className="project-card--container no-padding">
+                    <div className={"w-full"}>
+                      <div className="relative flex pb-4">
+                        <h3 className="text-lg font-medium">
+                          {t("Purchase")}
+                        </h3>
+                      </div>
+                      <SwapTokensV2 fixedSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+                    </div>
                   </div>
-                </div>
-              </div>
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -63,12 +63,14 @@ const WalletProfile = ({ type, hidenSelectbox }) => {
                         )} `}</strong>
                       </div>
                     </Screen>
-                    {store.network == "bsc" ? (
+                    {store.network == "bsc" && (
                       <span className="badge badge-coin relative ml-2">BSC</span>
-                    ) : (
-                      <span className="badge badge-coin relative ml-2">
-                        ETHEREUM
-                      </span>
+                    )}
+                    {store.network == "eth" && (
+                      <span className="badge badge-coin relative ml-2">ETH</span>
+                    )}
+                    {store.network == "polygon" && (
+                      <span className="badge badge-coin relative ml-2">POLYGON</span>
                     )}
                   </>
                 )}
@@ -150,17 +152,15 @@ const WalletProfile = ({ type, hidenSelectbox }) => {
                       )}...${account.substr(-4)} `}</strong>
                     </div>
                   </Screen>
-
-                  {store.network == "bsc" ? (
-                    <span className="bg-white text-gray-700 text-2xs py-0.5 px-1 mx-1 rounded">
-                      BSC
-                    </span>
-                  ) : (
-                    <span className="bg-white text-gray-700 text-2xs py-0.5 px-1 mx-1 rounded">
-                      ETHEREUM
-                    </span>
+                  {store.network == "bsc" && (
+                    <span className="bg-white text-gray-700 text-2xs py-0.5 px-1 mx-1 rounded">BSC</span>
                   )}
-
+                  {store.network == "eth" && (
+                    <span className="bg-white text-gray-700 text-2xs py-0.5 px-1 mx-1 rounded">ETH</span>
+                  )}
+                  {store.network == "polygon" && (
+                    <span className="bg-white text-gray-700 text-2xs py-0.5 px-1 mx-1 rounded">POLYGON</span>
+                  )}
                   <button
                     className="text-right p-1 rounded-lg z-10"
                     onClick={() => handleDisconnectWallet()}

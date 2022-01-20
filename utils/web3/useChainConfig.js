@@ -2,7 +2,7 @@ import { InjectedConnector } from '@web3-react/injected-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { StaticJsonRpcProvider } from '@ethersproject/providers'
 import { ethers } from 'ethers'
-import { RPC_CONFIG,POLLING_INTERVAL,BUSD_CONTRACT,USDT_CONTRACT, RIR_ETH_CONTRACT,RIR_BSC_CONTRACT,BUSD_CONTRACT_2 } from '../config'
+import { RPC_CONFIG,POLLING_INTERVAL,BUSD_CONTRACT,USDT_CONTRACT, RIR_ETH_CONTRACT,RIR_BSC_CONTRACT,BUSD_CONTRACT_2,USDT_POLYGON_CONTRACT,RIR_POLYGON_CONTRACT } from '../config'
 import useStore from "../../lib/useStore"
 import {sample} from "lodash"
 
@@ -28,6 +28,12 @@ export const getNodeUrl = (network) => {
     }
     return RPC_CONFIG.eth.dev.url
   }
+  if (network === "polygon"){
+    if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+      return RPC_CONFIG.polygon.production.url
+    }
+    return RPC_CONFIG.polygon.dev.url
+  }
 }
 
 const rpcUrls = {}
@@ -50,17 +56,23 @@ export const getProviderURL = function(network){
 export const getChainName = (network) => {
   // Use custom node if available (both for development and production)
   // However on the testnet it wouldn't work, so if on testnet - comment out the REACT_APP_NODE_PRODUCTION from env file
-  if (snetwork === "bsc"){
+  if (network === "bsc"){
     if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
       return RPC_CONFIG.bsc.production.name
     }
     return RPC_CONFIG.bsc.dev.name
   }
-  if (network === "eth"){
+  else if (network === "eth"){
     if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
       return RPC_CONFIG.eth.production.name
     }
     return RPC_CONFIG.eth.dev.name
+  }
+  else if (network === "polygon"){
+    if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+      return RPC_CONFIG.polygon.production.name
+    }
+    return RPC_CONFIG.polygon.dev.name
   }
 }
 
@@ -76,6 +88,12 @@ export const getChainScanUrl = function(network){
       return RPC_CONFIG.eth.production.scan
     }
     return RPC_CONFIG.eth.dev.scan
+  }
+  if (network=== "polygon"){
+    if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+      return RPC_CONFIG.polygon.production.scan
+    }
+    return RPC_CONFIG.polygon.dev.scan
   }
 }
 
@@ -94,51 +112,24 @@ export const getChainId = (network) => {
     }
     return RPC_CONFIG.eth.dev.chainId
   }
+  if (network === "polygon"){
+    if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
+      return RPC_CONFIG.polygon.production.chainId
+    }
+    return RPC_CONFIG.polygon.dev.chainId
+  }
 }
 
 const useChainConfig = function(){
   const store = useStore()
-  
-
-  const getChainName = () => {
-    // Use custom node if available (both for development and production)
-    // However on the testnet it wouldn't work, so if on testnet - comment out the REACT_APP_NODE_PRODUCTION from env file
-    if (store.network === "bsc"){
-      if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
-        return RPC_CONFIG.bsc.production.name
-      }
-      return RPC_CONFIG.bsc.dev.name
-    }
-    if (store.network === "eth"){
-      if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
-        return RPC_CONFIG.eth.production.name
-      }
-      return RPC_CONFIG.eth.dev.name
-    }
-  }
-
-  const getChainScanUrl = function(){
-    if (store.network === "bsc"){
-      if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
-        return RPC_CONFIG.bsc.production.scan
-      }
-      return RPC_CONFIG.bsc.dev.scan
-    }
-    if (store.network === "eth"){
-      if (process.env.NEXT_PUBLIC_CHAIN === 'production') {
-        return RPC_CONFIG.eth.production.scan
-      }
-      return RPC_CONFIG.eth.dev.scan
-    }
-  }
 
   const getBscScanURL = (address) => {
-    let url = getChainScanUrl()
+    let url = getChainScanUrl(store.network)
     return url + "address/" + address
   }
 
   const getBscTransactionURL = (hash) => {
-    let url = getChainScanUrl();
+    let url = getChainScanUrl(store.network);
     return url + "tx/" + hash;
   }
 
@@ -149,6 +140,9 @@ const useChainConfig = function(){
     if (store.network === "eth"){
       return USDT_CONTRACT[chainId]
     }
+    if (store.network === "polygon"){
+      return USDT_POLYGON_CONTRACT[chainId]
+    }
   }
 
   const getBusdAddressV2 = () => {
@@ -156,7 +150,10 @@ const useChainConfig = function(){
       return BUSD_CONTRACT_2[chainId]
     }
     if (store.network === "eth"){
-      return BUSD_CONTRACT_2[chainId]
+      return USDT_CONTRACT[chainId]
+    }
+    if (store.network === "polygon"){
+      return USDT_POLYGON_CONTRACT[chainId]
     }
   }
 
@@ -166,6 +163,9 @@ const useChainConfig = function(){
     }
     if (store.network === "eth"){
       return RIR_ETH_CONTRACT[chainId]
+    }
+    if (store.network === "polygon"){
+      return RIR_POLYGON_CONTRACT[chainId]
     }
   }
 
@@ -219,6 +219,10 @@ const useChainConfig = function(){
       name = "ETH";
       symbol = "eth";
     }
+    else if (store.network == "polygon"){
+      name = "MATIC";
+      symbol = "matic";
+    }
     if (provider) {
       try {
         await provider.request({
@@ -226,14 +230,14 @@ const useChainConfig = function(){
           params: [
             {
               chainId: `0x${chainId.toString(16)}`,
-              chainName: getChainName(),
+              chainName: getChainName(store.network),
               nativeCurrency: {
                 name: name,
                 symbol: symbol,
                 decimals: decimals,
               },
               rpcUrls: [getProviderURL(store.network)],
-              blockExplorerUrls: [`${getChainScanUrl()}/`],
+              blockExplorerUrls: [`${getChainScanUrl(store.network)}/`],
             },
           ],
         })

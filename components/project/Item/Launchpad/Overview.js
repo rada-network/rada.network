@@ -1,11 +1,12 @@
 import { useTranslation } from "react-i18next";
-import { BscSvg, UsdtSvg, LaunchSvg, BusdSvg } from "../../../svg/SvgIcons";
+import { BscSvg, UsdtSvg, LaunchSvg, BusdSvg, PolygonSvg } from "../../../svg/SvgIcons";
 import { useState, useEffect } from "react";
 import Image from "@components/Image";
+import useStore from "@lib/useStore";
 export default function LaunchpadOverview({ project,pool }) {
   const { token } = project;
   const { t } = useTranslation("launchpad");
-  
+  const store = useStore()
   return (
     <>
       <div className="section-header">
@@ -13,7 +14,11 @@ export default function LaunchpadOverview({ project,pool }) {
           <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
             <span className="icon flex-shrink-0 mr-2">
               <Image
-                src={token.logo}
+                src={
+                  project?.token?.logo !== null
+                    ? project?.token?.logo
+                    : `https://cdn.rada.network/static/img/coins/128x128/${project?.token?.slug}.png`
+                }
                 className="h-px-32 w-px-32"
                 alt={token.name}
                 width={32}
@@ -34,22 +39,42 @@ export default function LaunchpadOverview({ project,pool }) {
           </div>
          
           <div className="flex flex-wrap space-x-4 mb-4">
-            <div className="flex items-center text-sm">
-              <span className="w-5 h-5">
-                <BusdSvg />
-              </span>
-              <span className="ml-2">BUSD</span>
-            </div>
-
-            <div className="flex items-center text-sm">
-              <span className="w-4 h-4">
-                <BscSvg />
-              </span>
-              <span className="ml-2">
-                {project?.platform?.networkName.toUpperCase()}
-              </span>
-            </div>
-
+            {store.network == "bsc" && 
+            <>
+              <div className="flex items-center text-sm">
+                <span className="w-5 h-5">
+                  <BusdSvg />
+                </span>
+                <span className="ml-2">BUSD</span>
+              </div>
+              <div className="flex items-center text-sm">
+                <span className="w-4 h-4">
+                  <BscSvg />
+                </span>
+                <span className="ml-2">
+                  {project?.platform?.networkName.toUpperCase()}
+                </span>
+              </div>
+            </>
+            }
+            {store.network == "polygon" && 
+            <>
+              <div className="flex items-center text-sm">
+                <span className="w-5 h-5">
+                  <UsdtSvg />
+                </span>
+                <span className="ml-2">USDT</span>
+              </div>
+              <div className="flex items-center text-sm">
+                <span className="w-4 h-4">
+                  <PolygonSvg />
+                </span>
+                <span className="ml-2">
+                  {project?.platform?.networkName.toUpperCase()}
+                </span>
+              </div>
+            </>
+            }
             {!!pool && <div className={`label ${pool.type}`}>{pool.type}</div>}
           </div>
         </div>

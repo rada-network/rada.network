@@ -41,12 +41,14 @@ export const WalletRequire = ({ type }) => {
                     -4
                   )} `}</strong>
                 </div>
-                {store.network == "bsc" ? (
+                {store.network == "bsc" && (
                   <span className="badge badge-coin relative ml-2">BSC</span>
-                ) : (
-                  <span className="badge badge-coin relative ml-2">
-                    ETHEREUM
-                  </span>
+                )}
+                {store.network == "eth" && (
+                  <span className="badge badge-coin relative ml-2">ETH</span>
+                )}
+                {store.network == "polygon" && (
+                  <span className="badge badge-coin relative ml-2">POLYGON</span>
                 )}
                 <button onClick={handleDisconnectWallet} className="ml-2 opacity-70 hover:opacity-100 p-1 rounded-lg z-10"><span className="icon"><i className="fas fa-sign-out"></i></span><span className="sr-only">Disconnect</span></button>
               </>

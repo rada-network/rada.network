@@ -25,6 +25,7 @@ const projectBySlugGql = gql`
         name
         logo
         symbol
+        slug
         link{
           url
           name
@@ -93,6 +94,8 @@ const projectBySlugGql = gql`
         is_allow_rir
         is_whitelist
         is_hidden
+        is_openbox
+        is_nft_reward
         project_pool_nft{
           title
           description

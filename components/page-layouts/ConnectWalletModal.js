@@ -76,7 +76,7 @@ const ConnectWalletModal = observer(({}) => {
       },
       {
         name: "Polygon",
-        networkName: "matic",
+        networkName: "polygon",
         icon: "polygon",
       },
       {

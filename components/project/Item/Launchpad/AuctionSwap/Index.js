@@ -8,6 +8,7 @@ import { BLOCK_PASS_KYC_COMPLETE } from "@config/constants";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
 import PoolDetailCountdown from "../PoolDetailCountdown";
+import PoolClosed from "../PoolClosed";
 
 const LaunchpadActions = observer(({ project,pool }) => {
   const { t, i18n } = useTranslation("launchpad")
@@ -53,7 +54,7 @@ const LaunchpadActions = observer(({ project,pool }) => {
             <div className="card-body no-padding">
               <div className="flex flex-col">
                 <div className="project-card--container">
-                  <SubscribeLaunchpadClosed project={project} pool={pool} />
+                  <PoolClosed />
                 </div>
               </div>
             </div>
