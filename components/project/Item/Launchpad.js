@@ -8,7 +8,7 @@ import LaunchpadContent from "./Launchpad/Content";
 
 import fetcher from "@lib/fetchJson";
 import ProjectFaq from "./Faq";
-import Subscriber from "./Launchpad/Actions/Subscriber";
+import Subscriber from "./Launchpad/Ido/Subscriber";
 import { getProjectPoolWinnerBySlug } from "@data/query/projects";
 import dynamic from "next/dynamic";
 import HowToUse from "./HowToUse";
@@ -21,7 +21,7 @@ import Timeline from "./Launchpad/AuctionSwap/Timeline";
 import BoxPreview from "./BoxPreview";
 
 
-const LaunchpadIdo = dynamic(import(`./Launchpad/Actions/Index`));
+const LaunchpadIdo = dynamic(import(`./Launchpad/Ido/Index`));
 const LaunchpadFixedSwap = dynamic(import(`./Launchpad/FixedSwap/Index`));
 const LaunchpadAuctionSwap = dynamic(import(`./Launchpad/AuctionSwap/Index`));
 const style = {
@@ -99,10 +99,10 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
   useEffect(() => {
     fetcher(`/api/pools/get-pools?slug=${project.slug}/${pool.slug}`).then(function(res){
       if (!!res.contract){
-        setPoolContract({...pool,id : res.pool_id,contract : res.contract,openbox_contract:res?.openbox_contract,box_contract : res?.box_contract })
+        setPoolContract({...pool,id : res.pool_id,contract : res.contract,openbox_contract:res?.openbox_contract,box_contract : res?.box_contract,nft_contract : res?.nft_contract })
       }
       else{
-        setPoolContract({...pool,id : null,contract : "",openbox_contract: "",box_contract : "" })
+        setPoolContract({...pool,id : null,contract : "",openbox_contract: "",box_contract : "",nft_contract : "" })
       }
       setLoadingPool(false)
     })    

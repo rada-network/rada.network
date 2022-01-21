@@ -39,6 +39,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const [step, setStep] = useState(2)
   const [tokenAddress,setTokenAddress] = useState(ethers.constants.AddressZero)
   const [poolStatus, setPoolStatus] = useState("");
+  const boxContract = useERC20(pool.box_contract)
 
   useEffect(() => {
     if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
@@ -75,10 +76,25 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   }
 
   const fetchAccountBalance = async function () {
-    let busdBalance = await bUSDContract.balanceOf(account);
-    setAccountBalance({
-      busdBalance: utils.formatEther(busdBalance),
-    })
+    try {
+      let dataPromise = []
+      dataPromise.push(bUSDContract.balanceOf(account))
+      dataPromise.push(boxContract.balanceOf(account))
+      let data = await Promise.all(dataPromise)
+      let busdBalance = data[0];
+      let boxBalance = data[1];
+      setAccountBalance({
+        busdBalance: parseInt(utils.formatEther(busdBalance)),
+        boxBalance: parseInt(utils.formatUnits(boxBalance, 0)),
+      })
+    }
+    catch(e){
+      console.log(e)
+      setAccountBalance({
+        busdBalance: 0,
+        boxBalance: 0,
+      })
+    }
   }
   useEffect(() => {
     if (!!account) {

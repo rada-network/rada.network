@@ -3,7 +3,7 @@ import { usePageStore } from "@lib/usePageStore";
 
 import { useTranslation } from "next-i18next";
 import { observer } from "mobx-react";
-import PoolInfoIdo from "./Actions/PoolInfo"
+import PoolInfoIdo from "./Ido/PoolInfo"
 import PoolInfoFixedSwap from "./FixedSwap/PoolInfo.js"
 import PoolInfoAuctionSwap from "./AuctionSwap/PoolInfo.js"
 

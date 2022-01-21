@@ -6,7 +6,7 @@ import useStore from "@lib/useStore";
 import { useTranslation } from "react-i18next";
 import { CheckSvg } from "@components/svg/SvgIcons"
 import useChainConfig from "@utils/web3/useChainConfig";
-import NftItem from "@components/project/Item/Launchpad/AuctionSwap/openbox/NftItem";
+import NftItem from "@components/project/Item/Launchpad/OpenBox/NftItem";
 
 const OpenBoxModal = observer(({ }) => {
   const store = useStore();

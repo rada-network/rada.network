@@ -12,11 +12,11 @@ import useChainConfig from "utils/web3/useChainConfig"
 import useStore from "@lib/useStore";
 import OpenDate from "@components/project/Item/Launchpad/OpenDate";
 import ProjectCountdown from "./Countdown";
-import OpenBox from "./openbox/OpenBox";
+import OpenBox from "@components/project/Item/Launchpad/OpenBox/OpenBox";
 import PoolDetailCountdown from "../PoolDetailCountdown";
 import BidInfo from "./BidInfo";
 import SubscribeSwapTokenLoading from "@components/project/Item/Launchpad/SubscribeSwapTokenLoading";
-import NftList from "./openbox/NftList"
+import NftList from "@components/project/Item/Launchpad/OpenBox/NftList";
 
 
 const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) => {
@@ -42,16 +42,26 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
   }
 
   const fetchAccountBalance = async function () {
-    let dataPromise = []
-    dataPromise.push(bUSDContract.balanceOf(account))
-    dataPromise.push(boxContract.balanceOf(account))
-    let data = await Promise.all(dataPromise)
-    let busdBalance = data[0];
-    let boxBalance = data[1];
-    setAccountBalance({
-      busdBalance: parseInt(utils.formatEther(busdBalance)),
-      boxBalance: parseInt(utils.formatUnits(boxBalance, 0)),
-    })
+    try {
+      let dataPromise = []
+      dataPromise.push(bUSDContract.balanceOf(account))
+      dataPromise.push(boxContract.balanceOf(account))
+      let data = await Promise.all(dataPromise)
+      let busdBalance = data[0];
+      let boxBalance = data[1];
+      setAccountBalance({
+        busdBalance: parseInt(utils.formatEther(busdBalance)),
+        boxBalance: parseInt(utils.formatUnits(boxBalance, 0)),
+      })
+    }
+    catch(e){
+      console.log(e)
+      setAccountBalance({
+        busdBalance: 0,
+        boxBalance: 0,
+      })
+    }
+    
     setLoadBalance(false);
   }
   useEffect(() => {
@@ -72,7 +82,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
         setStep(3)
       } else {
         if (auctionSwapInfo.order.totalWinItem > 0) {
-          setStep(21)
+          setStep(2)
         } else {
           if (auctionSwapInfo.order.total > 0) {
             //place order success
@@ -128,75 +138,50 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
           <div className="card-body">
             <div className="flex flex-col">
 
-              {!auctionSwapInfo.info.ended && (
-                <>
-                  {/* {auctionSwapInfo.order.total > 0 &&
-                    <div className="m-4 bg-green-500 text-white px-8 rounded-md p-4">
-                      <div>
-                        You current bid:
-                        <div>
-                          {auctionSwapInfo.order.detail.map((item) => {
-                            return (
-                              <BidInfo pool={pool} bid_index={item.index} bid_value={item.priceEach} quantity={item.quantity}></BidInfo>
-                            )
-                          })}
-                        </div>
-                      </div>
-                      <div>
-                        <button className="btn btn-default"
-                          onClick={enableAdjust}>
-                          {!isEnableAdjust ? t("Adjust your bid") : t("cancel")}
-                        </button>
-                      </div>
-                    </div>
-                  } */}
-
-                  <div className="project-card--container no-padding">
-                    <div className={isEnableAdjust ? "w-full" : "w-full disabled"}>
-                      <div className="relative flex pb-4">
-                        <h3 className="text-lg font-medium">
-                          {auctionSwapInfo.order.totalItem > 0 ? t("Adjust your bid") : t("Place your bid")}
-                        </h3>
-                      </div>
-                      <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+              
+              {/* {auctionSwapInfo.order.total > 0 &&
+                <div className="m-4 bg-green-500 text-white px-8 rounded-md p-4">
+                  <div>
+                    You current bid:
+                    <div>
+                      {auctionSwapInfo.order.detail.map((item) => {
+                        return (
+                          <BidInfo pool={pool} bid_index={item.index} bid_value={item.priceEach} quantity={item.quantity}></BidInfo>
+                        )
+                      })}
                     </div>
                   </div>
-                </>
-              )}
-
-            </div>
-          </div>
-        </div>
-      }
-
-      {/* Show status */}
-      {step == 21 &&
-        <div className="card-default project-main-actions no-padding overflow-hidden">
-          <div className="card-body no-padding card card-default">
-            <div className="flex flex-col">
-
-              <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")} />
-
-              <div className="m-4 bg-green-500 text-white px-8 rounded-md p-4">
-                <div>
-                  Your bid result:
                   <div>
-                    <div>- You win {auctionSwapInfo.order.totalWinItem} box</div>
-                    <div>- You refund {auctionSwapInfo.order.refundBalance} BUSD</div>
+                    <button className="btn btn-default"
+                      onClick={enableAdjust}>
+                      {!isEnableAdjust ? t("Adjust your bid") : t("cancel")}
+                    </button>
                   </div>
                 </div>
-              </div>
+              } */}
 
-              <div className="m-4 px-1 p-4">
-                <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`}>
-                  {t("Claim")}
-                </button>
+              <div className="project-card--container no-padding">
+                <div className={isEnableAdjust ? "w-full" : "w-full disabled"}>
+                  <div className="relative flex pb-4">
+                    {!auctionSwapInfo.info.ended && 
+                    <h3 className="text-lg font-medium">
+                      {auctionSwapInfo.order.totalItem > 0 ? t("Adjust your bid") : t("Place your bid")}
+                    </h3>
+                    }
+                    {auctionSwapInfo.info.ended && 
+                    <h3 className="text-lg font-medium">
+                      {t("Your bid result")}
+                    </h3>
+                    }
+                    
+                  </div>
+                  <SwapTokensV2 auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+                </div>
               </div>
             </div>
           </div>
         </div>
       }
-
       {step == 3 &&
         <>
         <div className="card-default project-main-actions no-padding overflow-hidden">
