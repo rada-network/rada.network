@@ -201,7 +201,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                     </h3>
                   </div>
 
-                  <div className="w-full flex justify-between mt-4">
+                  <div className="w-full flex flex-col md:flex-row md:justify-between mt-4">
                     <OpenBox auctionSwapInfo={auctionSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
 
                     <div className="mt-4 flex flex-shrink-0">

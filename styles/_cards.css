@@ -204,6 +204,18 @@ a:visited .card-post,
 
 
 /* 
+Card NFT
+----------------------------------------------*/
+.card-nftthumb {
+  @apply px-4 py-4;
+}
+
+.slick-list .card-nftthumb {
+  @apply px-4 py-0;
+}
+
+
+/* 
 Card Social 
 ----------------------------------------------*/
 .card-social {

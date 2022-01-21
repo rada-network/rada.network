@@ -100,7 +100,7 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
 
           {totalNft > ITEM_PER_PAGE &&
           <div className="flex flex-col md:flex-row md:justify-between items-center">
-            <div className="mt-4 opacity-60 test-sm">
+            <div className="mt-4 text-xs opacity-60">
               <p>Showing
               6 / <strong>200</strong> items</p>
             </div>
