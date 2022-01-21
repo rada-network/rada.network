@@ -16,13 +16,11 @@ import MiniCountdown from "@components/project/List/Countdown";
 import useStore from "@lib/useStore"
 import OpenDate from "@components/project/Item/Launchpad/OpenDate"
 import { CheckSvg } from "@components/svg/SvgIcons"
-import { poll } from "@ethersproject/web";
 import { registerToken } from "@utils/wallet";
 import SubscribeSwapTokenLoading from "@components/project/Item/Launchpad/SubscribeSwapTokenLoading";
 import PoolDetailCountdown from "../PoolDetailCountdown";
-
-
-
+import OpenBox from "@components/project/Item/Launchpad/OpenBox/OpenBox";
+import NftList from "@components/project/Item/Launchpad/OpenBox/NftList";
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const { t, i18n } = useTranslation("launchpad")
@@ -124,8 +122,13 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
         setStep(2)
       }
       else{
+        if (pool.is_openbox){
+          setStep(3)
+        }
+        else{
+          setStep(31)
+        }
         //place order success
-        setStep(31)
       }
       
     }
@@ -206,6 +209,57 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
           </div>
         </div>
       }
+      {step == 3 &&
+        <>
+        <div className="card-default project-main-actions no-padding overflow-hidden">
+
+          {fixedSwapInfo.info.ended ?
+            <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")} /> :
+            <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")} />
+          }
+
+          <div className="card-body">
+            <div className="flex flex-col">
+              <div className="project-card--container no-padding">
+                <div className="w-full">
+                  <div className="relative flex flex-col justify-center">
+                    <h3 className="text-lg font-medium">
+                      Open your boxes
+                    </h3>
+                  </div>
+
+                  <div className="w-full flex flex-col md:flex-row md:justify-between mt-4">
+                    <OpenBox auctionSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+
+                    <div className="mt-4 flex flex-shrink-0">
+                      <span className="font-normal">Your balance:</span>
+                      <div className="ml-2">
+                        <span className="badge !text-sm !px-2">
+                          <strong className="font-semibold mr-1">{accountBalance.boxBalance}</strong>
+                          {pool.token_name} 
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  {currentTime < endTime && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
+                    <div className="mt-4 w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
+                      <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
+                        <i className="fa fa-money-bill"></i>
+                      </span>
+                      <div>
+                        <p className="text-lg text-yellow-600 dark:text-yellow-400">{t("Purchase more")}</p>
+                      </div>
+                    </div>
+                    }
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <NftList auctionSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+        </>
+      }
       {(step == 31) &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
           <div className="card-body no-padding">
@@ -235,7 +289,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           <i className="fa fa-money-bill"></i>
                         </span>
                         <div>
-                          <p className="text-lg text-yellow-600 dark:text-yellow-400">{t("Place more")}</p>
+                          <p className="text-lg text-yellow-600 dark:text-yellow-400">{t("Purchase more")}</p>
 
                           <a href={`#`}  className="group">
                             <span className="text-sm mr-1">

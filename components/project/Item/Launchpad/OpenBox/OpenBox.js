@@ -140,11 +140,11 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
             {t("Claim")}
           </button>
         )} */}
-        {account === "0xC0129E7E233d6D9D4f2717Ba3e1837A4FE6C03af" &&
+        {/* {account === "0xC0129E7E233d6D9D4f2717Ba3e1837A4FE6C03af" &&
           <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`} onClick={resetApproved}  >
             {t("Reset approve")}
           </button>
-        }
+        } */}
       </div>
     </>
   )

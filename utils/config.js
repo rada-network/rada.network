@@ -52,13 +52,13 @@ export const RPC_CONFIG = {
     dev : {
       name : "Polygon Mumbai Testnet",
       chainId : 80001,
-      url : 'https://rpc-mumbai.matic.today',
+      url : 'https://matic-mumbai.chainstacklabs.com',
       scan : 'https://mumbai.polygonscan.com/',
     },
     staging : {
       name : "Polygon Mumbai Testnet",
       chainId : 80001,
-      url : 'https://rpc-mumbai.matic.today',
+      url : 'https://matic-mumbai.chainstacklabs.com',
       scan : 'https://mumbai.polygonscan.com/',
     }
   },
@@ -97,7 +97,7 @@ export const RIR_POLYGON_CONTRACT  = {
 
 export const USDT_POLYGON_CONTRACT  = {
   137 : "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-  80001 : "0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+  80001 : "0xD40132404421037309B608c0ab9efD518a158198"
 }
 
 

@@ -15,7 +15,7 @@ import useChainConfig from '../../utils/web3/useChainConfig'
 import useStore from '../../lib/useStore'
 import {useRouter} from 'next/router'
 import { NetworkLocalStorageKey } from '../../utils/config'
-import { useERC20, useLaunchpadContract, useLotteryContract } from '../../utils/hooks/useContracts'
+import { useERC20, useLaunchpadContract } from '../../utils/hooks/useContracts'
 import { ethers } from 'ethers'
 
 function getErrorMessage(error) {

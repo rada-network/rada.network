@@ -8,6 +8,7 @@ import { useTranslation } from "next-i18next"
 import { CheckSvg } from "@components/svg/SvgIcons"
 import useStore from "@lib/useStore"
 import SubscribeSwapTokenLoading from "../../SubscribeSwapTokenLoading"
+import { getRaiseTokenByPlatfrom } from "@utils/hooks/index"
 
 const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance,fixedSwapInfo}) => {
   const store = useStore()
@@ -27,6 +28,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
     setNumberBox(e.currentTarget.value)
     setNumberBusd(parseInt(e.currentTarget.value)*fixedSwapInfo.info.startPrice )
   }
+  const usd_token = getRaiseTokenByPlatfrom(project)
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
   useApproveConfirmTransaction({
     onRequiresApproval: async () => {
@@ -79,13 +81,13 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
             <>{t("Approving Contract")}</> 
             }
             {isApproved && 
-            <>{t("Approved Contract")} BUSD</> 
+            <>{t("Approved Contract")} {usd_token}</> 
             }
             {!isApproving && !isApproved &&
-            <>{t("Approve Contract")} BUSD</>
+            <>{t("Approve Contract")} {usd_token}</>
             }
           </button>
-          <p className="mt-4 text-xs">Enable BUSD to purchase boxes</p>
+          <p className="mt-4 text-xs">{t("Enable USD to purchase boxes")}</p>
         </div>
         }
 
@@ -116,11 +118,11 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
                 </select>
               </div>
               <div id="price" className="w-1/3 text-base flex">
-              {fixedSwapInfo.info.startPrice} BUSD
+              {fixedSwapInfo.info.startPrice} {usd_token}
               </div>
               <div className="w-1/3 flex-grow flex items-center text-right">
                 <div className="ml-auto text-base">
-                  {numberBusd} BUSD       
+                  {numberBusd} {usd_token}       
                 </div>       
               </div>
             </div>
@@ -129,7 +131,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <div> 
             
             <div className="flex items-center mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 dark:border-opacity-50">
-              <div className="text-sm opacity-60">You can purchase upto 10 boxes</div>
+              <div className="text-sm opacity-60">You can purchase upto {fixedSwapInfo.info.maxBuyPerAddress - fixedSwapInfo.order.total} boxes</div>
               <button className={`btn !text-sm relative max-w-lg btn-default btn-default-lg btn-primary ml-auto` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" width="100%" scale="md">
                 {isConfirming && <span className="spinner" />}
                 {isConfirming ? <>{t("Place Order")}</> : <>{t("Place Order")}</>}
@@ -139,7 +141,16 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           
           {fixedSwapInfo.order.total > 0 &&
           <div className="mt-4">
-            <button className="btn btn-default btn-default-lg w-full mt-2" onClick={e => {setStep(31)}} disabled="" id="cancel" width="100%" scale="md">
+            <button className="btn btn-default btn-default-lg w-full mt-2" 
+            onClick={e => {
+              if (pool.is_openbox){
+                setStep(3)
+              }
+              else{
+                setStep(31)
+              }
+              
+            }} disabled="" id="cancel" width="100%" scale="md">
             {t("Back")}
             </button>
           </div>

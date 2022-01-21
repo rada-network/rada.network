@@ -8,11 +8,11 @@ import NftItem from "./NftItem"
 import SubscribeSwapTokenLoading from "../SubscribeSwapTokenLoading"
 //const ITEM_PER_PAGE = 9
 const ITEM_PER_PAGE = 6
-const NftList = function({ pool, project, accountBalance, setStep, fetchAccountBalance, auctionSwapInfo }){
+const NftList = function({ pool, project, accountBalance, setStep, fetchAccountBalance }){
   const store = useStore()
   const { t } = useTranslation("launchpad")
   const { account } = useActiveWeb3React()
-  const radaNftContract = useErc721('0x6e1aa924a1882b7c1122290e11a9fe94f63af52d')
+  const radaNftContract = useErc721(pool.nft_contract)
   const [listNft,setListNft] = useState([]);
   const [loading,setLoading] = useState(true);
   const [totalNft,setTotalNft] = useState(0);
