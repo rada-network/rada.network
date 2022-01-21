@@ -93,33 +93,40 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
             
           </div>
           :
-          <div className="" >
+          <div className="">
             {t("Your inventory is empty")}
           </div>
           }
-          <div className="flex space-x-2 mt-4 justify-center">
+
           {totalNft > ITEM_PER_PAGE &&
-            <ul className="pagination">
-              {curPage > 1 && 
-              <li><a href="#" onClick={e => {handleChangePage(curPage-1)}}  className="">{curPage - 1}</a></li>
-              }
-              <li><a href="#" className="current">{curPage}</a></li>
-              {(curPage+1) <= totalPage && 
-              <li><a href="#" onClick={e => {handleChangePage(curPage+1)}} className="">{curPage+1}</a></li>
-              }
-              {(curPage+2) <= totalPage && 
-              <li><a href="#" onClick={e => {handleChangePage(curPage+2)}} className="">{curPage + 2}</a></li>
-              }
-              
-              {Math.floor((totalNft)/ITEM_PER_PAGE) + 1 > curPage + 2 && 
-              <li><a>...</a></li>
-              }
-              {Math.floor((totalNft)/ITEM_PER_PAGE) + 1 > curPage + 2 && 
-              <li><a href="#" onClick={e => {handleChangePage(Math.floor((totalNft)/50) + 1)}} className="">{Math.floor(totalNft/ITEM_PER_PAGE) + 1}</a></li>
-              }
-            </ul>
-            }
-        </div>
+          <div className="flex flex-col md:flex-row md:justify-between items-center">
+            <div className="mt-4 opacity-60 test-sm">
+              <p>Showing
+              6 / <strong>200</strong> items</p>
+            </div>
+            <div className="flex space-x-2 mt-4 justify-center">
+              <ul className="pagination">
+                {curPage > 1 && 
+                <li><a href="#" onClick={e => {handleChangePage(curPage-1)}}  className="">{curPage - 1}</a></li>
+                }
+                <li><a href="#" className="current">{curPage}</a></li>
+                {(curPage+1) <= totalPage && 
+                <li><a href="#" onClick={e => {handleChangePage(curPage+1)}} className="">{curPage+1}</a></li>
+                }
+                {(curPage+2) <= totalPage && 
+                <li><a href="#" onClick={e => {handleChangePage(curPage+2)}} className="">{curPage + 2}</a></li>
+                }
+                
+                {Math.floor((totalNft)/ITEM_PER_PAGE) + 1 > curPage + 2 && 
+                <li><a>...</a></li>
+                }
+                {Math.floor((totalNft)/ITEM_PER_PAGE) + 1 > curPage + 2 && 
+                <li><a href="#" onClick={e => {handleChangePage(Math.floor((totalNft)/50) + 1)}} className="">{Math.floor(totalNft/ITEM_PER_PAGE) + 1}</a></li>
+                }
+              </ul>
+            </div>
+          </div>
+          }
           {/* NFT Cards Slideshow */}
 
         </div>
