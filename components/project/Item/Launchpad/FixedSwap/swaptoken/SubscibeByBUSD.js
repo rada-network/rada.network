@@ -116,7 +116,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
                 </select>
               </div>
               <div id="price" className="w-1/3 text-base flex">
-              150 BUSD
+              {fixedSwapInfo.info.startPrice} BUSD
               </div>
               <div className="w-1/3 flex-grow flex items-center text-right">
                 <div className="ml-auto text-base">
