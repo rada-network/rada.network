@@ -109,13 +109,21 @@ const OpenBoxModal = observer(({ }) => {
                     </div>
                   </Dialog.Title>
 
-                  <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
+                  <div className="p-4 md:p-6 dark:text-gray-300">
                     {!isBoxOpening &&
-                      <div className="mx-auto text-center">
+                      <div className=" max-w-md mx-auto text-center">
                         {!isError ? (
-                          <p>{t("Please wait while we order the box for you")}</p>
+                          <>
+                          <p className="text-base">{t("Please wait while we order the box for you")}</p>
+                          <p className="text-xs text-gray-400 dark:text-gray-400 mt-1">
+                            {t("Make sure you confirmed your transaction in Metamask or your software wallet")}
+                          </p>
+                          </>
                         ) : (
-                          <p className="mb-4" >{message}</p>
+                          <p className="mt-8 mb-12">
+                            <span className="text-5xl icon mr-2 mb-4"><i class="fa-duotone fa-info-circle text-yellow-500"></i></span>
+                            <span className="block">{message}</span>
+                          </p>
                         )}
                       </div>
                     }
@@ -148,8 +156,8 @@ const OpenBoxModal = observer(({ }) => {
                       </div>
                     )}
 
-
                     <div className="flex items-center justify-center">
+
                       <button
                         type="button"
                         className={`btn btn-default-lg btn-primary ${((openedBoxs == numberOpenBox) || isError) ? "" : "disabled"}`}
@@ -158,6 +166,14 @@ const OpenBoxModal = observer(({ }) => {
                       </button>
                     </div>
 
+                  </div>
+
+                  <div className="absolute right-4 top-3">
+                    <button
+                      type="button"
+                      className={`btn-close--box `} onClick={closeModal}>
+                      <i className="fa-solid fa-close text-base"></i>
+                    </button>
                   </div>
                 </div>
               </Transition.Child>
