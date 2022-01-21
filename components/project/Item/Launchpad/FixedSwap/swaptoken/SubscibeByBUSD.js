@@ -22,7 +22,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
   const [loading, setLoading] = useState(true);
 
   
-  const maxSelected = fixedSwapInfo.info.maxBuyPerAddress - fixedSwapInfo.order.total
+  const maxSelected = fixedSwapInfo.info.maxBuyPerAddress - fixedSwapInfo.order.total > fixedSwapInfo.info.maxBuyPerOrder ? fixedSwapInfo.info.maxBuyPerOrder : fixedSwapInfo.info.maxBuyPerAddress - fixedSwapInfo.order.total;
   const handleChangeNumberBox = function(e){
     setNumberBox(e.currentTarget.value)
     setNumberBusd(parseInt(e.currentTarget.value)*fixedSwapInfo.info.startPrice )

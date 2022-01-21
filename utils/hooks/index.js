@@ -528,6 +528,7 @@ export const useFixedSwapInfo = ({ pool, status }) => {
         startTime: parseInt(ethers.utils.formatUnits(info.startTime, 0)),
         startPrice: parseInt(ethers.utils.formatUnits(info.startPrice)),
         maxBuyPerAddress: parseInt(ethers.utils.formatUnits(info.maxBuyPerAddress,0)),
+        maxBuyPerOrder: parseInt(ethers.utils.formatUnits(info.maxBuyPerOrder,0)),
       }
       updateInfo = {
         stat,
