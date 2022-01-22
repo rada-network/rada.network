@@ -65,11 +65,15 @@ const NftItem = function({item, boxID}){
     return (
       <div className={`card card-nftthumb w-1/2 md:w-1/3`}>
         <div className="relative">
-          <div className="bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg">
-            <img className="w-full object-cover rounded-lg opacity-50" src="https://d14zibwblxxd02.cloudfront.net/testnet/imgs/5/0.jpg" />
+          <div className="bg-gradient-to-br from-gray-600 to-gray-700 rounded-xl">
+            <img className="w-full object-cover rounded-xl opacity-50" src="https://d14zibwblxxd02.cloudfront.net/testnet/imgs/5/0.jpg" />
           </div>
-
-          <div className="absolute top-1/2 right-1/2 -mr-6 -mt-2">
+          <div className="absolute top-2/3 right-1/2 -mr-6 mt-4">
+            <span className="flex text-xs font-medium bg-white bg-opacity-100 text-gray-900 text-center w-12 pl-1.5 rounded-full shadow-xl">
+              • • • •
+            </span>
+          </div>
+          <div className="absolute top-2/3 right-1/2 -mr-6 mt-4">
             <span className="flex text-xs font-medium bg-white bg-opacity-80 text-gray-900 text-center w-12 pl-1.5 rounded-full shadow-xl">
               <OpeningText />
             </span>
@@ -91,11 +95,18 @@ const NftItem = function({item, boxID}){
             <img className="w-full object-cover rounded-xl opacity-50" src="https://d14zibwblxxd02.cloudfront.net/testnet/imgs/5/0.jpg" />
             }
             {!!metadata?.rarityName ? null : 
-              <div className="absolute top-2/3 right-1/2 -mr-7">
-                <span className="flex text-xs font-medium bg-white bg-opacity-80 text-gray-900 text-center w-12 pl-1.5 rounded-full shadow-xl">
-                  <OpeningText />
-                </span>
-              </div>
+            <>
+            <div className="absolute top-2/3 right-1/2 -mr-7 mt-0">
+              <span className="flex text-xs font-medium bg-white bg-opacity-100 text-gray-900 text-center w-12 pl-1.5 rounded-full shadow-xl">
+                • • • •
+              </span>
+            </div>
+            <div className="absolute top-2/3 right-1/2 -mr-7 mt-0">
+              <span className="flex text-xs font-medium bg-white bg-opacity-80 text-gray-900 text-center w-12 pl-1.5 rounded-full shadow-xl">
+                <OpeningText />
+              </span>
+            </div>
+            </>
             }
           </div>
 
