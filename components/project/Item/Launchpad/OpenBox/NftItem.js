@@ -98,7 +98,7 @@ const NftItem = function({item, boxID}){
                {metadata?.name} #{item.id}
               </h5>
               {!!metadata?.rarityName ?
-              <span className="text-xs font-medium text-yellow-500">
+              <span className={`text-xs font-medium label-${metadata?.rarityName}`}>
                 {metadata?.rarityName}
               </span>
               :
