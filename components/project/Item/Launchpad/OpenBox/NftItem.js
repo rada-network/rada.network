@@ -21,12 +21,12 @@ const NftItem = function({item, boxID}){
     "4":"Rare",
     "5":"Rare",
     "6":"Rare",
-    "7":"Super Rare",
-    "8":"Super Rare",
-    "9":"Super Rare",
-    "10":"Legendary",
-    "11":"Legendary",
-    "12":"Legendary"
+    "7":"Epic",
+    "8":"Epic",
+    "9":"Epic",
+    "10":"Legend",
+    "11":"Legend",
+    "12":"Legend"
   }
 
   const fetchMetaData = function(){
@@ -66,7 +66,7 @@ const NftItem = function({item, boxID}){
       <div className={`card card-nftthumb w-1/2 xl:w-1/3`}>
         <div className="relative">
           <div className="bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg">
-            <img className="w-full object-cover rounded-lg opacity-50" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
+            <img className="w-full object-cover rounded-lg opacity-50" src="https://d14zibwblxxd02.cloudfront.net/testnet/imgs/5/0.jpg" />
           </div>
 
           <div className="absolute top-1/2 right-1/2 -mr-6 -mt-2">
@@ -88,7 +88,7 @@ const NftItem = function({item, boxID}){
             {metadata?.image ? 
             <img className="w-full object-cover rounded-lg" src={metadata?.image} />
             :
-            <img className="w-full object-cover rounded-lg opacity-50" src="https://d14zibwblxxd02.cloudfront.net/box-square.png" />
+            <img className="w-full object-cover rounded-lg opacity-50" src="https://d14zibwblxxd02.cloudfront.net/testnet/imgs/5/0.jpg" />
             }
           </div>
 
