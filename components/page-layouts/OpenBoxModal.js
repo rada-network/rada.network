@@ -171,7 +171,7 @@ const OpenBoxModal = observer(({ }) => {
                   <div className="absolute right-4 top-3">
                     <button
                       type="button"
-                      className={`btn-close--box `} onClick={closeModal}>
+                      className={`btn-close--box ${((openedBoxs == numberOpenBox) || isError) ? "" : "disabled"}`} onClick={closeModal}>
                       <i className="fa-solid fa-close text-base"></i>
                     </button>
                   </div>
