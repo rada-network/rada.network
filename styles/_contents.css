@@ -320,6 +320,33 @@ Small Badges
   }
 }
 
+/*
+Labels
+------------------------------ */
+/* 
+NFT Labels 
+*/
+.nftlabel-immortal,
+.nftlabel-Immortal,
+.nftlabel-legend,
+.nftlabel-Legend {
+  @apply text-transparent bg-clip-text bg-gradient-to-br from-yellow-300 to-yellow-600;
+}
+
+.nftlabel-epic,
+.nftlabel-Epic {
+  @apply text-transparent bg-clip-text bg-gradient-to-br from-purple-300 to-purple-600;
+}
+
+.nftlabel-rare,
+.nftlabel-Rare {
+  @apply text-transparent bg-clip-text bg-gradient-to-br from-blue-300 to-blue-600;
+}
+
+.nftlabel-common,
+.nftlabel-Common {
+  @apply text-transparent bg-clip-text bg-gradient-to-br from-green-300 to-green-600;
+}
 
 /*
 Icons Styles

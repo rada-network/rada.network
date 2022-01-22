@@ -492,3 +492,56 @@ Timeline State: COMPLETED
 .is-complete .timeline-event-body::after {
   @apply bg-green-400;
 }
+
+
+
+/* Slick Slider
+-------------------------------*/
+.slick-prev,
+.slick-next {
+  @apply !hidden !w-8 !h-8 hover:!bg-gray-200 rounded-full z-10;
+}
+
+.slick-prev {
+  @apply ml-1.5 -mt-2;
+}
+
+.slick-next {
+  @apply mr-1.5 -mt-2;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  @apply !bg-gray-200;
+}
+
+.dark .slick-prev:hover,
+.dark .slick-next:hover {
+  @apply !bg-gray-700;
+}
+
+.slick-slider:hover {
+  .slick-prev,
+  .slick-next {
+  @apply !block;
+}
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: "Font Awesome 6 Pro" !important;
+  @apply !text-xl !text-gray-700;
+}
+
+.slick-prev:before {
+  content: "\f104" !important;
+}
+
+.slick-next:before {
+  content: "\f105" !important;
+}
+
+.dark .slick-prev:before,
+.dark .slick-next:before {
+  @apply !text-gray-200;
+}
