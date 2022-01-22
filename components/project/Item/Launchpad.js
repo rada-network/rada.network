@@ -149,6 +149,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
         <div class="flex flex-col lg:flex-row items-start">
 
           <Screen upto="md">
+            <div> {/* HieuNN: Fix Safari Grid Height by adding a div */}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <LaunchpadContent project={project} pool={poolContract} />
 
@@ -171,6 +172,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </Screen>
           
