@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useRef, useState } from "react";
 import { set } from "lodash";
 import { useTranslation } from "react-i18next";
+import Image from "@components/Image";
 
 const BoxPreview = function({project,pool}){
   const {t} = useTranslation("launchpad")
@@ -22,7 +23,7 @@ const BoxPreview = function({project,pool}){
       </div>
       <div className="card-body">
 
-        <div className="">
+        <div className="flex center">
           Intro of {pool.token_name}
         </div>
       </div>

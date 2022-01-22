@@ -32,7 +32,7 @@ export const useBUSDContract = () => {
   const address = getBusdAddress()
   const { library,account } = useActiveWeb3React()
   const store = useStore()
-  return useMemo(() => getBep20Contract(address,account ? library.getSigner() : library, store.network ), [address, library, store,network])
+  return useMemo(() => getBep20Contract(address,account ? library.getSigner() : library, store.network ), [address, library, store.network])
 }
 
 export const useBUSDContractV2 = () => {
