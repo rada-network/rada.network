@@ -6,7 +6,7 @@ import useStore from "@lib/useStore";
 import { useTranslation } from "react-i18next";
 import { CheckSvg } from "@components/svg/SvgIcons"
 import useChainConfig from "@utils/web3/useChainConfig";
-
+const DELAY_TIMEOUT = 30000
 const TransactionModal = observer(({ }) => {
   const store = useStore();
   const { t } = useTranslation("common");
@@ -34,15 +34,25 @@ const TransactionModal = observer(({ }) => {
     if (isStartTransaction) {
       timeoutShowBscWarning = setTimeout(function() {
         if (transactionHash == "") {
-          store?.transaction.updateMessage(t("bsc warning"));
+          if (store.network === "bsc"){
+            store?.transaction.updateMessage(t("bsc warning"));
+          }
+          else if (store.network === "polygon"){
+            store?.transaction.updateMessage(t("polygon warning"));
+          }
         }
-      }, 30000);
+      }, DELAY_TIMEOUT);
     }
     else{
       clearTimeout(timeoutShowBscWarning);
     }
-    
-  }, [isStartTransaction]);
+    if (store?.transaction.isError){
+      clearTimeout(timeoutShowBscWarning)
+    }
+    return () => {
+      clearTimeout(timeoutShowBscWarning);
+    }
+  }, [isStartTransaction,store?.transaction.isError]);
 
   function openModal() {
     setIsOpen(true);

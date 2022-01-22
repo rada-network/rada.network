@@ -52,6 +52,7 @@
   "Haven't KYC yet": "Chưa hoàn thành!",
   "KYC completed": "Chưa hoàn thành!",
   "bsc warning" : "Binance Smart Chain đôi khi quá tải. Có thể mất đến 5 phút để hoàn tất giao dịch.",
+  "polygon warning" : "Polygon Network đôi khi quá tải. Có thể mất đến 5 phút để hoàn tất giao dịch.",
   "start transaction message": "Vui lòng kiểm tra lại ví và phí gas trước khi bắt đầu giao dịch.",
   "View more details": "Xem thêm chi tiết: ",
   "transaction completed": "Hoàn thành giao dịch",
