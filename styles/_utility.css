@@ -31,6 +31,12 @@
   @apply bg-gray-200 dark:bg-gray-700;
 }
 
+.label.box {
+  @apply px-2 py-1 items-center justify-center rounded-full;
+  @apply text-2xs font-medium uppercase tracking-wide;
+  @apply bg-gray-200 dark:bg-gray-700;
+}
+
 .label--active,
 .label--success,
 .label--green,
