@@ -114,7 +114,7 @@ const NftPreview = function({project,pool}){
                       <h5 className="font-medium">
                         {item.title}
                       </h5>
-                      <span className="text-xs font-medium text-yellow-500">
+                      <span className={`text-xs font-medium nftlabel-${item.rarity.toLowerCase()}`}>
                         {item.rarity}
                       </span>
                     </div>
