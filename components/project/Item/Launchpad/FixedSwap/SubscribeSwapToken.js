@@ -230,16 +230,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
                   <div className="w-full flex flex-col md:flex-row md:justify-between mt-4">
                     <OpenBox auctionSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
-
-                    <div className="mt-4 flex flex-shrink-0">
-                      <span className="font-normal">Your balance:</span>
-                      <div className="ml-2">
-                        <span className="badge !text-sm !px-2">
-                          <strong className="font-semibold mr-1">{accountBalance.boxBalance}</strong>
-                          {pool.token_name} 
-                        </span>
-                      </div>
-                    </div>
                   </div>
                   {currentTime < endTime && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
                     <div className="mt-4 w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >

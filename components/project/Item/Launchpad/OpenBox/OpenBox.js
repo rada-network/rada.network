@@ -146,7 +146,19 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
           </button>
         } */}
       </div>
+      {isApproved && 
+      <div className="mt-4 flex flex-shrink-0">
+        <span className="font-normal">Your balance:</span>
+        <div className="ml-2">
+          <span className="badge !text-sm !px-2">
+            <strong className="font-semibold mr-1">{accountBalance.boxBalance}</strong>
+            {pool.token_name} 
+          </span>
+        </div>
+      </div>
+      }
     </>
+    
   )
 }
 export default OpenBox
