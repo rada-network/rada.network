@@ -90,6 +90,13 @@ const NftItem = function({item, boxID}){
             :
             <img className="w-full object-cover rounded-lg opacity-50" src="https://d14zibwblxxd02.cloudfront.net/testnet/imgs/5/0.jpg" />
             }
+            {!!metadata?.rarityName ? null : 
+              <div className="absolute top-1/2 right-1/2 -mr-6 -mt-2">
+                <span className="flex text-xs font-medium bg-white bg-opacity-80 text-gray-900 text-center w-12 pl-1.5 rounded-full shadow-xl">
+                  <OpeningText />
+                </span>
+              </div>
+            }
           </div>
 
           <div className="flex justify-center items-center pt-2">
@@ -98,15 +105,10 @@ const NftItem = function({item, boxID}){
                {metadata?.name} #{item.id}
               </h5>
               {!!metadata?.rarityName ?
-              <span className="text-xs font-medium text-yellow-500">
-                {metadata?.rarityName}
+              <span className={`text-xs font-medium nftlabel-${metadata?.rarityName}`}>
+                {metadata?.rarityName.toString().toLowerCase()}
               </span>
-              :
-              <div className="absolute top-1/2 right-1/2 -mr-6 -mt-2">
-                <span className="flex text-xs font-medium bg-white bg-opacity-80 text-gray-900 text-center w-12 pl-1.5 rounded-full shadow-xl">
-                  <OpeningText />
-                </span>
-              </div>
+              : null
               }
             </div>
 
