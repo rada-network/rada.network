@@ -65,6 +65,13 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
     {title: t("Open"), des: t("Open your box"), step: "3", from: formatTime(new Date(pool.open_date)), to: "TBA"},
   ]
 
+  const fixedSwapOpenBoxRewardsSteps = [
+    {title: t("Prepare"), des: t("Prepare for purchase"), step: "1", from: formatTime(new Date()), to: formatTime(new Date(pool.open_date))},
+    {title: t("Purchase"), des: t("Purchase your box"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
+    {title: t("Open"), des: t("Open your box"), step: "3", from: formatTime(new Date(pool.open_date)), to: "TBA"},
+    {title: t("Claim"), des: t("Claim your reward"), step: "4", from: formatTime(new Date(pool.whitelist_date)), to: "TBA"}
+  ]
+
   const auctionSwapOpenBoxSteps = [
     {title: t("Prepare"), des: t("Prepare for purchase"), step: "1", from: formatTime(new Date()), to: formatTime(new Date(pool.open_date))},
     {title: t("Auction"), des: t("Place your bid"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
@@ -99,10 +106,10 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
   useEffect(() => {
     fetcher(`/api/pools/get-pools?slug=${project.slug}/${pool.slug}`).then(function(res){
       if (!!res.contract){
-        setPoolContract({...pool,id : res.pool_id,contract : res.contract,openbox_contract:res?.openbox_contract,box_contract : res?.box_contract,nft_contract : res?.nft_contract })
+        setPoolContract({...pool,id : res.pool_id,contract : res.contract,openbox_contract:res?.openbox_contract,box_contract : res?.box_contract,nft_contract : res?.nft_contract,reward_contract : res?.reward_contract })
       }
       else{
-        setPoolContract({...pool,id : null,contract : "",openbox_contract: "",box_contract : "",nft_contract : "" })
+        setPoolContract({...pool,id : null,contract : "",openbox_contract: "",box_contract : "",nft_contract : "",reward_contract : "" })
       }
       setLoadingPool(false)
     })    
@@ -193,8 +200,11 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
                 {pool.token_sale == "fixed-swap" && !pool.is_openbox &&
                   <Timeline step={currentStep} steps={fixedSwapSteps} />
                 }
-                {pool.token_sale == "fixed-swap" && pool.is_openbox &&
+                {pool.token_sale == "fixed-swap" && pool.is_openbox && !pool.is_nft_reward &&
                   <Timeline step={currentStep} steps={fixedSwapOpenBoxSteps} />
+                }
+                {pool.token_sale == "fixed-swap" && pool.is_openbox && pool.is_nft_reward &&
+                  <Timeline step={currentStep} steps={fixedSwapOpenBoxRewardsSteps} />
                 }
                 {pool.token_sale == "auction-swap" && pool.is_openbox && !pool.is_nft_reward && 
                   <Timeline step={currentStep} steps={auctionSwapOpenBoxSteps} />

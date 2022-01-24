@@ -2,7 +2,7 @@ import useStore from "@lib/useStore"
 import useChainConfig from "@utils/web3/useChainConfig"
 import {useMemo} from "react"
 
-import {getBep20Contract,getLaunchpadContract,getLaunchpadContractV2, getShare2EarnContract, getReferralAdminContract, getFixedSwapContract, getAuctionSwapContract, getOpenBoxContract, getErc721Contract} from "../contractHelpers"
+import {getBep20Contract,getLaunchpadContract,getLaunchpadContractV2, getShare2EarnContract, getReferralAdminContract, getFixedSwapContract, getAuctionSwapContract, getOpenBoxContract, getErc721Contract, getNftClaimContract} from "../contractHelpers"
 
 import useActiveWeb3React from "./useActiveWeb3React"
 
@@ -83,5 +83,11 @@ export const useOpenBoxContract = (address) => {
   const { account, library } = useActiveWeb3React()
   const store = useStore()
   return useMemo(() => getOpenBoxContract(address,account ? library.getSigner() : library, store.network), [address, library, store.network])
+}
+
+export const useNftClaimContract = (address) => {
+  const { account, library } = useActiveWeb3React()
+  const store = useStore()
+  return useMemo(() => getNftClaimContract(address,account ? library.getSigner() : library, store.network), [address, library, store.network])
 }
 

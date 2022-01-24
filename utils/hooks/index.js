@@ -506,7 +506,6 @@ export const useFixedSwapInfo = ({ pool, status }) => {
       let order = data[1];
       let itemTotal = data[2];
       let info = data[3];
-      console.log(info)
       order = {
         item: order,
         total: parseInt(ethers.utils.formatUnits(itemTotal, 0))

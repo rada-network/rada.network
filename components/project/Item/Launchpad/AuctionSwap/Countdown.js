@@ -7,7 +7,7 @@ const ProjectCountdown = ({ project, setCountdownDone ,pool,isEndDate}) => {
     if (completed) {
       // Render a completed state
       // reload page
-      router.reload()
+      //router.reload()
       return <span></span>;
     } else {
       // Render a countdown

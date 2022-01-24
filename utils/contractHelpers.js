@@ -10,6 +10,7 @@ import fixedSwapAbi from '../config/abi/fixedSwap.json'
 import auctionSwapAbi from '../config/abi/auctionSwap.json'
 import openBoxAbi from '../config/abi/openbox.json'
 import erc721 from '../config/abi/erc721.json'
+import nftClaimAbi from '../config/abi/nftClaim.json'
 
 import bep20AbiPolygon from '../config/abi-polygon/erc20.json'
 import launchpadAbiPolygon from '../config/abi-polygon/launchpad.json'
@@ -21,6 +22,7 @@ import fixedSwapAbiPolygon from '../config/abi-polygon/fixedSwap.json'
 import auctionSwapAbiPolygon from '../config/abi-polygon/auctionSwap.json'
 import openBoxAbiPolygon from '../config/abi-polygon/openbox.json'
 import erc721Polygon from '../config/abi-polygon/erc721.json'
+import nftClaimAbiPolygon from '../config/abi-polygon/nftClaim.json'
 
 import useStore from '@lib/useStore'
 
@@ -109,6 +111,14 @@ export const getOpenBoxContract = (address, signer, network) => {
     return getContract(openBoxAbiPolygon, address, signer)
   }
   return getContract(openBoxAbi, address, signer)
+}
+
+export const getNftClaimContract = (address, signer, network) => {
+  network = network || "bsc"
+  if (network == "polygon"){
+    return getContract(nftClaimAbiPolygon, address, signer)
+  }
+  return getContract(nftClaimAbiPolygon, address, signer)
 }
 
 export const getReferralAdminContract = (address, signer, network) => {

@@ -110,11 +110,16 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     if (currentTime > endTime) {
       if (fixedSwapInfo.order.total > 0){
         //place order success
-        setStep(31)
+        if (pool.is_openbox){
+          setStep(3)
+        }
+        else{
+          setStep(31)
+        }
       }
       else{
         //pool close
-        setStep(32)
+        setStep(31)
       }
     }
     else{
