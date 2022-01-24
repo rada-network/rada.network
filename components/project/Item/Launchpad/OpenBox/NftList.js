@@ -15,7 +15,7 @@ import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 
 //const ITEM_PER_PAGE = 9
 const ITEM_PER_PAGE = 10
-const NftList = function({ pool, project, accountBalance, setStep, fetchAccountBalance }){
+const NftList = function({auctionSwapInfo, pool, project, accountBalance, setStep, fetchAccountBalance }){
   const store = useStore()
   const { t } = useTranslation("launchpad")
   const { account } = useActiveWeb3React()
@@ -32,6 +32,7 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
   const [claimData,setClaimData] = useState({});
   const [poolInfo, setPoolInfo] = useState({})
   const [claimDisabled,setClaimDisabled] = useState(false);
+  const numberBox = store?.box.numberBox;
   const fetchPoolAccountInfo = async function() {
     let dataPromise = []
     dataPromise.push(radaNftContract.balanceOf(account))
@@ -47,20 +48,31 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
   }
 
   const getClaimable = async function() {
+    let poolInfo = await nftClaimContract.getPool(pool.id);
     let dataPromise = []
     const claimAbleNft = listNft.map(item => {
       return item.id
     })
-    dataPromise.push(nftClaimContract.getClaimable(pool.id,claimAbleNft));
-    dataPromise.push(nftClaimContract.getDepositedTokens(pool.id));
-    let data = await Promise.all(dataPromise)
-    let claimableData = data[0].map(item => {
-      return parseInt(ethers.utils.formatUnits(item,0))
-    })
-    let totalClaimable = claimableData.pop()
-    return { claimableData,totalClaimable,
-      depositedTokens : parseInt(ethers.utils.formatEther(data[1]))
+    for (let i = 0; i < claimAbleNft.length; i++){
+      dataPromise.push(nftClaimContract.getTokenInfo(pool.id,claimAbleNft[i]));
     }
+    let data = await Promise.all(dataPromise)
+    let claimableToken = data.reduce(function(sum,item){
+      return sum + parseInt(ethers.utils.formatUnits(item._claimable,0))
+    },0)
+    let claimedToken = data.reduce(function(sum,item){
+      return sum + parseInt(ethers.utils.formatUnits(item._claimed,0))
+    },0)
+    let allocation = data.reduce(function(sum,item){
+      return sum + parseInt(ethers.utils.formatUnits(item._allocation,0))
+    },0)
+    return { 
+      poolInfo,claimableToken,allocation,claimedToken
+    }
+  }
+
+  const getPercentageClaimToken = function(){
+    return ((claimData.claimedToken / claimData.allocation * 100).toFixed(1))
   }
 
   const fetchListNft = async function() {
@@ -103,7 +115,6 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
       setClaimDisabled(false)
       fetchAccountBalance()
       getClaimable().then(res => {
-        console.log(res)
         setClaimData(res)
       })
     } catch (error) {
@@ -148,7 +159,7 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
         setClaimData(res)
       })
     }
-  },[listNft,account])
+  },[listNft,account,store?.box.openedNumberBox])
 
   const handleChangePage = (i) => {
     if (loading) return false;
@@ -180,34 +191,28 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
                 {t("investment")}
               </div> 
               <ul className="mt-4 mb-2 flex-shrink-0 flex-grow">
-              <li className="list-pair mb-2">
-                  <span className="list-key !w-1/2">{t("Total allocation")}</span>
-                  <span className="ml-auto list-value font-semibold">
-                    
-                  </span>
-                </li>
                 <li className="list-pair mb-2">
                   <span className="list-key !w-1/2">{t("Total token")}</span>
                   <span className="ml-auto list-value font-semibold">
-                    {project.token.symbol}
+                    {claimData.allocation} {project.token.symbol}
                   </span>
                 </li>
                 
                 <li className="list-pair mb-2">
                   <span className="list-key !w-1/2">{t("Claimed token")}</span>
                   <span className="ml-auto list-value font-semibold">
-                    {project.token.symbol}
+                  {claimData.claimedToken} {project.token.symbol}
                   </span>
                 </li>
                 <li className="list-pair mb-2">
                   <span className="list-key !w-1/2">{project.token.symbol} Contract</span>
                   <div className="ml-auto p-2 rounded-lg flex bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700">
-                    <a target="_blank" href={getBscScanURL("1")}>
-                      {`${"12312312312".substr(0, 5)}...${"12312312".substr(-4)}`}
+                    <a target="_blank" href={getBscScanURL(claimData?.poolInfo?.tokenAddress)}>
+                      {`${claimData?.poolInfo?.tokenAddress.substr(0, 5)}...${claimData?.poolInfo?.tokenAddress.substr(-4)}`}
                     </a>
                     <CopyToClipboard
                       onCopy={handleCopy}
-                      text={"1231312312"}
+                      text={claimData?.poolInfo?.tokenAddress}
                     >
                       <button className="btn ml-2">
                         <i className="fa-duotone fa-copy text-2xs"></i>
@@ -221,19 +226,19 @@ const NftList = function({ pool, project, accountBalance, setStep, fetchAccountB
             <div className="box box--gray -mx-4 -mb-6 md:m-0">
               <div className="box-header flex">
                 <h4>{t("Claimable token")}</h4>
-                {!!claimData && claimData.totalClaimable > 0 &&
-                <div className="ml-auto text-right">{claimData.totalClaimable.toFixed(2).toLocaleString()} {project.token.symbol}</div>
+                {!!claimData && claimData.claimableToken > 0 &&
+                <div className="ml-auto text-right">{claimData.claimableToken.toFixed(2).toLocaleString()} {project.token.symbol}</div>
                 }
               </div> 
               <div className="p-6">
                 
-                <button onClick={e => { handleClaimToken(e) }} className={`w-full btn-primary py-2 px-4 rounded-md` + (claimDisabled || claimData.totalClaimable == 0 ? " disabled" : "")}>{t("Claim")}</button>
+                <button onClick={e => { handleClaimToken(e) }} className={`w-full btn-primary py-2 px-4 rounded-md` + (claimDisabled || claimData.claimableToken == 0 ? " disabled" : "")}>{t("Claim")}</button>
               
                 <div className="text-center">
                   <div className="progress-bar mt-6 bg-gray-300 dark:bg-gray-600 w-full h-4 rounded-full">
-                    <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" style={{width:"25" +"%"}}>{25}%</div>
+                    <div className="text-2xs font-semibold flex px-2 text-white items-center progress-bar--percentage h-4 bg-green-500 rounded-full" style={{width:getPercentageClaimToken() +"%"}}>{getPercentageClaimToken()}%</div>
                   </div>
-                  <div className="text-sm mt-2 opacity-60">{t("token claim note",{tokenPercentage : 25})}</div>
+                  <div className="text-sm mt-2 opacity-60">{t("token claim note",{tokenPercentage : getPercentageClaimToken()})}</div>
                 </div>
               </div>
             </div>
