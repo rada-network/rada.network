@@ -62,26 +62,26 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
   const fixedSwapOpenBoxSteps = [
     {title: t("Prepare"), des: t("Prepare for purchase"), step: "1", from: formatTime(new Date()), to: formatTime(new Date(pool.open_date))},
     {title: t("Purchase"), des: t("Purchase your box"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
-    {title: t("Open"), des: t("Open your box"), step: "3", from: formatTime(new Date(pool.open_date)), to: "TBA"},
+    {title: t("Open"), des: t("Open your cards"), step: "3", from: formatTime(new Date(pool.open_date)), to: "TBA"},
   ]
 
   const fixedSwapOpenBoxRewardsSteps = [
     {title: t("Prepare"), des: t("Prepare for purchase"), step: "1", from: formatTime(new Date()), to: formatTime(new Date(pool.open_date))},
     {title: t("Purchase"), des: t("Purchase your box"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
-    {title: t("Open"), des: t("Open your box"), step: "3", from: formatTime(new Date(pool.open_date)), to: "TBA"},
+    {title: t("Open"), des: t("Open your cards"), step: "3", from: formatTime(new Date(pool.open_date)), to: "TBA"},
     {title: t("Claim"), des: t("Claim your reward"), step: "4", from: formatTime(new Date(pool.whitelist_date)), to: "TBA"}
   ]
 
   const auctionSwapOpenBoxSteps = [
     {title: t("Prepare"), des: t("Prepare for purchase"), step: "1", from: formatTime(new Date()), to: formatTime(new Date(pool.open_date))},
     {title: t("Auction"), des: t("Place your bid"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
-    {title: t("Open"), des: t("Open your box"), step: "3", from: formatTime(new Date(pool.end_date)), to: formatTime(new Date(pool.whitelist_date))},
+    {title: t("Open"), des: t("Open your cards"), step: "3", from: formatTime(new Date(pool.end_date)), to: formatTime(new Date(pool.whitelist_date))},
   ]
 
   const auctionSwapOpenBoxRewardSteps = [
     {title: t("Prepare"), des: t("Prepare for purchase"), step: "1", from: formatTime(new Date()), to: formatTime(new Date(pool.open_date))},
     {title: t("Auction"), des: t("Place your bid"), step: "2", from: formatTime(new Date(pool.open_date)), to: formatTime(new Date(pool.end_date))},
-    {title: t("Open"), des: t("Open your box"), step: "3", from: formatTime(new Date(pool.end_date)), to: formatTime(new Date(pool.whitelist_date))},
+    {title: t("Open"), des: t("Open your cards"), step: "3", from: formatTime(new Date(pool.end_date)), to: formatTime(new Date(pool.whitelist_date))},
     {title: t("Claim"), des: t("Claim your reward"), step: "4", from: formatTime(new Date(pool.whitelist_date)), to: "TBA"}
   ]
 

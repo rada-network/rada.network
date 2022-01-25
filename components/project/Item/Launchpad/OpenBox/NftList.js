@@ -119,7 +119,6 @@ const NftList = function({auctionSwapInfo, pool, project, accountBalance, setSte
       })
     } catch (error) {
       setClaimDisabled(false)
-      console.log(error)
       if (!!error?.data?.message){
         toast.error(t(error?.data?.message?.replace("execution reverted: ","")))
       }
@@ -150,16 +149,15 @@ const NftList = function({auctionSwapInfo, pool, project, accountBalance, setSte
         setListNft(res)
       })
     }
-  },[totalNft,account,poolInfo,curPage])
+  },[totalNft,account,poolInfo,curPage,store.loadPoolContent])
 
   useEffect(() => {
     if (listNft.length > 0 && pool.is_nft_reward){
       getClaimable().then(res => {
-        console.log(res)
         setClaimData(res)
       })
     }
-  },[listNft,account,store?.box.openedNumberBox])
+  },[listNft,account,store.loadPoolContent])
 
   const handleChangePage = (i) => {
     if (loading) return false;

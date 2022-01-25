@@ -12,10 +12,6 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
   const store = useStore()
   const { t } = useTranslation("launchpad")
   const { account } = useActiveWeb3React()
-  const launchpadContract = useAuctionSwapContract(pool)
-  const rirContract = useRIRContract()
-  const bUSDContract = useBUSDContractV2()
-  const radaNftContract = useErc721(pool.nft_contract)
   const boxContract = useERC20(pool.box_contract)
   const openBoxContract = useOpenBoxContract(pool.openbox_contract)
   const { callWithGasPrice } = useCallWithGasPrice()
@@ -35,7 +31,6 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
       const tx = await callWithGasPrice(openBoxContract, 'openBox', [pool.id, numberBox]);
       const receipt = await tx.wait();
       let tokenIds = [];
-      console.log(receipt)
       for (let i = 0; i < receipt.events.length; i++) {
         let tokenIDObject = new Object()
         if (receipt.events[i].args) {
@@ -44,8 +39,8 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
         }
       }
       store.box.updateArgs(tokenIds);
+      setNumberBox(0)
       await fetchAccountBalance()
-      store.updateLoadPoolContent((new Date()).getTime())
     }
     catch (error) {
       if (!!error?.data?.message) {
@@ -116,7 +111,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
               <div className="flex justify-center items-center relative">
                 <div className="w-2/6 flex-shrink-0">
                   <select id="box" name="amount" defaultValue={numberBox} onChange={handleChangeNumberBox} className="select-custom w-full ">
-                    <option className="text-gray-300" value="0">---</option>
+                    <option className="text-gray-300" value={0}>---</option>
                     {Array((maxOpenBox)).fill(null).map((_, i) => {
                       return (
                         <option key={i} className="text-gray-300" value={(i + 1)}>{i + 1}</option>

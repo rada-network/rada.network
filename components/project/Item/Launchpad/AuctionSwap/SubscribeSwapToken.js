@@ -197,7 +197,7 @@ const SubscribeSwapToken = ({ project, openTime, endTime, currentTime, pool }) =
                 <div className="w-full">
                   <div className="relative flex flex-col justify-center">
                     <h3 className="text-lg font-medium">
-                      Open your boxes
+                      {t("Open your cards")}
                     </h3>
                   </div>
 

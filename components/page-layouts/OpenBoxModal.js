@@ -29,6 +29,7 @@ const OpenBoxModal = observer(({ }) => {
 
   const closeModal = () => {
     store.box.reset()
+    store.updateLoadPoolContent((new Date()).getTime())
   }
 
   useEffect(() => {
@@ -105,7 +106,7 @@ const OpenBoxModal = observer(({ }) => {
                     className="dialog-header"
                   >
                     <div className="mx-auto inline-flex">
-                      {t("Open your boxes")}
+                      {t("Open your cards")}
                     </div>
                   </Dialog.Title>
 
