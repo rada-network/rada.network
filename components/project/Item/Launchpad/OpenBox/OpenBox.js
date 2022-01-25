@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React"
 import { useAuctionSwapContract, useBUSDContractV2, useERC20, useErc721, useOpenBoxContract, useRIRContract } from "@utils/hooks/useContracts"
 import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransaction"
-import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
+import { useCallWithGasPrice,useCallWithoutGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
 import useStore from "@lib/useStore"
@@ -14,7 +14,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
   const { account } = useActiveWeb3React()
   const boxContract = useERC20(pool.box_contract)
   const openBoxContract = useOpenBoxContract(pool.openbox_contract)
-  const { callWithGasPrice } = useCallWithGasPrice()
+  const { callWithoutGasPrice } = useCallWithoutGasPrice()
   const [numberBox, setNumberBox] = useState(0);
   const handleChangeNumberBox = function (e) {
     setNumberBox(e.currentTarget.value)
@@ -28,7 +28,9 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
     //store.transaction.showTransaction(true);
     try {
       store.box.showOpenBoxModal(true, parseInt(numberBox));
-      const tx = await callWithGasPrice(openBoxContract, 'openBox', [pool.id, numberBox]);
+      const gas = await openBoxContract.estimateGas.openBox(pool.id, numberBox);
+      console.log(ethers.utils.formatUnits(gas, 'wei'))
+      const tx = await callWithoutGasPrice(openBoxContract, 'openBox', [pool.id, numberBox]);
       const receipt = await tx.wait();
       let tokenIds = [];
       for (let i = 0; i < receipt.events.length; i++) {
@@ -41,6 +43,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
       store.box.updateArgs(tokenIds);
       setNumberBox(0)
       await fetchAccountBalance()
+      store.updateLoadPoolContent((new Date()).getTime())
     }
     catch (error) {
       if (!!error?.data?.message) {
@@ -69,7 +72,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
       },
       onApprove: async (requireApprove) => {
         store.transaction.showTransaction(true, t("start transaction message"));
-        const tx = callWithGasPrice(boxContract, 'approve', [openBoxContract.address, ethers.constants.MaxUint256])
+        const tx = callWithoutGasPrice(boxContract, 'approve', [openBoxContract.address, ethers.constants.MaxUint256])
         store.transaction.startTransaction(true, t("transaction started"));
         return tx;
       },
@@ -83,7 +86,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
     })
 
   const resetApproved = async () => {
-    await callWithGasPrice(boxContract, 'approve', [openBoxContract.address, 0])
+    await callWithoutGasPrice(boxContract, 'approve', [openBoxContract.address, 0])
   }
 
   const claimNftBox = async () => {

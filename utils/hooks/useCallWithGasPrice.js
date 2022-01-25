@@ -40,3 +40,24 @@ export function useCallWithGasPrice() {
 
   return { callWithGasPrice }
 }
+
+
+export function useCallWithoutGasPrice() {
+  const store = useStore()
+  const callWithoutGasPrice = useCallback(
+    async (
+      contract,
+      methodName,
+      methodArgs,
+    )=> {
+      const contractMethod = get(contract, methodName)
+      const tx = await contractMethod(
+        ...methodArgs
+      )
+      return tx
+    },
+    [],
+  )
+
+  return { callWithoutGasPrice }
+}

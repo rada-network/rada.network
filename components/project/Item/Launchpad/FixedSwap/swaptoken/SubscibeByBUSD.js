@@ -2,7 +2,7 @@ import { useState,useEffect } from "react"
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React"
 import { useBUSDContractV2,useFixedSwapContract,useRIRContract} from "@utils/hooks/useContracts"
 import useApproveConfirmTransaction from "@utils/hooks/useApproveConfirmTransaction"
-import {useCallWithGasPrice} from "@utils/hooks/useCallWithGasPrice"
+import {useCallWithGasPrice,useCallWithoutGasPrice} from "@utils/hooks/useCallWithGasPrice"
 import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
 import { CheckSvg } from "@components/svg/SvgIcons"
@@ -17,7 +17,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
   const launchpadContract = useFixedSwapContract(pool)
   const rirContract = useRIRContract()
   const bUSDContract = useBUSDContractV2()
-  const {callWithGasPrice} = useCallWithGasPrice()
+  const {callWithoutGasPrice} = useCallWithoutGasPrice()
   const [numberBox,setNumberBox] = useState(1)
   const [numberBusd,setNumberBusd] = useState(fixedSwapInfo.info.startPrice)
   const [loading, setLoading] = useState(true);
@@ -43,7 +43,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
     },
     onApprove: async (requireApprove) => {
       store.transaction.showTransaction(true, t("start transaction message"));
-      const tx = callWithGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256]);
+      const tx = callWithoutGasPrice(bUSDContract, 'approve', [launchpadContract.address, ethers.constants.MaxUint256]);
       store.transaction.startTransaction(true, t("transaction started"));
       return tx;
     },
@@ -52,7 +52,9 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
     },
     onConfirm: async () => {
       store.transaction.showTransaction(true, t("start transaction message"));
-      const tx = await callWithGasPrice(launchpadContract, 'placeOrder', [pool.id,numberBox]);
+      const gas = await launchpadContract.estimateGas.placeOrder(pool.id, numberBox);
+      console.log(ethers.utils.formatUnits(gas, 0))
+      const tx = await callWithoutGasPrice(launchpadContract, 'placeOrder', [pool.id,numberBox],);
       store.transaction.startTransaction(true, t("transaction started"));
       return tx;
     },

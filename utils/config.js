@@ -46,7 +46,7 @@ export const RPC_CONFIG = {
     production : {
       name : "Polygon Mainnet",
       chainId : 137,
-      url : 'https://matic-mainnet.chainstacklabs.com',
+      url : 'https://polygon-rpc.com',
       scan : "https://polygonscan.com/"
     },
     dev : {

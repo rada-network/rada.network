@@ -9,7 +9,7 @@ export const GAS_PRICE = {
 export const GAS_PRICE_POLYGON = {
   default : '9',
   fast : '29',
-  instant : '45',
+  instant : '49',
   testnet :  '10',
 }
 
