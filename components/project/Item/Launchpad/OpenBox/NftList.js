@@ -14,7 +14,7 @@ import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 
 
 //const ITEM_PER_PAGE = 9
-const ITEM_PER_PAGE = 10
+const ITEM_PER_PAGE = 20
 const NftList = function({auctionSwapInfo, pool, project, accountBalance, setStep, fetchAccountBalance }){
   const store = useStore()
   const { t } = useTranslation("launchpad")

@@ -113,7 +113,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
             <div className="mx-auto">
               <div className="flex justify-center items-center relative">
                 <div className="w-2/6 flex-shrink-0">
-                  <select id="box" name="amount" defaultValue={numberBox} onChange={handleChangeNumberBox} className="select-custom w-full ">
+                  <select id="box" name="amount" value={numberBox} onChange={handleChangeNumberBox} className="select-custom w-full ">
                     <option className="text-gray-300" value={0}>---</option>
                     {Array((maxOpenBox)).fill(null).map((_, i) => {
                       return (
