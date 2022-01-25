@@ -53,25 +53,32 @@ const NftList = function({auctionSwapInfo, pool, project, accountBalance, setSte
     const claimAbleNft = listNft.map(item => {
       return item.id
     })
-    for (let i = 0; i < claimAbleNft.length; i++){
-      dataPromise.push(nftClaimContract.getTokenInfo(pool.id,claimAbleNft[i]));
+    let claimableToken = 0,claimedToken=0,allocation=0
+    if (claimAbleNft.length > 0){
+      for (let i = 0; i < claimAbleNft.length; i++){
+        dataPromise.push(nftClaimContract.getTokenInfo(pool.id,claimAbleNft[i]));
+      }
+      let data = await Promise.all(dataPromise)
+      claimableToken = data.reduce(function(sum,item){
+        return sum + parseInt(ethers.utils.formatEther(item._claimable))
+      },0)
+      claimedToken = data.reduce(function(sum,item){
+        return sum + parseInt(ethers.utils.formatEther(item._claimed))
+      },0)
+      allocation = data.reduce(function(sum,item){
+        return sum + parseInt(ethers.utils.formatEther(item._allocation))
+      },0)
     }
-    let data = await Promise.all(dataPromise)
-    let claimableToken = data.reduce(function(sum,item){
-      return sum + parseInt(ethers.utils.formatEther(item._claimable))
-    },0)
-    let claimedToken = data.reduce(function(sum,item){
-      return sum + parseInt(ethers.utils.formatEther(item._claimed))
-    },0)
-    let allocation = data.reduce(function(sum,item){
-      return sum + parseInt(ethers.utils.formatEther(item._allocation))
-    },0)
+    
     return { 
       poolInfo,claimableToken,allocation,claimedToken
     }
   }
 
   const getPercentageClaimToken = function(){
+    if (claimData.allocation === 0){
+      return 0
+    }
     return ((claimData.claimedToken / claimData.allocation * 100).toFixed(1))
   }
 
@@ -154,6 +161,7 @@ const NftList = function({auctionSwapInfo, pool, project, accountBalance, setSte
   useEffect(() => {
     if (listNft.length > 0 && pool.is_nft_reward){
       getClaimable().then(res => {
+        console.log(res)
         setClaimData(res)
       })
     }
