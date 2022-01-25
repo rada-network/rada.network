@@ -96,6 +96,8 @@ const projectBySlugGql = gql`
         is_hidden
         is_openbox
         is_nft_reward
+        token_decimal
+        price_decimal
         project_pool_nft{
           title
           description

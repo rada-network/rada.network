@@ -521,7 +521,6 @@ export const useFixedSwapInfo = ({ pool, status }) => {
         totalBidItem: parseInt(ethers.utils.formatUnits(stat.totalBidItem, 0)),
         totalSold: parseInt(ethers.utils.formatUnits(stat.totalSold, 0))
       }
-      
       info = {
         addressItem: info.addressItem,
         ended: info.ended,
@@ -531,7 +530,7 @@ export const useFixedSwapInfo = ({ pool, status }) => {
         title: info.title,
         endTime: parseInt(ethers.utils.formatUnits(info.endTime, 0)),
         startTime: parseInt(ethers.utils.formatUnits(info.startTime, 0)),
-        startPrice: parseInt(ethers.utils.formatUnits(info.startPrice)),
+        startPrice: parseInt(ethers.utils.formatUnits(info.startPrice,pool.price_decimal)),
         maxBuyPerAddress: parseInt(ethers.utils.formatUnits(info.maxBuyPerAddress,0)),
         maxBuyPerOrder: parseInt(ethers.utils.formatUnits(info.maxBuyPerOrder,0)),
       }
