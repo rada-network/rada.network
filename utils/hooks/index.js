@@ -3,11 +3,17 @@ import { ethers, utils } from "ethers"
 import { useAuctionSwapContract, useFixedSwapContract, useLaunchpadContractV2 } from "./useContracts"
 import useActiveWeb3React from "./useActiveWeb3React"
 import { useWeb3React } from '@web3-react/core'
-import { GAS_PRICE_GWEI } from "../../config/gas"
+import { GAS_PRICE_GWEI, GAS_PRICE_POLYGON_GWEI } from "../../config/gas"
 import useStore from "@lib/useStore"
+
 export function useGasPrice() {
   const userGas = GAS_PRICE_GWEI.instant
   return process.env.NEXT_PUBLIC_CHAIN == 'production' ? userGas : GAS_PRICE_GWEI.testnet
+}
+
+export function useGasPricePolygon() {
+  const userGas = GAS_PRICE_POLYGON_GWEI.instant
+  return process.env.NEXT_PUBLIC_CHAIN == 'production' ? userGas : GAS_PRICE_POLYGON_GWEI.testnet
 }
 
 const DEV_STATUS_FAILED = {
