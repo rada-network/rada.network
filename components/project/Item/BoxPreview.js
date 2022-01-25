@@ -8,6 +8,8 @@ import Image from "@components/Image";
 
 const BoxPreview = function({project,pool}){
   const {t} = useTranslation("launchpad")
+  console.log(pool)
+  if (!pool.token_name) return null
   return (
     <div className="card card-default">
       <div className="card-header items-end">
