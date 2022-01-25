@@ -9,7 +9,7 @@ import SubscribeSwapTokenLoading from "../SubscribeSwapTokenLoading"
 import useChainConfig from "@utils/web3/useChainConfig"
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { toast } from "react-toastify"
-import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
+import { useCallWithGasPrice,useCallWithoutGasPrice } from "@utils/hooks/useCallWithGasPrice"
 
 
 
@@ -20,7 +20,7 @@ const NftList = function({auctionSwapInfo, pool, project, accountBalance, setSte
   const { t } = useTranslation("launchpad")
   const { account } = useActiveWeb3React()
   const { getBscScanURL } = useChainConfig()
-  const { callWithGasPrice } = useCallWithGasPrice()
+  const { callWithoutGasPrice } = useCallWithoutGasPrice()
   const radaNftContract = useErc721(pool.nft_contract)
   const openBoxContract = useOpenBoxContract(pool.openbox_contract)
   const nftClaimContract = useNftClaimContract(pool.reward_contract)
@@ -114,7 +114,7 @@ const NftList = function({auctionSwapInfo, pool, project, accountBalance, setSte
       const claimAbleNft = listNft.map(item => {
         return item.id
       })
-      const tx = await callWithGasPrice(nftClaimContract, "claim", [pool.id,claimAbleNft])
+      const tx = await callWithoutGasPrice(nftClaimContract, "claim", [pool.id,claimAbleNft])
       const receipt = await tx.wait()
       if (receipt.status) {
         toast.success(t("Claim success!"))
