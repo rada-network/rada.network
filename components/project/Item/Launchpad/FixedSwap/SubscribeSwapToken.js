@@ -82,7 +82,11 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       let busdBalance = data[0];
       let boxBalance = data[1];
       setAccountBalance({
-        busdBalance: parseInt(utils.formatEther(busdBalance)),
+        busdBalance: parseInt(utils.formatUnits(busdBalance,pool.price_decimal)),
+        boxBalance: parseInt(utils.formatUnits(boxBalance, 0)),
+      })
+      console.log({
+        busdBalance: parseInt(utils.formatUnits(busdBalance,pool.price_decimal)),
         boxBalance: parseInt(utils.formatUnits(boxBalance, 0)),
       })
     }

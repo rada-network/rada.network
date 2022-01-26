@@ -69,7 +69,6 @@ const NftList = function({auctionSwapInfo, pool, project, accountBalance, setSte
         return sum + parseInt(ethers.utils.formatUnits(item._allocation,pool.price_decimal))
       },0)
     }
-    
     return { 
       poolInfo,claimableToken,allocation,claimedToken
     }
@@ -159,9 +158,8 @@ const NftList = function({auctionSwapInfo, pool, project, accountBalance, setSte
   },[totalNft,account,poolInfo,curPage,store.loadPoolContent])
 
   useEffect(() => {
-    if (listNft.length > 0 && pool.is_nft_reward){
+    if (pool.is_nft_reward){
       getClaimable().then(res => {
-        console.log(res)
         setClaimData(res)
       })
     }
