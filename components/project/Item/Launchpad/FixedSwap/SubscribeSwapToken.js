@@ -223,7 +223,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
         <div className="card-default project-main-actions no-padding overflow-hidden">
 
           {currentTime > endTime ?
-            <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")} /> :
+            "" :
             <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")} />
           }
 
