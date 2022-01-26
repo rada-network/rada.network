@@ -6,8 +6,23 @@ import { useCallWithGasPrice,useCallWithoutGasPrice } from "@utils/hooks/useCall
 import { ethers } from 'ethers'
 import { useTranslation } from "next-i18next"
 import useStore from "@lib/useStore"
+import { toast } from "react-toastify"
+
 
 const MAX_BOX_CURRENT_OPEN = 5
+
+function formatAMPM(time) {
+  const date = new Date(time)
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return strTime;
+}
+
 const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, auctionSwapInfo }) => {
   const store = useStore()
   const { t } = useTranslation("launchpad")
@@ -16,16 +31,25 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
   const openBoxContract = useOpenBoxContract(pool.openbox_contract)
   const { callWithoutGasPrice } = useCallWithoutGasPrice()
   const [numberBox, setNumberBox] = useState(0);
+  const currentTime = (new Date(pool.current_date)).getTime() / 1000
+  const openTime = (new Date(pool.open_date)).getTime() / 1000
+  const endTime = (new Date(pool.end_date)).getTime() / 1000
+  const openBoxTime = (new Date(pool.whitelis_date)).getTime() / 1000
   const handleChangeNumberBox = function (e) {
     setNumberBox(e.currentTarget.value)
   }
   const [loading, setLoading] = useState(true);
 
   const maxOpenBox = accountBalance.boxBalance > MAX_BOX_CURRENT_OPEN ? MAX_BOX_CURRENT_OPEN : accountBalance.boxBalance
+  //const maxOpenBox = 5
 
 
   const handleOpenBox = async function (bidIndex) {
     //store.transaction.showTransaction(true);
+    if (currentTime < endTime){
+      toast.error(t("Open card starts at ") + formatAMPM(pool.end_date))
+      return false;
+    }
     try {
       store.box.showOpenBoxModal(true, parseInt(numberBox));
       const gas = await openBoxContract.estimateGas.openBox(pool.id, numberBox);
@@ -125,7 +149,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
                 <div className="w-4/6">
                   <button className={`text-sm ml-2 md:ml-4 py-2 flex-grow flex-shrink-0 btn btn-primary px-4 ${(numberBox == 0 || isConfirming) ? "disabled" : ""} flex justify-center`}
                     onClick={handleOpenBox}>
-                    Open box {pool.token_name}
+                    Open {pool.token_name}
                   </button>
                 </div>
               </div>
