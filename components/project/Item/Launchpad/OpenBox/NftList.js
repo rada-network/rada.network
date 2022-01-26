@@ -60,13 +60,13 @@ const NftList = function({auctionSwapInfo, pool, project, accountBalance, setSte
       }
       let data = await Promise.all(dataPromise)
       claimableToken = data.reduce(function(sum,item){
-        return sum + parseInt(ethers.utils.formatEther(item._claimable))
+        return sum + parseInt(ethers.utils.formatUnits(item._claimable,pool.price_decimal))
       },0)
       claimedToken = data.reduce(function(sum,item){
-        return sum + parseInt(ethers.utils.formatEther(item._claimed))
+        return sum + parseInt(ethers.utils.formatUnits(item._claimed,pool.price_decimal))
       },0)
       allocation = data.reduce(function(sum,item){
-        return sum + parseInt(ethers.utils.formatEther(item._allocation))
+        return sum + parseInt(ethers.utils.formatUnits(item._allocation,pool.price_decimal))
       },0)
     }
     
