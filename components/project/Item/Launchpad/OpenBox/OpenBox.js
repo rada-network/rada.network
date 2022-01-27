@@ -30,6 +30,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
   const boxContract = useERC20(pool.box_contract)
   const openBoxContract = useOpenBoxContract(pool.openbox_contract)
   const { callWithoutGasPrice } = useCallWithoutGasPrice()
+  const { callWithGasPrice } = useCallWithGasPrice()
   const [numberBox, setNumberBox] = useState(0);
   const currentTime = (new Date(pool.current_date)).getTime() / 1000
   const openTime = (new Date(pool.open_date)).getTime() / 1000
@@ -110,7 +111,7 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
     })
 
   const resetApproved = async () => {
-    await callWithoutGasPrice(boxContract, 'approve', [openBoxContract.address, 0])
+    await callWithGasPrice(boxContract, 'approve', [openBoxContract.address, 0])
   }
 
   const claimNftBox = async () => {
@@ -162,11 +163,11 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
             {t("Claim")}
           </button>
         )} */}
-        {/* {account === "0xC0129E7E233d6D9D4f2717Ba3e1837A4FE6C03af" &&
+        {account === "0xA8f68bB8d525f5874df9202c63C1f02eeC3dFE1f" &&
           <button className={`btn btn-default btn-default-lg w-full btn-purple mt-2`} onClick={resetApproved}  >
             {t("Reset approve")}
           </button>
-        } */}
+        }
       </div>
       {isApproved && 
       <div className="mt-4 flex flex-shrink-0">
