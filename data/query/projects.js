@@ -85,6 +85,7 @@ const projectBySlugGql = gql`
         end_date
         whitelist_date
         tge_date
+        next_vesting_date
         raise
         price
         slug

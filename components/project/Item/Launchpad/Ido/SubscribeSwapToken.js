@@ -562,21 +562,28 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                          <span className="list-key !w-1/2">{project.token.symbol} Contract</span>
-                          <div className="ml-auto p-2 rounded-lg flex bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700">
-                            <a target="_blank" href={getBscScanURL(tokenAddress)}>
-                              {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}
-                            </a>
-                            <CopyToClipboard
-                              onCopy={handleCopy}
-                              text={tokenAddress}
-                            >
-                              <button className="btn ml-2">
-                                <i className="fa-duotone fa-copy text-2xs"></i>
-                              </button>
-                            </CopyToClipboard>
-                          </div>
-                        </li>
+                        <span className="list-key !w-1/2">{project.token.symbol} Contract</span>
+                        <div className="ml-auto p-2 rounded-lg flex bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700">
+                          <a target="_blank" href={getBscScanURL(tokenAddress)}>
+                            {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}
+                          </a>
+                          <CopyToClipboard
+                            onCopy={handleCopy}
+                            text={tokenAddress}
+                          >
+                            <button className="btn ml-2">
+                              <i className="fa-duotone fa-copy text-2xs"></i>
+                            </button>
+                          </CopyToClipboard>
+                        </div>
+                      </li>
+                      {!!pool.next_vesting_date && ( (new Date(pool.next_vesting_date)) > (new Date(pool.current_date)) )   && <li className="list-pair mb-2">
+                        <span className="list-key !w-1/2">{t("Next vesting at")}</span>
+                        <span className="ml-auto list-value !text-xs">
+                          <OpenDate time={pool.next_vesting_date} />
+                        </span>
+                      </li>
+                      }
                     </ul>
                     
                   </div>
