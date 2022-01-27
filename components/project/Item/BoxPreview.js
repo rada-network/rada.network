@@ -25,7 +25,7 @@ const BoxPreview = function({project,pool}){
       <div className="card-body">
 
         <div className="flex center">
-          Intro of {pool.token_name}
+        RADA's on-chain Li Xi is an internal event held by RADA Treasury with an intent to give back to contributors valuable gifts and prizes, as a way to show gratitude for their endless effort and hard work for the past year. The event is an auction of RADA's latest NFT collection - 12 different NFT cards minted on the Polygon Blockchain. The logic of the auction follows the NFT fixed-swap auction model, another feature by RADA soon to be released for public use.
         </div>
       </div>
     </div>
