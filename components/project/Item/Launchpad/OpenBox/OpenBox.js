@@ -111,7 +111,9 @@ const OpenBox = ({ pool, project, accountBalance, setStep, fetchAccountBalance, 
     })
 
   const resetApproved = async () => {
-    await callWithGasPrice(boxContract, 'approve', [openBoxContract.address, 0])
+    console.log("reset approved");
+    console.log(boxContract)
+    await callWithGasPrice(boxContract, 'approve', [openBoxContract.address, ethers.constants.Zero])
   }
 
   const claimNftBox = async () => {
