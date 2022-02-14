@@ -71,10 +71,16 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
   const fetchAccountBalance = async function () {
     await fetchLaunchpadInfo()
-    let rirBalance = await rirContract.balanceOf(account);
+    let rirBalance = 0
+    try {
+      rirBalance =  utils.formatEther(await rirContract.balanceOf(account));
+    }
+    catch (e) {
+      console.log(e)
+    }
     let busdBalance = await bUSDContract.balanceOf(account);
     setAccountBalance({
-      rirBalance: utils.formatEther(rirBalance),
+      rirBalance: rirBalance,
       busdBalance: utils.formatEther(busdBalance),
     })
   }
@@ -105,7 +111,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     }
   }, [account,launchpadInfo])
   useEffect(() => {
-    if (!loading){
+    if (!loading && !!launchpadInfo){
       let currentOrderBusd = launchpadInfo.investor.amountBusd && launchpadInfo.investor.paid ? launchpadInfo.investor.amountBusd : 0
       let currentOrderRIR = launchpadInfo.investor.amountRir && launchpadInfo.investor.paid ? launchpadInfo.investor.amountRir : 0
       let currentApprovedBusd = launchpadInfo.investor.approved && launchpadInfo.investor.paid ? launchpadInfo.investor.allocationBusd : 0
@@ -118,7 +124,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   }, [launchpadInfo,loading])
 
   useEffect(() => {
-    if (loading) return false
+    if (loading || !launchpadInfo) return false
     //pool dont set winner
     if (launchpadInfo.stat.approvedBusd == 0 || !launchpadInfo.investor.paid){
       if (parseInt(orderBusd) > 0){
@@ -214,6 +220,9 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     return (
       <NotInWhitesist></NotInWhitesist>
     )
+  }
+  if (!launchpadInfo){
+    return "Error loading swap info"
   }
   const maxRIR = parseInt(launchpadInfo.individualMaximumAmount) / 100;
   const maxBusd = parseInt(launchpadInfo.individualMaximumAmount);
