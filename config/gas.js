@@ -2,7 +2,7 @@ import { parseUnits } from 'ethers/lib/utils'
 export const GAS_PRICE = {
   default : '5',
   fast : '6',
-  instant : '29',
+  instant : '7',
   testnet :  '10',
 }
 
