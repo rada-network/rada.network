@@ -28,7 +28,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
     setNumberBox(e.currentTarget.value)
     setNumberBusd(parseInt(e.currentTarget.value)*fixedSwapInfo.info.startPrice )
   }
-  const usd_token = getRaiseTokenByPlatfrom(project)
+  const usd_token = getRaiseTokenByPlatfrom(project.platform.networkName)
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
   useApproveConfirmTransaction({
     onRequiresApproval: async () => {
