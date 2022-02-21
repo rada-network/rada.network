@@ -319,7 +319,7 @@ const ProjectLaunchpad = observer (({ project, pool }) => {
             </Screen>
 
             <NftInfo project={project} pool={poolContract}/>
-            <TutorialWidget project={project}></TutorialWidget>
+            <TutorialWidget project={project} pool={poolContract}/>
 
           </div>
 

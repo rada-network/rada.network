@@ -109,6 +109,14 @@ const projectBySlugGql = gql`
           total
           probability
         }
+        project_pool_content{
+          description
+          title
+          lang
+          learn_more_url
+          whitelist_url
+          whitelist_title
+        }
       }
     }
   }

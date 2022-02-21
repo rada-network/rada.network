@@ -101,7 +101,7 @@ const PoolInfo = observer(function({ project,pool }) {
             </span>
 
           </li> */}
-          {!!pool.open_date && openTime < curentTime && showInfo &&
+          {!!pool.open_date && showInfo &&
           <li className="list-pair mb-2">
           <span className="list-key capitalize">{t("Progress")}</span>
           <span className="list-value ml-auto text-right">

@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 import Link from "next/link"
-const TutorialWidget = function({project}){
+const TutorialWidget = function({project,pool}){
   const {t,i18n} = useTranslation("launchpad")
   const url = project?.content?.share2earn_url
   const share2earn_url = !!url ? url : ( project?.share_campaign?.length >  0 ? `/${i18n.language}/launchverse/${project.slug}/share2earn` : "")
@@ -30,7 +30,19 @@ const TutorialWidget = function({project}){
             </div>
           </Link>
           }
-
+          {pool.project_pool_content && <div className="w-full p-4 my-2 bg-gray-200 dark:bg-gray-800 rounded-lg flex cursor-pointer items-center group">
+            <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow">
+              <i className="fa-duotone fa-hand-holding-heart"></i>
+            </span>
+            <div>
+              <p className="">{pool.project_pool_content.whitelist_title}</p>
+              <a href={pool.project_pool_content.whitelist_url} target="_blank" className="group">
+                <span className="text-sm">{t("Learn more")}</span>
+                <span className="icon text-xs relative left-1 group-hover:left-2 transition-all"><i className="fas fa-angle-right"></i></span>
+              </a>
+            </div>
+          </div>
+          }
           <div className="w-full p-4 my-2 bg-gray-200 dark:bg-gray-800 rounded-lg flex cursor-pointer items-center group">
             <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow">
               <i className="fad fa-info"></i>
