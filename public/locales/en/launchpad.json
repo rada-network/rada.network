@@ -116,5 +116,15 @@
   "start transaction message": "Confirm your wallet and start transaction",
   "transaction started": "The transaction is in progress, please wait a moment.",
   "how to use": "How to use the box",
-  "Open box": "Open box"
+  "Open box": "Open box",
+  "Purchase": "Purchase",
+  "Purchase starts in": "Purchase starts in",
+  "Info box" : "Info",
+  "Purchase success" : "Purchase success",
+  "Purchase more" : "Purchase more",
+  "Purchase more note": "Your purchase is {{orderBusd}}, your maximum allocation {{maxBusd}}",
+  "Back" : "Back",
+  "Place Order" : "Place Order",
+  "You can purchase upto" : "You can purchase upto ",
+  "Total" : "Total"
 }

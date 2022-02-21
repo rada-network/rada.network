@@ -114,5 +114,15 @@
   "start transaction message": "Vui lòng kiểm tra lại ví và phí gas trước khi bắt đầu giao dịch.",
   "transaction started": "Giao dịch đang được thực hiện, vui lòng chờ trong giây lát.",
   "how to use": "Hướng dẫn sử dụng",
-  "Open box": "Mở hộp"
+  "Open box": "Mở hộp",
+  "Purchase": "Mua",
+  "Purchase starts in": "Bắt đầu mua trong",
+  "Info box" : "Thông tin",
+  "Purchase success" : "Mua thành công",
+  "Purchase more" : "Mua thêm",
+  "Purchase more note": "Bạn đã mua {{orderBusd}}, hạn mức tối đa {{maxBusd}}",
+  "Back" : "Quay lại",
+  "Place Order" : "Mua",
+  "You can purchase upto" : "Bạn có thể mua tối đa ",
+  "Total" : "Tổng"
 }

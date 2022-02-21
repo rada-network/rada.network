@@ -24,6 +24,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
   
   const maxSelected = fixedSwapInfo.info.maxBuyPerAddress - fixedSwapInfo.order.total > fixedSwapInfo.info.maxBuyPerOrder ? fixedSwapInfo.info.maxBuyPerOrder : fixedSwapInfo.info.maxBuyPerAddress - fixedSwapInfo.order.total;
+  // const maxSelected = 1;
   const handleChangeNumberBox = function(e){
     setNumberBox(e.currentTarget.value)
     setNumberBusd(parseInt(e.currentTarget.value)*fixedSwapInfo.info.startPrice )
@@ -98,26 +99,31 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <div className="mb-2 flex uppercase text-2xs md:text-xs tracking-wider gap-4">
             <div className="w-1/3 flex items-center">
               {/* <span className="icon mr-2"><i class="fa-duotone fa-box"></i></span> */}
-              <label for="currency" className="block tracking-wide font-medium opacity-60 text-xs">Boxes</label>
+              <label for="currency" className="block tracking-wide font-medium opacity-60 text-xs">{pool.token_name}</label>
             </div>
             <div className="w-1/3">
-              <label for="price" className="block tracking-wide font-medium opacity-60 text-xs">Price</label>
+              <label for="price" className="block tracking-wide font-medium opacity-60 text-xs">{t("Token Price")}</label>
             </div>
             <div className="w-1/3 text-right">
-              <label className="block tracking-wide font-medium opacity-60 text-xs">Total</label>
+              <label className="block tracking-wide font-medium opacity-60 text-xs">{t("Total")}</label>
             </div>
             
           </div>
           <div className="relative">
             <div className="mb-4 flex gap-4 relative items-center ">
               <div className="w-1/3 flex-grow">
-                <select id="box" name="amount" className="select-custom w-full " value={numberBox} onChange={handleChangeNumberBox}>
+                {maxSelected > 1 && <select id="box" name="amount" className="select-custom w-full " value={numberBox} onChange={handleChangeNumberBox}>
                   {Array(maxSelected).fill(null).map((_, i) => {
                     return (
                       <option key={i} className="text-gray-300" value={(i+1)}>{i+1}</option>
                     )
                   })}
                 </select>
+                }
+                {maxSelected == 1 && <div id="box" name="amount" className="select-custom w-full " value={numberBox} >
+                  {maxSelected}
+                </div>
+                }
               </div>
               <div id="price" className="w-1/3 text-base flex">
               {fixedSwapInfo.info.startPrice} {usd_token}
@@ -133,7 +139,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <div> 
             
             <div className="flex items-center mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 dark:border-opacity-50">
-              <div className="text-sm opacity-60">You can purchase upto {fixedSwapInfo.info.maxBuyPerAddress - fixedSwapInfo.order.total} boxes</div>
+              <div className="text-sm opacity-60">{t("You can purchase upto")} {fixedSwapInfo.info.maxBuyPerAddress - fixedSwapInfo.order.total} {pool.token_name}</div>
               <button className={`btn !text-sm relative max-w-lg btn-default btn-default-lg btn-primary ml-auto` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" width="100%" scale="md">
                 {isConfirming && <span className="spinner" />}
                 {isConfirming ? <>{t("Place Order")}</> : <>{t("Place Order")}</>}

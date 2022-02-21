@@ -274,7 +274,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           <span className="icon mr-2">
                             <i className="fa-duotone fa-badge-check"></i>
                           </span>
-                          {t("Place order success")}
+                          {t("Purchase success")}
                         </h3>
                         <strong className="message-body--info">
                           {fixedSwapInfo.order.total}
@@ -292,7 +292,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
                           <a href={`#`}  className="group">
                             <span className="text-sm mr-1">
-                              {t("adjust note",{"orderBusd" : fixedSwapInfo.order.total,"maxBusd" : fixedSwapInfo.info.maxBuyPerAddress})}
+                              {t("Purchase more note",{"orderBusd" : fixedSwapInfo.order.total,"maxBusd" : fixedSwapInfo.info.maxBuyPerAddress})}
                             </span>
                             <span className="icon text-xs relative left-1 group-hover:left-2 transition-all">
                               <i className="fas fa-angle-right"></i>
@@ -326,12 +326,12 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                             </div>
                           </div>
 
-                          {!!pool.end_date && 
+                          {/* {!!pool.end_date && 
                           <div  className="py-4 md:flex">
                             <span className="mr-2 opacity-60 w-2/5">{t("Closeat")}</span> 
                             <OpenDate time={pool.end_date} />
                           </div>
-                          }
+                          } */}
                         </div>
                       </div>
 
