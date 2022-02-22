@@ -60,7 +60,6 @@ export default function ProjectsIndex({ projects, locale }) {
       return item.slug === "heroic"
     })[0]
   }
-  console.log(heroic)
   // console.log(projects)
   return (
     <>
