@@ -11,6 +11,32 @@ const MiniCountdown = ({ pool, isEndDate,style }) => {
       return "";
     } else {
       // Render a countdown
+
+      if (style === 'simple-text-lg'){
+        return (
+          <>
+            <div className="countdown--mini text-lg">
+              <div className="countdown--mini--body !py-0 countdown--mini--body--day">
+                <time>{days}</time>
+                <span className="">d</span>
+              </div>
+              <div className="countdown--mini--body !py-0 countdown--mini--body--hour">
+                <time>{hours}</time>
+                <span className="">h</span>
+              </div>
+              <div className="countdown--mini--body !py-0 countdown--mini--body--minute">
+                <time>{minutes}</time>
+                <span className="">m</span>
+              </div>
+              <div className="countdown--mini--body !py-0 countdown--mini--second">
+                <time>{seconds}</time>
+                <span className="">s</span>
+              </div>
+            </div>
+          </>
+        );
+      }
+
       if (style === 'simple'){
         return (
           <>

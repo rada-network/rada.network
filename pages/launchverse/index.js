@@ -10,6 +10,8 @@ import Image from "@components/Image";
 import { useTheme } from "next-themes";
 import useStore from "@lib/useStore";
 import ProjectsListSecret from "@components/project/List/ProjectListSecret";
+import Link from "next/link"
+import MiniCountdown from "@components/project/List/Countdown";
 
 const Layout = dynamic(import("@components/page-layouts/Global"));
 const ProjectsList = dynamic(() => import("@components/project/List/ProjectsList"));
@@ -49,6 +51,16 @@ export default function ProjectsIndex({ projects, locale }) {
     return item.status === "closed";
   });
   store.updateNetwork("bsc");
+  const defihorse = activeProjects.filter(function (item){
+    return item.slug === "defihorse"
+  })
+  let heroic = null
+  if (defihorse.length > 0) {
+    heroic = defihorse[0].project_pool.filter(function (item) {
+      return item.slug === "heroic"
+    })[0]
+  }
+  console.log(heroic)
   // console.log(projects)
   return (
     <>
@@ -104,7 +116,7 @@ export default function ProjectsIndex({ projects, locale }) {
                 {/* END: BANNER */}
 
                 {/* BANNER */}
-                <div className="mt-8 md:mt-16">
+                {heroic && <div className="mt-8 md:mt-16">
                   <div className="projects-section">
                     <div className="projects-section--subheader">
                       <h3 className="">Current Project</h3>
@@ -147,35 +159,31 @@ export default function ProjectsIndex({ projects, locale }) {
 
                         <div className="flex flex-col flex-shrink-0 ml-8">
 
+                          {(new Date(heroic.current_date)).getTime() < (new Date(heroic.open_date)).getTime() ? 
                           <div className="mb-6">
                             {/* COUNTDOWN */}
                             <div className="legend text-2xs uppercase tracking-widest opacity-60 mb-2">
                               <h5 className="bg-green-800">Time until sale</h5>
                             </div>
 
-                            <div className="countdown--mini text-lg">
-                              <div className="countdown--mini--body !py-0 countdown--mini--body--day">
-                                <time>7</time>
-                                <span className="">d</span>
-                              </div>
-                              <div className="countdown--mini--body !py-0 countdown--mini--body--hour">
-                                <time>12</time>
-                                <span className="">h</span>
-                              </div>
-                              <div className="countdown--mini--body !py-0 countdown--mini--body--minute">
-                                <time>34</time>
-                                <span className="">m</span>
-                              </div>
-                              <div className="countdown--mini--body !py-0 countdown--mini--second">
-                                <time>52</time>
-                                <span className="">s</span>
-                              </div>
-                            </div>
+                            <MiniCountdown pool={heroic} isEndDate={false} />
                           </div>
+                          :
+                          <div className="mb-6">
+                            {/* COUNTDOWN */}
+                            <div className="legend text-2xs uppercase tracking-widest opacity-60 mb-2">
+                              <h5 className="bg-green-800">Time until close</h5>
+                            </div>
 
-                          <a href="#" className="border-0 rounded-md bg-white bg-opacity-90 px-4 py-2">
-                            <span className="text-base text-gray-700 font-medium w-full justify-center flex">View Details</span>
-                          </a>
+                            <MiniCountdown pool={heroic} isEndDate={true} />
+                          </div>
+                          }
+
+                          <Link href={ "/" + i18n.language + "/launchverse/defihorse/heroic"}>
+                            <a href={ "/" + i18n.language + "/launchverse/defihorse/heroic"} className="border-0 rounded-md bg-white bg-opacity-90 px-4 py-2">
+                              <span className="text-base text-gray-700 font-medium w-full justify-center flex">View Detail</span>
+                            </a>
+                          </Link>
                         </div>
 
                       </div>
@@ -183,19 +191,20 @@ export default function ProjectsIndex({ projects, locale }) {
 
                   </div>
                 </div>
+                }
                 {/* END: BANNER */}
 
 
                 {/* PROJECTS LIST */}
                 <div className="mt-8 md:mt-16">
-                  {activeProjects.length > 0 && (
+                  {/* {activeProjects.length > 0 && (
                     <ProjectsList
                       key={`active`}
                       title={`Current Project`}
                       projects={activeProjects}
                       isComing={false}
                     />
-                  )}
+                  )} */}
 
                   {upcomingProjects.length > 0 && (
                     <ProjectsList
