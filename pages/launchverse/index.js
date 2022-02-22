@@ -91,7 +91,7 @@ export default function ProjectsIndex({ projects, locale }) {
                 {/* END: HEADER */}
 
                 {/* BANNER */}
-                <div className="mt-8 md:mt-16">
+                {/* <div className="mt-8 md:mt-16">
                   {secretProjects.length > 0 && (
                     <ProjectsListSecret
                       key={`active`}
@@ -100,6 +100,88 @@ export default function ProjectsIndex({ projects, locale }) {
                       isComing={false}
                     />
                   )}
+                </div> */}
+                {/* END: BANNER */}
+
+                {/* BANNER */}
+                <div className="mt-8 md:mt-16">
+                  <div className="projects-section">
+                    <div className="projects-section--subheader">
+                      <h3 className="">Current Project</h3>
+                    </div>
+
+                    <div className="rounded-lg overflow-hidden">
+                      <div className="">
+                        <img
+                          src={
+                            process.env.NEXT_PUBLIC_CDN +
+                            "/images/banners/dfh-ino.png"
+                          }
+                          alt="DefiHorse INO"
+                          width={1600}
+                          height={947}
+                          className="rounded-t-lg"
+                        />
+                      </div>
+                      <div className="p-8 bg-gradient-to-r from-green-700 to-green-800 text-white flex justify-center">
+                        <div className="w-32 h-32 mr-8">
+                          <img
+                            src={
+                              process.env.NEXT_PUBLIC_CDN +
+                              "project-logos/defihorse.png"
+                            }
+                            alt="DefiHorse"
+                            width={147}
+                            height={115}
+                            className="rounded-t-lg"
+                          />
+                        </div>
+
+                        <div>
+                          <p className="opacity-80 uppercase font-medium">Exclusive on RADA</p>
+                          <h4 className="text-2xl font-medium flex items-center">
+                            The first-ever NFT Sale of DefiHorse
+                          </h4>
+                          <p className="opacity-80 mt-2">The super-project attracting millions of event participants from Racers around the world officially opens the first round of NFT sale (INO). Ready to become the proud owner of the remarkable steeds?</p>
+                        </div>
+
+                        <div className="flex flex-col flex-shrink-0 ml-8">
+
+                          <div className="mb-6">
+                            {/* COUNTDOWN */}
+                            <div className="legend text-2xs uppercase tracking-widest opacity-60 mb-2">
+                              <h5 className="bg-green-800">Time until sale</h5>
+                            </div>
+
+                            <div className="countdown--mini text-lg">
+                              <div className="countdown--mini--body !py-0 countdown--mini--body--day">
+                                <time>7</time>
+                                <span className="">d</span>
+                              </div>
+                              <div className="countdown--mini--body !py-0 countdown--mini--body--hour">
+                                <time>12</time>
+                                <span className="">h</span>
+                              </div>
+                              <div className="countdown--mini--body !py-0 countdown--mini--body--minute">
+                                <time>34</time>
+                                <span className="">m</span>
+                              </div>
+                              <div className="countdown--mini--body !py-0 countdown--mini--second">
+                                <time>52</time>
+                                <span className="">s</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <a href="#" className="border-0 rounded-md bg-white bg-opacity-90 px-4 py-2">
+                            <span className="text-base text-gray-700 font-medium w-full justify-center flex">View Details</span>
+                          </a>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
                 {/* END: BANNER */}
 
@@ -144,7 +226,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       className="
                                 flex flex-col items-stretch justify-center p-4 md:p-8
                                 shadow-sm
-                                rounded-lg h-full bg-white dark:bg-gray-800
+                                rounded-lg h-full bg-white dark:bg-gray-700
                               "
                     >
                       <div className="flex-shrink-0 text-center">
@@ -168,7 +250,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       className="
                                 flex flex-col items-stretch justify-center p-4 md:p-8
                                 shadow-sm
-                                rounded-lg h-full bg-white dark:bg-gray-800
+                                rounded-lg h-full bg-white dark:bg-gray-700
                               "
                     >
                       <div className="flex-shrink-0 text-center">
@@ -192,7 +274,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       className="
                                 flex flex-col items-stretch justify-center p-4 md:p-8
                                 shadow-sm
-                                rounded-lg h-full bg-white dark:bg-gray-800
+                                rounded-lg h-full bg-white dark:bg-gray-700
                               "
                     >
                       <div className="flex-shrink-0 text-center">
@@ -216,7 +298,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       className="
                                 flex flex-col items-stretch justify-center p-4 md:p-8
                                 shadow-sm
-                                rounded-lg h-full bg-white dark:bg-gray-800
+                                rounded-lg h-full bg-white dark:bg-gray-700
                               "
                     >
                       <div className="flex-shrink-0 text-center">
@@ -241,7 +323,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       className="
                                 flex flex-col items-stretch justify-center p-4 md:p-8
                                 shadow-sm
-                                rounded-lg h-full bg-white dark:bg-gray-800
+                                rounded-lg h-full bg-white dark:bg-gray-700
                               "
                     >
                       <div className="flex-shrink-0 text-center">
@@ -265,7 +347,7 @@ export default function ProjectsIndex({ projects, locale }) {
                       className="
                                 flex flex-col items-stretch justify-center p-4 md:p-8
                                 shadow-sm
-                                rounded-lg h-full bg-white dark:bg-gray-800
+                                rounded-lg h-full bg-white dark:bg-gray-700
                               "
                     >
                       <div className="flex-shrink-0 text-center">
