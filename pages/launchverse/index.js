@@ -126,7 +126,7 @@ export default function ProjectsIndex({ projects, locale }) {
                         <img
                           src={
                             process.env.NEXT_PUBLIC_CDN +
-                            "/images/banners/dfh-ino.png"
+                            "/project-banners/dfh-ino.png"
                           }
                           alt="DefiHorse INO"
                           width={1600}
@@ -134,52 +134,57 @@ export default function ProjectsIndex({ projects, locale }) {
                           className="rounded-t-lg"
                         />
                       </div>
-                      <div className="p-8 bg-gradient-to-r from-green-700 to-green-800 text-white flex justify-center">
-                        <div className="w-32 h-32 mr-8">
-                          <img
-                            src={
-                              process.env.NEXT_PUBLIC_CDN +
-                              "project-logos/defihorse.png"
-                            }
-                            alt="DefiHorse"
-                            width={147}
-                            height={115}
-                            className="rounded-t-lg"
-                          />
+
+                      <div className="p-8 lg:py-8 lg:px-16 bg-gradient-to-r from-green-700 to-green-800 text-white flex justify-center flex-col lg:flex-row">
+                        <div className="flex flex-col lg:flex-row">
+                          <div className="hidden xl:!block w-28 mr-12 flex-shrink-0">
+                            <img
+                              src={
+                                process.env.NEXT_PUBLIC_CDN +
+                                "project-logos/defihorse.png"
+                              }
+                              alt="DefiHorse"
+                              width={147}
+                              height={115}
+                              className="rounded-t-lg"
+                            />
+                          </div>
+
+                          <div>
+                            <p className="opacity-80 uppercase font-medium">Exclusive on RADA</p>
+                            <h4 className="text-2xl font-semibold flex items-center">
+                              The first-ever NFT Sale of DefiHorse
+                            </h4>
+                            <p className="opacity-80 mt-2">The super-project attracting millions of event participants from Racers around the world officially opens the first round of NFT sale (INO). Ready to become the proud owner of the remarkable steeds?</p>
+                          </div>
                         </div>
 
-                        <div>
-                          <p className="opacity-80 uppercase font-medium">Exclusive on RADA</p>
-                          <h4 className="text-2xl font-medium flex items-center">
-                            The first-ever NFT Sale of DefiHorse
-                          </h4>
-                          <p className="opacity-80 mt-2">The super-project attracting millions of event participants from Racers around the world officially opens the first round of NFT sale (INO). Ready to become the proud owner of the remarkable steeds?</p>
-                        </div>
-
-                        <div className="flex flex-col flex-shrink-0 ml-8">
+                        <div className="flex flex-col flex-shrink-0 mt-8 lg:mt-0 lg:ml-12">
 
                           {(new Date(heroic.current_date)).getTime() < (new Date(heroic.open_date)).getTime() ? 
                           <div className="mb-6">
                             {/* COUNTDOWN */}
                             <div className="legend text-2xs uppercase tracking-widest opacity-60 mb-2">
-                              <h5 className="bg-green-800">Time until sale</h5>
+                              <h5 className="bg-green-800 rounded-full">Time until sale</h5>
                             </div>
-
-                            <MiniCountdown pool={heroic} isEndDate={false} />
+                            <div className="text-2xl flex justify-center">
+                              <MiniCountdown pool={heroic} isEndDate={false} />
+                            </div>
                           </div>
                           :
                           <div className="mb-6">
                             {/* COUNTDOWN */}
                             <div className="legend text-2xs uppercase tracking-widest opacity-60 mb-2">
-                              <h5 className="bg-green-800">Time until close</h5>
+                              <h5 className="bg-green-800 rounded-full">Time until close</h5>
                             </div>
-
-                            <MiniCountdown pool={heroic} isEndDate={true} />
+                            <div className="text-2xl flex justify-center">
+                              <MiniCountdown pool={heroic} isEndDate={true} />
+                            </div>
                           </div>
                           }
 
                           <Link href={ "/" + i18n.language + "/launchverse/defihorse/heroic"}>
-                            <a href={ "/" + i18n.language + "/launchverse/defihorse/heroic"} className="border-0 rounded-md bg-white bg-opacity-90 px-4 py-2">
+                            <a href={ "/" + i18n.language + "/launchverse/defihorse/heroic"} className="border-0 rounded-md bg-white bg-opacity-90 hover:bg-opacity-100 px-4 py-2">
                               <span className="text-base text-gray-700 font-medium w-full justify-center flex">View Detail</span>
                             </a>
                           </Link>
