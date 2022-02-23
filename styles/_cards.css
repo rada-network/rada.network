@@ -78,8 +78,8 @@ Generic Styles
 Generic Card 
 ----------------------------------------------*/
 .card-default {
-  @apply flex-col p-0 rounded-md;
-  @apply bg-white dark:bg-gray-800 border border-gray-400 border-opacity-20 dark:border-opacity-10;
+  @apply flex-col p-0 rounded-xl;
+  @apply bg-white dark:bg-gray-800 shadow-sm;
   @apply text-sm;
 }
 
