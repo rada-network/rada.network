@@ -104,22 +104,22 @@ export const Head = observer(({ meta }) => {
         />
 
         {/* <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-        key="google-fonts-preconnect_1"
-      />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="crossorigin"
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          key="google-fonts-preconnect_1"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="crossorigin"
 
-        key="google-fonts-preconnect_2"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-        rel="stylesheet"
-        key="google-fonts"
-      /> */}
+          key="google-fonts-preconnect_2"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+          rel="stylesheet"
+          key="google-fonts"
+        /> */}
 
         {meta?.alternate?.map((alternate) => (
           <link

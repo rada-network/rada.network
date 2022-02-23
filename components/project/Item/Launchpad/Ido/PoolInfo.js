@@ -61,7 +61,7 @@ const PoolInfo = observer(function({ project,pool }) {
     <div className="card card-default project-brief">
       <div className="card-header flex items-start">
         <div>
-          <span className="text-2xs uppercase opacity-60 tracking-wide">{project.content.title} </span>
+          <span className="text-xs uppercase opacity-60 tracking-wide">{project.content.title} </span>
           <h3>{pool.title}</h3>
         </div>
         {/* <a className="btn flex btn-default !text-xs flex-shrink-0" target="_blank" 

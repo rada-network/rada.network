@@ -184,7 +184,7 @@ const NftList = function({auctionSwapInfo, pool, project, accountBalance, setSte
       <div className="card card-default card--project-info mt-4">
         <div className="card-header items-end">
           <div>
-            <span class="text-2xs uppercase opacity-60 tracking-wide">{t("Claim")} </span>
+            <span class="text-xs uppercase opacity-60 tracking-wide">{t("Claim")} </span>
             <h3>{t("Claim your reward")}</h3>
           </div>
         </div>
@@ -254,7 +254,7 @@ const NftList = function({auctionSwapInfo, pool, project, accountBalance, setSte
       <div className="card card-default card--project-info mt-4">
         <div className="card-header items-end">
           <div>
-            <span class="text-2xs uppercase opacity-60 tracking-wide">{t("Preview")} </span>
+            <span class="text-xs uppercase opacity-60 tracking-wide">{t("Preview")} </span>
             <h3>{t("Your Inventory")}</h3>
           </div>
         </div>

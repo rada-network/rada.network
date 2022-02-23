@@ -13,7 +13,7 @@ const BoxPreview = function({project,pool}){
     <div className="card card-default">
       <div className="card-header items-end">
         <div>
-          <span class="text-2xs uppercase opacity-60 tracking-wide">{t("Info box")}</span>
+          <span class="text-xs uppercase opacity-60 tracking-wide">{t("Info box")}</span>
           <h3>{pool.project_pool_content.title}</h3>
         </div>
         <a href={pool.project_pool_content.learn_more_url} target="_blank" className="btn btn-default">

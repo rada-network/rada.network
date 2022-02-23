@@ -88,7 +88,7 @@ const NftPreview = function({project,pool}){
     <div className="card card-default">
       <div className="card-header items-end">
         <div>
-          <span class="text-2xs uppercase opacity-60 tracking-wide">PREVIEW </span>
+          <span class="text-xs uppercase opacity-60 tracking-wide">PREVIEW </span>
           <h3>{project.content.title} NFT Collection</h3>
         </div>
         <a className="btn btn-default">

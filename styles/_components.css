@@ -395,15 +395,15 @@ Disclosure
 .timeline-event-body::before,
 .timeline-event-body::after {
   content: "";
-  @apply block absolute h-full w-1 md:h-0.5 md:w-1/2 top-4 z-0;
+  @apply block absolute h-full w-0.5 md:h-0.5 md:w-1/2 top-5 z-0;
   @apply bg-gray-300 dark:bg-gray-500;
 }
 
 .timeline-event-body::before {
-  @apply left-3.5 md:left-0;
+  @apply left-5 md:left-0;
 }
 .timeline-event-body::after {
-  @apply left-3.5 md:left-auto md:right-0;
+  @apply left-5 md:left-auto md:right-0;
 }
 
 .timeline-event:first-child .timeline-event-body::before,
@@ -416,8 +416,8 @@ Disclosure
 }
 
 .timeline-event--icon {
-  @apply inline-flex justify-center items-center w-8 h-8 mr-2 md:mr-0 rounded-full z-10 relative;
-  @apply bg-gray-300 dark:bg-gray-500 text-gray-800 font-medium;
+  @apply inline-flex justify-center items-center w-10 h-10 mr-2 md:mr-0 rounded-full z-10 relative;
+  @apply bg-gray-300 dark:bg-gray-500 text-gray-800 font-medium border-4 border-white dark:border-gray-800;
 }
 
 .timeline-event--icon svg {
