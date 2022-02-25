@@ -141,7 +141,7 @@ export default function ProjectsIndex({ projects, locale }) {
                             <img
                               src={
                                 process.env.NEXT_PUBLIC_CDN +
-                                "project-logos/defihorse.png"
+                                "/project-logos/defihorse.png"
                               }
                               alt="DefiHorse"
                               width={147}

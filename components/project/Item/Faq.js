@@ -1,3 +1,4 @@
+import ContentDescription from "@components/ContentDescription";
 import { getFaqFeed } from "@data/query/faq";
 import { Disclosure, Transition } from "@headlessui/react";
 import { useState,useEffect } from "react";
@@ -48,8 +49,7 @@ const ProjectFaq = ({project, pool}) => {
                         leaveTo="transform scale-y-0 opacity-0"
                       >
                         <Disclosure.Panel className="disclosure--panel">
-                          <div dangerouslySetInnerHTML={{ __html: item.answer }}>
-                          </div>
+                          <ContentDescription content={item.answer} />
                         </Disclosure.Panel>
                       </Transition>
                     </>
