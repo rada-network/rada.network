@@ -26,7 +26,7 @@ const BoxPreview = function({project,pool}){
         <div className="flex center">
         <div className="section-body post-body">
           <div className="post-content" itemProp="description">
-            <ContentDescription content={pool.project_pool_content.description} />
+            <ContentDescription content={pool.project_pool_content.description} allowStyle={true} />
           </div>
         </div>
         </div>
