@@ -63,12 +63,12 @@ function DashboardSocial({ user }) {
                     <div className="list-group--item--media brand--google">
                       <span className="icon"><i className="fa-brands fa-google"></i></span>
                     </div>
-                    <label className="text-color-desc mb-2 md:mb-0">
+                    <label className="text-color-desc">
                       Google
                     </label>
                   </div>
 
-                  <div className="flex-1 -mt-4 md:mt-0">
+                  <div className="flex-1">
                     <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(google) ? (
                         <span className="text-sm">
@@ -80,9 +80,6 @@ function DashboardSocial({ user }) {
                     </div>
                   </div>
 
-                  <div className="text-right relative -top-4 md:top-0">
-                    <div className="btn" hidden></div>
-                  </div>
                 </div>
 
                 <div className="list-group--item !px-0">
@@ -90,11 +87,11 @@ function DashboardSocial({ user }) {
                     <div className="list-group--item--media brand--facebook">
                       <span className="icon"><i className="fa-brands fa-facebook-f"></i></span>
                     </div>
-                    <label className="text-color-desc mb-2 md:mb-0">
+                    <label className="text-color-desc">
                       Facebook
                     </label>
                   </div>
-                  <div className="flex-1 -mt-4 md:mt-0">
+                  <div className="flex-1">
                     <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(facebook) ? (
                         <span className="text-sm">
@@ -106,9 +103,6 @@ function DashboardSocial({ user }) {
                     </div>
                   </div>
 
-                  <div className="text-right relative -top-4 md:top-0">
-                    <div className="btn" hidden></div>
-                  </div>
                 </div>
 
                 <div className="list-group--item !px-0">
@@ -116,11 +110,11 @@ function DashboardSocial({ user }) {
                     <div className="list-group--item--media brand--twitter">
                       <span className="icon"><i className="fa-brands fa-twitter"></i></span>
                     </div>
-                    <label className="text-color-desc mb-2 md:mb-0">
+                    <label className="text-color-desc">
                       Twitter
                     </label>
                   </div>
-                  <div className="flex-1 -mt-4 md:mt-0">
+                  <div className="flex-1">
                     <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(twitter) ? (
                         <span className="text-sm">
@@ -132,9 +126,6 @@ function DashboardSocial({ user }) {
                     </div>
                   </div>
 
-                  <div className="text-right relative -top-4 md:top-0">
-                    <div className="btn" hidden></div>
-                  </div>
                 </div>
               </>
             )}

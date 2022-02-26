@@ -50,16 +50,16 @@ function DashboardWallet() {
           <div className="list-group">
             {/* <WalletProfile hidenSelectbox={true} /> */}
 
-            <div className="list-group--item !px-0">
+            <div className="list-group--item !px-0 relative">
               <div className="list-group--item--title w-full md:w-1/3">
                 <div className="list-group--item--media dark:!bg-gray-700">
                   <span className="icon "><i className="fa-solid fa-wallet"></i></span>
                 </div>
-                <label htmlFor="blockchain-wallet" className="text-color-desc mb-2 md:mb-0">
+                <label htmlFor="blockchain-wallet" className="text-color-desc">
                   {t("Wallet")}
                 </label>
               </div>
-              <div className="flex-1 -mt-4 md:mt-0">
+              <div className="flex-1">
                 <div className="relative pl-8 md:pl-0 w-full flex items-center">
                   {!!account ? (
                     <strong>{`${account.substr(0, 4)}...${account.substr(-6)} `}</strong>
@@ -68,7 +68,7 @@ function DashboardWallet() {
                   )}
                 </div>
               </div>
-              <div className="text-right relative -top-4 md:top-0">
+              <div className="text-right absolute top-6 md:top-4 right-0">
                 <button className="btn btn-default btn-primary"
                   onClick={handleConnectWallet}
                 >
@@ -82,7 +82,7 @@ function DashboardWallet() {
                 <div className="list-group--item--media dark:!bg-gray-700">
                   <RadaSvg />
                 </div>
-                <label htmlFor="blockchain-wallet" className="text-color-desc">
+                <label className="text-color-desc">
                   {t("rir banlance")}
                 </label>
               </div>
