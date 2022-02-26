@@ -14,7 +14,7 @@ const TutorialWidget = function({project,pool}){
         <div className="w-full">
           {!!share2earn_url && 
           <Link href={share2earn_url}>
-            <div className="w-full p-4 my-2 bg-primary-600 dark:bg-primary-700 text-white rounded-lg flex items-center cursor-pointer group">
+            <div className="w-full p-4 mb-4 bg-primary-600 dark:bg-primary-700 text-white rounded-lg flex items-center cursor-pointer group">
               <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-gray-900 bg-opacity-50 rounded-full flex-shrink-0 mr-4 shadow">
                 <i className="fa-duotone fa-hand-holding-heart"></i>
               </span>
@@ -31,7 +31,7 @@ const TutorialWidget = function({project,pool}){
           </Link>
           }
           {pool.project_pool_content && 
-          <div className="w-full p-4 my-2 bg-gray-100 dark:bg-gray-900 rounded-lg flex cursor-pointer items-center group border border-gray-200 dark:border-gray-700 hover:border-primary-500 hover:bg-white dark:hover:bg-gray-800 dark:hover:border-primary-500">
+          <div className="w-full p-4 mb-4 bg-gray-100 dark:bg-gray-900 rounded-lg flex cursor-pointer items-center group border border-gray-200 dark:border-gray-700 hover:border-primary-500 hover:bg-white dark:hover:bg-gray-800 dark:hover:border-primary-500">
             <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-700 rounded-full flex-shrink-0 mr-4 shadow">
               <i className="fa-duotone fa-info"></i>
             </span>
@@ -44,7 +44,7 @@ const TutorialWidget = function({project,pool}){
             </div>
           </div>
           }
-          <div className="w-full p-4 my-2 bg-gray-100 dark:bg-gray-900 rounded-lg flex cursor-pointer items-center group border border-gray-200 dark:border-gray-700 hover:border-primary-500 hover:bg-white dark:hover:bg-gray-800 dark:hover:border-primary-500">
+          <div className="w-full p-4 mb-4 bg-gray-100 dark:bg-gray-900 rounded-lg flex cursor-pointer items-center group border border-gray-200 dark:border-gray-700 hover:border-primary-500 hover:bg-white dark:hover:bg-gray-800 dark:hover:border-primary-500">
             <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-700 rounded-full flex-shrink-0 mr-4 shadow">
               <i className="fa-duotone fa-info"></i>
             </span>

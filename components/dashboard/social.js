@@ -39,14 +39,14 @@ function DashboardSocial({ user }) {
 
   return (
     <>
-      <div className="card--wrapper mb-4 md:mb-0">
-        <div className="card--header pb-1">
-          Social
+      <div className="card card-default mb-4 md:mb-0">
+        <div className="card-header pb-1">
+          <h3>Social</h3>
         </div>
-        <div className="card--body">
+        <div className="card-body !px-4 md:!px-6 !py-0">
           <div className="list-group">
             {!user?.id && (
-              <div className="list-group--item !pb-0 md:!pb-4">
+              <div className="list-group--item !px-0">
                 <div className="relative mt-2 mb-2 w-full flex items-center justify-center">
                   <button className="btn btn-default items-center"
                     onClick={handleConnect}
@@ -58,12 +58,12 @@ function DashboardSocial({ user }) {
 
             {user?.id && (
               <>
-                <div className="list-group--item !pb-0 md:!pb-4">
+                <div className="list-group--item !px-0">
                   <div className="list-group--item--title w-full md:w-1/3">
                     <div className="list-group--item--media brand--google">
                       <span className="icon"><i className="fa-brands fa-google"></i></span>
                     </div>
-                    <label htmlFor="blockchain-wallet" className="text-color-desc">
+                    <label className="text-color-desc mb-2 md:mb-0">
                       Google
                     </label>
                   </div>
@@ -85,12 +85,12 @@ function DashboardSocial({ user }) {
                   </div>
                 </div>
 
-                <div className="list-group--item !pb-0 md:!pb-4">
+                <div className="list-group--item !px-0">
                   <div className="list-group--item--title w-full md:w-1/3">
                     <div className="list-group--item--media brand--facebook">
                       <span className="icon"><i className="fa-brands fa-facebook-f"></i></span>
                     </div>
-                    <label htmlFor="blockchain-wallet" className="text-color-desc">
+                    <label className="text-color-desc mb-2 md:mb-0">
                       Facebook
                     </label>
                   </div>
@@ -111,12 +111,12 @@ function DashboardSocial({ user }) {
                   </div>
                 </div>
 
-                <div className="list-group--item !pb-0 md:!pb-4">
+                <div className="list-group--item !px-0">
                   <div className="list-group--item--title w-full md:w-1/3">
                     <div className="list-group--item--media brand--twitter">
                       <span className="icon"><i className="fa-brands fa-twitter"></i></span>
                     </div>
-                    <label htmlFor="blockchain-wallet" className="text-color-desc">
+                    <label className="text-color-desc mb-2 md:mb-0">
                       Twitter
                     </label>
                   </div>

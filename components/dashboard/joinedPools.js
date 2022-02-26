@@ -26,12 +26,12 @@ function JoinedPools() {
   return (
     <>
       <div className="mt-4">
-        <div className="card--wrapper  mb-4 md:mb-0">
+        <div className="card card-default mb-4 md:mb-0">
           {/* Start header */}
-          <div className="card--header pb-1">
-            LaunchVerse
+          <div className="card-header">
+            <h3>LaunchVerse</h3>
           </div>
-          <div className="card--body">
+          <div className="card-body">
             <div className="invisible h-0 md:h-auto md:visible md:flex px-4 md:py-4 py-0 md:px-6 border-b border-gray-200 dark:border-gray-500 dark:border-opacity-10 text-xs uppercase font-semibold text-opacity-50 tracking-wider">
               <div className="flex md:w-1/2 md:mr-2 mb-2 md:mb-0">
                 <div className="mr-4">
@@ -65,8 +65,9 @@ function JoinedPools() {
               </div>
             )}
             {projects.length == 0 && (
-              <div className="relative mt-2 mb-2 w-full flex items-center justify-center">
-                <span>{t("Connect Wallet to view")}</span>
+              <div className="relative mt-6 mb-6 w-full flex items-center justify-center opacity-60">
+                <span className="icon mr-2"><i class="fa-solid fa-circle-info"></i></span>
+                <span>{t("Connect your wallet to view")}</span>
               </div>
             )}
             {/* End pool */}

@@ -31,7 +31,7 @@ const ProjectFaq = ({project, pool}) => {
                   {({ open }) => (
                     <>
                       <Disclosure.Button as="div" className="disclosure--toggle">
-                        <strong>
+                        <strong className="text-base">
                           {item.question}
                         </strong>
                         <span
