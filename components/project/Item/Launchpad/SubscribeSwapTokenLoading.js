@@ -12,7 +12,7 @@ const SubscribeSwapTokenLoading = function ({ currentTime, opendTime, endTime })
                   <p className="relative mb-4">
                     <span className="spinner-xl"></span>
                   </p>
-                  <span className="text-xs mt-8">Please wait</span>
+                  <span className="text-sm mt-8">Please wait</span>
                 </div>
               </div>
             </div>

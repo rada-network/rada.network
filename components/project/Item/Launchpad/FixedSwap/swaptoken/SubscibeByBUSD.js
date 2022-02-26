@@ -156,7 +156,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
                   {maxSelected == 1 && 
                   <div>
-                    <div id="box" name="amount" className="select-custom !w-28 !p-0 flex justify-between" value={numberBox} >
+                    <div id="box" name="amount" className="select-custom !w-28 !p-0 flex justify-between cursor-not-allowed" value={numberBox} >
                       <span className="icon border-r py-1.5 px-2 disabled"><i class="fa-solid fa-plus"></i></span>
                       <strong className="p-1.5 font-medium">{maxSelected}</strong>
                       <span className="icon border-l py-1.5 px-2 disabled"><i class="fa-solid fa-minus"></i></span>

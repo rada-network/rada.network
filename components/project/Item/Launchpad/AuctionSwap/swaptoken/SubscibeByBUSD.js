@@ -159,7 +159,7 @@ const SubcribeByBUSD = ({ pool, project, accountBalance, setStep, fetchAccountBa
           <p className="relative mb-4">
             <span className="spinner-xl"></span>
           </p>
-          <span className="text-xs mt-8">Please wait</span>
+          <span className="text-sm mt-8">Please wait</span>
         </div>
       </div>
     )

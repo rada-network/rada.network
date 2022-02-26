@@ -21,7 +21,7 @@ const PoolClosed = ({ project }) => {
           <div className="mb-4">
             <p className="text-center font-normal text-base">{t("pool close note")}</p>
           </div>
-          <div className="list-group rounded-md bg-gray-100 dark:bg-gray-900 px-4">
+          <div className="list-group rounded-lg bg-gray-100 dark:bg-gray-900 px-4">
             <WalletRequire />
           </div>
           <div className="">

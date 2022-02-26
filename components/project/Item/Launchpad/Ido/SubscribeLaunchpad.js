@@ -41,7 +41,7 @@ const SubscribeLaunchpad = ({ project,pool }) => {
           </p>
         </div>
 
-        <div className="list-group rounded-md bg-gray-100 dark:bg-gray-900 px-4">
+        <div className="list-group rounded-lg bg-gray-100 dark:bg-gray-900 px-4">
           {pool.is_kyc && <Login />}
           {pool.is_kyc && <KYC />}
           <WalletRequire />
