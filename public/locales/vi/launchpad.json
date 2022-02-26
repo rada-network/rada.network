@@ -122,7 +122,8 @@
   "Purchase more" : "Mua thêm",
   "Purchase more note": "Bạn đã mua {{orderBusd}}, hạn mức tối đa {{maxBusd}}",
   "Back" : "Quay lại",
-  "Place Order" : "Mua",
+  "Place Order" : "Mua ngay",
   "You can purchase upto" : "Bạn có thể mua tối đa ",
-  "Total" : "Tổng"
+  "Total" : "Tổng",
+  "Cancel" : "Huỷ lệnh"
 }
