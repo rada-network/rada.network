@@ -111,7 +111,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <div className="relative">
             <div className="flex flex-col md:flex-row justify-center items-center md:items-start relative">
 
-              <div className="w-32 md:mr-12 mb-4 md:mb-0 md:mt-2 flex-shrink-0">
+              <div className="w-32 md:mr-12 mb-4 mt-2 flex-shrink-0">
                 <img
                   src={
                     process.env.NEXT_PUBLIC_CDN +

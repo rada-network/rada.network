@@ -17,7 +17,7 @@ const ProjectCountdown = ({ project, setCountdownDone ,pool,isEndDate}) => {
 
             <div className="flex items-baseline">
               <div className="slashed-zero tabular-nums leading-none" x-text="days">{days}</div>
-              <div className="text-sm eading-none opacity-60 ml-1">d</div>
+              <div className="text-sm leading-none opacity-60 ml-1">d</div>
             </div>
 
             <div className="flex items-baseline">
