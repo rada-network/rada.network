@@ -132,7 +132,7 @@ const OpenBoxModal = observer(({ }) => {
                     {isBoxOpening && !isError &&
                       <div className="mx-auto text-center">
                         <p className="text-base mx-auto text-green-500">
-                          <span className="icon mr-2"><i class="fa-duotone fa-badge-check"></i></span>
+                          <span className="icon mr-2"><i class="fa-solid fa-badge-check"></i></span>
                           {t(`Open ${openedBoxs}/${numberBox} box successfully`)}
                         </p>
                       </div>

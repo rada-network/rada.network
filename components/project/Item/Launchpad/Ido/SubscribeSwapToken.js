@@ -340,7 +340,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <div className="w-full">
                       <h3 className="text-lg md:text-xl border-2 p-4 rounded-lg bg-green-500 bg-opacity-5 border-green-500 mb-4 text-green-500 text-center text-semibold">
                         <span className="icon mr-2">
-                          <i className="fa-duotone fa-badge-check"></i>
+                          <i className="fa-solid fa-badge-check"></i>
                         </span>
                         {orderRIR > 0 ?
                           <span>
@@ -388,7 +388,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           <i className="fa fa-money-bill"></i>
                         </span>
                         <div>
-                          <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">{t("Adjust prefund")}</p>
+                          <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400 font-medium">{t("Adjust prefund")}</p>
 
                           <a href={`#`}  className="group">
                             <span className="text-sm mr-1">{t("adjust note",{"orderBusd" : orderBusd,"maxBusd" : maxBusd})}</span>
@@ -420,7 +420,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <div className="p-4 md:p-8 rounded-lg border-2 border-green-200 dark:border-green-700">
                       <h3 className="text-lg text-center text-green-500 md:text-2xl mb-4  text-semibold">
                         <span className="icon mr-2">
-                          <i className="fa-duotone fa-badge-check"></i>
+                          <i className="fa-solid"></i>
                         </span>
                         {t("status success")}
                       </h3>

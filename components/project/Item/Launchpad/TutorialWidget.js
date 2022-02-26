@@ -19,7 +19,7 @@ const TutorialWidget = function({project,pool}){
                 <i className="fa-duotone fa-hand-holding-heart"></i>
               </span>
               <div>
-                <p className="mb-1">{t("Refer a friend to earn RIR")}</p>
+                <p className="mb-1 font-medium">{t("Refer a friend to earn RIR")}</p>
               
                 <a href={share2earn_url} className="group text-white">
                   <span className="text-sm">{t("Join Share2Earn")}</span>
@@ -36,7 +36,7 @@ const TutorialWidget = function({project,pool}){
               <i className="fa-duotone fa-info"></i>
             </span>
             <div>
-              <p className="">{pool.project_pool_content.whitelist_title}</p>
+              <p className="font-medium">{pool.project_pool_content.whitelist_title}</p>
               <a href={pool.project_pool_content.whitelist_url} target="_blank" className="group">
                 <span className="text-sm">{t("Learn more")}</span>
                 <span className="icon text-xs relative left-1 group-hover:left-2 transition-all"><i className="fas fa-angle-right"></i></span>
@@ -49,7 +49,7 @@ const TutorialWidget = function({project,pool}){
               <i className="fa-duotone fa-info"></i>
             </span>
             <div>
-              <p className="">{t("How to join RADA LaunchVerse")}</p>
+              <p className="font-medium">{t("How to join RADA LaunchVerse")}</p>
               {/* <Link href={`/launchverse/${project.slug}/share2earn`}>
               <a href={`/launchverse/${project.slug}/share2earn`} className="group">
                 <span className="text-sm">{t("Learn more")}</span>

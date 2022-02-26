@@ -44,7 +44,7 @@ const MainActions = ({}) => {
                         <i className="fa fa-money-bill"></i>
                       </span>
                       <div>
-                        <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">Adjust your prefunding</p>
+                        <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400 font-medium">Adjust your prefunding</p>
                       
                         <a href="" className="group">
                           <span className="text-sm">Add more fund to increase your chance to win</span>

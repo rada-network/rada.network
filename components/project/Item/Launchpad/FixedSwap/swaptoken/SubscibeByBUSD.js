@@ -74,7 +74,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
   return (
     <>
-      <div className="p-6 md:p-8 xl:px-16 rounded-lg">
+      <div className="p-0 md:py-8 md:px-16 rounded-lg">
         {!isApproved && 
         <div className="max-w-xs mx-auto text-center flex flex-col">
           <button className={`btn relative mx-auto btn-default btn-default-lg btn-primary`} onClick={handleApprove} width="100%" scale="md">
@@ -128,22 +128,22 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
                 <h4 className="text-2xl font-medium text-center md:text-left">{project.content.title} {pool.token_name}</h4>
 
-                <div className="text-sm mb-4 pb-4 md:pb-0 text-center md:text-left border-b border-gray-200 dark:border-gray-700 dark:border-opacity-50 md:border-b-0">
+                <div className="text-sm mb-4 pb-4 md:pb-0 text-center md:text-left border-b border-gray-200 dark:border-gray-700 md:border-b-0">
                   <strong className="">{fixedSwapInfo.info.maxBuyPerAddress - fixedSwapInfo.order.total}</strong>
                   <span className="opacity-60">
-                  &nbsp;/&nbsp;
+                  /
                   {fixedSwapInfo.info.maxBuyPerAddress}&nbsp;
                   {t("Purchase Limit")}
                   </span>
                 </div>
 
                 <div id="price" className="flex items-baseline mb-2">
-                  <span className="text-xs opacity-60 uppercase font-medium mr-2 w-16 md:w-10">Price:</span>
+                  <span className="text-xs opacity-60 uppercase font-medium mr-2 w-16 md:w-12">Price:</span>
                   <strong className="font-medium text-base">{fixedSwapInfo.info.startPrice} {usd_token}</strong>
                 </div>
 
                 <div className="flex items-baseline">
-                  <span className="text-xs opacity-60 uppercase font-medium mr-2 w-16 md:w-10">QTY:</span>
+                  <span className="text-xs opacity-60 uppercase font-medium mr-2 w-16 md:w-12">QTY:</span>
 
                   {maxSelected > 1 && <select id="box" name="amount" className="select-custom w-full " value={numberBox} onChange={handleChangeNumberBox}>
                     {Array(maxSelected).fill(null).map((_, i) => {
@@ -156,23 +156,23 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
                   {maxSelected == 1 && 
                   <div>
-                    <div id="box" name="amount" className="select-custom !w-24 !p-0 flex justify-between" value={numberBox} >
+                    <div id="box" name="amount" className="select-custom !w-28 !p-0 flex justify-between" value={numberBox} >
                       <span className="icon border-r py-1.5 px-2 disabled"><i class="fa-solid fa-plus"></i></span>
-                      <span className="p-1.5">{maxSelected}</span>
+                      <strong className="p-1.5 font-medium">{maxSelected}</strong>
                       <span className="icon border-l py-1.5 px-2 disabled"><i class="fa-solid fa-minus"></i></span>
                     </div>
-                    <small>You can only buy 1 box at a time</small>
+                    <small className="block mt-2">You can only buy 1 box at a time</small>
                   </div>
                   }
                 </div>
 
-                <div className="flex items-baseline mt-4 pt-2 border-t border-gray-200 dark:border-gray-700 dark:border-opacity-50">
-                  <span className="text-xs opacity-60 uppercase font-medium mr-2 w-16 md:w-10">Total:</span>
+                <div className="flex items-baseline mt-4 pt-2 border-t border-gray-200 dark:border-gray-700">
+                  <span className="text-xs opacity-60 uppercase font-medium mr-2 w-16 md:w-12">Total:</span>
                   <strong className="text-base">{numberBusd} {usd_token}</strong>
                 </div>
 
                 
-                <div className="flex flex-col md:flex-row mt-2 pt-4 border-t border-gray-200 dark:border-gray-700 dark:border-opacity-50">
+                <div className="flex flex-col md:flex-row mt-2 pt-4 border-t border-gray-200 dark:border-gray-700">
                   <button className={`btn relative btn-default btn-default-lg btn-primary` + ((!isApproved) ? " disabled" : "")} onClick={handleConfirm} disabled="" scale="md">
                     <span>
                       {isConfirming && <span className="spinner" />}

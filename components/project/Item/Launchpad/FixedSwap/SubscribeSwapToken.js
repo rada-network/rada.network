@@ -246,7 +246,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         <i className="fa fa-money-bill"></i>
                       </span>
                       <div>
-                        <p className="text-lg text-yellow-600 dark:text-yellow-400">{t("Purchase more")}</p>
+                        <p className="text-lg text-yellow-600 dark:text-yellow-400 font-medium">{t("Purchase more")}</p>
                       </div>
                     </div>
                     }
@@ -272,7 +272,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       <div className="message message--success">
                         <h3 className="message-body--text">
                           <span className="icon mr-2">
-                            <i className="fa-duotone fa-badge-check"></i>
+                            <i className="fa-solid fa-badge-check"></i>
                           </span>
                           {t("Purchase success")}
                         </h3>
@@ -283,12 +283,12 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       </div>
 
                       {currentTime < endTime && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
-                      <div className="mt-4 w-full text-left p-4 border border-gray-200 border-opacity-20 bg-yellow-50 hover:border-yellow-400 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
-                        <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
+                      <div className="mt-4 w-full text-left p-4 border border-transparent border-opacity-20 bg-yellow-100 hover:bg-yellow-50  hover:border-yellow-400 dark:bg-gray-900 dark:hover:bg-gray-800 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
+                        <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-700 rounded-full flex-shrink-0 mr-4 shadow transition-all">
                           <i className="fa fa-money-bill"></i>
                         </span>
                         <div>
-                          <p className="text-lg text-yellow-600 dark:text-yellow-400">{t("Purchase more")}</p>
+                          <p className="text-lg text-yellow-600 dark:text-yellow-400 font-medium">{t("Purchase more")}</p>
 
                           <a href={`#`}  className="group">
                             <span className="text-sm mr-1">

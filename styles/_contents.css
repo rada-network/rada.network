@@ -850,12 +850,15 @@ MESSAGES
 ------------------------------- */
 .message {
   @apply p-4 text-center rounded-lg;
-  @apply bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700;
+  @apply bg-gray-100 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700;
+  .icon {
+    @apply text-xl;
+  }
   .message-body--text {
-    @apply text-base;
+    @apply text-xl;
   }
   .message-body--info {
-    @apply text-2xl font-medium;
+    @apply block mt-2 text-xl font-medium;
   }
 }
 
@@ -865,10 +868,10 @@ MESSAGES
 }
 
 .message--success .message-body--text {
+ @apply text-green-500;
 }
 
 .message--success .message-body--info {
-  @apply block text-green-500 mt-2;
 }
 
 
