@@ -204,7 +204,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
                   <div className="project-card--container no-padding">
                     <div className={"w-full"}>
-                      <div className="relative flex pb-4">
+                      <div className="sr-only relative flex pb-4 justify-center">
                         <h3 className="text-lg font-medium">
                           {t("Purchase")}
                         </h3>
@@ -305,14 +305,14 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                       <div className="mt-4">
                         <div className="px-4 divide-y dark:divide-gray-600 inline-block w-full mx-auto
                             rounded-md border border-gray-200 dark:border-gray-700">
-                          <div className="py-4">
-                            <span className="mr-2 opacity-60 w-2/5">
+                          <div className="py-4 flex justify-between items-center">
+                            <span className="mr-2 opacity-60 w-2/5 uppercase text-xs">
                               {pool.token_name} Contract: 
                             </span>
                             <div className="flex">
                               <div className="mr-2">
                                 <a target="_blank" href={getBscScanURL(tokenAddress)}>
-                                  {`${tokenAddress.substr(0, 4)}...${tokenAddress.substr(-6)}`}
+                                  {`${tokenAddress.substr(0, 6)}...${tokenAddress.substr(-6)}`}
                                 </a>
                               </div>
                               <CopyToClipboard
