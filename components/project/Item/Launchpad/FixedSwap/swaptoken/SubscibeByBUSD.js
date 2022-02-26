@@ -74,7 +74,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
 
   return (
     <>
-      <div className="p-6 md:p-8 xl:px-16 bg-gray-100 dark:bg-gray-900 rounded-lg">
+      <div className="p-6 md:p-8 xl:px-16 rounded-lg">
         {!isApproved && 
         <div className="max-w-xs mx-auto text-center flex flex-col">
           <button className={`btn relative mx-auto btn-default btn-default-lg btn-primary`} onClick={handleApprove} width="100%" scale="md">

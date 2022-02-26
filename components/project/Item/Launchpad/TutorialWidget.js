@@ -30,7 +30,8 @@ const TutorialWidget = function({project,pool}){
             </div>
           </Link>
           }
-          {pool.project_pool_content && <div className="w-full p-4 my-2 bg-gray-200 dark:bg-gray-800 rounded-lg flex cursor-pointer items-center group">
+          {pool.project_pool_content && 
+          <div className="w-full p-4 my-2 bg-gray-100 dark:bg-gray-800 rounded-lg flex cursor-pointer items-center group border border-gray-200 dark:border-gray-700 hover:border-primary-500 hover:bg-white dark:hover:bg-gray-700 dark:hover:border-primary-500">
             <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow">
               <i className="fa-duotone fa-hand-holding-heart"></i>
             </span>
@@ -43,7 +44,7 @@ const TutorialWidget = function({project,pool}){
             </div>
           </div>
           }
-          <div className="w-full p-4 my-2 bg-gray-200 dark:bg-gray-800 rounded-lg flex cursor-pointer items-center group">
+          <div className="w-full p-4 my-2 bg-gray-100 dark:bg-gray-800 rounded-lg flex cursor-pointer items-center group border border-gray-200 dark:border-gray-700 hover:border-primary-500 hover:bg-white dark:hover:bg-gray-700 dark:hover:border-primary-500">
             <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow">
               <i className="fad fa-info"></i>
             </span>
