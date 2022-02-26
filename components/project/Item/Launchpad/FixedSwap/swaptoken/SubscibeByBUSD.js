@@ -111,7 +111,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           <div className="relative">
             <div className="flex flex-col md:flex-row justify-center items-center md:items-start relative">
 
-              <div className="w-32 md:mr-12 mb-4 md:mb-0 flex-shrink-0">
+              <div className="w-32 md:mr-12 mb-4 md:mb-0 md:mt-2 flex-shrink-0">
                 <img
                   src={
                     process.env.NEXT_PUBLIC_CDN +
@@ -126,7 +126,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
               
               <div className="flex flex-col w-full">
 
-                <h4 className="text-lg font-medium text-center md:text-left">{project.content.title} {pool.token_name}</h4>
+                <h4 className="text-2xl font-medium text-center md:text-left">{project.content.title} {pool.token_name}</h4>
 
                 <div className="text-sm mb-4 pb-4 md:pb-0 text-center md:text-left border-b border-gray-200 dark:border-gray-700 dark:border-opacity-50 md:border-b-0">
                   <strong className="">{fixedSwapInfo.info.maxBuyPerAddress - fixedSwapInfo.order.total}</strong>
