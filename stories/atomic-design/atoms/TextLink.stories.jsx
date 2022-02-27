@@ -7,7 +7,7 @@ export default {
   title: "Atomic Design/Atoms/TextLink",
   component: TextLink,
 };
-const Template = (args) => <TextLink {...args}>Button</TextLink>;
+const Template = (args) => <TextLink {...args}>hello world</TextLink>;
 
 export const Primary = Template.bind({});
 Primary.args = {
