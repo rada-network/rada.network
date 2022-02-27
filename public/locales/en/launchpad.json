@@ -122,7 +122,7 @@
   "Info box" : "Info",
   "Purchase success" : "Purchase success",
   "Purchase more" : "Purchase more",
-  "Purchase more note": "Your purchase is {{orderBusd}}, your maximum allocation {{maxBusd}}",
+  "Purchase more note": "You have purchased {{orderBusd}} NFT, your maximum allocation is {{maxBusd}} NFT",
   "Back" : "Back",
   "Place Order" : "Place Order",
   "You can purchase upto" : "You can purchase upto ",

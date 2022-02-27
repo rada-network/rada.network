@@ -28,7 +28,7 @@ const LaunchpadActions = observer(({ project,pool }) => {
     return <WhitelistCountdown project={project} pool={pool} />
   }
   
-  if (openTime < currentTime && currentTime < endTime) {
+  if (openTime <= currentTime && currentTime < endTime) {
     return (
       <>
         {((store.kyc.isKYC && store.kyc.status === BLOCK_PASS_KYC_COMPLETE && store.user.id !== "") || !pool.is_kyc) && !!account ?
