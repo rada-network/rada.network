@@ -1,0 +1,8 @@
+jest.config.js
+postcss.config.js
+src/__mocks__/*.js
+next.config.js
+next-i18next.config.js
+jest.storyshots.config.js
+src/generated/graphql.tsx
+stories
