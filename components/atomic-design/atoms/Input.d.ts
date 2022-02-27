@@ -15,7 +15,8 @@ type InputTypeType =
   | "password"
   | "telephone"
   | "number"
-  | "checkbox";
+  | "checkbox"
+  | "radio";
 
 export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type"> & {
   innerRef?: RefObject<HTMLInputElement>;

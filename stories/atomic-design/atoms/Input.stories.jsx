@@ -32,3 +32,7 @@ export const CheckBoxInput = Template.bind({});
 CheckBoxInput.args = {
   type: "checkbox",
 };
+export const RadioInput = Template.bind({});
+RadioInput.args = {
+  type: "radio",
+};

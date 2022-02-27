@@ -28,6 +28,10 @@ const getProps = (type = "text") => {
       return {
         type: "checkbox",
       };
+    case "radio":
+      return {
+        type: "radio",
+      };
     default:
       return {};
   }
