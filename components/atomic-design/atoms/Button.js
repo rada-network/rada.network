@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 export const BtnType = {
   primary: "primary",
@@ -10,9 +10,7 @@ export const BtnType = {
 };
 
 const Button = ({ children, ...props }) => (
-  <Fragment>
-    <button {...props}>{children}</button>
-  </Fragment>
+  <button {...props}>{children}</button>
 );
 
 export default Button;

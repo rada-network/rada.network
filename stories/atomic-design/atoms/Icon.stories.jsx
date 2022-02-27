@@ -9,5 +9,5 @@ const Template = (args) => <Icon {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  className: "fas fa-address-book",
+  className: "fa-regular fa-address-book",
 };

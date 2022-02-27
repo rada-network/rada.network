@@ -1,40 +1,51 @@
-import React, { Suspense } from 'react';
-import { withI18n } from 'storybook-addon-i18n';
-import { addParameters, addDecorator } from '@storybook/react';
-import { MockedProvider } from '@apollo/client/testing';
-import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
-import i18n from 'i18next';
-import Backend from 'i18next-http-backend';
-import { initReactI18next } from 'react-i18next';
+import React, { Suspense } from "react";
+import { withI18n } from "storybook-addon-i18n";
+import { addParameters, addDecorator } from "@storybook/react";
+import { MockedProvider } from "@apollo/client/testing";
+import { MINIMAL_VIEWPORTS } from "@storybook/addon-viewport";
+import i18n from "i18next";
+import Backend from "i18next-http-backend";
+import { initReactI18next } from "react-i18next";
 import { RouterContext } from "next/dist/shared/lib/router-context";
+
+import "../styles/tw.css";
+import "../styles/globals.css";
+import "../styles/styles.css";
+
+import(
+  /* webpackPrefetch: true */ "../public/vendors/font-awesome6-pro/css/all.min.css"
+);
+import(
+  /* webpackPrefetch: true */ "../public/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
+);
 
 const customViewports = {
   iPhone5: {
-    name: 'iPhone5',
+    name: "iPhone5",
     styles: {
-      width: '320px',
-      height: '568px',
+      width: "320px",
+      height: "568px",
     },
   },
   iPhone6: {
-    name: 'iPhone6,7,8',
+    name: "iPhone6,7,8",
     styles: {
-      width: '375px',
-      height: '667px',
+      width: "375px",
+      height: "667px",
     },
   },
   iPhoneX: {
-    name: 'iPhoneX',
+    name: "iPhoneX",
     styles: {
-      width: '375px',
-      height: '812px',
+      width: "375px",
+      height: "812px",
     },
   },
   iPhoneXsMax: {
-    name: 'iPhoneXsMax',
+    name: "iPhoneXsMax",
     styles: {
-      width: '414px',
-      height: '896px',
+      width: "414px",
+      height: "896px",
     },
   },
 };
@@ -58,17 +69,17 @@ i18n
   .use(Backend)
   .use(initReactI18next)
   .init({
-    defaultLocale: 'en',
-    locales: ['en', 'vi'],
+    defaultLocale: "en",
+    locales: ["en", "vi"],
     debug: true,
     backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
+      loadPath: "/locales/{{lng}}/{{ns}}.json",
     },
     initImmediate: false,
   });
 
 addParameters({
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -80,8 +91,8 @@ addParameters({
 export function i18nProviderWrapper({ children, i18n, locale }) {
   React.useEffect(() => {
     i18n.changeLanguage(locale);
-    document.documentElement.setAttribute('lang', locale);
-    document.querySelector('html body').setAttribute('lang', locale);
+    document.documentElement.setAttribute("lang", locale);
+    document.querySelector("html body").setAttribute("lang", locale);
   }, [i18n, locale]);
   return <>{children}</>;
 }
@@ -92,7 +103,7 @@ addParameters({
     providerProps: {
       i18n: i18n,
     },
-    supportedLocales: ['en', 'vi'],
+    supportedLocales: ["en", "vi"],
   },
 });
 

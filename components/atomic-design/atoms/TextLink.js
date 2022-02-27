@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { Fragment } from "react";
+import React from "react";
 
 export const TextLinkType = {
   primary: "primary",
@@ -15,11 +15,9 @@ export const TextLinkType = {
 };
 
 const TextLink = ({ children, ...textLinkProps }) => (
-  <Fragment>
-    <Link {...textLinkProps} passHref>
-      <a {...textLinkProps}>{children}</a>
-    </Link>
-  </Fragment>
+  <Link {...textLinkProps} passHref>
+    <a {...textLinkProps}>{children}</a>
+  </Link>
 );
 
 export default TextLink;

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 const getProps = (type = "text") => {
   switch (type) {
@@ -38,9 +38,7 @@ const getProps = (type = "text") => {
 };
 
 const Input = ({ innerRef, type, ...props }) => (
-  <Fragment>
-    <input {...getProps(type)} {...props} ref={innerRef} />
-  </Fragment>
+  <input {...getProps(type)} {...props} ref={innerRef} />
 );
 
 export default Input;

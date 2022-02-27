@@ -1,9 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
 
-const Icon = (props) => (
-  <Fragment>
-    <i {...props} />
-  </Fragment>
-);
+const Icon = (props) => <i {...props} />;
 
 export default Icon;

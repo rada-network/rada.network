@@ -11,6 +11,14 @@ module.exports = {
     "storybook-addon-i18n/register.js",
     "storybook-addon-apollo-client",
     "storybook-addon-next-router",
+    {
+      name: "@storybook/addon-postcss",
+      options: {
+        postcssLoaderOptions: {
+          implementation: require("postcss"),
+        },
+      },
+    },
   ],
   framework: "@storybook/react",
   core: {
