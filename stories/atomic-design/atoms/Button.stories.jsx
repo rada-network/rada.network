@@ -9,25 +9,25 @@ const Template = (args) => <Button {...args}>Button</Button>;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  btnType: BtnType.primary,
+  className: BtnType.primary,
 };
 export const Secondary = Template.bind({});
 Secondary.args = {
-  btnType: BtnType.secondary,
+  className: BtnType.secondary,
 };
 export const Tertiary = Template.bind({});
 Tertiary.args = {
-  btnType: BtnType.tertiary,
+  className: BtnType.tertiary,
 };
 export const Success = Template.bind({});
 Success.args = {
-  btnType: BtnType.success,
+  className: BtnType.success,
 };
 export const Warning = Template.bind({});
 Warning.args = {
-  btnType: BtnType.warning,
+  className: BtnType.warning,
 };
 export const Error = Template.bind({});
 Error.args = {
-  btnType: BtnType.error,
+  className: BtnType.error,
 };

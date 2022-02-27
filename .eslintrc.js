@@ -9,6 +9,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
+    "plugin:import/recommended",
   ],
   root: true,
   env: {

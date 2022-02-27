@@ -13,9 +13,7 @@ export const BtnType: {
 
 export type BtnType = typeof BtnType[keyof typeof BtnType];
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  btnType: BtnType;
-};
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 declare const Button: FunctionComponent<ButtonProps>;
 export default Button;

@@ -9,11 +9,9 @@ export const BtnType = {
   error: "error",
 };
 
-const Button = ({ children, className, btnType = "primary", ...props }) => (
+const Button = ({ children, ...props }) => (
   <Fragment>
-    <button className={`${className ?? ""} ${btnType}`} {...props}>
-      {children}
-    </button>
+    <button {...props}>{children}</button>
   </Fragment>
 );
 
