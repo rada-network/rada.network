@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es6",
     "baseUrl": "./",
     "paths": {
@@ -13,5 +13,11 @@
       "@styles/*": ["./styles/*"]
     }
   },
-  "exclude": ["node_modules", "**/node_modules/*",".next","https_cert","public"]
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*",
+    ".next",
+    "https_cert",
+    "public"
+  ]
 }
