@@ -1,7 +1,8 @@
 import { useCallback } from 'react'
 import ethers, { Contract, CallOverrides } from 'ethers'
-import { useGasPrice } from './index'
+import { useGasPrice,useGasPricePolygon } from './index'
 import { get } from 'lodash'
+import useStore from '@lib/useStore'
 
 /**
  * Perform a contract call with a gas price returned from useGasPrice
@@ -12,7 +13,11 @@ import { get } from 'lodash'
  * @returns https://docs.ethers.io/v5/api/providers/types/#providers-TransactionReceipt
  */
 export function useCallWithGasPrice() {
-  const gasPrice = useGasPrice()
+  const store = useStore()
+  let gasPrice = useGasPrice()
+  if (store.network === "polygon"){
+    gasPrice = useGasPricePolygon()
+  }
   const callWithGasPrice = useCallback(
     async (
       contract,
@@ -22,15 +27,37 @@ export function useCallWithGasPrice() {
     )=> {
       const contractMethod = get(contract, methodName)
       const hasManualGasPriceOverride = overrides?.gasPrice
+
       const tx = await contractMethod(
         ...methodArgs,
         hasManualGasPriceOverride ? { ...overrides } : { ...overrides, gasPrice },
       )
-
+      
       return tx
     },
     [gasPrice],
   )
 
   return { callWithGasPrice }
+}
+
+
+export function useCallWithoutGasPrice() {
+  const store = useStore()
+  const callWithoutGasPrice = useCallback(
+    async (
+      contract,
+      methodName,
+      methodArgs,
+    )=> {
+      const contractMethod = get(contract, methodName)
+      const tx = await contractMethod(
+        ...methodArgs
+      )
+      return tx
+    },
+    [],
+  )
+
+  return { callWithoutGasPrice }
 }

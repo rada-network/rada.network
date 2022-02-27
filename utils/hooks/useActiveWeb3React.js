@@ -9,10 +9,10 @@ import {getProvider,getChainId} from '../web3/useChainConfig'
  * Recreate web3 instance only if the provider change
  */
 const useActiveWeb3React = () => {
-  const { library, ...web3React } = useWeb3React()
+  const { library,chainId, deactivate, ...web3React } = useWeb3React()
   const store = useStore()
   const refEth = useRef(library)
-  const chainId=getChainId(store.network)
+  const requireChainId=getChainId(store.network)
   const simpleRpcProvider = getProvider(store.network)
   const [provider, setProvider] = useState(library || simpleRpcProvider)
   useEffect(() => {
@@ -20,9 +20,12 @@ const useActiveWeb3React = () => {
       setProvider(library || simpleRpcProvider)
       refEth.current = library
     }
+    if (library && library._network && requireChainId !== chainId) {
+      deactivate()
+    }
   }, [library])
 
-  return { library: provider,chainId: chainId, ...web3React }
+  return { library: provider,chainId: requireChainId, ...web3React }
 }
 
 export default useActiveWeb3React

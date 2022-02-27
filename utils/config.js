@@ -12,7 +12,7 @@ export const RPC_CONFIG = {
     dev : {
       name : "Binance Smart Chain Testnet",
       chainId : 97,
-      url : 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+      url : 'https://data-seed-prebsc-1-s2.binance.org:8545/',
       scan : "https://testnet.bscscan.com/"
     },
     staging : {
@@ -42,10 +42,36 @@ export const RPC_CONFIG = {
       scan : 'https://rinkeby.etherscan.io/',
     }
   },
+  polygon : {
+    production : {
+      name : "Polygon Mainnet",
+      chainId : 137,
+      url : 'https://polygon-rpc.com',
+      scan : "https://polygonscan.com/"
+    },
+    dev : {
+      name : "Polygon Mumbai Testnet",
+      chainId : 80001,
+      url : 'https://matic-mumbai.chainstacklabs.com',
+      scan : 'https://mumbai.polygonscan.com/',
+    },
+    staging : {
+      name : "Polygon Mumbai Testnet",
+      chainId : 80001,
+      url : 'https://matic-mumbai.chainstacklabs.com',
+      scan : 'https://mumbai.polygonscan.com/',
+    }
+  },
 }
 
 export const BUSD_CONTRACT  = {
   97 : "0x6945239350ae805b0823cb292a4da5974d166640",
+  56 : "0xe9e7cea3dedca5984780bafc599bd69add087d56"
+}
+
+//busd using in token sale fixed swap and auction swap
+export const BUSD_CONTRACT_2  = {
+  97 : "0x862BcFA4305DD0ecF1a82796fFc9c3627E0b592a",
   56 : "0xe9e7cea3dedca5984780bafc599bd69add087d56"
 }
 
@@ -60,7 +86,18 @@ export const RIR_ETH_CONTRACT  = {
 }
 
 export const USDT_CONTRACT  = {
-  4 : "0x6945239350ae805b0823cb292a4da5974d166640"
+  1 : "0x6945239350ae805b0823cb292a4da5974d166640",
+  4 : "0x6945239350ae805b0823cb292a4da5974d166640",
+}
+
+export const RIR_POLYGON_CONTRACT  = {
+  137 : "0x6768bdc5d03a87942ce7cb143fa74e0dade0371b",
+  80001 : "0x6768bdc5d03a87942ce7cb143fa74e0dade0371b",
+}
+
+export const USDT_POLYGON_CONTRACT  = {
+  137 : "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+  80001 : "0xD40132404421037309B608c0ab9efD518a158198"
 }
 
 

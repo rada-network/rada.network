@@ -4,7 +4,7 @@ import ReactTooltip from "react-tooltip";
 import { useRouter } from "next/router";
 import { observer } from "mobx-react";
 import { usePageStore } from "../lib/usePageStore";
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 import utils from "@lib/util";
 import Script from "next/script";
 import LazyLoadCSS from "./LazyLoadCSS";
@@ -12,7 +12,7 @@ import LazyLoadCSS from "./LazyLoadCSS";
 export const Head = observer(({ meta }) => {
   const { asPath, pathname } = useRouter();
   const { dataStore, detailStore } = usePageStore();
-  meta = _.isEmpty(dataStore.meta) ? meta : dataStore.meta;
+  meta = isEmpty(dataStore.meta) ? meta : dataStore.meta;
   meta = meta || {};
   return (
     <>
@@ -32,6 +32,7 @@ export const Head = observer(({ meta }) => {
           />
         )}
         <title>RADA - {meta.title || ""}</title>
+        {meta.canonical && <meta rel="canonical" href={meta.canonical} />}
         {meta.description && (
           <>
             <meta
@@ -103,22 +104,22 @@ export const Head = observer(({ meta }) => {
         />
 
         {/* <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-        key="google-fonts-preconnect_1"
-      />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="crossorigin"
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+          key="google-fonts-preconnect_1"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="crossorigin"
 
-        key="google-fonts-preconnect_2"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-        rel="stylesheet"
-        key="google-fonts"
-      /> */}
+          key="google-fonts-preconnect_2"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+          rel="stylesheet"
+          key="google-fonts"
+        /> */}
 
         {meta?.alternate?.map((alternate) => (
           <link
@@ -131,22 +132,8 @@ export const Head = observer(({ meta }) => {
 
         <link rel="manifest" href={"/manifest.json"} />
       </HTMLHead>
+      
       <LazyLoadCSS href="https://rsms.me/inter/inter.css" />
-
-      <LazyLoadCSS
-        href={
-          process.env.NEXT_PUBLIC_CDN +
-          "/vendors/font-awesome6-pro/css/all.min.css"
-        }
-      />
-
-      <LazyLoadCSS
-        rel="stylesheet"
-        href={
-          process.env.NEXT_PUBLIC_CDN +
-          "/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css"
-        }
-      />
 
       <TooltipWrapper />
     </>

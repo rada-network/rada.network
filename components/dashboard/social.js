@@ -8,9 +8,30 @@ import { getSession } from "next-auth/client";
 import { getCurrentUser } from "@data/query/user";
 import { useTranslation } from "react-i18next";
 
-function DashboardSocial({user, google, facebook, twitter}) {
+function DashboardSocial({ user }) {
+
   const store = useStore();
   const { t } = useTranslation("common");
+
+  let google = {},
+    wallet = {},
+    facebook = {},
+    twitter = {};
+  if (!!user) {
+    google = user.account?.find((item) => {
+      return item.provider === "google";
+    });
+    wallet = user.account?.find((item) => {
+      return item.provider === "wallet";
+    });
+    facebook = user.account?.find((item) => {
+      return item.provider === "facebook";
+    });
+    twitter = user.account?.find((item) => {
+      return item.provider === "twitter";
+    });
+  }
+
 
   const handleConnect = () => {
     store.user.showConnect(true);
@@ -18,15 +39,15 @@ function DashboardSocial({user, google, facebook, twitter}) {
 
   return (
     <>
-      <div className="card--wrapper mb-4 md:mb-0">
-        <div className="card--header pb-1">
-          Social
+      <div className="card card-default mb-4 md:mb-0">
+        <div className="card-header pb-1">
+          <h3>Social</h3>
         </div>
-        <div className="card--body">
+        <div className="card-body !px-4 md:!px-6 !py-0">
           <div className="list-group">
             {!user?.id && (
-              <div className="list-group--item !pb-0 md:!pb-4">
-                <div className="text-right flex-1 relative -top-4 md:top-0 ">
+              <div className="list-group--item !px-0">
+                <div className="relative mt-2 mb-2 w-full flex items-center justify-center">
                   <button className="btn btn-default items-center"
                     onClick={handleConnect}
                   >{t("login to join")}
@@ -37,20 +58,20 @@ function DashboardSocial({user, google, facebook, twitter}) {
 
             {user?.id && (
               <>
-                <div className="list-group--item !pb-0 md:!pb-4">
+                <div className="list-group--item !px-0">
                   <div className="list-group--item--title w-full md:w-1/3">
                     <div className="list-group--item--media brand--google">
                       <span className="icon"><i className="fa-brands fa-google"></i></span>
                     </div>
-                    <label htmlFor="blockchain-wallet" className="text-color-desc">
+                    <label className="text-color-desc">
                       Google
                     </label>
                   </div>
 
-                  <div className="flex-1 -mt-4 md:mt-0">
+                  <div className="flex-1">
                     <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(google) ? (
-                        <span>
+                        <span className="text-sm">
                           {t("no connection", { provider: "Google" })}
                         </span>
                       ) : (
@@ -58,21 +79,22 @@ function DashboardSocial({user, google, facebook, twitter}) {
                       )}
                     </div>
                   </div>
+
                 </div>
 
-                <div className="list-group--item !pb-0 md:!pb-4">
+                <div className="list-group--item !px-0">
                   <div className="list-group--item--title w-full md:w-1/3">
                     <div className="list-group--item--media brand--facebook">
                       <span className="icon"><i className="fa-brands fa-facebook-f"></i></span>
                     </div>
-                    <label htmlFor="blockchain-wallet" className="text-color-desc">
+                    <label className="text-color-desc">
                       Facebook
                     </label>
                   </div>
-                  <div className="flex-1 -mt-4 md:mt-0">
+                  <div className="flex-1">
                     <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(facebook) ? (
-                        <span>
+                        <span className="text-sm">
                           {t("no connection", { provider: "Facebook" })}
                         </span>
                       ):(
@@ -80,21 +102,22 @@ function DashboardSocial({user, google, facebook, twitter}) {
                       )}
                     </div>
                   </div>
+
                 </div>
 
-                <div className="list-group--item !pb-0 md:!pb-4">
+                <div className="list-group--item !px-0">
                   <div className="list-group--item--title w-full md:w-1/3">
                     <div className="list-group--item--media brand--twitter">
                       <span className="icon"><i className="fa-brands fa-twitter"></i></span>
                     </div>
-                    <label htmlFor="blockchain-wallet" className="text-color-desc">
+                    <label className="text-color-desc">
                       Twitter
                     </label>
                   </div>
-                  <div className="flex-1 -mt-4 md:mt-0">
+                  <div className="flex-1">
                     <div className="relative pl-8 md:pl-0 w-full">
                       {_.isEmpty(twitter) ? (
-                        <span>
+                        <span className="text-sm">
                           {t("no connection", { provider: "Twitter" })}
                         </span>
                       ) : (
@@ -102,6 +125,7 @@ function DashboardSocial({user, google, facebook, twitter}) {
                       )}
                     </div>
                   </div>
+
                 </div>
               </>
             )}

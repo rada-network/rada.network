@@ -61,7 +61,7 @@ export default function ProjectItem({ project, page, slug,pool }) {
               (page == "share2earn" ? " page-project-share2earn" : "")
             }
           >
-            <div className="w-limiter-lg">
+            <div className="w-limiter-xl">
               {page == "index" && pool !== null && <ProjectLaunchpad project={project} pool={pool} />}
               {page == "index" && pool === null && <ProjectLaunchpadPool project={project} pool={pool} />}
               {page == "research" && <ProjectDetails project={project} pool={pool} />}

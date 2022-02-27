@@ -46,6 +46,14 @@
   "Wallet" : "Wallet",
   "share2earn" : "Share2earn",
   "rir banlance": "Balance",
-  "Want to earn free RIR": "Want to earn free RIR?",
-  "learn more url": "https://rada.network/en/post/refer-a-friend-and-earn-rir-tokens-introducing-radas-share2earn-referral-program"
+  "Want to earn free RIR": "How to earn RIR?",
+  "learn more url": "https://rada.network/en/post/refer-a-friend-and-earn-rir-tokens-introducing-radas-share2earn-referral-program",
+  "bsc warning" : "Binance Smart Chain Network is under heavy load. It may take up to 5 minutes to complete a transaction.",
+  "polygon warning" : "Polygon Network is under heavy load. It may take up to 5 minutes to complete a transaction.",
+  "start transaction message": "Confirm your wallet and start transaction", 
+  "View more details": "View more details: ",
+  "transaction completed": "Transaction Completed",
+  "transaction in progress": "Transaction is in progress",
+  "transaction error": "Transaction Error", 
+  "transaction error message": "Please check your wallet and try again."
 }

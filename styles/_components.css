@@ -2,6 +2,59 @@
 Various UI Components Style
 */
 
+/*
+Dialogs
+-------------------------------*/
+.dialog-outside-wrapper {
+  @apply fixed inset-0 z-50 overflow-y-auto;
+}
+
+.dialog-outside {
+  @apply text-center;
+}
+
+.dialog-overlay {
+  @apply bg-gray-200 dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-lg;
+}
+
+.dialog {
+  @apply max-w-xs md:max-w-xl overflow-hidden text-left align-middle;
+  @apply text-left bg-gray-50 dark:bg-gray-800 shadow-xl rounded-lg;
+}
+
+.dialog-wrapper {
+  @apply block md:flex;
+}
+
+.dialog-header {
+  @apply flex p-4 md:px-6;
+  @apply text-lg font-semibold leading-6 text-gray-900 dark:text-gray-200;
+  @apply border-b border-gray-200 dark:border-gray-800;
+}
+
+.dialog .divider {
+  @apply relative my-6 text-center;
+}
+
+.dialog .divider::before {
+  @apply absolute block w-full bg-gray-500 bg-opacity-20 -z-1;
+  content: " ";
+  height: 1px;
+  bottom: calc(50% - 0.2rem)
+}
+
+.dialog .divider span {
+  @apply bg-gray-50 dark:bg-gray-900 text-xs uppercase z-0 px-4;
+}
+
+/* Boxes/Modals Close Button */
+.btn-close--box {
+  @apply inline-flex justify-center items-center w-8 h-8 bg-transparent font-medium;
+  @apply text-gray-700 border border-transparent rounded-full;
+  @apply hover:bg-gray-700 hover:text-white dark:hover:bg-gray-700;
+}
+
+
 
 /* Steps
 -------------------------------*/
@@ -182,7 +235,7 @@ Step Text
 }
 
 .box-header {
-  @apply p-4 lg:px-6 lg:py-4 text-base font-medium border-b border-gray-200 dark:border-gray-700; 
+  @apply p-4 lg:px-4 lg:py-4 text-base font-medium border-b border-gray-200 dark:border-gray-700; 
 }
 
 .box-body {
@@ -293,13 +346,13 @@ Disclosure
 .disclosure--toggle {
   @apply flex items-center justify-between py-4 relative cursor-pointer pr-10;
   strong {
-    @apply text-base font-medium;
+    @apply font-medium;
   }
 }
 
 .disclosure--toggle-arrow {
   @apply absolute right-0 top-auto flex justify-center items-center transition-all;
-  @apply w-6 h-6 rounded-full bg-gray-400 bg-opacity-20 dark:bg-opacity-20;
+  @apply w-6 h-6 rounded-full;
   .fas {
     @apply text-sm;
   }
@@ -312,7 +365,183 @@ Disclosure
 .disclosure--panel {
   @apply pb-4;
   p {
-    @apply opacity-80;
   }
 }
 
+/* Timeline
+-------------------------------*/
+.timeline {
+  @apply flex flex-col md:flex-row md:justify-evenly;
+}
+
+.timeline-event {
+  @apply w-full md:text-center;
+  /* &:first-child {
+    @apply text-left;
+  }
+  &:last-child {
+    @apply text-right;
+  } */
+}
+
+.timeline-event-body {
+  @apply flex pb-4 md:pb-0 md:block relative md:space-y-2;
+}
+
+.timeline-event:last-child .timeline-event-body {
+  @apply pb-0;
+}
+
+.timeline-event-body::before,
+.timeline-event-body::after {
+  content: "";
+  @apply block absolute h-full w-0.5 md:h-0.5 md:w-1/2 top-5 z-0;
+  @apply bg-gray-300 dark:bg-gray-500;
+}
+
+.timeline-event-body::before {
+  @apply left-5 md:left-0;
+}
+.timeline-event-body::after {
+  @apply left-5 md:left-auto md:right-0;
+}
+
+.timeline-event:first-child .timeline-event-body::before,
+.timeline-event:last-child .timeline-event-body::after {
+  @apply hidden;
+}
+
+.timeline-event:last-child .timeline-event-body::before {
+  @apply hidden md:block;
+}
+
+.timeline-event--icon {
+  @apply inline-flex justify-center items-center w-10 h-10 mr-2 md:mr-0 rounded-full z-10 relative;
+  @apply bg-gray-300 dark:bg-gray-500 text-gray-800 font-medium border-4 border-white dark:border-gray-800;
+}
+
+.timeline-event--icon svg {
+  @apply w-4 opacity-80;
+}
+
+.timeline-event--content {
+}
+
+.timeline-event--title {
+  @apply block font-medium opacity-60;
+}
+
+.timeline-event--text {
+  @apply hidden md:block text-xs opacity-60;
+}
+
+.timeline-event--duration {
+  @apply md:hidden mt-1;
+}
+
+.timeline-event .tooltip {
+  @apply hidden text-left z-50;
+}
+
+.timeline-event:hover .tooltip {
+  @apply md:block absolute w-56;
+}
+
+.timeline-event--time {
+  @apply flex text-xs;
+  span {
+    @apply opacity-60 w-10 md:text-right md:mr-2;
+  }
+}
+
+
+/* 
+Timeline State: CURRENT
+*/
+.is-current .timeline-event--icon {
+  @apply bg-green-400;
+}
+
+.is-current .timeline-event--title {
+  @apply text-gray-800 dark:text-gray-200 opacity-100;
+}
+
+.is-current .timeline-event--text {
+  @apply opacity-100;
+}
+
+.is-current .timeline-event-body::before {
+  @apply bg-green-400;
+}
+
+/* 
+Timeline State: COMPLETED
+*/
+.is-complete .timeline-event--icon {
+  @apply bg-green-400;
+}
+
+/* .is-complete .timeline-event--title {
+  @apply text-green-500;
+}
+.is-complete .timeline-event--text {
+  @apply opacity-100;
+} */
+
+.is-complete .timeline-event-body::before,
+.is-complete .timeline-event-body::after {
+  @apply bg-green-400;
+}
+
+
+
+/* Slick Slider
+-------------------------------*/
+.slick-prev,
+.slick-next {
+  @apply !hidden !w-8 !h-8 hover:!bg-gray-200 rounded-full z-10;
+}
+
+.slick-prev {
+  @apply ml-1.5 -mt-2;
+}
+
+.slick-next {
+  @apply mr-1.5 -mt-2;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  @apply !bg-gray-200;
+}
+
+.dark .slick-prev:hover,
+.dark .slick-next:hover {
+  @apply !bg-gray-700;
+}
+
+.slick-slider:hover {
+  .slick-prev,
+  .slick-next {
+  @apply !block;
+}
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: "Font Awesome 6 Pro" !important;
+  @apply !text-xl !text-gray-700;
+}
+
+.slick-prev:before {
+  content: "\f104" !important;
+}
+
+.slick-next:before {
+  content: "\f105" !important;
+}
+
+.dark .slick-prev:before,
+.dark .slick-next:before {
+  @apply !text-gray-200;
+}

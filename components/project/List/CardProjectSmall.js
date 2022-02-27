@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "@components/Image";
+import fetcher from "@lib/fetchJson";
+import CardProjectProgress from "./CardProjectProgress";
+import { getRaiseTokenByNetwork,getRaiseTokenByPlatfrom } from "@utils/hooks/index";
 
 export const CardProject = ({
   project,
@@ -18,6 +21,7 @@ export const CardProject = ({
   const { t, i18n } = useTranslation("launchpad");
   const [endDate, setEndDate] = useState("");
   const [showInfo, setShowInfo] = useState(true);
+  const [poolContract, setPoolContract] = useState({"pool_id":'',"contract":null});
   useEffect(() => {
     const options = { year: "numeric", month: "short", day: "numeric" };
     const endPool = Date.parse(pool.end_date);
@@ -27,7 +31,23 @@ export const CardProject = ({
     }
   }, []);
   if (pool.is_hidden) return null;
-  
+  useEffect(() => {
+    if (pool !== null && !pool.is_hidden) {
+      fetcher(`/api/pools/get-pools?slug=${project.slug}/${pool.slug}`).then(function(res){
+        if (!!res.pool_id){
+          setPoolContract(res)
+        }
+      })
+    }
+  }, []);
+  const raise = pool.raise;
+  let raise_token = getRaiseTokenByPlatfrom(project.platform.networkName)
+  let price_token = getRaiseTokenByPlatfrom(project.platform.networkName)
+  let sale_token = project?.token?.symbol || "TBA"
+  if (pool.token_sale == "fixed-swap" || pool.token_sale == "auction-swap"){
+    raise_token = pool.token_name
+    sale_token = pool.token_name
+  }
   return (
     <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
       <div className={`card-project card-project-sm`}>
@@ -42,8 +62,13 @@ export const CardProject = ({
                   height={32}
                 />
               </div>
-              <div className="flex items-baseline">
+              <div className="flex flex-col items-baseline mb-2 lg:mb-0">
                 <div className="project-title--token-name">{title}</div>
+                <div className="project-badge">
+                  {/* <span className={`label label-${status}`}>{status}</span> */}
+                  {pool.type === "private" && <span className={`label label-${pool.type} label--primary-light`}>Private Investor Only</span>}
+                  
+                </div>
               </div>
             </div>
 
@@ -51,7 +76,7 @@ export const CardProject = ({
               <li className="list-pair">
                 <span className="list-key">{t("Raise")}</span>
                 <span className="list-value font-semibold">
-                  {showInfo ? pool.raise.toLocaleString() + " BUSD"  : "NA"}
+                  {showInfo ? pool.raise.toLocaleString() + " " + raise_token  : "N.A"}
                 </span>
               </li>
               <li className="list-pair">
@@ -61,11 +86,8 @@ export const CardProject = ({
                 </span>
               </li>
               <li className="list-pair">
-                <span className="list-key">{t("Progress")}</span>
-                <span className="list-value">
-                  <span className="font-semibold">{showInfo ? progressToken : "NA"}</span>
-                  <span className="opacity-70">/{showInfo ? target : "NA"}</span> {token}
-                </span>
+                {poolContract.contract && <CardProjectProgress type="short" project={project} pool={{...pool,contract: poolContract.contract,pool_id : poolContract.pool_id}} />}
+                
               </li>
               <li className="list-pair">
                 <span className="list-key">{t("Ended in")}</span>
@@ -76,9 +98,9 @@ export const CardProject = ({
             </ul>
           </div>
 
-          <div className="project-status">
+          {/* <div className="project-status">
             <span className={`label label-${status}`}>{status}</span>
-          </div>
+          </div> */}
         </div>
         {/* End of project--content */}
       </div>

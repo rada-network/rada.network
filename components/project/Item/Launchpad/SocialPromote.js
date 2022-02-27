@@ -4,7 +4,7 @@ const SocialPromote = ({}) => {
   const {t} = useTranslation("launchpad")
   return (
     <div className="max-w-md mx-auto">
-      <p className="text-sm text-center mt-4 leading-7" dangerouslySetInnerHTML={{__html : t("coming soon note",
+      <p className="text-xs text-center mt-4 leading-6" dangerouslySetInnerHTML={{__html : t("coming soon note",
         {
           twitter : `<a class="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
           radanetwork : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,

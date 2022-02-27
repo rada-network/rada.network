@@ -10,19 +10,10 @@ const projectBySlugGql = gql`
       thumbnail_uri
       cover_uri
       background_uri
-      open_date
-      end_date
       cover_embed
-      thumbnail_embed
       thumbnail_embed
       type
       status
-      swap_contract
-      raise
-      price
-      is_kyc
-      is_allow_rir
-      is_whitelist
       website
       facebook
       twitter
@@ -34,6 +25,7 @@ const projectBySlugGql = gql`
         name
         logo
         symbol
+        slug
         link{
           url
           name
@@ -87,9 +79,13 @@ const projectBySlugGql = gql`
         open_date
         current_date
         type
+        token_sale
+        token_name
+        token_image_uri
         end_date
         whitelist_date
         tge_date
+        next_vesting_date
         raise
         price
         slug
@@ -99,6 +95,28 @@ const projectBySlugGql = gql`
         is_allow_rir
         is_whitelist
         is_hidden
+        is_openbox
+        is_nft_reward
+        token_decimal
+        price_decimal
+        project_pool_nft{
+          title
+          description
+          images
+          rarity
+          sort
+          allocation
+          total
+          probability
+        }
+        project_pool_content{
+          description
+          title
+          lang
+          learn_more_url
+          whitelist_url
+          whitelist_title
+        }
       }
     }
   }
@@ -108,9 +126,11 @@ const projectFeedGql = gql`
     projectFeed(lang: $lang) {
     is_default_open
     slug
+    open_date
+    end_date
     thumbnail_uri
     cover_uri
-    background_uri    
+    background_uri
     status
     website
     facebook
@@ -118,6 +138,7 @@ const projectFeedGql = gql`
     telegram
     discord
     medium
+    date_created
     token{
       name
       logo
@@ -127,11 +148,18 @@ const projectFeedGql = gql`
       title
       description
     }
+    platform{
+      name
+      networkName
+    }
     project_pool{
       sort
       open_date
       current_date
       type
+      token_sale
+      token_name
+      token_image_uri
       end_date
       whitelist_date
       tge_date
@@ -155,9 +183,11 @@ const submitProjectPrefundLogGql = gql`
 const poolByWalletAddress = gql`
   query poolByWalletAddress($lang : String!, $wallet_address : String!){
     poolByWalletAddress(lang: $lang, wallet_address: $wallet_address) {
+      id
       contract_address
       pool_id
       project{
+        slug
         thumbnail_uri
         content{
           title
@@ -175,6 +205,14 @@ const poolByWalletAddress = gql`
   }
 `
 
+const projectPoolWinnerBySlugGgl = gql`
+  query projectPoolWinnerBySlug($pool : String!, $slug : String!){
+    projectPoolWinnerBySlug(pool :$pool,slug :$slug){
+      wallet_address
+    }
+  }
+`
+
 export async function getPoolByWallet({ lang, wallet_address }) {
   const client = getClient()
   const res = await client.query({
@@ -185,6 +223,17 @@ export async function getPoolByWallet({ lang, wallet_address }) {
     }
   })
   return res.data.poolByWalletAddress || []
+}
+
+export async function getProjectPoolWinnerBySlug({ slug, pool }) {
+  const client = getClient()
+  const res = await client.query({
+    query: projectPoolWinnerBySlugGgl,
+    variables: {
+      slug,pool
+    }
+  })
+  return res.data.projectPoolWinnerBySlug || []
 }
 
 export async function getProjects({ lang }) {

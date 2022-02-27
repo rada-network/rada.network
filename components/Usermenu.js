@@ -5,7 +5,6 @@ import { signOut } from "next-auth/client";
 import Link from "next/link";
 import getClient from "../data/client";
 import { useCookies } from "react-cookie";
-import Image from "./Image";
 
 export default function Usermenu({ user }) {
   const [, , removeCookie] = useCookies(["access_token"]);
@@ -17,8 +16,8 @@ export default function Usermenu({ user }) {
       aria-expanded="false"
       aria-haspopup="true"
     >
-      <span className="avatar leading-10">
-        <Image src={user.image} alt={user.name} width={40} height={40} />
+      <span className="avatar leading-10 relative">
+        <img src={user.image} alt={user.name} />
       </span>
       <span className="btn--text ml-2">{user.name}</span>
     </div>
@@ -55,12 +54,12 @@ export default function Usermenu({ user }) {
             <Menu.Item as="div" className="dropdown-item">
               {({ active }) => (
                 <>
-                  <Link href={`/${i18n.language}/user/profile`}>
+                  <Link href={`/${i18n.language}/dashboard`}>
                     <a>
                       <span className="icon">
                         <i className="fa-duotone fa-user-gear"></i>
                       </span>
-                      <span className="dropdown-item--text">Profile</span>
+                      <span className="dropdown-item--text">LaunchVerse Profile</span>
                     </a>
                   </Link>
                 </>

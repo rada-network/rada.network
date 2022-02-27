@@ -134,7 +134,7 @@ export const CardProject = ({ project }) => {
                 <span className="">Ends in</span>
               </div> */}
               
-              {status=="open" && <MiniCountdown project={project} isEndDate={false}/>}
+              {/* {status=="open" && <MiniCountdown project={project} isEndDate={false}/>} */}
               
               
             </div>

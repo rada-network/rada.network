@@ -20,10 +20,10 @@ const MainActions = ({}) => {
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-50 overflow-y-auto"
+          className="dialog-outside-wrapper fixed inset-0 z-50 overflow-y-auto"
           onClose={closeModal}
         >
-          <div className="min-h-screen px-4 text-center">
+          <div className="dialog-outside min-h-screen px-4">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -33,7 +33,7 @@ const MainActions = ({}) => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 blur-md bg-black opacity-90" />
+              <Dialog.Overlay className="dialog-overlay fixed inset-0" />
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
@@ -56,19 +56,19 @@ const MainActions = ({}) => {
               text-left align-middle transition-all transform bg-white dark:bg-gray-900 shadow-xl rounded-lg">
                 <Dialog.Title
                   as="h3"
-                  className="text-md md:text-lg flex border-b dark:border-gray-00 border-gray-200
-                   font-medium p-4 md:p-6 leading-6 text-gray-900 dark:bg-gray-900 bg-opacity-50 
-                   dark:border-gray-800 dark:text-gray-300"
+                  className="text-base flex border-b border-gray-200
+                  font-medium p-4 md:p-6 leading-6 text-gray-900 dark:bg-gray-900 bg-opacity-50 
+                  dark:border-gray-800 dark:text-gray-300"
                 >
                   <div className="mx-auto inlie-flex">
-                    <span className="text-yellow-500 mr-2">
-                      <i className="fad fa-exclamation-triangle"></i>
-                    </span>
+                    {/* <span className="icon text-yellow-500 mr-2">
+                      <i class="fa-solid fa-circle-info"></i>
+                    </span> */}
                   Transaction is in progress</div>
                 </Dialog.Title>
                 <div className="p-4 md:p-6 text-sm text-gray-600 dark:text-gray-300">
                   <span className="spinner-xl mx-auto"></span>
-                  <h2 className="text-sm md:text-lg text-center mt-4 mx-auto">
+                  <h2 className="text-base text-center my-4 mx-auto">
                     <p>BSC network is under heavy load. It may take up to 5 minutes to complete the transaction.Thanks for your patience!</p>
                   </h2>
                   
@@ -80,7 +80,7 @@ const MainActions = ({}) => {
                   <button
                     type="button"
                     className="inline-flex justify-center px-4 bg-transparent 
-                    py-2 text-sm font-medium text-gray-500 border border-transparent rounded-md
+                    py-2 text-sm font-medium text-gray-500 border border-transparent rounded-full
                      hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none 
                      focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                     onClick={closeModal}

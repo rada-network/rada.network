@@ -1,50 +1,24 @@
 import { useTranslation } from "react-i18next";
-import { BscSvg, UsdtSvg, LaunchSvg, BusdSvg } from "../../../svg/SvgIcons";
+import { BscSvg, UsdtSvg, LaunchSvg, BusdSvg, PolygonSvg } from "../../../svg/SvgIcons";
 import { useState, useEffect } from "react";
 import Image from "@components/Image";
+import useStore from "@lib/useStore";
 export default function LaunchpadOverview({ project,pool }) {
   const { token } = project;
   const { t } = useTranslation("launchpad");
-  const [isWarning, setIsWarning] = useState(false);
-  useEffect(() =>{
-    if (window.sessionStorage){
-      let isShow = window.sessionStorage.getItem("networkWarning")
-      if (!!isShow || !pool){
-        setIsWarning(false);
-      }
-      else{
-        setIsWarning(true);
-      }
-    }
-  },[])
-  const closeWarning = (e) => {
-    if (window.sessionStorage){
-      window.sessionStorage.setItem("networkWarning",1)
-    }
-    setIsWarning(false);
-  }
+  const store = useStore()
   return (
     <>
-      {isWarning && (
-        <div className="message warning flex relative items-center">
-          <span className="message-icon">
-            <i className="mr-2 fas fa-exclamation-circle"></i>
-          </span>
-          <div className="message-content pr-2">{t("bsc warning")}</div>
-          <button
-            onClick={closeWarning}
-            className="flex items-center ml-auto w-4 h-4 "
-          >
-            <i className="text-base fas fa-times"></i>
-          </button>
-        </div>
-      )}
-      <div className="section-header pt-4">
+      <div className="section-header">
         <div className="flex flex-wrap justify-between items-center w-full">
           <div className="flex flex-0 flex-shrink-0 mb-4 items-center">
             <span className="icon flex-shrink-0 mr-2">
               <Image
-                src={token.logo}
+                src={
+                  project?.token?.logo !== null
+                    ? project?.token?.logo
+                    : `https://cdn.rada.network/static/img/coins/128x128/${project?.token?.slug}.png`
+                }
                 className="h-px-32 w-px-32"
                 alt={token.name}
                 width={32}
@@ -63,30 +37,52 @@ export default function LaunchpadOverview({ project,pool }) {
               </span>
             </h1>
           </div>
-
+         
           <div className="flex flex-wrap space-x-4 mb-4">
-            <div className="flex items-center text-sm">
-              <span className="w-5 h-5">
-                <BusdSvg />
-              </span>
-              <span className="ml-2">BUSD</span>
-            </div>
-
-            <div className="flex items-center text-sm">
-              <span className="w-4 h-4">
-                <BscSvg />
-              </span>
-              <span className="ml-2">
-                {project?.platform?.networkName.toUpperCase()}
-              </span>
-            </div>
-
+            {store.network == "bsc" && 
+            <>
+              <div className="flex items-center text-sm">
+                <span className="w-5 h-5">
+                  <BusdSvg />
+                </span>
+                <span className="ml-2">BUSD</span>
+              </div>
+              <div className="flex items-center text-sm">
+                <span className="w-4 h-4">
+                  <BscSvg />
+                </span>
+                <span className="ml-2">
+                  {project?.platform?.networkName.toUpperCase()}
+                </span>
+              </div>
+            </>
+            }
+            {store.network == "polygon" && 
+            <>
+              <div className="flex items-center text-sm">
+                <span className="w-5 h-5">
+                  <UsdtSvg />
+                </span>
+                <span className="ml-2">USDT</span>
+              </div>
+              <div className="flex items-center text-sm">
+                <span className="w-4 h-4">
+                  <PolygonSvg />
+                </span>
+                <span className="ml-2">
+                  {project?.platform?.networkName.toUpperCase()}
+                </span>
+              </div>
+            </>
+            }
             {!!pool && <div className={`label ${pool.type}`}>{pool.type}</div>}
           </div>
         </div>
       </div>
 
       {/* Video / Banner of Project */}
+     
+
       {pool == null && 
       <div className="page-media">
         <div className="media-player rounded-lg">

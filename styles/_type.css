@@ -6,7 +6,7 @@ Typography Styles
 Core Contents
 ----------------------------------- */
 html {
-  font-feature-settings: "cv02","cv03","cv04","cv11";
+  /*font-feature-settings: "cv02","cv03","cv04","cv11";*/
 }
 
 body {
@@ -27,7 +27,7 @@ body {
 .metadata-wrapper,
 .navbar-search--input::placeholder,
 .comment-footer {
-  @apply text-gray-800 text-opacity-50 dark:text-gray-200 dark:text-opacity-50;
+  @apply text-gray-800 text-opacity-60 dark:text-gray-200 dark:text-opacity-60;
 }
 
 strong {

@@ -1,21 +1,24 @@
+import ContentDescription from "@components/ContentDescription";
 import { getFaqFeed } from "@data/query/faq";
 import { Disclosure, Transition } from "@headlessui/react";
 import { useState,useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-const ProjectFaq = ({project}) => {
-  const {t,i18n} = useTranslation()
-  const [listFaq,setListFaq] = useState([])
+const ProjectFaq = ({project, pool}) => {
+  const {t,i18n} = useTranslation();
+  const [listFaq,setListFaq] = useState([]);
+  
   useEffect(() => {
     getFaqFeed({page_slug : `launchverse/${project.slug}`,lang : i18n.language}).then(function(feed) {
       setListFaq(feed)
     })
-  },[])
+  },[]);
+  
   return (
     <>
-    {listFaq.length > 0 && <div className="card-default faqs launchverse-faqs mt-8">
-      <div className="global-padding-lg">
-        <h3 className="text-lg md:text-2xl text-center mb-4 font-semibold mx-auto">
+    {listFaq.length > 0 &&
+      <div className="">
+        <h3 className="text-lg md:text-xl text-center mb-4 font-medium mx-auto">
           {t("Frequently Asked Questions")}
         </h3>
 
@@ -28,7 +31,7 @@ const ProjectFaq = ({project}) => {
                   {({ open }) => (
                     <>
                       <Disclosure.Button as="div" className="disclosure--toggle">
-                        <strong>
+                        <strong className="text-base">
                           {item.question}
                         </strong>
                         <span
@@ -46,8 +49,7 @@ const ProjectFaq = ({project}) => {
                         leaveTo="transform scale-y-0 opacity-0"
                       >
                         <Disclosure.Panel className="disclosure--panel">
-                          <div dangerouslySetInnerHTML={{ __html: item.answer }}>
-                          </div>
+                          <ContentDescription content={item.answer} />
                         </Disclosure.Panel>
                       </Transition>
                     </>
@@ -59,7 +61,6 @@ const ProjectFaq = ({project}) => {
           </div>
         </div>
       </div>
-    </div>
     }
     </>
   )

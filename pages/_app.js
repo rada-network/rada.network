@@ -1,10 +1,14 @@
+
 import "../styles/tw.css";
 import "../styles/globals.css";
 import "../styles/styles.css";
 
+import(/* webpackPrefetch: true */ '../public/vendors/font-awesome6-pro/css/all.min.css');
+import(/* webpackPrefetch: true */ '../public/vendors/cryptocurrency-icons/styles/cryptofont.nnth.css');
+
 import { StoreProvider, useStore } from "../lib/useStore";
 import { configure } from "mobx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import * as ga from "../lib/ga";
 import { appWithTranslation } from "next-i18next";
@@ -13,6 +17,7 @@ import { Provider, useSession, signOut } from "next-auth/client";
 import { useCookies, CookiesProvider } from "react-cookie";
 import { PageStoreProvider, usePageStore } from "../lib/usePageStore";
 import { ThemeProvider } from "next-themes";
+import fetcher from "../lib/fetchJson";
 
 import dynamic from "next/dynamic";
 
@@ -49,6 +54,7 @@ const MyApp = function MyApp({ Component, pageProps }) {
   const [session, loading] = useSession();
   const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
   const { dataStore, detailStore } = usePageStore();
+  const [accessToken,setAccessToken] = useState("")
   dataStore.lang = pageProps.lang || pageProps.locale || "vi";
 
   // Get ref send to cookie
@@ -64,33 +70,32 @@ const MyApp = function MyApp({ Component, pageProps }) {
     if (session) {
       const { valid } = getTokenState(session.access_token);
       if (valid) {
-        store.user.update({
-          id: session.user.id,
-          name: session.user.name,
-          email: session.user.email,
-          image: session.user.image,
-          access_token: session.access_token,
-          walletAddress: "",
-        });
-        setCookie("access_token", session.access_token, {
-          path: "/",
-          maxAge: 24 * 7 * 3600,
-        });
+        setAccessToken(session.access_token)
       } else {
-        signOut(true).then(() => {
-          removeCookie("access_token", {
-            path: "/",
-            expires: -1,
-          });
-          removeCookie("ref", {
-            path: "/",
-            expires: -1,
-          });
-        });
+        fetcher("/api/get-access-token").then(function(res){
+          setAccessToken(res.access_token)
+        })
       }
     }
     return () => {};
   }, [session, store]);
+
+  useEffect(() => {
+    if (session) {
+      store.user.update({
+        id: session.user.id,
+        name: session.user.name,
+        email: session.user.email,
+        image: session.user.image,
+        access_token: accessToken,
+        walletAddress: "",
+      });
+      setCookie("access_token", accessToken, {
+        path: "/",
+        maxAge: 24 * 7 * 3600,
+      });
+    }
+  },[accessToken,session])
 
   useEffect(() => {
     const handleRouteChange = (url, { shallow }) => {

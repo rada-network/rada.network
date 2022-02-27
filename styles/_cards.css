@@ -78,13 +78,17 @@ Generic Styles
 Generic Card 
 ----------------------------------------------*/
 .card-default {
-  @apply flex-col p-0 rounded-lg;
-  @apply bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700;
+  @apply flex-col p-0 rounded-xl;
+  @apply bg-white dark:bg-gray-800 shadow-sm;
   @apply text-sm;
 }
 
 .card-default .card-header {
-  @apply py-3 px-4 lg:px-6 lg:py-3 text-base font-medium border-b border-gray-200 dark:border-gray-700; 
+  @apply py-2 px-4 lg:px-6 lg:py-3 font-medium border-b border-gray-400 border-opacity-20 dark:border-opacity-10; 
+}
+
+.card-default .card-header h3 {
+  @apply text-base; 
 }
 
 .card-default .card-body {
@@ -200,6 +204,18 @@ a:visited .card-post,
 
 .card-post .card-media-blank img {
   @apply w-px-24 h-px-24;
+}
+
+
+/* 
+Card NFT
+----------------------------------------------*/
+.card-nftthumb {
+  @apply px-4 py-4;
+}
+
+.slick-list .card-nftthumb {
+  @apply px-4 py-0;
 }
 
 

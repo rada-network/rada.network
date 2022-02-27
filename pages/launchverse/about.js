@@ -51,7 +51,6 @@ const LaunchVerseAbout = (props) => {
                     alt="RADA LaunchVerse"
                     width={307}
                     height={54}
-                    priority
                   />
 
                   <h1 className="sr-only">

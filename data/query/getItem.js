@@ -40,6 +40,7 @@ const itemFeedGql = gql`
         isshowcontent
         keywords
         createdAt
+        updatedAt
         websiteUri
         lang
         grabTopic{
@@ -67,7 +68,7 @@ const itemFeedGql = gql`
           logo
         }
         is_footnote
-        category { 
+        category {
           slug
         }
         multilang{
@@ -122,7 +123,7 @@ const itemFeedGql = gql`
           logo
         }
         is_footnote
-        category { 
+        category {
           slug
         }
         multilang{
@@ -161,6 +162,7 @@ const itemByIdGql = gql`
         content_en_display
         keywords
         createdAt
+        updatedAt
         websiteUri
         lang
         grabTopic{
@@ -188,7 +190,7 @@ const itemByIdGql = gql`
           logo
         }
         is_footnote
-        category { 
+        category {
           slug
         }
         multilang{
@@ -242,7 +244,7 @@ const itemByIdGql = gql`
           logo
         }
         is_footnote
-        category { 
+        category {
           slug
         }
         multilang{
