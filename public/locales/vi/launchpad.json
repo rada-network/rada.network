@@ -120,7 +120,7 @@
   "Info box" : "Thông tin",
   "Purchase success" : "Mua thành công",
   "Purchase more" : "Mua thêm",
-  "Purchase more note": "Bạn đã mua {{orderBusd}}, hạn mức tối đa {{maxBusd}}",
+  "Purchase more note": "Bạn đã mua {{orderBusd}} NFT, hạn mức tối đa {{maxBusd}} NFT",
   "Back" : "Quay lại",
   "Place Order" : "Mua ngay",
   "You can purchase upto" : "Bạn có thể mua tối đa ",
