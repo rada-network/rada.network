@@ -1,0 +1,6 @@
+{
+  "*.{js,ts,tsx}": [
+    "eslint --ext ts --ext tsx --fix",
+  ],
+}
+

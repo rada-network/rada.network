@@ -14,7 +14,8 @@
     "start:staging": "NODE_ENV=staging && next start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "simple-git-hooks"
   },
   "dependencies": {
     "@apollo/client": "^3.3.12",
@@ -99,6 +100,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "lint-staged": "^12.3.4",
     "next-pwa": "^5.3.1",
     "next-sitemap": "^1.6.203",
     "postcss": "^8.2.9",
@@ -107,7 +109,8 @@
     "postcss-nesting": "^7.0.1",
     "storybook-addon-apollo-client": "^4.0.9",
     "storybook-addon-i18n": "^5.1.13",
-    "storybook-addon-next-router": "^3.1.1"
+    "storybook-addon-next-router": "^3.1.1",
+    "simple-git-hooks": "^2.4.1"
   },
   "browserslist": {
     "production": [
@@ -119,6 +122,11 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": [
+      "yarn lint-staged --allow-empty"
     ]
   }
 }
