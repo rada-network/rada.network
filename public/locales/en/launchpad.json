@@ -126,5 +126,8 @@
   "Back" : "Back",
   "Place Order" : "Place Order",
   "You can purchase upto" : "You can purchase upto ",
-  "Total" : "Total"
+  "Total" : "Total",
+  "Cancel" : "Cancel",
+  "Purchase Limit" : "Purchase limit",
+  "Purchase limit order" : "You can only buy {{limit}} box at a time"
 }

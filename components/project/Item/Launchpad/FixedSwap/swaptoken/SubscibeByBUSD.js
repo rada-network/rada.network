@@ -126,7 +126,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
               
               <div className="flex flex-col w-full">
 
-                <h4 className="text-2xl font-medium text-center md:text-left">{project.content.title} {pool.token_name}</h4>
+                <h4 className="text-2xl font-medium text-center md:text-left">{pool.token_name}</h4>
 
                 <div className="text-sm mb-4 pb-4 md:pb-0 text-center md:text-left border-b border-gray-200 dark:border-gray-700 md:border-b-0">
                   <strong className="">{fixedSwapInfo.info.maxBuyPerAddress - fixedSwapInfo.order.total}</strong>
@@ -161,7 +161,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
                       <strong className="p-1.5 font-medium">{maxSelected}</strong>
                       <span className="icon border-l py-1.5 px-2 disabled"><i class="fa-solid fa-minus"></i></span>
                     </div>
-                    <small className="block mt-2">You can only buy 1 box at a time</small>
+                    <small className="block mt-2">{t("Purchase limit order",{limit : fixedSwapInfo.info.maxBuyPerOrder})}</small>
                   </div>
                   }
                 </div>

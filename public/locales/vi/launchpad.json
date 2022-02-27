@@ -125,5 +125,7 @@
   "Place Order" : "Mua ngay",
   "You can purchase upto" : "Bạn có thể mua tối đa ",
   "Total" : "Tổng",
-  "Cancel" : "Huỷ lệnh"
+  "Cancel" : "Huỷ lệnh",
+  "Purchase Limit" : "Giới hạn mua",
+  "Purchase limit order" : "Bạn chỉ có thể mua {{limit}} hộp mỗi lần"
 }
