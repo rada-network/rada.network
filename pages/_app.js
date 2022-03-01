@@ -20,16 +20,13 @@ import { Provider, useSession, signOut } from "next-auth/client";
 import { useCookies, CookiesProvider } from "react-cookie";
 import { PageStoreProvider, usePageStore } from "../lib/usePageStore";
 import { ThemeProvider } from "next-themes";
-<<<<<<< HEAD
+import fetcher from "../lib/fetchJson";
+
+import dynamic from "next/dynamic";
+
 import { DefaultSeo, LogoJsonLd } from "next-seo";
 import ogimage from "../public/images/launchverse-hero.png";
 import logo from "../public/images/rada.svg";
-=======
-import fetcher from "../lib/fetchJson";
-
->>>>>>> c99010be5827741654ca43fe3641a8dc38da74fb
-import dynamic from "next/dynamic";
-
 
 const Nprogress = dynamic(() => import("@components/Nprogress"));
 const Toast = dynamic(() => import("@components/Toast"));

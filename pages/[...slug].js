@@ -235,8 +235,6 @@ export const Index = ({ props, dataStore, voteStore, detailStore }) => {
   );
 };
 
-<<<<<<< HEAD
-=======
 const ResizeerWrapper = function ({ mainRef, dataStore, containerRef }) {
   let pw;
   let mw;
@@ -291,7 +289,6 @@ const ResizeerWrapper = function ({ mainRef, dataStore, containerRef }) {
   );
 };
 
->>>>>>> c99010be5827741654ca43fe3641a8dc38da74fb
 export async function getStaticPaths() {
   return {
     paths: [],
