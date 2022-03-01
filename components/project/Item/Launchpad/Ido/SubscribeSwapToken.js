@@ -1,24 +1,21 @@
 import Subscriber from "./Subscriber";
-import Timeline from "./Timeline";
 import { useBUSDContract, useERC20, useRIRContract, useLaunchpadContractV2 } from "@utils/hooks/useContracts";
 import { useEffect, useState } from "react";
 import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
 import { ethers, utils } from "ethers";
 import { useTranslation } from "next-i18next";
-
 import { useLaunchpadInfo } from "@utils/hooks/index";
 import SwapTokensV2 from "./SwapTokenV2";
-import Link from "next/link"
 import { useCallWithGasPrice } from "@utils/hooks/useCallWithGasPrice"
 import { toast } from "react-toastify"
-import { set } from "store";
 import SocialPromote from "../SocialPromote";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import useChainConfig from "utils/web3/useChainConfig"
 import MiniCountdown from "@components/project/List/Countdown";
 import useStore from "@lib/useStore"
 import OpenDate from "@components/project/Item/Launchpad/OpenDate"
-
+import PoolDetailCountdown from "../PoolDetailCountdown";
+import SubscribeSwapTokenLoading from "@components/project/Item/Launchpad/SubscribeSwapTokenLoading";
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const { t, i18n } = useTranslation("launchpad")
@@ -41,8 +38,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const [step, setStep] = useState(2)
   const [claimDisbaled, setClaimDisbaled] = useState(false)
   const [tokenAddress,setTokenAddress] = useState(ethers.constants.AddressZero)
-
-
   const [poolStatus, setPoolStatus] = useState("");
 
   useEffect(() => {
@@ -76,10 +71,16 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
   const fetchAccountBalance = async function () {
     await fetchLaunchpadInfo()
-    let rirBalance = await rirContract.balanceOf(account);
+    let rirBalance = 0
+    try {
+      rirBalance =  utils.formatEther(await rirContract.balanceOf(account));
+    }
+    catch (e) {
+      console.log(e)
+    }
     let busdBalance = await bUSDContract.balanceOf(account);
     setAccountBalance({
-      rirBalance: utils.formatEther(rirBalance),
+      rirBalance: rirBalance,
       busdBalance: utils.formatEther(busdBalance),
     })
   }
@@ -110,7 +111,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
     }
   }, [account,launchpadInfo])
   useEffect(() => {
-    if (!loading){
+    if (!loading && !!launchpadInfo){
       let currentOrderBusd = launchpadInfo.investor.amountBusd && launchpadInfo.investor.paid ? launchpadInfo.investor.amountBusd : 0
       let currentOrderRIR = launchpadInfo.investor.amountRir && launchpadInfo.investor.paid ? launchpadInfo.investor.amountRir : 0
       let currentApprovedBusd = launchpadInfo.investor.approved && launchpadInfo.investor.paid ? launchpadInfo.investor.allocationBusd : 0
@@ -123,7 +124,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   }, [launchpadInfo,loading])
 
   useEffect(() => {
-    if (loading) return false
+    if (loading || !launchpadInfo) return false
     //pool dont set winner
     if (launchpadInfo.stat.approvedBusd == 0 || !launchpadInfo.investor.paid){
       if (parseInt(orderBusd) > 0){
@@ -220,6 +221,9 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       <NotInWhitesist></NotInWhitesist>
     )
   }
+  if (!launchpadInfo){
+    return "Error loading swap info"
+  }
   const maxRIR = parseInt(launchpadInfo.individualMaximumAmount) / 100;
   const maxBusd = parseInt(launchpadInfo.individualMaximumAmount);
   return (
@@ -229,16 +233,11 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
           <div className="card-body no-padding">
 
             <div className="flex flex-col">
-
+              <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")}/>
               <div className="project-card--container">
                 <div className="grid gap-4 md:gap-8 lg:grid-cols-2">
 
                   <div className="box box--transparent">
-
-                    <div className="box-header !px-0">
-                      <CountdownInPool />
-                    </div>
-
                     <div className="box-header !px-0 sr-only">{t("Your allocation")}</div>
 
                     <ul className="mt-4 mb-2 flex-shrink-0 flex-grow">
@@ -341,7 +340,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <div className="w-full">
                       <h3 className="text-lg md:text-xl border-2 p-4 rounded-lg bg-green-500 bg-opacity-5 border-green-500 mb-4 text-green-500 text-center text-semibold">
                         <span className="icon mr-2">
-                          <i className="fa-duotone fa-badge-check"></i>
+                          <i className="fa-solid fa-badge-check"></i>
                         </span>
                         {orderRIR > 0 ?
                           <span>
@@ -389,7 +388,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                           <i className="fa fa-money-bill"></i>
                         </span>
                         <div>
-                          <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">{t("Adjust prefund")}</p>
+                          <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400 font-medium">{t("Adjust prefund")}</p>
 
                           <a href={`#`}  className="group">
                             <span className="text-sm mr-1">{t("adjust note",{"orderBusd" : orderBusd,"maxBusd" : maxBusd})}</span>
@@ -421,7 +420,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                     <div className="p-4 md:p-8 rounded-lg border-2 border-green-200 dark:border-green-700">
                       <h3 className="text-lg text-center text-green-500 md:text-2xl mb-4  text-semibold">
                         <span className="icon mr-2">
-                          <i className="fa-duotone fa-badge-check"></i>
+                          <i className="fa-solid"></i>
                         </span>
                         {t("status success")}
                       </h3>
@@ -572,21 +571,28 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         </span>
                       </li>
                       <li className="list-pair mb-2">
-                          <span className="list-key !w-1/2">{project.token.symbol} Contract</span>
-                          <div className="ml-auto p-2 rounded-lg flex bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700">
-                            <a target="_blank" href={getBscScanURL(tokenAddress)}>
-                              {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}
-                            </a>
-                            <CopyToClipboard
-                              onCopy={handleCopy}
-                              text={tokenAddress}
-                            >
-                              <button className="btn ml-2">
-                                <i className="fa-duotone fa-copy text-2xs"></i>
-                              </button>
-                            </CopyToClipboard>
-                          </div>
-                        </li>
+                        <span className="list-key !w-1/2">{project.token.symbol} Contract</span>
+                        <div className="ml-auto p-2 rounded-lg flex bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700">
+                          <a target="_blank" href={getBscScanURL(tokenAddress)}>
+                            {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}
+                          </a>
+                          <CopyToClipboard
+                            onCopy={handleCopy}
+                            text={tokenAddress}
+                          >
+                            <button className="btn ml-2">
+                              <i className="fa-duotone fa-copy text-2xs"></i>
+                            </button>
+                          </CopyToClipboard>
+                        </div>
+                      </li>
+                      {!!pool.next_vesting_date && ( (new Date(pool.next_vesting_date)) > (new Date(pool.current_date)) )   && <li className="list-pair mb-2">
+                        <span className="list-key !w-1/2">{t("Next vesting at")}</span>
+                        <span className="ml-auto list-value !text-xs">
+                          <OpenDate time={pool.next_vesting_date} />
+                        </span>
+                      </li>
+                      }
                     </ul>
                     
                   </div>
@@ -621,29 +627,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       }
     </>
   );
-}
-
-const SubscribeSwapTokenLoading = function({currentTime,opendTime,endTime}){
-  return (
-    <div className="card-default project-main-actions no-padding overflow-hidden">
-
-      <div className="card-body no-padding">
-        <div className="flex flex-col">
-          <div className="project-card--container">
-            <div className="max-w-2xl mx-auto text-center">
-
-              <div className="flex items-center">
-                <div className="mx-auto">
-                  <p className="relative mb-4 "><span className="spinner left-0 top-0"></span></p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  )
 }
 
 const TokenSocialPromote = function({project}){

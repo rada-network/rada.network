@@ -18,13 +18,21 @@ const Timeline = observer (({ step, steps }) => {
         <div className="timeline-event-body" aria-current="step">
           <div className="timeline-event--icon">
             <span className="timeline-event--icon--text">
-              {/* {cstep > step ? <CheckSvg /> : step} */}
-              {cstep > step ? step : step}
+              {cstep > step ? <CheckSvg /> : step}
+              {/* {cstep > step ? step : step} */}
             </span>
           </div>
           <div className="timeline-event--content">
             <span className="timeline-event--title">{title}</span>
             <span className="timeline-event--text">{desc}</span>
+            <div className="timeline-event--duration">
+              <time className="timeline-event--time">
+                <span>From:</span> {timeOpen}
+              </time>
+              <time className="timeline-event--time">
+                <span>To:</span> {timeClose}
+              </time>
+            </div>
             <div className="tooltip">
               <time className="timeline-event--time">
                 <span>From:</span> {timeOpen}
@@ -50,8 +58,8 @@ const Timeline = observer (({ step, steps }) => {
                 step={item.step}
                 title={item.title}
                 desc={item.des}
-                timeOpen="9AM, 21/01/2022 (UTC)"
-                timeClose="9AM, 24/01/2022 (UTC)"
+                timeOpen={item.from}
+                timeClose={item.to}
               />
             )
           })}

@@ -48,6 +48,12 @@ const submitKycStatusGql =  gql`
   }
 `
 
+const getAccessTokenGql =  gql`
+  query getAccessToken($user_id : String!,$key : String!){
+    getAccessToken (user_id : $user_id,key : $key)
+  }
+`
+
 export async function getTokenFromYourAPIServer(profile, account, oauthProfile) {
   const key = process.env.LOGIN_KEY || ""
     const client = getClient();
@@ -81,4 +87,17 @@ export async function submitKycStatus({id,kyc_status}) {
     }
   })
   return data.data.submitKycStatus
+}
+
+export async function getAccessToken({user_id}) {
+  const client = getClient();
+  const key = process.env.LOGIN_KEY || ""
+  let data = await client.query({
+    query : getAccessTokenGql,
+    variables: {
+      key : key,
+      user_id : user_id
+    }
+  })
+  return data.data.getAccessToken
 }

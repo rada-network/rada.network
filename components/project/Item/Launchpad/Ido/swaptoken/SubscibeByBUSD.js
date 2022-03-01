@@ -115,7 +115,7 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
           {/* <div className="dark:text-gray-400 mt-2 text-gray-500">You have to pay <strong>100 busd</strong></div> */}
         </div>
         <div className="mt-4">
-          <button className={`btn relative  w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} onClick={handleApprove} width="100%" scale="md">
+          <button className={`btn relative w-full btn-default btn-default-lg btn-purple` + (isApproved ? " disabled" : "")} onClick={handleApprove} width="100%" scale="md">
             {isApproving && <span className="spinner" />}
             {isApproved && <span className="button-compact-body--icon--text" ><CheckSvg></CheckSvg></span>}
             {isApproving && 

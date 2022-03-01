@@ -42,15 +42,15 @@ function DashboardWallet() {
 
   return (
     <>
-      <div className="card--wrapper  mb-4 md:mb-0">
-        <div className="card--header pb-1">
-          {t("Wallet")}
+      <div className="card card-default mb-4 md:mb-0">
+        <div className="card-header pb-1">
+          <h3>{t("Wallet")}</h3>
         </div>
-        <div className="card--body">
+        <div className="card-body !px-4 md:!px-6 !py-0">
           <div className="list-group">
             {/* <WalletProfile hidenSelectbox={true} /> */}
 
-            <div className="list-group--item !pb-0 md:!pb-4">
+            <div className="list-group--item !px-0 relative">
               <div className="list-group--item--title w-full md:w-1/3">
                 <div className="list-group--item--media dark:!bg-gray-700">
                   <span className="icon "><i className="fa-solid fa-wallet"></i></span>
@@ -59,17 +59,17 @@ function DashboardWallet() {
                   {t("Wallet")}
                 </label>
               </div>
-              <div className="flex-1 -mt-4 md:mt-0">
+              <div className="flex-1">
                 <div className="relative pl-8 md:pl-0 w-full flex items-center">
                   {!!account ? (
-                    <strong>{`${account.substr(0, 3)}...${account.substr(-3)} `}</strong>
+                    <strong>{`${account.substr(0, 4)}...${account.substr(-6)} `}</strong>
                   ) : (
                     <span className="text-sm">{t("no connection", { provider: "wallet" })}</span>
                   )}
                 </div>
               </div>
-              <div className="text-right relative -top-4 md:top-0">
-                <button className="btn btn-default"
+              <div className="text-right absolute top-6 md:top-4 right-0">
+                <button className="btn btn-default btn-primary"
                   onClick={handleConnectWallet}
                 >
                   {!!account ? t("disconnect") : t("connect")}
@@ -77,24 +77,24 @@ function DashboardWallet() {
               </div>
             </div>
 
-            <div className="list-group--item  md:!pb-4">
-              <div className="list-group--item--title w-1/3">
+            <div className="list-group--item !px-0 justify-between md:!justify-start">
+              <div className="list-group--item--title w-auto md:w-1/3">
                 <div className="list-group--item--media dark:!bg-gray-700">
                   <RadaSvg />
                 </div>
-                <label htmlFor="blockchain-wallet" className="text-color-desc">
+                <label className="text-color-desc">
                   {t("rir banlance")}
                 </label>
               </div>
-              <div className="flex-1 md:mt-0">
-                <div className="relative pl-8 md:pl-0 w-full flex items-center">
-                  {accountBalance} RIR
+              <div className="ml-auto md:ml-0 md:mt-0">
+                <div className="relative md:pl-0 w-full flex items-center">
+                  <strong className="mr-1">{accountBalance}</strong> RIR
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="p-4 border-t flex items-centers dark:border-gray-500 dark:border-opacity-10">
+          <div className="mt-auto mb-4 px-4 py-2 bg-gray-100 dark:bg-gray-700 flex items-centers rounded-lg">
             {t("Want to earn free RIR")}
             <a href={t("learn more url")} target="_blank" className="ml-auto flex items-center text-yellow-500">
               {t("Learn more")}

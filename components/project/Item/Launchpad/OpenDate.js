@@ -16,6 +16,6 @@ const OpenDate = ({ time }) => {
     return strTime;
   }
 
-  return <strong>{formatAMPM(date)}, {date.toDateString("en-US", options)} ({zone})</strong>
+  return <time>{formatAMPM(date)}, {date.toDateString("en-US", options)} ({zone})</time>
 }
 export default OpenDate

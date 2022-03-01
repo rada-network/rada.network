@@ -9,6 +9,7 @@ import { ethers, utils } from "ethers";
 import { useTranslation } from "next-i18next";
 import useStore from "@lib/useStore"
 import { observer } from "mobx-react";
+import { getRaiseTokenByPlatfrom } from "@utils/hooks/index";
 
 const PoolInfo = observer(function({ project,pool }) {
   const { dataStore } = usePageStore();
@@ -48,6 +49,7 @@ const PoolInfo = observer(function({ project,pool }) {
   const curentTime = (new Date()).getTime() / 1000
   const openTime = (new Date(pool.open_date)).getTime() / 1000
   let raise_token = "BUSD"
+  let price_token = getRaiseTokenByPlatfrom(project.platform.networkName)
   let sale_token = project.token.symbol
   if (pool.token_sale == "fixed-swap" || pool.token_sale == "auction-swap"){
     raise_token = pool.token_name
@@ -57,7 +59,7 @@ const PoolInfo = observer(function({ project,pool }) {
     <div className="card card-default project-brief">
       <div className="card-header flex items-start">
         <div>
-          <span className="text-2xs uppercase opacity-60 tracking-wide">{project.content.title} </span>
+          <span className="text-xs uppercase opacity-60 tracking-wide">{project.content.title} </span>
           <h3>{pool.title}</h3>
         </div>
         {/* <a className="btn flex btn-default !text-xs flex-shrink-0" target="_blank" 
@@ -83,7 +85,7 @@ const PoolInfo = observer(function({ project,pool }) {
             <span className="list-key">{t("Token Price")}</span>
             {tokenPrice ? 
             <span className="ml-auto font-semibold text-right">
-            1 {sale_token} = {tokenPrice} BUSD
+            1 {sale_token} = {tokenPrice} {price_token}
             </span>
             :
             <span className="ml-auto font-semibold">
@@ -99,7 +101,7 @@ const PoolInfo = observer(function({ project,pool }) {
             </span>
 
           </li> */}
-          {!!pool.open_date && openTime < curentTime && showInfo &&
+          {!!pool.open_date && showInfo &&
           <li className="list-pair mb-2">
           <span className="list-key capitalize">{t("Progress")}</span>
           <span className="list-value ml-auto text-right">

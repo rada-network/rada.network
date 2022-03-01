@@ -645,8 +645,8 @@ Tootips
 .__react_component_tooltip {
   @apply max-w-xs shadow-lg backdrop-filter backdrop-blur;
   padding: 4px 8px !important;
-  background: #FEF3C7 !important;
-  color: #111827 !important;
+  background: #111827 !important;
+  color: #fff !important;
   font-size: 0.875rem !important;
   &::after {
     border-color: transparent !important;

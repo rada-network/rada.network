@@ -4,6 +4,7 @@ import fetchJson from "@lib/fetchJson";
 import useSWR from "swr";
 import { useTranslation } from "next-i18next";
 import { getCurrentUser } from "@data/query/user";
+import SocialPromote from "../SocialPromote";
 
 import dynamic from "next/dynamic";
 import { BLOCK_PASS_KYC_COMPLETE,BLOCK_PASS_KYC_REJECT } from "@config/constants";
@@ -33,22 +34,20 @@ const SubscribeLaunchpad = ({ project,pool }) => {
   }
   return (
     <>
-      <div className="max-w-2xl mx-auto rounded-lg mt-8">
+      <div className="max-w-lg w-full mx-auto rounded-lg">
         <div className="mb-4">
-          {/* <h3 className="text-2xl text-center font-normal">
-            <span className="text-color-title">
-              {project?.token.name}'s {t("Whitelist")}
-            </span>
-          </h3> */}
-          <p className="text-center mt-2 font-normal text-base">
+          <p className="text-center font-normal text-base">
             {t("Complete all the requirements below to joint the pool.")}
           </p>
         </div>
 
-        <div className="list-group">
+        <div className="list-group rounded-lg bg-gray-100 dark:bg-gray-900 px-4">
           {pool.is_kyc && <Login />}
           {pool.is_kyc && <KYC />}
           <WalletRequire />
+        </div>
+        <div className="">
+          <SocialPromote />
         </div>
       </div>
     </>
@@ -69,7 +68,7 @@ export const SubscribeLaunchpadClosed = ({ project }) => {
 
         <div className="max-w-2xl mx-auto p-4 lg:px-8 rounded-lg">
           <div className="mb-4">
-            <p className="text-center mt-2 font-normal text-base">{t("pool close note")}</p>
+            <p className="text-center font-normal text-base">{t("pool close note")}</p>
           </div>
           <div className="list-group">
             <WalletRequire />
@@ -96,7 +95,7 @@ const Login = () => {
              </span>;
     return (
       <button
-        className="btn btn-default w-20 md:w-24"
+        className="btn btn-default btn-primary w-20 md:w-24"
         onClick={(e) => store.user.showConnect(true)}
       >
         {t("login")}
@@ -178,7 +177,7 @@ const KYC = () => {
     }
     if (store.kyc.status === BLOCK_PASS_KYC_REJECT){
       return (
-        <a href={`https://identity.blockpass.org/`} target="_blank" rel="nofolow" className={`btn btn-default w-20 md:w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
+        <a href={`https://identity.blockpass.org/`} target="_blank" rel="nofolow" className={`btn btn-default btn-primary w-20 md:w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
           Resubmit
         </a>
       );
@@ -187,7 +186,7 @@ const KYC = () => {
       return <span className="flex label label--neutral w-24">{`In Progress`}</span>;
     }
     return (
-      <button className={`btn btn-default w-20 md:w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
+      <button className={`btn btn-default btn-primary w-20 md:w-24 ` + (store.user.id == "" ? "disabled" : "")} id="blockpass-kyc-connect">
         KYC
       </button>
     );

@@ -49,7 +49,7 @@ export default function ProjectNavbar({ symbol, project, slug, pool }) {
           <div className="tabbar--main">
           <NavItem uri={symbol+`${pool !== null ? ('/' + pool?.slug) : ""}`}>
             {pool == null && project?.content?.title}
-            {pool !== null && (<span className="hidden md:!block">{project.content.title + " - "+ pool.title}</span>)}
+            {pool !== null && (<span className="hidden md:!block">{project.content.title + " - "+ pool?.title}</span>)}
             {pool !== null && (<span className="block md:hidden">Pool</span>)}
           </NavItem>
             {(!!project.news || project.share_campaign?.length !== 0) && (
@@ -59,7 +59,11 @@ export default function ProjectNavbar({ symbol, project, slug, pool }) {
               <NavItem uri={pool != null ? `${symbol}/research?pool=${pool.slug}` : `${symbol}/research`}>
                 <span className="token-symbol flex-shrink-0 lg:mr-2 h-px-20 w-px-20">
                   <Image
-                    src={project?.token?.logo}
+                    src={
+                      project?.token?.logo !== null
+                        ? project?.token?.logo
+                        : `https://cdn.rada.network/static/img/coins/128x128/${project?.token?.slug}.png`
+                    }
                     className="h-px-20 w-px-20"
                     alt={project?.token?.name}
                     width={20}

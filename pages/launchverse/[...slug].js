@@ -17,7 +17,7 @@ export function ProjectPage({ slug, locale }) {
   const {status} = router.query
   const { dataStore } = usePageStore();
   const { locales, asPath } = useRouter();
-  const { data : project } = useSWR(`/api/project/getProject?slug=${slug[0]}&lang=${locale}`, fetcher)
+  const { data : project } = useSWR(`/api/project/getProject?slug=${slug[0]}&lang=${locale}`, fetcher,{ refreshInterval: 10000 })
   const store = useStore();
   dataStore.page = "launchverse";
   dataStore.lang = locale;

@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import { usePageStore } from "../lib/usePageStore";
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 import { useTranslation } from "next-i18next";
 import { DISPLAY_SOURCES, LIST_SOURCE, LIST_URLS } from "../config/links";
 import { useRef, useEffect } from "react";
@@ -9,7 +9,7 @@ const PostNotice = observer(({ type, setTabCallback }) => {
   const { detailStore } = usePageStore();
   const { t } = useTranslation();
   const mainNotice = useRef();
-  if (_.isEmpty(detailStore.data)) {
+  if (isEmpty(detailStore.data)) {
     return null;
   }
   useEffect(() => {

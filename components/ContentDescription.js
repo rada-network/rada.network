@@ -1,12 +1,14 @@
 import WhiteListTag from "@data/whitelisttags";
 import { useRouter } from "next/router";
 
-const ContentDescription = ({ content }) => {
+const ContentDescription = ({ content,allowStyle }) => {
   const { locale } = useRouter();
-
+  allowStyle = allowStyle || false;
   if (content) {
     content = content.replace(/<img (.*)>/gi, '<img loading="lazy" $1 />');
-    content = content.replace(/style/gi, "");
+    if (!allowStyle){
+      content = content.replace(/style/gi, "");
+    }
 
     WhiteListTag.forEach((tag) => {
       content = content.replace(

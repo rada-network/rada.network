@@ -36,7 +36,7 @@ const Share2EarnRequire = ({ shareCampaign }) => {
     <>
       <div className="p-4 mt-4 rounded-lg border border-gray-200 dark:border-gray-700 mx-auto">
         <div className="mb-4">
-          <p className="text-center mt-2 font-normal text-base">
+          <p className="text-center font-normal text-base">
             {t("Complete all the requirements below to joint the event")}
           </p>
         </div>
@@ -67,7 +67,7 @@ const Login = () => {
              </span>;
     return (
       <button
-        className="btn btn-default w-20 md:w-24"
+        className="btn btn-default btn-primary w-20 md:w-24"
         onClick={(e) => store.user.showConnect(true)}
       >
         {t("login")}

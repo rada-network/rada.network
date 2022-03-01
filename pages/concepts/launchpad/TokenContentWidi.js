@@ -47,7 +47,7 @@ const TokenContent = function({tokenData,token}){
       </div>
       {/* end of project-brief */}
 
-      <div className="card card-default card--project-info">
+      <div className="card card-default">
         <div className="card-header">
           <h3>Widiland's Info</h3>
         </div>

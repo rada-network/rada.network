@@ -8,7 +8,7 @@ import styles from "../styles/modules/Dialog.wallet.module.css";
 
 import ReactTooltip from "react-tooltip";
 import { useTranslation } from "next-i18next";
-import { getProviders, getSession, signIn } from "next-auth/client";
+import { getProviders, useSession, signIn } from "next-auth/client";
 
 import dynamic from "next/dynamic";
 
@@ -16,17 +16,7 @@ const Usermenu = dynamic(import("./Usermenu"));
 const Avatar = dynamic(import("boring-avatars"));
 
 export default function Profile() {
-  const [session, setSession] = useState();
-  useEffect(() => {
-    let cancel = false;
-    getSession().then((sess) => {
-      if (cancel) return;
-      setSession(sess);
-    });
-    return () => {
-      cancel = true;
-    };
-  }, []);
+  const [session, loading] = useSession();
   // When rendering client side don't display anything until loading is complete
 
   // If no session exists, display access denied message
@@ -115,11 +105,11 @@ const NotConnectedButton = observer(({}) => {
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
-              enterFrom="opacity-0 scale-y-0"
-              enterTo="opacity-100 scale-y-100"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
               leave="ease-in duration-200"
-              leaveFrom="opacity-100 scale-y-100 h-full"
-              leaveTo="opacity-0 scale-y-0 h-0"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
             >
               <div className={`inline-block w-full z-200 relative dialog`}>
                 <div className={`dialog-wrapper`}>

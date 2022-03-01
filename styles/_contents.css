@@ -320,6 +320,33 @@ Small Badges
   }
 }
 
+/*
+Labels
+------------------------------ */
+/* 
+NFT Labels 
+*/
+.nftlabel-immortal,
+.nftlabel-Immortal,
+.nftlabel-legend,
+.nftlabel-Legend {
+  @apply text-2xs uppercase text-transparent bg-clip-text bg-gradient-to-br from-yellow-300 to-yellow-600;
+}
+
+.nftlabel-epic,
+.nftlabel-Epic {
+  @apply text-2xs uppercase text-transparent bg-clip-text bg-gradient-to-br from-purple-300 to-purple-600;
+}
+
+.nftlabel-rare,
+.nftlabel-Rare {
+  @apply text-2xs uppercase text-transparent bg-clip-text bg-gradient-to-br from-blue-300 to-blue-600;
+}
+
+.nftlabel-common,
+.nftlabel-Common {
+  @apply text-2xs uppercase text-transparent bg-clip-text bg-gradient-to-br from-green-300 to-green-600;
+}
 
 /*
 Icons Styles
@@ -817,9 +844,56 @@ Article TOC
   }
 }
 
+
+/* 
+MESSAGES
+------------------------------- */
+.message {
+  @apply p-4 text-center rounded-lg;
+  @apply bg-gray-100 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700;
+  .icon {
+    @apply text-xl;
+  }
+  .message-body--text {
+    @apply text-xl;
+  }
+  .message-body--info {
+    @apply block mt-2 text-xl font-medium;
+  }
+}
+
+.message--success {
+  @apply border-green-400 dark:border-green-500;
+  @apply bg-green-500 bg-opacity-10 dark:bg-green-500 dark:bg-opacity-20;
+}
+
+.message--success .message-body--text {
+ @apply text-green-500;
+}
+
+.message--success .message-body--info {
+}
+
+
 /*
 MISC
 ------------------------------- */
+/* 
+Legend 
+*/
+.legend {
+  @apply text-center relative;
+  h5 {
+    @apply relative inline-block text-2xs tracking-widest font-altsans uppercase z-10 px-2 py-1;
+  }
+  &::before {
+    @apply block absolute bottom-2 h-px-1 w-full bg-gray-300 z-0;
+    content: " ";
+  }
+}
+
+
+
 /*
 Social Button Lists
 */

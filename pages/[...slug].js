@@ -6,7 +6,8 @@ import { getItemById, getItems } from "../data/query/getItem";
 import { getPage } from "../data/query/page";
 import React, { useEffect, useRef } from "react";
 
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
+import isUndefined from "lodash/isUndefined";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import store from "store";
@@ -51,7 +52,7 @@ const getDataExplore = async ({ query, type, lang }) => {
 
 const getDataPostDetail = async ({ query, id, lang }) => {
   const newsDetail = await getItemById({ id: id });
-  if (_.isEmpty(newsDetail.data.itemById)) {
+  if (isEmpty(newsDetail.data.itemById)) {
     return false;
   }
   let type = "all";
@@ -234,6 +235,63 @@ export const Index = ({ props, dataStore, voteStore, detailStore }) => {
   );
 };
 
+<<<<<<< HEAD
+=======
+const ResizeerWrapper = function ({ mainRef, dataStore, containerRef }) {
+  let pw;
+  let mw;
+  useEffect(() => {
+    let mwp = store.get("main-width");
+    if (isUndefined(mwp)) {
+      mwp = 40;
+    }
+    if (isNaN(mwp)) {
+      mwp = 40;
+    }
+    if (mwp > 40) mwp = 40;
+    if (mwp < 30) mwp = 30;
+    dataStore.home.mainwidth = mwp;
+    const style = `--main-width: ${mwp}%`;
+    containerRef.current.setAttribute("style", style);
+  }, []);
+  const resizeStart = (e) => {
+    pw = mainRef.current.parentNode.clientWidth;
+    mw = mainRef.current.clientWidth;
+  };
+  const resizeDone = (e) => {
+    if (!pw) pw = mainRef.current.parentNode.clientWidth;
+    // calculate width
+    let mwp = Math.round((mainRef.current.clientWidth / pw) * 100);
+    if (mwp > 40) mwp = 40;
+    if (mwp < 30) mwp = 30;
+    dataStore.home.mainwidth = mwp;
+    const style = `--main-width: ${mwp}%`;
+    containerRef.current.setAttribute("style", style);
+    store.set("main-width", mwp);
+    mainRef.current.nextSibling.style.width = "";
+    mainRef.current.style.width = "";
+  };
+  const resizePane = (e) => {
+    // calculate width
+    const dw = e.clientX - e.startX;
+    let mwn = Math.round(mw + dw);
+    if (mwn > 0.4 * pw) mwn = Math.round(0.4 * pw);
+    if (mwn < 0.3 * pw) mwn = Math.round(0.3 * pw);
+    mainRef.current.style.width = mwn + "px";
+    mainRef.current.nextSibling.style.width = pw - mwn - 1 + "px";
+  };
+
+  return (
+    <Resizer
+      className="pane-dragger"
+      onDragMove={resizePane}
+      onDragStop={resizeDone}
+      onDragStart={resizeStart}
+    ></Resizer>
+  );
+};
+
+>>>>>>> c99010be5827741654ca43fe3641a8dc38da74fb
 export async function getStaticPaths() {
   return {
     paths: [],

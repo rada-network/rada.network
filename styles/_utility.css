@@ -26,9 +26,15 @@
 }
 /*** labels ***/
 .label {
-  @apply px-2 py-1.5 items-center justify-center rounded-full;
+  @apply px-2 py-1 items-center justify-center rounded-full;
   @apply text-2xs font-medium uppercase tracking-wide;
   @apply bg-gray-200 dark:bg-gray-700;
+}
+
+.label.box {
+  @apply px-2 py-1 items-center justify-center rounded-full;
+  @apply text-2xs font-medium uppercase tracking-wide;
+  @apply bg-yellow-500 text-white;
 }
 
 .label--active,
@@ -41,6 +47,20 @@
 .label--warning {
   @apply bg-red-500 text-white dark:bg-red-500 dark:text-white;
 }
+
+.label--yellow {
+  @apply bg-yellow-500 text-white dark:bg-yellow-500 dark:text-white;
+}
+
+.label--primary {
+  @apply bg-primary-500 text-white dark:bg-primary-500 dark:text-white;
+}
+
+.label--primary-light {
+  @apply bg-primary-100 text-gray-700 dark:bg-primary-100 dark:text-gray-700;
+}
+
+
 
 .label--inactive {
   @apply bg-gray-400 text-gray-200;
@@ -196,7 +216,7 @@
   @apply flex-shrink-0 flex-grow text-right px-2 py-2 overflow-ellipsis overflow-hidden;
 }
 .pagination {
-  @apply ml-auto mr-0 flex mt-4;
+  @apply ml-auto mr-0 flex;
 }
 .pagination li {
   @apply mx-1 ;
@@ -205,7 +225,7 @@
   @apply ml-auto;
 }
 .pagination li a {
-  @apply text-gray-500 px-2 py-1 border border-gray-200 dark:border-gray-900 rounded-md;
+  @apply text-gray-500 px-2 py-1 border border-gray-200 dark:border-gray-900 rounded-full;
 }
 .pagination li a.current{
   @apply dark:bg-gray-900 bg-gray-100 text-gray-800 dark:text-gray-100;

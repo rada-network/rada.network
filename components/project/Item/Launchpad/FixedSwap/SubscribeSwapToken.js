@@ -16,9 +16,11 @@ import MiniCountdown from "@components/project/List/Countdown";
 import useStore from "@lib/useStore"
 import OpenDate from "@components/project/Item/Launchpad/OpenDate"
 import { CheckSvg } from "@components/svg/SvgIcons"
-import { poll } from "@ethersproject/web";
 import { registerToken } from "@utils/wallet";
-
+import SubscribeSwapTokenLoading from "@components/project/Item/Launchpad/SubscribeSwapTokenLoading";
+import PoolDetailCountdown from "../PoolDetailCountdown";
+import OpenBox from "@components/project/Item/Launchpad/OpenBox/OpenBox";
+import NftList from "@components/project/Item/Launchpad/OpenBox/NftList";
 
 const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const { t, i18n } = useTranslation("launchpad")
@@ -35,6 +37,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   const [step, setStep] = useState(2)
   const [tokenAddress,setTokenAddress] = useState(ethers.constants.AddressZero)
   const [poolStatus, setPoolStatus] = useState("");
+  const boxContract = useERC20(pool.box_contract)
 
   useEffect(() => {
     if (pool.open_date !== null && Date.parse(pool.open_date) < Date.parse(new Date()) && Date.parse(new Date()) < Date.parse(pool.end_date)) {
@@ -71,10 +74,29 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
   }
 
   const fetchAccountBalance = async function () {
-    let busdBalance = await bUSDContract.balanceOf(account);
-    setAccountBalance({
-      busdBalance: utils.formatEther(busdBalance),
-    })
+    try {
+      let dataPromise = []
+      dataPromise.push(bUSDContract.balanceOf(account))
+      dataPromise.push(boxContract.balanceOf(account))
+      let data = await Promise.all(dataPromise)
+      let busdBalance = data[0];
+      let boxBalance = data[1];
+      setAccountBalance({
+        busdBalance: parseInt(utils.formatUnits(busdBalance,pool.price_decimal)),
+        boxBalance: parseInt(utils.formatUnits(boxBalance, 0)),
+      })
+      console.log({
+        busdBalance: parseInt(utils.formatUnits(busdBalance,pool.price_decimal)),
+        boxBalance: parseInt(utils.formatUnits(boxBalance, 0)),
+      })
+    }
+    catch(e){
+      console.log(e)
+      setAccountBalance({
+        busdBalance: 0,
+        boxBalance: 0,
+      })
+    }
   }
   useEffect(() => {
     if (!!account) {
@@ -87,11 +109,17 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
 
   useEffect(() => {
     if (loading) return false;
+    if (!fixedSwapInfo) return false;
     setTokenAddress(fixedSwapInfo.info.addressItem)
-    if (fixedSwapInfo.info.isEnd){
+    if (currentTime > endTime) {
       if (fixedSwapInfo.order.total > 0){
         //place order success
-        setStep(31)
+        if (pool.is_openbox){
+          setStep(3)
+        }
+        else{
+          setStep(31)
+        }
       }
       else{
         //pool close
@@ -103,8 +131,13 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
         setStep(2)
       }
       else{
+        if (pool.is_openbox){
+          setStep(3)
+        }
+        else{
+          setStep(31)
+        }
         //place order success
-        setStep(31)
       }
       
     }
@@ -131,51 +164,100 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       <SubscribeSwapTokenLoading openTime={openTime} currentTime={currentTime} endTime={endTime} />
     )
   }
+  if (!fixedSwapInfo){
+    return "Error loading swap info"
+  }
 
   return (
     <>
       {step == 2 &&
-        <div className="project-main-actions no-padding overflow-hidden">
+        <div className="card-default project-main-actions no-padding overflow-hidden">
 
-          <div className="card-body no-padding">
+        {fixedSwapInfo.info.ended ? <PoolDetailCountdown project={project} pool={pool} isEndDate={true} whitelist_date={pool.whitelist_date} title={t("Pool closes in")} /> :
+          <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")} />}
+
+          <div className="card-body">
             <div className="flex flex-col">
 
-              <div className="project-card--container no-padding ">
-                <div className="">
-                  
-                    {/* <ul className="flex-shrink-0 flex-grow">
-                      <li className="flex items-center md:block mb-3 pb-3 border-b border-gray-700">
-                        <span className="opacity-70 block mb-1">Limit per wallet </span>
-                        <span className="ml-auto text-right md:text-left md:ml-0 block list-value text-md font-semibold tabular-nums">
-                          1-{fixedSwapInfo.info.maxBuyPerAddress} boxes
-                        </span>
-                      </li>
-                      <li className="flex items-center md:block mb-3 pb-3 border-b border-gray-700">
-                        <span className="opacity-70 block mb-1">Your order</span>
-                        <span className="ml-auto text-right md:text-left md:ml-0 block list-value text-md font-semibold tabular-nums">
-                          {fixedSwapInfo.order.total} boxes
-                        </span>
-                      </li>
-                    
-                    </ul> */}
-                    
-                    {/* <ul className="mt-4 text-sm text-gray-600 dark:text-gray-300 pt-4 border-t border-gray-300 dark:border-gray-800">
-                      <li className="flex mb-2 relative pl-6">
-                        <span className="absolute top-0.5 left-0  text-whiteflex-shink-0 w-4 h-4 mr-1  p-1 flex items-center rounded-full bg-gray-300 dark:bg-gray-600">
-                          <CheckSvg />  
-                        </span>
-                        <div className="">Some notice</div>
-                      </li>
-                    </ul> */}
-                  <div className="w-full">
-                    <div className="box-header relative flex !border-opacity-50">Purchase </div>
-                    <SwapTokensV2 fixedSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+              {!fixedSwapInfo.info.ended && (
+                <>
+                  {/* {auctionSwapInfo.order.total > 0 &&
+                    <div className="m-4 bg-green-500 text-white px-8 rounded-md p-4">
+                      <div>
+                        You current bid:
+                        <div>
+                          {auctionSwapInfo.order.detail.map((item) => {
+                            return (
+                              <BidInfo pool={pool} bid_index={item.index} bid_value={item.priceEach} quantity={item.quantity}></BidInfo>
+                            )
+                          })}
+                        </div>
+                      </div>
+                      <div>
+                        <button className="btn btn-default"
+                          onClick={enableAdjust}>
+                          {!isEnableAdjust ? t("Adjust your bid") : t("cancel")}
+                        </button>
+                      </div>
+                    </div>
+                  } */}
+
+                  <div className="project-card--container no-padding">
+                    <div className={"w-full"}>
+                      <div className="sr-only relative flex pb-4 justify-center">
+                        <h3 className="text-lg font-medium">
+                          {t("Purchase")}
+                        </h3>
+                      </div>
+                      <SwapTokensV2 fixedSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+                    </div>
                   </div>
-                </div>
-              </div>
+                </>
+              )}
             </div>
           </div>
         </div>
+      }
+      {step == 3 &&
+        <>
+        <div className="card-default project-main-actions no-padding overflow-hidden">
+
+          {currentTime > endTime ?
+            "" :
+            <PoolDetailCountdown project={project} pool={pool} isEndDate={true} end_date={pool.end_date} title={t("Pool closes in")} />
+          }
+
+          <div className="card-body">
+            <div className="flex flex-col">
+              <div className="project-card--container no-padding">
+                <div className="w-full">
+                  <div className="relative flex flex-col justify-center">
+                    <h3 className="text-lg font-medium">
+                      {t("Open your cards")}
+                    </h3>
+                  </div>
+
+                  <div className="w-full flex flex-col md:flex-row md:justify-between mt-4">
+                    <OpenBox auctionSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+                  </div>
+                  {currentTime < endTime && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
+                    <div className="mt-4 w-full text-left p-4 bg-yellow-100 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
+                      <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
+                        <i className="fa fa-money-bill"></i>
+                      </span>
+                      <div>
+                        <p className="text-lg text-yellow-600 dark:text-yellow-400 font-medium">{t("Purchase more")}</p>
+                      </div>
+                    </div>
+                    }
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <NftList auctionSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
+        </>
       }
       {(step == 31) &&
         <div className="card-default project-main-actions no-padding overflow-hidden">
@@ -186,68 +268,73 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                 <div className="max-w-xl mx-auto">
                   <div className="flex">
                     <div className="w-full">
-                      <h3 className="text-lg md:text-xl border-2 p-4 rounded-lg bg-green-500 bg-opacity-5 border-green-500 mb-4 text-green-500 text-center text-semibold">
-                        <span className="icon mr-2">
-                          <i className="fa-duotone fa-badge-check"></i>
-                        </span>
-                        Place order success : {fixedSwapInfo.order.total} {pool.token_name}
-                      </h3>
-                      
-                      
-                      <div className="mt4">
-                        <div className="inline-block w-full mx-auto text-center 
-                            rounded-lg mb-4
-                            border border-gray-200 dark:border-gray-700">
-                          <div className="py-2 px-4 flex justify-center">
-                            <strong className="mr-2">
-                              {pool.token_name} Contract: 
-                            </strong>
-                            <div className="mr-2">
-                              <a target="_blank" href={getBscScanURL(tokenAddress)}>
-                                {`${tokenAddress.substr(0, 5)}...${tokenAddress.substr(-4)}`}
-                              </a>
-                            </div>
-                            <CopyToClipboard
-                              onCopy={handleCopy}
-                              text={fixedSwapInfo.info.addressItem}
-                            >
-                              <button className="btn ml-2">
-                                <i className="fa-duotone fa-copy text-2xs"></i>
-                              </button>
-                            </CopyToClipboard>
-                          </div>
-                        </div>
+
+                      <div className="message message--success">
+                        <h3 className="message-body--text">
+                          <span className="icon mr-2">
+                            <i className="fa-solid fa-badge-check"></i>
+                          </span>
+                          {t("Purchase success")}
+                        </h3>
+                        <strong className="message-body--info">
+                          {fixedSwapInfo.order.total}
+                          <span className="ml-1">{pool.token_name}</span>
+                        </strong>
                       </div>
 
-                      <div className="mt-4">
-                        <div className="inline-block w-full mx-auto text-center 
-                            rounded-lg mb-4
-                            border border-gray-200 dark:border-gray-700"
-                        >
-                          {!!pool.end_date && 
-                          <div  className="py-1 px-4">
-                            <span className="mr-2 opacity-70">{t("Closeat")}</span> 
-                            <OpenDate time={pool.end_date} />
-                          </div>
-                          }
-                        </div>
-                      </div>
-
-                      {!fixedSwapInfo.info.isEnd && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
-                      <div className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
-                        <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
+                      {currentTime < endTime && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
+                      <div className="mt-4 w-full text-left p-4 border border-transparent border-opacity-20 bg-yellow-100 hover:bg-yellow-50  hover:border-yellow-400 dark:bg-gray-900 dark:hover:bg-gray-800 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
+                        <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-700 rounded-full flex-shrink-0 mr-4 shadow transition-all">
                           <i className="fa fa-money-bill"></i>
                         </span>
                         <div>
-                          <p className="mb-1 text-lg text-yellow-600 dark:text-yellow-400">{t("Place more")}</p>
+                          <p className="text-lg text-yellow-600 dark:text-yellow-400 font-medium">{t("Purchase more")}</p>
 
                           <a href={`#`}  className="group">
-                            <span className="text-sm mr-1">{t("adjust note",{"orderBusd" : fixedSwapInfo.order.total,"maxBusd" : fixedSwapInfo.info.maxBuyPerAddress})}</span>
-                            <span className="icon text-xs relative left-1 group-hover:left-2 transition-all"><i className="fas fa-angle-right"></i></span>
+                            <span className="text-sm mr-1">
+                              {t("Purchase more note",{"orderBusd" : fixedSwapInfo.order.total,"maxBusd" : fixedSwapInfo.info.maxBuyPerAddress})}
+                            </span>
+                            <span className="icon text-xs relative left-1 group-hover:left-2 transition-all">
+                              <i className="fas fa-angle-right"></i>
+                            </span>
                           </a>
                         </div>
                       </div>
                       }
+
+                      <div className="mt-4">
+                        <div className="px-4 divide-y dark:divide-gray-600 inline-block w-full mx-auto
+                            rounded-md border border-gray-200 dark:border-gray-700">
+                          <div className="py-4 flex justify-between items-center">
+                            <span className="mr-2 opacity-60 w-2/5 uppercase text-xs">
+                              {pool.token_name} Contract: 
+                            </span>
+                            <div className="flex">
+                              <div className="mr-2">
+                                <a target="_blank" href={getBscScanURL(tokenAddress)}>
+                                  {`${tokenAddress.substr(0, 6)}...${tokenAddress.substr(-6)}`}
+                                </a>
+                              </div>
+                              <CopyToClipboard
+                                onCopy={handleCopy}
+                                text={fixedSwapInfo.info.addressItem}
+                              >
+                                <button className="btn ml-2">
+                                  <i className="fa-duotone fa-copy text-2xs"></i>
+                                </button>
+                              </CopyToClipboard>
+                            </div>
+                          </div>
+
+                          {/* {!!pool.end_date && 
+                          <div  className="py-4 md:flex">
+                            <span className="mr-2 opacity-60 w-2/5">{t("Closeat")}</span> 
+                            <OpenDate time={pool.end_date} />
+                          </div>
+                          } */}
+                        </div>
+                      </div>
+
                     </div>
                   </div>
 
@@ -280,91 +367,6 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
       }
     </>
   );
-}
-
-const SubscribeSwapTokenLoading = function({currentTime,opendTime,endTime}){
-  return (
-    <div className="card-default project-main-actions no-padding overflow-hidden">
-
-      <div className="card-body no-padding">
-        <div className="flex flex-col">
-
-          <div className="project-card--container">
-            <div className="max-w-2xl mx-auto text-center">
-
-              <div className="flex items-center">
-                <div className="mx-auto">
-                  <p className="relative mb-4 "><span className="spinner left-0 top-0"></span></p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-const TokenSocialPromote = function({project}){
-  const {t,i18n} = useTranslation("launchpad")
-  return (
-    <ul className="text-left p-4 border border-gray-200 dark:border-gray-700 rounded-lg mb-4">
-      <li  className="relative pl-6  mb-2">
-        <span className="absolute left-0 top-0 mr-2">
-          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" />
-        </span>
-        <p className="" dangerouslySetInnerHTML={{__html : t("status note")}} >
-        </p>
-      </li>
-      <li className="relative pl-6 mb-2">
-        <span className="absolute left-0 top-0 mr-2">
-          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" />
-        </span>
-          <p className="" dangerouslySetInnerHTML={{__html : t("coming soon note",
-          {
-            twitter : `<a class="link" target="_blank" rel="nofollow" href="https://twitter.com/rada_network">@rada_network</a>`,
-            radanetwork : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radanetwork">Telegram channel</a>`,
-            radadao : `<a class="link" target="_blank" rel="nofollow" href="https://t.me/radadao">Telegram Community</a>`
-          }
-          )}} />
-      </li>
-      <li className="relative pl-6  mb-2">
-        <span className="absolute left-0 top-0  mr-2">
-          <i className="fa-duotone fa-circle-small opacity-60 mx-auto" />
-        </span>
-          <p className="" dangerouslySetInnerHTML={{__html : t("status note 2",
-            {
-              token : project.token.name,
-              research : `<a class="link" target="_blank" rel="nofollow" href="/${i18n.language}/launchverse/${project.slug}/research">Research</a>`
-            }
-          )}} />
-      </li>
-
-    </ul>
-  )
-}
-
-const NotInWhitesist = function(){
-  const {t} = useTranslation("launchpad")
-  return (
-    <div className="card-default project-main-actions no-padding overflow-hidden">
-
-      <div className="card-body no-padding">
-        <div className="flex flex-col">
-
-          <div className="project-card--container">
-            <div className="max-w-2xl mx-auto text-center">
-              <div className="flex items-center justify-center mx-auto text-lg md:text-xl">
-                <span className="mr-2"><i class="fad fa-calendar-times"></i></span>
-                <span className="">{t("Not allow")}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
 }
 
 export default SubscribeSwapToken

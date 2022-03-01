@@ -113,7 +113,21 @@
   "Want to launch your project on RADA?": "Want to launch your project on RADA?",
   "Apply for Launch": "Apply for Launch",
   "View Details": "View Details",
-  "start transaction message": "Confirm your wallet and start transction.",
+  "start transaction message": "Confirm your wallet and start transaction",
   "transaction started": "The transaction is in progress, please wait a moment.",
-  "how to use": "How to use the box"
+  "how to use": "How to use the box",
+  "Open box": "Open box",
+  "Purchase": "Purchase",
+  "Purchase starts in": "Purchase starts in",
+  "Info box" : "Info",
+  "Purchase success" : "Purchase success",
+  "Purchase more" : "Purchase more",
+  "Purchase more note": "You have purchased {{orderBusd}} NFT, your maximum allocation is {{maxBusd}} NFT",
+  "Back" : "Back",
+  "Place Order" : "Place Order",
+  "You can purchase upto" : "You can purchase upto ",
+  "Total" : "Total",
+  "Cancel" : "Cancel",
+  "Purchase Limit" : "Purchase limit",
+  "Purchase limit order" : "You can only buy {{limit}} box at a time"
 }

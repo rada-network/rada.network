@@ -79,60 +79,64 @@ function Dashboard() {
 
   return (
     <>
-    <Layout meta={meta}>
-        <div className="pane-content--sec--main grid scrollbar">
-          {/* NNTH: Remove 'max-w-screen-md mx-auto' on production */}
-          <div className="page max-w-screen-lg mx-auto">
-            <div className="section">
-              <div className="grid grid-cols-1">
-                {/* Post Header */}              
+    <Layout extraClass="page-dashboard glassmorphism"  meta={meta}>
+      <div className="pane-content--sec pane-content-active !w-full">
+      <div className="pane-content--sec--main grid scrollbar">
+        {/* NNTH: Remove 'max-w-screen-md mx-auto' on production */}
+        <div className="page max-w-screen-xl mx-auto">
+          <div className="section">
+            <div className="grid grid-cols-1">
+              {/* Post Header */}              
 
-                {/* Post Content */}
-                <div className="w-full mt-4">
-                  
-                    <div className="text-center mx-auto max-w-lg mb-4 md:mb-8">
+              {/* Post Content */}
+              <div className="w-full mt-4">
+                
+                  <div className="text-center mx-auto max-w-lg mb-4 md:mb-8">
 
-                      <div className="w-20 h-20 mx-auto relative">
-                        {user && (
-                          <img className="rounded-full" src={userAvatar} />
-                        )}
-                        
-                        {/* Display this checkmark if the user already KYCed */}
-                        {user && user.is_kyc && (
-                          <span className="w-6 h-6 p-1 absolute right-0 top-0 rounded-full flex 
-                          items-center bg-green-500">
-                            <i className="text-sm font-bold fas fa-check text-white"></i>
-                          </span>
-                        )}
-                      </div> 
-
-                      {/* Only show this block if the user haven't KYCed.  */}
+                    <div className="w-24 h-24 mx-auto relative">
                       {user && (
-                        <> 
-                          {kycStatus != "Approved" ? (
-                            <KYC is_short = {true}/>
-                          ) : (
-                            <div className="">
-                              <span className="opacity-70">KYC Status: {kycStatus}</span>
-                            </div>
-                          )}
-                        </>
+                        <img className="w-24 h-24 rounded-full shadow-lg" src={userAvatar} />
                       )}
-                    </div>
-                  
-                  <div className="md:grid grid-cols-2 gap-4">
-                    <DashboardSocial user={user}/>
-                    <DashboardWallet />
-                  </div>      
-                  <JoinedPools/>
-                  
+                      
+                      {/* Display this checkmark if the user already KYCed */}
+                      {user && user.is_kyc && (
+                        <span className="w-6 h-6 p-1 absolute right-0 top-0 rounded-full flex 
+                        items-center bg-green-500 shadow-lg">
+                          <i className="fa-solid fa-check text-sm text-white"></i>
+                        </span>
+                      )}
+
+                    </div> 
+
+                    {/* Only show this block if the user haven't KYCed.  */}
+                    {user && (
+                      <> 
+                        {kycStatus != "Approved" ? (
+                          <KYC is_short = {true}/>
+                        ) : (
+                          <div className="mt-4">
+                            <span className="opacity-60">KYC Status:</span> <strong>{kycStatus}</strong>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </div>
+                
+                <div className="md:grid grid-cols-2 gap-4">
+                  <DashboardSocial user={user}/>
+                  <DashboardWallet />
                 </div>
-                {/* End: Post Content */}
+
+                <JoinedPools />
+                
               </div>
+              {/* End: Post Content */}
             </div>
           </div>
         </div>
-      </Layout>
+      </div>
+      </div>
+    </Layout>
     </>
   );
 }

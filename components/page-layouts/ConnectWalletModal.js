@@ -76,7 +76,7 @@ const ConnectWalletModal = observer(({}) => {
       },
       {
         name: "Polygon",
-        networkName: "matic",
+        networkName: "polygon",
         icon: "polygon",
       },
       {
@@ -116,20 +116,18 @@ const ConnectWalletModal = observer(({}) => {
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-y-0"
-                enterTo="opacity-100 scale-y-100"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
                 leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-y-100 h-full"
-                leaveTo="opacity-0 scale-y-0 h-0"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
               >
-                <div
-                  className="inline-block w-full max-w-lg my-8 overflow-hidden relative
+                <div className="inline-block w-full max-w-lg my-8 overflow-hidden relative
             text-left align-middle transition-all transform bg-white dark:bg-gray-800 shadow-xl rounded-lg"
                 >
                   <Dialog.Title
                     as="h3"
-                    className="text-lg border-b dark:border-gray-700 border-gray-200
-                  font-medium p-4 md:p-6 leading-6 text-gray-900 dark:text-gray-300"
+                    className="dialog-header"
                   >
                     Connect your wallet
                   </Dialog.Title>
@@ -163,7 +161,7 @@ const ConnectWalletModal = observer(({}) => {
                                   alt={item.name}
                                 />
                                 {store.network === item.networkName && (
-                                  <span className="w-4 h-4 text-center bg-green-500 text-white rounded-full absolute rounded-full top-0 right-0 flex items-center">
+                                  <span className="w-4 h-4 text-center bg-green-500 text-white rounded-full absolute top-0 right-0 flex items-center">
                                     <i className="fa-duotone mx-auto font-bold fa-check text-2xs"></i>
                                   </span>
                                 )}
@@ -247,16 +245,13 @@ const ConnectWalletModal = observer(({}) => {
                     {/* end of wallet section */}
                   </div>
 
-                  <div className="absolute right-4 top-2 md:top-4">
+                  <div className="absolute right-4 top-3">
                     <button
                       type="button"
-                      className="w-10 h-10 inline-flex items-center justify-center bg-transparent transition
-                  text-base font-medium text-gray-700 dark:text-gray-200 border border-transparent rounded-full
-                hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none
-                  focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                      className="btn btn-close--box"
                       onClick={closeModal}
                     >
-                      <i className="fa-duotone fa-close text-base"></i>
+                      <i className="fa-solid fa-close text-base"></i>
                     </button>
                   </div>
                 </div>

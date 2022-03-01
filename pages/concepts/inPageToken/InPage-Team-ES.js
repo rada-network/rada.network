@@ -76,7 +76,7 @@ function Concept() {
                     </div>
                     <div className="mb-2">
                       <strong className="">
-                        N/A
+                        N.A
                       </strong>
                     </div>
                   </div>
@@ -92,7 +92,7 @@ function Concept() {
                     </div>
                     <div className="mb-2">
                       <strong className="">
-                        N/A
+                        N.A
                       </strong>
                     </div>
                   </div>

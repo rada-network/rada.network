@@ -7,5 +7,6 @@
   "[javascript]": {
 
     "editor.formatOnSave": false
-  }
+  },
+  "svn.ignoreMissingSvnWarning": true
 }

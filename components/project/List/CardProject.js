@@ -2,16 +2,48 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Link from "next/link"
 import MiniCountdown from "./Countdown";
-import { useState, useEffect } from "react";
-import useActiveWeb3React from "@utils/hooks/useActiveWeb3React";
-import { useLaunchpadContractV2 } from "@utils/hooks/useContracts";
-import { ethers, utils } from "ethers";
+import { useState, useEffect, Fragment } from "react";
 import fetcher from "@lib/fetchJson";
-import numberFormatter from "@components/utils/numberFormatter";
 import CardProjectProgress from "./CardProjectProgress";
+import { Dialog, Transition } from "@headlessui/react";
+import { useRouter } from "next/router";
+import { getRaiseTokenByNetwork,getRaiseTokenByPlatfrom } from "@utils/hooks/index";
+
 
 
 export const CardProject = ({project,pool, status}) => {
+  const {t,i18n} = useTranslation("launchpad");
+  
+  const router = useRouter()
+  let [isOpen, setIsOpen] = useState(false)
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
+  function openLink(e) {
+    router.push(e.currentTarget.getAttribute('href'))
+  }
+
+  if (pool.is_hidden) return null
+  if (pool.title.toLowerCase() === "tba"){
+    return (
+      <div onClick={openModal} className={`card-project is-${project.status}`}>
+        <CardProjectContent project={project} pool={pool} status={status} openModal={openModal} closeModal={closeModal} isOpen={isOpen} />
+      </div>
+    )
+  }
+  return (
+    <div href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} className={`card-project is-${project.status}`} onClick={openLink} >
+      <CardProjectContent project={project} pool={pool} status={status} openModal={openModal} closeModal={closeModal} isOpen={isOpen} />
+    </div>
+  )
+}
+
+const CardProjectContent = ({project,pool, status,isOpen,closeModal,openModal}) => {
   const {t,i18n} = useTranslation("launchpad");
   const [poolStatus, setPoolStatus] = useState("");
   const [poolContract, setPoolContract] = useState({"pool_id":'',"contract":null});
@@ -46,16 +78,15 @@ export const CardProject = ({project,pool, status}) => {
   }, []);
 
   const raise = pool.raise;
-  let raise_token = "BUSD"
-  let sale_token = project.token.symbol
+  let raise_token = getRaiseTokenByPlatfrom(project.platform.networkName)
+  let price_token = getRaiseTokenByPlatfrom(project.platform.networkName)
+  let sale_token = project?.token?.symbol || "TBA"
   if (pool.token_sale == "fixed-swap" || pool.token_sale == "auction-swap"){
     raise_token = pool.token_name
     sale_token = pool.token_name
   }
-  if (pool.is_hidden) return null
   return (
-    <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`}>
-    <div className={`card-project is-${project.status}`}>
+    <>
       <div className="project-content relative">
 
         {!(project.status == "upcoming") && (
@@ -98,7 +129,7 @@ export const CardProject = ({project,pool, status}) => {
               </span>
               {pool.price ? 
               <span className="ml-auto list-value">
-              1 {sale_token} = {pool.price} BUSD
+              1 {sale_token} = {pool.price} {price_token}
               </span>
               :
               <span className="ml-auto list-value">
@@ -111,6 +142,7 @@ export const CardProject = ({project,pool, status}) => {
           {poolContract.contract && <CardProjectProgress project={project} pool={{...pool,contract: poolContract.contract,pool_id : poolContract.pool_id}} />
           }
           <div className="project--cta">
+            {pool.title.toLowerCase() !== "tba" &&  
             <Link href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} >
             <a href={`/${i18n.language}/launchverse/${project.slug}/${pool.slug}`} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
               <span>
@@ -118,16 +150,103 @@ export const CardProject = ({project,pool, status}) => {
               </span>
             </a>
             </Link>
+            }
+
+            {pool.title.toLowerCase() === "tba" &&  
+            <a href="#" onClick={openModal} className={`rounded-lg block mt-4 btn-default btn-lg text-center is-${status}`}>
+              <span>
+               {t("Learn More")}
+              </span>
+            </a>
+            }
           </div>
           {/* End of project-cta */}
         </div>
       </div>
         {/* End of project--content */}
       {/* End of card--body */}
+      {pool.title.toLowerCase() === "tba" &&  
+      <Transition appear show={isOpen} as={Fragment}>
+        <Dialog
+          as="div"
+          className="dialog-outside-wrapper fixed inset-0 z-50 overflow-y-auto"
+          onClose={closeModal}
+        >
+          <div className="dialog-outside min-h-screen">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <Dialog.Overlay className="dialog-overlay fixed inset-0" />
+            </Transition.Child>
 
+            {/* This element is to trick the browser into centering the modal contents. */}
+            <span
+              className="inline-block h-screen align-middle"
+              aria-hidden="true"
+            >
+              &#8203;
+            </span>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div className="dialog inline-block !max-w-sm z-200 relative">
+                <div className="dialog-wrapper flex-col">
+                  <Dialog.Title
+                    as="h3"
+                    className="flex border-b dark:border-gray-00 border-gray-200
+                    font-medium p-4 md:py-4 md:px-6
+                    dark:border-gray-700"
+                  >
+                    <div className="inlie-flex">
+                    Introducing RADA's Secrect Project</div>
+                  </Dialog.Title>
+                  <div className="p-4 md:p-6">
+                    <p className="mx-auto">
+                      RADA's Secrect Project is a new interesting way to joint the token sales.
+                    </p>
+                  </div>
+                  <div className="p-4 md:p-6 text-right space-x-4">
+                    <button onClick={closeModal} className="btn btn-default">
+                      <span className="btn--text">Cancel</span>
+                    </button>
+                    <button className="btn btn-default btn-primary">
+                      <span className="btn--text">Read full detail</span>
+                      <span className="icon"><i class="fa-duotone fa-square-arrow-up-right"></i></span>
+                    </button>
+                  </div>
+                  <div className="absolute right-4 top-2">
+                    <button
+                      type="button"
+                      className="inline-flex justify-center items-center w-10 h-10 bg-transparent 
+                      text-gray-500 border border-transparent rounded-full
+                      hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none 
+                      focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                      onClick={closeModal}
+                    >
+                        <i className="fa-duotone fa-close text-lg"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </Transition.Child>
+          </div>
+        </Dialog>
+      </Transition>
+      }
       {/* End of card--wrapper */}
-    </div>
-    </Link>
+    </>
   )
 }
 

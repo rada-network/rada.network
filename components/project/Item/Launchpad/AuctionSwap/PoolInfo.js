@@ -25,7 +25,6 @@ const PoolInfo = observer(function({ project,pool }) {
         setPoolStat({
           totalSold : parseInt(ethers.utils.formatUnits(stat.totalBidItem,0))
         });
-        console.log(parseInt(ethers.utils.formatUnits(stat.totalBidItem,0)));
       } catch (error) {
         //console.log(account)
         console.log("error to fetch launchpad info", error);
@@ -59,7 +58,7 @@ const PoolInfo = observer(function({ project,pool }) {
     <div className="card card-default project-brief">
       <div className="card-header flex items-start">
         <div>
-          <span className="text-2xs uppercase opacity-60 tracking-wide">{project.content.title} </span>
+          <span className="text-xs uppercase opacity-60 tracking-wide">{project.content.title} </span>
           <h3>{pool.title}</h3>
         </div>
         {/* <a className="btn flex btn-default !text-xs flex-shrink-0" target="_blank" 
@@ -82,10 +81,10 @@ const PoolInfo = observer(function({ project,pool }) {
             }
           </li>
           <li className="list-pair mb-2">
-            <span className="list-key">{t("Token Price")}</span>
+            <span className="list-key">{t("Start Price")}</span>
             {tokenPrice ? 
             <span className="list-value ml-auto font-semibold">
-            1 {sale_token} = {tokenPrice} BUSD
+            {tokenPrice} BUSD
             </span>
             :
             <span className="list-value ml-auto font-semibold">

@@ -25,6 +25,7 @@ const projectBySlugGql = gql`
         name
         logo
         symbol
+        slug
         link{
           url
           name
@@ -84,6 +85,7 @@ const projectBySlugGql = gql`
         end_date
         whitelist_date
         tge_date
+        next_vesting_date
         raise
         price
         slug
@@ -93,6 +95,10 @@ const projectBySlugGql = gql`
         is_allow_rir
         is_whitelist
         is_hidden
+        is_openbox
+        is_nft_reward
+        token_decimal
+        price_decimal
         project_pool_nft{
           title
           description
@@ -103,6 +109,14 @@ const projectBySlugGql = gql`
           total
           probability
         }
+        project_pool_content{
+          description
+          title
+          lang
+          learn_more_url
+          whitelist_url
+          whitelist_title
+        }
       }
     }
   }
@@ -112,6 +126,8 @@ const projectFeedGql = gql`
     projectFeed(lang: $lang) {
     is_default_open
     slug
+    open_date
+    end_date
     thumbnail_uri
     cover_uri
     background_uri
@@ -131,6 +147,10 @@ const projectFeedGql = gql`
     content{
       title
       description
+    }
+    platform{
+      name
+      networkName
     }
     project_pool{
       sort
