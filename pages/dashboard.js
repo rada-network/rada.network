@@ -112,7 +112,7 @@ function Dashboard() {
                     {user && (
                       <> 
                         {kycStatus != "Approved" ? (
-                          <KYC is_short = {true}/>
+                          {/* <KYC is_short = {true}/> */}
                         ) : (
                           <div className="mt-4">
                             <span className="opacity-60">KYC Status:</span> <strong>{kycStatus}</strong>
