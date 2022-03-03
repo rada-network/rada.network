@@ -9,6 +9,8 @@ import { CheckSvg } from "@components/svg/SvgIcons"
 import useStore from "@lib/useStore"
 import SubscribeSwapTokenLoading from "../../SubscribeSwapTokenLoading"
 import { getRaiseTokenByPlatfrom } from "@utils/hooks/index"
+import SocialPromote from "../../SocialPromote";
+
 
 const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance,fixedSwapInfo}) => {
   const store = useStore()
@@ -72,9 +74,26 @@ const SubcribeByBUSD = ({pool,project,accountBalance,setStep,fetchAccountBalance
     )
   }
 
+  if (fixedSwapInfo.stat.totalSold >= pool.raise){
+    return (
+      <>
+      <div className="p-4 md:p-8 rounded-lg border border-yellow-300 dark:border-gray-700">
+        <h3 className="text-lg text-center text-yellow-500 md:text-xl mb-4  text-semibold">
+          <span className="icon mr-2">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
+          {t("Sold out")}
+        </h3>
+      </div>
+      <SocialPromote />
+      </>
+    )
+  }
+
   return (
     <>
       <div className="p-0 md:py-8 md:px-16 rounded-lg">
+        
         {!isApproved && 
         <div className="max-w-xs mx-auto text-center flex flex-col">
           <button className={`btn relative mx-auto btn-default btn-default-lg btn-primary`} onClick={handleApprove} width="100%" scale="md">

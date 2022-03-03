@@ -240,7 +240,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                   <div className="w-full flex flex-col md:flex-row md:justify-between mt-4">
                     <OpenBox auctionSwapInfo={fixedSwapInfo} accountBalance={accountBalance} fetchAccountBalance={reloadAccount} setStep={setStep} project={project} pool={pool} />
                   </div>
-                  {currentTime < endTime && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
+                  {currentTime < endTime && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) && (fixedSwapInfo.stat.totalSold < parseInt(pool.raise)) &&
                     <div className="mt-4 w-full text-left p-4 bg-yellow-100 dark:bg-gray-700 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
                       <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-900 rounded-full flex-shrink-0 mr-4 shadow transition-all">
                         <i className="fa fa-money-bill"></i>
@@ -282,7 +282,7 @@ const SubscribeSwapToken = ({ project ,openTime,endTime,currentTime,pool}) => {
                         </strong>
                       </div>
 
-                      {currentTime < endTime && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) &&
+                      {currentTime < endTime && (fixedSwapInfo.order.total < fixedSwapInfo.info.maxBuyPerAddress) && (fixedSwapInfo.stat.totalSold < parseInt(pool.raise)) &&
                       <div className="mt-4 w-full text-left p-4 border border-transparent border-opacity-20 bg-yellow-100 hover:bg-yellow-50  hover:border-yellow-400 dark:bg-gray-900 dark:hover:bg-gray-800 rounded-lg flex cursor-pointer items-center group" onClick={e => { setStep(2) }} >
                         <span className="icon text-xl opacity-70 w-10 h-10 !flex items-center justify-center bg-white dark:bg-gray-700 rounded-full flex-shrink-0 mr-4 shadow transition-all">
                           <i className="fa fa-money-bill"></i>

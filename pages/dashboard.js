@@ -111,13 +111,18 @@ function Dashboard() {
                     {/* Only show this block if the user haven't KYCed.  */}
                     {user && (
                       <> 
-                        {kycStatus != "Approved" ? (
-                          {/* <KYC is_short = {true}/> */}
+                        {/* {kycStatus != "Approved" ? (
+                          <KYC is_short = {true}/>
                         ) : (
                           <div className="mt-4">
                             <span className="opacity-60">KYC Status:</span> <strong>{kycStatus}</strong>
                           </div>
-                        )}
+                        )} */}
+                        {kycStatus == "Approved" &&
+                          <div className="mt-4">
+                            <span className="opacity-60">KYC Status:</span> <strong>{kycStatus}</strong>
+                          </div>
+                        }
                       </>
                     )}
                   </div>
