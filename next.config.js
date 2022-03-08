@@ -60,14 +60,19 @@ module.exports = (phase) => {
         "bitcoinist.com",
         "ucarecdn.com",
         "www.newsbtc.com",
-        "adapulse.io"
+        "adapulse.io",
       ],
     },
     assetPrefix: isProd ? process.env.NEXT_PUBLIC_CDN : "",
     serverRuntimeConfig: {
       PROJECT_ROOT: __dirname,
     },
-    experimental: { optimizeCss: true }
+    experimental: { optimizeCss: true },
+    eslint: {
+      // Warning: This allows production builds to successfully complete even if
+      // your project has ESLint errors.
+      ignoreDuringBuilds: true,
+    },
   };
 
   // next.config.js object
