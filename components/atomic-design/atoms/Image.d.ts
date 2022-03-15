@@ -1,4 +1,4 @@
-import { FunctionComponent, HTMLAttributes } from "react";
+import { FunctionComponent, HTMLAttributes, ImgHTMLAttributes } from "react";
 
 export = Image;
 
@@ -9,7 +9,7 @@ export const ImageType: {
 
 export type ImageType = typeof ImageType[keyof typeof ImageType];
 
-export type ImageProps = HTMLAttributes<HTMLElement> & {
+export type ImageProps = ImgHTMLAttributes<HTMLElement> & {
   type: ImageType;
 };
 
