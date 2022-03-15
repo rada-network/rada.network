@@ -12,6 +12,12 @@ Install the following plugins
 - Prettier  
   https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 
+Install packages:
+
+```sh
+yarn install
+```
+
 # local https server
 
 export NODE_EXTRA_CA_CERTS="$(~/mkcert/mkcert -CAROOT)/rootCA.pem"
