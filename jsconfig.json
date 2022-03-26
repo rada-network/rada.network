@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es6",
+    "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
       "@lib/*": ["./lib/*"],
@@ -13,5 +14,11 @@
       "@styles/*": ["./styles/*"]
     }
   },
-  "exclude": ["node_modules", "**/node_modules/*",".next","https_cert","public"]
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*",
+    ".next",
+    "https_cert",
+    "public"
+  ]
 }
